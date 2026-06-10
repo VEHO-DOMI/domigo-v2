@@ -1,0 +1,597 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 12,
+  "slug": "g4-u12",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u12.w.asteroid",
+      "kind": "phrase",
+      "theme": null,
+      "en": "asteroid",
+      "de": [
+        "Asteroid"
+      ],
+      "deRaw": "Asteroid",
+      "exampleSb": "Most asteroids are found between Mars and Jupiter.",
+      "cf": null,
+      "forms": [
+        "asteroid"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.astronaut",
+      "kind": "phrase",
+      "theme": null,
+      "en": "astronaut",
+      "de": [
+        "Astronaut/in"
+      ],
+      "deRaw": "Astronaut/in",
+      "exampleSb": "Astronauts travel into space in a spacecraft.",
+      "cf": null,
+      "forms": [
+        "astronaut"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.explosion",
+      "kind": "phrase",
+      "theme": null,
+      "en": "explosion",
+      "de": [
+        "Explosion"
+      ],
+      "deRaw": "Explosion",
+      "exampleSb": "There were two loud explosions and then the building collapsed.",
+      "cf": null,
+      "forms": [
+        "explosion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.orbit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "orbit",
+      "de": [
+        "Umlaufbahn"
+      ],
+      "deRaw": "Umlaufbahn",
+      "exampleSb": "The space shuttle stayed in orbit around the Earth.",
+      "cf": null,
+      "forms": [
+        "orbit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.plaque",
+      "kind": "phrase",
+      "theme": null,
+      "en": "plaque",
+      "de": [
+        "Plakette"
+      ],
+      "deRaw": "Plakette",
+      "exampleSb": "There is a plaque on the moon that says when the first landing took place.",
+      "cf": null,
+      "forms": [
+        "plaque"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.space-shuttle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "space shuttle",
+      "de": [
+        "Raumfähre"
+      ],
+      "deRaw": "Raumfähre",
+      "exampleSb": "A space shuttle is used to travel between the Earth and a space station.",
+      "cf": null,
+      "forms": [
+        "space shuttle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.altogether",
+      "kind": "phrase",
+      "theme": null,
+      "en": "altogether",
+      "de": [
+        "insgesamt"
+      ],
+      "deRaw": "insgesamt",
+      "exampleSb": "Altogether there are 8 planets in our solar system.",
+      "cf": null,
+      "forms": [
+        "altogether"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.atmosphere",
+      "kind": "phrase",
+      "theme": null,
+      "en": "atmosphere",
+      "de": [
+        "Atmosphäre"
+      ],
+      "deRaw": "Atmosphäre",
+      "exampleSb": "The atmosphere surrounds the Earth and protects it from the sun's rays.",
+      "cf": null,
+      "forms": [
+        "atmosphere"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.crew",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crew",
+      "de": [
+        "Mannschaft",
+        "Besatzung"
+      ],
+      "deRaw": "Mannschaft, Besatzung",
+      "exampleSb": "The crew of a spaceship have to train very hard before they can go into space.",
+      "cf": null,
+      "forms": [
+        "crew"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.disgusting",
+      "kind": "phrase",
+      "theme": null,
+      "en": "disgusting",
+      "de": [
+        "ekelhaft"
+      ],
+      "deRaw": "ekelhaft",
+      "exampleSb": "Sorry, but this pizza is disgusting. It tastes horrible.",
+      "cf": null,
+      "forms": [
+        "disgusting"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.engineering",
+      "kind": "phrase",
+      "theme": null,
+      "en": "engineering",
+      "de": [
+        "Maschinenbau",
+        "Ingenieurswesen"
+      ],
+      "deRaw": "Maschinenbau, Ingenieurswesen",
+      "exampleSb": "A spaceship is a fantastic work of engineering.",
+      "cf": null,
+      "forms": [
+        "engineering"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.mankind",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mankind",
+      "de": [
+        "Menschheit"
+      ],
+      "deRaw": "Menschheit",
+      "exampleSb": "One day mankind might need a new home on another planet.",
+      "cf": null,
+      "forms": [
+        "mankind"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.space-travel",
+      "kind": "phrase",
+      "theme": null,
+      "en": "space travel",
+      "de": [
+        "Raumfahrt"
+      ],
+      "deRaw": "Raumfahrt",
+      "exampleSb": "Space travel has made it possible to land on the moon.",
+      "cf": null,
+      "forms": [
+        "space travel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.sunrise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sunrise",
+      "de": [
+        "Sonnenaufgang"
+      ],
+      "deRaw": "Sonnenaufgang",
+      "exampleSb": "Sunrise tomorrow is around 6 a.m.",
+      "cf": null,
+      "forms": [
+        "sunrise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.sunset",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sunset",
+      "de": [
+        "Sonnenuntergang"
+      ],
+      "deRaw": "Sonnenuntergang",
+      "exampleSb": "Sunset tomorrow is around 8.30 p.m.",
+      "cf": null,
+      "forms": [
+        "sunset"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.warning",
+      "kind": "phrase",
+      "theme": null,
+      "en": "warning",
+      "de": [
+        "Warnung"
+      ],
+      "deRaw": "Warnung",
+      "exampleSb": "There's a warning not to go into the water. There are jellyfish.",
+      "cf": null,
+      "forms": [
+        "warning"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.advert",
+      "kind": "phrase",
+      "theme": null,
+      "en": "advert",
+      "de": [
+        "Reklame",
+        "Anzeige"
+      ],
+      "deRaw": "Reklame, Anzeige",
+      "exampleSb": "You want to sell your car? I saw your advert in the local newspaper.",
+      "cf": null,
+      "forms": [
+        "advert"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.spacecraft",
+      "kind": "phrase",
+      "theme": null,
+      "en": "spacecraft",
+      "de": [
+        "Raumfahrzeug"
+      ],
+      "deRaw": "Raumfahrzeug",
+      "exampleSb": "In the future there will probably be several kinds of spacecraft to take us into space.",
+      "cf": null,
+      "forms": [
+        "spacecraft"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.commercial",
+      "kind": "phrase",
+      "theme": null,
+      "en": "commercial",
+      "de": [
+        "kommerziell"
+      ],
+      "deRaw": "kommerziell",
+      "exampleSb": "We use the plane for private and commercial flights.",
+      "cf": null,
+      "forms": [
+        "commercial"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.demand",
+      "kind": "phrase",
+      "theme": null,
+      "en": "demand",
+      "de": [
+        "verlangen"
+      ],
+      "deRaw": "verlangen",
+      "exampleSb": "Tell me why you did that. I demand an answer.",
+      "cf": null,
+      "forms": [
+        "demand"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.multibillion",
+      "kind": "phrase",
+      "theme": null,
+      "en": "multibillion",
+      "de": [
+        "Multimilliarden-"
+      ],
+      "deRaw": "Multimilliarden-",
+      "exampleSb": "It's a very expensive multibillion-dollar project.",
+      "cf": null,
+      "forms": [
+        "multibillion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.privately-owned",
+      "kind": "phrase",
+      "theme": null,
+      "en": "privately owned",
+      "de": [
+        "im Privatbesitz befindlich"
+      ],
+      "deRaw": "im Privatbesitz befindlich",
+      "exampleSb": "The race was won by a privately owned yacht.",
+      "cf": null,
+      "forms": [
+        "privately owned"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.celebrate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "celebrate",
+      "de": [
+        "feiern"
+      ],
+      "deRaw": "feiern",
+      "exampleSb": "She wants to celebrate her birthday next weekend.",
+      "cf": null,
+      "forms": [
+        "celebrate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.depressed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "depressed",
+      "de": [
+        "deprimiert"
+      ],
+      "deRaw": "deprimiert",
+      "exampleSb": "He and his girlfriend broke up last week. He's miserable and feeling very depressed.",
+      "cf": null,
+      "forms": [
+        "depressed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.disturb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "disturb",
+      "de": [
+        "stören"
+      ],
+      "deRaw": "stören",
+      "exampleSb": "I'm sorry to disturb you, but I think you should see this now.",
+      "cf": null,
+      "forms": [
+        "disturb"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.masterpiece",
+      "kind": "phrase",
+      "theme": null,
+      "en": "masterpiece",
+      "de": [
+        "Meisterwerk"
+      ],
+      "deRaw": "Meisterwerk",
+      "exampleSb": "Her picture was a brilliant piece of art – a masterpiece.",
+      "cf": null,
+      "forms": [
+        "masterpiece"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.neither-nor",
+      "kind": "phrase",
+      "theme": null,
+      "en": "neither ... nor",
+      "de": [
+        "weder ... noch"
+      ],
+      "deRaw": "weder ... noch",
+      "exampleSb": "Neither you nor I will be able to travel to other planets for many years.",
+      "cf": null,
+      "forms": [
+        "neither ... nor"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.reply",
+      "kind": "phrase",
+      "theme": null,
+      "en": "reply",
+      "de": [
+        "erwidern",
+        "antworten"
+      ],
+      "deRaw": "erwidern, antworten",
+      "exampleSb": "She replied to his question immediately.",
+      "cf": null,
+      "forms": [
+        "reply"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.biosphere",
+      "kind": "phrase",
+      "theme": null,
+      "en": "biosphere",
+      "de": [
+        "Lebensraum",
+        "Biosphäre"
+      ],
+      "deRaw": "Lebensraum, Biosphäre",
+      "exampleSb": "The biosphere is the area of the planet where organisms live, including the ground and the air.",
+      "cf": null,
+      "forms": [
+        "biosphere"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.genetic-engineering",
+      "kind": "phrase",
+      "theme": null,
+      "en": "genetic engineering",
+      "de": [
+        "Gentechnik"
+      ],
+      "deRaw": "Gentechnik",
+      "exampleSb": "Cloning is an example of genetic engineering.",
+      "cf": null,
+      "forms": [
+        "genetic engineering"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.gravity",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gravity",
+      "de": [
+        "Schwerkraft"
+      ],
+      "deRaw": "Schwerkraft",
+      "exampleSb": "It's gravity that makes satellites move around the Earth.",
+      "cf": null,
+      "forms": [
+        "gravity"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.resource",
+      "kind": "phrase",
+      "theme": null,
+      "en": "resource",
+      "de": [
+        "Hilfs-/Mittel",
+        "Quelle"
+      ],
+      "deRaw": "Hilfs-/Mittel, Quelle",
+      "exampleSb": "The computer lab is an essential resource for students.",
+      "cf": null,
+      "forms": [
+        "resource"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.surface",
+      "kind": "phrase",
+      "theme": null,
+      "en": "surface",
+      "de": [
+        "Oberfläche"
+      ],
+      "deRaw": "Oberfläche",
+      "exampleSb": "About one third of the Earth's surface is land.",
+      "cf": null,
+      "forms": [
+        "surface"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.uninhabitable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "uninhabitable",
+      "de": [
+        "unbewohnbar"
+      ],
+      "deRaw": "unbewohnbar",
+      "exampleSb": "After the earthquake, many of the ruined houses were uninhabitable.",
+      "cf": null,
+      "forms": [
+        "uninhabitable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.commander",
+      "kind": "phrase",
+      "theme": null,
+      "en": "commander",
+      "de": [
+        "Kommandant/in"
+      ],
+      "deRaw": "Kommandant/in",
+      "exampleSb": "The commander of the spaceship gave his orders to the crew.",
+      "cf": null,
+      "forms": [
+        "commander"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u12.w.tiring",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tiring",
+      "de": [
+        "ermüdend"
+      ],
+      "deRaw": "ermüdend",
+      "exampleSb": "Shopping all day was very tiring. I'm exhausted!",
+      "cf": null,
+      "forms": [
+        "tiring"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

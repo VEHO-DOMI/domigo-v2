@@ -1,0 +1,573 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 3,
+  "slug": "g2-u03",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u03.w.witch",
+      "kind": "wordfile",
+      "theme": "Halloween",
+      "en": "witch",
+      "de": [
+        "Hexe"
+      ],
+      "deRaw": "Hexe",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "witch"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.ghost",
+      "kind": "wordfile",
+      "theme": "Halloween",
+      "en": "ghost",
+      "de": [
+        "Geist"
+      ],
+      "deRaw": "Geist",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ghost"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.pumpkin-bucket",
+      "kind": "wordfile",
+      "theme": "Halloween",
+      "en": "pumpkin bucket",
+      "de": [
+        "Kürbiseimer"
+      ],
+      "deRaw": "Kürbiseimer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pumpkin bucket"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.vampire",
+      "kind": "wordfile",
+      "theme": "Halloween",
+      "en": "vampire",
+      "de": [
+        "Vampir"
+      ],
+      "deRaw": "Vampir",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "vampire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.trick-or-treat",
+      "kind": "wordfile",
+      "theme": "Halloween",
+      "en": "trick or treat",
+      "de": [
+        "Süßes oder Saures"
+      ],
+      "deRaw": "Süßes oder Saures",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "trick or treat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.apple-bobbing",
+      "kind": "wordfile",
+      "theme": "Halloween",
+      "en": "apple bobbing",
+      "de": [
+        "Äpfeltauchen"
+      ],
+      "deRaw": "Äpfeltauchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "apple bobbing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.mask",
+      "kind": "wordfile",
+      "theme": "Halloween",
+      "en": "mask",
+      "de": [
+        "Maske"
+      ],
+      "deRaw": "Maske",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mask"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.tradition",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tradition",
+      "de": [
+        "Tradition"
+      ],
+      "deRaw": "Tradition",
+      "exampleSb": "What's your favourite Halloween tradition?",
+      "cf": null,
+      "forms": [
+        "tradition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.to-fear",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to fear",
+      "de": [
+        "(sich) fürchten (vor)"
+      ],
+      "deRaw": "(sich) fürchten (vor)",
+      "exampleSb": "We do not fear the zombies.",
+      "cf": "fear",
+      "forms": [
+        "to fear",
+        "fear"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.to-cut-off",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to cut off",
+      "de": [
+        "abschneiden"
+      ],
+      "deRaw": "abschneiden",
+      "exampleSb": "We cut off the top of the pumpkin.",
+      "cf": "cut off",
+      "forms": [
+        "to cut off",
+        "cut off"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.front-window",
+      "kind": "phrase",
+      "theme": null,
+      "en": "front window",
+      "de": [
+        "Vorderfenster"
+      ],
+      "deRaw": "Vorderfenster",
+      "exampleSb": "We put some vampire stickers on his front window.",
+      "cf": null,
+      "forms": [
+        "front window"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.to-keep",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to keep",
+      "de": [
+        "(be-)halten"
+      ],
+      "deRaw": "(be-)halten",
+      "exampleSb": "Let's keep the pumpkin for our Halloween party.",
+      "cf": "keep",
+      "forms": [
+        "to keep",
+        "keep"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.to-be-proud",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be proud (of)",
+      "de": [
+        "stolz sein (auf)"
+      ],
+      "deRaw": "stolz sein (auf)",
+      "exampleSb": "I was very proud.",
+      "cf": "be proud",
+      "forms": [
+        "to be proud",
+        "be proud",
+        "of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.stairs",
+      "kind": "phrase",
+      "theme": null,
+      "en": "stairs",
+      "de": [
+        "Treppe"
+      ],
+      "deRaw": "Treppe",
+      "exampleSb": "We walk up the stairs in the dark.",
+      "cf": null,
+      "forms": [
+        "stairs"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.sticker",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sticker",
+      "de": [
+        "Aufkleber",
+        "Sticker"
+      ],
+      "deRaw": "Aufkleber, Sticker",
+      "exampleSb": "I put a vampire sticker on his window.",
+      "cf": null,
+      "forms": [
+        "sticker"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.sweets",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sweets",
+      "de": [
+        "Süßigkeiten"
+      ],
+      "deRaw": "Süßigkeiten",
+      "exampleSb": "Children get sweets for Halloween.",
+      "cf": null,
+      "forms": [
+        "sweets"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.trick-or-treat-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Trick or treat!",
+      "de": [
+        "Süßes oder Saures (Frage beim Halloween-Umzug)"
+      ],
+      "deRaw": "Süßes oder Saures (Frage beim Halloween-Umzug)",
+      "exampleSb": "We knock on people's doors and say \"Trick or treat!\".",
+      "cf": null,
+      "forms": [
+        "Trick or treat!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.knife",
+      "kind": "phrase",
+      "theme": null,
+      "en": "knife (pl knives)",
+      "de": [
+        "Messer"
+      ],
+      "deRaw": "Messer",
+      "exampleSb": "I need a knife to cut vegetables.",
+      "cf": null,
+      "forms": [
+        "knife",
+        "knives"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.century",
+      "kind": "phrase",
+      "theme": null,
+      "en": "century",
+      "de": [
+        "Jahrhundert"
+      ],
+      "deRaw": "Jahrhundert",
+      "exampleSb": "She was dressed like a girl from the 19th century.",
+      "cf": null,
+      "forms": [
+        "century"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.costume",
+      "kind": "phrase",
+      "theme": null,
+      "en": "costume",
+      "de": [
+        "Kostüm"
+      ],
+      "deRaw": "Kostüm",
+      "exampleSb": "Her costume looks great. She looks like a real vampire.",
+      "cf": null,
+      "forms": [
+        "costume"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.couldn-t",
+      "kind": "phrase",
+      "theme": null,
+      "en": "couldn't",
+      "de": [
+        "konnte/n nicht"
+      ],
+      "deRaw": "konnte/n nicht",
+      "exampleSb": "Laura couldn't stop.",
+      "cf": null,
+      "forms": [
+        "couldn't"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.cute",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cute",
+      "de": [
+        "niedlich",
+        "süß"
+      ],
+      "deRaw": "niedlich, süß",
+      "exampleSb": "Look at my cat. Isn't it cute?",
+      "cf": null,
+      "forms": [
+        "cute"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.dress",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dress",
+      "de": [
+        "Kleid"
+      ],
+      "deRaw": "Kleid",
+      "exampleSb": "The dress is beautiful. You can wear it to the party.",
+      "cf": null,
+      "forms": [
+        "dress"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.graveyard",
+      "kind": "phrase",
+      "theme": null,
+      "en": "graveyard",
+      "de": [
+        "Friedhof"
+      ],
+      "deRaw": "Friedhof",
+      "exampleSb": "The house is next to the graveyard.",
+      "cf": null,
+      "forms": [
+        "graveyard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.myself",
+      "kind": "phrase",
+      "theme": null,
+      "en": "myself",
+      "de": [
+        "mich selbst",
+        "mir selbst"
+      ],
+      "deRaw": "mich selbst, mir selbst",
+      "exampleSb": "I often talk to myself.",
+      "cf": null,
+      "forms": [
+        "myself"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.shall",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shall",
+      "de": [
+        "sollen",
+        "wollen"
+      ],
+      "deRaw": "sollen; wollen",
+      "exampleSb": "Where shall we go?",
+      "cf": null,
+      "forms": [
+        "shall"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.sick",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sick",
+      "de": [
+        "übel",
+        "krank"
+      ],
+      "deRaw": "übel; krank",
+      "exampleSb": "I feel a bit sick. I ate too many sweets.",
+      "cf": null,
+      "forms": [
+        "sick"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.superheroine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "superheroine",
+      "de": [
+        "Superheldin"
+      ],
+      "deRaw": "Superheldin",
+      "exampleSb": "She was dressed up as her favourite superheroine.",
+      "cf": null,
+      "forms": [
+        "superheroine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.wild",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wild",
+      "de": [
+        "wild"
+      ],
+      "deRaw": "wild",
+      "exampleSb": "You shouldn't play many wild games.",
+      "cf": null,
+      "forms": [
+        "wild"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.to-scare",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to scare",
+      "de": [
+        "Angst machen",
+        "erschrecken"
+      ],
+      "deRaw": "Angst machen, erschrecken",
+      "exampleSb": "At Halloween, some costumes really scare me.",
+      "cf": "scare",
+      "forms": [
+        "to scare",
+        "scare"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.cycle-helmet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cycle helmet",
+      "de": [
+        "Fahrradhelm"
+      ],
+      "deRaw": "Fahrradhelm",
+      "exampleSb": "You should always wear a cycle helmet.",
+      "cf": null,
+      "forms": [
+        "cycle helmet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.guys",
+      "kind": "phrase",
+      "theme": null,
+      "en": "guys",
+      "de": [
+        "Leute"
+      ],
+      "deRaw": "Leute",
+      "exampleSb": "Come on, guys. Don't look. Promise.",
+      "cf": null,
+      "forms": [
+        "guys"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.to-lose",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to lose",
+      "de": [
+        "verlieren"
+      ],
+      "deRaw": "verlieren",
+      "exampleSb": "I don't want to lose my phone.",
+      "cf": "lose",
+      "forms": [
+        "to lose",
+        "lose"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u03.w.picnic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "picnic",
+      "de": [
+        "Picknick"
+      ],
+      "deRaw": "Picknick",
+      "exampleSb": "Let's have a picnic in the park.",
+      "cf": null,
+      "forms": [
+        "picnic"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

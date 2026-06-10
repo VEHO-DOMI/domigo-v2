@@ -1,0 +1,20 @@
+{
+  "schema": "unit-state@1",
+  "slug": "g1-u08",
+  "transitions": [
+    {
+      "state": "extracted",
+      "at": "2026-06-10T19:13:53.514Z",
+      "by": "pipeline",
+      "contentHash": null,
+      "note": "master list parsed"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-10T19:13:53.514Z",
+      "by": "pipeline",
+      "contentHash": "9dd0f200363cc6d0114fc7d94fc444f29de7e8fdbb3fd5e30e2c5d28668719b0",
+      "note": null
+    }
+  ]
+}

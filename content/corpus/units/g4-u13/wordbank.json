@@ -1,0 +1,487 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 13,
+  "slug": "g4-u13",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u13.w.best-wishes",
+      "kind": "phrase",
+      "theme": null,
+      "en": "best wishes",
+      "de": [
+        "mit den besten Wünschen"
+      ],
+      "deRaw": "mit den besten Wünschen",
+      "exampleSb": "I sent her a birthday card with best wishes from us all.",
+      "cf": null,
+      "forms": [
+        "best wishes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.edition",
+      "kind": "phrase",
+      "theme": null,
+      "en": "edition",
+      "de": [
+        "Ausgabe"
+      ],
+      "deRaw": "Ausgabe",
+      "exampleSb": "The latest edition of the book has new photos and a longer introduction.",
+      "cf": null,
+      "forms": [
+        "edition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.scuba-diving",
+      "kind": "phrase",
+      "theme": null,
+      "en": "scuba-diving",
+      "de": [
+        "(Sport-)Tauchen"
+      ],
+      "deRaw": "(Sport-)Tauchen",
+      "exampleSb": "Last year we went scuba-diving in California.",
+      "cf": null,
+      "forms": [
+        "scuba-diving"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.water-proof",
+      "kind": "phrase",
+      "theme": null,
+      "en": "water-proof",
+      "de": [
+        "wasserdicht"
+      ],
+      "deRaw": "wasserdicht",
+      "exampleSb": "My feet are wet. And I thought my new shoes were water-proof!",
+      "cf": null,
+      "forms": [
+        "water-proof"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.artist",
+      "kind": "phrase",
+      "theme": null,
+      "en": "artist",
+      "de": [
+        "Künstler/in"
+      ],
+      "deRaw": "Künstler/in",
+      "exampleSb": "He's a well-known recording artist.",
+      "cf": null,
+      "forms": [
+        "artist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.autograph",
+      "kind": "phrase",
+      "theme": null,
+      "en": "autograph",
+      "de": [
+        "Autogramm"
+      ],
+      "deRaw": "Autogramm",
+      "exampleSb": "I saw Madonna and asked her for her autograph.",
+      "cf": null,
+      "forms": [
+        "autograph"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.chill-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "chill out",
+      "de": [
+        "relaxen",
+        "sich entspannen"
+      ],
+      "deRaw": "relaxen, sich entspannen",
+      "exampleSb": "I feel really tired after the race. I need to chill out at home for a few hours.",
+      "cf": null,
+      "forms": [
+        "chill out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.elder",
+      "kind": "phrase",
+      "theme": null,
+      "en": "elder",
+      "de": [
+        "älter"
+      ],
+      "deRaw": "älter",
+      "exampleSb": "My elder brother is 19. I'm 15.",
+      "cf": null,
+      "forms": [
+        "elder"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.highlight",
+      "kind": "phrase",
+      "theme": null,
+      "en": "highlight",
+      "de": [
+        "Höhepunkt"
+      ],
+      "deRaw": "Höhepunkt",
+      "exampleSb": "Our holiday in California was the highlight of the year for the whole family.",
+      "cf": null,
+      "forms": [
+        "highlight"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.last-but-not-least",
+      "kind": "phrase",
+      "theme": null,
+      "en": "last but not least",
+      "de": [
+        "nicht zuletzt"
+      ],
+      "deRaw": "nicht zuletzt",
+      "exampleSb": "That was today's news. And now, last but not least – the weather.",
+      "cf": null,
+      "forms": [
+        "last but not least"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.leisure-centre",
+      "kind": "phrase",
+      "theme": null,
+      "en": "leisure centre",
+      "de": [
+        "Freizeitzentrum"
+      ],
+      "deRaw": "Freizeitzentrum",
+      "exampleSb": "Let's go down to the leisure centre and have a game of table tennis.",
+      "cf": null,
+      "forms": [
+        "leisure centre"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.occasionally",
+      "kind": "phrase",
+      "theme": null,
+      "en": "occasionally",
+      "de": [
+        "ab und zu",
+        "hin und wieder"
+      ],
+      "deRaw": "ab und zu; hin und wieder",
+      "exampleSb": "There's an ice cream parlour on the corner. We go there occasionally in the summer.",
+      "cf": null,
+      "forms": [
+        "occasionally"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.apply",
+      "kind": "phrase",
+      "theme": null,
+      "en": "apply (for)",
+      "de": [
+        "sich bewerben (für)"
+      ],
+      "deRaw": "sich bewerben (für)",
+      "exampleSb": "If you want the job, you'll have to apply immediately.",
+      "cf": null,
+      "forms": [
+        "apply",
+        "for"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.discipline",
+      "kind": "phrase",
+      "theme": null,
+      "en": "discipline",
+      "de": [
+        "Disziplin"
+      ],
+      "deRaw": "Disziplin",
+      "exampleSb": "To be successful in any sport, you need skill and discipline.",
+      "cf": null,
+      "forms": [
+        "discipline"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.honestly",
+      "kind": "phrase",
+      "theme": null,
+      "en": "honestly",
+      "de": [
+        "ehrlich"
+      ],
+      "deRaw": "ehrlich",
+      "exampleSb": "I didn't know. Honestly, I didn't.",
+      "cf": null,
+      "forms": [
+        "honestly"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.tough",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tough",
+      "de": [
+        "hart",
+        "schwierig"
+      ],
+      "deRaw": "hart; schwierig",
+      "exampleSb": "Life is tough at the moment. I don't have any pocket money left.",
+      "cf": null,
+      "forms": [
+        "tough"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.tournament",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tournament",
+      "de": [
+        "Turnier"
+      ],
+      "deRaw": "Turnier",
+      "exampleSb": "Who won the tennis tournament this year?",
+      "cf": null,
+      "forms": [
+        "tournament"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.beggar",
+      "kind": "phrase",
+      "theme": null,
+      "en": "beggar",
+      "de": [
+        "Bettler/in"
+      ],
+      "deRaw": "Bettler/in",
+      "exampleSb": "There was a poor beggar on the street who asked me for money.",
+      "cf": null,
+      "forms": [
+        "beggar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.coal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "coal",
+      "de": [
+        "Kohle"
+      ],
+      "deRaw": "Kohle",
+      "exampleSb": "We burn oil, wood or coal to heat our homes in winter.",
+      "cf": null,
+      "forms": [
+        "coal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.legend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "legend",
+      "de": [
+        "Legende"
+      ],
+      "deRaw": "Legende",
+      "exampleSb": "The legend tells us that one day King Arthur will return to save the world.",
+      "cf": null,
+      "forms": [
+        "legend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.ripe",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ripe",
+      "de": [
+        "reif"
+      ],
+      "deRaw": "reif",
+      "exampleSb": "I love strawberries, but they must be ripe.",
+      "cf": null,
+      "forms": [
+        "ripe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.catch-up-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "catch up on",
+      "de": [
+        "aufholen (Versäumtes)",
+        "nachholen"
+      ],
+      "deRaw": "aufholen (Versäumtes); nachholen",
+      "exampleSb": "She reads the newspaper on Sunday morning to catch up on the news.",
+      "cf": null,
+      "forms": [
+        "catch up on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.get-involved-with",
+      "kind": "phrase",
+      "theme": null,
+      "en": "get involved with",
+      "de": [
+        "sich auf etw. einlassen",
+        "mitmischen (bei)"
+      ],
+      "deRaw": "sich auf etw. einlassen; mitmischen (bei)",
+      "exampleSb": "This is too dangerous. I am not getting involved.",
+      "cf": null,
+      "forms": [
+        "get involved with"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.help-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "help out",
+      "de": [
+        "(aus-)helfen"
+      ],
+      "deRaw": "(aus-)helfen",
+      "exampleSb": "I sometimes help out in the kitchen.",
+      "cf": null,
+      "forms": [
+        "help out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.kill-time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "kill time",
+      "de": [
+        "sich die Zeit vertreiben"
+      ],
+      "deRaw": "sich die Zeit vertreiben",
+      "exampleSb": "We killed time watching the boats on the river.",
+      "cf": null,
+      "forms": [
+        "kill time"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.make-money",
+      "kind": "phrase",
+      "theme": null,
+      "en": "make money",
+      "de": [
+        "Geld machen/verdienen"
+      ],
+      "deRaw": "Geld machen/verdienen",
+      "exampleSb": "She's making a lot of money with her job.",
+      "cf": null,
+      "forms": [
+        "make money"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.take-care-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "take care of",
+      "de": [
+        "Acht geben auf",
+        "sorgen für"
+      ],
+      "deRaw": "Acht geben auf; sorgen für",
+      "exampleSb": "Don't worry about your broken ankle. I'm going to take care of you.",
+      "cf": null,
+      "forms": [
+        "take care of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.take-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "take up",
+      "de": [
+        "anfangen"
+      ],
+      "deRaw": "anfangen",
+      "exampleSb": "He did not want to take up a new sport. He had too much to do.",
+      "cf": null,
+      "forms": [
+        "take up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u13.w.attend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "attend",
+      "de": [
+        "an etw. teilnehmen",
+        "etw. besuchen"
+      ],
+      "deRaw": "an etw. teilnehmen; etw. besuchen",
+      "exampleSb": "How many people attended the baseball game?",
+      "cf": null,
+      "forms": [
+        "attend"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

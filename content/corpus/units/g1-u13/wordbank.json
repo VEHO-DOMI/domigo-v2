@@ -1,0 +1,970 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 13,
+  "slug": "g1-u13",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u13.w.storm",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "storm",
+      "de": [
+        "Sturm"
+      ],
+      "deRaw": "Sturm",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "storm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.jetpack",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "jetpack",
+      "de": [
+        "Jetpack",
+        "Raketenrucksack"
+      ],
+      "deRaw": "Jetpack, Raketenrucksack",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "jetpack"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.helicopter",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "helicopter",
+      "de": [
+        "Hubschrauber"
+      ],
+      "deRaw": "Hubschrauber",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "helicopter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.coastguard",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "coastguard",
+      "de": [
+        "Küstenwache"
+      ],
+      "deRaw": "Küstenwache",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "coastguard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.fire-brigade",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "fire brigade",
+      "de": [
+        "Feuerwehr"
+      ],
+      "deRaw": "Feuerwehr",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fire brigade"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.ambulance",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "ambulance",
+      "de": [
+        "Rettungswagen",
+        "Krankenwagen"
+      ],
+      "deRaw": "Rettungswagen, Krankenwagen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ambulance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.police",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "police",
+      "de": [
+        "Polizei"
+      ],
+      "deRaw": "Polizei",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "police"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.mountain-rescue",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "mountain rescue",
+      "de": [
+        "Bergrettung"
+      ],
+      "deRaw": "Bergrettung",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mountain rescue"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-shout-for-help",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to shout for help",
+      "de": [
+        "um Hilfe rufen"
+      ],
+      "deRaw": "um Hilfe rufen",
+      "exampleSb": null,
+      "cf": "shout for help",
+      "forms": [
+        "to shout for help",
+        "shout for help"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-be-lucky",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be lucky",
+      "de": [
+        "Glück haben"
+      ],
+      "deRaw": "Glück haben",
+      "exampleSb": "They were lucky. The helicopter rescued them.",
+      "cf": "be lucky",
+      "forms": [
+        "to be lucky",
+        "be lucky"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-break",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to break",
+      "de": [
+        "brechen"
+      ],
+      "deRaw": "brechen",
+      "exampleSb": "She falls and breaks her leg.",
+      "cf": "break",
+      "forms": [
+        "to break",
+        "break"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.country",
+      "kind": "phrase",
+      "theme": null,
+      "en": "country",
+      "de": [
+        "Land",
+        "Staat"
+      ],
+      "deRaw": "Land; Staat",
+      "exampleSb": "Austria is a European country.",
+      "cf": null,
+      "forms": [
+        "country"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.crime",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crime",
+      "de": [
+        "Verbrechen"
+      ],
+      "deRaw": "Verbrechen",
+      "exampleSb": "Robbery is a crime.",
+      "cf": null,
+      "forms": [
+        "crime"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.fire",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fire",
+      "de": [
+        "Feuer"
+      ],
+      "deRaw": "Feuer",
+      "exampleSb": "Help! There's a fire in Hammond Street.",
+      "cf": null,
+      "forms": [
+        "fire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.accident",
+      "kind": "phrase",
+      "theme": null,
+      "en": "accident",
+      "de": [
+        "Unfall"
+      ],
+      "deRaw": "Unfall",
+      "exampleSb": "There was an accident on the rocks.",
+      "cf": null,
+      "forms": [
+        "accident"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-be-in-danger",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be in danger",
+      "de": [
+        "in Gefahr sein"
+      ],
+      "deRaw": "in Gefahr sein",
+      "exampleSb": "The police can help you when you are in danger.",
+      "cf": "be in danger",
+      "forms": [
+        "to be in danger",
+        "be in danger"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-fly-up-the-mountain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to fly up the mountain",
+      "de": [
+        "den Berg hinauffliegen"
+      ],
+      "deRaw": "den Berg hinauffliegen",
+      "exampleSb": "The man with the jetpack flies up the mountain.",
+      "cf": "fly up the mountain",
+      "forms": [
+        "to fly up the mountain",
+        "fly up the mountain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-radio",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to radio",
+      "de": [
+        "(an-)funken"
+      ],
+      "deRaw": "(an-)funken",
+      "exampleSb": "He finds her and radios the rescue team.",
+      "cf": "radio",
+      "forms": [
+        "to radio",
+        "radio"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.rescue-team",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rescue team",
+      "de": [
+        "Rettungsteam"
+      ],
+      "deRaw": "Rettungsteam",
+      "exampleSb": "The rescue team arrives in the helicopter.",
+      "cf": null,
+      "forms": [
+        "rescue team"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.rock",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rock",
+      "de": [
+        "Stein"
+      ],
+      "deRaw": "Stein",
+      "exampleSb": "The rock is wet.",
+      "cf": null,
+      "forms": [
+        "rock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-shout-for-help-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to shout for help",
+      "de": [
+        "um Hilfe rufen"
+      ],
+      "deRaw": "um Hilfe rufen",
+      "exampleSb": "She hasn't got a phone and shouts for help.",
+      "cf": "shout for help",
+      "forms": [
+        "to shout for help",
+        "shout for help"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-slip",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to slip",
+      "de": [
+        "ausrutschen"
+      ],
+      "deRaw": "ausrutschen",
+      "exampleSb": "He slips on wet rocks.",
+      "cf": "slip",
+      "forms": [
+        "to slip",
+        "slip"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.storm-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "storm",
+      "de": [
+        "Sturm"
+      ],
+      "deRaw": "Sturm",
+      "exampleSb": "Yesterday, there was a storm with strong winds.",
+      "cf": null,
+      "forms": [
+        "storm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.wet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wet",
+      "de": [
+        "nass"
+      ],
+      "deRaw": "nass",
+      "exampleSb": "It rained. The rocks are wet.",
+      "cf": null,
+      "forms": [
+        "wet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-arrive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to arrive",
+      "de": [
+        "(an-)kommen"
+      ],
+      "deRaw": "(an-)kommen",
+      "exampleSb": "The mountain rescue team arrives.",
+      "cf": "arrive",
+      "forms": [
+        "to arrive",
+        "arrive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-be-safe",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be safe",
+      "de": [
+        "in Sicherheit sein"
+      ],
+      "deRaw": "in Sicherheit sein",
+      "exampleSb": "The helicopter arrives. You're safe!",
+      "cf": "be safe",
+      "forms": [
+        "to be safe",
+        "be safe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-dream",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to dream",
+      "de": [
+        "träumen"
+      ],
+      "deRaw": "träumen",
+      "exampleSb": "Are you dreaming? No – the man has a jetpack.",
+      "cf": "dream",
+      "forms": [
+        "to dream",
+        "dream"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-fall-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to fall down",
+      "de": [
+        "(hinunter-)fallen"
+      ],
+      "deRaw": "(hinunter-)fallen",
+      "exampleSb": "You fall down and break your leg.",
+      "cf": "fall down",
+      "forms": [
+        "to fall down",
+        "fall down"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-land",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to land",
+      "de": [
+        "landen"
+      ],
+      "deRaw": "landen",
+      "exampleSb": "It is difficult for a helicopter to land on a mountain.",
+      "cf": "land",
+      "forms": [
+        "to land",
+        "land"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.medicine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "medicine",
+      "de": [
+        "Medikament",
+        "Medizin"
+      ],
+      "deRaw": "Medikament; Medizin",
+      "exampleSb": "The rescue team gives you medicine and keeps you warm.",
+      "cf": null,
+      "forms": [
+        "medicine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.sky",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sky",
+      "de": [
+        "Himmel"
+      ],
+      "deRaw": "Himmel",
+      "exampleSb": "It's night-time. The sky is dark.",
+      "cf": null,
+      "forms": [
+        "sky"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.windy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "windy",
+      "de": [
+        "windig"
+      ],
+      "deRaw": "windig",
+      "exampleSb": "There's a storm. It's very windy.",
+      "cf": null,
+      "forms": [
+        "windy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.dark",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dark",
+      "de": [
+        "dunkel"
+      ],
+      "deRaw": "dunkel",
+      "exampleSb": "I can't see anything. It's very dark.",
+      "cf": null,
+      "forms": [
+        "dark"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.young",
+      "kind": "phrase",
+      "theme": null,
+      "en": "young",
+      "de": [
+        "jung"
+      ],
+      "deRaw": "jung",
+      "exampleSb": "She's fifteen. She's a young teenager.",
+      "cf": null,
+      "forms": [
+        "young"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.alone",
+      "kind": "phrase",
+      "theme": null,
+      "en": "alone",
+      "de": [
+        "allein"
+      ],
+      "deRaw": "allein",
+      "exampleSb": "I was alone in the mountains.",
+      "cf": null,
+      "forms": [
+        "alone"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.backpack",
+      "kind": "phrase",
+      "theme": null,
+      "en": "backpack",
+      "de": [
+        "Rucksack"
+      ],
+      "deRaw": "Rucksack",
+      "exampleSb": "My phone was in my backpack.",
+      "cf": null,
+      "forms": [
+        "backpack"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-happen",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to happen",
+      "de": [
+        "passieren"
+      ],
+      "deRaw": "passieren",
+      "exampleSb": "What happened? The helicopter came back.",
+      "cf": "happen",
+      "forms": [
+        "to happen",
+        "happen"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-chase",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to chase",
+      "de": [
+        "verfolgen",
+        "jagen"
+      ],
+      "deRaw": "verfolgen, jagen",
+      "exampleSb": "My dog chased a cat in our garden.",
+      "cf": "chase",
+      "forms": [
+        "to chase",
+        "chase"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.sunny",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sunny",
+      "de": [
+        "sonnig"
+      ],
+      "deRaw": "sonnig",
+      "exampleSb": "The weather was sunny in the morning.",
+      "cf": null,
+      "forms": [
+        "sunny"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.class-speaker",
+      "kind": "phrase",
+      "theme": null,
+      "en": "class speaker",
+      "de": [
+        "Klassensprecher/Klassensprecherin"
+      ],
+      "deRaw": "Klassensprecher/Klassensprecherin",
+      "exampleSb": "At the beginning of the school year, we choose a class speaker.",
+      "cf": null,
+      "forms": [
+        "class speaker"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.democracy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "democracy",
+      "de": [
+        "Demokratie"
+      ],
+      "deRaw": "Demokratie",
+      "exampleSb": "In a democracy, the people have the power.",
+      "cf": null,
+      "forms": [
+        "democracy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.mayor",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mayor",
+      "de": [
+        "Bürgermeister/Bürgermeisterin"
+      ],
+      "deRaw": "Bürgermeister/Bürgermeisterin",
+      "exampleSb": "The mayor is the leader of the town council.",
+      "cf": null,
+      "forms": [
+        "mayor"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.political",
+      "kind": "phrase",
+      "theme": null,
+      "en": "political",
+      "de": [
+        "politisch"
+      ],
+      "deRaw": "politisch",
+      "exampleSb": "Political education is important.",
+      "cf": null,
+      "forms": [
+        "political"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-vote",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to vote",
+      "de": [
+        "wählen"
+      ],
+      "deRaw": "wählen",
+      "exampleSb": "People vote for their parliament.",
+      "cf": "vote",
+      "forms": [
+        "to vote",
+        "vote"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.button",
+      "kind": "phrase",
+      "theme": null,
+      "en": "button",
+      "de": [
+        "Schalter",
+        "Knopf"
+      ],
+      "deRaw": "Schalter; Knopf",
+      "exampleSb": "Diana pressed the button.",
+      "cf": null,
+      "forms": [
+        "button"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.cloud",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cloud",
+      "de": [
+        "Wolke"
+      ],
+      "deRaw": "Wolke",
+      "exampleSb": "There were dark clouds in the sky.",
+      "cf": null,
+      "forms": [
+        "cloud"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.earth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Earth",
+      "de": [
+        "Erde"
+      ],
+      "deRaw": "Erde",
+      "exampleSb": "We live on Earth.",
+      "cf": null,
+      "forms": [
+        "Earth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-die",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to die",
+      "de": [
+        "sterben"
+      ],
+      "deRaw": "sterben",
+      "exampleSb": "The Earth is dying.",
+      "cf": "die",
+      "forms": [
+        "to die",
+        "die"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.forest",
+      "kind": "phrase",
+      "theme": null,
+      "en": "forest",
+      "de": [
+        "Wald"
+      ],
+      "deRaw": "Wald",
+      "exampleSb": "There are a lot of trees in the forest.",
+      "cf": null,
+      "forms": [
+        "forest"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.introduction",
+      "kind": "phrase",
+      "theme": null,
+      "en": "introduction",
+      "de": [
+        "Einleitung"
+      ],
+      "deRaw": "Einleitung",
+      "exampleSb": "Read the introduction to the radio play.",
+      "cf": null,
+      "forms": [
+        "introduction"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.space",
+      "kind": "phrase",
+      "theme": null,
+      "en": "space",
+      "de": [
+        "Weltall"
+      ],
+      "deRaw": "Weltall",
+      "exampleSb": "People are living in spaceships in space.",
+      "cf": null,
+      "forms": [
+        "space"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-notice",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to notice",
+      "de": [
+        "bemerken"
+      ],
+      "deRaw": "bemerken",
+      "exampleSb": "Suddenly, they noticed a little spaceship.",
+      "cf": "notice",
+      "forms": [
+        "to notice",
+        "notice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.to-press",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to press",
+      "de": [
+        "drücken"
+      ],
+      "deRaw": "drücken",
+      "exampleSb": "You have to press the button.",
+      "cf": "press",
+      "forms": [
+        "to press",
+        "press"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.screen",
+      "kind": "phrase",
+      "theme": null,
+      "en": "screen",
+      "de": [
+        "Bildschirm"
+      ],
+      "deRaw": "Bildschirm",
+      "exampleSb": "They were in front of a big screen.",
+      "cf": null,
+      "forms": [
+        "screen"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.adventure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "adventure",
+      "de": [
+        "Abenteuer",
+        "Erlebnis"
+      ],
+      "deRaw": "Abenteuer, Erlebnis",
+      "exampleSb": "That was a great adventure!",
+      "cf": null,
+      "forms": [
+        "adventure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.character",
+      "kind": "phrase",
+      "theme": null,
+      "en": "character",
+      "de": [
+        "Figur",
+        "Person"
+      ],
+      "deRaw": "Figur; Person",
+      "exampleSb": "In the story, the characters are in space.",
+      "cf": null,
+      "forms": [
+        "character"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.guess-what",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Guess what?",
+      "de": [
+        "Du wirst es nicht glauben."
+      ],
+      "deRaw": "Du wirst es nicht glauben.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Guess what?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u13.w.tell-me-more",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Tell me more.",
+      "de": [
+        "Erzähl mir mehr."
+      ],
+      "deRaw": "Erzähl mir mehr.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Tell me more."
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

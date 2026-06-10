@@ -1,0 +1,986 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 14,
+  "slug": "g1-u14",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u14.w.nature-programme",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "nature programme",
+      "de": [
+        "Naturdokumentation"
+      ],
+      "deRaw": "Naturdokumentation",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "nature programme"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.fantasy-film",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "fantasy film",
+      "de": [
+        "Fantasyfilm"
+      ],
+      "deRaw": "Fantasyfilm",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fantasy film"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.reality-show",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "reality show",
+      "de": [
+        "Reality-Show"
+      ],
+      "deRaw": "Reality-Show",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "reality show"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.fantasy-story",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "fantasy story",
+      "de": [
+        "Fantasygeschichte"
+      ],
+      "deRaw": "Fantasygeschichte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fantasy story"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.quiz-show",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "quiz show",
+      "de": [
+        "Quizshow"
+      ],
+      "deRaw": "Quizshow",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "quiz show"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.science-fiction-film",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "science fiction film",
+      "de": [
+        "Science-Fiction-Film"
+      ],
+      "deRaw": "Science-Fiction-Film",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "science fiction film"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.the-news",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "the news",
+      "de": [
+        "die Nachrichten"
+      ],
+      "deRaw": "die Nachrichten",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "the news"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.detective-story",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "detective story",
+      "de": [
+        "Kriminalgeschichte",
+        "Krimi"
+      ],
+      "deRaw": "Kriminalgeschichte, Krimi",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "detective story"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.romantic-film",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "romantic film",
+      "de": [
+        "Liebesfilm"
+      ],
+      "deRaw": "Liebesfilm",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "romantic film"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.sports-programme",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "sports programme",
+      "de": [
+        "Sportsendung"
+      ],
+      "deRaw": "Sportsendung",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sports programme"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.horror-story",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "horror story",
+      "de": [
+        "Horrorgeschichte"
+      ],
+      "deRaw": "Horrorgeschichte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "horror story"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.drama-series",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "drama series",
+      "de": [
+        "Dramaserie"
+      ],
+      "deRaw": "Dramaserie",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "drama series"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.adventure-story",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "adventure story",
+      "de": [
+        "Abenteuergeschichte"
+      ],
+      "deRaw": "Abenteuergeschichte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "adventure story"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.music-video",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "music video",
+      "de": [
+        "Musikvideo"
+      ],
+      "deRaw": "Musikvideo",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "music video"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.romantic-story",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "romantic story",
+      "de": [
+        "Liebesgeschichte"
+      ],
+      "deRaw": "Liebesgeschichte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "romantic story"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.cartoon",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cartoon",
+      "de": [
+        "Zeichentrick(-film/-serie)"
+      ],
+      "deRaw": "Zeichentrick(-film/-serie)",
+      "exampleSb": "Cartoons are my favourite programme.",
+      "cf": null,
+      "forms": [
+        "cartoon"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.screen-time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "screen time",
+      "de": [
+        "Zeit vor einem Bildschirm"
+      ],
+      "deRaw": "Zeit vor einem Bildschirm",
+      "exampleSb": "Every day we have three hours of screen time.",
+      "cf": null,
+      "forms": [
+        "screen time"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.headline",
+      "kind": "phrase",
+      "theme": null,
+      "en": "headline",
+      "de": [
+        "Schlagzeile"
+      ],
+      "deRaw": "Schlagzeile",
+      "exampleSb": "What's the news headline today?",
+      "cf": null,
+      "forms": [
+        "headline"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.latest",
+      "kind": "phrase",
+      "theme": null,
+      "en": "latest",
+      "de": [
+        "neuester/neueste/neuestes"
+      ],
+      "deRaw": "neuester/neueste/neuestes",
+      "exampleSb": "This is their latest song.",
+      "cf": null,
+      "forms": [
+        "latest"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.comedy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "comedy",
+      "de": [
+        "Komödie"
+      ],
+      "deRaw": "Komödie",
+      "exampleSb": "We also watch comedy series.",
+      "cf": null,
+      "forms": [
+        "comedy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.episode",
+      "kind": "phrase",
+      "theme": null,
+      "en": "episode",
+      "de": [
+        "Episode",
+        "Folge"
+      ],
+      "deRaw": "Episode, Folge",
+      "exampleSb": "I watch three episodes a day.",
+      "cf": null,
+      "forms": [
+        "episode"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.gamer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gamer",
+      "de": [
+        "Spieler/Spielerin",
+        "Zocker/Zockerin"
+      ],
+      "deRaw": "Spieler/Spielerin; Zocker/Zockerin",
+      "exampleSb": "I watch the gamers.",
+      "cf": null,
+      "forms": [
+        "gamer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.kind-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "kind of",
+      "de": [
+        "eine Art von"
+      ],
+      "deRaw": "eine Art von",
+      "exampleSb": "I usually watch some kind of series.",
+      "cf": null,
+      "forms": [
+        "kind of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.quite",
+      "kind": "phrase",
+      "theme": null,
+      "en": "quite",
+      "de": [
+        "ziemlich"
+      ],
+      "deRaw": "ziemlich",
+      "exampleSb": "I quite like detective films.",
+      "cf": null,
+      "forms": [
+        "quite"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-stream",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to stream",
+      "de": [
+        "streamen"
+      ],
+      "deRaw": "streamen",
+      "exampleSb": "We sometimes stream a film.",
+      "cf": "stream",
+      "forms": [
+        "to stream",
+        "stream"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.weekend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "weekend",
+      "de": [
+        "Wochenende"
+      ],
+      "deRaw": "Wochenende",
+      "exampleSb": "Saturday and Sunday are the weekend.",
+      "cf": null,
+      "forms": [
+        "weekend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-freeze",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to freeze (froze)",
+      "de": [
+        "erstarren",
+        "anhalten"
+      ],
+      "deRaw": "erstarren, anhalten",
+      "exampleSb": "The film stopped and the people in the picture froze.",
+      "cf": "freeze",
+      "forms": [
+        "to freeze",
+        "freeze",
+        "froze"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.huge",
+      "kind": "phrase",
+      "theme": null,
+      "en": "huge",
+      "de": [
+        "riesig"
+      ],
+      "deRaw": "riesig",
+      "exampleSb": "An elephant is a huge animal.",
+      "cf": null,
+      "forms": [
+        "huge"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.inside",
+      "kind": "phrase",
+      "theme": null,
+      "en": "inside",
+      "de": [
+        "in",
+        "innerhalb"
+      ],
+      "deRaw": "in, innerhalb",
+      "exampleSb": "Inside the car, there were four people.",
+      "cf": null,
+      "forms": [
+        "inside"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-pay",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to pay (paid)",
+      "de": [
+        "(be-)zahlen"
+      ],
+      "deRaw": "(be-)zahlen",
+      "exampleSb": "I paid three pounds for my hamburger.",
+      "cf": "pay",
+      "forms": [
+        "to pay",
+        "pay",
+        "paid"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-point-to",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to point to",
+      "de": [
+        "zeigen auf"
+      ],
+      "deRaw": "zeigen auf",
+      "exampleSb": "She pointed to the clock inside the bank.",
+      "cf": "point to",
+      "forms": [
+        "to point to",
+        "point to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.power",
+      "kind": "phrase",
+      "theme": null,
+      "en": "power",
+      "de": [
+        "Kraft"
+      ],
+      "deRaw": "Kraft",
+      "exampleSb": "It has special powers.",
+      "cf": null,
+      "forms": [
+        "power"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.remote-control",
+      "kind": "phrase",
+      "theme": null,
+      "en": "remote control",
+      "de": [
+        "Fernbedienung"
+      ],
+      "deRaw": "Fernbedienung",
+      "exampleSb": "You use a remote control to change the programme.",
+      "cf": null,
+      "forms": [
+        "remote control"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-reply",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to reply (replied)",
+      "de": [
+        "antworten"
+      ],
+      "deRaw": "antworten",
+      "exampleSb": "I replied to your email this morning.",
+      "cf": "reply",
+      "forms": [
+        "to reply",
+        "reply",
+        "replied"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-sell",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to sell (sold)",
+      "de": [
+        "verkaufen"
+      ],
+      "deRaw": "verkaufen",
+      "exampleSb": "He wants to sell his old car.",
+      "cf": "sell",
+      "forms": [
+        "to sell",
+        "sell",
+        "sold"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.tiny",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tiny",
+      "de": [
+        "winzig"
+      ],
+      "deRaw": "winzig",
+      "exampleSb": "An ant is a tiny insect.",
+      "cf": null,
+      "forms": [
+        "tiny"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.voice",
+      "kind": "phrase",
+      "theme": null,
+      "en": "voice",
+      "de": [
+        "Stimme"
+      ],
+      "deRaw": "Stimme",
+      "exampleSb": "She's a great singer with a beautiful voice.",
+      "cf": null,
+      "forms": [
+        "voice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.wide",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wide",
+      "de": [
+        "breit",
+        "weit"
+      ],
+      "deRaw": "breit; weit",
+      "exampleSb": "There's a very wide road near our house.",
+      "cf": null,
+      "forms": [
+        "wide"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-fight",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to fight (fought)",
+      "de": [
+        "kämpfen (mit)"
+      ],
+      "deRaw": "kämpfen (mit)",
+      "exampleSb": "He fought his sister to get the control.",
+      "cf": "fight",
+      "forms": [
+        "to fight",
+        "fight",
+        "fought"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.shopkeeper",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shopkeeper",
+      "de": [
+        "Ladenbesitzer/Ladenbesitzerin"
+      ],
+      "deRaw": "Ladenbesitzer/Ladenbesitzerin",
+      "exampleSb": "The shopkeeper wasn't there.",
+      "cf": null,
+      "forms": [
+        "shopkeeper"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-disappear",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to disappear",
+      "de": [
+        "verschwinden"
+      ],
+      "deRaw": "verschwinden",
+      "exampleSb": "He turned the ring and disappeared.",
+      "cf": "disappear",
+      "forms": [
+        "to disappear",
+        "disappear"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-hold",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to hold (held)",
+      "de": [
+        "halten"
+      ],
+      "deRaw": "halten",
+      "exampleSb": "The robber held a gun in his hand.",
+      "cf": "hold",
+      "forms": [
+        "to hold",
+        "hold",
+        "held"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-spend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to spend",
+      "de": [
+        "verbringen (mit)"
+      ],
+      "deRaw": "verbringen (mit)",
+      "exampleSb": "We spend a lot of time watching shows.",
+      "cf": "spend",
+      "forms": [
+        "to spend",
+        "spend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-bend-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to bend down (bent down)",
+      "de": [
+        "(sich) hinunterbeugen"
+      ],
+      "deRaw": "(sich) hinunterbeugen",
+      "exampleSb": "Bend down and hug me.",
+      "cf": "bend down",
+      "forms": [
+        "to bend down",
+        "bend down",
+        "bent down"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-hug",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to hug",
+      "de": [
+        "umarmen"
+      ],
+      "deRaw": "umarmen",
+      "exampleSb": "Can I hug you?",
+      "cf": "hug",
+      "forms": [
+        "to hug",
+        "hug"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.lake",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lake",
+      "de": [
+        "See"
+      ],
+      "deRaw": "See",
+      "exampleSb": "The giraffe went to the lake.",
+      "cf": null,
+      "forms": [
+        "lake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.leaf",
+      "kind": "phrase",
+      "theme": null,
+      "en": "leaf (pl leaves)",
+      "de": [
+        "Blatt (Blätter)"
+      ],
+      "deRaw": "Blatt (Blätter)",
+      "exampleSb": "It only eats leaves.",
+      "cf": null,
+      "forms": [
+        "leaf",
+        "leaves"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.to-lie",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to lie",
+      "de": [
+        "liegen"
+      ],
+      "deRaw": "liegen",
+      "exampleSb": "I want to lie in the sun.",
+      "cf": "lie",
+      "forms": [
+        "to lie",
+        "lie"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.skin",
+      "kind": "phrase",
+      "theme": null,
+      "en": "skin",
+      "de": [
+        "Haut"
+      ],
+      "deRaw": "Haut",
+      "exampleSb": "The lion's skin is yellow.",
+      "cf": null,
+      "forms": [
+        "skin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.spot",
+      "kind": "phrase",
+      "theme": null,
+      "en": "spot",
+      "de": [
+        "Punkt"
+      ],
+      "deRaw": "Punkt",
+      "exampleSb": "The giraffe has black spots.",
+      "cf": null,
+      "forms": [
+        "spot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.weak",
+      "kind": "phrase",
+      "theme": null,
+      "en": "weak",
+      "de": [
+        "schwach"
+      ],
+      "deRaw": "schwach",
+      "exampleSb": "I feel so weak today.",
+      "cf": null,
+      "forms": [
+        "weak"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.dead",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dead",
+      "de": [
+        "tot"
+      ],
+      "deRaw": "tot",
+      "exampleSb": "Maybe I'm dead tomorrow.",
+      "cf": null,
+      "forms": [
+        "dead"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.once-upon-a-time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "once upon a time",
+      "de": [
+        "es war einmal"
+      ],
+      "deRaw": "es war einmal",
+      "exampleSb": "Once upon a time, there was a lion.",
+      "cf": null,
+      "forms": [
+        "once upon a time"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.one-day",
+      "kind": "phrase",
+      "theme": null,
+      "en": "one day",
+      "de": [
+        "eines Tages"
+      ],
+      "deRaw": "eines Tages",
+      "exampleSb": "One day, the giraffe went to the lake.",
+      "cf": null,
+      "forms": [
+        "one day"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.adventure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "adventure",
+      "de": [
+        "Abenteuer"
+      ],
+      "deRaw": "Abenteuer",
+      "exampleSb": "My favourite books are adventure stories.",
+      "cf": null,
+      "forms": [
+        "adventure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.cover",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cover",
+      "de": [
+        "(Buch-)Umschlag"
+      ],
+      "deRaw": "(Buch-)Umschlag",
+      "exampleSb": "Look at the book covers.",
+      "cf": null,
+      "forms": [
+        "cover"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.friendship",
+      "kind": "phrase",
+      "theme": null,
+      "en": "friendship",
+      "de": [
+        "Freundschaft"
+      ],
+      "deRaw": "Freundschaft",
+      "exampleSb": "Is this a story about friendship?",
+      "cf": null,
+      "forms": [
+        "friendship"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.poem",
+      "kind": "phrase",
+      "theme": null,
+      "en": "poem",
+      "de": [
+        "Gedicht"
+      ],
+      "deRaw": "Gedicht",
+      "exampleSb": "I read a poem every day.",
+      "cf": null,
+      "forms": [
+        "poem"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u14.w.neighbour",
+      "kind": "phrase",
+      "theme": null,
+      "en": "neighbour",
+      "de": [
+        "Nachbar/Nachbarin"
+      ],
+      "deRaw": "Nachbar/Nachbarin",
+      "exampleSb": "The neighbour's kid is nice.",
+      "cf": null,
+      "forms": [
+        "neighbour"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

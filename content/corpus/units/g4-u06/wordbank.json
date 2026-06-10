@@ -1,0 +1,309 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 6,
+  "slug": "g4-u06",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u06.w.achieve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "achieve",
+      "de": [
+        "erreichen"
+      ],
+      "deRaw": "erreichen",
+      "exampleSb": "After all this hard work, they finally achieved their goal.",
+      "cf": null,
+      "forms": [
+        "achieve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.donate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "donate",
+      "de": [
+        "spenden"
+      ],
+      "deRaw": "spenden",
+      "exampleSb": "We donated our old clothes to charity.",
+      "cf": null,
+      "forms": [
+        "donate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.drop-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "drop out (of school)",
+      "de": [
+        "(die Schule) abbrechen"
+      ],
+      "deRaw": "(die Schule) abbrechen",
+      "exampleSb": "He dropped out of high school at the age of 16.",
+      "cf": null,
+      "forms": [
+        "drop out",
+        "of school"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.goal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "goal",
+      "de": [
+        "Ziel"
+      ],
+      "deRaw": "Ziel",
+      "exampleSb": "Her primary goal is to get a college degree.",
+      "cf": null,
+      "forms": [
+        "goal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.income",
+      "kind": "phrase",
+      "theme": null,
+      "en": "income",
+      "de": [
+        "Einkommen"
+      ],
+      "deRaw": "Einkommen",
+      "exampleSb": "I have an income of 25,000 pounds a year.",
+      "cf": null,
+      "forms": [
+        "income"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.inspire",
+      "kind": "phrase",
+      "theme": null,
+      "en": "inspire",
+      "de": [
+        "inspirieren"
+      ],
+      "deRaw": "inspirieren",
+      "exampleSb": "She inspired generations of future scientists.",
+      "cf": null,
+      "forms": [
+        "inspire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.support",
+      "kind": "phrase",
+      "theme": null,
+      "en": "support",
+      "de": [
+        "unterstützen"
+      ],
+      "deRaw": "unterstützen",
+      "exampleSb": "I completely support your decision.",
+      "cf": null,
+      "forms": [
+        "support"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.encouragement",
+      "kind": "phrase",
+      "theme": null,
+      "en": "encouragement",
+      "de": [
+        "Ermutigung",
+        "Förderung"
+      ],
+      "deRaw": "Ermutigung; Förderung",
+      "exampleSb": "Teachers should give their students a lot of encouragement.",
+      "cf": null,
+      "forms": [
+        "encouragement"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.community",
+      "kind": "phrase",
+      "theme": null,
+      "en": "community",
+      "de": [
+        "Gemeinschaft"
+      ],
+      "deRaw": "Gemeinschaft",
+      "exampleSb": "The festival was a great way for the local community to get together.",
+      "cf": null,
+      "forms": [
+        "community"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.exceed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "exceed",
+      "de": [
+        "übertreffen"
+      ],
+      "deRaw": "übertreffen",
+      "exampleSb": "The cost must not exceed 10 dollars.",
+      "cf": null,
+      "forms": [
+        "exceed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.frustrated",
+      "kind": "phrase",
+      "theme": null,
+      "en": "frustrated",
+      "de": [
+        "frustriert"
+      ],
+      "deRaw": "frustriert",
+      "exampleSb": "He lost the match and was really frustrated.",
+      "cf": null,
+      "forms": [
+        "frustrated"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.grateful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "grateful",
+      "de": [
+        "dankbar"
+      ],
+      "deRaw": "dankbar",
+      "exampleSb": "I'm sure the museum will be grateful for all the donations.",
+      "cf": null,
+      "forms": [
+        "grateful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.in-particular",
+      "kind": "phrase",
+      "theme": null,
+      "en": "in particular",
+      "de": [
+        "besonders",
+        "im Speziellen"
+      ],
+      "deRaw": "besonders; im Speziellen",
+      "exampleSb": "She didn't know anybody in particular.",
+      "cf": null,
+      "forms": [
+        "in particular"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.learn-a-lesson",
+      "kind": "phrase",
+      "theme": null,
+      "en": "learn a lesson",
+      "de": [
+        "eine Lehre aus etw. ziehen"
+      ],
+      "deRaw": "eine Lehre aus etw. ziehen",
+      "exampleSb": "My computer crashed before I saved the document – I've learned my lesson, and now I save everything all the time.",
+      "cf": null,
+      "forms": [
+        "learn a lesson"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.range-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "range of",
+      "de": [
+        "eine Reihe von",
+        "zahlreiche"
+      ],
+      "deRaw": "eine Reihe von, zahlreiche",
+      "exampleSb": "We discussed a wide range of topics.",
+      "cf": null,
+      "forms": [
+        "range of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.relate-to",
+      "kind": "phrase",
+      "theme": null,
+      "en": "relate to",
+      "de": [
+        "sich mit jdm./etw. identifizieren",
+        "nachempfinden"
+      ],
+      "deRaw": "sich mit jdm./etw. identifizieren; nachempfinden",
+      "exampleSb": "The same thing happened to me; I can relate to your feelings.",
+      "cf": null,
+      "forms": [
+        "relate to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.small-wonder",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Small wonder",
+      "de": [
+        "Kein Wunder"
+      ],
+      "deRaw": "Kein Wunder",
+      "exampleSb": "Small wonder that we're lost, since we didn't ask for directions.",
+      "cf": null,
+      "forms": [
+        "Small wonder"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u06.w.transmit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "transmit",
+      "de": [
+        "senden",
+        "übermitteln"
+      ],
+      "deRaw": "senden, übermitteln",
+      "exampleSb": "The data is transmitted via Bluetooth.",
+      "cf": null,
+      "forms": [
+        "transmit"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

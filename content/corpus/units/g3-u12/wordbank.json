@@ -1,0 +1,838 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 12,
+  "slug": "g3-u12",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u12.w.drought",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "drought",
+      "de": [
+        "Dürre"
+      ],
+      "deRaw": "Dürre",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "drought"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.earthquake",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "earthquake",
+      "de": [
+        "Erdbeben"
+      ],
+      "deRaw": "Erdbeben",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "earthquake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.hurricane",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "hurricane",
+      "de": [
+        "Hurrikan"
+      ],
+      "deRaw": "Hurrikan",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hurricane"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.volcanic-eruption",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "volcanic eruption",
+      "de": [
+        "Vulkanausbruch"
+      ],
+      "deRaw": "Vulkanausbruch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "volcanic eruption"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.mudslide",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "mudslide",
+      "de": [
+        "Schlammlawine"
+      ],
+      "deRaw": "Schlammlawine",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mudslide"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.avalanche",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "avalanche",
+      "de": [
+        "Lawine"
+      ],
+      "deRaw": "Lawine",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "avalanche"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.forest-fire",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "forest fire",
+      "de": [
+        "Waldbrand"
+      ],
+      "deRaw": "Waldbrand",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "forest fire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.tsunami",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "tsunami",
+      "de": [
+        "Tsunami"
+      ],
+      "deRaw": "Tsunami",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tsunami"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.flood",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "flood",
+      "de": [
+        "Überschwemmung"
+      ],
+      "deRaw": "Überschwemmung",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "flood"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.fire-drill",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "fire drill",
+      "de": [
+        "Feueralarm-Übung"
+      ],
+      "deRaw": "Feueralarm-Übung",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fire drill"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.escape-route",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "escape route",
+      "de": [
+        "Fluchtweg"
+      ],
+      "deRaw": "Fluchtweg",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "escape route"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.smoke-detector",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "smoke detector",
+      "de": [
+        "Rauchmelder"
+      ],
+      "deRaw": "Rauchmelder",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "smoke detector"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.meeting-place",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "meeting place",
+      "de": [
+        "Treffpunkt"
+      ],
+      "deRaw": "Treffpunkt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "meeting place"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-check-doors",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "to check doors",
+      "de": [
+        "Türen überprüfen"
+      ],
+      "deRaw": "Türen überprüfen",
+      "exampleSb": null,
+      "cf": "check doors",
+      "forms": [
+        "to check doors",
+        "check doors"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-crawl-low",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "to crawl low",
+      "de": [
+        "niedrig kriechen"
+      ],
+      "deRaw": "niedrig kriechen",
+      "exampleSb": null,
+      "cf": "crawl low",
+      "forms": [
+        "to crawl low",
+        "crawl low"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-stop-drop-roll",
+      "kind": "wordfile",
+      "theme": "Natural Disasters / Fire Safety",
+      "en": "to stop, drop & roll",
+      "de": [
+        "stoppen",
+        "fallen und rollen"
+      ],
+      "deRaw": "stoppen, fallen und rollen",
+      "exampleSb": null,
+      "cf": "stop, drop & roll",
+      "forms": [
+        "to stop, drop & roll",
+        "stop, drop & roll"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.research",
+      "kind": "phrase",
+      "theme": null,
+      "en": "research",
+      "de": [
+        "Forschung",
+        "Recherche"
+      ],
+      "deRaw": "Forschung, Recherche",
+      "exampleSb": "A lot of money is spent on the research of avalanches.",
+      "cf": null,
+      "forms": [
+        "research"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-be-trapped",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be trapped",
+      "de": [
+        "gefangen sein",
+        "festsitzen"
+      ],
+      "deRaw": "gefangen sein, festsitzen",
+      "exampleSb": "If you are trapped in an avalanche, no one can hear you.",
+      "cf": "be trapped",
+      "forms": [
+        "to be trapped",
+        "be trapped"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.pressure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pressure",
+      "de": [
+        "Druck"
+      ],
+      "deRaw": "Druck",
+      "exampleSb": "The gas inside a volcano creates a lot of pressure.",
+      "cf": null,
+      "forms": [
+        "pressure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.surface",
+      "kind": "phrase",
+      "theme": null,
+      "en": "surface",
+      "de": [
+        "Oberfläche"
+      ],
+      "deRaw": "Oberfläche",
+      "exampleSb": "There's a pool of magma under the surface of the Earth.",
+      "cf": null,
+      "forms": [
+        "surface"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.undersea",
+      "kind": "phrase",
+      "theme": null,
+      "en": "undersea",
+      "de": [
+        "unter Wasser"
+      ],
+      "deRaw": "unter Wasser",
+      "exampleSb": "There are also undersea volcanoes that can erupt.",
+      "cf": null,
+      "forms": [
+        "undersea"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.border",
+      "kind": "phrase",
+      "theme": null,
+      "en": "border",
+      "de": [
+        "Grenze"
+      ],
+      "deRaw": "Grenze",
+      "exampleSb": "There were fights at the Mexican border with North America.",
+      "cf": null,
+      "forms": [
+        "border"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.damage",
+      "kind": "phrase",
+      "theme": null,
+      "en": "damage",
+      "de": [
+        "Schaden"
+      ],
+      "deRaw": "Schaden",
+      "exampleSb": "The damage caused by the earthquake was bad.",
+      "cf": null,
+      "forms": [
+        "damage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-evacuate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to evacuate",
+      "de": [
+        "evakuieren"
+      ],
+      "deRaw": "evakuieren",
+      "exampleSb": "Hundreds of people were evacuated by air.",
+      "cf": "evacuate",
+      "forms": [
+        "to evacuate",
+        "evacuate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-measure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to measure",
+      "de": [
+        "messen"
+      ],
+      "deRaw": "messen",
+      "exampleSb": "The earthquake measured 7.0 on the Richter scale.",
+      "cf": "measure",
+      "forms": [
+        "to measure",
+        "measure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.region",
+      "kind": "phrase",
+      "theme": null,
+      "en": "region",
+      "de": [
+        "Region",
+        "Gebiet"
+      ],
+      "deRaw": "Region, Gebiet",
+      "exampleSb": "The region was hit by long periods without rain.",
+      "cf": null,
+      "forms": [
+        "region"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.violent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "violent",
+      "de": [
+        "gewalttätig"
+      ],
+      "deRaw": "gewalttätig",
+      "exampleSb": "Droughts have led to violent conflicts between the regions.",
+      "cf": null,
+      "forms": [
+        "violent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-keep-away-from",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to keep away from",
+      "de": [
+        "fernbleiben von"
+      ],
+      "deRaw": "fernbleiben von",
+      "exampleSb": "Keep away from heavy furniture that might fall over.",
+      "cf": "keep away from",
+      "forms": [
+        "to keep away from",
+        "keep away from"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-fall-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to fall down",
+      "de": [
+        "hinunterfallen"
+      ],
+      "deRaw": "hinunterfallen",
+      "exampleSb": "A few trees fell down because of the earthquake.",
+      "cf": "fall down",
+      "forms": [
+        "to fall down",
+        "fall down"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-realise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to realise",
+      "de": [
+        "realisieren",
+        "erkennen"
+      ],
+      "deRaw": "realisieren, erkennen",
+      "exampleSb": "I realised it was serious when I saw people running away.",
+      "cf": "realise",
+      "forms": [
+        "to realise",
+        "realise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.survival",
+      "kind": "phrase",
+      "theme": null,
+      "en": "survival",
+      "de": [
+        "Überleben"
+      ],
+      "deRaw": "Überleben",
+      "exampleSb": "We are looking for people with amazing survival stories.",
+      "cf": null,
+      "forms": [
+        "survival"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.underneath",
+      "kind": "phrase",
+      "theme": null,
+      "en": "underneath",
+      "de": [
+        "unter"
+      ],
+      "deRaw": "unter",
+      "exampleSb": "I just got underneath the kitchen table.",
+      "cf": null,
+      "forms": [
+        "underneath"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.ash",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ash",
+      "de": [
+        "Asche"
+      ],
+      "deRaw": "Asche",
+      "exampleSb": "He used ash from the fire to draw a face on the ball.",
+      "cf": null,
+      "forms": [
+        "ash"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.castaway",
+      "kind": "phrase",
+      "theme": null,
+      "en": "castaway",
+      "de": [
+        "Schiffbrüchiger/Schiffbrüchige"
+      ],
+      "deRaw": "Schiffbrüchiger/Schiffbrüchige",
+      "exampleSb": "How would you spend your time if you were a castaway?",
+      "cf": null,
+      "forms": [
+        "castaway"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-deliver",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to deliver",
+      "de": [
+        "zustellen",
+        "liefern"
+      ],
+      "deRaw": "zustellen, liefern",
+      "exampleSb": "He still hoped to deliver the parcels unopened one day.",
+      "cf": "deliver",
+      "forms": [
+        "to deliver",
+        "deliver"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.delivery-company",
+      "kind": "phrase",
+      "theme": null,
+      "en": "delivery company",
+      "de": [
+        "Zustelldienst"
+      ],
+      "deRaw": "Zustelldienst",
+      "exampleSb": "Chuck worked for a worldwide delivery company.",
+      "cf": null,
+      "forms": [
+        "delivery company"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.flame",
+      "kind": "phrase",
+      "theme": null,
+      "en": "flame",
+      "de": [
+        "Flamme"
+      ],
+      "deRaw": "Flamme",
+      "exampleSb": "He was trying to make fire and finally he saw a flame.",
+      "cf": null,
+      "forms": [
+        "flame"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-get-used-to",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to get used to",
+      "de": [
+        "sich an etw. gewöhnen"
+      ],
+      "deRaw": "sich an etw. gewöhnen",
+      "exampleSb": "As the years went by, Chuck got used to the island.",
+      "cf": "get used to",
+      "forms": [
+        "to get used to",
+        "get used to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.hometown",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hometown",
+      "de": [
+        "Heimatstadt"
+      ],
+      "deRaw": "Heimatstadt",
+      "exampleSb": "Chuck knew the island as well as his hometown.",
+      "cf": null,
+      "forms": [
+        "hometown"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.joy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "joy",
+      "de": [
+        "Freude"
+      ],
+      "deRaw": "Freude",
+      "exampleSb": "He laughed with joy.",
+      "cf": null,
+      "forms": [
+        "joy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.parcel",
+      "kind": "phrase",
+      "theme": null,
+      "en": "parcel",
+      "de": [
+        "Paket"
+      ],
+      "deRaw": "Paket",
+      "exampleSb": "He put the unopened parcel next to him.",
+      "cf": null,
+      "forms": [
+        "parcel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.raft",
+      "kind": "phrase",
+      "theme": null,
+      "en": "raft",
+      "de": [
+        "Floß"
+      ],
+      "deRaw": "Floß",
+      "exampleSb": "Chuck built a raft to escape the island.",
+      "cf": null,
+      "forms": [
+        "raft"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.shelter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shelter",
+      "de": [
+        "Unterschlupf",
+        "Unterkunft"
+      ],
+      "deRaw": "Unterschlupf, Unterkunft",
+      "exampleSb": "He built himself a shelter from the rain.",
+      "cf": null,
+      "forms": [
+        "shelter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-turn-into",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to turn into",
+      "de": [
+        "verwandeln",
+        "hier: zu etw. werden"
+      ],
+      "deRaw": "verwandeln, hier: zu etw. werden",
+      "exampleSb": "The rainfall quickly turned into heavy snowfall.",
+      "cf": "turn into",
+      "forms": [
+        "to turn into",
+        "turn into"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.miracle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "miracle",
+      "de": [
+        "Wunder"
+      ],
+      "deRaw": "Wunder",
+      "exampleSb": "It's a miracle that we survived the earthquake.",
+      "cf": null,
+      "forms": [
+        "miracle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.desert-island",
+      "kind": "phrase",
+      "theme": null,
+      "en": "desert island",
+      "de": [
+        "einsame Insel"
+      ],
+      "deRaw": "einsame Insel",
+      "exampleSb": "What would you take on a desert island?",
+      "cf": null,
+      "forms": [
+        "desert island"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.pleasure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pleasure (no pl)",
+      "de": [
+        "Freude",
+        "Vergnügen"
+      ],
+      "deRaw": "Freude, Vergnügen",
+      "exampleSb": "It's a pleasure to be here.",
+      "cf": null,
+      "forms": [
+        "pleasure",
+        "no pl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.in-case-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "in case of",
+      "de": [
+        "im Falle von"
+      ],
+      "deRaw": "im Falle von",
+      "exampleSb": "In case of fire go outside!",
+      "cf": null,
+      "forms": [
+        "in case of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.lighter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lighter",
+      "de": [
+        "Feuerzeug"
+      ],
+      "deRaw": "Feuerzeug",
+      "exampleSb": "Don't play with lighters.",
+      "cf": null,
+      "forms": [
+        "lighter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u12.w.to-collapse",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to collapse",
+      "de": [
+        "zusammenbrechen"
+      ],
+      "deRaw": "zusammenbrechen",
+      "exampleSb": "The house could collapse during an earthquake.",
+      "cf": "collapse",
+      "forms": [
+        "to collapse",
+        "collapse"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

@@ -1,0 +1,748 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 4,
+  "slug": "g4-u04",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u04.w.accountant",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "accountant",
+      "de": [
+        "Buchhalter/in"
+      ],
+      "deRaw": "Buchhalter/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "accountant"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.receptionist",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "receptionist",
+      "de": [
+        "Rezeptionist/in"
+      ],
+      "deRaw": "Rezeptionist/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "receptionist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.mechanic",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "mechanic",
+      "de": [
+        "Mechaniker/in"
+      ],
+      "deRaw": "Mechaniker/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mechanic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.nurse",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "nurse",
+      "de": [
+        "Krankenpfleger/in"
+      ],
+      "deRaw": "Krankenpfleger/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "nurse"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.health-care",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "health care",
+      "de": [
+        "Gesundheitswesen"
+      ],
+      "deRaw": "Gesundheitswesen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "health care"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.marketing",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "marketing",
+      "de": [
+        "Marketing"
+      ],
+      "deRaw": "Marketing",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "marketing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.finance",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "finance",
+      "de": [
+        "Finanzwesen"
+      ],
+      "deRaw": "Finanzwesen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "finance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.electrician",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "electrician",
+      "de": [
+        "Elektriker/in"
+      ],
+      "deRaw": "Elektriker/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "electrician"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.secretary",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "secretary",
+      "de": [
+        "Sekretär/in"
+      ],
+      "deRaw": "Sekretär/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "secretary"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.flight-attendant",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "flight attendant",
+      "de": [
+        "Flugbegleiter/in"
+      ],
+      "deRaw": "Flugbegleiter/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "flight attendant"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.computing",
+      "kind": "wordfile",
+      "theme": "Jobs and Professions",
+      "en": "computing",
+      "de": [
+        "Datenverarbeitung",
+        "Computerwesen"
+      ],
+      "deRaw": "Datenverarbeitung; Computerwesen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "computing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.computing-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "computing",
+      "de": [
+        "Datenverarbeitung",
+        "Computerwesen"
+      ],
+      "deRaw": "Datenverarbeitung; Computerwesen",
+      "exampleSb": "I love programming, so I'm glad I found a job in computing.",
+      "cf": null,
+      "forms": [
+        "computing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.finance-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "finance",
+      "de": [
+        "Finanzwesen"
+      ],
+      "deRaw": "Finanzwesen",
+      "exampleSb": "She works in finance. She's an accountant.",
+      "cf": null,
+      "forms": [
+        "finance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.health-care-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "health care",
+      "de": [
+        "Gesundheitswesen"
+      ],
+      "deRaw": "Gesundheitswesen",
+      "exampleSb": "If you want to work in health care, you need to be flexible.",
+      "cf": null,
+      "forms": [
+        "health care"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.sales-and-marketing",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sales and marketing",
+      "de": [
+        "Verkauf und Marketing"
+      ],
+      "deRaw": "Verkauf und Marketing",
+      "exampleSb": "He has good people skills. No wonder he works in sales and marketing.",
+      "cf": null,
+      "forms": [
+        "sales and marketing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.deserve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "deserve",
+      "de": [
+        "verdienen"
+      ],
+      "deRaw": "verdienen",
+      "exampleSb": "The team played well and really deserved to win.",
+      "cf": null,
+      "forms": [
+        "deserve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.female",
+      "kind": "phrase",
+      "theme": null,
+      "en": "female",
+      "de": [
+        "weiblich"
+      ],
+      "deRaw": "weiblich",
+      "exampleSb": "My dog's a girl, so it's female, not male.",
+      "cf": null,
+      "forms": [
+        "female"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.male",
+      "kind": "phrase",
+      "theme": null,
+      "en": "male",
+      "de": [
+        "männlich"
+      ],
+      "deRaw": "männlich",
+      "exampleSb": "Male ducks are called drakes.",
+      "cf": null,
+      "forms": [
+        "male"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.satisfaction",
+      "kind": "phrase",
+      "theme": null,
+      "en": "satisfaction",
+      "de": [
+        "Genugtuung",
+        "Zufriedenheit"
+      ],
+      "deRaw": "Genugtuung; Zufriedenheit",
+      "exampleSb": "I love my job. It gives me a lot of satisfaction.",
+      "cf": null,
+      "forms": [
+        "satisfaction"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.unemployed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unemployed",
+      "de": [
+        "arbeitslos"
+      ],
+      "deRaw": "arbeitslos",
+      "exampleSb": "I lost my job last week. Now I'm unemployed.",
+      "cf": null,
+      "forms": [
+        "unemployed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.career",
+      "kind": "phrase",
+      "theme": null,
+      "en": "career",
+      "de": [
+        "Karriere",
+        "Berufslaufbahn"
+      ],
+      "deRaw": "Karriere; Berufslaufbahn",
+      "exampleSb": "She started her career as a model ten years ago.",
+      "cf": null,
+      "forms": [
+        "career"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.be-keen-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "be keen on",
+      "de": [
+        "von etw. begeistert sein"
+      ],
+      "deRaw": "von etw. begeistert sein",
+      "exampleSb": "I was very tired, so I wasn't keen on going to the party.",
+      "cf": null,
+      "forms": [
+        "be keen on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.be-responsible-for",
+      "kind": "phrase",
+      "theme": null,
+      "en": "be responsible for",
+      "de": [
+        "für etw. verantwortlich sein"
+      ],
+      "deRaw": "für etw. verantwortlich sein",
+      "exampleSb": "The architect is responsible for designing the project.",
+      "cf": null,
+      "forms": [
+        "be responsible for"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.bonus",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bonus",
+      "de": [
+        "Bonus",
+        "Zulage",
+        "Prämie"
+      ],
+      "deRaw": "Bonus, Zulage; Prämie",
+      "exampleSb": "The staff got a bonus for finishing the project on time.",
+      "cf": null,
+      "forms": [
+        "bonus"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.deadline",
+      "kind": "phrase",
+      "theme": null,
+      "en": "deadline",
+      "de": [
+        "Frist",
+        "Abgabetermin"
+      ],
+      "deRaw": "Frist, Abgabetermin",
+      "exampleSb": "We had to hurry to meet the deadline.",
+      "cf": null,
+      "forms": [
+        "deadline"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.develop",
+      "kind": "phrase",
+      "theme": null,
+      "en": "develop",
+      "de": [
+        "entwickeln"
+      ],
+      "deRaw": "entwickeln",
+      "exampleSb": "The company develops new software programmes.",
+      "cf": null,
+      "forms": [
+        "develop"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.earn",
+      "kind": "phrase",
+      "theme": null,
+      "en": "earn",
+      "de": [
+        "verdienen"
+      ],
+      "deRaw": "verdienen",
+      "exampleSb": "I need to earn a lot of money if I want to go on holiday to Australia.",
+      "cf": null,
+      "forms": [
+        "earn"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.launch",
+      "kind": "phrase",
+      "theme": null,
+      "en": "launch",
+      "de": [
+        "einführen",
+        "auf den Markt bringen"
+      ],
+      "deRaw": "einführen, auf den Markt bringen",
+      "exampleSb": "The new product will be launched in July.",
+      "cf": null,
+      "forms": [
+        "launch"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.pros-and-cons",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pros and cons",
+      "de": [
+        "Vor- und Nachteile"
+      ],
+      "deRaw": "Vor- und Nachteile",
+      "exampleSb": "Each technology has its pros and cons.",
+      "cf": null,
+      "forms": [
+        "pros and cons"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.salary",
+      "kind": "phrase",
+      "theme": null,
+      "en": "salary",
+      "de": [
+        "Gehalt"
+      ],
+      "deRaw": "Gehalt",
+      "exampleSb": "She earns a good salary.",
+      "cf": null,
+      "forms": [
+        "salary"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.think-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "think up",
+      "de": [
+        "ausdenken",
+        "erfinden"
+      ],
+      "deRaw": "ausdenken, erfinden",
+      "exampleSb": "Can't you think up a better excuse than that?",
+      "cf": null,
+      "forms": [
+        "think up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.working-hours",
+      "kind": "phrase",
+      "theme": null,
+      "en": "working hours",
+      "de": [
+        "Arbeitszeit"
+      ],
+      "deRaw": "Arbeitszeit",
+      "exampleSb": "Most people enjoy shorter working hours and more leisure time.",
+      "cf": null,
+      "forms": [
+        "working hours"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.advice",
+      "kind": "phrase",
+      "theme": null,
+      "en": "advice",
+      "de": [
+        "Ratschlag"
+      ],
+      "deRaw": "Ratschlag",
+      "exampleSb": "Take my advice. Don't do it.",
+      "cf": null,
+      "forms": [
+        "advice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.ambition",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ambition",
+      "de": [
+        "Ehrgeiz"
+      ],
+      "deRaw": "Ehrgeiz",
+      "exampleSb": "His ambition is to become world champion.",
+      "cf": null,
+      "forms": [
+        "ambition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.casual",
+      "kind": "phrase",
+      "theme": null,
+      "en": "casual",
+      "de": [
+        "lässig",
+        "locker"
+      ],
+      "deRaw": "lässig; locker",
+      "exampleSb": "Don't be too casual during an interview for a new job.",
+      "cf": null,
+      "forms": [
+        "casual"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.company",
+      "kind": "phrase",
+      "theme": null,
+      "en": "company",
+      "de": [
+        "Unternehmen",
+        "Firma"
+      ],
+      "deRaw": "Unternehmen, Firma",
+      "exampleSb": "I've worked for the company for 2 years now.",
+      "cf": null,
+      "forms": [
+        "company"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.confidently",
+      "kind": "phrase",
+      "theme": null,
+      "en": "confidently",
+      "de": [
+        "selbstbewusst"
+      ],
+      "deRaw": "selbstbewusst",
+      "exampleSb": "Try to speak and act confidently, but don't be cheeky.",
+      "cf": null,
+      "forms": [
+        "confidently"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.employer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "employer",
+      "de": [
+        "Arbeitgeber/in"
+      ],
+      "deRaw": "Arbeitgeber/in",
+      "exampleSb": "My new employer is a big computer company.",
+      "cf": null,
+      "forms": [
+        "employer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.enthusiastic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "enthusiastic",
+      "de": [
+        "enthusiastisch",
+        "begeistert"
+      ],
+      "deRaw": "enthusiastisch, begeistert",
+      "exampleSb": "My parents love classical music, but I'm not so enthusiastic.",
+      "cf": null,
+      "forms": [
+        "enthusiastic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.eye-contact",
+      "kind": "phrase",
+      "theme": null,
+      "en": "eye contact",
+      "de": [
+        "Augenkontakt"
+      ],
+      "deRaw": "Augenkontakt",
+      "exampleSb": "Look at your interviewer and try to keep eye contact.",
+      "cf": null,
+      "forms": [
+        "eye contact"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.interview",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(job) interview",
+      "de": [
+        "Vorstellungsgespräch"
+      ],
+      "deRaw": "Vorstellungsgespräch",
+      "exampleSb": "She has an interview next week for the manager's job.",
+      "cf": null,
+      "forms": [
+        "interview",
+        "job"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.memorise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "memorise",
+      "de": [
+        "sich einprägen"
+      ],
+      "deRaw": "sich einprägen",
+      "exampleSb": "Read the text and try to memorise all the facts.",
+      "cf": null,
+      "forms": [
+        "memorise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.naturally",
+      "kind": "phrase",
+      "theme": null,
+      "en": "naturally",
+      "de": [
+        "natürlich"
+      ],
+      "deRaw": "natürlich",
+      "exampleSb": "Act naturally. Don't try to be like another person.",
+      "cf": null,
+      "forms": [
+        "naturally"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.skills",
+      "kind": "phrase",
+      "theme": null,
+      "en": "skills",
+      "de": [
+        "Fähigkeiten"
+      ],
+      "deRaw": "Fähigkeiten",
+      "exampleSb": "We need someone with practical skills for the job.",
+      "cf": null,
+      "forms": [
+        "skills"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u04.w.journalism",
+      "kind": "phrase",
+      "theme": null,
+      "en": "journalism",
+      "de": [
+        "Journalismus"
+      ],
+      "deRaw": "Journalismus",
+      "exampleSb": "She can write well. She's looking for a career in journalism.",
+      "cf": null,
+      "forms": [
+        "journalism"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

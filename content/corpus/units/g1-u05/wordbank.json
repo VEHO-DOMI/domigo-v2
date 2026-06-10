@@ -1,0 +1,736 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 5,
+  "slug": "g1-u05",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u05.w.keyboard-player",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "keyboard player",
+      "de": [
+        "Keyboarder/Keyboarderin"
+      ],
+      "deRaw": "Keyboarder/Keyboarderin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "keyboard player"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.keyboard",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "keyboard",
+      "de": [
+        "Keyboard"
+      ],
+      "deRaw": "Keyboard",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "keyboard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.singer",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "singer",
+      "de": [
+        "Sänger/Sängerin"
+      ],
+      "deRaw": "Sänger/Sängerin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "singer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.drummer",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "drummer",
+      "de": [
+        "Schlagzeuger/Schlagzeugerin"
+      ],
+      "deRaw": "Schlagzeuger/Schlagzeugerin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "drummer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.drums",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "drums",
+      "de": [
+        "Schlagzeug"
+      ],
+      "deRaw": "Schlagzeug",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "drums"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.saxophone-player",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "saxophone player",
+      "de": [
+        "Saxophonist/Saxophonistin"
+      ],
+      "deRaw": "Saxophonist/Saxophonistin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "saxophone player"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.saxophone",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "saxophone",
+      "de": [
+        "Saxophon"
+      ],
+      "deRaw": "Saxophon",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "saxophone"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.guitarist",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "guitarist",
+      "de": [
+        "Gitarrist/Gitarristin"
+      ],
+      "deRaw": "Gitarrist/Gitarristin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "guitarist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.guitar",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "guitar",
+      "de": [
+        "Gitarre"
+      ],
+      "deRaw": "Gitarre",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "guitar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.boyfriend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "boyfriend",
+      "de": [
+        "fester Freund"
+      ],
+      "deRaw": "fester Freund",
+      "exampleSb": "Jack is her boyfriend.",
+      "cf": null,
+      "forms": [
+        "boyfriend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.its",
+      "kind": "phrase",
+      "theme": null,
+      "en": "its",
+      "de": [
+        "sein/e",
+        "ihr/e"
+      ],
+      "deRaw": "sein/e; ihr/e",
+      "exampleSb": "This is my band. Its name is Project 11.",
+      "cf": null,
+      "forms": [
+        "its"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-play",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to play",
+      "de": [
+        "spielen"
+      ],
+      "deRaw": "spielen",
+      "exampleSb": "They play the guitar.",
+      "cf": "play",
+      "forms": [
+        "to play",
+        "play"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.sister",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sister",
+      "de": [
+        "Schwester"
+      ],
+      "deRaw": "Schwester",
+      "exampleSb": "Jessica is my sister.",
+      "cf": null,
+      "forms": [
+        "sister"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.can-cannot-can-t",
+      "kind": "phrase",
+      "theme": null,
+      "en": "can, cannot / can't",
+      "de": [
+        "können",
+        "nicht können"
+      ],
+      "deRaw": "können, nicht können",
+      "exampleSb": "She can play the drums. He can't sing.",
+      "cf": null,
+      "forms": [
+        "can, cannot / can't"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.concert",
+      "kind": "phrase",
+      "theme": null,
+      "en": "concert",
+      "de": [
+        "Konzert"
+      ],
+      "deRaw": "Konzert",
+      "exampleSb": "Let's go to the concert tomorrow.",
+      "cf": null,
+      "forms": [
+        "concert"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-dance",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to dance",
+      "de": [
+        "tanzen"
+      ],
+      "deRaw": "tanzen",
+      "exampleSb": "Let's dance to the music!",
+      "cf": "dance",
+      "forms": [
+        "to dance",
+        "dance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.don-t-worry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Don't worry.",
+      "de": [
+        "Keine Sorge."
+      ],
+      "deRaw": "Keine Sorge.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Don't worry."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.job",
+      "kind": "phrase",
+      "theme": null,
+      "en": "job",
+      "de": [
+        "Arbeit",
+        "Aufgabe"
+      ],
+      "deRaw": "Arbeit; Aufgabe",
+      "exampleSb": "She has a good job.",
+      "cf": null,
+      "forms": [
+        "job"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.perfect",
+      "kind": "phrase",
+      "theme": null,
+      "en": "perfect",
+      "de": [
+        "perfekt"
+      ],
+      "deRaw": "perfekt",
+      "exampleSb": "The job is perfect for you.",
+      "cf": null,
+      "forms": [
+        "perfect"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-carry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to carry",
+      "de": [
+        "tragen"
+      ],
+      "deRaw": "tragen",
+      "exampleSb": "Can you carry my guitar?",
+      "cf": "carry",
+      "forms": [
+        "to carry",
+        "carry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-stand-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to stand on",
+      "de": [
+        "auf etwas stehen"
+      ],
+      "deRaw": "auf etwas stehen",
+      "exampleSb": "I can stand on my head.",
+      "cf": "stand on",
+      "forms": [
+        "to stand on",
+        "stand on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.tongue",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tongue",
+      "de": [
+        "Zunge"
+      ],
+      "deRaw": "Zunge",
+      "exampleSb": "He can touch his nose with his tongue.",
+      "cf": null,
+      "forms": [
+        "tongue"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-touch",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to touch",
+      "de": [
+        "berühren"
+      ],
+      "deRaw": "berühren",
+      "exampleSb": "Please don't touch my guitar.",
+      "cf": "touch",
+      "forms": [
+        "to touch",
+        "touch"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-walk-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to walk on",
+      "de": [
+        "auf etwas gehen"
+      ],
+      "deRaw": "auf etwas gehen",
+      "exampleSb": "Can you walk on your hands?",
+      "cf": "walk on",
+      "forms": [
+        "to walk on",
+        "walk on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-wiggle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to wiggle",
+      "de": [
+        "wackeln"
+      ],
+      "deRaw": "wackeln",
+      "exampleSb": "He can wiggle his ears.",
+      "cf": "wiggle",
+      "forms": [
+        "to wiggle",
+        "wiggle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.can",
+      "kind": "phrase",
+      "theme": null,
+      "en": "can",
+      "de": [
+        "Dose"
+      ],
+      "deRaw": "Dose",
+      "exampleSb": "Look, he carries fifteen cans.",
+      "cf": null,
+      "forms": [
+        "can"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-drink",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to drink",
+      "de": [
+        "trinken"
+      ],
+      "deRaw": "trinken",
+      "exampleSb": "I can't drink fifteen cans.",
+      "cf": "drink",
+      "forms": [
+        "to drink",
+        "drink"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.hundred",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hundred",
+      "de": [
+        "hundert"
+      ],
+      "deRaw": "hundert",
+      "exampleSb": "Can you eat a hundred apples?",
+      "cf": null,
+      "forms": [
+        "hundred"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.in-one-go",
+      "kind": "phrase",
+      "theme": null,
+      "en": "in one go",
+      "de": [
+        "in einem Zug",
+        "auf einmal"
+      ],
+      "deRaw": "in einem Zug, auf einmal",
+      "exampleSb": "Can you drink five cans in one go?",
+      "cf": null,
+      "forms": [
+        "in one go"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.is-that-so",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Is that so?",
+      "de": [
+        "Ach wirklich?"
+      ],
+      "deRaw": "Ach wirklich?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Is that so?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.this-is-me",
+      "kind": "phrase",
+      "theme": null,
+      "en": "This is me.",
+      "de": [
+        "Das bin ich."
+      ],
+      "deRaw": "Das bin ich.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "This is me."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.economy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "economy",
+      "de": [
+        "Wirtschaft"
+      ],
+      "deRaw": "Wirtschaft",
+      "exampleSb": "The economy is the world of money.",
+      "cf": null,
+      "forms": [
+        "economy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.hospital",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hospital",
+      "de": [
+        "Krankenhaus"
+      ],
+      "deRaw": "Krankenhaus",
+      "exampleSb": "The Clown Doctors go to hospitals and help children.",
+      "cf": null,
+      "forms": [
+        "hospital"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-laugh",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to laugh",
+      "de": [
+        "lachen"
+      ],
+      "deRaw": "lachen",
+      "exampleSb": "They make children laugh.",
+      "cf": "laugh",
+      "forms": [
+        "to laugh",
+        "laugh"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.money",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(pocket) money",
+      "de": [
+        "(Taschen-)Geld"
+      ],
+      "deRaw": "(Taschen-)Geld",
+      "exampleSb": "I get my pocket money from my mum and dad.",
+      "cf": null,
+      "forms": [
+        "money",
+        "pocket"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.pound",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pound",
+      "de": [
+        "Pfund"
+      ],
+      "deRaw": "Pfund",
+      "exampleSb": "A cup of apple juice is 2 pounds.",
+      "cf": null,
+      "forms": [
+        "pound"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.profit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "profit",
+      "de": [
+        "Gewinn",
+        "Profit"
+      ],
+      "deRaw": "Gewinn, Profit",
+      "exampleSb": "It's 120 pounds. That's my profit.",
+      "cf": null,
+      "forms": [
+        "profit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.school-canteen",
+      "kind": "phrase",
+      "theme": null,
+      "en": "school canteen",
+      "de": [
+        "Schulkantine"
+      ],
+      "deRaw": "Schulkantine",
+      "exampleSb": "We have apple juice in our school canteen.",
+      "cf": null,
+      "forms": [
+        "school canteen"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.table",
+      "kind": "phrase",
+      "theme": null,
+      "en": "table",
+      "de": [
+        "Tisch"
+      ],
+      "deRaw": "Tisch",
+      "exampleSb": "I put a table in our playground.",
+      "cf": null,
+      "forms": [
+        "table"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.teacher",
+      "kind": "phrase",
+      "theme": null,
+      "en": "teacher",
+      "de": [
+        "Lehrer/Lehrerin"
+      ],
+      "deRaw": "Lehrer/Lehrerin",
+      "exampleSb": "Mr Davis is my teacher at school.",
+      "cf": null,
+      "forms": [
+        "teacher"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.uncle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "uncle",
+      "de": [
+        "Onkel"
+      ],
+      "deRaw": "Onkel",
+      "exampleSb": "My uncle is my dad's brother.",
+      "cf": null,
+      "forms": [
+        "uncle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.to-wash",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to wash",
+      "de": [
+        "waschen"
+      ],
+      "deRaw": "waschen",
+      "exampleSb": "I wash my mum's car.",
+      "cf": "wash",
+      "forms": [
+        "to wash",
+        "wash"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.nothing",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nothing",
+      "de": [
+        "nichts"
+      ],
+      "deRaw": "nichts",
+      "exampleSb": "There's nothing in the garden.",
+      "cf": null,
+      "forms": [
+        "nothing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u05.w.sorry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Sorry?",
+      "de": [
+        "Entschuldigung?",
+        "Wie bitte?"
+      ],
+      "deRaw": "Entschuldigung?, Wie bitte?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Sorry?"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# deps / build output
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# env + local secrets — prod DATABASE_URL must NEVER live in this repo
+.env
+.env.*
+!.env.example
+
+# vercel
+.vercel/
+
+# macOS / iCloud artifacts
+.DS_Store
+* 2.*
+* 2/
+
+# NOTE: content/ (corpus, transcripts, dist artifacts) is COMMITTED by design —
+# CI validates artifacts without needing iCloud sources. Do not ignore it.

@@ -1,0 +1,514 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 7,
+  "slug": "g2-u07",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u07.w.to-do-nothing",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to do nothing",
+      "de": [
+        "nichts tun"
+      ],
+      "deRaw": "nichts tun",
+      "exampleSb": null,
+      "cf": "do nothing",
+      "forms": [
+        "to do nothing",
+        "do nothing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-play-basketball",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to play basketball",
+      "de": [
+        "Basketball spielen"
+      ],
+      "deRaw": "Basketball spielen",
+      "exampleSb": null,
+      "cf": "play basketball",
+      "forms": [
+        "to play basketball",
+        "play basketball"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-stay-at-a-friend-s-house",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to stay at a friend's house",
+      "de": [
+        "bei einem Freund übernachten"
+      ],
+      "deRaw": "bei einem Freund übernachten",
+      "exampleSb": null,
+      "cf": "stay at a friend's house",
+      "forms": [
+        "to stay at a friend's house",
+        "stay at a friend's house"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-tidy-your-room",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to tidy your room",
+      "de": [
+        "dein Zimmer aufräumen"
+      ],
+      "deRaw": "dein Zimmer aufräumen",
+      "exampleSb": null,
+      "cf": "tidy your room",
+      "forms": [
+        "to tidy your room",
+        "tidy your room"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-have-a-party",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to have a party",
+      "de": [
+        "eine Party machen"
+      ],
+      "deRaw": "eine Party machen",
+      "exampleSb": null,
+      "cf": "have a party",
+      "forms": [
+        "to have a party",
+        "have a party"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-do-the-shopping",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to do the shopping",
+      "de": [
+        "einkaufen gehen"
+      ],
+      "deRaw": "einkaufen gehen",
+      "exampleSb": null,
+      "cf": "do the shopping",
+      "forms": [
+        "to do the shopping",
+        "do the shopping"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-do-your-homework",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to do your homework",
+      "de": [
+        "Hausaufgaben machen"
+      ],
+      "deRaw": "Hausaufgaben machen",
+      "exampleSb": null,
+      "cf": "do your homework",
+      "forms": [
+        "to do your homework",
+        "do your homework"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-watch-a-film",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to watch a film",
+      "de": [
+        "einen Film schauen"
+      ],
+      "deRaw": "einen Film schauen",
+      "exampleSb": null,
+      "cf": "watch a film",
+      "forms": [
+        "to watch a film",
+        "watch a film"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.honestly",
+      "kind": "phrase",
+      "theme": null,
+      "en": "honestly",
+      "de": [
+        "ehrlich",
+        "wirklich"
+      ],
+      "deRaw": "ehrlich; wirklich",
+      "exampleSb": "Honestly, that was only a joke!",
+      "cf": null,
+      "forms": [
+        "honestly"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.instead",
+      "kind": "phrase",
+      "theme": null,
+      "en": "instead",
+      "de": [
+        "stattdessen"
+      ],
+      "deRaw": "stattdessen",
+      "exampleSb": "I don't want to tidy my room. I'm going to do nothing instead.",
+      "cf": null,
+      "forms": [
+        "instead"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-take-it-easy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take it easy",
+      "de": [
+        "sich entspannen"
+      ],
+      "deRaw": "sich entspannen",
+      "exampleSb": "I'm very tired. I'm going to take it easy this afternoon.",
+      "cf": "take it easy",
+      "forms": [
+        "to take it easy",
+        "take it easy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-be-ashamed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be ashamed",
+      "de": [
+        "sich schämen"
+      ],
+      "deRaw": "sich schämen",
+      "exampleSb": "I was very ashamed.",
+      "cf": "be ashamed",
+      "forms": [
+        "to be ashamed",
+        "be ashamed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-come-over",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to come over",
+      "de": [
+        "vorbeikommen"
+      ],
+      "deRaw": "vorbeikommen",
+      "exampleSb": "She isn't going to come over today.",
+      "cf": "come over",
+      "forms": [
+        "to come over",
+        "come over"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.communication",
+      "kind": "phrase",
+      "theme": null,
+      "en": "communication",
+      "de": [
+        "Kommunikation"
+      ],
+      "deRaw": "Kommunikation",
+      "exampleSb": "There are many types of communication.",
+      "cf": null,
+      "forms": [
+        "communication"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.excuse",
+      "kind": "phrase",
+      "theme": null,
+      "en": "excuse",
+      "de": [
+        "Ausrede"
+      ],
+      "deRaw": "Ausrede",
+      "exampleSb": "There's no excuse.",
+      "cf": null,
+      "forms": [
+        "excuse"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.group-chat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "group chat",
+      "de": [
+        "Gruppenchat"
+      ],
+      "deRaw": "Gruppenchat",
+      "exampleSb": "My friends and I have a group chat.",
+      "cf": null,
+      "forms": [
+        "group chat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.social-media",
+      "kind": "phrase",
+      "theme": null,
+      "en": "social media",
+      "de": [
+        "soziale Medien"
+      ],
+      "deRaw": "soziale Medien",
+      "exampleSb": "I'm writing a social media post.",
+      "cf": null,
+      "forms": [
+        "social media"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-tell-a-lie",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to tell a lie",
+      "de": [
+        "lügen"
+      ],
+      "deRaw": "lügen",
+      "exampleSb": "Don't tell me a lie. I know it was you!",
+      "cf": "tell a lie",
+      "forms": [
+        "to tell a lie",
+        "tell a lie"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.truth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "truth",
+      "de": [
+        "Wahrheit"
+      ],
+      "deRaw": "Wahrheit",
+      "exampleSb": "I didn't tell her the truth.",
+      "cf": null,
+      "forms": [
+        "truth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-be-worried",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be worried",
+      "de": [
+        "besorgt sein"
+      ],
+      "deRaw": "besorgt sein",
+      "exampleSb": "William is always worried.",
+      "cf": "be worried",
+      "forms": [
+        "to be worried",
+        "be worried"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-crash",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to crash",
+      "de": [
+        "einen Unfall bauen",
+        "gegen etw. fahren"
+      ],
+      "deRaw": "einen Unfall bauen, gegen etw. fahren",
+      "exampleSb": "Be careful or you might crash.",
+      "cf": "crash",
+      "forms": [
+        "to crash",
+        "crash"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.to-get-into-trouble",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to get into trouble",
+      "de": [
+        "in Schwierigkeiten geraten",
+        "Ärger bekommen"
+      ],
+      "deRaw": "in Schwierigkeiten geraten, Ärger bekommen",
+      "exampleSb": "I might get into trouble if I do that.",
+      "cf": "get into trouble",
+      "forms": [
+        "to get into trouble",
+        "get into trouble"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.fancy-dress-party",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fancy dress party",
+      "de": [
+        "Kostümparty"
+      ],
+      "deRaw": "Kostümparty",
+      "exampleSb": "My friend invited me to a fancy dress party.",
+      "cf": null,
+      "forms": [
+        "fancy dress party"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.disappointment",
+      "kind": "phrase",
+      "theme": null,
+      "en": "disappointment",
+      "de": [
+        "Enttäuschung"
+      ],
+      "deRaw": "Enttäuschung",
+      "exampleSb": "She showed her disappointment.",
+      "cf": null,
+      "forms": [
+        "disappointment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.german",
+      "kind": "phrase",
+      "theme": null,
+      "en": "German",
+      "de": [
+        "Deutsch"
+      ],
+      "deRaw": "Deutsch",
+      "exampleSb": "How do you say this in German?",
+      "cf": null,
+      "forms": [
+        "German"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.row",
+      "kind": "phrase",
+      "theme": null,
+      "en": "row",
+      "de": [
+        "(Sitz-)Reihe"
+      ],
+      "deRaw": "(Sitz-)Reihe",
+      "exampleSb": "Can we have tickets for row 12, please?",
+      "cf": null,
+      "forms": [
+        "row"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.sold-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sold out",
+      "de": [
+        "ausverkauft"
+      ],
+      "deRaw": "ausverkauft",
+      "exampleSb": "The concert is sold out.",
+      "cf": null,
+      "forms": [
+        "sold out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.that-s-a-pity",
+      "kind": "phrase",
+      "theme": null,
+      "en": "That's a pity.",
+      "de": [
+        "Das ist schade!"
+      ],
+      "deRaw": "Das ist schade!",
+      "exampleSb": "There's only one ticket for the 5 o'clock showing. That's a pity!",
+      "cf": null,
+      "forms": [
+        "That's a pity."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.ticket",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ticket",
+      "de": [
+        "Eintrittskarte",
+        "Ticket"
+      ],
+      "deRaw": "Eintrittskarte, Ticket",
+      "exampleSb": "Can I have two tickets, please?",
+      "cf": null,
+      "forms": [
+        "ticket"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u07.w.what-a-shame",
+      "kind": "phrase",
+      "theme": null,
+      "en": "What a shame!",
+      "de": [
+        "Wie schade!"
+      ],
+      "deRaw": "Wie schade!",
+      "exampleSb": "The concert is sold out. What a shame!",
+      "cf": null,
+      "forms": [
+        "What a shame!"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

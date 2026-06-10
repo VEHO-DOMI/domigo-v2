@@ -1,0 +1,846 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 6,
+  "slug": "g2-u06",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u06.w.sun",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "sun",
+      "de": [
+        "Sonne"
+      ],
+      "deRaw": "Sonne",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sun"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.sea",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "sea",
+      "de": [
+        "Meer"
+      ],
+      "deRaw": "Meer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sea"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.beach",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "beach",
+      "de": [
+        "Strand"
+      ],
+      "deRaw": "Strand",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "beach"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.town",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "town",
+      "de": [
+        "Stadt"
+      ],
+      "deRaw": "Stadt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "town"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.motorway",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "motorway",
+      "de": [
+        "Autobahn"
+      ],
+      "deRaw": "Autobahn",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "motorway"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.road",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "road",
+      "de": [
+        "Straße"
+      ],
+      "deRaw": "Straße",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "road"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.river",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "river",
+      "de": [
+        "Fluss"
+      ],
+      "deRaw": "Fluss",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "river"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.village",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "village",
+      "de": [
+        "Dorf"
+      ],
+      "deRaw": "Dorf",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "village"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.field",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "field",
+      "de": [
+        "Feld"
+      ],
+      "deRaw": "Feld",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "field"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.hill",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "hill",
+      "de": [
+        "Hügel"
+      ],
+      "deRaw": "Hügel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hill"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.valley",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "valley",
+      "de": [
+        "Tal"
+      ],
+      "deRaw": "Tal",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "valley"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.lake",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "lake",
+      "de": [
+        "See"
+      ],
+      "deRaw": "See",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "lake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.forest",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "forest",
+      "de": [
+        "Wald"
+      ],
+      "deRaw": "Wald",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "forest"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.mountains",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "mountains",
+      "de": [
+        "Berge"
+      ],
+      "deRaw": "Berge",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mountains"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.stars",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "stars",
+      "de": [
+        "Sterne"
+      ],
+      "deRaw": "Sterne",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "stars"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.moon",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "moon",
+      "de": [
+        "Mond"
+      ],
+      "deRaw": "Mond",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "moon"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.to-build-a-tree-house",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "to build a tree house",
+      "de": [
+        "ein Baumhaus bauen"
+      ],
+      "deRaw": "ein Baumhaus bauen",
+      "exampleSb": null,
+      "cf": "build a tree house",
+      "forms": [
+        "to build a tree house",
+        "build a tree house"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.camp",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "camp",
+      "de": [
+        "Lager",
+        "Camp"
+      ],
+      "deRaw": "Lager, Camp",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "camp"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.life-jacket",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "life jacket",
+      "de": [
+        "Schwimmweste"
+      ],
+      "deRaw": "Schwimmweste",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "life jacket"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.guide",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "guide",
+      "de": [
+        "Führer/in",
+        "Guide"
+      ],
+      "deRaw": "Führer/in, Guide",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "guide"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.campfire",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "campfire",
+      "de": [
+        "Lagerfeuer"
+      ],
+      "deRaw": "Lagerfeuer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "campfire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.picnic",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "picnic",
+      "de": [
+        "Picknick"
+      ],
+      "deRaw": "Picknick",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "picnic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.canoe",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "canoe",
+      "de": [
+        "Kanu"
+      ],
+      "deRaw": "Kanu",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "canoe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.canoeing",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "canoeing",
+      "de": [
+        "Kanufahren"
+      ],
+      "deRaw": "Kanufahren",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "canoeing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.waterfall",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "waterfall",
+      "de": [
+        "Wasserfall"
+      ],
+      "deRaw": "Wasserfall",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "waterfall"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.rock-climbing",
+      "kind": "wordfile",
+      "theme": "Places & Adventure Camp",
+      "en": "rock climbing",
+      "de": [
+        "Klettern"
+      ],
+      "deRaw": "Klettern",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rock climbing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.bottom",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bottom",
+      "de": [
+        "unten",
+        "unterer/untere/unteres"
+      ],
+      "deRaw": "unten; unterer/untere/unteres",
+      "exampleSb": "The lake is on the bottom left corner of the picture.",
+      "cf": null,
+      "forms": [
+        "bottom"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.left-hand",
+      "kind": "phrase",
+      "theme": null,
+      "en": "left-hand",
+      "de": [
+        "linker/linke/linkes"
+      ],
+      "deRaw": "linker/linke/linkes",
+      "exampleSb": "On the left-hand side there's a lake.",
+      "cf": null,
+      "forms": [
+        "left-hand"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.middle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "middle",
+      "de": [
+        "Mitte"
+      ],
+      "deRaw": "Mitte",
+      "exampleSb": "We sat around the campfire in the middle of the forest.",
+      "cf": null,
+      "forms": [
+        "middle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.right-hand",
+      "kind": "phrase",
+      "theme": null,
+      "en": "right-hand",
+      "de": [
+        "rechter/rechte/rechtes"
+      ],
+      "deRaw": "rechter/rechte/rechtes",
+      "exampleSb": "On the right-hand side there's a waterfall.",
+      "cf": null,
+      "forms": [
+        "right-hand"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.anorak",
+      "kind": "phrase",
+      "theme": null,
+      "en": "anorak",
+      "de": [
+        "Anorak"
+      ],
+      "deRaw": "Anorak",
+      "exampleSb": "Wear an anorak near the waterfall.",
+      "cf": null,
+      "forms": [
+        "anorak"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.hard-hat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hard hat",
+      "de": [
+        "Schutzhelm"
+      ],
+      "deRaw": "Schutzhelm",
+      "exampleSb": "Wear a hard hat when building a tree house.",
+      "cf": null,
+      "forms": [
+        "hard hat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.absolutely",
+      "kind": "phrase",
+      "theme": null,
+      "en": "absolutely",
+      "de": [
+        "völlig",
+        "absolut"
+      ],
+      "deRaw": "völlig, absolut",
+      "exampleSb": "The guides were absolutely furious!",
+      "cf": null,
+      "forms": [
+        "absolutely"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.actually",
+      "kind": "phrase",
+      "theme": null,
+      "en": "actually",
+      "de": [
+        "eigentlich",
+        "tatsächlich"
+      ],
+      "deRaw": "eigentlich; tatsächlich",
+      "exampleSb": "The rest of the day was actually fun.",
+      "cf": null,
+      "forms": [
+        "actually"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.adventure-camp",
+      "kind": "phrase",
+      "theme": null,
+      "en": "adventure camp",
+      "de": [
+        "Abenteuercamp"
+      ],
+      "deRaw": "Abenteuercamp",
+      "exampleSb": "The children are going to spend some days at the adventure camp.",
+      "cf": null,
+      "forms": [
+        "adventure camp"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.to-be-afraid",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be afraid (of)",
+      "de": [
+        "Angst haben (vor)"
+      ],
+      "deRaw": "Angst haben (vor)",
+      "exampleSb": "He wasn't afraid of the ghost.",
+      "cf": "be afraid",
+      "forms": [
+        "to be afraid",
+        "be afraid",
+        "of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.although",
+      "kind": "phrase",
+      "theme": null,
+      "en": "although",
+      "de": [
+        "obwohl"
+      ],
+      "deRaw": "obwohl",
+      "exampleSb": "I enjoyed it, although I wasn't good at it.",
+      "cf": null,
+      "forms": [
+        "although"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.to-care",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to care",
+      "de": [
+        "sich kümmern"
+      ],
+      "deRaw": "sich kümmern",
+      "exampleSb": "The boy didn't care.",
+      "cf": "care",
+      "forms": [
+        "to care",
+        "care"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.drive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "drive",
+      "de": [
+        "Fahrt"
+      ],
+      "deRaw": "Fahrt",
+      "exampleSb": "It was a short drive into the forest.",
+      "cf": null,
+      "forms": [
+        "drive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.gate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gate",
+      "de": [
+        "Tor"
+      ],
+      "deRaw": "Tor",
+      "exampleSb": "There was a huge gate with a big sign on it.",
+      "cf": null,
+      "forms": [
+        "gate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.to-be-good-at-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be good at sth.",
+      "de": [
+        "etw. gut können",
+        "gut in etw. sein"
+      ],
+      "deRaw": "etw. gut können, gut in etw. sein",
+      "exampleSb": "I wasn't very good at building a tree house.",
+      "cf": "be good at sth.",
+      "forms": [
+        "to be good at sth.",
+        "be good at sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.once-upon-a-time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "once upon a time",
+      "de": [
+        "es war einmal"
+      ],
+      "deRaw": "es war einmal",
+      "exampleSb": "Once upon a time, there was a young boy who lived in this forest.",
+      "cf": null,
+      "forms": [
+        "once upon a time"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.sheep",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sheep (pl sheep)",
+      "de": [
+        "Schaf"
+      ],
+      "deRaw": "Schaf",
+      "exampleSb": "There were lots of sheep in the fields.",
+      "cf": null,
+      "forms": [
+        "sheep"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.shepherd",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shepherd",
+      "de": [
+        "Schäfer/Schäferin"
+      ],
+      "deRaw": "Schäfer/Schäferin",
+      "exampleSb": "The shepherd boy loved to play in the forest.",
+      "cf": null,
+      "forms": [
+        "shepherd"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.to-trust",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to trust",
+      "de": [
+        "vertrauen"
+      ],
+      "deRaw": "vertrauen",
+      "exampleSb": "Follow me! You can trust me.",
+      "cf": "trust",
+      "forms": [
+        "to trust",
+        "trust"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.while",
+      "kind": "phrase",
+      "theme": null,
+      "en": "while",
+      "de": [
+        "Weile"
+      ],
+      "deRaw": "Weile",
+      "exampleSb": "We chatted with our friends for a while.",
+      "cf": null,
+      "forms": [
+        "while"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.to-wash-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to wash up",
+      "de": [
+        "abspülen",
+        "abwaschen"
+      ],
+      "deRaw": "abspülen, abwaschen",
+      "exampleSb": "We don't have to wash up.",
+      "cf": "wash up",
+      "forms": [
+        "to wash up",
+        "wash up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.alive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "alive",
+      "de": [
+        "lebendig",
+        "am Leben"
+      ],
+      "deRaw": "lebendig, am Leben",
+      "exampleSb": "Darkman is alive.",
+      "cf": null,
+      "forms": [
+        "alive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.cry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cry",
+      "de": [
+        "Schrei"
+      ],
+      "deRaw": "Schrei",
+      "exampleSb": "The children hear a cry for help.",
+      "cf": null,
+      "forms": [
+        "cry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.i-m-off-now",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I'm off now.",
+      "de": [
+        "Ich bin jetzt weg."
+      ],
+      "deRaw": "Ich bin jetzt weg.",
+      "exampleSb": "I'm off now. Bye.",
+      "cf": null,
+      "forms": [
+        "I'm off now."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u06.w.poor-you",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Poor you!",
+      "de": [
+        "Du Armer!/Arme!"
+      ],
+      "deRaw": "Du Armer!/Arme!",
+      "exampleSb": "Poor you! You look very hungry.",
+      "cf": null,
+      "forms": [
+        "Poor you!"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

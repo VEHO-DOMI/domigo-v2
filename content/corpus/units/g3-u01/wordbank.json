@@ -1,0 +1,680 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 1,
+  "slug": "g3-u01",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u01.w.to-give-sth-a-try",
+      "kind": "wordfile",
+      "theme": "Audition",
+      "en": "to give sth. a try",
+      "de": [
+        "etw. versuchen"
+      ],
+      "deRaw": "etw. versuchen",
+      "exampleSb": null,
+      "cf": "give sth. a try",
+      "forms": [
+        "to give sth. a try",
+        "give sth. a try"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-give-up",
+      "kind": "wordfile",
+      "theme": "Audition",
+      "en": "to give up",
+      "de": [
+        "aufgeben"
+      ],
+      "deRaw": "aufgeben",
+      "exampleSb": null,
+      "cf": "give up",
+      "forms": [
+        "to give up",
+        "give up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.audition",
+      "kind": "wordfile",
+      "theme": "Audition",
+      "en": "audition",
+      "de": [
+        "Vorsprechen",
+        "Vorsingen"
+      ],
+      "deRaw": "Vorsprechen, Vorsingen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "audition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-have-got-what-it-takes",
+      "kind": "wordfile",
+      "theme": "Audition",
+      "en": "to have got what it takes",
+      "de": [
+        "das Zeug dazu haben"
+      ],
+      "deRaw": "das Zeug dazu haben",
+      "exampleSb": null,
+      "cf": "have got what it takes",
+      "forms": [
+        "to have got what it takes",
+        "have got what it takes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-make-it",
+      "kind": "wordfile",
+      "theme": "Audition",
+      "en": "to make it",
+      "de": [
+        "es schaffen"
+      ],
+      "deRaw": "es schaffen",
+      "exampleSb": null,
+      "cf": "make it",
+      "forms": [
+        "to make it",
+        "make it"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-be-on-the-way-up",
+      "kind": "wordfile",
+      "theme": "Audition",
+      "en": "to be on the way up",
+      "de": [
+        "auf dem Weg nach oben sein"
+      ],
+      "deRaw": "auf dem Weg nach oben sein",
+      "exampleSb": null,
+      "cf": "be on the way up",
+      "forms": [
+        "to be on the way up",
+        "be on the way up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-get-back-to-sb",
+      "kind": "wordfile",
+      "theme": "Audition",
+      "en": "to get back to sb.",
+      "de": [
+        "sich bei jdm. melden"
+      ],
+      "deRaw": "sich bei jdm. melden",
+      "exampleSb": null,
+      "cf": "get back to sb.",
+      "forms": [
+        "to get back to sb.",
+        "get back to sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-agree",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to agree",
+      "de": [
+        "zustimmen"
+      ],
+      "deRaw": "zustimmen",
+      "exampleSb": "I couldn't agree more.",
+      "cf": "agree",
+      "forms": [
+        "to agree",
+        "agree"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-belong-to",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to belong to",
+      "de": [
+        "gehören"
+      ],
+      "deRaw": "gehören",
+      "exampleSb": "It probably belonged to my great-grandparents.",
+      "cf": "belong to",
+      "forms": [
+        "to belong to",
+        "belong to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-celebrate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to celebrate",
+      "de": [
+        "feiern"
+      ],
+      "deRaw": "feiern",
+      "exampleSb": "To celebrate music, I thought I'd share with you my favourite musical facts.",
+      "cf": "celebrate",
+      "forms": [
+        "to celebrate",
+        "celebrate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.extremely",
+      "kind": "phrase",
+      "theme": null,
+      "en": "extremely",
+      "de": [
+        "extrem"
+      ],
+      "deRaw": "extrem",
+      "exampleSb": "He was also extremely talented.",
+      "cf": null,
+      "forms": [
+        "extremely"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.flute",
+      "kind": "phrase",
+      "theme": null,
+      "en": "flute",
+      "de": [
+        "Flöte"
+      ],
+      "deRaw": "Flöte",
+      "exampleSb": "The oldest musical instrument is the flute.",
+      "cf": null,
+      "forms": [
+        "flute"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.singer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "singer",
+      "de": [
+        "Sänger/Sängerin"
+      ],
+      "deRaw": "Sänger/Sängerin",
+      "exampleSb": "You can choose from 17 million singers and bands on Spotify.",
+      "cf": null,
+      "forms": [
+        "singer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.successful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "successful",
+      "de": [
+        "erfolgreich"
+      ],
+      "deRaw": "erfolgreich",
+      "exampleSb": "The song was so successful that they even built a statue.",
+      "cf": null,
+      "forms": [
+        "successful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.talented",
+      "kind": "phrase",
+      "theme": null,
+      "en": "talented",
+      "de": [
+        "talentiert",
+        "begabt"
+      ],
+      "deRaw": "talentiert, begabt",
+      "exampleSb": "She was very talented.",
+      "cf": null,
+      "forms": [
+        "talented"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-spill",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to spill",
+      "de": [
+        "verschütten"
+      ],
+      "deRaw": "verschütten",
+      "exampleSb": "I hope she didn't spill any coffee on it!",
+      "cf": "spill",
+      "forms": [
+        "to spill",
+        "spill"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.whole",
+      "kind": "phrase",
+      "theme": null,
+      "en": "whole",
+      "de": [
+        "ganze/r/s"
+      ],
+      "deRaw": "ganze/r/s",
+      "exampleSb": "Your driver will drive you behind your favourite star for the whole day.",
+      "cf": null,
+      "forms": [
+        "whole"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.critic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "critic",
+      "de": [
+        "Kritiker/Kritikerin"
+      ],
+      "deRaw": "Kritiker/Kritikerin",
+      "exampleSb": "Paul Sacks and Sally Green are critics on Superstar.",
+      "cf": null,
+      "forms": [
+        "critic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.brave",
+      "kind": "phrase",
+      "theme": null,
+      "en": "brave",
+      "de": [
+        "mutig"
+      ],
+      "deRaw": "mutig",
+      "exampleSb": "You're a brave man.",
+      "cf": null,
+      "forms": [
+        "brave"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.not-even",
+      "kind": "phrase",
+      "theme": null,
+      "en": "not even",
+      "de": [
+        "noch nicht einmal"
+      ],
+      "deRaw": "noch nicht einmal",
+      "exampleSb": "In fact, you're not even going to be a background singer.",
+      "cf": null,
+      "forms": [
+        "not even"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.suit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "suit",
+      "de": [
+        "Anzug"
+      ],
+      "deRaw": "Anzug",
+      "exampleSb": "Sing at home when you're not wearing that suit.",
+      "cf": null,
+      "forms": [
+        "suit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.unhappy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unhappy",
+      "de": [
+        "unglücklich"
+      ],
+      "deRaw": "unglücklich",
+      "exampleSb": "Don't be too unhappy.",
+      "cf": null,
+      "forms": [
+        "unhappy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-waste",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to waste",
+      "de": [
+        "verschwenden"
+      ],
+      "deRaw": "verschwenden",
+      "exampleSb": "Don't waste our time.",
+      "cf": "waste",
+      "forms": [
+        "to waste",
+        "waste"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-feel",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to feel",
+      "de": [
+        "sich fühlen"
+      ],
+      "deRaw": "sich fühlen",
+      "exampleSb": "I feel bad about it.",
+      "cf": "feel",
+      "forms": [
+        "to feel",
+        "feel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-get-tired-of-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to get tired of sth.",
+      "de": [
+        "etw. satt haben"
+      ],
+      "deRaw": "etw. satt haben",
+      "exampleSb": "I never get tired of listening to music.",
+      "cf": "get tired of sth.",
+      "forms": [
+        "to get tired of sth.",
+        "get tired of sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.lyrics",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lyrics",
+      "de": [
+        "Liedtext"
+      ],
+      "deRaw": "Liedtext",
+      "exampleSb": "The lyrics in a song should be meaningful.",
+      "cf": null,
+      "forms": [
+        "lyrics"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-make-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to make up",
+      "de": [
+        "erfinden",
+        "sich ausdenken"
+      ],
+      "deRaw": "erfinden, sich ausdenken",
+      "exampleSb": "I make up special dance moves for my fans.",
+      "cf": "make up",
+      "forms": [
+        "to make up",
+        "make up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.record",
+      "kind": "phrase",
+      "theme": null,
+      "en": "record",
+      "de": [
+        "(Schall-)Platte"
+      ],
+      "deRaw": "(Schall-)Platte",
+      "exampleSb": "I buy a record every week.",
+      "cf": null,
+      "forms": [
+        "record"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-seem",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to seem",
+      "de": [
+        "wirken",
+        "scheinen"
+      ],
+      "deRaw": "wirken, scheinen",
+      "exampleSb": "She doesn't seem to get on well.",
+      "cf": "seem",
+      "forms": [
+        "to seem",
+        "seem"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-sing-along",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to sing along",
+      "de": [
+        "mitsingen"
+      ],
+      "deRaw": "mitsingen",
+      "exampleSb": "I always sing along to the songs I like.",
+      "cf": "sing along",
+      "forms": [
+        "to sing along",
+        "sing along"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.tune",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tune",
+      "de": [
+        "Melodie"
+      ],
+      "deRaw": "Melodie",
+      "exampleSb": "I like songs with a good tune.",
+      "cf": null,
+      "forms": [
+        "tune"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.i-can-t-stand-it",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I can't stand it.",
+      "de": [
+        "Ich kann es nicht ausstehen."
+      ],
+      "deRaw": "Ich kann es nicht ausstehen.",
+      "exampleSb": "I can't stand it.",
+      "cf": null,
+      "forms": [
+        "I can't stand it."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.i-don-t-mind",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I don't mind (it).",
+      "de": [
+        "Ich habe nichts dagegen."
+      ],
+      "deRaw": "Ich habe nichts dagegen.",
+      "exampleSb": "I don't mind it.",
+      "cf": null,
+      "forms": [
+        "I don't mind .",
+        "it"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-come-along",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to come along",
+      "de": [
+        "mitkommen"
+      ],
+      "deRaw": "mitkommen",
+      "exampleSb": "James wanted to come along.",
+      "cf": "come along",
+      "forms": [
+        "to come along",
+        "come along"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-take-place",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take place",
+      "de": [
+        "stattfinden"
+      ],
+      "deRaw": "stattfinden",
+      "exampleSb": "Where did the concert take place?",
+      "cf": "take place",
+      "forms": [
+        "to take place",
+        "take place"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.afterwards",
+      "kind": "phrase",
+      "theme": null,
+      "en": "afterwards",
+      "de": [
+        "danach",
+        "anschließend"
+      ],
+      "deRaw": "danach, anschließend",
+      "exampleSb": "We'll go to the cinema and afterwards to the restaurant.",
+      "cf": null,
+      "forms": [
+        "afterwards"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.apart-from",
+      "kind": "phrase",
+      "theme": null,
+      "en": "apart from",
+      "de": [
+        "abgesehen von"
+      ],
+      "deRaw": "abgesehen von",
+      "exampleSb": "Apart from his bad taste in music, my dad's cool.",
+      "cf": null,
+      "forms": [
+        "apart from"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.in-my-opinion",
+      "kind": "phrase",
+      "theme": null,
+      "en": "in my opinion",
+      "de": [
+        "meiner Meinung nach"
+      ],
+      "deRaw": "meiner Meinung nach",
+      "exampleSb": "In my opinion, it's the best they've done.",
+      "cf": null,
+      "forms": [
+        "in my opinion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.to-be-interested-in",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be interested in",
+      "de": [
+        "an etw. interessiert sein"
+      ],
+      "deRaw": "an etw. interessiert sein",
+      "exampleSb": "He seems to be interested in her music.",
+      "cf": "be interested in",
+      "forms": [
+        "to be interested in",
+        "be interested in"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u01.w.me-neither",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Me neither.",
+      "de": [
+        "Ich auch nicht."
+      ],
+      "deRaw": "Ich auch nicht.",
+      "exampleSb": "Me neither.",
+      "cf": null,
+      "forms": [
+        "Me neither."
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

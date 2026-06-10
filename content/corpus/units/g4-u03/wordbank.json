@@ -1,0 +1,540 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 3,
+  "slug": "g4-u03",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u03.w.busy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "busy",
+      "de": [
+        "belebt",
+        "hektisch"
+      ],
+      "deRaw": "belebt, hektisch",
+      "exampleSb": "New York is one of the busiest cities in the world.",
+      "cf": null,
+      "forms": [
+        "busy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.cuisine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cuisine",
+      "de": [
+        "Küche",
+        "Kulinarik"
+      ],
+      "deRaw": "Küche, Kulinarik",
+      "exampleSb": "This restaurant is famous for its spicy cuisine.",
+      "cf": null,
+      "forms": [
+        "cuisine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.immigrant",
+      "kind": "phrase",
+      "theme": null,
+      "en": "immigrant",
+      "de": [
+        "Einwanderer/Einwanderin"
+      ],
+      "deRaw": "Einwanderer/Einwanderin",
+      "exampleSb": "Millions of immigrants came to America in the 19th century.",
+      "cf": null,
+      "forms": [
+        "immigrant"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.native",
+      "kind": "phrase",
+      "theme": null,
+      "en": "native",
+      "de": [
+        "einheimisch",
+        "ursprünglich"
+      ],
+      "deRaw": "einheimisch, ursprünglich",
+      "exampleSb": "Native Americans arrived in the US at least 15,000 years ago.",
+      "cf": null,
+      "forms": [
+        "native"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.nearby",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nearby",
+      "de": [
+        "in der Nähe"
+      ],
+      "deRaw": "in der Nähe",
+      "exampleSb": "We were very hungry. Luckily we found a restaurant nearby.",
+      "cf": null,
+      "forms": [
+        "nearby"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.origin",
+      "kind": "phrase",
+      "theme": null,
+      "en": "origin",
+      "de": [
+        "Herkunft",
+        "Ursprung"
+      ],
+      "deRaw": "Herkunft, Ursprung",
+      "exampleSb": "She is of French origin. She was born in Paris.",
+      "cf": null,
+      "forms": [
+        "origin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.politics",
+      "kind": "phrase",
+      "theme": null,
+      "en": "politics",
+      "de": [
+        "Politik"
+      ],
+      "deRaw": "Politik",
+      "exampleSb": "Politics are the business of government.",
+      "cf": null,
+      "forms": [
+        "politics"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.announcement",
+      "kind": "phrase",
+      "theme": null,
+      "en": "announcement",
+      "de": [
+        "Durchsage",
+        "Ankündigung"
+      ],
+      "deRaw": "Durchsage, Ankündigung",
+      "exampleSb": "I heard the announcement on the speakers saying that the store was closing soon.",
+      "cf": null,
+      "forms": [
+        "announcement"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.be-in-trouble",
+      "kind": "phrase",
+      "theme": null,
+      "en": "be in trouble",
+      "de": [
+        "in Schwierigkeiten sein"
+      ],
+      "deRaw": "in Schwierigkeiten sein",
+      "exampleSb": "James was in trouble with the police.",
+      "cf": null,
+      "forms": [
+        "be in trouble"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.blow-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "blow up",
+      "de": [
+        "explodieren"
+      ],
+      "deRaw": "explodieren",
+      "exampleSb": "The bomb blew up.",
+      "cf": null,
+      "forms": [
+        "blow up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.emergency-landing",
+      "kind": "phrase",
+      "theme": null,
+      "en": "emergency landing",
+      "de": [
+        "Notlandung"
+      ],
+      "deRaw": "Notlandung",
+      "exampleSb": "The pilot had to make an emergency landing.",
+      "cf": null,
+      "forms": [
+        "emergency landing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.evacuate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "evacuate",
+      "de": [
+        "evakuieren"
+      ],
+      "deRaw": "evakuieren",
+      "exampleSb": "People who live along the coast were evacuated because of the hurricane.",
+      "cf": null,
+      "forms": [
+        "evacuate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.flock-of-birds",
+      "kind": "phrase",
+      "theme": null,
+      "en": "flock of birds",
+      "de": [
+        "Vogelschwarm"
+      ],
+      "deRaw": "Vogelschwarm",
+      "exampleSb": "A flock of birds flew over our heads.",
+      "cf": null,
+      "forms": [
+        "flock of birds"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.glide-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "glide down",
+      "de": [
+        "hinuntergleiten"
+      ],
+      "deRaw": "hinuntergleiten",
+      "exampleSb": "We watched the skiers glide down the slope.",
+      "cf": null,
+      "forms": [
+        "glide down"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.miracle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "miracle",
+      "de": [
+        "Wunder"
+      ],
+      "deRaw": "Wunder",
+      "exampleSb": "It would take a miracle for this team to win.",
+      "cf": null,
+      "forms": [
+        "miracle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.on-duty",
+      "kind": "phrase",
+      "theme": null,
+      "en": "on duty",
+      "de": [
+        "im Dienst"
+      ],
+      "deRaw": "im Dienst",
+      "exampleSb": "I'm not allowed to make private calls while I'm on duty.",
+      "cf": null,
+      "forms": [
+        "on duty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.rescue-boat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rescue boat",
+      "de": [
+        "Rettungsboot"
+      ],
+      "deRaw": "Rettungsboot",
+      "exampleSb": "There weren't enough rescue boats to save all the people on the ship.",
+      "cf": null,
+      "forms": [
+        "rescue boat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.runway",
+      "kind": "phrase",
+      "theme": null,
+      "en": "runway",
+      "de": [
+        "Landebahn"
+      ],
+      "deRaw": "Landebahn",
+      "exampleSb": "The airplane landed safely on the runway.",
+      "cf": null,
+      "forms": [
+        "runway"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.takeoff",
+      "kind": "phrase",
+      "theme": null,
+      "en": "takeoff",
+      "de": [
+        "Abflug",
+        "Start"
+      ],
+      "deRaw": "Abflug, Start",
+      "exampleSb": "Please remain seated during takeoff.",
+      "cf": null,
+      "forms": [
+        "takeoff"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.treatment",
+      "kind": "phrase",
+      "theme": null,
+      "en": "treatment",
+      "de": [
+        "Behandlung"
+      ],
+      "deRaw": "Behandlung",
+      "exampleSb": "There are various treatments available at the hotel spa.",
+      "cf": null,
+      "forms": [
+        "treatment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.wing",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wing",
+      "de": [
+        "Flügel"
+      ],
+      "deRaw": "Flügel",
+      "exampleSb": "The bird spread its wings and flew away.",
+      "cf": null,
+      "forms": [
+        "wing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.become-desperate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "become desperate",
+      "de": [
+        "verzweifelt",
+        "verzweifeln",
+        "in Schwierigkeiten geraten"
+      ],
+      "deRaw": "verzweifelt; verzweifeln; in Schwierigkeiten geraten",
+      "exampleSb": "As the supply of food ran out, people became desperate.",
+      "cf": null,
+      "forms": [
+        "become desperate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.collide",
+      "kind": "phrase",
+      "theme": null,
+      "en": "collide",
+      "de": [
+        "zusammenstoßen",
+        "kollidieren"
+      ],
+      "deRaw": "zusammenstoßen, kollidieren",
+      "exampleSb": "Two football players collided on the field.",
+      "cf": null,
+      "forms": [
+        "collide"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.explode",
+      "kind": "phrase",
+      "theme": null,
+      "en": "explode",
+      "de": [
+        "explodieren"
+      ],
+      "deRaw": "explodieren",
+      "exampleSb": "The firework exploded in his hand.",
+      "cf": null,
+      "forms": [
+        "explode"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.bravery",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bravery",
+      "de": [
+        "Mut",
+        "Tapferkeit"
+      ],
+      "deRaw": "Mut, Tapferkeit",
+      "exampleSb": "She received an award for her bravery.",
+      "cf": null,
+      "forms": [
+        "bravery"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.reward-sb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "reward sb",
+      "de": [
+        "jemanden prämieren"
+      ],
+      "deRaw": "jemanden prämieren",
+      "exampleSb": "The firefighters were rewarded for their brave actions.",
+      "cf": null,
+      "forms": [
+        "reward sb"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.critic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "critic",
+      "de": [
+        "Kritiker/in"
+      ],
+      "deRaw": "Kritiker/in",
+      "exampleSb": "The critics loved the movie.",
+      "cf": null,
+      "forms": [
+        "critic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.elevator",
+      "kind": "phrase",
+      "theme": null,
+      "en": "elevator (AE)",
+      "de": [
+        "Aufzug"
+      ],
+      "deRaw": "Aufzug",
+      "exampleSb": "The office is on the fifth floor, so we should take the elevator.",
+      "cf": null,
+      "forms": [
+        "elevator",
+        "AE"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.campaign",
+      "kind": "phrase",
+      "theme": null,
+      "en": "campaign",
+      "de": [
+        "Kampagne",
+        "Aktion"
+      ],
+      "deRaw": "Kampagne, Aktion",
+      "exampleSb": "The university is organising a campaign to attract more students.",
+      "cf": null,
+      "forms": [
+        "campaign"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.charge",
+      "kind": "phrase",
+      "theme": null,
+      "en": "charge",
+      "de": [
+        "berechnen",
+        "verlangen"
+      ],
+      "deRaw": "berechnen, verlangen",
+      "exampleSb": "The museum charges visitors $20.",
+      "cf": null,
+      "forms": [
+        "charge"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.crowd-funding",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crowd-funding",
+      "de": [
+        "Gruppenfinanzierung"
+      ],
+      "deRaw": "Gruppenfinanzierung",
+      "exampleSb": "They raised the money for the film through crowd-funding.",
+      "cf": null,
+      "forms": [
+        "crowd-funding"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u03.w.statement",
+      "kind": "phrase",
+      "theme": null,
+      "en": "statement",
+      "de": [
+        "Aussage"
+      ],
+      "deRaw": "Aussage",
+      "exampleSb": "He went to the police station to make a statement.",
+      "cf": null,
+      "forms": [
+        "statement"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

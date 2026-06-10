@@ -1,0 +1,537 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 8,
+  "slug": "g2-u08",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u08.w.spaceship",
+      "kind": "wordfile",
+      "theme": "Science Fiction",
+      "en": "spaceship",
+      "de": [
+        "Raumschiff"
+      ],
+      "deRaw": "Raumschiff",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "spaceship"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.commander",
+      "kind": "wordfile",
+      "theme": "Science Fiction",
+      "en": "commander",
+      "de": [
+        "Kommandant/in"
+      ],
+      "deRaw": "Kommandant/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "commander"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.spacesuit",
+      "kind": "wordfile",
+      "theme": "Science Fiction",
+      "en": "spacesuit",
+      "de": [
+        "Raumanzug"
+      ],
+      "deRaw": "Raumanzug",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "spacesuit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.alien",
+      "kind": "wordfile",
+      "theme": "Science Fiction",
+      "en": "alien",
+      "de": [
+        "Außerirdische/r"
+      ],
+      "deRaw": "Außerirdische/r",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "alien"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.ufo",
+      "kind": "wordfile",
+      "theme": "Science Fiction",
+      "en": "UFO",
+      "de": [
+        "UFO"
+      ],
+      "deRaw": "UFO",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "UFO"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.space-centre",
+      "kind": "wordfile",
+      "theme": "Science Fiction",
+      "en": "space centre",
+      "de": [
+        "Raumfahrtzentrum"
+      ],
+      "deRaw": "Raumfahrtzentrum",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "space centre"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.planet",
+      "kind": "wordfile",
+      "theme": "Science Fiction",
+      "en": "planet",
+      "de": [
+        "Planet"
+      ],
+      "deRaw": "Planet",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "planet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.boss",
+      "kind": "phrase",
+      "theme": null,
+      "en": "boss",
+      "de": [
+        "Chef/Chefin"
+      ],
+      "deRaw": "Chef/Chefin",
+      "exampleSb": "He wanted to warn the boss of the space centre.",
+      "cf": null,
+      "forms": [
+        "boss"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.cable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cable",
+      "de": [
+        "Kabel"
+      ],
+      "deRaw": "Kabel",
+      "exampleSb": "Benson connected a cable to his spacesuit.",
+      "cf": null,
+      "forms": [
+        "cable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.capital",
+      "kind": "phrase",
+      "theme": null,
+      "en": "capital",
+      "de": [
+        "Hauptstadt"
+      ],
+      "deRaw": "Hauptstadt",
+      "exampleSb": "Vienna is the capital of Austria.",
+      "cf": null,
+      "forms": [
+        "capital"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.to-connect",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to connect",
+      "de": [
+        "anschließen",
+        "verbinden"
+      ],
+      "deRaw": "anschließen; verbinden",
+      "exampleSb": "You have to connect the cable to the spacesuit.",
+      "cf": "connect",
+      "forms": [
+        "to connect",
+        "connect"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.hero-heroine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hero, heroine",
+      "de": [
+        "Held",
+        "Heldin"
+      ],
+      "deRaw": "Held, Heldin",
+      "exampleSb": "You saved us – you're our hero.",
+      "cf": null,
+      "forms": [
+        "hero, heroine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.machine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "machine",
+      "de": [
+        "Maschine"
+      ],
+      "deRaw": "Maschine",
+      "exampleSb": "The alien gave him a little machine that helped him to understand the language.",
+      "cf": null,
+      "forms": [
+        "machine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.to-repair",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to repair",
+      "de": [
+        "reparieren"
+      ],
+      "deRaw": "reparieren",
+      "exampleSb": "Benson went outside to repair the broken spaceship.",
+      "cf": "repair",
+      "forms": [
+        "to repair",
+        "repair"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.space",
+      "kind": "phrase",
+      "theme": null,
+      "en": "space",
+      "de": [
+        "Weltall"
+      ],
+      "deRaw": "Weltall",
+      "exampleSb": "There are lots of stars and planets out there in space.",
+      "cf": null,
+      "forms": [
+        "space"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.statue",
+      "kind": "phrase",
+      "theme": null,
+      "en": "statue",
+      "de": [
+        "Statue"
+      ],
+      "deRaw": "Statue",
+      "exampleSb": "There's a statue of Lord Nelson at Trafalgar Square.",
+      "cf": null,
+      "forms": [
+        "statue"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.to-take-over",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take over",
+      "de": [
+        "erobern",
+        "die Führung übernehmen"
+      ],
+      "deRaw": "erobern, die Führung übernehmen",
+      "exampleSb": "The aliens want to take over the Earth.",
+      "cf": "take over",
+      "forms": [
+        "to take over",
+        "take over"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.traveller",
+      "kind": "phrase",
+      "theme": null,
+      "en": "traveller",
+      "de": [
+        "Reisender/Reisende"
+      ],
+      "deRaw": "Reisender/Reisende",
+      "exampleSb": "I'm a traveller from planet Arconia.",
+      "cf": null,
+      "forms": [
+        "traveller"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.visitor",
+      "kind": "phrase",
+      "theme": null,
+      "en": "visitor",
+      "de": [
+        "Besucher/Besucherin"
+      ],
+      "deRaw": "Besucher/Besucherin",
+      "exampleSb": "Welcome! It's good to have you as a visitor.",
+      "cf": null,
+      "forms": [
+        "visitor"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.key",
+      "kind": "phrase",
+      "theme": null,
+      "en": "key",
+      "de": [
+        "Schlüssel"
+      ],
+      "deRaw": "Schlüssel",
+      "exampleSb": "He found a gold key on the ground.",
+      "cf": null,
+      "forms": [
+        "key"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.crew",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crew",
+      "de": [
+        "Besatzung"
+      ],
+      "deRaw": "Besatzung",
+      "exampleSb": "Benson has to save his crew on the spaceship.",
+      "cf": null,
+      "forms": [
+        "crew"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.aeroplane",
+      "kind": "phrase",
+      "theme": null,
+      "en": "aeroplane",
+      "de": [
+        "Flugzeug"
+      ],
+      "deRaw": "Flugzeug",
+      "exampleSb": "Yesterday, I saw a huge aeroplane in the sky.",
+      "cf": null,
+      "forms": [
+        "aeroplane"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.expert",
+      "kind": "phrase",
+      "theme": null,
+      "en": "expert",
+      "de": [
+        "Experte/Expertin"
+      ],
+      "deRaw": "Experte/Expertin",
+      "exampleSb": "She's an expert.",
+      "cf": null,
+      "forms": [
+        "expert"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.hoax",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hoax",
+      "de": [
+        "Streich",
+        "Täuschung"
+      ],
+      "deRaw": "Streich; Täuschung",
+      "exampleSb": "The news isn't true. It's a hoax.",
+      "cf": null,
+      "forms": [
+        "hoax"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.investigation",
+      "kind": "phrase",
+      "theme": null,
+      "en": "investigation",
+      "de": [
+        "Untersuchung",
+        "Ermittlung"
+      ],
+      "deRaw": "Untersuchung, Ermittlung",
+      "exampleSb": "The police started their investigation yesterday.",
+      "cf": null,
+      "forms": [
+        "investigation"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.photograph",
+      "kind": "phrase",
+      "theme": null,
+      "en": "photograph",
+      "de": [
+        "Foto"
+      ],
+      "deRaw": "Foto",
+      "exampleSb": "My grandma showed me an old photograph.",
+      "cf": null,
+      "forms": [
+        "photograph"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.to-destroy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to destroy",
+      "de": [
+        "zerstören"
+      ],
+      "deRaw": "zerstören",
+      "exampleSb": "In the film, aliens try to destroy Earth.",
+      "cf": "destroy",
+      "forms": [
+        "to destroy",
+        "destroy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.to-kidnap",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to kidnap",
+      "de": [
+        "entführen"
+      ],
+      "deRaw": "entführen",
+      "exampleSb": "I think aliens want to kidnap people from Earth.",
+      "cf": "kidnap",
+      "forms": [
+        "to kidnap",
+        "kidnap"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.nonsense",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nonsense",
+      "de": [
+        "Unsinn"
+      ],
+      "deRaw": "Unsinn",
+      "exampleSb": "I'm sorry, but this is just nonsense.",
+      "cf": null,
+      "forms": [
+        "nonsense"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.comfortable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "comfortable",
+      "de": [
+        "bequem"
+      ],
+      "deRaw": "bequem",
+      "exampleSb": "The chair was very comfortable!",
+      "cf": null,
+      "forms": [
+        "comfortable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.calm-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Calm down!",
+      "de": [
+        "Beruhige dich!"
+      ],
+      "deRaw": "Beruhige dich!",
+      "exampleSb": "Calm down! You're safe with us.",
+      "cf": null,
+      "forms": [
+        "Calm down!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u08.w.in-that-case",
+      "kind": "phrase",
+      "theme": null,
+      "en": "in that case",
+      "de": [
+        "in diesem Fall"
+      ],
+      "deRaw": "in diesem Fall",
+      "exampleSb": "In that case, we should give him morphing powers.",
+      "cf": null,
+      "forms": [
+        "in that case"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

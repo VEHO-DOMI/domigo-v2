@@ -1,0 +1,760 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 2,
+  "slug": "g4-u02",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u02.w.illegal",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "illegal",
+      "de": [
+        "illegal",
+        "rechtswidrig"
+      ],
+      "deRaw": "illegal, rechtswidrig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "illegal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.suspect",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "suspect",
+      "de": [
+        "Verdächtige/r"
+      ],
+      "deRaw": "Verdächtige/r",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "suspect"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.criminal",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "criminal",
+      "de": [
+        "Verbrecher/in"
+      ],
+      "deRaw": "Verbrecher/in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "criminal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.to-steal",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "to steal",
+      "de": [
+        "stehlen"
+      ],
+      "deRaw": "stehlen",
+      "exampleSb": null,
+      "cf": "steal",
+      "forms": [
+        "to steal",
+        "steal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.evidence",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "evidence",
+      "de": [
+        "Beweis"
+      ],
+      "deRaw": "Beweis",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "evidence"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.victim",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "victim",
+      "de": [
+        "Opfer"
+      ],
+      "deRaw": "Opfer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "victim"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.blackmail",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "blackmail",
+      "de": [
+        "Erpressung"
+      ],
+      "deRaw": "Erpressung",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "blackmail"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.murder",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "murder",
+      "de": [
+        "Mord"
+      ],
+      "deRaw": "Mord",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "murder"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.weapon",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "weapon",
+      "de": [
+        "Waffe"
+      ],
+      "deRaw": "Waffe",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "weapon"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.witness",
+      "kind": "wordfile",
+      "theme": "Crime",
+      "en": "witness",
+      "de": [
+        "Zeuge/Zeugin"
+      ],
+      "deRaw": "Zeuge/Zeugin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "witness"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.chest",
+      "kind": "phrase",
+      "theme": null,
+      "en": "chest",
+      "de": [
+        "Brust"
+      ],
+      "deRaw": "Brust",
+      "exampleSb": "The murdered man had a knife wound in his chest.",
+      "cf": null,
+      "forms": [
+        "chest"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.employee",
+      "kind": "phrase",
+      "theme": null,
+      "en": "employee",
+      "de": [
+        "Angestellte/r"
+      ],
+      "deRaw": "Angestellte/r",
+      "exampleSb": "Employees are the people that work for a company.",
+      "cf": null,
+      "forms": [
+        "employee"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.mystery",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mystery",
+      "de": [
+        "Rätsel",
+        "Geheimnis"
+      ],
+      "deRaw": "Rätsel; Geheimnis",
+      "exampleSb": "Her disappearance is still a mystery.",
+      "cf": null,
+      "forms": [
+        "mystery"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.report",
+      "kind": "phrase",
+      "theme": null,
+      "en": "report",
+      "de": [
+        "Bericht"
+      ],
+      "deRaw": "Bericht",
+      "exampleSb": "According to the report, police arrested the criminal.",
+      "cf": null,
+      "forms": [
+        "report"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.attractive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "attractive",
+      "de": [
+        "attraktiv"
+      ],
+      "deRaw": "attraktiv",
+      "exampleSb": "Lots of people like the way she looks, they think she's a very attractive woman.",
+      "cf": null,
+      "forms": [
+        "attractive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.nephew",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nephew",
+      "de": [
+        "Neffe"
+      ],
+      "deRaw": "Neffe",
+      "exampleSb": "He's my nephew. You know, my brother's son.",
+      "cf": null,
+      "forms": [
+        "nephew"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.office-clerk",
+      "kind": "phrase",
+      "theme": null,
+      "en": "office clerk",
+      "de": [
+        "Büroangestellte/r"
+      ],
+      "deRaw": "Büroangestellte/r",
+      "exampleSb": "She works for a TV company as an office clerk.",
+      "cf": null,
+      "forms": [
+        "office clerk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.keep-an-eye-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "keep an eye on",
+      "de": [
+        "aufpassen auf"
+      ],
+      "deRaw": "aufpassen auf",
+      "exampleSb": "Don't forget to keep an eye on the children while they're at the zoo.",
+      "cf": null,
+      "forms": [
+        "keep an eye on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.confusion",
+      "kind": "phrase",
+      "theme": null,
+      "en": "confusion",
+      "de": [
+        "Verwirrung"
+      ],
+      "deRaw": "Verwirrung",
+      "exampleSb": "After the accident, there was great confusion.",
+      "cf": null,
+      "forms": [
+        "confusion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.relative",
+      "kind": "phrase",
+      "theme": null,
+      "en": "relative",
+      "de": [
+        "Verwandte/r"
+      ],
+      "deRaw": "Verwandte/r",
+      "exampleSb": "We had a big party last week. All my friends and relatives were there.",
+      "cf": null,
+      "forms": [
+        "relative"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.retire",
+      "kind": "phrase",
+      "theme": null,
+      "en": "retire",
+      "de": [
+        "in Pension gehen"
+      ],
+      "deRaw": "in Pension gehen",
+      "exampleSb": "When you've worked enough in your life, you can retire.",
+      "cf": null,
+      "forms": [
+        "retire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.right-away",
+      "kind": "phrase",
+      "theme": null,
+      "en": "right away",
+      "de": [
+        "sofort"
+      ],
+      "deRaw": "sofort",
+      "exampleSb": "We'd like some more water, please. – Right away, sir!",
+      "cf": null,
+      "forms": [
+        "right away"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.take-over",
+      "kind": "phrase",
+      "theme": null,
+      "en": "take over",
+      "de": [
+        "übernehmen"
+      ],
+      "deRaw": "übernehmen",
+      "exampleSb": "When he retires, his son will take over the company.",
+      "cf": null,
+      "forms": [
+        "take over"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.unlock",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unlock",
+      "de": [
+        "aufschließen"
+      ],
+      "deRaw": "aufschließen",
+      "exampleSb": "Give me the key and I'll unlock the door for you.",
+      "cf": null,
+      "forms": [
+        "unlock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.upset",
+      "kind": "phrase",
+      "theme": null,
+      "en": "upset",
+      "de": [
+        "verstört"
+      ],
+      "deRaw": "verstört",
+      "exampleSb": "When she heard the bad news, she was very upset.",
+      "cf": null,
+      "forms": [
+        "upset"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.consider",
+      "kind": "phrase",
+      "theme": null,
+      "en": "consider",
+      "de": [
+        "erwägen"
+      ],
+      "deRaw": "erwägen",
+      "exampleSb": "To find out if we have to move house or not.",
+      "cf": null,
+      "forms": [
+        "consider"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.mention",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mention",
+      "de": [
+        "erwähnen"
+      ],
+      "deRaw": "erwähnen",
+      "exampleSb": "Don't forget to mention me in your letter home.",
+      "cf": null,
+      "forms": [
+        "mention"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.likely",
+      "kind": "phrase",
+      "theme": null,
+      "en": "likely",
+      "de": [
+        "wahrscheinlich"
+      ],
+      "deRaw": "wahrscheinlich",
+      "exampleSb": "It's likely that we'll get more rain tomorrow.",
+      "cf": null,
+      "forms": [
+        "likely"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.besides",
+      "kind": "phrase",
+      "theme": null,
+      "en": "besides",
+      "de": [
+        "außerdem",
+        "im Übrigen"
+      ],
+      "deRaw": "außerdem, im Übrigen",
+      "exampleSb": "No, thanks. I'm not hungry. And besides, I hate tofu.",
+      "cf": null,
+      "forms": [
+        "besides"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.expect",
+      "kind": "phrase",
+      "theme": null,
+      "en": "expect",
+      "de": [
+        "erwarten"
+      ],
+      "deRaw": "erwarten",
+      "exampleSb": "I expect she'll get good marks at the test tomorrow.",
+      "cf": null,
+      "forms": [
+        "expect"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.handkerchief",
+      "kind": "phrase",
+      "theme": null,
+      "en": "handkerchief",
+      "de": [
+        "Taschentuch"
+      ],
+      "deRaw": "Taschentuch",
+      "exampleSb": "I have a terrible cold. I need a handkerchief.",
+      "cf": null,
+      "forms": [
+        "handkerchief"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.never-mind",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Never mind.",
+      "de": [
+        "Macht nichts.",
+        "Egal."
+      ],
+      "deRaw": "Macht nichts., Egal.",
+      "exampleSb": "I'm sorry I'm late. – Never mind. I'm fine.",
+      "cf": null,
+      "forms": [
+        "Never mind."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.suspicion",
+      "kind": "phrase",
+      "theme": null,
+      "en": "suspicion",
+      "de": [
+        "Verdacht"
+      ],
+      "deRaw": "Verdacht",
+      "exampleSb": "My suspicion is that it was John.",
+      "cf": null,
+      "forms": [
+        "suspicion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.wastepaper-bin",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wastepaper bin",
+      "de": [
+        "Papierkorb"
+      ],
+      "deRaw": "Papierkorb",
+      "exampleSb": "He threw all the letters into the wastepaper bin.",
+      "cf": null,
+      "forms": [
+        "wastepaper bin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.excellent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "excellent",
+      "de": [
+        "hervorragend",
+        "großartig"
+      ],
+      "deRaw": "hervorragend, großartig",
+      "exampleSb": "Her new movie has received excellent reviews.",
+      "cf": null,
+      "forms": [
+        "excellent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.conclusion",
+      "kind": "phrase",
+      "theme": null,
+      "en": "conclusion",
+      "de": [
+        "Schlussfolgerung"
+      ],
+      "deRaw": "Schlussfolgerung",
+      "exampleSb": "He came to the conclusion that the murderer was a woman.",
+      "cf": null,
+      "forms": [
+        "conclusion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.get-hold-of-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "get hold of sth",
+      "de": [
+        "an etwas gelangen"
+      ],
+      "deRaw": "an etwas gelangen",
+      "exampleSb": "A reporter got hold of the story and put it was in all the newspapers.",
+      "cf": null,
+      "forms": [
+        "get hold of sth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.prove",
+      "kind": "phrase",
+      "theme": null,
+      "en": "prove",
+      "de": [
+        "beweisen"
+      ],
+      "deRaw": "beweisen",
+      "exampleSb": "I know he's the murderer, but I can't prove it.",
+      "cf": null,
+      "forms": [
+        "prove"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.historical",
+      "kind": "phrase",
+      "theme": null,
+      "en": "historical",
+      "de": [
+        "historisch"
+      ],
+      "deRaw": "historisch",
+      "exampleSb": "The Old State House is an important historical building.",
+      "cf": null,
+      "forms": [
+        "historical"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.commit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "commit",
+      "de": [
+        "begehen"
+      ],
+      "deRaw": "begehen",
+      "exampleSb": "If you commit a crime, you become a criminal.",
+      "cf": null,
+      "forms": [
+        "commit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.escape",
+      "kind": "phrase",
+      "theme": null,
+      "en": "escape",
+      "de": [
+        "entkommen",
+        "flüchten"
+      ],
+      "deRaw": "entkommen, flüchten",
+      "exampleSb": "The thieves escaped from prison.",
+      "cf": null,
+      "forms": [
+        "escape"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.investigation",
+      "kind": "phrase",
+      "theme": null,
+      "en": "investigation",
+      "de": [
+        "Untersuchung"
+      ],
+      "deRaw": "Untersuchung",
+      "exampleSb": "The police started their investigation of the crime immediately.",
+      "cf": null,
+      "forms": [
+        "investigation"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.common",
+      "kind": "phrase",
+      "theme": null,
+      "en": "common",
+      "de": [
+        "häufig",
+        "gewöhnlich"
+      ],
+      "deRaw": "häufig; gewöhnlich",
+      "exampleSb": "The most common word in the English language is 'the'.",
+      "cf": null,
+      "forms": [
+        "common"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.personal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "personal",
+      "de": [
+        "persönlich"
+      ],
+      "deRaw": "persönlich",
+      "exampleSb": "A lot of personal computers were hacked last year.",
+      "cf": null,
+      "forms": [
+        "personal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.crime-scene",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crime scene",
+      "de": [
+        "Tatort"
+      ],
+      "deRaw": "Tatort",
+      "exampleSb": "The police arrived at the crime scene very quickly.",
+      "cf": null,
+      "forms": [
+        "crime scene"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u02.w.realise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "realise",
+      "de": [
+        "erkennen",
+        "begreifen"
+      ],
+      "deRaw": "erkennen; begreifen",
+      "exampleSb": "She didn't realise the risk she was taking.",
+      "cf": null,
+      "forms": [
+        "realise"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

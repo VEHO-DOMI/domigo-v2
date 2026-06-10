@@ -1,0 +1,777 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 4,
+  "slug": "g3-u04",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u04.w.poisonous",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "poisonous",
+      "de": [
+        "giftig"
+      ],
+      "deRaw": "giftig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "poisonous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.aggressive",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "aggressive",
+      "de": [
+        "aggressiv"
+      ],
+      "deRaw": "aggressiv",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "aggressive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.dangerous",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "dangerous",
+      "de": [
+        "gefährlich"
+      ],
+      "deRaw": "gefährlich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "dangerous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.deadly",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "deadly",
+      "de": [
+        "tödlich"
+      ],
+      "deRaw": "tödlich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "deadly"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.elegant",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "elegant",
+      "de": [
+        "elegant"
+      ],
+      "deRaw": "elegant",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "elegant"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.stunning",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "stunning",
+      "de": [
+        "atemberaubend",
+        "umwerfend"
+      ],
+      "deRaw": "atemberaubend, umwerfend",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "stunning"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.cute",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "cute",
+      "de": [
+        "niedlich",
+        "süß"
+      ],
+      "deRaw": "niedlich, süß",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cute"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.furry",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "furry",
+      "de": [
+        "pelzig",
+        "flauschig"
+      ],
+      "deRaw": "pelzig, flauschig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "furry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.cuddly",
+      "kind": "wordfile",
+      "theme": "Adjectives Describing Animals",
+      "en": "cuddly",
+      "de": [
+        "kuschelig"
+      ],
+      "deRaw": "kuschelig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cuddly"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.cub",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cub",
+      "de": [
+        "(Bären-)Junges"
+      ],
+      "deRaw": "(Bären-)Junges",
+      "exampleSb": "A baby bear is called a 'cub'.",
+      "cf": null,
+      "forms": [
+        "cub"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.good-luck",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Good luck!",
+      "de": [
+        "Viel Glück!"
+      ],
+      "deRaw": "Viel Glück!",
+      "exampleSb": "Good luck!",
+      "cf": null,
+      "forms": [
+        "Good luck!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.polar-bear",
+      "kind": "phrase",
+      "theme": null,
+      "en": "polar bear",
+      "de": [
+        "Eisbär"
+      ],
+      "deRaw": "Eisbär",
+      "exampleSb": "There are 3,000 polar bears on the Svalbard Islands in Norway.",
+      "cf": null,
+      "forms": [
+        "polar bear"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.adorable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "adorable",
+      "de": [
+        "bezaubernd",
+        "liebenswert"
+      ],
+      "deRaw": "bezaubernd, liebenswert",
+      "exampleSb": "The baby seal's parents are not as adorable.",
+      "cf": null,
+      "forms": [
+        "adorable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.bite",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bite",
+      "de": [
+        "Biss"
+      ],
+      "deRaw": "Biss",
+      "exampleSb": "A bite from a slow lorris can be deadly.",
+      "cf": null,
+      "forms": [
+        "bite"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-cause",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to cause",
+      "de": [
+        "verursachen"
+      ],
+      "deRaw": "verursachen",
+      "exampleSb": "One bite can cause a lot of pain and could even kill you.",
+      "cf": "cause",
+      "forms": [
+        "to cause",
+        "cause"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.poison",
+      "kind": "phrase",
+      "theme": null,
+      "en": "poison",
+      "de": [
+        "Gift"
+      ],
+      "deRaw": "Gift",
+      "exampleSb": "The slow loris produces a poison to protect its young.",
+      "cf": null,
+      "forms": [
+        "poison"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.rabies",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rabies",
+      "de": [
+        "Tollwut"
+      ],
+      "deRaw": "Tollwut",
+      "exampleSb": "Chipmunks can spread diseases like rabies.",
+      "cf": null,
+      "forms": [
+        "rabies"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.seal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "seal",
+      "de": [
+        "Robbe"
+      ],
+      "deRaw": "Robbe",
+      "exampleSb": "Everyone loves a baby leopard seal.",
+      "cf": null,
+      "forms": [
+        "seal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.swan",
+      "kind": "phrase",
+      "theme": null,
+      "en": "swan",
+      "de": [
+        "Schwan"
+      ],
+      "deRaw": "Schwan",
+      "exampleSb": "Swans are commonly found on lakes and rivers.",
+      "cf": null,
+      "forms": [
+        "swan"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-bite",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to bite (off)",
+      "de": [
+        "(ab-)beißen"
+      ],
+      "deRaw": "(ab-)beißen",
+      "exampleSb": "His lizard tried to bite my finger off.",
+      "cf": "bite",
+      "forms": [
+        "to bite",
+        "bite",
+        "off"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.lizard",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lizard",
+      "de": [
+        "Eidechse"
+      ],
+      "deRaw": "Eidechse",
+      "exampleSb": "Dave's got a new lizard as a pet.",
+      "cf": null,
+      "forms": [
+        "lizard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-chase-away",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to chase away",
+      "de": [
+        "verjagen"
+      ],
+      "deRaw": "verjagen",
+      "exampleSb": "He managed to chase the big fish away.",
+      "cf": "chase away",
+      "forms": [
+        "to chase away",
+        "chase away"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-complain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to complain",
+      "de": [
+        "sich beschweren"
+      ],
+      "deRaw": "sich beschweren",
+      "exampleSb": "She smiles a lot and never complains.",
+      "cf": "complain",
+      "forms": [
+        "to complain",
+        "complain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.injury",
+      "kind": "phrase",
+      "theme": null,
+      "en": "injury",
+      "de": [
+        "Verletzung"
+      ],
+      "deRaw": "Verletzung",
+      "exampleSb": "Charlie saw that his daughter had terrible injuries.",
+      "cf": null,
+      "forms": [
+        "injury"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-lift",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to lift",
+      "de": [
+        "aufheben"
+      ],
+      "deRaw": "aufheben",
+      "exampleSb": "He dived into the water, and tried to lift the girl out.",
+      "cf": "lift",
+      "forms": [
+        "to lift",
+        "lift"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-pull-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to pull down",
+      "de": [
+        "hinunterziehen"
+      ],
+      "deRaw": "hinunterziehen",
+      "exampleSb": "There was a big surf shark, and it was pulling Paige down into the water.",
+      "cf": "pull down",
+      "forms": [
+        "to pull down",
+        "pull down"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-accept",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to accept",
+      "de": [
+        "akzeptieren"
+      ],
+      "deRaw": "akzeptieren",
+      "exampleSb": "Paige tries to accept her situation.",
+      "cf": "accept",
+      "forms": [
+        "to accept",
+        "accept"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.immediately",
+      "kind": "phrase",
+      "theme": null,
+      "en": "immediately",
+      "de": [
+        "sofort"
+      ],
+      "deRaw": "sofort",
+      "exampleSb": "Why didn't they go back to the café immediately?",
+      "cf": null,
+      "forms": [
+        "immediately"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-advise-against-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to advise (sb.) against sth.",
+      "de": [
+        "(jdn.) von etw. abraten",
+        "(jdn.) vor etw. warnen"
+      ],
+      "deRaw": "(jdn.) von etw. abraten, (jdn.) vor etw. warnen",
+      "exampleSb": "I would advise against surfing or swimming out too far.",
+      "cf": "advise against sth.",
+      "forms": [
+        "to advise against sth.",
+        "advise against sth.",
+        "sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-bleed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to bleed",
+      "de": [
+        "bluten"
+      ],
+      "deRaw": "bluten",
+      "exampleSb": "The great white shark let's people bleed to death.",
+      "cf": "bleed",
+      "forms": [
+        "to bleed",
+        "bleed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.death",
+      "kind": "phrase",
+      "theme": null,
+      "en": "death",
+      "de": [
+        "Tod"
+      ],
+      "deRaw": "Tod",
+      "exampleSb": "Great white sharks want their victims bleed to death.",
+      "cf": null,
+      "forms": [
+        "death"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-defend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to defend",
+      "de": [
+        "verteidigen"
+      ],
+      "deRaw": "verteidigen",
+      "exampleSb": "Sharks attack to defend their territory.",
+      "cf": "defend",
+      "forms": [
+        "to defend",
+        "defend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-mistake-sth-for-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to mistake sth. for sth.",
+      "de": [
+        "etw. mit etw. verwechseln"
+      ],
+      "deRaw": "etw. mit etw. verwechseln",
+      "exampleSb": "They attack humans because they mistake them for seals or sea lions.",
+      "cf": "mistake sth. for sth.",
+      "forms": [
+        "to mistake sth. for sth.",
+        "mistake sth. for sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.on-average",
+      "kind": "phrase",
+      "theme": null,
+      "en": "on average",
+      "de": [
+        "durchschnittlich",
+        "im Durchschnitt"
+      ],
+      "deRaw": "durchschnittlich, im Durchschnitt",
+      "exampleSb": "They only kill one person every eight years on average.",
+      "cf": null,
+      "forms": [
+        "on average"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.scuba-diver",
+      "kind": "phrase",
+      "theme": null,
+      "en": "scuba diver",
+      "de": [
+        "Sporttaucher/Sporttaucherin"
+      ],
+      "deRaw": "Sporttaucher/Sporttaucherin",
+      "exampleSb": "Swimmers are in more danger than a scuba diver.",
+      "cf": null,
+      "forms": [
+        "scuba diver"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.shape",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shape",
+      "de": [
+        "Form"
+      ],
+      "deRaw": "Form",
+      "exampleSb": "From below, the shape of a swimmer can look like a seal to a shark.",
+      "cf": null,
+      "forms": [
+        "shape"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-suppose",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to suppose",
+      "de": [
+        "vermuten",
+        "annehmen"
+      ],
+      "deRaw": "vermuten, annehmen",
+      "exampleSb": "I suppose so.",
+      "cf": "suppose",
+      "forms": [
+        "to suppose",
+        "suppose"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-take-care",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take care",
+      "de": [
+        "aufpassen",
+        "sich hüten"
+      ],
+      "deRaw": "aufpassen, sich hüten",
+      "exampleSb": "People should take care when they go swimming.",
+      "cf": "take care",
+      "forms": [
+        "to take care",
+        "take care"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.victim",
+      "kind": "phrase",
+      "theme": null,
+      "en": "victim",
+      "de": [
+        "Opfer"
+      ],
+      "deRaw": "Opfer",
+      "exampleSb": "Sharks watch their victims bleed before eating.",
+      "cf": null,
+      "forms": [
+        "victim"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-communicate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to communicate",
+      "de": [
+        "kommunizieren"
+      ],
+      "deRaw": "kommunizieren",
+      "exampleSb": "Soon they find out that Troodons can communicate.",
+      "cf": "communicate",
+      "forms": [
+        "to communicate",
+        "communicate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.audience",
+      "kind": "phrase",
+      "theme": null,
+      "en": "audience",
+      "de": [
+        "Publikum"
+      ],
+      "deRaw": "Publikum",
+      "exampleSb": "There are different ways to reach an audience.",
+      "cf": null,
+      "forms": [
+        "audience"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.environment",
+      "kind": "phrase",
+      "theme": null,
+      "en": "environment",
+      "de": [
+        "Umwelt"
+      ],
+      "deRaw": "Umwelt",
+      "exampleSb": "Foxes are a part of our environment.",
+      "cf": null,
+      "forms": [
+        "environment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.hands-off",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Hands off!",
+      "de": [
+        "Finger weg!"
+      ],
+      "deRaw": "Finger weg!",
+      "exampleSb": "Hands off!",
+      "cf": null,
+      "forms": [
+        "Hands off!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-inform",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to inform",
+      "de": [
+        "informieren"
+      ],
+      "deRaw": "informieren",
+      "exampleSb": "You need to inform the public about changes to the voting system.",
+      "cf": "inform",
+      "forms": [
+        "to inform",
+        "inform"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.to-lock-sb-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to lock sb. up",
+      "de": [
+        "jdn. einsperren"
+      ],
+      "deRaw": "jdn. einsperren",
+      "exampleSb": "You should lock up the chickens at night.",
+      "cf": "lock sb. up",
+      "forms": [
+        "to lock sb. up",
+        "lock sb. up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u04.w.politician",
+      "kind": "phrase",
+      "theme": null,
+      "en": "politician",
+      "de": [
+        "Politiker/Politikerin"
+      ],
+      "deRaw": "Politiker/Politikerin",
+      "exampleSb": "They're asking for the local politicians to get the foxes off our streets.",
+      "cf": null,
+      "forms": [
+        "politician"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

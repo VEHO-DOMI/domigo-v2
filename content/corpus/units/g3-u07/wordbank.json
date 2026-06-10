@@ -1,0 +1,584 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 7,
+  "slug": "g3-u07",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u07.w.to-fall-out-with-sb",
+      "kind": "wordfile",
+      "theme": "Relationships",
+      "en": "to fall out with sb.",
+      "de": [
+        "sich mit jdm. zerstreiten"
+      ],
+      "deRaw": "sich mit jdm. zerstreiten",
+      "exampleSb": null,
+      "cf": "fall out with sb.",
+      "forms": [
+        "to fall out with sb.",
+        "fall out with sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-storm-out-of",
+      "kind": "wordfile",
+      "theme": "Relationships",
+      "en": "to storm out of",
+      "de": [
+        "wütend hinausstürmen"
+      ],
+      "deRaw": "wütend hinausstürmen",
+      "exampleSb": null,
+      "cf": "storm out of",
+      "forms": [
+        "to storm out of",
+        "storm out of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-break-up-with-sb",
+      "kind": "wordfile",
+      "theme": "Relationships",
+      "en": "to break up with sb.",
+      "de": [
+        "mit jdm. Schluss machen"
+      ],
+      "deRaw": "mit jdm. Schluss machen",
+      "exampleSb": null,
+      "cf": "break up with sb.",
+      "forms": [
+        "to break up with sb.",
+        "break up with sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-mind-your-own-business",
+      "kind": "wordfile",
+      "theme": "Relationships",
+      "en": "to mind your own business",
+      "de": [
+        "sich um seine eigenen Angelegenheiten kümmern"
+      ],
+      "deRaw": "sich um seine eigenen Angelegenheiten kümmern",
+      "exampleSb": null,
+      "cf": "mind your own business",
+      "forms": [
+        "to mind your own business",
+        "mind your own business"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-make-up-with-sb",
+      "kind": "wordfile",
+      "theme": "Relationships",
+      "en": "to make up with sb.",
+      "de": [
+        "sich mit jdm. versöhnen"
+      ],
+      "deRaw": "sich mit jdm. versöhnen",
+      "exampleSb": null,
+      "cf": "make up with sb.",
+      "forms": [
+        "to make up with sb.",
+        "make up with sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-get-on-well-with-sb",
+      "kind": "wordfile",
+      "theme": "Relationships",
+      "en": "to get on well with sb.",
+      "de": [
+        "sich gut mit jdm. verstehen"
+      ],
+      "deRaw": "sich gut mit jdm. verstehen",
+      "exampleSb": null,
+      "cf": "get on well with sb.",
+      "forms": [
+        "to get on well with sb.",
+        "get on well with sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.it-s-none-of-my-business",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It's none of my business.",
+      "de": [
+        "Das geht mich nichts an."
+      ],
+      "deRaw": "Das geht mich nichts an.",
+      "exampleSb": "It's none of my business.",
+      "cf": null,
+      "forms": [
+        "It's none of my business."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-laugh-at-sb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to laugh at sb.",
+      "de": [
+        "jdn. auslachen"
+      ],
+      "deRaw": "jdn. auslachen",
+      "exampleSb": "Some of the kids laughed at me at school.",
+      "cf": "laugh at sb.",
+      "forms": [
+        "to laugh at sb.",
+        "laugh at sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-make-up-one-s-mind",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to make up one's mind",
+      "de": [
+        "einen Entschluss fassen"
+      ],
+      "deRaw": "einen Entschluss fassen",
+      "exampleSb": "Once she has made up her mind about something, she doesn't let go.",
+      "cf": "make up one's mind",
+      "forms": [
+        "to make up one's mind",
+        "make up one's mind"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-make-fun-of-sb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to make fun of sb.",
+      "de": [
+        "sich über jdn. lustig machen"
+      ],
+      "deRaw": "sich über jdn. lustig machen",
+      "exampleSb": "Then one day, a kid was making fun of her at school.",
+      "cf": "make fun of sb.",
+      "forms": [
+        "to make fun of sb.",
+        "make fun of sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-move",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to move",
+      "de": [
+        "umziehen",
+        "übersiedeln"
+      ],
+      "deRaw": "umziehen, übersiedeln",
+      "exampleSb": "My parents want to move to California.",
+      "cf": "move",
+      "forms": [
+        "to move",
+        "move"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.soft-toy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "soft toy",
+      "de": [
+        "Stofftier"
+      ],
+      "deRaw": "Stofftier",
+      "exampleSb": "I've had these soft toys since I was a baby.",
+      "cf": null,
+      "forms": [
+        "soft toy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-step-in",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to step in",
+      "de": [
+        "hier: eingreifen",
+        "dazwischen gehen"
+      ],
+      "deRaw": "hier: eingreifen, dazwischen gehen",
+      "exampleSb": "If a kid makes fun of your friend, you should step in.",
+      "cf": "step in",
+      "forms": [
+        "to step in",
+        "step in"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.relationship",
+      "kind": "phrase",
+      "theme": null,
+      "en": "relationship",
+      "de": [
+        "Beziehung"
+      ],
+      "deRaw": "Beziehung",
+      "exampleSb": "George's relationship with Alessia changes over time.",
+      "cf": null,
+      "forms": [
+        "relationship"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-own",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to own",
+      "de": [
+        "besitzen"
+      ],
+      "deRaw": "besitzen",
+      "exampleSb": "Which of the things you own do you like a lot?",
+      "cf": "own",
+      "forms": [
+        "to own",
+        "own"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.childhood",
+      "kind": "phrase",
+      "theme": null,
+      "en": "childhood (no pl)",
+      "de": [
+        "Kindheit"
+      ],
+      "deRaw": "Kindheit",
+      "exampleSb": "I have lived in this house since my childhood.",
+      "cf": null,
+      "forms": [
+        "childhood",
+        "no pl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.earring",
+      "kind": "phrase",
+      "theme": null,
+      "en": "earring",
+      "de": [
+        "Ohrring"
+      ],
+      "deRaw": "Ohrring",
+      "exampleSb": "I lost my earring in the sea.",
+      "cf": null,
+      "forms": [
+        "earring"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.jealous",
+      "kind": "phrase",
+      "theme": null,
+      "en": "jealous",
+      "de": [
+        "eifersüchtig"
+      ],
+      "deRaw": "eifersüchtig",
+      "exampleSb": "Your best friend has a new friend and you are feeling a bit jealous.",
+      "cf": null,
+      "forms": [
+        "jealous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-keep-secret",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to keep (a) secret",
+      "de": [
+        "ein Geheimnis für sich behalten"
+      ],
+      "deRaw": "ein Geheimnis für sich behalten",
+      "exampleSb": "My best friend can keep a secret.",
+      "cf": "keep secret",
+      "forms": [
+        "to keep secret",
+        "keep secret",
+        "a"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.questionnaire",
+      "kind": "phrase",
+      "theme": null,
+      "en": "questionnaire",
+      "de": [
+        "Fragebogen"
+      ],
+      "deRaw": "Fragebogen",
+      "exampleSb": "Do the questionnaire to find out if you're a good friend.",
+      "cf": null,
+      "forms": [
+        "questionnaire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-tell-sb-off",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to tell sb. off",
+      "de": [
+        "mit jdm. schimpfen"
+      ],
+      "deRaw": "mit jdm. schimpfen",
+      "exampleSb": "Your teacher tells you off in front of the class for not doing your homework.",
+      "cf": "tell sb. off",
+      "forms": [
+        "to tell sb. off",
+        "tell sb. off"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-solve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to solve",
+      "de": [
+        "lösen"
+      ],
+      "deRaw": "lösen",
+      "exampleSb": "This solves all our problems.",
+      "cf": "solve",
+      "forms": [
+        "to solve",
+        "solve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.beloved",
+      "kind": "phrase",
+      "theme": null,
+      "en": "beloved",
+      "de": [
+        "geliebt"
+      ],
+      "deRaw": "geliebt",
+      "exampleSb": "With a broken heart Stallone sold his beloved dog.",
+      "cf": null,
+      "forms": [
+        "beloved"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.nowhere",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nowhere",
+      "de": [
+        "nirgends"
+      ],
+      "deRaw": "nirgends",
+      "exampleSb": "Stallone had no money left and nowhere to sleep.",
+      "cf": null,
+      "forms": [
+        "nowhere"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.script",
+      "kind": "phrase",
+      "theme": null,
+      "en": "script",
+      "de": [
+        "Drehbuch"
+      ],
+      "deRaw": "Drehbuch",
+      "exampleSb": "Stallone was trying to sell his script.",
+      "cf": null,
+      "forms": [
+        "script"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-struggle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to struggle",
+      "de": [
+        "kämpfen",
+        "sich abmühen"
+      ],
+      "deRaw": "kämpfen, sich abmühen",
+      "exampleSb": "As an actor he struggled a lot.",
+      "cf": "struggle",
+      "forms": [
+        "to struggle",
+        "struggle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-lie-to-sb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to lie to sb.",
+      "de": [
+        "jdn. anlügen"
+      ],
+      "deRaw": "jdn. anlügen",
+      "exampleSb": "A good friend never lies to you.",
+      "cf": "lie to sb.",
+      "forms": [
+        "to lie to sb.",
+        "lie to sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-admit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to admit",
+      "de": [
+        "zugeben"
+      ],
+      "deRaw": "zugeben",
+      "exampleSb": "I told Tom to admit what happened.",
+      "cf": "admit",
+      "forms": [
+        "to admit",
+        "admit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.to-blackmail",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to blackmail",
+      "de": [
+        "erpressen"
+      ],
+      "deRaw": "erpressen",
+      "exampleSb": "Ollie saw me and then he tried to blackmail me.",
+      "cf": "blackmail",
+      "forms": [
+        "to blackmail",
+        "blackmail"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.clumsy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "clumsy",
+      "de": [
+        "ungeschickt"
+      ],
+      "deRaw": "ungeschickt",
+      "exampleSb": "He knocked the books into the sink because he is so clumsy.",
+      "cf": null,
+      "forms": [
+        "clumsy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.honest",
+      "kind": "phrase",
+      "theme": null,
+      "en": "honest",
+      "de": [
+        "ehrlich"
+      ],
+      "deRaw": "ehrlich",
+      "exampleSb": "She lies a lot and is never honest.",
+      "cf": null,
+      "forms": [
+        "honest"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.a-pile-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "a pile of",
+      "de": [
+        "ein Stapel an"
+      ],
+      "deRaw": "ein Stapel an",
+      "exampleSb": "I put my homework on the pile of books.",
+      "cf": null,
+      "forms": [
+        "a pile of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.rash",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rash",
+      "de": [
+        "Hautausschlag"
+      ],
+      "deRaw": "Hautausschlag",
+      "exampleSb": "My skin's a bit red – I think it's a rash.",
+      "cf": null,
+      "forms": [
+        "rash"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u07.w.unwell",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unwell",
+      "de": [
+        "unwohl",
+        "krank"
+      ],
+      "deRaw": "unwohl, krank",
+      "exampleSb": "She looks a bit unwell.",
+      "cf": null,
+      "forms": [
+        "unwell"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

@@ -1,0 +1,812 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 5,
+  "slug": "g2-u05",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u05.w.cinema",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "cinema",
+      "de": [
+        "Kino"
+      ],
+      "deRaw": "Kino",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cinema"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.church",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "church",
+      "de": [
+        "Kirche"
+      ],
+      "deRaw": "Kirche",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "church"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.bank",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "bank",
+      "de": [
+        "Bank"
+      ],
+      "deRaw": "Bank",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bank"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.restaurant",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "restaurant",
+      "de": [
+        "Restaurant"
+      ],
+      "deRaw": "Restaurant",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "restaurant"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.railway-station",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "railway station",
+      "de": [
+        "Bahnhof"
+      ],
+      "deRaw": "Bahnhof",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "railway station"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.chemist-s",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "chemist's",
+      "de": [
+        "Apotheke"
+      ],
+      "deRaw": "Apotheke",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chemist's"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.tourist-office",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "tourist office",
+      "de": [
+        "Touristeninformation"
+      ],
+      "deRaw": "Touristeninformation",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tourist office"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.music-shop",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "music shop",
+      "de": [
+        "Musikgeschäft"
+      ],
+      "deRaw": "Musikgeschäft",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "music shop"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.post-office",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "post office",
+      "de": [
+        "Postamt"
+      ],
+      "deRaw": "Postamt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "post office"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.supermarket",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "supermarket",
+      "de": [
+        "Supermarkt"
+      ],
+      "deRaw": "Supermarkt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "supermarket"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.hospital",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "hospital",
+      "de": [
+        "Krankenhaus"
+      ],
+      "deRaw": "Krankenhaus",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hospital"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.police-station",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "police station",
+      "de": [
+        "Polizeistation"
+      ],
+      "deRaw": "Polizeistation",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "police station"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-go-past",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "to go past",
+      "de": [
+        "vorbeigehen"
+      ],
+      "deRaw": "vorbeigehen",
+      "exampleSb": null,
+      "cf": "go past",
+      "forms": [
+        "to go past",
+        "go past"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-go-straight-ahead",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "to go straight ahead",
+      "de": [
+        "geradeaus gehen"
+      ],
+      "deRaw": "geradeaus gehen",
+      "exampleSb": null,
+      "cf": "go straight ahead",
+      "forms": [
+        "to go straight ahead",
+        "go straight ahead"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-cross-the-street",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "to cross the street",
+      "de": [
+        "die Straße überqueren"
+      ],
+      "deRaw": "die Straße überqueren",
+      "exampleSb": null,
+      "cf": "cross the street",
+      "forms": [
+        "to cross the street",
+        "cross the street"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-turn-left",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "to turn left",
+      "de": [
+        "links abbiegen"
+      ],
+      "deRaw": "links abbiegen",
+      "exampleSb": null,
+      "cf": "turn left",
+      "forms": [
+        "to turn left",
+        "turn left"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-take-the-second-right",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "to take the second right",
+      "de": [
+        "die zweite rechts nehmen"
+      ],
+      "deRaw": "die zweite rechts nehmen",
+      "exampleSb": null,
+      "cf": "take the second right",
+      "forms": [
+        "to take the second right",
+        "take the second right"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.round-the-corner",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "round the corner",
+      "de": [
+        "um die Ecke"
+      ],
+      "deRaw": "um die Ecke",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "round the corner"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.as-far-as",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "as far as",
+      "de": [
+        "bis zu"
+      ],
+      "deRaw": "bis zu",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "as far as"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.opposite",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "opposite",
+      "de": [
+        "gegenüber"
+      ],
+      "deRaw": "gegenüber",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "opposite"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.next-to",
+      "kind": "wordfile",
+      "theme": "Buildings & Directions",
+      "en": "next to",
+      "de": [
+        "neben"
+      ],
+      "deRaw": "neben",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "next to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-cross",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to cross",
+      "de": [
+        "überqueren"
+      ],
+      "deRaw": "überqueren",
+      "exampleSb": "We have to cross the street.",
+      "cf": "cross",
+      "forms": [
+        "to cross",
+        "cross"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.map",
+      "kind": "phrase",
+      "theme": null,
+      "en": "map",
+      "de": [
+        "(Land-)Karte"
+      ],
+      "deRaw": "(Land-)Karte",
+      "exampleSb": "You can see where you are on the map.",
+      "cf": null,
+      "forms": [
+        "map"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.second",
+      "kind": "phrase",
+      "theme": null,
+      "en": "second",
+      "de": [
+        "zweiter/zweite/zweites",
+        "Sekunde"
+      ],
+      "deRaw": "zweiter/zweite/zweites; Sekunde",
+      "exampleSb": "Take the second right.",
+      "cf": null,
+      "forms": [
+        "second"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-go-straight-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to go straight on",
+      "de": [
+        "geradeaus weitergehen"
+      ],
+      "deRaw": "geradeaus weitergehen",
+      "exampleSb": "Go straight on, then turn left.",
+      "cf": "go straight on",
+      "forms": [
+        "to go straight on",
+        "go straight on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.airport",
+      "kind": "phrase",
+      "theme": null,
+      "en": "airport",
+      "de": [
+        "Flughafen"
+      ],
+      "deRaw": "Flughafen",
+      "exampleSb": "His son picked him up from the airport.",
+      "cf": null,
+      "forms": [
+        "airport"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-change-trains",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to change trains",
+      "de": [
+        "umsteigen"
+      ],
+      "deRaw": "umsteigen",
+      "exampleSb": "We have to change trains at Waterloo Station.",
+      "cf": "change trains",
+      "forms": [
+        "to change trains",
+        "change trains"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.most-of-the-time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "most of the time",
+      "de": [
+        "meistens"
+      ],
+      "deRaw": "meistens",
+      "exampleSb": "In Ireland, it rains most of the time.",
+      "cf": null,
+      "forms": [
+        "most of the time"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.pocket",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pocket",
+      "de": [
+        "Tasche (bei Kleidungsstücken)"
+      ],
+      "deRaw": "Tasche (bei Kleidungsstücken)",
+      "exampleSb": "He put his ticket into his coat pocket.",
+      "cf": null,
+      "forms": [
+        "pocket"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.slow",
+      "kind": "phrase",
+      "theme": null,
+      "en": "slow",
+      "de": [
+        "langsam"
+      ],
+      "deRaw": "langsam",
+      "exampleSb": "Tortoises are slow animals.",
+      "cf": null,
+      "forms": [
+        "slow"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.somewhere",
+      "kind": "phrase",
+      "theme": null,
+      "en": "somewhere",
+      "de": [
+        "irgendwo"
+      ],
+      "deRaw": "irgendwo",
+      "exampleSb": "He hoped to see his son somewhere.",
+      "cf": null,
+      "forms": [
+        "somewhere"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.underground",
+      "kind": "phrase",
+      "theme": null,
+      "en": "underground",
+      "de": [
+        "U-Bahn"
+      ],
+      "deRaw": "U-Bahn",
+      "exampleSb": "They went into London by underground.",
+      "cf": null,
+      "forms": [
+        "underground"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.market-square",
+      "kind": "phrase",
+      "theme": null,
+      "en": "market square",
+      "de": [
+        "Marktplatz"
+      ],
+      "deRaw": "Marktplatz",
+      "exampleSb": "We can meet on market square.",
+      "cf": null,
+      "forms": [
+        "market square"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.simply",
+      "kind": "phrase",
+      "theme": null,
+      "en": "simply",
+      "de": [
+        "einfach"
+      ],
+      "deRaw": "einfach",
+      "exampleSb": "Then simply go ahead.",
+      "cf": null,
+      "forms": [
+        "simply"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.comment",
+      "kind": "phrase",
+      "theme": null,
+      "en": "comment",
+      "de": [
+        "Kommentar"
+      ],
+      "deRaw": "Kommentar",
+      "exampleSb": "Who wrote the positive comment?",
+      "cf": null,
+      "forms": [
+        "comment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-comment",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to comment",
+      "de": [
+        "kommentieren"
+      ],
+      "deRaw": "kommentieren",
+      "exampleSb": "You can comment on the postings.",
+      "cf": "comment",
+      "forms": [
+        "to comment",
+        "comment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.feedback",
+      "kind": "phrase",
+      "theme": null,
+      "en": "feedback",
+      "de": [
+        "Feedback"
+      ],
+      "deRaw": "Feedback",
+      "exampleSb": "You can give positive and negative feedback.",
+      "cf": null,
+      "forms": [
+        "feedback"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.guest",
+      "kind": "phrase",
+      "theme": null,
+      "en": "guest",
+      "de": [
+        "Gast"
+      ],
+      "deRaw": "Gast",
+      "exampleSb": "She invited ten guests to dinner.",
+      "cf": null,
+      "forms": [
+        "guest"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-offer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to offer",
+      "de": [
+        "anbieten"
+      ],
+      "deRaw": "anbieten",
+      "exampleSb": "We offer you three nights for the price of two.",
+      "cf": "offer",
+      "forms": [
+        "to offer",
+        "offer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.opening",
+      "kind": "phrase",
+      "theme": null,
+      "en": "opening",
+      "de": [
+        "Eröffnung"
+      ],
+      "deRaw": "Eröffnung",
+      "exampleSb": "There is a new shopping centre opening.",
+      "cf": null,
+      "forms": [
+        "opening"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.positive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "positive",
+      "de": [
+        "positiv"
+      ],
+      "deRaw": "positiv",
+      "exampleSb": "Write a positive comment.",
+      "cf": null,
+      "forms": [
+        "positive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.review",
+      "kind": "phrase",
+      "theme": null,
+      "en": "review",
+      "de": [
+        "Rezension"
+      ],
+      "deRaw": "Rezension",
+      "exampleSb": "The restaurant got a bad review online.",
+      "cf": null,
+      "forms": [
+        "review"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.the-worst",
+      "kind": "phrase",
+      "theme": null,
+      "en": "the worst",
+      "de": [
+        "der/die/das schlechteste"
+      ],
+      "deRaw": "der/die/das schlechteste",
+      "exampleSb": "Luigi's pizza is the worst pizza ever!",
+      "cf": null,
+      "forms": [
+        "the worst"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-bother",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to bother",
+      "de": [
+        "stören"
+      ],
+      "deRaw": "stören",
+      "exampleSb": "I'm sorry to bother you.",
+      "cf": "bother",
+      "forms": [
+        "to bother",
+        "bother"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.bus-stop",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bus stop",
+      "de": [
+        "Bushaltestelle"
+      ],
+      "deRaw": "Bushaltestelle",
+      "exampleSb": "I saw her standing at the bus stop waiting for the bus to arrive.",
+      "cf": null,
+      "forms": [
+        "bus stop"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.fountain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fountain",
+      "de": [
+        "(Spring-)Brunnen"
+      ],
+      "deRaw": "(Spring-)Brunnen",
+      "exampleSb": "There's a big fountain at market square.",
+      "cf": null,
+      "forms": [
+        "fountain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.to-interrupt",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to interrupt",
+      "de": [
+        "unterbrechen"
+      ],
+      "deRaw": "unterbrechen",
+      "exampleSb": "You can interrupt politely.",
+      "cf": "interrupt",
+      "forms": [
+        "to interrupt",
+        "interrupt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.politely",
+      "kind": "phrase",
+      "theme": null,
+      "en": "politely",
+      "de": [
+        "höflich"
+      ],
+      "deRaw": "höflich",
+      "exampleSb": "You should always ask politely and say please.",
+      "cf": null,
+      "forms": [
+        "politely"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u05.w.traffic-lights",
+      "kind": "phrase",
+      "theme": null,
+      "en": "traffic lights",
+      "de": [
+        "Verkehrsampel"
+      ],
+      "deRaw": "Verkehrsampel",
+      "exampleSb": "Turn left at the traffic lights.",
+      "cf": null,
+      "forms": [
+        "traffic lights"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 5,
+  "slug": "g4-u05",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u05.w.artificial",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "artificial",
+      "de": [
+        "künstlich"
+      ],
+      "deRaw": "künstlich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "artificial"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.fattening",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "fattening",
+      "de": [
+        "dick machend"
+      ],
+      "deRaw": "dick machend",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fattening"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.filling",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "filling",
+      "de": [
+        "sättigend"
+      ],
+      "deRaw": "sättigend",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "filling"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.revolting",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "revolting",
+      "de": [
+        "ekelhaft",
+        "widerlich"
+      ],
+      "deRaw": "ekelhaft, widerlich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "revolting"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.harmful",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "harmful",
+      "de": [
+        "schädlich"
+      ],
+      "deRaw": "schädlich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "harmful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.healthy",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "healthy",
+      "de": [
+        "gesund"
+      ],
+      "deRaw": "gesund",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "healthy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.nutritious",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "nutritious",
+      "de": [
+        "nahrhaft"
+      ],
+      "deRaw": "nahrhaft",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "nutritious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.fresh",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "fresh",
+      "de": [
+        "frisch"
+      ],
+      "deRaw": "frisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fresh"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.tasty",
+      "kind": "wordfile",
+      "theme": "Food",
+      "en": "tasty",
+      "de": [
+        "lecker",
+        "schmackhaft"
+      ],
+      "deRaw": "lecker, schmackhaft",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tasty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.vegetarian",
+      "kind": "phrase",
+      "theme": null,
+      "en": "vegetarian",
+      "de": [
+        "Vegetarier/in"
+      ],
+      "deRaw": "Vegetarier/in",
+      "exampleSb": "She doesn't eat meat. She's a vegetarian.",
+      "cf": null,
+      "forms": [
+        "vegetarian"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.afford",
+      "kind": "phrase",
+      "theme": null,
+      "en": "afford",
+      "de": [
+        "sich leisten können"
+      ],
+      "deRaw": "sich leisten können",
+      "exampleSb": "We can't afford to go abroad this summer.",
+      "cf": null,
+      "forms": [
+        "afford"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.feed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "feed",
+      "de": [
+        "ernähren"
+      ],
+      "deRaw": "ernähren",
+      "exampleSb": "They have a large family to feed.",
+      "cf": null,
+      "forms": [
+        "feed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.hunger",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hunger",
+      "de": [
+        "Hunger"
+      ],
+      "deRaw": "Hunger",
+      "exampleSb": "Many people die of hunger every day.",
+      "cf": null,
+      "forms": [
+        "hunger"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.intake",
+      "kind": "phrase",
+      "theme": null,
+      "en": "intake",
+      "de": [
+        "Aufnahme"
+      ],
+      "deRaw": "Aufnahme",
+      "exampleSb": "People in America have a higher intake of calories than people in Africa.",
+      "cf": null,
+      "forms": [
+        "intake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.waste",
+      "kind": "phrase",
+      "theme": null,
+      "en": "waste",
+      "de": [
+        "verschwenden"
+      ],
+      "deRaw": "verschwenden",
+      "exampleSb": "We need to stop wasting food and help the hungry.",
+      "cf": null,
+      "forms": [
+        "waste"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.contain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "contain",
+      "de": [
+        "enthalten"
+      ],
+      "deRaw": "enthalten",
+      "exampleSb": "What's in that box? What does it contain?",
+      "cf": null,
+      "forms": [
+        "contain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.cookery",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cookery",
+      "de": [
+        "Koch",
+        "Kochkunst"
+      ],
+      "deRaw": "Koch; Kochkunst",
+      "exampleSb": "Learn to cook by watching a cookery programme on TV.",
+      "cf": null,
+      "forms": [
+        "cookery"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.diet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "diet",
+      "de": [
+        "Ernährung"
+      ],
+      "deRaw": "Ernährung",
+      "exampleSb": "To stay fit you need a healthy diet.",
+      "cf": null,
+      "forms": [
+        "diet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.even-though",
+      "kind": "phrase",
+      "theme": null,
+      "en": "even though",
+      "de": [
+        "obwohl"
+      ],
+      "deRaw": "obwohl",
+      "exampleSb": "I had to eat the spinach even though I didn't like it.",
+      "cf": null,
+      "forms": [
+        "even though"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.health",
+      "kind": "phrase",
+      "theme": null,
+      "en": "health",
+      "de": [
+        "Gesundheit"
+      ],
+      "deRaw": "Gesundheit",
+      "exampleSb": "Good health is the most important thing in anyone's life.",
+      "cf": null,
+      "forms": [
+        "health"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.nutrition",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nutrition",
+      "de": [
+        "Ernährung"
+      ],
+      "deRaw": "Ernährung",
+      "exampleSb": "Good nutrition means eating good food regularly.",
+      "cf": null,
+      "forms": [
+        "nutrition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.overweight",
+      "kind": "phrase",
+      "theme": null,
+      "en": "overweight",
+      "de": [
+        "übergewichtig"
+      ],
+      "deRaw": "übergewichtig",
+      "exampleSb": "If you eat too much too often, you will soon be overweight.",
+      "cf": null,
+      "forms": [
+        "overweight"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.regularly",
+      "kind": "phrase",
+      "theme": null,
+      "en": "regularly",
+      "de": [
+        "regelmäßig"
+      ],
+      "deRaw": "regelmäßig",
+      "exampleSb": "He plays football regularly every week.",
+      "cf": null,
+      "forms": [
+        "regularly"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.dislike",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dislike",
+      "de": [
+        "nicht mögen"
+      ],
+      "deRaw": "nicht mögen",
+      "exampleSb": "I like tomatoes, but I dislike spinach.",
+      "cf": null,
+      "forms": [
+        "dislike"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.habits",
+      "kind": "phrase",
+      "theme": null,
+      "en": "habits",
+      "de": [
+        "Gewohnheiten"
+      ],
+      "deRaw": "Gewohnheiten",
+      "exampleSb": "\"Old habits die hard\" means it's often difficult to change the way you do things.",
+      "cf": null,
+      "forms": [
+        "habits"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.accept",
+      "kind": "phrase",
+      "theme": null,
+      "en": "accept",
+      "de": [
+        "hinnehmen",
+        "akzeptieren"
+      ],
+      "deRaw": "hinnehmen; akzeptieren",
+      "exampleSb": "I didn't get the job, so I'll just have to accept their decision.",
+      "cf": null,
+      "forms": [
+        "accept"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.afterwards",
+      "kind": "phrase",
+      "theme": null,
+      "en": "afterwards",
+      "de": [
+        "nachher"
+      ],
+      "deRaw": "nachher",
+      "exampleSb": "Let's watch TV. Afterwards we can have a pizza.",
+      "cf": null,
+      "forms": [
+        "afterwards"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.eating-disorder",
+      "kind": "phrase",
+      "theme": null,
+      "en": "eating disorder",
+      "de": [
+        "Essstörung"
+      ],
+      "deRaw": "Essstörung",
+      "exampleSb": "Some people might have an eating disorder because they imagine they are too fat.",
+      "cf": null,
+      "forms": [
+        "eating disorder"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.gain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gain",
+      "de": [
+        "zunehmen"
+      ],
+      "deRaw": "zunehmen",
+      "exampleSb": "He started to eat more and gained 10 kilos in a month.",
+      "cf": null,
+      "forms": [
+        "gain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.gym",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gym",
+      "de": [
+        "Turnhalle"
+      ],
+      "deRaw": "Turnhalle",
+      "exampleSb": "PE usually takes place in the school gym.",
+      "cf": null,
+      "forms": [
+        "gym"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.thin",
+      "kind": "phrase",
+      "theme": null,
+      "en": "thin",
+      "de": [
+        "dünn"
+      ],
+      "deRaw": "dünn",
+      "exampleSb": "You look very thin. You need to eat more.",
+      "cf": null,
+      "forms": [
+        "thin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.throw-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "throw up",
+      "de": [
+        "erbrechen"
+      ],
+      "deRaw": "erbrechen",
+      "exampleSb": "She suddenly felt very sick and had to throw up.",
+      "cf": null,
+      "forms": [
+        "throw up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.ashamed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(be) ashamed",
+      "de": [
+        "sich schämen"
+      ],
+      "deRaw": "sich schämen",
+      "exampleSb": "You don't have to be ashamed if you get too fat.",
+      "cf": null,
+      "forms": [
+        "ashamed",
+        "be"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u05.w.trust",
+      "kind": "phrase",
+      "theme": null,
+      "en": "trust",
+      "de": [
+        "vertrauen"
+      ],
+      "deRaw": "vertrauen",
+      "exampleSb": "Trust me. I know what I'm talking about.",
+      "cf": null,
+      "forms": [
+        "trust"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

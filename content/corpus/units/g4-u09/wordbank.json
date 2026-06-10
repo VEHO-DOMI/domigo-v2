@@ -1,0 +1,597 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 9,
+  "slug": "g4-u09",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u09.w.wedding-dress",
+      "kind": "wordfile",
+      "theme": "A Wedding",
+      "en": "wedding dress",
+      "de": [
+        "Brautkleid"
+      ],
+      "deRaw": "Brautkleid",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "wedding dress"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.wedding-suit",
+      "kind": "wordfile",
+      "theme": "A Wedding",
+      "en": "wedding suit",
+      "de": [
+        "Hochzeitsanzug"
+      ],
+      "deRaw": "Hochzeitsanzug",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "wedding suit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.bride",
+      "kind": "wordfile",
+      "theme": "A Wedding",
+      "en": "bride",
+      "de": [
+        "Braut"
+      ],
+      "deRaw": "Braut",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bride"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.bridegroom",
+      "kind": "wordfile",
+      "theme": "A Wedding",
+      "en": "bridegroom",
+      "de": [
+        "Bräutigam"
+      ],
+      "deRaw": "Bräutigam",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bridegroom"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.bridesmaid",
+      "kind": "wordfile",
+      "theme": "A Wedding",
+      "en": "bridesmaid",
+      "de": [
+        "Brautjungfer"
+      ],
+      "deRaw": "Brautjungfer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bridesmaid"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.black-market",
+      "kind": "phrase",
+      "theme": null,
+      "en": "black market",
+      "de": [
+        "Schwarzmarkt"
+      ],
+      "deRaw": "Schwarzmarkt",
+      "exampleSb": "You can't get these things in a normal shop. We bought them on the black market.",
+      "cf": null,
+      "forms": [
+        "black market"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.collect",
+      "kind": "phrase",
+      "theme": null,
+      "en": "collect",
+      "de": [
+        "sammeln"
+      ],
+      "deRaw": "sammeln",
+      "exampleSb": "I've collected stamps since I was 12.",
+      "cf": null,
+      "forms": [
+        "collect"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.collection",
+      "kind": "phrase",
+      "theme": null,
+      "en": "collection",
+      "de": [
+        "Sammlung"
+      ],
+      "deRaw": "Sammlung",
+      "exampleSb": "The painting comes from his private collection.",
+      "cf": null,
+      "forms": [
+        "collection"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.fascination",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fascination",
+      "de": [
+        "Faszination"
+      ],
+      "deRaw": "Faszination",
+      "exampleSb": "His fascination with garden gnomes started five years ago.",
+      "cf": null,
+      "forms": [
+        "fascination"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.rare",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rare",
+      "de": [
+        "selten"
+      ],
+      "deRaw": "selten",
+      "exampleSb": "You don't see many of those butterflies. They're very rare.",
+      "cf": null,
+      "forms": [
+        "rare"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.auction",
+      "kind": "phrase",
+      "theme": null,
+      "en": "auction",
+      "de": [
+        "Auktion",
+        "Versteigerung"
+      ],
+      "deRaw": "Auktion, Versteigerung",
+      "exampleSb": "I bought this painting at an auction.",
+      "cf": null,
+      "forms": [
+        "auction"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.burn-to-the-ground",
+      "kind": "phrase",
+      "theme": null,
+      "en": "burn to the ground",
+      "de": [
+        "niederbrennen"
+      ],
+      "deRaw": "niederbrennen",
+      "exampleSb": "The building burned to the ground.",
+      "cf": null,
+      "forms": [
+        "burn to the ground"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.copy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "copy",
+      "de": [
+        "Kopie",
+        "Exemplar"
+      ],
+      "deRaw": "Kopie, Exemplar",
+      "exampleSb": "The book sold 20,000 copies within two weeks.",
+      "cf": null,
+      "forms": [
+        "copy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.execute",
+      "kind": "phrase",
+      "theme": null,
+      "en": "execute",
+      "de": [
+        "hinrichten"
+      ],
+      "deRaw": "hinrichten",
+      "exampleSb": "After the trial, the murderer was executed.",
+      "cf": null,
+      "forms": [
+        "execute"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.furious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "furious",
+      "de": [
+        "wütend",
+        "aufgebracht"
+      ],
+      "deRaw": "wütend, aufgebracht",
+      "exampleSb": "I'm furious that I wasn't told about it.",
+      "cf": null,
+      "forms": [
+        "furious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.judge",
+      "kind": "phrase",
+      "theme": null,
+      "en": "judge",
+      "de": [
+        "Richter/in"
+      ],
+      "deRaw": "Richter/in",
+      "exampleSb": "The judge sentenced him to five years in prison.",
+      "cf": null,
+      "forms": [
+        "judge"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.librarian",
+      "kind": "phrase",
+      "theme": null,
+      "en": "librarian",
+      "de": [
+        "Bibliothekar/in"
+      ],
+      "deRaw": "Bibliothekar/in",
+      "exampleSb": "She works in the town library as a librarian.",
+      "cf": null,
+      "forms": [
+        "librarian"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.library",
+      "kind": "phrase",
+      "theme": null,
+      "en": "library",
+      "de": [
+        "Bibliothek"
+      ],
+      "deRaw": "Bibliothek",
+      "exampleSb": "I never buy books; I always go to the library.",
+      "cf": null,
+      "forms": [
+        "library"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.monastery",
+      "kind": "phrase",
+      "theme": null,
+      "en": "monastery",
+      "de": [
+        "Kloster"
+      ],
+      "deRaw": "Kloster",
+      "exampleSb": "The monks lived in a big monastery outside the city.",
+      "cf": null,
+      "forms": [
+        "monastery"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.monk",
+      "kind": "phrase",
+      "theme": null,
+      "en": "monk",
+      "de": [
+        "Mönch"
+      ],
+      "deRaw": "Mönch",
+      "exampleSb": "A monk is a member of a religious group of men.",
+      "cf": null,
+      "forms": [
+        "monk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.precious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "precious",
+      "de": [
+        "kostbar"
+      ],
+      "deRaw": "kostbar",
+      "exampleSb": "That ring means a lot to me. It's very precious.",
+      "cf": null,
+      "forms": [
+        "precious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.preserve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "preserve",
+      "de": [
+        "erhalten",
+        "schützen"
+      ],
+      "deRaw": "erhalten, schützen",
+      "exampleSb": "We need to preserve our traditions and our heritage.",
+      "cf": null,
+      "forms": [
+        "preserve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.rob",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rob",
+      "de": [
+        "ausrauben"
+      ],
+      "deRaw": "ausrauben",
+      "exampleSb": "We've been robbed. The thieves have taken everything from the house.",
+      "cf": null,
+      "forms": [
+        "rob"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.sentence-to-death",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sentence to death",
+      "de": [
+        "zu Tode verurteilen"
+      ],
+      "deRaw": "zu Tode verurteilen",
+      "exampleSb": "He was sentenced to death for his crime.",
+      "cf": null,
+      "forms": [
+        "sentence to death"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.shorten",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shorten",
+      "de": [
+        "kürzen"
+      ],
+      "deRaw": "kürzen",
+      "exampleSb": "That film was much too long. I think they should shorten it.",
+      "cf": null,
+      "forms": [
+        "shorten"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.addict",
+      "kind": "phrase",
+      "theme": null,
+      "en": "addict",
+      "de": [
+        "Abhängiger",
+        "Süchtige/r"
+      ],
+      "deRaw": "Abhängiger, Süchtige/r",
+      "exampleSb": "Look at all the science-fiction addicts waiting outside the cinema! They want to see the new Star Wars movie.",
+      "cf": null,
+      "forms": [
+        "addict"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.addiction",
+      "kind": "phrase",
+      "theme": null,
+      "en": "addiction",
+      "de": [
+        "Sucht"
+      ],
+      "deRaw": "Sucht",
+      "exampleSb": "He spends all his time in front of the computer. He has an addiction.",
+      "cf": null,
+      "forms": [
+        "addiction"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.command",
+      "kind": "phrase",
+      "theme": null,
+      "en": "command",
+      "de": [
+        "Befehl"
+      ],
+      "deRaw": "Befehl",
+      "exampleSb": "I gave her the command to stay at home.",
+      "cf": null,
+      "forms": [
+        "command"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.go-crazy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "go crazy",
+      "de": [
+        "verrückt werden",
+        "durchdrehen"
+      ],
+      "deRaw": "verrückt werden, durchdrehen",
+      "exampleSb": "I must be going crazy. I can't find my car keys anywhere.",
+      "cf": null,
+      "forms": [
+        "go crazy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.miss-out-on-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "miss out on sth",
+      "de": [
+        "etw. verpassen"
+      ],
+      "deRaw": "etw. verpassen",
+      "exampleSb": "Of course I'm coming. I don't want to miss out on all the fun!",
+      "cf": null,
+      "forms": [
+        "miss out on sth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.pale",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pale",
+      "de": [
+        "blass"
+      ],
+      "deRaw": "blass",
+      "exampleSb": "Are you really OK? You look pale.",
+      "cf": null,
+      "forms": [
+        "pale"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.turn-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "turn up",
+      "de": [
+        "auftauchen"
+      ],
+      "deRaw": "auftauchen",
+      "exampleSb": "When do you think our guests will turn up?",
+      "cf": null,
+      "forms": [
+        "turn up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.whisper",
+      "kind": "phrase",
+      "theme": null,
+      "en": "whisper",
+      "de": [
+        "flüstern"
+      ],
+      "deRaw": "flüstern",
+      "exampleSb": "He whispered in my ear to tell me the secret.",
+      "cf": null,
+      "forms": [
+        "whisper"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.sheet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sheet",
+      "de": [
+        "Blatt"
+      ],
+      "deRaw": "Blatt",
+      "exampleSb": "Write this down on a sheet of paper.",
+      "cf": null,
+      "forms": [
+        "sheet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.confuse-sb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "confuse sb",
+      "de": [
+        "verwirren"
+      ],
+      "deRaw": "verwirren",
+      "exampleSb": "His comments only confused me even more.",
+      "cf": null,
+      "forms": [
+        "confuse sb"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.kitschy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "kitschy",
+      "de": [
+        "kitschig"
+      ],
+      "deRaw": "kitschig",
+      "exampleSb": "The restaurant is decorated with kitschy furniture from the 1950s.",
+      "cf": null,
+      "forms": [
+        "kitschy"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

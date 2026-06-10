@@ -1,0 +1,695 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 3,
+  "slug": "g1-u03",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u03.w.finger",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "finger",
+      "de": [
+        "Finger"
+      ],
+      "deRaw": "Finger",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "finger"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.ear",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "ear",
+      "de": [
+        "Ohr"
+      ],
+      "deRaw": "Ohr",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ear"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.nose",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "nose",
+      "de": [
+        "Nase"
+      ],
+      "deRaw": "Nase",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "nose"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.hair",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "hair",
+      "de": [
+        "Haar(e)"
+      ],
+      "deRaw": "Haar(e)",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hair"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.eye",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "eye",
+      "de": [
+        "Auge"
+      ],
+      "deRaw": "Auge",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "eye"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.mouth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "mouth",
+      "de": [
+        "Mund"
+      ],
+      "deRaw": "Mund",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mouth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.beard",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "beard",
+      "de": [
+        "Bart"
+      ],
+      "deRaw": "Bart",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "beard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.right-arm",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "right arm",
+      "de": [
+        "rechter Arm"
+      ],
+      "deRaw": "rechter Arm",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "right arm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.left-arm",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "left arm",
+      "de": [
+        "linker Arm"
+      ],
+      "deRaw": "linker Arm",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "left arm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.shoulder",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "shoulder",
+      "de": [
+        "Schulter"
+      ],
+      "deRaw": "Schulter",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "shoulder"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.leg",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "leg",
+      "de": [
+        "Bein"
+      ],
+      "deRaw": "Bein",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "leg"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.foot",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "foot",
+      "de": [
+        "Fuß"
+      ],
+      "deRaw": "Fuß",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "foot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.feet",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "feet",
+      "de": [
+        "Füße"
+      ],
+      "deRaw": "Füße",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "feet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.tooth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tooth",
+      "de": [
+        "Zahn"
+      ],
+      "deRaw": "Zahn",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tooth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.teeth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "teeth",
+      "de": [
+        "Zähne"
+      ],
+      "deRaw": "Zähne",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "teeth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.tall",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tall",
+      "de": [
+        "groß"
+      ],
+      "deRaw": "groß",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tall"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.short",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "short",
+      "de": [
+        "kurz",
+        "klein"
+      ],
+      "deRaw": "kurz; klein",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "short"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.big",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "big",
+      "de": [
+        "groß"
+      ],
+      "deRaw": "groß",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "big"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.small",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "small",
+      "de": [
+        "klein"
+      ],
+      "deRaw": "klein",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "small"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.long",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "long",
+      "de": [
+        "lang"
+      ],
+      "deRaw": "lang",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "long"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.also",
+      "kind": "phrase",
+      "theme": null,
+      "en": "also",
+      "de": [
+        "auch"
+      ],
+      "deRaw": "auch",
+      "exampleSb": "Tamara is also a pirate.",
+      "cf": null,
+      "forms": [
+        "also"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.famous",
+      "kind": "phrase",
+      "theme": null,
+      "en": "famous",
+      "de": [
+        "berühmt"
+      ],
+      "deRaw": "berühmt",
+      "exampleSb": "Greybeard is a famous pirate.",
+      "cf": null,
+      "forms": [
+        "famous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.him",
+      "kind": "phrase",
+      "theme": null,
+      "en": "him",
+      "de": [
+        "ihn"
+      ],
+      "deRaw": "ihn",
+      "exampleSb": "Peter is nice. We like him.",
+      "cf": null,
+      "forms": [
+        "him"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.his",
+      "kind": "phrase",
+      "theme": null,
+      "en": "his",
+      "de": [
+        "sein/e"
+      ],
+      "deRaw": "sein/e",
+      "exampleSb": "His pirate name is Blackbeard.",
+      "cf": null,
+      "forms": [
+        "his"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.ship",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ship",
+      "de": [
+        "Schiff"
+      ],
+      "deRaw": "Schiff",
+      "exampleSb": "Greybeard has got a big ship.",
+      "cf": null,
+      "forms": [
+        "ship"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.to-be-scared",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be scared (of)",
+      "de": [
+        "Angst haben (vor)"
+      ],
+      "deRaw": "Angst haben (vor)",
+      "exampleSb": "Tamara is scared of Greybeard.",
+      "cf": "be scared",
+      "forms": [
+        "to be scared",
+        "be scared",
+        "of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.strong",
+      "kind": "phrase",
+      "theme": null,
+      "en": "strong",
+      "de": [
+        "stark"
+      ],
+      "deRaw": "stark",
+      "exampleSb": "Greybeard hasn't got a strong left leg.",
+      "cf": null,
+      "forms": [
+        "strong"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.captain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "captain",
+      "de": [
+        "Kapitän/Kapitänin"
+      ],
+      "deRaw": "Kapitän/Kapitänin",
+      "exampleSb": "The captain has got a blue ship.",
+      "cf": null,
+      "forms": [
+        "captain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.have-got-has-got",
+      "kind": "phrase",
+      "theme": null,
+      "en": "have got / has got",
+      "de": [
+        "haben"
+      ],
+      "deRaw": "haben",
+      "exampleSb": "I have got brown hair. Tamara has got red hair.",
+      "cf": null,
+      "forms": [
+        "have got / has got"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.pretty",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pretty",
+      "de": [
+        "hübsch"
+      ],
+      "deRaw": "hübsch",
+      "exampleSb": "Polly is a pretty pirate.",
+      "cf": null,
+      "forms": [
+        "pretty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.purple",
+      "kind": "phrase",
+      "theme": null,
+      "en": "purple",
+      "de": [
+        "lila",
+        "violett"
+      ],
+      "deRaw": "lila, violett",
+      "exampleSb": "The parrot is purple.",
+      "cf": null,
+      "forms": [
+        "purple"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.week",
+      "kind": "phrase",
+      "theme": null,
+      "en": "week",
+      "de": [
+        "Woche"
+      ],
+      "deRaw": "Woche",
+      "exampleSb": "Seven days is one week.",
+      "cf": null,
+      "forms": [
+        "week"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.again",
+      "kind": "phrase",
+      "theme": null,
+      "en": "again",
+      "de": [
+        "wieder"
+      ],
+      "deRaw": "wieder",
+      "exampleSb": "Hooray! We won again.",
+      "cf": null,
+      "forms": [
+        "again"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.back",
+      "kind": "phrase",
+      "theme": null,
+      "en": "back",
+      "de": [
+        "zurück"
+      ],
+      "deRaw": "zurück",
+      "exampleSb": "When are they back?",
+      "cf": null,
+      "forms": [
+        "back"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.to-paint",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to paint",
+      "de": [
+        "malen"
+      ],
+      "deRaw": "malen",
+      "exampleSb": "Let's paint a pirate.",
+      "cf": "paint",
+      "forms": [
+        "to paint",
+        "paint"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.sister",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sister",
+      "de": [
+        "Schwester"
+      ],
+      "deRaw": "Schwester",
+      "exampleSb": "My sister has got brown hair.",
+      "cf": null,
+      "forms": [
+        "sister"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.boy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "boy",
+      "de": [
+        "Junge",
+        "Bub"
+      ],
+      "deRaw": "Junge; Bub",
+      "exampleSb": "The boy has got brown hair.",
+      "cf": null,
+      "forms": [
+        "boy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.girl",
+      "kind": "phrase",
+      "theme": null,
+      "en": "girl",
+      "de": [
+        "Mädchen"
+      ],
+      "deRaw": "Mädchen",
+      "exampleSb": "The girl has got blond hair.",
+      "cf": null,
+      "forms": [
+        "girl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.man",
+      "kind": "phrase",
+      "theme": null,
+      "en": "man (pl men)",
+      "de": [
+        "Mann"
+      ],
+      "deRaw": "Mann",
+      "exampleSb": "The man has got a red beard.",
+      "cf": null,
+      "forms": [
+        "man",
+        "men"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.woman",
+      "kind": "phrase",
+      "theme": null,
+      "en": "woman (pl women)",
+      "de": [
+        "Frau"
+      ],
+      "deRaw": "Frau",
+      "exampleSb": "The woman has got brown hair.",
+      "cf": null,
+      "forms": [
+        "woman",
+        "women"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.her-name-is",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Her name is …",
+      "de": [
+        "Sie heißt …"
+      ],
+      "deRaw": "Sie heißt …",
+      "exampleSb": "Her name is Annabelle.",
+      "cf": null,
+      "forms": [
+        "Her name is …"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u03.w.his-name-is",
+      "kind": "phrase",
+      "theme": null,
+      "en": "His name is …",
+      "de": [
+        "Er heißt …"
+      ],
+      "deRaw": "Er heißt …",
+      "exampleSb": "His name is Paul.",
+      "cf": null,
+      "forms": [
+        "His name is …"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

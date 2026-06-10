@@ -1,0 +1,1205 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 12,
+  "slug": "g1-u12",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u12.w.january",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "January",
+      "de": [
+        "Jänner"
+      ],
+      "deRaw": "Jänner",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "January"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.february",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "February",
+      "de": [
+        "Februar"
+      ],
+      "deRaw": "Februar",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "February"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.march",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "March",
+      "de": [
+        "März"
+      ],
+      "deRaw": "März",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "March"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.april",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "April",
+      "de": [
+        "April"
+      ],
+      "deRaw": "April",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "April"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.may",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "May",
+      "de": [
+        "Mai"
+      ],
+      "deRaw": "Mai",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "May"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.june",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "June",
+      "de": [
+        "Juni"
+      ],
+      "deRaw": "Juni",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "June"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.july",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "July",
+      "de": [
+        "Juli"
+      ],
+      "deRaw": "Juli",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "July"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.august",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "August",
+      "de": [
+        "August"
+      ],
+      "deRaw": "August",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "August"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.september",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "September",
+      "de": [
+        "September"
+      ],
+      "deRaw": "September",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "September"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.october",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "October",
+      "de": [
+        "Oktober"
+      ],
+      "deRaw": "Oktober",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "October"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.november",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "November",
+      "de": [
+        "November"
+      ],
+      "deRaw": "November",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "November"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.december",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "December",
+      "de": [
+        "Dezember"
+      ],
+      "deRaw": "Dezember",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "December"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.bedroom",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "bedroom",
+      "de": [
+        "Schlafzimmer"
+      ],
+      "deRaw": "Schlafzimmer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bedroom"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.library",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "library",
+      "de": [
+        "Bibliothek"
+      ],
+      "deRaw": "Bibliothek",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "library"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.living-room",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "living room",
+      "de": [
+        "Wohnzimmer"
+      ],
+      "deRaw": "Wohnzimmer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "living room"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.dining-room",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "dining room",
+      "de": [
+        "Esszimmer"
+      ],
+      "deRaw": "Esszimmer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "dining room"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.bathroom",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "bathroom",
+      "de": [
+        "Badezimmer"
+      ],
+      "deRaw": "Badezimmer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bathroom"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.hall",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "hall",
+      "de": [
+        "Flur",
+        "Diele"
+      ],
+      "deRaw": "Flur, Diele",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hall"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.kitchen",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "kitchen",
+      "de": [
+        "Küche"
+      ],
+      "deRaw": "Küche",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "kitchen"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.garden",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "garden",
+      "de": [
+        "Garten"
+      ],
+      "deRaw": "Garten",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "garden"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.garage",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "garage",
+      "de": [
+        "Garage"
+      ],
+      "deRaw": "Garage",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "garage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.1st-first",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "1st first",
+      "de": [
+        "1. erste/r/s"
+      ],
+      "deRaw": "1. erste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "1st first"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.2nd-second",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "2nd second",
+      "de": [
+        "2. zweite/r/s"
+      ],
+      "deRaw": "2. zweite/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "2nd second"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.3rd-third",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "3rd third",
+      "de": [
+        "3. dritte/r/s"
+      ],
+      "deRaw": "3. dritte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "3rd third"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.4th-fourth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "4th fourth",
+      "de": [
+        "4. vierte/r/s"
+      ],
+      "deRaw": "4. vierte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "4th fourth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.5th-fifth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "5th fifth",
+      "de": [
+        "5. fünfte/r/s"
+      ],
+      "deRaw": "5. fünfte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "5th fifth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.6th-sixth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "6th sixth",
+      "de": [
+        "6. sechste/r/s"
+      ],
+      "deRaw": "6. sechste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "6th sixth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.7th-seventh",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "7th seventh",
+      "de": [
+        "7. siebte/r/s"
+      ],
+      "deRaw": "7. siebte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "7th seventh"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.8th-eighth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "8th eighth",
+      "de": [
+        "8. achte/r/s"
+      ],
+      "deRaw": "8. achte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "8th eighth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.9th-ninth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "9th ninth",
+      "de": [
+        "9. neunte/r/s"
+      ],
+      "deRaw": "9. neunte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "9th ninth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.10th-tenth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "10th tenth",
+      "de": [
+        "10. zehnte/r/s"
+      ],
+      "deRaw": "10. zehnte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "10th tenth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.11th-eleventh",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "11th eleventh",
+      "de": [
+        "11. elfte/r/s"
+      ],
+      "deRaw": "11. elfte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "11th eleventh"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.12th-twelfth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "12th twelfth",
+      "de": [
+        "12. zwölfte/r/s"
+      ],
+      "deRaw": "12. zwölfte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "12th twelfth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.13th-thirteenth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "13th thirteenth",
+      "de": [
+        "13. dreizehnte/r/s"
+      ],
+      "deRaw": "13. dreizehnte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "13th thirteenth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.14th-fourteenth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "14th fourteenth",
+      "de": [
+        "14. vierzehnte/r/s"
+      ],
+      "deRaw": "14. vierzehnte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "14th fourteenth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.15th-fifteenth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "15th fifteenth",
+      "de": [
+        "15. fünfzehnte/r/s"
+      ],
+      "deRaw": "15. fünfzehnte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "15th fifteenth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.16th-sixteenth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "16th sixteenth",
+      "de": [
+        "16. sechzehnte/r/s"
+      ],
+      "deRaw": "16. sechzehnte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "16th sixteenth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.17th-seventeenth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "17th seventeenth",
+      "de": [
+        "17. siebzehnte/r/s"
+      ],
+      "deRaw": "17. siebzehnte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "17th seventeenth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.18th-eighteenth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "18th eighteenth",
+      "de": [
+        "18. achtzehnte/r/s"
+      ],
+      "deRaw": "18. achtzehnte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "18th eighteenth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.19th-nineteenth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "19th nineteenth",
+      "de": [
+        "19. neunzehnte/r/s"
+      ],
+      "deRaw": "19. neunzehnte/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "19th nineteenth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.20th-twentieth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "20th twentieth",
+      "de": [
+        "20. zwanzigste/r/s"
+      ],
+      "deRaw": "20. zwanzigste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "20th twentieth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.21st-twenty-first",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "21st twenty-first",
+      "de": [
+        "21. einundzwanzigste/r/s"
+      ],
+      "deRaw": "21. einundzwanzigste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "21st twenty-first"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.22nd-twenty-second",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "22nd twenty-second",
+      "de": [
+        "22. zweiundzwanzigste/r/s"
+      ],
+      "deRaw": "22. zweiundzwanzigste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "22nd twenty-second"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.23rd-twenty-third",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "23rd twenty-third",
+      "de": [
+        "23. dreiundzwanzigste/r/s"
+      ],
+      "deRaw": "23. dreiundzwanzigste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "23rd twenty-third"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.24th-twenty-fourth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "24th twenty-fourth",
+      "de": [
+        "24. vierundzwanzigste/r/s"
+      ],
+      "deRaw": "24. vierundzwanzigste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "24th twenty-fourth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.25th-twenty-fifth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "25th twenty-fifth",
+      "de": [
+        "25. fünfundzwanzigste/r/s"
+      ],
+      "deRaw": "25. fünfundzwanzigste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "25th twenty-fifth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.30th-thirtieth",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "30th thirtieth",
+      "de": [
+        "30. dreißigste/r/s"
+      ],
+      "deRaw": "30. dreißigste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "30th thirtieth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.31st-thirty-first",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "31st thirty-first",
+      "de": [
+        "31. einunddreißigste/r/s"
+      ],
+      "deRaw": "31. einunddreißigste/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "31st thirty-first"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.birthday-cake",
+      "kind": "phrase",
+      "theme": null,
+      "en": "birthday cake",
+      "de": [
+        "Geburtstagskuchen/-torte"
+      ],
+      "deRaw": "Geburtstagskuchen/-torte",
+      "exampleSb": "Mike's mum is making a big birthday cake for his birthday.",
+      "cf": null,
+      "forms": [
+        "birthday cake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.eater",
+      "kind": "phrase",
+      "theme": null,
+      "en": "eater",
+      "de": [
+        "Esser/Esserin"
+      ],
+      "deRaw": "Esser/Esserin",
+      "exampleSb": "She never eats much. She's not a big eater.",
+      "cf": null,
+      "forms": [
+        "eater"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.ill",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ill",
+      "de": [
+        "krank"
+      ],
+      "deRaw": "krank",
+      "exampleSb": "He isn't at school today because he's ill.",
+      "cf": null,
+      "forms": [
+        "ill"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.messy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "messy",
+      "de": [
+        "unordentlich",
+        "schlampig"
+      ],
+      "deRaw": "unordentlich, schlampig",
+      "exampleSb": "He's a messy eater.",
+      "cf": null,
+      "forms": [
+        "messy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.piece",
+      "kind": "phrase",
+      "theme": null,
+      "en": "piece",
+      "de": [
+        "Stück"
+      ],
+      "deRaw": "Stück",
+      "exampleSb": "Have a piece of my birthday cake!",
+      "cf": null,
+      "forms": [
+        "piece"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.cinema",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cinema",
+      "de": [
+        "Kino"
+      ],
+      "deRaw": "Kino",
+      "exampleSb": "Let's go to the cinema on Friday.",
+      "cf": null,
+      "forms": [
+        "cinema"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.excellent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "excellent",
+      "de": [
+        "ausgezeichnet"
+      ],
+      "deRaw": "ausgezeichnet",
+      "exampleSb": "That's excellent work!",
+      "cf": null,
+      "forms": [
+        "excellent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.finally",
+      "kind": "phrase",
+      "theme": null,
+      "en": "finally",
+      "de": [
+        "endlich",
+        "schließlich"
+      ],
+      "deRaw": "endlich; schließlich",
+      "exampleSb": "Oh good! Finally we can leave!",
+      "cf": null,
+      "forms": [
+        "finally"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.match",
+      "kind": "phrase",
+      "theme": null,
+      "en": "match",
+      "de": [
+        "Match",
+        "Spiel"
+      ],
+      "deRaw": "Match, Spiel",
+      "exampleSb": "There's a volleyball match on Saturday.",
+      "cf": null,
+      "forms": [
+        "match"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.it-s-my-birthday",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It's my birthday.",
+      "de": [
+        "Ich habe Geburtstag."
+      ],
+      "deRaw": "Ich habe Geburtstag.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "It's my birthday."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.date",
+      "kind": "phrase",
+      "theme": null,
+      "en": "date",
+      "de": [
+        "Datum"
+      ],
+      "deRaw": "Datum",
+      "exampleSb": "Today's date is Monday, July 7th.",
+      "cf": null,
+      "forms": [
+        "date"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.month",
+      "kind": "phrase",
+      "theme": null,
+      "en": "month",
+      "de": [
+        "Monat"
+      ],
+      "deRaw": "Monat",
+      "exampleSb": "February is the second month of the year.",
+      "cf": null,
+      "forms": [
+        "month"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.how-old-are-you",
+      "kind": "phrase",
+      "theme": null,
+      "en": "How old are you?",
+      "de": [
+        "Wie alt bist du?"
+      ],
+      "deRaw": "Wie alt bist du?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "How old are you?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.candle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "candle",
+      "de": [
+        "Kerze"
+      ],
+      "deRaw": "Kerze",
+      "exampleSb": "The cake has twelve candles on it.",
+      "cf": null,
+      "forms": [
+        "candle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.delicious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "delicious",
+      "de": [
+        "köstlich"
+      ],
+      "deRaw": "köstlich",
+      "exampleSb": "The chocolate cake looks delicious.",
+      "cf": null,
+      "forms": [
+        "delicious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.last",
+      "kind": "phrase",
+      "theme": null,
+      "en": "last",
+      "de": [
+        "letzter/letzte/letztes"
+      ],
+      "deRaw": "letzter/letzte/letztes",
+      "exampleSb": "There was a robbery last night.",
+      "cf": null,
+      "forms": [
+        "last"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.robber",
+      "kind": "phrase",
+      "theme": null,
+      "en": "robber",
+      "de": [
+        "Räuber/Räuberin"
+      ],
+      "deRaw": "Räuber/Räuberin",
+      "exampleSb": "He wants to find the robber.",
+      "cf": null,
+      "forms": [
+        "robber"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.robbery",
+      "kind": "phrase",
+      "theme": null,
+      "en": "robbery",
+      "de": [
+        "Raubüberfall"
+      ],
+      "deRaw": "Raubüberfall",
+      "exampleSb": "There was a robbery at the big house.",
+      "cf": null,
+      "forms": [
+        "robbery"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.yesterday",
+      "kind": "phrase",
+      "theme": null,
+      "en": "yesterday",
+      "de": [
+        "gestern"
+      ],
+      "deRaw": "gestern",
+      "exampleSb": "Where were you yesterday at 9 p.m.?",
+      "cf": null,
+      "forms": [
+        "yesterday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.alarm-clock",
+      "kind": "phrase",
+      "theme": null,
+      "en": "alarm clock",
+      "de": [
+        "Wecker"
+      ],
+      "deRaw": "Wecker",
+      "exampleSb": "The alarm clock wakes me up every morning.",
+      "cf": null,
+      "forms": [
+        "alarm clock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.probably",
+      "kind": "phrase",
+      "theme": null,
+      "en": "probably",
+      "de": [
+        "wahrscheinlich"
+      ],
+      "deRaw": "wahrscheinlich",
+      "exampleSb": "Last night at 9 p.m. I was probably in the garden.",
+      "cf": null,
+      "forms": [
+        "probably"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.good-for-you",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Good for you!",
+      "de": [
+        "Schön für dich!"
+      ],
+      "deRaw": "Schön für dich!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Good for you!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.inspector",
+      "kind": "phrase",
+      "theme": null,
+      "en": "inspector",
+      "de": [
+        "Inspektor/Inspektorin"
+      ],
+      "deRaw": "Inspektor/Inspektorin",
+      "exampleSb": "The inspector asks the questions.",
+      "cf": null,
+      "forms": [
+        "inspector"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.how-dare-you",
+      "kind": "phrase",
+      "theme": null,
+      "en": "How dare you!",
+      "de": [
+        "Wie kannst du es wagen!"
+      ],
+      "deRaw": "Wie kannst du es wagen!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "How dare you!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.that-was-close",
+      "kind": "phrase",
+      "theme": null,
+      "en": "That was close.",
+      "de": [
+        "Das war knapp."
+      ],
+      "deRaw": "Das war knapp.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "That was close."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u12.w.you-re-welcome",
+      "kind": "phrase",
+      "theme": null,
+      "en": "You're welcome.",
+      "de": [
+        "Nichts zu danken.",
+        "Keine Ursache.",
+        "Gern geschehen."
+      ],
+      "deRaw": "Nichts zu danken., Keine Ursache., Gern geschehen.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "You're welcome."
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

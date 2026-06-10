@@ -1,0 +1,829 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 4,
+  "slug": "g2-u04",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u04.w.mosquito",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "mosquito",
+      "de": [
+        "Moskito",
+        "Stechmücke"
+      ],
+      "deRaw": "Moskito, Stechmücke",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mosquito"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.pigeon",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "pigeon",
+      "de": [
+        "Taube"
+      ],
+      "deRaw": "Taube",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pigeon"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.parrot",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "parrot",
+      "de": [
+        "Papagei"
+      ],
+      "deRaw": "Papagei",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "parrot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.ostrich",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "ostrich",
+      "de": [
+        "Strauß"
+      ],
+      "deRaw": "Strauß",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ostrich"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.chimpanzee",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "chimpanzee",
+      "de": [
+        "Schimpanse"
+      ],
+      "deRaw": "Schimpanse",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chimpanzee"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.antelope",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "antelope",
+      "de": [
+        "Antilope"
+      ],
+      "deRaw": "Antilope",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "antelope"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.bat",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "bat",
+      "de": [
+        "Fledermaus"
+      ],
+      "deRaw": "Fledermaus",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.giraffe",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "giraffe",
+      "de": [
+        "Giraffe"
+      ],
+      "deRaw": "Giraffe",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "giraffe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.rhino",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "rhino",
+      "de": [
+        "Nashorn"
+      ],
+      "deRaw": "Nashorn",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rhino"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.cheetah",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "cheetah",
+      "de": [
+        "Gepard"
+      ],
+      "deRaw": "Gepard",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cheetah"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.anaconda",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "anaconda",
+      "de": [
+        "Anakonda"
+      ],
+      "deRaw": "Anakonda",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "anaconda"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.crocodile",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "crocodile",
+      "de": [
+        "Krokodil"
+      ],
+      "deRaw": "Krokodil",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "crocodile"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.dolphin",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "dolphin",
+      "de": [
+        "Delfin"
+      ],
+      "deRaw": "Delfin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "dolphin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.whale",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "whale",
+      "de": [
+        "Wal"
+      ],
+      "deRaw": "Wal",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "whale"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.shark",
+      "kind": "wordfile",
+      "theme": "Animals",
+      "en": "shark",
+      "de": [
+        "Hai"
+      ],
+      "deRaw": "Hai",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "shark"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.ago",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(two days) ago",
+      "de": [
+        "vor (zwei Tagen)"
+      ],
+      "deRaw": "vor (zwei Tagen)",
+      "exampleSb": "Two days ago, I saw a crocodile.",
+      "cf": null,
+      "forms": [
+        "ago",
+        "two days"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.farmer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "farmer",
+      "de": [
+        "Bauer/Bäuerin"
+      ],
+      "deRaw": "Bauer/Bäuerin",
+      "exampleSb": "A farmer saw a huge crocodile.",
+      "cf": null,
+      "forms": [
+        "farmer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.human",
+      "kind": "phrase",
+      "theme": null,
+      "en": "human",
+      "de": [
+        "Mensch"
+      ],
+      "deRaw": "Mensch",
+      "exampleSb": "I wanted to show the animal that not all humans are bad.",
+      "cf": null,
+      "forms": [
+        "human"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.incredible",
+      "kind": "phrase",
+      "theme": null,
+      "en": "incredible",
+      "de": [
+        "unglaublich"
+      ],
+      "deRaw": "unglaublich",
+      "exampleSb": "That's an incredible but true story.",
+      "cf": null,
+      "forms": [
+        "incredible"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.dangerous",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dangerous",
+      "de": [
+        "gefährlich"
+      ],
+      "deRaw": "gefährlich",
+      "exampleSb": "The taipan snake can be very dangerous.",
+      "cf": null,
+      "forms": [
+        "dangerous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.hairy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hairy",
+      "de": [
+        "haarig",
+        "stark behaart"
+      ],
+      "deRaw": "haarig, stark behaart",
+      "exampleSb": "My pet rat has got lots of fur. It's very hairy.",
+      "cf": null,
+      "forms": [
+        "hairy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.heavy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "heavy",
+      "de": [
+        "schwer"
+      ],
+      "deRaw": "schwer",
+      "exampleSb": "This bag is too heavy. I can't carry it.",
+      "cf": null,
+      "forms": [
+        "heavy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.strong",
+      "kind": "phrase",
+      "theme": null,
+      "en": "strong",
+      "de": [
+        "stark"
+      ],
+      "deRaw": "stark",
+      "exampleSb": "I'm not as strong as my best friend.",
+      "cf": null,
+      "forms": [
+        "strong"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.climate-change",
+      "kind": "phrase",
+      "theme": null,
+      "en": "climate change",
+      "de": [
+        "Klimawandel"
+      ],
+      "deRaw": "Klimawandel",
+      "exampleSb": "Many animals die because of climate change.",
+      "cf": null,
+      "forms": [
+        "climate change"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.fast",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fast",
+      "de": [
+        "schnell"
+      ],
+      "deRaw": "schnell",
+      "exampleSb": "Cheetahs can run very fast.",
+      "cf": null,
+      "forms": [
+        "fast"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.female",
+      "kind": "phrase",
+      "theme": null,
+      "en": "female",
+      "de": [
+        "weiblich",
+        "Weibchen (Tierwelt)"
+      ],
+      "deRaw": "weiblich; Weibchen (Tierwelt)",
+      "exampleSb": "The female is dark green.",
+      "cf": null,
+      "forms": [
+        "female"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.male",
+      "kind": "phrase",
+      "theme": null,
+      "en": "male",
+      "de": [
+        "männlich"
+      ],
+      "deRaw": "männlich",
+      "exampleSb": "The male toad is golden red.",
+      "cf": null,
+      "forms": [
+        "male"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.nobody",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nobody",
+      "de": [
+        "niemand"
+      ],
+      "deRaw": "niemand",
+      "exampleSb": "Nobody knows why the paradise parrot became extinct.",
+      "cf": null,
+      "forms": [
+        "nobody"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.scientist",
+      "kind": "phrase",
+      "theme": null,
+      "en": "scientist",
+      "de": [
+        "Wissenschaftler/Wissenschaftlerin"
+      ],
+      "deRaw": "Wissenschaftler/Wissenschaftlerin",
+      "exampleSb": "I want to become a scientist and study animals.",
+      "cf": null,
+      "forms": [
+        "scientist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.to-die-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to die out",
+      "de": [
+        "aussterben"
+      ],
+      "deRaw": "aussterben",
+      "exampleSb": "Many animals are dying out.",
+      "cf": "die out",
+      "forms": [
+        "to die out",
+        "die out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.less",
+      "kind": "phrase",
+      "theme": null,
+      "en": "less",
+      "de": [
+        "weniger"
+      ],
+      "deRaw": "weniger",
+      "exampleSb": "The rhino was fast, but less than 60 km/h.",
+      "cf": null,
+      "forms": [
+        "less"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.to-carry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to carry",
+      "de": [
+        "tragen",
+        "hier: übertragen"
+      ],
+      "deRaw": "tragen; hier: übertragen",
+      "exampleSb": "Mosquitos can carry malaria.",
+      "cf": "carry",
+      "forms": [
+        "to carry",
+        "carry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.centimetre",
+      "kind": "phrase",
+      "theme": null,
+      "en": "centimetre",
+      "de": [
+        "Zentimeter"
+      ],
+      "deRaw": "Zentimeter",
+      "exampleSb": "One centimetre is 10 millimetres.",
+      "cf": null,
+      "forms": [
+        "centimetre"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.desert",
+      "kind": "phrase",
+      "theme": null,
+      "en": "desert",
+      "de": [
+        "Wüste"
+      ],
+      "deRaw": "Wüste",
+      "exampleSb": "There are no deserts in England.",
+      "cf": null,
+      "forms": [
+        "desert"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.to-die",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to die",
+      "de": [
+        "sterben"
+      ],
+      "deRaw": "sterben",
+      "exampleSb": "Millions of people die from malaria.",
+      "cf": "die",
+      "forms": [
+        "to die",
+        "die"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.mammal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mammal",
+      "de": [
+        "Säugetier"
+      ],
+      "deRaw": "Säugetier",
+      "exampleSb": "Elephants and lions are mammals.",
+      "cf": null,
+      "forms": [
+        "mammal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.ton",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ton",
+      "de": [
+        "Tonne (1000 kg)"
+      ],
+      "deRaw": "Tonne (1000 kg)",
+      "exampleSb": "One ton is 1000 kg.",
+      "cf": null,
+      "forms": [
+        "ton"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.venomous",
+      "kind": "phrase",
+      "theme": null,
+      "en": "venomous",
+      "de": [
+        "giftig"
+      ],
+      "deRaw": "giftig",
+      "exampleSb": "A venomous animal produces poison to kill other animals.",
+      "cf": null,
+      "forms": [
+        "venomous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.to-weigh",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to weigh",
+      "de": [
+        "wiegen"
+      ],
+      "deRaw": "wiegen",
+      "exampleSb": "A python can weigh up to 100 kg.",
+      "cf": "weigh",
+      "forms": [
+        "to weigh",
+        "weigh"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.length",
+      "kind": "phrase",
+      "theme": null,
+      "en": "length",
+      "de": [
+        "Länge"
+      ],
+      "deRaw": "Länge",
+      "exampleSb": "The maximum length is 6 m.",
+      "cf": null,
+      "forms": [
+        "length"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.speed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "speed",
+      "de": [
+        "Geschwindigkeit",
+        "Tempo"
+      ],
+      "deRaw": "Geschwindigkeit, Tempo",
+      "exampleSb": "Their speed on land is 8 km/h.",
+      "cf": null,
+      "forms": [
+        "speed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.intelligent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "intelligent",
+      "de": [
+        "intelligent"
+      ],
+      "deRaw": "intelligent",
+      "exampleSb": "Dolphins are very intelligent animals.",
+      "cf": null,
+      "forms": [
+        "intelligent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.reason",
+      "kind": "phrase",
+      "theme": null,
+      "en": "reason",
+      "de": [
+        "Grund"
+      ],
+      "deRaw": "Grund",
+      "exampleSb": "Is there a reason why you don't want to come over?",
+      "cf": null,
+      "forms": [
+        "reason"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.to-share",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to share",
+      "de": [
+        "teilen",
+        "zeigen"
+      ],
+      "deRaw": "teilen; zeigen",
+      "exampleSb": "Share your notes with a partner.",
+      "cf": "share",
+      "forms": [
+        "to share",
+        "share"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.luck",
+      "kind": "phrase",
+      "theme": null,
+      "en": "luck",
+      "de": [
+        "Glück"
+      ],
+      "deRaw": "Glück",
+      "exampleSb": "What animal can bring us luck?",
+      "cf": null,
+      "forms": [
+        "luck"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.powerful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "powerful",
+      "de": [
+        "mächtig",
+        "kräftig"
+      ],
+      "deRaw": "mächtig, kräftig",
+      "exampleSb": "Rhinos are very powerful animals.",
+      "cf": null,
+      "forms": [
+        "powerful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.smart",
+      "kind": "phrase",
+      "theme": null,
+      "en": "smart",
+      "de": [
+        "schlau"
+      ],
+      "deRaw": "schlau",
+      "exampleSb": "Cats are very smart animals.",
+      "cf": null,
+      "forms": [
+        "smart"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.truck",
+      "kind": "phrase",
+      "theme": null,
+      "en": "truck",
+      "de": [
+        "Lastwagen"
+      ],
+      "deRaw": "Lastwagen",
+      "exampleSb": "A rhino can be bigger than a truck.",
+      "cf": null,
+      "forms": [
+        "truck"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.forever",
+      "kind": "phrase",
+      "theme": null,
+      "en": "forever",
+      "de": [
+        "für immer"
+      ],
+      "deRaw": "für immer",
+      "exampleSb": "We want to be best friends forever.",
+      "cf": null,
+      "forms": [
+        "forever"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u04.w.to-protect",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to protect",
+      "de": [
+        "(be-)schützen"
+      ],
+      "deRaw": "(be-)schützen",
+      "exampleSb": "Our stones can protect you.",
+      "cf": "protect",
+      "forms": [
+        "to protect",
+        "protect"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

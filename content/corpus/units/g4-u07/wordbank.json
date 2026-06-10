@@ -1,0 +1,505 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 7,
+  "slug": "g4-u07",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u07.w.aborigine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Aborigine",
+      "de": [
+        "Ureinwohner/in Australiens"
+      ],
+      "deRaw": "Ureinwohner/in Australiens",
+      "exampleSb": "The Aborigines were the first people to live in Australia thousands of years ago.",
+      "cf": null,
+      "forms": [
+        "Aborigine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.cheque",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cheque",
+      "de": [
+        "Scheck"
+      ],
+      "deRaw": "Scheck",
+      "exampleSb": "I don't have any money with me. I'll have to pay by cheque.",
+      "cf": null,
+      "forms": [
+        "cheque"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.envelope",
+      "kind": "phrase",
+      "theme": null,
+      "en": "envelope",
+      "de": [
+        "Kuvert",
+        "Briefumschlag"
+      ],
+      "deRaw": "Kuvert, Briefumschlag",
+      "exampleSb": "When you write a letter, you put it in an envelope before you send it.",
+      "cf": null,
+      "forms": [
+        "envelope"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.airline",
+      "kind": "phrase",
+      "theme": null,
+      "en": "airline",
+      "de": [
+        "Fluglinie"
+      ],
+      "deRaw": "Fluglinie",
+      "exampleSb": "Lufthansa is a famous German airline.",
+      "cf": null,
+      "forms": [
+        "airline"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.ancestor",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ancestor",
+      "de": [
+        "Vorfahr/in",
+        "Ahne",
+        "Ahnin"
+      ],
+      "deRaw": "Vorfahr/in, Ahne, Ahnin",
+      "exampleSb": "The ancestors of the Aborigines came to Australia over 40,000 years ago.",
+      "cf": null,
+      "forms": [
+        "ancestor"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.bush-trail",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bush trail",
+      "de": [
+        "Buschpfad"
+      ],
+      "deRaw": "Buschpfad",
+      "exampleSb": "There was a bush trail from our camp to the rock.",
+      "cf": null,
+      "forms": [
+        "bush trail"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.crawl",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crawl",
+      "de": [
+        "kriechen"
+      ],
+      "deRaw": "kriechen",
+      "exampleSb": "They crawled out of the tent on their hands and knees.",
+      "cf": null,
+      "forms": [
+        "crawl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.drag",
+      "kind": "phrase",
+      "theme": null,
+      "en": "drag",
+      "de": [
+        "schleppen"
+      ],
+      "deRaw": "schleppen",
+      "exampleSb": "The crocodile tried to drag them off into the water.",
+      "cf": null,
+      "forms": [
+        "drag"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.excess-weight",
+      "kind": "phrase",
+      "theme": null,
+      "en": "excess weight",
+      "de": [
+        "Übergewicht (bei Gepäck)"
+      ],
+      "deRaw": "Übergewicht (bei Gepäck)",
+      "exampleSb": "My suitcase was too heavy. I had to pay for the excess weight.",
+      "cf": null,
+      "forms": [
+        "excess weight"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.gorgeous",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gorgeous",
+      "de": [
+        "wunderschön",
+        "herrlich"
+      ],
+      "deRaw": "wunderschön, herrlich",
+      "exampleSb": "The weather is gorgeous today. Blue skies and lots of sun.",
+      "cf": null,
+      "forms": [
+        "gorgeous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.grab",
+      "kind": "phrase",
+      "theme": null,
+      "en": "grab",
+      "de": [
+        "packen",
+        "schnappen"
+      ],
+      "deRaw": "packen, schnappen",
+      "exampleSb": "I grabbed my school bag and ran home.",
+      "cf": null,
+      "forms": [
+        "grab"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.headlight",
+      "kind": "phrase",
+      "theme": null,
+      "en": "headlight",
+      "de": [
+        "Scheinwerfer"
+      ],
+      "deRaw": "Scheinwerfer",
+      "exampleSb": "As soon as it was dark, I turned on the car's headlights.",
+      "cf": null,
+      "forms": [
+        "headlight"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.heritage",
+      "kind": "phrase",
+      "theme": null,
+      "en": "heritage",
+      "de": [
+        "Erbe",
+        "Tradition"
+      ],
+      "deRaw": "Erbe, Tradition",
+      "exampleSb": "The Aborigines have a heritage that goes back thousands of years.",
+      "cf": null,
+      "forms": [
+        "heritage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.jump-start",
+      "kind": "phrase",
+      "theme": null,
+      "en": "jump-start",
+      "de": [
+        "Starthilfe geben"
+      ],
+      "deRaw": "Starthilfe geben",
+      "exampleSb": "If your car battery is weak, you can jump-start your car with help from another car.",
+      "cf": null,
+      "forms": [
+        "jump-start"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.pressure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pressure",
+      "de": [
+        "Druck"
+      ],
+      "deRaw": "Druck",
+      "exampleSb": "You need to take a holiday to get away from the pressure of work.",
+      "cf": null,
+      "forms": [
+        "pressure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.shade",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shade",
+      "de": [
+        "Schatten"
+      ],
+      "deRaw": "Schatten",
+      "exampleSb": "We sat down in the shade to get some rest.",
+      "cf": null,
+      "forms": [
+        "shade"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.string",
+      "kind": "phrase",
+      "theme": null,
+      "en": "string",
+      "de": [
+        "Schnur",
+        "Bindfaden"
+      ],
+      "deRaw": "Schnur, Bindfaden",
+      "exampleSb": "Pull the string and the track will fall.",
+      "cf": null,
+      "forms": [
+        "string"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.reed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "reed",
+      "de": [
+        "Schilfrohr"
+      ],
+      "deRaw": "Schilfrohr",
+      "exampleSb": "You can find reeds around a pond or a lake.",
+      "cf": null,
+      "forms": [
+        "reed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.track",
+      "kind": "phrase",
+      "theme": null,
+      "en": "track",
+      "de": [
+        "(Tier)Fährte",
+        "Spur"
+      ],
+      "deRaw": "(Tier)Fährte, Spur",
+      "exampleSb": "We followed the bear's tracks in the snow.",
+      "cf": null,
+      "forms": [
+        "track"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.survival-skills",
+      "kind": "phrase",
+      "theme": null,
+      "en": "survival skills",
+      "de": [
+        "Überlebenstechniken"
+      ],
+      "deRaw": "Überlebenstechniken",
+      "exampleSb": "You need good survival skills to survive in the jungle.",
+      "cf": null,
+      "forms": [
+        "survival skills"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.walkabout",
+      "kind": "phrase",
+      "theme": null,
+      "en": "walkabout",
+      "de": [
+        "Buschwanderung"
+      ],
+      "deRaw": "Buschwanderung",
+      "exampleSb": "On their walkabout, Aborigines cross Australia on foot.",
+      "cf": null,
+      "forms": [
+        "walkabout"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.aircraft",
+      "kind": "phrase",
+      "theme": null,
+      "en": "aircraft",
+      "de": [
+        "Flugzeug"
+      ],
+      "deRaw": "Flugzeug",
+      "exampleSb": "The Flying Doctors often travel very long distances in their aircraft.",
+      "cf": null,
+      "forms": [
+        "aircraft"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.ambulance",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ambulance",
+      "de": [
+        "Krankenwagen"
+      ],
+      "deRaw": "Krankenwagen",
+      "exampleSb": "The man's just had a heart attack! Call an ambulance!",
+      "cf": null,
+      "forms": [
+        "ambulance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.detailed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "detailed",
+      "de": [
+        "ausführlich"
+      ],
+      "deRaw": "ausführlich",
+      "exampleSb": "Check ask people detailed questions to find out what's wrong.",
+      "cf": null,
+      "forms": [
+        "detailed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.distance",
+      "kind": "phrase",
+      "theme": null,
+      "en": "distance",
+      "de": [
+        "Entfernung"
+      ],
+      "deRaw": "Entfernung",
+      "exampleSb": "Paul has to drive long distances to get to his job.",
+      "cf": null,
+      "forms": [
+        "distance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.drugs",
+      "kind": "phrase",
+      "theme": null,
+      "en": "drugs",
+      "de": [
+        "Medikamente"
+      ],
+      "deRaw": "Medikamente",
+      "exampleSb": "You have to take drugs if you have this illness.",
+      "cf": null,
+      "forms": [
+        "drugs"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.first-aid",
+      "kind": "phrase",
+      "theme": null,
+      "en": "first aid",
+      "de": [
+        "Erste Hilfe"
+      ],
+      "deRaw": "Erste Hilfe",
+      "exampleSb": "If someone is injured, you have to give them first aid before the doctor arrives.",
+      "cf": null,
+      "forms": [
+        "first aid"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.landing",
+      "kind": "phrase",
+      "theme": null,
+      "en": "landing",
+      "de": [
+        "Landung"
+      ],
+      "deRaw": "Landung",
+      "exampleSb": "The aircraft made a perfect landing and stopped next to the house.",
+      "cf": null,
+      "forms": [
+        "landing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.outback",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(the) outback",
+      "de": [
+        "Hinterland Australiens"
+      ],
+      "deRaw": "Hinterland Australiens",
+      "exampleSb": "It's very hot and dry in the Australian outback.",
+      "cf": null,
+      "forms": [
+        "outback",
+        "the"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u07.w.provide",
+      "kind": "phrase",
+      "theme": null,
+      "en": "provide",
+      "de": [
+        "versorgen",
+        "verschaffen"
+      ],
+      "deRaw": "versorgen, verschaffen",
+      "exampleSb": "The trees provide shade for the animals in the summer.",
+      "cf": null,
+      "forms": [
+        "provide"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

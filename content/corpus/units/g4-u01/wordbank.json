@@ -1,0 +1,599 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 1,
+  "slug": "g4-u01",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u01.w.be-aware-of-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "be aware of sth",
+      "de": [
+        "sich etw. bewusst sein"
+      ],
+      "deRaw": "sich etw. bewusst sein",
+      "exampleSb": "I wasn't aware of that.",
+      "cf": null,
+      "forms": [
+        "be aware of sth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.catholic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Catholic",
+      "de": [
+        "katholisch",
+        "Katholik/in"
+      ],
+      "deRaw": "katholisch, Katholik/in",
+      "exampleSb": "Most people in the Republic of Ireland are Catholics.",
+      "cf": null,
+      "forms": [
+        "Catholic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.fluent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fluent",
+      "de": [
+        "fließend"
+      ],
+      "deRaw": "fließend",
+      "exampleSb": "She speaks fluent English.",
+      "cf": null,
+      "forms": [
+        "fluent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.independent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "independent",
+      "de": [
+        "unabhängig"
+      ],
+      "deRaw": "unabhängig",
+      "exampleSb": "The Republic of Ireland is an independent country.",
+      "cf": null,
+      "forms": [
+        "independent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.leading",
+      "kind": "phrase",
+      "theme": null,
+      "en": "leading",
+      "de": [
+        "führend"
+      ],
+      "deRaw": "führend",
+      "exampleSb": "Some leading computer firms have their base in Ireland.",
+      "cf": null,
+      "forms": [
+        "leading"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.member",
+      "kind": "phrase",
+      "theme": null,
+      "en": "member",
+      "de": [
+        "Mitglied"
+      ],
+      "deRaw": "Mitglied",
+      "exampleSb": "The club has 300 members.",
+      "cf": null,
+      "forms": [
+        "member"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.primary-school",
+      "kind": "phrase",
+      "theme": null,
+      "en": "primary school",
+      "de": [
+        "Volksschule"
+      ],
+      "deRaw": "Volksschule",
+      "exampleSb": "Children in primary school are between 6 and 10 years old.",
+      "cf": null,
+      "forms": [
+        "primary school"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.cattle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cattle",
+      "de": [
+        "Rinder",
+        "Vieh"
+      ],
+      "deRaw": "Rinder, Vieh",
+      "exampleSb": "He keeps horses and cattle on his farm.",
+      "cf": null,
+      "forms": [
+        "cattle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.cheer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cheer",
+      "de": [
+        "jubeln"
+      ],
+      "deRaw": "jubeln",
+      "exampleSb": "The fans cheered for their team.",
+      "cf": null,
+      "forms": [
+        "cheer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.crop",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crop",
+      "de": [
+        "Ernte"
+      ],
+      "deRaw": "Ernte",
+      "exampleSb": "In 1845, the potato crop in Ireland was destroyed.",
+      "cf": null,
+      "forms": [
+        "crop"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.famine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "famine",
+      "de": [
+        "Hungersnot"
+      ],
+      "deRaw": "Hungersnot",
+      "exampleSb": "In a famine, people die because they have nothing to eat.",
+      "cf": null,
+      "forms": [
+        "famine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.found",
+      "kind": "phrase",
+      "theme": null,
+      "en": "found",
+      "de": [
+        "gründen"
+      ],
+      "deRaw": "gründen",
+      "exampleSb": "The Irish Republic was founded in 1922.",
+      "cf": null,
+      "forms": [
+        "found"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.free-state",
+      "kind": "phrase",
+      "theme": null,
+      "en": "free state",
+      "de": [
+        "Freistaat"
+      ],
+      "deRaw": "Freistaat",
+      "exampleSb": "Ireland became a free state in 1922.",
+      "cf": null,
+      "forms": [
+        "free state"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.fungus",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fungus",
+      "de": [
+        "Pilz"
+      ],
+      "deRaw": "Pilz",
+      "exampleSb": "A fungus destroyed all the potatoes in Ireland.",
+      "cf": null,
+      "forms": [
+        "fungus"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.government",
+      "kind": "phrase",
+      "theme": null,
+      "en": "government",
+      "de": [
+        "Regierung"
+      ],
+      "deRaw": "Regierung",
+      "exampleSb": "The government didn't react fast enough to the crisis.",
+      "cf": null,
+      "forms": [
+        "government"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.grain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "grain",
+      "de": [
+        "Getreide"
+      ],
+      "deRaw": "Getreide",
+      "exampleSb": "You can make bread from grain. It grows in fields.",
+      "cf": null,
+      "forms": [
+        "grain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.incident",
+      "kind": "phrase",
+      "theme": null,
+      "en": "incident",
+      "de": [
+        "Zwischenfall"
+      ],
+      "deRaw": "Zwischenfall",
+      "exampleSb": "Someone just stole that lady's handbag. We should report the incident to the police.",
+      "cf": null,
+      "forms": [
+        "incident"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.intention",
+      "kind": "phrase",
+      "theme": null,
+      "en": "intention",
+      "de": [
+        "Absicht",
+        "Vorhaben"
+      ],
+      "deRaw": "Absicht, Vorhaben",
+      "exampleSb": "She announced her intention to run for president.",
+      "cf": null,
+      "forms": [
+        "intention"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.interfere",
+      "kind": "phrase",
+      "theme": null,
+      "en": "interfere",
+      "de": [
+        "sich einmischen",
+        "in Konflikt geraten"
+      ],
+      "deRaw": "sich einmischen; in Konflikt geraten",
+      "exampleSb": "You should not interfere in other people's business.",
+      "cf": null,
+      "forms": [
+        "interfere"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.landlord",
+      "kind": "phrase",
+      "theme": null,
+      "en": "landlord",
+      "de": [
+        "Grundbesitzer",
+        "Vermieter"
+      ],
+      "deRaw": "Grundbesitzer; Vermieter",
+      "exampleSb": "The landlord is the owner of the house or the land where people live or work.",
+      "cf": null,
+      "forms": [
+        "landlord"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.majority",
+      "kind": "phrase",
+      "theme": null,
+      "en": "majority",
+      "de": [
+        "Mehrheit"
+      ],
+      "deRaw": "Mehrheit",
+      "exampleSb": "Most of the people in the north were Protestant. They were the majority.",
+      "cf": null,
+      "forms": [
+        "majority"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.put-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "put down",
+      "de": [
+        "niederschlagen"
+      ],
+      "deRaw": "niederschlagen",
+      "exampleSb": "British soldiers put down the rebellion.",
+      "cf": null,
+      "forms": [
+        "put down"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.shake-hands",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shake hands",
+      "de": [
+        "Hände schütteln"
+      ],
+      "deRaw": "Hände schütteln",
+      "exampleSb": "It's normal to shake hands with somebody you've just met.",
+      "cf": null,
+      "forms": [
+        "shake hands"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.starve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "starve",
+      "de": [
+        "verhungern"
+      ],
+      "deRaw": "verhungern",
+      "exampleSb": "The people had nothing to eat. They were starving.",
+      "cf": null,
+      "forms": [
+        "starve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.guess",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Guess!",
+      "de": [
+        "Rate!"
+      ],
+      "deRaw": "Rate!",
+      "exampleSb": "You want to know what I bought? Guess!",
+      "cf": null,
+      "forms": [
+        "Guess!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.i-d-rather",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I'd rather",
+      "de": [
+        "Ich möchte eher"
+      ],
+      "deRaw": "Ich möchte eher",
+      "exampleSb": "I'd rather stay at home than go on holiday this year.",
+      "cf": null,
+      "forms": [
+        "I'd rather"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.foreigner",
+      "kind": "phrase",
+      "theme": null,
+      "en": "foreigner",
+      "de": [
+        "Ausländer/-in"
+      ],
+      "deRaw": "Ausländer/-in",
+      "exampleSb": "I met many foreigners from Asia who was working at the hotel.",
+      "cf": null,
+      "forms": [
+        "foreigner"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.improve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "improve",
+      "de": [
+        "verbessern"
+      ],
+      "deRaw": "verbessern",
+      "exampleSb": "I wanted to improve my English and get better marks.",
+      "cf": null,
+      "forms": [
+        "improve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.tax",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tax",
+      "de": [
+        "Steuer"
+      ],
+      "deRaw": "Steuer",
+      "exampleSb": "Nearly everyone in the country has to pay taxes to the government.",
+      "cf": null,
+      "forms": [
+        "tax"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.hiking",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hiking",
+      "de": [
+        "Wandern"
+      ],
+      "deRaw": "Wandern",
+      "exampleSb": "National Parks are always great places for hiking.",
+      "cf": null,
+      "forms": [
+        "hiking"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.proper",
+      "kind": "phrase",
+      "theme": null,
+      "en": "proper",
+      "de": [
+        "richtig",
+        "angemessen"
+      ],
+      "deRaw": "richtig, angemessen",
+      "exampleSb": "That's not a proper job. Do it again!",
+      "cf": null,
+      "forms": [
+        "proper"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.admire",
+      "kind": "phrase",
+      "theme": null,
+      "en": "admire",
+      "de": [
+        "bewundern"
+      ],
+      "deRaw": "bewundern",
+      "exampleSb": "They all admired her courage.",
+      "cf": null,
+      "forms": [
+        "admire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.be-terrified",
+      "kind": "phrase",
+      "theme": null,
+      "en": "be terrified",
+      "de": [
+        "fürchterliche Angst haben"
+      ],
+      "deRaw": "fürchterliche Angst haben",
+      "exampleSb": "Scared? I was absolutely terrified!",
+      "cf": null,
+      "forms": [
+        "be terrified"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.nonsense",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nonsense",
+      "de": [
+        "Unsinn",
+        "Quatsch"
+      ],
+      "deRaw": "Unsinn, Quatsch",
+      "exampleSb": "She thinks that astrology is nonsense.",
+      "cf": null,
+      "forms": [
+        "nonsense"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.thunder",
+      "kind": "phrase",
+      "theme": null,
+      "en": "thunder",
+      "de": [
+        "Donner"
+      ],
+      "deRaw": "Donner",
+      "exampleSb": "Lightning is usually followed by thunder.",
+      "cf": null,
+      "forms": [
+        "thunder"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u01.w.unconscious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unconscious",
+      "de": [
+        "bewusstlos",
+        "unbewusst"
+      ],
+      "deRaw": "bewusstlos; unbewusst",
+      "exampleSb": "She was unconscious for three days after the accident.",
+      "cf": null,
+      "forms": [
+        "unconscious"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

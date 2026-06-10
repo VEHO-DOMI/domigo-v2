@@ -1,0 +1,30 @@
+{
+  "schema": "ids-lock@1",
+  "slug": "g1-u15",
+  "words": {
+    "wordfile:to fly to": "g1u15.w.to-fly-to",
+    "wordfile:to go fishing": "g1u15.w.to-go-fishing",
+    "wordfile:to stay at a campsite": "g1u15.w.to-stay-at-a-campsite",
+    "wordfile:to swim in the sea": "g1u15.w.to-swim-in-the-sea",
+    "wordfile:to play badminton": "g1u15.w.to-play-badminton",
+    "wordfile:to lie in the sun": "g1u15.w.to-lie-in-the-sun",
+    "wordfile:to write a postcard": "g1u15.w.to-write-a-postcard",
+    "wordfile:to play board games": "g1u15.w.to-play-board-games",
+    "wordfile:to visit a castle": "g1u15.w.to-visit-a-castle",
+    "phrase:aunt": "g1u15.w.aunt",
+    "phrase:beach": "g1u15.w.beach",
+    "phrase:board game": "g1u15.w.board-game",
+    "phrase:campsite": "g1u15.w.campsite",
+    "phrase:cook": "g1u15.w.cook",
+    "phrase:to drive": "g1u15.w.to-drive",
+    "phrase:holiday": "g1u15.w.holiday",
+    "phrase:national park": "g1u15.w.national-park",
+    "phrase:parents": "g1u15.w.parents",
+    "phrase:plane": "g1u15.w.plane",
+    "phrase:summer": "g1u15.w.summer",
+    "phrase:hippo": "g1u15.w.hippo",
+    "phrase:to join": "g1u15.w.to-join",
+    "phrase:to invite": "g1u15.w.to-invite"
+  },
+  "tombstones": []
+}

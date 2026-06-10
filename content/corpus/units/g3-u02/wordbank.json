@@ -1,0 +1,715 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 2,
+  "slug": "g3-u02",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u02.w.to-buy-sth",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to buy sth.",
+      "de": [
+        "etw. kaufen"
+      ],
+      "deRaw": "etw. kaufen",
+      "exampleSb": null,
+      "cf": "buy sth.",
+      "forms": [
+        "to buy sth.",
+        "buy sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-listen-to-music",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to listen to music",
+      "de": [
+        "Musik hören"
+      ],
+      "deRaw": "Musik hören",
+      "exampleSb": null,
+      "cf": "listen to music",
+      "forms": [
+        "to listen to music",
+        "listen to music"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-try-on-sunglasses",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to try on sunglasses",
+      "de": [
+        "Sonnenbrillen anprobieren"
+      ],
+      "deRaw": "Sonnenbrillen anprobieren",
+      "exampleSb": null,
+      "cf": "try on sunglasses",
+      "forms": [
+        "to try on sunglasses",
+        "try on sunglasses"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-pay-the-bill",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to pay the bill",
+      "de": [
+        "die Rechnung bezahlen"
+      ],
+      "deRaw": "die Rechnung bezahlen",
+      "exampleSb": null,
+      "cf": "pay the bill",
+      "forms": [
+        "to pay the bill",
+        "pay the bill"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-drink-eat-sth",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to drink/eat sth.",
+      "de": [
+        "etw. trinken/essen"
+      ],
+      "deRaw": "etw. trinken/essen",
+      "exampleSb": null,
+      "cf": "drink/eat sth.",
+      "forms": [
+        "to drink/eat sth.",
+        "drink/eat sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-look-at-sth",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to look at sth.",
+      "de": [
+        "etw. ansehen"
+      ],
+      "deRaw": "etw. ansehen",
+      "exampleSb": null,
+      "cf": "look at sth.",
+      "forms": [
+        "to look at sth.",
+        "look at sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-talk-on-the-mobile",
+      "kind": "wordfile",
+      "theme": "Activities",
+      "en": "to talk on the mobile",
+      "de": [
+        "am Handy telefonieren"
+      ],
+      "deRaw": "am Handy telefonieren",
+      "exampleSb": null,
+      "cf": "talk on the mobile",
+      "forms": [
+        "to talk on the mobile",
+        "talk on the mobile"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.coincidence",
+      "kind": "phrase",
+      "theme": null,
+      "en": "coincidence",
+      "de": [
+        "Zufall"
+      ],
+      "deRaw": "Zufall",
+      "exampleSb": "What a coincidence!",
+      "cf": null,
+      "forms": [
+        "coincidence"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.married",
+      "kind": "phrase",
+      "theme": null,
+      "en": "married",
+      "de": [
+        "verheiratet"
+      ],
+      "deRaw": "verheiratet",
+      "exampleSb": "When they got married, his wife changed her name.",
+      "cf": null,
+      "forms": [
+        "married"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.similar",
+      "kind": "phrase",
+      "theme": null,
+      "en": "similar",
+      "de": [
+        "ähnlich"
+      ],
+      "deRaw": "ähnlich",
+      "exampleSb": "They both like similar music.",
+      "cf": null,
+      "forms": [
+        "similar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-return",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to return",
+      "de": [
+        "zurückgeben",
+        "zurückkehren"
+      ],
+      "deRaw": "zurückgeben; zurückkehren",
+      "exampleSb": "Please return the balloon to the following address.",
+      "cf": "return",
+      "forms": [
+        "to return",
+        "return"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.what-a",
+      "kind": "phrase",
+      "theme": null,
+      "en": "What a ...!",
+      "de": [
+        "Was für ein/e ...!"
+      ],
+      "deRaw": "Was für ein/e ...!",
+      "exampleSb": "What a mess!",
+      "cf": null,
+      "forms": [
+        "What a ...!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.author",
+      "kind": "phrase",
+      "theme": null,
+      "en": "author",
+      "de": [
+        "Autor/Autorin"
+      ],
+      "deRaw": "Autor/Autorin",
+      "exampleSb": "This author wrote a lot of novels.",
+      "cf": null,
+      "forms": [
+        "author"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.member",
+      "kind": "phrase",
+      "theme": null,
+      "en": "member",
+      "de": [
+        "Mitglied"
+      ],
+      "deRaw": "Mitglied",
+      "exampleSb": "A member of the crew remembered the famous night.",
+      "cf": null,
+      "forms": [
+        "member"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.passenger",
+      "kind": "phrase",
+      "theme": null,
+      "en": "passenger",
+      "de": [
+        "Passagier/Passagierin"
+      ],
+      "deRaw": "Passagier/Passagierin",
+      "exampleSb": "Of the 2,200 passengers, only 705 survived.",
+      "cf": null,
+      "forms": [
+        "passenger"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-sink",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to sink",
+      "de": [
+        "sinken"
+      ],
+      "deRaw": "sinken",
+      "exampleSb": "When the ship sank, most of its 2,500 passengers died.",
+      "cf": "sink",
+      "forms": [
+        "to sink",
+        "sink"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-survive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to survive",
+      "de": [
+        "überleben"
+      ],
+      "deRaw": "überleben",
+      "exampleSb": "Most people didn't survive.",
+      "cf": "survive",
+      "forms": [
+        "to survive",
+        "survive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.careless",
+      "kind": "phrase",
+      "theme": null,
+      "en": "careless",
+      "de": [
+        "unvorsichtig",
+        "leichtsinnig"
+      ],
+      "deRaw": "unvorsichtig, leichtsinnig",
+      "exampleSb": "I've lost my phone because I was careless.",
+      "cf": null,
+      "forms": [
+        "careless"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.handbag",
+      "kind": "phrase",
+      "theme": null,
+      "en": "handbag",
+      "de": [
+        "Handtasche"
+      ],
+      "deRaw": "Handtasche",
+      "exampleSb": "She put the phone in her handbag.",
+      "cf": null,
+      "forms": [
+        "handbag"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.i-beg-your-pardon",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I beg your pardon.",
+      "de": [
+        "Entschuldigung",
+        "Verzeihen Sie bitte."
+      ],
+      "deRaw": "Entschuldigung, Verzeihen Sie bitte.",
+      "exampleSb": "I beg your pardon.",
+      "cf": null,
+      "forms": [
+        "I beg your pardon."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-steal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to steal",
+      "de": [
+        "stehlen"
+      ],
+      "deRaw": "stehlen",
+      "exampleSb": "The thief wanted to steal the woman's money.",
+      "cf": "steal",
+      "forms": [
+        "to steal",
+        "steal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.thief",
+      "kind": "phrase",
+      "theme": null,
+      "en": "thief (pl thieves)",
+      "de": [
+        "Dieb/Diebin"
+      ],
+      "deRaw": "Dieb/Diebin",
+      "exampleSb": "The thief was watching the two boys.",
+      "cf": null,
+      "forms": [
+        "thief",
+        "thieves"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.north-pole",
+      "kind": "phrase",
+      "theme": null,
+      "en": "North Pole",
+      "de": [
+        "Nordpol"
+      ],
+      "deRaw": "Nordpol",
+      "exampleSb": "I want to travel to the North Pole one day.",
+      "cf": null,
+      "forms": [
+        "North Pole"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.south-pole",
+      "kind": "phrase",
+      "theme": null,
+      "en": "South Pole",
+      "de": [
+        "Südpol"
+      ],
+      "deRaw": "Südpol",
+      "exampleSb": "An imaginary line connects the North and the South Pole.",
+      "cf": null,
+      "forms": [
+        "South Pole"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.awful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "awful",
+      "de": [
+        "furchtbar",
+        "schrecklich",
+        "scheußlich"
+      ],
+      "deRaw": "furchtbar, schrecklich, scheußlich",
+      "exampleSb": "There is an awful smell.",
+      "cf": null,
+      "forms": [
+        "awful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.entrance",
+      "kind": "phrase",
+      "theme": null,
+      "en": "entrance",
+      "de": [
+        "Eingang"
+      ],
+      "deRaw": "Eingang",
+      "exampleSb": "They were all queuing up at the entrance.",
+      "cf": null,
+      "forms": [
+        "entrance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-hand-sth-in",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to hand sth. in",
+      "de": [
+        "einreichen",
+        "abgeben"
+      ],
+      "deRaw": "einreichen, abgeben",
+      "exampleSb": "I'm sure someone found it and handed it in.",
+      "cf": "hand sth. in",
+      "forms": [
+        "to hand sth. in",
+        "hand sth. in"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.hold-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Hold on!",
+      "de": [
+        "Warte(t)!"
+      ],
+      "deRaw": "Warte(t)!",
+      "exampleSb": "Hold on!",
+      "cf": null,
+      "forms": [
+        "Hold on!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-leave-sb-alone",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to leave sb. alone",
+      "de": [
+        "jdn. in Ruhe lassen"
+      ],
+      "deRaw": "jdn. in Ruhe lassen",
+      "exampleSb": "Lucas didn't leave his sister alone.",
+      "cf": "leave sb. alone",
+      "forms": [
+        "to leave sb. alone",
+        "leave sb. alone"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-look-forward-to-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to look forward to sth.",
+      "de": [
+        "sich auf etw. freuen"
+      ],
+      "deRaw": "sich auf etw. freuen",
+      "exampleSb": "Lucas was very much looking forward to it.",
+      "cf": "look forward to sth.",
+      "forms": [
+        "to look forward to sth.",
+        "look forward to sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.queue",
+      "kind": "phrase",
+      "theme": null,
+      "en": "queue",
+      "de": [
+        "Warteschlange"
+      ],
+      "deRaw": "Warteschlange",
+      "exampleSb": "The queue was getting shorter and shorter.",
+      "cf": null,
+      "forms": [
+        "queue"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-queue",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to queue (up)",
+      "de": [
+        "sich anstellen"
+      ],
+      "deRaw": "sich anstellen",
+      "exampleSb": "They were all queuing up to get in the museum.",
+      "cf": "queue",
+      "forms": [
+        "to queue",
+        "queue",
+        "up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-wave",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to wave",
+      "de": [
+        "winken"
+      ],
+      "deRaw": "winken",
+      "exampleSb": "Someone is waving at us from the front of the queue.",
+      "cf": "wave",
+      "forms": [
+        "to wave",
+        "wave"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.date-of-birth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "date of birth",
+      "de": [
+        "Geburtsdatum"
+      ],
+      "deRaw": "Geburtsdatum",
+      "exampleSb": "We talked about our date of birth.",
+      "cf": null,
+      "forms": [
+        "date of birth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.hang-on-a-minute",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Hang on a minute.",
+      "de": [
+        "Ein Augenblick (mal)."
+      ],
+      "deRaw": "Ein Augenblick (mal).",
+      "exampleSb": "Hang on a minute.",
+      "cf": null,
+      "forms": [
+        "Hang on a minute."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-achieve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to achieve (a goal)",
+      "de": [
+        "(ein Ziel) erreichen"
+      ],
+      "deRaw": "(ein Ziel) erreichen",
+      "exampleSb": "Think of a time you were trying to achieve a goal.",
+      "cf": "achieve",
+      "forms": [
+        "to achieve",
+        "achieve",
+        "a goal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.laugh",
+      "kind": "phrase",
+      "theme": null,
+      "en": "laugh",
+      "de": [
+        "Lacher"
+      ],
+      "deRaw": "Lacher",
+      "exampleSb": "I got no laugh for my jokes.",
+      "cf": null,
+      "forms": [
+        "laugh"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.note",
+      "kind": "phrase",
+      "theme": null,
+      "en": "note",
+      "de": [
+        "Geldschein"
+      ],
+      "deRaw": "Geldschein",
+      "exampleSb": "The £50 note was mine.",
+      "cf": null,
+      "forms": [
+        "note"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.per-cent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "per cent",
+      "de": [
+        "Prozent"
+      ],
+      "deRaw": "Prozent",
+      "exampleSb": "50 per cent of the jokes weren't even funny.",
+      "cf": null,
+      "forms": [
+        "per cent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.speech",
+      "kind": "phrase",
+      "theme": null,
+      "en": "speech",
+      "de": [
+        "Rede",
+        "Ansprache"
+      ],
+      "deRaw": "Rede, Ansprache",
+      "exampleSb": "I'm writing a motivational speech.",
+      "cf": null,
+      "forms": [
+        "speech"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.stage",
+      "kind": "phrase",
+      "theme": null,
+      "en": "stage",
+      "de": [
+        "Bühne"
+      ],
+      "deRaw": "Bühne",
+      "exampleSb": "I went to the front of the stage.",
+      "cf": null,
+      "forms": [
+        "stage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u02.w.to-try-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to try out",
+      "de": [
+        "ausprobieren"
+      ],
+      "deRaw": "ausprobieren",
+      "exampleSb": "Try out your jokes before you go on stage.",
+      "cf": "try out",
+      "forms": [
+        "to try out",
+        "try out"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

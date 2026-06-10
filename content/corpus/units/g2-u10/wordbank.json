@@ -1,0 +1,377 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 10,
+  "slug": "g2-u10",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u10.w.auntie",
+      "kind": "phrase",
+      "theme": null,
+      "en": "auntie",
+      "de": [
+        "Tantchen"
+      ],
+      "deRaw": "Tantchen",
+      "exampleSb": "My auntie arrived first.",
+      "cf": null,
+      "forms": [
+        "auntie"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.calm",
+      "kind": "phrase",
+      "theme": null,
+      "en": "calm",
+      "de": [
+        "ruhig",
+        "gelassen"
+      ],
+      "deRaw": "ruhig, gelassen",
+      "exampleSb": "It's difficult for me to stay calm.",
+      "cf": null,
+      "forms": [
+        "calm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.girlfriend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "girlfriend",
+      "de": [
+        "feste Freundin"
+      ],
+      "deRaw": "feste Freundin",
+      "exampleSb": "My dad has a new girlfriend.",
+      "cf": null,
+      "forms": [
+        "girlfriend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.to-be-proud-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be proud of",
+      "de": [
+        "stolz sein auf"
+      ],
+      "deRaw": "stolz sein auf",
+      "exampleSb": "I'm very proud of myself.",
+      "cf": "be proud of",
+      "forms": [
+        "to be proud of",
+        "be proud of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.sense-of-humour",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sense of humour",
+      "de": [
+        "Sinn für Humor"
+      ],
+      "deRaw": "Sinn für Humor",
+      "exampleSb": "We've got the same sense of humour.",
+      "cf": null,
+      "forms": [
+        "sense of humour"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.ugly",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ugly",
+      "de": [
+        "hässlich"
+      ],
+      "deRaw": "hässlich",
+      "exampleSb": "Your hat's so ugly!",
+      "cf": null,
+      "forms": [
+        "ugly"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.virus",
+      "kind": "phrase",
+      "theme": null,
+      "en": "virus",
+      "de": [
+        "Virus"
+      ],
+      "deRaw": "Virus",
+      "exampleSb": "I've got this virus.",
+      "cf": null,
+      "forms": [
+        "virus"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.to-breathe",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to breathe",
+      "de": [
+        "(ein-)atmen"
+      ],
+      "deRaw": "(ein-)atmen",
+      "exampleSb": "I like to breathe the clean air in the mountains.",
+      "cf": "breathe",
+      "forms": [
+        "to breathe",
+        "breathe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.to-burn",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to burn",
+      "de": [
+        "(ver-)brennen"
+      ],
+      "deRaw": "(ver-)brennen",
+      "exampleSb": "You can burn wood on a fire.",
+      "cf": "burn",
+      "forms": [
+        "to burn",
+        "burn"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.foreign-language",
+      "kind": "phrase",
+      "theme": null,
+      "en": "foreign language",
+      "de": [
+        "Fremdsprache"
+      ],
+      "deRaw": "Fremdsprache",
+      "exampleSb": "She doesn't speak a foreign language.",
+      "cf": null,
+      "forms": [
+        "foreign language"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.to-panic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to panic",
+      "de": [
+        "in Panik geraten"
+      ],
+      "deRaw": "in Panik geraten",
+      "exampleSb": "When you get scared, try not to panic.",
+      "cf": "panic",
+      "forms": [
+        "to panic",
+        "panic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.tractor",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tractor",
+      "de": [
+        "Traktor"
+      ],
+      "deRaw": "Traktor",
+      "exampleSb": "The farmer has a big tractor on his farm.",
+      "cf": null,
+      "forms": [
+        "tractor"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.tool",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tool",
+      "de": [
+        "Werkzeug"
+      ],
+      "deRaw": "Werkzeug",
+      "exampleSb": "You use a tool to make or build something.",
+      "cf": null,
+      "forms": [
+        "tool"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.divorced",
+      "kind": "phrase",
+      "theme": null,
+      "en": "divorced",
+      "de": [
+        "geschieden"
+      ],
+      "deRaw": "geschieden",
+      "exampleSb": "Rick's parents are divorced.",
+      "cf": null,
+      "forms": [
+        "divorced"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.to-be-related-to",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be related to",
+      "de": [
+        "mit jdm. verwandt sein"
+      ],
+      "deRaw": "mit jdm. verwandt sein",
+      "exampleSb": "Talk about the people and how they are related to you.",
+      "cf": "be related to",
+      "forms": [
+        "to be related to",
+        "be related to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.to-delete",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to delete",
+      "de": [
+        "löschen"
+      ],
+      "deRaw": "löschen",
+      "exampleSb": "Don't delete the last email I sent you.",
+      "cf": "delete",
+      "forms": [
+        "to delete",
+        "delete"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.file",
+      "kind": "phrase",
+      "theme": null,
+      "en": "file",
+      "de": [
+        "Ordner",
+        "Datei"
+      ],
+      "deRaw": "Ordner; Datei",
+      "exampleSb": "You mustn't go into my private files.",
+      "cf": null,
+      "forms": [
+        "file"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.to-print-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to print out",
+      "de": [
+        "ausdrucken"
+      ],
+      "deRaw": "ausdrucken",
+      "exampleSb": "I should print out everything.",
+      "cf": "print out",
+      "forms": [
+        "to print out",
+        "print out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.public",
+      "kind": "phrase",
+      "theme": null,
+      "en": "public",
+      "de": [
+        "öffentlich",
+        "in der Öffentlichkeit"
+      ],
+      "deRaw": "öffentlich; in der Öffentlichkeit",
+      "exampleSb": "You mustn't shout in public.",
+      "cf": null,
+      "forms": [
+        "public"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.ice-skating",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ice skating",
+      "de": [
+        "Eislaufen"
+      ],
+      "deRaw": "Eislaufen",
+      "exampleSb": "I don't like ice skating.",
+      "cf": null,
+      "forms": [
+        "ice skating"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.fault",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fault",
+      "de": [
+        "Schuld"
+      ],
+      "deRaw": "Schuld",
+      "exampleSb": "It's not my fault.",
+      "cf": null,
+      "forms": [
+        "fault"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u10.w.hopefully",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hopefully",
+      "de": [
+        "hoffentlich"
+      ],
+      "deRaw": "hoffentlich",
+      "exampleSb": "This was hopefully the last time.",
+      "cf": null,
+      "forms": [
+        "hopefully"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

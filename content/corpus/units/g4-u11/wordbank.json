@@ -1,0 +1,554 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 11,
+  "slug": "g4-u11",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u11.w.fiction",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "Fiction",
+      "de": [
+        "Belletristik",
+        "Fiktion"
+      ],
+      "deRaw": "Belletristik, Fiktion",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Fiction"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.reference",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "Reference",
+      "de": [
+        "Nachschlagewerk"
+      ],
+      "deRaw": "Nachschlagewerk",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Reference"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.poetry",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "Poetry",
+      "de": [
+        "Poesie",
+        "Lyrik"
+      ],
+      "deRaw": "Poesie, Lyrik",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Poetry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.non-fiction",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "Non-fiction",
+      "de": [
+        "Sachbücher"
+      ],
+      "deRaw": "Sachbücher",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Non-fiction"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.classics",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "Classics",
+      "de": [
+        "Klassiker"
+      ],
+      "deRaw": "Klassiker",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Classics"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.comic",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "comic",
+      "de": [
+        "Comic"
+      ],
+      "deRaw": "Comic",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "comic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.screenplay",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "screenplay",
+      "de": [
+        "Drehbuch"
+      ],
+      "deRaw": "Drehbuch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "screenplay"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.play",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "play",
+      "de": [
+        "Theaterstück"
+      ],
+      "deRaw": "Theaterstück",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "play"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.anthology",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "anthology",
+      "de": [
+        "Anthologie",
+        "Sammlung"
+      ],
+      "deRaw": "Anthologie, Sammlung",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "anthology"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.dictionary",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "dictionary",
+      "de": [
+        "Wörterbuch"
+      ],
+      "deRaw": "Wörterbuch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "dictionary"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.biography",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "biography",
+      "de": [
+        "Biografie"
+      ],
+      "deRaw": "Biografie",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "biography"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.novel",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "novel",
+      "de": [
+        "Roman"
+      ],
+      "deRaw": "Roman",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "novel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.short-story",
+      "kind": "wordfile",
+      "theme": "Types of Books",
+      "en": "short story",
+      "de": [
+        "Kurzgeschichte"
+      ],
+      "deRaw": "Kurzgeschichte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "short story"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.book-review",
+      "kind": "phrase",
+      "theme": null,
+      "en": "book review",
+      "de": [
+        "Buchrezension"
+      ],
+      "deRaw": "Buchrezension",
+      "exampleSb": "The book review was really good. – I'm definitely going to read it.",
+      "cf": null,
+      "forms": [
+        "book review"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.fence",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fence",
+      "de": [
+        "Zaun"
+      ],
+      "deRaw": "Zaun",
+      "exampleSb": "They built a fence around their garden so the dog can't escape.",
+      "cf": null,
+      "forms": [
+        "fence"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.innocent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "innocent",
+      "de": [
+        "unschuldig"
+      ],
+      "deRaw": "unschuldig",
+      "exampleSb": "During the war, many innocent people were killed.",
+      "cf": null,
+      "forms": [
+        "innocent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.disappointment",
+      "kind": "phrase",
+      "theme": null,
+      "en": "disappointment",
+      "de": [
+        "Enttäuschung"
+      ],
+      "deRaw": "Enttäuschung",
+      "exampleSb": "That new restaurant was a big disappointment. The food was awful.",
+      "cf": null,
+      "forms": [
+        "disappointment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.prefer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "prefer",
+      "de": [
+        "bevorzugen"
+      ],
+      "deRaw": "bevorzugen",
+      "exampleSb": "I prefer jazz to rock music.",
+      "cf": null,
+      "forms": [
+        "prefer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.blurb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "blurb",
+      "de": [
+        "Klappentext"
+      ],
+      "deRaw": "Klappentext",
+      "exampleSb": "Before I buy a book, I always read the blurb on the cover first.",
+      "cf": null,
+      "forms": [
+        "blurb"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.millionaire",
+      "kind": "phrase",
+      "theme": null,
+      "en": "millionaire",
+      "de": [
+        "Millionär/in"
+      ],
+      "deRaw": "Millionär/in",
+      "exampleSb": "She won the lottery. Now she's a millionaire.",
+      "cf": null,
+      "forms": [
+        "millionaire"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.fairy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fairy",
+      "de": [
+        "Fee"
+      ],
+      "deRaw": "Fee",
+      "exampleSb": "The good fairy gave me three wishes.",
+      "cf": null,
+      "forms": [
+        "fairy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.historical-novel",
+      "kind": "phrase",
+      "theme": null,
+      "en": "historical novel",
+      "de": [
+        "historischer Roman"
+      ],
+      "deRaw": "historischer Roman",
+      "exampleSb": "Historical novels are books about the past.",
+      "cf": null,
+      "forms": [
+        "historical novel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.reference-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "reference",
+      "de": [
+        "Bezug",
+        "Hinweis"
+      ],
+      "deRaw": "Bezug, Hinweis",
+      "exampleSb": "There are a lot of references to famous songs in the book.",
+      "cf": null,
+      "forms": [
+        "reference"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.trilogy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "trilogy",
+      "de": [
+        "Trilogie"
+      ],
+      "deRaw": "Trilogie",
+      "exampleSb": "Have you read the last book of the trilogy?",
+      "cf": null,
+      "forms": [
+        "trilogy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.answer-the-door",
+      "kind": "phrase",
+      "theme": null,
+      "en": "answer the door",
+      "de": [
+        "an die Tür gehen",
+        "jdn. hereinbitten"
+      ],
+      "deRaw": "an die Tür gehen, jdn. hereinbitten",
+      "exampleSb": "There is someone at the door. Can you answer it, please?",
+      "cf": null,
+      "forms": [
+        "answer the door"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.clear-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "clear up",
+      "de": [
+        "aufräumen"
+      ],
+      "deRaw": "aufräumen",
+      "exampleSb": "Clear up your own mess!",
+      "cf": null,
+      "forms": [
+        "clear up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.goggles",
+      "kind": "phrase",
+      "theme": null,
+      "en": "goggles",
+      "de": [
+        "Schwimmbrille",
+        "Schutzbrille"
+      ],
+      "deRaw": "Schwimmbrille, Schutzbrille",
+      "exampleSb": "Tom always wears goggles when he swims.",
+      "cf": null,
+      "forms": [
+        "goggles"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.kilt",
+      "kind": "phrase",
+      "theme": null,
+      "en": "kilt",
+      "de": [
+        "Kilt",
+        "Schottenrock"
+      ],
+      "deRaw": "Kilt, Schottenrock",
+      "exampleSb": "He's Scottish, so he's wearing a kilt to his wedding.",
+      "cf": null,
+      "forms": [
+        "kilt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.sort-oneself-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sort oneself out",
+      "de": [
+        "sich ordnen",
+        "zu sich selbst finden"
+      ],
+      "deRaw": "sich ordnen; zu sich selbst finden",
+      "exampleSb": "John took a week off work to sort himself out.",
+      "cf": null,
+      "forms": [
+        "sort oneself out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.spot-of-bother",
+      "kind": "phrase",
+      "theme": null,
+      "en": "spot of bother",
+      "de": [
+        "Problem",
+        "Ärger"
+      ],
+      "deRaw": "Problem; Ärger",
+      "exampleSb": "He's in a spot of bother with the police.",
+      "cf": null,
+      "forms": [
+        "spot of bother"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.wee",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wee",
+      "de": [
+        "klein",
+        "winzig"
+      ],
+      "deRaw": "klein, winzig",
+      "exampleSb": "She's playing on the field with her wee brother.",
+      "cf": null,
+      "forms": [
+        "wee"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.obey",
+      "kind": "phrase",
+      "theme": null,
+      "en": "obey",
+      "de": [
+        "befolgen",
+        "gehorchen"
+      ],
+      "deRaw": "befolgen, gehorchen",
+      "exampleSb": "His dog has learned to obey several commands.",
+      "cf": null,
+      "forms": [
+        "obey"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u11.w.scratch",
+      "kind": "phrase",
+      "theme": null,
+      "en": "scratch",
+      "de": [
+        "kratzen"
+      ],
+      "deRaw": "kratzen",
+      "exampleSb": "That cat just scratched my arm.",
+      "cf": null,
+      "forms": [
+        "scratch"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

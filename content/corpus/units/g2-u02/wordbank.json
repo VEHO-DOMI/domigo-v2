@@ -1,0 +1,612 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 2,
+  "slug": "g2-u02",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u02.w.to-organise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to organise",
+      "de": [
+        "organisieren"
+      ],
+      "deRaw": "organisieren",
+      "exampleSb": "I want to organise a surprise party for her birthday.",
+      "cf": "organise",
+      "forms": [
+        "to organise",
+        "organise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.surprise-party",
+      "kind": "phrase",
+      "theme": null,
+      "en": "surprise party",
+      "de": [
+        "Überraschungsparty"
+      ],
+      "deRaw": "Überraschungsparty",
+      "exampleSb": "They planned a surprise party.",
+      "cf": null,
+      "forms": [
+        "surprise party"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.admission-fee",
+      "kind": "phrase",
+      "theme": null,
+      "en": "admission fee",
+      "de": [
+        "Eintritt",
+        "Eintrittspreis"
+      ],
+      "deRaw": "Eintritt, Eintrittspreis",
+      "exampleSb": "The admission fee to enter the museum is 5 pounds.",
+      "cf": null,
+      "forms": [
+        "admission fee"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.artist",
+      "kind": "phrase",
+      "theme": null,
+      "en": "artist",
+      "de": [
+        "Künstler/Künstlerin"
+      ],
+      "deRaw": "Künstler/Künstlerin",
+      "exampleSb": "He made this painting. He's a great artist.",
+      "cf": null,
+      "forms": [
+        "artist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.exhibition",
+      "kind": "phrase",
+      "theme": null,
+      "en": "exhibition",
+      "de": [
+        "Ausstellung"
+      ],
+      "deRaw": "Ausstellung",
+      "exampleSb": "I'm going to see the new exhibition at the museum.",
+      "cf": null,
+      "forms": [
+        "exhibition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.dirty",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dirty",
+      "de": [
+        "dreckig",
+        "schmutzig"
+      ],
+      "deRaw": "dreckig, schmutzig",
+      "exampleSb": "The floor was very dirty after the party.",
+      "cf": null,
+      "forms": [
+        "dirty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.modern",
+      "kind": "phrase",
+      "theme": null,
+      "en": "modern",
+      "de": [
+        "modern"
+      ],
+      "deRaw": "modern",
+      "exampleSb": "The modern sculpture was missing.",
+      "cf": null,
+      "forms": [
+        "modern"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.museum",
+      "kind": "phrase",
+      "theme": null,
+      "en": "museum",
+      "de": [
+        "Museum"
+      ],
+      "deRaw": "Museum",
+      "exampleSb": "She works in a museum.",
+      "cf": null,
+      "forms": [
+        "museum"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.to-be-part-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be part of",
+      "de": [
+        "Teil von etw. sein"
+      ],
+      "deRaw": "Teil von etw. sein",
+      "exampleSb": "The jacket was part of a sculpture.",
+      "cf": "be part of",
+      "forms": [
+        "to be part of",
+        "be part of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.sculpture",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sculpture",
+      "de": [
+        "Skulptur"
+      ],
+      "deRaw": "Skulptur",
+      "exampleSb": "The sculpture is huge.",
+      "cf": null,
+      "forms": [
+        "sculpture"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.to-be-worth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be worth",
+      "de": [
+        "wert sein"
+      ],
+      "deRaw": "wert sein",
+      "exampleSb": "The sculpture was worth a lot of money.",
+      "cf": "be worth",
+      "forms": [
+        "to be worth",
+        "be worth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.what-s-the-matter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "What's the matter?",
+      "de": [
+        "Was ist los?"
+      ],
+      "deRaw": "Was ist los?",
+      "exampleSb": "What's the matter? You look upset.",
+      "cf": null,
+      "forms": [
+        "What's the matter?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.anyone",
+      "kind": "phrase",
+      "theme": null,
+      "en": "anyone",
+      "de": [
+        "irgendjemand"
+      ],
+      "deRaw": "irgendjemand",
+      "exampleSb": "Don't give your computer password to anyone.",
+      "cf": null,
+      "forms": [
+        "anyone"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.behaviour",
+      "kind": "phrase",
+      "theme": null,
+      "en": "behaviour",
+      "de": [
+        "Verhalten"
+      ],
+      "deRaw": "Verhalten",
+      "exampleSb": "There is a lot of wrong behaviour on the web.",
+      "cf": null,
+      "forms": [
+        "behaviour"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.to-contact",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to contact",
+      "de": [
+        "kontaktieren"
+      ],
+      "deRaw": "kontaktieren",
+      "exampleSb": "Please contact us if you have any questions.",
+      "cf": "contact",
+      "forms": [
+        "to contact",
+        "contact"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.mess",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mess",
+      "de": [
+        "Unordnung",
+        "Durcheinander"
+      ],
+      "deRaw": "Unordnung, Durcheinander",
+      "exampleSb": "The garden was a mess.",
+      "cf": null,
+      "forms": [
+        "mess"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.to-pass-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to pass on",
+      "de": [
+        "weitergeben"
+      ],
+      "deRaw": "weitergeben",
+      "exampleSb": "Please pass on the message to your mum.",
+      "cf": "pass on",
+      "forms": [
+        "to pass on",
+        "pass on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.password",
+      "kind": "phrase",
+      "theme": null,
+      "en": "password",
+      "de": [
+        "Passwort"
+      ],
+      "deRaw": "Passwort",
+      "exampleSb": "Don't give your computer password to other people.",
+      "cf": null,
+      "forms": [
+        "password"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.to-post",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to post",
+      "de": [
+        "posten",
+        "einen Beitrag verfassen (online)"
+      ],
+      "deRaw": "posten, einen Beitrag verfassen (online)",
+      "exampleSb": "Think before you post something.",
+      "cf": "post",
+      "forms": [
+        "to post",
+        "post"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.posting",
+      "kind": "phrase",
+      "theme": null,
+      "en": "posting",
+      "de": [
+        "Posting",
+        "Beitrag (online)"
+      ],
+      "deRaw": "Posting, Beitrag (online)",
+      "exampleSb": "Check who can see your posting.",
+      "cf": null,
+      "forms": [
+        "posting"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.such",
+      "kind": "phrase",
+      "theme": null,
+      "en": "such",
+      "de": [
+        "solch",
+        "so (ein)"
+      ],
+      "deRaw": "solch, so (ein)",
+      "exampleSb": "He isn't the only one to make such a mistake.",
+      "cf": null,
+      "forms": [
+        "such"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.tip",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tip",
+      "de": [
+        "Hinweis",
+        "Tipp"
+      ],
+      "deRaw": "Hinweis, Tipp",
+      "exampleSb": "Here is an important tip for when you go online.",
+      "cf": null,
+      "forms": [
+        "tip"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.possible",
+      "kind": "phrase",
+      "theme": null,
+      "en": "possible",
+      "de": [
+        "möglich"
+      ],
+      "deRaw": "möglich",
+      "exampleSb": "I can't finish all this homework. It's not possible.",
+      "cf": null,
+      "forms": [
+        "possible"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.awesome",
+      "kind": "phrase",
+      "theme": null,
+      "en": "awesome",
+      "de": [
+        "großartig",
+        "beeindruckend"
+      ],
+      "deRaw": "großartig, beeindruckend",
+      "exampleSb": "Sport is awesome!",
+      "cf": null,
+      "forms": [
+        "awesome"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.boring",
+      "kind": "phrase",
+      "theme": null,
+      "en": "boring",
+      "de": [
+        "langweilig"
+      ],
+      "deRaw": "langweilig",
+      "exampleSb": "This film is very boring. I don't want to watch it any more.",
+      "cf": null,
+      "forms": [
+        "boring"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.confusing",
+      "kind": "phrase",
+      "theme": null,
+      "en": "confusing",
+      "de": [
+        "verwirrend"
+      ],
+      "deRaw": "verwirrend",
+      "exampleSb": "I don't understand this exercise. It's very confusing.",
+      "cf": null,
+      "forms": [
+        "confusing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.difficult",
+      "kind": "phrase",
+      "theme": null,
+      "en": "difficult",
+      "de": [
+        "schwierig"
+      ],
+      "deRaw": "schwierig",
+      "exampleSb": "I don't think the text is difficult. It's easy.",
+      "cf": null,
+      "forms": [
+        "difficult"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.exciting",
+      "kind": "phrase",
+      "theme": null,
+      "en": "exciting",
+      "de": [
+        "spannend",
+        "aufregend"
+      ],
+      "deRaw": "spannend, aufregend",
+      "exampleSb": "There's an exciting film on TV this evening.",
+      "cf": null,
+      "forms": [
+        "exciting"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.funny",
+      "kind": "phrase",
+      "theme": null,
+      "en": "funny",
+      "de": [
+        "lustig",
+        "komisch"
+      ],
+      "deRaw": "lustig, komisch",
+      "exampleSb": "That was funny. I laughed a lot.",
+      "cf": null,
+      "forms": [
+        "funny"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.embarrassed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "embarrassed",
+      "de": [
+        "verlegen",
+        "beschämt"
+      ],
+      "deRaw": "verlegen, beschämt",
+      "exampleSb": "I was so embarrassed. I didn't know what to say.",
+      "cf": null,
+      "forms": [
+        "embarrassed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.plate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "plate",
+      "de": [
+        "Teller"
+      ],
+      "deRaw": "Teller",
+      "exampleSb": "The waiter puts the plate down.",
+      "cf": null,
+      "forms": [
+        "plate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.secret",
+      "kind": "phrase",
+      "theme": null,
+      "en": "secret",
+      "de": [
+        "Geheimnis"
+      ],
+      "deRaw": "Geheimnis",
+      "exampleSb": "Your secret is safe with me.",
+      "cf": null,
+      "forms": [
+        "secret"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.upset",
+      "kind": "phrase",
+      "theme": null,
+      "en": "upset",
+      "de": [
+        "verärgert",
+        "aufgebracht"
+      ],
+      "deRaw": "verärgert, aufgebracht",
+      "exampleSb": "The little girl looked upset because she couldn't have her favourite toy.",
+      "cf": null,
+      "forms": [
+        "upset"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.to-add",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to add",
+      "de": [
+        "hinzufügen"
+      ],
+      "deRaw": "hinzufügen",
+      "exampleSb": "You should add a good title to the story.",
+      "cf": "add",
+      "forms": [
+        "to add",
+        "add"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.to-fail",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to fail",
+      "de": [
+        "scheitern",
+        "durchfallen"
+      ],
+      "deRaw": "scheitern; durchfallen",
+      "exampleSb": "I didn't want to fail the test, so I studied very hard.",
+      "cf": "fail",
+      "forms": [
+        "to fail",
+        "fail"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u02.w.i-promise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I promise.",
+      "de": [
+        "Ich verspreche es."
+      ],
+      "deRaw": "Ich verspreche es.",
+      "exampleSb": "I'll help you. I promise.",
+      "cf": null,
+      "forms": [
+        "I promise."
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

@@ -1,0 +1,626 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 14,
+  "slug": "g3-u14",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u14.w.to-plan-a-trip",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to plan a trip",
+      "de": [
+        "eine Reise planen"
+      ],
+      "deRaw": "eine Reise planen",
+      "exampleSb": null,
+      "cf": "plan a trip",
+      "forms": [
+        "to plan a trip",
+        "plan a trip"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-book-a-holiday",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to book a holiday",
+      "de": [
+        "einen Urlaub buchen"
+      ],
+      "deRaw": "einen Urlaub buchen",
+      "exampleSb": null,
+      "cf": "book a holiday",
+      "forms": [
+        "to book a holiday",
+        "book a holiday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-make-a-hotel-reservation",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to make a hotel reservation",
+      "de": [
+        "eine Hotelreservierung vornehmen"
+      ],
+      "deRaw": "eine Hotelreservierung vornehmen",
+      "exampleSb": null,
+      "cf": "make a hotel reservation",
+      "forms": [
+        "to make a hotel reservation",
+        "make a hotel reservation"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-hire-a-car",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to hire a car",
+      "de": [
+        "ein Auto mieten"
+      ],
+      "deRaw": "ein Auto mieten",
+      "exampleSb": null,
+      "cf": "hire a car",
+      "forms": [
+        "to hire a car",
+        "hire a car"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-check-the-area-out-online",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to check the area out online",
+      "de": [
+        "die Gegend online erkunden"
+      ],
+      "deRaw": "die Gegend online erkunden",
+      "exampleSb": null,
+      "cf": "check the area out online",
+      "forms": [
+        "to check the area out online",
+        "check the area out online"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-buy-a-dictionary",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to buy a dictionary",
+      "de": [
+        "ein Wörterbuch kaufen"
+      ],
+      "deRaw": "ein Wörterbuch kaufen",
+      "exampleSb": null,
+      "cf": "buy a dictionary",
+      "forms": [
+        "to buy a dictionary",
+        "buy a dictionary"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-find-out-about-good-restaurants",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to find out about good restaurants",
+      "de": [
+        "gute Restaurants herausfinden"
+      ],
+      "deRaw": "gute Restaurants herausfinden",
+      "exampleSb": null,
+      "cf": "find out about good restaurants",
+      "forms": [
+        "to find out about good restaurants",
+        "find out about good restaurants"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-find-information-about-the-best-beaches",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to find information about the best beaches",
+      "de": [
+        "Informationen über die besten Strände finden"
+      ],
+      "deRaw": "Informationen über die besten Strände finden",
+      "exampleSb": null,
+      "cf": "find information about the best beaches",
+      "forms": [
+        "to find information about the best beaches",
+        "find information about the best beaches"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-look-at-a-map-of-the-area",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to look at a map of the area",
+      "de": [
+        "sich eine Karte der Gegend ansehen"
+      ],
+      "deRaw": "sich eine Karte der Gegend ansehen",
+      "exampleSb": null,
+      "cf": "look at a map of the area",
+      "forms": [
+        "to look at a map of the area",
+        "look at a map of the area"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-find-out-what-to-do-there",
+      "kind": "wordfile",
+      "theme": "Holiday Plans",
+      "en": "to find out what to do there",
+      "de": [
+        "herausfinden",
+        "was man dort machen kann"
+      ],
+      "deRaw": "herausfinden, was man dort machen kann",
+      "exampleSb": null,
+      "cf": "find out what to do there",
+      "forms": [
+        "to find out what to do there",
+        "find out what to do there"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.bug",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bug",
+      "de": [
+        "Insekt"
+      ],
+      "deRaw": "Insekt",
+      "exampleSb": "We built a hotel for all kinds of bugs.",
+      "cf": null,
+      "forms": [
+        "bug"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-prefer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to prefer",
+      "de": [
+        "bevorzugen"
+      ],
+      "deRaw": "bevorzugen",
+      "exampleSb": "I like bananas, but I prefer apples.",
+      "cf": "prefer",
+      "forms": [
+        "to prefer",
+        "prefer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.official-language",
+      "kind": "phrase",
+      "theme": null,
+      "en": "official language",
+      "de": [
+        "Amtssprache"
+      ],
+      "deRaw": "Amtssprache",
+      "exampleSb": "The official language in Botswana is English.",
+      "cf": null,
+      "forms": [
+        "official language"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.balcony",
+      "kind": "phrase",
+      "theme": null,
+      "en": "balcony",
+      "de": [
+        "Balkon"
+      ],
+      "deRaw": "Balkon",
+      "exampleSb": "I saw a man on the balcony next to our room.",
+      "cf": null,
+      "forms": [
+        "balcony"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.crime",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crime",
+      "de": [
+        "Verbrechen"
+      ],
+      "deRaw": "Verbrechen",
+      "exampleSb": "Killing leopards is a crime.",
+      "cf": null,
+      "forms": [
+        "crime"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-dig",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to dig",
+      "de": [
+        "graben"
+      ],
+      "deRaw": "graben",
+      "exampleSb": "I'm going to dig for diamonds tomorrow.",
+      "cf": "dig",
+      "forms": [
+        "to dig",
+        "dig"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.shocked",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shocked",
+      "de": [
+        "schockiert"
+      ],
+      "deRaw": "schockiert",
+      "exampleSb": "I was really shocked when I saw the car crash.",
+      "cf": null,
+      "forms": [
+        "shocked"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.wild-animal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wild animal",
+      "de": [
+        "Wildtier"
+      ],
+      "deRaw": "Wildtier",
+      "exampleSb": "There are lots of wild animals in Botswana.",
+      "cf": null,
+      "forms": [
+        "wild animal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.wetland",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wetland",
+      "de": [
+        "Sumpfgebiet"
+      ],
+      "deRaw": "Sumpfgebiet",
+      "exampleSb": "The Okavango is a large wetland.",
+      "cf": null,
+      "forms": [
+        "wetland"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.otherwise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "otherwise",
+      "de": [
+        "andernfalls",
+        "sonst"
+      ],
+      "deRaw": "andernfalls, sonst",
+      "exampleSb": "We need to protect the leopards. Otherwise they'll die out.",
+      "cf": null,
+      "forms": [
+        "otherwise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.stuffed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "stuffed",
+      "de": [
+        "ausgestopft"
+      ],
+      "deRaw": "ausgestopft",
+      "exampleSb": "Stuffed baby crocodiles are an illegal wildlife souvenir.",
+      "cf": null,
+      "forms": [
+        "stuffed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.wildlife",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wildlife",
+      "de": [
+        "wilde Tierwelt"
+      ],
+      "deRaw": "wilde Tierwelt",
+      "exampleSb": "Tourists take about 50,000 illegal wildlife souvenirs back to Britain!",
+      "cf": null,
+      "forms": [
+        "wildlife"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.at-once",
+      "kind": "phrase",
+      "theme": null,
+      "en": "at once",
+      "de": [
+        "sofort"
+      ],
+      "deRaw": "sofort",
+      "exampleSb": "If you see him, tell me at once!",
+      "cf": null,
+      "forms": [
+        "at once"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.branch",
+      "kind": "phrase",
+      "theme": null,
+      "en": "branch",
+      "de": [
+        "Ast"
+      ],
+      "deRaw": "Ast",
+      "exampleSb": "Leopards like to climb trees and sleep on the branches.",
+      "cf": null,
+      "forms": [
+        "branch"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.by-the-way",
+      "kind": "phrase",
+      "theme": null,
+      "en": "by the way",
+      "de": [
+        "übrigens"
+      ],
+      "deRaw": "übrigens",
+      "exampleSb": "Oh, by the way, I was really glad to see you again.",
+      "cf": null,
+      "forms": [
+        "by the way"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.impolite",
+      "kind": "phrase",
+      "theme": null,
+      "en": "impolite",
+      "de": [
+        "unhöflich"
+      ],
+      "deRaw": "unhöflich",
+      "exampleSb": "I didn't say anything because I didn't want to be impolite.",
+      "cf": null,
+      "forms": [
+        "impolite"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.round-a-bend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "round a bend",
+      "de": [
+        "um eine Ecke",
+        "um eine Kurve"
+      ],
+      "deRaw": "um eine Ecke, um eine Kurve",
+      "exampleSb": "We followed the car and drove round a bend.",
+      "cf": null,
+      "forms": [
+        "round a bend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.bush",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bush",
+      "de": [
+        "Busch"
+      ],
+      "deRaw": "Busch",
+      "exampleSb": "There's a black car in the bushes over there.",
+      "cf": null,
+      "forms": [
+        "bush"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.cut",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cut",
+      "de": [
+        "Schnitt(-wunde)"
+      ],
+      "deRaw": "Schnitt(-wunde)",
+      "exampleSb": "The man had a cut on his head.",
+      "cf": null,
+      "forms": [
+        "cut"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-drive-off",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to drive off",
+      "de": [
+        "wegfahren"
+      ],
+      "deRaw": "wegfahren",
+      "exampleSb": "Suddenly, the black car drove off very fast.",
+      "cf": "drive off",
+      "forms": [
+        "to drive off",
+        "drive off"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.engine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "engine",
+      "de": [
+        "Motor"
+      ],
+      "deRaw": "Motor",
+      "exampleSb": "He stopped the car and switched the engine off.",
+      "cf": null,
+      "forms": [
+        "engine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.front-seat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "front seat",
+      "de": [
+        "Vordersitz"
+      ],
+      "deRaw": "Vordersitz",
+      "exampleSb": "I was sitting in the front seat of the big Land Rover.",
+      "cf": null,
+      "forms": [
+        "front seat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.park-ranger",
+      "kind": "phrase",
+      "theme": null,
+      "en": "park ranger",
+      "de": [
+        "Parkwächter/Parkwächterin"
+      ],
+      "deRaw": "Parkwächter/Parkwächterin",
+      "exampleSb": "Alex took out his walkie-talkie and called the park rangers.",
+      "cf": null,
+      "forms": [
+        "park ranger"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.sunburn",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sunburn",
+      "de": [
+        "Sonnenbrand"
+      ],
+      "deRaw": "Sonnenbrand",
+      "exampleSb": "Hippos stay under water because they're afraid of getting a sunburn.",
+      "cf": null,
+      "forms": [
+        "sunburn"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-turn-over",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to turn over",
+      "de": [
+        "(sich) überschlagen"
+      ],
+      "deRaw": "(sich) überschlagen",
+      "exampleSb": "The Land Rover turned over and landed on its roof.",
+      "cf": "turn over",
+      "forms": [
+        "to turn over",
+        "turn over"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.to-whisper",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to whisper",
+      "de": [
+        "flüstern"
+      ],
+      "deRaw": "flüstern",
+      "exampleSb": "He whispered the secret in my ear.",
+      "cf": "whisper",
+      "forms": [
+        "to whisper",
+        "whisper"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u14.w.crash",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crash",
+      "de": [
+        "Unfall",
+        "Zusammenstoß"
+      ],
+      "deRaw": "Unfall, Zusammenstoß",
+      "exampleSb": "There was a car crash on May Street.",
+      "cf": null,
+      "forms": [
+        "crash"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

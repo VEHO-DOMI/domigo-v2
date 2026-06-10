@@ -1,0 +1,932 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 3,
+  "slug": "g3-u03",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u03.w.to-get-to",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to get to (the airport)",
+      "de": [
+        "zum (Flughafen) kommen"
+      ],
+      "deRaw": "zum (Flughafen) kommen",
+      "exampleSb": null,
+      "cf": "get to",
+      "forms": [
+        "to get to",
+        "get to",
+        "the airport"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-take-off",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to take off",
+      "de": [
+        "abheben",
+        "starten"
+      ],
+      "deRaw": "abheben, starten",
+      "exampleSb": null,
+      "cf": "take off",
+      "forms": [
+        "to take off",
+        "take off"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-get-on",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to get on (a plane)",
+      "de": [
+        "in (ein Flugzeug) einsteigen"
+      ],
+      "deRaw": "in (ein Flugzeug) einsteigen",
+      "exampleSb": null,
+      "cf": "get on",
+      "forms": [
+        "to get on",
+        "get on",
+        "a plane"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-fly",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to fly (back)",
+      "de": [
+        "(zurück-)fliegen"
+      ],
+      "deRaw": "(zurück-)fliegen",
+      "exampleSb": null,
+      "cf": "fly",
+      "forms": [
+        "to fly",
+        "fly",
+        "back"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-get-off",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to get off (the plane)",
+      "de": [
+        "aus (dem Flugzeug) aussteigen"
+      ],
+      "deRaw": "aus (dem Flugzeug) aussteigen",
+      "exampleSb": null,
+      "cf": "get off",
+      "forms": [
+        "to get off",
+        "get off",
+        "the plane"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-suffer-from-altitude-sickness",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to suffer from altitude sickness",
+      "de": [
+        "an Höhenkrankheit leiden"
+      ],
+      "deRaw": "an Höhenkrankheit leiden",
+      "exampleSb": null,
+      "cf": "suffer from altitude sickness",
+      "forms": [
+        "to suffer from altitude sickness",
+        "suffer from altitude sickness"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-land",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to land",
+      "de": [
+        "landen"
+      ],
+      "deRaw": "landen",
+      "exampleSb": null,
+      "cf": "land",
+      "forms": [
+        "to land",
+        "land"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.it-takes",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "it takes (an hour)",
+      "de": [
+        "es dauert (eine Stunde)"
+      ],
+      "deRaw": "es dauert (eine Stunde)",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "it takes",
+        "an hour"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-get-into",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to get into (a car)",
+      "de": [
+        "in (ein Auto) einsteigen"
+      ],
+      "deRaw": "in (ein Auto) einsteigen",
+      "exampleSb": null,
+      "cf": "get into",
+      "forms": [
+        "to get into",
+        "get into",
+        "a car"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-rent",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to rent (a car)",
+      "de": [
+        "(ein Auto) mieten"
+      ],
+      "deRaw": "(ein Auto) mieten",
+      "exampleSb": null,
+      "cf": "rent",
+      "forms": [
+        "to rent",
+        "rent",
+        "a car"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-get-out-of",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to get out of (the car)",
+      "de": [
+        "aus (dem Auto) aussteigen"
+      ],
+      "deRaw": "aus (dem Auto) aussteigen",
+      "exampleSb": null,
+      "cf": "get out of",
+      "forms": [
+        "to get out of",
+        "get out of",
+        "the car"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-drive",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to drive (home)",
+      "de": [
+        "(nach Hause) fahren"
+      ],
+      "deRaw": "(nach Hause) fahren",
+      "exampleSb": null,
+      "cf": "drive",
+      "forms": [
+        "to drive",
+        "drive",
+        "home"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-set-off",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to set off (for work)",
+      "de": [
+        "(zur Arbeit) aufbrechen"
+      ],
+      "deRaw": "(zur Arbeit) aufbrechen",
+      "exampleSb": null,
+      "cf": "set off",
+      "forms": [
+        "to set off",
+        "set off",
+        "for work"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-work-on",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to work on (a blog)",
+      "de": [
+        "an (einem Blog) arbeiten"
+      ],
+      "deRaw": "an (einem Blog) arbeiten",
+      "exampleSb": null,
+      "cf": "work on",
+      "forms": [
+        "to work on",
+        "work on",
+        "a blog"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-get-close-to",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to get close to (nature)",
+      "de": [
+        "(der Natur) nahe kommen"
+      ],
+      "deRaw": "(der Natur) nahe kommen",
+      "exampleSb": null,
+      "cf": "get close to",
+      "forms": [
+        "to get close to",
+        "get close to",
+        "nature"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-sleep-in-a-tent",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to sleep in a tent",
+      "de": [
+        "in einem Zelt schlafen"
+      ],
+      "deRaw": "in einem Zelt schlafen",
+      "exampleSb": null,
+      "cf": "sleep in a tent",
+      "forms": [
+        "to sleep in a tent",
+        "sleep in a tent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-escape",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to escape (the midday heat)",
+      "de": [
+        "(der Mittagshitze) entkommen"
+      ],
+      "deRaw": "(der Mittagshitze) entkommen",
+      "exampleSb": null,
+      "cf": "escape",
+      "forms": [
+        "to escape",
+        "escape",
+        "the midday heat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-cross",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to cross (a river)",
+      "de": [
+        "(einen Fluss) überqueren"
+      ],
+      "deRaw": "(einen Fluss) überqueren",
+      "exampleSb": null,
+      "cf": "cross",
+      "forms": [
+        "to cross",
+        "cross",
+        "a river"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-meet-up-with",
+      "kind": "wordfile",
+      "theme": "Travelling",
+      "en": "to meet up with (people)",
+      "de": [
+        "sich mit (Leuten) treffen"
+      ],
+      "deRaw": "sich mit (Leuten) treffen",
+      "exampleSb": null,
+      "cf": "meet up with",
+      "forms": [
+        "to meet up with",
+        "meet up with",
+        "people"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-become",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to become",
+      "de": [
+        "werden"
+      ],
+      "deRaw": "werden",
+      "exampleSb": "His feet hurt so badly that walking became difficult.",
+      "cf": "become",
+      "forms": [
+        "to become",
+        "become"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.curious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "curious",
+      "de": [
+        "neugierig"
+      ],
+      "deRaw": "neugierig",
+      "exampleSb": "Reading about all these places makes me curious.",
+      "cf": null,
+      "forms": [
+        "curious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.decision",
+      "kind": "phrase",
+      "theme": null,
+      "en": "decision",
+      "de": [
+        "Entscheidung"
+      ],
+      "deRaw": "Entscheidung",
+      "exampleSb": "Starting to travel was the best decision in his life.",
+      "cf": null,
+      "forms": [
+        "decision"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.experience",
+      "kind": "phrase",
+      "theme": null,
+      "en": "experience",
+      "de": [
+        "Erfahrung"
+      ],
+      "deRaw": "Erfahrung",
+      "exampleSb": "And in China he had a very painful experience.",
+      "cf": null,
+      "forms": [
+        "experience"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-explore",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to explore",
+      "de": [
+        "erkunden",
+        "erforschen"
+      ],
+      "deRaw": "erkunden, erforschen",
+      "exampleSb": "He started to explore the streets of London.",
+      "cf": "explore",
+      "forms": [
+        "to explore",
+        "explore"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.journey",
+      "kind": "phrase",
+      "theme": null,
+      "en": "journey",
+      "de": [
+        "Reise"
+      ],
+      "deRaw": "Reise",
+      "exampleSb": "His first journey took him to France.",
+      "cf": null,
+      "forms": [
+        "journey"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.on-foot",
+      "kind": "phrase",
+      "theme": null,
+      "en": "on foot",
+      "de": [
+        "zu Fuß"
+      ],
+      "deRaw": "zu Fuß",
+      "exampleSb": "He crossed Zanzibar and Tasmania on foot.",
+      "cf": null,
+      "forms": [
+        "on foot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.painful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "painful",
+      "de": [
+        "schmerzhaft"
+      ],
+      "deRaw": "schmerzhaft",
+      "exampleSb": "Getting attacked by wasps can be very painful.",
+      "cf": null,
+      "forms": [
+        "painful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-reach",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to reach",
+      "de": [
+        "(er-)reichen"
+      ],
+      "deRaw": "(er-)reichen",
+      "exampleSb": "He became the first blind person to reach the top of Mount Vesuvius.",
+      "cf": "reach",
+      "forms": [
+        "to reach",
+        "reach"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-sail",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to sail",
+      "de": [
+        "segeln"
+      ],
+      "deRaw": "segeln",
+      "exampleSb": "He got on board of a ship to sail across the Atlantic.",
+      "cf": "sail",
+      "forms": [
+        "to sail",
+        "sail"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.traveller",
+      "kind": "phrase",
+      "theme": null,
+      "en": "traveller",
+      "de": [
+        "Reisender/Reisende"
+      ],
+      "deRaw": "Reisender/Reisende",
+      "exampleSb": "James Holman was a record traveller.",
+      "cf": null,
+      "forms": [
+        "traveller"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.lonely",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lonely",
+      "de": [
+        "einsam"
+      ],
+      "deRaw": "einsam",
+      "exampleSb": "Holman found his first journey to France lonely.",
+      "cf": null,
+      "forms": [
+        "lonely"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-criticise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to criticise",
+      "de": [
+        "kritisieren"
+      ],
+      "deRaw": "kritisieren",
+      "exampleSb": "She criticised the Europeans.",
+      "cf": "criticise",
+      "forms": [
+        "to criticise",
+        "criticise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.explorer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "explorer",
+      "de": [
+        "Entdecker/Entdeckerin"
+      ],
+      "deRaw": "Entdecker/Entdeckerin",
+      "exampleSb": "She was a great female explorer in the 19th century.",
+      "cf": null,
+      "forms": [
+        "explorer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.even-though",
+      "kind": "phrase",
+      "theme": null,
+      "en": "even though",
+      "de": [
+        "obwohl"
+      ],
+      "deRaw": "obwohl",
+      "exampleSb": "Even though my bike is old, I still like it.",
+      "cf": null,
+      "forms": [
+        "even though"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.hut",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hut",
+      "de": [
+        "Hütte"
+      ],
+      "deRaw": "Hütte",
+      "exampleSb": "She lived with the people in their huts.",
+      "cf": null,
+      "forms": [
+        "hut"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-turn-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to turn out",
+      "de": [
+        "sich herausstellen"
+      ],
+      "deRaw": "sich herausstellen",
+      "exampleSb": "The Fang turned out to be quite friendly.",
+      "cf": "turn out",
+      "forms": [
+        "to turn out",
+        "turn out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.wilderness",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wilderness",
+      "de": [
+        "Wildnis"
+      ],
+      "deRaw": "Wildnis",
+      "exampleSb": "In the wilderness she looked like a lady.",
+      "cf": null,
+      "forms": [
+        "wilderness"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-behave",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to behave",
+      "de": [
+        "verhalten"
+      ],
+      "deRaw": "verhalten",
+      "exampleSb": "You should behave well in other countries.",
+      "cf": "behave",
+      "forms": [
+        "to behave",
+        "behave"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.all-in-all",
+      "kind": "phrase",
+      "theme": null,
+      "en": "all in all",
+      "de": [
+        "alles in allem"
+      ],
+      "deRaw": "alles in allem",
+      "exampleSb": "All in all, we had a great time.",
+      "cf": null,
+      "forms": [
+        "all in all"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.awake",
+      "kind": "phrase",
+      "theme": null,
+      "en": "awake",
+      "de": [
+        "wach"
+      ],
+      "deRaw": "wach",
+      "exampleSb": "By the time we got back, we felt really awake.",
+      "cf": null,
+      "forms": [
+        "awake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.pretty",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pretty",
+      "de": [
+        "hier: ziemlich"
+      ],
+      "deRaw": "hier: ziemlich",
+      "exampleSb": "The lake was pretty cold.",
+      "cf": null,
+      "forms": [
+        "pretty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.unfortunately",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unfortunately",
+      "de": [
+        "leider"
+      ],
+      "deRaw": "leider",
+      "exampleSb": "Unfortunately, all good things come to an end.",
+      "cf": null,
+      "forms": [
+        "unfortunately"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.departure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "departure",
+      "de": [
+        "Abflug",
+        "Abfahrt"
+      ],
+      "deRaw": "Abflug; Abfahrt",
+      "exampleSb": "The check-in is two hours before departure.",
+      "cf": null,
+      "forms": [
+        "departure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.flight",
+      "kind": "phrase",
+      "theme": null,
+      "en": "flight",
+      "de": [
+        "Flug"
+      ],
+      "deRaw": "Flug",
+      "exampleSb": "There's another flight to London at 3 p.m.",
+      "cf": null,
+      "forms": [
+        "flight"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-make-a-reservation",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to make a reservation",
+      "de": [
+        "eine Reservierung vornehmen"
+      ],
+      "deRaw": "eine Reservierung vornehmen",
+      "exampleSb": "I want to make a reservation for dinner tonight.",
+      "cf": "make a reservation",
+      "forms": [
+        "to make a reservation",
+        "make a reservation"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-note",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to note",
+      "de": [
+        "beachten",
+        "feststellen"
+      ],
+      "deRaw": "beachten, feststellen",
+      "exampleSb": "Please note that you have to check in early.",
+      "cf": "note",
+      "forms": [
+        "to note",
+        "note"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-fix-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to fix sth.",
+      "de": [
+        "etw. beheben",
+        "reparieren"
+      ],
+      "deRaw": "etw. beheben, reparieren",
+      "exampleSb": "It took him exactly one minute to fix the problem.",
+      "cf": "fix sth.",
+      "forms": [
+        "to fix sth.",
+        "fix sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.thirsty",
+      "kind": "phrase",
+      "theme": null,
+      "en": "thirsty",
+      "de": [
+        "durstig"
+      ],
+      "deRaw": "durstig",
+      "exampleSb": "I felt really thirsty so I asked for a glass of water.",
+      "cf": null,
+      "forms": [
+        "thirsty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.impossible",
+      "kind": "phrase",
+      "theme": null,
+      "en": "impossible",
+      "de": [
+        "unmöglich"
+      ],
+      "deRaw": "unmöglich",
+      "exampleSb": "It was impossible to get some sleep.",
+      "cf": null,
+      "forms": [
+        "impossible"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.recently",
+      "kind": "phrase",
+      "theme": null,
+      "en": "recently",
+      "de": [
+        "vor Kurzem",
+        "letztens"
+      ],
+      "deRaw": "vor Kurzem, letztens",
+      "exampleSb": "Your family went for a short holiday recently.",
+      "cf": null,
+      "forms": [
+        "recently"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-get-lost",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to get lost",
+      "de": [
+        "sich verirren"
+      ],
+      "deRaw": "sich verirren",
+      "exampleSb": "We got lost on the way.",
+      "cf": "get lost",
+      "forms": [
+        "to get lost",
+        "get lost"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-get-to-know-sb-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to get to know sb./sth.",
+      "de": [
+        "jdn./etw. näher kennenlernen"
+      ],
+      "deRaw": "jdn./etw. näher kennenlernen",
+      "exampleSb": "I want to get to know the countryside.",
+      "cf": "get to know sb./sth.",
+      "forms": [
+        "to get to know sb./sth.",
+        "get to know sb./sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-promise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to promise",
+      "de": [
+        "versprechen"
+      ],
+      "deRaw": "versprechen",
+      "exampleSb": "I'll call you tomorrow, I promise.",
+      "cf": "promise",
+      "forms": [
+        "to promise",
+        "promise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u03.w.to-recommend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to recommend",
+      "de": [
+        "empfehlen"
+      ],
+      "deRaw": "empfehlen",
+      "exampleSb": "I can recommend some very interesting books.",
+      "cf": "recommend",
+      "forms": [
+        "to recommend",
+        "recommend"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

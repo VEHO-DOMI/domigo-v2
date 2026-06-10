@@ -1,0 +1,883 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 13,
+  "slug": "g2-u13",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u13.w.snowy",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "snowy",
+      "de": [
+        "schneereich",
+        "verschneit"
+      ],
+      "deRaw": "schneereich, verschneit",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "snowy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.thunderstorm",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "thunderstorm",
+      "de": [
+        "Gewitter"
+      ],
+      "deRaw": "Gewitter",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "thunderstorm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.cloudy",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "cloudy",
+      "de": [
+        "bewölkt"
+      ],
+      "deRaw": "bewölkt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cloudy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.windy",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "windy",
+      "de": [
+        "windig"
+      ],
+      "deRaw": "windig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "windy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.rainy",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "rainy",
+      "de": [
+        "regnerisch"
+      ],
+      "deRaw": "regnerisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rainy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.sunny",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "sunny",
+      "de": [
+        "sonnig"
+      ],
+      "deRaw": "sonnig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sunny"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.foggy",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "foggy",
+      "de": [
+        "neblig"
+      ],
+      "deRaw": "neblig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "foggy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.hot",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "hot",
+      "de": [
+        "heiß"
+      ],
+      "deRaw": "heiß",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.cold",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "cold",
+      "de": [
+        "kalt"
+      ],
+      "deRaw": "kalt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cold"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.weather-presenter-meteorologist",
+      "kind": "wordfile",
+      "theme": "Weather Forecast",
+      "en": "weather presenter / meteorologist",
+      "de": [
+        "Wettermoderator/in / Meteorologe/Meteorologin"
+      ],
+      "deRaw": "Wettermoderator/in / Meteorologe/Meteorologin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "weather presenter / meteorologist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.coast",
+      "kind": "phrase",
+      "theme": null,
+      "en": "coast",
+      "de": [
+        "Küste"
+      ],
+      "deRaw": "Küste",
+      "exampleSb": "It's nice and dry at the coast.",
+      "cf": null,
+      "forms": [
+        "coast"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-continue",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to continue",
+      "de": [
+        "andauern",
+        "weitergehen"
+      ],
+      "deRaw": "andauern; weitergehen",
+      "exampleSb": "The rain will continue until tomorrow.",
+      "cf": "continue",
+      "forms": [
+        "to continue",
+        "continue"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.cool",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cool",
+      "de": [
+        "kühl"
+      ],
+      "deRaw": "kühl",
+      "exampleSb": "It's warm during the day, but quite cool at night.",
+      "cf": null,
+      "forms": [
+        "cool"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.degree",
+      "kind": "phrase",
+      "theme": null,
+      "en": "degree",
+      "de": [
+        "Grad (°)"
+      ],
+      "deRaw": "Grad (°)",
+      "exampleSb": "It will be 104 degrees Fahrenheit in San Diego.",
+      "cf": null,
+      "forms": [
+        "degree"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.dry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dry",
+      "de": [
+        "trocken"
+      ],
+      "deRaw": "trocken",
+      "exampleSb": "We had very dry weather for our holidays last year.",
+      "cf": null,
+      "forms": [
+        "dry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.formula",
+      "kind": "phrase",
+      "theme": null,
+      "en": "formula",
+      "de": [
+        "Formel"
+      ],
+      "deRaw": "Formel",
+      "exampleSb": "The formula is (°F - 32) : 1.8.",
+      "cf": null,
+      "forms": [
+        "formula"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-give-way",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to give way",
+      "de": [
+        "ausweichen",
+        "Platz machen"
+      ],
+      "deRaw": "ausweichen, Platz machen",
+      "exampleSb": "Rain in the morning will give way to sun later on.",
+      "cf": "give way",
+      "forms": [
+        "to give way",
+        "give way"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.scale",
+      "kind": "phrase",
+      "theme": null,
+      "en": "scale",
+      "de": [
+        "Skala",
+        "Maßstab"
+      ],
+      "deRaw": "Skala, Maßstab",
+      "exampleSb": "On a scale from 1 to 10: How good was your day?",
+      "cf": null,
+      "forms": [
+        "scale"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.sunshine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sunshine",
+      "de": [
+        "Sonnenschein"
+      ],
+      "deRaw": "Sonnenschein",
+      "exampleSb": "There will be lots of sunshine tomorrow. Perfect weather for a picnic.",
+      "cf": null,
+      "forms": [
+        "sunshine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.temperature",
+      "kind": "phrase",
+      "theme": null,
+      "en": "temperature",
+      "de": [
+        "Temperatur"
+      ],
+      "deRaw": "Temperatur",
+      "exampleSb": "The highest temperature ever recorded in the USA was 134°F.",
+      "cf": null,
+      "forms": [
+        "temperature"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-clear-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to clear up",
+      "de": [
+        "hier: aufheitern"
+      ],
+      "deRaw": "hier: aufheitern",
+      "exampleSb": "The bad weather will clear up by this evening.",
+      "cf": "clear up",
+      "forms": [
+        "to clear up",
+        "clear up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.fog",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fog",
+      "de": [
+        "Nebel"
+      ],
+      "deRaw": "Nebel",
+      "exampleSb": "Heavy fog in the South will clear up later.",
+      "cf": null,
+      "forms": [
+        "fog"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.forecast",
+      "kind": "phrase",
+      "theme": null,
+      "en": "forecast",
+      "de": [
+        "Vorhersage"
+      ],
+      "deRaw": "Vorhersage",
+      "exampleSb": "The forecast is very good for tomorrow.",
+      "cf": null,
+      "forms": [
+        "forecast"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.hope",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hope",
+      "de": [
+        "Hoffnung"
+      ],
+      "deRaw": "Hoffnung",
+      "exampleSb": "Don't give up. There's still hope!",
+      "cf": null,
+      "forms": [
+        "hope"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.outlook",
+      "kind": "phrase",
+      "theme": null,
+      "en": "outlook",
+      "de": [
+        "Aussicht",
+        "Ausblick"
+      ],
+      "deRaw": "Aussicht, Ausblick",
+      "exampleSb": "The outlook for the weekend is warm and sunny.",
+      "cf": null,
+      "forms": [
+        "outlook"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.small-talk",
+      "kind": "phrase",
+      "theme": null,
+      "en": "small talk",
+      "de": [
+        "Small Talk",
+        "Plauderei"
+      ],
+      "deRaw": "Small Talk, Plauderei",
+      "exampleSb": "There's lots of small talk about the weather.",
+      "cf": null,
+      "forms": [
+        "small talk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.thick",
+      "kind": "phrase",
+      "theme": null,
+      "en": "thick",
+      "de": [
+        "dicht",
+        "dick"
+      ],
+      "deRaw": "dicht; dick",
+      "exampleSb": "Watch out! There's thick fog here.",
+      "cf": null,
+      "forms": [
+        "thick"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.towards",
+      "kind": "phrase",
+      "theme": null,
+      "en": "towards",
+      "de": [
+        "in Richtung",
+        "auf ... zu"
+      ],
+      "deRaw": "in Richtung, auf ... zu",
+      "exampleSb": "It will be sunny towards the end of the week.",
+      "cf": null,
+      "forms": [
+        "towards"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.have-a-nice-day",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Have a nice day!",
+      "de": [
+        "Einen schönen Tag noch!"
+      ],
+      "deRaw": "Einen schönen Tag noch!",
+      "exampleSb": "Have a nice day!",
+      "cf": null,
+      "forms": [
+        "Have a nice day!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-make-sure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to make sure",
+      "de": [
+        "sich versichern",
+        "darauf achten"
+      ],
+      "deRaw": "sich versichern, darauf achten",
+      "exampleSb": "Make sure you take your umbrella! It's raining.",
+      "cf": "make sure",
+      "forms": [
+        "to make sure",
+        "make sure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-rise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to rise",
+      "de": [
+        "(an-)steigen"
+      ],
+      "deRaw": "(an-)steigen",
+      "exampleSb": "The temperatures will rise to 20°C.",
+      "cf": "rise",
+      "forms": [
+        "to rise",
+        "rise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.axe",
+      "kind": "phrase",
+      "theme": null,
+      "en": "axe",
+      "de": [
+        "Axt"
+      ],
+      "deRaw": "Axt",
+      "exampleSb": "The old man put down his axe.",
+      "cf": null,
+      "forms": [
+        "axe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.bright",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bright",
+      "de": [
+        "hell"
+      ],
+      "deRaw": "hell",
+      "exampleSb": "There was a bright flash of light.",
+      "cf": null,
+      "forms": [
+        "bright"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.flash-of-light",
+      "kind": "phrase",
+      "theme": null,
+      "en": "flash of light",
+      "de": [
+        "Lichtblitz"
+      ],
+      "deRaw": "Lichtblitz",
+      "exampleSb": "Suddenly, there was a flash of light in the sky.",
+      "cf": null,
+      "forms": [
+        "flash of light"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-shine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to shine",
+      "de": [
+        "scheinen"
+      ],
+      "deRaw": "scheinen",
+      "exampleSb": "I'll shine my light all over the world.",
+      "cf": "shine",
+      "forms": [
+        "to shine",
+        "shine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.average",
+      "kind": "phrase",
+      "theme": null,
+      "en": "average",
+      "de": [
+        "durchschnittlich"
+      ],
+      "deRaw": "durchschnittlich",
+      "exampleSb": "The average rainfall in Death Valley is 2 inches.",
+      "cf": null,
+      "forms": [
+        "average"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.below",
+      "kind": "phrase",
+      "theme": null,
+      "en": "below",
+      "de": [
+        "unter(-halb)",
+        "unten"
+      ],
+      "deRaw": "unter(-halb); unten",
+      "exampleSb": "The temperature will be below 0°C tomorrow.",
+      "cf": null,
+      "forms": [
+        "below"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.generally",
+      "kind": "phrase",
+      "theme": null,
+      "en": "generally",
+      "de": [
+        "im Allgemeinen"
+      ],
+      "deRaw": "im Allgemeinen",
+      "exampleSb": "Death Valley is generally sunny, dry and clear.",
+      "cf": null,
+      "forms": [
+        "generally"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.inch",
+      "kind": "phrase",
+      "theme": null,
+      "en": "inch (pl inches)",
+      "de": [
+        "Zoll"
+      ],
+      "deRaw": "Zoll",
+      "exampleSb": "One inch is 2.54 centimetres.",
+      "cf": null,
+      "forms": [
+        "inch",
+        "inches"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.mild",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mild",
+      "de": [
+        "mild"
+      ],
+      "deRaw": "mild",
+      "exampleSb": "In Death Valley, the winters are mild.",
+      "cf": null,
+      "forms": [
+        "mild"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.mile",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mile",
+      "de": [
+        "Meile (= 1,6 Kilometer)"
+      ],
+      "deRaw": "Meile (= 1,6 Kilometer)",
+      "exampleSb": "Seathwaite is one mile away from Seatoller.",
+      "cf": null,
+      "forms": [
+        "mile"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.rainfall",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rainfall",
+      "de": [
+        "Niederschlag"
+      ],
+      "deRaw": "Niederschlag",
+      "exampleSb": "The average rainfall each year is 120 inches.",
+      "cf": null,
+      "forms": [
+        "rainfall"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-record",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to record",
+      "de": [
+        "aufzeichnen"
+      ],
+      "deRaw": "aufzeichnen",
+      "exampleSb": "It was the lowest temperature ever recorded.",
+      "cf": "record",
+      "forms": [
+        "to record",
+        "record"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.sea-level",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sea level",
+      "de": [
+        "Meeresspiegel"
+      ],
+      "deRaw": "Meeresspiegel",
+      "exampleSb": "Death Valley is 282 feet below sea level.",
+      "cf": null,
+      "forms": [
+        "sea level"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.throughout-the-year",
+      "kind": "phrase",
+      "theme": null,
+      "en": "throughout the year",
+      "de": [
+        "das ganze Jahr (über)"
+      ],
+      "deRaw": "das ganze Jahr (über)",
+      "exampleSb": "It's usually sunny throughout the year.",
+      "cf": null,
+      "forms": [
+        "throughout the year"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.western",
+      "kind": "phrase",
+      "theme": null,
+      "en": "western",
+      "de": [
+        "westlich"
+      ],
+      "deRaw": "westlich",
+      "exampleSb": "Death Valley is the lowest point in the western world.",
+      "cf": null,
+      "forms": [
+        "western"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.wet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wet",
+      "de": [
+        "nass"
+      ],
+      "deRaw": "nass",
+      "exampleSb": "All my clothes are wet because of the rain.",
+      "cf": null,
+      "forms": [
+        "wet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.heavy-rain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "heavy rain",
+      "de": [
+        "starker Regen"
+      ],
+      "deRaw": "starker Regen",
+      "exampleSb": "It got colder and then the heavy rain came.",
+      "cf": null,
+      "forms": [
+        "heavy rain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.tan",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tan",
+      "de": [
+        "(Sonnen-)Bräune"
+      ],
+      "deRaw": "(Sonnen-)Bräune",
+      "exampleSb": "Where did you go on holiday? You have a great tan.",
+      "cf": null,
+      "forms": [
+        "tan"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.binoculars",
+      "kind": "phrase",
+      "theme": null,
+      "en": "binoculars",
+      "de": [
+        "Fernglas"
+      ],
+      "deRaw": "Fernglas",
+      "exampleSb": "I can watch birds from far away with my binoculars.",
+      "cf": null,
+      "forms": [
+        "binoculars"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.career",
+      "kind": "phrase",
+      "theme": null,
+      "en": "career",
+      "de": [
+        "Karriere"
+      ],
+      "deRaw": "Karriere",
+      "exampleSb": "She started her career as a meteorologist in 2015.",
+      "cf": null,
+      "forms": [
+        "career"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-earn",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to earn",
+      "de": [
+        "(Geld) verdienen"
+      ],
+      "deRaw": "(Geld) verdienen",
+      "exampleSb": "Most people don't earn money with their hobby.",
+      "cf": "earn",
+      "forms": [
+        "to earn",
+        "earn"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u13.w.to-be-mad-about-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be mad about sth.",
+      "de": [
+        "für etw. schwärmen"
+      ],
+      "deRaw": "für etw. schwärmen",
+      "exampleSb": "My dad's mad about birdwatching.",
+      "cf": "be mad about sth.",
+      "forms": [
+        "to be mad about sth.",
+        "be mad about sth."
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

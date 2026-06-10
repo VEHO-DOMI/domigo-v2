@@ -1,0 +1,918 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 11,
+  "slug": "g2-u11",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u11.w.wardrobe",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "wardrobe",
+      "de": [
+        "Kleiderschrank"
+      ],
+      "deRaw": "Kleiderschrank",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "wardrobe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.bed",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "bed",
+      "de": [
+        "Bett"
+      ],
+      "deRaw": "Bett",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.bedside-table",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "bedside table",
+      "de": [
+        "Nachttisch"
+      ],
+      "deRaw": "Nachttisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bedside table"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.carpet",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "carpet",
+      "de": [
+        "Teppich(boden)"
+      ],
+      "deRaw": "Teppich(boden)",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "carpet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.fridge",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "fridge",
+      "de": [
+        "Kühlschrank"
+      ],
+      "deRaw": "Kühlschrank",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fridge"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.cooker",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "cooker",
+      "de": [
+        "Herd"
+      ],
+      "deRaw": "Herd",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cooker"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.curtain",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "curtain",
+      "de": [
+        "Vorhang"
+      ],
+      "deRaw": "Vorhang",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "curtain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.sink",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "sink",
+      "de": [
+        "Spülbecken"
+      ],
+      "deRaw": "Spülbecken",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sink"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.cupboard",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "cupboard",
+      "de": [
+        "Schrank"
+      ],
+      "deRaw": "Schrank",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cupboard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.table",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "table",
+      "de": [
+        "Tisch"
+      ],
+      "deRaw": "Tisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "table"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.chair",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "chair",
+      "de": [
+        "Stuhl"
+      ],
+      "deRaw": "Stuhl",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chair"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.sofa",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "sofa",
+      "de": [
+        "Sofa"
+      ],
+      "deRaw": "Sofa",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sofa"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.armchair",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "armchair",
+      "de": [
+        "Sessel"
+      ],
+      "deRaw": "Sessel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "armchair"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.lamp",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "lamp",
+      "de": [
+        "Lampe"
+      ],
+      "deRaw": "Lampe",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "lamp"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.radiator",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "radiator",
+      "de": [
+        "Heizkörper"
+      ],
+      "deRaw": "Heizkörper",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "radiator"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.rug",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "rug",
+      "de": [
+        "Teppich"
+      ],
+      "deRaw": "Teppich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rug"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.roof",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "roof",
+      "de": [
+        "Dach"
+      ],
+      "deRaw": "Dach",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "roof"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.wall",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "wall",
+      "de": [
+        "Wand",
+        "Mauer"
+      ],
+      "deRaw": "Wand, Mauer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "wall"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.window",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "window",
+      "de": [
+        "Fenster"
+      ],
+      "deRaw": "Fenster",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "window"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.staircase",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "staircase",
+      "de": [
+        "Treppe"
+      ],
+      "deRaw": "Treppe",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "staircase"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.cellar",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "cellar",
+      "de": [
+        "Keller"
+      ],
+      "deRaw": "Keller",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cellar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.trailer",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "trailer (American English)",
+      "de": [
+        "Wohnwagen"
+      ],
+      "deRaw": "Wohnwagen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "trailer",
+        "American English"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.tree-house",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "tree house",
+      "de": [
+        "Baumhaus"
+      ],
+      "deRaw": "Baumhaus",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tree house"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.stilts",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "stilts",
+      "de": [
+        "Stelzen"
+      ],
+      "deRaw": "Stelzen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "stilts"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.reed",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "reed",
+      "de": [
+        "Schilf"
+      ],
+      "deRaw": "Schilf",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "reed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.island",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "island",
+      "de": [
+        "Insel"
+      ],
+      "deRaw": "Insel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "island"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.ground",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "ground",
+      "de": [
+        "Boden"
+      ],
+      "deRaw": "Boden",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ground"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.ours",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "ours",
+      "de": [
+        "unsere/r/s"
+      ],
+      "deRaw": "unsere/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ours"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.theirs",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "theirs",
+      "de": [
+        "ihre/r/s"
+      ],
+      "deRaw": "ihre/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "theirs"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.mine",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "mine",
+      "de": [
+        "meine/r/s"
+      ],
+      "deRaw": "meine/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.hers",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "hers",
+      "de": [
+        "ihre/r/s (Singular)"
+      ],
+      "deRaw": "ihre/r/s (Singular)",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hers"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.his",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "his",
+      "de": [
+        "seine/r/s"
+      ],
+      "deRaw": "seine/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "his"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.yours",
+      "kind": "wordfile",
+      "theme": "Inside a Room / Houses and Homes / Possessive Pronouns",
+      "en": "yours",
+      "de": [
+        "deine/r/s",
+        "Ihre/r/s"
+      ],
+      "deRaw": "deine/r/s; Ihre/r/s",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "yours"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.furniture",
+      "kind": "phrase",
+      "theme": null,
+      "en": "furniture",
+      "de": [
+        "Möbel"
+      ],
+      "deRaw": "Möbel",
+      "exampleSb": "In our house, there's lots of furniture.",
+      "cf": null,
+      "forms": [
+        "furniture"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.whose",
+      "kind": "phrase",
+      "theme": null,
+      "en": "whose",
+      "de": [
+        "wessen"
+      ],
+      "deRaw": "wessen",
+      "exampleSb": "Whose pen is this?",
+      "cf": null,
+      "forms": [
+        "whose"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.american",
+      "kind": "phrase",
+      "theme": null,
+      "en": "American",
+      "de": [
+        "Amerikaner/in",
+        "amerikanisch"
+      ],
+      "deRaw": "Amerikaner/in; amerikanisch",
+      "exampleSb": "My mom is American.",
+      "cf": null,
+      "forms": [
+        "American"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.cellar-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cellar",
+      "de": [
+        "Keller"
+      ],
+      "deRaw": "Keller",
+      "exampleSb": "There's a big cellar underneath our house.",
+      "cf": null,
+      "forms": [
+        "cellar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.central-asia",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Central Asia",
+      "de": [
+        "Zentralasien"
+      ],
+      "deRaw": "Zentralasien",
+      "exampleSb": "The Mongolian people in Central Asia move their houses a lot.",
+      "cf": null,
+      "forms": [
+        "Central Asia"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.electricity",
+      "kind": "phrase",
+      "theme": null,
+      "en": "electricity",
+      "de": [
+        "Elektrizität"
+      ],
+      "deRaw": "Elektrizität",
+      "exampleSb": "The trailers can be connected to electricity and water.",
+      "cf": null,
+      "forms": [
+        "electricity"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.to-float",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to float",
+      "de": [
+        "treiben",
+        "schweben"
+      ],
+      "deRaw": "treiben; schweben",
+      "exampleSb": "Fifty islands of reed float on the water.",
+      "cf": "float",
+      "forms": [
+        "to float",
+        "float"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.moveable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "moveable",
+      "de": [
+        "beweglich"
+      ],
+      "deRaw": "beweglich",
+      "exampleSb": "The Mongolian people have moveable houses.",
+      "cf": null,
+      "forms": [
+        "moveable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.underneath",
+      "kind": "phrase",
+      "theme": null,
+      "en": "underneath",
+      "de": [
+        "unterhalb"
+      ],
+      "deRaw": "unterhalb",
+      "exampleSb": "There might be a cellar underneath the house.",
+      "cf": null,
+      "forms": [
+        "underneath"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.to-transport",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to transport",
+      "de": [
+        "transportieren"
+      ],
+      "deRaw": "transportieren",
+      "exampleSb": "They can transport their homes.",
+      "cf": "transport",
+      "forms": [
+        "to transport",
+        "transport"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.hammock",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hammock",
+      "de": [
+        "Hängematte"
+      ],
+      "deRaw": "Hängematte",
+      "exampleSb": "I have a new hammock. I like sleeping in it.",
+      "cf": null,
+      "forms": [
+        "hammock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.cotton",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cotton",
+      "de": [
+        "Baumwolle"
+      ],
+      "deRaw": "Baumwolle",
+      "exampleSb": "My jacket is made of cotton.",
+      "cf": null,
+      "forms": [
+        "cotton"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.leather",
+      "kind": "phrase",
+      "theme": null,
+      "en": "leather",
+      "de": [
+        "Leder"
+      ],
+      "deRaw": "Leder",
+      "exampleSb": "She doesn't wear leather shoes because she wants to protect animals.",
+      "cf": null,
+      "forms": [
+        "leather"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.material",
+      "kind": "phrase",
+      "theme": null,
+      "en": "material",
+      "de": [
+        "Material"
+      ],
+      "deRaw": "Material",
+      "exampleSb": "What material did they use to build this house?",
+      "cf": null,
+      "forms": [
+        "material"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.metal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "metal",
+      "de": [
+        "Metall"
+      ],
+      "deRaw": "Metall",
+      "exampleSb": "It's made of metal.",
+      "cf": null,
+      "forms": [
+        "metal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.pattern",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pattern",
+      "de": [
+        "Muster"
+      ],
+      "deRaw": "Muster",
+      "exampleSb": "The shirt has a striped pattern.",
+      "cf": null,
+      "forms": [
+        "pattern"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.plain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "plain",
+      "de": [
+        "einfarbig"
+      ],
+      "deRaw": "einfarbig",
+      "exampleSb": "It's plain white.",
+      "cf": null,
+      "forms": [
+        "plain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.plastic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "plastic",
+      "de": [
+        "Plastik"
+      ],
+      "deRaw": "Plastik",
+      "exampleSb": "This bottle is made of plastic.",
+      "cf": null,
+      "forms": [
+        "plastic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.pond",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pond",
+      "de": [
+        "Teich"
+      ],
+      "deRaw": "Teich",
+      "exampleSb": "She falls in the pond.",
+      "cf": null,
+      "forms": [
+        "pond"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.seat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "seat",
+      "de": [
+        "(Sitz-)Platz"
+      ],
+      "deRaw": "(Sitz-)Platz",
+      "exampleSb": "Take a seat.",
+      "cf": null,
+      "forms": [
+        "seat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.spotted",
+      "kind": "phrase",
+      "theme": null,
+      "en": "spotted",
+      "de": [
+        "gepunktet"
+      ],
+      "deRaw": "gepunktet",
+      "exampleSb": "I can't find my spotted sunglasses.",
+      "cf": null,
+      "forms": [
+        "spotted"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.strap",
+      "kind": "phrase",
+      "theme": null,
+      "en": "strap",
+      "de": [
+        "Band"
+      ],
+      "deRaw": "Band",
+      "exampleSb": "I've got a watch with a blue strap.",
+      "cf": null,
+      "forms": [
+        "strap"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u11.w.striped",
+      "kind": "phrase",
+      "theme": null,
+      "en": "striped",
+      "de": [
+        "gestreift"
+      ],
+      "deRaw": "gestreift",
+      "exampleSb": "My T-shirt is striped.",
+      "cf": null,
+      "forms": [
+        "striped"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

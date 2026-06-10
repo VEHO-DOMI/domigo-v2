@@ -1,0 +1,931 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 9,
+  "slug": "g2-u09",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u09.w.grapes",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "grapes",
+      "de": [
+        "Trauben"
+      ],
+      "deRaw": "Trauben",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "grapes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.plums",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "plums",
+      "de": [
+        "Pflaumen"
+      ],
+      "deRaw": "Pflaumen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "plums"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.pumpkin-pie",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "pumpkin pie",
+      "de": [
+        "Kürbiskuchen"
+      ],
+      "deRaw": "Kürbiskuchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pumpkin pie"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.rice-pudding",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "rice pudding",
+      "de": [
+        "Milchreis"
+      ],
+      "deRaw": "Milchreis",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rice pudding"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.chocolate-ice-cream",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "chocolate ice cream",
+      "de": [
+        "Schokoladeneis"
+      ],
+      "deRaw": "Schokoladeneis",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chocolate ice cream"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.turkey",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "turkey",
+      "de": [
+        "Truthahn"
+      ],
+      "deRaw": "Truthahn",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "turkey"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.ham",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "ham",
+      "de": [
+        "Schinken"
+      ],
+      "deRaw": "Schinken",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ham"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.beef",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "beef",
+      "de": [
+        "Rindfleisch"
+      ],
+      "deRaw": "Rindfleisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "beef"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.chicken",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "chicken",
+      "de": [
+        "Huhn",
+        "Hühnerfleisch"
+      ],
+      "deRaw": "Huhn, Hühnerfleisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chicken"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.apple-juice",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "apple juice",
+      "de": [
+        "Apfelsaft"
+      ],
+      "deRaw": "Apfelsaft",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "apple juice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.cheesecake",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "cheesecake",
+      "de": [
+        "Käsekuchen"
+      ],
+      "deRaw": "Käsekuchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cheesecake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.pancakes",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "pancakes",
+      "de": [
+        "Pfannkuchen"
+      ],
+      "deRaw": "Pfannkuchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pancakes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.mineral-water",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "mineral water",
+      "de": [
+        "Mineralwasser"
+      ],
+      "deRaw": "Mineralwasser",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mineral water"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.tomato",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "tomato (pl tomatoes)",
+      "de": [
+        "Tomate"
+      ],
+      "deRaw": "Tomate",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tomato",
+        "tomatoes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.cabbage",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "cabbage",
+      "de": [
+        "Kohl"
+      ],
+      "deRaw": "Kohl",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cabbage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.sausages",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "sausages",
+      "de": [
+        "Würstchen"
+      ],
+      "deRaw": "Würstchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sausages"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.lamb",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "lamb",
+      "de": [
+        "Lamm",
+        "Lammfleisch"
+      ],
+      "deRaw": "Lamm, Lammfleisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "lamb"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.pears",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "pears",
+      "de": [
+        "Birnen"
+      ],
+      "deRaw": "Birnen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pears"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.peppers",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "peppers",
+      "de": [
+        "Paprika"
+      ],
+      "deRaw": "Paprika",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "peppers"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.onions",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "onions",
+      "de": [
+        "Zwiebeln"
+      ],
+      "deRaw": "Zwiebeln",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "onions"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.olives",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "olives",
+      "de": [
+        "Oliven"
+      ],
+      "deRaw": "Oliven",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "olives"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.mushrooms",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "mushrooms",
+      "de": [
+        "Pilze"
+      ],
+      "deRaw": "Pilze",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mushrooms"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.potato",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "potato (pl potatoes)",
+      "de": [
+        "Kartoffel"
+      ],
+      "deRaw": "Kartoffel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "potato",
+        "potatoes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.peaches",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "peaches",
+      "de": [
+        "Pfirsiche"
+      ],
+      "deRaw": "Pfirsiche",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "peaches"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.strawberries",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "strawberries",
+      "de": [
+        "Erdbeeren"
+      ],
+      "deRaw": "Erdbeeren",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "strawberries"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.chef",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "chef",
+      "de": [
+        "Koch/Köchin"
+      ],
+      "deRaw": "Koch/Köchin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chef"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.recipe",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "recipe",
+      "de": [
+        "Rezept"
+      ],
+      "deRaw": "Rezept",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "recipe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.waiter",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "waiter",
+      "de": [
+        "Kellner"
+      ],
+      "deRaw": "Kellner",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "waiter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.cloche",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "cloche",
+      "de": [
+        "Speiseglocke"
+      ],
+      "deRaw": "Speiseglocke",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cloche"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.menu",
+      "kind": "wordfile",
+      "theme": "Food and Drink / Restaurant",
+      "en": "menu",
+      "de": [
+        "Speisekarte"
+      ],
+      "deRaw": "Speisekarte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "menu"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.slice",
+      "kind": "phrase",
+      "theme": null,
+      "en": "slice",
+      "de": [
+        "Stück",
+        "Scheibe"
+      ],
+      "deRaw": "Stück; Scheibe",
+      "exampleSb": "Can I have a slice of your pizza?",
+      "cf": null,
+      "forms": [
+        "slice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.actor-actress",
+      "kind": "phrase",
+      "theme": null,
+      "en": "actor, actress",
+      "de": [
+        "Schauspieler",
+        "Schauspielerin"
+      ],
+      "deRaw": "Schauspieler, Schauspielerin",
+      "exampleSb": "I want to be an actor, but I need the money.",
+      "cf": null,
+      "forms": [
+        "actor, actress"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.main-course",
+      "kind": "phrase",
+      "theme": null,
+      "en": "main course",
+      "de": [
+        "Hauptgang",
+        "Hauptspeise"
+      ],
+      "deRaw": "Hauptgang, Hauptspeise",
+      "exampleSb": "Here comes the main course.",
+      "cf": null,
+      "forms": [
+        "main course"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.to-pour",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to pour",
+      "de": [
+        "einschenken",
+        "schütten"
+      ],
+      "deRaw": "einschenken, schütten",
+      "exampleSb": "Let me pour it for you.",
+      "cf": "pour",
+      "forms": [
+        "to pour",
+        "pour"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.soup",
+      "kind": "phrase",
+      "theme": null,
+      "en": "soup",
+      "de": [
+        "Suppe"
+      ],
+      "deRaw": "Suppe",
+      "exampleSb": "One tomato soup for you and the onion soup for your husband.",
+      "cf": null,
+      "forms": [
+        "soup"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.starter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "starter",
+      "de": [
+        "Vorspeise"
+      ],
+      "deRaw": "Vorspeise",
+      "exampleSb": "The restaurant serves a delicious soup as a starter.",
+      "cf": null,
+      "forms": [
+        "starter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.straightaway",
+      "kind": "phrase",
+      "theme": null,
+      "en": "straightaway",
+      "de": [
+        "sofort"
+      ],
+      "deRaw": "sofort",
+      "exampleSb": "I'll bring the soup straightaway.",
+      "cf": null,
+      "forms": [
+        "straightaway"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.completely",
+      "kind": "phrase",
+      "theme": null,
+      "en": "completely",
+      "de": [
+        "vollständig"
+      ],
+      "deRaw": "vollständig",
+      "exampleSb": "The restaurant is completely dark.",
+      "cf": null,
+      "forms": [
+        "completely"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.crane",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crane",
+      "de": [
+        "Kran"
+      ],
+      "deRaw": "Kran",
+      "exampleSb": "A crane holds a large platform more than 50 m above the ground.",
+      "cf": null,
+      "forms": [
+        "crane"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.to-drop",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to drop",
+      "de": [
+        "fallen (lassen)"
+      ],
+      "deRaw": "fallen (lassen)",
+      "exampleSb": "You shouldn't drop your phone on the ground.",
+      "cf": "drop",
+      "forms": [
+        "to drop",
+        "drop"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.to-entertain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to entertain",
+      "de": [
+        "unterhalten"
+      ],
+      "deRaw": "unterhalten",
+      "exampleSb": "The robots dance to entertain the guests.",
+      "cf": "entertain",
+      "forms": [
+        "to entertain",
+        "entertain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.glasses",
+      "kind": "phrase",
+      "theme": null,
+      "en": "glasses (pl)",
+      "de": [
+        "Brille"
+      ],
+      "deRaw": "Brille",
+      "exampleSb": "The waiter wears special glasses so that he can see in the dark.",
+      "cf": null,
+      "forms": [
+        "glasses",
+        "pl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.platform",
+      "kind": "phrase",
+      "theme": null,
+      "en": "platform",
+      "de": [
+        "Plattform"
+      ],
+      "deRaw": "Plattform",
+      "exampleSb": "There's a restaurant on a platform in the sky.",
+      "cf": null,
+      "forms": [
+        "platform"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.to-serve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to serve",
+      "de": [
+        "servieren"
+      ],
+      "deRaw": "servieren",
+      "exampleSb": "The waiters serve the food.",
+      "cf": "serve",
+      "forms": [
+        "to serve",
+        "serve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.several",
+      "kind": "phrase",
+      "theme": null,
+      "en": "several",
+      "de": [
+        "einige",
+        "mehrere"
+      ],
+      "deRaw": "einige, mehrere",
+      "exampleSb": "There are several restaurants in my town.",
+      "cf": null,
+      "forms": [
+        "several"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.stew",
+      "kind": "phrase",
+      "theme": null,
+      "en": "stew",
+      "de": [
+        "Eintopf"
+      ],
+      "deRaw": "Eintopf",
+      "exampleSb": "Can I have the cabbage stew, please?",
+      "cf": null,
+      "forms": [
+        "stew"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.fridge",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fridge",
+      "de": [
+        "Kühlschrank"
+      ],
+      "deRaw": "Kühlschrank",
+      "exampleSb": "There's nothing in the fridge. Let's go to the supermarket.",
+      "cf": null,
+      "forms": [
+        "fridge"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.to-complain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to complain",
+      "de": [
+        "sich beschweren"
+      ],
+      "deRaw": "sich beschweren",
+      "exampleSb": "They complain about their food.",
+      "cf": "complain",
+      "forms": [
+        "to complain",
+        "complain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.consumer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "consumer",
+      "de": [
+        "Konsument/Konsumentin"
+      ],
+      "deRaw": "Konsument/Konsumentin",
+      "exampleSb": "A consumer is someone who buys something.",
+      "cf": null,
+      "forms": [
+        "consumer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.delivery",
+      "kind": "phrase",
+      "theme": null,
+      "en": "delivery",
+      "de": [
+        "Lieferung"
+      ],
+      "deRaw": "Lieferung",
+      "exampleSb": "I'm waiting for my pizza delivery.",
+      "cf": null,
+      "forms": [
+        "delivery"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.to-download",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to download",
+      "de": [
+        "herunterladen"
+      ],
+      "deRaw": "herunterladen",
+      "exampleSb": "I downloaded the new Dua Lipa album.",
+      "cf": "download",
+      "forms": [
+        "to download",
+        "download"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.refund",
+      "kind": "phrase",
+      "theme": null,
+      "en": "refund",
+      "de": [
+        "Rückerstattung"
+      ],
+      "deRaw": "Rückerstattung",
+      "exampleSb": "My phone stopped working. I want a refund.",
+      "cf": null,
+      "forms": [
+        "refund"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.certain",
+      "kind": "phrase",
+      "theme": null,
+      "en": "certain",
+      "de": [
+        "sicher",
+        "gewiss"
+      ],
+      "deRaw": "sicher, gewiss",
+      "exampleSb": "Are you certain?",
+      "cf": null,
+      "forms": [
+        "certain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.to-change-one-s-mind",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to change one's mind",
+      "de": [
+        "seine Meinung ändern"
+      ],
+      "deRaw": "seine Meinung ändern",
+      "exampleSb": "I changed my mind. I want pizza after all.",
+      "cf": "change one's mind",
+      "forms": [
+        "to change one's mind",
+        "change one's mind"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.gym",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gym",
+      "de": [
+        "Turnhalle",
+        "Fitnesscenter"
+      ],
+      "deRaw": "Turnhalle; Fitnesscenter",
+      "exampleSb": "Leo goes to the gym.",
+      "cf": null,
+      "forms": [
+        "gym"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u09.w.to-miss",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to miss",
+      "de": [
+        "hier: verpassen"
+      ],
+      "deRaw": "hier: verpassen",
+      "exampleSb": "Hurry up, I don't want to miss the bus.",
+      "cf": "miss",
+      "forms": [
+        "to miss",
+        "miss"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}
