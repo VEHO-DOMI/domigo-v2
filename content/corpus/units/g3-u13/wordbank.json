@@ -1,0 +1,588 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 13,
+  "slug": "g3-u13",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u13.w.to-make-up-your-mind",
+      "kind": "wordfile",
+      "theme": "Making Decisions",
+      "en": "to make up your mind",
+      "de": [
+        "sich entscheiden"
+      ],
+      "deRaw": "sich entscheiden",
+      "exampleSb": null,
+      "cf": "make up your mind",
+      "forms": [
+        "to make up your mind",
+        "make up your mind"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-sleep-on-it",
+      "kind": "wordfile",
+      "theme": "Making Decisions",
+      "en": "to sleep on it",
+      "de": [
+        "eine Nacht darüber schlafen"
+      ],
+      "deRaw": "eine Nacht darüber schlafen",
+      "exampleSb": null,
+      "cf": "sleep on it",
+      "forms": [
+        "to sleep on it",
+        "sleep on it"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-find-a-way-out-of-a-dilemma",
+      "kind": "wordfile",
+      "theme": "Making Decisions",
+      "en": "to find a way out of a dilemma",
+      "de": [
+        "einen Ausweg aus einem Dilemma finden"
+      ],
+      "deRaw": "einen Ausweg aus einem Dilemma finden",
+      "exampleSb": null,
+      "cf": "find a way out of a dilemma",
+      "forms": [
+        "to find a way out of a dilemma",
+        "find a way out of a dilemma"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-be-in-two-minds-about-sth",
+      "kind": "wordfile",
+      "theme": "Making Decisions",
+      "en": "to be in two minds about sth.",
+      "de": [
+        "bei etw. unentschlossen sein"
+      ],
+      "deRaw": "bei etw. unentschlossen sein",
+      "exampleSb": null,
+      "cf": "be in two minds about sth.",
+      "forms": [
+        "to be in two minds about sth.",
+        "be in two minds about sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-have-second-thoughts-about-sth",
+      "kind": "wordfile",
+      "theme": "Making Decisions",
+      "en": "to have second thoughts about sth.",
+      "de": [
+        "etw. noch einmal überdenken"
+      ],
+      "deRaw": "etw. noch einmal überdenken",
+      "exampleSb": null,
+      "cf": "have second thoughts about sth.",
+      "forms": [
+        "to have second thoughts about sth.",
+        "have second thoughts about sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-be-at-a-loss",
+      "kind": "wordfile",
+      "theme": "Making Decisions",
+      "en": "to be at a loss",
+      "de": [
+        "ratlos sein"
+      ],
+      "deRaw": "ratlos sein",
+      "exampleSb": null,
+      "cf": "be at a loss",
+      "forms": [
+        "to be at a loss",
+        "be at a loss"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.dilemma",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dilemma",
+      "de": [
+        "Dilemma",
+        "Zwangslage"
+      ],
+      "deRaw": "Dilemma, Zwangslage",
+      "exampleSb": "I'm sure we'll find a way out of this dilemma.",
+      "cf": null,
+      "forms": [
+        "dilemma"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-reach-a-decision",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to reach a decision",
+      "de": [
+        "eine Entscheidung treffen"
+      ],
+      "deRaw": "eine Entscheidung treffen",
+      "exampleSb": "I'm happy we could reach a decision.",
+      "cf": "reach a decision",
+      "forms": [
+        "to reach a decision",
+        "reach a decision"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-cancel",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to cancel",
+      "de": [
+        "absagen"
+      ],
+      "deRaw": "absagen",
+      "exampleSb": "You can't just cancel because you want to play football!",
+      "cf": "cancel",
+      "forms": [
+        "to cancel",
+        "cancel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.disappointment",
+      "kind": "phrase",
+      "theme": null,
+      "en": "disappointment",
+      "de": [
+        "Enttäuschung"
+      ],
+      "deRaw": "Enttäuschung",
+      "exampleSb": "It's a big disappointment that you can't play on Saturday.",
+      "cf": null,
+      "forms": [
+        "disappointment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.granddad",
+      "kind": "phrase",
+      "theme": null,
+      "en": "granddad",
+      "de": [
+        "Opa"
+      ],
+      "deRaw": "Opa",
+      "exampleSb": "We are going to visit granddad in the afternoon.",
+      "cf": null,
+      "forms": [
+        "granddad"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-kick-sb-off",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to kick sb. off",
+      "de": [
+        "rausschmeißen"
+      ],
+      "deRaw": "rausschmeißen",
+      "exampleSb": "My coach is going to kick me off the team.",
+      "cf": "kick sb. off",
+      "forms": [
+        "to kick sb. off",
+        "kick sb. off"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-move",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to move",
+      "de": [
+        "(sich) bewegen",
+        "umziehen",
+        "hier: verschieben"
+      ],
+      "deRaw": "(sich) bewegen; umziehen; hier: verschieben",
+      "exampleSb": "They have asked me to move the game to Saturday.",
+      "cf": "move",
+      "forms": [
+        "to move",
+        "move"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-rethink",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to rethink",
+      "de": [
+        "überdenken"
+      ],
+      "deRaw": "überdenken",
+      "exampleSb": "I'll have to rethink my decision.",
+      "cf": "rethink",
+      "forms": [
+        "to rethink",
+        "rethink"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-deserve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to deserve",
+      "de": [
+        "verdienen"
+      ],
+      "deRaw": "verdienen",
+      "exampleSb": "You deserve to feel special on your birthday.",
+      "cf": "deserve",
+      "forms": [
+        "to deserve",
+        "deserve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.except",
+      "kind": "phrase",
+      "theme": null,
+      "en": "except",
+      "de": [
+        "außer"
+      ],
+      "deRaw": "außer",
+      "exampleSb": "Everyone knew – except you.",
+      "cf": null,
+      "forms": [
+        "except"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.it-s-a-shame",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It's a shame.",
+      "de": [
+        "Das ist schade."
+      ],
+      "deRaw": "Das ist schade.",
+      "exampleSb": "It's a shame.",
+      "cf": null,
+      "forms": [
+        "It's a shame."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.lift",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lift",
+      "de": [
+        "hier: Mitfahrgelegenheit"
+      ],
+      "deRaw": "hier: Mitfahrgelegenheit",
+      "exampleSb": "Can you give me a lift home?",
+      "cf": null,
+      "forms": [
+        "lift"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.alibi",
+      "kind": "phrase",
+      "theme": null,
+      "en": "alibi",
+      "de": [
+        "Alibi"
+      ],
+      "deRaw": "Alibi",
+      "exampleSb": "Your brother asked you to give him an alibi for last night.",
+      "cf": null,
+      "forms": [
+        "alibi"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.id",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ID (=identification)",
+      "de": [
+        "Personalausweis"
+      ],
+      "deRaw": "Personalausweis",
+      "exampleSb": "Can I see your ID?",
+      "cf": null,
+      "forms": [
+        "ID"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-keep-quiet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to keep quiet",
+      "de": [
+        "still sein",
+        "schweigen"
+      ],
+      "deRaw": "still sein, schweigen",
+      "exampleSb": "I'd keep quiet if the teacher asked me what happened.",
+      "cf": "keep quiet",
+      "forms": [
+        "to keep quiet",
+        "keep quiet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-tell-on-sb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to tell on sb.",
+      "de": [
+        "jdn. verpetzen"
+      ],
+      "deRaw": "jdn. verpetzen",
+      "exampleSb": "I'm not going to tell on my friend.",
+      "cf": "tell on sb.",
+      "forms": [
+        "to tell on sb.",
+        "tell on sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.detention",
+      "kind": "phrase",
+      "theme": null,
+      "en": "detention",
+      "de": [
+        "Nachsitzen"
+      ],
+      "deRaw": "Nachsitzen",
+      "exampleSb": "If you didn't say anything, you'd probably get detention.",
+      "cf": null,
+      "forms": [
+        "detention"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-put-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to put up",
+      "de": [
+        "aufhängen"
+      ],
+      "deRaw": "aufhängen",
+      "exampleSb": "I put up a note on the fridge.",
+      "cf": "put up",
+      "forms": [
+        "to put up",
+        "put up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-ask-sb-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to ask sb. out",
+      "de": [
+        "jdn. nach einem Date fragen"
+      ],
+      "deRaw": "jdn. nach einem Date fragen",
+      "exampleSb": "Jim has asked me out, but I don't want to go out with him.",
+      "cf": "ask sb. out",
+      "forms": [
+        "to ask sb. out",
+        "ask sb. out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.accidentally",
+      "kind": "phrase",
+      "theme": null,
+      "en": "accidentally",
+      "de": [
+        "versehentlich"
+      ],
+      "deRaw": "versehentlich",
+      "exampleSb": "When running down the stairs, you accidentally broke a vase.",
+      "cf": null,
+      "forms": [
+        "accidentally"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-argue",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to argue",
+      "de": [
+        "streiten",
+        "diskutieren"
+      ],
+      "deRaw": "streiten, diskutieren",
+      "exampleSb": "I don't like to argue with my parents.",
+      "cf": "argue",
+      "forms": [
+        "to argue",
+        "argue"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-look-the-other-way",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to look the other way",
+      "de": [
+        "wegsehen"
+      ],
+      "deRaw": "wegsehen",
+      "exampleSb": "If someone needs help, don't look the other way.",
+      "cf": "look the other way",
+      "forms": [
+        "to look the other way",
+        "look the other way"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-pretend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to pretend",
+      "de": [
+        "vortäuschen",
+        "so tun",
+        "als ob"
+      ],
+      "deRaw": "vortäuschen, so tun, als ob",
+      "exampleSb": "Would you pretend you weren't my friend?",
+      "cf": "pretend",
+      "forms": [
+        "to pretend",
+        "pretend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-reject",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to reject",
+      "de": [
+        "ablehnen",
+        "zurückweisen"
+      ],
+      "deRaw": "ablehnen, zurückweisen",
+      "exampleSb": "Tanja just rejected my advice.",
+      "cf": "reject",
+      "forms": [
+        "to reject",
+        "reject"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.homemade",
+      "kind": "phrase",
+      "theme": null,
+      "en": "homemade",
+      "de": [
+        "hausgemacht"
+      ],
+      "deRaw": "hausgemacht",
+      "exampleSb": "I could give him some homemade vouchers.",
+      "cf": null,
+      "forms": [
+        "homemade"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.neither-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "neither of",
+      "de": [
+        "keiner von"
+      ],
+      "deRaw": "keiner von",
+      "exampleSb": "Neither of us has any money.",
+      "cf": null,
+      "forms": [
+        "neither of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.voucher",
+      "kind": "phrase",
+      "theme": null,
+      "en": "voucher",
+      "de": [
+        "Gutschein"
+      ],
+      "deRaw": "Gutschein",
+      "exampleSb": "I make a voucher that says: maths homework.",
+      "cf": null,
+      "forms": [
+        "voucher"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u13.w.to-wrap",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to wrap",
+      "de": [
+        "verpacken"
+      ],
+      "deRaw": "verpacken",
+      "exampleSb": "I'll wrap the present and give it to him.",
+      "cf": "wrap",
+      "forms": [
+        "to wrap",
+        "wrap"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

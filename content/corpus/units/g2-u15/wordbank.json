@@ -1,0 +1,418 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 15,
+  "slug": "g2-u15",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u15.w.to-feed-your-pet",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to feed your pet",
+      "de": [
+        "dein Haustier füttern"
+      ],
+      "deRaw": "dein Haustier füttern",
+      "exampleSb": null,
+      "cf": "feed your pet",
+      "forms": [
+        "to feed your pet",
+        "feed your pet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-clean-out-the-litter-tray",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to clean out the litter tray",
+      "de": [
+        "das Katzenklo sauber machen"
+      ],
+      "deRaw": "das Katzenklo sauber machen",
+      "exampleSb": null,
+      "cf": "clean out the litter tray",
+      "forms": [
+        "to clean out the litter tray",
+        "clean out the litter tray"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-clean-out-your-pet-s-cage",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to clean out your pet's cage",
+      "de": [
+        "den Käfig deines Haustieres säubern"
+      ],
+      "deRaw": "den Käfig deines Haustieres säubern",
+      "exampleSb": null,
+      "cf": "clean out your pet's cage",
+      "forms": [
+        "to clean out your pet's cage",
+        "clean out your pet's cage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-play-with-your-pet",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to play with your pet",
+      "de": [
+        "mit deinem Haustier spielen"
+      ],
+      "deRaw": "mit deinem Haustier spielen",
+      "exampleSb": null,
+      "cf": "play with your pet",
+      "forms": [
+        "to play with your pet",
+        "play with your pet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-dry-your-pet",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to dry your pet",
+      "de": [
+        "dein Haustier abtrocknen"
+      ],
+      "deRaw": "dein Haustier abtrocknen",
+      "exampleSb": null,
+      "cf": "dry your pet",
+      "forms": [
+        "to dry your pet",
+        "dry your pet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-stroke",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to stroke",
+      "de": [
+        "streicheln"
+      ],
+      "deRaw": "streicheln",
+      "exampleSb": null,
+      "cf": "stroke",
+      "forms": [
+        "to stroke",
+        "stroke"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-brush",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to brush",
+      "de": [
+        "bürsten"
+      ],
+      "deRaw": "bürsten",
+      "exampleSb": null,
+      "cf": "brush",
+      "forms": [
+        "to brush",
+        "brush"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-walk-your-pet",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to walk your pet",
+      "de": [
+        "mit deinem Haustier spazieren gehen"
+      ],
+      "deRaw": "mit deinem Haustier spazieren gehen",
+      "exampleSb": null,
+      "cf": "walk your pet",
+      "forms": [
+        "to walk your pet",
+        "walk your pet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-take-your-pet-to-the-vet",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to take your pet to the vet",
+      "de": [
+        "dein Haustier zum Tierarzt bringen"
+      ],
+      "deRaw": "dein Haustier zum Tierarzt bringen",
+      "exampleSb": null,
+      "cf": "take your pet to the vet",
+      "forms": [
+        "to take your pet to the vet",
+        "take your pet to the vet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-give-your-pet-a-bath",
+      "kind": "wordfile",
+      "theme": "Looking After a Pet",
+      "en": "to give your pet a bath",
+      "de": [
+        "dein Haustier baden"
+      ],
+      "deRaw": "dein Haustier baden",
+      "exampleSb": null,
+      "cf": "give your pet a bath",
+      "forms": [
+        "to give your pet a bath",
+        "give your pet a bath"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.cage",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cage",
+      "de": [
+        "Käfig"
+      ],
+      "deRaw": "Käfig",
+      "exampleSb": "My snake lives in a big glass cage.",
+      "cf": null,
+      "forms": [
+        "cage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.litter-tray",
+      "kind": "phrase",
+      "theme": null,
+      "en": "litter tray",
+      "de": [
+        "Katzenklo"
+      ],
+      "deRaw": "Katzenklo",
+      "exampleSb": "I have to clean out the cat's litter tray.",
+      "cf": null,
+      "forms": [
+        "litter tray"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.vet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "vet (veterinarian)",
+      "de": [
+        "Tierarzt/Tierärztin"
+      ],
+      "deRaw": "Tierarzt/Tierärztin",
+      "exampleSb": "My cat is sick. I should take her to the vet.",
+      "cf": null,
+      "forms": [
+        "vet",
+        "veterinarian"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-have-got-a-fear-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to have got a fear of",
+      "de": [
+        "Angst haben vor"
+      ],
+      "deRaw": "Angst haben vor",
+      "exampleSb": "She's got a terrible fear of snakes.",
+      "cf": "have got a fear of",
+      "forms": [
+        "to have got a fear of",
+        "have got a fear of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-keep-sb-company",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to keep sb. company",
+      "de": [
+        "jdm. Gesellschaft leisten"
+      ],
+      "deRaw": "jdm. Gesellschaft leisten",
+      "exampleSb": "A pet can keep us company.",
+      "cf": "keep sb. company",
+      "forms": [
+        "to keep sb. company",
+        "keep sb. company"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.neither-do-i",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Neither do I.",
+      "de": [
+        "Ich auch nicht."
+      ],
+      "deRaw": "Ich auch nicht.",
+      "exampleSb": "She doesn't like dogs. Neither do I.",
+      "cf": null,
+      "forms": [
+        "Neither do I."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.so-do-i",
+      "kind": "phrase",
+      "theme": null,
+      "en": "So do I.",
+      "de": [
+        "Ich auch."
+      ],
+      "deRaw": "Ich auch.",
+      "exampleSb": "They like pizza. So do I.",
+      "cf": null,
+      "forms": [
+        "So do I."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.space",
+      "kind": "phrase",
+      "theme": null,
+      "en": "space",
+      "de": [
+        "Platz",
+        "Raum"
+      ],
+      "deRaw": "Platz; Raum",
+      "exampleSb": "We don't have enough space to keep a dog.",
+      "cf": null,
+      "forms": [
+        "space"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.antarctic-ocean",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Antarctic Ocean",
+      "de": [
+        "Antarktischer Ozean"
+      ],
+      "deRaw": "Antarktischer Ozean",
+      "exampleSb": "Penguins eat fish that live in the Antarctic Ocean.",
+      "cf": null,
+      "forms": [
+        "Antarctic Ocean"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.emperor-penguin",
+      "kind": "phrase",
+      "theme": null,
+      "en": "emperor penguin",
+      "de": [
+        "Kaiserpinguin"
+      ],
+      "deRaw": "Kaiserpinguin",
+      "exampleSb": "The emperor penguin is the biggest penguin of all.",
+      "cf": null,
+      "forms": [
+        "emperor penguin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-release",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to release",
+      "de": [
+        "befreien",
+        "frei lassen"
+      ],
+      "deRaw": "befreien, frei lassen",
+      "exampleSb": "Where did they release the penguin?",
+      "cf": "release",
+      "forms": [
+        "to release",
+        "release"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.sand",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sand",
+      "de": [
+        "Sand"
+      ],
+      "deRaw": "Sand",
+      "exampleSb": "The penguin was trying to eat sand.",
+      "cf": null,
+      "forms": [
+        "sand"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.pyjamas",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pyjamas",
+      "de": [
+        "Pyjama",
+        "Schlafanzug"
+      ],
+      "deRaw": "Pyjama, Schlafanzug",
+      "exampleSb": "He wears striped pyjamas in bed.",
+      "cf": null,
+      "forms": [
+        "pyjamas"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u15.w.to-tidy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to tidy (up)",
+      "de": [
+        "aufräumen"
+      ],
+      "deRaw": "aufräumen",
+      "exampleSb": "Why doesn't he tidy up my basket?",
+      "cf": "tidy",
+      "forms": [
+        "to tidy",
+        "tidy",
+        "up"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

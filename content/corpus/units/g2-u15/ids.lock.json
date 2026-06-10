@@ -1,0 +1,31 @@
+{
+  "schema": "ids-lock@1",
+  "slug": "g2-u15",
+  "words": {
+    "wordfile:to feed your pet": "g2u15.w.to-feed-your-pet",
+    "wordfile:to clean out the litter tray": "g2u15.w.to-clean-out-the-litter-tray",
+    "wordfile:to clean out your pet's cage": "g2u15.w.to-clean-out-your-pet-s-cage",
+    "wordfile:to play with your pet": "g2u15.w.to-play-with-your-pet",
+    "wordfile:to dry your pet": "g2u15.w.to-dry-your-pet",
+    "wordfile:to stroke": "g2u15.w.to-stroke",
+    "wordfile:to brush": "g2u15.w.to-brush",
+    "wordfile:to walk your pet": "g2u15.w.to-walk-your-pet",
+    "wordfile:to take your pet to the vet": "g2u15.w.to-take-your-pet-to-the-vet",
+    "wordfile:to give your pet a bath": "g2u15.w.to-give-your-pet-a-bath",
+    "phrase:cage": "g2u15.w.cage",
+    "phrase:litter tray": "g2u15.w.litter-tray",
+    "phrase:vet": "g2u15.w.vet",
+    "phrase:to have got a fear of": "g2u15.w.to-have-got-a-fear-of",
+    "phrase:to keep sb. company": "g2u15.w.to-keep-sb-company",
+    "phrase:neither do i.": "g2u15.w.neither-do-i",
+    "phrase:so do i.": "g2u15.w.so-do-i",
+    "phrase:space": "g2u15.w.space",
+    "phrase:antarctic ocean": "g2u15.w.antarctic-ocean",
+    "phrase:emperor penguin": "g2u15.w.emperor-penguin",
+    "phrase:to release": "g2u15.w.to-release",
+    "phrase:sand": "g2u15.w.sand",
+    "phrase:pyjamas": "g2u15.w.pyjamas",
+    "phrase:to tidy": "g2u15.w.to-tidy"
+  },
+  "tombstones": []
+}

@@ -1,0 +1,802 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 1,
+  "slug": "g2-u01",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u01.w.english",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "English",
+      "de": [
+        "Englisch"
+      ],
+      "deRaw": "Englisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "English"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.french",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "French",
+      "de": [
+        "Französisch"
+      ],
+      "deRaw": "Französisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "French"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.music",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "music",
+      "de": [
+        "Musik"
+      ],
+      "deRaw": "Musik",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "music"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.maths",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "maths",
+      "de": [
+        "Mathematik"
+      ],
+      "deRaw": "Mathematik",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "maths"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.geography",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "geography",
+      "de": [
+        "Geografie"
+      ],
+      "deRaw": "Geografie",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "geography"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.science",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "science",
+      "de": [
+        "Naturwissenschaften"
+      ],
+      "deRaw": "Naturwissenschaften",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "science"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.physical-education",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "physical education (PE)",
+      "de": [
+        "Sport",
+        "Leibeserziehung"
+      ],
+      "deRaw": "Sport, Leibeserziehung",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "physical education",
+        "PE"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.art",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "art",
+      "de": [
+        "Kunst"
+      ],
+      "deRaw": "Kunst",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "art"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.history",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "history",
+      "de": [
+        "Geschichte"
+      ],
+      "deRaw": "Geschichte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "history"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.information-technology",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "information technology (IT)",
+      "de": [
+        "Informatik"
+      ],
+      "deRaw": "Informatik",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "information technology",
+        "IT"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.design-and-technology",
+      "kind": "wordfile",
+      "theme": "School Subjects",
+      "en": "design and technology",
+      "de": [
+        "Werken"
+      ],
+      "deRaw": "Werken",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "design and technology"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.glad",
+      "kind": "phrase",
+      "theme": null,
+      "en": "glad",
+      "de": [
+        "froh"
+      ],
+      "deRaw": "froh",
+      "exampleSb": "I was glad to stay at home.",
+      "cf": null,
+      "forms": [
+        "glad"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.kilometre",
+      "kind": "phrase",
+      "theme": null,
+      "en": "kilometre",
+      "de": [
+        "Kilometer"
+      ],
+      "deRaw": "Kilometer",
+      "exampleSb": "My school's one kilometre from my house.",
+      "cf": null,
+      "forms": [
+        "kilometre"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-stay-at-home",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to stay at home",
+      "de": [
+        "zu Hause bleiben"
+      ],
+      "deRaw": "zu Hause bleiben",
+      "exampleSb": "Are you going to stay at home?",
+      "cf": "stay at home",
+      "forms": [
+        "to stay at home",
+        "stay at home"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-travel",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to travel",
+      "de": [
+        "reisen"
+      ],
+      "deRaw": "reisen",
+      "exampleSb": "Did you travel far?",
+      "cf": "travel",
+      "forms": [
+        "to travel",
+        "travel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.as-soon-as",
+      "kind": "phrase",
+      "theme": null,
+      "en": "as soon as",
+      "de": [
+        "sobald (wie)"
+      ],
+      "deRaw": "sobald (wie)",
+      "exampleSb": "I do my homework as soon as I get home.",
+      "cf": null,
+      "forms": [
+        "as soon as"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-get-dressed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to get dressed",
+      "de": [
+        "sich anziehen"
+      ],
+      "deRaw": "sich anziehen",
+      "exampleSb": "I get dressed at 7.45.",
+      "cf": "get dressed",
+      "forms": [
+        "to get dressed",
+        "get dressed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-go-for-a-walk",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to go for a walk",
+      "de": [
+        "spazieren gehen"
+      ],
+      "deRaw": "spazieren gehen",
+      "exampleSb": "I go for a walk with my dog.",
+      "cf": "go for a walk",
+      "forms": [
+        "to go for a walk",
+        "go for a walk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.lesson",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lesson",
+      "de": [
+        "Unterrichtsstunde"
+      ],
+      "deRaw": "Unterrichtsstunde",
+      "exampleSb": "Our first lesson starts at 7.30 a.m.",
+      "cf": null,
+      "forms": [
+        "lesson"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-prepare",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to prepare",
+      "de": [
+        "(zu-)bereiten"
+      ],
+      "deRaw": "(zu-)bereiten",
+      "exampleSb": "I help my mum to prepare food for our supper.",
+      "cf": "prepare",
+      "forms": [
+        "to prepare",
+        "prepare"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-put-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to put on",
+      "de": [
+        "anziehen (Kleidung)"
+      ],
+      "deRaw": "anziehen (Kleidung)",
+      "exampleSb": "After breakfast, I put on my school uniform.",
+      "cf": "put on",
+      "forms": [
+        "to put on",
+        "put on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.supper",
+      "kind": "phrase",
+      "theme": null,
+      "en": "supper",
+      "de": [
+        "Abendessen"
+      ],
+      "deRaw": "Abendessen",
+      "exampleSb": "I do my homework after supper.",
+      "cf": null,
+      "forms": [
+        "supper"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.daily",
+      "kind": "phrase",
+      "theme": null,
+      "en": "daily",
+      "de": [
+        "täglich"
+      ],
+      "deRaw": "täglich",
+      "exampleSb": "My daily routine starts when I get up in the morning.",
+      "cf": null,
+      "forms": [
+        "daily"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.calendar",
+      "kind": "phrase",
+      "theme": null,
+      "en": "calendar",
+      "de": [
+        "Kalender"
+      ],
+      "deRaw": "Kalender",
+      "exampleSb": "It's like a big calendar.",
+      "cf": null,
+      "forms": [
+        "calendar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.grandmother",
+      "kind": "phrase",
+      "theme": null,
+      "en": "grandmother",
+      "de": [
+        "Großmutter"
+      ],
+      "deRaw": "Großmutter",
+      "exampleSb": "My grandmother lives in Mexico.",
+      "cf": null,
+      "forms": [
+        "grandmother"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.joke",
+      "kind": "phrase",
+      "theme": null,
+      "en": "joke",
+      "de": [
+        "Witz"
+      ],
+      "deRaw": "Witz",
+      "exampleSb": "It wasn't a joke.",
+      "cf": null,
+      "forms": [
+        "joke"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.scary",
+      "kind": "phrase",
+      "theme": null,
+      "en": "scary",
+      "de": [
+        "furchterregend",
+        "unheimlich"
+      ],
+      "deRaw": "furchterregend, unheimlich",
+      "exampleSb": "My family and I had a scary holiday.",
+      "cf": null,
+      "forms": [
+        "scary"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.spring",
+      "kind": "phrase",
+      "theme": null,
+      "en": "spring",
+      "de": [
+        "Frühling"
+      ],
+      "deRaw": "Frühling",
+      "exampleSb": "In the spring and summer, the shadows of the steps look like a huge snake.",
+      "cf": null,
+      "forms": [
+        "spring"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.area",
+      "kind": "phrase",
+      "theme": null,
+      "en": "area",
+      "de": [
+        "Gebiet",
+        "Region"
+      ],
+      "deRaw": "Gebiet, Region",
+      "exampleSb": "There are lots of animals in the area.",
+      "cf": null,
+      "forms": [
+        "area"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-book",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to book",
+      "de": [
+        "buchen"
+      ],
+      "deRaw": "buchen",
+      "exampleSb": "You can book your holiday today.",
+      "cf": "book",
+      "forms": [
+        "to book",
+        "book"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.popular",
+      "kind": "phrase",
+      "theme": null,
+      "en": "popular",
+      "de": [
+        "beliebt"
+      ],
+      "deRaw": "beliebt",
+      "exampleSb": "Chichen Itza is a popular tourist attraction.",
+      "cf": null,
+      "forms": [
+        "popular"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.shadow",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shadow",
+      "de": [
+        "Schatten"
+      ],
+      "deRaw": "Schatten",
+      "exampleSb": "You can see a shadow move down the side of the pyramid steps.",
+      "cf": null,
+      "forms": [
+        "shadow"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-visit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to visit",
+      "de": [
+        "besichtigen"
+      ],
+      "deRaw": "besichtigen",
+      "exampleSb": "A lot of tourists visit the Mayan city of Chichen Itza.",
+      "cf": "visit",
+      "forms": [
+        "to visit",
+        "visit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.colourful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "colourful",
+      "de": [
+        "bunt",
+        "farbenfroh"
+      ],
+      "deRaw": "bunt, farbenfroh",
+      "exampleSb": "There are many colourful parrots at the zoo.",
+      "cf": null,
+      "forms": [
+        "colourful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.along",
+      "kind": "phrase",
+      "theme": null,
+      "en": "along",
+      "de": [
+        "entlang"
+      ],
+      "deRaw": "entlang",
+      "exampleSb": "Snakes slide along the sand.",
+      "cf": null,
+      "forms": [
+        "along"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-crawl",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to crawl",
+      "de": [
+        "kriechen"
+      ],
+      "deRaw": "kriechen",
+      "exampleSb": "Snakes crawl around and into stones.",
+      "cf": "crawl",
+      "forms": [
+        "to crawl",
+        "crawl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.to-take-a-rest",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take a rest",
+      "de": [
+        "sich ausruhen"
+      ],
+      "deRaw": "sich ausruhen",
+      "exampleSb": "I take a rest after school.",
+      "cf": "take a rest",
+      "forms": [
+        "to take a rest",
+        "take a rest"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.subject",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(school) subject",
+      "de": [
+        "(Schul-)Fach"
+      ],
+      "deRaw": "(Schul-)Fach",
+      "exampleSb": "English is my favourite subject.",
+      "cf": null,
+      "forms": [
+        "subject",
+        "school"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.break",
+      "kind": "phrase",
+      "theme": null,
+      "en": "break",
+      "de": [
+        "Pause"
+      ],
+      "deRaw": "Pause",
+      "exampleSb": "After the break, we have history.",
+      "cf": null,
+      "forms": [
+        "break"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.timetable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "timetable",
+      "de": [
+        "Stundenplan"
+      ],
+      "deRaw": "Stundenplan",
+      "exampleSb": "She has four English lessons in her timetable.",
+      "cf": null,
+      "forms": [
+        "timetable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.bicycle-lane",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bicycle lane",
+      "de": [
+        "Radweg"
+      ],
+      "deRaw": "Radweg",
+      "exampleSb": "There's a new bicycle lane in my town.",
+      "cf": null,
+      "forms": [
+        "bicycle lane"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.king",
+      "kind": "phrase",
+      "theme": null,
+      "en": "king",
+      "de": [
+        "König"
+      ],
+      "deRaw": "König",
+      "exampleSb": "A king can make the rules.",
+      "cf": null,
+      "forms": [
+        "king"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.noisy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "noisy",
+      "de": [
+        "laut",
+        "geräuschvoll"
+      ],
+      "deRaw": "laut, geräuschvoll",
+      "exampleSb": "I don't like noisy people.",
+      "cf": null,
+      "forms": [
+        "noisy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.queen",
+      "kind": "phrase",
+      "theme": null,
+      "en": "queen",
+      "de": [
+        "Königin"
+      ],
+      "deRaw": "Königin",
+      "exampleSb": "A queen can make the rules.",
+      "cf": null,
+      "forms": [
+        "queen"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.rubbish",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rubbish",
+      "de": [
+        "Müll",
+        "Abfall"
+      ],
+      "deRaw": "Müll, Abfall",
+      "exampleSb": "A big problem in our area is rubbish in the street.",
+      "cf": null,
+      "forms": [
+        "rubbish"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.online-safety",
+      "kind": "phrase",
+      "theme": null,
+      "en": "online safety",
+      "de": [
+        "Internetsicherheit"
+      ],
+      "deRaw": "Internetsicherheit",
+      "exampleSb": "You can find helpful tips for online safety on this website.",
+      "cf": null,
+      "forms": [
+        "online safety"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.opinion",
+      "kind": "phrase",
+      "theme": null,
+      "en": "opinion",
+      "de": [
+        "Meinung"
+      ],
+      "deRaw": "Meinung",
+      "exampleSb": "I always say my opinion.",
+      "cf": null,
+      "forms": [
+        "opinion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u01.w.webpage",
+      "kind": "phrase",
+      "theme": null,
+      "en": "webpage",
+      "de": [
+        "Internetseite"
+      ],
+      "deRaw": "Internetseite",
+      "exampleSb": "Go online and read the webpage.",
+      "cf": null,
+      "forms": [
+        "webpage"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

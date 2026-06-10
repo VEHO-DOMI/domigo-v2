@@ -1,0 +1,668 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 9,
+  "slug": "g3-u09",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u09.w.to-dye-your-hair",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to dye your hair",
+      "de": [
+        "deine Haare färben"
+      ],
+      "deRaw": "deine Haare färben",
+      "exampleSb": null,
+      "cf": "dye your hair",
+      "forms": [
+        "to dye your hair",
+        "dye your hair"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-get-a-tattoo",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to get a tattoo",
+      "de": [
+        "sich tätowieren lassen"
+      ],
+      "deRaw": "sich tätowieren lassen",
+      "exampleSb": null,
+      "cf": "get a tattoo",
+      "forms": [
+        "to get a tattoo",
+        "get a tattoo"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-hang-out-in-shopping-centres",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to hang out in shopping centres",
+      "de": [
+        "in Einkaufszentren abhängen"
+      ],
+      "deRaw": "in Einkaufszentren abhängen",
+      "exampleSb": null,
+      "cf": "hang out in shopping centres",
+      "forms": [
+        "to hang out in shopping centres",
+        "hang out in shopping centres"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-go-roller-skating-without-pads",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to go roller-skating without pads",
+      "de": [
+        "ohne Schützer Rollschuh fahren"
+      ],
+      "deRaw": "ohne Schützer Rollschuh fahren",
+      "exampleSb": null,
+      "cf": "go roller-skating without pads",
+      "forms": [
+        "to go roller-skating without pads",
+        "go roller-skating without pads"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-get-a-nose-stud",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to get a nose stud",
+      "de": [
+        "sich einen Nasenstecker stechen lassen"
+      ],
+      "deRaw": "sich einen Nasenstecker stechen lassen",
+      "exampleSb": null,
+      "cf": "get a nose stud",
+      "forms": [
+        "to get a nose stud",
+        "get a nose stud"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-scroll-through-your-phone",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to scroll through your phone",
+      "de": [
+        "durch dein Handy scrollen"
+      ],
+      "deRaw": "durch dein Handy scrollen",
+      "exampleSb": null,
+      "cf": "scroll through your phone",
+      "forms": [
+        "to scroll through your phone",
+        "scroll through your phone"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-have-a-party-at-home",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to have a party at home",
+      "de": [
+        "zu Hause eine Party machen"
+      ],
+      "deRaw": "zu Hause eine Party machen",
+      "exampleSb": null,
+      "cf": "have a party at home",
+      "forms": [
+        "to have a party at home",
+        "have a party at home"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-buy-your-own-clothes",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to buy your own clothes",
+      "de": [
+        "deine eigene Kleidung kaufen"
+      ],
+      "deRaw": "deine eigene Kleidung kaufen",
+      "exampleSb": null,
+      "cf": "buy your own clothes",
+      "forms": [
+        "to buy your own clothes",
+        "buy your own clothes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-eat-too-many-sweets",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to eat too many sweets",
+      "de": [
+        "zu viele Süßigkeiten essen"
+      ],
+      "deRaw": "zu viele Süßigkeiten essen",
+      "exampleSb": null,
+      "cf": "eat too many sweets",
+      "forms": [
+        "to eat too many sweets",
+        "eat too many sweets"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-wear-earrings",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to wear earrings",
+      "de": [
+        "Ohrringe tragen"
+      ],
+      "deRaw": "Ohrringe tragen",
+      "exampleSb": null,
+      "cf": "wear earrings",
+      "forms": [
+        "to wear earrings",
+        "wear earrings"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-ride-your-bike-without-a-helmet",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to ride your bike without a helmet",
+      "de": [
+        "ohne Helm Fahrrad fahren"
+      ],
+      "deRaw": "ohne Helm Fahrrad fahren",
+      "exampleSb": null,
+      "cf": "ride your bike without a helmet",
+      "forms": [
+        "to ride your bike without a helmet",
+        "ride your bike without a helmet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-come-home-after-ten",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to come home after ten",
+      "de": [
+        "nach zehn Uhr nach Hause kommen"
+      ],
+      "deRaw": "nach zehn Uhr nach Hause kommen",
+      "exampleSb": null,
+      "cf": "come home after ten",
+      "forms": [
+        "to come home after ten",
+        "come home after ten"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-turn-your-music-up-loud",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to turn your music up loud",
+      "de": [
+        "deine Musik laut aufdrehen"
+      ],
+      "deRaw": "deine Musik laut aufdrehen",
+      "exampleSb": null,
+      "cf": "turn your music up loud",
+      "forms": [
+        "to turn your music up loud",
+        "turn your music up loud"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-go-to-the-disco",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to go to the disco",
+      "de": [
+        "in die Disco gehen"
+      ],
+      "deRaw": "in die Disco gehen",
+      "exampleSb": null,
+      "cf": "go to the disco",
+      "forms": [
+        "to go to the disco",
+        "go to the disco"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-play-video-games-all-day",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to play video games all day",
+      "de": [
+        "den ganzen Tag Videospiele spielen"
+      ],
+      "deRaw": "den ganzen Tag Videospiele spielen",
+      "exampleSb": null,
+      "cf": "play video games all day",
+      "forms": [
+        "to play video games all day",
+        "play video games all day"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-watch-tv-after-10-o-clock",
+      "kind": "wordfile",
+      "theme": "Teen Activities",
+      "en": "to watch TV after 10 o'clock",
+      "de": [
+        "nach 22 Uhr fernsehen"
+      ],
+      "deRaw": "nach 22 Uhr fernsehen",
+      "exampleSb": null,
+      "cf": "watch TV after 10 o'clock",
+      "forms": [
+        "to watch TV after 10 o'clock",
+        "watch TV after 10 o'clock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-be-allowed-to-do-sth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be allowed to do sth.",
+      "de": [
+        "etw. tun dürfen"
+      ],
+      "deRaw": "etw. tun dürfen",
+      "exampleSb": "They are allowed to hold and feed the animals.",
+      "cf": "be allowed to do sth.",
+      "forms": [
+        "to be allowed to do sth.",
+        "be allowed to do sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.it-s-a-pity",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It's a pity.",
+      "de": [
+        "Das ist schade."
+      ],
+      "deRaw": "Das ist schade.",
+      "exampleSb": "It's a pity.",
+      "cf": null,
+      "forms": [
+        "It's a pity."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.strict",
+      "kind": "phrase",
+      "theme": null,
+      "en": "strict",
+      "de": [
+        "streng"
+      ],
+      "deRaw": "streng",
+      "exampleSb": "Mum's very strict about that.",
+      "cf": null,
+      "forms": [
+        "strict"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-adopt",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to adopt",
+      "de": [
+        "hier: annehmen"
+      ],
+      "deRaw": "hier: annehmen",
+      "exampleSb": "The Amish are known for being slow to adopt modern technology.",
+      "cf": "adopt",
+      "forms": [
+        "to adopt",
+        "adopt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.community",
+      "kind": "phrase",
+      "theme": null,
+      "en": "community",
+      "de": [
+        "Gemeinschaft",
+        "Gemeinde"
+      ],
+      "deRaw": "Gemeinschaft, Gemeinde",
+      "exampleSb": "There are many different groups, but the strongest community is the Old Order Amish.",
+      "cf": null,
+      "forms": [
+        "community"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.conservative",
+      "kind": "phrase",
+      "theme": null,
+      "en": "conservative",
+      "de": [
+        "konservativ"
+      ],
+      "deRaw": "konservativ",
+      "exampleSb": "The most conservative Amish groups don't allow the use of machines.",
+      "cf": null,
+      "forms": [
+        "conservative"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.modern-technology",
+      "kind": "phrase",
+      "theme": null,
+      "en": "modern technology",
+      "de": [
+        "moderne Technologie"
+      ],
+      "deRaw": "moderne Technologie",
+      "exampleSb": "Most Amish groups don't use modern technology.",
+      "cf": null,
+      "forms": [
+        "modern technology"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.plenty",
+      "kind": "phrase",
+      "theme": null,
+      "en": "plenty",
+      "de": [
+        "reichlich"
+      ],
+      "deRaw": "reichlich",
+      "exampleSb": "We're a church group of 35 families, and we've got plenty to do.",
+      "cf": null,
+      "forms": [
+        "plenty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-pray",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to pray",
+      "de": [
+        "beten"
+      ],
+      "deRaw": "beten",
+      "exampleSb": "We often get together and pray.",
+      "cf": "pray",
+      "forms": [
+        "to pray",
+        "pray"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-punish",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to punish",
+      "de": [
+        "bestrafen"
+      ],
+      "deRaw": "bestrafen",
+      "exampleSb": "You can go to parties and your parents don't punish you for it.",
+      "cf": "punish",
+      "forms": [
+        "to punish",
+        "punish"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.it-depends",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It depends.",
+      "de": [
+        "Es kommt darauf an."
+      ],
+      "deRaw": "Es kommt darauf an.",
+      "exampleSb": "It depends.",
+      "cf": null,
+      "forms": [
+        "It depends."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-stay-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to stay up",
+      "de": [
+        "aufbleiben"
+      ],
+      "deRaw": "aufbleiben",
+      "exampleSb": "Well, I can stay up, but only on Saturdays.",
+      "cf": "stay up",
+      "forms": [
+        "to stay up",
+        "stay up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-invite-sb-over",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to invite sb. over",
+      "de": [
+        "jdn. zu sich einladen"
+      ],
+      "deRaw": "jdn. zu sich einladen",
+      "exampleSb": "Are you allowed to invite friends over?",
+      "cf": "invite sb. over",
+      "forms": [
+        "to invite sb. over",
+        "invite sb. over"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.for-a-change",
+      "kind": "phrase",
+      "theme": null,
+      "en": "for a change",
+      "de": [
+        "zur Abwechslung"
+      ],
+      "deRaw": "zur Abwechslung",
+      "exampleSb": "I'll write something positive about young people for a change.",
+      "cf": null,
+      "forms": [
+        "for a change"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.journalist",
+      "kind": "phrase",
+      "theme": null,
+      "en": "journalist",
+      "de": [
+        "Journalist/Journalistin"
+      ],
+      "deRaw": "Journalist/Journalistin",
+      "exampleSb": "My dad's friend works as a journalist at the local paper.",
+      "cf": null,
+      "forms": [
+        "journalist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.litter-picking",
+      "kind": "phrase",
+      "theme": null,
+      "en": "litter-picking",
+      "de": [
+        "Müllsammeln"
+      ],
+      "deRaw": "Müllsammeln",
+      "exampleSb": "How about we organise a litter-picking day?",
+      "cf": null,
+      "forms": [
+        "litter-picking"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.rude",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rude",
+      "de": [
+        "unhöflich",
+        "unverschämt"
+      ],
+      "deRaw": "unhöflich, unverschämt",
+      "exampleSb": "When some people asked them to stop, they were rude.",
+      "cf": null,
+      "forms": [
+        "rude"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.unbelievable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unbelievable",
+      "de": [
+        "unglaublich"
+      ],
+      "deRaw": "unglaublich",
+      "exampleSb": "They left their rubbish all over the place. It's unbelievable.",
+      "cf": null,
+      "forms": [
+        "unbelievable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-freeze",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to freeze",
+      "de": [
+        "(er-)frieren"
+      ],
+      "deRaw": "(er-)frieren",
+      "exampleSb": "She's from a hot country. She'll freeze over here.",
+      "cf": "freeze",
+      "forms": [
+        "to freeze",
+        "freeze"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-lend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to lend",
+      "de": [
+        "(ver-)leihen"
+      ],
+      "deRaw": "(ver-)leihen",
+      "exampleSb": "I could lend her some of my clothes if you like.",
+      "cf": "lend",
+      "forms": [
+        "to lend",
+        "lend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.never-mind",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Never mind!",
+      "de": [
+        "Egal!",
+        "Schon gut!"
+      ],
+      "deRaw": "Egal!, Schon gut!",
+      "exampleSb": "Never mind!",
+      "cf": null,
+      "forms": [
+        "Never mind!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-remind-sb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to remind sb.",
+      "de": [
+        "jdn. erinnern"
+      ],
+      "deRaw": "jdn. erinnern",
+      "exampleSb": "Kate reminds him that Laura is from Portugal.",
+      "cf": "remind sb.",
+      "forms": [
+        "to remind sb.",
+        "remind sb."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u09.w.to-sort-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to sort out",
+      "de": [
+        "aussortieren"
+      ],
+      "deRaw": "aussortieren",
+      "exampleSb": "I'm going to sort out my clothes for Bianca.",
+      "cf": "sort out",
+      "forms": [
+        "to sort out",
+        "sort out"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

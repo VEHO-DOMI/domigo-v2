@@ -1,0 +1,626 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 11,
+  "slug": "g3-u11",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u11.w.canyon",
+      "kind": "wordfile",
+      "theme": "Places and Sights in Death Valley",
+      "en": "canyon",
+      "de": [
+        "Schlucht",
+        "Canyon"
+      ],
+      "deRaw": "Schlucht, Canyon",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "canyon"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.dirt-road",
+      "kind": "wordfile",
+      "theme": "Places and Sights in Death Valley",
+      "en": "dirt road",
+      "de": [
+        "unbefestigte Straße"
+      ],
+      "deRaw": "unbefestigte Straße",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "dirt road"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.ridge",
+      "kind": "wordfile",
+      "theme": "Places and Sights in Death Valley",
+      "en": "ridge",
+      "de": [
+        "Bergrücken",
+        "Grat"
+      ],
+      "deRaw": "Bergrücken, Grat",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ridge"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.headquarters",
+      "kind": "wordfile",
+      "theme": "Places and Sights in Death Valley",
+      "en": "headquarters (pl)",
+      "de": [
+        "Hauptquartier"
+      ],
+      "deRaw": "Hauptquartier",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "headquarters",
+        "pl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.to-spot-sth",
+      "kind": "wordfile",
+      "theme": "Places and Sights in Death Valley",
+      "en": "to spot sth.",
+      "de": [
+        "etw. entdecken"
+      ],
+      "deRaw": "etw. entdecken",
+      "exampleSb": null,
+      "cf": "spot sth.",
+      "forms": [
+        "to spot sth.",
+        "spot sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.a-dry-place",
+      "kind": "wordfile",
+      "theme": "Places and Sights in Death Valley",
+      "en": "a dry place",
+      "de": [
+        "ein trockener Ort"
+      ],
+      "deRaw": "ein trockener Ort",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "a dry place"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.to-have-no-signal",
+      "kind": "wordfile",
+      "theme": "Places and Sights in Death Valley",
+      "en": "to have no signal",
+      "de": [
+        "kein Signal haben"
+      ],
+      "deRaw": "kein Signal haben",
+      "exampleSb": null,
+      "cf": "have no signal",
+      "forms": [
+        "to have no signal",
+        "have no signal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.backpack",
+      "kind": "wordfile",
+      "theme": "Places and Sights in Death Valley",
+      "en": "backpack",
+      "de": [
+        "Rucksack"
+      ],
+      "deRaw": "Rucksack",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "backpack"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.fabulous",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fabulous",
+      "de": [
+        "fabelhaft"
+      ],
+      "deRaw": "fabelhaft",
+      "exampleSb": "Don't forget our fabulous national parks.",
+      "cf": null,
+      "forms": [
+        "fabulous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.height",
+      "kind": "phrase",
+      "theme": null,
+      "en": "height",
+      "de": [
+        "Höhe"
+      ],
+      "deRaw": "Höhe",
+      "exampleSb": "The giant redwood trees can reach heights of more than 100 m.",
+      "cf": null,
+      "forms": [
+        "height"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.capital",
+      "kind": "phrase",
+      "theme": null,
+      "en": "capital",
+      "de": [
+        "Hauptstadt"
+      ],
+      "deRaw": "Hauptstadt",
+      "exampleSb": "Which city is the state capital of California?",
+      "cf": null,
+      "forms": [
+        "capital"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.independent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "independent",
+      "de": [
+        "unabhängig"
+      ],
+      "deRaw": "unabhängig",
+      "exampleSb": "California was an independent country for one month in 1846.",
+      "cf": null,
+      "forms": [
+        "independent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.innovation",
+      "kind": "phrase",
+      "theme": null,
+      "en": "innovation",
+      "de": [
+        "Neuerung",
+        "Innovation"
+      ],
+      "deRaw": "Neuerung, Innovation",
+      "exampleSb": "California is famous for its innovations.",
+      "cf": null,
+      "forms": [
+        "innovation"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.state",
+      "kind": "phrase",
+      "theme": null,
+      "en": "state",
+      "de": [
+        "Staat"
+      ],
+      "deRaw": "Staat",
+      "exampleSb": "There are about 40 million people living in the state of California.",
+      "cf": null,
+      "forms": [
+        "state"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.to-commute",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to commute",
+      "de": [
+        "pendeln"
+      ],
+      "deRaw": "pendeln",
+      "exampleSb": "My mum commuted to the Valley every day.",
+      "cf": "commute",
+      "forms": [
+        "to commute",
+        "commute"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.connection",
+      "kind": "phrase",
+      "theme": null,
+      "en": "connection",
+      "de": [
+        "Verbindung"
+      ],
+      "deRaw": "Verbindung",
+      "exampleSb": "His internet connection was slow.",
+      "cf": null,
+      "forms": [
+        "connection"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.programmer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "programmer",
+      "de": [
+        "Programmierer/Programmiererin"
+      ],
+      "deRaw": "Programmierer/Programmiererin",
+      "exampleSb": "Your mum works as a programmer.",
+      "cf": null,
+      "forms": [
+        "programmer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.steep",
+      "kind": "phrase",
+      "theme": null,
+      "en": "steep",
+      "de": [
+        "steil"
+      ],
+      "deRaw": "steil",
+      "exampleSb": "A canyon is deep with steep sides of rock.",
+      "cf": null,
+      "forms": [
+        "steep"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.to-crack",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to crack",
+      "de": [
+        "aufbrechen",
+        "zerbrechen"
+      ],
+      "deRaw": "aufbrechen; zerbrechen",
+      "exampleSb": "My mouth was dry and my lips began to crack.",
+      "cf": "crack",
+      "forms": [
+        "to crack",
+        "crack"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.four-wheel-drive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "four-wheel drive",
+      "de": [
+        "Allradantrieb"
+      ],
+      "deRaw": "Allradantrieb",
+      "exampleSb": "We need a jeep with four-wheel drive in the desert.",
+      "cf": null,
+      "forms": [
+        "four-wheel drive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.gold-digger",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gold digger",
+      "de": [
+        "Goldgräber/Goldgräberin"
+      ],
+      "deRaw": "Goldgräber/Goldgräberin",
+      "exampleSb": "Gold diggers were the people trying to find gold.",
+      "cf": null,
+      "forms": [
+        "gold digger"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.gold-rush",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gold rush",
+      "de": [
+        "Goldrausch"
+      ],
+      "deRaw": "Goldrausch",
+      "exampleSb": "The California gold rush began in 1849.",
+      "cf": null,
+      "forms": [
+        "gold rush"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.lip",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lip",
+      "de": [
+        "Lippe"
+      ],
+      "deRaw": "Lippe",
+      "exampleSb": "Her lips were shaking and she started to cry.",
+      "cf": null,
+      "forms": [
+        "lip"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.mountain-range",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mountain range",
+      "de": [
+        "Bergkette"
+      ],
+      "deRaw": "Bergkette",
+      "exampleSb": "The valley is situated between two mountain ranges.",
+      "cf": null,
+      "forms": [
+        "mountain range"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.shade",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shade (no pl)",
+      "de": [
+        "Schatten"
+      ],
+      "deRaw": "Schatten",
+      "exampleSb": "I stayed in the shade of a giant rock.",
+      "cf": null,
+      "forms": [
+        "shade",
+        "no pl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.to-be-situated",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be situated",
+      "de": [
+        "liegen",
+        "sich befinden"
+      ],
+      "deRaw": "liegen, sich befinden",
+      "exampleSb": "Where is Death Valley situated?",
+      "cf": "be situated",
+      "forms": [
+        "to be situated",
+        "be situated"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.thirst",
+      "kind": "phrase",
+      "theme": null,
+      "en": "thirst",
+      "de": [
+        "Durst"
+      ],
+      "deRaw": "Durst",
+      "exampleSb": "A group of gold diggers got lost in the valley and died of thirst.",
+      "cf": null,
+      "forms": [
+        "thirst"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.criminal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "criminal",
+      "de": [
+        "Krimineller/Kriminelle"
+      ],
+      "deRaw": "Krimineller/Kriminelle",
+      "exampleSb": "Alcatraz was home to some famous criminals.",
+      "cf": null,
+      "forms": [
+        "criminal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.cyclist",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cyclist",
+      "de": [
+        "Radfahrer/Radfahrerin"
+      ],
+      "deRaw": "Radfahrer/Radfahrerin",
+      "exampleSb": "On Sundays, the road is only open to cyclists and roller skaters.",
+      "cf": null,
+      "forms": [
+        "cyclist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.familiar",
+      "kind": "phrase",
+      "theme": null,
+      "en": "familiar",
+      "de": [
+        "vertraut",
+        "bekannt"
+      ],
+      "deRaw": "vertraut, bekannt",
+      "exampleSb": "The Golden Gate Bridge is one of the most familiar sights of San Francisco.",
+      "cf": null,
+      "forms": [
+        "familiar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.ferry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ferry",
+      "de": [
+        "Fähre"
+      ],
+      "deRaw": "Fähre",
+      "exampleSb": "You can take a ferry to Alcatraz Island.",
+      "cf": null,
+      "forms": [
+        "ferry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.guided",
+      "kind": "phrase",
+      "theme": null,
+      "en": "guided",
+      "de": [
+        "geführt",
+        "geleitet"
+      ],
+      "deRaw": "geführt, geleitet",
+      "exampleSb": "These days you can go on a guided tour to Alcatraz Island.",
+      "cf": null,
+      "forms": [
+        "guided"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.to-take-over",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take over",
+      "de": [
+        "übernehmen"
+      ],
+      "deRaw": "übernehmen",
+      "exampleSb": "On Sundays, the cyclists and roller skaters take over the street.",
+      "cf": "take over",
+      "forms": [
+        "to take over",
+        "take over"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.to-catch",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to catch (the train)",
+      "de": [
+        "(den Zug) erwischen"
+      ],
+      "deRaw": "(den Zug) erwischen",
+      "exampleSb": "They have to go to the platform to catch the train.",
+      "cf": "catch",
+      "forms": [
+        "to catch",
+        "catch",
+        "the train"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.information-office",
+      "kind": "phrase",
+      "theme": null,
+      "en": "information office",
+      "de": [
+        "Informationsbüro",
+        "Auskunftsbüro"
+      ],
+      "deRaw": "Informationsbüro, Auskunftsbüro",
+      "exampleSb": "If you need help, you can ask someone in the information office.",
+      "cf": null,
+      "forms": [
+        "information office"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.railway",
+      "kind": "phrase",
+      "theme": null,
+      "en": "railway",
+      "de": [
+        "Zug",
+        "Eisenbahn"
+      ],
+      "deRaw": "Zug, Eisenbahn",
+      "exampleSb": "The railway service to Manchester is leaving from platform 3.",
+      "cf": null,
+      "forms": [
+        "railway"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u11.w.totally",
+      "kind": "phrase",
+      "theme": null,
+      "en": "totally",
+      "de": [
+        "total"
+      ],
+      "deRaw": "total",
+      "exampleSb": "You are totally right about this.",
+      "cf": null,
+      "forms": [
+        "totally"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

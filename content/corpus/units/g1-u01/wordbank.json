@@ -1,0 +1,1141 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 1,
+  "slug": "g1-u01",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u01.w.sound-system",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "sound system",
+      "de": [
+        "Soundsystem",
+        "Musikanlage"
+      ],
+      "deRaw": "Soundsystem, Musikanlage",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sound system"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.projector",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "projector",
+      "de": [
+        "Projektor",
+        "Beamer"
+      ],
+      "deRaw": "Projektor, Beamer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "projector"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.board",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "board",
+      "de": [
+        "Tafel"
+      ],
+      "deRaw": "Tafel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "board"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.window",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "window",
+      "de": [
+        "Fenster"
+      ],
+      "deRaw": "Fenster",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "window"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.door",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "door",
+      "de": [
+        "Tür"
+      ],
+      "deRaw": "Tür",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "door"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.desk",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "desk",
+      "de": [
+        "Schreibtisch",
+        "Pult"
+      ],
+      "deRaw": "Schreibtisch, Pult",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "desk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.scissors",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "scissors",
+      "de": [
+        "Schere"
+      ],
+      "deRaw": "Schere",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "scissors"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.ruler",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "ruler",
+      "de": [
+        "Lineal"
+      ],
+      "deRaw": "Lineal",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ruler"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.tablet",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tablet",
+      "de": [
+        "Tablet"
+      ],
+      "deRaw": "Tablet",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tablet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.chair",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "chair",
+      "de": [
+        "Stuhl",
+        "Sessel"
+      ],
+      "deRaw": "Stuhl, Sessel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chair"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.school-bag",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "school bag",
+      "de": [
+        "Schultasche"
+      ],
+      "deRaw": "Schultasche",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "school bag"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.pen",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "pen",
+      "de": [
+        "Kugelschreiber"
+      ],
+      "deRaw": "Kugelschreiber",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pen"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.exercise-book",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "exercise book",
+      "de": [
+        "Heft"
+      ],
+      "deRaw": "Heft",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "exercise book"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.pencil-case",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "pencil case",
+      "de": [
+        "Federmäppchen"
+      ],
+      "deRaw": "Federmäppchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pencil case"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.pencil",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "pencil",
+      "de": [
+        "Bleistift"
+      ],
+      "deRaw": "Bleistift",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pencil"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.rubber",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "rubber",
+      "de": [
+        "Radiergummi"
+      ],
+      "deRaw": "Radiergummi",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rubber"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.book",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "book",
+      "de": [
+        "Buch"
+      ],
+      "deRaw": "Buch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "book"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.hairband",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "hairband",
+      "de": [
+        "Haarreif",
+        "Stirnband"
+      ],
+      "deRaw": "Haarreif, Stirnband",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hairband"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.sunglasses",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "sunglasses",
+      "de": [
+        "Sonnenbrille"
+      ],
+      "deRaw": "Sonnenbrille",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sunglasses"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.hat",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "hat",
+      "de": [
+        "Hut"
+      ],
+      "deRaw": "Hut",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.school-tie",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "school tie",
+      "de": [
+        "Schulkrawatte"
+      ],
+      "deRaw": "Schulkrawatte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "school tie"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.shirt",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "shirt",
+      "de": [
+        "Hemd"
+      ],
+      "deRaw": "Hemd",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "shirt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.sweater",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "sweater",
+      "de": [
+        "Pullover"
+      ],
+      "deRaw": "Pullover",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sweater"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.skirt",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "skirt",
+      "de": [
+        "Rock"
+      ],
+      "deRaw": "Rock",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "skirt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.socks",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "socks",
+      "de": [
+        "Socken"
+      ],
+      "deRaw": "Socken",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "socks"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.shoe",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "shoe",
+      "de": [
+        "Schuh"
+      ],
+      "deRaw": "Schuh",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "shoe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-give",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to give",
+      "de": [
+        "geben"
+      ],
+      "deRaw": "geben",
+      "exampleSb": "Give me your school bag.",
+      "cf": "give",
+      "forms": [
+        "to give",
+        "give"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "time",
+      "de": [
+        "Zeit"
+      ],
+      "deRaw": "Zeit",
+      "exampleSb": "It's time for school.",
+      "cf": null,
+      "forms": [
+        "time"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-understand",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to understand",
+      "de": [
+        "verstehen"
+      ],
+      "deRaw": "verstehen",
+      "exampleSb": "I understand the question.",
+      "cf": "understand",
+      "forms": [
+        "to understand",
+        "understand"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-write",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to write",
+      "de": [
+        "schreiben"
+      ],
+      "deRaw": "schreiben",
+      "exampleSb": "Write the numbers.",
+      "cf": "write",
+      "forms": [
+        "to write",
+        "write"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-enjoy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to enjoy",
+      "de": [
+        "genießen"
+      ],
+      "deRaw": "genießen",
+      "exampleSb": "Enjoy the music.",
+      "cf": "enjoy",
+      "forms": [
+        "to enjoy",
+        "enjoy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-listen",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to listen",
+      "de": [
+        "zuhören"
+      ],
+      "deRaw": "zuhören",
+      "exampleSb": "Listen to the song.",
+      "cf": "listen",
+      "forms": [
+        "to listen",
+        "listen"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-love",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to love",
+      "de": [
+        "lieben"
+      ],
+      "deRaw": "lieben",
+      "exampleSb": "I love blue. It's my favourite colour.",
+      "cf": "love",
+      "forms": [
+        "to love",
+        "love"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.more",
+      "kind": "phrase",
+      "theme": null,
+      "en": "more",
+      "de": [
+        "mehr"
+      ],
+      "deRaw": "mehr",
+      "exampleSb": "I want more!",
+      "cf": null,
+      "forms": [
+        "more"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-read",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to read",
+      "de": [
+        "lesen"
+      ],
+      "deRaw": "lesen",
+      "exampleSb": "Read the text.",
+      "cf": "read",
+      "forms": [
+        "to read",
+        "read"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.their",
+      "kind": "phrase",
+      "theme": null,
+      "en": "their",
+      "de": [
+        "ihr/e"
+      ],
+      "deRaw": "ihr/e",
+      "exampleSb": "What's their address?",
+      "cf": null,
+      "forms": [
+        "their"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-ask",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to ask",
+      "de": [
+        "fragen"
+      ],
+      "deRaw": "fragen",
+      "exampleSb": "Can I ask you a question?",
+      "cf": "ask",
+      "forms": [
+        "to ask",
+        "ask"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.address",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(email) address",
+      "de": [
+        "(E-Mail-)Adresse"
+      ],
+      "deRaw": "(E-Mail-)Adresse",
+      "exampleSb": "My email address is sara@linkways.com.",
+      "cf": null,
+      "forms": [
+        "address",
+        "email"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.how-are-you",
+      "kind": "phrase",
+      "theme": null,
+      "en": "How are you?",
+      "de": [
+        "Wie geht es dir/Ihnen/euch?"
+      ],
+      "deRaw": "Wie geht es dir/Ihnen/euch?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "How are you?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.i-am-fine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I am (= I'm) fine.",
+      "de": [
+        "Es geht mir gut."
+      ],
+      "deRaw": "Es geht mir gut.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "I am fine."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-meet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to meet",
+      "de": [
+        "kennenlernen",
+        "sich treffen"
+      ],
+      "deRaw": "kennenlernen; sich treffen",
+      "exampleSb": "Nice to meet you!",
+      "cf": "meet",
+      "forms": [
+        "to meet",
+        "meet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.then",
+      "kind": "phrase",
+      "theme": null,
+      "en": "then",
+      "de": [
+        "dann",
+        "danach"
+      ],
+      "deRaw": "dann, danach",
+      "exampleSb": "Listen to the dialogue. Then read it.",
+      "cf": null,
+      "forms": [
+        "then"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.your",
+      "kind": "phrase",
+      "theme": null,
+      "en": "your",
+      "de": [
+        "dein/e",
+        "Ihr/e",
+        "euer/eure"
+      ],
+      "deRaw": "dein/e; Ihr/e; euer/eure",
+      "exampleSb": "What's your email address?",
+      "cf": null,
+      "forms": [
+        "your"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-look",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to look",
+      "de": [
+        "sehen",
+        "schauen",
+        "Schau mal."
+      ],
+      "deRaw": "sehen, schauen; Schau mal.",
+      "exampleSb": "Look at the animals.",
+      "cf": "look",
+      "forms": [
+        "to look",
+        "look"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.or",
+      "kind": "phrase",
+      "theme": null,
+      "en": "or",
+      "de": [
+        "oder"
+      ],
+      "deRaw": "oder",
+      "exampleSb": "Tick or correct the numbers.",
+      "cf": null,
+      "forms": [
+        "or"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-eat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to eat",
+      "de": [
+        "essen",
+        "fressen"
+      ],
+      "deRaw": "essen; fressen",
+      "exampleSb": "I eat insects.",
+      "cf": "eat",
+      "forms": [
+        "to eat",
+        "eat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-go",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to go",
+      "de": [
+        "gehen"
+      ],
+      "deRaw": "gehen",
+      "exampleSb": "I must go. Bye.",
+      "cf": "go",
+      "forms": [
+        "to go",
+        "go"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.must",
+      "kind": "phrase",
+      "theme": null,
+      "en": "must",
+      "de": [
+        "müssen"
+      ],
+      "deRaw": "müssen",
+      "exampleSb": "I must go.",
+      "cf": null,
+      "forms": [
+        "must"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.how-many",
+      "kind": "phrase",
+      "theme": null,
+      "en": "how many",
+      "de": [
+        "wie viele"
+      ],
+      "deRaw": "wie viele",
+      "exampleSb": "How many frogs can you see?",
+      "cf": null,
+      "forms": [
+        "how many"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-hate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to hate",
+      "de": [
+        "hassen",
+        "nicht ausstehen können"
+      ],
+      "deRaw": "hassen, nicht ausstehen können",
+      "exampleSb": "I hate pink.",
+      "cf": "hate",
+      "forms": [
+        "to hate",
+        "hate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.here",
+      "kind": "phrase",
+      "theme": null,
+      "en": "here",
+      "de": [
+        "hier"
+      ],
+      "deRaw": "hier",
+      "exampleSb": "Here's your pencil case.",
+      "cf": null,
+      "forms": [
+        "here"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.it",
+      "kind": "phrase",
+      "theme": null,
+      "en": "it",
+      "de": [
+        "es"
+      ],
+      "deRaw": "es",
+      "exampleSb": "It's yellow.",
+      "cf": null,
+      "forms": [
+        "it"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.let-s",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Let's …",
+      "de": [
+        "Lass(t) …"
+      ],
+      "deRaw": "Lass(t) …",
+      "exampleSb": "Let's sing a song!",
+      "cf": null,
+      "forms": [
+        "Let's …"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.midnight",
+      "kind": "phrase",
+      "theme": null,
+      "en": "midnight",
+      "de": [
+        "Mitternacht"
+      ],
+      "deRaw": "Mitternacht",
+      "exampleSb": "It's twelve o'clock – midnight.",
+      "cf": null,
+      "forms": [
+        "midnight"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.our",
+      "kind": "phrase",
+      "theme": null,
+      "en": "our",
+      "de": [
+        "unser/e"
+      ],
+      "deRaw": "unser/e",
+      "exampleSb": "This is our school.",
+      "cf": null,
+      "forms": [
+        "our"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.favourite",
+      "kind": "phrase",
+      "theme": null,
+      "en": "favourite",
+      "de": [
+        "Lieblings-"
+      ],
+      "deRaw": "Lieblings-",
+      "exampleSb": "Green is my favourite colour.",
+      "cf": null,
+      "forms": [
+        "favourite"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-find",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to find",
+      "de": [
+        "finden"
+      ],
+      "deRaw": "finden",
+      "exampleSb": "Can you find my school tie?",
+      "cf": "find",
+      "forms": [
+        "to find",
+        "find"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.light",
+      "kind": "phrase",
+      "theme": null,
+      "en": "light",
+      "de": [
+        "hell"
+      ],
+      "deRaw": "hell",
+      "exampleSb": "My favourite colour is light blue.",
+      "cf": null,
+      "forms": [
+        "light"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.child",
+      "kind": "phrase",
+      "theme": null,
+      "en": "child",
+      "de": [
+        "Kind"
+      ],
+      "deRaw": "Kind",
+      "exampleSb": "The child is in class 1A.",
+      "cf": null,
+      "forms": [
+        "child"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-clean",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to clean",
+      "de": [
+        "sauber machen",
+        "putzen"
+      ],
+      "deRaw": "sauber machen, putzen",
+      "exampleSb": "Clean the board.",
+      "cf": "clean",
+      "forms": [
+        "to clean",
+        "clean"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-close",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to close",
+      "de": [
+        "schließen",
+        "zumachen"
+      ],
+      "deRaw": "schließen, zumachen",
+      "exampleSb": "Close the door.",
+      "cf": "close",
+      "forms": [
+        "to close",
+        "close"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-open",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to open",
+      "de": [
+        "öffnen",
+        "aufmachen"
+      ],
+      "deRaw": "öffnen, aufmachen",
+      "exampleSb": "Open the window.",
+      "cf": "open",
+      "forms": [
+        "to open",
+        "open"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.picture",
+      "kind": "phrase",
+      "theme": null,
+      "en": "picture",
+      "de": [
+        "Bild"
+      ],
+      "deRaw": "Bild",
+      "exampleSb": "Look at the pictures.",
+      "cf": null,
+      "forms": [
+        "picture"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-sit-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to sit down",
+      "de": [
+        "sich (hin-)setzen"
+      ],
+      "deRaw": "sich (hin-)setzen",
+      "exampleSb": "Sit down, children.",
+      "cf": "sit down",
+      "forms": [
+        "to sit down",
+        "sit down"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-speak",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to speak",
+      "de": [
+        "sprechen"
+      ],
+      "deRaw": "sprechen",
+      "exampleSb": "Don't speak. Listen.",
+      "cf": "speak",
+      "forms": [
+        "to speak",
+        "speak"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-stand-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to stand up",
+      "de": [
+        "aufstehen"
+      ],
+      "deRaw": "aufstehen",
+      "exampleSb": "Don't stand up. Sit down.",
+      "cf": "stand up",
+      "forms": [
+        "to stand up",
+        "stand up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.to-take-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take out",
+      "de": [
+        "herausnehmen"
+      ],
+      "deRaw": "herausnehmen",
+      "exampleSb": "Take out your books.",
+      "cf": "take out",
+      "forms": [
+        "to take out",
+        "take out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u01.w.class",
+      "kind": "phrase",
+      "theme": null,
+      "en": "class",
+      "de": [
+        "(Schul-)Klasse"
+      ],
+      "deRaw": "(Schul-)Klasse",
+      "exampleSb": "I'm in class 1A.",
+      "cf": null,
+      "forms": [
+        "class"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

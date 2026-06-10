@@ -1,0 +1,16 @@
+{
+  "name": "domigo-v2",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@11.5.3",
+  "scripts": {
+    "typecheck": "pnpm -r run typecheck",
+    "lint": "pnpm -r run lint",
+    "test": "pnpm -r run test",
+    "build": "pnpm --filter web run build",
+    "content": "node packages/content-pipeline/src/content.ts"
+  }
+}

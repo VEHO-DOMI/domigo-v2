@@ -1,0 +1,622 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 14,
+  "slug": "g2-u14",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u14.w.roller-skating",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "roller-skating",
+      "de": [
+        "Rollschuhlaufen"
+      ],
+      "deRaw": "Rollschuhlaufen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "roller-skating"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.sportsman-and-sportswoman",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "sportsman and sportswoman",
+      "de": [
+        "Sportler und Sportlerin"
+      ],
+      "deRaw": "Sportler und Sportlerin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sportsman and sportswoman"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.ice-skating",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "ice skating",
+      "de": [
+        "Eislaufen"
+      ],
+      "deRaw": "Eislaufen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ice skating"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.snowboarding",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "snowboarding",
+      "de": [
+        "Snowboarden"
+      ],
+      "deRaw": "Snowboarden",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "snowboarding"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.skiing",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "skiing",
+      "de": [
+        "Skifahren"
+      ],
+      "deRaw": "Skifahren",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "skiing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.surfing",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "surfing",
+      "de": [
+        "Surfen"
+      ],
+      "deRaw": "Surfen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "surfing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.mountain-climbing",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "mountain climbing",
+      "de": [
+        "Bergsteigen"
+      ],
+      "deRaw": "Bergsteigen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mountain climbing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.windsurfing",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "windsurfing",
+      "de": [
+        "Windsurfen"
+      ],
+      "deRaw": "Windsurfen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "windsurfing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.swimming",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "swimming",
+      "de": [
+        "Schwimmen"
+      ],
+      "deRaw": "Schwimmen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "swimming"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.mountain-biking",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "mountain biking",
+      "de": [
+        "Mountainbiken"
+      ],
+      "deRaw": "Mountainbiken",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mountain biking"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.cycling",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "cycling",
+      "de": [
+        "Radfahren"
+      ],
+      "deRaw": "Radfahren",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cycling"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.skateboarding",
+      "kind": "wordfile",
+      "theme": "Sports",
+      "en": "skateboarding",
+      "de": [
+        "Skateboardfahren"
+      ],
+      "deRaw": "Skateboardfahren",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "skateboarding"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.to-grow-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to grow up",
+      "de": [
+        "erwachsen werden",
+        "aufwachsen"
+      ],
+      "deRaw": "erwachsen werden; aufwachsen",
+      "exampleSb": "When I grow up, I want to be an Olympic skier.",
+      "cf": "grow up",
+      "forms": [
+        "to grow up",
+        "grow up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.member",
+      "kind": "phrase",
+      "theme": null,
+      "en": "member",
+      "de": [
+        "Mitglied"
+      ],
+      "deRaw": "Mitglied",
+      "exampleSb": "She's a member of the school team.",
+      "cf": null,
+      "forms": [
+        "member"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.professional",
+      "kind": "phrase",
+      "theme": null,
+      "en": "professional",
+      "de": [
+        "professionell",
+        "hauptberuflich"
+      ],
+      "deRaw": "professionell; hauptberuflich",
+      "exampleSb": "I want to play professional basketball.",
+      "cf": null,
+      "forms": [
+        "professional"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.race",
+      "kind": "phrase",
+      "theme": null,
+      "en": "race",
+      "de": [
+        "Wettfahrt",
+        "Rennen"
+      ],
+      "deRaw": "Wettfahrt; Rennen",
+      "exampleSb": "I won my first race last week.",
+      "cf": null,
+      "forms": [
+        "race"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.serious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "serious",
+      "de": [
+        "ernst(haft)",
+        "gravierend"
+      ],
+      "deRaw": "ernst(haft); gravierend",
+      "exampleSb": "Have you ever had any serious accidents?",
+      "cf": null,
+      "forms": [
+        "serious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.to-appear",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to appear",
+      "de": [
+        "erscheinen"
+      ],
+      "deRaw": "erscheinen",
+      "exampleSb": "Would you like to appear on television?",
+      "cf": "appear",
+      "forms": [
+        "to appear",
+        "appear"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.competition",
+      "kind": "phrase",
+      "theme": null,
+      "en": "competition",
+      "de": [
+        "Wettbewerb"
+      ],
+      "deRaw": "Wettbewerb",
+      "exampleSb": "Have you ever won a competition?",
+      "cf": null,
+      "forms": [
+        "competition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.challenge",
+      "kind": "phrase",
+      "theme": null,
+      "en": "challenge",
+      "de": [
+        "Herausforderung"
+      ],
+      "deRaw": "Herausforderung",
+      "exampleSb": "The competition was a big challenge for me.",
+      "cf": null,
+      "forms": [
+        "challenge"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.distance",
+      "kind": "phrase",
+      "theme": null,
+      "en": "distance",
+      "de": [
+        "Abstand",
+        "Distanz"
+      ],
+      "deRaw": "Abstand, Distanz",
+      "exampleSb": "You have to throw an egg over a large distance.",
+      "cf": null,
+      "forms": [
+        "distance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.extreme",
+      "kind": "phrase",
+      "theme": null,
+      "en": "extreme",
+      "de": [
+        "extrem"
+      ],
+      "deRaw": "extrem",
+      "exampleSb": "I've never tried any extreme sports.",
+      "cf": null,
+      "forms": [
+        "extreme"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.flood",
+      "kind": "phrase",
+      "theme": null,
+      "en": "flood",
+      "de": [
+        "Flut"
+      ],
+      "deRaw": "Flut",
+      "exampleSb": "The bridge broke after a big flood.",
+      "cf": null,
+      "forms": [
+        "flood"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.to-manage",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to manage",
+      "de": [
+        "etw. schaffen"
+      ],
+      "deRaw": "etw. schaffen",
+      "exampleSb": "A team from New Zealand managed to set a new record.",
+      "cf": "manage",
+      "forms": [
+        "to manage",
+        "manage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.official",
+      "kind": "phrase",
+      "theme": null,
+      "en": "official",
+      "de": [
+        "offiziell"
+      ],
+      "deRaw": "offiziell",
+      "exampleSb": "Has there ever been an official record?",
+      "cf": null,
+      "forms": [
+        "official"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.rather",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rather",
+      "de": [
+        "ziemlich",
+        "eher"
+      ],
+      "deRaw": "ziemlich, eher",
+      "exampleSb": "Egg throwing is a rather unusual sport.",
+      "cf": null,
+      "forms": [
+        "rather"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.to-snorkel",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to snorkel",
+      "de": [
+        "schnorcheln"
+      ],
+      "deRaw": "schnorcheln",
+      "exampleSb": "I love to snorkel in the sea.",
+      "cf": "snorkel",
+      "forms": [
+        "to snorkel",
+        "snorkel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.to-take-part",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take part (in)",
+      "de": [
+        "an etw. teilnehmen"
+      ],
+      "deRaw": "an etw. teilnehmen",
+      "exampleSb": "Do you want to take part in a competition?",
+      "cf": "take part",
+      "forms": [
+        "to take part",
+        "take part",
+        "in"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.without",
+      "kind": "phrase",
+      "theme": null,
+      "en": "without",
+      "de": [
+        "ohne"
+      ],
+      "deRaw": "ohne",
+      "exampleSb": "You have to throw an egg without breaking it.",
+      "cf": null,
+      "forms": [
+        "without"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.world-record",
+      "kind": "phrase",
+      "theme": null,
+      "en": "world record",
+      "de": [
+        "Weltrekord"
+      ],
+      "deRaw": "Weltrekord",
+      "exampleSb": "There's an official world record in egg throwing.",
+      "cf": null,
+      "forms": [
+        "world record"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.nil",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nil",
+      "de": [
+        "null"
+      ],
+      "deRaw": "null",
+      "exampleSb": "The score was twenty – nil.",
+      "cf": null,
+      "forms": [
+        "nil"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.on-one-s-own",
+      "kind": "phrase",
+      "theme": null,
+      "en": "on one's own",
+      "de": [
+        "alleine"
+      ],
+      "deRaw": "alleine",
+      "exampleSb": "I was all on my own.",
+      "cf": null,
+      "forms": [
+        "on one's own"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.to-score",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to score",
+      "de": [
+        "erreichen",
+        "erzielen (Tore)"
+      ],
+      "deRaw": "erreichen, erzielen (Tore)",
+      "exampleSb": "I want to score the next goal.",
+      "cf": "score",
+      "forms": [
+        "to score",
+        "score"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.to-tackle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to tackle",
+      "de": [
+        "attackieren (im Sport)"
+      ],
+      "deRaw": "attackieren (im Sport)",
+      "exampleSb": "Helen tackled Eddie.",
+      "cf": "tackle",
+      "forms": [
+        "to tackle",
+        "tackle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.waste-of-time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "waste of time",
+      "de": [
+        "Zeitverschwendung"
+      ],
+      "deRaw": "Zeitverschwendung",
+      "exampleSb": "I've had enough. It's a waste of time.",
+      "cf": null,
+      "forms": [
+        "waste of time"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.equipment",
+      "kind": "phrase",
+      "theme": null,
+      "en": "equipment",
+      "de": [
+        "Ausrüstung"
+      ],
+      "deRaw": "Ausrüstung",
+      "exampleSb": "You don't need a lot of equipment to do this sport.",
+      "cf": null,
+      "forms": [
+        "equipment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u14.w.success",
+      "kind": "phrase",
+      "theme": null,
+      "en": "success",
+      "de": [
+        "Erfolg"
+      ],
+      "deRaw": "Erfolg",
+      "exampleSb": "Was the party a success?",
+      "cf": null,
+      "forms": [
+        "success"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

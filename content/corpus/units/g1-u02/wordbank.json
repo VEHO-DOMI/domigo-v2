@@ -1,0 +1,861 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 2,
+  "slug": "g1-u02",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u02.w.tree",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tree",
+      "de": [
+        "Baum"
+      ],
+      "deRaw": "Baum",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tree"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.monkey",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "monkey",
+      "de": [
+        "Affe"
+      ],
+      "deRaw": "Affe",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "monkey"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.parrot",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "parrot",
+      "de": [
+        "Papagei"
+      ],
+      "deRaw": "Papagei",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "parrot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.giraffe",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "giraffe",
+      "de": [
+        "Giraffe"
+      ],
+      "deRaw": "Giraffe",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "giraffe"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.train",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "train",
+      "de": [
+        "Zug"
+      ],
+      "deRaw": "Zug",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "train"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.penguin",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "penguin",
+      "de": [
+        "Pinguin"
+      ],
+      "deRaw": "Pinguin",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "penguin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.guide",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "guide",
+      "de": [
+        "Führer/Führerin",
+        "Guide"
+      ],
+      "deRaw": "Führer/Führerin, Guide",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "guide"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.lion",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "lion",
+      "de": [
+        "Löwe"
+      ],
+      "deRaw": "Löwe",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "lion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.next-to",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "next to",
+      "de": [
+        "neben"
+      ],
+      "deRaw": "neben",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "next to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.in",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "in",
+      "de": [
+        "in"
+      ],
+      "deRaw": "in",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "in"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.behind",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "behind",
+      "de": [
+        "hinter"
+      ],
+      "deRaw": "hinter",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "behind"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.under",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "under",
+      "de": [
+        "unter"
+      ],
+      "deRaw": "unter",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "under"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.on",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "on",
+      "de": [
+        "auf"
+      ],
+      "deRaw": "auf",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.in-front-of",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "in front of",
+      "de": [
+        "vor"
+      ],
+      "deRaw": "vor",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "in front of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.zoo",
+      "kind": "phrase",
+      "theme": null,
+      "en": "zoo",
+      "de": [
+        "Zoo"
+      ],
+      "deRaw": "Zoo",
+      "exampleSb": "There are many animals in the zoo.",
+      "cf": null,
+      "forms": [
+        "zoo"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.beautiful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "beautiful",
+      "de": [
+        "schön",
+        "hübsch"
+      ],
+      "deRaw": "schön, hübsch",
+      "exampleSb": "The parrot is blue and yellow. It's beautiful.",
+      "cf": null,
+      "forms": [
+        "beautiful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.behind-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "behind",
+      "de": [
+        "hinter"
+      ],
+      "deRaw": "hinter",
+      "exampleSb": "The chair is behind the desk.",
+      "cf": null,
+      "forms": [
+        "behind"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.big",
+      "kind": "phrase",
+      "theme": null,
+      "en": "big",
+      "de": [
+        "groß"
+      ],
+      "deRaw": "groß",
+      "exampleSb": "There's a big giraffe.",
+      "cf": null,
+      "forms": [
+        "big"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.in-front-of-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "in front of",
+      "de": [
+        "vor"
+      ],
+      "deRaw": "vor",
+      "exampleSb": "The tree is in front of you.",
+      "cf": null,
+      "forms": [
+        "in front of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.next-to-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "next to",
+      "de": [
+        "neben"
+      ],
+      "deRaw": "neben",
+      "exampleSb": "The monkey is next to the parrot.",
+      "cf": null,
+      "forms": [
+        "next to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.under-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "under",
+      "de": [
+        "unter"
+      ],
+      "deRaw": "unter",
+      "exampleSb": "The bag is under the desk.",
+      "cf": null,
+      "forms": [
+        "under"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.where",
+      "kind": "phrase",
+      "theme": null,
+      "en": "where",
+      "de": [
+        "wo"
+      ],
+      "deRaw": "wo",
+      "exampleSb": "Where is Polly?",
+      "cf": null,
+      "forms": [
+        "where"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.small",
+      "kind": "phrase",
+      "theme": null,
+      "en": "small",
+      "de": [
+        "klein"
+      ],
+      "deRaw": "klein",
+      "exampleSb": "The monkey isn't big. It's small.",
+      "cf": null,
+      "forms": [
+        "small"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.adult",
+      "kind": "phrase",
+      "theme": null,
+      "en": "adult",
+      "de": [
+        "Erwachsene/r"
+      ],
+      "deRaw": "Erwachsene/r",
+      "exampleSb": "Adults are €14.40.",
+      "cf": null,
+      "forms": [
+        "adult"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.at",
+      "kind": "phrase",
+      "theme": null,
+      "en": "at",
+      "de": [
+        "bei",
+        "an",
+        "hier: in"
+      ],
+      "deRaw": "bei; an; hier: in",
+      "exampleSb": "The children are at the zoo.",
+      "cf": null,
+      "forms": [
+        "at"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.to-bring",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to bring",
+      "de": [
+        "(mit-)bringen"
+      ],
+      "deRaw": "(mit-)bringen",
+      "exampleSb": "Can I bring my dog, Buddy?",
+      "cf": "bring",
+      "forms": [
+        "to bring",
+        "bring"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.but",
+      "kind": "phrase",
+      "theme": null,
+      "en": "but",
+      "de": [
+        "aber"
+      ],
+      "deRaw": "aber",
+      "exampleSb": "Dogs are welcome. But they can't run around.",
+      "cf": null,
+      "forms": [
+        "but"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.child",
+      "kind": "phrase",
+      "theme": null,
+      "en": "child (pl children)",
+      "de": [
+        "Kind"
+      ],
+      "deRaw": "Kind",
+      "exampleSb": "Child €4.90.",
+      "cf": null,
+      "forms": [
+        "child",
+        "children"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.dog",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dog",
+      "de": [
+        "Hund"
+      ],
+      "deRaw": "Hund",
+      "exampleSb": "Buddy is a dog.",
+      "cf": null,
+      "forms": [
+        "dog"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.family",
+      "kind": "phrase",
+      "theme": null,
+      "en": "family",
+      "de": [
+        "Familie"
+      ],
+      "deRaw": "Familie",
+      "exampleSb": "Buddy's family is at the zoo.",
+      "cf": null,
+      "forms": [
+        "family"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.free",
+      "kind": "phrase",
+      "theme": null,
+      "en": "free",
+      "de": [
+        "kostenlos"
+      ],
+      "deRaw": "kostenlos",
+      "exampleSb": "Parking is free.",
+      "cf": null,
+      "forms": [
+        "free"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.grandma",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Grandma",
+      "de": [
+        "Oma"
+      ],
+      "deRaw": "Oma",
+      "exampleSb": "Say hi to Grandma!",
+      "cf": null,
+      "forms": [
+        "Grandma"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.group",
+      "kind": "phrase",
+      "theme": null,
+      "en": "group",
+      "de": [
+        "Gruppe"
+      ],
+      "deRaw": "Gruppe",
+      "exampleSb": "A group ticket is €8.90.",
+      "cf": null,
+      "forms": [
+        "group"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.long",
+      "kind": "phrase",
+      "theme": null,
+      "en": "long",
+      "de": [
+        "lang"
+      ],
+      "deRaw": "lang",
+      "exampleSb": "The giraffe has a long neck.",
+      "cf": null,
+      "forms": [
+        "long"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.ticket",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ticket",
+      "de": [
+        "Eintrittskarte",
+        "Ticket"
+      ],
+      "deRaw": "Eintrittskarte; Ticket",
+      "exampleSb": "Adults tickets are €14.40.",
+      "cf": null,
+      "forms": [
+        "ticket"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.to-want",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to want",
+      "de": [
+        "wollen"
+      ],
+      "deRaw": "wollen",
+      "exampleSb": "I want a lion.",
+      "cf": "want",
+      "forms": [
+        "to want",
+        "want"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.from",
+      "kind": "phrase",
+      "theme": null,
+      "en": "from",
+      "de": [
+        "aus"
+      ],
+      "deRaw": "aus",
+      "exampleSb": "They are from California.",
+      "cf": null,
+      "forms": [
+        "from"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.year",
+      "kind": "phrase",
+      "theme": null,
+      "en": "year",
+      "de": [
+        "Jahr",
+        "Jahrgangsstufe"
+      ],
+      "deRaw": "Jahr; Jahrgangsstufe",
+      "exampleSb": "I'm in Year 7.",
+      "cf": null,
+      "forms": [
+        "year"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.he",
+      "kind": "phrase",
+      "theme": null,
+      "en": "he",
+      "de": [
+        "er"
+      ],
+      "deRaw": "er",
+      "exampleSb": "He likes animals.",
+      "cf": null,
+      "forms": [
+        "he"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.she",
+      "kind": "phrase",
+      "theme": null,
+      "en": "she",
+      "de": [
+        "sie"
+      ],
+      "deRaw": "sie",
+      "exampleSb": "She is from England.",
+      "cf": null,
+      "forms": [
+        "she"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.to-talk",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to talk",
+      "de": [
+        "sprechen",
+        "sich unterhalten"
+      ],
+      "deRaw": "sprechen, sich unterhalten",
+      "exampleSb": "Talk about the boys and girls.",
+      "cf": "talk",
+      "forms": [
+        "to talk",
+        "talk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.they",
+      "kind": "phrase",
+      "theme": null,
+      "en": "they",
+      "de": [
+        "sie"
+      ],
+      "deRaw": "sie",
+      "exampleSb": "Rahim and Sue are 11. They are from Manchester.",
+      "cf": null,
+      "forms": [
+        "they"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.we",
+      "kind": "phrase",
+      "theme": null,
+      "en": "we",
+      "de": [
+        "wir"
+      ],
+      "deRaw": "wir",
+      "exampleSb": "We are from Austria.",
+      "cf": null,
+      "forms": [
+        "we"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.for",
+      "kind": "phrase",
+      "theme": null,
+      "en": "for",
+      "de": [
+        "für"
+      ],
+      "deRaw": "für",
+      "exampleSb": "Here's a chant for you.",
+      "cf": null,
+      "forms": [
+        "for"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.happy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "happy",
+      "de": [
+        "glücklich",
+        "fröhlich",
+        "zufrieden"
+      ],
+      "deRaw": "glücklich, fröhlich; zufrieden",
+      "exampleSb": "Buddy is happy.",
+      "cf": null,
+      "forms": [
+        "happy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.to-let-somebody-out",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to let somebody out",
+      "de": [
+        "jemanden herauslassen"
+      ],
+      "deRaw": "jemanden herauslassen",
+      "exampleSb": "Let us out!",
+      "cf": "let somebody out",
+      "forms": [
+        "to let somebody out",
+        "let somebody out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.us",
+      "kind": "phrase",
+      "theme": null,
+      "en": "us",
+      "de": [
+        "uns"
+      ],
+      "deRaw": "uns",
+      "exampleSb": "Can you see us?",
+      "cf": null,
+      "forms": [
+        "us"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.car",
+      "kind": "phrase",
+      "theme": null,
+      "en": "car",
+      "de": [
+        "Auto"
+      ],
+      "deRaw": "Auto",
+      "exampleSb": "The parrot is in the car.",
+      "cf": null,
+      "forms": [
+        "car"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.at-last",
+      "kind": "phrase",
+      "theme": null,
+      "en": "At last.",
+      "de": [
+        "Endlich."
+      ],
+      "deRaw": "Endlich.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "At last."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.how-strange",
+      "kind": "phrase",
+      "theme": null,
+      "en": "How strange!",
+      "de": [
+        "Wie komisch!"
+      ],
+      "deRaw": "Wie komisch!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "How strange!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.let-me-see",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Let me see.",
+      "de": [
+        "Lass mich mal schauen."
+      ],
+      "deRaw": "Lass mich mal schauen.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Let me see."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u02.w.stone",
+      "kind": "phrase",
+      "theme": null,
+      "en": "stone",
+      "de": [
+        "Stein"
+      ],
+      "deRaw": "Stein",
+      "exampleSb": "Colour your stone.",
+      "cf": null,
+      "forms": [
+        "stone"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

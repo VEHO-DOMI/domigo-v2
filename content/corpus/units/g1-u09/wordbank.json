@@ -1,0 +1,945 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 9,
+  "slug": "g1-u09",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u09.w.owl",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "owl",
+      "de": [
+        "Eule"
+      ],
+      "deRaw": "Eule",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "owl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.budgie",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "budgie",
+      "de": [
+        "Wellensittich"
+      ],
+      "deRaw": "Wellensittich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "budgie"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.elephant",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "elephant",
+      "de": [
+        "Elefant"
+      ],
+      "deRaw": "Elefant",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "elephant"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.spider",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "spider",
+      "de": [
+        "Spinne"
+      ],
+      "deRaw": "Spinne",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "spider"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.bat",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "bat",
+      "de": [
+        "Fledermaus"
+      ],
+      "deRaw": "Fledermaus",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.shark",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "shark",
+      "de": [
+        "Hai"
+      ],
+      "deRaw": "Hai",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "shark"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.zebra",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "zebra",
+      "de": [
+        "Zebra"
+      ],
+      "deRaw": "Zebra",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "zebra"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.camel",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "camel",
+      "de": [
+        "Kamel"
+      ],
+      "deRaw": "Kamel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "camel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.pony",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "pony",
+      "de": [
+        "Pony"
+      ],
+      "deRaw": "Pony",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pony"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.guinea-pig",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "guinea pig",
+      "de": [
+        "Meerschweinchen"
+      ],
+      "deRaw": "Meerschweinchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "guinea pig"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.fish",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "fish",
+      "de": [
+        "Fisch"
+      ],
+      "deRaw": "Fisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fish"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.pig",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "pig",
+      "de": [
+        "Schwein"
+      ],
+      "deRaw": "Schwein",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pig"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.rabbit",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "rabbit",
+      "de": [
+        "Kaninchen",
+        "Hase"
+      ],
+      "deRaw": "Kaninchen, Hase",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rabbit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.lizard",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "lizard",
+      "de": [
+        "Eidechse"
+      ],
+      "deRaw": "Eidechse",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "lizard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.rat",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "rat",
+      "de": [
+        "Ratte"
+      ],
+      "deRaw": "Ratte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.mouse",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "mouse",
+      "de": [
+        "Maus"
+      ],
+      "deRaw": "Maus",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mouse"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.tortoise",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tortoise",
+      "de": [
+        "Schildkröte"
+      ],
+      "deRaw": "Schildkröte",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tortoise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.box",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "box",
+      "de": [
+        "Schachtel",
+        "Kiste"
+      ],
+      "deRaw": "Schachtel, Kiste",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "box"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.tank",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tank",
+      "de": [
+        "Aquarium",
+        "Terrarium"
+      ],
+      "deRaw": "Aquarium, Terrarium",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tank"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.cage",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "cage",
+      "de": [
+        "Käfig"
+      ],
+      "deRaw": "Käfig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cage"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.terrarium",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "terrarium",
+      "de": [
+        "Terrarium"
+      ],
+      "deRaw": "Terrarium",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "terrarium"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.unusual",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unusual",
+      "de": [
+        "ungewöhnlich",
+        "außergewöhnlich"
+      ],
+      "deRaw": "ungewöhnlich, außergewöhnlich",
+      "exampleSb": "A snake is a very unusual pet.",
+      "cf": null,
+      "forms": [
+        "unusual"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.mouse-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mouse (pl mice)",
+      "de": [
+        "Maus"
+      ],
+      "deRaw": "Maus",
+      "exampleSb": "I have a mouse and a dog and my friend has four mice.",
+      "cf": null,
+      "forms": [
+        "mouse",
+        "mice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.a-day",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(...) a day",
+      "de": [
+        "(...) am Tag"
+      ],
+      "deRaw": "(...) am Tag",
+      "exampleSb": "She walks her dog three times a day.",
+      "cf": null,
+      "forms": [
+        "a day",
+        "..."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.once",
+      "kind": "phrase",
+      "theme": null,
+      "en": "once",
+      "de": [
+        "einmal"
+      ],
+      "deRaw": "einmal",
+      "exampleSb": "He feeds his hamster once a day.",
+      "cf": null,
+      "forms": [
+        "once"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.twice",
+      "kind": "phrase",
+      "theme": null,
+      "en": "twice",
+      "de": [
+        "zweimal"
+      ],
+      "deRaw": "zweimal",
+      "exampleSb": "I only feed my spider twice a week.",
+      "cf": null,
+      "forms": [
+        "twice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.across",
+      "kind": "phrase",
+      "theme": null,
+      "en": "across (Britain)",
+      "de": [
+        "hier: in ganz (Großbritannien)"
+      ],
+      "deRaw": "hier: in ganz (Großbritannien)",
+      "exampleSb": "There are lots of pets in homes across Britain.",
+      "cf": null,
+      "forms": [
+        "across",
+        "Britain"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.dangerous",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dangerous",
+      "de": [
+        "gefährlich"
+      ],
+      "deRaw": "gefährlich",
+      "exampleSb": "Crocodiles are dangerous animals.",
+      "cf": null,
+      "forms": [
+        "dangerous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.farm",
+      "kind": "phrase",
+      "theme": null,
+      "en": "farm",
+      "de": [
+        "Bauernhof"
+      ],
+      "deRaw": "Bauernhof",
+      "exampleSb": "She lives on a farm with horses and pigs.",
+      "cf": null,
+      "forms": [
+        "farm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.man",
+      "kind": "phrase",
+      "theme": null,
+      "en": "man (pl men)",
+      "de": [
+        "Mann"
+      ],
+      "deRaw": "Mann",
+      "exampleSb": "The man's name is John.",
+      "cf": null,
+      "forms": [
+        "man",
+        "men"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.near",
+      "kind": "phrase",
+      "theme": null,
+      "en": "near",
+      "de": [
+        "in der Nähe von"
+      ],
+      "deRaw": "in der Nähe von",
+      "exampleSb": "The Smith family lives near London.",
+      "cf": null,
+      "forms": [
+        "near"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.newspaper",
+      "kind": "phrase",
+      "theme": null,
+      "en": "newspaper",
+      "de": [
+        "Zeitung"
+      ],
+      "deRaw": "Zeitung",
+      "exampleSb": "My dad always reads the newspaper in the morning.",
+      "cf": null,
+      "forms": [
+        "newspaper"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.a-week",
+      "kind": "phrase",
+      "theme": null,
+      "en": "(...) a week",
+      "de": [
+        "(...) in der Woche"
+      ],
+      "deRaw": "(...) in der Woche",
+      "exampleSb": "He feeds his spider once a week.",
+      "cf": null,
+      "forms": [
+        "a week",
+        "..."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.basket",
+      "kind": "phrase",
+      "theme": null,
+      "en": "basket",
+      "de": [
+        "Korb"
+      ],
+      "deRaw": "Korb",
+      "exampleSb": "Grandpa gives her two baskets of apples and plums.",
+      "cf": null,
+      "forms": [
+        "basket"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.daughter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "daughter",
+      "de": [
+        "Tochter"
+      ],
+      "deRaw": "Tochter",
+      "exampleSb": "Clare is her daughter.",
+      "cf": null,
+      "forms": [
+        "daughter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.to-drive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to drive",
+      "de": [
+        "fahren"
+      ],
+      "deRaw": "fahren",
+      "exampleSb": "On Sunday, they drive to Grandpa's house.",
+      "cf": "drive",
+      "forms": [
+        "to drive",
+        "drive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.everybody",
+      "kind": "phrase",
+      "theme": null,
+      "en": "everybody",
+      "de": [
+        "jede/r"
+      ],
+      "deRaw": "jede/r",
+      "exampleSb": "Everybody in class is sad today.",
+      "cf": null,
+      "forms": [
+        "everybody"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.far-away",
+      "kind": "phrase",
+      "theme": null,
+      "en": "far away",
+      "de": [
+        "weit weg"
+      ],
+      "deRaw": "weit weg",
+      "exampleSb": "Grandpa's house is far away.",
+      "cf": null,
+      "forms": [
+        "far away"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.grandpa",
+      "kind": "phrase",
+      "theme": null,
+      "en": "grandpa",
+      "de": [
+        "Opa"
+      ],
+      "deRaw": "Opa",
+      "exampleSb": "My grandpa lives on a farm.",
+      "cf": null,
+      "forms": [
+        "grandpa"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.mother",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mother",
+      "de": [
+        "Mutter"
+      ],
+      "deRaw": "Mutter",
+      "exampleSb": "She lives at home with her mother.",
+      "cf": null,
+      "forms": [
+        "mother"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.noise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "noise",
+      "de": [
+        "Geräusch"
+      ],
+      "deRaw": "Geräusch",
+      "exampleSb": "Clare hears a noise in the apartment.",
+      "cf": null,
+      "forms": [
+        "noise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.to-stay",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to stay",
+      "de": [
+        "bleiben"
+      ],
+      "deRaw": "bleiben",
+      "exampleSb": "We can't stay here.",
+      "cf": "stay",
+      "forms": [
+        "to stay",
+        "stay"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.cuddly-toy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cuddly toy",
+      "de": [
+        "Stofftier"
+      ],
+      "deRaw": "Stofftier",
+      "exampleSb": "All day long he plays with his cuddly toys.",
+      "cf": null,
+      "forms": [
+        "cuddly toy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.to-visit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to visit",
+      "de": [
+        "besuchen"
+      ],
+      "deRaw": "besuchen",
+      "exampleSb": "On Sunday, they visit Grandpa.",
+      "cf": "visit",
+      "forms": [
+        "to visit",
+        "visit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.to-be-interested-in",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be interested in",
+      "de": [
+        "an etw. interessiert sein"
+      ],
+      "deRaw": "an etw. interessiert sein",
+      "exampleSb": "Tell me about the things you are interested in.",
+      "cf": "be interested in",
+      "forms": [
+        "to be interested in",
+        "be interested in"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.fur",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fur",
+      "de": [
+        "Fell"
+      ],
+      "deRaw": "Fell",
+      "exampleSb": "My pet has fur – lots of it.",
+      "cf": null,
+      "forms": [
+        "fur"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.personal",
+      "kind": "phrase",
+      "theme": null,
+      "en": "personal",
+      "de": [
+        "persönlich"
+      ],
+      "deRaw": "persönlich",
+      "exampleSb": "Don't put personal information on your blog.",
+      "cf": null,
+      "forms": [
+        "personal"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.owner",
+      "kind": "phrase",
+      "theme": null,
+      "en": "owner",
+      "de": [
+        "Besitzer/Besitzerin"
+      ],
+      "deRaw": "Besitzer/Besitzerin",
+      "exampleSb": "Jamie is the owner of an unusual pet.",
+      "cf": null,
+      "forms": [
+        "owner"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.aunty",
+      "kind": "phrase",
+      "theme": null,
+      "en": "aunty",
+      "de": [
+        "Tante (Koseform)"
+      ],
+      "deRaw": "Tante (Koseform)",
+      "exampleSb": "Aunty Jane is Mum's sister.",
+      "cf": null,
+      "forms": [
+        "aunty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.dear",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dear",
+      "de": [
+        "liebe/r (Anrede)"
+      ],
+      "deRaw": "liebe/r (Anrede)",
+      "exampleSb": "Dear Aunty Olivia, ...",
+      "cf": null,
+      "forms": [
+        "dear"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.letter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "letter",
+      "de": [
+        "Brief"
+      ],
+      "deRaw": "Brief",
+      "exampleSb": "Thank you for your letter.",
+      "cf": null,
+      "forms": [
+        "letter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.to-bite",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to bite",
+      "de": [
+        "beißen"
+      ],
+      "deRaw": "beißen",
+      "exampleSb": "I don't like that dog. It bites!",
+      "cf": "bite",
+      "forms": [
+        "to bite",
+        "bite"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.beginning",
+      "kind": "phrase",
+      "theme": null,
+      "en": "beginning",
+      "de": [
+        "Anfang"
+      ],
+      "deRaw": "Anfang",
+      "exampleSb": "The beginning of the film is fantastic.",
+      "cf": null,
+      "forms": [
+        "beginning"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.to-begin",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to begin",
+      "de": [
+        "anfangen",
+        "beginnen"
+      ],
+      "deRaw": "anfangen, beginnen",
+      "exampleSb": "He always begins his emails with \"Hi!\".",
+      "cf": "begin",
+      "forms": [
+        "to begin",
+        "begin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.best-wishes",
+      "kind": "phrase",
+      "theme": null,
+      "en": "best wishes",
+      "de": [
+        "herzliche Grüße"
+      ],
+      "deRaw": "herzliche Grüße",
+      "exampleSb": "Best wishes to your mum and dad, Peter.",
+      "cf": null,
+      "forms": [
+        "best wishes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.ending",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ending",
+      "de": [
+        "Ende",
+        "Schluss"
+      ],
+      "deRaw": "Ende, Schluss",
+      "exampleSb": "The ending of the book is very strange.",
+      "cf": null,
+      "forms": [
+        "ending"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u09.w.to-need",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to need",
+      "de": [
+        "brauchen"
+      ],
+      "deRaw": "brauchen",
+      "exampleSb": "I really need your help.",
+      "cf": "need",
+      "forms": [
+        "to need",
+        "need"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

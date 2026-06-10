@@ -1,0 +1,614 @@
+{
+  "schema": "wordbank@1",
+  "grade": 4,
+  "unit": 10,
+  "slug": "g4-u10",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 4 Units 1-13.docx",
+    "sha256": "f28dd62d3120daa81bb05b7300b73877baf496060a9a4384c8b392656520bbfc"
+  },
+  "entries": [
+    {
+      "id": "g4u10.w.oil",
+      "kind": "phrase",
+      "theme": null,
+      "en": "oil",
+      "de": [
+        "Öl"
+      ],
+      "deRaw": "Öl",
+      "exampleSb": "Oil is very precious in our society.",
+      "cf": null,
+      "forms": [
+        "oil"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.fair-trade",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Fair Trade",
+      "de": [
+        "eine Organisation",
+        "die sich für fairen Handel einsetzt"
+      ],
+      "deRaw": "eine Organisation, die sich für fairen Handel einsetzt",
+      "exampleSb": "The Fair Trade project gives farmers more money for their products.",
+      "cf": null,
+      "forms": [
+        "Fair Trade"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.farmer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "farmer",
+      "de": [
+        "Landwirt/in"
+      ],
+      "deRaw": "Landwirt/in",
+      "exampleSb": "My uncle is a farmer. He owns a farm with cows and horses.",
+      "cf": null,
+      "forms": [
+        "farmer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.make-a-living",
+      "kind": "phrase",
+      "theme": null,
+      "en": "make a living",
+      "de": [
+        "den Lebensunterhalt verdienen"
+      ],
+      "deRaw": "den Lebensunterhalt verdienen",
+      "exampleSb": "He made a living by working as a cook.",
+      "cf": null,
+      "forms": [
+        "make a living"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.pay-rise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pay rise",
+      "de": [
+        "Gehaltserhöhung"
+      ],
+      "deRaw": "Gehaltserhöhung",
+      "exampleSb": "She got a pay rise for her good work.",
+      "cf": null,
+      "forms": [
+        "pay rise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.pesticide",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pesticide",
+      "de": [
+        "Pestizid",
+        "Insektenbekämpfungsmittel"
+      ],
+      "deRaw": "Pestizid, Insektenbekämpfungsmittel",
+      "exampleSb": "Pesticides are used to stop insects and fungus destroying crops.",
+      "cf": null,
+      "forms": [
+        "pesticide"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.select",
+      "kind": "phrase",
+      "theme": null,
+      "en": "select",
+      "de": [
+        "auswählen"
+      ],
+      "deRaw": "auswählen",
+      "exampleSb": "Only the best beans are selected.",
+      "cf": null,
+      "forms": [
+        "select"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.agreement",
+      "kind": "phrase",
+      "theme": null,
+      "en": "agreement",
+      "de": [
+        "Vereinbarung"
+      ],
+      "deRaw": "Vereinbarung",
+      "exampleSb": "Fair Trade is an international agreement.",
+      "cf": null,
+      "forms": [
+        "agreement"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.increase",
+      "kind": "phrase",
+      "theme": null,
+      "en": "increase",
+      "de": [
+        "steigen",
+        "erhöhen"
+      ],
+      "deRaw": "steigen, erhöhen",
+      "exampleSb": "The world's population increases each year.",
+      "cf": null,
+      "forms": [
+        "increase"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.rate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rate",
+      "de": [
+        "Rate"
+      ],
+      "deRaw": "Rate",
+      "exampleSb": "The number of crimes is increasing at an alarming rate.",
+      "cf": null,
+      "forms": [
+        "rate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.brother-in-law",
+      "kind": "phrase",
+      "theme": null,
+      "en": "brother-in-law",
+      "de": [
+        "Schwager"
+      ],
+      "deRaw": "Schwager",
+      "exampleSb": "The man who married my sister is my brother-in-law.",
+      "cf": null,
+      "forms": [
+        "brother-in-law"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.defeat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "defeat",
+      "de": [
+        "besiegen",
+        "überwältigen"
+      ],
+      "deRaw": "besiegen, überwältigen",
+      "exampleSb": "He defeated the champion in three sets.",
+      "cf": null,
+      "forms": [
+        "defeat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.harmony",
+      "kind": "phrase",
+      "theme": null,
+      "en": "harmony",
+      "de": [
+        "Harmonie"
+      ],
+      "deRaw": "Harmonie",
+      "exampleSb": "Our dream is that all the peoples of the world should live in harmony.",
+      "cf": null,
+      "forms": [
+        "harmony"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.human-being",
+      "kind": "phrase",
+      "theme": null,
+      "en": "human being",
+      "de": [
+        "Mensch"
+      ],
+      "deRaw": "Mensch",
+      "exampleSb": "Human beings are the people on this planet Earth.",
+      "cf": null,
+      "forms": [
+        "human being"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.hurtful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hurtful",
+      "de": [
+        "verletzend"
+      ],
+      "deRaw": "verletzend",
+      "exampleSb": "He was horrible. He said some hurtful things.",
+      "cf": null,
+      "forms": [
+        "hurtful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.ignorance",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ignorance",
+      "de": [
+        "Ignoranz"
+      ],
+      "deRaw": "Ignoranz",
+      "exampleSb": "Their ignorance makes them do stupid things.",
+      "cf": null,
+      "forms": [
+        "ignorance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.overcome",
+      "kind": "phrase",
+      "theme": null,
+      "en": "overcome",
+      "de": [
+        "besiegen",
+        "überwinden"
+      ],
+      "deRaw": "besiegen, überwinden",
+      "exampleSb": "I want to overcome my fear of flying.",
+      "cf": null,
+      "forms": [
+        "overcome"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.painful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "painful",
+      "de": [
+        "schmerzhaft"
+      ],
+      "deRaw": "schmerzhaft",
+      "exampleSb": "I hurt my ankle yesterday. It's still very painful.",
+      "cf": null,
+      "forms": [
+        "painful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.racism",
+      "kind": "phrase",
+      "theme": null,
+      "en": "racism",
+      "de": [
+        "Rassismus"
+      ],
+      "deRaw": "Rassismus",
+      "exampleSb": "Martin Luther King Jr. led the anti-racism movement for civil rights in America.",
+      "cf": null,
+      "forms": [
+        "racism"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.racist",
+      "kind": "phrase",
+      "theme": null,
+      "en": "racist",
+      "de": [
+        "rassistisch"
+      ],
+      "deRaw": "rassistisch",
+      "exampleSb": "He made racist comments about black people.",
+      "cf": null,
+      "forms": [
+        "racist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.recognition",
+      "kind": "phrase",
+      "theme": null,
+      "en": "recognition",
+      "de": [
+        "Anerkennung",
+        "Bestätigung"
+      ],
+      "deRaw": "Anerkennung, Bestätigung",
+      "exampleSb": "She got a lot of recognition for her work.",
+      "cf": null,
+      "forms": [
+        "recognition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.slavery",
+      "kind": "phrase",
+      "theme": null,
+      "en": "slavery",
+      "de": [
+        "Sklaverei"
+      ],
+      "deRaw": "Sklaverei",
+      "exampleSb": "For two hundred years Africans were sold into slavery in America.",
+      "cf": null,
+      "forms": [
+        "slavery"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.son-in-law",
+      "kind": "phrase",
+      "theme": null,
+      "en": "son-in-law",
+      "de": [
+        "Schwiegersohn"
+      ],
+      "deRaw": "Schwiegersohn",
+      "exampleSb": "Your son-in-law is your daughter's husband.",
+      "cf": null,
+      "forms": [
+        "son-in-law"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.angry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "angry",
+      "de": [
+        "wütend"
+      ],
+      "deRaw": "wütend",
+      "exampleSb": "The passengers were angry because of the delay.",
+      "cf": null,
+      "forms": [
+        "angry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.annoy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "annoy",
+      "de": [
+        "verärgern"
+      ],
+      "deRaw": "verärgern",
+      "exampleSb": "Don't phone at home. You'll annoy my parents.",
+      "cf": null,
+      "forms": [
+        "annoy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.helpless",
+      "kind": "phrase",
+      "theme": null,
+      "en": "helpless",
+      "de": [
+        "hilflos"
+      ],
+      "deRaw": "hilflos",
+      "exampleSb": "The gang attacked a helpless victim in the park.",
+      "cf": null,
+      "forms": [
+        "helpless"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.hurt",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hurt",
+      "de": [
+        "verletzen"
+      ],
+      "deRaw": "verletzen",
+      "exampleSb": "It hurt me to think that he would lie.",
+      "cf": null,
+      "forms": [
+        "hurt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.misunderstood",
+      "kind": "phrase",
+      "theme": null,
+      "en": "misunderstood",
+      "de": [
+        "missverstanden"
+      ],
+      "deRaw": "missverstanden",
+      "exampleSb": "No one really believes me. I'm misunderstood by everyone.",
+      "cf": null,
+      "forms": [
+        "misunderstood"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.proud",
+      "kind": "phrase",
+      "theme": null,
+      "en": "proud",
+      "de": [
+        "stolz"
+      ],
+      "deRaw": "stolz",
+      "exampleSb": "She was proud that her daughter had so much talent.",
+      "cf": null,
+      "forms": [
+        "proud"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.shocked",
+      "kind": "phrase",
+      "theme": null,
+      "en": "shocked",
+      "de": [
+        "schockiert"
+      ],
+      "deRaw": "schockiert",
+      "exampleSb": "Many people were shocked by the nude scene in the film.",
+      "cf": null,
+      "forms": [
+        "shocked"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.surprised",
+      "kind": "phrase",
+      "theme": null,
+      "en": "surprised",
+      "de": [
+        "überrascht"
+      ],
+      "deRaw": "überrascht",
+      "exampleSb": "She looked surprised when I told her the news.",
+      "cf": null,
+      "forms": [
+        "surprised"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.claim",
+      "kind": "phrase",
+      "theme": null,
+      "en": "claim",
+      "de": [
+        "behaupten"
+      ],
+      "deRaw": "behaupten",
+      "exampleSb": "She claims she saw an old friend on her train last night.",
+      "cf": null,
+      "forms": [
+        "claim"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.bicycle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bicycle",
+      "de": [
+        "Fahrrad"
+      ],
+      "deRaw": "Fahrrad",
+      "exampleSb": "\"Bike\" is the short form of the word \"bicycle\".",
+      "cf": null,
+      "forms": [
+        "bicycle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.fairness",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fairness",
+      "de": [
+        "Gerechtigkeit",
+        "Fairness"
+      ],
+      "deRaw": "Gerechtigkeit, Fairness",
+      "exampleSb": "We think other people should be fair to us, so we should show fairness to them, too.",
+      "cf": null,
+      "forms": [
+        "fairness"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.hell",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hell",
+      "de": [
+        "Hölle"
+      ],
+      "deRaw": "Hölle",
+      "exampleSb": "Hell is the opposite of heaven.",
+      "cf": null,
+      "forms": [
+        "hell"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.introduction",
+      "kind": "phrase",
+      "theme": null,
+      "en": "introduction",
+      "de": [
+        "Einleitung"
+      ],
+      "deRaw": "Einleitung",
+      "exampleSb": "In a short introduction, he explains the background to his book.",
+      "cf": null,
+      "forms": [
+        "introduction"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u10.w.pollution",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pollution",
+      "de": [
+        "Verschmutzung"
+      ],
+      "deRaw": "Verschmutzung",
+      "exampleSb": "Pollution of the environment is a big problem for everyone.",
+      "cf": null,
+      "forms": [
+        "pollution"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

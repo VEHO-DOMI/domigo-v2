@@ -1,0 +1,796 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 8,
+  "slug": "g3-u08",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u08.w.to-invent",
+      "kind": "wordfile",
+      "theme": "Inventions",
+      "en": "to invent",
+      "de": [
+        "erfinden"
+      ],
+      "deRaw": "erfinden",
+      "exampleSb": null,
+      "cf": "invent",
+      "forms": [
+        "to invent",
+        "invent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-experiment",
+      "kind": "wordfile",
+      "theme": "Inventions",
+      "en": "to experiment",
+      "de": [
+        "experimentieren"
+      ],
+      "deRaw": "experimentieren",
+      "exampleSb": null,
+      "cf": "experiment",
+      "forms": [
+        "to experiment",
+        "experiment"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-improve",
+      "kind": "wordfile",
+      "theme": "Inventions",
+      "en": "to improve",
+      "de": [
+        "verbessern"
+      ],
+      "deRaw": "verbessern",
+      "exampleSb": null,
+      "cf": "improve",
+      "forms": [
+        "to improve",
+        "improve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-discover",
+      "kind": "wordfile",
+      "theme": "Inventions",
+      "en": "to discover",
+      "de": [
+        "entdecken"
+      ],
+      "deRaw": "entdecken",
+      "exampleSb": null,
+      "cf": "discover",
+      "forms": [
+        "to discover",
+        "discover"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-work-sth-out",
+      "kind": "wordfile",
+      "theme": "Inventions",
+      "en": "to work sth. out",
+      "de": [
+        "etw. herausfinden"
+      ],
+      "deRaw": "etw. herausfinden",
+      "exampleSb": null,
+      "cf": "work sth. out",
+      "forms": [
+        "to work sth. out",
+        "work sth. out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-design",
+      "kind": "wordfile",
+      "theme": "Inventions",
+      "en": "to design",
+      "de": [
+        "entwerfen",
+        "gestalten"
+      ],
+      "deRaw": "entwerfen, gestalten",
+      "exampleSb": null,
+      "cf": "design",
+      "forms": [
+        "to design",
+        "design"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-try-out",
+      "kind": "wordfile",
+      "theme": "Inventions",
+      "en": "to try out",
+      "de": [
+        "ausprobieren"
+      ],
+      "deRaw": "ausprobieren",
+      "exampleSb": null,
+      "cf": "try out",
+      "forms": [
+        "to try out",
+        "try out"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-produce",
+      "kind": "wordfile",
+      "theme": "Inventions",
+      "en": "to produce",
+      "de": [
+        "produzieren",
+        "herstellen"
+      ],
+      "deRaw": "produzieren, herstellen",
+      "exampleSb": null,
+      "cf": "produce",
+      "forms": [
+        "to produce",
+        "produce"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.bacon",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bacon",
+      "de": [
+        "Speck"
+      ],
+      "deRaw": "Speck",
+      "exampleSb": "Lots of people love bacon and egg for breakfast.",
+      "cf": null,
+      "forms": [
+        "bacon"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-decorate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to decorate",
+      "de": [
+        "dekorieren"
+      ],
+      "deRaw": "dekorieren",
+      "exampleSb": "Then someone invented electric lights to decorate houses.",
+      "cf": "decorate",
+      "forms": [
+        "to decorate",
+        "decorate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.dish",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dish",
+      "de": [
+        "Gericht"
+      ],
+      "deRaw": "Gericht",
+      "exampleSb": "I invented a new dish with the cook of the restaurant.",
+      "cf": null,
+      "forms": [
+        "dish"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.fat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fat",
+      "de": [
+        "Fett"
+      ],
+      "deRaw": "Fett",
+      "exampleSb": "I like bacon with less fat.",
+      "cf": null,
+      "forms": [
+        "fat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.invention",
+      "kind": "phrase",
+      "theme": null,
+      "en": "invention",
+      "de": [
+        "Erfindung"
+      ],
+      "deRaw": "Erfindung",
+      "exampleSb": "He worked on his invention for a number of years.",
+      "cf": null,
+      "forms": [
+        "invention"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.crowd",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crowd",
+      "de": [
+        "Publikum",
+        "Menschenmenge"
+      ],
+      "deRaw": "Publikum, Menschenmenge",
+      "exampleSb": "He can make a huge crowd laugh.",
+      "cf": null,
+      "forms": [
+        "crowd"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.current",
+      "kind": "phrase",
+      "theme": null,
+      "en": "current",
+      "de": [
+        "(elektrischer) Strom"
+      ],
+      "deRaw": "(elektrischer) Strom",
+      "exampleSb": "He passed current through his body.",
+      "cf": null,
+      "forms": [
+        "current"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-develop",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to develop",
+      "de": [
+        "entwickeln"
+      ],
+      "deRaw": "entwickeln",
+      "exampleSb": "In the late 1880s, Tesla developed a new kind of electricity.",
+      "cf": "develop",
+      "forms": [
+        "to develop",
+        "develop"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.electric",
+      "kind": "phrase",
+      "theme": null,
+      "en": "electric (motor)",
+      "de": [
+        "elektrisch",
+        "(Elektro)motor"
+      ],
+      "deRaw": "elektrisch; (Elektro)motor",
+      "exampleSb": "Tesla invented the electric motor.",
+      "cf": null,
+      "forms": [
+        "electric",
+        "motor"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.energy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "energy",
+      "de": [
+        "Energie",
+        "Strom"
+      ],
+      "deRaw": "Energie; Strom",
+      "exampleSb": "He said he could send energy waves through water.",
+      "cf": null,
+      "forms": [
+        "energy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.influence",
+      "kind": "phrase",
+      "theme": null,
+      "en": "influence",
+      "de": [
+        "Einfluss"
+      ],
+      "deRaw": "Einfluss",
+      "exampleSb": "Edison used his influence to tell people that AC was too dangerous.",
+      "cf": null,
+      "forms": [
+        "influence"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.inventor",
+      "kind": "phrase",
+      "theme": null,
+      "en": "inventor",
+      "de": [
+        "Erfinder/Erfinderin"
+      ],
+      "deRaw": "Erfinder/Erfinderin",
+      "exampleSb": "Thomas Edison was perhaps the most famous inventor of his time.",
+      "cf": null,
+      "forms": [
+        "inventor"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-invest",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to invest",
+      "de": [
+        "investieren"
+      ],
+      "deRaw": "investieren",
+      "exampleSb": "Edison invested all his money in DC.",
+      "cf": "invest",
+      "forms": [
+        "to invest",
+        "invest"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.perhaps",
+      "kind": "phrase",
+      "theme": null,
+      "en": "perhaps",
+      "de": [
+        "vielleicht",
+        "eventuell"
+      ],
+      "deRaw": "vielleicht, eventuell",
+      "exampleSb": "Perhaps it was his mother.",
+      "cf": null,
+      "forms": [
+        "perhaps"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-be-responsible-for",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be responsible for",
+      "de": [
+        "für etw. verantwortlich sein"
+      ],
+      "deRaw": "für etw. verantwortlich sein",
+      "exampleSb": "The invention was also responsible for his bad luck.",
+      "cf": "be responsible for",
+      "forms": [
+        "to be responsible for",
+        "be responsible for"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-shoot",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to shoot",
+      "de": [
+        "schießen"
+      ],
+      "deRaw": "schießen",
+      "exampleSb": "He used the Tesla coil to shoot large electric lightning bolts into the room.",
+      "cf": "shoot",
+      "forms": [
+        "to shoot",
+        "shoot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.confident",
+      "kind": "phrase",
+      "theme": null,
+      "en": "confident",
+      "de": [
+        "(selbst)sicher",
+        "zuversichtlich"
+      ],
+      "deRaw": "(selbst)sicher; zuversichtlich",
+      "exampleSb": "I'm quite confident it will work.",
+      "cf": null,
+      "forms": [
+        "confident"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-impress",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to impress",
+      "de": [
+        "beeindrucken"
+      ],
+      "deRaw": "beeindrucken",
+      "exampleSb": "I've invented something that I think might impress my teacher.",
+      "cf": "impress",
+      "forms": [
+        "to impress",
+        "impress"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.soap",
+      "kind": "phrase",
+      "theme": null,
+      "en": "soap",
+      "de": [
+        "Seife"
+      ],
+      "deRaw": "Seife",
+      "exampleSb": "Use soap to wash your hands.",
+      "cf": null,
+      "forms": [
+        "soap"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.device",
+      "kind": "phrase",
+      "theme": null,
+      "en": "device",
+      "de": [
+        "Gerät"
+      ],
+      "deRaw": "Gerät",
+      "exampleSb": "This device allows people to talk under water.",
+      "cf": null,
+      "forms": [
+        "device"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.product",
+      "kind": "phrase",
+      "theme": null,
+      "en": "product",
+      "de": [
+        "Produkt"
+      ],
+      "deRaw": "Produkt",
+      "exampleSb": "He started a company to produce his product.",
+      "cf": null,
+      "forms": [
+        "product"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.remarkable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "remarkable",
+      "de": [
+        "bemerkenswert"
+      ],
+      "deRaw": "bemerkenswert",
+      "exampleSb": "Kids can sometimes produce something quite remarkable.",
+      "cf": null,
+      "forms": [
+        "remarkable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-research",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to research",
+      "de": [
+        "erforschen",
+        "recherchieren"
+      ],
+      "deRaw": "erforschen, recherchieren",
+      "exampleSb": "He decided to research underwater acoustics.",
+      "cf": "research",
+      "forms": [
+        "to research",
+        "research"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.wrist",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wrist",
+      "de": [
+        "Handgelenk"
+      ],
+      "deRaw": "Handgelenk",
+      "exampleSb": "Her wrist was hurting from the cold.",
+      "cf": null,
+      "forms": [
+        "wrist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.crutches",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crutches",
+      "de": [
+        "Krücken"
+      ],
+      "deRaw": "Krücken",
+      "exampleSb": "She uses a walker or crutches to move about.",
+      "cf": null,
+      "forms": [
+        "crutches"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.illness",
+      "kind": "phrase",
+      "theme": null,
+      "en": "illness",
+      "de": [
+        "Krankheit"
+      ],
+      "deRaw": "Krankheit",
+      "exampleSb": "Her illness had stopped Sadie from entering the competition.",
+      "cf": null,
+      "forms": [
+        "illness"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.ramp",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ramp",
+      "de": [
+        "Rampe"
+      ],
+      "deRaw": "Rampe",
+      "exampleSb": "She needs to look for ramps to get up and down steps.",
+      "cf": null,
+      "forms": [
+        "ramp"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.wheelchair",
+      "kind": "phrase",
+      "theme": null,
+      "en": "wheelchair",
+      "de": [
+        "Rollstuhl"
+      ],
+      "deRaw": "Rollstuhl",
+      "exampleSb": "A wheelchair helps her get around.",
+      "cf": null,
+      "forms": [
+        "wheelchair"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-adapt",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to adapt",
+      "de": [
+        "anpassen"
+      ],
+      "deRaw": "anpassen",
+      "exampleSb": "She is able to adapt easily to different situations.",
+      "cf": "adapt",
+      "forms": [
+        "to adapt",
+        "adapt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-attach",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to attach",
+      "de": [
+        "anfügen",
+        "anhängen"
+      ],
+      "deRaw": "anfügen, anhängen",
+      "exampleSb": "I'll attach a picture to my email.",
+      "cf": "attach",
+      "forms": [
+        "to attach",
+        "attach"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.glove",
+      "kind": "phrase",
+      "theme": null,
+      "en": "glove",
+      "de": [
+        "Handschuh"
+      ],
+      "deRaw": "Handschuh",
+      "exampleSb": "Wear some gloves to keep your hands warm in winter.",
+      "cf": null,
+      "forms": [
+        "glove"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.housework",
+      "kind": "phrase",
+      "theme": null,
+      "en": "housework",
+      "de": [
+        "Hausarbeit"
+      ],
+      "deRaw": "Hausarbeit",
+      "exampleSb": "Busy parents don't have enough time for housework.",
+      "cf": null,
+      "forms": [
+        "housework"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.automatically",
+      "kind": "phrase",
+      "theme": null,
+      "en": "automatically",
+      "de": [
+        "automatisch"
+      ],
+      "deRaw": "automatisch",
+      "exampleSb": "When the cat wants to go inside, the flap opens automatically.",
+      "cf": null,
+      "forms": [
+        "automatically"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.collar",
+      "kind": "phrase",
+      "theme": null,
+      "en": "collar",
+      "de": [
+        "Kragen"
+      ],
+      "deRaw": "Kragen",
+      "exampleSb": "I've created a collar for our cat.",
+      "cf": null,
+      "forms": [
+        "collar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.computer-science",
+      "kind": "phrase",
+      "theme": null,
+      "en": "computer science",
+      "de": [
+        "Informatik"
+      ],
+      "deRaw": "Informatik",
+      "exampleSb": "His best subject at school is computer science.",
+      "cf": null,
+      "forms": [
+        "computer science"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.engineer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "engineer",
+      "de": [
+        "Techniker/Technikerin"
+      ],
+      "deRaw": "Techniker/Technikerin",
+      "exampleSb": "What subjects do you need to study to be an engineer?",
+      "cf": null,
+      "forms": [
+        "engineer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.inspiration",
+      "kind": "phrase",
+      "theme": null,
+      "en": "inspiration",
+      "de": [
+        "Inspiration"
+      ],
+      "deRaw": "Inspiration",
+      "exampleSb": "This is not the kind of inspiration I'm looking for right now.",
+      "cf": null,
+      "forms": [
+        "inspiration"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-repair",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to repair",
+      "de": [
+        "reparieren"
+      ],
+      "deRaw": "reparieren",
+      "exampleSb": "I love repairing things and playing around with new ideas.",
+      "cf": "repair",
+      "forms": [
+        "to repair",
+        "repair"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u08.w.to-support",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to support",
+      "de": [
+        "unterstützen"
+      ],
+      "deRaw": "unterstützen",
+      "exampleSb": "I want to do things that will support my dream for the future.",
+      "cf": "support",
+      "forms": [
+        "to support",
+        "support"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

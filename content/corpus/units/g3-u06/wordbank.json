@@ -1,0 +1,753 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 6,
+  "slug": "g3-u06",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u06.w.bridge",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "bridge",
+      "de": [
+        "Brücke"
+      ],
+      "deRaw": "Brücke",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bridge"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.river",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "river",
+      "de": [
+        "Fluss"
+      ],
+      "deRaw": "Fluss",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "river"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.art-gallery",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "art gallery",
+      "de": [
+        "Kunstgalerie"
+      ],
+      "deRaw": "Kunstgalerie",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "art gallery"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.square",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "square",
+      "de": [
+        "Platz"
+      ],
+      "deRaw": "Platz",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "square"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.park",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "park",
+      "de": [
+        "Park"
+      ],
+      "deRaw": "Park",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "park"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.tower",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "tower",
+      "de": [
+        "Turm"
+      ],
+      "deRaw": "Turm",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tower"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.district",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "district",
+      "de": [
+        "Bezirk",
+        "Viertel"
+      ],
+      "deRaw": "Bezirk, Viertel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "district"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.building",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "building",
+      "de": [
+        "Gebäude"
+      ],
+      "deRaw": "Gebäude",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "building"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.street",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "street",
+      "de": [
+        "Straße"
+      ],
+      "deRaw": "Straße",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "street"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.shop",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "shop",
+      "de": [
+        "Geschäft"
+      ],
+      "deRaw": "Geschäft",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "shop"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.shopping-centre",
+      "kind": "wordfile",
+      "theme": "Places Around Town",
+      "en": "shopping centre",
+      "de": [
+        "Einkaufszentrum"
+      ],
+      "deRaw": "Einkaufszentrum",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "shopping centre"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.stadium",
+      "kind": "phrase",
+      "theme": null,
+      "en": "stadium",
+      "de": [
+        "Stadion"
+      ],
+      "deRaw": "Stadion",
+      "exampleSb": "This stadium is home to the England national football team.",
+      "cf": null,
+      "forms": [
+        "stadium"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-burn-down",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to burn down",
+      "de": [
+        "niederbrennen"
+      ],
+      "deRaw": "niederbrennen",
+      "exampleSb": "The old Globe Theatre burnt down, but there's a new one.",
+      "cf": "burn down",
+      "forms": [
+        "to burn down",
+        "burn down"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.collection",
+      "kind": "phrase",
+      "theme": null,
+      "en": "collection",
+      "de": [
+        "Sammlung"
+      ],
+      "deRaw": "Sammlung",
+      "exampleSb": "This is an art gallery whose collection of modern art is one of the best in the world.",
+      "cf": null,
+      "forms": [
+        "collection"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.government",
+      "kind": "phrase",
+      "theme": null,
+      "en": "government",
+      "de": [
+        "Regierung"
+      ],
+      "deRaw": "Regierung",
+      "exampleSb": "It is where the British government meets.",
+      "cf": null,
+      "forms": [
+        "government"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.the-houses-of-parliament",
+      "kind": "phrase",
+      "theme": null,
+      "en": "the Houses of Parliament",
+      "de": [
+        "das Parlament (von Großbritannien)"
+      ],
+      "deRaw": "das Parlament (von Großbritannien)",
+      "exampleSb": "The government meets at the Houses of Parliament.",
+      "cf": null,
+      "forms": [
+        "the Houses of Parliament"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.in-advance",
+      "kind": "phrase",
+      "theme": null,
+      "en": "in advance",
+      "de": [
+        "im Voraus"
+      ],
+      "deRaw": "im Voraus",
+      "exampleSb": "If you want to avoid the long queues – book in advance.",
+      "cf": null,
+      "forms": [
+        "in advance"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-photograph",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to photograph",
+      "de": [
+        "fotografieren"
+      ],
+      "deRaw": "fotografieren",
+      "exampleSb": "A lot of people photograph these places.",
+      "cf": "photograph",
+      "forms": [
+        "to photograph",
+        "photograph"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.play",
+      "kind": "phrase",
+      "theme": null,
+      "en": "play",
+      "de": [
+        "Theaterstück"
+      ],
+      "deRaw": "Theaterstück",
+      "exampleSb": "You can watch a Shakespeare play at the Globe.",
+      "cf": null,
+      "forms": [
+        "play"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.prison",
+      "kind": "phrase",
+      "theme": null,
+      "en": "prison",
+      "de": [
+        "Gefängnis"
+      ],
+      "deRaw": "Gefängnis",
+      "exampleSb": "It was built in 1078 as a castle, later it was a prison.",
+      "cf": null,
+      "forms": [
+        "prison"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-raise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to raise",
+      "de": [
+        "anheben",
+        "erhöhen"
+      ],
+      "deRaw": "anheben, erhöhen",
+      "exampleSb": "They can raise the bridge for big ships.",
+      "cf": "raise",
+      "forms": [
+        "to raise",
+        "raise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.raven",
+      "kind": "phrase",
+      "theme": null,
+      "en": "raven",
+      "de": [
+        "Rabe"
+      ],
+      "deRaw": "Rabe",
+      "exampleSb": "The ravens should never leave the Tower of London.",
+      "cf": null,
+      "forms": [
+        "raven"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-take-a-walk",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to take a walk",
+      "de": [
+        "einen Spaziergang machen"
+      ],
+      "deRaw": "einen Spaziergang machen",
+      "exampleSb": "Take a walk along the banks of the river.",
+      "cf": "take a walk",
+      "forms": [
+        "to take a walk",
+        "take a walk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.theatre",
+      "kind": "phrase",
+      "theme": null,
+      "en": "theatre",
+      "de": [
+        "Theater"
+      ],
+      "deRaw": "Theater",
+      "exampleSb": "There was a round theatre here, where Shakespeare acted.",
+      "cf": null,
+      "forms": [
+        "theatre"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.view",
+      "kind": "phrase",
+      "theme": null,
+      "en": "view",
+      "de": [
+        "Ausblick",
+        "Aussicht"
+      ],
+      "deRaw": "Ausblick, Aussicht",
+      "exampleSb": "The 25-minute ride on the wheel gives you some of the best views of London.",
+      "cf": null,
+      "forms": [
+        "view"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.visitor",
+      "kind": "phrase",
+      "theme": null,
+      "en": "visitor",
+      "de": [
+        "Besucher/Besucherin"
+      ],
+      "deRaw": "Besucher/Besucherin",
+      "exampleSb": "More than 3.5 million visitors take a ride on the wheel each year.",
+      "cf": null,
+      "forms": [
+        "visitor"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.thrilling",
+      "kind": "phrase",
+      "theme": null,
+      "en": "thrilling",
+      "de": [
+        "aufregend"
+      ],
+      "deRaw": "aufregend",
+      "exampleSb": "Let's throw a thrilling party on Thursday.",
+      "cf": null,
+      "forms": [
+        "thrilling"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.approximately",
+      "kind": "phrase",
+      "theme": null,
+      "en": "approximately",
+      "de": [
+        "ungefähr"
+      ],
+      "deRaw": "ungefähr",
+      "exampleSb": "The Great Plague killed approximately 100,000 people in London.",
+      "cf": null,
+      "forms": [
+        "approximately"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-cough",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to cough (up)",
+      "de": [
+        "(aus-)husten"
+      ],
+      "deRaw": "(aus-)husten",
+      "exampleSb": "Usual symptoms were fever and coughing up blood.",
+      "cf": "cough",
+      "forms": [
+        "to cough",
+        "cough",
+        "up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.cruel",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cruel",
+      "de": [
+        "grausam"
+      ],
+      "deRaw": "grausam",
+      "exampleSb": "The Great Plague was a cruel killer.",
+      "cf": null,
+      "forms": [
+        "cruel"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.empty",
+      "kind": "phrase",
+      "theme": null,
+      "en": "empty",
+      "de": [
+        "leer"
+      ],
+      "deRaw": "leer",
+      "exampleSb": "The streets were empty. There were no people.",
+      "cf": null,
+      "forms": [
+        "empty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.fever",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fever",
+      "de": [
+        "Fieber"
+      ],
+      "deRaw": "Fieber",
+      "exampleSb": "If you had the Plague, you also had fever.",
+      "cf": null,
+      "forms": [
+        "fever"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-report",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to report",
+      "de": [
+        "berichten",
+        "melden"
+      ],
+      "deRaw": "berichten, melden",
+      "exampleSb": "Many people didn't report their symptoms.",
+      "cf": "report",
+      "forms": [
+        "to report",
+        "report"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.path",
+      "kind": "phrase",
+      "theme": null,
+      "en": "path",
+      "de": [
+        "Weg"
+      ],
+      "deRaw": "Weg",
+      "exampleSb": "There's a long path, a lake and lots of trees.",
+      "cf": null,
+      "forms": [
+        "path"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.spectacular",
+      "kind": "phrase",
+      "theme": null,
+      "en": "spectacular",
+      "de": [
+        "spektakulär"
+      ],
+      "deRaw": "spektakulär",
+      "exampleSb": "What I loved most was the spectacular light show.",
+      "cf": null,
+      "forms": [
+        "spectacular"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.tourist-attraction",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tourist attraction",
+      "de": [
+        "Sehenswürdigkeit"
+      ],
+      "deRaw": "Sehenswürdigkeit",
+      "exampleSb": "Madame Tussauds has been a popular tourist attraction for many years.",
+      "cf": null,
+      "forms": [
+        "tourist attraction"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-experience",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to experience",
+      "de": [
+        "erleben",
+        "erfahren"
+      ],
+      "deRaw": "erleben, erfahren",
+      "exampleSb": "You can experience one of the many interactive attractions.",
+      "cf": "experience",
+      "forms": [
+        "to experience",
+        "experience"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.traffic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "traffic",
+      "de": [
+        "Verkehr"
+      ],
+      "deRaw": "Verkehr",
+      "exampleSb": "There's a lot of traffic on the street. It's very noisy.",
+      "cf": null,
+      "forms": [
+        "traffic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.multicultural",
+      "kind": "phrase",
+      "theme": null,
+      "en": "multicultural",
+      "de": [
+        "multikulturell"
+      ],
+      "deRaw": "multikulturell",
+      "exampleSb": "London is very multicultural.",
+      "cf": null,
+      "forms": [
+        "multicultural"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.contract",
+      "kind": "phrase",
+      "theme": null,
+      "en": "contract",
+      "de": [
+        "Vertrag"
+      ],
+      "deRaw": "Vertrag",
+      "exampleSb": "We signed a contract.",
+      "cf": null,
+      "forms": [
+        "contract"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-lead",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to lead",
+      "de": [
+        "leiten"
+      ],
+      "deRaw": "leiten",
+      "exampleSb": "I should be helping Dad to lead a healthier lifestyle.",
+      "cf": "lead",
+      "forms": [
+        "to lead",
+        "lead"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.sugar",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sugar",
+      "de": [
+        "Zucker"
+      ],
+      "deRaw": "Zucker",
+      "exampleSb": "I want to eat less sugar.",
+      "cf": null,
+      "forms": [
+        "sugar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-earn",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to earn (money)",
+      "de": [
+        "(Geld) verdienen"
+      ],
+      "deRaw": "(Geld) verdienen",
+      "exampleSb": "My other job earns me £10 a week.",
+      "cf": "earn",
+      "forms": [
+        "to earn",
+        "earn",
+        "money"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-save-up-for",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to save up for",
+      "de": [
+        "ansparen"
+      ],
+      "deRaw": "ansparen",
+      "exampleSb": "I need to save up money for our new project.",
+      "cf": "save up for",
+      "forms": [
+        "to save up for",
+        "save up for"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u06.w.to-sign",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to sign",
+      "de": [
+        "unterschreiben"
+      ],
+      "deRaw": "unterschreiben",
+      "exampleSb": "He agreed and signed the contract.",
+      "cf": "sign",
+      "forms": [
+        "to sign",
+        "sign"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

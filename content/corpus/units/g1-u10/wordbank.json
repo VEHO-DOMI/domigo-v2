@@ -1,0 +1,731 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 10,
+  "slug": "g1-u10",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u10.w.20-twenty",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "20 twenty",
+      "de": [
+        "20 zwanzig"
+      ],
+      "deRaw": "20 zwanzig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "20 twenty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.30-thirty",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "30 thirty",
+      "de": [
+        "30 dreißig"
+      ],
+      "deRaw": "30 dreißig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "30 thirty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.40-forty",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "40 forty",
+      "de": [
+        "40 vierzig"
+      ],
+      "deRaw": "40 vierzig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "40 forty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.50-fifty",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "50 fifty",
+      "de": [
+        "50 fünfzig"
+      ],
+      "deRaw": "50 fünfzig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "50 fifty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.60-sixty",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "60 sixty",
+      "de": [
+        "60 sechzig"
+      ],
+      "deRaw": "60 sechzig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "60 sixty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.70-seventy",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "70 seventy",
+      "de": [
+        "70 siebzig"
+      ],
+      "deRaw": "70 siebzig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "70 seventy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.80-eighty",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "80 eighty",
+      "de": [
+        "80 achtzig"
+      ],
+      "deRaw": "80 achtzig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "80 eighty"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.90-ninety",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "90 ninety",
+      "de": [
+        "90 neunzig"
+      ],
+      "deRaw": "90 neunzig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "90 ninety"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.100-one-hundred",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "100 one hundred",
+      "de": [
+        "100 einhundert"
+      ],
+      "deRaw": "100 einhundert",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "100 one hundred"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.1000-one-thousand",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "1000 one thousand",
+      "de": [
+        "1000 eintausend"
+      ],
+      "deRaw": "1000 eintausend",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "1000 one thousand"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.how-much-is-are",
+      "kind": "phrase",
+      "theme": null,
+      "en": "how much is/are ...",
+      "de": [
+        "wie viel kostet/kosten ..."
+      ],
+      "deRaw": "wie viel kostet/kosten ...",
+      "exampleSb": "How much are the trainers?",
+      "cf": null,
+      "forms": [
+        "how much is/are ..."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.price",
+      "kind": "phrase",
+      "theme": null,
+      "en": "price",
+      "de": [
+        "Preis",
+        "Rechnungsbetrag"
+      ],
+      "deRaw": "Preis, Rechnungsbetrag",
+      "exampleSb": "The price is six pounds ninety-nine.",
+      "cf": null,
+      "forms": [
+        "price"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.these",
+      "kind": "phrase",
+      "theme": null,
+      "en": "these",
+      "de": [
+        "diese"
+      ],
+      "deRaw": "diese",
+      "exampleSb": "I'd like these shoes here.",
+      "cf": null,
+      "forms": [
+        "these"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.those",
+      "kind": "phrase",
+      "theme": null,
+      "en": "those",
+      "de": [
+        "jene"
+      ],
+      "deRaw": "jene",
+      "exampleSb": "I'd like those trainers over there.",
+      "cf": null,
+      "forms": [
+        "those"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.anything-else",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Anything else?",
+      "de": [
+        "Darf es noch etwas sein?"
+      ],
+      "deRaw": "Darf es noch etwas sein?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Anything else?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.can-i-help-you",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Can I help you?",
+      "de": [
+        "Kann ich dir/Ihnen behilflich sein?"
+      ],
+      "deRaw": "Kann ich dir/Ihnen behilflich sein?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Can I help you?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.computer-game",
+      "kind": "phrase",
+      "theme": null,
+      "en": "computer game",
+      "de": [
+        "Computerspiel"
+      ],
+      "deRaw": "Computerspiel",
+      "exampleSb": "How much is the computer game?",
+      "cf": null,
+      "forms": [
+        "computer game"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.headphones",
+      "kind": "phrase",
+      "theme": null,
+      "en": "headphones",
+      "de": [
+        "Kopfhörer"
+      ],
+      "deRaw": "Kopfhörer",
+      "exampleSb": "She can't hear you. She has headphones on.",
+      "cf": null,
+      "forms": [
+        "headphones"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.key-ring",
+      "kind": "phrase",
+      "theme": null,
+      "en": "key ring",
+      "de": [
+        "Schlüsselanhänger"
+      ],
+      "deRaw": "Schlüsselanhänger",
+      "exampleSb": "I put my key on a key ring.",
+      "cf": null,
+      "forms": [
+        "key ring"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.magazine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "magazine",
+      "de": [
+        "Zeitschrift",
+        "Magazin"
+      ],
+      "deRaw": "Zeitschrift, Magazin",
+      "exampleSb": "Can I buy this magazine?",
+      "cf": null,
+      "forms": [
+        "magazine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.mobile-phone",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mobile phone",
+      "de": [
+        "Mobiltelefon",
+        "Handy"
+      ],
+      "deRaw": "Mobiltelefon, Handy",
+      "exampleSb": "Can I have a new mobile phone?",
+      "cf": null,
+      "forms": [
+        "mobile phone"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.scooter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "scooter",
+      "de": [
+        "Roller"
+      ],
+      "deRaw": "Roller",
+      "exampleSb": "I ride my scooter to school.",
+      "cf": null,
+      "forms": [
+        "scooter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.sweets",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sweets (pl)",
+      "de": [
+        "Süßigkeiten"
+      ],
+      "deRaw": "Süßigkeiten",
+      "exampleSb": "The sweets are one ninety-nine.",
+      "cf": null,
+      "forms": [
+        "sweets",
+        "pl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.tin",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tin",
+      "de": [
+        "Dose"
+      ],
+      "deRaw": "Dose",
+      "exampleSb": "A tin of chicken soup, please.",
+      "cf": null,
+      "forms": [
+        "tin"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.congratulations",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Congratulations!",
+      "de": [
+        "Herzlichen Glückwunsch!"
+      ],
+      "deRaw": "Herzlichen Glückwunsch!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Congratulations!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.rule",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rule",
+      "de": [
+        "Regel"
+      ],
+      "deRaw": "Regel",
+      "exampleSb": "You know the rules.",
+      "cf": null,
+      "forms": [
+        "rule"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.customer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "customer",
+      "de": [
+        "Kunde/Kundin"
+      ],
+      "deRaw": "Kunde/Kundin",
+      "exampleSb": "His customers like to come to the shop.",
+      "cf": null,
+      "forms": [
+        "customer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.everything",
+      "kind": "phrase",
+      "theme": null,
+      "en": "everything",
+      "de": [
+        "alles"
+      ],
+      "deRaw": "alles",
+      "exampleSb": "Have you got everything?",
+      "cf": null,
+      "forms": [
+        "everything"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.expensive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "expensive",
+      "de": [
+        "teuer"
+      ],
+      "deRaw": "teuer",
+      "exampleSb": "The things in this shop are very expensive.",
+      "cf": null,
+      "forms": [
+        "expensive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.to-fall-asleep",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to fall asleep",
+      "de": [
+        "einschlafen"
+      ],
+      "deRaw": "einschlafen",
+      "exampleSb": "Mr Anderson sits on his chair and falls asleep.",
+      "cf": "fall asleep",
+      "forms": [
+        "to fall asleep",
+        "fall asleep"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.goodbye",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Goodbye.",
+      "de": [
+        "Auf Wiedersehen.",
+        "Tschüss."
+      ],
+      "deRaw": "Auf Wiedersehen., Tschüss.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Goodbye."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.i-d-like",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I'd like ...",
+      "de": [
+        "Ich hätte gerne ...",
+        "Ich möchte ..."
+      ],
+      "deRaw": "Ich hätte gerne ... , Ich möchte ...",
+      "exampleSb": "I'd like 20 kilos of rice.",
+      "cf": null,
+      "forms": [
+        "I'd like ..."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.no-wonder",
+      "kind": "phrase",
+      "theme": null,
+      "en": "No wonder.",
+      "de": [
+        "Kein Wunder."
+      ],
+      "deRaw": "Kein Wunder.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "No wonder."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.suddenly",
+      "kind": "phrase",
+      "theme": null,
+      "en": "suddenly",
+      "de": [
+        "plötzlich",
+        "auf einmal"
+      ],
+      "deRaw": "plötzlich, auf einmal",
+      "exampleSb": "Suddenly, he hears the doorbell.",
+      "cf": null,
+      "forms": [
+        "suddenly"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.town",
+      "kind": "phrase",
+      "theme": null,
+      "en": "town",
+      "de": [
+        "Stadt"
+      ],
+      "deRaw": "Stadt",
+      "exampleSb": "There's an old shop in the town.",
+      "cf": null,
+      "forms": [
+        "town"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.to-walk-away",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to walk away",
+      "de": [
+        "weggehen",
+        "fortgehen"
+      ],
+      "deRaw": "weggehen, fortgehen",
+      "exampleSb": "The horse picks up the food and walks away.",
+      "cf": "walk away",
+      "forms": [
+        "to walk away",
+        "walk away"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.changing-room",
+      "kind": "phrase",
+      "theme": null,
+      "en": "changing room",
+      "de": [
+        "Umkleidekabine"
+      ],
+      "deRaw": "Umkleidekabine",
+      "exampleSb": "You can try them on in the changing room.",
+      "cf": null,
+      "forms": [
+        "changing room"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.no-problem",
+      "kind": "phrase",
+      "theme": null,
+      "en": "No problem.",
+      "de": [
+        "Kein Problem."
+      ],
+      "deRaw": "Kein Problem.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "No problem."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.over-there",
+      "kind": "phrase",
+      "theme": null,
+      "en": "over there",
+      "de": [
+        "da/dort drüben"
+      ],
+      "deRaw": "da/dort drüben",
+      "exampleSb": "How much are those socks over there in the window?",
+      "cf": null,
+      "forms": [
+        "over there"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.drawer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "drawer",
+      "de": [
+        "Schublade"
+      ],
+      "deRaw": "Schublade",
+      "exampleSb": "All my socks are in the drawer.",
+      "cf": null,
+      "forms": [
+        "drawer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.that-s-better",
+      "kind": "phrase",
+      "theme": null,
+      "en": "That's better.",
+      "de": [
+        "So ist es besser."
+      ],
+      "deRaw": "So ist es besser.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "That's better."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.what-can-i-do-for-you",
+      "kind": "phrase",
+      "theme": null,
+      "en": "What can I do for you?",
+      "de": [
+        "Was kann ich für dich/Sie tun?"
+      ],
+      "deRaw": "Was kann ich für dich/Sie tun?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "What can I do for you?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.be-careful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Be careful.",
+      "de": [
+        "Pass(t) auf.",
+        "Sei(d) vorsichtig."
+      ],
+      "deRaw": "Pass(t) auf.; Sei(d) vorsichtig.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Be careful."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u10.w.just-a-minute",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Just a minute.",
+      "de": [
+        "Einen Augenblick bitte.",
+        "Moment mal."
+      ],
+      "deRaw": "Einen Augenblick bitte., Moment mal.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Just a minute."
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

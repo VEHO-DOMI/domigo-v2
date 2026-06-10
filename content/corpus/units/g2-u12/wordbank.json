@@ -1,0 +1,549 @@
+{
+  "schema": "wordbank@1",
+  "grade": 2,
+  "unit": 12,
+  "slug": "g2-u12",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 2 Units 1-15.docx",
+    "sha256": "c7f1686054191ee2a5d7dc1136c9d7597042e2033841087b0033ae4176667b6a"
+  },
+  "entries": [
+    {
+      "id": "g2u12.w.headache",
+      "kind": "wordfile",
+      "theme": "Aches and Pains",
+      "en": "headache",
+      "de": [
+        "Kopfschmerzen"
+      ],
+      "deRaw": "Kopfschmerzen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "headache"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.toothache",
+      "kind": "wordfile",
+      "theme": "Aches and Pains",
+      "en": "toothache",
+      "de": [
+        "Zahnschmerzen"
+      ],
+      "deRaw": "Zahnschmerzen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "toothache"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.earache",
+      "kind": "wordfile",
+      "theme": "Aches and Pains",
+      "en": "earache",
+      "de": [
+        "Ohrenschmerzen"
+      ],
+      "deRaw": "Ohrenschmerzen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "earache"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.stomach-ache",
+      "kind": "wordfile",
+      "theme": "Aches and Pains",
+      "en": "stomach ache",
+      "de": [
+        "Bauchschmerzen"
+      ],
+      "deRaw": "Bauchschmerzen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "stomach ache"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.pain-in-ankle",
+      "kind": "wordfile",
+      "theme": "Aches and Pains",
+      "en": "pain in ankle",
+      "de": [
+        "Schmerzen im Knöchel"
+      ],
+      "deRaw": "Schmerzen im Knöchel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pain in ankle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.knee",
+      "kind": "wordfile",
+      "theme": "Aches and Pains",
+      "en": "knee",
+      "de": [
+        "Knie"
+      ],
+      "deRaw": "Knie",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "knee"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.backache",
+      "kind": "wordfile",
+      "theme": "Aches and Pains",
+      "en": "backache",
+      "de": [
+        "Rückenschmerzen"
+      ],
+      "deRaw": "Rückenschmerzen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "backache"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.throat",
+      "kind": "wordfile",
+      "theme": "Aches and Pains",
+      "en": "throat",
+      "de": [
+        "Hals"
+      ],
+      "deRaw": "Hals",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "throat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.bath",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bath",
+      "de": [
+        "Bad"
+      ],
+      "deRaw": "Bad",
+      "exampleSb": "I have to give my dog a bath. She's very dirty.",
+      "cf": null,
+      "forms": [
+        "bath"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.medicine",
+      "kind": "phrase",
+      "theme": null,
+      "en": "medicine",
+      "de": [
+        "Medizin"
+      ],
+      "deRaw": "Medizin",
+      "exampleSb": "The doctor says you should take your medicine.",
+      "cf": null,
+      "forms": [
+        "medicine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.memory",
+      "kind": "phrase",
+      "theme": null,
+      "en": "memory",
+      "de": [
+        "Gedächtnis"
+      ],
+      "deRaw": "Gedächtnis",
+      "exampleSb": "Her memory is very good. She can remember lots of facts.",
+      "cf": null,
+      "forms": [
+        "memory"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.patient",
+      "kind": "phrase",
+      "theme": null,
+      "en": "patient",
+      "de": [
+        "Patient/Patientin"
+      ],
+      "deRaw": "Patient/Patientin",
+      "exampleSb": "There are many patient and doctor jokes.",
+      "cf": null,
+      "forms": [
+        "patient"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.spoon",
+      "kind": "phrase",
+      "theme": null,
+      "en": "spoon",
+      "de": [
+        "Löffel"
+      ],
+      "deRaw": "Löffel",
+      "exampleSb": "I need a spoon to eat my soup.",
+      "cf": null,
+      "forms": [
+        "spoon"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.blood",
+      "kind": "phrase",
+      "theme": null,
+      "en": "blood",
+      "de": [
+        "Blut"
+      ],
+      "deRaw": "Blut",
+      "exampleSb": "There's blood on your T-shirt. It's all red.",
+      "cf": null,
+      "forms": [
+        "blood"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.lamp-post",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lamp post",
+      "de": [
+        "Laternenmast"
+      ],
+      "deRaw": "Laternenmast",
+      "exampleSb": "Ouch – I've just walked into a lamp post.",
+      "cf": null,
+      "forms": [
+        "lamp post"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.cure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cure",
+      "de": [
+        "Heilmittel"
+      ],
+      "deRaw": "Heilmittel",
+      "exampleSb": "In Ancient Egypt, a dead mouse was a cure for toothache.",
+      "cf": null,
+      "forms": [
+        "cure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.to-cure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to cure",
+      "de": [
+        "heilen"
+      ],
+      "deRaw": "heilen",
+      "exampleSb": "Worms cured stomach ache.",
+      "cf": "cure",
+      "forms": [
+        "to cure",
+        "cure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.dentist",
+      "kind": "phrase",
+      "theme": null,
+      "en": "dentist",
+      "de": [
+        "Zahnarzt/Zahnärztin"
+      ],
+      "deRaw": "Zahnarzt/Zahnärztin",
+      "exampleSb": "I want to become a dentist.",
+      "cf": null,
+      "forms": [
+        "dentist"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.to-mash",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to mash",
+      "de": [
+        "zerdrücken",
+        "zerstampfen"
+      ],
+      "deRaw": "zerdrücken, zerstampfen",
+      "exampleSb": "They mashed a dead mouse and mixed it with food to get a paste.",
+      "cf": "mash",
+      "forms": [
+        "to mash",
+        "mash"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.to-mix",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to mix",
+      "de": [
+        "vermischen"
+      ],
+      "deRaw": "vermischen",
+      "exampleSb": "I mix my pet's medicine with its food.",
+      "cf": "mix",
+      "forms": [
+        "to mix",
+        "mix"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.taste",
+      "kind": "phrase",
+      "theme": null,
+      "en": "taste",
+      "de": [
+        "Geschmack"
+      ],
+      "deRaw": "Geschmack",
+      "exampleSb": "The taste was very good.",
+      "cf": null,
+      "forms": [
+        "taste"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.toothpaste",
+      "kind": "phrase",
+      "theme": null,
+      "en": "toothpaste",
+      "de": [
+        "Zahnpasta"
+      ],
+      "deRaw": "Zahnpasta",
+      "exampleSb": "In Ancient Rome, people didn't have toothpaste.",
+      "cf": null,
+      "forms": [
+        "toothpaste"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.worm",
+      "kind": "phrase",
+      "theme": null,
+      "en": "worm",
+      "de": [
+        "Wurm"
+      ],
+      "deRaw": "Wurm",
+      "exampleSb": "A worm lives under the ground.",
+      "cf": null,
+      "forms": [
+        "worm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.smell",
+      "kind": "phrase",
+      "theme": null,
+      "en": "smell",
+      "de": [
+        "Geruch"
+      ],
+      "deRaw": "Geruch",
+      "exampleSb": "The smell of fish was really bad.",
+      "cf": null,
+      "forms": [
+        "smell"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.first-aid",
+      "kind": "phrase",
+      "theme": null,
+      "en": "first aid",
+      "de": [
+        "Erste Hilfe"
+      ],
+      "deRaw": "Erste Hilfe",
+      "exampleSb": "We have first aid classes at school.",
+      "cf": null,
+      "forms": [
+        "first aid"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.helpful",
+      "kind": "phrase",
+      "theme": null,
+      "en": "helpful",
+      "de": [
+        "hilfsbereit"
+      ],
+      "deRaw": "hilfsbereit",
+      "exampleSb": "She has always been a great and helpful friend.",
+      "cf": null,
+      "forms": [
+        "helpful"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.horrible",
+      "kind": "phrase",
+      "theme": null,
+      "en": "horrible",
+      "de": [
+        "schrecklich"
+      ],
+      "deRaw": "schrecklich",
+      "exampleSb": "The accident was horrible!",
+      "cf": null,
+      "forms": [
+        "horrible"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.pupil",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pupil",
+      "de": [
+        "Schüler/Schülerin"
+      ],
+      "deRaw": "Schüler/Schülerin",
+      "exampleSb": "Sam is a very helpful pupil.",
+      "cf": null,
+      "forms": [
+        "pupil"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.since",
+      "kind": "phrase",
+      "theme": null,
+      "en": "since",
+      "de": [
+        "seit"
+      ],
+      "deRaw": "seit",
+      "exampleSb": "I've been in hospital since last week.",
+      "cf": null,
+      "forms": [
+        "since"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.believe-me",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Believe me!",
+      "de": [
+        "Glaub mir!"
+      ],
+      "deRaw": "Glaub mir!",
+      "exampleSb": "It's true. Believe me!",
+      "cf": null,
+      "forms": [
+        "Believe me!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.to-injure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to injure",
+      "de": [
+        "verletzen"
+      ],
+      "deRaw": "verletzen",
+      "exampleSb": "I don't want to injure my knee again.",
+      "cf": "injure",
+      "forms": [
+        "to injure",
+        "injure"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.it-doesn-t-matter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It doesn't matter.",
+      "de": [
+        "Das macht nichts",
+        "egal"
+      ],
+      "deRaw": "Das macht nichts, egal",
+      "exampleSb": "It doesn't matter.",
+      "cf": null,
+      "forms": [
+        "It doesn't matter."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g2u12.w.writer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "writer",
+      "de": [
+        "Schriftsteller/-in"
+      ],
+      "deRaw": "Schriftsteller/-in",
+      "exampleSb": "I don't know who the writer of this text is.",
+      "cf": null,
+      "forms": [
+        "writer"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

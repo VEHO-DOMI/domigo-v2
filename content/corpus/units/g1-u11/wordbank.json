@@ -1,0 +1,981 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 11,
+  "slug": "g1-u11",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u11.w.9-a-m",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "9 a.m.",
+      "de": [
+        "9 Uhr morgens"
+      ],
+      "deRaw": "9 Uhr morgens",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "9 a.m."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.midday",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "midday",
+      "de": [
+        "Mittag"
+      ],
+      "deRaw": "Mittag",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "midday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.9-p-m",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "9 p.m.",
+      "de": [
+        "9 Uhr abends"
+      ],
+      "deRaw": "9 Uhr abends",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "9 p.m."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.midnight",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "midnight",
+      "de": [
+        "Mitternacht"
+      ],
+      "deRaw": "Mitternacht",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "midnight"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.9-o-clock",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "9 o'clock",
+      "de": [
+        "9 Uhr"
+      ],
+      "deRaw": "9 Uhr",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "9 o'clock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.quarter-past-nine",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "(a) quarter past nine",
+      "de": [
+        "Viertel nach neun"
+      ],
+      "deRaw": "Viertel nach neun",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "quarter past nine",
+        "a"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.half-past-nine",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "half past nine",
+      "de": [
+        "halb zehn"
+      ],
+      "deRaw": "halb zehn",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "half past nine"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.quarter-to-ten",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "(a) quarter to ten",
+      "de": [
+        "Viertel vor zehn"
+      ],
+      "deRaw": "Viertel vor zehn",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "quarter to ten",
+        "a"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-ride-a-bike",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to ride a bike",
+      "de": [
+        "Fahrrad fahren"
+      ],
+      "deRaw": "Fahrrad fahren",
+      "exampleSb": null,
+      "cf": "ride a bike",
+      "forms": [
+        "to ride a bike",
+        "ride a bike"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-watch-tv",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to watch TV",
+      "de": [
+        "fernsehen"
+      ],
+      "deRaw": "fernsehen",
+      "exampleSb": null,
+      "cf": "watch TV",
+      "forms": [
+        "to watch TV",
+        "watch TV"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-play-football",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to play football",
+      "de": [
+        "Fußball spielen"
+      ],
+      "deRaw": "Fußball spielen",
+      "exampleSb": null,
+      "cf": "play football",
+      "forms": [
+        "to play football",
+        "play football"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-play-computer-games",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to play computer games",
+      "de": [
+        "Computerspiele spielen"
+      ],
+      "deRaw": "Computerspiele spielen",
+      "exampleSb": null,
+      "cf": "play computer games",
+      "forms": [
+        "to play computer games",
+        "play computer games"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-play-the-piano",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to play the piano",
+      "de": [
+        "Klavier spielen"
+      ],
+      "deRaw": "Klavier spielen",
+      "exampleSb": null,
+      "cf": "play the piano",
+      "forms": [
+        "to play the piano",
+        "play the piano"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-ride-a-horse",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to ride a horse",
+      "de": [
+        "reiten"
+      ],
+      "deRaw": "reiten",
+      "exampleSb": null,
+      "cf": "ride a horse",
+      "forms": [
+        "to ride a horse",
+        "ride a horse"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-skateboard",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to skateboard",
+      "de": [
+        "Skateboard fahren"
+      ],
+      "deRaw": "Skateboard fahren",
+      "exampleSb": null,
+      "cf": "skateboard",
+      "forms": [
+        "to skateboard",
+        "skateboard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-cook",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to cook",
+      "de": [
+        "kochen"
+      ],
+      "deRaw": "kochen",
+      "exampleSb": null,
+      "cf": "cook",
+      "forms": [
+        "to cook",
+        "cook"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-ride-a-scooter",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to ride a scooter",
+      "de": [
+        "Roller fahren"
+      ],
+      "deRaw": "Roller fahren",
+      "exampleSb": null,
+      "cf": "ride a scooter",
+      "forms": [
+        "to ride a scooter",
+        "ride a scooter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-ski",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to ski",
+      "de": [
+        "Ski fahren"
+      ],
+      "deRaw": "Ski fahren",
+      "exampleSb": null,
+      "cf": "ski",
+      "forms": [
+        "to ski",
+        "ski"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-snowboard",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to snowboard",
+      "de": [
+        "snowboarden"
+      ],
+      "deRaw": "snowboarden",
+      "exampleSb": null,
+      "cf": "snowboard",
+      "forms": [
+        "to snowboard",
+        "snowboard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-skate",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to skate",
+      "de": [
+        "Schlittschuh laufen"
+      ],
+      "deRaw": "Schlittschuh laufen",
+      "exampleSb": null,
+      "cf": "skate",
+      "forms": [
+        "to skate",
+        "skate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.daily",
+      "kind": "phrase",
+      "theme": null,
+      "en": "daily",
+      "de": [
+        "täglich"
+      ],
+      "deRaw": "täglich",
+      "exampleSb": "At 7 a.m., I do my daily exercise.",
+      "cf": null,
+      "forms": [
+        "daily"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.free-time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "free time",
+      "de": [
+        "Freizeit"
+      ],
+      "deRaw": "Freizeit",
+      "exampleSb": "I like to read comics in my free time.",
+      "cf": null,
+      "forms": [
+        "free time"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.what-s-the-time",
+      "kind": "phrase",
+      "theme": null,
+      "en": "What's the time?",
+      "de": [
+        "Wie spät ist es?"
+      ],
+      "deRaw": "Wie spät ist es?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "What's the time?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.excuse-me",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Excuse me.",
+      "de": [
+        "Entschuldigen Sie bitte.",
+        "Entschuldigung."
+      ],
+      "deRaw": "Entschuldigen Sie bitte., Entschuldigung.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Excuse me."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-hurry",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to hurry",
+      "de": [
+        "sich beeilen"
+      ],
+      "deRaw": "sich beeilen",
+      "exampleSb": "We're late. Let's hurry.",
+      "cf": "hurry",
+      "forms": [
+        "to hurry",
+        "hurry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.clock",
+      "kind": "phrase",
+      "theme": null,
+      "en": "clock",
+      "de": [
+        "Uhr"
+      ],
+      "deRaw": "Uhr",
+      "exampleSb": "My clock shows the wrong time.",
+      "cf": null,
+      "forms": [
+        "clock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.it-s-10-a-m",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It's 10 a.m.",
+      "de": [
+        "Es ist 10 Uhr morgens/vormittags."
+      ],
+      "deRaw": "Es ist 10 Uhr morgens/vormittags.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "It's 10 a.m."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.it-s-8-p-m",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It's 8 p.m.",
+      "de": [
+        "Es ist 8 Uhr abends."
+      ],
+      "deRaw": "Es ist 8 Uhr abends.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "It's 8 p.m."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.what-time-is-it",
+      "kind": "phrase",
+      "theme": null,
+      "en": "What time is it?",
+      "de": [
+        "Wie spät ist es?"
+      ],
+      "deRaw": "Wie spät ist es?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "What time is it?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.bedtime",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bedtime",
+      "de": [
+        "Schlafenszeit"
+      ],
+      "deRaw": "Schlafenszeit",
+      "exampleSb": "Bedtime is at ten o'clock.",
+      "cf": null,
+      "forms": [
+        "bedtime"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.break",
+      "kind": "phrase",
+      "theme": null,
+      "en": "break",
+      "de": [
+        "Pause"
+      ],
+      "deRaw": "Pause",
+      "exampleSb": "At a quarter to nine, I have a break.",
+      "cf": null,
+      "forms": [
+        "break"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.exercise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "exercise",
+      "de": [
+        "Übung",
+        "hier: (körperliche) Bewegung"
+      ],
+      "deRaw": "Übung; hier: (körperliche) Bewegung",
+      "exampleSb": "At a quarter to ten, we do our daily exercise.",
+      "cf": null,
+      "forms": [
+        "exercise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-go-to-bed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to go to bed",
+      "de": [
+        "schlafen gehen"
+      ],
+      "deRaw": "schlafen gehen",
+      "exampleSb": "I go to bed at nine o'clock.",
+      "cf": "go to bed",
+      "forms": [
+        "to go to bed",
+        "go to bed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-go-to-school",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to go to school",
+      "de": [
+        "in die Schule gehen"
+      ],
+      "deRaw": "in die Schule gehen",
+      "exampleSb": "Sarah goes to school at a quarter to eight.",
+      "cf": "go to school",
+      "forms": [
+        "to go to school",
+        "go to school"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.outside",
+      "kind": "phrase",
+      "theme": null,
+      "en": "outside",
+      "de": [
+        "draußen",
+        "außerhalb"
+      ],
+      "deRaw": "draußen, außerhalb",
+      "exampleSb": "We always do our exercise outside.",
+      "cf": null,
+      "forms": [
+        "outside"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-study",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to study",
+      "de": [
+        "lernen",
+        "studieren"
+      ],
+      "deRaw": "lernen, studieren",
+      "exampleSb": "I study art and drawing.",
+      "cf": "study",
+      "forms": [
+        "to study",
+        "study"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-wake-somebody-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to wake somebody up",
+      "de": [
+        "jemanden aufwecken"
+      ],
+      "deRaw": "jemanden aufwecken",
+      "exampleSb": "My dad plays a loud song to wake me up.",
+      "cf": "wake somebody up",
+      "forms": [
+        "to wake somebody up",
+        "wake somebody up"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.amazing",
+      "kind": "phrase",
+      "theme": null,
+      "en": "amazing",
+      "de": [
+        "erstaunlich",
+        "großartig"
+      ],
+      "deRaw": "erstaunlich, großartig",
+      "exampleSb": "I want to show you something amazing!",
+      "cf": null,
+      "forms": [
+        "amazing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-answer-the-door",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to answer the door",
+      "de": [
+        "die Tür aufmachen"
+      ],
+      "deRaw": "die Tür aufmachen",
+      "exampleSb": "There's a knock at the door. Suzy answers the door.",
+      "cf": "answer the door",
+      "forms": [
+        "to answer the door",
+        "answer the door"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.bush",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bush",
+      "de": [
+        "Busch"
+      ],
+      "deRaw": "Busch",
+      "exampleSb": "Let's hide behind the bush.",
+      "cf": null,
+      "forms": [
+        "bush"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.have-fun",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Have fun!",
+      "de": [
+        "Viel Spaß!"
+      ],
+      "deRaw": "Viel Spaß!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Have fun!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-hide",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to hide",
+      "de": [
+        "(sich) verstecken"
+      ],
+      "deRaw": "(sich) verstecken",
+      "exampleSb": "Tim is hiding in the bushes.",
+      "cf": "hide",
+      "forms": [
+        "to hide",
+        "hide"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.knock",
+      "kind": "phrase",
+      "theme": null,
+      "en": "knock",
+      "de": [
+        "Klopfen"
+      ],
+      "deRaw": "Klopfen",
+      "exampleSb": "There's a knock at the door.",
+      "cf": null,
+      "forms": [
+        "knock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.living-room",
+      "kind": "phrase",
+      "theme": null,
+      "en": "living room",
+      "de": [
+        "Wohnzimmer"
+      ],
+      "deRaw": "Wohnzimmer",
+      "exampleSb": "She is watching TV in the living room.",
+      "cf": null,
+      "forms": [
+        "living room"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.surprise",
+      "kind": "phrase",
+      "theme": null,
+      "en": "surprise",
+      "de": [
+        "Überraschung"
+      ],
+      "deRaw": "Überraschung",
+      "exampleSb": "Tim has got a surprise for Suzy.",
+      "cf": null,
+      "forms": [
+        "surprise"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-push",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to push",
+      "de": [
+        "schieben",
+        "drücken"
+      ],
+      "deRaw": "schieben; drücken",
+      "exampleSb": "The cat pushes the skateboard down the park.",
+      "cf": "push",
+      "forms": [
+        "to push",
+        "push"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-cook-2",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to cook",
+      "de": [
+        "kochen"
+      ],
+      "deRaw": "kochen",
+      "exampleSb": "My mum cooks great spaghetti.",
+      "cf": "cook",
+      "forms": [
+        "to cook",
+        "cook"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.text-message",
+      "kind": "phrase",
+      "theme": null,
+      "en": "text message",
+      "de": [
+        "Textnachricht",
+        "SMS"
+      ],
+      "deRaw": "Textnachricht, SMS",
+      "exampleSb": "He's sending a text message.",
+      "cf": null,
+      "forms": [
+        "text message"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-look-after",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to look after",
+      "de": [
+        "sich kümmern"
+      ],
+      "deRaw": "sich kümmern",
+      "exampleSb": "She's looking after her cat.",
+      "cf": "look after",
+      "forms": [
+        "to look after",
+        "look after"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.road",
+      "kind": "phrase",
+      "theme": null,
+      "en": "road",
+      "de": [
+        "Straße",
+        "Weg"
+      ],
+      "deRaw": "Straße, Weg",
+      "exampleSb": "I'm walking down the road.",
+      "cf": null,
+      "forms": [
+        "road"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.place",
+      "kind": "phrase",
+      "theme": null,
+      "en": "place",
+      "de": [
+        "Ort",
+        "Platz",
+        "hier: Wohnung",
+        "Zuhause"
+      ],
+      "deRaw": "Ort, Platz; hier: Wohnung, Zuhause",
+      "exampleSb": "Can you come to my place?",
+      "cf": null,
+      "forms": [
+        "place"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.programme",
+      "kind": "phrase",
+      "theme": null,
+      "en": "programme",
+      "de": [
+        "Programm",
+        "Sendung"
+      ],
+      "deRaw": "Programm, Sendung",
+      "exampleSb": "I'm watching a great TV programme.",
+      "cf": null,
+      "forms": [
+        "programme"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.clue",
+      "kind": "phrase",
+      "theme": null,
+      "en": "clue",
+      "de": [
+        "Hinweis",
+        "Tipp"
+      ],
+      "deRaw": "Hinweis, Tipp",
+      "exampleSb": "I don't know. Give me a clue.",
+      "cf": null,
+      "forms": [
+        "clue"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.see-you-soon",
+      "kind": "phrase",
+      "theme": null,
+      "en": "See you soon.",
+      "de": [
+        "Bis bald."
+      ],
+      "deRaw": "Bis bald.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "See you soon."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.to-snow",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to snow",
+      "de": [
+        "schneien"
+      ],
+      "deRaw": "schneien",
+      "exampleSb": "It's snowing outside.",
+      "cf": "snow",
+      "forms": [
+        "to snow",
+        "snow"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.weather",
+      "kind": "phrase",
+      "theme": null,
+      "en": "weather",
+      "de": [
+        "Wetter"
+      ],
+      "deRaw": "Wetter",
+      "exampleSb": "I hope the weather is nice tomorrow.",
+      "cf": null,
+      "forms": [
+        "weather"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.half-an-hour",
+      "kind": "phrase",
+      "theme": null,
+      "en": "half an hour",
+      "de": [
+        "eine halbe Stunde"
+      ],
+      "deRaw": "eine halbe Stunde",
+      "exampleSb": "I read for half an hour every evening.",
+      "cf": null,
+      "forms": [
+        "half an hour"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u11.w.hurry-up",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Hurry up.",
+      "de": [
+        "Beeil dich. / Beeilt euch."
+      ],
+      "deRaw": "Beeil dich. / Beeilt euch.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Hurry up."
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

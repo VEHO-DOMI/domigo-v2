@@ -1,0 +1,1100 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 7,
+  "slug": "g1-u07",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u07.w.ice-cream",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "ice cream",
+      "de": [
+        "Eis",
+        "Eiscreme"
+      ],
+      "deRaw": "Eis, Eiscreme",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "ice cream"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.chillies",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "chillies",
+      "de": [
+        "Chilischoten"
+      ],
+      "deRaw": "Chilischoten",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chillies"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.fish",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "fish",
+      "de": [
+        "Fisch"
+      ],
+      "deRaw": "Fisch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fish"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.chicken",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "chicken",
+      "de": [
+        "Huhn",
+        "Hühnchen"
+      ],
+      "deRaw": "Huhn, Hühnchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chicken"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.milk",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "milk",
+      "de": [
+        "Milch"
+      ],
+      "deRaw": "Milch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "milk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.butter",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "butter",
+      "de": [
+        "Butter"
+      ],
+      "deRaw": "Butter",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "butter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.cheese",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "cheese",
+      "de": [
+        "Käse"
+      ],
+      "deRaw": "Käse",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cheese"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.orange-juice",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "orange juice",
+      "de": [
+        "Orangensaft"
+      ],
+      "deRaw": "Orangensaft",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "orange juice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.tea",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tea",
+      "de": [
+        "Tee"
+      ],
+      "deRaw": "Tee",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tea"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.cucumber",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "cucumber",
+      "de": [
+        "Gurke"
+      ],
+      "deRaw": "Gurke",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cucumber"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.sausages",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "sausages",
+      "de": [
+        "Würstchen"
+      ],
+      "deRaw": "Würstchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sausages"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.beans",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "beans",
+      "de": [
+        "Bohnen"
+      ],
+      "deRaw": "Bohnen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "beans"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.broccoli",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "broccoli",
+      "de": [
+        "Brokkoli"
+      ],
+      "deRaw": "Brokkoli",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "broccoli"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.carrot",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "carrot",
+      "de": [
+        "Karotte",
+        "Möhre"
+      ],
+      "deRaw": "Karotte, Möhre",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "carrot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.onion",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "onion",
+      "de": [
+        "Zwiebel"
+      ],
+      "deRaw": "Zwiebel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "onion"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.peas",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "peas",
+      "de": [
+        "Erbsen"
+      ],
+      "deRaw": "Erbsen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "peas"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.an-apple",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "an apple",
+      "de": [
+        "ein Apfel"
+      ],
+      "deRaw": "ein Apfel",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "an apple"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.mineral-water",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "mineral water",
+      "de": [
+        "Mineralwasser"
+      ],
+      "deRaw": "Mineralwasser",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "mineral water"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.grapes",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "grapes",
+      "de": [
+        "Weintrauben"
+      ],
+      "deRaw": "Weintrauben",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "grapes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.an-orange",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "an orange",
+      "de": [
+        "eine Orange"
+      ],
+      "deRaw": "eine Orange",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "an orange"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.tomato",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tomato (pl tomatoes)",
+      "de": [
+        "Tomate (pl Tomaten)"
+      ],
+      "deRaw": "Tomate (pl Tomaten)",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tomato",
+        "tomatoes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.red-pepper",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "red pepper",
+      "de": [
+        "rote Paprika"
+      ],
+      "deRaw": "rote Paprika",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "red pepper"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.kiwi",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "kiwi",
+      "de": [
+        "Kiwi"
+      ],
+      "deRaw": "Kiwi",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "kiwi"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.spinach",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "spinach",
+      "de": [
+        "Spinat"
+      ],
+      "deRaw": "Spinat",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "spinach"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.strawberry",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "strawberry",
+      "de": [
+        "Erdbeere"
+      ],
+      "deRaw": "Erdbeere",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "strawberry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.sugar",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "sugar",
+      "de": [
+        "Zucker"
+      ],
+      "deRaw": "Zucker",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sugar"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.bread",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "bread",
+      "de": [
+        "Brot"
+      ],
+      "deRaw": "Brot",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bread"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.rice",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "rice",
+      "de": [
+        "Reis"
+      ],
+      "deRaw": "Reis",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "rice"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.egg",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "egg",
+      "de": [
+        "Ei"
+      ],
+      "deRaw": "Ei",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "egg"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.pasta",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "pasta",
+      "de": [
+        "Nudeln",
+        "Pasta"
+      ],
+      "deRaw": "Nudeln, Pasta",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pasta"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.pizza",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "pizza",
+      "de": [
+        "Pizza"
+      ],
+      "deRaw": "Pizza",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "pizza"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.fries",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "fries",
+      "de": [
+        "Pommes frites"
+      ],
+      "deRaw": "Pommes frites",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "fries"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.chips",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "chips",
+      "de": [
+        "Chips"
+      ],
+      "deRaw": "Chips",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chips"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.hamburger",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "hamburger",
+      "de": [
+        "Hamburger"
+      ],
+      "deRaw": "Hamburger",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hamburger"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.chocolate",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "chocolate",
+      "de": [
+        "Schokolade"
+      ],
+      "deRaw": "Schokolade",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "chocolate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.cake",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "cake",
+      "de": [
+        "Kuchen"
+      ],
+      "deRaw": "Kuchen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.breakfast",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "breakfast",
+      "de": [
+        "Frühstück"
+      ],
+      "deRaw": "Frühstück",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "breakfast"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.lunch",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "lunch",
+      "de": [
+        "Mittagessen"
+      ],
+      "deRaw": "Mittagessen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "lunch"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.dinner",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "dinner",
+      "de": [
+        "Abendessen"
+      ],
+      "deRaw": "Abendessen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "dinner"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.restaurant",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "restaurant",
+      "de": [
+        "Restaurant"
+      ],
+      "deRaw": "Restaurant",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "restaurant"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.always",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "always",
+      "de": [
+        "immer"
+      ],
+      "deRaw": "immer",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "always"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.usually",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "usually",
+      "de": [
+        "normalerweise",
+        "gewöhnlich"
+      ],
+      "deRaw": "normalerweise, gewöhnlich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "usually"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.often",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "often",
+      "de": [
+        "oft"
+      ],
+      "deRaw": "oft",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "often"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.sometimes",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "sometimes",
+      "de": [
+        "manchmal"
+      ],
+      "deRaw": "manchmal",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sometimes"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.never",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "never",
+      "de": [
+        "nie",
+        "niemals"
+      ],
+      "deRaw": "nie, niemals",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "never"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.meat",
+      "kind": "phrase",
+      "theme": null,
+      "en": "meat",
+      "de": [
+        "Fleisch"
+      ],
+      "deRaw": "Fleisch",
+      "exampleSb": "I am vegetarian. I never eat meat.",
+      "cf": null,
+      "forms": [
+        "meat"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.ham",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ham",
+      "de": [
+        "Schinken"
+      ],
+      "deRaw": "Schinken",
+      "exampleSb": "On the weekend, I sometimes have ham and eggs for breakfast.",
+      "cf": null,
+      "forms": [
+        "ham"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.healthy",
+      "kind": "phrase",
+      "theme": null,
+      "en": "healthy",
+      "de": [
+        "gesund"
+      ],
+      "deRaw": "gesund",
+      "exampleSb": "A lot of junk food isn't healthy.",
+      "cf": null,
+      "forms": [
+        "healthy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.to-like",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to like",
+      "de": [
+        "mögen"
+      ],
+      "deRaw": "mögen",
+      "exampleSb": "I like orange juice.",
+      "cf": "like",
+      "forms": [
+        "to like",
+        "like"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.that-s-nice",
+      "kind": "phrase",
+      "theme": null,
+      "en": "That's nice.",
+      "de": [
+        "Das ist nett."
+      ],
+      "deRaw": "Das ist nett.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "That's nice."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.any",
+      "kind": "phrase",
+      "theme": null,
+      "en": "any",
+      "de": [
+        "irgendwelche"
+      ],
+      "deRaw": "irgendwelche",
+      "exampleSb": "Have you got any tomatoes?",
+      "cf": null,
+      "forms": [
+        "any"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.to-drink",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to drink",
+      "de": [
+        "trinken"
+      ],
+      "deRaw": "trinken",
+      "exampleSb": "Would you like something to drink?",
+      "cf": "drink",
+      "forms": [
+        "to drink",
+        "drink"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.to-make",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to make",
+      "de": [
+        "machen",
+        "hier: zubereiten"
+      ],
+      "deRaw": "machen; hier: zubereiten",
+      "exampleSb": "I want to make a salad.",
+      "cf": "make",
+      "forms": [
+        "to make",
+        "make"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.money",
+      "kind": "phrase",
+      "theme": null,
+      "en": "money",
+      "de": [
+        "Geld"
+      ],
+      "deRaw": "Geld",
+      "exampleSb": "How much money have you got?",
+      "cf": null,
+      "forms": [
+        "money"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.sandwich",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sandwich",
+      "de": [
+        "Sandwich",
+        "belegtes Brot"
+      ],
+      "deRaw": "Sandwich; belegtes Brot",
+      "exampleSb": "I have a cheese sandwich for lunch.",
+      "cf": null,
+      "forms": [
+        "sandwich"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.some",
+      "kind": "phrase",
+      "theme": null,
+      "en": "some",
+      "de": [
+        "etwas",
+        "einige"
+      ],
+      "deRaw": "etwas; einige",
+      "exampleSb": "I need some cheese.",
+      "cf": null,
+      "forms": [
+        "some"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.vegetable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "vegetable",
+      "de": [
+        "Gemüse"
+      ],
+      "deRaw": "Gemüse",
+      "exampleSb": "Broccoli is a green vegetable.",
+      "cf": null,
+      "forms": [
+        "vegetable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.waiter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "waiter",
+      "de": [
+        "Kellner/Kellnerin"
+      ],
+      "deRaw": "Kellner/Kellnerin",
+      "exampleSb": "The waiter brings the food.",
+      "cf": null,
+      "forms": [
+        "waiter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.have-you-got",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Have you got …?",
+      "de": [
+        "Hast du / Habt ihr / Haben Sie ...?"
+      ],
+      "deRaw": "Hast du / Habt ihr / Haben Sie ...?",
+      "exampleSb": "Have you got any chips?",
+      "cf": null,
+      "forms": [
+        "Have you got …?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.i-ve-got",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I've got …",
+      "de": [
+        "Ich habe …"
+      ],
+      "deRaw": "Ich habe …",
+      "exampleSb": "Yes, I've got four bags of chips.",
+      "cf": null,
+      "forms": [
+        "I've got …"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.junk-food",
+      "kind": "phrase",
+      "theme": null,
+      "en": "junk food",
+      "de": [
+        "Junk Food"
+      ],
+      "deRaw": "Junk Food",
+      "exampleSb": "Junk food is not good for you.",
+      "cf": null,
+      "forms": [
+        "junk food"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.menu",
+      "kind": "phrase",
+      "theme": null,
+      "en": "menu",
+      "de": [
+        "Speisekarte"
+      ],
+      "deRaw": "Speisekarte",
+      "exampleSb": "Can I have the menu, please?",
+      "cf": null,
+      "forms": [
+        "menu"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.mum",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Mum",
+      "de": [
+        "Mama"
+      ],
+      "deRaw": "Mama",
+      "exampleSb": "My mum makes breakfast.",
+      "cf": null,
+      "forms": [
+        "Mum"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.plate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "plate",
+      "de": [
+        "Teller"
+      ],
+      "deRaw": "Teller",
+      "exampleSb": "Can I have a clean plate?",
+      "cf": null,
+      "forms": [
+        "plate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.salad",
+      "kind": "phrase",
+      "theme": null,
+      "en": "salad",
+      "de": [
+        "Salat"
+      ],
+      "deRaw": "Salat",
+      "exampleSb": "I want a salad.",
+      "cf": null,
+      "forms": [
+        "salad"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.soup",
+      "kind": "phrase",
+      "theme": null,
+      "en": "soup",
+      "de": [
+        "Suppe"
+      ],
+      "deRaw": "Suppe",
+      "exampleSb": "Can I have a soup, please?",
+      "cf": null,
+      "forms": [
+        "soup"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u07.w.glass",
+      "kind": "phrase",
+      "theme": null,
+      "en": "glass",
+      "de": [
+        "Glas"
+      ],
+      "deRaw": "Glas",
+      "exampleSb": "Would you like a glass of juice?",
+      "cf": null,
+      "forms": [
+        "glass"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

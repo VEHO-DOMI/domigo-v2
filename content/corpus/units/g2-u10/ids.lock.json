@@ -1,0 +1,29 @@
+{
+  "schema": "ids-lock@1",
+  "slug": "g2-u10",
+  "words": {
+    "phrase:auntie": "g2u10.w.auntie",
+    "phrase:calm": "g2u10.w.calm",
+    "phrase:girlfriend": "g2u10.w.girlfriend",
+    "phrase:to be proud of": "g2u10.w.to-be-proud-of",
+    "phrase:sense of humour": "g2u10.w.sense-of-humour",
+    "phrase:ugly": "g2u10.w.ugly",
+    "phrase:virus": "g2u10.w.virus",
+    "phrase:to breathe": "g2u10.w.to-breathe",
+    "phrase:to burn": "g2u10.w.to-burn",
+    "phrase:foreign language": "g2u10.w.foreign-language",
+    "phrase:to panic": "g2u10.w.to-panic",
+    "phrase:tractor": "g2u10.w.tractor",
+    "phrase:tool": "g2u10.w.tool",
+    "phrase:divorced": "g2u10.w.divorced",
+    "phrase:to be related to": "g2u10.w.to-be-related-to",
+    "phrase:to delete": "g2u10.w.to-delete",
+    "phrase:file": "g2u10.w.file",
+    "phrase:to print out": "g2u10.w.to-print-out",
+    "phrase:public": "g2u10.w.public",
+    "phrase:ice skating": "g2u10.w.ice-skating",
+    "phrase:fault": "g2u10.w.fault",
+    "phrase:hopefully": "g2u10.w.hopefully"
+  },
+  "tombstones": []
+}

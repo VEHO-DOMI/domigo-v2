@@ -1,0 +1,398 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 15,
+  "slug": "g1-u15",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u15.w.to-fly-to",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to fly to",
+      "de": [
+        "fliegen nach"
+      ],
+      "deRaw": "fliegen nach",
+      "exampleSb": null,
+      "cf": "fly to",
+      "forms": [
+        "to fly to",
+        "fly to"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-go-fishing",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to go fishing",
+      "de": [
+        "angeln gehen"
+      ],
+      "deRaw": "angeln gehen",
+      "exampleSb": null,
+      "cf": "go fishing",
+      "forms": [
+        "to go fishing",
+        "go fishing"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-stay-at-a-campsite",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to stay at a campsite",
+      "de": [
+        "auf einem Campingplatz übernachten"
+      ],
+      "deRaw": "auf einem Campingplatz übernachten",
+      "exampleSb": null,
+      "cf": "stay at a campsite",
+      "forms": [
+        "to stay at a campsite",
+        "stay at a campsite"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-swim-in-the-sea",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to swim in the sea",
+      "de": [
+        "im Meer schwimmen"
+      ],
+      "deRaw": "im Meer schwimmen",
+      "exampleSb": null,
+      "cf": "swim in the sea",
+      "forms": [
+        "to swim in the sea",
+        "swim in the sea"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-play-badminton",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to play badminton",
+      "de": [
+        "Badminton spielen"
+      ],
+      "deRaw": "Badminton spielen",
+      "exampleSb": null,
+      "cf": "play badminton",
+      "forms": [
+        "to play badminton",
+        "play badminton"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-lie-in-the-sun",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to lie in the sun",
+      "de": [
+        "in der Sonne liegen"
+      ],
+      "deRaw": "in der Sonne liegen",
+      "exampleSb": null,
+      "cf": "lie in the sun",
+      "forms": [
+        "to lie in the sun",
+        "lie in the sun"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-write-a-postcard",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to write a postcard",
+      "de": [
+        "eine Postkarte schreiben"
+      ],
+      "deRaw": "eine Postkarte schreiben",
+      "exampleSb": null,
+      "cf": "write a postcard",
+      "forms": [
+        "to write a postcard",
+        "write a postcard"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-play-board-games",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to play board games",
+      "de": [
+        "Brettspiele spielen"
+      ],
+      "deRaw": "Brettspiele spielen",
+      "exampleSb": null,
+      "cf": "play board games",
+      "forms": [
+        "to play board games",
+        "play board games"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-visit-a-castle",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "to visit a castle",
+      "de": [
+        "eine Burg/ein Schloss besuchen"
+      ],
+      "deRaw": "eine Burg/ein Schloss besuchen",
+      "exampleSb": null,
+      "cf": "visit a castle",
+      "forms": [
+        "to visit a castle",
+        "visit a castle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.aunt",
+      "kind": "phrase",
+      "theme": null,
+      "en": "aunt",
+      "de": [
+        "Tante"
+      ],
+      "deRaw": "Tante",
+      "exampleSb": "My aunt is my mum's sister.",
+      "cf": null,
+      "forms": [
+        "aunt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.beach",
+      "kind": "phrase",
+      "theme": null,
+      "en": "beach",
+      "de": [
+        "Strand"
+      ],
+      "deRaw": "Strand",
+      "exampleSb": "Let's go to the beach and swim in the sea.",
+      "cf": null,
+      "forms": [
+        "beach"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.board-game",
+      "kind": "phrase",
+      "theme": null,
+      "en": "board game",
+      "de": [
+        "Brettspiel"
+      ],
+      "deRaw": "Brettspiel",
+      "exampleSb": "In the evening, we're going to play board games.",
+      "cf": null,
+      "forms": [
+        "board game"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.campsite",
+      "kind": "phrase",
+      "theme": null,
+      "en": "campsite",
+      "de": [
+        "Campingplatz"
+      ],
+      "deRaw": "Campingplatz",
+      "exampleSb": "We're going to stay at a campsite and sleep in a tent.",
+      "cf": null,
+      "forms": [
+        "campsite"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.cook",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cook",
+      "de": [
+        "Koch/Köchin"
+      ],
+      "deRaw": "Koch/Köchin",
+      "exampleSb": "My grandma is a very good cook.",
+      "cf": null,
+      "forms": [
+        "cook"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-drive",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to drive",
+      "de": [
+        "fahren",
+        "Fahrt"
+      ],
+      "deRaw": "fahren; Fahrt",
+      "exampleSb": "We're going to drive to Grandma's house. It's a long drive.",
+      "cf": "drive",
+      "forms": [
+        "to drive",
+        "drive"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.holiday",
+      "kind": "phrase",
+      "theme": null,
+      "en": "holiday",
+      "de": [
+        "Urlaub",
+        "Ferien"
+      ],
+      "deRaw": "Urlaub; Ferien",
+      "exampleSb": "My mum and dad have no holiday.",
+      "cf": null,
+      "forms": [
+        "holiday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.national-park",
+      "kind": "phrase",
+      "theme": null,
+      "en": "national park",
+      "de": [
+        "Nationalpark"
+      ],
+      "deRaw": "Nationalpark",
+      "exampleSb": "We're going to visit the national parks in the United States.",
+      "cf": null,
+      "forms": [
+        "national park"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.parents",
+      "kind": "phrase",
+      "theme": null,
+      "en": "parents",
+      "de": [
+        "Eltern"
+      ],
+      "deRaw": "Eltern",
+      "exampleSb": "My parents and I are going to fly to the US.",
+      "cf": null,
+      "forms": [
+        "parents"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.plane",
+      "kind": "phrase",
+      "theme": null,
+      "en": "plane",
+      "de": [
+        "Flugzeug"
+      ],
+      "deRaw": "Flugzeug",
+      "exampleSb": "I'm not scared of flying. I can sleep on the plane.",
+      "cf": null,
+      "forms": [
+        "plane"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.summer",
+      "kind": "phrase",
+      "theme": null,
+      "en": "summer",
+      "de": [
+        "Sommer"
+      ],
+      "deRaw": "Sommer",
+      "exampleSb": "In the summer, I'm going to go swimming.",
+      "cf": null,
+      "forms": [
+        "summer"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.hippo",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hippo",
+      "de": [
+        "Nilpferd"
+      ],
+      "deRaw": "Nilpferd",
+      "exampleSb": "Hippos are big animals.",
+      "cf": null,
+      "forms": [
+        "hippo"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-join",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to join",
+      "de": [
+        "beitreten",
+        "ein Mitglied werden"
+      ],
+      "deRaw": "beitreten, ein Mitglied werden",
+      "exampleSb": "Let's join an Irish band.",
+      "cf": "join",
+      "forms": [
+        "to join",
+        "join"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u15.w.to-invite",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to invite",
+      "de": [
+        "einladen"
+      ],
+      "deRaw": "einladen",
+      "exampleSb": "Who are you going to invite to your party?",
+      "cf": "invite",
+      "forms": [
+        "to invite",
+        "invite"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

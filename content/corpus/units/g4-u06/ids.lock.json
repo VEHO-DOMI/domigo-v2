@@ -1,0 +1,25 @@
+{
+  "schema": "ids-lock@1",
+  "slug": "g4-u06",
+  "words": {
+    "phrase:achieve": "g4u06.w.achieve",
+    "phrase:donate": "g4u06.w.donate",
+    "phrase:drop out": "g4u06.w.drop-out",
+    "phrase:goal": "g4u06.w.goal",
+    "phrase:income": "g4u06.w.income",
+    "phrase:inspire": "g4u06.w.inspire",
+    "phrase:support": "g4u06.w.support",
+    "phrase:encouragement": "g4u06.w.encouragement",
+    "phrase:community": "g4u06.w.community",
+    "phrase:exceed": "g4u06.w.exceed",
+    "phrase:frustrated": "g4u06.w.frustrated",
+    "phrase:grateful": "g4u06.w.grateful",
+    "phrase:in particular": "g4u06.w.in-particular",
+    "phrase:learn a lesson": "g4u06.w.learn-a-lesson",
+    "phrase:range of": "g4u06.w.range-of",
+    "phrase:relate to": "g4u06.w.relate-to",
+    "phrase:small wonder": "g4u06.w.small-wonder",
+    "phrase:transmit": "g4u06.w.transmit"
+  },
+  "tombstones": []
+}

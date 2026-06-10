@@ -1,0 +1,697 @@
+{
+  "schema": "wordbank@1",
+  "grade": 3,
+  "unit": 5,
+  "slug": "g3-u05",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "Full Vocabulary List MORE 3 Units 1-14.docx",
+    "sha256": "7049f51a91022e06afd22124d5bf0a6194e183cf3f0bc2c0bd073bde57a3599a"
+  },
+  "entries": [
+    {
+      "id": "g3u05.w.to-be-unlucky",
+      "kind": "wordfile",
+      "theme": "Luck",
+      "en": "to be unlucky",
+      "de": [
+        "Pech haben"
+      ],
+      "deRaw": "Pech haben",
+      "exampleSb": null,
+      "cf": "be unlucky",
+      "forms": [
+        "to be unlucky",
+        "be unlucky"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-make-a-wish",
+      "kind": "wordfile",
+      "theme": "Luck",
+      "en": "to make a wish",
+      "de": [
+        "sich etwas wünschen"
+      ],
+      "deRaw": "sich etwas wünschen",
+      "exampleSb": null,
+      "cf": "make a wish",
+      "forms": [
+        "to make a wish",
+        "make a wish"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-wish-for-sth",
+      "kind": "wordfile",
+      "theme": "Luck",
+      "en": "to wish for sth.",
+      "de": [
+        "sich etw. wünschen"
+      ],
+      "deRaw": "sich etw. wünschen",
+      "exampleSb": null,
+      "cf": "wish for sth.",
+      "forms": [
+        "to wish for sth.",
+        "wish for sth."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-bring-luck",
+      "kind": "wordfile",
+      "theme": "Luck",
+      "en": "to bring (good/bad) luck",
+      "de": [
+        "(Glück/Pech) bringen"
+      ],
+      "deRaw": "(Glück/Pech) bringen",
+      "exampleSb": null,
+      "cf": "bring luck",
+      "forms": [
+        "to bring luck",
+        "bring luck",
+        "good/bad"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-come-true",
+      "kind": "wordfile",
+      "theme": "Luck",
+      "en": "to come true",
+      "de": [
+        "wahr werden"
+      ],
+      "deRaw": "wahr werden",
+      "exampleSb": null,
+      "cf": "come true",
+      "forms": [
+        "to come true",
+        "come true"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.spooky",
+      "kind": "wordfile",
+      "theme": "Luck",
+      "en": "spooky",
+      "de": [
+        "unheimlich",
+        "gruselig"
+      ],
+      "deRaw": "unheimlich, gruselig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "spooky"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-have-luck",
+      "kind": "wordfile",
+      "theme": "Luck",
+      "en": "to have (good/bad) luck",
+      "de": [
+        "(Glück/Pech) haben"
+      ],
+      "deRaw": "(Glück/Pech) haben",
+      "exampleSb": null,
+      "cf": "have luck",
+      "forms": [
+        "to have luck",
+        "have luck",
+        "good/bad"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-believe-in-superstitions",
+      "kind": "wordfile",
+      "theme": "Luck",
+      "en": "to believe in superstitions",
+      "de": [
+        "an Aberglauben glauben"
+      ],
+      "deRaw": "an Aberglauben glauben",
+      "exampleSb": null,
+      "cf": "believe in superstitions",
+      "forms": [
+        "to believe in superstitions",
+        "believe in superstitions"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.alarm-clock",
+      "kind": "phrase",
+      "theme": null,
+      "en": "alarm clock",
+      "de": [
+        "Wecker"
+      ],
+      "deRaw": "Wecker",
+      "exampleSb": "I really didn't want to get up when my alarm clock rang.",
+      "cf": null,
+      "forms": [
+        "alarm clock"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.any-luck",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Any luck?",
+      "de": [
+        "Hattest du Glück?"
+      ],
+      "deRaw": "Hattest du Glück?",
+      "exampleSb": "Any luck?",
+      "cf": null,
+      "forms": [
+        "Any luck?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.beside",
+      "kind": "phrase",
+      "theme": null,
+      "en": "beside",
+      "de": [
+        "neben"
+      ],
+      "deRaw": "neben",
+      "exampleSb": "Mr. Wallis, the teacher, arrives and sits down beside me.",
+      "cf": null,
+      "forms": [
+        "beside"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.do-you-mind",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Do you mind ...?",
+      "de": [
+        "Macht es dir etwas aus ...?"
+      ],
+      "deRaw": "Macht es dir etwas aus ...?",
+      "exampleSb": "Do you mind ...?",
+      "cf": null,
+      "forms": [
+        "Do you mind ...?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.evil",
+      "kind": "phrase",
+      "theme": null,
+      "en": "evil",
+      "de": [
+        "böse"
+      ],
+      "deRaw": "böse",
+      "exampleSb": "Candyman is an evil spirit.",
+      "cf": null,
+      "forms": [
+        "evil"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.i-m-joking",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I'm joking.",
+      "de": [
+        "Ich scherze nur."
+      ],
+      "deRaw": "Ich scherze nur.",
+      "exampleSb": "I'm joking.",
+      "cf": null,
+      "forms": [
+        "I'm joking."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-ignore",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to ignore",
+      "de": [
+        "ignorieren"
+      ],
+      "deRaw": "ignorieren",
+      "exampleSb": "Ignore him – he's just being silly.",
+      "cf": "ignore",
+      "forms": [
+        "to ignore",
+        "ignore"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.satisfied",
+      "kind": "phrase",
+      "theme": null,
+      "en": "satisfied",
+      "de": [
+        "zufrieden"
+      ],
+      "deRaw": "zufrieden",
+      "exampleSb": "I am not really satisfied with your answer.",
+      "cf": null,
+      "forms": [
+        "satisfied"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-scream",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to scream",
+      "de": [
+        "schreien"
+      ],
+      "deRaw": "schreien",
+      "exampleSb": "I heard your scream in the middle of the night.",
+      "cf": "scream",
+      "forms": [
+        "to scream",
+        "scream"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.sleeping-bag",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sleeping bag",
+      "de": [
+        "Schlafsack"
+      ],
+      "deRaw": "Schlafsack",
+      "exampleSb": "Nick is lying in his sleeping bag.",
+      "cf": null,
+      "forms": [
+        "sleeping bag"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.spirit",
+      "kind": "phrase",
+      "theme": null,
+      "en": "spirit",
+      "de": [
+        "Geist"
+      ],
+      "deRaw": "Geist",
+      "exampleSb": "There is a spirit by the name of Candyman.",
+      "cf": null,
+      "forms": [
+        "spirit"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.superstition",
+      "kind": "phrase",
+      "theme": null,
+      "en": "superstition",
+      "de": [
+        "Aberglaube"
+      ],
+      "deRaw": "Aberglaube",
+      "exampleSb": "It's only a silly superstition, after all.",
+      "cf": null,
+      "forms": [
+        "superstition"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-attract",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to attract",
+      "de": [
+        "anziehen",
+        "anlocken"
+      ],
+      "deRaw": "anziehen, anlocken",
+      "exampleSb": "If you whistle, you'll attract a spirit.",
+      "cf": "attract",
+      "forms": [
+        "to attract",
+        "attract"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-enter",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to enter",
+      "de": [
+        "betreten",
+        "eintreten"
+      ],
+      "deRaw": "betreten, eintreten",
+      "exampleSb": "When you want to enter your home, you have to turn sharply to the left or right.",
+      "cf": "enter",
+      "forms": [
+        "to enter",
+        "enter"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.haircut",
+      "kind": "phrase",
+      "theme": null,
+      "en": "haircut",
+      "de": [
+        "Haarschnitt"
+      ],
+      "deRaw": "Haarschnitt",
+      "exampleSb": "If you get a haircut before an exam, you'll forget everything.",
+      "cf": null,
+      "forms": [
+        "haircut"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.obvious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "obvious",
+      "de": [
+        "offensichtlich"
+      ],
+      "deRaw": "offensichtlich",
+      "exampleSb": "Isn't it obvious that you should watch your handbag carefully?",
+      "cf": null,
+      "forms": [
+        "obvious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.traditional",
+      "kind": "phrase",
+      "theme": null,
+      "en": "traditional",
+      "de": [
+        "traditionell"
+      ],
+      "deRaw": "traditionell",
+      "exampleSb": "Traditional homes in China have large spirit screens.",
+      "cf": null,
+      "forms": [
+        "traditional"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-trick",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to trick",
+      "de": [
+        "austricksen"
+      ],
+      "deRaw": "austricksen",
+      "exampleSb": "Some homes in China have spirit screens to trick ghosts.",
+      "cf": "trick",
+      "forms": [
+        "to trick",
+        "trick"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.unlucky",
+      "kind": "phrase",
+      "theme": null,
+      "en": "unlucky",
+      "de": [
+        "unglücklich",
+        "glücklos"
+      ],
+      "deRaw": "unglücklich, glücklos",
+      "exampleSb": "In Italy, the unlucky number is 17.",
+      "cf": null,
+      "forms": [
+        "unlucky"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-whistle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to whistle",
+      "de": [
+        "pfeifen"
+      ],
+      "deRaw": "pfeifen",
+      "exampleSb": "If you whistle when the sun is shining, it will shine for more than two hours.",
+      "cf": "whistle",
+      "forms": [
+        "to whistle",
+        "whistle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.crack",
+      "kind": "phrase",
+      "theme": null,
+      "en": "crack",
+      "de": [
+        "Riss",
+        "Spalt",
+        "hier: Fuge"
+      ],
+      "deRaw": "Riss, Spalt; hier: Fuge",
+      "exampleSb": "You'll have bad luck if you walk on the cracks in the pavement.",
+      "cf": null,
+      "forms": [
+        "crack"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.cuckoo",
+      "kind": "phrase",
+      "theme": null,
+      "en": "cuckoo",
+      "de": [
+        "Kuckuck"
+      ],
+      "deRaw": "Kuckuck",
+      "exampleSb": "I can hear a cuckoo in the woods.",
+      "cf": null,
+      "forms": [
+        "cuckoo"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.pavement",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pavement",
+      "de": [
+        "Gehsteig"
+      ],
+      "deRaw": "Gehsteig",
+      "exampleSb": "I sometimes don't walk on the cracks in the pavement.",
+      "cf": null,
+      "forms": [
+        "pavement"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.rich",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rich",
+      "de": [
+        "reich"
+      ],
+      "deRaw": "reich",
+      "exampleSb": "You'll get rich if you hear a cuckoo and shake your money.",
+      "cf": null,
+      "forms": [
+        "rich"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-shake",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to shake",
+      "de": [
+        "schütteln"
+      ],
+      "deRaw": "schütteln",
+      "exampleSb": "I always shake the money in my pocket if I hear a cuckoo.",
+      "cf": "shake",
+      "forms": [
+        "to shake",
+        "shake"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.superstitious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "superstitious",
+      "de": [
+        "abergläubisch"
+      ],
+      "deRaw": "abergläubisch",
+      "exampleSb": "Are you superstitious?",
+      "cf": null,
+      "forms": [
+        "superstitious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-catch-a-cold",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to catch a cold",
+      "de": [
+        "sich verkühlen"
+      ],
+      "deRaw": "sich verkühlen",
+      "exampleSb": "If you don't wear a jacket, you'll catch a cold.",
+      "cf": "catch a cold",
+      "forms": [
+        "to catch a cold",
+        "catch a cold"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.toothbrush",
+      "kind": "phrase",
+      "theme": null,
+      "en": "toothbrush",
+      "de": [
+        "Zahnbürste"
+      ],
+      "deRaw": "Zahnbürste",
+      "exampleSb": "If you drop your toothbrush, you'll have to wash it.",
+      "cf": null,
+      "forms": [
+        "toothbrush"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.to-arrange",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to arrange",
+      "de": [
+        "vereinbaren",
+        "arrangieren"
+      ],
+      "deRaw": "vereinbaren, arrangieren",
+      "exampleSb": "Have you got something else arranged?",
+      "cf": "arrange",
+      "forms": [
+        "to arrange",
+        "arrange"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.i-m-sure",
+      "kind": "phrase",
+      "theme": null,
+      "en": "I'm sure.",
+      "de": [
+        "Ich bin mir sicher."
+      ],
+      "deRaw": "Ich bin mir sicher.",
+      "exampleSb": "I'm sure.",
+      "cf": null,
+      "forms": [
+        "I'm sure."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.lucky-charm",
+      "kind": "phrase",
+      "theme": null,
+      "en": "lucky charm",
+      "de": [
+        "Glücksbringer"
+      ],
+      "deRaw": "Glücksbringer",
+      "exampleSb": "I just found a lucky charm.",
+      "cf": null,
+      "forms": [
+        "lucky charm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.salt",
+      "kind": "phrase",
+      "theme": null,
+      "en": "salt",
+      "de": [
+        "Salz"
+      ],
+      "deRaw": "Salz",
+      "exampleSb": "Oh no, I spilled the salt on the table.",
+      "cf": null,
+      "forms": [
+        "salt"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g3u05.w.seriously",
+      "kind": "phrase",
+      "theme": null,
+      "en": "seriously",
+      "de": [
+        "ernsthaft",
+        "im Ernst"
+      ],
+      "deRaw": "ernsthaft, im Ernst",
+      "exampleSb": "You seriously believe in all these things?",
+      "cf": null,
+      "forms": [
+        "seriously"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}

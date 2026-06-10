@@ -1,0 +1,1008 @@
+{
+  "schema": "wordbank@1",
+  "grade": 1,
+  "unit": 4,
+  "slug": "g1-u04",
+  "title": {
+    "en": null
+  },
+  "source": {
+    "masterList": "MORE1_Master_Vocabulary_List_Units_1-15.docx",
+    "sha256": "c305c9147475a30f5db0c06e920ec2fd9cadac6f0375b25071473210e29143c3"
+  },
+  "entries": [
+    {
+      "id": "g1u04.w.cold",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "cold",
+      "de": [
+        "kalt"
+      ],
+      "deRaw": "kalt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "cold"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.angry",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "angry",
+      "de": [
+        "wütend",
+        "böse"
+      ],
+      "deRaw": "wütend, böse",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "angry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.happy",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "happy",
+      "de": [
+        "glücklich",
+        "fröhlich"
+      ],
+      "deRaw": "glücklich, fröhlich",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "happy"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.scared",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "scared",
+      "de": [
+        "ängstlich",
+        "verängstigt"
+      ],
+      "deRaw": "ängstlich, verängstigt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "scared"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.excited",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "excited",
+      "de": [
+        "aufgeregt"
+      ],
+      "deRaw": "aufgeregt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "excited"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.hot",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "hot",
+      "de": [
+        "heiß"
+      ],
+      "deRaw": "heiß",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hot"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.bored",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "bored",
+      "de": [
+        "gelangweilt"
+      ],
+      "deRaw": "gelangweilt",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "bored"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.sad",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "sad",
+      "de": [
+        "traurig"
+      ],
+      "deRaw": "traurig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "sad"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.hungry",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "hungry",
+      "de": [
+        "hungrig"
+      ],
+      "deRaw": "hungrig",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "hungry"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.nervous",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "nervous",
+      "de": [
+        "nervös"
+      ],
+      "deRaw": "nervös",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "nervous"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.tired",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "tired",
+      "de": [
+        "müde"
+      ],
+      "deRaw": "müde",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "tired"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.proud",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "proud",
+      "de": [
+        "stolz"
+      ],
+      "deRaw": "stolz",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "proud"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.morning",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "morning",
+      "de": [
+        "Morgen"
+      ],
+      "deRaw": "Morgen",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "morning"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.lunchtime",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "lunchtime",
+      "de": [
+        "Mittagszeit"
+      ],
+      "deRaw": "Mittagszeit",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "lunchtime"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.afternoon",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "afternoon",
+      "de": [
+        "Nachmittag"
+      ],
+      "deRaw": "Nachmittag",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "afternoon"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.evening",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "evening",
+      "de": [
+        "Abend"
+      ],
+      "deRaw": "Abend",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "evening"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.night",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "night",
+      "de": [
+        "Nacht"
+      ],
+      "deRaw": "Nacht",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "night"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.monday",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "Monday",
+      "de": [
+        "Montag"
+      ],
+      "deRaw": "Montag",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Monday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.tuesday",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "Tuesday",
+      "de": [
+        "Dienstag"
+      ],
+      "deRaw": "Dienstag",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Tuesday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.wednesday",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "Wednesday",
+      "de": [
+        "Mittwoch"
+      ],
+      "deRaw": "Mittwoch",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Wednesday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.thursday",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "Thursday",
+      "de": [
+        "Donnerstag"
+      ],
+      "deRaw": "Donnerstag",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Thursday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.friday",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "Friday",
+      "de": [
+        "Freitag"
+      ],
+      "deRaw": "Freitag",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Friday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.saturday",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "Saturday",
+      "de": [
+        "Samstag"
+      ],
+      "deRaw": "Samstag",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Saturday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.sunday",
+      "kind": "wordfile",
+      "theme": null,
+      "en": "Sunday",
+      "de": [
+        "Sonntag"
+      ],
+      "deRaw": "Sonntag",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Sunday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.after",
+      "kind": "phrase",
+      "theme": null,
+      "en": "after",
+      "de": [
+        "nach"
+      ],
+      "deRaw": "nach",
+      "exampleSb": "After school I meet my friends.",
+      "cf": null,
+      "forms": [
+        "after"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.day",
+      "kind": "phrase",
+      "theme": null,
+      "en": "day",
+      "de": [
+        "Tag"
+      ],
+      "deRaw": "Tag",
+      "exampleSb": "On the big day, Mike is nervous.",
+      "cf": null,
+      "forms": [
+        "day"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.end",
+      "kind": "phrase",
+      "theme": null,
+      "en": "end",
+      "de": [
+        "Ende"
+      ],
+      "deRaw": "Ende",
+      "exampleSb": "At the end of the play, Mike is very happy.",
+      "cf": null,
+      "forms": [
+        "end"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.fun",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fun",
+      "de": [
+        "Spaß"
+      ],
+      "deRaw": "Spaß",
+      "exampleSb": "It's great fun.",
+      "cf": null,
+      "forms": [
+        "fun"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.go-away",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Go away!",
+      "de": [
+        "Geh weg!"
+      ],
+      "deRaw": "Geh weg!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Go away!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.to-happen",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to happen",
+      "de": [
+        "passieren",
+        "geschehen"
+      ],
+      "deRaw": "passieren, geschehen",
+      "exampleSb": "What's happening?",
+      "cf": "happen",
+      "forms": [
+        "to happen",
+        "happen"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.show",
+      "kind": "phrase",
+      "theme": null,
+      "en": "show",
+      "de": [
+        "Show",
+        "Vorführung"
+      ],
+      "deRaw": "Show, Vorführung",
+      "exampleSb": "At the end of the show, she's proud.",
+      "cf": null,
+      "forms": [
+        "show"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.a-day-in-the-life-of",
+      "kind": "phrase",
+      "theme": null,
+      "en": "a day in the life of",
+      "de": [
+        "ein Tag im Leben von"
+      ],
+      "deRaw": "ein Tag im Leben von",
+      "exampleSb": "The story is about a day in the life of Richard.",
+      "cf": null,
+      "forms": [
+        "a day in the life of"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.to-be-asleep",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to be asleep",
+      "de": [
+        "schlafen"
+      ],
+      "deRaw": "schlafen",
+      "exampleSb": "He's in bed and he's asleep.",
+      "cf": "be asleep",
+      "forms": [
+        "to be asleep",
+        "be asleep"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.early",
+      "kind": "phrase",
+      "theme": null,
+      "en": "early",
+      "de": [
+        "früh"
+      ],
+      "deRaw": "früh",
+      "exampleSb": "It's early. He's still in bed.",
+      "cf": null,
+      "forms": [
+        "early"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.life",
+      "kind": "phrase",
+      "theme": null,
+      "en": "life",
+      "de": [
+        "Leben"
+      ],
+      "deRaw": "Leben",
+      "exampleSb": "A day in the life of …",
+      "cf": null,
+      "forms": [
+        "life"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.still",
+      "kind": "phrase",
+      "theme": null,
+      "en": "still",
+      "de": [
+        "noch immer"
+      ],
+      "deRaw": "noch immer",
+      "exampleSb": "Richard is still asleep.",
+      "cf": null,
+      "forms": [
+        "still"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.story",
+      "kind": "phrase",
+      "theme": null,
+      "en": "story",
+      "de": [
+        "Geschichte"
+      ],
+      "deRaw": "Geschichte",
+      "exampleSb": "It's a story about a boy.",
+      "cf": null,
+      "forms": [
+        "story"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.today",
+      "kind": "phrase",
+      "theme": null,
+      "en": "today",
+      "de": [
+        "heute"
+      ],
+      "deRaw": "heute",
+      "exampleSb": "Today is Tuesday.",
+      "cf": null,
+      "forms": [
+        "today"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.are-you-ok",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Are you OK?",
+      "de": [
+        "Geht's dir/euch/Ihnen gut?"
+      ],
+      "deRaw": "Geht's dir/euch/Ihnen gut?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Are you OK?"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.homework",
+      "kind": "phrase",
+      "theme": null,
+      "en": "homework (no pl)",
+      "de": [
+        "Hausaufgaben"
+      ],
+      "deRaw": "Hausaufgaben",
+      "exampleSb": "We have got a lot of homework today.",
+      "cf": null,
+      "forms": [
+        "homework",
+        "no pl"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.into",
+      "kind": "phrase",
+      "theme": null,
+      "en": "into",
+      "de": [
+        "in (… hinein)"
+      ],
+      "deRaw": "in (… hinein)",
+      "exampleSb": "Go into the classroom!",
+      "cf": null,
+      "forms": [
+        "into"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.oh-dear",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Oh dear!",
+      "de": [
+        "Du meine Güte!"
+      ],
+      "deRaw": "Du meine Güte!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Oh dear!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.room",
+      "kind": "phrase",
+      "theme": null,
+      "en": "room",
+      "de": [
+        "Raum",
+        "Zimmer"
+      ],
+      "deRaw": "Raum; Zimmer",
+      "exampleSb": "There's a bird in the room!",
+      "cf": null,
+      "forms": [
+        "room"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.bad",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bad",
+      "de": [
+        "schlecht",
+        "böse"
+      ],
+      "deRaw": "schlecht, böse",
+      "exampleSb": "Thursday and Friday aren't bad.",
+      "cf": null,
+      "forms": [
+        "bad"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.don-t-be-late",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Don't be late.",
+      "de": [
+        "Komm(t) nicht zu spät.",
+        "Sei(d) pünktlich."
+      ],
+      "deRaw": "Komm(t) nicht zu spät., Sei(d) pünktlich.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Don't be late."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.tomorrow",
+      "kind": "phrase",
+      "theme": null,
+      "en": "tomorrow",
+      "de": [
+        "morgen"
+      ],
+      "deRaw": "morgen",
+      "exampleSb": "Tomorrow is Monday.",
+      "cf": null,
+      "forms": [
+        "tomorrow"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.birthday",
+      "kind": "phrase",
+      "theme": null,
+      "en": "birthday",
+      "de": [
+        "Geburtstag"
+      ],
+      "deRaw": "Geburtstag",
+      "exampleSb": "Happy birthday, David!",
+      "cf": null,
+      "forms": [
+        "birthday"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.friend",
+      "kind": "phrase",
+      "theme": null,
+      "en": "friend",
+      "de": [
+        "Freund/Freundin"
+      ],
+      "deRaw": "Freund/Freundin",
+      "exampleSb": "Tom is his friend.",
+      "cf": null,
+      "forms": [
+        "friend"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.be-yourself",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Be yourself.",
+      "de": [
+        "Sei du selbst."
+      ],
+      "deRaw": "Sei du selbst.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Be yourself."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.no-one-else",
+      "kind": "phrase",
+      "theme": null,
+      "en": "no one else",
+      "de": [
+        "niemand anders"
+      ],
+      "deRaw": "niemand anders",
+      "exampleSb": "Be yourself and no one else.",
+      "cf": null,
+      "forms": [
+        "no one else"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.bottle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bottle",
+      "de": [
+        "Flasche"
+      ],
+      "deRaw": "Flasche",
+      "exampleSb": "The feelings are in the bottle.",
+      "cf": null,
+      "forms": [
+        "bottle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.to-get-back",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to get back",
+      "de": [
+        "zurückholen",
+        "zurückbekommen"
+      ],
+      "deRaw": "zurückholen, zurückbekommen",
+      "exampleSb": "I will get the feelings back.",
+      "cf": "get back",
+      "forms": [
+        "to get back",
+        "get back"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.mad",
+      "kind": "phrase",
+      "theme": null,
+      "en": "mad",
+      "de": [
+        "wütend",
+        "zornig"
+      ],
+      "deRaw": "wütend, zornig",
+      "exampleSb": "I am nice, Bob is mad.",
+      "cf": null,
+      "forms": [
+        "mad"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.magic",
+      "kind": "phrase",
+      "theme": null,
+      "en": "magic",
+      "de": [
+        "magisch",
+        "Zauber-"
+      ],
+      "deRaw": "magisch, Zauber-",
+      "exampleSb": "This is a magic bottle.",
+      "cf": null,
+      "forms": [
+        "magic"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.to-break",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to break",
+      "de": [
+        "(zer-)brechen"
+      ],
+      "deRaw": "(zer-)brechen",
+      "exampleSb": "I must break the bottle.",
+      "cf": "break",
+      "forms": [
+        "to break",
+        "break"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.to-go-to-sleep",
+      "kind": "phrase",
+      "theme": null,
+      "en": "to go to sleep",
+      "de": [
+        "schlafen gehen"
+      ],
+      "deRaw": "schlafen gehen",
+      "exampleSb": "Go back to sleep.",
+      "cf": "go to sleep",
+      "forms": [
+        "to go to sleep",
+        "go to sleep"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.because",
+      "kind": "phrase",
+      "theme": null,
+      "en": "because",
+      "de": [
+        "weil"
+      ],
+      "deRaw": "weil",
+      "exampleSb": "I'm happy because it's the weekend.",
+      "cf": null,
+      "forms": [
+        "because"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.it-s-me",
+      "kind": "phrase",
+      "theme": null,
+      "en": "It's me.",
+      "de": [
+        "Ich bin's."
+      ],
+      "deRaw": "Ich bin's.",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "It's me."
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.try-it",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Try it!",
+      "de": [
+        "Versuch es!"
+      ],
+      "deRaw": "Versuch es!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Try it!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.let-go",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Let go!",
+      "de": [
+        "Lass(t) los!"
+      ],
+      "deRaw": "Lass(t) los!",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "Let go!"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g1u04.w.what-s-happening",
+      "kind": "phrase",
+      "theme": null,
+      "en": "What's happening?",
+      "de": [
+        "Was ist (hier) los?"
+      ],
+      "deRaw": "Was ist (hier) los?",
+      "exampleSb": null,
+      "cf": null,
+      "forms": [
+        "What's happening?"
+      ],
+      "taughtGloss": false
+    }
+  ]
+}
