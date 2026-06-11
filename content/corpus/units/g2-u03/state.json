@@ -22,6 +22,20 @@
       "by": "pipeline",
       "contentHash": "6dc22386a63c6171e13dabcc37b730a17bb1e440f694443db4e72612bbd60490",
       "note": "re-parse changed content"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "6dc22386a63c",
+      "note": "round 1 doc: 1 open flag(s)",
+      "at": "2026-06-11T15:34:38.625Z"
+    },
+    {
+      "state": "wordbank_approved",
+      "by": "fable",
+      "contentHash": "6dc22386a63c6171e13dabcc37b730a17bb1e440f694443db4e72612bbd60490",
+      "note": "round 1: 1 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
+      "at": "2026-06-11T15:37:56.169Z"
     }
   ]
 }

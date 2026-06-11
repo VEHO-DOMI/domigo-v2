@@ -1,0 +1,20 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u03",
+  "round": 1,
+  "bankHash": "6dc22386a63c",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "duplicate-headword:g2u03.w.trick-or-treat-2",
+      "kind": "duplicate-headword",
+      "entryId": "g2u03.w.trick-or-treat-2",
+      "verdict": "ok",
+      "note": "Both verbatim in the master list (Word File line + phrase line with example). Different pedagogical roles: vocabulary item vs. communicative exclamation with usage context. Lens C verified both source lines."
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A (source fidelity): clean, 34/34 rows verbatim. Lens B: 4 notation observations — \"(be-)halten\", \"konnte/n nicht\", \"Aufkleber ; Sticker\", \"sollen ; wollen\" — all verbatim master-list notation, kept per source-canonical rule (for Koki's digest, not errors). Lens C: cross-unit duplicates all confirmed genuine re-teaches (picnic is in BOTH U3+U6 master sections; v1 only had U6); tracing + v1-parity spot-checks pass."
+  }
+}
