@@ -1,5 +1,15 @@
 # Runbook — word-bank review loop (thorough, Fable-performed)
 
+> **CAMPAIGN COMPLETED 2026-06-11** — 57/57 units `wordbank_approved` across PRs
+> [#5](https://github.com/VEHO-DOMI/domigo-v2/pull/5) (pilot g2-u03 + core allowlist),
+> [#6](https://github.com/VEHO-DOMI/domigo-v2/pull/6) (wave G2) and
+> [#7](https://github.com/VEHO-DOMI/domigo-v2/pull/7) (waves G1+G3+G4). ~25 independent lens agents;
+> every verdict + audit trail lives in `content/corpus/units/*/review/` (flags.json, reviewed.json,
+> state.json). Headline finds: MORE!-4 master-list u8/9 phrase-table swap (fixed via section-aware
+> parse remap), one publisher typo overlay-patched, 28 allowlist tokens rejected on evidence.
+> This runbook STAYS LIVE: any approved bank that drifts (V-A red) re-enters the loop as a round-2
+> diff review. The same machinery is reused for item review (stage 8) and story-chapter review.
+
 **Delegation (Koki, 2026-06-11):** the thorough word-bank review is performed by Fable itself, in
 waves, with every verdict committed as an auditable artifact. Koki receives a per-wave digest of all
 judgment calls (veto possible any time; nothing is student-facing for months). This delegation
