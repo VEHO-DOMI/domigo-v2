@@ -1,5 +1,14 @@
 # Runbook — Story/RPG mode tech spike (post-launch, P2)
 
+> **SUPERSEDED 2026-06-11** by [`docs/handover/10_game_layer.md`](../handover/10_game_layer.md):
+> Koki pulled the game layer forward as four standalone grade games (g1 starter overworld RPG ·
+> g2 Watson Manor full rework · g3 FOURTEEN interactive graphic novel · g4 Syntaxia branching game),
+> tech decided (Phaser 3 / DOM+motion / raw Three.js, all-procedural art). The spike's go/no-go
+> intent survives as the g1 vertical-slice gate (~W6). Two facts below are STALE: the G2 campaign
+> data is in truth a COMPLETE 15-chapter mystery (997-line `m2-campaign.js` — "partial" referred to
+> live-engine integration), and G3 has a complete 14-level production script
+> (`Grade3_Campaign_Production_Script.md`, 3,861 lines). Kept for the legacy line references.
+
 Story mode is a **rework of the legacy trainers' story/adventure/quest modes** (v1 dropped them in
 its migration), not greenfield. Scope + tech are decided WITH Koki after a spike — this file
 carries what the spike starts from. The architecture already reserves the integration point:
