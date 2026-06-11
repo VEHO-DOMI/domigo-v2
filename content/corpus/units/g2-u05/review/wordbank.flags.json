@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u05",
+  "round": 1,
+  "bankHash": "e4e84149755f",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 49/49 verbatim incl. umlauts. Two earlier ascii-umlaut flags were heuristic false positives on German 'qu' (überqueren) — heuristic fixed this wave; no open flags."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u09",
+  "round": 1,
+  "bankHash": "bee9a27e376e",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 56/56 verbatim. Lens B raised forms 'tomatoes' — that is the English inflection family working as designed; bare '(pl)' label artifact ('glasses pl') fixed in shapeEntry this wave. No open flags."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u07",
+  "round": 1,
+  "bankHash": "1fd181b8d7a9",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: verbatim (comma→' ; ' separator normalization is by design; deRaw preserves source). Lens B: clean. No open flags."
+  }
+}

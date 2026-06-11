@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u12",
+  "round": 1,
+  "bankHash": "2b2627e1bbe4",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: verbatim. Earlier v1-missing 'pain in the ankle' auto-resolved: master list has 'pain in ankle'; parity matcher is now article-insensitive. No open flags."
+  }
+}

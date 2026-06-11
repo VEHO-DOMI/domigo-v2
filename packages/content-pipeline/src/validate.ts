@@ -16,9 +16,9 @@ import type { Grade, WordBankEntry } from "@domigo/content-schema";
 import { GRADES, UNITS_PER_GRADE, WordBank, unitIdPrefix, unitSlug } from "@domigo/content-schema";
 import { readJsonIfExists } from "./json.ts";
 import { OVERLAYS_DIR, UNITS_DIR, V1_SNAPSHOT_DIR } from "./paths.ts";
-import { buildWordbankReview, loadV1Unit } from "./review-wordbank.ts";
+import { buildWordbankReview, entryMatchesWord, loadV1Unit } from "./review-wordbank.ts";
 import { readStateLog } from "./state.ts";
-import { tokenMatches, wordTokens } from "./tokenize.ts";
+import { wordTokens } from "./tokenize.ts";
 import { entriesContentHash, type ParseFixes } from "./wordbank.ts";
 
 /** Master-list self-declared totals (also asserted at parse time in stage 2). */
@@ -226,14 +226,8 @@ export function runValidate(): void {
         for (const ve of loadV1Unit(grade, unit) ?? []) {
           const key = wordTokens(ve.w).join(" ");
           if (key.length === 0 || formKeys.has(key) || waived.has(key)) continue;
-          // fuzzy fallback: per-token inflection comparison against grade entries
-          const wseq = wordTokens(ve.w);
-          const fuzzy = gradeEntries.some((e) =>
-            [e.en, ...e.forms].some((f) => {
-              const seq = wordTokens(f);
-              return seq.length === wseq.length && seq.every((t, i) => tokenMatches(wseq[i] as string, t));
-            }),
-          );
+          // fuzzy fallback: THE shared matcher (article-insensitive, inflection-aware)
+          const fuzzy = gradeEntries.some((e) => entryMatchesWord(e, ve.w));
           if (!fuzzy) misses.push(ve.w);
         }
       }

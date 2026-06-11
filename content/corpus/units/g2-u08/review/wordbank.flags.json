@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u08",
+  "round": 1,
+  "bankHash": "7b3557fe606c",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: verbatim. Earlier umlaut flag was a 'bequem' false positive (q-before-ue), heuristic fixed. Lens B: clean. No open flags."
+  }
+}

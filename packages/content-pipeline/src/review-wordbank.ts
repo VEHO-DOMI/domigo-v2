@@ -15,8 +15,8 @@ import { WordBank } from "@domigo/content-schema";
 import { readJsonIfExists, sha256OfString, writeText } from "./json.ts";
 import { MULTI_SEP, renderTable } from "./mdtable.ts";
 import { TRANSCRIPTS_DIR, UNITS_DIR, V1_SNAPSHOT_DIR } from "./paths.ts";
-import { appendTransition } from "./state.ts";
-import { tokenizeText, traceForms, tokenMatches, wordTokens, type TokenizedText } from "./tokenize.ts";
+import { appendTransition, currentState } from "./state.ts";
+import { LOOSE_SKIP, tokenizeText, traceForms, tokenMatches, wordTokens, type TokenizedText } from "./tokenize.ts";
 import { entriesContentHash } from "./wordbank.ts";
 
 // ---------------------------------------------------------------------------
@@ -141,11 +141,13 @@ export function crossUnitIndex(): Map<string, Array<{ slug: string; id: string }
 
 const UMLAUT_EXCEPTIONS = ["aktuell", "eventuell", "manuell", "individuell", "visuell", "virtuell", "punktuell", "statue", "fluent"];
 
-function entryMatchesWord(e: WordBankEntry, w: string): boolean {
-  const wseq = wordTokens(w);
+export function entryMatchesWord(e: WordBankEntry, w: string): boolean {
+  // Article/particle-insensitive: "pain in the ankle" (v1) must match the
+  // master list's "pain in ankle". Content tokens still compare 1:1.
+  const wseq = wordTokens(w).filter((t) => !LOOSE_SKIP.has(t));
   if (wseq.length === 0) return false;
   for (const candidate of [e.en, ...e.forms]) {
-    const seq = wordTokens(candidate);
+    const seq = wordTokens(candidate).filter((t) => !LOOSE_SKIP.has(t));
     if (seq.length !== wseq.length) continue;
     if (seq.every((t, i) => tokenMatches(wseq[i] as string, t))) return true;
   }
@@ -200,8 +202,13 @@ function computeFlags(bank: WordBankT): FlagComputation {
       });
     }
 
+    // NOTE: "q" is excluded before "ue" — German q is always followed by u
+    // ("bequem", "überqueren"), never an ASCII umlaut.
     const lowerDe = e.deRaw.toLowerCase();
-    if (/[bcdfghjklmnpqrstvwxz](ae|oe|ue)/.test(lowerDe) && !UMLAUT_EXCEPTIONS.some((x) => lowerDe.includes(x))) {
+    if (
+      (/[bcdfghjklmnprstvwxz](ae|oe|ue)/.test(lowerDe) || /[bcdfghjklmnpqrstvwxz](ae|oe)/.test(lowerDe)) &&
+      !UMLAUT_EXCEPTIONS.some((x) => lowerDe.includes(x))
+    ) {
       flags.push({
         key: `ascii-umlaut-suspect:${e.id}`,
         kind: "ascii-umlaut-suspect",
@@ -481,7 +488,18 @@ export function runReviewDocWordbank(filter: { grade?: number; unit?: string }):
   if (slugs.length === 0) throw new Error("no units match the filter");
 
   let written = 0;
+  let skipped = 0;
   for (const slug of slugs) {
+    // An approved unit with an unchanged bank needs no new review round —
+    // regenerating would regress its state. (V-A drift forces re-review.)
+    const last = currentState(path.join(UNITS_DIR, slug));
+    if (last?.state === "wordbank_approved") {
+      const bank = loadBank(slug);
+      if (last.contentHash === entriesContentHash(bank.entries)) {
+        skipped += 1;
+        continue;
+      }
+    }
     const review = buildWordbankReview(slug);
     const outPath = path.join(UNITS_DIR, slug, "review", "wordbank.review.md");
     if (writeText(outPath, review.markdown)) written += 1;
@@ -493,5 +511,5 @@ export function runReviewDocWordbank(filter: { grade?: number; unit?: string }):
     });
     console.log(`${slug}: round ${review.round}, ${review.openFlags.length} open flag(s), ${review.rows.length} rows`);
   }
-  console.log(`review-doc: ${slugs.length} unit(s), ${written} doc(s) updated.`);
+  console.log(`review-doc: ${slugs.length} unit(s), ${written} doc(s) updated${skipped > 0 ? `, ${skipped} approved unit(s) skipped` : ""}.`);
 }

@@ -132,8 +132,9 @@ export function phraseExact(text: TokenizedText, form: string): boolean {
 export type TraceResult = "exact" | "loose" | "miss";
 
 /** Function words ignored by the LOOSE check — "going for walks" must still
- *  trace "to go for a walk". Exact matching is unaffected. */
-const LOOSE_SKIP = new Set(["a", "an", "the", "to", "of"]);
+ *  trace "to go for a walk". Exact matching is unaffected. Also used by the
+ *  v1-parity matcher ("pain in the ankle" ≈ master's "pain in ankle"). */
+export const LOOSE_SKIP = new Set(["a", "an", "the", "to", "of"]);
 
 /** Review-mode tracing: exact, else all-content-tokens-present, else miss. */
 export function traceForms(text: TokenizedText, forms: string[]): TraceResult {

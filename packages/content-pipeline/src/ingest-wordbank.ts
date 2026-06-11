@@ -15,7 +15,7 @@ import { readJsonIfExists, writeJson } from "./json.ts";
 import { MULTI_SEP, parseTables, parseVerdicts } from "./mdtable.ts";
 import { OVERLAYS_DIR, UNITS_DIR } from "./paths.ts";
 import { buildWordbankReview, loadV1Unit, rowsForEntries } from "./review-wordbank.ts";
-import { appendTransition } from "./state.ts";
+import { appendTransition, currentState } from "./state.ts";
 import { wordTokens } from "./tokenize.ts";
 import { entriesContentHash, runWordbank, shapeEntry, type ParseFixes } from "./wordbank.ts";
 
@@ -216,6 +216,8 @@ export function runIngestWordbank(filter: { grade?: number; unit?: string }, dry
 
   const plans: UnitPlan[] = [];
   for (const slug of slugs) {
+    // already-approved units keep their (now historical) review doc — skip
+    if (currentState(path.join(UNITS_DIR, slug))?.state === "wordbank_approved") continue;
     const plan = planUnit(slug);
     if (plan !== null) plans.push(plan);
   }

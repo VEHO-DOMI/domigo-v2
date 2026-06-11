@@ -22,6 +22,34 @@
       "by": "pipeline",
       "contentHash": "d2d12476b35844454d49b1c6cbf3435e723d1a422bb12b6479ea56b355b00106",
       "note": "re-parse changed content"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "d2d12476b358",
+      "note": "round 1 doc: 3 open flag(s)",
+      "at": "2026-06-11T15:47:23.515Z"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-11T15:51:39.860Z",
+      "by": "pipeline",
+      "contentHash": "d2d12476b35844454d49b1c6cbf3435e723d1a422bb12b6479ea56b355b00106",
+      "note": "re-parse after later state — review impact"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "d2d12476b358",
+      "note": "round 1 doc: 3 open flag(s)",
+      "at": "2026-06-11T15:51:40.378Z"
+    },
+    {
+      "state": "wordbank_approved",
+      "by": "fable",
+      "contentHash": "d2d12476b35844454d49b1c6cbf3435e723d1a422bb12b6479ea56b355b00106",
+      "note": "round 1: 3 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
+      "at": "2026-06-11T15:53:19.251Z"
     }
   ]
 }

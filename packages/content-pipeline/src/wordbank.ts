@@ -219,6 +219,7 @@ export function shapeEntry(raw: RawEntry, id: string): WordBankEntry {
   if (cf !== null) forms.add(cf);
   for (const p of parens) {
     if (p.length === 0 || /^[=≈]/.test(p)) continue;
+    if (/^(pl|sing)\.?$/i.test(p)) continue; // bare grammar label, e.g. "glasses (pl)"
     const pl = /^pl\.?\s+(.+)$/i.exec(p);
     if (pl?.[1] !== undefined) {
       forms.add(clean(pl[1]));

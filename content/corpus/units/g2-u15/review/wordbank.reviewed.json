@@ -1,0 +1,31 @@
+{
+  "schema": "wordbank-reviewed@1",
+  "slug": "g2-u15",
+  "round": 1,
+  "rows": {
+    "to-feed-your-pet": "180cd027f434",
+    "to-clean-out-the-litter-tray": "bc5ed1a2bca0",
+    "to-clean-out-your-pet-s-cage": "627c686c9def",
+    "to-play-with-your-pet": "d41fea1012e8",
+    "to-dry-your-pet": "cc61624b81cd",
+    "to-stroke": "b12e18a71233",
+    "to-brush": "ffefcf44cf5a",
+    "to-walk-your-pet": "9f0d6a3aba95",
+    "to-take-your-pet-to-the-vet": "78fc204cc4de",
+    "to-give-your-pet-a-bath": "fc5501a21861",
+    "cage": "98507ad4d4b0",
+    "litter-tray": "6fe4fbd8ff54",
+    "vet": "c70ef2fcb087",
+    "to-have-got-a-fear-of": "2ae070650f8e",
+    "to-keep-sb-company": "b7eb3c892633",
+    "neither-do-i": "7c9c5cce5aec",
+    "so-do-i": "6f1e3cd9d8b9",
+    "space": "1e7e34b7f9b2",
+    "antarctic-ocean": "bd455a84e5d8",
+    "emperor-penguin": "acbede1f1495",
+    "to-release": "3dd910fb42ee",
+    "sand": "e44148807c83",
+    "pyjamas": "1d90185cd496",
+    "to-tidy": "2845c5a5d9c2"
+  }
+}
