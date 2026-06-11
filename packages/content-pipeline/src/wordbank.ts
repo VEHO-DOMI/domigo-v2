@@ -288,9 +288,10 @@ function assignIds(
     ids.push(id);
   }
 
-  // tombstone keys that disappeared from the source
+  // tombstone keys that disappeared from the source — but never the
+  // `overlay:`-prefixed keys, which are minted by review ingest, not parsing
   for (const [key, id] of Object.entries(lock.words)) {
-    if (!seenKeys.has(key)) {
+    if (!seenKeys.has(key) && !key.startsWith("overlay:")) {
       delete lock.words[key];
       lock.tombstones.push({ id, key, removedWith: sourceSha.slice(0, 12) });
       lockChanged = true;
