@@ -22,6 +22,41 @@
       "by": "pipeline",
       "contentHash": "001680d0f49a11dc71f191e15e39070ee4014ede9046f06f70752721ca652609",
       "note": "re-parse changed content"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "001680d0f49a",
+      "note": "round 1 doc: 2 open flag(s)",
+      "at": "2026-06-11T15:58:03.062Z"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-11T16:02:20.479Z",
+      "by": "pipeline",
+      "contentHash": "001680d0f49a11dc71f191e15e39070ee4014ede9046f06f70752721ca652609",
+      "note": "re-parse after later state — review impact"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "001680d0f49a",
+      "note": "round 1 doc: 2 open flag(s)",
+      "at": "2026-06-11T16:02:24.380Z"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-11T16:04:44.591Z",
+      "by": "pipeline",
+      "contentHash": "001680d0f49a11dc71f191e15e39070ee4014ede9046f06f70752721ca652609",
+      "note": "re-parse after later state — review impact"
+    },
+    {
+      "state": "wordbank_approved",
+      "by": "fable",
+      "contentHash": "001680d0f49a11dc71f191e15e39070ee4014ede9046f06f70752721ca652609",
+      "note": "round 1: 2 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
+      "at": "2026-06-11T16:04:44.598Z"
     }
   ]
 }

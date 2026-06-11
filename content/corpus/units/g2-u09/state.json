@@ -50,6 +50,27 @@
       "contentHash": "bee9a27e376e3c22611c82280290e6a080bdadcda4741a7b3e2fbb9db2713eb7",
       "note": "round 1: 0 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T15:53:19.258Z"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-11T16:02:20.508Z",
+      "by": "pipeline",
+      "contentHash": "fd299da73d1ba8288a2014345646707c1c3687e497c16b73749f213a5ec65f0b",
+      "note": "re-parse after later state — review impact"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "fd299da73d1b",
+      "note": "round 2 doc: 1 open flag(s)",
+      "at": "2026-06-11T16:02:24.534Z"
+    },
+    {
+      "state": "wordbank_approved",
+      "by": "fable",
+      "contentHash": "fd299da73d1ba8288a2014345646707c1c3687e497c16b73749f213a5ec65f0b",
+      "note": "round 2: 1 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
+      "at": "2026-06-11T16:04:45.218Z"
     }
   ]
 }

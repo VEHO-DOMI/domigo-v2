@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g4-u02",
+  "round": 1,
+  "bankHash": "68861df2eca4",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 46/46 verbatim. Lens B: clean. No open flags."
+  }
+}

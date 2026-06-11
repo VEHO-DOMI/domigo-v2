@@ -360,7 +360,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "1st first"
+        "1st first",
+        "1st",
+        "first"
       ],
       "taughtGloss": false
     },
@@ -376,7 +378,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "2nd second"
+        "2nd second",
+        "2nd",
+        "second"
       ],
       "taughtGloss": false
     },
@@ -392,7 +396,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "3rd third"
+        "3rd third",
+        "3rd",
+        "third"
       ],
       "taughtGloss": false
     },
@@ -408,7 +414,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "4th fourth"
+        "4th fourth",
+        "4th",
+        "fourth"
       ],
       "taughtGloss": false
     },
@@ -424,7 +432,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "5th fifth"
+        "5th fifth",
+        "5th",
+        "fifth"
       ],
       "taughtGloss": false
     },
@@ -440,7 +450,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "6th sixth"
+        "6th sixth",
+        "6th",
+        "sixth"
       ],
       "taughtGloss": false
     },
@@ -456,7 +468,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "7th seventh"
+        "7th seventh",
+        "7th",
+        "seventh"
       ],
       "taughtGloss": false
     },
@@ -472,7 +486,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "8th eighth"
+        "8th eighth",
+        "8th",
+        "eighth"
       ],
       "taughtGloss": false
     },
@@ -488,7 +504,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "9th ninth"
+        "9th ninth",
+        "9th",
+        "ninth"
       ],
       "taughtGloss": false
     },
@@ -504,7 +522,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "10th tenth"
+        "10th tenth",
+        "10th",
+        "tenth"
       ],
       "taughtGloss": false
     },
@@ -520,7 +540,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "11th eleventh"
+        "11th eleventh",
+        "11th",
+        "eleventh"
       ],
       "taughtGloss": false
     },
@@ -536,7 +558,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "12th twelfth"
+        "12th twelfth",
+        "12th",
+        "twelfth"
       ],
       "taughtGloss": false
     },
@@ -552,7 +576,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "13th thirteenth"
+        "13th thirteenth",
+        "13th",
+        "thirteenth"
       ],
       "taughtGloss": false
     },
@@ -568,7 +594,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "14th fourteenth"
+        "14th fourteenth",
+        "14th",
+        "fourteenth"
       ],
       "taughtGloss": false
     },
@@ -584,7 +612,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "15th fifteenth"
+        "15th fifteenth",
+        "15th",
+        "fifteenth"
       ],
       "taughtGloss": false
     },
@@ -600,7 +630,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "16th sixteenth"
+        "16th sixteenth",
+        "16th",
+        "sixteenth"
       ],
       "taughtGloss": false
     },
@@ -616,7 +648,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "17th seventeenth"
+        "17th seventeenth",
+        "17th",
+        "seventeenth"
       ],
       "taughtGloss": false
     },
@@ -632,7 +666,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "18th eighteenth"
+        "18th eighteenth",
+        "18th",
+        "eighteenth"
       ],
       "taughtGloss": false
     },
@@ -648,7 +684,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "19th nineteenth"
+        "19th nineteenth",
+        "19th",
+        "nineteenth"
       ],
       "taughtGloss": false
     },
@@ -664,7 +702,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "20th twentieth"
+        "20th twentieth",
+        "20th",
+        "twentieth"
       ],
       "taughtGloss": false
     },
@@ -680,7 +720,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "21st twenty-first"
+        "21st twenty-first",
+        "21st",
+        "twenty-first"
       ],
       "taughtGloss": false
     },
@@ -696,7 +738,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "22nd twenty-second"
+        "22nd twenty-second",
+        "22nd",
+        "twenty-second"
       ],
       "taughtGloss": false
     },
@@ -712,7 +756,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "23rd twenty-third"
+        "23rd twenty-third",
+        "23rd",
+        "twenty-third"
       ],
       "taughtGloss": false
     },
@@ -728,7 +774,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "24th twenty-fourth"
+        "24th twenty-fourth",
+        "24th",
+        "twenty-fourth"
       ],
       "taughtGloss": false
     },
@@ -744,7 +792,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "25th twenty-fifth"
+        "25th twenty-fifth",
+        "25th",
+        "twenty-fifth"
       ],
       "taughtGloss": false
     },
@@ -760,7 +810,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "30th thirtieth"
+        "30th thirtieth",
+        "30th",
+        "thirtieth"
       ],
       "taughtGloss": false
     },
@@ -776,7 +828,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "31st thirty-first"
+        "31st thirty-first",
+        "31st",
+        "thirty-first"
       ],
       "taughtGloss": false
     },

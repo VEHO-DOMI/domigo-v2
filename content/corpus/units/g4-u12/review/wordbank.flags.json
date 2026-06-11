@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g4-u12",
+  "round": 1,
+  "bankHash": "8238afa2164f",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 36/36 verbatim incl. 'neither … nor' ellipsis. Lens B: clean. No open flags."
+  }
+}

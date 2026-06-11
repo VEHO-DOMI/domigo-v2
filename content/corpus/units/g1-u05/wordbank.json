@@ -234,7 +234,9 @@
       "exampleSb": "She can play the drums. He can't sing.",
       "cf": null,
       "forms": [
-        "can, cannot / can't"
+        "can, cannot / can't",
+        "can, cannot",
+        "can't"
       ],
       "taughtGloss": false
     },

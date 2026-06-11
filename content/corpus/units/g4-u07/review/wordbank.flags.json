@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g4-u07",
+  "round": 1,
+  "bankHash": "1e982a04bb64",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 30/30 verbatim — source example 'Check ask people…' preserved verbatim (publisher wording; noted in digest). Lens B: clean."
+  }
+}

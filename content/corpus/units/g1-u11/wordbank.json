@@ -23,7 +23,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "9 a.m."
+        "9 a.m.",
+        "9",
+        "a.m."
       ],
       "taughtGloss": false
     },
@@ -55,7 +57,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "9 p.m."
+        "9 p.m.",
+        "9",
+        "p.m."
       ],
       "taughtGloss": false
     },
@@ -87,7 +91,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "9 o'clock"
+        "9 o'clock",
+        "9",
+        "o'clock"
       ],
       "taughtGloss": false
     },
@@ -530,7 +536,7 @@
       "en": "exercise",
       "de": [
         "Übung",
-        "hier: (körperliche) Bewegung"
+        "(körperliche) Bewegung"
       ],
       "deRaw": "Übung; hier: (körperliche) Bewegung",
       "exampleSb": "At a quarter to ten, we do our daily exercise.",
@@ -851,7 +857,7 @@
       "de": [
         "Ort",
         "Platz",
-        "hier: Wohnung",
+        "Wohnung",
         "Zuhause"
       ],
       "deRaw": "Ort, Platz; hier: Wohnung, Zuhause",

@@ -647,7 +647,9 @@
       "exampleSb": "There are lots of beautiful trees in the park.",
       "cf": null,
       "forms": [
-        "a lot of / lots of"
+        "a lot of / lots of",
+        "a lot of",
+        "lots of"
       ],
       "taughtGloss": false
     },

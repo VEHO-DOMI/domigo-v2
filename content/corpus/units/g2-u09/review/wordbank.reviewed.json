@@ -1,7 +1,7 @@
 {
   "schema": "wordbank-reviewed@1",
   "slug": "g2-u09",
-  "round": 1,
+  "round": 2,
   "rows": {
     "grapes": "e5e7d1a3efcc",
     "plums": "111020af7139",
@@ -58,6 +58,6 @@
     "certain": "6c95c5f8da0e",
     "to-change-one-s-mind": "e45197a4298c",
     "gym": "e5efa06fd71b",
-    "to-miss": "e7d0db6d8f00"
+    "to-miss": "a8175f61b28f"
   }
 }

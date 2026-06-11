@@ -1,7 +1,7 @@
 {
   "schema": "wordbank-reviewed@1",
   "slug": "g2-u04",
-  "round": 1,
+  "round": 2,
   "rows": {
     "mosquito": "c3ed74ed1523",
     "pigeon": "683b4b3253a0",
@@ -34,7 +34,7 @@
     "scientist": "7f7684076b1a",
     "to-die-out": "b93e54c0ed22",
     "less": "b651c5586f82",
-    "to-carry": "3f633c2288a2",
+    "to-carry": "71fc4c9a13ec",
     "centimetre": "91ab24b19bcd",
     "desert": "1cb61e3ac3ff",
     "to-die": "e0a8c4a1e857",

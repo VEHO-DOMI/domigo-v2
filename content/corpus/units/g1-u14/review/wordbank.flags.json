@@ -1,0 +1,27 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u14",
+  "round": 1,
+  "bankHash": "001680d0f49a",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "not-in-transcript:g1u14.w.drama-series",
+      "kind": "not-in-transcript",
+      "entryId": "g1u14.w.drama-series",
+      "verdict": "ok",
+      "note": "Master-list Word File vocab; not in the SB/WB TV-programme lists — list canonical. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u14.w.music-video",
+      "kind": "not-in-transcript",
+      "entryId": "g1u14.w.music-video",
+      "verdict": "ok",
+      "note": "Master-list Word File vocab; list canonical. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 59/59 verbatim incl. irregular verb notations. Lens B: clean."
+  }
+}

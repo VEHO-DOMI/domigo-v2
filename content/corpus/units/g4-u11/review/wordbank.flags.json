@@ -1,0 +1,27 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g4-u11",
+  "round": 1,
+  "bankHash": "143b60cf5aef",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "duplicate-headword:g4u11.w.reference-2",
+      "kind": "duplicate-headword",
+      "entryId": "g4u11.w.reference-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified. (Lens C)"
+    },
+    {
+      "key": "ascii-umlaut-suspect:g4u11.w.poetry",
+      "kind": "ascii-umlaut-suspect",
+      "entryId": "g4u11.w.poetry",
+      "verdict": "ok",
+      "note": "de 'Poesie ; Lyrik' is correctly spelled — heuristic false positive ('oe' in Poesie is genuine). (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 33/33 verbatim. Both flags adjudicated ok with evidence."
+  }
+}

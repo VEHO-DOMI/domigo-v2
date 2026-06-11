@@ -29,6 +29,27 @@ const EXPECTED: Record<Grade, { total: number; wordfile: number; phrase: number 
   4: { total: 450, wordfile: 48, phrase: 402 },
 };
 
+/**
+ * SOURCE ANOMALY (review campaign, 2026-06-11): the MORE! 4 master list swaps
+ * the Words-and-Phrases tables of units 8 and 9 relative to the actual
+ * textbook — its u8 phrases are "Body talk" content (textbook U9), its u9
+ * phrases are "Obsessed!" collecting content (textbook U8). The unit-9 Word
+ * File ("A Wedding") is NOT swapped: it traces in transcript U9 and v1-u09.
+ * Evidence: SB/WB transcripts (verbatim textbook), v1's corpus, and Koki's
+ * classroom folders ("Unit 8 Obsessed!") all agree; only the list's phrase
+ * tables differ. The textbook is the ultimate source (guardrail 1), so the
+ * parser remaps the PHRASE entries of these list-units; Word Files stay.
+ */
+const PHRASE_UNIT_REMAP: Partial<Record<Grade, Record<number, number>>> = {
+  4: { 8: 9, 9: 8 },
+};
+
+function targetUnit(grade: Grade, listUnit: number, kind: "wordfile" | "phrase"): number {
+  const mapped = PHRASE_UNIT_REMAP[grade]?.[listUnit];
+  if (mapped === undefined || kind === "wordfile") return listUnit;
+  return mapped;
+}
+
 export interface RawEntry {
   kind: "wordfile" | "phrase";
   theme: string | null;
@@ -117,8 +138,12 @@ function parseGradeEntries(
 
     // table
     if (unit === null) continue; // intro table
-    const entries = byUnit.get(unit);
-    if (entries === undefined) continue;
+    const pushEntry = (raw: RawEntry): void => {
+      const target = targetUnit(grade, unit as number, raw.kind);
+      const list = byUnit.get(target) ?? [];
+      list.push(raw);
+      byUnit.set(target, list);
+    };
 
     for (const row of block.rows) {
       const cells = row.map(clean);
@@ -149,14 +174,14 @@ function parseGradeEntries(
           warnings.push(`g${grade} u${unit}: phrase "${en}" has no translation; skipped`);
           continue;
         }
-        entries.push({ kind, theme: null, en, deRaw: de, exampleSb: example.length > 0 ? example : null });
+        pushEntry({ kind, theme: null, en, deRaw: de, exampleSb: example.length > 0 ? example : null });
       } else {
         const de = cells[1] ?? "";
         if (de.length === 0) {
           warnings.push(`g${grade} u${unit}: word "${en}" has no translation; skipped`);
           continue;
         }
-        entries.push({ kind, theme, en, deRaw: de, exampleSb: null });
+        pushEntry({ kind, theme, en, deRaw: de, exampleSb: null });
       }
     }
   }
@@ -202,7 +227,9 @@ export function splitDe(deRaw: string): string[] {
   const parts = deRaw
     .split(/\n|;/)
     .flatMap((p) => splitTopLevelCommas(p))
-    .map((p) => clean(p))
+    // "tragen; hier: übertragen" — the "hier:" context label is master-list
+    // notation, not part of the translation; deRaw keeps the original.
+    .map((p) => clean(p).replace(/^hier:\s*/i, ""))
     .filter((p) => p.length > 0);
   const unique = [...new Set(parts)];
   return unique.length > 0 ? unique : [clean(deRaw)];
@@ -217,12 +244,30 @@ export function shapeEntry(raw: RawEntry, id: string): WordBankEntry {
   const forms = new Set<string>();
   if (enClean.length > 0) forms.add(enClean);
   if (cf !== null) forms.add(cf);
+  // spaced-slash variants: "a lot of / lots of" teaches BOTH phrasings
+  if (enClean.includes(" / ")) {
+    for (const variant of enClean.split(/\s+\/\s+/)) {
+      const v = clean(variant);
+      if (v.length > 0) forms.add(v);
+    }
+  }
+  // numeral+word pairs: "20 twenty", "1st first" — each part counts as taught
+  const numPair = /^(\d+(?:st|nd|rd|th)?)\s+([a-z].*)$/i.exec(enClean);
+  if (numPair?.[1] !== undefined && numPair[2] !== undefined) {
+    forms.add(numPair[1]);
+    forms.add(clean(numPair[2]));
+  }
   for (const p of parens) {
     if (p.length === 0 || /^[=≈]/.test(p)) continue;
     if (/^(pl|sing)\.?$/i.test(p)) continue; // bare grammar label, e.g. "glasses (pl)"
     const pl = /^pl\.?\s+(.+)$/i.exec(p);
     if (pl?.[1] !== undefined) {
       forms.add(clean(pl[1]));
+      continue;
+    }
+    if (/^(s|es|n|e)$/.test(p)) {
+      // suffix plural marker: "right(s)" → "rights", "tomato(es)" → "tomatoes"
+      if (enClean.length > 0) forms.add(clean(enClean + p));
       continue;
     }
     if (/^[a-zäöüß]+(?:[ ,][a-zäöüß]+)*$/.test(p)) {

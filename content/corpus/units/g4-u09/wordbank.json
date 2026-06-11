@@ -12,6 +12,618 @@
   },
   "entries": [
     {
+      "id": "g4u09.w.border",
+      "kind": "phrase",
+      "theme": null,
+      "en": "border",
+      "de": [
+        "Grenze"
+      ],
+      "deRaw": "Grenze",
+      "exampleSb": "He grew up in Malaysia, near the Indonesian border.",
+      "cf": null,
+      "forms": [
+        "border"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.communicate",
+      "kind": "phrase",
+      "theme": null,
+      "en": "communicate",
+      "de": [
+        "kommunizieren"
+      ],
+      "deRaw": "kommunizieren",
+      "exampleSb": "Humans communicate with language.",
+      "cf": null,
+      "forms": [
+        "communicate"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.fashionable",
+      "kind": "phrase",
+      "theme": null,
+      "en": "fashionable",
+      "de": [
+        "in Mode",
+        "modisch"
+      ],
+      "deRaw": "in Mode, modisch",
+      "exampleSb": "Today piercing has become very fashionable.",
+      "cf": null,
+      "forms": [
+        "fashionable"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.firstly",
+      "kind": "phrase",
+      "theme": null,
+      "en": "firstly",
+      "de": [
+        "erstens"
+      ],
+      "deRaw": "erstens",
+      "exampleSb": "Why do you wear a stud? – Well, firstly, I think it looks good!",
+      "cf": null,
+      "forms": [
+        "firstly"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.funeral",
+      "kind": "phrase",
+      "theme": null,
+      "en": "funeral",
+      "de": [
+        "Begräbnis"
+      ],
+      "deRaw": "Begräbnis",
+      "exampleSb": "Our neighbour died yesterday. The funeral is on Friday.",
+      "cf": null,
+      "forms": [
+        "funeral"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.health-risk",
+      "kind": "phrase",
+      "theme": null,
+      "en": "health risk",
+      "de": [
+        "Gesundheitsrisiko"
+      ],
+      "deRaw": "Gesundheitsrisiko",
+      "exampleSb": "Eating too much fast food can be a health risk.",
+      "cf": null,
+      "forms": [
+        "health risk"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.in-common",
+      "kind": "phrase",
+      "theme": null,
+      "en": "in common",
+      "de": [
+        "gemein",
+        "gemeinsam"
+      ],
+      "deRaw": "gemein, gemeinsam",
+      "exampleSb": "The two sisters had nothing in common.",
+      "cf": null,
+      "forms": [
+        "in common"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.needle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "needle",
+      "de": [
+        "Nadel"
+      ],
+      "deRaw": "Nadel",
+      "exampleSb": "The needle makes a hole in your ear for the earring.",
+      "cf": null,
+      "forms": [
+        "needle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.permanent",
+      "kind": "phrase",
+      "theme": null,
+      "en": "permanent",
+      "de": [
+        "dauerhaft",
+        "endgültig"
+      ],
+      "deRaw": "dauerhaft, endgültig",
+      "exampleSb": "The accident has not done any permanent damage.",
+      "cf": null,
+      "forms": [
+        "permanent"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.pierced",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pierced",
+      "de": [
+        "durchstochen",
+        "gepierct"
+      ],
+      "deRaw": "durchstochen, gepierct",
+      "exampleSb": "When your ear is pierced, you can wear an earring.",
+      "cf": null,
+      "forms": [
+        "pierced"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.rebellious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "rebellious",
+      "de": [
+        "rebellisch"
+      ],
+      "deRaw": "rebellisch",
+      "exampleSb": "She didn't like school, she has a rebellious nature.",
+      "cf": null,
+      "forms": [
+        "rebellious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.religious",
+      "kind": "phrase",
+      "theme": null,
+      "en": "religious",
+      "de": [
+        "religiös"
+      ],
+      "deRaw": "religiös",
+      "exampleSb": "If you are religious, you try to go to church regularly.",
+      "cf": null,
+      "forms": [
+        "religious"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.ceremony",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ceremony",
+      "de": [
+        "Zeremonie"
+      ],
+      "deRaw": "Zeremonie",
+      "exampleSb": "During the opening ceremony the stadium was full.",
+      "cf": null,
+      "forms": [
+        "ceremony"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.bury",
+      "kind": "phrase",
+      "theme": null,
+      "en": "bury",
+      "de": [
+        "begraben"
+      ],
+      "deRaw": "begraben",
+      "exampleSb": "The pirates buried the treasure on a small island.",
+      "cf": null,
+      "forms": [
+        "bury"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.devil",
+      "kind": "phrase",
+      "theme": null,
+      "en": "devil",
+      "de": [
+        "Teufel"
+      ],
+      "deRaw": "Teufel",
+      "exampleSb": "A devil is another name for an evil spirit.",
+      "cf": null,
+      "forms": [
+        "devil"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.confused",
+      "kind": "phrase",
+      "theme": null,
+      "en": "confused",
+      "de": [
+        "verwirrt"
+      ],
+      "deRaw": "verwirrt",
+      "exampleSb": "I'm a little confused. Can you explain that again, please?",
+      "cf": null,
+      "forms": [
+        "confused"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.far-east",
+      "kind": "phrase",
+      "theme": null,
+      "en": "Far East",
+      "de": [
+        "Ferner Osten"
+      ],
+      "deRaw": "Ferner Osten",
+      "exampleSb": "Japan and China are in the Far East.",
+      "cf": null,
+      "forms": [
+        "Far East"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.gesture",
+      "kind": "phrase",
+      "theme": null,
+      "en": "gesture",
+      "de": [
+        "Geste"
+      ],
+      "deRaw": "Geste",
+      "exampleSb": "A gesture with your hand can mean different things in different countries.",
+      "cf": null,
+      "forms": [
+        "gesture"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.greet",
+      "kind": "phrase",
+      "theme": null,
+      "en": "greet",
+      "de": [
+        "begrüßen"
+      ],
+      "deRaw": "begrüßen",
+      "exampleSb": "When we greet people, we say \"Hi\" or \"Hello\".",
+      "cf": null,
+      "forms": [
+        "greet"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.index-finger",
+      "kind": "phrase",
+      "theme": null,
+      "en": "index finger",
+      "de": [
+        "Zeigefinger"
+      ],
+      "deRaw": "Zeigefinger",
+      "exampleSb": "Your index finger is the finger that is next to your thumb.",
+      "cf": null,
+      "forms": [
+        "index finger"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.insult",
+      "kind": "phrase",
+      "theme": null,
+      "en": "insult",
+      "de": [
+        "beleidigen"
+      ],
+      "deRaw": "beleidigen",
+      "exampleSb": "I think I insulted him when I said he was overweight.",
+      "cf": null,
+      "forms": [
+        "insult"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.nod-the-head",
+      "kind": "phrase",
+      "theme": null,
+      "en": "nod the head",
+      "de": [
+        "mit dem Kopf nicken"
+      ],
+      "deRaw": "mit dem Kopf nicken",
+      "exampleSb": "I can't hear you. Nod your head if you agree.",
+      "cf": null,
+      "forms": [
+        "nod the head"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.palm",
+      "kind": "phrase",
+      "theme": null,
+      "en": "palm",
+      "de": [
+        "Handfläche"
+      ],
+      "deRaw": "Handfläche",
+      "exampleSb": "The palm is the area on the inside of your hand.",
+      "cf": null,
+      "forms": [
+        "palm"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.pass-something-on",
+      "kind": "phrase",
+      "theme": null,
+      "en": "pass something on",
+      "de": [
+        "etwas weitergeben"
+      ],
+      "deRaw": "etwas weitergeben",
+      "exampleSb": "Please pass my message on to your sister.",
+      "cf": null,
+      "forms": [
+        "pass something on"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.thumb",
+      "kind": "phrase",
+      "theme": null,
+      "en": "thumb",
+      "de": [
+        "Daumen"
+      ],
+      "deRaw": "Daumen",
+      "exampleSb": "On each hand you have four fingers and a thumb.",
+      "cf": null,
+      "forms": [
+        "thumb"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.victory",
+      "kind": "phrase",
+      "theme": null,
+      "en": "victory",
+      "de": [
+        "Sieg"
+      ],
+      "deRaw": "Sieg",
+      "exampleSb": "We won 3 – 0. It was a great victory!",
+      "cf": null,
+      "forms": [
+        "victory"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.zero",
+      "kind": "phrase",
+      "theme": null,
+      "en": "zero",
+      "de": [
+        "null"
+      ],
+      "deRaw": "null",
+      "exampleSb": "It was very cold. The temperature dropped to zero.",
+      "cf": null,
+      "forms": [
+        "zero"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.decent-looking",
+      "kind": "phrase",
+      "theme": null,
+      "en": "decent-looking",
+      "de": [
+        "gut aussehend"
+      ],
+      "deRaw": "gut aussehend",
+      "exampleSb": "He's not too cute, but he's a decent-looking boy.",
+      "cf": null,
+      "forms": [
+        "decent-looking"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.embarrassed",
+      "kind": "phrase",
+      "theme": null,
+      "en": "embarrassed",
+      "de": [
+        "verlegen"
+      ],
+      "deRaw": "verlegen",
+      "exampleSb": "I didn't have enough money to pay the bill. I felt very embarrassed.",
+      "cf": null,
+      "forms": [
+        "embarrassed"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.giggle",
+      "kind": "phrase",
+      "theme": null,
+      "en": "giggle",
+      "de": [
+        "kichern"
+      ],
+      "deRaw": "kichern",
+      "exampleSb": "He looked so funny that the girls giggled when they saw him.",
+      "cf": null,
+      "forms": [
+        "giggle"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.goth",
+      "kind": "phrase",
+      "theme": null,
+      "en": "goth",
+      "de": [
+        "Grufti"
+      ],
+      "deRaw": "Grufti",
+      "exampleSb": "Everything she wears is black. She must be a goth.",
+      "cf": null,
+      "forms": [
+        "goth"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.hastily",
+      "kind": "phrase",
+      "theme": null,
+      "en": "hastily",
+      "de": [
+        "hastig"
+      ],
+      "deRaw": "hastig",
+      "exampleSb": "Take more time. Don't do things hastily.",
+      "cf": null,
+      "forms": [
+        "hastily"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.ignore",
+      "kind": "phrase",
+      "theme": null,
+      "en": "ignore",
+      "de": [
+        "ignorieren"
+      ],
+      "deRaw": "ignorieren",
+      "exampleSb": "She didn't even look at me at the party. She just ignored me.",
+      "cf": null,
+      "forms": [
+        "ignore"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.sigh",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sigh",
+      "de": [
+        "seufzen"
+      ],
+      "deRaw": "seufzen",
+      "exampleSb": "\"This film is really boring,\" she sighed.",
+      "cf": null,
+      "forms": [
+        "sigh"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.sitting-room",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sitting room",
+      "de": [
+        "Wohnzimmer"
+      ],
+      "deRaw": "Wohnzimmer",
+      "exampleSb": "Let's have tea in the sitting room.",
+      "cf": null,
+      "forms": [
+        "sitting room"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.scare-off",
+      "kind": "phrase",
+      "theme": null,
+      "en": "scare off",
+      "de": [
+        "verschrecken"
+      ],
+      "deRaw": "verschrecken",
+      "exampleSb": "The cat has disappeared. The dogs scared it off.",
+      "cf": null,
+      "forms": [
+        "scare off"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.sleeve",
+      "kind": "phrase",
+      "theme": null,
+      "en": "sleeve",
+      "de": [
+        "Ärmel"
+      ],
+      "deRaw": "Ärmel",
+      "exampleSb": "Do you like shirts with long or short sleeves?",
+      "cf": null,
+      "forms": [
+        "sleeve"
+      ],
+      "taughtGloss": false
+    },
+    {
+      "id": "g4u09.w.possibility",
+      "kind": "phrase",
+      "theme": null,
+      "en": "possibility",
+      "de": [
+        "Möglichkeit"
+      ],
+      "deRaw": "Möglichkeit",
+      "exampleSb": "Is there a possibility that you might not come to my party?",
+      "cf": null,
+      "forms": [
+        "possibility"
+      ],
+      "taughtGloss": false
+    },
+    {
       "id": "g4u09.w.wedding-dress",
       "kind": "wordfile",
       "theme": "A Wedding",
@@ -88,508 +700,6 @@
       "cf": null,
       "forms": [
         "bridesmaid"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.black-market",
-      "kind": "phrase",
-      "theme": null,
-      "en": "black market",
-      "de": [
-        "Schwarzmarkt"
-      ],
-      "deRaw": "Schwarzmarkt",
-      "exampleSb": "You can't get these things in a normal shop. We bought them on the black market.",
-      "cf": null,
-      "forms": [
-        "black market"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.collect",
-      "kind": "phrase",
-      "theme": null,
-      "en": "collect",
-      "de": [
-        "sammeln"
-      ],
-      "deRaw": "sammeln",
-      "exampleSb": "I've collected stamps since I was 12.",
-      "cf": null,
-      "forms": [
-        "collect"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.collection",
-      "kind": "phrase",
-      "theme": null,
-      "en": "collection",
-      "de": [
-        "Sammlung"
-      ],
-      "deRaw": "Sammlung",
-      "exampleSb": "The painting comes from his private collection.",
-      "cf": null,
-      "forms": [
-        "collection"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.fascination",
-      "kind": "phrase",
-      "theme": null,
-      "en": "fascination",
-      "de": [
-        "Faszination"
-      ],
-      "deRaw": "Faszination",
-      "exampleSb": "His fascination with garden gnomes started five years ago.",
-      "cf": null,
-      "forms": [
-        "fascination"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.rare",
-      "kind": "phrase",
-      "theme": null,
-      "en": "rare",
-      "de": [
-        "selten"
-      ],
-      "deRaw": "selten",
-      "exampleSb": "You don't see many of those butterflies. They're very rare.",
-      "cf": null,
-      "forms": [
-        "rare"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.auction",
-      "kind": "phrase",
-      "theme": null,
-      "en": "auction",
-      "de": [
-        "Auktion",
-        "Versteigerung"
-      ],
-      "deRaw": "Auktion, Versteigerung",
-      "exampleSb": "I bought this painting at an auction.",
-      "cf": null,
-      "forms": [
-        "auction"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.burn-to-the-ground",
-      "kind": "phrase",
-      "theme": null,
-      "en": "burn to the ground",
-      "de": [
-        "niederbrennen"
-      ],
-      "deRaw": "niederbrennen",
-      "exampleSb": "The building burned to the ground.",
-      "cf": null,
-      "forms": [
-        "burn to the ground"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.copy",
-      "kind": "phrase",
-      "theme": null,
-      "en": "copy",
-      "de": [
-        "Kopie",
-        "Exemplar"
-      ],
-      "deRaw": "Kopie, Exemplar",
-      "exampleSb": "The book sold 20,000 copies within two weeks.",
-      "cf": null,
-      "forms": [
-        "copy"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.execute",
-      "kind": "phrase",
-      "theme": null,
-      "en": "execute",
-      "de": [
-        "hinrichten"
-      ],
-      "deRaw": "hinrichten",
-      "exampleSb": "After the trial, the murderer was executed.",
-      "cf": null,
-      "forms": [
-        "execute"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.furious",
-      "kind": "phrase",
-      "theme": null,
-      "en": "furious",
-      "de": [
-        "wütend",
-        "aufgebracht"
-      ],
-      "deRaw": "wütend, aufgebracht",
-      "exampleSb": "I'm furious that I wasn't told about it.",
-      "cf": null,
-      "forms": [
-        "furious"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.judge",
-      "kind": "phrase",
-      "theme": null,
-      "en": "judge",
-      "de": [
-        "Richter/in"
-      ],
-      "deRaw": "Richter/in",
-      "exampleSb": "The judge sentenced him to five years in prison.",
-      "cf": null,
-      "forms": [
-        "judge"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.librarian",
-      "kind": "phrase",
-      "theme": null,
-      "en": "librarian",
-      "de": [
-        "Bibliothekar/in"
-      ],
-      "deRaw": "Bibliothekar/in",
-      "exampleSb": "She works in the town library as a librarian.",
-      "cf": null,
-      "forms": [
-        "librarian"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.library",
-      "kind": "phrase",
-      "theme": null,
-      "en": "library",
-      "de": [
-        "Bibliothek"
-      ],
-      "deRaw": "Bibliothek",
-      "exampleSb": "I never buy books; I always go to the library.",
-      "cf": null,
-      "forms": [
-        "library"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.monastery",
-      "kind": "phrase",
-      "theme": null,
-      "en": "monastery",
-      "de": [
-        "Kloster"
-      ],
-      "deRaw": "Kloster",
-      "exampleSb": "The monks lived in a big monastery outside the city.",
-      "cf": null,
-      "forms": [
-        "monastery"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.monk",
-      "kind": "phrase",
-      "theme": null,
-      "en": "monk",
-      "de": [
-        "Mönch"
-      ],
-      "deRaw": "Mönch",
-      "exampleSb": "A monk is a member of a religious group of men.",
-      "cf": null,
-      "forms": [
-        "monk"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.precious",
-      "kind": "phrase",
-      "theme": null,
-      "en": "precious",
-      "de": [
-        "kostbar"
-      ],
-      "deRaw": "kostbar",
-      "exampleSb": "That ring means a lot to me. It's very precious.",
-      "cf": null,
-      "forms": [
-        "precious"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.preserve",
-      "kind": "phrase",
-      "theme": null,
-      "en": "preserve",
-      "de": [
-        "erhalten",
-        "schützen"
-      ],
-      "deRaw": "erhalten, schützen",
-      "exampleSb": "We need to preserve our traditions and our heritage.",
-      "cf": null,
-      "forms": [
-        "preserve"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.rob",
-      "kind": "phrase",
-      "theme": null,
-      "en": "rob",
-      "de": [
-        "ausrauben"
-      ],
-      "deRaw": "ausrauben",
-      "exampleSb": "We've been robbed. The thieves have taken everything from the house.",
-      "cf": null,
-      "forms": [
-        "rob"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.sentence-to-death",
-      "kind": "phrase",
-      "theme": null,
-      "en": "sentence to death",
-      "de": [
-        "zu Tode verurteilen"
-      ],
-      "deRaw": "zu Tode verurteilen",
-      "exampleSb": "He was sentenced to death for his crime.",
-      "cf": null,
-      "forms": [
-        "sentence to death"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.shorten",
-      "kind": "phrase",
-      "theme": null,
-      "en": "shorten",
-      "de": [
-        "kürzen"
-      ],
-      "deRaw": "kürzen",
-      "exampleSb": "That film was much too long. I think they should shorten it.",
-      "cf": null,
-      "forms": [
-        "shorten"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.addict",
-      "kind": "phrase",
-      "theme": null,
-      "en": "addict",
-      "de": [
-        "Abhängiger",
-        "Süchtige/r"
-      ],
-      "deRaw": "Abhängiger, Süchtige/r",
-      "exampleSb": "Look at all the science-fiction addicts waiting outside the cinema! They want to see the new Star Wars movie.",
-      "cf": null,
-      "forms": [
-        "addict"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.addiction",
-      "kind": "phrase",
-      "theme": null,
-      "en": "addiction",
-      "de": [
-        "Sucht"
-      ],
-      "deRaw": "Sucht",
-      "exampleSb": "He spends all his time in front of the computer. He has an addiction.",
-      "cf": null,
-      "forms": [
-        "addiction"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.command",
-      "kind": "phrase",
-      "theme": null,
-      "en": "command",
-      "de": [
-        "Befehl"
-      ],
-      "deRaw": "Befehl",
-      "exampleSb": "I gave her the command to stay at home.",
-      "cf": null,
-      "forms": [
-        "command"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.go-crazy",
-      "kind": "phrase",
-      "theme": null,
-      "en": "go crazy",
-      "de": [
-        "verrückt werden",
-        "durchdrehen"
-      ],
-      "deRaw": "verrückt werden, durchdrehen",
-      "exampleSb": "I must be going crazy. I can't find my car keys anywhere.",
-      "cf": null,
-      "forms": [
-        "go crazy"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.miss-out-on-sth",
-      "kind": "phrase",
-      "theme": null,
-      "en": "miss out on sth",
-      "de": [
-        "etw. verpassen"
-      ],
-      "deRaw": "etw. verpassen",
-      "exampleSb": "Of course I'm coming. I don't want to miss out on all the fun!",
-      "cf": null,
-      "forms": [
-        "miss out on sth"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.pale",
-      "kind": "phrase",
-      "theme": null,
-      "en": "pale",
-      "de": [
-        "blass"
-      ],
-      "deRaw": "blass",
-      "exampleSb": "Are you really OK? You look pale.",
-      "cf": null,
-      "forms": [
-        "pale"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.turn-up",
-      "kind": "phrase",
-      "theme": null,
-      "en": "turn up",
-      "de": [
-        "auftauchen"
-      ],
-      "deRaw": "auftauchen",
-      "exampleSb": "When do you think our guests will turn up?",
-      "cf": null,
-      "forms": [
-        "turn up"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.whisper",
-      "kind": "phrase",
-      "theme": null,
-      "en": "whisper",
-      "de": [
-        "flüstern"
-      ],
-      "deRaw": "flüstern",
-      "exampleSb": "He whispered in my ear to tell me the secret.",
-      "cf": null,
-      "forms": [
-        "whisper"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.sheet",
-      "kind": "phrase",
-      "theme": null,
-      "en": "sheet",
-      "de": [
-        "Blatt"
-      ],
-      "deRaw": "Blatt",
-      "exampleSb": "Write this down on a sheet of paper.",
-      "cf": null,
-      "forms": [
-        "sheet"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.confuse-sb",
-      "kind": "phrase",
-      "theme": null,
-      "en": "confuse sb",
-      "de": [
-        "verwirren"
-      ],
-      "deRaw": "verwirren",
-      "exampleSb": "His comments only confused me even more.",
-      "cf": null,
-      "forms": [
-        "confuse sb"
-      ],
-      "taughtGloss": false
-    },
-    {
-      "id": "g4u09.w.kitschy",
-      "kind": "phrase",
-      "theme": null,
-      "en": "kitschy",
-      "de": [
-        "kitschig"
-      ],
-      "deRaw": "kitschig",
-      "exampleSb": "The restaurant is decorated with kitschy furniture from the 1950s.",
-      "cf": null,
-      "forms": [
-        "kitschy"
       ],
       "taughtGloss": false
     }

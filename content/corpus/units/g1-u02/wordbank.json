@@ -405,7 +405,7 @@
       "de": [
         "bei",
         "an",
-        "hier: in"
+        "in"
       ],
       "deRaw": "bei; an; hier: in",
       "exampleSb": "The children are at the zoo.",
@@ -571,7 +571,7 @@
         "Ticket"
       ],
       "deRaw": "Eintrittskarte; Ticket",
-      "exampleSb": "Adults tickets are €14.40.",
+      "exampleSb": "Adult tickets are €14.40.",
       "cf": null,
       "forms": [
         "ticket"

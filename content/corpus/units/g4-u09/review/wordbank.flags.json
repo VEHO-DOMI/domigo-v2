@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g4-u09",
+  "round": 1,
+  "bankHash": "7b87ba493528",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Counterpart of the u08 phrase-table swap (see g4-u08 note): 'Body talk' phrases + 'A Wedding' Word File now correctly united under unit 9. All 27 round-1 flags dissolved (tracing + v1 parity align). Lens A: verbatim."
+  }
+}

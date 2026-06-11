@@ -2,44 +2,253 @@
   "schema": "ids-lock@1",
   "slug": "g4-u08",
   "words": {
-    "phrase:border": "g4u08.w.border",
-    "phrase:communicate": "g4u08.w.communicate",
-    "phrase:fashionable": "g4u08.w.fashionable",
-    "phrase:firstly": "g4u08.w.firstly",
-    "phrase:funeral": "g4u08.w.funeral",
-    "phrase:health risk": "g4u08.w.health-risk",
-    "phrase:in common": "g4u08.w.in-common",
-    "phrase:needle": "g4u08.w.needle",
-    "phrase:permanent": "g4u08.w.permanent",
-    "phrase:pierced": "g4u08.w.pierced",
-    "phrase:rebellious": "g4u08.w.rebellious",
-    "phrase:religious": "g4u08.w.religious",
-    "phrase:ceremony": "g4u08.w.ceremony",
-    "phrase:bury": "g4u08.w.bury",
-    "phrase:devil": "g4u08.w.devil",
-    "phrase:confused": "g4u08.w.confused",
-    "phrase:far east": "g4u08.w.far-east",
-    "phrase:gesture": "g4u08.w.gesture",
-    "phrase:greet": "g4u08.w.greet",
-    "phrase:index finger": "g4u08.w.index-finger",
-    "phrase:insult": "g4u08.w.insult",
-    "phrase:nod the head": "g4u08.w.nod-the-head",
-    "phrase:palm": "g4u08.w.palm",
-    "phrase:pass something on": "g4u08.w.pass-something-on",
-    "phrase:thumb": "g4u08.w.thumb",
-    "phrase:victory": "g4u08.w.victory",
-    "phrase:zero": "g4u08.w.zero",
-    "phrase:decent-looking": "g4u08.w.decent-looking",
-    "phrase:embarrassed": "g4u08.w.embarrassed",
-    "phrase:giggle": "g4u08.w.giggle",
-    "phrase:goth": "g4u08.w.goth",
-    "phrase:hastily": "g4u08.w.hastily",
-    "phrase:ignore": "g4u08.w.ignore",
-    "phrase:sigh": "g4u08.w.sigh",
-    "phrase:sitting room": "g4u08.w.sitting-room",
-    "phrase:scare off": "g4u08.w.scare-off",
-    "phrase:sleeve": "g4u08.w.sleeve",
-    "phrase:possibility": "g4u08.w.possibility"
+    "phrase:black market": "g4u08.w.black-market",
+    "phrase:collect": "g4u08.w.collect",
+    "phrase:collection": "g4u08.w.collection",
+    "phrase:fascination": "g4u08.w.fascination",
+    "phrase:rare": "g4u08.w.rare",
+    "phrase:auction": "g4u08.w.auction",
+    "phrase:burn to the ground": "g4u08.w.burn-to-the-ground",
+    "phrase:copy": "g4u08.w.copy",
+    "phrase:execute": "g4u08.w.execute",
+    "phrase:furious": "g4u08.w.furious",
+    "phrase:judge": "g4u08.w.judge",
+    "phrase:librarian": "g4u08.w.librarian",
+    "phrase:library": "g4u08.w.library",
+    "phrase:monastery": "g4u08.w.monastery",
+    "phrase:monk": "g4u08.w.monk",
+    "phrase:precious": "g4u08.w.precious",
+    "phrase:preserve": "g4u08.w.preserve",
+    "phrase:rob": "g4u08.w.rob",
+    "phrase:sentence to death": "g4u08.w.sentence-to-death",
+    "phrase:shorten": "g4u08.w.shorten",
+    "phrase:addict": "g4u08.w.addict",
+    "phrase:addiction": "g4u08.w.addiction",
+    "phrase:command": "g4u08.w.command",
+    "phrase:go crazy": "g4u08.w.go-crazy",
+    "phrase:miss out on sth": "g4u08.w.miss-out-on-sth",
+    "phrase:pale": "g4u08.w.pale",
+    "phrase:turn up": "g4u08.w.turn-up",
+    "phrase:whisper": "g4u08.w.whisper",
+    "phrase:sheet": "g4u08.w.sheet",
+    "phrase:confuse sb": "g4u08.w.confuse-sb",
+    "phrase:kitschy": "g4u08.w.kitschy"
   },
-  "tombstones": []
+  "tombstones": [
+    {
+      "id": "g4u08.w.border",
+      "key": "phrase:border",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.communicate",
+      "key": "phrase:communicate",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.fashionable",
+      "key": "phrase:fashionable",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.firstly",
+      "key": "phrase:firstly",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.funeral",
+      "key": "phrase:funeral",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.health-risk",
+      "key": "phrase:health risk",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.in-common",
+      "key": "phrase:in common",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.needle",
+      "key": "phrase:needle",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.permanent",
+      "key": "phrase:permanent",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.pierced",
+      "key": "phrase:pierced",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.rebellious",
+      "key": "phrase:rebellious",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.religious",
+      "key": "phrase:religious",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.ceremony",
+      "key": "phrase:ceremony",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.bury",
+      "key": "phrase:bury",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.devil",
+      "key": "phrase:devil",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.confused",
+      "key": "phrase:confused",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.far-east",
+      "key": "phrase:far east",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.gesture",
+      "key": "phrase:gesture",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.greet",
+      "key": "phrase:greet",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.index-finger",
+      "key": "phrase:index finger",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.insult",
+      "key": "phrase:insult",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.nod-the-head",
+      "key": "phrase:nod the head",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.palm",
+      "key": "phrase:palm",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.pass-something-on",
+      "key": "phrase:pass something on",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.thumb",
+      "key": "phrase:thumb",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.victory",
+      "key": "phrase:victory",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.zero",
+      "key": "phrase:zero",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.decent-looking",
+      "key": "phrase:decent-looking",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.embarrassed",
+      "key": "phrase:embarrassed",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.giggle",
+      "key": "phrase:giggle",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.goth",
+      "key": "phrase:goth",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.hastily",
+      "key": "phrase:hastily",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.ignore",
+      "key": "phrase:ignore",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.sigh",
+      "key": "phrase:sigh",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.sitting-room",
+      "key": "phrase:sitting room",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.scare-off",
+      "key": "phrase:scare off",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.sleeve",
+      "key": "phrase:sleeve",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.possibility",
+      "key": "phrase:possibility",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.wedding-dress",
+      "key": "wordfile:wedding dress",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.wedding-suit",
+      "key": "wordfile:wedding suit",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.bride",
+      "key": "wordfile:bride",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.bridegroom",
+      "key": "wordfile:bridegroom",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u08.w.bridesmaid",
+      "key": "wordfile:bridesmaid",
+      "removedWith": "f28dd62d3120"
+    }
+  ]
 }
