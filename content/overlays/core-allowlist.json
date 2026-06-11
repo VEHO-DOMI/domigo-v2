@@ -1,0 +1,681 @@
+{
+  "schema": "core-allowlist@1",
+  "reviewedBy": "fable",
+  "tokens": [
+    {
+      "token": "a",
+      "category": "article",
+      "note": null
+    },
+    {
+      "token": "an",
+      "category": "article",
+      "note": null
+    },
+    {
+      "token": "the",
+      "category": "article",
+      "note": null
+    },
+    {
+      "token": "i",
+      "category": "pronoun-subject",
+      "note": null
+    },
+    {
+      "token": "you",
+      "category": "pronoun-subject",
+      "note": null
+    },
+    {
+      "token": "he",
+      "category": "pronoun-subject",
+      "note": null
+    },
+    {
+      "token": "she",
+      "category": "pronoun-subject",
+      "note": null
+    },
+    {
+      "token": "it",
+      "category": "pronoun-subject",
+      "note": null
+    },
+    {
+      "token": "we",
+      "category": "pronoun-subject",
+      "note": null
+    },
+    {
+      "token": "they",
+      "category": "pronoun-subject",
+      "note": null
+    },
+    {
+      "token": "me",
+      "category": "pronoun-object",
+      "note": null
+    },
+    {
+      "token": "him",
+      "category": "pronoun-object",
+      "note": null
+    },
+    {
+      "token": "her",
+      "category": "pronoun-object",
+      "note": null
+    },
+    {
+      "token": "us",
+      "category": "pronoun-object",
+      "note": null
+    },
+    {
+      "token": "them",
+      "category": "pronoun-object",
+      "note": null
+    },
+    {
+      "token": "my",
+      "category": "possessive",
+      "note": null
+    },
+    {
+      "token": "your",
+      "category": "possessive",
+      "note": null
+    },
+    {
+      "token": "his",
+      "category": "possessive",
+      "note": null
+    },
+    {
+      "token": "its",
+      "category": "possessive",
+      "note": null
+    },
+    {
+      "token": "our",
+      "category": "possessive",
+      "note": null
+    },
+    {
+      "token": "their",
+      "category": "possessive",
+      "note": null
+    },
+    {
+      "token": "this",
+      "category": "demonstrative",
+      "note": null
+    },
+    {
+      "token": "that",
+      "category": "demonstrative",
+      "note": null
+    },
+    {
+      "token": "these",
+      "category": "demonstrative",
+      "note": null
+    },
+    {
+      "token": "those",
+      "category": "demonstrative",
+      "note": null
+    },
+    {
+      "token": "who",
+      "category": "question",
+      "note": null
+    },
+    {
+      "token": "what",
+      "category": "question",
+      "note": null
+    },
+    {
+      "token": "which",
+      "category": "question",
+      "note": null
+    },
+    {
+      "token": "when",
+      "category": "question",
+      "note": null
+    },
+    {
+      "token": "where",
+      "category": "question",
+      "note": null
+    },
+    {
+      "token": "why",
+      "category": "question",
+      "note": null
+    },
+    {
+      "token": "how",
+      "category": "question",
+      "note": null
+    },
+    {
+      "token": "be",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "am",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "is",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "are",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "was",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "were",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "isn't",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "aren't",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "wasn't",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "weren't",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "i'm",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "you're",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "he's",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "she's",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "it's",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "we're",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "they're",
+      "category": "be",
+      "note": null
+    },
+    {
+      "token": "do",
+      "category": "do",
+      "note": null
+    },
+    {
+      "token": "does",
+      "category": "do",
+      "note": null
+    },
+    {
+      "token": "did",
+      "category": "do",
+      "note": null
+    },
+    {
+      "token": "done",
+      "category": "do",
+      "note": null
+    },
+    {
+      "token": "doing",
+      "category": "do",
+      "note": null
+    },
+    {
+      "token": "don't",
+      "category": "do",
+      "note": null
+    },
+    {
+      "token": "doesn't",
+      "category": "do",
+      "note": null
+    },
+    {
+      "token": "didn't",
+      "category": "do",
+      "note": null
+    },
+    {
+      "token": "have",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "has",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "had",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "having",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "haven't",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "hasn't",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "i've",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "you've",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "we've",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "they've",
+      "category": "have",
+      "note": null
+    },
+    {
+      "token": "can",
+      "category": "modal",
+      "note": null
+    },
+    {
+      "token": "can't",
+      "category": "modal",
+      "note": null
+    },
+    {
+      "token": "cannot",
+      "category": "modal",
+      "note": null
+    },
+    {
+      "token": "let's",
+      "category": "modal",
+      "note": null
+    },
+    {
+      "token": "and",
+      "category": "conjunction",
+      "note": null
+    },
+    {
+      "token": "or",
+      "category": "conjunction",
+      "note": null
+    },
+    {
+      "token": "but",
+      "category": "conjunction",
+      "note": null
+    },
+    {
+      "token": "because",
+      "category": "conjunction",
+      "note": null
+    },
+    {
+      "token": "so",
+      "category": "conjunction",
+      "note": null
+    },
+    {
+      "token": "if",
+      "category": "conjunction",
+      "note": null
+    },
+    {
+      "token": "than",
+      "category": "conjunction",
+      "note": null
+    },
+    {
+      "token": "then",
+      "category": "conjunction",
+      "note": null
+    },
+    {
+      "token": "in",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "on",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "at",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "to",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "of",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "for",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "with",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "from",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "up",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "down",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "about",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "into",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "out",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "over",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "under",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "after",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "before",
+      "category": "preposition",
+      "note": null
+    },
+    {
+      "token": "not",
+      "category": "polarity",
+      "note": null
+    },
+    {
+      "token": "no",
+      "category": "polarity",
+      "note": null
+    },
+    {
+      "token": "yes",
+      "category": "polarity",
+      "note": null
+    },
+    {
+      "token": "n't",
+      "category": "polarity",
+      "note": null
+    },
+    {
+      "token": "some",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "any",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "all",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "both",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "many",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "much",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "more",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "most",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "one",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "two",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "three",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "four",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "five",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "six",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "seven",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "eight",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "nine",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "ten",
+      "category": "quantifier",
+      "note": null
+    },
+    {
+      "token": "here",
+      "category": "adverb-core",
+      "note": null
+    },
+    {
+      "token": "there",
+      "category": "adverb-core",
+      "note": null
+    },
+    {
+      "token": "now",
+      "category": "adverb-core",
+      "note": null
+    },
+    {
+      "token": "today",
+      "category": "adverb-core",
+      "note": null
+    },
+    {
+      "token": "very",
+      "category": "adverb-core",
+      "note": null
+    },
+    {
+      "token": "too",
+      "category": "adverb-core",
+      "note": null
+    },
+    {
+      "token": "also",
+      "category": "adverb-core",
+      "note": null
+    },
+    {
+      "token": "there's",
+      "category": "adverb-core",
+      "note": null
+    },
+    {
+      "token": "please",
+      "category": "courtesy",
+      "note": null
+    },
+    {
+      "token": "sorry",
+      "category": "courtesy",
+      "note": null
+    },
+    {
+      "token": "ok",
+      "category": "courtesy",
+      "note": null
+    },
+    {
+      "token": "hello",
+      "category": "courtesy",
+      "note": null
+    },
+    {
+      "token": "hi",
+      "category": "courtesy",
+      "note": null
+    },
+    {
+      "token": "bye",
+      "category": "courtesy",
+      "note": null
+    },
+    {
+      "token": "goodbye",
+      "category": "courtesy",
+      "note": null
+    },
+    {
+      "token": "thanks",
+      "category": "courtesy",
+      "note": null
+    },
+    {
+      "token": "thank",
+      "category": "courtesy",
+      "note": null
+    }
+  ]
+}
