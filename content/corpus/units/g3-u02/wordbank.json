@@ -542,7 +542,8 @@
       "forms": [
         "to queue",
         "queue",
-        "up"
+        "to queue up",
+        "queue up"
       ],
       "taughtGloss": false
     },
@@ -609,7 +610,8 @@
       "forms": [
         "to achieve",
         "achieve",
-        "a goal"
+        "to achieve a goal",
+        "achieve a goal"
       ],
       "taughtGloss": false
     },

@@ -18,6 +18,7 @@ import type { DocxBlock } from "./docx.ts";
 import { parseDocxBlocks } from "./docx.ts";
 import { readJsonIfExists, sha256OfFile, sha256OfString, writeJson } from "./json.ts";
 import { GRADE_SOURCES, OVERLAYS_DIR, UNITS_DIR } from "./paths.ts";
+import { recordState } from "./state.ts";
 
 /** Self-declared totals as analysed at kickoff (2026-06-10). The parser also
  *  reads the declaration out of each docx; disagreement = hard error. */
@@ -28,7 +29,7 @@ const EXPECTED: Record<Grade, { total: number; wordfile: number; phrase: number 
   4: { total: 450, wordfile: 48, phrase: 402 },
 };
 
-interface RawEntry {
+export interface RawEntry {
   kind: "wordfile" | "phrase";
   theme: string | null;
   en: string;
@@ -176,17 +177,38 @@ function slugify(s: string): string {
   return slug.length > 0 ? slug : "entry";
 }
 
-function splitDe(deRaw: string): string[] {
+/** Split on ", " only at parenthesis depth 0 — "besuchen (Universität, Veranstaltung)" stays whole. */
+function splitTopLevelCommas(s: string): string[] {
+  const parts: string[] = [];
+  let depth = 0;
+  let cur = "";
+  for (let i = 0; i < s.length; i += 1) {
+    const ch = s[i] as string;
+    if (ch === "(") depth += 1;
+    else if (ch === ")") depth = Math.max(0, depth - 1);
+    if (ch === "," && depth === 0 && s[i + 1] === " ") {
+      parts.push(cur);
+      cur = "";
+      i += 1; // swallow the space
+      continue;
+    }
+    cur += ch;
+  }
+  parts.push(cur);
+  return parts;
+}
+
+export function splitDe(deRaw: string): string[] {
   const parts = deRaw
     .split(/\n|;/)
-    .flatMap((p) => p.split(/,\s+/))
+    .flatMap((p) => splitTopLevelCommas(p))
     .map((p) => clean(p))
     .filter((p) => p.length > 0);
   const unique = [...new Set(parts)];
   return unique.length > 0 ? unique : [clean(deRaw)];
 }
 
-function shapeEntry(raw: RawEntry, id: string): WordBankEntry {
+export function shapeEntry(raw: RawEntry, id: string): WordBankEntry {
   const parens = [...raw.en.matchAll(/\(([^)]+)\)/g)].map((m) => clean(m[1] ?? ""));
   const enClean = clean(raw.en.replace(/\([^)]*\)/g, " "));
   const cfMatch = /^to\s+(.+)$/.exec(enClean);
@@ -196,9 +218,22 @@ function shapeEntry(raw: RawEntry, id: string): WordBankEntry {
   if (enClean.length > 0) forms.add(enClean);
   if (cf !== null) forms.add(cf);
   for (const p of parens) {
+    if (p.length === 0 || /^[=≈]/.test(p)) continue;
     const pl = /^pl\.?\s+(.+)$/i.exec(p);
-    if (pl?.[1] !== undefined) forms.add(clean(pl[1]));
-    else if (p.length > 0 && p.length <= 24 && !/^[=≈]/.test(p)) forms.add(p);
+    if (pl?.[1] !== undefined) {
+      forms.add(clean(pl[1]));
+      continue;
+    }
+    if (/^[a-zäöüß]+(?:[ ,][a-zäöüß]+)*$/.test(p)) {
+      // Lowercase particle(s): "to be proud (of)" → "be proud of". NEVER add
+      // the bare particle — it would credit "of" as taught to the level gate.
+      const bases = [enClean, cf].filter((b): b is string => b !== null && b.length > 0);
+      for (const alt of p.split(/,\s*/)) {
+        for (const base of bases) forms.add(clean(`${base} ${alt}`));
+      }
+      continue;
+    }
+    if (p.length <= 24) forms.add(p); // abbreviation / alternate label, e.g. "PE"
   }
   if (forms.size === 0) forms.add(clean(raw.en));
 
@@ -265,7 +300,7 @@ function assignIds(
   return { ids, lockChanged };
 }
 
-interface ParseFixes {
+export interface ParseFixes {
   [unitSlug: string]: {
     drop?: string[];
     patch?: Record<string, Partial<WordBankEntry>>;
@@ -273,7 +308,7 @@ interface ParseFixes {
   };
 }
 
-function applyOverlays(slug: string, entries: WordBankEntry[]): WordBankEntry[] {
+export function applyOverlays(slug: string, entries: WordBankEntry[]): WordBankEntry[] {
   const fixes = readJsonIfExists<ParseFixes>(path.join(OVERLAYS_DIR, "parse-fixes.json"));
   const unitFixes = fixes?.[slug];
   if (unitFixes === undefined) return entries;
@@ -293,36 +328,9 @@ function applyOverlays(slug: string, entries: WordBankEntry[]): WordBankEntry[] 
   return out;
 }
 
-interface StateLogFile {
-  schema: "unit-state@1";
-  slug: string;
-  transitions: Array<{ state: string; at: string; by: string; contentHash: string | null; note: string | null }>;
-}
-
-function recordState(unitDir: string, slug: string, contentHash: string): void {
-  const statePath = path.join(unitDir, "state.json");
-  const existing = readJsonIfExists<StateLogFile>(statePath);
-  if (existing === null) {
-    writeJson(statePath, {
-      schema: "unit-state@1",
-      slug,
-      transitions: [
-        { state: "extracted", at: new Date().toISOString(), by: "pipeline", contentHash: null, note: "master list parsed" },
-        { state: "wordbank_draft", at: new Date().toISOString(), by: "pipeline", contentHash, note: null },
-      ],
-    } satisfies StateLogFile);
-    return;
-  }
-  const last = existing.transitions[existing.transitions.length - 1];
-  if (last !== undefined && last.contentHash === contentHash) return; // unchanged → byte-stable
-  existing.transitions.push({
-    state: "wordbank_draft",
-    at: new Date().toISOString(),
-    by: "pipeline",
-    contentHash,
-    note: last?.state === "wordbank_draft" ? "re-parse changed content" : "re-parse after later state — review impact",
-  });
-  writeJson(statePath, existing);
+/** Canonical content hash of a unit's entries (state log + approval gating). */
+export function entriesContentHash(entries: WordBankEntry[]): string {
+  return sha256OfString(JSON.stringify(entries));
 }
 
 // ---------------------------------------------------------------------------
@@ -402,7 +410,7 @@ export function runWordbank(onlyGrade?: Grade): void {
         entries,
       });
       writeJson(path.join(unitDir, "wordbank.json"), bank);
-      recordState(unitDir, slug, sha256OfString(JSON.stringify(entries)));
+      recordState(unitDir, slug, entriesContentHash(entries));
     }
   }
 

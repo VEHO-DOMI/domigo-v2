@@ -25,7 +25,8 @@
       "forms": [
         "to get to",
         "get to",
-        "the airport"
+        "to get to the airport",
+        "get to the airport"
       ],
       "taughtGloss": false
     },
@@ -61,7 +62,8 @@
       "forms": [
         "to get on",
         "get on",
-        "a plane"
+        "to get on a plane",
+        "get on a plane"
       ],
       "taughtGloss": false
     },
@@ -79,7 +81,8 @@
       "forms": [
         "to fly",
         "fly",
-        "back"
+        "to fly back",
+        "fly back"
       ],
       "taughtGloss": false
     },
@@ -97,7 +100,8 @@
       "forms": [
         "to get off",
         "get off",
-        "the plane"
+        "to get off the plane",
+        "get off the plane"
       ],
       "taughtGloss": false
     },
@@ -148,7 +152,7 @@
       "cf": null,
       "forms": [
         "it takes",
-        "an hour"
+        "it takes an hour"
       ],
       "taughtGloss": false
     },
@@ -166,7 +170,8 @@
       "forms": [
         "to get into",
         "get into",
-        "a car"
+        "to get into a car",
+        "get into a car"
       ],
       "taughtGloss": false
     },
@@ -184,7 +189,8 @@
       "forms": [
         "to rent",
         "rent",
-        "a car"
+        "to rent a car",
+        "rent a car"
       ],
       "taughtGloss": false
     },
@@ -202,7 +208,8 @@
       "forms": [
         "to get out of",
         "get out of",
-        "the car"
+        "to get out of the car",
+        "get out of the car"
       ],
       "taughtGloss": false
     },
@@ -220,7 +227,8 @@
       "forms": [
         "to drive",
         "drive",
-        "home"
+        "to drive home",
+        "drive home"
       ],
       "taughtGloss": false
     },
@@ -238,7 +246,8 @@
       "forms": [
         "to set off",
         "set off",
-        "for work"
+        "to set off for work",
+        "set off for work"
       ],
       "taughtGloss": false
     },
@@ -256,7 +265,8 @@
       "forms": [
         "to work on",
         "work on",
-        "a blog"
+        "to work on a blog",
+        "work on a blog"
       ],
       "taughtGloss": false
     },
@@ -274,7 +284,8 @@
       "forms": [
         "to get close to",
         "get close to",
-        "nature"
+        "to get close to nature",
+        "get close to nature"
       ],
       "taughtGloss": false
     },
@@ -309,7 +320,8 @@
       "forms": [
         "to escape",
         "escape",
-        "the midday heat"
+        "to escape the midday heat",
+        "escape the midday heat"
       ],
       "taughtGloss": false
     },
@@ -327,7 +339,8 @@
       "forms": [
         "to cross",
         "cross",
-        "a river"
+        "to cross a river",
+        "cross a river"
       ],
       "taughtGloss": false
     },
@@ -345,7 +358,8 @@
       "forms": [
         "to meet up with",
         "meet up with",
-        "people"
+        "to meet up with people",
+        "meet up with people"
       ],
       "taughtGloss": false
     },

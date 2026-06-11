@@ -1,0 +1,715 @@
+{
+  "slug": "unit-02",
+  "grade": 3,
+  "unit": 2,
+  "title": "Unit 2",
+  "entries": [
+    {
+      "w": "to buy sth.",
+      "g": "etw. kaufen",
+      "d": "To get something by paying money for it",
+      "s": "I want to _____ a special present for my friend's birthday party on Saturday at the toy shop.",
+      "cf": "buy",
+      "a": [
+        "buy",
+        "bought"
+      ],
+      "mc": [
+        "to sell sth.",
+        "to give away sth.",
+        "to throw away sth."
+      ]
+    },
+    {
+      "w": "to listen to music",
+      "g": "Musik hören",
+      "d": "To enjoy songs or melodies through your ears",
+      "s": "He always puts on his wireless headphones to _____ on the long bus ride to school every morning.",
+      "cf": "listen to music",
+      "a": [
+        "listen to music",
+        "listens to music",
+        "listening to music"
+      ],
+      "mc": [
+        "to play music",
+        "to compose music",
+        "to record music"
+      ]
+    },
+    {
+      "w": "to try on sunglasses",
+      "g": "Sonnenbrillen anprobieren",
+      "d": "To put on a pair to see if they look good on you",
+      "s": "She _____ five different pairs of sunglasses in front of the mirror in the shop to see which looked best on her face.",
+      "cf": "tried on",
+      "a": [
+        "try on sunglasses",
+        "tried on sunglasses"
+      ],
+      "mc": [
+        "to buy sunglasses",
+        "to design sunglasses",
+        "to break sunglasses"
+      ]
+    },
+    {
+      "w": "to pay the bill",
+      "g": "die Rechnung bezahlen",
+      "d": "To give money for what you owe",
+      "s": "After a delicious dinner at the restaurant, my dad _____ at the cash desk with his credit card.",
+      "cf": "paid the bill",
+      "a": [
+        "pay the bill",
+        "paid the bill"
+      ],
+      "mc": [
+        "to cook the dinner",
+        "to serve the food",
+        "to prepare the table"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BILL?",
+          "options": [
+            "pay",
+            "split",
+            "electricity",
+            "bake"
+          ],
+          "answer": "bake"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ the bill",
+          "options": [
+            "Pay",
+            "Cook",
+            "Wash",
+            "Build"
+          ],
+          "answer": "Pay"
+        }
+      ]
+    },
+    {
+      "w": "to drink/eat sth.",
+      "g": "etw. trinken/essen",
+      "d": "To have food or a drink",
+      "s": "Would you like to _____ something hot or cold at the café — a coffee, a tea, or a slice of cake?",
+      "cf": "drink",
+      "a": [
+        "drink",
+        "eat",
+        "drank",
+        "ate"
+      ],
+      "mc": [
+        "to make sth.",
+        "to sell sth.",
+        "to grow sth."
+      ]
+    },
+    {
+      "w": "to look at sth.",
+      "g": "etw. ansehen",
+      "d": "To turn your eyes to see something",
+      "s": "We _____ the beautiful photos from our holiday on my phone together last night after dinner.",
+      "cf": "looked at",
+      "a": [
+        "look at",
+        "looked at"
+      ],
+      "mc": [
+        "to look for sth.",
+        "to look after sth.",
+        "to look down on sth."
+      ]
+    },
+    {
+      "w": "to talk on the mobile",
+      "g": "am Handy telefonieren",
+      "d": "To have a conversation on your phone",
+      "s": "Please don't _____ during class with your phone — put it away now and focus on the lesson.",
+      "cf": "talk on the mobile",
+      "a": [
+        "talk on the mobile",
+        "talking on the mobile"
+      ],
+      "mc": [
+        "to text on the mobile",
+        "to read on the mobile",
+        "to play on the mobile"
+      ]
+    },
+    {
+      "w": "coincidence",
+      "g": "Zufall",
+      "d": "When two things happen at the same time by chance",
+      "s": "We wore exactly the same red dress to the party — what a _____! Neither of us knew in advance.",
+      "a": [
+        "coincidences"
+      ],
+      "mc": [
+        "plan",
+        "rehearsal",
+        "agreement"
+      ]
+    },
+    {
+      "w": "married",
+      "g": "verheiratet",
+      "d": "Having a husband or wife",
+      "s": "My aunt and uncle got _____ last summer in a beautiful garden ceremony with 100 guests.",
+      "a": [],
+      "mc": [
+        "divorced",
+        "separated",
+        "single"
+      ]
+    },
+    {
+      "w": "similar",
+      "g": "ähnlich",
+      "d": "Almost the same but not exactly",
+      "s": "Your new red handbag and mine are very _____. They are both the same size and colour.",
+      "a": [],
+      "mc": [
+        "different",
+        "opposite",
+        "nothing alike"
+      ]
+    },
+    {
+      "w": "to return",
+      "g": "zurückgeben; zurückkehren",
+      "d": "To go back to a place, or to give something back",
+      "s": "Please _____ the library book about dinosaurs before Friday, or you will have to pay a late fee.",
+      "a": [
+        "return",
+        "returned"
+      ],
+      "mc": [
+        "to keep",
+        "to take",
+        "to find"
+      ]
+    },
+    {
+      "w": "What a ...!",
+      "g": "Was für ein/e ...!",
+      "d": "An expression to show surprise or a strong feeling",
+      "s": "_____ beautiful sunny day outside with blue sky and warm temperatures! Let's go to the park!",
+      "cf": "What a",
+      "a": [
+        "What a"
+      ],
+      "mc": [
+        "What ...",
+        "Such a ...",
+        "Very ..."
+      ]
+    },
+    {
+      "w": "author",
+      "g": "Autor/Autorin",
+      "d": "A person who writes books or stories",
+      "s": "This famous children's book _____ has written more than twenty adventure novels for young readers aged 10-14.",
+      "a": [
+        "authors"
+      ],
+      "mc": [
+        "reader",
+        "librarian",
+        "printer"
+      ]
+    },
+    {
+      "w": "member",
+      "g": "Mitglied",
+      "d": "A person who belongs to a group or club",
+      "s": "Every _____ of our football club got a gold medal and certificate at the end-of-season party last Friday.",
+      "a": [
+        "members"
+      ],
+      "mc": [
+        "visitor",
+        "fan",
+        "coach"
+      ]
+    },
+    {
+      "w": "passenger",
+      "g": "Passagier/Passagierin",
+      "d": "A person who travels in a bus, train, car or plane",
+      "s": "Every _____ on the aeroplane had to fasten their seatbelt tightly before take-off from Vienna airport.",
+      "a": [
+        "passengers"
+      ],
+      "mc": [
+        "pilot",
+        "air steward",
+        "mechanic"
+      ]
+    },
+    {
+      "w": "to sink",
+      "g": "sinken",
+      "d": "To go down below the surface of water",
+      "s": "The small toy wooden boat started to _____ slowly to the bottom of the swimming pool with water inside it.",
+      "cf": "sink",
+      "a": [
+        "sink",
+        "sank",
+        "sunk"
+      ],
+      "mc": [
+        "to float",
+        "to swim",
+        "to jump"
+      ]
+    },
+    {
+      "w": "to survive",
+      "g": "überleben",
+      "d": "To stay alive after something dangerous",
+      "s": "The cat fell from the tall tree but _____ the fall without any serious injuries — it landed on its feet.",
+      "cf": "survived",
+      "a": [
+        "survive",
+        "survived"
+      ],
+      "mc": [
+        "to die",
+        "to disappear",
+        "to faint"
+      ]
+    },
+    {
+      "w": "careless",
+      "g": "unvorsichtig, leichtsinnig",
+      "d": "Not thinking enough about what you do",
+      "s": "He was _____ with his new phone and dropped it on the hard concrete ground because he wasn't paying attention.",
+      "a": [],
+      "mc": [
+        "careful",
+        "cautious",
+        "attentive"
+      ]
+    },
+    {
+      "w": "handbag",
+      "g": "Handtasche",
+      "d": "A small bag for carrying personal things",
+      "s": "She put her keys, wallet, phone, and lipstick neatly in her small leather _____ before leaving the house.",
+      "a": [
+        "handbags"
+      ],
+      "mc": [
+        "school bag",
+        "suitcase",
+        "backpack"
+      ]
+    },
+    {
+      "w": "I beg your pardon.",
+      "g": "Entschuldigung, Verzeihen Sie bitte.",
+      "d": "A polite way to say sorry or to ask someone to repeat something",
+      "s": "_____. I didn't quite hear what you said. Could you please repeat that a bit louder?",
+      "cf": "I beg your pardon",
+      "a": [
+        "I beg your pardon"
+      ],
+      "mc": [
+        "Goodbye.",
+        "Thank you.",
+        "You're welcome."
+      ]
+    },
+    {
+      "w": "to steal",
+      "g": "stehlen",
+      "d": "To take something that is not yours",
+      "s": "Someone _____ my expensive red bicycle from the school yard last week without permission, and I never got it back.",
+      "cf": "stole",
+      "a": [
+        "steal",
+        "stole",
+        "stolen"
+      ],
+      "mc": [
+        "to borrow",
+        "to fix",
+        "to paint"
+      ]
+    },
+    {
+      "w": "thief (pl thieves)",
+      "g": "Dieb/Diebin",
+      "d": "A person who steals things",
+      "s": "The police finally caught the _____ who took the old woman's handbag at the train station last Tuesday.",
+      "cf": "thief",
+      "a": [
+        "thief",
+        "thieves"
+      ],
+      "mc": [
+        "victim",
+        "witness",
+        "police officer"
+      ]
+    },
+    {
+      "w": "North Pole",
+      "g": "Nordpol",
+      "d": "The very top point of the Earth",
+      "s": "It is extremely cold at the _____ where polar bears live on the ice in the far north of Earth.",
+      "cf": "North Pole",
+      "a": [
+        "North Pole"
+      ],
+      "mc": [
+        "equator",
+        "beach",
+        "desert"
+      ]
+    },
+    {
+      "w": "South Pole",
+      "g": "Südpol",
+      "d": "The very bottom point of the Earth",
+      "s": "Penguins live near the _____ in the icy cold south of Earth where it snows almost every day of the year.",
+      "cf": "South Pole",
+      "a": [
+        "South Pole"
+      ],
+      "mc": [
+        "North Pole",
+        "equator",
+        "desert"
+      ]
+    },
+    {
+      "w": "awful",
+      "g": "furchtbar, schrecklich, scheußlich",
+      "d": "Very bad or unpleasant",
+      "s": "The weather last Saturday was absolutely _____ — it rained heavily all day and we couldn't go outside at all.",
+      "a": [],
+      "mc": [
+        "wonderful",
+        "perfect",
+        "lovely"
+      ]
+    },
+    {
+      "w": "entrance",
+      "g": "Eingang",
+      "d": "The door or opening where you go into a place",
+      "s": "We'll meet at the main _____ of the big shopping centre at three o'clock in the afternoon near the big fountain.",
+      "a": [
+        "entrances"
+      ],
+      "mc": [
+        "exit",
+        "car park",
+        "roof"
+      ]
+    },
+    {
+      "w": "to hand sth. in",
+      "g": "einreichen, abgeben",
+      "d": "To give something to a person in charge",
+      "s": "Don't forget to _____ your homework to the teacher before Friday morning or you will lose marks.",
+      "cf": "hand in",
+      "a": [
+        "hand in",
+        "handed in"
+      ],
+      "mc": [
+        "to throw sth. away",
+        "to lose sth.",
+        "to keep sth."
+      ]
+    },
+    {
+      "w": "Hold on!",
+      "g": "Warte(t)!",
+      "d": "A way to tell someone to wait",
+      "s": "_____! I need to tie my shoelaces properly before we can start running to catch the bus.",
+      "cf": "Hold on",
+      "a": [
+        "Hold on"
+      ],
+      "mc": [
+        "Go away!",
+        "Leave me!",
+        "Don't wait!"
+      ]
+    },
+    {
+      "w": "to leave sb. alone",
+      "g": "jdn. in Ruhe lassen",
+      "d": "To stop bothering someone",
+      "s": "Please _____! I need some quiet peaceful time by myself to finish my school project without interruptions.",
+      "cf": "leave me alone",
+      "a": [
+        "leave alone",
+        "left alone"
+      ],
+      "mc": [
+        "to bother sb.",
+        "to annoy sb.",
+        "to follow sb."
+      ]
+    },
+    {
+      "w": "to look forward to sth.",
+      "g": "sich auf etw. freuen",
+      "d": "To feel happy about something that will happen",
+      "s": "I am very _____ to the exciting school trip to Rome next week — we're going to see the Colosseum!",
+      "cf": "looking forward",
+      "a": [
+        "look forward to",
+        "looking forward to",
+        "looked forward to"
+      ],
+      "mc": [
+        "to worry about sth.",
+        "to give up sth.",
+        "to put off sth."
+      ]
+    },
+    {
+      "w": "queue",
+      "g": "Warteschlange",
+      "d": "A line of people waiting for something",
+      "s": "There was a long _____ of thirty people waiting to buy ice cream at the popular shop in the town square.",
+      "a": [
+        "queues"
+      ],
+      "mc": [
+        "crowd",
+        "party",
+        "mess"
+      ]
+    },
+    {
+      "w": "to queue (up)",
+      "g": "sich anstellen",
+      "d": "To stand in a line and wait for your turn",
+      "s": "We had to _____ in a single file for twenty minutes to get into the popular new museum on opening day.",
+      "cf": "queue",
+      "a": [
+        "queue",
+        "queue up",
+        "queued",
+        "queued up"
+      ],
+      "mc": [
+        "to rush in",
+        "to skip ahead",
+        "to push through"
+      ]
+    },
+    {
+      "w": "to wave",
+      "g": "winken",
+      "d": "To move your hand to say hello or goodbye",
+      "s": "She _____ her hand high in the air at her best friend across the crowded playground to get her attention.",
+      "cf": "waved",
+      "a": [
+        "wave",
+        "waved"
+      ],
+      "mc": [
+        "to hide from",
+        "to ignore",
+        "to turn away from"
+      ]
+    },
+    {
+      "w": "date of birth",
+      "g": "Geburtsdatum",
+      "d": "The day, month and year when you were born",
+      "s": "Please write your _____ on the form — we need the exact day, month, and year you were born.",
+      "cf": "date of birth",
+      "a": [
+        "date of birth"
+      ],
+      "mc": [
+        "first name",
+        "address",
+        "phone number"
+      ]
+    },
+    {
+      "w": "Hang on a minute.",
+      "g": "Ein Augenblick (mal).",
+      "d": "A way to ask someone to wait a short time",
+      "s": "_____, I just need to find my house keys before we can leave. Don't go without me.",
+      "cf": "Hang on a minute",
+      "a": [
+        "Hang on a minute",
+        "Hang on"
+      ],
+      "mc": [
+        "Hurry up!",
+        "Leave now!",
+        "Go ahead!"
+      ]
+    },
+    {
+      "w": "to achieve (a goal)",
+      "g": "(ein Ziel) erreichen",
+      "d": "To get what you wanted after trying hard",
+      "s": "She worked really hard all year and finally _____ her goal of getting straight As on her school report.",
+      "cf": "achieved",
+      "a": [
+        "achieve",
+        "achieved"
+      ],
+      "mc": [
+        "to forget (a goal)",
+        "to give up (a goal)",
+        "to fail (a goal)"
+      ]
+    },
+    {
+      "w": "laugh",
+      "g": "Lacher",
+      "d": "The sound you make when something is funny",
+      "s": "His funny joke about the chicken crossing the road got a big loud _____ from the whole class of 30 students.",
+      "a": [
+        "laughs"
+      ],
+      "mc": [
+        "sigh",
+        "yawn",
+        "frown"
+      ]
+    },
+    {
+      "w": "note",
+      "g": "Geldschein",
+      "d": "A piece of paper money",
+      "s": "She found a €20 paper _____ on the ground near the bus stop and handed it to her teacher to find the owner.",
+      "a": [
+        "notes"
+      ],
+      "mc": [
+        "coin",
+        "receipt",
+        "letter"
+      ]
+    },
+    {
+      "w": "per cent",
+      "g": "Prozent",
+      "d": "A part of a hundred, shown with the % sign",
+      "s": "About 80 _____ of the students in our year group passed the difficult maths test on the first try.",
+      "cf": "per cent",
+      "a": [
+        "per cent",
+        "percent"
+      ],
+      "mc": [
+        "euros",
+        "hours",
+        "metres"
+      ]
+    },
+    {
+      "w": "speech",
+      "g": "Rede, Ansprache",
+      "d": "A talk given to a group of people",
+      "s": "The headteacher gave a short 5-minute welcome _____ at the whole-school assembly on the first day of term.",
+      "a": [
+        "speeches"
+      ],
+      "mc": [
+        "song",
+        "video",
+        "book"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SPEECH?",
+          "options": [
+            "give",
+            "make",
+            "short",
+            "cook"
+          ],
+          "answer": "cook"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ a speech",
+          "options": [
+            "Give",
+            "Cook",
+            "Wash",
+            "Build"
+          ],
+          "answer": "Give"
+        }
+      ]
+    },
+    {
+      "w": "stage",
+      "g": "Bühne",
+      "d": "The raised area where actors or singers perform",
+      "s": "The rock band walked onto the brightly lit _____ and the huge crowd of 5000 fans cheered loudly.",
+      "a": [
+        "stages"
+      ],
+      "mc": [
+        "audience",
+        "dressing room",
+        "bar"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with STAGE?",
+          "options": [
+            "go on",
+            "leave",
+            "perform on",
+            "cook on"
+          ],
+          "answer": "cook on"
+        },
+        {
+          "type": "gap",
+          "prompt": "go on _____",
+          "options": [
+            "stage",
+            "table",
+            "chair",
+            "wall"
+          ],
+          "answer": "stage"
+        }
+      ]
+    },
+    {
+      "w": "to try out",
+      "g": "ausprobieren",
+      "d": "To test something to see how it works or if you like it",
+      "s": "I really want to _____ this new board game — my friend says it looks really fun and interesting.",
+      "cf": "try out",
+      "a": [
+        "try out",
+        "tried out"
+      ],
+      "mc": [
+        "to throw away",
+        "to sell",
+        "to hide"
+      ]
+    }
+  ]
+}

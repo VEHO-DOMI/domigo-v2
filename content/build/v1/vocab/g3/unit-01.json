@@ -1,0 +1,642 @@
+{
+  "slug": "unit-01",
+  "grade": 3,
+  "unit": 1,
+  "title": "Unit 1",
+  "entries": [
+    {
+      "w": "to give sth. a try",
+      "g": "etw. versuchen",
+      "d": "To do something to see if you like it or can do it",
+      "s": "I've never played tennis before, but I want to _____ it at the tennis club this Saturday morning.",
+      "cf": "give it a try",
+      "a": [
+        "give it a try",
+        "give sth. a try",
+        "give something a try"
+      ],
+      "mc": [
+        "to give sth. up",
+        "to put sth. off",
+        "to throw sth. away"
+      ]
+    },
+    {
+      "w": "to give up",
+      "g": "aufgeben",
+      "d": "To stop trying to do something",
+      "s": "Learning the guitar is hard, but please don't _____. Keep practising every day and you will improve.",
+      "cf": "give up",
+      "a": [
+        "give up",
+        "gave up",
+        "given up"
+      ],
+      "mc": [
+        "to keep going",
+        "to try again",
+        "to succeed"
+      ]
+    },
+    {
+      "w": "audition",
+      "g": "Vorsprechen, Vorsingen",
+      "d": "A short performance to show you can sing, act or dance",
+      "s": "She sang a pop song at her _____ for the school musical.",
+      "a": [
+        "auditions"
+      ],
+      "mc": [
+        "rehearsal",
+        "performance",
+        "concert"
+      ]
+    },
+    {
+      "w": "to have got what it takes",
+      "g": "das Zeug dazu haben",
+      "d": "To have the skills or talent that you need",
+      "s": "You are a great dancer and full of talent — you've _____ what it takes to win the competition!",
+      "cf": "got",
+      "a": [
+        "have got what it takes",
+        "have what it takes"
+      ],
+      "mc": [
+        "to have given up",
+        "to have lost hope",
+        "to have made mistakes"
+      ]
+    },
+    {
+      "w": "to make it",
+      "g": "es schaffen",
+      "d": "To succeed or to be able to come",
+      "s": "Sorry, I can't _____ it to your birthday party — I have an important dentist appointment at the same time.",
+      "cf": "make",
+      "a": [
+        "make it",
+        "made it"
+      ],
+      "mc": [
+        "to enjoy it",
+        "to avoid it",
+        "to plan it"
+      ]
+    },
+    {
+      "w": "to be on the way up",
+      "g": "auf dem Weg nach oben sein",
+      "d": "To become more and more successful",
+      "s": "The young rock band is _____. They play bigger concerts every month and their songs are becoming popular.",
+      "cf": "on the way up",
+      "a": [
+        "be on the way up",
+        "on the way up"
+      ],
+      "mc": [
+        "to be on the way out",
+        "to be on the way down",
+        "to be at the bottom"
+      ]
+    },
+    {
+      "w": "to get back to sb.",
+      "g": "sich bei jdm. melden",
+      "d": "To answer or contact someone later",
+      "s": "I'm busy right now, but I'll _____ back to you with an answer after lunch at 2 o'clock.",
+      "cf": "get",
+      "a": [
+        "get back to",
+        "got back to"
+      ],
+      "mc": [
+        "to ignore sb.",
+        "to forget about sb.",
+        "to run away from sb."
+      ]
+    },
+    {
+      "w": "to agree",
+      "g": "zustimmen",
+      "d": "To have the same idea or opinion as someone else",
+      "s": "I _____ with you completely — chocolate ice cream really is the best flavour of all ice cream in the world.",
+      "cf": "agree",
+      "a": [
+        "agree",
+        "agreed"
+      ],
+      "mc": [
+        "to disagree",
+        "to argue",
+        "to refuse"
+      ]
+    },
+    {
+      "w": "to belong to",
+      "g": "gehören",
+      "d": "To be the property of someone",
+      "s": "This blue jacket isn't mine — it _____ to my older brother Tom, so I have to give it back to him later.",
+      "cf": "belongs",
+      "a": [
+        "belong to",
+        "belongs to",
+        "belonged to"
+      ],
+      "mc": [
+        "to match",
+        "to suit",
+        "to compare"
+      ]
+    },
+    {
+      "w": "to celebrate",
+      "g": "feiern",
+      "d": "To do something special for a happy event",
+      "s": "On New Year's Eve, people _____ with colourful fireworks, dancing, and parties at midnight when the new year begins.",
+      "cf": "celebrate",
+      "a": [
+        "celebrate",
+        "celebrated"
+      ],
+      "mc": [
+        "to watch",
+        "to plan",
+        "to remember"
+      ]
+    },
+    {
+      "w": "extremely",
+      "g": "extrem",
+      "d": "Very, very much",
+      "s": "The water in the swimming pool was _____ cold — much colder than I expected and my lips turned blue!",
+      "a": [],
+      "mc": [
+        "slightly",
+        "a bit",
+        "a little"
+      ]
+    },
+    {
+      "w": "flute",
+      "g": "Flöte",
+      "d": "A musical instrument that you blow across",
+      "s": "She plays the _____ in the school orchestra — a long thin silver instrument you blow into.",
+      "a": [
+        "flutes"
+      ],
+      "mc": [
+        "piano",
+        "violin",
+        "guitar"
+      ]
+    },
+    {
+      "w": "singer",
+      "g": "Sänger/Sängerin",
+      "d": "A person who sings, often as a job",
+      "s": "My favourite _____ has a new album out this week with ten new songs that she wrote and recorded.",
+      "a": [
+        "singers"
+      ],
+      "mc": [
+        "guitarist",
+        "drummer",
+        "songwriter"
+      ]
+    },
+    {
+      "w": "successful",
+      "g": "erfolgreich",
+      "d": "Having done well or achieved what you wanted",
+      "s": "The school play was very _____ — all 300 tickets were sold and the audience gave a standing ovation.",
+      "a": [],
+      "mc": [
+        "disappointing",
+        "cancelled",
+        "expensive"
+      ]
+    },
+    {
+      "w": "talented",
+      "g": "talentiert, begabt",
+      "d": "Having a natural skill to do something well",
+      "s": "My little brother is very _____ at drawing — he never took any lessons but draws portraits like a professional artist.",
+      "a": [],
+      "mc": [
+        "clumsy",
+        "unskilled",
+        "new"
+      ]
+    },
+    {
+      "w": "to spill",
+      "g": "verschütten",
+      "d": "To make a liquid fall out of its container by mistake",
+      "s": "Be careful with that glass or you'll _____ your juice all over the clean white table and make a mess.",
+      "a": [
+        "spill",
+        "spilled",
+        "spilt"
+      ],
+      "mc": [
+        "to drink",
+        "to hide",
+        "to catch"
+      ]
+    },
+    {
+      "w": "whole",
+      "g": "ganze/r/s",
+      "d": "All of something, complete",
+      "s": "She ate the _____ large pizza by herself in one sitting because she was so hungry after the match.",
+      "a": [],
+      "mc": [
+        "half of the",
+        "a slice of",
+        "a quarter of"
+      ]
+    },
+    {
+      "w": "critic",
+      "g": "Kritiker/Kritikerin",
+      "d": "A person who gives their opinion about music, films or books",
+      "s": "The film _____ in the newspaper wrote that the new Hollywood film was boring and too long.",
+      "a": [
+        "critics"
+      ],
+      "mc": [
+        "actor",
+        "director",
+        "producer"
+      ]
+    },
+    {
+      "w": "brave",
+      "g": "mutig",
+      "d": "Not afraid, ready to do difficult or dangerous things",
+      "s": "The firefighter was very _____ and ran into the burning building to save the little girl on the top floor.",
+      "a": [],
+      "mc": [
+        "cowardly",
+        "scared",
+        "nervous"
+      ]
+    },
+    {
+      "w": "not even",
+      "g": "noch nicht einmal",
+      "d": "Used to say something surprising — less than you expected",
+      "s": "The maths test was so easy but he got _____ one answer right — zero out of ten questions correct.",
+      "cf": "not even",
+      "a": [
+        "not even"
+      ],
+      "mc": [
+        "almost all",
+        "nearly all",
+        "most of the"
+      ]
+    },
+    {
+      "w": "suit",
+      "g": "Anzug",
+      "d": "A set of matching jacket and trousers for formal events",
+      "s": "My dad wears a dark grey business _____ with matching trousers, jacket, and tie when he goes to the office.",
+      "a": [
+        "suits"
+      ],
+      "mc": [
+        "T-shirt",
+        "tracksuit",
+        "pyjamas"
+      ]
+    },
+    {
+      "w": "unhappy",
+      "g": "unglücklich",
+      "d": "Not happy, feeling sad",
+      "s": "She was very _____ and could not stop crying because her best friend had moved to another country.",
+      "a": [],
+      "mc": [
+        "delighted",
+        "excited",
+        "thrilled"
+      ]
+    },
+    {
+      "w": "to waste",
+      "g": "verschwenden",
+      "d": "To use something badly or use more than you need",
+      "s": "Don't _____ good food by throwing it in the bin — eat everything on your plate. Think of hungry people.",
+      "a": [
+        "waste",
+        "wasted"
+      ],
+      "mc": [
+        "to save",
+        "to cook",
+        "to grow"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WASTE?",
+          "options": [
+            "time",
+            "money",
+            "energy",
+            "chair"
+          ],
+          "answer": "chair"
+        },
+        {
+          "type": "gap",
+          "prompt": "Don't _____ time!",
+          "options": [
+            "waste",
+            "cook",
+            "build",
+            "wash"
+          ],
+          "answer": "waste"
+        },
+        {
+          "type": "gap",
+          "prompt": "a waste of _____",
+          "options": [
+            "time",
+            "chair",
+            "door",
+            "hat"
+          ],
+          "answer": "time"
+        }
+      ]
+    },
+    {
+      "w": "to feel",
+      "g": "sich fühlen",
+      "d": "To have a feeling or emotion inside you",
+      "s": "After the long day, I _____ very tired and just wanted to sleep.",
+      "cf": "felt",
+      "a": [
+        "feel",
+        "felt"
+      ],
+      "mc": [
+        "to seem",
+        "to think",
+        "to believe"
+      ]
+    },
+    {
+      "w": "to get tired of sth.",
+      "g": "etw. satt haben",
+      "d": "To not enjoy something any more because you did it too often",
+      "s": "I _____ tired of eating the same cheese sandwich every day and asked mum for something different in my lunchbox.",
+      "cf": "got",
+      "a": [
+        "get tired of",
+        "got tired of",
+        "getting tired of"
+      ],
+      "mc": [
+        "to get excited about sth.",
+        "to fall in love with sth.",
+        "to be amazed by sth."
+      ]
+    },
+    {
+      "w": "lyrics",
+      "g": "Liedtext",
+      "d": "The words of a song",
+      "s": "I love this pop song, but I can never remember the _____ — the words that the singer sings in each verse.",
+      "a": [],
+      "mc": [
+        "music",
+        "melody",
+        "rhythm"
+      ]
+    },
+    {
+      "w": "to make up",
+      "g": "erfinden, sich ausdenken",
+      "d": "To create something new from your imagination",
+      "s": "My little sister likes to _____ funny imaginary stories about dragons and princesses before bedtime.",
+      "cf": "make up",
+      "a": [
+        "make up",
+        "made up"
+      ],
+      "mc": [
+        "to memorise",
+        "to copy",
+        "to write down"
+      ]
+    },
+    {
+      "w": "record",
+      "g": "(Schall-)Platte",
+      "d": "A round, flat disc that plays music when you put it on a player",
+      "s": "My mum has a dusty box of old black vinyl _____ from the 1980s that she still plays on quiet Sunday afternoons.",
+      "cf": "records",
+      "a": [
+        "record",
+        "records"
+      ],
+      "mc": [
+        "CD",
+        "MP3 file",
+        "cassette"
+      ]
+    },
+    {
+      "w": "to seem",
+      "g": "wirken, scheinen",
+      "d": "To look like or appear to be",
+      "s": "The chocolate cake _____ delicious when I saw it, but when I tasted it, it was actually very salty.",
+      "cf": "seemed",
+      "a": [
+        "seem",
+        "seemed",
+        "seems"
+      ],
+      "mc": [
+        "to taste",
+        "to become",
+        "to remain"
+      ]
+    },
+    {
+      "w": "to sing along",
+      "g": "mitsingen",
+      "d": "To join in when a melody is playing",
+      "s": "Everyone in the car started to _____ loudly to their favourite pop song playing on the radio.",
+      "cf": "sing along",
+      "a": [
+        "sing along",
+        "sang along",
+        "sung along"
+      ],
+      "mc": [
+        "to dance to",
+        "to listen to",
+        "to turn off"
+      ]
+    },
+    {
+      "w": "tune",
+      "g": "Melodie",
+      "d": "A piece of music or the main melody of a song",
+      "s": "I know this familiar _____ very well but I can't remember the name of the song right now.",
+      "a": [
+        "tunes"
+      ],
+      "mc": [
+        "lyrics",
+        "beat",
+        "band"
+      ]
+    },
+    {
+      "w": "I can't stand it.",
+      "g": "Ich kann es nicht ausstehen.",
+      "d": "A way to say you really don't like something",
+      "s": "The music coming from next door is so loud and terrible — I _____!",
+      "cf": "can't stand it",
+      "a": [
+        "I can't stand it",
+        "can't stand"
+      ],
+      "mc": [
+        "I love it.",
+        "I enjoy it.",
+        "I appreciate it."
+      ]
+    },
+    {
+      "w": "I don't mind (it).",
+      "g": "Ich habe nichts dagegen.",
+      "d": "A way to say something is OK for you",
+      "s": "We can watch that action film if you want to — I _____ at all, it's fine with me.",
+      "cf": "don't mind",
+      "a": [
+        "I don't mind",
+        "I don't mind it",
+        "don't mind"
+      ],
+      "mc": [
+        "I refuse.",
+        "I hate it.",
+        "I won't allow it."
+      ]
+    },
+    {
+      "w": "to come along",
+      "g": "mitkommen",
+      "d": "To go somewhere with someone",
+      "s": "We're all going to the park to play football. Do you want to _____ with us?",
+      "cf": "come along",
+      "a": [
+        "come along",
+        "came along"
+      ],
+      "mc": [
+        "to stay behind",
+        "to go somewhere else",
+        "to refuse"
+      ]
+    },
+    {
+      "w": "to take place",
+      "g": "stattfinden",
+      "d": "To happen at a certain time and location",
+      "s": "The Olympic Games _____ every four years in a different host country around the world, with thousands of athletes.",
+      "cf": "take place",
+      "a": [
+        "take place",
+        "took place",
+        "takes place"
+      ],
+      "mc": [
+        "to take part",
+        "to take over",
+        "to take off"
+      ]
+    },
+    {
+      "w": "afterwards",
+      "g": "danach, anschließend",
+      "d": "After that, later",
+      "s": "We had lunch at noon in the park, and _____ we all went swimming at the pool at two o'clock.",
+      "a": [],
+      "mc": [
+        "beforehand",
+        "earlier",
+        "in advance"
+      ]
+    },
+    {
+      "w": "apart from",
+      "g": "abgesehen von",
+      "d": "Except for, other than",
+      "s": "_____ the heavy rain in the afternoon, the whole trip to the zoo was really fun and we saw all the animals.",
+      "cf": "Apart from",
+      "a": [
+        "apart from"
+      ],
+      "mc": [
+        "because of",
+        "due to",
+        "thanks to"
+      ]
+    },
+    {
+      "w": "in my opinion",
+      "g": "meiner Meinung nach",
+      "d": "A phrase to introduce what you think",
+      "s": "_____, the best film this year was the one about the lost dog who travels 1000 miles to find his family.",
+      "cf": "In my opinion",
+      "a": [
+        "in my opinion"
+      ],
+      "mc": [
+        "in fact",
+        "as a result",
+        "by the way"
+      ]
+    },
+    {
+      "w": "to be interested in",
+      "g": "an etw. interessiert sein",
+      "d": "To want to know more about something",
+      "s": "He is very _____ space and astronomy — he reads every book about planets he can find at the library.",
+      "cf": "interested in",
+      "a": [
+        "be interested in",
+        "interested in"
+      ],
+      "mc": [
+        "to be bored with",
+        "to be scared of",
+        "to be sick of"
+      ]
+    },
+    {
+      "w": "Me neither.",
+      "g": "Ich auch nicht.",
+      "d": "A way to agree when someone says they don't do or like something",
+      "s": "'I don't like spiders at all.' — '_____ They scare me too.'",
+      "cf": "Me neither",
+      "a": [
+        "Me neither"
+      ],
+      "mc": [
+        "Me too.",
+        "So do I.",
+        "Same here."
+      ]
+    }
+  ]
+}

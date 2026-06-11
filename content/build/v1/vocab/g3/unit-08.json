@@ -1,0 +1,779 @@
+{
+  "slug": "unit-08",
+  "grade": 3,
+  "unit": 8,
+  "title": "Unit 8",
+  "entries": [
+    {
+      "w": "to invent",
+      "g": "erfinden",
+      "d": "To create something completely new that didn't exist before",
+      "s": "Who first _____ the telephone back in 1876? It was Alexander Graham Bell — no one had created one before.",
+      "cf": "invented",
+      "a": [
+        "invent",
+        "invented"
+      ],
+      "mc": [
+        "to find",
+        "to use",
+        "to buy"
+      ]
+    },
+    {
+      "w": "to experiment",
+      "g": "experimentieren",
+      "d": "To try new things to find out what happens",
+      "s": "Scientists in their white lab coats _____ in their clean labs with chemicals to discover brand new things about the world.",
+      "cf": "experiment",
+      "a": [
+        "experiment",
+        "experimented"
+      ],
+      "mc": [
+        "to sleep",
+        "to eat",
+        "to dance"
+      ]
+    },
+    {
+      "w": "to improve",
+      "g": "verbessern",
+      "d": "To make something better than before",
+      "s": "She _____ her English speaking skills a lot over one year by watching English films without subtitles every single day.",
+      "cf": "improved",
+      "a": [
+        "improve",
+        "improved"
+      ],
+      "mc": [
+        "to worsen",
+        "to forget",
+        "to ruin"
+      ]
+    },
+    {
+      "w": "to discover",
+      "g": "entdecken",
+      "d": "To find something or learn about something for the first time",
+      "s": "The curious children _____ a secret hidden path in the forest that nobody in the village had ever seen before.",
+      "cf": "discovered",
+      "a": [
+        "discover",
+        "discovered"
+      ],
+      "mc": [
+        "to invent",
+        "to build",
+        "to draw"
+      ]
+    },
+    {
+      "w": "to work sth. out",
+      "g": "etw. herausfinden",
+      "d": "To find the answer by thinking about it",
+      "s": "I can't _____ the correct answer to question five in the maths test — the numbers don't add up no matter what I try.",
+      "cf": "work out",
+      "a": [
+        "work out",
+        "worked out"
+      ],
+      "mc": [
+        "to give up on",
+        "to ignore",
+        "to forget about"
+      ]
+    },
+    {
+      "w": "to design",
+      "g": "entwerfen, gestalten",
+      "d": "To make a plan or drawing for how something will look",
+      "s": "She loves fashion and wants to _____ her own unique collection of stylish clothes one day with her own logo and brand.",
+      "cf": "design",
+      "a": [
+        "design",
+        "designed"
+      ],
+      "mc": [
+        "to copy",
+        "to steal",
+        "to destroy"
+      ]
+    },
+    {
+      "w": "to try out",
+      "g": "ausprobieren",
+      "d": "To test something to see how it works or if you like it",
+      "s": "Let's _____ this new chocolate cake recipe from the cookbook today — it looks delicious and sounds easy to make.",
+      "cf": "try out",
+      "a": [
+        "try out",
+        "tried out"
+      ],
+      "mc": [
+        "to avoid",
+        "to refuse",
+        "to throw away"
+      ]
+    },
+    {
+      "w": "to produce",
+      "g": "produzieren, herstellen",
+      "d": "To make or create something in large amounts",
+      "s": "This big factory in China _____ more than one million colourful plastic toys every single year for children around the world.",
+      "cf": "produces",
+      "a": [
+        "produce",
+        "produced",
+        "produces"
+      ],
+      "mc": [
+        "to destroy",
+        "to eat",
+        "to sell only"
+      ]
+    },
+    {
+      "w": "bacon",
+      "g": "Speck",
+      "d": "Thin slices of salted or smoked meat from a pig",
+      "s": "I like to have scrambled eggs and crispy fried _____ — thin strips of pork meat — for breakfast on lazy Sunday mornings.",
+      "a": [],
+      "mc": [
+        "bread",
+        "cheese",
+        "fruit"
+      ]
+    },
+    {
+      "w": "to decorate",
+      "g": "dekorieren",
+      "d": "To make something look more beautiful by adding things to it",
+      "s": "We _____ the classroom brightly with colourful balloons, paper chains, and streamers for the birthday party this afternoon.",
+      "cf": "decorated",
+      "a": [
+        "decorate",
+        "decorated"
+      ],
+      "mc": [
+        "to clean",
+        "to destroy",
+        "to empty"
+      ]
+    },
+    {
+      "w": "dish",
+      "g": "Gericht",
+      "d": "Food that has been prepared in a particular way",
+      "s": "My absolute favourite _____ is pasta with homemade tomato sauce — my grandmother's special recipe that she taught my mum.",
+      "a": [
+        "dishes"
+      ],
+      "mc": [
+        "drink",
+        "toy",
+        "game"
+      ]
+    },
+    {
+      "w": "fat",
+      "g": "Fett",
+      "d": "The oily substance in food or under the skin",
+      "s": "Too much unhealthy _____ in fast food like burgers and fries is really not good for your health and can make you sick.",
+      "a": [
+        "fats"
+      ],
+      "mc": [
+        "vitamins",
+        "water",
+        "fresh air"
+      ]
+    },
+    {
+      "w": "invention",
+      "g": "Erfindung",
+      "d": "Something new that someone has created",
+      "s": "The electric light bulb in 1879 was an amazing _____ by Thomas Edison that completely changed the world at night.",
+      "a": [
+        "inventions"
+      ],
+      "mc": [
+        "natural phenomenon",
+        "animal",
+        "weather event"
+      ]
+    },
+    {
+      "w": "crowd",
+      "g": "Publikum, Menschenmenge",
+      "d": "A large group of people in one place",
+      "s": "A big noisy _____ of about 500 people waited outside the cinema for two hours for the new Marvel film to start.",
+      "a": [
+        "crowds"
+      ],
+      "mc": [
+        "single person",
+        "empty space",
+        "no one"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CROWD?",
+          "options": [
+            "large",
+            "huge",
+            "cheer",
+            "bake"
+          ],
+          "answer": "bake"
+        },
+        {
+          "type": "gap",
+          "prompt": "a _____ crowd",
+          "options": [
+            "large",
+            "thin",
+            "tall",
+            "fast"
+          ],
+          "answer": "large"
+        }
+      ]
+    },
+    {
+      "w": "current",
+      "g": "(elektrischer) Strom",
+      "d": "The flow of electricity through a wire",
+      "s": "Be very careful — there is a strong electric _____ flowing through these exposed wires and it could give you a bad shock.",
+      "a": [
+        "currents"
+      ],
+      "mc": [
+        "flower",
+        "hole",
+        "sound"
+      ]
+    },
+    {
+      "w": "to develop",
+      "g": "entwickeln",
+      "d": "To create something new over a period of time",
+      "s": "The clever software team _____ a new mobile app for learning Spanish and French over the past six months.",
+      "cf": "developed",
+      "a": [
+        "develop",
+        "developed"
+      ],
+      "mc": [
+        "to delete",
+        "to destroy",
+        "to forget"
+      ]
+    },
+    {
+      "w": "electric (motor)",
+      "g": "elektrisch; (Elektro)motor",
+      "d": "Using or producing electricity",
+      "s": "My dad wants to buy a new modern car with a quiet _____ motor that uses batteries instead of petrol.",
+      "cf": "electric",
+      "a": [
+        "electric"
+      ],
+      "mc": [
+        "broken",
+        "old",
+        "loud"
+      ]
+    },
+    {
+      "w": "energy",
+      "g": "Energie; Strom",
+      "d": "Power that makes machines work or keeps things moving",
+      "s": "Wind turbines and solar panels can give us clean renewable _____ without polluting the environment or using fossil fuels.",
+      "a": [],
+      "mc": [
+        "noise",
+        "rubbish",
+        "pollution"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ENERGY?",
+          "options": [
+            "save",
+            "clean",
+            "waste",
+            "fry"
+          ],
+          "answer": "fry"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ energy",
+          "options": [
+            "Save",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Save"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ energy",
+          "options": [
+            "Clean",
+            "Angry",
+            "Loud",
+            "Shy"
+          ],
+          "answer": "Clean"
+        }
+      ]
+    },
+    {
+      "w": "influence",
+      "g": "Einfluss",
+      "d": "The power to change what other people think or do",
+      "s": "Good kind teachers have a big positive _____ on their students' lives and can shape who they become as adults.",
+      "a": [
+        "influences"
+      ],
+      "mc": [
+        "weight",
+        "height",
+        "age"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INFLUENCE?",
+          "options": [
+            "strong",
+            "big",
+            "have",
+            "fry"
+          ],
+          "answer": "fry"
+        },
+        {
+          "type": "gap",
+          "prompt": "a _____ influence",
+          "options": [
+            "strong",
+            "empty",
+            "thin",
+            "loud"
+          ],
+          "answer": "strong"
+        }
+      ]
+    },
+    {
+      "w": "inventor",
+      "g": "Erfinder/Erfinderin",
+      "d": "A person who creates something new",
+      "s": "She wants to be a creative _____ and make new helpful machines that solve everyday problems for people around the world.",
+      "a": [
+        "inventors"
+      ],
+      "mc": [
+        "consumer",
+        "user only",
+        "seller"
+      ]
+    },
+    {
+      "w": "to invest",
+      "g": "investieren",
+      "d": "To spend money on something hoping to get more back",
+      "s": "He _____ all his savings of €5000 in a new small coffee shop business that opened last year in his town.",
+      "cf": "invested",
+      "a": [
+        "invest",
+        "invested"
+      ],
+      "mc": [
+        "to spend on junk",
+        "to throw away",
+        "to lose"
+      ]
+    },
+    {
+      "w": "perhaps",
+      "g": "vielleicht, eventuell",
+      "d": "Maybe, possibly",
+      "s": "_____ we can go to the cinema this weekend — maybe on Saturday afternoon, but I'm not completely sure yet.",
+      "cf": "Perhaps",
+      "a": [
+        "perhaps"
+      ],
+      "mc": [
+        "certainly",
+        "definitely",
+        "absolutely"
+      ]
+    },
+    {
+      "w": "to be responsible for",
+      "g": "für etw. verantwortlich sein",
+      "d": "To be the one who caused something or must take care of it",
+      "s": "Who is _____ for cleaning the whole classroom today after the last lesson — it needs sweeping and wiping.",
+      "cf": "responsible for",
+      "a": [
+        "be responsible for",
+        "responsible for"
+      ],
+      "mc": [
+        "to be distracted by",
+        "to be afraid of",
+        "to be bored with"
+      ]
+    },
+    {
+      "w": "to shoot",
+      "g": "schießen",
+      "d": "To send something out fast, like a ball or an arrow",
+      "s": "He _____ the football directly into the goal from ten metres away and his team scored the winning point.",
+      "cf": "shot",
+      "a": [
+        "shoot",
+        "shot"
+      ],
+      "mc": [
+        "to throw",
+        "to catch",
+        "to touch"
+      ]
+    },
+    {
+      "w": "confident",
+      "g": "(selbst)sicher; zuversichtlich",
+      "d": "Feeling sure about yourself and your abilities",
+      "s": "She felt _____ about the big maths test because she had studied very hard for it for two whole weeks.",
+      "a": [],
+      "mc": [
+        "nervous",
+        "scared",
+        "unsure"
+      ]
+    },
+    {
+      "w": "to impress",
+      "g": "beeindrucken",
+      "d": "To make someone think you are very good at something",
+      "s": "He _____ all his friends at the birthday party with an amazing magic card trick that nobody could figure out.",
+      "cf": "impressed",
+      "a": [
+        "impress",
+        "impressed"
+      ],
+      "mc": [
+        "to bore",
+        "to upset",
+        "to anger"
+      ]
+    },
+    {
+      "w": "soap",
+      "g": "Seife",
+      "d": "Something you use with water to wash your hands and body",
+      "s": "Always use _____ and warm water when you wash your dirty hands to kill the germs and keep yourself healthy.",
+      "a": [
+        "soaps"
+      ],
+      "mc": [
+        "just water",
+        "perfume",
+        "lotion"
+      ]
+    },
+    {
+      "w": "device",
+      "g": "Gerät",
+      "d": "A piece of equipment made for a special purpose",
+      "s": "A smartphone is a very useful electronic _____ — a small portable machine with a screen that you carry everywhere in your pocket.",
+      "a": [
+        "devices"
+      ],
+      "mc": [
+        "animal",
+        "food",
+        "plant"
+      ]
+    },
+    {
+      "w": "product",
+      "g": "Produkt",
+      "d": "Something that is made to be sold",
+      "s": "This supermarket sells only _____ that are made in Austria — milk, cheese, honey, and bread all from local farmers.",
+      "cf": "products",
+      "a": [
+        "product",
+        "products"
+      ],
+      "mc": [
+        "foreign goods",
+        "imported items",
+        "international brands"
+      ]
+    },
+    {
+      "w": "remarkable",
+      "g": "bemerkenswert",
+      "d": "Very special and worth noticing",
+      "s": "She gave a _____ five-minute speech about saving the environment that impressed everyone in the audience with clever ideas.",
+      "a": [],
+      "mc": [
+        "ordinary",
+        "boring",
+        "forgettable"
+      ]
+    },
+    {
+      "w": "to research",
+      "g": "erforschen, recherchieren",
+      "d": "To study something carefully to learn more about it",
+      "s": "The students _____ the topic of climate change online for two hours before writing their homework essays for science class.",
+      "cf": "researched",
+      "a": [
+        "research",
+        "researched"
+      ],
+      "mc": [
+        "to ignore",
+        "to forget",
+        "to avoid"
+      ]
+    },
+    {
+      "w": "wrist",
+      "g": "Handgelenk",
+      "d": "The part of your body between your hand and your arm",
+      "s": "She wears a beautiful silver bracelet on her left _____ — the joint between her hand and her arm.",
+      "a": [
+        "wrists"
+      ],
+      "mc": [
+        "head",
+        "foot",
+        "knee"
+      ]
+    },
+    {
+      "w": "crutches",
+      "g": "Krücken",
+      "d": "Sticks you put under your arms to help you walk when your leg is hurt",
+      "s": "He had to use wooden _____ under his arms to walk around for three weeks after he broke his foot playing football.",
+      "a": [],
+      "mc": [
+        "a hat",
+        "gloves",
+        "sunglasses"
+      ]
+    },
+    {
+      "w": "illness",
+      "g": "Krankheit",
+      "d": "A health problem that makes you feel unwell",
+      "s": "She missed a lot of school because of a long serious _____ that kept her in hospital for two months.",
+      "a": [
+        "illnesses"
+      ],
+      "mc": [
+        "holiday",
+        "school trip",
+        "birthday"
+      ]
+    },
+    {
+      "w": "ramp",
+      "g": "Rampe",
+      "d": "A slope that connects two different levels",
+      "s": "There is a smooth _____ at the entrance of the school instead of steps, so people in wheelchairs can easily get inside.",
+      "a": [
+        "ramps"
+      ],
+      "mc": [
+        "wall",
+        "gate",
+        "statue"
+      ]
+    },
+    {
+      "w": "wheelchair",
+      "g": "Rollstuhl",
+      "d": "A chair with wheels for people who cannot walk",
+      "s": "The injured boy uses a silver _____ with four wheels to move around the school corridors while his broken leg heals.",
+      "a": [
+        "wheelchairs"
+      ],
+      "mc": [
+        "scooter",
+        "bicycle",
+        "car"
+      ]
+    },
+    {
+      "w": "to adapt",
+      "g": "anpassen",
+      "d": "To change something or yourself to fit a new situation",
+      "s": "She quickly _____ to her new school in a different country and made lots of new friends within the first two weeks.",
+      "cf": "adapted",
+      "a": [
+        "adapt",
+        "adapted"
+      ],
+      "mc": [
+        "to refuse",
+        "to complain about",
+        "to run away from"
+      ]
+    },
+    {
+      "w": "to attach",
+      "g": "anfügen, anhängen",
+      "d": "To join or fix one thing to another",
+      "s": "I accidentally _____ the wrong file to my important email to the teacher — I sent my music playlist instead of my homework.",
+      "cf": "attached",
+      "a": [
+        "attach",
+        "attached"
+      ],
+      "mc": [
+        "to detach",
+        "to remove",
+        "to delete"
+      ]
+    },
+    {
+      "w": "glove",
+      "g": "Handschuh",
+      "d": "A piece of clothing you wear on your hand to keep it warm",
+      "s": "It's freezing cold outside with snow on the ground — don't forget your warm woolly _____ for your hands!",
+      "cf": "gloves",
+      "a": [
+        "glove",
+        "gloves"
+      ],
+      "mc": [
+        "shoe",
+        "hat",
+        "scarf"
+      ]
+    },
+    {
+      "w": "housework",
+      "g": "Hausarbeit",
+      "d": "The work you do to keep a house clean, like washing and cooking",
+      "s": "Everyone in our family of four has to help with the _____ — washing dishes, vacuuming, and taking out the bins on Sundays.",
+      "a": [],
+      "mc": [
+        "school homework",
+        "office work",
+        "factory work"
+      ]
+    },
+    {
+      "w": "automatically",
+      "g": "automatisch",
+      "d": "Working by itself, without a person doing it",
+      "s": "The sliding glass doors of the big supermarket open _____ when you walk near them without you having to push or touch anything.",
+      "a": [],
+      "mc": [
+        "manually",
+        "by hand",
+        "with effort"
+      ]
+    },
+    {
+      "w": "collar",
+      "g": "Kragen",
+      "d": "The part of a shirt around the neck, or a band around an animal's neck",
+      "s": "The big brown dog has a red leather _____ around its neck with its name 'Rex' and owner's phone number.",
+      "a": [
+        "collars"
+      ],
+      "mc": [
+        "cap",
+        "sock",
+        "jacket"
+      ]
+    },
+    {
+      "w": "computer science",
+      "g": "Informatik",
+      "d": "The study of how computers work and how to program them",
+      "s": "She is very interested in _____ and wants to learn computer programming and coding in Python this year.",
+      "cf": "computer science",
+      "a": [
+        "computer science"
+      ],
+      "mc": [
+        "cooking",
+        "music",
+        "painting"
+      ]
+    },
+    {
+      "w": "engineer",
+      "g": "Techniker/Technikerin",
+      "d": "A person who designs or builds machines, roads or bridges",
+      "s": "The clever _____ designed and built a small helpful robot that can vacuum and clean floors by itself in 30 minutes.",
+      "a": [
+        "engineers"
+      ],
+      "mc": [
+        "clown",
+        "poet",
+        "chef"
+      ]
+    },
+    {
+      "w": "inspiration",
+      "g": "Inspiration",
+      "d": "A feeling or idea that makes you want to create or do something",
+      "s": "Beautiful nature is often a great _____ for famous artists who paint landscapes, trees, flowers, and mountains.",
+      "a": [
+        "inspirations"
+      ],
+      "mc": [
+        "distraction",
+        "obstacle",
+        "problem"
+      ]
+    },
+    {
+      "w": "to repair",
+      "g": "reparieren",
+      "d": "To fix something that is broken",
+      "s": "The experienced mechanic said he could _____ the broken washing machine with new parts and make it work again like new.",
+      "a": [
+        "repair",
+        "repaired"
+      ],
+      "mc": [
+        "to break",
+        "to destroy",
+        "to throw away"
+      ]
+    },
+    {
+      "w": "to support",
+      "g": "unterstützen",
+      "d": "To help someone or give them what they need",
+      "s": "My kind parents always _____ me emotionally when I have a problem at school — they listen and give good advice.",
+      "a": [
+        "support",
+        "supported"
+      ],
+      "mc": [
+        "to ignore",
+        "to abandon",
+        "to laugh at"
+      ]
+    }
+  ]
+}

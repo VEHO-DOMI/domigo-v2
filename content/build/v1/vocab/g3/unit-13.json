@@ -1,0 +1,524 @@
+{
+  "slug": "unit-13",
+  "grade": 3,
+  "unit": 13,
+  "title": "Unit 13",
+  "entries": [
+    {
+      "w": "to make up your mind",
+      "g": "sich entscheiden",
+      "d": "To decide what to do after thinking about it",
+      "s": "Have you _____ up your mind yet about which new T-shirt you want to buy — the blue one or the red one?",
+      "cf": "made",
+      "a": [
+        "make up your mind",
+        "made up my mind",
+        "made up your mind"
+      ],
+      "mc": [
+        "to lose your mind",
+        "to change your mind easily",
+        "to hesitate forever"
+      ]
+    },
+    {
+      "w": "to sleep on it",
+      "g": "eine Nacht darüber schlafen",
+      "d": "To wait until the next day before making a decision",
+      "s": "I'm not sure yet what to do about the big decision. I think I'll _____ and decide in the morning when I'm less tired.",
+      "cf": "sleep on it",
+      "a": [
+        "sleep on it",
+        "slept on it"
+      ],
+      "mc": [
+        "to forget about it",
+        "to ignore it forever",
+        "to rush a decision"
+      ]
+    },
+    {
+      "w": "to find a way out of a dilemma",
+      "g": "einen Ausweg aus einem Dilemma finden",
+      "d": "To discover a solution to a difficult problem",
+      "s": "Let's try to _____ a way out of this really difficult situation together by brainstorming possible solutions.",
+      "cf": "find",
+      "a": [
+        "find a way out of a dilemma",
+        "find a way out"
+      ],
+      "mc": [
+        "to stay stuck in",
+        "to give up on",
+        "to make worse"
+      ]
+    },
+    {
+      "w": "to be in two minds about sth.",
+      "g": "bei etw. unentschlossen sein",
+      "d": "To be unsure because you are thinking both yes and no",
+      "s": "I'm _____ two minds about going to Anna's birthday party tonight — part of me wants to go, part of me wants to stay home.",
+      "cf": "in",
+      "a": [
+        "be in two minds",
+        "in two minds"
+      ],
+      "mc": [
+        "to be definitely sure about",
+        "to have decided firmly about",
+        "to know exactly about"
+      ]
+    },
+    {
+      "w": "to have second thoughts about sth.",
+      "g": "etw. noch einmal überdenken",
+      "d": "To start thinking that maybe your first idea wasn't good",
+      "s": "I _____ second thoughts about buying this very expensive new phone because it costs a lot more than I can afford right now.",
+      "cf": "had",
+      "a": [
+        "have second thoughts",
+        "had second thoughts",
+        "having second thoughts"
+      ],
+      "mc": [
+        "to be completely certain about",
+        "to have no doubts about",
+        "to be fully committed to"
+      ]
+    },
+    {
+      "w": "to be at a loss",
+      "g": "ratlos sein",
+      "d": "To not know what to do or say",
+      "s": "When her friend got terrible news she stood completely _____, with no idea what to say or do.",
+      "cf": "at",
+      "a": [
+        "be at a loss",
+        "at a loss"
+      ],
+      "mc": [
+        "to know exactly what to do",
+        "to have a plan",
+        "to be confident"
+      ]
+    },
+    {
+      "w": "dilemma",
+      "g": "Dilemma, Zwangslage",
+      "d": "A difficult situation where you must choose between two things",
+      "s": "It's a real _____ — I want to go to both parties tonight but they are at exactly the same time in different places.",
+      "a": [
+        "dilemmas"
+      ],
+      "mc": [
+        "simple choice",
+        "clear decision",
+        "easy problem"
+      ]
+    },
+    {
+      "w": "to reach a decision",
+      "g": "eine Entscheidung treffen",
+      "d": "To finally decide something after thinking about it",
+      "s": "After a long discussion for two hours, they finally _____ a decision to go on holiday to Italy instead of Spain.",
+      "cf": "reached",
+      "a": [
+        "reach a decision",
+        "reached a decision"
+      ],
+      "mc": [
+        "to avoid a decision",
+        "to delay a decision",
+        "to reverse a decision"
+      ]
+    },
+    {
+      "w": "to cancel",
+      "g": "absagen",
+      "d": "To say that something planned will not happen",
+      "s": "We had to _____ the outdoor picnic at the last minute because of the sudden heavy thunderstorm that arrived.",
+      "cf": "cancel",
+      "a": [
+        "cancel",
+        "cancelled",
+        "canceled"
+      ],
+      "mc": [
+        "to go ahead with",
+        "to enjoy",
+        "to continue"
+      ]
+    },
+    {
+      "w": "disappointment",
+      "g": "Enttäuschung",
+      "d": "A feeling of sadness when something is not as good as you hoped",
+      "s": "Not getting the job she had applied for was a big _____ for her — she had really wanted it and prepared hard for the interview.",
+      "a": [
+        "disappointments"
+      ],
+      "mc": [
+        "success",
+        "victory",
+        "achievement"
+      ]
+    },
+    {
+      "w": "granddad",
+      "g": "Opa",
+      "d": "Your grandfather, your parent's father",
+      "s": "My old _____ — my dad's father — always tells us funny stories from when he was young boy during the war.",
+      "a": [
+        "granddads",
+        "grandad"
+      ],
+      "mc": [
+        "big brother",
+        "baby cousin",
+        "uncle's son"
+      ]
+    },
+    {
+      "w": "to kick sb. off",
+      "g": "rausschmeißen",
+      "d": "To force someone to leave a team or group",
+      "s": "The strict football coach will _____ the team if you miss practice again without a good reason like illness.",
+      "cf": "kick you off",
+      "a": [
+        "kick off",
+        "kicked off"
+      ],
+      "mc": [
+        "to welcome sb. to",
+        "to promote sb. on",
+        "to keep sb. on"
+      ]
+    },
+    {
+      "w": "to move",
+      "g": "(sich) bewegen; umziehen; hier: verschieben",
+      "d": "To change the time or date of something (in this context)",
+      "s": "Can we _____ the important class meeting from Wednesday afternoon to Thursday morning instead, because of the school trip?",
+      "a": [
+        "move",
+        "moved"
+      ],
+      "mc": [
+        "to cancel forever",
+        "to delete",
+        "to forget"
+      ]
+    },
+    {
+      "w": "to rethink",
+      "g": "überdenken",
+      "d": "To think about something again because you might change your mind",
+      "s": "Maybe I should _____ my original holiday plan and try something completely different this year, like going camping instead of to the beach.",
+      "a": [
+        "rethink"
+      ],
+      "mc": [
+        "to forget",
+        "to celebrate",
+        "to complete"
+      ]
+    },
+    {
+      "w": "to deserve",
+      "g": "verdienen",
+      "d": "To have earned something good (or bad) because of what you did",
+      "s": "She worked so incredibly hard all year on her homework and studies — she really _____ the top grade on her final report.",
+      "cf": "deserves",
+      "a": [
+        "deserve",
+        "deserved",
+        "deserves"
+      ],
+      "mc": [
+        "to not earn",
+        "to fail at",
+        "to accidentally get"
+      ]
+    },
+    {
+      "w": "except",
+      "g": "außer",
+      "d": "Not including, but not",
+      "s": "Everyone in our class of 25 students is here today _____ Tom — he's still at home sick with the flu.",
+      "a": [],
+      "mc": [
+        "including",
+        "with",
+        "plus"
+      ]
+    },
+    {
+      "w": "It's a shame.",
+      "g": "Das ist schade.",
+      "d": "A way to say you feel sorry about something",
+      "s": "She didn't win the first place prize after all her hard work and months of preparation. _____.",
+      "cf": "It's a shame",
+      "a": [
+        "It's a shame"
+      ],
+      "mc": [
+        "It's great.",
+        "It's wonderful.",
+        "It's fantastic."
+      ]
+    },
+    {
+      "w": "lift",
+      "g": "hier: Mitfahrgelegenheit",
+      "d": "A free ride in someone's car",
+      "s": "Can you give me a _____ to the train station in your car? I'm in a hurry and it's too far to walk in time.",
+      "a": [
+        "lifts"
+      ],
+      "mc": [
+        "a hug",
+        "a present",
+        "a cup of tea"
+      ]
+    },
+    {
+      "w": "alibi",
+      "g": "Alibi",
+      "d": "Proof that you were somewhere else when something happened",
+      "s": "The police officers asked the suspect for a proper _____ — proof of where he was during the time of the crime last night.",
+      "a": [
+        "alibis"
+      ],
+      "mc": [
+        "punishment",
+        "confession",
+        "prison sentence"
+      ]
+    },
+    {
+      "w": "ID (=identification)",
+      "g": "Personalausweis",
+      "d": "A card or document that shows who you are",
+      "s": "You need to show your official _____ card with your photo and name to get into the concert venue at the entrance.",
+      "cf": "ID",
+      "a": [
+        "ID",
+        "identification"
+      ],
+      "mc": [
+        "friend list",
+        "favourite song",
+        "ticket only"
+      ]
+    },
+    {
+      "w": "to keep quiet",
+      "g": "still sein, schweigen",
+      "d": "To not say anything about something",
+      "s": "He decided to _____ about what he saw and not tell anyone, even though he knew he had witnessed the incident clearly.",
+      "cf": "keep quiet",
+      "a": [
+        "keep quiet",
+        "kept quiet"
+      ],
+      "mc": [
+        "to shout loudly",
+        "to tell everyone",
+        "to gossip"
+      ]
+    },
+    {
+      "w": "to tell on sb.",
+      "g": "jdn. verpetzen",
+      "d": "To report to a teacher or parent what someone did wrong",
+      "s": "Please don't _____ on me to the teacher — I promise I won't break the classroom rules about phones again, it was just one time.",
+      "cf": "tell on",
+      "a": [
+        "tell on",
+        "told on"
+      ],
+      "mc": [
+        "to protect sb.",
+        "to defend sb.",
+        "to forgive sb."
+      ]
+    },
+    {
+      "w": "detention",
+      "g": "Nachsitzen",
+      "d": "A punishment where you have to stay at school after classes end",
+      "s": "He got _____ for one hour after school for talking loudly during class again, even after the teacher had warned him twice.",
+      "a": [
+        "detentions"
+      ],
+      "mc": [
+        "praise",
+        "a reward",
+        "a medal"
+      ]
+    },
+    {
+      "w": "to put up",
+      "g": "aufhängen",
+      "d": "To hang or fix something on a wall or board",
+      "s": "The art teacher _____ our colourful drawings of animals on the classroom wall last week for everyone to see.",
+      "cf": "put up",
+      "a": [
+        "put up"
+      ],
+      "mc": [
+        "to pull down",
+        "to hide away",
+        "to destroy"
+      ]
+    },
+    {
+      "w": "to ask sb. out",
+      "g": "jdn. nach einem Date fragen",
+      "d": "To invite someone on a date",
+      "s": "He was too shy to _____ her on a date for coffee at the café — he had liked her secretly for months but couldn't find the courage.",
+      "cf": "ask out",
+      "a": [
+        "ask out",
+        "asked out"
+      ],
+      "mc": [
+        "to avoid sb.",
+        "to ignore sb.",
+        "to run from sb."
+      ]
+    },
+    {
+      "w": "accidentally",
+      "g": "versehentlich",
+      "d": "Without meaning to do it, by mistake",
+      "s": "I _____ deleted all my favourite photos from my phone last night — I didn't mean to do it at all, my finger slipped on the button!",
+      "a": [],
+      "mc": [
+        "on purpose",
+        "deliberately",
+        "intentionally"
+      ]
+    },
+    {
+      "w": "to argue",
+      "g": "streiten, diskutieren",
+      "d": "To have a fight with words, to disagree strongly",
+      "s": "My little brother and I sometimes _____ about which TV show to watch on Saturday mornings — he wants cartoons and I want quiz shows.",
+      "a": [
+        "argue",
+        "argued"
+      ],
+      "mc": [
+        "to agree",
+        "to compromise",
+        "to say nothing"
+      ]
+    },
+    {
+      "w": "to look the other way",
+      "g": "wegsehen",
+      "d": "To pretend you don't see something wrong",
+      "s": "When she saw the boy being bullied by two older students, she _____ instead of helping — she pretended not to see.",
+      "cf": "looked the other way",
+      "a": [
+        "look the other way",
+        "looked the other way"
+      ],
+      "mc": [
+        "to step in and help",
+        "to tell a teacher",
+        "to run to help"
+      ]
+    },
+    {
+      "w": "to pretend",
+      "g": "vortäuschen, so tun, als ob",
+      "d": "To act as if something is true when it is not",
+      "s": "She _____ to be completely asleep in bed so that she didn't have to talk to her annoying aunt who was visiting.",
+      "cf": "pretended",
+      "a": [
+        "pretend",
+        "pretended"
+      ],
+      "mc": [
+        "to actually sleep",
+        "to genuinely rest",
+        "to really dream"
+      ]
+    },
+    {
+      "w": "to reject",
+      "g": "ablehnen, zurückweisen",
+      "d": "To say no to something or someone",
+      "s": "The strict teacher _____ my excuse for not doing homework because it wasn't believable — I said my dog ate it but I don't have a dog.",
+      "cf": "rejected",
+      "a": [
+        "reject",
+        "rejected"
+      ],
+      "mc": [
+        "to accept kindly",
+        "to believe",
+        "to forgive"
+      ]
+    },
+    {
+      "w": "homemade",
+      "g": "hausgemacht",
+      "d": "Made at home, not bought in a shop",
+      "s": "My grandma's delicious _____ chocolate cake baked in her own kitchen is much better than any cake you can buy from a bakery.",
+      "a": [],
+      "mc": [
+        "shop-bought",
+        "factory-made",
+        "ready-made"
+      ]
+    },
+    {
+      "w": "neither of",
+      "g": "keiner von",
+      "d": "Not one and not the other of two things or people",
+      "s": "_____ us wanted to go into the dark haunted house first, so we waited outside for a whole minute arguing about who should go.",
+      "cf": "Neither of",
+      "a": [
+        "neither of"
+      ],
+      "mc": [
+        "both of",
+        "one of",
+        "all of"
+      ]
+    },
+    {
+      "w": "voucher",
+      "g": "Gutschein",
+      "d": "A piece of paper that you can use instead of money",
+      "s": "She got a paper €20 _____ for the big bookshop as a generous birthday present from her godmother last week.",
+      "a": [
+        "vouchers"
+      ],
+      "mc": [
+        "receipt",
+        "bill",
+        "invoice"
+      ]
+    },
+    {
+      "w": "to wrap",
+      "g": "verpacken",
+      "d": "To cover something with paper or cloth",
+      "s": "I need to carefully _____ this present in colourful paper with a ribbon before the birthday party starts at three o'clock.",
+      "cf": "wrap",
+      "a": [
+        "wrap",
+        "wrapped"
+      ],
+      "mc": [
+        "to unwrap",
+        "to open",
+        "to throw away"
+      ]
+    }
+  ]
+}

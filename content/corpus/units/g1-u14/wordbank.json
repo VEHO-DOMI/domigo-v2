@@ -446,7 +446,8 @@
       "forms": [
         "to freeze",
         "freeze",
-        "froze"
+        "to freeze froze",
+        "freeze froze"
       ],
       "taughtGloss": false
     },
@@ -497,7 +498,8 @@
       "forms": [
         "to pay",
         "pay",
-        "paid"
+        "to pay paid",
+        "pay paid"
       ],
       "taughtGloss": false
     },
@@ -564,7 +566,8 @@
       "forms": [
         "to reply",
         "reply",
-        "replied"
+        "to reply replied",
+        "reply replied"
       ],
       "taughtGloss": false
     },
@@ -582,7 +585,8 @@
       "forms": [
         "to sell",
         "sell",
-        "sold"
+        "to sell sold",
+        "sell sold"
       ],
       "taughtGloss": false
     },
@@ -649,7 +653,8 @@
       "forms": [
         "to fight",
         "fight",
-        "fought"
+        "to fight fought",
+        "fight fought"
       ],
       "taughtGloss": false
     },
@@ -700,7 +705,8 @@
       "forms": [
         "to hold",
         "hold",
-        "held"
+        "to hold held",
+        "hold held"
       ],
       "taughtGloss": false
     },
@@ -735,7 +741,8 @@
       "forms": [
         "to bend down",
         "bend down",
-        "bent down"
+        "to bend down bent down",
+        "bend down bent down"
       ],
       "taughtGloss": false
     },

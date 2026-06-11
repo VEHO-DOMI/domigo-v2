@@ -1,0 +1,1188 @@
+{
+  "slug": "unit-08",
+  "grade": 4,
+  "unit": 8,
+  "title": "Unit 8",
+  "entries": [
+    {
+      "w": "black market",
+      "g": "Schwarzmarkt",
+      "d": "An illegal system of buying and selling goods that are forbidden or hard to find",
+      "s": "During the war, people often had to buy food on the _____.",
+      "a": [],
+      "mc": [
+        "flea market",
+        "stock market",
+        "supermarket"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BLACK MARKET?",
+          "options": [
+            "buy",
+            "sell",
+            "illegal",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "They bought food on the _____.",
+          "options": [
+            "black market",
+            "flea market",
+            "stock market",
+            "supermarket"
+          ],
+          "answer": "black market"
+        }
+      ]
+    },
+    {
+      "w": "collect",
+      "g": "sammeln",
+      "d": "To gather things together as a hobby or for a purpose",
+      "s": "My little brother likes to _____ football cards and trade them with his friends.",
+      "a": [
+        "collected"
+      ],
+      "mc": [
+        "gather",
+        "assemble",
+        "hoard"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COLLECT?",
+          "options": [
+            "stamps",
+            "coins",
+            "cards",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "He likes to _____ football cards.",
+          "options": [
+            "collect",
+            "correct",
+            "connect",
+            "protect"
+          ],
+          "answer": "collect"
+        }
+      ]
+    },
+    {
+      "w": "collection",
+      "g": "Sammlung",
+      "d": "A group of objects gathered together because they are interesting or valuable",
+      "s": "She has an amazing _____ of old coins from all over the world.",
+      "a": [
+        "collections"
+      ],
+      "mc": [
+        "exhibition",
+        "selection",
+        "assortment"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COLLECTION?",
+          "options": [
+            "amazing",
+            "private",
+            "huge",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She has a large _____ of coins.",
+          "options": [
+            "collection",
+            "direction",
+            "correction",
+            "protection"
+          ],
+          "answer": "collection"
+        }
+      ]
+    },
+    {
+      "w": "fascination",
+      "g": "Faszination",
+      "d": "A very strong interest in or attraction to something",
+      "s": "Her _____ with dinosaurs began when she visited the natural history museum.",
+      "a": [],
+      "mc": [
+        "obsession",
+        "curiosity",
+        "admiration"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FASCINATION?",
+          "options": [
+            "deep",
+            "growing",
+            "childhood",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "Her _____ with dinosaurs began early.",
+          "options": [
+            "fascination",
+            "imagination",
+            "decoration",
+            "celebration"
+          ],
+          "answer": "fascination"
+        }
+      ]
+    },
+    {
+      "w": "rare",
+      "g": "selten",
+      "d": "Not found or seen very often; uncommon",
+      "s": "This stamp is very _____ — only 50 of them were ever printed.",
+      "a": [],
+      "mc": [
+        "unique",
+        "unusual",
+        "scarce"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RARE?",
+          "options": [
+            "very",
+            "extremely",
+            "quite",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "This stamp is very _____.",
+          "options": [
+            "rare",
+            "care",
+            "dare",
+            "fair"
+          ],
+          "answer": "rare"
+        }
+      ]
+    },
+    {
+      "w": "auction",
+      "g": "Auktion, Versteigerung",
+      "d": "A public sale where items are sold to the person who offers the most money",
+      "s": "The old violin was sold at an _____ for over 10,000 euros.",
+      "a": [
+        "auctions"
+      ],
+      "mc": [
+        "exhibition",
+        "sale",
+        "lottery"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AUCTION?",
+          "options": [
+            "bid",
+            "sell",
+            "public",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The painting was sold at an _____.",
+          "options": [
+            "auction",
+            "caution",
+            "portion",
+            "fashion"
+          ],
+          "answer": "auction"
+        }
+      ]
+    },
+    {
+      "w": "burn to the ground",
+      "g": "niederbrennen",
+      "d": "To be completely destroyed by fire",
+      "s": "The old wooden house _____ during the storm last night.",
+      "cf": "burned to the ground",
+      "a": [
+        "burn to the ground",
+        "burned to the ground",
+        "burnt to the ground"
+      ],
+      "mc": [
+        "fall to pieces",
+        "blow to bits",
+        "tear apart"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BURN TO THE GROUND?",
+          "options": [
+            "completely",
+            "house",
+            "fire",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The house _____ during the fire.",
+          "options": [
+            "burned to the ground",
+            "burned to a crisp",
+            "burned to ashes",
+            "burned to pieces"
+          ],
+          "answer": "burned to the ground"
+        }
+      ]
+    },
+    {
+      "w": "copy",
+      "g": "Kopie; Exemplar",
+      "d": "One example of a book, newspaper, CD, or other printed or recorded item",
+      "s": "The library has three _____ of that popular novel.",
+      "cf": "copies",
+      "a": [
+        "copy",
+        "copies"
+      ],
+      "mc": [
+        "edition",
+        "original",
+        "version"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COPY?",
+          "options": [
+            "make",
+            "original",
+            "signed",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The library has three _____ of that book.",
+          "options": [
+            "copies",
+            "movies",
+            "stories",
+            "bodies"
+          ],
+          "answer": "copies"
+        }
+      ]
+    },
+    {
+      "w": "execute",
+      "g": "hinrichten",
+      "d": "To kill someone as a legal punishment for a crime",
+      "s": "In some countries, criminals can still be _____ for serious crimes.",
+      "cf": "executed",
+      "a": [
+        "execute",
+        "executed"
+      ],
+      "mc": [
+        "arrest",
+        "imprison",
+        "punish"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EXECUTE?",
+          "options": [
+            "prisoner",
+            "publicly",
+            "legally",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The criminal was _____.",
+          "options": [
+            "executed",
+            "educated",
+            "exhausted",
+            "exported"
+          ],
+          "answer": "executed"
+        }
+      ]
+    },
+    {
+      "w": "furious",
+      "g": "wütend, aufgebracht",
+      "d": "Extremely angry",
+      "s": "Mum was _____ when she found out I had broken the window.",
+      "a": [],
+      "mc": [
+        "annoyed",
+        "outraged",
+        "irritated"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FURIOUS?",
+          "options": [
+            "absolutely",
+            "become",
+            "extremely",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "Mum was _____ when she found out.",
+          "options": [
+            "furious",
+            "curious",
+            "serious",
+            "glorious"
+          ],
+          "answer": "furious"
+        }
+      ]
+    },
+    {
+      "w": "judge",
+      "g": "Richter/in",
+      "d": "A person who decides cases in a court of law",
+      "s": "The _____ listened carefully to both sides before making a decision.",
+      "a": [
+        "judges"
+      ],
+      "mc": [
+        "lawyer",
+        "jury",
+        "prosecutor"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with JUDGE?",
+          "options": [
+            "court",
+            "decide",
+            "fair",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ made a decision.",
+          "options": [
+            "judge",
+            "fudge",
+            "nudge",
+            "budge"
+          ],
+          "answer": "judge"
+        }
+      ]
+    },
+    {
+      "w": "librarian",
+      "g": "Bibliothekar/in",
+      "d": "A person who works in a library and helps people find books",
+      "s": "Ask the _____ if you need help finding the right book.",
+      "a": [
+        "librarians"
+      ],
+      "mc": [
+        "teacher",
+        "archivist",
+        "secretary"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LIBRARIAN?",
+          "options": [
+            "helpful",
+            "library",
+            "books",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Ask the _____ for help.",
+          "options": [
+            "librarian",
+            "historian",
+            "guardian",
+            "vegetarian"
+          ],
+          "answer": "librarian"
+        }
+      ]
+    },
+    {
+      "w": "library",
+      "g": "Bibliothek",
+      "d": "A building or room where books are kept for people to read or borrow",
+      "s": "I borrowed three books from the _____ for my history project.",
+      "a": [
+        "libraries"
+      ],
+      "mc": [
+        "bookshop",
+        "archive",
+        "museum"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LIBRARY?",
+          "options": [
+            "public",
+            "borrow",
+            "books",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "I borrowed books from the _____.",
+          "options": [
+            "library",
+            "laboratory",
+            "lavatory",
+            "lottery"
+          ],
+          "answer": "library"
+        }
+      ]
+    },
+    {
+      "w": "monastery",
+      "g": "Kloster",
+      "d": "A building where monks live and work together",
+      "s": "We visited an old _____ high up in the mountains during our school trip.",
+      "a": [
+        "monasteries"
+      ],
+      "mc": [
+        "cathedral",
+        "temple",
+        "chapel"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MONASTERY?",
+          "options": [
+            "old",
+            "ancient",
+            "visit",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We visited an old _____.",
+          "options": [
+            "monastery",
+            "cemetery",
+            "mystery",
+            "ministry"
+          ],
+          "answer": "monastery"
+        }
+      ]
+    },
+    {
+      "w": "monk",
+      "g": "Mönch",
+      "d": "A man who lives in a religious community and has devoted his life to God",
+      "s": "Each _____ in the community had a small room with just a bed and a desk.",
+      "a": [
+        "monks"
+      ],
+      "mc": [
+        "priest",
+        "nun",
+        "bishop"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MONK?",
+          "options": [
+            "live",
+            "pray",
+            "religious",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Each _____ had a small room.",
+          "options": [
+            "monk",
+            "trunk",
+            "chunk",
+            "skunk"
+          ],
+          "answer": "monk"
+        }
+      ]
+    },
+    {
+      "w": "precious",
+      "g": "kostbar",
+      "d": "Very valuable, either because it is rare or because it is very important to someone",
+      "s": "Gold and diamonds are _____ materials that people have valued for centuries.",
+      "a": [],
+      "mc": [
+        "valuable",
+        "expensive",
+        "priceless"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PRECIOUS?",
+          "options": [
+            "stone",
+            "metal",
+            "very",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Gold is a _____ metal.",
+          "options": [
+            "precious",
+            "conscious",
+            "anxious",
+            "curious"
+          ],
+          "answer": "precious"
+        }
+      ]
+    },
+    {
+      "w": "preserve",
+      "g": "erhalten; schützen",
+      "d": "To keep something in its original state or in good condition",
+      "s": "It is important to _____ old buildings so that future generations can enjoy them.",
+      "a": [],
+      "mc": [
+        "protect",
+        "restore",
+        "maintain"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PRESERVE?",
+          "options": [
+            "carefully",
+            "nature",
+            "culture",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We must _____ old buildings.",
+          "options": [
+            "preserve",
+            "observe",
+            "deserve",
+            "reserve"
+          ],
+          "answer": "preserve"
+        }
+      ]
+    },
+    {
+      "w": "rob",
+      "g": "ausrauben",
+      "d": "To steal money or property from a person, bank, or shop",
+      "s": "Two men tried to _____ the jewellery shop, but the alarm scared them away.",
+      "a": [
+        "robbed"
+      ],
+      "mc": [
+        "steal",
+        "burgle",
+        "mug"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ROB?",
+          "options": [
+            "bank",
+            "shop",
+            "armed",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "They tried to _____ the shop.",
+          "options": [
+            "rob",
+            "sob",
+            "job",
+            "mob"
+          ],
+          "answer": "rob"
+        }
+      ]
+    },
+    {
+      "w": "sentence to death",
+      "g": "zu Tode verurteilen",
+      "d": "To officially decide in court that someone must be killed as punishment",
+      "s": "The prisoner was _____ for treason against the crown.",
+      "cf": "sentenced to death",
+      "a": [
+        "sentence to death",
+        "sentenced to death"
+      ],
+      "mc": [
+        "send to prison",
+        "put on trial",
+        "find guilty"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SENTENCE TO DEATH?",
+          "options": [
+            "court",
+            "crime",
+            "judge",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The prisoner was _____ to death.",
+          "options": [
+            "sentenced",
+            "silenced",
+            "fenced",
+            "sensed"
+          ],
+          "answer": "sentenced"
+        }
+      ]
+    },
+    {
+      "w": "shorten",
+      "g": "kürzen",
+      "d": "To make something shorter in length or time",
+      "s": "The teacher decided to _____ the test because there wasn't enough time.",
+      "a": [],
+      "mc": [
+        "reduce",
+        "lengthen",
+        "trim"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SHORTEN?",
+          "options": [
+            "text",
+            "time",
+            "length",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The teacher decided to _____ the test.",
+          "options": [
+            "shorten",
+            "sharpen",
+            "soften",
+            "brighten"
+          ],
+          "answer": "shorten"
+        }
+      ]
+    },
+    {
+      "w": "addict",
+      "g": "Abhängige/r, Süchtige/r",
+      "d": "A person who cannot stop doing or consuming something harmful",
+      "s": "He plays video games all night — he's a real gaming _____.",
+      "a": [
+        "addicts"
+      ],
+      "mc": [
+        "fan",
+        "enthusiast",
+        "user"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ADDICT?",
+          "options": [
+            "gaming",
+            "drug",
+            "become",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "He's a real gaming _____.",
+          "options": [
+            "addict",
+            "predict",
+            "convict",
+            "district"
+          ],
+          "answer": "addict"
+        }
+      ]
+    },
+    {
+      "w": "addiction",
+      "g": "Sucht",
+      "d": "The condition of not being able to stop doing or using something harmful",
+      "s": "Spending eight hours a day on social media is a sign of _____.",
+      "a": [
+        "addictions"
+      ],
+      "mc": [
+        "obsession",
+        "habit",
+        "craving"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ADDICTION?",
+          "options": [
+            "serious",
+            "overcome",
+            "suffer",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Social media _____ is a real problem.",
+          "options": [
+            "addiction",
+            "condition",
+            "tradition",
+            "ambition"
+          ],
+          "answer": "addiction"
+        }
+      ]
+    },
+    {
+      "w": "command",
+      "g": "Befehl",
+      "d": "An order given by a person in authority",
+      "s": "The officer gave the _____ to stop, and all the soldiers stood still.",
+      "a": [
+        "commands"
+      ],
+      "mc": [
+        "order",
+        "request",
+        "instruction"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMMAND?",
+          "options": [
+            "give",
+            "follow",
+            "obey",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The officer gave the _____.",
+          "options": [
+            "command",
+            "demand",
+            "expand",
+            "husband"
+          ],
+          "answer": "command"
+        }
+      ]
+    },
+    {
+      "w": "go crazy",
+      "g": "verrückt werden, durchdrehen",
+      "d": "To become very excited, confused, or mentally unwell",
+      "s": "If I have to wait in this queue any longer, I'm going to _____!",
+      "a": [
+        "go crazy",
+        "going crazy",
+        "went crazy"
+      ],
+      "mc": [
+        "go mad",
+        "freak out",
+        "break down"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GO CRAZY?",
+          "options": [
+            "absolutely",
+            "almost",
+            "nearly",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "If I wait any longer, I'll _____!",
+          "options": [
+            "go crazy",
+            "go fishing",
+            "go hiking",
+            "go shopping"
+          ],
+          "answer": "go crazy"
+        }
+      ]
+    },
+    {
+      "w": "miss out on sth",
+      "g": "etw verpassen",
+      "d": "To not get the chance to experience or enjoy something",
+      "s": "Everyone at school is talking about the new film. I feel like I _____ something because I haven't seen it yet.",
+      "cf": "miss out on",
+      "a": [
+        "miss out on sth",
+        "miss out on something",
+        "miss out on",
+        "miss out"
+      ],
+      "mc": [
+        "give up on sth",
+        "look forward to sth",
+        "put up with sth"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MISS OUT ON?",
+          "options": [
+            "opportunity",
+            "fun",
+            "experience",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "Don't _____ this amazing offer!",
+          "options": [
+            "miss out on",
+            "mess up",
+            "mix up",
+            "make up"
+          ],
+          "answer": "miss out on"
+        }
+      ]
+    },
+    {
+      "w": "pale",
+      "g": "blass",
+      "d": "Having a lighter skin colour than usual, often because of illness or fear",
+      "s": "She looked very _____ after being ill in bed for a whole week.",
+      "a": [],
+      "mc": [
+        "faint",
+        "weak",
+        "dull"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PALE?",
+          "options": [
+            "look",
+            "very",
+            "face",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She looked very _____ after her illness.",
+          "options": [
+            "pale",
+            "tale",
+            "male",
+            "sale"
+          ],
+          "answer": "pale"
+        }
+      ]
+    },
+    {
+      "w": "turn up",
+      "g": "auftauchen",
+      "d": "To arrive or appear, often unexpectedly",
+      "s": "We waited for an hour, but he never _____.",
+      "cf": "turned up",
+      "a": [
+        "turn up",
+        "turned up"
+      ],
+      "mc": [
+        "show up",
+        "come along",
+        "pop in"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TURN UP?",
+          "options": [
+            "late",
+            "unexpectedly",
+            "never",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He never _____ to the meeting.",
+          "options": [
+            "turned up",
+            "turned down",
+            "turned off",
+            "turned in"
+          ],
+          "answer": "turned up"
+        }
+      ]
+    },
+    {
+      "w": "whisper",
+      "g": "flüstern",
+      "d": "To speak very quietly so that only the person next to you can hear",
+      "s": "Please don't talk so loudly in the library — you need to _____.",
+      "a": [
+        "whispered"
+      ],
+      "mc": [
+        "mumble",
+        "murmur",
+        "mutter"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WHISPER?",
+          "options": [
+            "quietly",
+            "softly",
+            "secret",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Please _____ in the library.",
+          "options": [
+            "whisper",
+            "whisker",
+            "winter",
+            "wander"
+          ],
+          "answer": "whisper"
+        }
+      ]
+    },
+    {
+      "w": "sheet",
+      "g": "Blatt",
+      "d": "A single piece of paper",
+      "s": "Take out a clean _____ of paper and write your name at the top.",
+      "a": [
+        "sheets"
+      ],
+      "mc": [
+        "page",
+        "slip",
+        "note"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SHEET?",
+          "options": [
+            "clean",
+            "paper",
+            "blank",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Take out a _____ of paper.",
+          "options": [
+            "sheet",
+            "sheep",
+            "sheer",
+            "shelf"
+          ],
+          "answer": "sheet"
+        }
+      ]
+    },
+    {
+      "w": "confuse sb",
+      "g": "jdn verwirren",
+      "d": "To make someone unable to understand or think clearly",
+      "s": "All these similar words really _____ me during last week's English test.",
+      "cf": "confused",
+      "a": [
+        "confuse sb",
+        "confuse",
+        "confused"
+      ],
+      "mc": [
+        "distract sb",
+        "mislead sb",
+        "surprise sb"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CONFUSE?",
+          "options": [
+            "really",
+            "totally",
+            "easily",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "All these words _____ me.",
+          "options": [
+            "confuse",
+            "refuse",
+            "abuse",
+            "amuse"
+          ],
+          "answer": "confuse"
+        }
+      ]
+    },
+    {
+      "w": "kitschy",
+      "g": "kitschig",
+      "d": "In poor taste because it is too bright, sentimental, or cheap-looking",
+      "s": "The souvenir shop was full of _____ little figurines that nobody really needed.",
+      "a": [],
+      "mc": [
+        "tacky",
+        "fancy",
+        "old-fashioned"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with KITSCHY?",
+          "options": [
+            "very",
+            "look",
+            "souvenirs",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The figurines were quite _____.",
+          "options": [
+            "kitschy",
+            "sketchy",
+            "catchy",
+            "patchy"
+          ],
+          "answer": "kitschy"
+        }
+      ]
+    }
+  ]
+}

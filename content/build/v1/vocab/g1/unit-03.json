@@ -1,0 +1,532 @@
+{
+  "slug": "unit-03",
+  "grade": 1,
+  "unit": 3,
+  "title": "Unit 3",
+  "entries": [
+    {
+      "w": "finger",
+      "g": "Finger",
+      "d": "you have ten of them on your hands",
+      "s": "She wore a silver ring on her _____, just above her hand.",
+      "a": [],
+      "mc": [
+        "neck",
+        "arm",
+        "leg"
+      ]
+    },
+    {
+      "w": "ear",
+      "g": "Ohr",
+      "d": "you hear with it",
+      "s": "The music is too loud. I cover my _____ with my hands to protect my hearing.",
+      "cf": "ears",
+      "a": [
+        "ears"
+      ],
+      "mc": [
+        "eye",
+        "mouth",
+        "foot"
+      ]
+    },
+    {
+      "w": "nose",
+      "g": "Nase",
+      "d": "you smell with it",
+      "s": "The clown has a big red _____ in the middle of his face that he can honk.",
+      "a": [],
+      "mc": [
+        "elbow",
+        "knee",
+        "toe"
+      ]
+    },
+    {
+      "w": "hair",
+      "g": "Haar(e)",
+      "d": "it grows on your head",
+      "s": "She has long brown curly _____ down to her shoulders.",
+      "a": [],
+      "mc": [
+        "nails",
+        "teeth",
+        "skin"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ your hair",
+          "options": [
+            "Brush",
+            "Eat",
+            "Drink",
+            "Play"
+          ],
+          "answer": "Brush"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HAIR?",
+          "options": [
+            "long",
+            "short",
+            "brown",
+            "loud"
+          ],
+          "answer": "loud"
+        }
+      ]
+    },
+    {
+      "w": "eye",
+      "g": "Auge",
+      "d": "you see with it",
+      "s": "She has one blue _____ and one green one, and she uses them to see colours.",
+      "a": [],
+      "mc": [
+        "knee",
+        "elbow",
+        "finger"
+      ]
+    },
+    {
+      "w": "mouth",
+      "g": "Mund",
+      "d": "you eat and talk with it",
+      "s": "Open your _____ wide and say 'aah' so the doctor can see your throat.",
+      "a": [],
+      "mc": [
+        "hand",
+        "foot",
+        "ear"
+      ]
+    },
+    {
+      "w": "beard",
+      "g": "Bart",
+      "d": "hair on a man's chin and cheeks",
+      "s": "My grandpa has a long grey _____ on his chin because he never shaves.",
+      "a": [],
+      "mc": [
+        "wig",
+        "scarf",
+        "tie"
+      ]
+    },
+    {
+      "w": "right arm",
+      "g": "rechter Arm",
+      "d": "the arm on the same side as your right hand",
+      "s": "He broke his _____ last week and has a cast from his shoulder to his hand — the one he writes with.",
+      "a": [],
+      "mc": [
+        "right foot",
+        "right knee",
+        "right ear"
+      ]
+    },
+    {
+      "w": "left arm",
+      "g": "linker Arm",
+      "d": "the arm on the same side as your left hand",
+      "s": "She wears her silver watch on her _____, on the side opposite from her writing hand.",
+      "a": [],
+      "mc": [
+        "left foot",
+        "left ear",
+        "left eye"
+      ]
+    },
+    {
+      "w": "shoulder",
+      "g": "Schulter",
+      "d": "the body part between your neck and arm",
+      "s": "The parrot sat on the pirate's _____ just next to his neck and under his ear.",
+      "a": [],
+      "mc": [
+        "head",
+        "knee",
+        "finger"
+      ]
+    },
+    {
+      "w": "leg",
+      "g": "Bein",
+      "d": "the body part you walk and stand with",
+      "s": "He hurt his _____ in football practice and cannot run today, but he can still walk slowly.",
+      "a": [],
+      "mc": [
+        "ear",
+        "nose",
+        "mouth"
+      ]
+    },
+    {
+      "w": "foot",
+      "g": "Fuß",
+      "d": "the body part at the end of your leg",
+      "s": "I have a brown shoe on my left _____. The other shoe is missing.",
+      "a": [],
+      "mc": [
+        "ear",
+        "nose",
+        "eye"
+      ]
+    },
+    {
+      "w": "feet",
+      "g": "Füße",
+      "d": "the plural of foot",
+      "s": "My _____ are freezing cold. I need to put on warm woolly socks and slippers.",
+      "a": [],
+      "mc": [
+        "hands",
+        "ears",
+        "arms"
+      ]
+    },
+    {
+      "w": "tooth",
+      "g": "Zahn",
+      "d": "a hard white thing in your mouth",
+      "s": "My baby sister just got her first white _____ in her lower gum. It is small and sharp.",
+      "a": [],
+      "mc": [
+        "hair",
+        "finger",
+        "toe"
+      ]
+    },
+    {
+      "w": "teeth",
+      "g": "Zähne",
+      "d": "the plural of tooth, in your mouth",
+      "s": "Brush your _____ every morning and evening with a toothbrush and toothpaste.",
+      "a": [],
+      "mc": [
+        "hair",
+        "ears",
+        "nails"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ your teeth",
+          "options": [
+            "Brush",
+            "Play",
+            "Cook",
+            "Read"
+          ],
+          "answer": "Brush"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TEETH?",
+          "options": [
+            "brush",
+            "white",
+            "clean",
+            "ride"
+          ],
+          "answer": "ride"
+        }
+      ]
+    },
+    {
+      "w": "tall",
+      "g": "groß",
+      "d": "high, not short, for people",
+      "s": "The basketball player is very _____ — about two metres from his feet to his head.",
+      "a": [],
+      "mc": [
+        "short",
+        "thin",
+        "wide"
+      ]
+    },
+    {
+      "w": "short",
+      "g": "kurz; klein",
+      "d": "not long or not tall",
+      "s": "She has _____ hair that only reaches her ears, because she cut it last week.",
+      "a": [],
+      "mc": [
+        "long",
+        "thin",
+        "curly"
+      ]
+    },
+    {
+      "w": "also",
+      "g": "auch",
+      "d": "too, as well",
+      "s": "Tom can sing very well, and he can _____ play the guitar at the same time.",
+      "a": [
+        "too"
+      ],
+      "mc": [
+        "never",
+        "only",
+        "hardly"
+      ]
+    },
+    {
+      "w": "famous",
+      "g": "berühmt",
+      "d": "known by many people",
+      "s": "This pop singer is very _____. Millions of people know her name and her songs.",
+      "a": [],
+      "mc": [
+        "unknown",
+        "quiet",
+        "secret"
+      ]
+    },
+    {
+      "w": "him",
+      "g": "ihn",
+      "d": "a word for a boy or man (object)",
+      "s": "Tom is my best friend. I like _____ very much because he is kind to everyone.",
+      "a": [],
+      "mc": [
+        "her",
+        "it",
+        "us"
+      ]
+    },
+    {
+      "w": "his",
+      "g": "sein/e",
+      "d": "belonging to a boy or man",
+      "s": "That big brown dog is _____. The boy over there loves his pet very much.",
+      "a": [],
+      "mc": [
+        "her",
+        "my",
+        "their"
+      ]
+    },
+    {
+      "w": "ship",
+      "g": "Schiff",
+      "d": "a big boat on the sea",
+      "s": "The big _____ with white sails sailed across the deep blue sea to America.",
+      "a": [
+        "boat"
+      ],
+      "mc": [
+        "train",
+        "car",
+        "bicycle"
+      ]
+    },
+    {
+      "w": "strong",
+      "g": "stark",
+      "d": "having a lot of power in your body",
+      "s": "He is very _____ and can lift the heavy box with both hands above his head.",
+      "a": [],
+      "mc": [
+        "weak",
+        "small",
+        "young"
+      ]
+    },
+    {
+      "w": "captain",
+      "g": "Kapitän/Kapitänin",
+      "d": "the leader of a ship",
+      "s": "The _____ of the ship told all the sailors to turn the boat to the left toward the island.",
+      "a": [],
+      "mc": [
+        "sailor",
+        "passenger",
+        "cook"
+      ]
+    },
+    {
+      "w": "have got",
+      "g": "haben",
+      "d": "to own or to have something",
+      "s": "I _____ two older sisters and one baby brother in my family.",
+      "cf": "have got",
+      "a": [
+        "have"
+      ],
+      "mc": [
+        "don't have",
+        "want",
+        "need"
+      ]
+    },
+    {
+      "w": "pretty",
+      "g": "hübsch",
+      "d": "nice to look at",
+      "s": "What a _____ pink summer dress you are wearing! I love the flower pattern.",
+      "a": [
+        "beautiful",
+        "lovely"
+      ],
+      "mc": [
+        "ugly",
+        "dirty",
+        "old"
+      ]
+    },
+    {
+      "w": "purple",
+      "g": "lila, violett",
+      "d": "a colour, a mix of red and blue",
+      "s": "She painted the flowers _____ — the colour you get when you mix red and blue.",
+      "a": [
+        "violet"
+      ],
+      "mc": [
+        "yellow",
+        "green",
+        "orange"
+      ]
+    },
+    {
+      "w": "week",
+      "g": "Woche",
+      "d": "seven days",
+      "s": "There are seven days — Monday to Sunday — in one _____.",
+      "a": [],
+      "mc": [
+        "year",
+        "month",
+        "hour"
+      ]
+    },
+    {
+      "w": "again",
+      "g": "wieder",
+      "d": "one more time",
+      "s": "I did not hear you clearly. Please say it _____, one more time.",
+      "a": [],
+      "mc": [
+        "never",
+        "once",
+        "first"
+      ]
+    },
+    {
+      "w": "back",
+      "g": "zurück",
+      "d": "to the place where you were before",
+      "s": "School is over for the day. Let's go _____ home to eat dinner.",
+      "a": [],
+      "mc": [
+        "away",
+        "forward",
+        "up"
+      ]
+    },
+    {
+      "w": "to paint",
+      "g": "malen",
+      "d": "to make a picture with colours",
+      "s": "I like to _____ big pictures of animals with my brush and colours.",
+      "cf": "paint",
+      "a": [
+        "draw"
+      ],
+      "mc": [
+        "to erase",
+        "to crumple",
+        "to tear"
+      ]
+    },
+    {
+      "w": "sister",
+      "g": "Schwester",
+      "d": "a girl who has the same parents as you",
+      "s": "My older _____ is twelve years old and she is a girl. We share a bedroom.",
+      "a": [],
+      "mc": [
+        "brother",
+        "father",
+        "grandpa"
+      ]
+    },
+    {
+      "w": "boy",
+      "g": "Junge; Bub",
+      "d": "a young male person",
+      "s": "That _____ over there in the blue T-shirt is my best male friend Tom from class 1A.",
+      "a": [],
+      "mc": [
+        "girl",
+        "woman",
+        "grandmother"
+      ]
+    },
+    {
+      "w": "girl",
+      "g": "Mädchen",
+      "d": "a young female person",
+      "s": "That _____ over there with the red hair in pigtails is called Anna. She is in my class.",
+      "a": [],
+      "mc": [
+        "boy",
+        "man",
+        "grandfather"
+      ]
+    },
+    {
+      "w": "man",
+      "g": "Mann",
+      "d": "an adult male person",
+      "s": "The _____ in the blue shirt with short hair and a tie is our male teacher Mr. Smith.",
+      "a": [],
+      "mc": [
+        "woman",
+        "girl",
+        "baby"
+      ]
+    },
+    {
+      "w": "woman",
+      "g": "Frau",
+      "d": "an adult female person",
+      "s": "The _____ with the long brown hair is my mother. She is about 40 years old.",
+      "a": [],
+      "mc": [
+        "man",
+        "boy",
+        "baby"
+      ]
+    },
+    {
+      "w": "Her name is",
+      "g": "Sie heißt …",
+      "d": "a phrase telling who a girl or woman is",
+      "s": "This is my younger sister. _____ Anna and she is 7 years old.",
+      "cf": "Her name is",
+      "a": [],
+      "mc": [
+        "His name is",
+        "My name is",
+        "Your name is"
+      ]
+    },
+    {
+      "w": "His name is",
+      "g": "Er heißt …",
+      "d": "a phrase telling who a boy or man is",
+      "s": "This is my older brother. _____ Tom and he is 12 years old.",
+      "cf": "His name is",
+      "a": [],
+      "mc": [
+        "Her name is",
+        "My name is",
+        "Your name is"
+      ]
+    }
+  ]
+}

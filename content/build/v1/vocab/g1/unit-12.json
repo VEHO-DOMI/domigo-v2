@@ -1,0 +1,908 @@
+{
+  "slug": "unit-12",
+  "grade": 1,
+  "unit": 12,
+  "title": "Unit 12",
+  "entries": [
+    {
+      "w": "January",
+      "g": "Jänner",
+      "d": "the first month of the year",
+      "s": "The new year starts in _____.",
+      "a": [],
+      "mc": [
+        "February",
+        "June",
+        "December"
+      ]
+    },
+    {
+      "w": "February",
+      "g": "Februar",
+      "d": "the second month of the year",
+      "s": "Valentine's Day is in _____.",
+      "a": [],
+      "mc": [
+        "January",
+        "March",
+        "November"
+      ]
+    },
+    {
+      "w": "March",
+      "g": "März",
+      "d": "the third month of the year",
+      "s": "Spring often begins in _____.",
+      "a": [],
+      "mc": [
+        "April",
+        "February",
+        "May"
+      ]
+    },
+    {
+      "w": "April",
+      "g": "April",
+      "d": "the fourth month of the year",
+      "s": "It often rains a lot in _____.",
+      "a": [],
+      "mc": [
+        "March",
+        "May",
+        "June"
+      ]
+    },
+    {
+      "w": "May",
+      "g": "Mai",
+      "d": "the fifth month of the year",
+      "s": "The flowers are beautiful in _____.",
+      "a": [],
+      "mc": [
+        "April",
+        "June",
+        "March"
+      ]
+    },
+    {
+      "w": "June",
+      "g": "Juni",
+      "d": "the sixth month of the year",
+      "s": "Summer holidays start at the end of _____.",
+      "a": [],
+      "mc": [
+        "July",
+        "May",
+        "August"
+      ]
+    },
+    {
+      "w": "July",
+      "g": "Juli",
+      "d": "the seventh month of the year",
+      "s": "It is very hot here in _____.",
+      "a": [],
+      "mc": [
+        "June",
+        "August",
+        "September"
+      ]
+    },
+    {
+      "w": "August",
+      "g": "August",
+      "d": "the eighth month of the year",
+      "s": "We always go on holiday in _____.",
+      "a": [],
+      "mc": [
+        "July",
+        "September",
+        "June"
+      ]
+    },
+    {
+      "w": "September",
+      "g": "September",
+      "d": "the ninth month of the year",
+      "s": "School starts again in _____.",
+      "a": [],
+      "mc": [
+        "October",
+        "August",
+        "November"
+      ]
+    },
+    {
+      "w": "October",
+      "g": "Oktober",
+      "d": "the tenth month of the year",
+      "s": "Halloween is at the end of _____.",
+      "a": [],
+      "mc": [
+        "September",
+        "November",
+        "December"
+      ]
+    },
+    {
+      "w": "November",
+      "g": "November",
+      "d": "the eleventh month of the year",
+      "s": "The days get very short in _____.",
+      "a": [],
+      "mc": [
+        "October",
+        "December",
+        "September"
+      ]
+    },
+    {
+      "w": "December",
+      "g": "Dezember",
+      "d": "the twelfth month of the year",
+      "s": "Christmas is in _____.",
+      "a": [],
+      "mc": [
+        "November",
+        "January",
+        "October"
+      ]
+    },
+    {
+      "w": "bedroom",
+      "g": "Schlafzimmer",
+      "d": "the room where you sleep",
+      "s": "My soft teddy bear is on the pillow of my bed in my _____. That is where I sleep every night.",
+      "a": [],
+      "mc": [
+        "kitchen",
+        "bathroom",
+        "garage"
+      ]
+    },
+    {
+      "w": "library",
+      "g": "Bibliothek",
+      "d": "a place with many books to read",
+      "s": "I go to the quiet _____ with thousands of books on tall shelves to borrow a story book.",
+      "a": [],
+      "mc": [
+        "classroom",
+        "gym",
+        "dining room"
+      ]
+    },
+    {
+      "w": "living room",
+      "g": "Wohnzimmer",
+      "d": "the room where a family sits together",
+      "s": "The big soft sofa and the television are in the _____ where we watch films together.",
+      "a": [],
+      "mc": [
+        "bathroom",
+        "kitchen",
+        "bedroom"
+      ]
+    },
+    {
+      "w": "dining room",
+      "g": "Esszimmer",
+      "d": "the room where you eat meals",
+      "s": "We eat breakfast together as a family at the big table in the _____ every morning.",
+      "a": [],
+      "mc": [
+        "garage",
+        "bathroom",
+        "garden"
+      ]
+    },
+    {
+      "w": "bathroom",
+      "g": "Badezimmer",
+      "d": "the room where you wash yourself",
+      "s": "I brush my teeth and wash my face in the _____ by the sink and mirror every morning.",
+      "a": [],
+      "mc": [
+        "bedroom",
+        "kitchen",
+        "living room"
+      ]
+    },
+    {
+      "w": "hall",
+      "g": "Flur, Diele",
+      "d": "the area inside the front door of a house",
+      "s": "Please leave your wet shoes and coat in the _____ near the front door when you come into the house.",
+      "a": [],
+      "mc": [
+        "kitchen",
+        "bathroom",
+        "bedroom"
+      ]
+    },
+    {
+      "w": "kitchen",
+      "g": "Küche",
+      "d": "the room where you cook food",
+      "s": "Mum is making breakfast on the stove in the _____ where the fridge and cooker are.",
+      "a": [],
+      "mc": [
+        "bathroom",
+        "bedroom",
+        "living room"
+      ]
+    },
+    {
+      "w": "garden",
+      "g": "Garten",
+      "d": "the green area outside your house",
+      "s": "We grow fresh red tomatoes and colourful flowers in our _____ at the back of the house.",
+      "a": [],
+      "mc": [
+        "living room",
+        "bathroom",
+        "kitchen"
+      ]
+    },
+    {
+      "w": "garage",
+      "g": "Garage",
+      "d": "a building where you keep your car",
+      "s": "Dad parks his red car inside the _____ next to the house every evening when he comes home from work.",
+      "a": [],
+      "mc": [
+        "living room",
+        "bedroom",
+        "kitchen"
+      ]
+    },
+    {
+      "w": "first",
+      "g": "1. erste/r/s",
+      "d": "number one in order",
+      "s": "Monday is the _____ day of the school week.",
+      "a": [],
+      "mc": [
+        "second",
+        "third",
+        "last"
+      ]
+    },
+    {
+      "w": "second",
+      "g": "2. zweite/r/s",
+      "d": "number two in order",
+      "s": "February is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "first",
+        "third",
+        "fourth"
+      ]
+    },
+    {
+      "w": "third",
+      "g": "3. dritte/r/s",
+      "d": "number three in order",
+      "s": "Wednesday is the _____ day of the school week.",
+      "a": [],
+      "mc": [
+        "second",
+        "fourth",
+        "fifth"
+      ]
+    },
+    {
+      "w": "fourth",
+      "g": "4. vierte/r/s",
+      "d": "number four in order",
+      "s": "April is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "third",
+        "fifth",
+        "sixth"
+      ]
+    },
+    {
+      "w": "fifth",
+      "g": "5. fünfte/r/s",
+      "d": "number five in order",
+      "s": "Friday is the _____ day of the school week.",
+      "a": [],
+      "mc": [
+        "fourth",
+        "sixth",
+        "third"
+      ]
+    },
+    {
+      "w": "sixth",
+      "g": "6. sechste/r/s",
+      "d": "number six in order",
+      "s": "June is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "fifth",
+        "seventh",
+        "fourth"
+      ]
+    },
+    {
+      "w": "seventh",
+      "g": "7. siebte/r/s",
+      "d": "number seven in order",
+      "s": "July is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "sixth",
+        "eighth",
+        "fifth"
+      ]
+    },
+    {
+      "w": "eighth",
+      "g": "8. achte/r/s",
+      "d": "number eight in order",
+      "s": "August is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "seventh",
+        "ninth",
+        "sixth"
+      ]
+    },
+    {
+      "w": "ninth",
+      "g": "9. neunte/r/s",
+      "d": "number nine in order",
+      "s": "September is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "eighth",
+        "tenth",
+        "seventh"
+      ]
+    },
+    {
+      "w": "tenth",
+      "g": "10. zehnte/r/s",
+      "d": "number ten in order",
+      "s": "October is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "ninth",
+        "eleventh",
+        "eighth"
+      ]
+    },
+    {
+      "w": "eleventh",
+      "g": "11. elfte/r/s",
+      "d": "number eleven in order",
+      "s": "November is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "tenth",
+        "twelfth",
+        "ninth"
+      ]
+    },
+    {
+      "w": "twelfth",
+      "g": "12. zwölfte/r/s",
+      "d": "number twelve in order",
+      "s": "December is the _____ month of the year.",
+      "a": [],
+      "mc": [
+        "eleventh",
+        "thirteenth",
+        "tenth"
+      ]
+    },
+    {
+      "w": "thirteenth",
+      "g": "13. dreizehnte/r/s",
+      "d": "number thirteen in order",
+      "s": "My birthday is on the _____ of May.",
+      "a": [],
+      "mc": [
+        "twelfth",
+        "fourteenth",
+        "eleventh"
+      ]
+    },
+    {
+      "w": "fourteenth",
+      "g": "14. vierzehnte/r/s",
+      "d": "number fourteen in order",
+      "s": "Valentine's Day is on the _____ of February.",
+      "a": [],
+      "mc": [
+        "thirteenth",
+        "fifteenth",
+        "twelfth"
+      ]
+    },
+    {
+      "w": "fifteenth",
+      "g": "15. fünfzehnte/r/s",
+      "d": "number fifteen in order",
+      "s": "The test is on the _____ of March.",
+      "a": [],
+      "mc": [
+        "fourteenth",
+        "sixteenth",
+        "thirteenth"
+      ]
+    },
+    {
+      "w": "sixteenth",
+      "g": "16. sechzehnte/r/s",
+      "d": "number sixteen in order",
+      "s": "Her party is on the _____ of April.",
+      "a": [],
+      "mc": [
+        "fifteenth",
+        "seventeenth",
+        "fourteenth"
+      ]
+    },
+    {
+      "w": "seventeenth",
+      "g": "17. siebzehnte/r/s",
+      "d": "number seventeen in order",
+      "s": "The school trip is on the _____ of June.",
+      "a": [],
+      "mc": [
+        "sixteenth",
+        "eighteenth",
+        "fifteenth"
+      ]
+    },
+    {
+      "w": "eighteenth",
+      "g": "18. achtzehnte/r/s",
+      "d": "number eighteen in order",
+      "s": "His birthday is on the _____ of October.",
+      "a": [],
+      "mc": [
+        "seventeenth",
+        "nineteenth",
+        "sixteenth"
+      ]
+    },
+    {
+      "w": "nineteenth",
+      "g": "19. neunzehnte/r/s",
+      "d": "number nineteen in order",
+      "s": "The concert is on the _____ of November.",
+      "a": [],
+      "mc": [
+        "eighteenth",
+        "twentieth",
+        "seventeenth"
+      ]
+    },
+    {
+      "w": "twentieth",
+      "g": "20. zwanzigste/r/s",
+      "d": "number twenty in order",
+      "s": "Christmas holidays start on the _____ of December.",
+      "a": [],
+      "mc": [
+        "nineteenth",
+        "twenty-first",
+        "thirtieth"
+      ]
+    },
+    {
+      "w": "twenty-first",
+      "g": "21. einundzwanzigste/r/s",
+      "d": "number twenty-one in order",
+      "s": "The party is on the _____ of July.",
+      "a": [],
+      "mc": [
+        "twentieth",
+        "twenty-second",
+        "thirty-first"
+      ]
+    },
+    {
+      "w": "twenty-second",
+      "g": "22. zweiundzwanzigste/r/s",
+      "d": "number twenty-two in order",
+      "s": "They arrive on the _____ of August.",
+      "a": [],
+      "mc": [
+        "twenty-first",
+        "twenty-third",
+        "twentieth"
+      ]
+    },
+    {
+      "w": "twenty-third",
+      "g": "23. dreiundzwanzigste/r/s",
+      "d": "number twenty-three in order",
+      "s": "The match is on the _____ of January.",
+      "a": [],
+      "mc": [
+        "twenty-second",
+        "twenty-fourth",
+        "twenty-first"
+      ]
+    },
+    {
+      "w": "twenty-fourth",
+      "g": "24. vierundzwanzigste/r/s",
+      "d": "number twenty-four in order",
+      "s": "Christmas Eve is on the _____ of December.",
+      "a": [],
+      "mc": [
+        "twenty-third",
+        "twenty-fifth",
+        "twenty-second"
+      ]
+    },
+    {
+      "w": "twenty-fifth",
+      "g": "25. fünfundzwanzigste/r/s",
+      "d": "number twenty-five in order",
+      "s": "Christmas Day is on the _____ of December.",
+      "a": [],
+      "mc": [
+        "twenty-fourth",
+        "twenty-sixth",
+        "thirtieth"
+      ]
+    },
+    {
+      "w": "thirtieth",
+      "g": "30. dreißigste/r/s",
+      "d": "number thirty in order",
+      "s": "The last day of April is the _____.",
+      "a": [],
+      "mc": [
+        "twentieth",
+        "thirty-first",
+        "twenty-ninth"
+      ]
+    },
+    {
+      "w": "thirty-first",
+      "g": "31. einunddreißigste/r/s",
+      "d": "number thirty-one in order",
+      "s": "New Year's Eve is on the _____ of December.",
+      "a": [],
+      "mc": [
+        "thirtieth",
+        "twenty-first",
+        "first"
+      ]
+    },
+    {
+      "w": "birthday cake",
+      "g": "Geburtstagskuchen/-torte",
+      "d": "a special cake for a birthday",
+      "s": "Mum made a big chocolate _____ with twelve candles on top for my 12th birthday party.",
+      "a": [],
+      "mc": [
+        "dinner plate",
+        "loaf of bread",
+        "bowl of soup"
+      ]
+    },
+    {
+      "w": "eater",
+      "g": "Esser/Esserin",
+      "d": "a person who eats",
+      "s": "My little brother is a very slow _____ at the dinner table — it takes him an hour to finish his food.",
+      "a": [],
+      "mc": [
+        "runner",
+        "singer",
+        "driver"
+      ]
+    },
+    {
+      "w": "ill",
+      "g": "krank",
+      "d": "not feeling well, sick",
+      "s": "Tom is _____ today with a high fever. He is staying in bed and his mum is making him soup.",
+      "a": [],
+      "mc": [
+        "happy",
+        "excited",
+        "well"
+      ]
+    },
+    {
+      "w": "messy",
+      "g": "unordentlich, schlampig",
+      "d": "not clean or tidy",
+      "s": "Your bedroom is very _____ with clothes on the floor and toys everywhere. Please tidy it up now!",
+      "a": [],
+      "mc": [
+        "tidy",
+        "clean",
+        "neat"
+      ]
+    },
+    {
+      "w": "piece",
+      "g": "Stück",
+      "d": "one part of something bigger",
+      "s": "Can I have a _____ of the chocolate cake, please? Just one slice is enough for me.",
+      "a": [],
+      "mc": [
+        "bucket",
+        "bag",
+        "box"
+      ]
+    },
+    {
+      "w": "cinema",
+      "g": "Kino",
+      "d": "a place where you watch films",
+      "s": "Let's go to the _____ with a big screen and popcorn and see the new Marvel film tonight.",
+      "a": [],
+      "mc": [
+        "library",
+        "gym",
+        "hospital"
+      ]
+    },
+    {
+      "w": "excellent",
+      "g": "ausgezeichnet",
+      "d": "very, very good",
+      "s": "You got ten out of ten on the maths test with no mistakes. That is _____ work!",
+      "a": [],
+      "mc": [
+        "terrible",
+        "bad",
+        "wrong"
+      ]
+    },
+    {
+      "w": "finally",
+      "g": "endlich; schließlich",
+      "d": "after a long time",
+      "s": "We waited impatiently for a whole hour at the bus stop and _____ the late bus came around the corner.",
+      "a": [],
+      "mc": [
+        "immediately",
+        "quickly",
+        "early"
+      ]
+    },
+    {
+      "w": "match",
+      "g": "Match, Spiel",
+      "d": "a game between two teams",
+      "s": "There is a big football _____ between our team and our rival team on Saturday afternoon at the stadium.",
+      "a": [],
+      "mc": [
+        "lesson",
+        "test",
+        "song"
+      ]
+    },
+    {
+      "w": "It's my birthday.",
+      "g": "Ich habe Geburtstag.",
+      "d": "a phrase to say today is your special day with cake and presents",
+      "s": "_____ Today I am eleven years old and we are having a big party with cake!",
+      "cf": "It's my birthday.",
+      "a": [],
+      "mc": [
+        "It's Monday.",
+        "It's lunch time.",
+        "It's cold."
+      ]
+    },
+    {
+      "w": "date",
+      "g": "Datum",
+      "d": "the day, month, and year",
+      "s": "What is today's _____? — It's March 5th, 2026.",
+      "a": [],
+      "mc": [
+        "time",
+        "year",
+        "weather"
+      ]
+    },
+    {
+      "w": "month",
+      "g": "Monat",
+      "d": "one of twelve parts of a year",
+      "s": "There are exactly twelve _____ in one year, starting with January and ending with December.",
+      "cf": "months",
+      "a": [
+        "months"
+      ],
+      "mc": [
+        "weeks",
+        "days",
+        "hours"
+      ]
+    },
+    {
+      "w": "How old are you?",
+      "g": "Wie alt bist du?",
+      "d": "asking someone's age",
+      "s": "_____ — I am eleven. My next birthday is in June.",
+      "cf": "How old are you",
+      "a": [],
+      "mc": [
+        "What day is it?",
+        "Where do you live?",
+        "What is your name?"
+      ]
+    },
+    {
+      "w": "candle",
+      "g": "Kerze",
+      "d": "a stick of wax that gives light",
+      "s": "We put exactly twelve small _____ sticks on top of the birthday cake and lit them all with a match.",
+      "cf": "candles",
+      "a": [
+        "candles"
+      ],
+      "mc": [
+        "flowers",
+        "strawberries",
+        "chocolates"
+      ]
+    },
+    {
+      "w": "delicious",
+      "g": "köstlich",
+      "d": "very good to eat",
+      "s": "This homemade chocolate cake is really _____! I want to eat another big slice right now!",
+      "a": [],
+      "mc": [
+        "horrible",
+        "terrible",
+        "bad"
+      ]
+    },
+    {
+      "w": "last",
+      "g": "letzter/letzte/letztes",
+      "d": "the one before this one",
+      "s": "We went on holiday to London _____ summer in July 2025. This summer we are staying home.",
+      "a": [],
+      "mc": [
+        "next",
+        "this",
+        "tomorrow"
+      ]
+    },
+    {
+      "w": "robber",
+      "g": "Räuber/Räuberin",
+      "d": "a person who steals things",
+      "s": "The police caught the _____ with a black mask and a bag of stolen money near the bank.",
+      "a": [],
+      "mc": [
+        "teacher",
+        "doctor",
+        "baker"
+      ]
+    },
+    {
+      "w": "robbery",
+      "g": "Raubüberfall",
+      "d": "the crime of stealing from a place",
+      "s": "There was a serious _____ at the jewellery shop last night. Thieves took all the gold rings and watches.",
+      "a": [],
+      "mc": [
+        "concert",
+        "wedding",
+        "celebration"
+      ]
+    },
+    {
+      "w": "yesterday",
+      "g": "gestern",
+      "d": "the day before today",
+      "s": "I was at my grandma's house _____ — the day before today. Today I am at home.",
+      "a": [],
+      "mc": [
+        "tomorrow",
+        "next week",
+        "in 2030"
+      ]
+    },
+    {
+      "w": "alarm clock",
+      "g": "Wecker",
+      "d": "a clock that wakes you up with noise",
+      "s": "My _____ on the bedside table rings very loudly at seven every morning to wake me up for school.",
+      "a": [],
+      "mc": [
+        "wall clock",
+        "watch",
+        "kitchen clock"
+      ]
+    },
+    {
+      "w": "probably",
+      "g": "wahrscheinlich",
+      "d": "most likely, almost sure",
+      "s": "It is very cloudy and grey outside, so it will _____ rain later this afternoon. I should take my umbrella.",
+      "a": [],
+      "mc": [
+        "definitely not",
+        "certainly not",
+        "never"
+      ]
+    },
+    {
+      "w": "Good for you!",
+      "g": "Schön für dich!",
+      "d": "saying you are happy for someone",
+      "s": "You won first prize in the singing competition? _____! I am so happy for your success!",
+      "cf": "Good for you",
+      "a": [],
+      "mc": [
+        "Bad luck!",
+        "Too bad!",
+        "Sorry!"
+      ]
+    },
+    {
+      "w": "inspector",
+      "g": "Inspektor/Inspektorin",
+      "d": "a police officer who finds answers",
+      "s": "The police _____ with a notebook asked the shopkeeper many questions about the robbery to solve the case.",
+      "a": [],
+      "mc": [
+        "criminal",
+        "thief",
+        "robber"
+      ]
+    },
+    {
+      "w": "How dare you!",
+      "g": "Wie kannst du es wagen!",
+      "d": "showing you are angry at someone",
+      "s": "You ate my lunch without asking me first! _____ That was very rude!",
+      "cf": "How dare you",
+      "a": [],
+      "mc": [
+        "Thank you!",
+        "Well done!",
+        "Good job!"
+      ]
+    },
+    {
+      "w": "That was close.",
+      "g": "Das war knapp.",
+      "d": "something almost went wrong",
+      "s": "The speeding car nearly hit us as we crossed the road. _____! We were almost hurt!",
+      "cf": "That was close",
+      "a": [],
+      "mc": [
+        "That was boring.",
+        "That was slow.",
+        "That was easy."
+      ]
+    },
+    {
+      "w": "You're welcome.",
+      "g": "Nichts zu danken., Keine Ursache., Gern geschehen.",
+      "d": "what you say after someone thanks you",
+      "s": "Thank you so much for your help with my homework! — _____. I was happy to help you.",
+      "cf": "You're welcome",
+      "a": [],
+      "mc": [
+        "No thanks.",
+        "I refuse.",
+        "Go away."
+      ]
+    }
+  ]
+}

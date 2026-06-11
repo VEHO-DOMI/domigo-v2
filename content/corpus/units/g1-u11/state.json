@@ -15,6 +15,13 @@
       "by": "pipeline",
       "contentHash": "328038c329d95093dc9b14ae2ab57de739c5189de4925862938221bdb00159d3",
       "note": null
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-11T15:07:54.267Z",
+      "by": "pipeline",
+      "contentHash": "d633b7fddde5184381a0a15ff9705dd68635f228ff82d4cacb175c9878db7f08",
+      "note": "re-parse changed content"
     }
   ]
 }

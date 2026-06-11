@@ -1,0 +1,1394 @@
+{
+  "slug": "unit-10",
+  "grade": 4,
+  "unit": 10,
+  "title": "Unit 10",
+  "entries": [
+    {
+      "w": "oil",
+      "g": "Öl",
+      "d": "A thick, dark liquid found underground, used as fuel or for making products",
+      "s": "Many countries depend on _____ to run their factories and cars.",
+      "a": [],
+      "mc": [
+        "gas",
+        "coal",
+        "fuel"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with OIL?",
+          "options": [
+            "crude",
+            "drill",
+            "industry",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Many countries depend on _____.",
+          "options": [
+            "oil",
+            "foil",
+            "coil",
+            "soil"
+          ],
+          "answer": "oil"
+        }
+      ]
+    },
+    {
+      "w": "Fair Trade",
+      "g": "eine Organisation, die sich für fairen Handel einsetzt",
+      "d": "A system that pays farmers and workers in poor countries a just price for their goods",
+      "s": "When you buy _____ chocolate, the cocoa farmers get a better price.",
+      "a": [
+        "fair trade",
+        "Fairtrade"
+      ],
+      "mc": [
+        "free trade",
+        "foreign trade",
+        "local trade"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FAIR TRADE?",
+          "options": [
+            "buy",
+            "products",
+            "organic",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Buy _____ chocolate to help farmers.",
+          "options": [
+            "Fair Trade",
+            "free trade",
+            "world trade",
+            "foreign trade"
+          ],
+          "answer": "Fair Trade"
+        }
+      ]
+    },
+    {
+      "w": "farmer",
+      "g": "Landwirt/in",
+      "d": "A person who owns or works on a farm, growing crops or raising animals",
+      "s": "The _____ wakes up early every morning to feed the animals.",
+      "a": [
+        "farmers"
+      ],
+      "mc": [
+        "gardener",
+        "rancher",
+        "merchant"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FARMER?",
+          "options": [
+            "local",
+            "crops",
+            "animals",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ wakes up early to feed the animals.",
+          "options": [
+            "farmer",
+            "charmer",
+            "hammer",
+            "grammar"
+          ],
+          "answer": "farmer"
+        }
+      ]
+    },
+    {
+      "w": "make a living",
+      "g": "den Lebensunterhalt verdienen",
+      "d": "To earn enough money to pay for the things you need in life",
+      "s": "It is hard to _____ as a musician because you don't earn enough money to pay the rent.",
+      "a": [
+        "make a living",
+        "living"
+      ],
+      "mc": [
+        "make a fortune",
+        "make a profit",
+        "make a deal"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MAKE A LIVING?",
+          "options": [
+            "hard",
+            "honest",
+            "decent",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "It's hard to _____ as a musician.",
+          "options": [
+            "make a living",
+            "make a fortune",
+            "make a profit",
+            "make a deal"
+          ],
+          "answer": "make a living"
+        }
+      ]
+    },
+    {
+      "w": "pay rise",
+      "g": "Gehaltserhöhung",
+      "d": "An increase in the amount of money you receive for your work",
+      "s": "After working there for two years, she finally asked her boss for a _____.",
+      "a": [
+        "pay raise"
+      ],
+      "mc": [
+        "pay cut",
+        "bonus",
+        "promotion"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PAY RISE?",
+          "options": [
+            "ask",
+            "deserve",
+            "get",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She asked her boss for a _____.",
+          "options": [
+            "pay rise",
+            "pay cut",
+            "pay day",
+            "pay slip"
+          ],
+          "answer": "pay rise"
+        }
+      ]
+    },
+    {
+      "w": "pesticide",
+      "g": "Pestizid; Insektenbekämpfungsmittel",
+      "d": "A chemical substance used to kill insects and other pests that damage crops",
+      "s": "Some people prefer organic food because it is grown without _____.",
+      "cf": "pesticides",
+      "a": [
+        "pesticide",
+        "pesticides"
+      ],
+      "mc": [
+        "fertiliser",
+        "herbicide",
+        "insecticide"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PESTICIDE?",
+          "options": [
+            "spray",
+            "harmful",
+            "chemical",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Organic food is grown without _____.",
+          "options": [
+            "pesticides",
+            "parasites",
+            "penalties",
+            "particles"
+          ],
+          "answer": "pesticides"
+        }
+      ]
+    },
+    {
+      "w": "select",
+      "g": "auswählen",
+      "d": "To choose someone or something carefully from a group",
+      "s": "The coach will _____ the best players for the school team tomorrow.",
+      "a": [
+        "select",
+        "selected"
+      ],
+      "mc": [
+        "collect",
+        "prefer",
+        "sort"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SELECT?",
+          "options": [
+            "carefully",
+            "best",
+            "team",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The coach will _____ the best players.",
+          "options": [
+            "select",
+            "collect",
+            "protect",
+            "connect"
+          ],
+          "answer": "select"
+        }
+      ]
+    },
+    {
+      "w": "agreement",
+      "g": "Vereinbarung",
+      "d": "An arrangement or decision made between two or more people or groups",
+      "s": "The two countries signed an _____ to work together on climate change.",
+      "a": [
+        "agreements"
+      ],
+      "mc": [
+        "arrangement",
+        "contract",
+        "compromise"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AGREEMENT?",
+          "options": [
+            "sign",
+            "reach",
+            "international",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The two countries signed an _____.",
+          "options": [
+            "agreement",
+            "arrangement",
+            "achievement",
+            "amazement"
+          ],
+          "answer": "agreement"
+        }
+      ]
+    },
+    {
+      "w": "increase",
+      "g": "steigen, erhöhen",
+      "d": "To become larger in amount, number, or level",
+      "s": "Temperatures _____ in summer and many people head to the lakes.",
+      "a": [
+        "increase",
+        "increases"
+      ],
+      "mc": [
+        "improve",
+        "expand",
+        "rise"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INCREASE?",
+          "options": [
+            "rapidly",
+            "steadily",
+            "prices",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Temperatures _____ in summer.",
+          "options": [
+            "increase",
+            "decrease",
+            "release",
+            "disease"
+          ],
+          "answer": "increase"
+        }
+      ]
+    },
+    {
+      "w": "rate",
+      "g": "Rate",
+      "d": "The speed at which something happens, or the amount compared to something else",
+      "s": "The birth _____ in many European countries has been falling for years.",
+      "a": [
+        "rates"
+      ],
+      "mc": [
+        "level",
+        "percentage",
+        "ratio"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RATE?",
+          "options": [
+            "high",
+            "low",
+            "birth",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The birth _____ has been falling.",
+          "options": [
+            "rate",
+            "gate",
+            "late",
+            "fate"
+          ],
+          "answer": "rate"
+        }
+      ]
+    },
+    {
+      "w": "brother-in-law",
+      "g": "Schwager",
+      "d": "The brother of your husband or wife, or the husband of your sister",
+      "s": "My sister got married last year, so now I have a _____.",
+      "a": [
+        "brothers-in-law"
+      ],
+      "mc": [
+        "father-in-law",
+        "son-in-law",
+        "stepbrother"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BROTHER-IN-LAW?",
+          "options": [
+            "my",
+            "new",
+            "close",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "My sister's husband is my _____.",
+          "options": [
+            "brother-in-law",
+            "father-in-law",
+            "son-in-law",
+            "mother-in-law"
+          ],
+          "answer": "brother-in-law"
+        }
+      ]
+    },
+    {
+      "w": "defeat",
+      "g": "besiegen; überwältigen",
+      "d": "To win against someone in a fight, war, or competition",
+      "s": "Our school team managed to _____ last year's champions in the final.",
+      "a": [
+        "defeat",
+        "defeated"
+      ],
+      "mc": [
+        "beat",
+        "destroy",
+        "surrender"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DEFEAT?",
+          "options": [
+            "enemy",
+            "opponent",
+            "easily",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Our team managed to _____ the champions.",
+          "options": [
+            "defeat",
+            "repeat",
+            "delete",
+            "compete"
+          ],
+          "answer": "defeat"
+        }
+      ]
+    },
+    {
+      "w": "harmony",
+      "g": "Harmonie",
+      "d": "A state of peaceful agreement and cooperation",
+      "s": "People of different cultures can live together in _____ if they respect each other.",
+      "a": [],
+      "mc": [
+        "unity",
+        "peace",
+        "balance"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HARMONY?",
+          "options": [
+            "live",
+            "peace",
+            "perfect",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "People can live together in _____.",
+          "options": [
+            "harmony",
+            "company",
+            "balcony",
+            "colony"
+          ],
+          "answer": "harmony"
+        }
+      ]
+    },
+    {
+      "w": "human being",
+      "g": "Mensch",
+      "d": "A man, woman, or child; a person",
+      "s": "Every _____ deserves to be treated with respect and dignity.",
+      "a": [
+        "human being",
+        "human beings"
+      ],
+      "mc": [
+        "human race",
+        "human nature",
+        "human right"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HUMAN BEING?",
+          "options": [
+            "every",
+            "respect",
+            "treat",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "Every _____ deserves respect.",
+          "options": [
+            "human being",
+            "human race",
+            "human nature",
+            "human right"
+          ],
+          "answer": "human being"
+        }
+      ]
+    },
+    {
+      "w": "hurtful",
+      "g": "verletzend",
+      "d": "Causing emotional pain or upset",
+      "s": "She regretted saying those _____ words to her best friend.",
+      "a": [],
+      "mc": [
+        "harmful",
+        "painful",
+        "offensive"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HURTFUL?",
+          "options": [
+            "very",
+            "words",
+            "deeply",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She regretted the _____ words.",
+          "options": [
+            "hurtful",
+            "harmful",
+            "hopeful",
+            "cheerful"
+          ],
+          "answer": "hurtful"
+        }
+      ]
+    },
+    {
+      "w": "ignorance",
+      "g": "Ignoranz",
+      "d": "A lack of knowledge or information about something",
+      "s": "His _____ about other cultures sometimes leads to misunderstandings.",
+      "a": [],
+      "mc": [
+        "innocence",
+        "arrogance",
+        "carelessness"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with IGNORANCE?",
+          "options": [
+            "complete",
+            "show",
+            "pure",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "His _____ about other cultures caused problems.",
+          "options": [
+            "ignorance",
+            "arrogance",
+            "insurance",
+            "importance"
+          ],
+          "answer": "ignorance"
+        }
+      ]
+    },
+    {
+      "w": "overcome",
+      "g": "bezwingen; überwinden",
+      "d": "To succeed in dealing with a problem or difficulty",
+      "s": "She worked hard to _____ her shyness and speak in front of the class.",
+      "a": [],
+      "mc": [
+        "avoid",
+        "endure",
+        "conquer"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with OVERCOME?",
+          "options": [
+            "fear",
+            "difficulty",
+            "problem",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She worked hard to _____ her shyness.",
+          "options": [
+            "overcome",
+            "outcome",
+            "income",
+            "welcome"
+          ],
+          "answer": "overcome"
+        }
+      ]
+    },
+    {
+      "w": "painful",
+      "g": "schmerzhaft",
+      "d": "Causing physical or emotional pain",
+      "s": "The dentist said the treatment might be a little _____.",
+      "a": [],
+      "mc": [
+        "hurtful",
+        "uncomfortable",
+        "sore"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PAINFUL?",
+          "options": [
+            "very",
+            "extremely",
+            "experience",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The treatment might be a little _____.",
+          "options": [
+            "painful",
+            "grateful",
+            "faithful",
+            "hopeful"
+          ],
+          "answer": "painful"
+        }
+      ]
+    },
+    {
+      "w": "racism",
+      "g": "Rassismus",
+      "d": "The unfair treatment of people because of their race or ethnic background",
+      "s": "Schools should teach students that _____ is wrong and harmful to society.",
+      "a": [],
+      "mc": [
+        "discrimination",
+        "prejudice",
+        "bullying"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RACISM?",
+          "options": [
+            "fight",
+            "end",
+            "serious",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ is wrong and harmful.",
+          "options": [
+            "Racism",
+            "Tourism",
+            "Realism",
+            "Idealism"
+          ],
+          "answer": "Racism"
+        }
+      ]
+    },
+    {
+      "w": "racist",
+      "g": "rassistisch",
+      "d": "Showing hatred or unfair treatment towards people of a different race",
+      "s": "The football player was banned for making _____ remarks during the match.",
+      "a": [],
+      "mc": [
+        "prejudiced",
+        "unfair",
+        "biased"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RACIST?",
+          "options": [
+            "remarks",
+            "behaviour",
+            "deeply",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "He was banned for making _____ remarks.",
+          "options": [
+            "racist",
+            "fascist",
+            "artist",
+            "tourist"
+          ],
+          "answer": "racist"
+        }
+      ]
+    },
+    {
+      "w": "recognition",
+      "g": "Anerkennung, Bestätigung",
+      "d": "The act of being acknowledged or praised for something you have done",
+      "s": "The volunteer group received _____ from the mayor for helping after the flood.",
+      "a": [],
+      "mc": [
+        "reputation",
+        "appreciation",
+        "attention"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RECOGNITION?",
+          "options": [
+            "receive",
+            "deserve",
+            "international",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She received _____ for her work.",
+          "options": [
+            "recognition",
+            "recommendation",
+            "realization",
+            "reservation"
+          ],
+          "answer": "recognition"
+        }
+      ]
+    },
+    {
+      "w": "slavery",
+      "g": "Sklaverei",
+      "d": "The system of owning people as property and forcing them to work",
+      "s": "In the 19th century, many people fought to end _____ in the United States.",
+      "a": [],
+      "mc": [
+        "poverty",
+        "imprisonment",
+        "colonialism"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SLAVERY?",
+          "options": [
+            "end",
+            "abolish",
+            "history",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "People fought to end _____.",
+          "options": [
+            "slavery",
+            "delivery",
+            "discovery",
+            "recovery"
+          ],
+          "answer": "slavery"
+        }
+      ]
+    },
+    {
+      "w": "son-in-law",
+      "g": "Schwiegersohn",
+      "d": "The husband of your daughter",
+      "s": "My parents really like my sister's husband. He is a wonderful _____.",
+      "a": [
+        "sons-in-law"
+      ],
+      "mc": [
+        "brother-in-law",
+        "father-in-law",
+        "stepson"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SON-IN-LAW?",
+          "options": [
+            "my",
+            "wonderful",
+            "new",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "My daughter's husband is my _____.",
+          "options": [
+            "son-in-law",
+            "brother-in-law",
+            "father-in-law",
+            "mother-in-law"
+          ],
+          "answer": "son-in-law"
+        }
+      ]
+    },
+    {
+      "w": "angry",
+      "g": "wütend",
+      "d": "Feeling strong displeasure about something unfair or wrong",
+      "s": "He gets _____ very easily — even small things make him shout.",
+      "a": [],
+      "mc": [
+        "furious",
+        "annoyed",
+        "irritated"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ANGRY?",
+          "options": [
+            "very",
+            "get",
+            "really",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He gets _____ very easily.",
+          "options": [
+            "angry",
+            "energy",
+            "entry",
+            "every"
+          ],
+          "answer": "angry"
+        }
+      ]
+    },
+    {
+      "w": "annoy",
+      "g": "(ver-)ärgern",
+      "d": "To make someone feel slightly angry or irritated",
+      "s": "Please stop tapping your pen — it really starts to _____ me.",
+      "a": [],
+      "mc": [
+        "bother",
+        "disturb",
+        "irritate"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ANNOY?",
+          "options": [
+            "really",
+            "people",
+            "easily",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Stop tapping — it really _____ me.",
+          "options": [
+            "annoys",
+            "enjoys",
+            "employs",
+            "destroys"
+          ],
+          "answer": "annoys"
+        }
+      ]
+    },
+    {
+      "w": "helpless",
+      "g": "hilflos",
+      "d": "Unable to do anything to help yourself or others",
+      "s": "Without his glasses, he felt completely _____ and could not read the signs.",
+      "a": [],
+      "mc": [
+        "hopeless",
+        "powerless",
+        "useless"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HELPLESS?",
+          "options": [
+            "feel",
+            "completely",
+            "totally",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Without his glasses, he felt _____.",
+          "options": [
+            "helpless",
+            "homeless",
+            "hopeless",
+            "harmless"
+          ],
+          "answer": "helpless"
+        }
+      ]
+    },
+    {
+      "w": "hurt",
+      "g": "verletzen",
+      "d": "To cause physical or emotional pain to someone",
+      "s": "His unkind words really _____ her feelings.",
+      "a": [],
+      "mc": [
+        "harm",
+        "damage",
+        "wound"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HURT?",
+          "options": [
+            "feelings",
+            "deeply",
+            "badly",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "His words really _____ her feelings.",
+          "options": [
+            "hurt",
+            "hunt",
+            "hint",
+            "hut"
+          ],
+          "answer": "hurt"
+        }
+      ]
+    },
+    {
+      "w": "misunderstood",
+      "g": "missverstanden",
+      "d": "Not correctly interpreted or appreciated by other people",
+      "s": "She often feels _____ -- people think she is unfriendly, but actually she is just shy.",
+      "a": [],
+      "mc": [
+        "mistreated",
+        "misjudged",
+        "misled"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MISUNDERSTOOD?",
+          "options": [
+            "feel",
+            "often",
+            "completely",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She often feels _____.",
+          "options": [
+            "misunderstood",
+            "understood",
+            "overlooked",
+            "overcooked"
+          ],
+          "answer": "misunderstood"
+        }
+      ]
+    },
+    {
+      "w": "proud",
+      "g": "stolz",
+      "d": "Feeling pleased and satisfied about something you or someone connected to you has achieved",
+      "s": "My parents were very _____ when I won the science competition.",
+      "a": [],
+      "mc": [
+        "arrogant",
+        "confident",
+        "pleased"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PROUD?",
+          "options": [
+            "very",
+            "parents",
+            "extremely",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "My parents were very _____.",
+          "options": [
+            "proud",
+            "cloud",
+            "crowd",
+            "loud"
+          ],
+          "answer": "proud"
+        }
+      ]
+    },
+    {
+      "w": "shocked",
+      "g": "schockiert",
+      "d": "Very surprised and upset by something unexpected and unpleasant",
+      "s": "Everyone was _____ when they heard about the accident on the motorway.",
+      "a": [],
+      "mc": [
+        "stunned",
+        "surprised",
+        "frightened"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SHOCKED?",
+          "options": [
+            "deeply",
+            "completely",
+            "truly",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Everyone was _____ by the news.",
+          "options": [
+            "shocked",
+            "blocked",
+            "knocked",
+            "locked"
+          ],
+          "answer": "shocked"
+        }
+      ]
+    },
+    {
+      "w": "surprised",
+      "g": "überrascht",
+      "d": "Feeling amazement because something unexpected happened",
+      "s": "I was really _____ to find a birthday cake waiting for me at school.",
+      "a": [],
+      "mc": [
+        "amazed",
+        "confused",
+        "impressed"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SURPRISED?",
+          "options": [
+            "really",
+            "very",
+            "completely",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "I was _____ to find a cake waiting.",
+          "options": [
+            "surprised",
+            "supervised",
+            "summarised",
+            "sympathised"
+          ],
+          "answer": "surprised"
+        }
+      ]
+    },
+    {
+      "w": "claim",
+      "g": "behaupten",
+      "d": "To say that something is true, even though it might not be proven",
+      "s": "He _____ that he can speak five languages, but nobody believes him because he has never proved it.",
+      "cf": "claims",
+      "a": [
+        "claim",
+        "claims"
+      ],
+      "mc": [
+        "argue",
+        "insist",
+        "state"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CLAIM?",
+          "options": [
+            "falsely",
+            "publicly",
+            "innocence",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "He _____ that he can speak five languages.",
+          "options": [
+            "claims",
+            "blames",
+            "flames",
+            "frames"
+          ],
+          "answer": "claims"
+        }
+      ]
+    },
+    {
+      "w": "bicycle",
+      "g": "Fahrrad",
+      "d": "A vehicle with two wheels that you ride by pushing pedals with your feet",
+      "s": "She rides her _____ to school every day because it is faster than the bus.",
+      "a": [
+        "bicycles",
+        "bike"
+      ],
+      "mc": [
+        "scooter",
+        "motorcycle",
+        "tricycle"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BICYCLE?",
+          "options": [
+            "ride",
+            "chain",
+            "wheel",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She rides her _____ to school.",
+          "options": [
+            "bicycle",
+            "vehicle",
+            "article",
+            "miracle"
+          ],
+          "answer": "bicycle"
+        }
+      ]
+    },
+    {
+      "w": "fairness",
+      "g": "Gerechtigkeit; Fairness",
+      "d": "The quality of treating people equally and in a reasonable way",
+      "s": "The referee must always show _____ and treat both teams the same.",
+      "a": [],
+      "mc": [
+        "justice",
+        "equality",
+        "honesty"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FAIRNESS?",
+          "options": [
+            "show",
+            "principle",
+            "equality",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The referee must show _____.",
+          "options": [
+            "fairness",
+            "fitness",
+            "darkness",
+            "madness"
+          ],
+          "answer": "fairness"
+        }
+      ]
+    },
+    {
+      "w": "hell",
+      "g": "Hölle",
+      "d": "In some religions, a place of punishment after death; also used to mean a terrible situation",
+      "s": "In many religions, people believe that bad souls are sent to _____.",
+      "a": [],
+      "mc": [
+        "heaven",
+        "purgatory",
+        "doom"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HELL?",
+          "options": [
+            "go",
+            "believe",
+            "fire",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Bad souls are sent to _____.",
+          "options": [
+            "hell",
+            "bell",
+            "cell",
+            "well"
+          ],
+          "answer": "hell"
+        }
+      ]
+    },
+    {
+      "w": "introduction",
+      "g": "Einleitung",
+      "d": "The first part of a book, speech, or presentation that explains what it is about",
+      "s": "The _____ of her essay explains what the topic is about.",
+      "a": [
+        "introductions"
+      ],
+      "mc": [
+        "conclusion",
+        "summary",
+        "preface"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INTRODUCTION?",
+          "options": [
+            "write",
+            "short",
+            "essay",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ explains what the topic is about.",
+          "options": [
+            "introduction",
+            "construction",
+            "instruction",
+            "destruction"
+          ],
+          "answer": "introduction"
+        }
+      ]
+    },
+    {
+      "w": "pollution",
+      "g": "Verschmutzung",
+      "d": "Damage caused to the environment by harmful substances or waste",
+      "s": "Air _____ from cars and factories is a serious problem in many cities.",
+      "a": [],
+      "mc": [
+        "contamination",
+        "emission",
+        "radiation"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with POLLUTION?",
+          "options": [
+            "air",
+            "water",
+            "reduce",
+            "friendly"
+          ],
+          "answer": "friendly"
+        },
+        {
+          "type": "gap",
+          "prompt": "Cars and factories cause air _____.",
+          "options": [
+            "pollution",
+            "population",
+            "position",
+            "portion"
+          ],
+          "answer": "pollution"
+        },
+        {
+          "type": "gap",
+          "prompt": "We must _____ pollution to protect the environment.",
+          "options": [
+            "reduce",
+            "produce",
+            "introduce",
+            "reproduce"
+          ],
+          "answer": "reduce"
+        }
+      ]
+    }
+  ]
+}

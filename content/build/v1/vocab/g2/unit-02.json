@@ -1,0 +1,597 @@
+{
+  "slug": "unit-02",
+  "grade": 2,
+  "unit": 2,
+  "title": "Unit 2",
+  "entries": [
+    {
+      "w": "to organise",
+      "g": "organisieren",
+      "d": "To plan and set up something",
+      "s": "Let's _____ the party and plan who to invite and what food to buy.",
+      "cf": "organise",
+      "a": [
+        "organise",
+        "organises",
+        "organised",
+        "organize",
+        "organized"
+      ],
+      "mc": [
+        "to prepare",
+        "to cancel",
+        "to attend"
+      ]
+    },
+    {
+      "w": "surprise party",
+      "g": "Überraschungsparty",
+      "d": "A party that someone does not know about before",
+      "s": "We planned a _____ for my sister. She does not know about it yet!",
+      "cf": "surprise party",
+      "a": [
+        "surprise party",
+        "surprise parties"
+      ],
+      "mc": [
+        "birthday party",
+        "fancy dress party",
+        "garden party"
+      ]
+    },
+    {
+      "w": "admission fee",
+      "g": "Eintritt, Eintrittspreis",
+      "d": "The money you pay to go into a place",
+      "s": "The _____ for the zoo is five euros — you pay it to get in.",
+      "cf": "admission fee",
+      "a": [
+        "admission fee",
+        "admission fees"
+      ],
+      "mc": [
+        "map",
+        "guidebook",
+        "snack"
+      ]
+    },
+    {
+      "w": "artist",
+      "g": "Künstler/Künstlerin",
+      "d": "Someone who makes pictures, music, or other creative things",
+      "s": "This painting is beautiful. The _____ is very talented.",
+      "a": [
+        "artists"
+      ],
+      "mc": [
+        "musician",
+        "writer",
+        "actor"
+      ]
+    },
+    {
+      "w": "exhibition",
+      "g": "Ausstellung",
+      "d": "A place where people show art or other things",
+      "s": "We went to see a photo _____ at the town hall.",
+      "a": [
+        "exhibitions"
+      ],
+      "mc": [
+        "museum",
+        "concert",
+        "gallery"
+      ]
+    },
+    {
+      "w": "dirty",
+      "g": "dreckig, schmutzig",
+      "d": "Not clean",
+      "s": "My shoes are very _____ because I played in the mud.",
+      "a": [],
+      "mc": [
+        "shiny",
+        "dusty",
+        "clean"
+      ]
+    },
+    {
+      "w": "modern",
+      "g": "modern",
+      "d": "New and from the time we live in now",
+      "s": "Their school is very _____ with big windows and computers.",
+      "a": [],
+      "mc": [
+        "old",
+        "ancient",
+        "traditional"
+      ]
+    },
+    {
+      "w": "museum",
+      "g": "Museum",
+      "d": "A building where you can see old or interesting things",
+      "s": "We saw old coins and swords at the _____.",
+      "a": [
+        "museums"
+      ],
+      "mc": [
+        "gallery",
+        "exhibition",
+        "library"
+      ]
+    },
+    {
+      "w": "to be part of",
+      "g": "Teil von etw. sein",
+      "d": "To belong to something bigger",
+      "s": "This song is _____ the new album — it is one of the twelve tracks on it.",
+      "cf": "part of",
+      "a": [
+        "be part of",
+        "is part of",
+        "was part of"
+      ],
+      "mc": [
+        "separate from",
+        "outside of",
+        "different from"
+      ]
+    },
+    {
+      "w": "sculpture",
+      "g": "Skulptur",
+      "d": "Art made from stone, wood, or metal that you can walk around",
+      "s": "There is a big stone _____ of a horse that an artist made for the park last year.",
+      "a": [
+        "sculptures"
+      ],
+      "mc": [
+        "tree",
+        "pond",
+        "bench"
+      ]
+    },
+    {
+      "w": "to be worth",
+      "g": "wert sein",
+      "d": "To have a price or value",
+      "s": "This old painting is _____ a lot of money.",
+      "cf": "worth",
+      "a": [
+        "be worth",
+        "is worth",
+        "was worth"
+      ],
+      "mc": [
+        "to cost",
+        "to pay",
+        "to afford"
+      ]
+    },
+    {
+      "w": "What's the matter?",
+      "g": "Was ist los?",
+      "d": "A question you ask when someone looks sad or worried",
+      "s": "You look sad. _____? Tell me what is wrong.",
+      "cf": "What's the matter",
+      "a": [
+        "What's the matter",
+        "What is the matter",
+        "Whats the matter"
+      ],
+      "mc": [
+        "What happened?",
+        "How are you?",
+        "What do you mean?"
+      ]
+    },
+    {
+      "w": "anyone",
+      "g": "irgendjemand",
+      "d": "Any person at all",
+      "s": "Is _____ at home? I knocked but nobody opened.",
+      "a": [
+        "anybody"
+      ],
+      "mc": [
+        "someone",
+        "everyone",
+        "nobody"
+      ]
+    },
+    {
+      "w": "behaviour",
+      "g": "Verhalten",
+      "d": "How a person acts and what they do",
+      "s": "Good _____ in class makes the teacher happy — sitting still, listening, and not talking.",
+      "a": [
+        "behavior"
+      ],
+      "mc": [
+        "punishment",
+        "noise",
+        "trouble"
+      ]
+    },
+    {
+      "w": "to contact",
+      "g": "kontaktieren",
+      "d": "To call, write, or send a message to someone",
+      "s": "Please _____ me by phone or email if you need help.",
+      "cf": "contact",
+      "a": [
+        "contact",
+        "contacts",
+        "contacted"
+      ],
+      "mc": [
+        "to ignore",
+        "to forget",
+        "to avoid"
+      ]
+    },
+    {
+      "w": "mess",
+      "g": "Unordnung, Durcheinander",
+      "d": "When things are not tidy and everywhere",
+      "s": "My room is a big _____ with clothes on the floor and toys everywhere. I need to clean it.",
+      "a": [
+        "messes"
+      ],
+      "mc": [
+        "surprise",
+        "secret",
+        "gift"
+      ]
+    },
+    {
+      "w": "to pass on",
+      "g": "weitergeben",
+      "d": "To give something to another person",
+      "s": "Can you _____ this letter to your mum? I cannot see her today.",
+      "cf": "pass on",
+      "a": [
+        "pass on",
+        "passed on",
+        "passes on"
+      ],
+      "mc": [
+        "to read",
+        "to open",
+        "to tear up"
+      ]
+    },
+    {
+      "w": "password",
+      "g": "Passwort",
+      "d": "A secret word you use to open your account",
+      "s": "Never tell your _____ to other people — it is secret and protects your account.",
+      "a": [
+        "passwords"
+      ],
+      "mc": [
+        "name",
+        "address",
+        "phone number"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ your password",
+          "options": [
+            "Change",
+            "Fry",
+            "Swim",
+            "Plant"
+          ],
+          "answer": "Change"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PASSWORD?",
+          "options": [
+            "strong",
+            "change",
+            "forget",
+            "boil"
+          ],
+          "answer": "boil"
+        }
+      ]
+    },
+    {
+      "w": "to post",
+      "g": "posten, einen Beitrag verfassen (online)",
+      "d": "To put a message or picture on the internet",
+      "s": "She _____ a funny photo on Instagram for all her followers to see, and got many likes.",
+      "cf": "posted",
+      "a": [
+        "post",
+        "posted",
+        "posts"
+      ],
+      "mc": [
+        "to hide",
+        "to delete",
+        "to save"
+      ]
+    },
+    {
+      "w": "posting",
+      "g": "Posting, Beitrag (online)",
+      "d": "A message or picture on the internet",
+      "s": "Did you read his new _____ on social media about his holiday photos?",
+      "a": [
+        "postings"
+      ],
+      "mc": [
+        "username",
+        "profile",
+        "password"
+      ]
+    },
+    {
+      "w": "such",
+      "g": "solch, so (ein)",
+      "d": "a word used before a/an + adjective + noun to show emphasis",
+      "s": "It was _____ a nice day -- so warm and sunny -- that we went to the lake.",
+      "a": [],
+      "mc": [
+        "really",
+        "very",
+        "quite"
+      ]
+    },
+    {
+      "w": "tip",
+      "g": "Hinweis, Tipp",
+      "d": "A helpful idea or piece of advice",
+      "s": "Here is a good _____ that will help you pass the test: read the questions first before you answer.",
+      "a": [
+        "tips"
+      ],
+      "mc": [
+        "prize",
+        "result",
+        "rule"
+      ]
+    },
+    {
+      "w": "possible",
+      "g": "möglich",
+      "d": "Something that can happen or be done",
+      "s": "Is it _____ to finish this homework in ten minutes?",
+      "a": [],
+      "mc": [
+        "impossible",
+        "probable",
+        "certain"
+      ]
+    },
+    {
+      "w": "awesome",
+      "g": "großartig, beeindruckend",
+      "d": "Really great and amazing",
+      "s": "The fireworks last night were _____!",
+      "a": [],
+      "mc": [
+        "boring",
+        "terrible",
+        "quiet"
+      ]
+    },
+    {
+      "w": "boring",
+      "g": "langweilig",
+      "d": "Not interesting at all",
+      "s": "This TV show is so _____. Nothing interesting happens and I want to fall asleep.",
+      "a": [],
+      "mc": [
+        "exciting",
+        "funny",
+        "interesting"
+      ]
+    },
+    {
+      "w": "confusing",
+      "g": "verwirrend",
+      "d": "Hard to understand",
+      "s": "The instructions were very _____ and I made mistakes. Nothing made sense.",
+      "a": [],
+      "mc": [
+        "clear",
+        "simple",
+        "easy"
+      ]
+    },
+    {
+      "w": "difficult",
+      "g": "schwierig",
+      "d": "Not easy to do or understand",
+      "s": "The last question on the test was really _____. Nobody in the class could answer it.",
+      "a": [],
+      "mc": [
+        "easy",
+        "simple",
+        "quick"
+      ]
+    },
+    {
+      "w": "exciting",
+      "g": "spannend, aufregend",
+      "d": "Making you feel happy and full of energy",
+      "s": "Going on a roller coaster is really _____!",
+      "a": [],
+      "mc": [
+        "boring",
+        "relaxing",
+        "calm"
+      ]
+    },
+    {
+      "w": "funny",
+      "g": "lustig, komisch",
+      "d": "Something that makes you laugh",
+      "s": "The clown at the party was very _____. He made everyone laugh out loud.",
+      "a": [
+        "funnier",
+        "funniest"
+      ],
+      "mc": [
+        "sad",
+        "scary",
+        "serious"
+      ]
+    },
+    {
+      "w": "embarrassed",
+      "g": "verlegen, beschämt",
+      "d": "Feeling bad because you did something silly",
+      "s": "I felt so _____ when I fell in front of everyone — my face turned red and I wanted to hide.",
+      "a": [],
+      "mc": [
+        "proud",
+        "brave",
+        "confident"
+      ]
+    },
+    {
+      "w": "plate",
+      "g": "Teller",
+      "d": "A flat round thing you put food on",
+      "s": "Put the pasta on the _____ and start eating.",
+      "a": [
+        "plates"
+      ],
+      "mc": [
+        "bowl",
+        "cup",
+        "tray"
+      ]
+    },
+    {
+      "w": "secret",
+      "g": "Geheimnis",
+      "d": "Something you do not tell other people",
+      "s": "Can you keep a _____? Don't tell anyone — not even your best friend!",
+      "a": [
+        "secrets"
+      ],
+      "mc": [
+        "promise",
+        "rule",
+        "diary"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a secret",
+          "options": [
+            "Keep",
+            "Cook",
+            "Wash",
+            "Drive"
+          ],
+          "answer": "Keep"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SECRET?",
+          "options": [
+            "keep",
+            "tell",
+            "big",
+            "fry"
+          ],
+          "answer": "fry"
+        }
+      ]
+    },
+    {
+      "w": "upset",
+      "g": "verärgert, aufgebracht",
+      "d": "Feeling sad or angry about something bad",
+      "s": "She was _____ because someone took her pencil case. Tears came to her eyes.",
+      "a": [],
+      "mc": [
+        "happy",
+        "glad",
+        "proud"
+      ]
+    },
+    {
+      "w": "to add",
+      "g": "hinzufügen",
+      "d": "To put something more to what is already there",
+      "s": "You can _____ sugar to your tea if you want to make it sweeter.",
+      "cf": "add",
+      "a": [
+        "add",
+        "adds",
+        "added"
+      ],
+      "mc": [
+        "to take away",
+        "to throw away",
+        "to remove"
+      ]
+    },
+    {
+      "w": "to fail",
+      "g": "scheitern; durchfallen",
+      "d": "To not pass a test or not do well enough",
+      "s": "I studied hard every night because I did not want to _____ the exam and get a bad mark.",
+      "cf": "fail",
+      "a": [
+        "fail",
+        "fails",
+        "failed"
+      ],
+      "mc": [
+        "to pass",
+        "to do",
+        "to write"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ an exam",
+          "options": [
+            "Fail",
+            "Cook",
+            "Ride",
+            "Swim"
+          ],
+          "answer": "Fail"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FAIL?",
+          "options": [
+            "an exam",
+            "a test",
+            "a driving test",
+            "a sandwich"
+          ],
+          "answer": "a sandwich"
+        }
+      ]
+    },
+    {
+      "w": "I promise.",
+      "g": "Ich verspreche es.",
+      "d": "Words you say to show you will do something for sure",
+      "s": "I will help you tomorrow. _____ I always keep my word.",
+      "cf": "I promise",
+      "a": [
+        "I promise"
+      ],
+      "mc": [
+        "I swear.",
+        "Believe me!",
+        "Trust me."
+      ]
+    }
+  ]
+}

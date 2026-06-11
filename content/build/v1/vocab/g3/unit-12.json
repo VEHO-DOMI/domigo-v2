@@ -1,0 +1,790 @@
+{
+  "slug": "unit-12",
+  "grade": 3,
+  "unit": 12,
+  "title": "Unit 12",
+  "entries": [
+    {
+      "w": "drought",
+      "g": "Dürre",
+      "d": "A long time without rain, when the land becomes very dry",
+      "s": "The long _____ lasted for six months and all the rivers, lakes, and wells in the area dried up completely.",
+      "a": [
+        "droughts"
+      ],
+      "mc": [
+        "flood",
+        "heavy rain",
+        "tsunami"
+      ]
+    },
+    {
+      "w": "earthquake",
+      "g": "Erdbeben",
+      "d": "When the ground shakes suddenly and strongly",
+      "s": "The sudden _____ shook the ground violently and damaged many brick buildings and apartment blocks in the city.",
+      "a": [
+        "earthquakes"
+      ],
+      "mc": [
+        "flood",
+        "drought",
+        "tornado"
+      ]
+    },
+    {
+      "w": "hurricane",
+      "g": "Hurrikan",
+      "d": "A very strong storm with fast winds and heavy rain",
+      "s": "The powerful tropical _____ brought extremely strong spiral winds of 200 km/h and destroyed many wooden houses on the Caribbean island.",
+      "a": [
+        "hurricanes"
+      ],
+      "mc": [
+        "snowstorm",
+        "drought",
+        "earthquake"
+      ]
+    },
+    {
+      "w": "volcanic eruption",
+      "g": "Vulkanausbruch",
+      "d": "When a volcano throws out hot rock and lava",
+      "s": "The huge _____ from Mount Vesuvius covered the whole Roman village of Pompeii in a thick layer of hot grey ash from the sky.",
+      "cf": "volcanic eruption",
+      "a": [
+        "volcanic eruption",
+        "volcanic eruptions"
+      ],
+      "mc": [
+        "snowstorm",
+        "flood",
+        "earthquake"
+      ]
+    },
+    {
+      "w": "mudslide",
+      "g": "Schlammlawine",
+      "d": "When wet earth moves quickly down a hill or mountain",
+      "s": "After three days of heavy rain on the hill, a big brown _____ of wet earth and rocks blocked the main road to the village.",
+      "a": [
+        "mudslides"
+      ],
+      "mc": [
+        "snowfall",
+        "sandstorm",
+        "hailstorm"
+      ]
+    },
+    {
+      "w": "avalanche",
+      "g": "Lawine",
+      "d": "A large amount of snow falling quickly down a mountain",
+      "s": "The three skiers on the mountain had to be rescued by helicopter after a huge _____ of snow came crashing down the slope.",
+      "a": [
+        "avalanches"
+      ],
+      "mc": [
+        "flood",
+        "drought",
+        "sandstorm"
+      ]
+    },
+    {
+      "w": "forest fire",
+      "g": "Waldbrand",
+      "d": "A large blaze that burns trees in the woods",
+      "s": "The terrible _____ destroyed thousands of tall pine trees in the woods in just one single day during the hot dry summer.",
+      "cf": "forest fire",
+      "a": [
+        "forest fire",
+        "forest fires"
+      ],
+      "mc": [
+        "snowstorm",
+        "flood",
+        "hurricane"
+      ]
+    },
+    {
+      "w": "tsunami",
+      "g": "Tsunami",
+      "d": "A very large ocean wave caused by an earthquake under the sea",
+      "s": "The enormous _____ wave from the ocean flooded the entire coast and destroyed many beach homes and shops.",
+      "a": [
+        "tsunamis"
+      ],
+      "mc": [
+        "earthquake",
+        "drought",
+        "hurricane"
+      ]
+    },
+    {
+      "w": "flood",
+      "g": "Überschwemmung",
+      "d": "When water covers land that is usually dry",
+      "s": "The heavy river _____ after three days of rain covered the whole street with half a metre of brown water and came into our house through the door.",
+      "a": [
+        "floods"
+      ],
+      "mc": [
+        "drought",
+        "dust storm",
+        "sandstorm"
+      ]
+    },
+    {
+      "w": "fire drill",
+      "g": "Feueralarm-Übung",
+      "d": "A practice exercise so everyone knows what to do in an emergency",
+      "s": "We have a practice _____ at school every few months to teach us how to safely evacuate the building in case of a real emergency.",
+      "cf": "fire drill",
+      "a": [
+        "fire drill",
+        "fire drills"
+      ],
+      "mc": [
+        "maths test",
+        "PE lesson",
+        "lunch break"
+      ]
+    },
+    {
+      "w": "escape route",
+      "g": "Fluchtweg",
+      "d": "The way out of a building in an emergency",
+      "s": "Always look carefully for the nearest _____ and exit signs when you enter a new unfamiliar building like a cinema or hotel.",
+      "cf": "escape route",
+      "a": [
+        "escape route",
+        "escape routes"
+      ],
+      "mc": [
+        "car park",
+        "snack bar",
+        "reception"
+      ]
+    },
+    {
+      "w": "smoke detector",
+      "g": "Rauchmelder",
+      "d": "A small device on the ceiling that makes a loud noise when something is burning",
+      "s": "Every bedroom in a house should have a _____ attached to the ceiling that beeps loudly when it senses smoke from a fire.",
+      "cf": "smoke detector",
+      "a": [
+        "smoke detector",
+        "smoke detectors"
+      ],
+      "mc": [
+        "light bulb",
+        "ceiling fan",
+        "loudspeaker"
+      ]
+    },
+    {
+      "w": "meeting place",
+      "g": "Treffpunkt",
+      "d": "A location where everyone gathers after an emergency",
+      "s": "Our designated _____ after every school fire drill is the far corner of the car park behind the gym.",
+      "cf": "meeting place",
+      "a": [
+        "meeting place",
+        "meeting places"
+      ],
+      "mc": [
+        "starting line",
+        "finish line",
+        "picnic spot"
+      ]
+    },
+    {
+      "w": "to check doors",
+      "g": "Türen überprüfen",
+      "d": "To make sure all entrances are closed and safe",
+      "s": "Before you leave your house for holiday, always _____ carefully to make sure they are all properly locked.",
+      "cf": "check doors",
+      "a": [
+        "check doors",
+        "check the doors"
+      ],
+      "mc": [
+        "to ignore doors",
+        "to break doors",
+        "to paint doors"
+      ]
+    },
+    {
+      "w": "to crawl low",
+      "g": "niedrig kriechen",
+      "d": "To move on your hands and knees close to the floor",
+      "s": "If there is thick smoke filling a room during a fire, _____ on your hands and knees to stay below the smoke where the air is cleaner.",
+      "cf": "crawl low",
+      "a": [
+        "crawl low"
+      ],
+      "mc": [
+        "to stand tall",
+        "to jump high",
+        "to run fast"
+      ]
+    },
+    {
+      "w": "to stop, drop & roll",
+      "g": "stoppen, fallen und rollen",
+      "d": "A safety rule: stay still, go to the ground, and turn your body if you catch fire",
+      "s": "If your clothes catch fire, remember to immediately _____ on the ground to put out the flames without running.",
+      "cf": "stop, drop and roll",
+      "a": [
+        "stop, drop and roll",
+        "stop drop and roll"
+      ],
+      "mc": [
+        "to run around",
+        "to jump up and down",
+        "to shake fast"
+      ]
+    },
+    {
+      "w": "research",
+      "g": "Forschung, Recherche",
+      "d": "The careful study of a subject to find new facts",
+      "s": "Scientists around the world are doing important _____ with special equipment to try and understand earthquakes better and predict them.",
+      "a": [],
+      "mc": [
+        "shopping",
+        "entertainment",
+        "gardening"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RESEARCH?",
+          "options": [
+            "do",
+            "carry out",
+            "scientific",
+            "fry"
+          ],
+          "answer": "fry"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ research",
+          "options": [
+            "Do",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Do"
+        }
+      ]
+    },
+    {
+      "w": "to be trapped",
+      "g": "gefangen sein, festsitzen",
+      "d": "To be stuck somewhere and unable to get out",
+      "s": "The poor black cat was _____ high up on the top branch of the tall tree and couldn't get down by itself without help.",
+      "cf": "trapped",
+      "a": [
+        "be trapped",
+        "trapped"
+      ],
+      "mc": [
+        "to be free",
+        "to be running around",
+        "to be relaxed"
+      ]
+    },
+    {
+      "w": "pressure",
+      "g": "Druck",
+      "d": "The force of pushing against something",
+      "s": "The enormous _____ of the rushing river water finally broke through the old concrete dam wall after days of heavy rain.",
+      "a": [],
+      "mc": [
+        "emptiness",
+        "stillness",
+        "silence"
+      ]
+    },
+    {
+      "w": "surface",
+      "g": "Oberfläche",
+      "d": "The outside or top part of something",
+      "s": "The _____ of the calm quiet lake was completely still and smooth like glass — there were no waves or ripples at all.",
+      "a": [
+        "surfaces"
+      ],
+      "mc": [
+        "bottom",
+        "depths",
+        "underwater"
+      ]
+    },
+    {
+      "w": "undersea",
+      "g": "unter Wasser",
+      "d": "Below the surface of the sea",
+      "s": "There are many active _____ volcanoes deep under the Pacific Ocean waves that we can't see from the boats above the waves.",
+      "a": [],
+      "mc": [
+        "mountain-top",
+        "desert",
+        "sky"
+      ]
+    },
+    {
+      "w": "border",
+      "g": "Grenze",
+      "d": "The line that separates two countries",
+      "s": "We slowly crossed the _____ line from Austria into Germany by car yesterday, showing our passports to the checkpoint guard.",
+      "a": [
+        "borders"
+      ],
+      "mc": [
+        "centre",
+        "middle",
+        "inside"
+      ]
+    },
+    {
+      "w": "damage",
+      "g": "Schaden",
+      "d": "Harm done to something so it is broken or doesn't work well",
+      "s": "The huge windy storm last night caused a lot of serious _____ to the roof of our school — several tiles fell off.",
+      "a": [],
+      "mc": [
+        "beauty",
+        "improvement",
+        "decoration"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DAMAGE?",
+          "options": [
+            "cause",
+            "serious",
+            "repair",
+            "fry"
+          ],
+          "answer": "fry"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ damage",
+          "options": [
+            "Cause",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Cause"
+        }
+      ]
+    },
+    {
+      "w": "to evacuate",
+      "g": "evakuieren",
+      "d": "To move people away from a dangerous place",
+      "s": "The police officers with loudspeakers _____ all the people from the dangerous burning building quickly and safely within ten minutes.",
+      "cf": "evacuated",
+      "a": [
+        "evacuate",
+        "evacuated"
+      ],
+      "mc": [
+        "to bring back to",
+        "to lock inside",
+        "to force into"
+      ]
+    },
+    {
+      "w": "to measure",
+      "g": "messen",
+      "d": "To find out the size, weight or amount of something",
+      "s": "We _____ the whole classroom carefully with a long metal measuring tape to see exactly how big it is in square metres.",
+      "cf": "measured",
+      "a": [
+        "measure",
+        "measured"
+      ],
+      "mc": [
+        "to destroy",
+        "to paint",
+        "to clean"
+      ]
+    },
+    {
+      "w": "region",
+      "g": "Region, Gebiet",
+      "d": "A large area of land",
+      "s": "This beautiful mountainous _____ of Austria called Tyrol is famous for its stunning lakes, snowy Alps, and ski resorts.",
+      "a": [
+        "regions"
+      ],
+      "mc": [
+        "entire country",
+        "whole world",
+        "single street"
+      ]
+    },
+    {
+      "w": "violent",
+      "g": "gewalttätig",
+      "d": "Using force to hurt people or things",
+      "s": "The terrible thunderstorm became much more _____ as the night went on, with very strong winds and lightning striking the ground.",
+      "a": [],
+      "mc": [
+        "gentle",
+        "calm",
+        "peaceful"
+      ]
+    },
+    {
+      "w": "to keep away from",
+      "g": "fernbleiben von",
+      "d": "To not go near something dangerous",
+      "s": "_____ the edge of the steep cliff at the seaside — it's very dangerous and you could easily slip and fall all the way down.",
+      "cf": "Keep away from",
+      "a": [
+        "keep away from",
+        "kept away from"
+      ],
+      "mc": [
+        "to run towards",
+        "to touch",
+        "to climb over"
+      ]
+    },
+    {
+      "w": "to fall down",
+      "g": "hinunterfallen",
+      "d": "To drop to the ground from a higher position",
+      "s": "The old 100-year-old oak tree in our garden _____ with a loud crash during the strong storm last night.",
+      "cf": "fell down",
+      "a": [
+        "fall down",
+        "fell down",
+        "fallen down"
+      ],
+      "mc": [
+        "to grow taller",
+        "to stand firmer",
+        "to bloom"
+      ]
+    },
+    {
+      "w": "to realise",
+      "g": "realisieren, erkennen",
+      "d": "To suddenly understand or notice something",
+      "s": "I suddenly _____ at the dinner table that it was already 9 pm — I had completely lost track of time playing video games all afternoon.",
+      "a": [
+        "realise",
+        "realised",
+        "realize",
+        "realized"
+      ],
+      "mc": [
+        "to forget",
+        "to ignore",
+        "to not know"
+      ]
+    },
+    {
+      "w": "survival",
+      "g": "Überleben",
+      "d": "Staying alive in a dangerous situation",
+      "s": "The exciting book tells the dramatic _____ story of a 12-year-old girl who was lost alone in the Alps mountains for three days.",
+      "a": [],
+      "mc": [
+        "death",
+        "failure",
+        "giving up"
+      ]
+    },
+    {
+      "w": "underneath",
+      "g": "unter",
+      "d": "Below or under something",
+      "s": "The shy black cat was hiding _____ the big wooden bed in the bedroom, just above the floor where nobody could see her.",
+      "a": [],
+      "mc": [
+        "on top of",
+        "next to",
+        "far from"
+      ]
+    },
+    {
+      "w": "ash",
+      "g": "Asche",
+      "d": "The grey powder left after something has burned",
+      "s": "After the huge campfire burned down at midnight, there was only grey _____ and some black charcoal left on the ground in the morning.",
+      "a": [
+        "ashes"
+      ],
+      "mc": [
+        "fresh wood",
+        "clean water",
+        "green grass"
+      ]
+    },
+    {
+      "w": "castaway",
+      "g": "Schiffbrüchiger/Schiffbrüchige",
+      "d": "A person who is left alone on an island after their ship sinks",
+      "s": "The lonely _____ lived completely alone on the deserted tropical island for two long years after his ship sank in the storm.",
+      "a": [
+        "castaways"
+      ],
+      "mc": [
+        "tourist",
+        "resident",
+        "holidaymaker"
+      ]
+    },
+    {
+      "w": "to deliver",
+      "g": "zustellen, liefern",
+      "d": "To bring something to a person or place",
+      "s": "The friendly postman _____ letters, postcards, and small parcels to every single house on our street every morning at 9 am.",
+      "cf": "delivers",
+      "a": [
+        "deliver",
+        "delivered",
+        "delivers"
+      ],
+      "mc": [
+        "to collect from",
+        "to throw away at",
+        "to hide from"
+      ]
+    },
+    {
+      "w": "delivery company",
+      "g": "Zustelldienst",
+      "d": "A business that brings things to people's houses",
+      "s": "The express _____ brought my new pair of running shoes to my front door in just one day after I ordered them online.",
+      "cf": "delivery company",
+      "a": [
+        "delivery company",
+        "delivery companies"
+      ],
+      "mc": [
+        "car rental company",
+        "cleaning company",
+        "travel company"
+      ]
+    },
+    {
+      "w": "flame",
+      "g": "Flamme",
+      "d": "The bright, hot part of a fire",
+      "s": "We all watched the orange and yellow _____ of the outdoor campfire dance and flicker in the dark night.",
+      "cf": "flames",
+      "a": [
+        "flame",
+        "flames"
+      ],
+      "mc": [
+        "smoke",
+        "ash",
+        "ember"
+      ]
+    },
+    {
+      "w": "to get used to",
+      "g": "sich an etw. gewöhnen",
+      "d": "To become comfortable with something new or different",
+      "s": "I quickly _____ wearing my new glasses after a few days — at first they felt strange and heavy, but now they feel normal.",
+      "cf": "got used to",
+      "a": [
+        "get used to",
+        "got used to"
+      ],
+      "mc": [
+        "to refuse",
+        "to hate",
+        "to reject"
+      ]
+    },
+    {
+      "w": "hometown",
+      "g": "Heimatstadt",
+      "d": "The town or city where you grew up",
+      "s": "She moved away to another country ten years ago, but she still visits her old _____ where she grew up every single summer.",
+      "a": [
+        "hometowns"
+      ],
+      "mc": [
+        "foreign city",
+        "holiday destination",
+        "unknown place"
+      ]
+    },
+    {
+      "w": "joy",
+      "g": "Freude",
+      "d": "A feeling of great happiness",
+      "s": "The excited children all jumped up and down with pure _____ when they heard exciting news about the surprise trip to Disneyland.",
+      "a": [
+        "joys"
+      ],
+      "mc": [
+        "sadness",
+        "disappointment",
+        "anger"
+      ]
+    },
+    {
+      "w": "parcel",
+      "g": "Paket",
+      "d": "A package that is sent or delivered",
+      "s": "There's a brown cardboard _____ with your name on the label at the front door — the postman must have delivered it this morning.",
+      "a": [
+        "parcels"
+      ],
+      "mc": [
+        "key",
+        "hat",
+        "book"
+      ]
+    },
+    {
+      "w": "raft",
+      "g": "Floß",
+      "d": "A flat structure made of wood for floating on water",
+      "s": "They built a simple floating _____ out of old pieces of wood and rope tied together to cross the wide river.",
+      "a": [
+        "rafts"
+      ],
+      "mc": [
+        "aeroplane",
+        "car",
+        "bike"
+      ]
+    },
+    {
+      "w": "shelter",
+      "g": "Unterschlupf, Unterkunft",
+      "d": "A safe place to stay, especially from bad weather",
+      "s": "They quickly found a safe _____ under a big rock overhang when it suddenly started to pour with heavy rain during their hike.",
+      "a": [
+        "shelters"
+      ],
+      "mc": [
+        "open field",
+        "empty space",
+        "exposed hilltop"
+      ]
+    },
+    {
+      "w": "to turn into",
+      "g": "verwandeln, hier: zu etw. werden",
+      "d": "To become something completely different",
+      "s": "The cold winter rain _____ into soft white snow as the temperature dropped below zero degrees at night.",
+      "cf": "turned into",
+      "a": [
+        "turn into",
+        "turned into"
+      ],
+      "mc": [
+        "to stay the same as",
+        "to come from",
+        "to run from"
+      ]
+    },
+    {
+      "w": "miracle",
+      "g": "Wunder",
+      "d": "Something amazing that you can't easily explain",
+      "s": "It was an absolute _____ that nobody was seriously hurt in the huge car accident on the motorway — everyone walked away safely.",
+      "a": [
+        "miracles"
+      ],
+      "mc": [
+        "disaster",
+        "tragedy",
+        "problem"
+      ]
+    },
+    {
+      "w": "desert island",
+      "g": "einsame Insel",
+      "d": "A remote, uninhabited piece of land surrounded by water",
+      "s": "If I were stuck on a _____ with nothing around me, I would bring a fishing rod to catch fish and a match to make a fire.",
+      "cf": "desert island",
+      "a": [
+        "desert island",
+        "desert islands"
+      ],
+      "mc": [
+        "crowded city",
+        "busy town",
+        "popular beach"
+      ]
+    },
+    {
+      "w": "pleasure (no pl)",
+      "g": "Freude, Vergnügen",
+      "d": "A feeling of enjoyment and happiness",
+      "s": "It gives me great _____ and makes me feel warm inside to help other kind people who need help with their homework.",
+      "cf": "pleasure",
+      "a": [
+        "pleasure"
+      ],
+      "mc": [
+        "pain",
+        "sadness",
+        "annoyance"
+      ]
+    },
+    {
+      "w": "in case of",
+      "g": "im Falle von",
+      "d": "If something happens, if there is a...",
+      "s": "_____ emergency fire, please use the stairs, not the lift which might get stuck between floors.",
+      "cf": "In case of",
+      "a": [
+        "in case of"
+      ],
+      "mc": [
+        "instead of",
+        "because of",
+        "thanks to"
+      ]
+    },
+    {
+      "w": "lighter",
+      "g": "Feuerzeug",
+      "d": "A small object that makes a flame",
+      "s": "My dad uses a small plastic _____ to start the charcoal barbecue fire in the back garden on sunny weekend afternoons.",
+      "a": [
+        "lighters"
+      ],
+      "mc": [
+        "torch",
+        "spoon",
+        "knife"
+      ]
+    },
+    {
+      "w": "to collapse",
+      "g": "zusammenbrechen",
+      "d": "To fall down suddenly",
+      "s": "The old stone wall in the garden finally _____ after years of rain, wind, and weathering damaged its structure and weakened the mortar.",
+      "cf": "collapsed",
+      "a": [
+        "collapse",
+        "collapsed"
+      ],
+      "mc": [
+        "to grow",
+        "to stand firmer",
+        "to become stronger"
+      ]
+    }
+  ]
+}

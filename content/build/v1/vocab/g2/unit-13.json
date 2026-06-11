@@ -1,0 +1,819 @@
+{
+  "slug": "unit-13",
+  "grade": 2,
+  "unit": 13,
+  "title": "Unit 13",
+  "entries": [
+    {
+      "w": "snowy",
+      "g": "schneereich, verschneit",
+      "d": "When there is a lot of white frozen water on the ground",
+      "s": "It was a cold, _____ day and the children played outside.",
+      "a": [
+        "snowier",
+        "snowiest"
+      ],
+      "mc": [
+        "icy",
+        "frosty",
+        "rainy"
+      ]
+    },
+    {
+      "w": "thunderstorm",
+      "g": "Gewitter",
+      "d": "A storm with loud booms and bright flashes in the sky",
+      "s": "We stayed inside because of the big _____ last night.",
+      "a": [
+        "thunderstorms"
+      ],
+      "mc": [
+        "hurricane",
+        "tornado",
+        "blizzard"
+      ]
+    },
+    {
+      "w": "cloudy",
+      "g": "bewölkt",
+      "d": "When grey shapes cover the sky and you cannot see the sun",
+      "s": "It is very _____ today. I think it will rain.",
+      "a": [
+        "cloudier",
+        "cloudiest"
+      ],
+      "mc": [
+        "foggy",
+        "sunny",
+        "hot"
+      ]
+    },
+    {
+      "w": "windy",
+      "g": "windig",
+      "d": "When the air moves a lot and blows things around",
+      "s": "Hold your hat! It is very _____ outside — the trees are bending.",
+      "a": [
+        "windier",
+        "windiest"
+      ],
+      "mc": [
+        "sunny",
+        "quiet",
+        "hot"
+      ]
+    },
+    {
+      "w": "rainy",
+      "g": "regnerisch",
+      "d": "When water falls from the sky for a long time",
+      "s": "Take your umbrella. It is going to be a _____ day.",
+      "a": [
+        "rainier",
+        "rainiest"
+      ],
+      "mc": [
+        "cloudy",
+        "snowy",
+        "stormy"
+      ]
+    },
+    {
+      "w": "sunny",
+      "g": "sonnig",
+      "d": "When the sky is clear and bright with no clouds",
+      "s": "It is a _____ day — perfect for a picnic in the park.",
+      "a": [
+        "sunnier",
+        "sunniest"
+      ],
+      "mc": [
+        "cloudy",
+        "bright",
+        "warm"
+      ]
+    },
+    {
+      "w": "foggy",
+      "g": "neblig",
+      "d": "When the air is thick and grey and you cannot see far",
+      "s": "Drive slowly — it is very _____ this morning and you cannot see the road.",
+      "a": [
+        "foggier",
+        "foggiest"
+      ],
+      "mc": [
+        "clear",
+        "bright",
+        "sunny"
+      ]
+    },
+    {
+      "w": "hot",
+      "g": "heiß",
+      "d": "A very high temperature that makes you feel warm",
+      "s": "It is so _____ today! Let's go swimming in the pool.",
+      "a": [
+        "hotter",
+        "hottest"
+      ],
+      "mc": [
+        "warm",
+        "rainy",
+        "cold"
+      ]
+    },
+    {
+      "w": "cold",
+      "g": "kalt",
+      "d": "A low temperature that makes you want a warm coat",
+      "s": "Wear a thick jacket — it is very _____ outside.",
+      "a": [
+        "colder",
+        "coldest"
+      ],
+      "mc": [
+        "cool",
+        "sunny",
+        "beautiful"
+      ]
+    },
+    {
+      "w": "weather presenter / meteorologist",
+      "g": "Wettermoderator/in / Meteorologe/Meteorologin",
+      "d": "A person on TV who tells you what the sky and air will be like",
+      "s": "The _____ on the TV news showed the weather map and said it will be warm tomorrow.",
+      "cf": "weather presenter",
+      "a": [
+        "weather presenter",
+        "meteorologist",
+        "weather presenters",
+        "meteorologists"
+      ],
+      "mc": [
+        "cook",
+        "gardener",
+        "driver"
+      ]
+    },
+    {
+      "w": "coast",
+      "g": "Küste",
+      "d": "The land next to the sea",
+      "s": "We drove to the _____ and spent the day by the water.",
+      "a": [
+        "coasts"
+      ],
+      "mc": [
+        "beach",
+        "shore",
+        "cliff"
+      ]
+    },
+    {
+      "w": "to continue",
+      "g": "andauern; weitergehen",
+      "d": "To keep going and not stop",
+      "s": "The bad weather will _____ all week without any change.",
+      "cf": "continue",
+      "a": [
+        "continue",
+        "continues",
+        "continued"
+      ],
+      "mc": [
+        "to stop",
+        "to end",
+        "to finish"
+      ]
+    },
+    {
+      "w": "cool",
+      "g": "kühl",
+      "d": "A little bit cold, but not too much",
+      "s": "The evenings are _____ in September -- not hot but not really cold either.",
+      "a": [
+        "cooler",
+        "coolest"
+      ],
+      "mc": [
+        "cold",
+        "mild",
+        "warm"
+      ]
+    },
+    {
+      "w": "degree",
+      "g": "Grad (°)",
+      "d": "A unit to measure how warm or cold it is",
+      "s": "Tomorrow it will be 25 _____ — nice and warm!",
+      "cf": "degrees",
+      "a": [
+        "degree",
+        "degrees"
+      ],
+      "mc": [
+        "percent",
+        "unit",
+        "point"
+      ]
+    },
+    {
+      "w": "dry",
+      "g": "trocken",
+      "d": "Having no water or rain",
+      "s": "The summer was very _____. It did not rain for weeks.",
+      "a": [
+        "drier",
+        "driest"
+      ],
+      "mc": [
+        "wet",
+        "damp",
+        "humid"
+      ]
+    },
+    {
+      "w": "formula",
+      "g": "Formel",
+      "d": "A special set of numbers and letters to work something out",
+      "s": "We used a _____ to change Fahrenheit to Celsius.",
+      "a": [
+        "formulas",
+        "formulae"
+      ],
+      "mc": [
+        "equation",
+        "method",
+        "sum"
+      ]
+    },
+    {
+      "w": "to give way",
+      "g": "ausweichen, Platz machen",
+      "d": "To change and be replaced by something else",
+      "s": "The clouds will _____ to sunshine in the afternoon.",
+      "cf": "give way",
+      "a": [
+        "give way",
+        "gives way",
+        "gave way"
+      ],
+      "mc": [
+        "to replace",
+        "to take over",
+        "to make way"
+      ]
+    },
+    {
+      "w": "scale",
+      "g": "Skala, Maßstab",
+      "d": "A set of numbers used to measure something",
+      "s": "On a _____ of one to ten, how much do you like maths?",
+      "a": [
+        "scales"
+      ],
+      "mc": [
+        "chart",
+        "graph",
+        "ruler"
+      ]
+    },
+    {
+      "w": "sunshine",
+      "g": "Sonnenschein",
+      "d": "light and warmth from the sun",
+      "s": "We had lovely warm _____ all day with a blue sky, so we stayed outside.",
+      "a": [],
+      "mc": [
+        "rain",
+        "snow",
+        "fog"
+      ]
+    },
+    {
+      "w": "temperature",
+      "g": "Temperatur",
+      "d": "How warm or cold something is",
+      "s": "The _____ dropped to zero degrees last night and water froze in the puddles.",
+      "a": [
+        "temperatures"
+      ],
+      "mc": [
+        "rain",
+        "wind",
+        "clock"
+      ]
+    },
+    {
+      "w": "to clear up",
+      "g": "hier: aufheitern",
+      "d": "When bad sky conditions go away and it gets nice",
+      "s": "Don't worry — the rain will _____ by lunchtime.",
+      "cf": "clear up",
+      "a": [
+        "clear up",
+        "clears up",
+        "cleared up"
+      ],
+      "mc": [
+        "to cloud over",
+        "to calm down",
+        "to warm up"
+      ]
+    },
+    {
+      "w": "fog",
+      "g": "Nebel",
+      "d": "A thick grey cloud near the ground that makes it hard to see",
+      "s": "I could not see the road because of the thick white _____ in the early morning.",
+      "a": [
+        "fogs"
+      ],
+      "mc": [
+        "rain",
+        "snow",
+        "wind"
+      ]
+    },
+    {
+      "w": "forecast",
+      "g": "Vorhersage",
+      "d": "A report that tells you what the sky and air will be like",
+      "s": "I checked the weather _____ on TV for tomorrow and it said it would rain all afternoon.",
+      "a": [
+        "forecasts"
+      ],
+      "mc": [
+        "temperature",
+        "cloud",
+        "storm"
+      ]
+    },
+    {
+      "w": "hope",
+      "g": "Hoffnung",
+      "d": "The feeling that something good will happen",
+      "s": "There is _____ that the weather will get better soon.",
+      "a": [
+        "hopes"
+      ],
+      "mc": [
+        "wish",
+        "dream",
+        "fear"
+      ]
+    },
+    {
+      "w": "outlook",
+      "g": "Aussicht, Ausblick",
+      "d": "What things will probably be like in the future",
+      "s": "The weather _____ for the next few weeks shows warm and dry conditions ahead.",
+      "a": [
+        "outlooks"
+      ],
+      "mc": [
+        "forecast",
+        "prediction",
+        "view"
+      ]
+    },
+    {
+      "w": "small talk",
+      "g": "Small Talk, Plauderei",
+      "d": "light conversation about the weather or weekend plans",
+      "s": "British people love making _____ about the weather. They have short, friendly chats everywhere.",
+      "cf": "small talk",
+      "a": [
+        "small talk"
+      ],
+      "mc": [
+        "conversation",
+        "discussion",
+        "gossip"
+      ]
+    },
+    {
+      "w": "thick",
+      "g": "dicht; dick",
+      "d": "Wide, heavy, or closely packed together",
+      "s": "She wore a _____ winter coat made of wool to stay warm in the freezing cold.",
+      "a": [
+        "thicker",
+        "thickest"
+      ],
+      "mc": [
+        "thin",
+        "light",
+        "summer"
+      ]
+    },
+    {
+      "w": "towards",
+      "g": "in Richtung, auf ... zu",
+      "d": "In the direction of something",
+      "s": "Walk _____ the park -- in its direction -- and you will find the shop.",
+      "a": [],
+      "mc": [
+        "away from",
+        "past",
+        "along"
+      ]
+    },
+    {
+      "w": "Have a nice day!",
+      "g": "Einen schönen Tag noch!",
+      "d": "A friendly thing you say when someone is leaving",
+      "s": "See you tomorrow. _____ Enjoy your time until then.",
+      "cf": "Have a nice day",
+      "a": [
+        "Have a nice day",
+        "Have a nice day!"
+      ],
+      "mc": [
+        "Good night.",
+        "Sleep well.",
+        "Sweet dreams."
+      ]
+    },
+    {
+      "w": "to make sure",
+      "g": "sich versichern, darauf achten",
+      "d": "To check that something is right or done",
+      "s": "_____ you close the windows carefully before you leave. Don't forget — it might rain.",
+      "cf": "Make sure",
+      "a": [
+        "make sure",
+        "makes sure",
+        "made sure"
+      ],
+      "mc": [
+        "to forget",
+        "to try not to",
+        "to pretend"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ friends",
+          "options": [
+            "Make",
+            "Do",
+            "Take",
+            "Keep"
+          ],
+          "answer": "Make"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MAKE?",
+          "options": [
+            "friends",
+            "a mistake",
+            "sure",
+            "a secret"
+          ],
+          "answer": "a secret"
+        }
+      ]
+    },
+    {
+      "w": "to rise",
+      "g": "(an-)steigen",
+      "d": "To go up, to get higher",
+      "s": "In summer, temperatures _____ up to thirty-five degrees in the afternoon.",
+      "cf": "rise",
+      "a": [
+        "rise",
+        "rises",
+        "rose",
+        "risen"
+      ],
+      "mc": [
+        "to fall",
+        "to freeze",
+        "to drop"
+      ]
+    },
+    {
+      "w": "axe",
+      "g": "Axt",
+      "d": "A heavy tool with a sharp metal part used to cut wood",
+      "s": "The farmer used an _____ to chop the firewood.",
+      "a": [
+        "axes"
+      ],
+      "mc": [
+        "saw",
+        "hammer",
+        "knife"
+      ]
+    },
+    {
+      "w": "bright",
+      "g": "hell",
+      "d": "Full of light, easy to see",
+      "s": "The stars were very _____ in the sky last night.",
+      "a": [
+        "brighter",
+        "brightest"
+      ],
+      "mc": [
+        "dim",
+        "dark",
+        "pale"
+      ]
+    },
+    {
+      "w": "flash of light",
+      "g": "Lichtblitz",
+      "d": "A very quick burst of brightness",
+      "s": "There was a _____ in the sky, then thunder.",
+      "cf": "flash of light",
+      "a": [
+        "flash of light",
+        "flashes of light"
+      ],
+      "mc": [
+        "ray of sunshine",
+        "beam of light",
+        "spark"
+      ]
+    },
+    {
+      "w": "to shine",
+      "g": "scheinen",
+      "d": "To give off light",
+      "s": "The sun _____ through the clouds after the rain stopped.",
+      "cf": "shone",
+      "a": [
+        "shine",
+        "shines",
+        "shone",
+        "shined"
+      ],
+      "mc": [
+        "to glow",
+        "to sparkle",
+        "to fade"
+      ]
+    },
+    {
+      "w": "average",
+      "g": "durchschnittlich",
+      "d": "The normal or middle amount",
+      "s": "The _____ price of a meal here is ten euros — some meals cost less, some cost more.",
+      "a": [],
+      "mc": [
+        "highest",
+        "cheapest",
+        "total"
+      ]
+    },
+    {
+      "w": "below",
+      "g": "unter(-halb); unten",
+      "d": "Lower than something, under",
+      "s": "The temperature dropped _____ zero and it was freezing.",
+      "a": [],
+      "mc": [
+        "above",
+        "beyond",
+        "beneath"
+      ]
+    },
+    {
+      "w": "generally",
+      "g": "im Allgemeinen",
+      "d": "Most of the time, usually",
+      "s": "Summers in Austria are _____ warm and nice, but not every single year.",
+      "a": [],
+      "mc": [
+        "never",
+        "sometimes",
+        "rarely"
+      ]
+    },
+    {
+      "w": "inch (pl inches)",
+      "g": "Zoll",
+      "d": "A small unit to measure length, used in the UK and USA",
+      "s": "My phone screen is about six _____ wide — that's around 15 centimetres.",
+      "cf": "inches",
+      "a": [
+        "inch",
+        "inches"
+      ],
+      "mc": [
+        "kilometres",
+        "metres",
+        "millimetres"
+      ]
+    },
+    {
+      "w": "mild",
+      "g": "mild",
+      "d": "Not too hot and not too cold, gentle",
+      "s": "The winters here are quite _____. It rarely snows and the temperature stays above freezing.",
+      "a": [
+        "milder",
+        "mildest"
+      ],
+      "mc": [
+        "harsh",
+        "freezing",
+        "extreme"
+      ]
+    },
+    {
+      "w": "mile",
+      "g": "Meile (= 1,6 Kilometer)",
+      "d": "A unit to measure how far something is, used in the UK and USA",
+      "s": "The next town is about five _____ from here.",
+      "cf": "miles",
+      "a": [
+        "mile",
+        "miles"
+      ],
+      "mc": [
+        "kilometre",
+        "yard",
+        "foot"
+      ]
+    },
+    {
+      "w": "rainfall",
+      "g": "Niederschlag",
+      "d": "The amount of water that comes down from the sky",
+      "s": "This area has a lot of _____ in autumn.",
+      "a": [],
+      "mc": [
+        "snowfall",
+        "sunshine",
+        "drought"
+      ]
+    },
+    {
+      "w": "to record",
+      "g": "aufzeichnen",
+      "d": "To write down or save information",
+      "s": "Scientists _____ the temperatures every day and save the data on a computer.",
+      "cf": "record",
+      "a": [
+        "record",
+        "records",
+        "recorded"
+      ],
+      "mc": [
+        "to forget",
+        "to guess",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "sea level",
+      "g": "Meeresspiegel",
+      "d": "The average height of the sea, used to measure how high land is",
+      "s": "This city is 300 metres above _____ — the line where the ocean meets the land.",
+      "cf": "sea level",
+      "a": [
+        "sea level"
+      ],
+      "mc": [
+        "the clouds",
+        "the ground",
+        "the buildings"
+      ]
+    },
+    {
+      "w": "throughout the year",
+      "g": "das ganze Jahr (über)",
+      "d": "During every part of the year, all twelve months",
+      "s": "It is warm in this country _____, from January to December.",
+      "cf": "throughout the year",
+      "a": [
+        "throughout the year"
+      ],
+      "mc": [
+        "only in summer",
+        "only at night",
+        "only on weekends"
+      ]
+    },
+    {
+      "w": "western",
+      "g": "westlich",
+      "d": "In or from the west, where the sun goes down",
+      "s": "The _____ part of Austria is very mountainous.",
+      "a": [],
+      "mc": [
+        "eastern",
+        "northern",
+        "southern"
+      ]
+    },
+    {
+      "w": "wet",
+      "g": "nass",
+      "d": "Covered with water or full of water",
+      "s": "My shoes are _____ because I walked through a puddle.",
+      "a": [
+        "wetter",
+        "wettest"
+      ],
+      "mc": [
+        "damp",
+        "dry",
+        "clean"
+      ]
+    },
+    {
+      "w": "heavy rain",
+      "g": "starker Regen",
+      "d": "When a lot of water falls from the sky very fast",
+      "s": "We could not play outside because of the _____.",
+      "cf": "heavy rain",
+      "a": [
+        "heavy rain"
+      ],
+      "mc": [
+        "light rain",
+        "drizzle",
+        "thunderstorm"
+      ]
+    },
+    {
+      "w": "tan",
+      "g": "(Sonnen-)Bräune",
+      "d": "When your skin gets darker because of the sun",
+      "s": "You have a nice _____! Were you on holiday?",
+      "a": [
+        "tans"
+      ],
+      "mc": [
+        "sunburn",
+        "freckles",
+        "pale skin"
+      ]
+    },
+    {
+      "w": "binoculars",
+      "g": "Fernglas",
+      "d": "A tool with two lenses you look through to see things far away",
+      "s": "I used my _____ to watch the birds on the lake.",
+      "a": [],
+      "mc": [
+        "telescope",
+        "magnifying glass",
+        "microscope"
+      ]
+    },
+    {
+      "w": "career",
+      "g": "Karriere",
+      "d": "The job or work someone does for many years",
+      "s": "She wants a long _____ as a doctor when she finishes school — maybe 30 or 40 years in the same profession.",
+      "a": [
+        "careers"
+      ],
+      "mc": [
+        "holiday",
+        "hobby",
+        "friendship"
+      ]
+    },
+    {
+      "w": "to earn",
+      "g": "(Geld) verdienen",
+      "d": "To get money by working",
+      "s": "My brother _____ 50 euros a week by helping at a bakery after school — the baker pays him.",
+      "cf": "earns",
+      "a": [
+        "earn",
+        "earns",
+        "earned"
+      ],
+      "mc": [
+        "to spend",
+        "to lose",
+        "to borrow"
+      ]
+    },
+    {
+      "w": "to be mad about sth.",
+      "g": "für etw. schwärmen",
+      "d": "To like something very, very much",
+      "s": "My sister is _____ horses. She rides every day.",
+      "cf": "mad about",
+      "a": [
+        "be mad about",
+        "mad about"
+      ],
+      "mc": [
+        "to be interested in",
+        "to be bored with",
+        "to be afraid of"
+      ]
+    }
+  ]
+}

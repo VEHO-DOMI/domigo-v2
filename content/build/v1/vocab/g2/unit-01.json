@@ -1,0 +1,845 @@
+{
+  "slug": "unit-01",
+  "grade": 2,
+  "unit": 1,
+  "title": "Unit 1",
+  "entries": [
+    {
+      "w": "English",
+      "g": "Englisch",
+      "d": "The language people speak in Britain and the USA",
+      "s": "We have _____ class and read stories from Britain and the USA.",
+      "a": [],
+      "mc": [
+        "French",
+        "German",
+        "Spanish"
+      ]
+    },
+    {
+      "w": "French",
+      "g": "Französisch",
+      "d": "The language people speak in France",
+      "s": "My sister is learning _____ so she can talk to people in Paris.",
+      "a": [],
+      "mc": [
+        "English",
+        "Spanish",
+        "Italian"
+      ]
+    },
+    {
+      "w": "music",
+      "g": "Musik",
+      "d": "Sounds that people sing or play on instruments",
+      "s": "We play guitar and sing in our _____ lesson.",
+      "a": [],
+      "mc": [
+        "art",
+        "drama",
+        "dance"
+      ]
+    },
+    {
+      "w": "maths",
+      "g": "Mathematik",
+      "d": "The subject where you work with numbers",
+      "s": "I like _____ because I am good with numbers.",
+      "a": [
+        "math"
+      ],
+      "mc": [
+        "science",
+        "geography",
+        "physics"
+      ]
+    },
+    {
+      "w": "geography",
+      "g": "Geografie",
+      "d": "The subject about countries and the world",
+      "s": "In _____ we are learning about mountains and rivers.",
+      "a": [],
+      "mc": [
+        "history",
+        "science",
+        "maths"
+      ]
+    },
+    {
+      "w": "science",
+      "g": "Naturwissenschaften",
+      "d": "The subject about how the world works",
+      "s": "We did a cool experiment in _____ class today.",
+      "a": [
+        "sciences"
+      ],
+      "mc": [
+        "maths",
+        "geography",
+        "history"
+      ]
+    },
+    {
+      "w": "physical education (PE)",
+      "g": "Bewegung und Sport",
+      "d": "The school subject where you run and play sports",
+      "s": "We play football and run in _____ class.",
+      "cf": "PE",
+      "a": [
+        "PE",
+        "physical education"
+      ],
+      "mc": [
+        "art",
+        "music",
+        "design and technology"
+      ]
+    },
+    {
+      "w": "art",
+      "g": "Kunst",
+      "d": "The subject where you draw and paint",
+      "s": "I painted a picture of my dog in _____ class.",
+      "a": [],
+      "mc": [
+        "music",
+        "design and technology",
+        "drama"
+      ]
+    },
+    {
+      "w": "history",
+      "g": "Geschichte",
+      "d": "The subject about things that happened long ago",
+      "s": "We learned about the Romans in _____ today.",
+      "a": [],
+      "mc": [
+        "geography",
+        "science",
+        "maths"
+      ]
+    },
+    {
+      "w": "information technology (IT)",
+      "g": "Informatik",
+      "d": "The school subject about computers",
+      "s": "We use laptops in _____ class every Friday.",
+      "cf": "IT",
+      "a": [
+        "IT",
+        "information technology"
+      ],
+      "mc": [
+        "design and technology",
+        "science",
+        "maths"
+      ]
+    },
+    {
+      "w": "design and technology",
+      "g": "Werken",
+      "d": "The subject where you make things with your hands",
+      "s": "We built a small car in _____ last week.",
+      "cf": "design and technology",
+      "a": [
+        "design and technology",
+        "D&T"
+      ],
+      "mc": [
+        "art",
+        "information technology (IT)",
+        "science"
+      ]
+    },
+    {
+      "w": "glad",
+      "g": "froh",
+      "d": "Happy about something good",
+      "s": "She was very _____ when she found her lost cat and had a big smile on her face.",
+      "a": [],
+      "mc": [
+        "sad",
+        "angry",
+        "worried"
+      ]
+    },
+    {
+      "w": "kilometre",
+      "g": "Kilometer",
+      "d": "A way to measure how far something is (1000 metres)",
+      "s": "The park is only one _____ from our house.",
+      "a": [
+        "kilometer",
+        "kilometres",
+        "kilometers"
+      ],
+      "mc": [
+        "metre",
+        "centimetre",
+        "mile"
+      ]
+    },
+    {
+      "w": "to stay at home",
+      "g": "zu Hause bleiben",
+      "d": "To not go out and be in your house",
+      "s": "It is raining, so I want to _____ today.",
+      "cf": "stay at home",
+      "a": [
+        "stay at home",
+        "stayed at home",
+        "stays at home"
+      ],
+      "mc": [
+        "to go out",
+        "to go for a walk",
+        "to travel"
+      ]
+    },
+    {
+      "w": "to travel",
+      "g": "reisen",
+      "d": "To go from one place to another place",
+      "s": "My family _____ to Italy every summer by plane.",
+      "cf": "travels",
+      "a": [
+        "travel",
+        "travels",
+        "travelled",
+        "traveled"
+      ],
+      "mc": [
+        "to stay at home",
+        "to arrive",
+        "to visit"
+      ]
+    },
+    {
+      "w": "as soon as",
+      "g": "sobald (wie)",
+      "d": "At the same moment that something happens",
+      "s": "I eat breakfast _____ I wake up -- I don't wait even one minute.",
+      "cf": "as soon as",
+      "a": [
+        "as soon as"
+      ],
+      "mc": [
+        "as long as",
+        "as far as",
+        "as well as"
+      ]
+    },
+    {
+      "w": "to get dressed",
+      "g": "sich anziehen",
+      "d": "To put your clothes on",
+      "s": "Every morning I _____ and put on my school uniform.",
+      "cf": "get dressed",
+      "a": [
+        "get dressed",
+        "gets dressed",
+        "got dressed"
+      ],
+      "mc": [
+        "to put on",
+        "to get up",
+        "to get undressed"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ dressed",
+          "options": [
+            "Get",
+            "Make",
+            "Do",
+            "Take"
+          ],
+          "answer": "Get"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GET?",
+          "options": [
+            "dressed",
+            "ready",
+            "lost",
+            "homework"
+          ],
+          "answer": "homework"
+        }
+      ]
+    },
+    {
+      "w": "to go for a walk",
+      "g": "spazieren gehen",
+      "d": "To walk outside for fun or exercise",
+      "s": "We _____ in the park with our dog every evening.",
+      "cf": "go for a walk",
+      "a": [
+        "go for a walk",
+        "went for a walk",
+        "goes for a walk"
+      ],
+      "mc": [
+        "to go for a run",
+        "to go for a ride",
+        "to take a rest"
+      ]
+    },
+    {
+      "w": "lesson",
+      "g": "Unterrichtsstunde",
+      "d": "A time at school when you learn something",
+      "s": "Our English _____ starts at eight o'clock.",
+      "a": [
+        "lessons"
+      ],
+      "mc": [
+        "break",
+        "homework",
+        "subject"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a lesson",
+          "options": [
+            "Learn",
+            "Cook",
+            "Wash",
+            "Drive"
+          ],
+          "answer": "Learn"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LESSON?",
+          "options": [
+            "learn",
+            "teach",
+            "piano",
+            "fry"
+          ],
+          "answer": "fry"
+        }
+      ]
+    },
+    {
+      "w": "to prepare",
+      "g": "(zu-)bereiten",
+      "d": "To get something ready",
+      "s": "My dad spends an hour _____ dinner by cutting vegetables and boiling water before we eat.",
+      "cf": "prepares",
+      "a": [
+        "prepare",
+        "prepares",
+        "prepared",
+        "preparing"
+      ],
+      "mc": [
+        "to eat",
+        "to order",
+        "to clean"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ dinner",
+          "options": [
+            "Prepare",
+            "Catch",
+            "Ride",
+            "Wear"
+          ],
+          "answer": "Prepare"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PREPARE?",
+          "options": [
+            "dinner",
+            "food",
+            "a meal",
+            "a bicycle"
+          ],
+          "answer": "a bicycle"
+        }
+      ]
+    },
+    {
+      "w": "to put on",
+      "g": "anziehen (Kleidung)",
+      "d": "To place clothes on your body",
+      "s": "It is cold outside, so _____ a warm jacket.",
+      "cf": "put on",
+      "a": [
+        "put on",
+        "puts on"
+      ],
+      "mc": [
+        "to take off",
+        "to get dressed",
+        "to pick up"
+      ]
+    },
+    {
+      "w": "supper",
+      "g": "Abendessen",
+      "d": "The meal you eat in the evening",
+      "s": "We eat our evening meal, called _____, at seven o'clock.",
+      "a": [
+        "suppers"
+      ],
+      "mc": [
+        "lunch",
+        "breakfast",
+        "brunch"
+      ]
+    },
+    {
+      "w": "daily",
+      "g": "täglich",
+      "d": "Something that happens every day",
+      "s": "Brushing your teeth is part of your _____ routine.",
+      "a": [],
+      "mc": [
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    {
+      "w": "calendar",
+      "g": "Kalender",
+      "d": "A list that shows all the days and months of a year",
+      "s": "I wrote the test date on my _____ so I can see all the days of the month.",
+      "a": [
+        "calendars"
+      ],
+      "mc": [
+        "notebook",
+        "schoolbag",
+        "pencil case"
+      ]
+    },
+    {
+      "w": "grandmother",
+      "g": "Großmutter",
+      "d": "Your mum's or dad's mother",
+      "s": "My _____ always bakes the best cakes. She is my mum's mother.",
+      "a": [
+        "grandmothers"
+      ],
+      "mc": [
+        "grandfather",
+        "auntie",
+        "mother"
+      ]
+    },
+    {
+      "w": "joke",
+      "g": "Witz",
+      "d": "A short funny story that makes you laugh",
+      "s": "Tom told a funny _____ that ended with a clever punchline.",
+      "a": [
+        "jokes"
+      ],
+      "mc": [
+        "song",
+        "speech",
+        "question"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a joke",
+          "options": [
+            "Tell",
+            "Make",
+            "Do",
+            "Run"
+          ],
+          "answer": "Tell"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with JOKE?",
+          "options": [
+            "tell",
+            "funny",
+            "good",
+            "boil"
+          ],
+          "answer": "boil"
+        }
+      ]
+    },
+    {
+      "w": "scary",
+      "g": "furchterregend, unheimlich",
+      "d": "Something that makes you feel afraid",
+      "s": "The old house in our street looks very _____ at night. No one dares to go inside.",
+      "a": [],
+      "mc": [
+        "pretty",
+        "welcoming",
+        "cosy"
+      ]
+    },
+    {
+      "w": "spring",
+      "g": "Frühling",
+      "d": "The time of year after winter when flowers grow",
+      "s": "The trees get green leaves in _____.",
+      "a": [],
+      "mc": [
+        "summer",
+        "autumn",
+        "winter"
+      ]
+    },
+    {
+      "w": "area",
+      "g": "Gebiet, Region",
+      "d": "A part of a place or town",
+      "s": "There are many shops and houses in the _____ around our street where we live.",
+      "a": [
+        "areas"
+      ],
+      "mc": [
+        "country",
+        "continent",
+        "planet"
+      ]
+    },
+    {
+      "w": "to book",
+      "g": "buchen",
+      "d": "To pay for a place or ticket before you go",
+      "s": "We _____ a hotel room for our holiday last week.",
+      "cf": "booked",
+      "a": [
+        "book",
+        "booked",
+        "books"
+      ],
+      "mc": [
+        "to cancel",
+        "to order",
+        "to buy"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a hotel room",
+          "options": [
+            "Book",
+            "Cook",
+            "Wash",
+            "Catch"
+          ],
+          "answer": "Book"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BOOK?",
+          "options": [
+            "a ticket",
+            "a room",
+            "a flight",
+            "a shoe"
+          ],
+          "answer": "a shoe"
+        }
+      ]
+    },
+    {
+      "w": "popular",
+      "g": "beliebt",
+      "d": "Liked by many people",
+      "s": "This game is very _____ with kids at our school. Almost everyone plays it every day.",
+      "a": [],
+      "mc": [
+        "unknown",
+        "hated",
+        "boring"
+      ]
+    },
+    {
+      "w": "shadow",
+      "g": "Schatten",
+      "d": "A dark shape on the ground when something blocks the sun",
+      "s": "I can see my _____ on the ground when the sun shines.",
+      "a": [
+        "shadows"
+      ],
+      "mc": [
+        "sunshine",
+        "light",
+        "reflection"
+      ]
+    },
+    {
+      "w": "to visit",
+      "g": "besuchen; besichtigen",
+      "d": "To go to a place to see it or someone",
+      "s": "We _____ our grandparents every Sunday and bring them flowers.",
+      "cf": "visit",
+      "a": [
+        "visit",
+        "visits",
+        "visited"
+      ],
+      "mc": [
+        "to travel",
+        "to arrive",
+        "to explore"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a museum",
+          "options": [
+            "Visit",
+            "Drive",
+            "Cook",
+            "Throw"
+          ],
+          "answer": "Visit"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with VISIT?",
+          "options": [
+            "a friend",
+            "a museum",
+            "grandparents",
+            "a pencil"
+          ],
+          "answer": "a pencil"
+        }
+      ]
+    },
+    {
+      "w": "colourful",
+      "g": "bunt, farbenfroh",
+      "d": "Having many bright colours",
+      "s": "She is wearing a _____ dress with red, blue, and yellow.",
+      "a": [
+        "colorful"
+      ],
+      "mc": [
+        "plain",
+        "dark",
+        "striped"
+      ]
+    },
+    {
+      "w": "along",
+      "g": "entlang",
+      "d": "From one end to the other of something",
+      "s": "We walked _____ the river from one end of the park to the other.",
+      "a": [],
+      "mc": [
+        "across",
+        "through",
+        "towards"
+      ]
+    },
+    {
+      "w": "to crawl",
+      "g": "kriechen",
+      "d": "To move slowly on the ground like a baby or a snake",
+      "s": "The baby _____ on her hands and knees across the floor to get her toy.",
+      "cf": "crawled",
+      "a": [
+        "crawl",
+        "crawled",
+        "crawls"
+      ],
+      "mc": [
+        "to run",
+        "to jump",
+        "to walk"
+      ]
+    },
+    {
+      "w": "to take a rest",
+      "g": "sich ausruhen",
+      "d": "To stop and relax for a short time",
+      "s": "After the long walk, we were very tired so we sat down under a tree to _____.",
+      "cf": "take a rest",
+      "a": [
+        "take a rest",
+        "took a rest",
+        "takes a rest"
+      ],
+      "mc": [
+        "to hurry",
+        "to run",
+        "to exercise"
+      ]
+    },
+    {
+      "w": "(school) subject",
+      "g": "(Schul-)Fach",
+      "d": "A topic you learn about at school",
+      "s": "Maths is my favourite _____. I study it four times a week.",
+      "cf": "subject",
+      "a": [
+        "subject",
+        "subjects",
+        "school subject"
+      ],
+      "mc": [
+        "day",
+        "teacher",
+        "book"
+      ]
+    },
+    {
+      "w": "break",
+      "g": "Pause",
+      "d": "A short time to rest between lessons",
+      "s": "We play in the playground during morning _____ between lessons.",
+      "a": [
+        "breaks"
+      ],
+      "mc": [
+        "class",
+        "homework",
+        "assembly"
+      ]
+    },
+    {
+      "w": "timetable",
+      "g": "Stundenplan",
+      "d": "A list that shows when your lessons are",
+      "s": "I always check my class _____ to see what lessons I have on Monday, Tuesday, and the rest of the week.",
+      "a": [
+        "timetables"
+      ],
+      "mc": [
+        "bag",
+        "book",
+        "pen"
+      ]
+    },
+    {
+      "w": "bicycle lane",
+      "g": "Radweg",
+      "d": "A special path on the road for bikes",
+      "s": "You should ride your bike on the _____ -- the special path just for bikes.",
+      "cf": "bicycle lane",
+      "a": [
+        "bicycle lane",
+        "bicycle lanes",
+        "bike lane"
+      ],
+      "mc": [
+        "motorway",
+        "pavement",
+        "bus stop"
+      ]
+    },
+    {
+      "w": "king",
+      "g": "König",
+      "d": "A man who rules a country",
+      "s": "The _____ lived in a big castle on the hill.",
+      "a": [
+        "kings"
+      ],
+      "mc": [
+        "queen",
+        "prince",
+        "emperor"
+      ]
+    },
+    {
+      "w": "noisy",
+      "g": "laut, geräuschvoll",
+      "d": "Making a lot of loud sounds",
+      "s": "The classroom was very _____ during the break — everyone was shouting and laughing.",
+      "a": [],
+      "mc": [
+        "quiet",
+        "calm",
+        "empty"
+      ]
+    },
+    {
+      "w": "queen",
+      "g": "Königin",
+      "d": "A woman who rules a country",
+      "s": "The _____ wore a beautiful golden crown and a long pink dress.",
+      "a": [
+        "queens"
+      ],
+      "mc": [
+        "king",
+        "prince",
+        "knight"
+      ]
+    },
+    {
+      "w": "rubbish",
+      "g": "Müll, Abfall",
+      "d": "Things you throw away because you do not need them",
+      "s": "Please put your _____ in the bin — banana peels and dirty tissues.",
+      "a": [],
+      "mc": [
+        "books",
+        "toys",
+        "clothes"
+      ]
+    },
+    {
+      "w": "online safety",
+      "g": "Internetsicherheit",
+      "d": "How to stay safe when you use the internet",
+      "s": "Our teacher talked about _____ and how to protect our passwords.",
+      "cf": "online safety",
+      "a": [
+        "online safety"
+      ],
+      "mc": [
+        "social media",
+        "group chat",
+        "password"
+      ]
+    },
+    {
+      "w": "opinion",
+      "g": "Meinung",
+      "d": "What you think about something",
+      "s": "In my _____, chocolate ice cream is the best. What do you think?",
+      "a": [
+        "opinions"
+      ],
+      "mc": [
+        "dream",
+        "memory",
+        "plan"
+      ]
+    },
+    {
+      "w": "webpage",
+      "g": "Internetseite",
+      "d": "A page on the internet with information",
+      "s": "I found a nice _____ about dinosaurs with pictures and videos.",
+      "a": [
+        "webpages",
+        "web page",
+        "web pages"
+      ],
+      "mc": [
+        "book",
+        "poster",
+        "letter"
+      ]
+    }
+  ]
+}

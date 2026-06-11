@@ -1,0 +1,287 @@
+{
+  "slug": "unit-15",
+  "grade": 1,
+  "unit": 15,
+  "title": "Unit 15",
+  "entries": [
+    {
+      "w": "to fly to",
+      "g": "fliegen nach",
+      "d": "to travel somewhere by plane",
+      "s": "We are going to _____ sunny Spain this summer by aeroplane from Vienna airport.",
+      "a": [],
+      "mc": [
+        "to drive to",
+        "to walk to",
+        "to cycle to"
+      ]
+    },
+    {
+      "w": "to go fishing",
+      "g": "angeln gehen",
+      "d": "to try to catch fish",
+      "s": "Dad and I want to _____ at the river with our rods and buckets tomorrow to catch some trout.",
+      "a": [],
+      "mc": [
+        "to go swimming",
+        "to go shopping",
+        "to go dancing"
+      ]
+    },
+    {
+      "w": "to stay at a campsite",
+      "g": "auf einem Campingplatz übernachten",
+      "d": "to sleep at a place for tents",
+      "s": "We are going to _____ in our family tent right next to the lake for the whole summer holiday.",
+      "a": [],
+      "mc": [
+        "to stay at a luxury hotel",
+        "to stay at home",
+        "to stay with grandma"
+      ]
+    },
+    {
+      "w": "to swim in the sea",
+      "g": "im Meer schwimmen",
+      "d": "to go swimming in the ocean",
+      "s": "I love to _____ in the salty blue water on sunny days when we are on holiday at the beach.",
+      "a": [],
+      "mc": [
+        "to swim in the school pool",
+        "to swim in the bathtub",
+        "to swim in the lake"
+      ]
+    },
+    {
+      "w": "to play badminton",
+      "g": "Badminton spielen",
+      "d": "to play a game with a net and a shuttlecock",
+      "s": "Let's _____ with our rackets and a light shuttlecock in the garden this afternoon.",
+      "a": [],
+      "mc": [
+        "to play football",
+        "to play chess",
+        "to play cards"
+      ]
+    },
+    {
+      "w": "to lie in the sun",
+      "g": "in der Sonne liegen",
+      "d": "to rest outside when it is sunny",
+      "s": "Mum likes to _____ on a beach towel and read a book on holiday to get a nice suntan.",
+      "a": [],
+      "mc": [
+        "to work in the office",
+        "to wash the dishes",
+        "to do the cleaning"
+      ]
+    },
+    {
+      "w": "to write a postcard",
+      "g": "eine Postkarte schreiben",
+      "d": "to send a card with a picture from your holiday",
+      "s": "I always _____ with a short holiday message and a picture to send to my grandma in the mail.",
+      "cf": "write a postcard",
+      "a": [],
+      "mc": [
+        "to write a novel",
+        "to write a letter",
+        "to write a diary"
+      ]
+    },
+    {
+      "w": "to play board games",
+      "g": "Brettspiele spielen",
+      "d": "to play games like Monopoly on a table",
+      "s": "When it rains heavily outside, we _____ together like Monopoly and Scrabble as a family on the table.",
+      "cf": "play board games",
+      "a": [],
+      "mc": [
+        "to play outside",
+        "to play football",
+        "to play hide and seek"
+      ]
+    },
+    {
+      "w": "to visit a castle",
+      "g": "eine Burg/ein Schloss besuchen",
+      "d": "to go and see an old big building",
+      "s": "On our summer trip to the mountains, we are going to _____ with tall stone walls, towers, and old knights' armour.",
+      "cf": "visit a castle",
+      "a": [],
+      "mc": [
+        "to visit a modern office",
+        "to visit a supermarket",
+        "to visit a swimming pool"
+      ]
+    },
+    {
+      "w": "aunt",
+      "g": "Tante",
+      "d": "the sister of your mum or dad",
+      "s": "My _____ Jane — my mum's sister — always gives me nice presents for my birthday every year.",
+      "a": [],
+      "mc": [
+        "uncle",
+        "grandpa",
+        "cousin"
+      ]
+    },
+    {
+      "w": "beach",
+      "g": "Strand",
+      "d": "a sandy place next to the sea",
+      "s": "We built a tall sandcastle with a moat on the sandy _____ near the blue sea on holiday.",
+      "a": [],
+      "mc": [
+        "mountain",
+        "forest",
+        "garden"
+      ]
+    },
+    {
+      "w": "board game",
+      "g": "Brettspiel",
+      "d": "a game you play on a table with pieces",
+      "s": "My favourite _____ that you play on a square board with dice is Monopoly. Four players can play.",
+      "a": [],
+      "mc": [
+        "computer game",
+        "video game",
+        "card game"
+      ]
+    },
+    {
+      "w": "campsite",
+      "g": "Campingplatz",
+      "d": "a place where people sleep in tents",
+      "s": "There were many colourful tents and campervans at the _____ near the lake where we stayed for a week.",
+      "a": [],
+      "mc": [
+        "luxury hotel",
+        "apartment",
+        "house"
+      ]
+    },
+    {
+      "w": "cook",
+      "g": "Koch/Köchin",
+      "d": "a person who makes food",
+      "s": "My grandpa is the best _____ in our whole family. He makes delicious pasta in the kitchen.",
+      "a": [],
+      "mc": [
+        "driver",
+        "singer",
+        "painter"
+      ]
+    },
+    {
+      "w": "to drive",
+      "g": "fahren; Fahrt",
+      "d": "to go somewhere in a car",
+      "s": "My dad will _____ us to the airport tomorrow morning in our car so we can catch our plane.",
+      "a": [],
+      "mc": [
+        "to fly",
+        "to walk",
+        "to cycle"
+      ]
+    },
+    {
+      "w": "holiday",
+      "g": "Urlaub; Ferien",
+      "d": "a time when you do not go to school",
+      "s": "Where are you going for your long summer _____ this year when school is closed for two months?",
+      "a": [],
+      "mc": [
+        "homework time",
+        "test day",
+        "school trip"
+      ]
+    },
+    {
+      "w": "national park",
+      "g": "Nationalpark",
+      "d": "a big area of nature that is protected",
+      "s": "We saw big brown bears and beautiful wild deer in the protected _____ where animals live freely.",
+      "a": [],
+      "mc": [
+        "city centre",
+        "shopping mall",
+        "school playground"
+      ]
+    },
+    {
+      "w": "parents",
+      "g": "Eltern",
+      "d": "your mother and father",
+      "s": "My _____ — my mum and dad — are taking me on a trip to Italy this summer by plane.",
+      "a": [],
+      "mc": [
+        "children",
+        "teachers",
+        "friends"
+      ]
+    },
+    {
+      "w": "plane",
+      "g": "Flugzeug",
+      "d": "a big machine that flies in the sky",
+      "s": "The _____ with wings and two jet engines left the airport at nine in the morning and flew up into the sky.",
+      "a": [],
+      "mc": [
+        "train",
+        "car",
+        "boat"
+      ]
+    },
+    {
+      "w": "summer",
+      "g": "Sommer",
+      "d": "the warm time of year between spring and autumn",
+      "s": "In _____, the hot months of June, July, and August, the days are long and we play outside a lot.",
+      "a": [],
+      "mc": [
+        "winter",
+        "autumn",
+        "spring"
+      ]
+    },
+    {
+      "w": "hippo",
+      "g": "Nilpferd",
+      "d": "a very big animal that lives in rivers in Africa",
+      "s": "We saw a big grey _____ — short for hippopotamus — cooling down in the water at the zoo.",
+      "a": [],
+      "mc": [
+        "lion",
+        "tiger",
+        "giraffe"
+      ]
+    },
+    {
+      "w": "to join",
+      "g": "beitreten, ein Mitglied werden",
+      "d": "to become part of a group",
+      "s": "Would you like to _____ our football team? We need one more player for the match on Saturday.",
+      "a": [],
+      "mc": [
+        "to leave",
+        "to avoid",
+        "to watch from outside"
+      ]
+    },
+    {
+      "w": "to invite",
+      "g": "einladen",
+      "d": "to ask someone to come to a party or event",
+      "s": "I want to _____ all my best friends to come to my birthday party at my house on Saturday.",
+      "a": [],
+      "mc": [
+        "to forget",
+        "to ignore",
+        "to exclude"
+      ]
+    }
+  ]
+}

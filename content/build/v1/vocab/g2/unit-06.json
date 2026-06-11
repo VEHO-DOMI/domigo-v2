@@ -1,0 +1,759 @@
+{
+  "slug": "unit-06",
+  "grade": 2,
+  "unit": 6,
+  "title": "Unit 6",
+  "entries": [
+    {
+      "w": "sun",
+      "g": "Sonne",
+      "d": "The big bright thing in the sky that gives us light and heat",
+      "s": "The _____ was shining and the sky was blue.",
+      "a": [],
+      "mc": [
+        "moon",
+        "star",
+        "cloud"
+      ]
+    },
+    {
+      "w": "sea",
+      "g": "Meer",
+      "d": "The big water around land, salty and very wide",
+      "s": "We swam in the _____ on our holiday in Greece.",
+      "a": [
+        "seas"
+      ],
+      "mc": [
+        "lake",
+        "river",
+        "pool"
+      ]
+    },
+    {
+      "w": "beach",
+      "g": "Strand",
+      "d": "The sandy place next to the water where you can sit",
+      "s": "We built a sandcastle on the sandy _____ next to the blue sea last summer.",
+      "a": [
+        "beaches"
+      ],
+      "mc": [
+        "mountain",
+        "forest",
+        "river"
+      ]
+    },
+    {
+      "w": "town",
+      "g": "Stadt",
+      "d": "A place with houses, shops, and streets where people live",
+      "s": "Our _____ has many shops, a park and a swimming pool. It is bigger than a village.",
+      "a": [
+        "towns"
+      ],
+      "mc": [
+        "city",
+        "village",
+        "neighbourhood"
+      ]
+    },
+    {
+      "w": "motorway",
+      "g": "Autobahn",
+      "d": "A big wide road where cars drive very fast",
+      "s": "There were many trucks on the _____ today.",
+      "a": [
+        "motorways"
+      ],
+      "mc": [
+        "road",
+        "path",
+        "bicycle lane"
+      ]
+    },
+    {
+      "w": "road",
+      "g": "Straße",
+      "d": "A long flat path for cars and buses",
+      "s": "Cars and buses drive on the new _____ from our village to the next one.",
+      "a": [
+        "roads"
+      ],
+      "mc": [
+        "path",
+        "motorway",
+        "bridge"
+      ]
+    },
+    {
+      "w": "river",
+      "g": "Fluss",
+      "d": "Water that moves through the land from the mountains to the sea",
+      "s": "We saw fish swimming in the _____, which flows from the mountains to the sea.",
+      "a": [
+        "rivers"
+      ],
+      "mc": [
+        "pond",
+        "bucket",
+        "swimming pool"
+      ]
+    },
+    {
+      "w": "village",
+      "g": "Dorf",
+      "d": "A very small town with only a few houses",
+      "s": "My grandma lives in a small _____ in the mountains.",
+      "a": [
+        "villages"
+      ],
+      "mc": [
+        "town",
+        "city",
+        "hamlet"
+      ]
+    },
+    {
+      "w": "field",
+      "g": "Feld",
+      "d": "A big open piece of land where food grows or animals eat",
+      "s": "The cows were eating grass in the large open _____ next to the farm.",
+      "a": [
+        "fields"
+      ],
+      "mc": [
+        "kitchen",
+        "street",
+        "forest"
+      ]
+    },
+    {
+      "w": "hill",
+      "g": "Hügel",
+      "d": "A high part of the land, but smaller than a mountain",
+      "s": "We ran up the small grassy _____ and looked at the view of the town below.",
+      "a": [
+        "hills"
+      ],
+      "mc": [
+        "stairs",
+        "road",
+        "bridge"
+      ]
+    },
+    {
+      "w": "valley",
+      "g": "Tal",
+      "d": "The low land between two mountains or hills",
+      "s": "A small river runs through the _____ between the two mountains.",
+      "a": [
+        "valleys"
+      ],
+      "mc": [
+        "hill",
+        "mountain",
+        "canyon"
+      ]
+    },
+    {
+      "w": "lake",
+      "g": "See",
+      "d": "A big area of water with land all around it",
+      "s": "We went swimming in the _____ in the mountains. The fresh water was cold!",
+      "a": [
+        "lakes"
+      ],
+      "mc": [
+        "pond",
+        "river",
+        "sea"
+      ]
+    },
+    {
+      "w": "forest",
+      "g": "Wald",
+      "d": "A big area with many trees close together",
+      "s": "We walked through the dark _____ full of tall pine trees and heard many birds.",
+      "a": [
+        "forests"
+      ],
+      "mc": [
+        "city",
+        "desert",
+        "beach"
+      ]
+    },
+    {
+      "w": "mountains",
+      "g": "Berge",
+      "d": "Very high rocky land that is hard to climb",
+      "s": "We could see snow on top of the _____.",
+      "a": [
+        "mountain"
+      ],
+      "mc": [
+        "hills",
+        "valleys",
+        "cliffs"
+      ]
+    },
+    {
+      "w": "stars",
+      "g": "Sterne",
+      "d": "Small bright lights you see in the sky at night",
+      "s": "We looked at the _____ in the sky before going to bed.",
+      "a": [
+        "star"
+      ],
+      "mc": [
+        "planets",
+        "clouds",
+        "moons"
+      ]
+    },
+    {
+      "w": "moon",
+      "g": "Mond",
+      "d": "The round bright thing in the sky at night",
+      "s": "The _____ was big and bright last night.",
+      "a": [
+        "moons"
+      ],
+      "mc": [
+        "sun",
+        "star",
+        "planet"
+      ]
+    },
+    {
+      "w": "to build a tree house",
+      "g": "ein Baumhaus bauen",
+      "d": "To make a small room in a tree from wood",
+      "s": "My dad helped me _____ in the big oak tree.",
+      "cf": "build a tree house",
+      "a": [
+        "build a tree house",
+        "built a tree house",
+        "builds a tree house"
+      ],
+      "mc": [
+        "to set up a tent",
+        "to build a campfire",
+        "to climb a tree"
+      ]
+    },
+    {
+      "w": "camp",
+      "g": "Lager, Camp",
+      "d": "A place where people sleep in tents or cabins",
+      "s": "We slept in tents at the summer _____.",
+      "a": [
+        "camps"
+      ],
+      "mc": [
+        "cabin",
+        "tent",
+        "hostel"
+      ]
+    },
+    {
+      "w": "life jacket",
+      "g": "Schwimmweste",
+      "d": "Something you wear over your chest to stay on top of the water",
+      "s": "You must wear a _____ when you go on the boat.",
+      "cf": "life jacket",
+      "a": [
+        "life jacket",
+        "life jackets"
+      ],
+      "mc": [
+        "anorak",
+        "hard hat",
+        "cycle helmet"
+      ]
+    },
+    {
+      "w": "guide",
+      "g": "Führer/in, Guide",
+      "d": "A person who shows you around a new place",
+      "s": "The _____ told us all about the old castle.",
+      "a": [
+        "guides"
+      ],
+      "mc": [
+        "leader",
+        "teacher",
+        "coach"
+      ]
+    },
+    {
+      "w": "campfire",
+      "g": "Lagerfeuer",
+      "d": "A fire you make outside to sit around at night",
+      "s": "We sat around the _____ outside our tent and told scary stories.",
+      "a": [
+        "campfires"
+      ],
+      "mc": [
+        "television",
+        "computer",
+        "radio"
+      ]
+    },
+    {
+      "w": "picnic",
+      "g": "Picknick",
+      "d": "A meal you eat outside, sitting on the grass",
+      "s": "We had a _____ near the river with sandwiches and juice.",
+      "a": [
+        "picnics"
+      ],
+      "mc": [
+        "barbecue",
+        "lunch",
+        "campfire"
+      ]
+    },
+    {
+      "w": "canoe",
+      "g": "Kanu",
+      "d": "A small light boat you move with a paddle",
+      "s": "We got into the small wooden _____ and used a paddle to go down the river.",
+      "a": [
+        "canoes"
+      ],
+      "mc": [
+        "car",
+        "bike",
+        "train"
+      ]
+    },
+    {
+      "w": "canoeing",
+      "g": "Kanufahren",
+      "d": "The activity of going in a small boat on a river",
+      "s": "_____ on the river in a small wooden boat is my favourite activity at summer camp.",
+      "cf": "Canoeing",
+      "a": [
+        "canoeing"
+      ],
+      "mc": [
+        "reading",
+        "cooking",
+        "painting"
+      ]
+    },
+    {
+      "w": "waterfall",
+      "g": "Wasserfall",
+      "d": "Water that falls down from a high place over rocks",
+      "s": "We could hear the loud _____ before we saw the water falling from the high cliff.",
+      "a": [
+        "waterfalls"
+      ],
+      "mc": [
+        "wind",
+        "birds",
+        "thunder"
+      ]
+    },
+    {
+      "w": "rock climbing",
+      "g": "Klettern",
+      "d": "Going up big rocks or walls using your hands and feet",
+      "s": "_____ is exciting but you need to be careful.",
+      "cf": "Rock climbing",
+      "a": [
+        "rock climbing"
+      ],
+      "mc": [
+        "mountain climbing",
+        "hiking",
+        "canoeing"
+      ]
+    },
+    {
+      "w": "bottom",
+      "g": "unten; unterer/untere/unteres",
+      "d": "The lowest part of something",
+      "s": "The boat sank to the _____ of the lake.",
+      "a": [
+        "bottoms"
+      ],
+      "mc": [
+        "top",
+        "middle",
+        "side"
+      ]
+    },
+    {
+      "w": "left-hand",
+      "g": "linker/linke/linkes",
+      "d": "On the left side",
+      "s": "The shop is on the _____ side of the road.",
+      "a": [],
+      "mc": [
+        "right-hand",
+        "upper",
+        "lower"
+      ]
+    },
+    {
+      "w": "middle",
+      "g": "Mitte",
+      "d": "The centre part, not the edges",
+      "s": "There is a big tree in the _____ of the park.",
+      "a": [],
+      "mc": [
+        "top",
+        "bottom",
+        "side"
+      ]
+    },
+    {
+      "w": "right-hand",
+      "g": "rechter/rechte/rechtes",
+      "d": "On the right side",
+      "s": "My name is on the _____ page of the list.",
+      "a": [],
+      "mc": [
+        "left-hand",
+        "upper",
+        "lower"
+      ]
+    },
+    {
+      "w": "anorak",
+      "g": "Anorak",
+      "d": "A warm jacket that keeps the rain away",
+      "s": "Take your _____ with the hood — it might rain this afternoon and you want to stay dry.",
+      "a": [
+        "anoraks"
+      ],
+      "mc": [
+        "sunglasses",
+        "gloves",
+        "scarf"
+      ]
+    },
+    {
+      "w": "hard hat",
+      "g": "Schutzhelm",
+      "d": "A strong hat that keeps your head safe from things falling",
+      "s": "Workers on a building site must wear a plastic _____ to protect their head from falling bricks.",
+      "cf": "hard hat",
+      "a": [
+        "hard hat",
+        "hard hats"
+      ],
+      "mc": [
+        "raincoat",
+        "gloves",
+        "boots"
+      ]
+    },
+    {
+      "w": "absolutely",
+      "g": "völlig, absolut",
+      "d": "Totally, completely",
+      "s": "This pizza is _____ delicious! It is the best I have ever eaten.",
+      "a": [],
+      "mc": [
+        "hardly",
+        "barely",
+        "nearly"
+      ]
+    },
+    {
+      "w": "actually",
+      "g": "eigentlich; tatsächlich",
+      "d": "Really, in fact",
+      "s": "I thought the film was bad, but it was _____ quite good — I was surprised.",
+      "a": [],
+      "mc": [
+        "rarely",
+        "maybe",
+        "possibly"
+      ]
+    },
+    {
+      "w": "adventure camp",
+      "g": "Abenteuercamp",
+      "d": "A place where children do fun outdoor activities",
+      "s": "We spent three days at an _____ in the mountains.",
+      "cf": "adventure camp",
+      "a": [
+        "adventure camp",
+        "adventure camps"
+      ],
+      "mc": [
+        "summer camp",
+        "holiday camp",
+        "school trip"
+      ]
+    },
+    {
+      "w": "to be afraid (of)",
+      "g": "Angst haben (vor)",
+      "d": "To feel scared about something",
+      "s": "My little sister is _____ the dark and always sleeps with a light on.",
+      "cf": "afraid of",
+      "a": [
+        "be afraid",
+        "afraid of",
+        "afraid"
+      ],
+      "mc": [
+        "to love",
+        "to be used to",
+        "to be okay with"
+      ]
+    },
+    {
+      "w": "although",
+      "g": "obwohl",
+      "d": "Even if, but still",
+      "s": "I went outside _____ it was raining.",
+      "a": [],
+      "mc": [
+        "because",
+        "so",
+        "when"
+      ]
+    },
+    {
+      "w": "to care",
+      "g": "sich kümmern",
+      "d": "To think something is important and worry about it",
+      "s": "She _____ about her little brother very much and helps him with homework every day.",
+      "cf": "cares",
+      "a": [
+        "care",
+        "cares",
+        "cared"
+      ],
+      "mc": [
+        "to ignore",
+        "to forget",
+        "to hate"
+      ]
+    },
+    {
+      "w": "drive",
+      "g": "Fahrt",
+      "d": "A trip in a car from one place to another",
+      "s": "It was a long _____ in the car from Vienna to Salzburg. Dad was behind the wheel for three hours.",
+      "a": [
+        "drives"
+      ],
+      "mc": [
+        "walk",
+        "flight",
+        "swim"
+      ]
+    },
+    {
+      "w": "gate",
+      "g": "Tor",
+      "d": "A big door in a wall or fence that you walk or drive through",
+      "s": "We opened the _____ and walked into the garden.",
+      "a": [
+        "gates"
+      ],
+      "mc": [
+        "door",
+        "fence",
+        "wall"
+      ]
+    },
+    {
+      "w": "to be good at sth.",
+      "g": "etw. gut können, gut in etw. sein",
+      "d": "To do something well",
+      "s": "My friend is very _____ drawing pictures. Her art always wins prizes.",
+      "cf": "good at",
+      "a": [
+        "be good at",
+        "good at"
+      ],
+      "mc": [
+        "to be bad at",
+        "to hate",
+        "to be tired of"
+      ]
+    },
+    {
+      "w": "once upon a time",
+      "g": "es war einmal",
+      "d": "Words that start a fairy tale",
+      "s": "_____, a girl lived in a little house in the woods.",
+      "cf": "Once upon a time",
+      "a": [
+        "once upon a time"
+      ],
+      "mc": [
+        "a long time ago",
+        "in the beginning",
+        "many years ago"
+      ]
+    },
+    {
+      "w": "sheep (pl sheep)",
+      "g": "Schaf",
+      "d": "A farm animal with white wool on its body",
+      "s": "There were many woolly _____ on the green hill. The farmer cuts their wool every spring.",
+      "cf": "sheep",
+      "a": [
+        "sheep"
+      ],
+      "mc": [
+        "dogs",
+        "horses",
+        "rabbits"
+      ]
+    },
+    {
+      "w": "shepherd",
+      "g": "Schäfer/Schäferin",
+      "d": "A person whose job is to look after woolly farm animals",
+      "s": "The _____ walked across the field with his dog.",
+      "a": [
+        "shepherds"
+      ],
+      "mc": [
+        "farmer",
+        "hunter",
+        "gardener"
+      ]
+    },
+    {
+      "w": "to trust",
+      "g": "vertrauen",
+      "d": "To believe that someone is good and honest",
+      "s": "I _____ my best friend with all my secrets.",
+      "cf": "trust",
+      "a": [
+        "trust",
+        "trusts",
+        "trusted"
+      ],
+      "mc": [
+        "to believe",
+        "to doubt",
+        "to rely on"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a friend",
+          "options": [
+            "Trust",
+            "Fry",
+            "Wash",
+            "Bake"
+          ],
+          "answer": "Trust"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TRUST?",
+          "options": [
+            "a friend",
+            "someone",
+            "each other",
+            "a lamp"
+          ],
+          "answer": "a lamp"
+        }
+      ]
+    },
+    {
+      "w": "while",
+      "g": "Weile",
+      "d": "A short time",
+      "s": "We waited for a _____ and then the bus came.",
+      "a": [],
+      "mc": [
+        "sandwich",
+        "pencil",
+        "window"
+      ]
+    },
+    {
+      "w": "to wash up",
+      "g": "abspülen, abwaschen",
+      "d": "To clean the dishes after eating",
+      "s": "Can you help me _____ the dirty plates and forks after dinner?",
+      "cf": "wash up",
+      "a": [
+        "wash up",
+        "washed up",
+        "washes up"
+      ],
+      "mc": [
+        "to cook",
+        "to serve",
+        "to eat"
+      ]
+    },
+    {
+      "w": "alive",
+      "g": "lebendig, am Leben",
+      "d": "Not dead, still living",
+      "s": "The little bird fell from the tree but it was still _____.",
+      "a": [],
+      "mc": [
+        "dead",
+        "awake",
+        "safe"
+      ]
+    },
+    {
+      "w": "cry",
+      "g": "Schrei",
+      "d": "A loud sound you make when you are hurt or scared",
+      "s": "We heard a loud _____ from the garden — someone was hurt!",
+      "a": [
+        "cries"
+      ],
+      "mc": [
+        "laugh",
+        "song",
+        "whisper"
+      ]
+    },
+    {
+      "w": "I'm off now.",
+      "g": "Ich bin jetzt weg.",
+      "d": "Words you say when you are leaving",
+      "s": "See you tomorrow. _____ I need to catch my bus.",
+      "cf": "I'm off now",
+      "a": [
+        "I'm off now",
+        "I am off now"
+      ],
+      "mc": [
+        "See you later.",
+        "Goodbye!",
+        "I'll be back."
+      ]
+    },
+    {
+      "w": "Poor you!",
+      "g": "Du Armer!/Arme!",
+      "d": "Words you say to someone who is having a bad time",
+      "s": "You fell and hurt your knee? _____ I feel sorry for you.",
+      "cf": "Poor you",
+      "a": [
+        "Poor you",
+        "Poor you!"
+      ],
+      "mc": [
+        "Lucky you!",
+        "Well done!",
+        "Congratulations!"
+      ]
+    }
+  ]
+}

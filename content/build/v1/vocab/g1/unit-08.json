@@ -1,0 +1,442 @@
+{
+  "slug": "unit-08",
+  "grade": 1,
+  "unit": 8,
+  "title": "Unit 8",
+  "entries": [
+    {
+      "w": "cap",
+      "g": "Kappe, Mütze",
+      "d": "a hat with a flat part at the front",
+      "s": "He wears a blue baseball _____ on his head with a stiff peak at the front to keep the sun off his eyes.",
+      "a": [],
+      "mc": [
+        "sock",
+        "glove",
+        "scarf"
+      ]
+    },
+    {
+      "w": "mask",
+      "g": "Maske",
+      "d": "something you wear over your face",
+      "s": "The masked superhero wears a black cloth _____ over his eyes and nose to hide his identity.",
+      "a": [],
+      "mc": [
+        "glove",
+        "belt",
+        "boot"
+      ]
+    },
+    {
+      "w": "jacket",
+      "g": "Jacke",
+      "d": "a short coat you wear outside",
+      "s": "Put on your warm waterproof _____ with a zip because it is cold and windy outside.",
+      "a": [],
+      "mc": [
+        "T-shirt",
+        "shorts",
+        "swimsuit"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ on a jacket",
+          "options": [
+            "Put",
+            "Do",
+            "Eat",
+            "Read"
+          ],
+          "answer": "Put"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with JACKET?",
+          "options": [
+            "put on",
+            "warm",
+            "new",
+            "drink"
+          ],
+          "answer": "drink"
+        }
+      ]
+    },
+    {
+      "w": "blouse",
+      "g": "Bluse",
+      "d": "a nice shirt for girls or women",
+      "s": "She wears a smart white _____ for girls with small buttons and a soft fabric to school.",
+      "a": [],
+      "mc": [
+        "T-shirt",
+        "football shirt",
+        "dress"
+      ]
+    },
+    {
+      "w": "trousers",
+      "g": "Hose",
+      "d": "clothes that cover both legs",
+      "s": "My new long _____ that cover my legs to my ankles are too long for me.",
+      "a": [
+        "pants"
+      ],
+      "mc": [
+        "cap",
+        "gloves",
+        "hat"
+      ]
+    },
+    {
+      "w": "hoodie",
+      "g": "Hoodie, Kapuzenpulli",
+      "d": "a top with a hood you pull over your head",
+      "s": "He always wears his favourite grey _____ with a hood at the back that he can pull up over his head.",
+      "a": [],
+      "mc": [
+        "T-shirt",
+        "shirt",
+        "blouse"
+      ]
+    },
+    {
+      "w": "cape",
+      "g": "Umhang",
+      "d": "a long piece of cloth you wear on your back",
+      "s": "The comic book superhero flies through the sky with a long red _____ flowing behind his back.",
+      "a": [],
+      "mc": [
+        "hat",
+        "belt",
+        "bag"
+      ]
+    },
+    {
+      "w": "pyjamas",
+      "g": "Pyjama, Schlafanzug",
+      "d": "soft clothes you wear in bed",
+      "s": "I put on my cotton _____ — a top and trousers for sleeping — before I go to bed at night.",
+      "a": [
+        "pajamas"
+      ],
+      "mc": [
+        "school uniform",
+        "party dress",
+        "football kit"
+      ]
+    },
+    {
+      "w": "tights",
+      "g": "Strumpfhose",
+      "d": "thin clothes that cover your legs and feet",
+      "s": "She wears warm grey _____ covering her legs from her feet to her waist under her skirt in winter.",
+      "a": [],
+      "mc": [
+        "shoes",
+        "gloves",
+        "hat"
+      ]
+    },
+    {
+      "w": "shoes",
+      "g": "Schuhe",
+      "d": "things you wear on your feet outside",
+      "s": "I need new black school _____ because my old ones are too small and my toes are hurting.",
+      "a": [],
+      "mc": [
+        "hats",
+        "gloves",
+        "belts"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "Put _____ your shoes",
+          "options": [
+            "On",
+            "In",
+            "At",
+            "Up"
+          ],
+          "answer": "On"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SHOES?",
+          "options": [
+            "put on",
+            "new",
+            "wear",
+            "cook"
+          ],
+          "answer": "cook"
+        }
+      ]
+    },
+    {
+      "w": "boots",
+      "g": "Stiefel",
+      "d": "strong shoes that cover your ankles",
+      "s": "When it rains heavily, I wear my tall waterproof rubber _____ so my feet stay dry.",
+      "a": [],
+      "mc": [
+        "slippers",
+        "sandals",
+        "trainers"
+      ]
+    },
+    {
+      "w": "trainers",
+      "g": "Turnschuhe, Sneakers",
+      "d": "soft shoes for running and sports",
+      "s": "You need sporty _____ with rubber soles for PE class today so you can run.",
+      "a": [
+        "sneakers"
+      ],
+      "mc": [
+        "high heels",
+        "slippers",
+        "flip-flops"
+      ]
+    },
+    {
+      "w": "belt",
+      "g": "Gürtel",
+      "d": "a long band you wear around your waist",
+      "s": "His trousers are too big and keep falling down, so he needs a leather _____ around his waist.",
+      "a": [],
+      "mc": [
+        "hat",
+        "glove",
+        "scarf"
+      ]
+    },
+    {
+      "w": "hole",
+      "g": "Loch",
+      "d": "an opening or empty space in something",
+      "s": "There is a big _____ in my left sock and my big toe comes out through it.",
+      "a": [],
+      "mc": [
+        "button",
+        "pocket",
+        "zip"
+      ]
+    },
+    {
+      "w": "anything",
+      "g": "(irgend)etwas",
+      "d": "any thing, used in questions",
+      "s": "Is there _____ at all in your empty pockets? Let me check.",
+      "a": [],
+      "mc": [
+        "nothing",
+        "a lot",
+        "many things"
+      ]
+    },
+    {
+      "w": "to borrow",
+      "g": "(sich) ausleihen",
+      "d": "to take something and give it back later",
+      "s": "Can I _____ your warm jacket for a few minutes? I am cold and I will give it back later.",
+      "cf": "borrow",
+      "a": [],
+      "mc": [
+        "to throw away",
+        "to burn",
+        "to tear up"
+      ]
+    },
+    {
+      "w": "to fit",
+      "g": "passen",
+      "d": "to be the right size for someone",
+      "s": "These shoes don't _____ me at all; they are two sizes too small and my toes hurt.",
+      "cf": "fit",
+      "a": [],
+      "mc": [
+        "to fall",
+        "to shine",
+        "to cost"
+      ]
+    },
+    {
+      "w": "to try on",
+      "g": "anprobieren",
+      "d": "to put on clothes to see if they fit",
+      "s": "Can I _____ this jacket in the shop before I decide to buy it?",
+      "cf": "try on",
+      "a": [],
+      "mc": [
+        "to throw away",
+        "to burn",
+        "to tear"
+      ]
+    },
+    {
+      "w": "to wear",
+      "g": "tragen (Kleidung)",
+      "d": "to have clothes on your body",
+      "s": "What kind of clothes do you like to _____ to school every day?",
+      "cf": "wear",
+      "a": [],
+      "mc": [
+        "to eat",
+        "to drink",
+        "to read"
+      ]
+    },
+    {
+      "w": "to hurt",
+      "g": "wehtun, schmerzen",
+      "d": "to feel pain in your body",
+      "s": "My new leather shoes _____ my feet and now I have painful red blisters on my toes.",
+      "cf": "hurt",
+      "a": [],
+      "mc": [
+        "to help",
+        "to heal",
+        "to cool"
+      ]
+    },
+    {
+      "w": "poem",
+      "g": "Gedicht",
+      "d": "a short text with rhythm and feeling",
+      "s": "She reads a short rhyming _____ about a cat and a bat to the whole class.",
+      "a": [],
+      "mc": [
+        "recipe",
+        "menu",
+        "map"
+      ]
+    },
+    {
+      "w": "to tickle",
+      "g": "kitzeln",
+      "d": "to touch someone so they laugh",
+      "s": "Don't _____ me under my arms! I can't stop laughing!",
+      "cf": "tickle",
+      "a": [],
+      "mc": [
+        "to hit",
+        "to kick",
+        "to push"
+      ]
+    },
+    {
+      "w": "somebody",
+      "g": "jemand",
+      "d": "a person, but you don't know who",
+      "s": "_____ — we don't know who — left a black jacket behind in the classroom after the lesson.",
+      "a": [
+        "someone"
+      ],
+      "mc": [
+        "nobody",
+        "everyone",
+        "a jacket"
+      ]
+    },
+    {
+      "w": "backwards",
+      "g": "rückwärts",
+      "d": "in the opposite direction, from end to start",
+      "s": "Can you say the alphabet _____, from Z to A, without making any mistakes?",
+      "a": [],
+      "mc": [
+        "sideways",
+        "upwards",
+        "inside out"
+      ]
+    },
+    {
+      "w": "exciting",
+      "g": "aufregend",
+      "d": "making you feel happy and full of energy",
+      "s": "The school trip to the zoo was really _____! We saw lions, elephants, and even a baby giraffe!",
+      "a": [],
+      "mc": [
+        "boring",
+        "dull",
+        "tiring"
+      ]
+    },
+    {
+      "w": "tonight",
+      "g": "heute Abend",
+      "d": "this evening, this night",
+      "s": "We are going to a big birthday party _____ after dinner — in about three hours from now.",
+      "a": [],
+      "mc": [
+        "yesterday",
+        "last week",
+        "next year"
+      ]
+    },
+    {
+      "w": "horse",
+      "g": "Pferd",
+      "d": "a big animal people can ride",
+      "s": "The brown _____ with a mane runs fast across the green grassy field in the countryside.",
+      "a": [],
+      "mc": [
+        "fish",
+        "rabbit",
+        "mouse"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a horse",
+          "options": [
+            "Ride",
+            "Eat",
+            "Read",
+            "Write"
+          ],
+          "answer": "Ride"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HORSE?",
+          "options": [
+            "ride",
+            "fast",
+            "big",
+            "spell"
+          ],
+          "answer": "spell"
+        }
+      ]
+    },
+    {
+      "w": "building",
+      "g": "Gebäude",
+      "d": "a house, school, or other structure",
+      "s": "Our school is the biggest tall _____ in the street, with four floors and many windows.",
+      "a": [],
+      "mc": [
+        "car",
+        "tree",
+        "park"
+      ]
+    },
+    {
+      "w": "Let's get out of here.",
+      "g": "Lass(t) uns verschwinden.",
+      "d": "let us leave this place quickly",
+      "s": "This place is dark and scary. _____ I don't want to stay a second longer!",
+      "a": [],
+      "mc": [
+        "Let's sit down.",
+        "Let's go to sleep.",
+        "Let's look around."
+      ]
+    }
+  ]
+}

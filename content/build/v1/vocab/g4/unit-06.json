@@ -1,0 +1,695 @@
+{
+  "slug": "unit-06",
+  "grade": 4,
+  "unit": 6,
+  "title": "Unit 6",
+  "entries": [
+    {
+      "w": "achieve",
+      "g": "erreichen",
+      "d": "To succeed in doing something good after working hard",
+      "s": "If you study hard enough, you can _____ anything you want.",
+      "a": [
+        "achieved"
+      ],
+      "mc": [
+        "accomplish",
+        "succeed",
+        "obtain"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ACHIEVE?",
+          "options": [
+            "goal",
+            "success",
+            "dream",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She worked hard to _____ her goal.",
+          "options": [
+            "achieve",
+            "believe",
+            "receive",
+            "deceive"
+          ],
+          "answer": "achieve"
+        }
+      ]
+    },
+    {
+      "w": "donate",
+      "g": "spenden",
+      "d": "To give money, food, or goods to help a person or organisation",
+      "s": "Our school decided to _____ books to the children's hospital.",
+      "a": [
+        "donated"
+      ],
+      "mc": [
+        "contribute",
+        "invest",
+        "collect"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DONATE?",
+          "options": [
+            "money",
+            "blood",
+            "clothes",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "We decided to _____ books to the hospital.",
+          "options": [
+            "donate",
+            "locate",
+            "rotate",
+            "migrate"
+          ],
+          "answer": "donate"
+        }
+      ]
+    },
+    {
+      "w": "drop out (of school)",
+      "g": "(die Schule) abbrechen",
+      "d": "To quit your studies before finishing your education",
+      "s": "She wanted to _____ at 15, but her parents convinced her to stay.",
+      "cf": "drop out",
+      "a": [
+        "drop out",
+        "dropped out",
+        "drop out of school",
+        "dropped out of school"
+      ],
+      "mc": [
+        "fail (at school)",
+        "skip (school)",
+        "graduate (from school)"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DROP OUT?",
+          "options": [
+            "school",
+            "university",
+            "course",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She wanted to _____ of school.",
+          "options": [
+            "drop out",
+            "drop off",
+            "drop in",
+            "drop by"
+          ],
+          "answer": "drop out"
+        }
+      ]
+    },
+    {
+      "w": "goal",
+      "g": "Ziel",
+      "d": "Something that you are trying to achieve",
+      "s": "My biggest _____ this year is to pass all my exams.",
+      "a": [
+        "goals"
+      ],
+      "mc": [
+        "aim",
+        "dream",
+        "purpose"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GOAL?",
+          "options": [
+            "set",
+            "achieve",
+            "long-term",
+            "fried"
+          ],
+          "answer": "fried"
+        },
+        {
+          "type": "gap",
+          "prompt": "My _____ is to learn three new languages.",
+          "options": [
+            "goal",
+            "gold",
+            "goat",
+            "coat"
+          ],
+          "answer": "goal"
+        },
+        {
+          "type": "gap",
+          "prompt": "You need to _____ a goal before you start working.",
+          "options": [
+            "set",
+            "sit",
+            "sat",
+            "sew"
+          ],
+          "answer": "set"
+        }
+      ]
+    },
+    {
+      "w": "income",
+      "g": "Einkommen",
+      "d": "The money that a person earns from work or receives regularly",
+      "s": "Many families find it hard to live on a low _____.",
+      "a": [],
+      "mc": [
+        "salary",
+        "profit",
+        "budget"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INCOME?",
+          "options": [
+            "high",
+            "low",
+            "annual",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Many families live on a low _____.",
+          "options": [
+            "income",
+            "outcome",
+            "welcome",
+            "overcome"
+          ],
+          "answer": "income"
+        }
+      ]
+    },
+    {
+      "w": "inspire",
+      "g": "inspirieren",
+      "d": "To give someone the desire or confidence to do something great",
+      "s": "My art teacher really _____ me to start painting every day.",
+      "cf": "inspired",
+      "a": [
+        "inspire",
+        "inspired"
+      ],
+      "mc": [
+        "motivate",
+        "encourage",
+        "influence"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INSPIRE?",
+          "options": [
+            "truly",
+            "deeply",
+            "people",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "My teacher _____ me to paint.",
+          "options": [
+            "inspired",
+            "required",
+            "admired",
+            "desired"
+          ],
+          "answer": "inspired"
+        }
+      ]
+    },
+    {
+      "w": "support",
+      "g": "unterstützen",
+      "d": "To help someone by giving them encouragement, money, or practical assistance",
+      "s": "My parents always _____ me when I have problems at school.",
+      "a": [],
+      "mc": [
+        "assist",
+        "encourage",
+        "sponsor"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SUPPORT?",
+          "options": [
+            "fully",
+            "always",
+            "financial",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "My parents always _____ me.",
+          "options": [
+            "support",
+            "report",
+            "export",
+            "import"
+          ],
+          "answer": "support"
+        }
+      ]
+    },
+    {
+      "w": "encouragement",
+      "g": "Ermutigung; Förderung",
+      "d": "Words or actions that give someone confidence or hope",
+      "s": "A few words of _____ from my coach helped me win the race.",
+      "a": [],
+      "mc": [
+        "motivation",
+        "praise",
+        "guidance"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ENCOURAGEMENT?",
+          "options": [
+            "give",
+            "need",
+            "words of",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "A few words of _____ helped a lot.",
+          "options": [
+            "encouragement",
+            "entertainment",
+            "environment",
+            "equipment"
+          ],
+          "answer": "encouragement"
+        }
+      ]
+    },
+    {
+      "w": "community",
+      "g": "Gemeinschaft",
+      "d": "A group of people who live in the same area or share something in common",
+      "s": "Everyone in our _____ helped clean up the park last weekend.",
+      "a": [
+        "communities"
+      ],
+      "mc": [
+        "society",
+        "neighbourhood",
+        "population"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMMUNITY?",
+          "options": [
+            "local",
+            "strong",
+            "serve",
+            "tropical"
+          ],
+          "answer": "tropical"
+        },
+        {
+          "type": "gap",
+          "prompt": "Everyone in the _____ helped out.",
+          "options": [
+            "community",
+            "opportunity",
+            "immunity",
+            "university"
+          ],
+          "answer": "community"
+        }
+      ]
+    },
+    {
+      "w": "exceed",
+      "g": "übertreffen",
+      "d": "To go beyond a limit or to do more than expected",
+      "s": "Your essay should not _____ 200 words — if it is longer, the teacher will not accept it.",
+      "a": [],
+      "mc": [
+        "surpass",
+        "extend",
+        "increase"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EXCEED?",
+          "options": [
+            "limit",
+            "expectations",
+            "budget",
+            "tropical"
+          ],
+          "answer": "tropical"
+        },
+        {
+          "type": "gap",
+          "prompt": "Your essay should not _____ 200 words.",
+          "options": [
+            "exceed",
+            "succeed",
+            "proceed",
+            "indeed"
+          ],
+          "answer": "exceed"
+        }
+      ]
+    },
+    {
+      "w": "frustrated",
+      "g": "frustriert",
+      "d": "Feeling annoyed and upset because you cannot do or achieve what you want",
+      "s": "She felt _____ because she couldn't solve the maths problem.",
+      "a": [],
+      "mc": [
+        "disappointed",
+        "confused",
+        "impatient"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FRUSTRATED?",
+          "options": [
+            "feel",
+            "very",
+            "deeply",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She felt _____ because she couldn't solve it.",
+          "options": [
+            "frustrated",
+            "illustrated",
+            "fascinated",
+            "decorated"
+          ],
+          "answer": "frustrated"
+        }
+      ]
+    },
+    {
+      "w": "grateful",
+      "g": "dankbar",
+      "d": "Feeling or showing thanks for something kind that someone has done",
+      "s": "I'm so _____ that you helped me carry all those bags.",
+      "a": [],
+      "mc": [
+        "thankful",
+        "pleased",
+        "generous"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GRATEFUL?",
+          "options": [
+            "very",
+            "deeply",
+            "extremely",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I'm so _____ for your help.",
+          "options": [
+            "grateful",
+            "hateful",
+            "wasteful",
+            "peaceful"
+          ],
+          "answer": "grateful"
+        }
+      ]
+    },
+    {
+      "w": "in particular",
+      "g": "besonders; im Speziellen",
+      "d": "Especially; more than others",
+      "s": "I like all sports, but tennis _____ is my favourite.",
+      "a": [],
+      "mc": [
+        "in general",
+        "for example",
+        "above all"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with IN PARTICULAR?",
+          "options": [
+            "enjoy",
+            "like",
+            "interest",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I like all sports, tennis _____.",
+          "options": [
+            "in particular",
+            "in general",
+            "in fact",
+            "in return"
+          ],
+          "answer": "in particular"
+        }
+      ]
+    },
+    {
+      "w": "learn a lesson",
+      "g": "eine Lehre aus etw ziehen",
+      "d": "To gain wisdom or understanding from a mistake or experience",
+      "s": "After I forgot my homework twice, I _____ and started using a planner.",
+      "cf": "learned my lesson",
+      "a": [
+        "learn a lesson",
+        "learned a lesson",
+        "learnt a lesson",
+        "learned my lesson"
+      ],
+      "mc": [
+        "make a mistake",
+        "set an example",
+        "take a chance"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LEARN A LESSON?",
+          "options": [
+            "important",
+            "hard",
+            "valuable",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "After the mistake, she _____ her lesson.",
+          "options": [
+            "learned",
+            "leaned",
+            "leaked",
+            "leaped"
+          ],
+          "answer": "learned"
+        }
+      ]
+    },
+    {
+      "w": "range of",
+      "g": "eine Reihe von, zahlreiche",
+      "d": "A variety of different things of the same general type",
+      "s": "The shop offers a wide _____ snacks and drinks.",
+      "a": [],
+      "mc": [
+        "variety of",
+        "number of",
+        "selection of"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RANGE OF?",
+          "options": [
+            "wide",
+            "broad",
+            "full",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "The shop offers a _____ of snacks.",
+          "options": [
+            "range",
+            "ranch",
+            "rash",
+            "rank"
+          ],
+          "answer": "range"
+        }
+      ]
+    },
+    {
+      "w": "relate to",
+      "g": "sich mit jdm/etw identifizieren; nachempfinden",
+      "d": "To understand someone's feelings or experiences because you have had similar ones",
+      "s": "I can really _____ what you're going through — I had the same problem.",
+      "a": [],
+      "mc": [
+        "refer to",
+        "belong to",
+        "respond to"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RELATE TO?",
+          "options": [
+            "easily",
+            "personally",
+            "experience",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "I can _____ what you're going through.",
+          "options": [
+            "relate to",
+            "belong to",
+            "refer to",
+            "respond to"
+          ],
+          "answer": "relate to"
+        }
+      ]
+    },
+    {
+      "w": "Small wonder",
+      "g": "Kein Wunder",
+      "d": "It is not surprising at all",
+      "s": "She eats ice cream for every meal. _____ she doesn't feel well.",
+      "a": [
+        "small wonder"
+      ],
+      "mc": [
+        "No doubt",
+        "Of course",
+        "How come"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT mean the same as SMALL WONDER?",
+          "options": [
+            "no surprise",
+            "of course",
+            "naturally",
+            "good morning"
+          ],
+          "answer": "good morning"
+        },
+        {
+          "type": "gap",
+          "prompt": "She never studies. _____ she failed.",
+          "options": [
+            "Small wonder",
+            "Small talk",
+            "Small change",
+            "Small print"
+          ],
+          "answer": "Small wonder"
+        }
+      ]
+    },
+    {
+      "w": "transmit",
+      "g": "senden, übermitteln",
+      "d": "To send or pass something from one person or place to another",
+      "s": "Mobile phones _____ signals to towers that can be many kilometres away.",
+      "a": [
+        "transmitted"
+      ],
+      "mc": [
+        "transfer",
+        "broadcast",
+        "deliver"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TRANSMIT?",
+          "options": [
+            "signal",
+            "data",
+            "disease",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Mobile phones _____ signals to towers.",
+          "options": [
+            "transmit",
+            "submit",
+            "permit",
+            "commit"
+          ],
+          "answer": "transmit"
+        }
+      ]
+    }
+  ]
+}

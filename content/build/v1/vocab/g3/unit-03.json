@@ -1,0 +1,933 @@
+{
+  "slug": "unit-03",
+  "grade": 3,
+  "unit": 3,
+  "title": "Unit 3",
+  "entries": [
+    {
+      "w": "to get to (the airport)",
+      "g": "zum (Flughafen) kommen",
+      "d": "To arrive at a place",
+      "s": "How do you _____ the airport from here by public transport on a weekday morning?",
+      "cf": "get to",
+      "a": [
+        "get to",
+        "got to"
+      ],
+      "mc": [
+        "to get away from (the airport)",
+        "to leave (the airport)",
+        "to escape (the airport)"
+      ]
+    },
+    {
+      "w": "to take off",
+      "g": "abheben, starten",
+      "d": "When a plane leaves the ground and goes up into the sky",
+      "s": "Our aeroplane to Spain will _____ from the runway in about thirty minutes at exactly ten o'clock.",
+      "cf": "take off",
+      "a": [
+        "take off",
+        "took off",
+        "taken off"
+      ],
+      "mc": [
+        "to land",
+        "to park",
+        "to stop"
+      ]
+    },
+    {
+      "w": "to get on (a plane)",
+      "g": "in (ein Flugzeug) einsteigen",
+      "d": "To board a vehicle like a bus or aircraft",
+      "s": "We need to quickly _____ the train at platform 3 before it leaves the station in two minutes.",
+      "cf": "get on",
+      "a": [
+        "get on",
+        "got on"
+      ],
+      "mc": [
+        "to get off (the plane)",
+        "to miss",
+        "to watch"
+      ]
+    },
+    {
+      "w": "to fly (back)",
+      "g": "(zurück-)fliegen",
+      "d": "To travel through the air in a plane",
+      "s": "We will _____ back home to Vienna from Paris on Sunday evening at 7 pm.",
+      "cf": "fly",
+      "a": [
+        "fly",
+        "flew",
+        "flown",
+        "fly back"
+      ],
+      "mc": [
+        "to sail (back)",
+        "to drive (back)",
+        "to walk (back)"
+      ]
+    },
+    {
+      "w": "to get off (the plane)",
+      "g": "aus (dem Flugzeug) aussteigen",
+      "d": "To step out of a vehicle like a bus or aircraft",
+      "s": "Please wait until the bus comes to a complete stop at the bus stop before you _____.",
+      "cf": "get off",
+      "a": [
+        "get off",
+        "got off"
+      ],
+      "mc": [
+        "to get on (a plane)",
+        "to sit down",
+        "to buy a ticket"
+      ]
+    },
+    {
+      "w": "to suffer from altitude sickness",
+      "g": "an Höhenkrankheit leiden",
+      "d": "To feel ill because you are very high up in the mountains",
+      "s": "Some climbers _____ very badly when they climbed too high and too fast up the Himalayan mountain.",
+      "cf": "suffered from altitude sickness",
+      "a": [
+        "suffer from altitude sickness",
+        "suffered from altitude sickness"
+      ],
+      "mc": [
+        "to feel great at altitude",
+        "to sleep well at altitude",
+        "to eat normally at altitude"
+      ]
+    },
+    {
+      "w": "to land",
+      "g": "landen",
+      "d": "When a plane comes down and touches the ground",
+      "s": "The plane from London will _____ at the airport runway in about ten minutes and passengers will get off soon after.",
+      "a": [
+        "land",
+        "landed"
+      ],
+      "mc": [
+        "to take off",
+        "to refuel",
+        "to board"
+      ]
+    },
+    {
+      "w": "it takes (an hour)",
+      "g": "es dauert (eine Stunde)",
+      "d": "Used to say how much time is needed",
+      "s": "It _____ me about twenty minutes to walk to school from my house at a normal speed.",
+      "cf": "takes",
+      "a": [
+        "it takes",
+        "takes"
+      ],
+      "mc": [
+        "it costs (an hour)",
+        "it weighs (an hour)",
+        "it lasts (an hour)"
+      ]
+    },
+    {
+      "w": "to get into (a car)",
+      "g": "in (ein Auto) einsteigen",
+      "d": "To climb into a vehicle",
+      "s": "She opened the door and _____ the back seat of the car and put on her seatbelt for the journey.",
+      "cf": "got into",
+      "a": [
+        "get into",
+        "got into"
+      ],
+      "mc": [
+        "to get out of (a car)",
+        "to run away from (the car)",
+        "to walk past (the car)"
+      ]
+    },
+    {
+      "w": "to rent (a car)",
+      "g": "(ein Auto) mieten",
+      "d": "To pay money to use something for a short time",
+      "s": "My parents want to _____ a small red car for just one week during our summer holiday in Spain.",
+      "cf": "rent",
+      "a": [
+        "rent",
+        "rented"
+      ],
+      "mc": [
+        "to sell (a car)",
+        "to repair (a car)",
+        "to own (a car)"
+      ]
+    },
+    {
+      "w": "to get out of (the car)",
+      "g": "aus (dem Auto) aussteigen",
+      "d": "To step out of a vehicle",
+      "s": "We _____ the parked car at the beach, grabbed our towels, and walked to the sand.",
+      "cf": "got out of",
+      "a": [
+        "get out of",
+        "got out of"
+      ],
+      "mc": [
+        "to get into (a car)",
+        "to drive (the car)",
+        "to wash (the car)"
+      ]
+    },
+    {
+      "w": "to drive (home)",
+      "g": "(nach Hause) fahren",
+      "d": "To control and move a car",
+      "s": "My mum will _____ us home from the cinema in her blue car after the film finishes at 10 pm.",
+      "cf": "drive",
+      "a": [
+        "drive",
+        "drove",
+        "driven"
+      ],
+      "mc": [
+        "to carry (home)",
+        "to push (home)",
+        "to swim (home)"
+      ]
+    },
+    {
+      "w": "to set off (for work)",
+      "g": "(zur Arbeit) aufbrechen",
+      "d": "To start a journey",
+      "s": "We need to _____ early in the morning at 6 am if we want to arrive at the airport on time.",
+      "cf": "set off",
+      "a": [
+        "set off"
+      ],
+      "mc": [
+        "to arrive (at work)",
+        "to finish (work)",
+        "to stay home"
+      ]
+    },
+    {
+      "w": "to work on (a blog)",
+      "g": "an (einem Blog) arbeiten",
+      "d": "To spend time doing or creating something",
+      "s": "She is currently _____ on a big school history project about ancient Egypt for her homework assignment.",
+      "cf": "working",
+      "a": [
+        "work on",
+        "worked on",
+        "working on"
+      ],
+      "mc": [
+        "to ignore (a blog)",
+        "to read (a blog)",
+        "to delete (a blog)"
+      ]
+    },
+    {
+      "w": "to get close to (nature)",
+      "g": "(der Natur) nahe kommen",
+      "d": "To come near to something",
+      "s": "On this camping trip you can _____ close to nature and see wild birds, deer, and squirrels.",
+      "cf": "get",
+      "a": [
+        "get close to",
+        "got close to"
+      ],
+      "mc": [
+        "to get far from (nature)",
+        "to avoid (nature)",
+        "to hide from (nature)"
+      ]
+    },
+    {
+      "w": "to sleep in a tent",
+      "g": "in einem Zelt schlafen",
+      "d": "To spend the night under canvas outdoors",
+      "s": "On our camping trip to the mountains, we _____ next to the cold lake under the stars for three nights.",
+      "cf": "slept in a tent",
+      "a": [
+        "sleep in a tent",
+        "slept in a tent"
+      ],
+      "mc": [
+        "to stay in a 5-star hotel",
+        "to sleep in a bed",
+        "to rest in the car"
+      ]
+    },
+    {
+      "w": "to escape (the midday heat)",
+      "g": "(der Mittagshitze) entkommen",
+      "d": "To get away from something unpleasant",
+      "s": "We sat in the cool shade under a big tree to _____ the burning hot afternoon sun from 12 to 3 pm.",
+      "cf": "escape",
+      "a": [
+        "escape",
+        "escaped"
+      ],
+      "mc": [
+        "to enjoy (the midday heat)",
+        "to stand in (the midday heat)",
+        "to feel (the midday heat)"
+      ]
+    },
+    {
+      "w": "to cross (a river)",
+      "g": "(einen Fluss) überqueren",
+      "d": "To go from one side to the other",
+      "s": "Be very careful when you _____ the busy main road near the school — look both ways first.",
+      "cf": "cross",
+      "a": [
+        "cross",
+        "crossed"
+      ],
+      "mc": [
+        "to swim in (a river)",
+        "to follow (a river)",
+        "to drink from (a river)"
+      ]
+    },
+    {
+      "w": "to meet up with (people)",
+      "g": "sich mit (Leuten) treffen",
+      "d": "To see friends at a planned time and location",
+      "s": "I'm going to _____ with my three best friends at the café after school today to celebrate the weekend.",
+      "cf": "meet up",
+      "a": [
+        "meet up with",
+        "met up with"
+      ],
+      "mc": [
+        "to run away from (people)",
+        "to avoid (people)",
+        "to ignore (people)"
+      ]
+    },
+    {
+      "w": "to become",
+      "g": "werden",
+      "d": "To start to be something",
+      "s": "She wants to _____ a children's doctor when she grows up and finishes her medical studies at university.",
+      "cf": "become",
+      "a": [
+        "become",
+        "became"
+      ],
+      "mc": [
+        "to stop being",
+        "to avoid being",
+        "to forget"
+      ]
+    },
+    {
+      "w": "curious",
+      "g": "neugierig",
+      "d": "Wanting to know or learn more about something",
+      "s": "The _____ little cat put its head into the open cardboard box to see what was inside.",
+      "a": [],
+      "mc": [
+        "bored",
+        "scared",
+        "sleepy"
+      ]
+    },
+    {
+      "w": "decision",
+      "g": "Entscheidung",
+      "d": "A choice that you make about something",
+      "s": "Moving to a new school in a different city was a very big _____ for our whole family last year.",
+      "a": [
+        "decisions"
+      ],
+      "mc": [
+        "accident",
+        "surprise",
+        "holiday"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DECISION?",
+          "options": [
+            "make",
+            "reach",
+            "difficult",
+            "cook"
+          ],
+          "answer": "cook"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ a decision",
+          "options": [
+            "Make",
+            "Do",
+            "Cook",
+            "Build"
+          ],
+          "answer": "Make"
+        }
+      ]
+    },
+    {
+      "w": "experience",
+      "g": "Erfahrung",
+      "d": "Something that happens to you, or knowledge from doing things",
+      "s": "Visiting the Eiffel Tower in Paris was an amazing once-in-a-lifetime _____ for me — I will never forget it.",
+      "a": [
+        "experiences"
+      ],
+      "mc": [
+        "product",
+        "ticket",
+        "photo"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EXPERIENCE?",
+          "options": [
+            "gain",
+            "valuable",
+            "do",
+            "work"
+          ],
+          "answer": "do"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ experience",
+          "options": [
+            "Gain",
+            "Cook",
+            "Build",
+            "Wash"
+          ],
+          "answer": "Gain"
+        }
+      ]
+    },
+    {
+      "w": "to explore",
+      "g": "erkunden, erforschen",
+      "d": "To travel around a new place to learn about it",
+      "s": "We spent the whole afternoon _____ the narrow winding streets of the old town and discovered a hidden church.",
+      "cf": "exploring",
+      "a": [
+        "explore",
+        "explored",
+        "exploring"
+      ],
+      "mc": [
+        "to avoid",
+        "to leave",
+        "to forget"
+      ]
+    },
+    {
+      "w": "journey",
+      "g": "Reise",
+      "d": "A trip from one place to another",
+      "s": "The long _____ from Vienna to London by train takes about sixteen hours and crosses three countries.",
+      "a": [
+        "journeys"
+      ],
+      "mc": [
+        "meal",
+        "test",
+        "lesson"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with JOURNEY?",
+          "options": [
+            "long",
+            "go on",
+            "safe",
+            "heavy"
+          ],
+          "answer": "heavy"
+        },
+        {
+          "type": "gap",
+          "prompt": "go on a _____",
+          "options": [
+            "journey",
+            "kitchen",
+            "pencil",
+            "lamp"
+          ],
+          "answer": "journey"
+        }
+      ]
+    },
+    {
+      "w": "on foot",
+      "g": "zu Fuß",
+      "d": "Walking, not using a car or bus",
+      "s": "The bakery is very close — just 200 metres from here — let's go _____ instead of taking the car.",
+      "cf": "on foot",
+      "a": [
+        "on foot"
+      ],
+      "mc": [
+        "by car",
+        "by train",
+        "by plane"
+      ]
+    },
+    {
+      "w": "painful",
+      "g": "schmerzhaft",
+      "d": "Causing pain, hurting",
+      "s": "Falling off my bicycle and scraping my knee on the rough asphalt was very _____ — I cried for ten minutes.",
+      "a": [],
+      "mc": [
+        "painless",
+        "fun",
+        "enjoyable"
+      ]
+    },
+    {
+      "w": "to reach",
+      "g": "(er-)reichen",
+      "d": "To arrive at a place or get to a point",
+      "s": "We finally _____ the top of the mountain after six hours of hiking, just before it got dark in the evening.",
+      "cf": "reached",
+      "a": [
+        "reach",
+        "reached"
+      ],
+      "mc": [
+        "to leave",
+        "to abandon",
+        "to give up"
+      ]
+    },
+    {
+      "w": "to sail",
+      "g": "segeln",
+      "d": "To travel on water in a boat with sails",
+      "s": "They _____ across the large lake on their small wooden boat using the wind in the white sails.",
+      "cf": "sailed",
+      "a": [
+        "sail",
+        "sailed"
+      ],
+      "mc": [
+        "to drive",
+        "to fly",
+        "to walk"
+      ]
+    },
+    {
+      "w": "traveller",
+      "g": "Reisender/Reisende",
+      "d": "A person who goes on trips to different places",
+      "s": "The experienced _____ visited ten different countries around the world in just one year with her backpack.",
+      "a": [
+        "travellers",
+        "traveler",
+        "travelers"
+      ],
+      "mc": [
+        "stay-at-home",
+        "farmer",
+        "shopkeeper"
+      ]
+    },
+    {
+      "w": "lonely",
+      "g": "einsam",
+      "d": "Feeling sad because you are alone",
+      "s": "She felt very _____ because she was all alone in the classroom during break and didn't know anyone yet.",
+      "a": [],
+      "mc": [
+        "popular",
+        "surrounded",
+        "accompanied"
+      ]
+    },
+    {
+      "w": "to criticise",
+      "g": "kritisieren",
+      "d": "To say what is wrong with someone or something",
+      "s": "The strict teacher _____ my essay sharply because it was too short and had many spelling mistakes.",
+      "cf": "criticised",
+      "a": [
+        "criticise",
+        "criticised",
+        "criticize",
+        "criticized"
+      ],
+      "mc": [
+        "to praise",
+        "to admire",
+        "to compliment"
+      ]
+    },
+    {
+      "w": "explorer",
+      "g": "Entdecker/Entdeckerin",
+      "d": "A person who travels to new places to find out about them",
+      "s": "The famous _____ wrote a thrilling book about her discoveries in the African jungle where no one had been before.",
+      "a": [
+        "explorers"
+      ],
+      "mc": [
+        "stay-at-home",
+        "shopkeeper",
+        "farmer"
+      ]
+    },
+    {
+      "w": "even though",
+      "g": "obwohl",
+      "d": "Although, despite the fact that",
+      "s": "_____ it was raining heavily outside, we still decided to go for a walk in the park with umbrellas.",
+      "cf": "Even though",
+      "a": [
+        "even though"
+      ],
+      "mc": [
+        "because",
+        "so",
+        "and"
+      ]
+    },
+    {
+      "w": "hut",
+      "g": "Hütte",
+      "d": "A small, simple house or building",
+      "s": "The old poor fisherman lived in a tiny wooden _____ with just one room near the sandy sea beach.",
+      "a": [
+        "huts"
+      ],
+      "mc": [
+        "mansion",
+        "castle",
+        "apartment building"
+      ]
+    },
+    {
+      "w": "to turn out",
+      "g": "sich herausstellen",
+      "d": "To be discovered to be true in the end",
+      "s": "The big scary maths test _____ to be much easier than I had thought — I got a good mark!",
+      "cf": "turned out",
+      "a": [
+        "turn out",
+        "turned out",
+        "turns out"
+      ],
+      "mc": [
+        "to give up",
+        "to forget",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "wilderness",
+      "g": "Wildnis",
+      "d": "A wild area where no people live",
+      "s": "There are wild brown bears, grey wolves, and other dangerous animals in the remote _____ far from any town.",
+      "a": [],
+      "mc": [
+        "city",
+        "shopping mall",
+        "playground"
+      ]
+    },
+    {
+      "w": "to behave",
+      "g": "verhalten",
+      "d": "To act in a certain way",
+      "s": "Please _____ yourselves well and quietly when we visit the museum — don't run around or shout.",
+      "a": [
+        "behave",
+        "behaved"
+      ],
+      "mc": [
+        "to misbehave",
+        "to shout",
+        "to run around"
+      ]
+    },
+    {
+      "w": "all in all",
+      "g": "alles in allem",
+      "d": "Thinking about everything together",
+      "s": "_____, it was a wonderful summer holiday with sunshine, swimming, and lots of ice cream.",
+      "cf": "All in all",
+      "a": [
+        "all in all"
+      ],
+      "mc": [
+        "for starters",
+        "first of all",
+        "to begin with"
+      ]
+    },
+    {
+      "w": "awake",
+      "g": "wach",
+      "d": "Not sleeping",
+      "s": "The noisy baby was still _____ crying at midnight and her mother was getting tired.",
+      "a": [],
+      "mc": [
+        "asleep",
+        "dreaming",
+        "snoring"
+      ]
+    },
+    {
+      "w": "pretty",
+      "g": "hier: ziemlich",
+      "d": "Quite, fairly (not about looks here)",
+      "s": "The history homework was _____ easy — not super simple, but not really hard either, somewhere in the middle.",
+      "a": [],
+      "mc": [
+        "very",
+        "extremely",
+        "terribly"
+      ]
+    },
+    {
+      "w": "unfortunately",
+      "g": "leider",
+      "d": "Used to say you are sorry about something",
+      "s": "_____, the big rock concert is completely sold out and we cannot buy any more tickets for Saturday night.",
+      "cf": "Unfortunately",
+      "a": [
+        "unfortunately"
+      ],
+      "mc": [
+        "luckily",
+        "happily",
+        "fortunately"
+      ]
+    },
+    {
+      "w": "departure",
+      "g": "Abflug; Abfahrt",
+      "d": "The time when a plane, bus or train leaves",
+      "s": "Check the big screen in the airport terminal for the exact _____ time of your flight to Rome.",
+      "a": [
+        "departures"
+      ],
+      "mc": [
+        "arrival",
+        "landing",
+        "parking"
+      ]
+    },
+    {
+      "w": "flight",
+      "g": "Flug",
+      "d": "A trip in a plane from one place to another",
+      "s": "Our _____ to sunny Rome leaves from Vienna airport gate 12 at exactly half past eight tomorrow morning.",
+      "a": [
+        "flights"
+      ],
+      "mc": [
+        "train",
+        "bus",
+        "boat"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FLIGHT?",
+          "options": [
+            "catch",
+            "book",
+            "miss",
+            "cook"
+          ],
+          "answer": "cook"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ a flight",
+          "options": [
+            "Book",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Book"
+        },
+        {
+          "type": "gap",
+          "prompt": "I don't want to _____ my flight!",
+          "options": [
+            "miss",
+            "wash",
+            "plant",
+            "draw"
+          ],
+          "answer": "miss"
+        }
+      ]
+    },
+    {
+      "w": "to make a reservation",
+      "g": "eine Reservierung vornehmen",
+      "d": "To book a table, room or seat in advance",
+      "s": "I'd like to _____ for a table for two people at exactly seven o'clock this evening, please.",
+      "cf": "make a reservation",
+      "a": [
+        "make a reservation",
+        "made a reservation"
+      ],
+      "mc": [
+        "to cancel a reservation",
+        "to skip a reservation",
+        "to forget a reservation"
+      ]
+    },
+    {
+      "w": "to note",
+      "g": "beachten, feststellen",
+      "d": "To notice or pay attention to something",
+      "s": "Please _____ carefully on your calendar that the school library closes at exactly five o'clock today.",
+      "a": [
+        "note",
+        "noted"
+      ],
+      "mc": [
+        "to ignore",
+        "to forget",
+        "to miss"
+      ]
+    },
+    {
+      "w": "to fix sth.",
+      "g": "etw. beheben, reparieren",
+      "d": "To repair something that is broken",
+      "s": "My dad is very good with tools — he can _____ almost anything that breaks in the house, from taps to TVs.",
+      "cf": "fix",
+      "a": [
+        "fix",
+        "fixed"
+      ],
+      "mc": [
+        "to break sth.",
+        "to smash sth.",
+        "to ruin sth."
+      ]
+    },
+    {
+      "w": "thirsty",
+      "g": "durstig",
+      "d": "Wanting or needing a drink",
+      "s": "After the long, hot football match in the sunshine, I was extremely _____ and drank two glasses of water.",
+      "a": [],
+      "mc": [
+        "full",
+        "satisfied",
+        "not interested"
+      ]
+    },
+    {
+      "w": "impossible",
+      "g": "unmöglich",
+      "d": "Not able to happen or be done",
+      "s": "It's completely _____ to finish all 100 pages of this long homework assignment in just one single hour.",
+      "a": [],
+      "mc": [
+        "easy",
+        "simple",
+        "quick"
+      ]
+    },
+    {
+      "w": "recently",
+      "g": "vor Kurzem, letztens",
+      "d": "Not long ago, a short time in the past",
+      "s": "I _____ started learning how to play the drums — just three weeks ago actually — and I love it so far.",
+      "cf": "recently",
+      "a": [
+        "recently"
+      ],
+      "mc": [
+        "many years ago",
+        "long before I was born",
+        "never in my life"
+      ]
+    },
+    {
+      "w": "to get lost",
+      "g": "sich verirren",
+      "d": "To not know where you are",
+      "s": "We _____ completely in the big unfamiliar forest because we didn't have a map or a compass.",
+      "cf": "got lost",
+      "a": [
+        "get lost",
+        "got lost"
+      ],
+      "mc": [
+        "to find our way",
+        "to know exactly where we were",
+        "to follow the clear path"
+      ]
+    },
+    {
+      "w": "to get to know sb./sth.",
+      "g": "jdn./etw. näher kennenlernen",
+      "d": "To learn more about a person or place over time",
+      "s": "I want to _____ my new classmates better by spending time with them during break and after school.",
+      "cf": "get to know",
+      "a": [
+        "get to know",
+        "got to know"
+      ],
+      "mc": [
+        "to avoid",
+        "to ignore",
+        "to forget about"
+      ]
+    },
+    {
+      "w": "to promise",
+      "g": "versprechen",
+      "d": "To say that you will definitely do something",
+      "s": "I _____ to definitely help you with your maths homework every day after school this week — you can count on me.",
+      "cf": "promised",
+      "a": [
+        "promise",
+        "promised"
+      ],
+      "mc": [
+        "to refuse",
+        "to forget",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "to recommend",
+      "g": "empfehlen",
+      "d": "To say that something is good and others should try it",
+      "s": "I can really _____ this new pizza restaurant to everyone — the food is great and the prices are low!",
+      "cf": "recommend",
+      "a": [
+        "recommend",
+        "recommended"
+      ],
+      "mc": [
+        "to warn against",
+        "to complain about",
+        "to criticise"
+      ]
+    }
+  ]
+}

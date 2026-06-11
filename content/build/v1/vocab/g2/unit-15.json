@@ -1,0 +1,402 @@
+{
+  "slug": "unit-15",
+  "grade": 2,
+  "unit": 15,
+  "title": "Unit 15",
+  "entries": [
+    {
+      "w": "to feed your pet",
+      "g": "dein Haustier füttern",
+      "d": "To give food to the animal you keep at home",
+      "s": "Don't forget to _____ — the cat's food bowl is empty.",
+      "cf": "feed your pet",
+      "a": [
+        "feed your pet",
+        "feed my pet",
+        "feeds her pet",
+        "fed my pet"
+      ],
+      "mc": [
+        "to walk your pet",
+        "to give your pet a bath",
+        "to brush"
+      ]
+    },
+    {
+      "w": "to clean out the litter tray",
+      "g": "das Katzenklo sauber machen",
+      "d": "To take the dirty stuff out of where a cat goes to the toilet",
+      "s": "The cat's toilet box smells bad — please _____.",
+      "cf": "clean out the litter tray",
+      "a": [
+        "clean out the litter tray",
+        "cleaned out the litter tray"
+      ],
+      "mc": [
+        "to clean out your pet's cage",
+        "to tidy up",
+        "to wash up"
+      ]
+    },
+    {
+      "w": "to clean out your pet's cage",
+      "g": "den Käfig deines Haustieres säubern",
+      "d": "To make the home of a small animal nice and clean",
+      "s": "You must _____ every week — a dirty cage makes the hamster sick.",
+      "cf": "clean out your pet's cage",
+      "a": [
+        "clean out your pet's cage",
+        "clean out my pet's cage",
+        "cleaned out the cage"
+      ],
+      "mc": [
+        "to clean out the litter tray",
+        "to tidy up",
+        "to wash up"
+      ]
+    },
+    {
+      "w": "to play with your pet",
+      "g": "mit deinem Haustier spielen",
+      "d": "To have fun and do activities with your animal",
+      "s": "I love to _____ — my dog and I throw a ball in the garden.",
+      "cf": "play with my pet",
+      "a": [
+        "play with your pet",
+        "play with my pet",
+        "plays with her pet"
+      ],
+      "mc": [
+        "to walk your pet",
+        "to stroke",
+        "to feed your pet"
+      ]
+    },
+    {
+      "w": "to dry your pet",
+      "g": "dein Haustier abtrocknen",
+      "d": "To use a towel to take water off your animal",
+      "s": "After washing the dog, you should _____ with a big towel so it is not wet.",
+      "cf": "dry your pet",
+      "a": [
+        "dry your pet",
+        "dry my pet",
+        "dried the dog"
+      ],
+      "mc": [
+        "to give your pet a bath",
+        "to brush",
+        "to wash up"
+      ]
+    },
+    {
+      "w": "to stroke",
+      "g": "streicheln",
+      "d": "To move your hand softly over an animal's fur",
+      "s": "The cat loves it when you _____ her head gently.",
+      "cf": "stroke",
+      "a": [
+        "stroke",
+        "strokes",
+        "stroked"
+      ],
+      "mc": [
+        "to brush",
+        "to pat",
+        "to cuddle"
+      ]
+    },
+    {
+      "w": "to brush",
+      "g": "bürsten",
+      "d": "To use a special tool to make hair or fur smooth",
+      "s": "I _____ my dog every morning with a special hairbrush so his fur looks soft and shiny.",
+      "cf": "brush",
+      "a": [
+        "brush",
+        "brushes",
+        "brushed"
+      ],
+      "mc": [
+        "to feed",
+        "to walk",
+        "to wash"
+      ]
+    },
+    {
+      "w": "to walk your pet",
+      "g": "mit deinem Haustier spazieren gehen",
+      "d": "To take your animal outside for a walk",
+      "s": "Every morning I _____ around the park before school.",
+      "cf": "walk my dog",
+      "a": [
+        "walk your pet",
+        "walk my dog",
+        "walks the dog",
+        "walked the dog"
+      ],
+      "mc": [
+        "to feed your pet",
+        "to play with your pet",
+        "to run with your pet"
+      ]
+    },
+    {
+      "w": "to take your pet to the vet",
+      "g": "dein Haustier zum Tierarzt bringen",
+      "d": "To bring your animal to the animal doctor for a check",
+      "s": "Our cat is sick, so we need to _____ for a check-up.",
+      "cf": "take our cat to the vet",
+      "a": [
+        "take your pet to the vet",
+        "take my pet to the vet",
+        "took the dog to the vet"
+      ],
+      "mc": [
+        "to take your pet to the park",
+        "to give your pet a bath",
+        "to feed your pet"
+      ]
+    },
+    {
+      "w": "to give your pet a bath",
+      "g": "dein Haustier baden",
+      "d": "To wash your animal with water and soap",
+      "s": "The dog is dirty from the mud, so it is time to _____.",
+      "cf": "give the dog a bath",
+      "a": [
+        "give your pet a bath",
+        "give my dog a bath",
+        "gave the cat a bath"
+      ],
+      "mc": [
+        "to dry your pet",
+        "to brush",
+        "to wash up"
+      ]
+    },
+    {
+      "w": "cage",
+      "g": "Käfig",
+      "d": "A box made of metal bars where you keep small animals",
+      "s": "The hamster runs around in his _____ all night.",
+      "a": [
+        "cages"
+      ],
+      "mc": [
+        "basket",
+        "box",
+        "tank"
+      ]
+    },
+    {
+      "w": "litter tray",
+      "g": "Katzenklo",
+      "d": "A box with special sand where a cat goes to the toilet",
+      "s": "We put the _____ in the bathroom for the cat.",
+      "cf": "litter tray",
+      "a": [
+        "litter tray",
+        "litter trays",
+        "litter box"
+      ],
+      "mc": [
+        "food bowl",
+        "water bowl",
+        "cage"
+      ]
+    },
+    {
+      "w": "vet (veterinarian)",
+      "g": "Tierarzt/Tierärztin",
+      "d": "A doctor for animals",
+      "s": "The _____ said our dog is healthy and strong.",
+      "cf": "vet",
+      "a": [
+        "vet",
+        "veterinarian",
+        "vets"
+      ],
+      "mc": [
+        "doctor",
+        "dentist",
+        "nurse"
+      ]
+    },
+    {
+      "w": "to have got a fear of",
+      "g": "Angst haben vor",
+      "d": "To be very scared of something",
+      "s": "My mum has _____ spiders — she is so scared she runs away.",
+      "cf": "got a fear of",
+      "a": [
+        "have got a fear of",
+        "has got a fear of",
+        "have a fear of"
+      ],
+      "mc": [
+        "to be afraid of",
+        "to be worried about",
+        "to be nervous about"
+      ]
+    },
+    {
+      "w": "to keep sb. company",
+      "g": "jdm. Gesellschaft leisten",
+      "d": "To be with someone so they are not alone",
+      "s": "My cat sits next to me and _____ so I do not feel alone.",
+      "cf": "keeps me company",
+      "a": [
+        "keep me company",
+        "keeps me company",
+        "kept me company"
+      ],
+      "mc": [
+        "to leave alone",
+        "to look after",
+        "to take care of"
+      ]
+    },
+    {
+      "w": "Neither do I.",
+      "g": "Ich auch nicht.",
+      "d": "Words you say to agree when someone says they don't like or do something",
+      "s": "I don't like getting up early at all. — _____ I also hate it.",
+      "cf": "Neither do I",
+      "a": [
+        "Neither do I",
+        "Neither do I."
+      ],
+      "mc": [
+        "So do I.",
+        "Me too.",
+        "I don't think so."
+      ]
+    },
+    {
+      "w": "So do I.",
+      "g": "Ich auch.",
+      "d": "Words you say to agree when someone says they like or do something",
+      "s": "I love pizza! — _____ It is my favourite food too.",
+      "cf": "So do I",
+      "a": [
+        "So do I",
+        "So do I."
+      ],
+      "mc": [
+        "Neither do I.",
+        "Me neither.",
+        "I don't agree."
+      ]
+    },
+    {
+      "w": "space",
+      "g": "Platz; Raum",
+      "d": "An empty area where you can put things or move around",
+      "s": "We don't have enough _____ for a big dog in our flat.",
+      "a": [
+        "spaces"
+      ],
+      "mc": [
+        "time",
+        "money",
+        "food"
+      ]
+    },
+    {
+      "w": "Southern Ocean",
+      "g": "Antarktischer Ozean",
+      "d": "The very cold sea around the south of the world",
+      "s": "Penguins swim in the _____ to catch fish.",
+      "cf": "Southern Ocean",
+      "a": [
+        "Southern Ocean",
+        "Antarctic Ocean"
+      ],
+      "mc": [
+        "Arctic Ocean",
+        "Atlantic Ocean",
+        "Pacific Ocean"
+      ]
+    },
+    {
+      "w": "emperor penguin",
+      "g": "Kaiserpinguin",
+      "d": "The biggest kind of black and white bird that cannot fly",
+      "s": "The _____ is taller than other types of penguin.",
+      "cf": "emperor penguin",
+      "a": [
+        "emperor penguin",
+        "emperor penguins"
+      ],
+      "mc": [
+        "king penguin",
+        "rockhopper penguin",
+        "polar bear"
+      ]
+    },
+    {
+      "w": "to release",
+      "g": "befreien, frei lassen",
+      "d": "To let an animal or person go free",
+      "s": "They _____ the bird back into the wild after it got better.",
+      "cf": "released",
+      "a": [
+        "release",
+        "releases",
+        "released"
+      ],
+      "mc": [
+        "to capture",
+        "to free",
+        "to rescue"
+      ]
+    },
+    {
+      "w": "sand",
+      "g": "Sand",
+      "d": "Tiny pieces of rock you find at the seaside or in a desert",
+      "s": "We built a castle out of _____ on the shore.",
+      "a": [
+        "sands"
+      ],
+      "mc": [
+        "mud",
+        "gravel",
+        "dust"
+      ]
+    },
+    {
+      "w": "pyjamas",
+      "g": "Pyjama, Schlafanzug",
+      "d": "Soft clothes you wear when you go to sleep",
+      "s": "I put on my _____ and brushed my teeth before going to sleep.",
+      "a": [
+        "pajamas"
+      ],
+      "mc": [
+        "uniform",
+        "tracksuit",
+        "dressing gown"
+      ]
+    },
+    {
+      "w": "to tidy (up)",
+      "g": "aufräumen",
+      "d": "To make a place clean and neat by putting things where they belong",
+      "s": "Please _____ your messy room by putting your toys in boxes before your friends come over.",
+      "cf": "tidy up",
+      "a": [
+        "tidy",
+        "tidy up",
+        "tidies up",
+        "tidied up"
+      ],
+      "mc": [
+        "to mess up",
+        "to decorate",
+        "to paint"
+      ]
+    }
+  ]
+}

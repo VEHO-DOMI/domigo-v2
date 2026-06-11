@@ -1,0 +1,909 @@
+{
+  "slug": "unit-10",
+  "grade": 3,
+  "unit": 10,
+  "title": "Unit 10",
+  "entries": [
+    {
+      "w": "to hand out leaflets",
+      "g": "Flugblätter verteilen",
+      "d": "To give small papers with information to people",
+      "s": "We _____ paper leaflets about recycling tips to shoppers in front of the supermarket on Saturday morning.",
+      "cf": "handed out",
+      "a": [
+        "hand out leaflets",
+        "handed out leaflets"
+      ],
+      "mc": [
+        "to collect money",
+        "to sing songs",
+        "to clean up"
+      ]
+    },
+    {
+      "w": "to sign a petition",
+      "g": "eine Petition unterschreiben",
+      "d": "To write your name on a paper to support a cause",
+      "s": "More than 500 people _____ the petition with their signatures to save the old park from being demolished.",
+      "cf": "signed",
+      "a": [
+        "sign a petition",
+        "signed a petition"
+      ],
+      "mc": [
+        "to ignore the petition",
+        "to refuse the petition",
+        "to throw away the petition"
+      ]
+    },
+    {
+      "w": "to go on a protest march",
+      "g": "auf einen Protestmarsch gehen",
+      "d": "To walk with others to show you disagree with something",
+      "s": "The angry students _____ on a protest march through the city centre to save the public library from closing down.",
+      "cf": "went",
+      "a": [
+        "go on a protest march",
+        "went on a protest march"
+      ],
+      "mc": [
+        "to stay home",
+        "to ignore the issue",
+        "to go on holiday"
+      ]
+    },
+    {
+      "w": "to organise a meeting",
+      "g": "ein Treffen organisieren",
+      "d": "To plan and arrange a get-together with other people",
+      "s": "Let's _____ a meeting for next Friday at 4 pm to discuss and plan the school trip to the mountains.",
+      "cf": "organise",
+      "a": [
+        "organise a meeting",
+        "organized a meeting"
+      ],
+      "mc": [
+        "to avoid a meeting",
+        "to forget about a meeting",
+        "to skip a meeting"
+      ]
+    },
+    {
+      "w": "to send out emails",
+      "g": "E-Mails versenden",
+      "d": "To write and distribute electronic messages to many people",
+      "s": "The class teacher _____ emails with details and times to all 30 parents about the upcoming school concert next week.",
+      "cf": "sent out",
+      "a": [
+        "send out emails",
+        "sent out emails"
+      ],
+      "mc": [
+        "to send out flyers by post",
+        "to send out letters by hand",
+        "to send out text messages"
+      ]
+    },
+    {
+      "w": "to recycle paper, glass, plastic and cans",
+      "g": "Papier, Glas, Plastik und Dosen recyceln",
+      "d": "To put used materials into special bins so they can be used again",
+      "s": "At our school, we _____ paper, glass bottles, plastic containers, and aluminium cans by putting them in the correct colour bins.",
+      "cf": "recycle",
+      "a": [
+        "recycle"
+      ],
+      "mc": [
+        "to burn paper, glass, plastic and cans",
+        "to throw away paper, glass, plastic and cans",
+        "to ignore paper, glass, plastic and cans"
+      ]
+    },
+    {
+      "w": "to save water and energy",
+      "g": "Wasser und Energie sparen",
+      "d": "To use less of our natural resources and electricity",
+      "s": "We should all really try to _____ by turning off the taps when brushing our teeth and switching off lights when we leave a room.",
+      "cf": "save",
+      "a": [
+        "save water and energy"
+      ],
+      "mc": [
+        "to waste water and energy",
+        "to misuse water and energy",
+        "to increase water and energy use"
+      ]
+    },
+    {
+      "w": "to buy locally produced food",
+      "g": "lokal produzierte Lebensmittel kaufen",
+      "d": "To purchase items grown or made near where you live",
+      "s": "My environmentally-friendly mum always tries to _____ locally produced food from the farmers' market instead of imported food from faraway countries.",
+      "cf": "buy",
+      "a": [
+        "buy locally produced food"
+      ],
+      "mc": [
+        "to import food from abroad",
+        "to grow her own food",
+        "to order food online"
+      ]
+    },
+    {
+      "w": "Don't drop litter.",
+      "g": "Wirf keinen Müll weg.",
+      "d": "Put your rubbish in a bin, not on the ground",
+      "s": "_____ There are rubbish bins everywhere in the park for your empty cans and wrappers.",
+      "cf": "Don't drop litter",
+      "a": [
+        "Don't drop litter"
+      ],
+      "mc": [
+        "Please throw trash anywhere.",
+        "Leave your rubbish on the ground.",
+        "Scatter your wrappers around."
+      ]
+    },
+    {
+      "w": "Don't drive short distances.",
+      "g": "Fahr keine kurzen Strecken.",
+      "d": "Use your feet or a bike for places that are close by",
+      "s": "_____ Walk or ride your bike to the nearby shops instead, to reduce pollution and get exercise.",
+      "cf": "Don't drive short distances",
+      "a": [
+        "Don't drive short distances"
+      ],
+      "mc": [
+        "Always drive everywhere.",
+        "Take the car even for 100 metres.",
+        "Use the car for short trips."
+      ]
+    },
+    {
+      "w": "Don't leave bottles or cans on the beach.",
+      "g": "Lass keine Flaschen oder Dosen am Strand liegen.",
+      "d": "Always take your rubbish when you go from the seaside",
+      "s": "_____ Take all your rubbish home with you in a bag after a day at the seaside to keep it clean for everyone.",
+      "cf": "Don't leave bottles or cans on the beach",
+      "a": [
+        "Don't leave bottles or cans on the beach"
+      ],
+      "mc": [
+        "Leave everything behind.",
+        "Throw rubbish in the sand.",
+        "Bury your cans in the sand."
+      ]
+    },
+    {
+      "w": "Don't buy a new bag. Bring your own.",
+      "g": "Kauf keine neue Tasche. Bring deine eigene mit.",
+      "d": "Reuse the bags you already have instead of getting fresh ones",
+      "s": "_____ It's much better for the environment to reuse your cloth bag than to buy plastic every time.",
+      "cf": "Don't buy a new bag",
+      "a": [
+        "Don't buy a new bag"
+      ],
+      "mc": [
+        "Buy a new plastic bag every trip.",
+        "Throw away old bags.",
+        "Forget your own bag."
+      ]
+    },
+    {
+      "w": "ability",
+      "g": "Fähigkeit",
+      "d": "Something that you can do well, a skill",
+      "s": "She has the natural _____ to make everyone in the room feel welcome and comfortable, even total strangers.",
+      "a": [
+        "abilities"
+      ],
+      "mc": [
+        "weakness",
+        "problem",
+        "difficulty"
+      ]
+    },
+    {
+      "w": "to exist",
+      "g": "existieren",
+      "d": "To be real, to be there",
+      "s": "Do you really think extraterrestrial aliens _____ somewhere out there in the vast universe, on another planet like Earth?",
+      "cf": "exist",
+      "a": [
+        "exist",
+        "existed",
+        "exists"
+      ],
+      "mc": [
+        "to disappear",
+        "to be imaginary",
+        "to be fake"
+      ]
+    },
+    {
+      "w": "right(s)",
+      "g": "Recht(e)",
+      "d": "Things that everyone should have, like food, school and safety",
+      "s": "Every single child in the world has the fundamental _____ to go to school and get a good education, no matter where they live.",
+      "cf": "right",
+      "a": [
+        "right",
+        "rights"
+      ],
+      "mc": [
+        "privilege",
+        "favour",
+        "reward"
+      ]
+    },
+    {
+      "w": "in general",
+      "g": "im Allgemeinen",
+      "d": "Usually, most of the time",
+      "s": "_____, I really like most of my school subjects, but I don't enjoy maths very much at all.",
+      "cf": "In general",
+      "a": [
+        "in general"
+      ],
+      "mc": [
+        "in particular",
+        "especially",
+        "specifically"
+      ]
+    },
+    {
+      "w": "quality",
+      "g": "Qualität",
+      "d": "How good or bad something is",
+      "s": "These Italian leather shoes are very good _____. They will last for ten years without falling apart, unlike cheap plastic shoes.",
+      "a": [],
+      "mc": [
+        "quantity",
+        "number",
+        "price"
+      ]
+    },
+    {
+      "w": "to be able to do",
+      "g": "fähig sein, etw. zu tun",
+      "d": "To have the skill or chance to do something",
+      "s": "After a lot of hard practice in the swimming pool, she was finally _____ to swim 500 metres without stopping once.",
+      "cf": "able",
+      "a": [
+        "be able to",
+        "able to"
+      ],
+      "mc": [
+        "to be forbidden to do",
+        "to be unable to do",
+        "to be too scared to do"
+      ]
+    },
+    {
+      "w": "cottage",
+      "g": "kleines Landhaus, Ferienhaus",
+      "d": "A small house in the countryside",
+      "s": "We spent our peaceful summer holiday in a small quaint _____ with a thatched roof and garden near the beautiful lake.",
+      "a": [
+        "cottages"
+      ],
+      "mc": [
+        "skyscraper",
+        "castle",
+        "office block"
+      ]
+    },
+    {
+      "w": "compromise",
+      "g": "Kompromiss",
+      "d": "An agreement where both sides give up something",
+      "s": "They finally found a fair _____ after the argument — half the park stays as grass and half becomes a new playground for children.",
+      "a": [
+        "compromises"
+      ],
+      "mc": [
+        "total victory",
+        "complete disagreement",
+        "refusal"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMPROMISE?",
+          "options": [
+            "reach",
+            "find",
+            "good",
+            "bake"
+          ],
+          "answer": "bake"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ a compromise",
+          "options": [
+            "Reach",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Reach"
+        }
+      ]
+    },
+    {
+      "w": "Good point.",
+      "g": "Da ist was dran., Gutes Argument.",
+      "d": "A way to say someone has made a strong argument",
+      "s": "We should ask the parents as well about the new school rule about phones. — _____! That's a really useful idea.",
+      "cf": "Good point",
+      "a": [
+        "Good point"
+      ],
+      "mc": [
+        "Bad idea.",
+        "Terrible suggestion.",
+        "Wrong thinking."
+      ]
+    },
+    {
+      "w": "to take action",
+      "g": "etw. unternehmen, aktiv werden",
+      "d": "To do something about a problem instead of just talking",
+      "s": "If you really want to change things and make a difference in the world, you need to _____ and not just complain.",
+      "cf": "take action",
+      "a": [
+        "take action",
+        "took action"
+      ],
+      "mc": [
+        "to do nothing",
+        "to stay quiet",
+        "to wait forever"
+      ]
+    },
+    {
+      "w": "town hall",
+      "g": "Rathaus, Gemeindeamt",
+      "d": "The building where the local government works",
+      "s": "The mayor and the city council work in the big _____ building in the centre of the town where public meetings are held.",
+      "cf": "town hall",
+      "a": [
+        "town hall"
+      ],
+      "mc": [
+        "town gym",
+        "town garage",
+        "town bus stop"
+      ]
+    },
+    {
+      "w": "way out",
+      "g": "Ausweg",
+      "d": "A solution to a difficult situation",
+      "s": "Let's try to find a _____ of this problem together by thinking of creative solutions that work for everyone.",
+      "cf": "way out",
+      "a": [
+        "way out"
+      ],
+      "mc": [
+        "way in",
+        "way back",
+        "way around"
+      ]
+    },
+    {
+      "w": "majority",
+      "g": "Mehrheit",
+      "d": "More than half of a group",
+      "s": "The _____ of students — about 85% — voted for the school trip to Salzburg next month instead of Innsbruck.",
+      "a": [
+        "majorities"
+      ],
+      "mc": [
+        "minority",
+        "few",
+        "handful"
+      ]
+    },
+    {
+      "w": "argument",
+      "g": "Argument; hier: Streit",
+      "d": "A reason for or against something, or a fight with words",
+      "s": "She had a big _____ with her older brother about who gets to use the TV remote control first on Saturday evening.",
+      "a": [
+        "arguments"
+      ],
+      "mc": [
+        "agreement",
+        "celebration",
+        "picnic"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ARGUMENT?",
+          "options": [
+            "have",
+            "strong",
+            "big",
+            "fry"
+          ],
+          "answer": "fry"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ an argument",
+          "options": [
+            "Have",
+            "Cook",
+            "Wash",
+            "Build"
+          ],
+          "answer": "Have"
+        }
+      ]
+    },
+    {
+      "w": "to protest",
+      "g": "protestieren",
+      "d": "To say or show that you disagree with something",
+      "s": "The angry students _____ loudly against the new school rules about mobile phones being banned from the entire school grounds.",
+      "cf": "protested",
+      "a": [
+        "protest",
+        "protested"
+      ],
+      "mc": [
+        "to support",
+        "to celebrate",
+        "to cheer for"
+      ]
+    },
+    {
+      "w": "city council",
+      "g": "Stadtrat",
+      "d": "The group of people who make decisions for a town",
+      "s": "The _____ of our town met last night at the town hall and decided to build a new public swimming pool next year.",
+      "cf": "city council",
+      "a": [
+        "city council"
+      ],
+      "mc": [
+        "city park",
+        "city centre",
+        "city bus"
+      ]
+    },
+    {
+      "w": "cloth bag",
+      "g": "Stofftasche",
+      "d": "A reusable container made from fabric, not plastic",
+      "s": "I always bring a reusable _____ made of thick cotton when I go food shopping to avoid using plastic bags.",
+      "cf": "cloth bag",
+      "a": [
+        "cloth bag",
+        "cloth bags"
+      ],
+      "mc": [
+        "plastic bag",
+        "paper bag",
+        "no bag at all"
+      ]
+    },
+    {
+      "w": "hardly ever",
+      "g": "fast nie",
+      "d": "Almost never",
+      "s": "I _____ eat unhealthy fast food — maybe only once a year on a special occasion like my birthday.",
+      "cf": "hardly ever",
+      "a": [
+        "hardly ever"
+      ],
+      "mc": [
+        "always",
+        "every day",
+        "regularly"
+      ]
+    },
+    {
+      "w": "lazy",
+      "g": "faul",
+      "d": "Not wanting to work or do anything",
+      "s": "Don't be so _____! Get up from the sofa and come help me clean up the messy kitchen after dinner.",
+      "a": [],
+      "mc": [
+        "hard-working",
+        "active",
+        "energetic"
+      ]
+    },
+    {
+      "w": "wrapping",
+      "g": "Verpackung",
+      "d": "The paper or plastic around a product",
+      "s": "Please put the colourful paper _____ from the birthday present in the recycling bin, not in the black rubbish bin.",
+      "a": [
+        "wrappings"
+      ],
+      "mc": [
+        "present inside",
+        "gift",
+        "box"
+      ]
+    },
+    {
+      "w": "to stand up for",
+      "g": "für etw. eintreten",
+      "d": "To say or do something to support what you believe is right",
+      "s": "You should _____ your classmates if someone is being mean or bullying them — help protect them from unfair treatment.",
+      "cf": "stand up for",
+      "a": [
+        "stand up for",
+        "stood up for"
+      ],
+      "mc": [
+        "to sit down with",
+        "to run away from",
+        "to hide behind"
+      ]
+    },
+    {
+      "w": "suffrage",
+      "g": "Wahlrecht",
+      "d": "The right to vote in elections",
+      "s": "Women in Austria finally got _____ — the legal right to vote in elections — in 1918 after a long struggle.",
+      "a": [],
+      "mc": [
+        "education",
+        "jobs",
+        "cars"
+      ]
+    },
+    {
+      "w": "suffragette",
+      "g": "Frauenrechtlerin",
+      "d": "A woman who fought for women's right to vote",
+      "s": "The brave _____ woman marched through the streets of London holding signs to demand equal voting rights for women.",
+      "a": [
+        "suffragettes"
+      ],
+      "mc": [
+        "singer",
+        "farmer",
+        "cook"
+      ]
+    },
+    {
+      "w": "to vote",
+      "g": "wählen",
+      "d": "To choose someone or something in an election",
+      "s": "In Austria, you can legally _____ in national elections for a political party when you are sixteen years old.",
+      "a": [
+        "vote",
+        "voted"
+      ],
+      "mc": [
+        "to complain",
+        "to watch",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "to attend",
+      "g": "besuchen (Universität, Veranstaltung)",
+      "d": "To go to an event, school, or meeting",
+      "s": "All students in our school must _____ the important assembly on Monday morning at 8 am in the main hall.",
+      "a": [
+        "attend",
+        "attended"
+      ],
+      "mc": [
+        "to skip",
+        "to miss",
+        "to avoid"
+      ]
+    },
+    {
+      "w": "to be equal",
+      "g": "gleichberechtigt sein",
+      "d": "To have the same rights and be treated the same way",
+      "s": "Everyone in the world should be _____ in rights and opportunities, no matter where they come from or what they look like.",
+      "cf": "equal",
+      "a": [
+        "be equal",
+        "equal"
+      ],
+      "mc": [
+        "to be different",
+        "to be better",
+        "to be worse"
+      ]
+    },
+    {
+      "w": "law",
+      "g": "Gesetz",
+      "d": "A rule made by the government that everyone must follow",
+      "s": "There is a _____ in Austria that says all children aged 6 to 15 must go to school every weekday.",
+      "a": [
+        "laws"
+      ],
+      "mc": [
+        "suggestion",
+        "opinion",
+        "request"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LAW?",
+          "options": [
+            "break",
+            "pass",
+            "against the",
+            "fry the"
+          ],
+          "answer": "fry the"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ the law",
+          "options": [
+            "Break",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Break"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ a law",
+          "options": [
+            "Pass",
+            "Fry",
+            "Wash",
+            "Draw"
+          ],
+          "answer": "Pass"
+        }
+      ]
+    },
+    {
+      "w": "nowadays",
+      "g": "heutzutage",
+      "d": "At the present time, these days",
+      "s": "_____, almost everyone — even young children — has their own personal smartphone connected to the internet.",
+      "cf": "Nowadays",
+      "a": [
+        "nowadays"
+      ],
+      "mc": [
+        "A hundred years ago",
+        "In ancient times",
+        "Long before phones existed"
+      ]
+    },
+    {
+      "w": "to treat",
+      "g": "behandeln",
+      "d": "To act towards someone in a certain way",
+      "s": "We should always _____ everyone we meet with kindness, respect, and politeness, no matter who they are.",
+      "a": [
+        "treat",
+        "treated"
+      ],
+      "mc": [
+        "to ignore",
+        "to be rude to",
+        "to laugh at"
+      ]
+    },
+    {
+      "w": "to arrest",
+      "g": "Verhaftung, Festnahme",
+      "d": "To be taken by the police because of breaking a law",
+      "s": "The police officers _____ the man who stole the red car and took him to the police station in handcuffs.",
+      "cf": "arrested",
+      "a": [
+        "arrest",
+        "arrested"
+      ],
+      "mc": [
+        "to thank",
+        "to reward",
+        "to let go"
+      ]
+    },
+    {
+      "w": "education",
+      "g": "(Aus-)Bildung",
+      "d": "Learning at school or university",
+      "s": "A good quality _____ with maths, science, languages, and history can help you find a much better job later in life.",
+      "a": [],
+      "mc": [
+        "meal",
+        "car",
+        "hobby"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EDUCATION?",
+          "options": [
+            "good",
+            "get",
+            "free",
+            "fry"
+          ],
+          "answer": "fry"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ an education",
+          "options": [
+            "Get",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Get"
+        }
+      ]
+    },
+    {
+      "w": "to speak out",
+      "g": "sich für etw./jdn. aussprechen, seine Meinung sagen",
+      "d": "To say publicly what you think about something important",
+      "s": "She _____ out bravely and loudly against bullying at her school in front of 500 students at the assembly.",
+      "cf": "spoke",
+      "a": [
+        "speak out",
+        "spoke out"
+      ],
+      "mc": [
+        "to stay silent",
+        "to whisper",
+        "to hide"
+      ]
+    },
+    {
+      "w": "to refuse",
+      "g": "(ver-)weigern",
+      "d": "To say no, to not do what someone asks",
+      "s": "He angrily _____ to eat his vegetables at dinner because he really didn't like the taste of broccoli.",
+      "cf": "refused",
+      "a": [
+        "refuse",
+        "refused"
+      ],
+      "mc": [
+        "to agree to",
+        "to accept",
+        "to enjoy"
+      ]
+    },
+    {
+      "w": "to close down",
+      "g": "schließen",
+      "d": "To stop a business or organisation permanently",
+      "s": "The old cinema in our town _____ down last year for good because not enough people were going to see films.",
+      "cf": "closed",
+      "a": [
+        "close down",
+        "closed down"
+      ],
+      "mc": [
+        "to open up",
+        "to expand",
+        "to grow"
+      ]
+    },
+    {
+      "w": "non-violent",
+      "g": "gewaltlos",
+      "d": "Without using force or hurting people",
+      "s": "They chose a completely _____ way to protest — they sat quietly on the ground and held homemade signs without fighting anyone.",
+      "cf": "non-violent",
+      "a": [
+        "non-violent",
+        "nonviolent"
+      ],
+      "mc": [
+        "aggressive",
+        "violent",
+        "harmful"
+      ]
+    },
+    {
+      "w": "businessman (pl businessmen)",
+      "g": "Geschäftsmann",
+      "d": "A man who works in business, often running a company",
+      "s": "The successful _____ in a smart suit opened a new electronics shop in the town centre last month with his own money.",
+      "cf": "businessman",
+      "a": [
+        "businessman",
+        "businessmen"
+      ],
+      "mc": [
+        "unemployed man",
+        "retired man",
+        "schoolboy"
+      ]
+    },
+    {
+      "w": "concern",
+      "g": "Anliegen, Sorge",
+      "d": "Something that worries you or is important to you",
+      "s": "The safety of all 500 students at our school is our biggest _____ as teachers — nothing else is more important.",
+      "a": [
+        "concerns"
+      ],
+      "mc": [
+        "joke",
+        "game",
+        "reward"
+      ]
+    },
+    {
+      "w": "debate",
+      "g": "Debatte",
+      "d": "A formal discussion where people share different opinions",
+      "s": "Our class had a lively _____ about whether homework should be completely banned from schools — 15 people spoke on both sides.",
+      "a": [
+        "debates"
+      ],
+      "mc": [
+        "silent lesson",
+        "movie showing",
+        "lunch break"
+      ]
+    },
+    {
+      "w": "headteacher",
+      "g": "Schulleiter/Schulleiterin",
+      "d": "The person in charge of a school",
+      "s": "The _____ of our school warmly welcomed all the new students on the first day of term with a speech and a smile.",
+      "a": [
+        "headteachers"
+      ],
+      "mc": [
+        "janitor",
+        "cook",
+        "school bus driver"
+      ]
+    },
+    {
+      "w": "to involve",
+      "g": "involvieren, einbeziehen",
+      "d": "To include someone in an activity or decision",
+      "s": "The art teacher wants to _____ all students — even the shy ones — in the big class project about famous painters.",
+      "cf": "involve",
+      "a": [
+        "involve",
+        "involved"
+      ],
+      "mc": [
+        "to exclude",
+        "to remove",
+        "to leave out"
+      ]
+    },
+    {
+      "w": "organisation",
+      "g": "Organisation",
+      "d": "A group of people working together for a purpose",
+      "s": "This international _____ called UNICEF helps children all over the world who cannot go to school because of war or poverty.",
+      "a": [
+        "organisations",
+        "organization",
+        "organizations"
+      ],
+      "mc": [
+        "single person",
+        "one family",
+        "one teacher"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,594 @@
+{
+  "slug": "unit-07",
+  "grade": 2,
+  "unit": 7,
+  "title": "Unit 7",
+  "entries": [
+    {
+      "w": "to do nothing",
+      "g": "nichts tun",
+      "d": "To not do anything at all, just rest",
+      "s": "On Sunday I want to _____ — not homework, not chores, just total laziness for once.",
+      "cf": "do nothing",
+      "a": [
+        "do nothing",
+        "does nothing",
+        "did nothing"
+      ],
+      "mc": [
+        "to take it easy",
+        "to relax",
+        "to stay at home"
+      ]
+    },
+    {
+      "w": "to play basketball",
+      "g": "Basketball spielen",
+      "d": "To take part in a game where you throw a ball into a high net",
+      "s": "I _____ with my friends — we throw the ball into the hoop.",
+      "cf": "play basketball",
+      "a": [
+        "play basketball",
+        "plays basketball",
+        "played basketball"
+      ],
+      "mc": [
+        "to play football",
+        "to play volleyball",
+        "to play tennis"
+      ]
+    },
+    {
+      "w": "to stay at a friend's house",
+      "g": "bei einem Freund übernachten",
+      "d": "To sleep at your friend's home for one night or more",
+      "s": "Can I _____ on Friday night? I will sleep there and come home Saturday.",
+      "cf": "stay at a friend's house",
+      "a": [
+        "stay at a friend's house",
+        "stayed at a friend's house"
+      ],
+      "mc": [
+        "to come over",
+        "to visit",
+        "to go out"
+      ]
+    },
+    {
+      "w": "to tidy your room",
+      "g": "dein Zimmer aufräumen",
+      "d": "To make your room clean and neat",
+      "s": "Mum says I must _____ right now — my clothes are on the floor and my toys are on the bed.",
+      "cf": "tidy my room",
+      "a": [
+        "tidy your room",
+        "tidy my room",
+        "tidy his room",
+        "tidy her room",
+        "tidied my room"
+      ],
+      "mc": [
+        "to lock your room",
+        "to paint your room",
+        "to leave your room"
+      ]
+    },
+    {
+      "w": "to have a party",
+      "g": "eine Party machen",
+      "d": "To get friends together to celebrate or have fun",
+      "s": "We are going to _____ with cake, balloons and games for my birthday.",
+      "cf": "have a party",
+      "a": [
+        "have a party",
+        "has a party",
+        "had a party"
+      ],
+      "mc": [
+        "to go to a party",
+        "to organise",
+        "to celebrate"
+      ]
+    },
+    {
+      "w": "to do the shopping",
+      "g": "einkaufen gehen",
+      "d": "To go to the shop and buy things you need",
+      "s": "My mum always _____ at the supermarket on Saturday morning.",
+      "cf": "does the shopping",
+      "a": [
+        "do the shopping",
+        "does the shopping",
+        "did the shopping"
+      ],
+      "mc": [
+        "to go to the supermarket",
+        "to buy groceries",
+        "to order online"
+      ]
+    },
+    {
+      "w": "to do your homework",
+      "g": "Hausaufgaben machen",
+      "d": "To finish the school work your teacher gave you",
+      "s": "I always _____ right after school before I play outside.",
+      "cf": "do my homework",
+      "a": [
+        "do your homework",
+        "do my homework",
+        "does his homework",
+        "did my homework"
+      ],
+      "mc": [
+        "to play games",
+        "to watch TV",
+        "to take a nap"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ your homework",
+          "options": [
+            "Do",
+            "Take",
+            "Keep",
+            "Catch"
+          ],
+          "answer": "Do"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DO?",
+          "options": [
+            "homework",
+            "your best",
+            "a favour",
+            "a secret"
+          ],
+          "answer": "a secret"
+        }
+      ]
+    },
+    {
+      "w": "to watch a film",
+      "g": "einen Film schauen",
+      "d": "To look at a movie on TV or at the cinema",
+      "s": "We are going to _____ on the sofa tonight. It's a new comedy with our favourite actors.",
+      "cf": "watch a film",
+      "a": [
+        "watch a film",
+        "watches a film",
+        "watched a film"
+      ],
+      "mc": [
+        "to listen to music",
+        "to read a book",
+        "to play a game"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a film",
+          "options": [
+            "Watch",
+            "Cook",
+            "Carry",
+            "Pour"
+          ],
+          "answer": "Watch"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WATCH?",
+          "options": [
+            "a film",
+            "TV",
+            "a match",
+            "a secret"
+          ],
+          "answer": "a secret"
+        }
+      ]
+    },
+    {
+      "w": "honestly",
+      "g": "ehrlich; wirklich",
+      "d": "In a true way, not telling lies",
+      "s": "_____, I did not eat the last biscuit! I am telling you the truth.",
+      "cf": "Honestly",
+      "a": [
+        "honestly"
+      ],
+      "mc": [
+        "maybe",
+        "sometimes",
+        "possibly"
+      ]
+    },
+    {
+      "w": "instead",
+      "g": "stattdessen",
+      "d": "In place of something, as another choice",
+      "s": "I don't want tea. Can I have juice _____?",
+      "a": [],
+      "mc": [
+        "never",
+        "otherwise",
+        "however"
+      ]
+    },
+    {
+      "w": "to take it easy",
+      "g": "sich entspannen",
+      "d": "To rest and not do hard work",
+      "s": "You worked so hard today. Now just _____ on the sofa with a cup of tea and relax a bit.",
+      "cf": "take it easy",
+      "a": [
+        "take it easy",
+        "takes it easy",
+        "took it easy"
+      ],
+      "mc": [
+        "to work more",
+        "to study",
+        "to clean"
+      ]
+    },
+    {
+      "w": "to be ashamed",
+      "g": "sich schämen",
+      "d": "To feel bad because you did something wrong or silly",
+      "s": "He was very _____ after he broke the window. He looked at the ground and could not say a word.",
+      "cf": "ashamed",
+      "a": [
+        "be ashamed",
+        "ashamed"
+      ],
+      "mc": [
+        "to be proud",
+        "to be happy",
+        "to be glad"
+      ]
+    },
+    {
+      "w": "to come over",
+      "g": "vorbeikommen",
+      "d": "To visit someone at their home",
+      "s": "Do you want to _____ to my house after school and play video games together?",
+      "cf": "come over",
+      "a": [
+        "come over",
+        "comes over",
+        "came over"
+      ],
+      "mc": [
+        "to run away",
+        "to stay home",
+        "to disappear"
+      ]
+    },
+    {
+      "w": "communication",
+      "g": "Kommunikation",
+      "d": "When people talk or write to each other",
+      "s": "Good _____ is important between friends so they understand each other.",
+      "a": [],
+      "mc": [
+        "silence",
+        "competition",
+        "distance"
+      ]
+    },
+    {
+      "w": "excuse",
+      "g": "Ausrede",
+      "d": "A reason you give for something bad you did",
+      "s": "That is not a good _____ for being late. 'I woke up late' is not a real reason.",
+      "a": [
+        "excuses"
+      ],
+      "mc": [
+        "time",
+        "day",
+        "place"
+      ]
+    },
+    {
+      "w": "group chat",
+      "g": "Gruppenchat",
+      "d": "A place online where many friends talk together",
+      "s": "We have a _____ for our class on the phone.",
+      "cf": "group chat",
+      "a": [
+        "group chat",
+        "group chats"
+      ],
+      "mc": [
+        "social media",
+        "email",
+        "video call"
+      ]
+    },
+    {
+      "w": "social media",
+      "g": "soziale Medien",
+      "d": "Apps and websites where people share photos and messages",
+      "s": "Many young people spend a lot of time on _____.",
+      "cf": "social media",
+      "a": [
+        "social media"
+      ],
+      "mc": [
+        "group chat",
+        "website",
+        "blog"
+      ]
+    },
+    {
+      "w": "to tell a lie",
+      "g": "lügen",
+      "d": "To say something that is not true",
+      "s": "You should never _____. Always say the truth.",
+      "cf": "tell a lie",
+      "a": [
+        "tell a lie",
+        "told a lie",
+        "tells a lie"
+      ],
+      "mc": [
+        "to tell the truth",
+        "to make up",
+        "to cheat"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a lie",
+          "options": [
+            "Tell",
+            "Make",
+            "Do",
+            "Run"
+          ],
+          "answer": "Tell"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TELL?",
+          "options": [
+            "a lie",
+            "the truth",
+            "a story",
+            "a bicycle"
+          ],
+          "answer": "a bicycle"
+        }
+      ]
+    },
+    {
+      "w": "truth",
+      "g": "Wahrheit",
+      "d": "What is real and not made up",
+      "s": "Please tell me the _____. Don't lie to me about what happened.",
+      "a": [],
+      "mc": [
+        "story",
+        "joke",
+        "news"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ the truth",
+          "options": [
+            "Tell",
+            "Cook",
+            "Catch",
+            "Wash"
+          ],
+          "answer": "Tell"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TRUTH?",
+          "options": [
+            "tell",
+            "know",
+            "whole",
+            "bake"
+          ],
+          "answer": "bake"
+        }
+      ]
+    },
+    {
+      "w": "to be worried",
+      "g": "besorgt sein",
+      "d": "To feel that something bad might happen",
+      "s": "Mum was _____ because I came home late — she thought something bad happened.",
+      "cf": "worried",
+      "a": [
+        "be worried",
+        "worried"
+      ],
+      "mc": [
+        "happy",
+        "proud",
+        "glad"
+      ]
+    },
+    {
+      "w": "to crash",
+      "g": "einen Unfall bauen, gegen etw. fahren",
+      "d": "To hit something hard, often by accident",
+      "s": "The bike went too fast and _____ straight into the wall with a loud bang. The boy fell off.",
+      "cf": "crashed",
+      "a": [
+        "crash",
+        "crashes",
+        "crashed"
+      ],
+      "mc": [
+        "to stop",
+        "to fly",
+        "to jump"
+      ]
+    },
+    {
+      "w": "to get into trouble",
+      "g": "in Schwierigkeiten geraten, Ärger bekommen",
+      "d": "To do something that makes you get punished",
+      "s": "If you don't listen to the teacher, you will _____ and get detention.",
+      "cf": "get into trouble",
+      "a": [
+        "get into trouble",
+        "got into trouble",
+        "gets into trouble"
+      ],
+      "mc": [
+        "to have fun",
+        "to get a prize",
+        "to make friends"
+      ]
+    },
+    {
+      "w": "fancy dress party",
+      "g": "Kostümparty",
+      "d": "A party where everyone wears special clothes to look different",
+      "s": "I wore a pirate hat and an eye patch to the _____ and my friend came as a ghost.",
+      "cf": "fancy dress party",
+      "a": [
+        "fancy dress party",
+        "fancy dress parties"
+      ],
+      "mc": [
+        "wedding",
+        "concert",
+        "meeting"
+      ]
+    },
+    {
+      "w": "disappointment",
+      "g": "Enttäuschung",
+      "d": "The sad feeling when something is not as good as you hoped",
+      "s": "Her face showed _____ when the trip was cancelled. She had looked forward to it for months.",
+      "a": [],
+      "mc": [
+        "joy",
+        "excitement",
+        "happiness"
+      ]
+    },
+    {
+      "w": "German",
+      "g": "Deutsch",
+      "d": "The language people speak in Austria and Germany",
+      "s": "My mother tongue is _____ because I grew up in Vienna.",
+      "a": [],
+      "mc": [
+        "English",
+        "French",
+        "Italian"
+      ]
+    },
+    {
+      "w": "row",
+      "g": "(Sitz-)Reihe",
+      "d": "A line of seats or people next to each other",
+      "s": "We sat in the front _____ at the cinema.",
+      "a": [
+        "rows"
+      ],
+      "mc": [
+        "seat",
+        "column",
+        "line"
+      ]
+    },
+    {
+      "w": "sold out",
+      "g": "ausverkauft",
+      "d": "When there is nothing left to buy because everything is gone",
+      "s": "The concert tickets are all _____. There are no more.",
+      "cf": "sold out",
+      "a": [
+        "sold out"
+      ],
+      "mc": [
+        "available",
+        "fully booked",
+        "on sale"
+      ]
+    },
+    {
+      "w": "That's a pity.",
+      "g": "Das ist schade!",
+      "d": "Words you say when you feel sorry about something",
+      "s": "You can't come to the party? _____ We will miss you.",
+      "cf": "That's a pity",
+      "a": [
+        "That's a pity",
+        "That is a pity"
+      ],
+      "mc": [
+        "That's fine!",
+        "No problem!",
+        "See you there!"
+      ]
+    },
+    {
+      "w": "ticket",
+      "g": "Eintrittskarte, Ticket",
+      "d": "A piece of paper that lets you go into a place or ride a bus",
+      "s": "I bought a _____ for the football match so I can sit in seat 24B and watch the game.",
+      "a": [
+        "tickets"
+      ],
+      "mc": [
+        "programme",
+        "scarf",
+        "drink"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a ticket",
+          "options": [
+            "Buy",
+            "Fry",
+            "Swim",
+            "Sleep"
+          ],
+          "answer": "Buy"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TICKET?",
+          "options": [
+            "buy",
+            "bus",
+            "return",
+            "bake"
+          ],
+          "answer": "bake"
+        }
+      ]
+    },
+    {
+      "w": "What a shame!",
+      "g": "Wie schade!",
+      "d": "Words you say when something sad or bad happens",
+      "s": "The match was cancelled because of rain. _____ I was really looking forward to it.",
+      "cf": "What a shame",
+      "a": [
+        "What a shame",
+        "What a shame!"
+      ],
+      "mc": [
+        "Great news!",
+        "How lucky!",
+        "Wonderful!"
+      ]
+    }
+  ]
+}

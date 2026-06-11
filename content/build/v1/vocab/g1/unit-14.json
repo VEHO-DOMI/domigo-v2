@@ -1,0 +1,695 @@
+{
+  "slug": "unit-14",
+  "grade": 1,
+  "unit": 14,
+  "title": "Unit 14",
+  "entries": [
+    {
+      "w": "nature programme",
+      "g": "Naturdokumentation",
+      "d": "a TV show about animals and nature",
+      "s": "We watched an interesting _____ with real footage of wild lions hunting in Africa.",
+      "a": [],
+      "mc": [
+        "cooking show",
+        "game show",
+        "music programme"
+      ]
+    },
+    {
+      "w": "fantasy film",
+      "g": "Fantasyfilm",
+      "d": "a film with magic and unreal things",
+      "s": "The magical _____ had wizards casting spells, fire-breathing dragons, and a talking unicorn.",
+      "a": [],
+      "mc": [
+        "war film",
+        "documentary",
+        "news programme"
+      ]
+    },
+    {
+      "w": "reality show",
+      "g": "Reality-Show",
+      "d": "a TV show with real people, not actors",
+      "s": "My sister loves watching that _____ with real people living together in a house every Friday.",
+      "a": [],
+      "mc": [
+        "animated cartoon",
+        "news programme",
+        "nature documentary"
+      ]
+    },
+    {
+      "w": "fantasy story",
+      "g": "Fantasygeschichte",
+      "d": "a story with magic and unreal things",
+      "s": "I am reading a _____ about a magic school for young wizards who ride broomsticks.",
+      "a": [],
+      "mc": [
+        "history book",
+        "newspaper",
+        "recipe book"
+      ]
+    },
+    {
+      "w": "quiz show",
+      "g": "Quizshow",
+      "d": "a TV show where people answer questions",
+      "s": "He won 10,000 euros on the TV _____ by answering 20 general knowledge questions correctly.",
+      "a": [],
+      "mc": [
+        "music concert",
+        "sports match",
+        "news bulletin"
+      ]
+    },
+    {
+      "w": "science fiction film",
+      "g": "Science-Fiction-Film",
+      "d": "a film about the future or space",
+      "s": "The _____ was about a future year 3000 where robots took over Earth with laser guns.",
+      "a": [],
+      "mc": [
+        "history film",
+        "cooking show",
+        "news programme"
+      ]
+    },
+    {
+      "w": "the news",
+      "g": "die Nachrichten",
+      "d": "a programme that tells you what happened today",
+      "s": "My dad always watches _____ on TV at eight o'clock to hear about politics and the world.",
+      "a": [],
+      "mc": [
+        "cartoons",
+        "cooking",
+        "music"
+      ]
+    },
+    {
+      "w": "detective story",
+      "g": "Kriminalgeschichte, Krimi",
+      "d": "a story about solving a crime",
+      "s": "In the _____, the clever police inspector found fingerprints and solved who robbed the bank.",
+      "a": [],
+      "mc": [
+        "love story",
+        "bedtime story",
+        "cookbook"
+      ]
+    },
+    {
+      "w": "romantic film",
+      "g": "Liebesfilm",
+      "d": "a film about people falling in love",
+      "s": "My mum likes to watch a _____ with a girl meeting a boy and falling in love on Saturday evenings.",
+      "a": [],
+      "mc": [
+        "horror film",
+        "war film",
+        "action film"
+      ]
+    },
+    {
+      "w": "sports programme",
+      "g": "Sportsendung",
+      "d": "a TV show about sport",
+      "s": "We watched the live football World Cup game between Germany and Brazil on the _____.",
+      "a": [],
+      "mc": [
+        "cooking show",
+        "cartoon",
+        "news programme"
+      ]
+    },
+    {
+      "w": "horror story",
+      "g": "Horrorgeschichte",
+      "d": "a scary story",
+      "s": "The _____ with ghosts, vampires, and a haunted house was so scary that I could not sleep all night.",
+      "a": [],
+      "mc": [
+        "romance",
+        "comedy",
+        "history book"
+      ]
+    },
+    {
+      "w": "drama series",
+      "g": "Dramaserie",
+      "d": "a serious TV show with many episodes",
+      "s": "The new _____ on TV with eight episodes about a family hospital is really exciting.",
+      "a": [],
+      "mc": [
+        "cartoon",
+        "music video",
+        "news"
+      ]
+    },
+    {
+      "w": "adventure story",
+      "g": "Abenteuergeschichte",
+      "d": "a story about exciting things happening",
+      "s": "The _____ was about a group of children searching for buried treasure on a tropical island.",
+      "a": [],
+      "mc": [
+        "love story",
+        "cookbook",
+        "science textbook"
+      ]
+    },
+    {
+      "w": "music video",
+      "g": "Musikvideo",
+      "d": "a short film made for a song",
+      "s": "Have you seen the new _____ with the singer dancing in a colourful background and her band?",
+      "a": [],
+      "mc": [
+        "silent film",
+        "textbook",
+        "painting"
+      ]
+    },
+    {
+      "w": "romantic story",
+      "g": "Liebesgeschichte",
+      "d": "a story about people falling in love",
+      "s": "She wrote a _____ about a handsome prince who fell in love with a beautiful princess.",
+      "a": [],
+      "mc": [
+        "war story",
+        "crime story",
+        "ghost story"
+      ]
+    },
+    {
+      "w": "cartoon",
+      "g": "Zeichentrick(-film/-serie)",
+      "d": "a film or show with drawn characters",
+      "s": "My little brother watches a colourful animated _____ with talking animals every morning on TV.",
+      "a": [],
+      "mc": [
+        "documentary",
+        "news",
+        "quiz show"
+      ]
+    },
+    {
+      "w": "screen time",
+      "g": "Zeit vor einem Bildschirm",
+      "d": "time you spend looking at a screen",
+      "s": "My parents say I have too much _____ on my phone and tablet and should go outside more.",
+      "a": [],
+      "mc": [
+        "study time",
+        "sleep time",
+        "meal time"
+      ]
+    },
+    {
+      "w": "headline",
+      "g": "Schlagzeile",
+      "d": "the title of a news story",
+      "s": "The big bold _____ at the top of the newspaper front page said: BIG STORM HITS CITY.",
+      "a": [],
+      "mc": [
+        "footnote",
+        "signature",
+        "page number"
+      ]
+    },
+    {
+      "w": "latest",
+      "g": "neuester/neueste/neuestes",
+      "d": "the most new, the most recent",
+      "s": "Have you heard their _____ song that came out yesterday? It is their newest hit.",
+      "a": [],
+      "mc": [
+        "first ever",
+        "oldest",
+        "original"
+      ]
+    },
+    {
+      "w": "comedy",
+      "g": "Komödie",
+      "d": "a funny film or show that makes you laugh",
+      "s": "We watched a funny _____ and laughed out loud the whole time until our stomachs hurt.",
+      "a": [],
+      "mc": [
+        "tragedy",
+        "horror",
+        "documentary"
+      ]
+    },
+    {
+      "w": "episode",
+      "g": "Episode, Folge",
+      "d": "one part of a TV series",
+      "s": "I watched the first _____ of the new show and now I want to see all the other 9 episodes.",
+      "a": [],
+      "mc": [
+        "page",
+        "chapter",
+        "paragraph"
+      ]
+    },
+    {
+      "w": "gamer",
+      "g": "Spieler/Spielerin; Zocker/Zockerin",
+      "d": "a person who plays video games a lot",
+      "s": "My older brother is a passionate _____ and plays video games for hours every day after school.",
+      "a": [],
+      "mc": [
+        "reader",
+        "writer",
+        "cook"
+      ]
+    },
+    {
+      "w": "kind of",
+      "g": "eine Art von",
+      "d": "a type of, a sort of",
+      "s": "What _____ of music do you like — pop, rock, jazz, or classical?",
+      "a": [],
+      "mc": [
+        "number of",
+        "size of",
+        "weight of"
+      ]
+    },
+    {
+      "w": "quite",
+      "g": "ziemlich",
+      "d": "a little, more than a bit",
+      "s": "The maths test was _____ easy — a bit tricky but not very hard. I got most right.",
+      "a": [],
+      "mc": [
+        "extremely",
+        "super",
+        "totally"
+      ]
+    },
+    {
+      "w": "to stream",
+      "g": "streamen",
+      "d": "to watch a film or show on the internet",
+      "s": "We can _____ the new film tonight on our tablet on Netflix without downloading it.",
+      "a": [],
+      "mc": [
+        "to print",
+        "to record on DVD",
+        "to buy in a shop"
+      ]
+    },
+    {
+      "w": "weekend",
+      "g": "Wochenende",
+      "d": "Saturday and Sunday",
+      "s": "What are you doing at the _____ on Saturday and Sunday when there is no school?",
+      "a": [],
+      "mc": [
+        "weekday",
+        "school day",
+        "working day"
+      ]
+    },
+    {
+      "w": "to freeze",
+      "g": "erstarren, anhalten",
+      "d": "to stop moving, to become very still",
+      "s": "When the music suddenly stopped in the game, everybody had to _____ and not move a single muscle.",
+      "a": [],
+      "mc": [
+        "to dance",
+        "to run",
+        "to jump"
+      ]
+    },
+    {
+      "w": "huge",
+      "g": "riesig",
+      "d": "very, very big",
+      "s": "We saw a _____ blue whale — the biggest animal in the world, 30 metres long — in the deep ocean.",
+      "a": [],
+      "mc": [
+        "tiny",
+        "microscopic",
+        "miniature"
+      ]
+    },
+    {
+      "w": "inside",
+      "g": "in, innerhalb",
+      "d": "in something, not outside",
+      "s": "It was pouring with rain outside, so we stayed and played board games _____ the warm house.",
+      "a": [],
+      "mc": [
+        "outside",
+        "above",
+        "behind"
+      ]
+    },
+    {
+      "w": "to pay",
+      "g": "(be-)zahlen",
+      "d": "to give money for something",
+      "s": "How much money did you _____ for that book at the shop? It looks expensive.",
+      "a": [],
+      "mc": [
+        "to read",
+        "to draw",
+        "to hide"
+      ]
+    },
+    {
+      "w": "to point to",
+      "g": "zeigen auf",
+      "d": "to show where something is with your finger",
+      "s": "She raised her hand and used her finger to _____ the country Spain on the big wall map.",
+      "cf": "point to",
+      "a": [],
+      "mc": [
+        "to hide",
+        "to close eyes at",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "power",
+      "g": "Kraft",
+      "d": "a strong force or special ability",
+      "s": "The superhero had the magical _____ to become invisible and walk through solid walls.",
+      "a": [],
+      "mc": [
+        "weakness",
+        "problem",
+        "fear"
+      ]
+    },
+    {
+      "w": "remote control",
+      "g": "Fernbedienung",
+      "d": "a small thing you use to control your TV",
+      "s": "I can not find the _____ for the TV. I want to change the channel to the news.",
+      "a": [],
+      "mc": [
+        "keyboard",
+        "pen",
+        "phone"
+      ]
+    },
+    {
+      "w": "to reply",
+      "g": "antworten",
+      "d": "to answer someone",
+      "s": "I sent her a text message this morning but she did not _____ all day. Maybe her phone is off.",
+      "a": [],
+      "mc": [
+        "to send",
+        "to forget",
+        "to write"
+      ]
+    },
+    {
+      "w": "to sell",
+      "g": "verkaufen",
+      "d": "to give something for money",
+      "s": "They want to _____ their old car for 2000 euros and then buy a new one with the money.",
+      "a": [],
+      "mc": [
+        "to buy",
+        "to keep",
+        "to hide"
+      ]
+    },
+    {
+      "w": "tiny",
+      "g": "winzig",
+      "d": "very, very small",
+      "s": "The baby bird was so _____ — only 2 centimetres long — that it fit in the palm of my hand.",
+      "a": [],
+      "mc": [
+        "huge",
+        "massive",
+        "giant"
+      ]
+    },
+    {
+      "w": "voice",
+      "g": "Stimme",
+      "d": "the sound you make when you talk or sing",
+      "s": "The female singer had a beautiful high _____ and everyone in the audience loved her.",
+      "a": [],
+      "mc": [
+        "face",
+        "hair",
+        "dress"
+      ]
+    },
+    {
+      "w": "wide",
+      "g": "breit; weit",
+      "d": "big from one side to the other",
+      "s": "The big brown river was very _____ — about 100 metres — and we could not swim across to the other side.",
+      "a": [],
+      "mc": [
+        "narrow",
+        "thin",
+        "short"
+      ]
+    },
+    {
+      "w": "to fight",
+      "g": "kämpfen (mit)",
+      "d": "to try hard against someone or something",
+      "s": "The two angry boys started to _____ with their fists over the last chocolate cookie on the plate.",
+      "a": [],
+      "mc": [
+        "to hug",
+        "to kiss",
+        "to sing to"
+      ]
+    },
+    {
+      "w": "shopkeeper",
+      "g": "Ladenbesitzer/Ladenbesitzerin",
+      "d": "a person who has a shop",
+      "s": "The friendly _____ behind the counter helped me find the right book in her small bookshop.",
+      "a": [],
+      "mc": [
+        "customer",
+        "teacher",
+        "doctor"
+      ]
+    },
+    {
+      "w": "to disappear",
+      "g": "verschwinden",
+      "d": "to go away so nobody can see you",
+      "s": "The magician said 'abracadabra' and made the white rabbit _____ from the top hat into thin air.",
+      "a": [],
+      "mc": [
+        "to grow bigger",
+        "to stay",
+        "to appear"
+      ]
+    },
+    {
+      "w": "to hold",
+      "g": "halten",
+      "d": "to have something in your hand",
+      "s": "Can you _____ my heavy shopping bag in your hands for a moment, please? I need to tie my shoelace.",
+      "a": [],
+      "mc": [
+        "to drop",
+        "to throw",
+        "to kick"
+      ]
+    },
+    {
+      "w": "to spend",
+      "g": "verbringen (mit)",
+      "d": "to use time doing something",
+      "s": "We _____ every Saturday afternoon at our grandma's cosy house drinking tea and eating cake.",
+      "cf": "spend",
+      "a": [],
+      "mc": [
+        "to avoid",
+        "to skip",
+        "to miss"
+      ]
+    },
+    {
+      "w": "to bend down",
+      "g": "(sich) hinunterbeugen",
+      "d": "to move the top of your body down",
+      "s": "She had to _____ from standing up to pick up the shiny gold coin from the floor.",
+      "a": [],
+      "mc": [
+        "to stand up",
+        "to sit down",
+        "to lie down"
+      ]
+    },
+    {
+      "w": "to hug",
+      "g": "umarmen",
+      "d": "to put your arms around someone",
+      "s": "I always _____ my mum and wrap my arms around her when I get home from school.",
+      "a": [],
+      "mc": [
+        "to push away",
+        "to ignore",
+        "to run from"
+      ]
+    },
+    {
+      "w": "lake",
+      "g": "See",
+      "d": "a big area of water with land around it",
+      "s": "We went swimming in the large clear _____ of still water surrounded by mountains on a hot summer day.",
+      "a": [],
+      "mc": [
+        "bathtub",
+        "puddle",
+        "swimming pool"
+      ]
+    },
+    {
+      "w": "leaf",
+      "g": "Blatt (Blätter)",
+      "d": "a flat green thing that grows on a tree",
+      "s": "In autumn, every single green _____ on the maple tree turns yellow, orange, and red before falling off.",
+      "a": [],
+      "mc": [
+        "flower",
+        "fruit",
+        "root"
+      ]
+    },
+    {
+      "w": "to lie",
+      "g": "liegen",
+      "d": "to be flat, for example on a bed",
+      "s": "I like to _____ flat on the soft sofa and read a good book in the afternoon.",
+      "a": [],
+      "mc": [
+        "to stand",
+        "to jump",
+        "to run"
+      ]
+    },
+    {
+      "w": "skin",
+      "g": "Haut",
+      "d": "the outside part of your body",
+      "s": "The sun was very hot and my _____ on my arms and face turned red and sore.",
+      "a": [],
+      "mc": [
+        "hair",
+        "teeth",
+        "nails"
+      ]
+    },
+    {
+      "w": "spot",
+      "g": "Punkt",
+      "d": "a small round mark on something",
+      "s": "The ladybird has shiny red wings with small round black _____ — 7 dots on each side.",
+      "cf": "spots",
+      "a": [],
+      "mc": [
+        "stripe",
+        "line",
+        "square"
+      ]
+    },
+    {
+      "w": "weak",
+      "g": "schwach",
+      "d": "not strong",
+      "s": "After being sick in bed with a fever for a whole week, I felt very tired and _____.",
+      "a": [],
+      "mc": [
+        "strong",
+        "powerful",
+        "healthy"
+      ]
+    },
+    {
+      "w": "dead",
+      "g": "tot",
+      "d": "not alive any more",
+      "s": "We found a _____ bird in the garden. It was not moving and its body was cold.",
+      "a": [],
+      "mc": [
+        "alive",
+        "healthy",
+        "flying"
+      ]
+    },
+    {
+      "w": "once upon a time",
+      "g": "es war einmal",
+      "d": "how many fairy tales begin",
+      "s": "_____, in a land far away, there lived a beautiful princess in a big tall castle with a tower.",
+      "a": [],
+      "mc": [
+        "Last Monday",
+        "Yesterday",
+        "In 2025"
+      ]
+    },
+    {
+      "w": "one day",
+      "g": "eines Tages",
+      "d": "at some time in the past or future",
+      "s": "_____, a very strange mysterious letter arrived at our front door in a black envelope.",
+      "a": [],
+      "mc": [
+        "Every day",
+        "Never",
+        "Twice a week"
+      ]
+    },
+    {
+      "w": "cover",
+      "g": "(Buch-)Umschlag",
+      "d": "the outside part of a book",
+      "s": "The front _____ of this new fantasy book has a big colourful picture of a dragon breathing fire.",
+      "a": [],
+      "mc": [
+        "page 50",
+        "index",
+        "table of contents"
+      ]
+    },
+    {
+      "w": "friendship",
+      "g": "Freundschaft",
+      "d": "when two people are friends",
+      "s": "Their long _____ started on the very first day of school in Year 1 and they are still friends today.",
+      "a": [],
+      "mc": [
+        "fight",
+        "argument",
+        "race"
+      ]
+    },
+    {
+      "w": "neighbour",
+      "g": "Nachbar/Nachbarin",
+      "d": "a person who lives next to you",
+      "s": "Our _____ who lives right next door to us has a big brown dog that barks a lot at night.",
+      "a": [],
+      "mc": [
+        "teacher",
+        "cousin",
+        "pen pal"
+      ]
+    }
+  ]
+}

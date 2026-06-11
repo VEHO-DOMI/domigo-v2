@@ -1,0 +1,740 @@
+{
+  "slug": "unit-06",
+  "grade": 3,
+  "unit": 6,
+  "title": "Unit 6",
+  "entries": [
+    {
+      "w": "bridge",
+      "g": "Brücke",
+      "d": "A structure built over a river, road, or railway so people can cross",
+      "s": "We walked across the old stone _____ over the river to get to the other side of the valley.",
+      "a": [
+        "bridges"
+      ],
+      "mc": [
+        "tunnel",
+        "wall",
+        "gate"
+      ]
+    },
+    {
+      "w": "river",
+      "g": "Fluss",
+      "d": "A large, long flow of water that goes to the sea",
+      "s": "The _____ was very wide and flowing fast, so we definitely needed a boat with an engine to cross it safely.",
+      "a": [
+        "rivers"
+      ],
+      "mc": [
+        "puddle",
+        "bathtub",
+        "sink"
+      ]
+    },
+    {
+      "w": "art gallery",
+      "g": "Kunstgalerie",
+      "d": "A place where you can look at paintings and sculptures",
+      "s": "We visited an _____ in the city centre and saw famous paintings by Monet and Picasso on the walls.",
+      "cf": "art gallery",
+      "a": [
+        "art gallery",
+        "art galleries"
+      ],
+      "mc": [
+        "library",
+        "swimming pool",
+        "shopping mall"
+      ]
+    },
+    {
+      "w": "square",
+      "g": "Platz",
+      "d": "An open area in a town, usually with buildings around it",
+      "s": "There is a big beautiful stone fountain in the middle of the old town _____ surrounded by cafés and historic buildings.",
+      "a": [
+        "squares"
+      ],
+      "mc": [
+        "river",
+        "park",
+        "bridge"
+      ]
+    },
+    {
+      "w": "park",
+      "g": "Park",
+      "d": "A large area with grass and trees where people can walk and play",
+      "s": "Let's meet at the _____ near the slides and the football pitch and play football together after school today.",
+      "a": [
+        "parks"
+      ],
+      "mc": [
+        "hospital",
+        "supermarket",
+        "library"
+      ]
+    },
+    {
+      "w": "tower",
+      "g": "Turm",
+      "d": "A tall, narrow building or part of a building",
+      "s": "The tall old church _____ with a bell at the top is the tallest building in our small town — you can see it from 10km away.",
+      "a": [
+        "towers"
+      ],
+      "mc": [
+        "basement",
+        "roof",
+        "door"
+      ]
+    },
+    {
+      "w": "district",
+      "g": "Bezirk, Viertel",
+      "d": "An area of a city or town",
+      "s": "The busy shopping _____ in the city centre has lots of nice cafés, boutique shops, and restaurants on every street.",
+      "a": [
+        "districts"
+      ],
+      "mc": [
+        "swimming pool",
+        "forest",
+        "beach"
+      ]
+    },
+    {
+      "w": "building",
+      "g": "Gebäude",
+      "d": "A structure with walls and a roof, like a house or school",
+      "s": "The brand new school _____ has three floors, a big gym, and a modern library for all the students.",
+      "a": [
+        "buildings"
+      ],
+      "mc": [
+        "bridge",
+        "road",
+        "tree"
+      ]
+    },
+    {
+      "w": "street",
+      "g": "Straße",
+      "d": "A road in a city or town with houses and shops",
+      "s": "Our quiet residential _____ is very peaceful because there are no shops and not much traffic or noise.",
+      "a": [
+        "streets"
+      ],
+      "mc": [
+        "playground",
+        "kitchen",
+        "bedroom"
+      ]
+    },
+    {
+      "w": "shop",
+      "g": "Geschäft",
+      "d": "A place where you buy things",
+      "s": "There's a cute little _____ near my house on the corner that sells colourful sweets, chocolate, and crisps to children.",
+      "a": [
+        "shops"
+      ],
+      "mc": [
+        "forest",
+        "park",
+        "church"
+      ]
+    },
+    {
+      "w": "shopping centre",
+      "g": "Einkaufszentrum",
+      "d": "A large building with many shops inside",
+      "s": "We went to the huge indoor _____ with 100 shops on three floors to buy new running shoes for school.",
+      "cf": "shopping centre",
+      "a": [
+        "shopping centre",
+        "shopping centres",
+        "shopping center"
+      ],
+      "mc": [
+        "small kiosk",
+        "street market",
+        "pharmacy"
+      ]
+    },
+    {
+      "w": "stadium",
+      "g": "Stadion",
+      "d": "A large building where people watch sports",
+      "s": "The giant football _____ was full of 50,000 excited fans cheering loudly for their favourite team.",
+      "a": [
+        "stadiums"
+      ],
+      "mc": [
+        "classroom",
+        "living room",
+        "bedroom"
+      ]
+    },
+    {
+      "w": "to burn down",
+      "g": "niederbrennen",
+      "d": "To be destroyed by fire",
+      "s": "The old abandoned factory _____ completely to the ground last winter during a huge electrical fire.",
+      "cf": "burnt down",
+      "a": [
+        "burn down",
+        "burnt down",
+        "burned down"
+      ],
+      "mc": [
+        "to be built",
+        "to open",
+        "to expand"
+      ]
+    },
+    {
+      "w": "collection",
+      "g": "Sammlung",
+      "d": "A group of things that have been gathered together",
+      "s": "My dad has a huge _____ of more than 500 old stamps from many different countries around the world, stored in albums.",
+      "a": [
+        "collections"
+      ],
+      "mc": [
+        "single stamp",
+        "one album",
+        "empty box"
+      ]
+    },
+    {
+      "w": "government",
+      "g": "Regierung",
+      "d": "The group of people who run a country",
+      "s": "The _____ of our country decided last week to build more free public schools in the remote countryside regions.",
+      "a": [
+        "governments"
+      ],
+      "mc": [
+        "family",
+        "band",
+        "school class"
+      ]
+    },
+    {
+      "w": "the Houses of Parliament",
+      "g": "das Parlament (von Großbritannien)",
+      "d": "The building in London where British laws are made",
+      "s": "We took a photo in front of _____ with the famous Big Ben clock tower when we visited London last summer.",
+      "cf": "the Houses of Parliament",
+      "a": [
+        "the Houses of Parliament",
+        "Houses of Parliament"
+      ],
+      "mc": [
+        "Disneyland",
+        "the Eiffel Tower",
+        "the Colosseum"
+      ]
+    },
+    {
+      "w": "in advance",
+      "g": "im Voraus",
+      "d": "Before something happens, ahead of time",
+      "s": "You should definitely buy your concert tickets _____ — at least two weeks before — because they sell out very quickly.",
+      "cf": "in advance",
+      "a": [
+        "in advance"
+      ],
+      "mc": [
+        "too late",
+        "after the event",
+        "during the concert"
+      ]
+    },
+    {
+      "w": "to photograph",
+      "g": "fotografieren",
+      "d": "To take a photo of someone or something",
+      "s": "My photographer sister loves to _____ wild birds and deer in the forest with her big professional camera with a zoom lens.",
+      "cf": "photograph",
+      "a": [
+        "photograph",
+        "photographed"
+      ],
+      "mc": [
+        "to hunt",
+        "to scare",
+        "to feed"
+      ]
+    },
+    {
+      "w": "play",
+      "g": "Theaterstück",
+      "d": "A story performed by actors on a stage",
+      "s": "Our drama class is going to perform a Shakespeare _____ on the school stage at the end of the school year in June.",
+      "a": [
+        "plays"
+      ],
+      "mc": [
+        "football match",
+        "song",
+        "speech"
+      ]
+    },
+    {
+      "w": "prison",
+      "g": "Gefängnis",
+      "d": "A building where people are kept as punishment for a crime",
+      "s": "The convicted thief was sent to _____ for two years by the judge after stealing jewellery from the shop.",
+      "a": [
+        "prisons"
+      ],
+      "mc": [
+        "school",
+        "hospital",
+        "hotel"
+      ]
+    },
+    {
+      "w": "to raise",
+      "g": "anheben, erhöhen",
+      "d": "To move something up to a higher position",
+      "s": "Please _____ your hand high up in the air if you know the correct answer to the teacher's question.",
+      "a": [
+        "raise",
+        "raised"
+      ],
+      "mc": [
+        "to lower",
+        "to hide",
+        "to drop"
+      ]
+    },
+    {
+      "w": "raven",
+      "g": "Rabe",
+      "d": "A large black bird",
+      "s": "A big black _____ was sitting on the wooden fence and cawing loudly at us as we walked past.",
+      "a": [
+        "ravens"
+      ],
+      "mc": [
+        "butterfly",
+        "rabbit",
+        "fish"
+      ]
+    },
+    {
+      "w": "to take a walk",
+      "g": "einen Spaziergang machen",
+      "d": "To go on a stroll, usually for pleasure",
+      "s": "Let's _____ together in the big park — the warm sunny weather is absolutely lovely today.",
+      "cf": "take a walk",
+      "a": [
+        "take a walk",
+        "took a walk"
+      ],
+      "mc": [
+        "to run a marathon",
+        "to drive the car",
+        "to swim"
+      ]
+    },
+    {
+      "w": "theatre",
+      "g": "Theater",
+      "d": "A building where you go to watch plays and shows",
+      "s": "We're going to the _____ tonight in Vienna to see a famous musical with live singers and an orchestra playing.",
+      "a": [
+        "theatres",
+        "theater",
+        "theaters"
+      ],
+      "mc": [
+        "cinema",
+        "concert hall",
+        "stadium"
+      ]
+    },
+    {
+      "w": "view",
+      "g": "Ausblick, Aussicht",
+      "d": "What you can see from a place",
+      "s": "The _____ from our tall hotel room on the 20th floor was truly amazing — we could see the whole blue sea and beach.",
+      "a": [
+        "views"
+      ],
+      "mc": [
+        "menu",
+        "price",
+        "size"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with VIEW?",
+          "options": [
+            "amazing",
+            "beautiful",
+            "enjoy the",
+            "cook the"
+          ],
+          "answer": "cook the"
+        },
+        {
+          "type": "gap",
+          "prompt": "an _____ view",
+          "options": [
+            "amazing",
+            "angry",
+            "empty",
+            "loud"
+          ],
+          "answer": "amazing"
+        }
+      ]
+    },
+    {
+      "w": "visitor",
+      "g": "Besucher/Besucherin",
+      "d": "A person who goes to see a place or another person",
+      "s": "The popular history museum has thousands of _____ every single year from countries all over the world.",
+      "cf": "visitors",
+      "a": [
+        "visitor",
+        "visitors"
+      ],
+      "mc": [
+        "staff member",
+        "owner",
+        "cleaner"
+      ]
+    },
+    {
+      "w": "thrilling",
+      "g": "aufregend",
+      "d": "Very exciting and a little bit scary",
+      "s": "The huge loop-the-loop roller coaster ride at the theme park was really _____ — my heart was beating super fast!",
+      "a": [],
+      "mc": [
+        "boring",
+        "slow",
+        "relaxing"
+      ]
+    },
+    {
+      "w": "approximately",
+      "g": "ungefähr",
+      "d": "Close to an exact number but not exact",
+      "s": "There are _____ 200 students at our school, give or take about 10 students either way — we don't count exactly.",
+      "a": [],
+      "mc": [
+        "exactly",
+        "precisely",
+        "definitely"
+      ]
+    },
+    {
+      "w": "to cough (up)",
+      "g": "(aus-)husten",
+      "d": "To push air out of your mouth and throat with a loud noise",
+      "s": "She has been _____ loudly all day since morning because she has a bad chest cold with lots of mucus.",
+      "cf": "coughing",
+      "a": [
+        "cough",
+        "coughed",
+        "coughing"
+      ],
+      "mc": [
+        "to sing",
+        "to laugh",
+        "to smile"
+      ]
+    },
+    {
+      "w": "cruel",
+      "g": "grausam",
+      "d": "Making other people or animals suffer on purpose",
+      "s": "It is very _____ and wrong to keep wild animals like elephants or lions in small cramped cages at the circus.",
+      "a": [],
+      "mc": [
+        "kind",
+        "gentle",
+        "loving"
+      ]
+    },
+    {
+      "w": "empty",
+      "g": "leer",
+      "d": "With nothing or no one inside",
+      "s": "The kitchen fridge is completely _____ inside — there's no food or drinks left at all. We need to go shopping right away.",
+      "a": [],
+      "mc": [
+        "full",
+        "packed",
+        "overflowing"
+      ]
+    },
+    {
+      "w": "fever",
+      "g": "Fieber",
+      "d": "When your body temperature is higher than normal because you are ill",
+      "s": "She stayed in bed all day because she had a high _____ of 39 degrees Celsius — the thermometer was way above normal.",
+      "a": [
+        "fevers"
+      ],
+      "mc": [
+        "cough",
+        "rash",
+        "bandage"
+      ]
+    },
+    {
+      "w": "to report",
+      "g": "berichten, melden",
+      "d": "To tell someone about something that has happened",
+      "s": "If you see something strange or suspicious in the school building, please _____ it immediately to the nearest teacher.",
+      "a": [
+        "report",
+        "reported"
+      ],
+      "mc": [
+        "to hide",
+        "to ignore",
+        "to forget about"
+      ]
+    },
+    {
+      "w": "path",
+      "g": "Weg",
+      "d": "A narrow way for walking",
+      "s": "Follow this narrow winding _____ carefully through the green forest and you'll arrive at the beautiful hidden lake.",
+      "a": [
+        "paths"
+      ],
+      "mc": [
+        "swimming pool",
+        "river",
+        "street"
+      ]
+    },
+    {
+      "w": "spectacular",
+      "g": "spektakulär",
+      "d": "Very impressive and beautiful to look at",
+      "s": "The huge colourful fireworks show on New Year's Eve over the river was absolutely _____ — I've never seen anything so impressive.",
+      "a": [],
+      "mc": [
+        "dull",
+        "ordinary",
+        "boring"
+      ]
+    },
+    {
+      "w": "tourist attraction",
+      "g": "Sehenswürdigkeit",
+      "d": "A place that many tourists visit",
+      "s": "The big old medieval castle on the hill is the most popular _____ in our town — thousands of tourists visit each summer.",
+      "cf": "tourist attraction",
+      "a": [
+        "tourist attraction",
+        "tourist attractions"
+      ],
+      "mc": [
+        "secret hideout",
+        "private house",
+        "empty field"
+      ]
+    },
+    {
+      "w": "to experience",
+      "g": "erleben, erfahren",
+      "d": "To see, feel or do something, especially for the first time",
+      "s": "On this school trip to a farm, you will _____ real farm life for three days — feeding animals and milking cows.",
+      "a": [
+        "experience",
+        "experienced"
+      ],
+      "mc": [
+        "to avoid",
+        "to ignore",
+        "to read about only"
+      ]
+    },
+    {
+      "w": "traffic",
+      "g": "Verkehr",
+      "d": "Cars, buses and other vehicles moving on a road",
+      "s": "There is always a lot of _____ with many cars, buses, and lorries in the city centre during rush hour at 8 am.",
+      "a": [],
+      "mc": [
+        "silence",
+        "emptiness",
+        "peace"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TRAFFIC?",
+          "options": [
+            "heavy",
+            "stuck in",
+            "jam",
+            "bake"
+          ],
+          "answer": "bake"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ traffic",
+          "options": [
+            "Heavy",
+            "Thin",
+            "Tall",
+            "Soft"
+          ],
+          "answer": "Heavy"
+        },
+        {
+          "type": "gap",
+          "prompt": "stuck in _____",
+          "options": [
+            "traffic",
+            "bread",
+            "paper",
+            "glass"
+          ],
+          "answer": "traffic"
+        }
+      ]
+    },
+    {
+      "w": "multicultural",
+      "g": "multikulturell",
+      "d": "Having people from many different countries and cultures",
+      "s": "Vienna is a very _____ city with many people from all over the world living together — from Turkey, Japan, Nigeria, and more.",
+      "a": [],
+      "mc": [
+        "single-culture",
+        "homogeneous",
+        "one-nation"
+      ]
+    },
+    {
+      "w": "contract",
+      "g": "Vertrag",
+      "d": "A written agreement between two people or groups",
+      "s": "Before you start the new summer job at the café, you need to sign an official paper _____ with the company owner.",
+      "a": [
+        "contracts"
+      ],
+      "mc": [
+        "a drawing",
+        "a photograph",
+        "a recipe"
+      ]
+    },
+    {
+      "w": "to lead",
+      "g": "leiten",
+      "d": "To be in charge of or to guide",
+      "s": "The experienced tour guide will _____ us through the narrow streets of the old part of the historic city for two hours.",
+      "a": [
+        "lead",
+        "led"
+      ],
+      "mc": [
+        "to follow behind",
+        "to stand still",
+        "to avoid"
+      ]
+    },
+    {
+      "w": "sugar",
+      "g": "Zucker",
+      "d": "A sweet white or brown substance used in food and drinks",
+      "s": "Do you take _____ in your morning tea or do you prefer it without anything sweet, just plain?",
+      "a": [],
+      "mc": [
+        "salt",
+        "pepper",
+        "vinegar"
+      ]
+    },
+    {
+      "w": "to earn (money)",
+      "g": "(Geld) verdienen",
+      "d": "To receive payment for work that you do",
+      "s": "She _____ some extra pocket money by walking her neighbour's big dog in the park every afternoon after school.",
+      "cf": "earns",
+      "a": [
+        "earn",
+        "earned",
+        "earns"
+      ],
+      "mc": [
+        "to lose money",
+        "to waste money",
+        "to steal money"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EARN?",
+          "options": [
+            "money",
+            "a living",
+            "respect",
+            "a cloud"
+          ],
+          "answer": "a cloud"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ money",
+          "options": [
+            "Earn",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Earn"
+        }
+      ]
+    },
+    {
+      "w": "to save up for",
+      "g": "ansparen",
+      "d": "To keep money so you can buy something later",
+      "s": "I'm _____ up hard for a new pair of expensive trainers that cost €120 — I put aside €10 every week from my pocket money.",
+      "cf": "saving",
+      "a": [
+        "save up for",
+        "saved up for",
+        "saving up for"
+      ],
+      "mc": [
+        "to throw away money",
+        "to spend money on",
+        "to lose money for"
+      ]
+    },
+    {
+      "w": "to sign",
+      "g": "unterschreiben",
+      "d": "To write your name on a document",
+      "s": "Please _____ your full name at the bottom of the form with a black pen to confirm you agree with everything written.",
+      "a": [
+        "sign",
+        "signed"
+      ],
+      "mc": [
+        "to draw",
+        "to tear",
+        "to fold"
+      ]
+    }
+  ]
+}

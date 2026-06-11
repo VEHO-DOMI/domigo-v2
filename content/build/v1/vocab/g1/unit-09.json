@@ -1,0 +1,697 @@
+{
+  "slug": "unit-09",
+  "grade": 1,
+  "unit": 9,
+  "title": "Unit 9",
+  "entries": [
+    {
+      "w": "owl",
+      "g": "Eule",
+      "d": "a bird that flies and hunts at night",
+      "s": "At night, you can hear the _____ with big round eyes hooting from the tall tree.",
+      "a": [],
+      "mc": [
+        "butterfly",
+        "fish",
+        "spider"
+      ]
+    },
+    {
+      "w": "budgie",
+      "g": "Wellensittich",
+      "d": "a small, colourful bird people keep at home",
+      "s": "My small blue pet _____ in its cage can say 'hello' and 'goodbye'.",
+      "a": [
+        "budgerigar"
+      ],
+      "mc": [
+        "goldfish",
+        "hamster",
+        "spider"
+      ]
+    },
+    {
+      "w": "elephant",
+      "g": "Elefant",
+      "d": "a very big grey animal with a long nose",
+      "s": "The huge grey _____ at the zoo has very big flappy ears and a long trunk.",
+      "a": [],
+      "mc": [
+        "fish",
+        "snake",
+        "rabbit"
+      ]
+    },
+    {
+      "w": "spider",
+      "g": "Spinne",
+      "d": "a small animal with eight legs",
+      "s": "There is a black _____ with eight legs and its sticky web in the corner of the ceiling.",
+      "a": [],
+      "mc": [
+        "worm",
+        "snail",
+        "ant"
+      ]
+    },
+    {
+      "w": "bat",
+      "g": "Fledermaus",
+      "d": "an animal that flies at night",
+      "s": "A _____ with leathery wings sleeps hanging upside-down during the day and flies at night.",
+      "a": [],
+      "mc": [
+        "fish",
+        "squirrel",
+        "mouse"
+      ]
+    },
+    {
+      "w": "shark",
+      "g": "Hai",
+      "d": "a big, dangerous fish in the sea",
+      "s": "The dangerous _____ with sharp teeth swims fast through the ocean looking for fish.",
+      "a": [],
+      "mc": [
+        "frog",
+        "turtle",
+        "starfish"
+      ]
+    },
+    {
+      "w": "zebra",
+      "g": "Zebra",
+      "d": "an animal with black and white stripes",
+      "s": "A _____ looks like a horse but has black and white stripes all over its body.",
+      "a": [],
+      "mc": [
+        "cow",
+        "sheep",
+        "pig"
+      ]
+    },
+    {
+      "w": "camel",
+      "g": "Kamel",
+      "d": "a big animal with a hump on its back",
+      "s": "In the hot desert, people ride a _____ with one or two humps on its back and long eyelashes.",
+      "a": [],
+      "mc": [
+        "cow",
+        "pig",
+        "dog"
+      ]
+    },
+    {
+      "w": "pony",
+      "g": "Pony",
+      "d": "a small horse",
+      "s": "The small children ride a little _____ — a small horse — at the farm on Sundays.",
+      "a": [],
+      "mc": [
+        "lion",
+        "tiger",
+        "bear"
+      ]
+    },
+    {
+      "w": "guinea pig",
+      "g": "Meerschweinchen",
+      "d": "a small, soft pet with no tail",
+      "s": "My small furry pet _____ loves to eat carrots and lettuce in its cage and squeaks for food.",
+      "a": [],
+      "mc": [
+        "goldfish",
+        "parrot",
+        "spider"
+      ]
+    },
+    {
+      "w": "pig",
+      "g": "Schwein",
+      "d": "a pink farm animal with a curly tail",
+      "s": "The pink _____ on the muddy farm likes to roll in the wet mud and has a curly tail.",
+      "a": [],
+      "mc": [
+        "chicken",
+        "horse",
+        "cow"
+      ]
+    },
+    {
+      "w": "rabbit",
+      "g": "Kaninchen, Hase",
+      "d": "a small animal with long ears",
+      "s": "Our pet _____ has soft white fur, long floppy ears, and hops around the garden.",
+      "a": [
+        "bunny"
+      ],
+      "mc": [
+        "cat",
+        "dog",
+        "parrot"
+      ]
+    },
+    {
+      "w": "lizard",
+      "g": "Eidechse",
+      "d": "a small animal with four legs and a long tail",
+      "s": "A small green _____ with scales sits on the warm rock in the sun and flicks its tongue.",
+      "a": [],
+      "mc": [
+        "rabbit",
+        "mouse",
+        "bird"
+      ]
+    },
+    {
+      "w": "rat",
+      "g": "Ratte",
+      "d": "an animal like a big mouse",
+      "s": "The big _____ has a long bald pink tail and sharp front teeth. It eats food from the bin.",
+      "a": [],
+      "mc": [
+        "cat",
+        "dog",
+        "rabbit"
+      ]
+    },
+    {
+      "w": "mouse",
+      "g": "Maus",
+      "d": "a very small animal with a long tail",
+      "s": "A little grey _____ with a thin tail ran quickly across the kitchen floor and hid behind the fridge.",
+      "a": [],
+      "mc": [
+        "cat",
+        "dog",
+        "rabbit"
+      ]
+    },
+    {
+      "w": "tortoise",
+      "g": "Schildkröte",
+      "d": "a slow animal with a hard shell",
+      "s": "My pet _____ walks very very slowly through the garden with its shell on its back.",
+      "a": [
+        "turtle"
+      ],
+      "mc": [
+        "rabbit",
+        "hamster",
+        "bird"
+      ]
+    },
+    {
+      "w": "box",
+      "g": "Schachtel, Kiste",
+      "d": "a container with four sides and a top",
+      "s": "Put the heavy books in that big cardboard _____ with a lid.",
+      "a": [],
+      "mc": [
+        "bag",
+        "bottle",
+        "glass"
+      ]
+    },
+    {
+      "w": "tank",
+      "g": "Aquarium, Terrarium",
+      "d": "a glass container for fish or reptiles",
+      "s": "My pet fish swim around in a big glass _____ filled with water and green plants.",
+      "a": [],
+      "mc": [
+        "box",
+        "basket",
+        "envelope"
+      ]
+    },
+    {
+      "w": "cage",
+      "g": "Käfig",
+      "d": "a space with bars to keep animals in",
+      "s": "The yellow canary bird sings in its metal _____ with thin bars all morning.",
+      "a": [],
+      "mc": [
+        "tank",
+        "box",
+        "bottle"
+      ]
+    },
+    {
+      "w": "terrarium",
+      "g": "Terrarium",
+      "d": "a glass box for lizards or snakes",
+      "s": "The pet lizard lives in a warm glass _____ with sand, rocks, and a heat lamp.",
+      "a": [],
+      "mc": [
+        "fridge",
+        "oven",
+        "bathtub"
+      ]
+    },
+    {
+      "w": "unusual",
+      "g": "ungewöhnlich, außergewöhnlich",
+      "d": "not normal, different from most things",
+      "s": "A pet snake is a very _____ animal to have at home. Most families have cats or dogs instead.",
+      "a": [],
+      "mc": [
+        "normal",
+        "common",
+        "popular"
+      ]
+    },
+    {
+      "w": "a day",
+      "g": "(...) am Tag",
+      "d": "once every twenty-four hours",
+      "s": "I brush my teeth two times _____ — once in the morning and once before bed.",
+      "a": [
+        "per day"
+      ],
+      "mc": [
+        "a year",
+        "a month",
+        "a week"
+      ]
+    },
+    {
+      "w": "once",
+      "g": "einmal",
+      "d": "one time",
+      "s": "He feeds his cat _____ a day in the morning at 7am with dry food.",
+      "a": [],
+      "mc": [
+        "twice",
+        "three times",
+        "four times"
+      ]
+    },
+    {
+      "w": "twice",
+      "g": "zweimal",
+      "d": "two times",
+      "s": "She walks her pet dog _____ every day — one time before school and one time after school.",
+      "a": [],
+      "mc": [
+        "once",
+        "three times",
+        "five times"
+      ]
+    },
+    {
+      "w": "across",
+      "g": "quer durch, über ... hinweg",
+      "d": "from one side to the other, everywhere in",
+      "s": "There are many pets in family homes _____ Britain, from Scotland in the north to England in the south.",
+      "a": [],
+      "mc": [
+        "under",
+        "above",
+        "below"
+      ]
+    },
+    {
+      "w": "dangerous",
+      "g": "gefährlich",
+      "d": "not safe, can hurt you",
+      "s": "Wild lions are _____ animals with big teeth and claws; don't go near them at the zoo!",
+      "a": [],
+      "mc": [
+        "safe",
+        "friendly",
+        "gentle"
+      ]
+    },
+    {
+      "w": "farm",
+      "g": "Bauernhof",
+      "d": "a place where people grow food and keep animals",
+      "s": "The cows, chickens, pigs and sheep all live together on the big green countryside _____.",
+      "a": [],
+      "mc": [
+        "city",
+        "factory",
+        "airport"
+      ]
+    },
+    {
+      "w": "near",
+      "g": "in der Nähe von",
+      "d": "not far from, close to",
+      "s": "Our house is _____ the school. I can walk there in just five minutes.",
+      "a": [
+        "close to"
+      ],
+      "mc": [
+        "far from",
+        "across from",
+        "under"
+      ]
+    },
+    {
+      "w": "newspaper",
+      "g": "Zeitung",
+      "d": "paper with news you read every day",
+      "s": "Dad reads the daily _____ with news stories and photos at breakfast every morning.",
+      "a": [],
+      "mc": [
+        "comic book",
+        "dictionary",
+        "diary"
+      ]
+    },
+    {
+      "w": "a week",
+      "g": "(...) in der Woche",
+      "d": "once every seven days",
+      "s": "We have swimming lessons three times _____ — every Monday, Wednesday, and Friday.",
+      "a": [
+        "per week"
+      ],
+      "mc": [
+        "a day",
+        "a month",
+        "a year"
+      ]
+    },
+    {
+      "w": "basket",
+      "g": "Korb",
+      "d": "a container to carry things in",
+      "s": "She puts the picked apples in a big woven _____ with a handle on top.",
+      "a": [],
+      "mc": [
+        "plate",
+        "bottle",
+        "glass"
+      ]
+    },
+    {
+      "w": "daughter",
+      "g": "Tochter",
+      "d": "a girl child of a parent",
+      "s": "Mr and Mrs Smith have one son called Tom and one _____ called Anna.",
+      "a": [],
+      "mc": [
+        "uncle",
+        "grandfather",
+        "nephew"
+      ]
+    },
+    {
+      "w": "to drive",
+      "g": "fahren",
+      "d": "to move a car from one place to another",
+      "s": "My dad can _____ us in his car to the zoo on Sunday. He has a driving licence.",
+      "cf": "drive",
+      "a": [],
+      "mc": [
+        "to swim",
+        "to fly",
+        "to cycle"
+      ]
+    },
+    {
+      "w": "everybody",
+      "g": "jede/r",
+      "d": "all people, every person",
+      "s": "_____ — all 25 pupils — in our class has a pet at home. Not a single child is without one.",
+      "a": [
+        "everyone"
+      ],
+      "mc": [
+        "nobody",
+        "just one student",
+        "only the teacher"
+      ]
+    },
+    {
+      "w": "far away",
+      "g": "weit weg",
+      "d": "not near, a long distance from here",
+      "s": "Grandpa lives _____ in another city that is 300 km away, so we always go by car.",
+      "a": [],
+      "mc": [
+        "next door",
+        "upstairs",
+        "in this house"
+      ]
+    },
+    {
+      "w": "grandpa",
+      "g": "Opa",
+      "d": "your father's or mother's father",
+      "s": "My _____ — my dad's father — tells us funny stories from his childhood every Sunday.",
+      "a": [
+        "grandfather",
+        "grandad"
+      ],
+      "mc": [
+        "uncle",
+        "brother",
+        "cousin"
+      ]
+    },
+    {
+      "w": "mother",
+      "g": "Mutter",
+      "d": "the woman who is your parent",
+      "s": "Her _____ takes her to school every morning in the car. She is a woman and a parent.",
+      "a": [
+        "mum",
+        "mom"
+      ],
+      "mc": [
+        "father",
+        "brother",
+        "uncle"
+      ]
+    },
+    {
+      "w": "noise",
+      "g": "Geräusch",
+      "d": "a sound, often loud or strange",
+      "s": "What is that loud banging _____? I can hear something strange coming from the cellar.",
+      "a": [
+        "sound"
+      ],
+      "mc": [
+        "smell",
+        "light",
+        "silence"
+      ]
+    },
+    {
+      "w": "to stay",
+      "g": "bleiben",
+      "d": "to not leave, to be in one place",
+      "s": "Can we _____ here a little longer at the playground, please? I don't want to go home yet.",
+      "cf": "stay",
+      "a": [],
+      "mc": [
+        "to leave",
+        "to run away",
+        "to disappear"
+      ]
+    },
+    {
+      "w": "cuddly toy",
+      "g": "Stofftier",
+      "d": "a soft toy animal for children",
+      "s": "She sleeps with her favourite soft _____ bear every night. She has had it since she was a baby.",
+      "a": [
+        "stuffed animal",
+        "soft toy"
+      ],
+      "mc": [
+        "computer game",
+        "football",
+        "book"
+      ]
+    },
+    {
+      "w": "to visit",
+      "g": "besuchen",
+      "d": "to go and see a person or place",
+      "s": "We _____ our elderly grandma at her house every weekend and have tea with her.",
+      "cf": "visit",
+      "a": [],
+      "mc": [
+        "to avoid",
+        "to forget",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "to be interested in",
+      "g": "an etw. interessiert sein",
+      "d": "to want to know more about something",
+      "s": "He is _____ wild animals — he reads books about them and watches nature shows on TV.",
+      "cf": "interested in",
+      "a": [],
+      "mc": [
+        "to be bored by",
+        "to be scared of",
+        "to hate"
+      ]
+    },
+    {
+      "w": "fur",
+      "g": "Fell",
+      "d": "the soft hair on an animal's body",
+      "s": "The cat has soft, fluffy white _____ all over its body. I like to stroke it.",
+      "a": [],
+      "mc": [
+        "skin",
+        "feathers",
+        "scales"
+      ]
+    },
+    {
+      "w": "personal",
+      "g": "persönlich",
+      "d": "about one person, private",
+      "s": "Don't put your _____ information like your address or phone number on the internet.",
+      "a": [],
+      "mc": [
+        "public",
+        "fake",
+        "simple"
+      ]
+    },
+    {
+      "w": "owner",
+      "g": "Besitzer/Besitzerin",
+      "d": "the person an animal or thing belongs to",
+      "s": "The lost dog runs back to its _____ — the person who bought it and feeds it — in the park.",
+      "a": [],
+      "mc": [
+        "stranger",
+        "teacher",
+        "classmate"
+      ]
+    },
+    {
+      "w": "aunty",
+      "g": "Tante (Koseform)",
+      "d": "your parent's sister",
+      "s": "My _____ Jane — my mother's sister — always brings presents for me when she visits our house.",
+      "a": [
+        "auntie",
+        "aunt"
+      ],
+      "mc": [
+        "uncle",
+        "grandpa",
+        "brother"
+      ]
+    },
+    {
+      "w": "dear",
+      "g": "liebe/r (Anrede)",
+      "d": "a word to start a letter",
+      "s": "_____ Grandma, thank you for the lovely birthday card you sent me. Love, Anna.",
+      "a": [],
+      "mc": [
+        "Goodbye",
+        "Stop",
+        "Bye"
+      ]
+    },
+    {
+      "w": "letter",
+      "g": "Brief",
+      "d": "a message you write on paper and send",
+      "s": "I write a long _____ on paper with a pen to my friend in London and put it in an envelope.",
+      "a": [],
+      "mc": [
+        "email",
+        "text message",
+        "phone call"
+      ]
+    },
+    {
+      "w": "to bite",
+      "g": "beißen",
+      "d": "to use your teeth on something",
+      "s": "Be careful around that angry dog! It has sharp teeth and can _____ you!",
+      "cf": "bite",
+      "a": [],
+      "mc": [
+        "to help",
+        "to thank",
+        "to greet"
+      ]
+    },
+    {
+      "w": "beginning",
+      "g": "Anfang",
+      "d": "the start, the first part",
+      "s": "The _____ of the book is very funny — the first chapter makes me laugh out loud.",
+      "a": [
+        "start"
+      ],
+      "mc": [
+        "ending",
+        "middle",
+        "last chapter"
+      ]
+    },
+    {
+      "w": "to begin",
+      "g": "anfangen, beginnen",
+      "d": "to start doing something",
+      "s": "The English lessons _____ at eight o'clock in the morning. We start at that time.",
+      "cf": "begin",
+      "a": [
+        "to start"
+      ],
+      "mc": [
+        "to end",
+        "to finish",
+        "to stop"
+      ]
+    },
+    {
+      "w": "best wishes",
+      "g": "herzliche Grüße",
+      "d": "a friendly way to end a letter",
+      "s": "_____, Tom. [at the end of a letter]",
+      "a": [],
+      "mc": [
+        "Dear,",
+        "Hello,",
+        "Hi,"
+      ]
+    },
+    {
+      "w": "ending",
+      "g": "Ende, Schluss",
+      "d": "the last part of something",
+      "s": "The _____ of the film is very sad. In the last scene the hero dies.",
+      "a": [
+        "end"
+      ],
+      "mc": [
+        "beginning",
+        "middle",
+        "start"
+      ]
+    },
+    {
+      "w": "to need",
+      "g": "brauchen",
+      "d": "to must have something",
+      "s": "My pet rabbit is hungry; I _____ to buy more food because we have run out.",
+      "cf": "need",
+      "a": [],
+      "mc": [
+        "to enjoy",
+        "to refuse",
+        "to hide"
+      ]
+    }
+  ]
+}

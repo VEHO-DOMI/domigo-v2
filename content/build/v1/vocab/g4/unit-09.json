@@ -1,0 +1,1623 @@
+{
+  "slug": "unit-09",
+  "grade": 4,
+  "unit": 9,
+  "title": "Unit 9",
+  "entries": [
+    {
+      "w": "wedding dress",
+      "g": "Brautkleid",
+      "d": "The special white gown a bride wears on her big day",
+      "s": "She chose a beautiful white _____ with lace and tiny pearls.",
+      "a": [
+        "wedding dresses",
+        "wedding gown"
+      ],
+      "mc": [
+        "evening gown",
+        "bridesmaid dress",
+        "prom dress"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WEDDING DRESS?",
+          "options": [
+            "white",
+            "lace",
+            "beautiful",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She chose a beautiful _____.",
+          "options": [
+            "wedding dress",
+            "evening dress",
+            "summer dress",
+            "fancy dress"
+          ],
+          "answer": "wedding dress"
+        }
+      ]
+    },
+    {
+      "w": "wedding suit",
+      "g": "Hochzeitsanzug",
+      "d": "The formal outfit a groom wears on the big day",
+      "s": "The groom looked very handsome in his dark blue _____ as he waited at the altar.",
+      "a": [
+        "wedding suits"
+      ],
+      "mc": [
+        "dinner jacket",
+        "school uniform",
+        "business suit"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WEDDING SUIT?",
+          "options": [
+            "dark",
+            "formal",
+            "elegant",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The groom wore a _____.",
+          "options": [
+            "wedding suit",
+            "business suit",
+            "track suit",
+            "bathing suit"
+          ],
+          "answer": "wedding suit"
+        }
+      ]
+    },
+    {
+      "w": "bride",
+      "g": "Braut",
+      "d": "A woman on her wedding day or just before and after it",
+      "s": "The _____ looked absolutely stunning as she walked down the aisle.",
+      "a": [
+        "brides"
+      ],
+      "mc": [
+        "bridesmaid",
+        "bridegroom",
+        "maid of honour"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BRIDE?",
+          "options": [
+            "beautiful",
+            "white",
+            "aisle",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ walked down the aisle.",
+          "options": [
+            "bride",
+            "pride",
+            "guide",
+            "hide"
+          ],
+          "answer": "bride"
+        }
+      ]
+    },
+    {
+      "w": "bridegroom",
+      "g": "Bräutigam",
+      "d": "A man on his wedding day or just before and after it",
+      "s": "The nervous _____ waited at the altar for his future wife.",
+      "a": [
+        "groom",
+        "bridegrooms"
+      ],
+      "mc": [
+        "best man",
+        "bride",
+        "groomsman"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BRIDEGROOM?",
+          "options": [
+            "nervous",
+            "altar",
+            "groom",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ waited at the altar.",
+          "options": [
+            "bridegroom",
+            "mushroom",
+            "bedroom",
+            "bathroom"
+          ],
+          "answer": "bridegroom"
+        }
+      ]
+    },
+    {
+      "w": "bridesmaid",
+      "g": "Brautjungfer",
+      "d": "A girl or woman who helps the bride at her wedding",
+      "s": "She asked her best friend to be her _____ at the wedding.",
+      "a": [
+        "bridesmaids"
+      ],
+      "mc": [
+        "maid of honour",
+        "flower girl",
+        "bride"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BRIDESMAID?",
+          "options": [
+            "dress",
+            "help",
+            "friend",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She asked her friend to be her _____.",
+          "options": [
+            "bridesmaid",
+            "mermaid",
+            "milkmaid",
+            "handmaid"
+          ],
+          "answer": "bridesmaid"
+        }
+      ]
+    },
+    {
+      "w": "border",
+      "g": "Grenze",
+      "d": "The line that separates two countries or regions",
+      "s": "We had to show our passports when we crossed the _____ into Italy.",
+      "a": [
+        "borders"
+      ],
+      "mc": [
+        "boundary",
+        "frontier",
+        "limit"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BORDER?",
+          "options": [
+            "cross",
+            "passport",
+            "country",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We crossed the _____ into Italy.",
+          "options": [
+            "border",
+            "order",
+            "folder",
+            "holder"
+          ],
+          "answer": "border"
+        }
+      ]
+    },
+    {
+      "w": "communicate",
+      "g": "kommunizieren",
+      "d": "To share information, ideas, or feelings with another person",
+      "s": "It's hard to _____ with someone who speaks a completely different language.",
+      "a": [],
+      "mc": [
+        "negotiate",
+        "translate",
+        "interact"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMMUNICATE?",
+          "options": [
+            "effectively",
+            "clearly",
+            "well",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "It's hard to _____ without a shared language.",
+          "options": [
+            "communicate",
+            "complicate",
+            "dominate",
+            "decorate"
+          ],
+          "answer": "communicate"
+        }
+      ]
+    },
+    {
+      "w": "fashionable",
+      "g": "in Mode, modisch",
+      "d": "Popular and considered stylish at a particular time",
+      "s": "Those trainers were really _____ last year, but now nobody wears them.",
+      "a": [],
+      "mc": [
+        "trendy",
+        "stylish",
+        "modern"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FASHIONABLE?",
+          "options": [
+            "very",
+            "clothes",
+            "extremely",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Those trainers are very _____.",
+          "options": [
+            "fashionable",
+            "comfortable",
+            "reasonable",
+            "considerable"
+          ],
+          "answer": "fashionable"
+        }
+      ]
+    },
+    {
+      "w": "firstly",
+      "g": "erstens",
+      "d": "Used to introduce the first point in a list of arguments",
+      "s": "There are two reasons I can't come: _____, I have too much homework, and secondly, I'm not feeling well.",
+      "a": [],
+      "mc": [
+        "finally",
+        "secondly",
+        "mainly"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT follow FIRSTLY?",
+          "options": [
+            "secondly",
+            "mention",
+            "point",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____, I have homework, and secondly, I'm tired.",
+          "options": [
+            "Firstly",
+            "Finally",
+            "Mainly",
+            "Nearly"
+          ],
+          "answer": "Firstly"
+        }
+      ]
+    },
+    {
+      "w": "funeral",
+      "g": "Begräbnis",
+      "d": "A ceremony held after someone has died, where the body is buried or cremated",
+      "s": "Many people came to the _____ to say goodbye to the old man.",
+      "a": [
+        "funerals"
+      ],
+      "mc": [
+        "burial",
+        "wedding",
+        "ceremony"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FUNERAL?",
+          "options": [
+            "attend",
+            "ceremony",
+            "sad",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Many people came to the _____.",
+          "options": [
+            "funeral",
+            "general",
+            "mineral",
+            "criminal"
+          ],
+          "answer": "funeral"
+        }
+      ]
+    },
+    {
+      "w": "health risk",
+      "g": "Gesundheitsrisiko",
+      "d": "Something that could be dangerous or harmful to your body",
+      "s": "Not wearing a helmet when cycling is a serious _____.",
+      "a": [
+        "health risks"
+      ],
+      "mc": [
+        "side effect",
+        "safety rule",
+        "warning sign"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HEALTH RISK?",
+          "options": [
+            "serious",
+            "major",
+            "avoid",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Smoking is a _____.",
+          "options": [
+            "health risk",
+            "health check",
+            "health care",
+            "health club"
+          ],
+          "answer": "health risk"
+        }
+      ]
+    },
+    {
+      "w": "in common",
+      "g": "gemein, gemeinsam",
+      "d": "Shared by two or more people or things",
+      "s": "We became friends because we have a lot _____.",
+      "a": [],
+      "mc": [
+        "in general",
+        "in public",
+        "in particular"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with IN COMMON?",
+          "options": [
+            "lot",
+            "have",
+            "share",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We have a lot _____.",
+          "options": [
+            "in common",
+            "in general",
+            "in public",
+            "in private"
+          ],
+          "answer": "in common"
+        }
+      ]
+    },
+    {
+      "w": "needle",
+      "g": "Nadel",
+      "d": "A thin, sharp piece of metal used for sewing or injections",
+      "s": "Be careful with that sewing _____ — it's very sharp!",
+      "a": [
+        "needles"
+      ],
+      "mc": [
+        "pin",
+        "hook",
+        "blade"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NEEDLE?",
+          "options": [
+            "sharp",
+            "sewing",
+            "thread",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Be careful with that _____.",
+          "options": [
+            "needle",
+            "middle",
+            "riddle",
+            "puddle"
+          ],
+          "answer": "needle"
+        }
+      ]
+    },
+    {
+      "w": "permanent",
+      "g": "dauerhaft, endgültig",
+      "d": "Lasting forever or for a very long time; not temporary",
+      "s": "Think carefully before you get a tattoo — it's _____.",
+      "a": [],
+      "mc": [
+        "temporary",
+        "constant",
+        "lifelong"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PERMANENT?",
+          "options": [
+            "damage",
+            "marker",
+            "job",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "A tattoo is _____.",
+          "options": [
+            "permanent",
+            "important",
+            "different",
+            "difficult"
+          ],
+          "answer": "permanent"
+        }
+      ]
+    },
+    {
+      "w": "pierced",
+      "g": "durchstochen; gepierct",
+      "d": "Having a small hole made through a part of the body for wearing jewellery",
+      "s": "She got her ears _____ at a shop in the city centre.",
+      "a": [],
+      "mc": [
+        "tattooed",
+        "scarred",
+        "decorated"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PIERCED?",
+          "options": [
+            "ears",
+            "nose",
+            "belly button",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She got her ears _____.",
+          "options": [
+            "pierced",
+            "pleased",
+            "praised",
+            "priced"
+          ],
+          "answer": "pierced"
+        }
+      ]
+    },
+    {
+      "w": "rebellious",
+      "g": "rebellisch",
+      "d": "Refusing to obey rules or accept normal behaviour",
+      "s": "As a teenager, he was quite _____ and often broke the school rules.",
+      "a": [],
+      "mc": [
+        "disobedient",
+        "stubborn",
+        "adventurous"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REBELLIOUS?",
+          "options": [
+            "teenager",
+            "quite",
+            "very",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "As a teenager, he was quite _____.",
+          "options": [
+            "rebellious",
+            "religious",
+            "ambitious",
+            "mysterious"
+          ],
+          "answer": "rebellious"
+        }
+      ]
+    },
+    {
+      "w": "religious",
+      "g": "religiös",
+      "d": "Relating to or believing in a religion",
+      "s": "Christmas and Easter are important _____ holidays in Austria.",
+      "a": [],
+      "mc": [
+        "spiritual",
+        "traditional",
+        "cultural"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RELIGIOUS?",
+          "options": [
+            "very",
+            "beliefs",
+            "holidays",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Christmas is a _____ holiday.",
+          "options": [
+            "religious",
+            "previous",
+            "serious",
+            "curious"
+          ],
+          "answer": "religious"
+        }
+      ]
+    },
+    {
+      "w": "ceremony",
+      "g": "Zeremonie",
+      "d": "A formal event held to mark an important occasion",
+      "s": "The graduation _____ took place in the school hall last Friday.",
+      "a": [
+        "ceremonies"
+      ],
+      "mc": [
+        "celebration",
+        "ritual",
+        "reception"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CEREMONY?",
+          "options": [
+            "formal",
+            "graduation",
+            "attend",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "The graduation _____ took place in the hall.",
+          "options": [
+            "ceremony",
+            "harmony",
+            "testimony",
+            "matrimony"
+          ],
+          "answer": "ceremony"
+        }
+      ]
+    },
+    {
+      "w": "bury",
+      "g": "begraben",
+      "d": "To put a dead body in the ground",
+      "s": "In many cultures, people _____ their dead in a cemetery.",
+      "a": [
+        "buried"
+      ],
+      "mc": [
+        "cremate",
+        "mourn",
+        "honour"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BURY?",
+          "options": [
+            "dead",
+            "ground",
+            "cemetery",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "They _____ him in the old cemetery.",
+          "options": [
+            "buried",
+            "hurried",
+            "worried",
+            "carried"
+          ],
+          "answer": "buried"
+        }
+      ]
+    },
+    {
+      "w": "devil",
+      "g": "Teufel",
+      "d": "An evil spirit or the most powerful evil being in some religions",
+      "s": "In old stories, the _____ often tries to trick people into doing bad things.",
+      "a": [],
+      "mc": [
+        "angel",
+        "ghost",
+        "demon"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DEVIL?",
+          "options": [
+            "evil",
+            "tempt",
+            "trick",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "In old stories, the _____ tries to trick people.",
+          "options": [
+            "devil",
+            "level",
+            "travel",
+            "novel"
+          ],
+          "answer": "devil"
+        }
+      ]
+    },
+    {
+      "w": "confused",
+      "g": "verwirrt",
+      "d": "Unable to understand something or think clearly about it",
+      "s": "The instructions were so complicated that everyone in class was _____.",
+      "a": [],
+      "mc": [
+        "curious",
+        "surprised",
+        "puzzled"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CONFUSED?",
+          "options": [
+            "very",
+            "completely",
+            "totally",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Everyone was _____.",
+          "options": [
+            "confused",
+            "amused",
+            "refused",
+            "accused"
+          ],
+          "answer": "confused"
+        }
+      ]
+    },
+    {
+      "w": "Far East",
+      "g": "Fernost",
+      "d": "The countries of eastern Asia, such as China, Japan, and Korea",
+      "s": "Many spices and teas that we use every day originally come from the _____.",
+      "a": [],
+      "mc": [
+        "Middle East",
+        "Near East",
+        "Far West"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FAR EAST?",
+          "options": [
+            "travel",
+            "culture",
+            "ancient",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Many teas come from the _____.",
+          "options": [
+            "Far East",
+            "Far West",
+            "Far North",
+            "Far Side"
+          ],
+          "answer": "Far East"
+        }
+      ]
+    },
+    {
+      "w": "gesture",
+      "g": "Geste",
+      "d": "A movement of your hand or body that expresses a feeling or idea",
+      "s": "Waving hello is a friendly _____ that most people understand.",
+      "a": [
+        "gestures"
+      ],
+      "mc": [
+        "posture",
+        "signal",
+        "expression"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GESTURE?",
+          "options": [
+            "friendly",
+            "make",
+            "rude",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Waving is a friendly _____.",
+          "options": [
+            "gesture",
+            "texture",
+            "mixture",
+            "creature"
+          ],
+          "answer": "gesture"
+        }
+      ]
+    },
+    {
+      "w": "greet",
+      "g": "begrüßen",
+      "d": "To welcome someone with words or actions when you meet them",
+      "s": "In Austria, people often _____ each other with a handshake.",
+      "a": [],
+      "mc": [
+        "welcome",
+        "introduce",
+        "farewell"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GREET?",
+          "options": [
+            "warmly",
+            "friendly",
+            "stranger",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "People _____ each other with a handshake.",
+          "options": [
+            "greet",
+            "treat",
+            "street",
+            "sweet"
+          ],
+          "answer": "greet"
+        }
+      ]
+    },
+    {
+      "w": "index finger",
+      "g": "Zeigefinger",
+      "d": "The one next to your thumb, used for pointing",
+      "s": "She pointed at the map with her _____ to show us where we were.",
+      "a": [
+        "index fingers"
+      ],
+      "mc": [
+        "middle finger",
+        "ring finger",
+        "little finger"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INDEX FINGER?",
+          "options": [
+            "point",
+            "raise",
+            "extend",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She pointed with her _____.",
+          "options": [
+            "index finger",
+            "middle finger",
+            "ring finger",
+            "little finger"
+          ],
+          "answer": "index finger"
+        }
+      ]
+    },
+    {
+      "w": "insult",
+      "g": "beleidigen",
+      "d": "To say or do something rude that offends someone",
+      "s": "Be careful what you say — you don't want to _____ anyone.",
+      "a": [
+        "insulted"
+      ],
+      "mc": [
+        "offend",
+        "tease",
+        "criticise"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INSULT?",
+          "options": [
+            "deeply",
+            "feel",
+            "somebody",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "You don't want to _____ anyone.",
+          "options": [
+            "insult",
+            "result",
+            "consult",
+            "adult"
+          ],
+          "answer": "insult"
+        }
+      ]
+    },
+    {
+      "w": "nod the head",
+      "g": "mit dem Kopf nicken",
+      "d": "To move up and down to show agreement or understanding",
+      "s": "If you agree with me, just _____ and we'll go ahead with the plan.",
+      "cf": "nod your head",
+      "a": [
+        "nod the head",
+        "nod your head"
+      ],
+      "mc": [
+        "shake the head",
+        "bow the head",
+        "tilt the head"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NOD THE HEAD?",
+          "options": [
+            "slowly",
+            "agreement",
+            "yes",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She _____ to show she agreed.",
+          "options": [
+            "nodded her head",
+            "shook her head",
+            "bowed her head",
+            "tilted her head"
+          ],
+          "answer": "nodded her head"
+        }
+      ]
+    },
+    {
+      "w": "palm",
+      "g": "Handfläche",
+      "d": "The inside part of your hand between your wrist and fingers",
+      "s": "He held the small bird carefully in the _____ of his hand.",
+      "a": [
+        "palms"
+      ],
+      "mc": [
+        "wrist",
+        "fist",
+        "fingertip"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PALM?",
+          "options": [
+            "hand",
+            "open",
+            "flat",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He held the coin in his _____.",
+          "options": [
+            "palm",
+            "calm",
+            "charm",
+            "farm"
+          ],
+          "answer": "palm"
+        }
+      ]
+    },
+    {
+      "w": "pass something on",
+      "g": "etwas weitergeben",
+      "d": "To hand over to another person after you have received it",
+      "s": "When you've finished reading this note, please _____ to the next person.",
+      "cf": "pass it on",
+      "a": [
+        "pass something on",
+        "pass on",
+        "pass it on"
+      ],
+      "mc": [
+        "hand something in",
+        "give something back",
+        "throw something away"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PASS ON?",
+          "options": [
+            "message",
+            "information",
+            "quickly",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Please _____ this note to the next person.",
+          "options": [
+            "pass on",
+            "pass by",
+            "pass out",
+            "pass up"
+          ],
+          "answer": "pass on"
+        }
+      ]
+    },
+    {
+      "w": "thumb",
+      "g": "Daumen",
+      "d": "The short, thick finger on each hand, set apart from the other four",
+      "s": "He gave us a _____ up to show that everything was OK.",
+      "a": [
+        "thumbs"
+      ],
+      "mc": [
+        "index finger",
+        "wrist",
+        "knuckle"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with THUMB?",
+          "options": [
+            "up",
+            "suck",
+            "press",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He gave us a _____ up.",
+          "options": [
+            "thumb",
+            "plumb",
+            "dumb",
+            "crumb"
+          ],
+          "answer": "thumb"
+        }
+      ]
+    },
+    {
+      "w": "victory",
+      "g": "Sieg",
+      "d": "The act of winning a battle, game, or competition",
+      "s": "The team celebrated their _____ with a big party after the match.",
+      "a": [
+        "victories"
+      ],
+      "mc": [
+        "triumph",
+        "defeat",
+        "championship"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with VICTORY?",
+          "options": [
+            "celebrate",
+            "great",
+            "win",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "They celebrated their _____.",
+          "options": [
+            "victory",
+            "history",
+            "factory",
+            "memory"
+          ],
+          "answer": "victory"
+        }
+      ]
+    },
+    {
+      "w": "zero",
+      "g": "Null",
+      "d": "The number 0; nothing",
+      "s": "Last winter, the temperature fell below _____ for two whole weeks.",
+      "a": [],
+      "mc": [
+        "double",
+        "dozen",
+        "minus"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ZERO?",
+          "options": [
+            "below",
+            "above",
+            "degrees",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The temperature fell below _____.",
+          "options": [
+            "zero",
+            "hero",
+            "euro",
+            "aero"
+          ],
+          "answer": "zero"
+        }
+      ]
+    },
+    {
+      "w": "decent-looking",
+      "g": "einigermaßen gut aussehend",
+      "d": "Having a pleasant and attractive appearance",
+      "s": "She said her date was _____ — not the most handsome person, but pleasant enough.",
+      "a": [],
+      "mc": [
+        "good-looking",
+        "plain-looking",
+        "stylish-looking"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DECENT-LOOKING?",
+          "options": [
+            "quite",
+            "fairly",
+            "reasonably",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "He's quite _____.",
+          "options": [
+            "decent-looking",
+            "good-looking",
+            "odd-looking",
+            "strange-looking"
+          ],
+          "answer": "decent-looking"
+        }
+      ]
+    },
+    {
+      "w": "embarrassed",
+      "g": "verlegen",
+      "d": "Feeling shy, awkward, or ashamed in front of other people",
+      "s": "I tripped and fell in front of the whole class — I was so _____!",
+      "a": [],
+      "mc": [
+        "ashamed",
+        "awkward",
+        "nervous"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EMBARRASSED?",
+          "options": [
+            "really",
+            "feel",
+            "deeply",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "I was so _____!",
+          "options": [
+            "embarrassed",
+            "interested",
+            "surprised",
+            "concerned"
+          ],
+          "answer": "embarrassed"
+        }
+      ]
+    },
+    {
+      "w": "giggle",
+      "g": "kichern",
+      "d": "To laugh quietly in a nervous or silly way",
+      "s": "The children started to _____ when the teacher made a funny mistake.",
+      "a": [
+        "giggled"
+      ],
+      "mc": [
+        "chuckle",
+        "snicker",
+        "grin"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GIGGLE?",
+          "options": [
+            "children",
+            "quietly",
+            "nervously",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The children started to _____.",
+          "options": [
+            "giggle",
+            "jiggle",
+            "wiggle",
+            "wriggle"
+          ],
+          "answer": "giggle"
+        }
+      ]
+    },
+    {
+      "w": "goth",
+      "g": "Grufti",
+      "d": "A person who dresses in black and likes dark music and style",
+      "s": "She dresses in all black and listens to dark music — her friends call her a _____.",
+      "a": [
+        "goths"
+      ],
+      "mc": [
+        "punk",
+        "hipster",
+        "emo"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GOTH?",
+          "options": [
+            "dark",
+            "black",
+            "music",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Her friends call her a _____.",
+          "options": [
+            "goth",
+            "moth",
+            "cloth",
+            "broth"
+          ],
+          "answer": "goth"
+        }
+      ]
+    },
+    {
+      "w": "hastily",
+      "g": "hastig",
+      "d": "Done quickly and often without enough care",
+      "s": "He _____ threw his books into his bag and rushed out because he was already ten minutes late.",
+      "a": [],
+      "mc": [
+        "slowly",
+        "carefully",
+        "eagerly"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HASTILY?",
+          "options": [
+            "leave",
+            "pack",
+            "write",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He _____ threw his books into his bag.",
+          "options": [
+            "hastily",
+            "easily",
+            "happily",
+            "busily"
+          ],
+          "answer": "hastily"
+        }
+      ]
+    },
+    {
+      "w": "ignore",
+      "g": "ignorieren",
+      "d": "To deliberately not pay attention to someone or something",
+      "s": "I said hello three times, but he chose to _____ me completely.",
+      "a": [
+        "ignored"
+      ],
+      "mc": [
+        "avoid",
+        "reject",
+        "overlook"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with IGNORE?",
+          "options": [
+            "completely",
+            "deliberately",
+            "someone",
+            "tropical"
+          ],
+          "answer": "tropical"
+        },
+        {
+          "type": "gap",
+          "prompt": "He chose to _____ me completely.",
+          "options": [
+            "ignore",
+            "explore",
+            "adore",
+            "restore"
+          ],
+          "answer": "ignore"
+        }
+      ]
+    },
+    {
+      "w": "sigh",
+      "g": "seufzen",
+      "d": "To breathe out slowly and audibly, expressing sadness, tiredness, or relief",
+      "s": "She looked at the huge pile of homework and began to _____.",
+      "a": [
+        "sighed"
+      ],
+      "mc": [
+        "groan",
+        "gasp",
+        "yawn"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SIGH?",
+          "options": [
+            "deeply",
+            "heavily",
+            "relief",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She looked at the homework and began to _____.",
+          "options": [
+            "sigh",
+            "high",
+            "buy",
+            "fly"
+          ],
+          "answer": "sigh"
+        }
+      ]
+    },
+    {
+      "w": "sitting room",
+      "g": "Wohnzimmer",
+      "d": "A comfortable space in a house where people relax (British English)",
+      "s": "The family gathered in the _____ to watch a film together.",
+      "a": [
+        "sitting rooms",
+        "living room"
+      ],
+      "mc": [
+        "dining room",
+        "bedroom",
+        "living room"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SITTING ROOM?",
+          "options": [
+            "comfortable",
+            "family",
+            "relax",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The family gathered in the _____.",
+          "options": [
+            "sitting room",
+            "dining room",
+            "bath room",
+            "class room"
+          ],
+          "answer": "sitting room"
+        }
+      ]
+    },
+    {
+      "w": "scare off",
+      "g": "verscheuchen",
+      "d": "To frighten someone or something so that they go away",
+      "s": "The loud noise from the fireworks _____ all the birds in the garden.",
+      "cf": "scared off",
+      "a": [
+        "scare off",
+        "scared off",
+        "scare away"
+      ],
+      "mc": [
+        "chase away",
+        "drive out",
+        "put off"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SCARE OFF?",
+          "options": [
+            "birds",
+            "animals",
+            "easily",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The loud noise _____ all the birds.",
+          "options": [
+            "scared off",
+            "showed off",
+            "took off",
+            "called off"
+          ],
+          "answer": "scared off"
+        }
+      ]
+    },
+    {
+      "w": "sleeve",
+      "g": "Ärmel",
+      "d": "The part of a piece of clothing that covers your arm",
+      "s": "It's hot today — I wish I had a T-shirt with short _____ instead of this jumper.",
+      "cf": "sleeves",
+      "a": [
+        "sleeve",
+        "sleeves"
+      ],
+      "mc": [
+        "collar",
+        "pocket",
+        "hem"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SLEEVE?",
+          "options": [
+            "long",
+            "short",
+            "roll up",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "I wish I had short _____.",
+          "options": [
+            "sleeves",
+            "shelves",
+            "leaves",
+            "thieves"
+          ],
+          "answer": "sleeves"
+        }
+      ]
+    },
+    {
+      "w": "possibility",
+      "g": "Möglichkeit",
+      "d": "Something that might happen or be true",
+      "s": "There is always the _____ that it might rain, so bring an umbrella.",
+      "a": [
+        "possibilities"
+      ],
+      "mc": [
+        "opportunity",
+        "probability",
+        "ability"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with POSSIBILITY?",
+          "options": [
+            "real",
+            "strong",
+            "consider",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "There is always the _____.",
+          "options": [
+            "possibility",
+            "responsibility",
+            "personality",
+            "nationality"
+          ],
+          "answer": "possibility"
+        }
+      ]
+    }
+  ]
+}

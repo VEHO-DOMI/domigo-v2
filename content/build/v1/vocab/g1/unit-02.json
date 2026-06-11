@@ -1,0 +1,605 @@
+{
+  "slug": "unit-02",
+  "grade": 1,
+  "unit": 2,
+  "title": "Unit 2",
+  "entries": [
+    {
+      "w": "tree",
+      "g": "Baum",
+      "d": "a big plant with a trunk and leaves",
+      "s": "The cat is sitting high up in the _____ on a strong branch.",
+      "a": [],
+      "mc": [
+        "bush",
+        "flower",
+        "nest"
+      ]
+    },
+    {
+      "w": "monkey",
+      "g": "Affe",
+      "d": "an animal that climbs trees and eats bananas",
+      "s": "The _____ with long arms is eating a banana high up in the tree.",
+      "a": [],
+      "mc": [
+        "snake",
+        "fish",
+        "crocodile"
+      ]
+    },
+    {
+      "w": "parrot",
+      "g": "Papagei",
+      "d": "a colourful bird that can talk",
+      "s": "The colourful _____ can say 'hello' and 'goodbye' like a human.",
+      "a": [],
+      "mc": [
+        "fish",
+        "cat",
+        "rabbit"
+      ]
+    },
+    {
+      "w": "giraffe",
+      "g": "Giraffe",
+      "d": "a very tall animal with a long neck",
+      "s": "The _____ with the very long neck is so tall it can eat leaves from high trees.",
+      "a": [],
+      "mc": [
+        "mouse",
+        "rabbit",
+        "dog"
+      ]
+    },
+    {
+      "w": "train",
+      "g": "Zug",
+      "d": "it goes on tracks and carries people",
+      "s": "We took the _____ on the tracks from London to Manchester with 20 carriages.",
+      "a": [],
+      "mc": [
+        "car",
+        "bicycle",
+        "boat"
+      ]
+    },
+    {
+      "w": "penguin",
+      "g": "Pinguin",
+      "d": "a black and white bird that cannot fly",
+      "s": "The black and white _____ cannot fly but swims in the cold icy water of Antarctica.",
+      "a": [],
+      "mc": [
+        "eagle",
+        "sparrow",
+        "chicken"
+      ]
+    },
+    {
+      "w": "guide",
+      "g": "Führer/Führerin, Guide",
+      "d": "a person who shows you around a place",
+      "s": "The friendly _____ at the zoo walked with us and told us about all the animals.",
+      "a": [],
+      "mc": [
+        "child",
+        "visitor",
+        "parent"
+      ]
+    },
+    {
+      "w": "lion",
+      "g": "Löwe",
+      "d": "a big wild cat, the king of animals",
+      "s": "The big _____ has a huge brown mane of hair around its head like a crown.",
+      "a": [],
+      "mc": [
+        "tiger",
+        "bear",
+        "wolf"
+      ]
+    },
+    {
+      "w": "next to",
+      "g": "neben",
+      "d": "very close to the side of something",
+      "s": "My house is right _____ the school, sharing a wall with it.",
+      "a": [],
+      "mc": [
+        "far from",
+        "behind",
+        "above"
+      ]
+    },
+    {
+      "w": "in",
+      "g": "in",
+      "d": "inside something",
+      "s": "The new pencils are _____ the small wooden box with the lid closed.",
+      "a": [],
+      "mc": [
+        "above",
+        "below",
+        "around"
+      ]
+    },
+    {
+      "w": "behind",
+      "g": "hinter",
+      "d": "at the back of something",
+      "s": "The scared cat is hiding _____ the big sofa where nobody can see her.",
+      "a": [],
+      "mc": [
+        "in front of",
+        "above",
+        "under"
+      ]
+    },
+    {
+      "w": "under",
+      "g": "unter",
+      "d": "below something",
+      "s": "The ball rolled _____ the table and is now on the floor between the four legs.",
+      "a": [],
+      "mc": [
+        "above",
+        "over",
+        "around"
+      ]
+    },
+    {
+      "w": "on",
+      "g": "auf",
+      "d": "on top of something",
+      "s": "The open book is _____ the desk, lying flat on the top surface.",
+      "a": [],
+      "mc": [
+        "under",
+        "inside",
+        "below"
+      ]
+    },
+    {
+      "w": "in front of",
+      "g": "vor",
+      "d": "before something, facing it",
+      "s": "The yellow school bus stopped _____ the school gate, facing the entrance.",
+      "a": [],
+      "mc": [
+        "behind",
+        "far from",
+        "above"
+      ]
+    },
+    {
+      "w": "zoo",
+      "g": "Zoo",
+      "d": "a place where you can see many animals",
+      "s": "We saw elephants, lions and monkeys in their cages at the _____.",
+      "a": [],
+      "mc": [
+        "shop",
+        "hospital",
+        "library"
+      ]
+    },
+    {
+      "w": "beautiful",
+      "g": "schön, hübsch",
+      "d": "very nice to look at",
+      "s": "Look at the pink sunset over the sea! The view is so _____ I want to take a photo.",
+      "a": [
+        "pretty"
+      ],
+      "mc": [
+        "ugly",
+        "dirty",
+        "dark"
+      ]
+    },
+    {
+      "w": "big",
+      "g": "groß",
+      "d": "not small, large",
+      "s": "An adult elephant is a very _____ animal — much larger than a car.",
+      "a": [
+        "large"
+      ],
+      "mc": [
+        "small",
+        "tiny",
+        "little"
+      ]
+    },
+    {
+      "w": "where",
+      "g": "wo",
+      "d": "asking about a place",
+      "s": "_____ is the bathroom, please? I can't find the door.",
+      "cf": "Where",
+      "a": [],
+      "mc": [
+        "when",
+        "who",
+        "why"
+      ]
+    },
+    {
+      "w": "small",
+      "g": "klein",
+      "d": "not big, little",
+      "s": "A baby mouse is a very _____ animal. You can hold it in the palm of your hand.",
+      "a": [
+        "little",
+        "tiny"
+      ],
+      "mc": [
+        "big",
+        "huge",
+        "enormous"
+      ]
+    },
+    {
+      "w": "adult",
+      "g": "Erwachsene/r",
+      "d": "a person who is not a child",
+      "s": "One _____ ticket for someone over 18 costs fourteen euros at the cinema.",
+      "a": [
+        "grown-up"
+      ],
+      "mc": [
+        "child",
+        "baby",
+        "toddler"
+      ]
+    },
+    {
+      "w": "at",
+      "g": "bei; an; hier: in",
+      "d": "a word to say where someone is",
+      "s": "The children are _____ school right now in their classroom until 1 pm.",
+      "a": [],
+      "mc": [
+        "with",
+        "from",
+        "by"
+      ]
+    },
+    {
+      "w": "to bring",
+      "g": "(mit-)bringen",
+      "d": "to carry something to a place",
+      "s": "Please _____ your packed lunch with you to school tomorrow for the trip.",
+      "cf": "bring",
+      "a": [],
+      "mc": [
+        "to leave",
+        "to forget",
+        "to lose"
+      ]
+    },
+    {
+      "w": "but",
+      "g": "aber",
+      "d": "a word that shows a different idea",
+      "s": "I like cats _____ my brother likes dogs. We cannot agree.",
+      "a": [],
+      "mc": [
+        "and",
+        "or",
+        "so"
+      ]
+    },
+    {
+      "w": "dog",
+      "g": "Hund",
+      "d": "a pet animal that barks",
+      "s": "My pet _____ named Rex likes to play fetch and run fast in the park.",
+      "a": [],
+      "mc": [
+        "goldfish",
+        "rabbit",
+        "tortoise"
+      ]
+    },
+    {
+      "w": "family",
+      "g": "Familie",
+      "d": "your mother, father, brothers, and sisters",
+      "s": "My _____ has four people: my mum, my dad, my little sister, and me.",
+      "a": [],
+      "mc": [
+        "class",
+        "team",
+        "group"
+      ]
+    },
+    {
+      "w": "free",
+      "g": "kostenlos",
+      "d": "you do not have to pay",
+      "s": "The water at the school drinking fountain is _____. You don't pay for it.",
+      "a": [],
+      "mc": [
+        "expensive",
+        "cheap",
+        "wet"
+      ]
+    },
+    {
+      "w": "Grandma",
+      "g": "Oma",
+      "d": "your mother's or father's mother",
+      "s": "We visit _____ — my mum's mother — every Sunday for lunch at her house.",
+      "a": [
+        "Grandmother",
+        "Granny"
+      ],
+      "mc": [
+        "Grandpa",
+        "Uncle",
+        "Dad"
+      ]
+    },
+    {
+      "w": "group",
+      "g": "Gruppe",
+      "d": "some people together",
+      "s": "Our _____ has five children working on the same project together.",
+      "a": [],
+      "mc": [
+        "family",
+        "class",
+        "team"
+      ]
+    },
+    {
+      "w": "long",
+      "g": "lang",
+      "d": "not short, having a big length",
+      "s": "The snake has a very _____ body, about three metres from head to tail.",
+      "a": [],
+      "mc": [
+        "short",
+        "round",
+        "small"
+      ]
+    },
+    {
+      "w": "ticket",
+      "g": "Eintrittskarte; Ticket",
+      "d": "a piece of paper that lets you go in",
+      "s": "You need a _____ to enter the zoo. You buy one at the entrance and show it at the gate.",
+      "a": [],
+      "mc": [
+        "map",
+        "photo",
+        "bag"
+      ]
+    },
+    {
+      "w": "to want",
+      "g": "wollen",
+      "d": "to wish for something",
+      "s": "I _____ to go swimming today because it is very hot outside. Can we?",
+      "cf": "want",
+      "a": [],
+      "mc": [
+        "to refuse",
+        "to hate",
+        "to fear"
+      ]
+    },
+    {
+      "w": "from",
+      "g": "aus",
+      "d": "showing where someone comes from",
+      "s": "She is _____ Austria. She was born in Vienna and speaks German.",
+      "a": [],
+      "mc": [
+        "to",
+        "at",
+        "with"
+      ]
+    },
+    {
+      "w": "year",
+      "g": "Jahr; Jahrgangsstufe",
+      "d": "twelve months, or a school grade",
+      "s": "I am ten _____ old. My next birthday is in June.",
+      "cf": "years",
+      "a": [
+        "years"
+      ],
+      "mc": [
+        "months",
+        "weeks",
+        "days"
+      ]
+    },
+    {
+      "w": "he",
+      "g": "er",
+      "d": "a word for a boy or man",
+      "s": "_____ is my older brother. His name is Tom and he is 14.",
+      "cf": "He",
+      "a": [],
+      "mc": [
+        "she",
+        "it",
+        "they"
+      ]
+    },
+    {
+      "w": "she",
+      "g": "sie",
+      "d": "a word for a girl or woman",
+      "s": "_____ is my younger sister. Her name is Anna and she is 8.",
+      "cf": "She",
+      "a": [],
+      "mc": [
+        "he",
+        "it",
+        "they"
+      ]
+    },
+    {
+      "w": "to talk",
+      "g": "sprechen, sich unterhalten",
+      "d": "to say words to someone",
+      "s": "I like to _____ to my friends about football and video games during the break.",
+      "cf": "talk",
+      "a": [],
+      "mc": [
+        "to sleep",
+        "to sing",
+        "to read"
+      ]
+    },
+    {
+      "w": "they",
+      "g": "sie",
+      "d": "a word for more than one person",
+      "s": "Tom and Anna are my friends. _____ always play together at break time.",
+      "cf": "They",
+      "a": [],
+      "mc": [
+        "we",
+        "he",
+        "she"
+      ]
+    },
+    {
+      "w": "we",
+      "g": "wir",
+      "d": "a word for me and other people",
+      "s": "_____ are all in class 1A together. There are twenty of us in the room.",
+      "cf": "We",
+      "a": [],
+      "mc": [
+        "they",
+        "he",
+        "she"
+      ]
+    },
+    {
+      "w": "for",
+      "g": "für",
+      "d": "showing who gets something",
+      "s": "This birthday present is _____ you. I bought it at the toyshop yesterday.",
+      "a": [],
+      "mc": [
+        "from",
+        "with",
+        "against"
+      ]
+    },
+    {
+      "w": "happy",
+      "g": "glücklich, fröhlich; zufrieden",
+      "d": "feeling good, not sad",
+      "s": "She is very _____ because it is her birthday party today and she has many presents.",
+      "a": [
+        "glad"
+      ],
+      "mc": [
+        "sad",
+        "angry",
+        "tired"
+      ]
+    },
+    {
+      "w": "to let somebody out",
+      "g": "jemanden herauslassen",
+      "d": "to allow someone to go outside",
+      "s": "The bird is stuck in the cage. Please open the door and _____ it _____ so it can fly free.",
+      "cf": "let ... out",
+      "a": [],
+      "mc": [
+        "to keep somebody in",
+        "to trap somebody",
+        "to lock somebody up"
+      ]
+    },
+    {
+      "w": "us",
+      "g": "uns",
+      "d": "a word for me and other people (object)",
+      "s": "The teacher told _____ a funny story. All twenty of us in the class listened and laughed.",
+      "a": [],
+      "mc": [
+        "them",
+        "him",
+        "her"
+      ]
+    },
+    {
+      "w": "car",
+      "g": "Auto",
+      "d": "a vehicle with four wheels for driving",
+      "s": "Dad drives his red _____ with four wheels and a steering wheel to work every day.",
+      "a": [],
+      "mc": [
+        "bicycle",
+        "boat",
+        "plane"
+      ]
+    },
+    {
+      "w": "At last.",
+      "g": "Endlich.",
+      "d": "finally, after a long wait",
+      "s": "We waited at the bus stop for one hour in the cold! _____ the late bus finally came.",
+      "cf": "At last",
+      "a": [
+        "Finally"
+      ],
+      "mc": [
+        "Oh no!",
+        "Not yet.",
+        "Once again."
+      ]
+    },
+    {
+      "w": "How strange!",
+      "g": "Wie komisch!",
+      "d": "that is very unusual",
+      "s": "Look — my old cat is swimming in the pool! _____ Cats usually hate water.",
+      "cf": "How strange!",
+      "a": [],
+      "mc": [
+        "How nice!",
+        "How funny!",
+        "How sad!"
+      ]
+    },
+    {
+      "w": "Let me see.",
+      "g": "Lass mich mal schauen.",
+      "d": "I want to look at it",
+      "s": "You found something interesting in the garden? _____ Show it to me now!",
+      "cf": "Let me see.",
+      "a": [],
+      "mc": [
+        "Let me go.",
+        "Let me try.",
+        "Let me think."
+      ]
+    },
+    {
+      "w": "stone",
+      "g": "Stein",
+      "d": "a hard piece of rock on the ground",
+      "s": "He picked up a small hard _____ from the ground and threw it into the water with a splash.",
+      "a": [
+        "rock"
+      ],
+      "mc": [
+        "flower",
+        "leaf",
+        "feather"
+      ]
+    }
+  ]
+}

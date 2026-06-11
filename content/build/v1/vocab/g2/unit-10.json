@@ -1,0 +1,341 @@
+{
+  "slug": "unit-10",
+  "grade": 2,
+  "unit": 10,
+  "title": "Unit 10",
+  "entries": [
+    {
+      "w": "auntie",
+      "g": "Tante",
+      "d": "A friendly name for your parent's sister",
+      "s": "My _____ always brings me a present when she visits.",
+      "a": [
+        "aunties",
+        "aunty"
+      ],
+      "mc": [
+        "uncle",
+        "cousin",
+        "grandmother"
+      ]
+    },
+    {
+      "w": "calm",
+      "g": "ruhig, gelassen",
+      "d": "Quiet and not nervous or angry",
+      "s": "The teacher told us to stay _____ and sit down.",
+      "a": [
+        "calmer",
+        "calmest"
+      ],
+      "mc": [
+        "nervous",
+        "angry",
+        "loud"
+      ]
+    },
+    {
+      "w": "girlfriend",
+      "g": "feste Freundin",
+      "d": "A girl or woman that someone is dating",
+      "s": "My brother's _____ came to our house for dinner.",
+      "a": [
+        "girlfriends"
+      ],
+      "mc": [
+        "boyfriend",
+        "best friend",
+        "classmate"
+      ]
+    },
+    {
+      "w": "to be proud of",
+      "g": "stolz sein auf",
+      "d": "To feel very good about what you or someone else did",
+      "s": "She was _____ her drawing because it looked great.",
+      "cf": "proud of",
+      "a": [
+        "be proud of",
+        "proud of"
+      ],
+      "mc": [
+        "to be ashamed of",
+        "to be pleased with",
+        "to be happy about"
+      ]
+    },
+    {
+      "w": "sense of humour",
+      "g": "Sinn für Humor",
+      "d": "The ability to find things funny and make others laugh",
+      "s": "My dad has a great _____. He makes everyone laugh.",
+      "cf": "sense of humour",
+      "a": [
+        "sense of humour",
+        "sense of humor"
+      ],
+      "mc": [
+        "sense of style",
+        "personality",
+        "talent"
+      ]
+    },
+    {
+      "w": "ugly",
+      "g": "hässlich",
+      "d": "Not nice to look at",
+      "s": "The old building was grey and _____.",
+      "a": [
+        "uglier",
+        "ugliest"
+      ],
+      "mc": [
+        "pretty",
+        "beautiful",
+        "lovely"
+      ]
+    },
+    {
+      "w": "virus",
+      "g": "Virus",
+      "d": "A tiny thing that can make you sick",
+      "s": "I caught a _____ and had to stay in bed for three days.",
+      "a": [
+        "viruses"
+      ],
+      "mc": [
+        "bacteria",
+        "illness",
+        "infection"
+      ]
+    },
+    {
+      "w": "to breathe",
+      "g": "(ein-)atmen",
+      "d": "To take air in and out through your nose or mouth",
+      "s": "It is hard to _____ when you run very fast.",
+      "cf": "breathe",
+      "a": [
+        "breathe",
+        "breathes",
+        "breathed"
+      ],
+      "mc": [
+        "to cough",
+        "to sneeze",
+        "to swallow"
+      ]
+    },
+    {
+      "w": "to burn",
+      "g": "(ver-)brennen",
+      "d": "To make fire, or to get hurt by fire or something hot",
+      "s": "We _____ wood to make a warm fire in the garden.",
+      "cf": "burn",
+      "a": [
+        "burn",
+        "burns",
+        "burned",
+        "burnt"
+      ],
+      "mc": [
+        "to freeze",
+        "to melt",
+        "to boil"
+      ]
+    },
+    {
+      "w": "foreign language",
+      "g": "Fremdsprache",
+      "d": "A language that is not the one you speak at home",
+      "s": "Learning a _____ can be hard but also a lot of fun.",
+      "cf": "foreign language",
+      "a": [
+        "foreign language",
+        "foreign languages"
+      ],
+      "mc": [
+        "mother tongue",
+        "second language",
+        "sign language"
+      ]
+    },
+    {
+      "w": "to panic",
+      "g": "in Panik geraten",
+      "d": "To feel very scared and not know what to do",
+      "s": "Don't _____ or start shouting! I will help you find your lost bag — just stay calm.",
+      "cf": "panic",
+      "a": [
+        "panic",
+        "panics",
+        "panicked"
+      ],
+      "mc": [
+        "to smile",
+        "to laugh",
+        "to whisper"
+      ]
+    },
+    {
+      "w": "tractor",
+      "g": "Traktor",
+      "d": "A big machine with big wheels that farmers use",
+      "s": "The farmer drove his _____ across the field.",
+      "a": [
+        "tractors"
+      ],
+      "mc": [
+        "truck",
+        "combine",
+        "van"
+      ]
+    },
+    {
+      "w": "tool",
+      "g": "Werkzeug",
+      "d": "Something you hold in your hand to build or fix things",
+      "s": "A hammer is a _____ you hold in your hand to put nails into wood.",
+      "a": [
+        "tools"
+      ],
+      "mc": [
+        "toy",
+        "food",
+        "game"
+      ]
+    },
+    {
+      "w": "divorced",
+      "g": "geschieden",
+      "d": "When two married people have ended their marriage",
+      "s": "His parents are _____ and he lives with his mum.",
+      "a": [],
+      "mc": [
+        "married",
+        "single",
+        "separated"
+      ]
+    },
+    {
+      "w": "to be related to",
+      "g": "mit jdm. verwandt sein",
+      "d": "To be in the same family as someone",
+      "s": "Are you _____ the new boy in class? He has the same last name.",
+      "cf": "related to",
+      "a": [
+        "be related to",
+        "related to"
+      ],
+      "mc": [
+        "to be friends with",
+        "to belong to",
+        "to be connected to"
+      ]
+    },
+    {
+      "w": "to delete",
+      "g": "löschen",
+      "d": "To remove something, like a file or message",
+      "s": "I _____ the old photos from my phone yesterday. They are gone forever now.",
+      "cf": "deleted",
+      "a": [
+        "delete",
+        "deletes",
+        "deleted"
+      ],
+      "mc": [
+        "to upload",
+        "to take",
+        "to share"
+      ]
+    },
+    {
+      "w": "file",
+      "g": "Ordner; Datei",
+      "d": "A place on your computer where you keep documents or pictures",
+      "s": "I saved my homework in a _____ on the computer.",
+      "a": [
+        "files"
+      ],
+      "mc": [
+        "folder",
+        "document",
+        "app"
+      ]
+    },
+    {
+      "w": "to print out",
+      "g": "ausdrucken",
+      "d": "To make a paper copy of something from the computer",
+      "s": "Can you _____ this document for me on paper? I need to read it at the table.",
+      "cf": "print out",
+      "a": [
+        "print out",
+        "prints out",
+        "printed out"
+      ],
+      "mc": [
+        "to delete",
+        "to hide",
+        "to throw away"
+      ]
+    },
+    {
+      "w": "public",
+      "g": "öffentlich; in der Öffentlichkeit",
+      "d": "For everyone, not just one person",
+      "s": "The library is a _____ place — anyone can go there.",
+      "a": [],
+      "mc": [
+        "private",
+        "personal",
+        "secret"
+      ]
+    },
+    {
+      "w": "ice skating",
+      "g": "Eislaufen",
+      "d": "Moving on a frozen surface wearing special shoes with blades",
+      "s": "We went _____ at the rink in the city centre.",
+      "cf": "ice skating",
+      "a": [
+        "ice skating"
+      ],
+      "mc": [
+        "roller-skating",
+        "skiing",
+        "snowboarding"
+      ]
+    },
+    {
+      "w": "fault",
+      "g": "Schuld",
+      "d": "When something bad is because of you",
+      "s": "It was my _____ that we were late. I forgot my bag.",
+      "a": [
+        "faults"
+      ],
+      "mc": [
+        "mistake",
+        "blame",
+        "problem"
+      ]
+    },
+    {
+      "w": "hopefully",
+      "g": "hoffentlich",
+      "d": "You want this to happen and think it will",
+      "s": "_____ it will be sunny for our school trip tomorrow.",
+      "cf": "Hopefully",
+      "a": [
+        "hopefully"
+      ],
+      "mc": [
+        "luckily",
+        "unfortunately",
+        "probably"
+      ]
+    }
+  ]
+}
