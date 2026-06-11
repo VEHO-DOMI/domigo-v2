@@ -39,10 +39,12 @@ touches iCloud: it validates the committed artifacts only.
 ```sh
 pnpm content extract        # stage 1: docx → content/build/transcripts + sources.lock.json
 pnpm content wordbank       # stage 2: master lists → content/corpus/units/*/wordbank.json
-pnpm content v1-snapshot    # v1 vocab corpus → content/build/v1/ (parity oracle, sha-locked)
+pnpm content v1-snapshot    # v1 vocab+grammar corpus → content/build/v1/ (parity oracle, sha-locked)
+pnpm content gen --structures --grade N --prepare|--ingest [--dry-run]
+                            # stage 4: SB grammar boxes + v1 floor → per-grade structures catalog
 pnpm content review-doc --wordbank [--grade N|--unit g2-u03]   # thorough review docs (+ --allowlist)
 pnpm content ingest-review --wordbank [--dry-run]              # verdicts/edits → overlays + state
-pnpm content validate       # CI-safe deterministic checks incl. V-A…V-E gates (red blocks merge)
+pnpm content validate       # CI-safe deterministic checks incl. V-A…V-F gates (red blocks merge)
 pnpm content status         # per-unit state dashboard (round, flags)
 ```
 
@@ -52,9 +54,11 @@ nothing. Word-bank totals are asserted against each master list's self-declared 
 
 **Status (2026-06-11):** all **57/57 word banks `wordbank_approved`** (thorough adversarial review
 campaign, PRs #2–#7 — protocol in [content-review-loop](docs/runbooks/content-review-loop.md));
-core allowlist approved (135 tokens, `content/overlays/core-allowlist.json`); CI gates V-A…V-E
-guard approved banks against drift. Next: item generation (stages 4–7) + the
-[game layer](docs/handover/10_game_layer.md) (four standalone grade games).
+core allowlist approved (135 tokens, `content/overlays/core-allowlist.json`); item + story schemas
+frozen (vocab@1 / grammar@1 / grammar-structures@1 / story@1, PR #10); **g2 structures catalog
+generated** (28 structures, 22/22 v1 ids mapped, `content/corpus/structures/g2/`); CI gates
+V-A…V-F guard approved artifacts against drift. Next: item stages 5–8 + the g2-u03 item pilot,
+then the [game layer](docs/handover/10_game_layer.md) (four standalone grade games).
 
 ## Database rules (shared Neon project with live v1 — do not skip)
 

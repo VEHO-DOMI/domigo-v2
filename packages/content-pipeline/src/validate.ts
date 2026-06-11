@@ -9,16 +9,35 @@
  *       enforced once every unit of the grade is approved, informational before
  *  V-D  overlay integrity (drop/patch/add ids resolve; adds present + prefixed)
  *  V-E  live review docs regenerate byte-identically (verdict lines aside)
+ *  V-F  per-grade structures catalogs (stage 4): schema green, ids match the
+ *       lock, v1 floor mapped-XOR-waived vs the committed snapshot, state-hash
+ *       drift guard, sbRefs resolve against committed transcripts + overlay
  */
 import fs from "node:fs";
 import path from "node:path";
 import type { Grade, WordBankEntry } from "@domigo/content-schema";
-import { GRADES, UNITS_PER_GRADE, WordBank, unitIdPrefix, unitSlug } from "@domigo/content-schema";
+import {
+  GRADES,
+  GrammarStructuresFile,
+  UNITS_PER_GRADE,
+  WordBank,
+  unitIdPrefix,
+  unitSlug,
+} from "@domigo/content-schema";
+import { diffV1Floor, structuresContentHash } from "./gen-structures.ts";
+import { loadGradeBoxes, validSbRefs } from "./grammar-boxes.ts";
 import { readJsonIfExists } from "./json.ts";
-import { OVERLAYS_DIR, UNITS_DIR, V1_SNAPSHOT_DIR } from "./paths.ts";
+import {
+  OVERLAYS_DIR,
+  STRUCTURES_DIR,
+  UNITS_DIR,
+  V1_GRAMMAR_SNAPSHOT_DIR,
+  V1_SNAPSHOT_DIR,
+} from "./paths.ts";
 import { buildWordbankReview, entryMatchesWord, loadV1Unit } from "./review-wordbank.ts";
 import { readStateLog } from "./state.ts";
 import { wordTokens } from "./tokenize.ts";
+import { loadV1GrammarModule } from "./v1grammar.ts";
 import { entriesContentHash, type ParseFixes } from "./wordbank.ts";
 
 /** Master-list self-declared totals (also asserted at parse time in stage 2). */
@@ -241,6 +260,104 @@ export function runValidate(): void {
     infos.push("V-C skipped: no v1 snapshot on disk (run `content v1-snapshot`)");
   }
 
+  // ---- V-F: per-grade structures catalogs (stage 4)
+  let structuresCount = 0;
+  if (fs.existsSync(STRUCTURES_DIR)) {
+    const gradeNames = fs
+      .readdirSync(STRUCTURES_DIR)
+      .filter((n) => /^g[1-4]$/.test(n))
+      .sort();
+    for (const gradeName of gradeNames) {
+      const grade = Number(gradeName.slice(1)) as Grade;
+      const gradeDir = path.join(STRUCTURES_DIR, gradeName);
+      const raw = readJsonIfExists<unknown>(path.join(gradeDir, "structures.json"));
+      if (raw === null) continue; // brief/draft only — not yet ingested
+      const parsed = GrammarStructuresFile.safeParse(raw);
+      if (!parsed.success) {
+        errors.push(
+          `structures ${gradeName}: V-F — schema violation: ${parsed.error.issues[0]?.message ?? "unknown"} at ${parsed.error.issues[0]?.path.join(".") ?? "?"}`,
+        );
+        continue;
+      }
+      const file = parsed.data;
+      structuresCount += file.structures.length;
+      if (file.grade !== grade) errors.push(`structures ${gradeName}: V-F — grade field says ${file.grade}`);
+
+      const lock = readJsonIfExists<{ structures: Record<string, string> }>(
+        path.join(gradeDir, "ids.lock.json"),
+      );
+      if (lock === null) {
+        errors.push(`structures ${gradeName}: V-F — missing ids.lock.json`);
+      } else {
+        for (const s of file.structures) {
+          if (lock.structures[s.key] !== s.id) {
+            errors.push(
+              `structures ${gradeName}: V-F — ${s.key} id ${s.id} not pinned in lock (lock says ${lock.structures[s.key] ?? "nothing"})`,
+            );
+          }
+        }
+        const fileKeys = new Set(file.structures.map((s) => s.key));
+        for (const key of Object.keys(lock.structures)) {
+          if (!fileKeys.has(key)) {
+            errors.push(
+              `structures ${gradeName}: V-F — lock pins ${key} but the catalog has no such structure (should be tombstoned)`,
+            );
+          }
+        }
+      }
+
+      const log = readStateLog(gradeDir);
+      const last = log?.transitions[log.transitions.length - 1];
+      const hash = structuresContentHash(file.structures);
+      if (last === undefined) {
+        errors.push(`structures ${gradeName}: V-F — no state.json`);
+      } else if (last.contentHash !== hash) {
+        errors.push(
+          `structures ${gradeName}: V-F — recorded hash ${last.contentHash?.slice(0, 12)} ≠ current ${hash.slice(0, 12)} (catalog drifted after ingest)`,
+        );
+      }
+
+      if (fs.existsSync(path.join(V1_GRAMMAR_SNAPSHOT_DIR, `m${grade}.json`))) {
+        const v1 = loadV1GrammarModule(grade);
+        const diff = diffV1Floor(
+          file.structures,
+          file.v1Waivers,
+          v1.module.structures.map((s) => s.id),
+        );
+        for (const e of diff.errors) errors.push(`structures ${gradeName}: V-F — ${e}`);
+        if (diff.fresh.length > 0) {
+          infos.push(
+            `structures ${gradeName}: ${diff.fresh.length} structure(s) without v1 ancestor (new): ${diff.fresh.join(", ")}`,
+          );
+        }
+      } else {
+        infos.push(
+          `structures ${gradeName}: V-F floor check skipped — no v1 grammar snapshot (run \`content v1-snapshot\`)`,
+        );
+      }
+
+      try {
+        const refs = validSbRefs(loadGradeBoxes(grade));
+        for (const s of file.structures) {
+          for (const r of s.sbRefs) {
+            if (!refs.has(r)) errors.push(`structures ${gradeName}: V-F — ${s.key} cites unknown sbRef ${r}`);
+          }
+        }
+      } catch (e) {
+        errors.push(`structures ${gradeName}: V-F — ${(e as Error).message}`);
+      }
+
+      const unitsWith = new Set(file.structures.map((s) => s.unit));
+      const empty: number[] = [];
+      for (let u = 1; u <= UNITS_PER_GRADE[grade]; u += 1) {
+        if (!unitsWith.has(u)) empty.push(u);
+      }
+      if (empty.length > 0) {
+        infos.push(`structures ${gradeName}: unit(s) without structures: ${empty.join(", ")}`);
+      }
+    }
+  }
+
   for (const i of infos) console.log(`  ℹ ${i}`);
   if (errors.length > 0) {
     console.error(`content validate: ${errors.length} error(s)`);
@@ -249,6 +366,6 @@ export function runValidate(): void {
     return;
   }
   console.log(
-    `content validate: OK — ${dirs.length} units, ${seenIds.size} entries, ${approvedSlugs.size} approved; schemas valid, ids unique, totals match, V-A…V-E green.`,
+    `content validate: OK — ${dirs.length} units, ${seenIds.size} entries, ${approvedSlugs.size} approved${structuresCount > 0 ? `, ${structuresCount} structures` : ""}; schemas valid, ids unique, totals match, V-A…V-F green.`,
   );
 }

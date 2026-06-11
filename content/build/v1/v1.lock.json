@@ -3,12 +3,58 @@
   "base": "/Users/okivehab/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/Claude/Cowork Space/Claude Code/domigo",
   "sources": [
     {
+      "relPath": "data/grammar-index.json",
+      "sha256": "a943855e0c4aca910dcc42a3e816e7c8219074afa980015562a1091499c6e815",
+      "bytes": 32684,
+      "mtime": "2026-05-16T11:16:41.143Z",
+      "grade": null,
+      "unit": null,
+      "role": "grammar-index"
+    },
+    {
+      "relPath": "data/grammar/m1.json",
+      "sha256": "b5db9dced44f1e33a2b8904a461ec0023b3e3e3cddf1598ec583d727235ca8fb",
+      "bytes": 642123,
+      "mtime": "2026-06-06T15:52:48.084Z",
+      "grade": 1,
+      "unit": null,
+      "role": "grammar-module"
+    },
+    {
+      "relPath": "data/grammar/m2.json",
+      "sha256": "fa84847025a73f8f53c4abb1b9dc39d0b407407cef9f96322d037ad020e563c9",
+      "bytes": 419262,
+      "mtime": "2026-06-06T15:52:48.124Z",
+      "grade": 2,
+      "unit": null,
+      "role": "grammar-module"
+    },
+    {
+      "relPath": "data/grammar/m3.json",
+      "sha256": "2298088253cea01bef381903969a166f2a2cb9fae839cbc2c075645e4ddfa0cf",
+      "bytes": 616532,
+      "mtime": "2026-06-06T15:52:48.183Z",
+      "grade": 3,
+      "unit": null,
+      "role": "grammar-module"
+    },
+    {
+      "relPath": "data/grammar/m4.json",
+      "sha256": "97fecba1043fec50cf57ef42cb0da8b5417c2cd6e3513805a19eb374a8ce805f",
+      "bytes": 611099,
+      "mtime": "2026-06-06T15:56:47.966Z",
+      "grade": 4,
+      "unit": null,
+      "role": "grammar-module"
+    },
+    {
       "relPath": "data/vocab/1/unit-01.json",
       "sha256": "e2247c2a69d31a6663da9a46a2f9a37036b238a387506f6a22575fd3d065d9b8",
       "bytes": 21136,
       "mtime": "2026-06-06T15:52:48.068Z",
       "grade": 1,
-      "unit": 1
+      "unit": 1,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-02.json",
@@ -16,7 +62,8 @@
       "bytes": 13555,
       "mtime": "2026-06-06T15:52:48.069Z",
       "grade": 1,
-      "unit": 2
+      "unit": 2,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-03.json",
@@ -24,7 +71,8 @@
       "bytes": 11764,
       "mtime": "2026-06-06T15:52:48.070Z",
       "grade": 1,
-      "unit": 3
+      "unit": 3,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-04.json",
@@ -32,7 +80,8 @@
       "bytes": 19852,
       "mtime": "2026-06-06T15:52:48.071Z",
       "grade": 1,
-      "unit": 4
+      "unit": 4,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-05.json",
@@ -40,7 +89,8 @@
       "bytes": 14659,
       "mtime": "2026-06-06T15:52:48.071Z",
       "grade": 1,
-      "unit": 5
+      "unit": 5,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-06.json",
@@ -48,7 +98,8 @@
       "bytes": 16379,
       "mtime": "2026-06-06T15:52:48.071Z",
       "grade": 1,
-      "unit": 6
+      "unit": 6,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-07.json",
@@ -56,7 +107,8 @@
       "bytes": 24052,
       "mtime": "2026-06-06T15:52:48.072Z",
       "grade": 1,
-      "unit": 7
+      "unit": 7,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-08.json",
@@ -64,7 +116,8 @@
       "bytes": 10453,
       "mtime": "2026-06-06T15:52:48.073Z",
       "grade": 1,
-      "unit": 8
+      "unit": 8,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-09.json",
@@ -72,7 +125,8 @@
       "bytes": 16510,
       "mtime": "2026-06-06T15:52:48.073Z",
       "grade": 1,
-      "unit": 9
+      "unit": 9,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-10.json",
@@ -80,7 +134,8 @@
       "bytes": 13382,
       "mtime": "2026-06-06T15:52:48.074Z",
       "grade": 1,
-      "unit": 10
+      "unit": 10,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-11.json",
@@ -88,7 +143,8 @@
       "bytes": 21094,
       "mtime": "2026-06-06T15:52:48.075Z",
       "grade": 1,
-      "unit": 11
+      "unit": 11,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-12.json",
@@ -96,7 +152,8 @@
       "bytes": 20867,
       "mtime": "2026-06-06T15:52:48.076Z",
       "grade": 1,
-      "unit": 12
+      "unit": 12,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-13.json",
@@ -104,7 +161,8 @@
       "bytes": 17372,
       "mtime": "2026-06-06T15:52:48.077Z",
       "grade": 1,
-      "unit": 13
+      "unit": 13,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-14.json",
@@ -112,7 +170,8 @@
       "bytes": 17841,
       "mtime": "2026-06-06T15:52:48.077Z",
       "grade": 1,
-      "unit": 14
+      "unit": 14,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/1/unit-15.json",
@@ -120,7 +179,8 @@
       "bytes": 7823,
       "mtime": "2026-06-06T15:52:48.078Z",
       "grade": 1,
-      "unit": 15
+      "unit": 15,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-01.json",
@@ -128,7 +188,8 @@
       "bytes": 18709,
       "mtime": "2026-06-06T15:52:48.109Z",
       "grade": 2,
-      "unit": 1
+      "unit": 1,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-02.json",
@@ -136,7 +197,8 @@
       "bytes": 13570,
       "mtime": "2026-06-06T15:52:48.110Z",
       "grade": 2,
-      "unit": 2
+      "unit": 2,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-03.json",
@@ -144,7 +206,8 @@
       "bytes": 11342,
       "mtime": "2026-06-06T15:52:48.110Z",
       "grade": 2,
-      "unit": 3
+      "unit": 3,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-04.json",
@@ -152,7 +215,8 @@
       "bytes": 17872,
       "mtime": "2026-06-06T15:52:48.111Z",
       "grade": 2,
-      "unit": 4
+      "unit": 4,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-05.json",
@@ -160,7 +224,8 @@
       "bytes": 17286,
       "mtime": "2026-06-06T15:52:48.112Z",
       "grade": 2,
-      "unit": 5
+      "unit": 5,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-06.json",
@@ -168,7 +233,8 @@
       "bytes": 16932,
       "mtime": "2026-06-06T15:52:48.112Z",
       "grade": 2,
-      "unit": 6
+      "unit": 6,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-07.json",
@@ -176,7 +242,8 @@
       "bytes": 14271,
       "mtime": "2026-06-06T15:52:48.113Z",
       "grade": 2,
-      "unit": 7
+      "unit": 7,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-08.json",
@@ -184,7 +251,8 @@
       "bytes": 11055,
       "mtime": "2026-06-06T15:52:48.114Z",
       "grade": 2,
-      "unit": 8
+      "unit": 8,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-09.json",
@@ -192,7 +260,8 @@
       "bytes": 20208,
       "mtime": "2026-06-06T15:52:48.115Z",
       "grade": 2,
-      "unit": 9
+      "unit": 9,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-10.json",
@@ -200,7 +269,8 @@
       "bytes": 7639,
       "mtime": "2026-06-06T15:52:48.115Z",
       "grade": 2,
-      "unit": 10
+      "unit": 10,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-11.json",
@@ -208,7 +278,8 @@
       "bytes": 16711,
       "mtime": "2026-06-06T15:52:48.116Z",
       "grade": 2,
-      "unit": 11
+      "unit": 11,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-12.json",
@@ -216,7 +287,8 @@
       "bytes": 11797,
       "mtime": "2026-06-06T15:52:48.117Z",
       "grade": 2,
-      "unit": 12
+      "unit": 12,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-13.json",
@@ -224,7 +296,8 @@
       "bytes": 18550,
       "mtime": "2026-06-06T15:52:48.117Z",
       "grade": 2,
-      "unit": 13
+      "unit": 13,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-14.json",
@@ -232,7 +305,8 @@
       "bytes": 12893,
       "mtime": "2026-06-06T15:52:48.117Z",
       "grade": 2,
-      "unit": 14
+      "unit": 14,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/2/unit-15.json",
@@ -240,7 +314,8 @@
       "bytes": 9975,
       "mtime": "2026-06-06T15:52:48.118Z",
       "grade": 2,
-      "unit": 15
+      "unit": 15,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-01.json",
@@ -248,7 +323,8 @@
       "bytes": 16459,
       "mtime": "2026-06-06T15:52:48.172Z",
       "grade": 3,
-      "unit": 1
+      "unit": 1,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-02.json",
@@ -256,7 +332,8 @@
       "bytes": 18110,
       "mtime": "2026-06-06T15:52:48.173Z",
       "grade": 3,
-      "unit": 2
+      "unit": 2,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-03.json",
@@ -264,7 +341,8 @@
       "bytes": 23951,
       "mtime": "2026-06-06T15:52:48.173Z",
       "grade": 3,
-      "unit": 3
+      "unit": 3,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-04.json",
@@ -272,7 +350,8 @@
       "bytes": 19305,
       "mtime": "2026-06-06T15:52:48.173Z",
       "grade": 3,
-      "unit": 4
+      "unit": 4,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-05.json",
@@ -280,7 +359,8 @@
       "bytes": 15948,
       "mtime": "2026-06-06T15:52:48.174Z",
       "grade": 3,
-      "unit": 5
+      "unit": 5,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-06.json",
@@ -288,7 +368,8 @@
       "bytes": 19154,
       "mtime": "2026-06-06T15:52:48.174Z",
       "grade": 3,
-      "unit": 6
+      "unit": 6,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-07.json",
@@ -296,7 +377,8 @@
       "bytes": 14807,
       "mtime": "2026-06-06T15:52:48.175Z",
       "grade": 3,
-      "unit": 7
+      "unit": 7,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-08.json",
@@ -304,7 +386,8 @@
       "bytes": 20415,
       "mtime": "2026-06-06T15:52:48.175Z",
       "grade": 3,
-      "unit": 8
+      "unit": 8,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-09.json",
@@ -312,7 +395,8 @@
       "bytes": 18030,
       "mtime": "2026-06-06T15:52:48.176Z",
       "grade": 3,
-      "unit": 9
+      "unit": 9,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-10.json",
@@ -320,7 +404,8 @@
       "bytes": 25053,
       "mtime": "2026-06-06T15:52:48.177Z",
       "grade": 3,
-      "unit": 10
+      "unit": 10,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-11.json",
@@ -328,7 +413,8 @@
       "bytes": 14658,
       "mtime": "2026-06-06T15:52:48.178Z",
       "grade": 3,
-      "unit": 11
+      "unit": 11,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-12.json",
@@ -336,7 +422,8 @@
       "bytes": 21521,
       "mtime": "2026-06-06T15:52:48.179Z",
       "grade": 3,
-      "unit": 12
+      "unit": 12,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-13.json",
@@ -344,7 +431,8 @@
       "bytes": 14858,
       "mtime": "2026-06-06T15:52:48.180Z",
       "grade": 3,
-      "unit": 13
+      "unit": 13,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/3/unit-14.json",
@@ -352,7 +440,8 @@
       "bytes": 15916,
       "mtime": "2026-06-06T15:52:48.180Z",
       "grade": 3,
-      "unit": 14
+      "unit": 14,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-01.json",
@@ -360,7 +449,8 @@
       "bytes": 31425,
       "mtime": "2026-06-06T15:52:48.209Z",
       "grade": 4,
-      "unit": 1
+      "unit": 1,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-02.json",
@@ -368,7 +458,8 @@
       "bytes": 40677,
       "mtime": "2026-06-06T15:52:48.209Z",
       "grade": 4,
-      "unit": 2
+      "unit": 2,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-03.json",
@@ -376,7 +467,8 @@
       "bytes": 29150,
       "mtime": "2026-06-06T15:52:48.210Z",
       "grade": 4,
-      "unit": 3
+      "unit": 3,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-04.json",
@@ -384,7 +476,8 @@
       "bytes": 38296,
       "mtime": "2026-06-06T15:52:48.211Z",
       "grade": 4,
-      "unit": 4
+      "unit": 4,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-05.json",
@@ -392,7 +485,8 @@
       "bytes": 29495,
       "mtime": "2026-06-06T15:52:48.212Z",
       "grade": 4,
-      "unit": 5
+      "unit": 5,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-06.json",
@@ -400,7 +494,8 @@
       "bytes": 16387,
       "mtime": "2026-06-06T15:52:48.212Z",
       "grade": 4,
-      "unit": 6
+      "unit": 6,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-07.json",
@@ -408,7 +503,8 @@
       "bytes": 26701,
       "mtime": "2026-06-06T15:52:48.213Z",
       "grade": 4,
-      "unit": 7
+      "unit": 7,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-08.json",
@@ -416,7 +512,8 @@
       "bytes": 27517,
       "mtime": "2026-06-06T15:52:48.214Z",
       "grade": 4,
-      "unit": 8
+      "unit": 8,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-09.json",
@@ -424,7 +521,8 @@
       "bytes": 37685,
       "mtime": "2026-06-06T15:52:48.214Z",
       "grade": 4,
-      "unit": 9
+      "unit": 9,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-10.json",
@@ -432,7 +530,8 @@
       "bytes": 32970,
       "mtime": "2026-06-06T15:52:48.216Z",
       "grade": 4,
-      "unit": 10
+      "unit": 10,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-11.json",
@@ -440,7 +539,8 @@
       "bytes": 25958,
       "mtime": "2026-06-06T15:52:48.217Z",
       "grade": 4,
-      "unit": 11
+      "unit": 11,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-12.json",
@@ -448,7 +548,8 @@
       "bytes": 32113,
       "mtime": "2026-06-06T15:52:48.218Z",
       "grade": 4,
-      "unit": 12
+      "unit": 12,
+      "role": "vocab-unit"
     },
     {
       "relPath": "data/vocab/4/unit-13.json",
@@ -456,7 +557,8 @@
       "bytes": 26054,
       "mtime": "2026-06-06T15:52:48.219Z",
       "grade": 4,
-      "unit": 13
+      "unit": 13,
+      "role": "vocab-unit"
     }
   ]
 }

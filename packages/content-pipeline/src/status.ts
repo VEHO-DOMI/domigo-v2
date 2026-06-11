@@ -2,7 +2,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readJsonIfExists } from "./json.ts";
-import { UNITS_DIR } from "./paths.ts";
+import { STRUCTURES_DIR, UNITS_DIR } from "./paths.ts";
 
 interface StateLogFile {
   transitions: Array<{ state: string; at: string; note: string | null }>;
@@ -43,4 +43,20 @@ export function runStatus(): void {
     );
   }
   console.log(`\n${slugs.length} unit(s): ${[...tally.entries()].sort().map(([s, n]) => `${s}=${n}`).join(" · ")}`);
+
+  // per-grade structures catalogs (stage 4)
+  if (fs.existsSync(STRUCTURES_DIR)) {
+    for (const gradeName of fs
+      .readdirSync(STRUCTURES_DIR)
+      .filter((n) => /^g[1-4]$/.test(n))
+      .sort()) {
+      const gradeDir = path.join(STRUCTURES_DIR, gradeName);
+      const catalog = readJsonIfExists<{ structures: unknown[] }>(path.join(gradeDir, "structures.json"));
+      const state = readJsonIfExists<StateLogFile>(path.join(gradeDir, "state.json"));
+      const last = state?.transitions[state.transitions.length - 1];
+      console.log(
+        `structures ${gradeName}: ${catalog?.structures.length ?? 0} structures · ${last?.state ?? "—"} · ${last?.at.slice(0, 10) ?? "—"}`,
+      );
+    }
+  }
 }

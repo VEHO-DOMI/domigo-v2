@@ -35,7 +35,11 @@ export const V1_BASE =
     "Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/Claude/Cowork Space/Claude Code/domigo",
   );
 export const V1_SNAPSHOT_DIR = path.join(CONTENT_DIR, "build", "v1", "vocab");
+export const V1_GRAMMAR_SNAPSHOT_DIR = path.join(CONTENT_DIR, "build", "v1", "grammar");
 export const V1_LOCK_PATH = path.join(CONTENT_DIR, "build", "v1", "v1.lock.json");
+
+/** Per-grade grammar-structures catalogs (stage 4). */
+export const STRUCTURES_DIR = path.join(CONTENT_DIR, "corpus", "structures");
 
 export interface GradeSources {
   grade: Grade;

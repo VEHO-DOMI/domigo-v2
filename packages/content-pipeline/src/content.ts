@@ -3,7 +3,9 @@
  *
  *   pnpm content extract       [--grade N]      stage 1: docx → committed text + sources.lock
  *   pnpm content wordbank      [--grade N]      stage 2: master lists → per-unit wordbank.json
- *   pnpm content v1-snapshot                    v1 vocab corpus → content/build/v1 (parity oracle)
+ *   pnpm content v1-snapshot                    v1 vocab+grammar corpus → content/build/v1 (parity oracle)
+ *   pnpm content gen --structures --grade N --prepare           stage 4a: evidence brief (SB boxes + v1 floor)
+ *   pnpm content gen --structures --grade N --ingest [--dry-run] stage 4c: draft → per-grade structures catalog
  *   pnpm content review-doc    --wordbank [--grade N|--unit g2-u03]   generate review docs
  *   pnpm content review-doc    --allowlist                            core-allowlist review doc
  *   pnpm content ingest-review --wordbank [--grade N|--unit slug] [--dry-run]
@@ -14,6 +16,7 @@
 import type { Grade } from "@domigo/content-schema";
 import { runIngestAllowlist, runReviewDocAllowlist } from "./allowlist.ts";
 import { runExtract } from "./extract.ts";
+import { runGenStructuresIngest, runGenStructuresPrepare } from "./gen-structures.ts";
 import { runIngestWordbank } from "./ingest-wordbank.ts";
 import { runReviewDocWordbank } from "./review-wordbank.ts";
 import { runStatus } from "./status.ts";
@@ -53,6 +56,17 @@ switch (command) {
   case "v1-snapshot":
     runV1Snapshot();
     break;
+  case "gen": {
+    if (!rest.includes("--structures")) {
+      throw new Error("gen needs --structures (item generation lands with stage 5)");
+    }
+    const grade = parseGrade(rest);
+    if (grade === undefined) throw new Error("gen --structures needs --grade N");
+    if (rest.includes("--prepare")) runGenStructuresPrepare(grade);
+    else if (rest.includes("--ingest")) runGenStructuresIngest(grade, rest.includes("--dry-run"));
+    else throw new Error("gen --structures needs --prepare or --ingest");
+    break;
+  }
   case "review-doc":
     if (rest.includes("--allowlist")) runReviewDocAllowlist();
     else if (rest.includes("--wordbank")) runReviewDocWordbank({ grade: parseGrade(rest), unit: parseUnit(rest) });
@@ -71,7 +85,7 @@ switch (command) {
     break;
   default:
     console.error(
-      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|wordbank|v1-snapshot|review-doc|ingest-review|validate|status> [flags]`,
+      `unknown command: ${command ?? "(none)"}\nusage: pnpm content <extract|wordbank|v1-snapshot|gen|review-doc|ingest-review|validate|status> [flags]`,
     );
     process.exitCode = 2;
 }

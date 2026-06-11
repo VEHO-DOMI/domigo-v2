@@ -1,0 +1,1547 @@
+{
+  "schema": "grammar-structures-draft@1",
+  "grade": 2,
+  "briefEvidence": "cc0f3f64437e",
+  "structures": [
+    {
+      "key": "past-simple",
+      "unit": 1,
+      "name": "Past simple (revision)",
+      "nameDe": "Past simple (Wiederholung)",
+      "category": "tenses",
+      "description": "Revision of the past simple for reporting past events and situations: regular verbs with -ed and the most common irregular forms carried over from grade 1.",
+      "rules": [
+        {
+          "id": "use-past-events",
+          "en": "Use the past simple to report events and situations in the past.",
+          "de": "Mithilfe des Past simple berichtest du über Ereignisse und Situationen in der Vergangenheit.",
+          "examples": [
+            { "en": "My family and I had a scary holiday.", "de": "Meine Familie und ich hatten einen gruseligen Urlaub." },
+            { "en": "Tell me what you did.", "de": "Erzähl mir, was du gemacht hast." }
+          ]
+        },
+        {
+          "id": "regular-ed",
+          "en": "Regular verbs form the past simple with -ed.",
+          "de": "Bei regelmäßigen Verben (regular verbs) hängst du ein -ed an das Verb an.",
+          "examples": [
+            { "en": "On Monday, they walked to school.", "de": "Am Montag gingen sie zu Fuß zur Schule." },
+            { "en": "He picked the snake up.", "de": "Er hob die Schlange auf." }
+          ]
+        },
+        {
+          "id": "irregular-forms",
+          "en": "Many verbs have irregular past simple forms that must be learnt: go-went, sit-sat, say-said, have-had, put-put, do-did, swim-swam.",
+          "de": "Einige Verben haben unregelmäßige Formen im Past simple, die du auswendig lernen musst: go-went, sit-sat, say-said, have-had, put-put, do-did, swim-swam.",
+          "examples": [
+            { "en": "We went to Disneyland in Paris.", "de": "Wir fuhren ins Disneyland nach Paris." },
+            { "en": "I sat down on a stone.", "de": "Ich setzte mich auf einen Stein." },
+            { "en": "I swam a lot.", "de": "Ich bin viel geschwommen." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding -ed to irregular verbs",
+          "wrong": "We goed to Disneyland.",
+          "correct": "We went to Disneyland."
+        },
+        {
+          "description": "Using the base form instead of the past form",
+          "wrong": "Yesterday I swim a lot.",
+          "correct": "Yesterday I swam a lot."
+        }
+      ],
+      "recursIn": [8],
+      "sbRefs": ["g2/sb/More 2 SB Unit 1.txt#grammar-1", "g2/sb/More 2 SB Unit 8.txt#grammar-1"],
+      "seedV1": []
+    },
+    {
+      "key": "present-simple",
+      "unit": 1,
+      "name": "Present simple (revision)",
+      "nameDe": "Present simple (Wiederholung)",
+      "category": "tenses",
+      "description": "Revision of the present simple for facts, habits and routines, carried over from grade 1.",
+      "rules": [
+        {
+          "id": "use-facts-habits",
+          "en": "Use the present simple to talk about facts and habits.",
+          "de": "Du verwendest das Present simple, um über Tatsachen und Gewohnheiten zu sprechen.",
+          "examples": [
+            { "en": "They sleep in the day and hunt at night.", "de": "Sie schlafen am Tag und jagen in der Nacht." },
+            { "en": "I do my homework after supper.", "de": "Ich mache meine Hausaufgaben nach dem Abendessen." }
+          ]
+        },
+        {
+          "id": "third-person-s",
+          "en": "In the third person singular (he/she/it) the verb takes -s.",
+          "de": "In der 3. Person Einzahl (he/she/it) hängst du ein -s an das Verb an.",
+          "examples": [
+            { "en": "The milk snake eats mice and rats.", "de": "Die Milchschlange frisst Mäuse und Ratten." },
+            { "en": "Our first lesson starts at 7.30 a.m.", "de": "Unsere erste Stunde beginnt um 7:30 Uhr." }
+          ]
+        },
+        {
+          "id": "negation-dont",
+          "en": "Form negatives with don't/doesn't + base form of the verb.",
+          "de": "Die Verneinung bildest du mit don't/doesn't + Grundform des Verbs.",
+          "examples": [
+            { "en": "I don't believe you.", "de": "Ich glaube dir nicht." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Missing -s in the third person singular",
+          "wrong": "She like dancing.",
+          "correct": "She likes dancing."
+        },
+        {
+          "description": "Using don't instead of doesn't in the third person",
+          "wrong": "He don't like school.",
+          "correct": "He doesn't like school."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 1.txt#grammar-1"],
+      "seedV1": []
+    },
+    {
+      "key": "irregular-verbs",
+      "unit": 2,
+      "name": "More irregular verbs",
+      "nameDe": "Weitere unregelmäßige Verben",
+      "category": "tenses",
+      "description": "Additional irregular past simple forms (buy-bought, know-knew, make-made, write-wrote), expanding the grade-1 set; unit 8 adds more (take, come, run, break, win, lose ...).",
+      "rules": [
+        {
+          "id": "learn-new-forms",
+          "en": "These irregular verbs do not follow the -ed pattern - their past forms must be learnt: buy-bought, know-knew, make-made, write-wrote.",
+          "de": "Diese unregelmäßigen Verben folgen nicht dem -ed-Muster. Ihre Vergangenheitsformen musst du auswendig lernen: buy-bought, know-knew, make-made, write-wrote.",
+          "examples": [
+            { "en": "We bought a big box of chocolates.", "de": "Wir kauften eine große Schachtel Pralinen." },
+            { "en": "He knew it was wrong.", "de": "Er wusste, dass es falsch war." },
+            { "en": "Jacob made a terrible mistake.", "de": "Jacob machte einen schrecklichen Fehler." }
+          ]
+        },
+        {
+          "id": "base-form-negatives-questions",
+          "en": "In negatives and questions, use the base form, not the past form: didn't buy, Did you write ...?",
+          "de": "In verneinten Sätzen und Fragen verwendest du die Grundform, nicht die Vergangenheitsform: didn't buy, Did you write ...?",
+          "examples": [
+            { "en": "He didn't make any mistakes.", "de": "Er hat keine Fehler gemacht." },
+            { "en": "Did she write an email?", "de": "Hat sie eine E-Mail geschrieben?" }
+          ]
+        },
+        {
+          "id": "growing-set",
+          "en": "The set keeps growing through the year: take-took, come-came, run-ran, wake up-woke up, break-broke, can-could, sing-sang, win-won, lose-lost.",
+          "de": "Die Liste wächst im Laufe des Jahres weiter: take-took, come-came, run-ran, wake up-woke up, break-broke, can-could, sing-sang, win-won, lose-lost.",
+          "examples": [
+            { "en": "Finally, they took him back to Earth.", "de": "Schließlich brachten sie ihn zurück zur Erde." },
+            { "en": "She won the game.", "de": "Sie gewann das Spiel." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding -ed to irregular verbs",
+          "wrong": "She buyed a new jacket.",
+          "correct": "She bought a new jacket."
+        },
+        {
+          "description": "Using the past form after didn't",
+          "wrong": "I didn't knew the answer.",
+          "correct": "I didn't know the answer."
+        }
+      ],
+      "recursIn": [8],
+      "sbRefs": ["g2/sb/More 2 SB Unit 2.txt#grammar-1", "g2/sb/More 2 SB Unit 8.txt#grammar-1"],
+      "seedV1": ["m2-u2-irregular-verbs-expanded"]
+    },
+    {
+      "key": "past-simple-negation",
+      "unit": 2,
+      "name": "Past simple negation (revision)",
+      "nameDe": "Verneinung im Past simple (Wiederholung)",
+      "category": "tenses",
+      "description": "Revision of past simple negatives: didn't + base form for most verbs, wasn't/weren't for be - never did/didn't with was/were.",
+      "rules": [
+        {
+          "id": "didnt-base-form",
+          "en": "Form past simple negatives with didn't + base form of the verb.",
+          "de": "So bildest du die Verneinung im Past simple: Person + didn't + Grundform des Verbs.",
+          "examples": [
+            { "en": "I didn't listen to a thing.", "de": "Ich habe überhaupt nicht zugehört." },
+            { "en": "I didn't know Clare liked Joe.", "de": "Ich wusste nicht, dass Clare Joe mag." },
+            { "en": "They didn't believe her.", "de": "Sie glaubten ihr nicht." }
+          ]
+        },
+        {
+          "id": "wasnt-werent",
+          "en": "Never use did or didn't with was/were - negate be with wasn't/weren't.",
+          "de": "Wichtig: Kein did oder didn't mit was/were! Was/were verneinst du mit wasn't/weren't.",
+          "examples": [
+            { "en": "The jacket wasn't on the screen.", "de": "Die Jacke war nicht auf dem Bildschirm." },
+            { "en": "The roses weren't on the jacket.", "de": "Die Rosen waren nicht auf der Jacke." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the past form after didn't",
+          "wrong": "I didn't listened to a thing.",
+          "correct": "I didn't listen to a thing."
+        },
+        {
+          "description": "Using didn't with was/were",
+          "wrong": "The jacket didn't was on the screen.",
+          "correct": "The jacket wasn't on the screen."
+        }
+      ],
+      "recursIn": [8],
+      "sbRefs": ["g2/sb/More 2 SB Unit 2.txt#grammar-1", "g2/sb/More 2 SB Unit 8.txt#grammar-1"],
+      "seedV1": []
+    },
+    {
+      "key": "past-simple-questions",
+      "unit": 2,
+      "name": "Past simple questions",
+      "nameDe": "Fragen im Past simple",
+      "category": "tenses",
+      "description": "Forming past simple questions with Did + subject + base form and with was/were for be, including short answers.",
+      "rules": [
+        {
+          "id": "did-base-form",
+          "en": "Form past simple questions with Did + subject + base form.",
+          "de": "So bildest du Fragen im Past simple: Did + Person + Grundform des Verbs.",
+          "examples": [
+            { "en": "Did you like the dumplings?", "de": "Haben dir die Knödel geschmeckt?" },
+            { "en": "Did you have a good day at school?", "de": "Hattest du einen guten Tag in der Schule?" }
+          ]
+        },
+        {
+          "id": "was-were-questions",
+          "en": "Never use did with was/were - for be, put was/were before the subject.",
+          "de": "Wichtig: Kein did oder didn't mit was/were! Bei be stellst du was/were einfach vor das Subjekt.",
+          "examples": [
+            { "en": "Was Chloe embarrassed?", "de": "War Chloe verlegen?" },
+            { "en": "Were there any dumplings left on the floor?", "de": "Waren noch Knödel auf dem Boden übrig?" }
+          ]
+        },
+        {
+          "id": "short-answers",
+          "en": "Short answers repeat the auxiliary: Yes, I did. / No, she didn't. / Yes, he was. / No, they weren't.",
+          "de": "Kurzantworten verwenden das Hilfsverb: Yes, I did. / No, she didn't. / Yes, he was. / No, they weren't.",
+          "examples": [
+            { "en": "Did you go? - Yes, I did.", "de": "Bist du gegangen? - Ja." },
+            { "en": "Was she embarrassed? - No, she wasn't.", "de": "War sie verlegen? - Nein." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using did with was/were",
+          "wrong": "Did he was happy?",
+          "correct": "Was he happy?"
+        },
+        {
+          "description": "Using the past form after did instead of the base form",
+          "wrong": "Did you went to the cinema?",
+          "correct": "Did you go to the cinema?"
+        },
+        {
+          "description": "Forming questions with statement word order, without did",
+          "wrong": "You liked the film?",
+          "correct": "Did you like the film?"
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 2.txt#grammar-1"],
+      "seedV1": ["m2-u2-past-simple-questions"]
+    },
+    {
+      "key": "why-because",
+      "unit": 2,
+      "name": "why - because",
+      "nameDe": "why - because (Gründe nennen)",
+      "category": "connectors",
+      "description": "Asking for reasons with why and giving reasons with because.",
+      "rules": [
+        {
+          "id": "why-asks-reason",
+          "en": "Use why to ask for a reason and answer with because + reason.",
+          "de": "Mit why fragst du nach dem Grund. Du antwortest mit because + Grund.",
+          "examples": [
+            { "en": "Why do you want another T-shirt? - Because I don't like this one.", "de": "Warum willst du noch ein T-Shirt? - Weil mir dieses nicht gefällt." },
+            { "en": "Why do you like PE? - Because sport is cool.", "de": "Warum magst du Turnen? - Weil Sport cool ist." }
+          ]
+        },
+        {
+          "id": "because-clause",
+          "en": "After because comes a full clause with subject + verb in normal word order.",
+          "de": "Nach because folgt ein ganzer Satz mit Subjekt + Verb in normaler Wortstellung.",
+          "examples": [
+            { "en": "Why is that not possible? - Because I put it in the washing machine.", "de": "Warum ist das nicht möglich? - Weil ich es in die Waschmaschine gesteckt habe." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "German verb-final word order after because (L1 transfer)",
+          "wrong": "Because sport cool is.",
+          "correct": "Because sport is cool."
+        },
+        {
+          "description": "Dropping the auxiliary do in why-questions",
+          "wrong": "Why you want another T-shirt?",
+          "correct": "Why do you want another T-shirt?"
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 2.txt#grammar-1"],
+      "seedV1": []
+    },
+    {
+      "key": "should",
+      "unit": 3,
+      "name": "should / shouldn't",
+      "nameDe": "should / shouldn't (Ratschläge)",
+      "category": "modals",
+      "description": "Giving advice and asking for advice with should/shouldn't + base form.",
+      "rules": [
+        {
+          "id": "should-advice",
+          "en": "Use should to say what someone should do and shouldn't to say what someone should not do.",
+          "de": "Wenn du sagen willst, was jemand tun sollte, verwendest du should. Wenn du sagen willst, was jemand nicht tun sollte, verwendest du shouldn't.",
+          "examples": [
+            { "en": "We should go home - it's late.", "de": "Wir sollten nach Hause gehen - es ist spät." },
+            { "en": "We shouldn't go in there - it's dangerous.", "de": "Wir sollten da nicht hineingehen - es ist gefährlich." }
+          ]
+        },
+        {
+          "id": "should-form",
+          "en": "Form: should/shouldn't + base form - the same for all persons, with no to and no third-person -s.",
+          "de": "Bildung: should / shouldn't + Grundform des Verbs. Die Form ist für alle Personen gleich - ohne to und ohne -s in der 3. Person.",
+          "examples": [
+            { "en": "You should wear a helmet.", "de": "Du solltest einen Helm tragen." },
+            { "en": "He should study more.", "de": "Er sollte mehr lernen." }
+          ]
+        },
+        {
+          "id": "should-questions",
+          "en": "Ask for advice with Should + subject + base form, or put a question word first.",
+          "de": "Wenn du um Rat fragst, verwendest du ebenfalls should: Should + Subjekt + Grundform - oder ein Fragewort davor.",
+          "examples": [
+            { "en": "What should I do?", "de": "Was soll ich tun?" },
+            { "en": "Should I phone my parents?", "de": "Soll ich meine Eltern anrufen?" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding to after should",
+          "wrong": "You should to wear a costume.",
+          "correct": "You should wear a costume."
+        },
+        {
+          "description": "Adding third-person -s to should",
+          "wrong": "She shoulds go home.",
+          "correct": "She should go home."
+        },
+        {
+          "description": "Negating should with don't",
+          "wrong": "You don't should go.",
+          "correct": "You shouldn't go."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 3.txt#grammar-1"],
+      "seedV1": ["m2-u3-should"]
+    },
+    {
+      "key": "as-as",
+      "unit": 4,
+      "name": "as ... as / not as ... as",
+      "nameDe": "as ... as / not as ... as (Gleichheit)",
+      "category": "comparison",
+      "description": "Expressing that two things are equal with as + adjective + as, and that they are not equal with not as ... as.",
+      "rules": [
+        {
+          "id": "as-as-equal",
+          "en": "Use as + adjective (base form) + as to say that two things, animals or people are the same in some way.",
+          "de": "Wenn du sagen willst, dass sich zwei Dinge/Tiere/Personen in irgendeiner Weise gleichen (z. B. gleich groß oder klein sind), verwendest du as ... as.",
+          "examples": [
+            { "en": "It was as small as a mouse.", "de": "Es war so klein wie eine Maus." },
+            { "en": "It was as dangerous as a snake.", "de": "Es war so gefährlich wie eine Schlange." }
+          ]
+        },
+        {
+          "id": "not-as-as",
+          "en": "Use not as + adjective + as to say the first thing has less of the quality than the second.",
+          "de": "Wenn sie sich nicht gleichen, verwendest du not as ... as - das Erste hat dann weniger von der Eigenschaft als das Zweite.",
+          "examples": [
+            { "en": "The female golden toad is not as colourful as the male animal.", "de": "Die weibliche Goldkröte ist nicht so bunt wie das männliche Tier." },
+            { "en": "A leopard is not as fast as a cheetah.", "de": "Ein Leopard ist nicht so schnell wie ein Gepard." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using so ... as instead of as ... as (L1 transfer)",
+          "wrong": "She is so fast as a cheetah.",
+          "correct": "She is as fast as a cheetah."
+        },
+        {
+          "description": "Using the comparative form between as ... as",
+          "wrong": "He is as taller as his dad.",
+          "correct": "He is as tall as his dad."
+        },
+        {
+          "description": "Using like instead of the second as",
+          "wrong": "She is as fast like a cheetah.",
+          "correct": "She is as fast as a cheetah."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 4.txt#grammar-1"],
+      "seedV1": ["m2-u4-as-as"]
+    },
+    {
+      "key": "comparatives",
+      "unit": 4,
+      "name": "Comparatives",
+      "nameDe": "Komparativ (Vergleichsstufe)",
+      "category": "comparison",
+      "description": "Comparing two different things with -er + than for short adjectives, more + adjective + than for long ones, and the irregular forms better and worse.",
+      "rules": [
+        {
+          "id": "short-er-than",
+          "en": "When comparing two different things, use than. One-syllable adjectives and two-syllable adjectives ending in -y, -le or -ow add -er.",
+          "de": "Wenn du zwei Dinge vergleichst, die verschieden sind, verwendest du than. An Adjektive mit einer Silbe und an zweisilbige Adjektive auf -y, -le und -ow hängst du -er an.",
+          "examples": [
+            { "en": "He's older than me.", "de": "Er ist älter als ich." },
+            { "en": "She's faster than me.", "de": "Sie ist schneller als ich." }
+          ]
+        },
+        {
+          "id": "comp-spelling",
+          "en": "Watch the spelling: hot - hotter, big - bigger, fat - fatter (double the final consonant); heavy - heavier, angry - angrier (-y becomes -ier).",
+          "de": "Achte auf die Schreibweise: hot - hotter, big - bigger, fat - fatter (Endkonsonant verdoppeln); heavy - heavier, angry - angrier (-y wird zu -ier).",
+          "examples": [
+            { "en": "It's hotter today than yesterday.", "de": "Heute ist es heißer als gestern." },
+            { "en": "The whale is bigger than a dolphin.", "de": "Der Wal ist größer als ein Delfin." },
+            { "en": "An elephant is heavier than a mouse.", "de": "Ein Elefant ist schwerer als eine Maus." }
+          ]
+        },
+        {
+          "id": "long-more-than",
+          "en": "Adjectives with more than two syllables (dangerous, difficult, interesting ...) use more + adjective + than.",
+          "de": "Wenn das Adjektiv mehr als zwei Silben hat (dangerous, difficult, interesting ...), verwendest du more + Adjektiv + than.",
+          "examples": [
+            { "en": "The book is more interesting than the film.", "de": "Das Buch ist interessanter als der Film." }
+          ]
+        },
+        {
+          "id": "comp-irregular",
+          "en": "Irregular comparatives must be learnt by heart: good - better, bad - worse.",
+          "de": "Ausnahmen musst du auswendig lernen: good - better, bad - worse.",
+          "examples": [
+            { "en": "He was better than Jeff.", "de": "Er war besser als Jeff." },
+            { "en": "I'm bad at football, but he's worse than me!", "de": "Ich bin schlecht im Fußball, aber er ist noch schlechter als ich!" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using more with short adjectives",
+          "wrong": "A lion is more fast than a turtle.",
+          "correct": "A lion is faster than a turtle."
+        },
+        {
+          "description": "Double comparative (more + -er)",
+          "wrong": "She is more bigger than her sister.",
+          "correct": "She is bigger than her sister."
+        },
+        {
+          "description": "Regularising irregular comparatives",
+          "wrong": "She is gooder at sports.",
+          "correct": "She is better at sports."
+        },
+        {
+          "description": "Forgetting to double the final consonant",
+          "wrong": "The elephant is biger than the horse.",
+          "correct": "The elephant is bigger than the horse."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 4.txt#grammar-1"],
+      "seedV1": ["m2-u4-comparatives"]
+    },
+    {
+      "key": "superlatives",
+      "unit": 4,
+      "name": "Superlatives",
+      "nameDe": "Superlativ (Höchststufe)",
+      "category": "comparison",
+      "description": "Expressing the highest degree with the + -est for short adjectives, the most + adjective for long ones, and the irregular forms the best and the worst.",
+      "rules": [
+        {
+          "id": "the-est",
+          "en": "To say that something is the biggest, heaviest, fastest etc., use the and add -est to the adjective.",
+          "de": "Wenn du ausdrücken willst, dass etwas am größten, schwersten, schnellsten usw. ist, verwendest du the und hängst -est an das Adjektiv an.",
+          "examples": [
+            { "en": "The cheetah is the fastest mammal in the world.", "de": "Der Gepard ist das schnellste Säugetier der Welt." }
+          ]
+        },
+        {
+          "id": "super-spelling",
+          "en": "Watch the spelling: hot - the hottest, big - the biggest, fat - the fattest (double the final consonant); heavy - the heaviest, angry - the angriest (-y becomes -iest).",
+          "de": "Bei einigen Adjektiven ändert sich die Schreibweise: hot - the hottest, big - the biggest, fat - the fattest (Endkonsonant verdoppeln); heavy - the heaviest, angry - the angriest (-y wird zu -iest).",
+          "examples": [
+            { "en": "This is the hottest day of the year.", "de": "Das ist der heißeste Tag des Jahres." },
+            { "en": "The blue whale is the heaviest animal in the world.", "de": "Der Blauwal ist das schwerste Tier der Welt." }
+          ]
+        },
+        {
+          "id": "the-most",
+          "en": "Adjectives with three or more syllables (dangerous, difficult, interesting ...) use the most + adjective.",
+          "de": "Bei Adjektiven, die aus drei oder mehr Silben bestehen (dangerous, difficult, interesting ...), verwendest du the most + Adjektiv.",
+          "examples": [
+            { "en": "The mosquito is the most dangerous animal in the world.", "de": "Die Stechmücke ist das gefährlichste Tier der Welt." }
+          ]
+        },
+        {
+          "id": "super-irregular",
+          "en": "Irregular superlatives must be learnt by heart: good - the best, bad - the worst.",
+          "de": "Ausnahmen musst du auswendig lernen: good - the best, bad - the worst.",
+          "examples": [
+            { "en": "She's the best player in the team.", "de": "Sie ist die beste Spielerin im Team." },
+            { "en": "It's the worst restaurant in town.", "de": "Es ist das schlechteste Restaurant der Stadt." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Missing the before the superlative",
+          "wrong": "He is fastest runner in the school.",
+          "correct": "He is the fastest runner in the school."
+        },
+        {
+          "description": "Double superlative (most + -est)",
+          "wrong": "The blue whale is the most biggest animal.",
+          "correct": "The blue whale is the biggest animal."
+        },
+        {
+          "description": "Regularising irregular superlatives",
+          "wrong": "She is the goodest student.",
+          "correct": "She is the best student."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 4.txt#grammar-1"],
+      "seedV1": ["m2-u4-superlatives"]
+    },
+    {
+      "key": "prepositions-directions",
+      "unit": 5,
+      "name": "Directions (prepositions of place)",
+      "nameDe": "Wegbeschreibungen (Ortspräpositionen)",
+      "category": "prepositions",
+      "description": "Giving directions with imperatives (go straight ahead, turn left, go past ...) and saying where places are with prepositions of place (opposite, behind, next to, beside, on the corner of).",
+      "rules": [
+        {
+          "id": "giving-directions",
+          "en": "Tell someone the way with imperatives: Go straight ahead. Take the first left / second right. Go past ... Turn left/right. Cross the bridge/street. Walk up ... as far as ...",
+          "de": "So sagst du jemandem, wie er/sie an ein bestimmtes Ziel gelangen kann: Go straight ahead. Take the first left / second right. Go past ... Turn left/right. Cross the bridge/street. Walk up ... as far as ...",
+          "examples": [
+            { "en": "Go past the post office.", "de": "Geh an der Post vorbei." },
+            { "en": "Take the first left.", "de": "Nimm die erste Straße links." },
+            { "en": "Walk up the hill as far as the church.", "de": "Geh den Hügel hinauf bis zur Kirche." }
+          ]
+        },
+        {
+          "id": "saying-where",
+          "en": "Say where a place is with prepositions of place: behind, next to, opposite, in front of, on the corner of, round the corner, beside.",
+          "de": "So sagst du jemandem, wo ein bestimmtes Ziel zu finden ist: behind, next to, opposite, in front of, on the corner of, round the corner, beside.",
+          "examples": [
+            { "en": "The cinema is behind the shopping centre.", "de": "Das Kino ist hinter dem Einkaufszentrum." },
+            { "en": "The restaurant is opposite the church.", "de": "Das Restaurant ist gegenüber der Kirche." },
+            { "en": "It's just round the corner, beside the bank.", "de": "Es ist gleich um die Ecke, neben der Bank." }
+          ]
+        },
+        {
+          "id": "asking-politely",
+          "en": "Ask for directions politely: Excuse me, how do I get to ...? / Excuse me, I'm trying to find ...",
+          "de": "So fragst du höflich nach dem Weg: Excuse me, how do I get to ...? / Excuse me, I'm trying to find ...",
+          "examples": [
+            { "en": "Excuse me, how do I get to the station?", "de": "Entschuldigung, wie komme ich zum Bahnhof?" },
+            { "en": "Excuse me, I'm trying to find the supermarket.", "de": "Entschuldigung, ich suche den Supermarkt." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding of after opposite",
+          "wrong": "It's opposite of the bank.",
+          "correct": "It's opposite the bank."
+        },
+        {
+          "description": "Omitting the after prepositions of place",
+          "wrong": "Go past post office.",
+          "correct": "Go past the post office."
+        },
+        {
+          "description": "L1 preposition transfer when giving directions",
+          "wrong": "Go in the left.",
+          "correct": "Turn left."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 5.txt#grammar-1"],
+      "seedV1": ["m2-u5-prepositions-directions"]
+    },
+    {
+      "key": "have-to",
+      "unit": 6,
+      "name": "have to / don't have to",
+      "nameDe": "have to / don't have to (Notwendigkeit)",
+      "category": "modals",
+      "description": "Expressing that something is necessary (have to / has to) or not necessary (don't/doesn't have to). Crucially, don't have to is NOT the same as mustn't.",
+      "rules": [
+        {
+          "id": "have-to-necessary",
+          "en": "Use have to / has to + base form to say that something is necessary. Third person singular: has to.",
+          "de": "Mit have to / has to + Grundform sagst du, dass etwas notwendig ist. 3. Person Einzahl: has to.",
+          "examples": [
+            { "en": "You have to wear a helmet!", "de": "Du musst einen Helm tragen!" },
+            { "en": "You have to wear a life jacket.", "de": "Du musst eine Schwimmweste tragen." },
+            { "en": "She has to get up early.", "de": "Sie muss früh aufstehen." }
+          ]
+        },
+        {
+          "id": "dont-have-to",
+          "en": "don't have to / doesn't have to = it is not necessary (but you can if you want). This is NOT the same as mustn't!",
+          "de": "Mit don't have to / doesn't have to sagst du, dass etwas nicht notwendig ist (aber du darfst, wenn du willst). Das ist NICHT dasselbe wie mustn't!",
+          "examples": [
+            { "en": "You don't have to wash up.", "de": "Du musst nicht abwaschen." },
+            { "en": "He doesn't have to wear a uniform.", "de": "Er muss keine Uniform tragen." }
+          ]
+        },
+        {
+          "id": "have-to-questions",
+          "en": "Form questions with Do/Does + subject + have to + base form.",
+          "de": "Fragen bildest du mit Do/Does + Subjekt + have to + Grundform.",
+          "examples": [
+            { "en": "Do you have to wear a uniform?", "de": "Musst du eine Uniform tragen?" },
+            { "en": "Does she have to get up early?", "de": "Muss sie früh aufstehen?" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Wrong third-person form",
+          "wrong": "She have to go early.",
+          "correct": "She has to go early."
+        },
+        {
+          "description": "Negating have to without do-support",
+          "wrong": "She hasn't to go.",
+          "correct": "She doesn't have to go."
+        },
+        {
+          "description": "Omitting to from have to",
+          "wrong": "You have wear a helmet.",
+          "correct": "You have to wear a helmet."
+        }
+      ],
+      "recursIn": [10],
+      "sbRefs": ["g2/sb/More 2 SB Unit 6.txt#grammar-1"],
+      "seedV1": ["m2-u6-have-to"]
+    },
+    {
+      "key": "going-to-negative",
+      "unit": 7,
+      "name": "going to (negative)",
+      "nameDe": "going to (Verneinung)",
+      "category": "tenses",
+      "description": "Negating going-to plans and intentions: negative of be + going to + base form.",
+      "rules": [
+        {
+          "id": "going-to-plans",
+          "en": "Use going to for plans and intentions. With the verb go itself you normally drop going to: I'm going to a party.",
+          "de": "Du verwendest going to, wenn du etwas planst oder beabsichtigst, etwas zu tun. Beim Verb go verwendest du normalerweise kein going to. Also: I'm going to a party.",
+          "examples": [
+            { "en": "I'm going to a party.", "de": "Ich gehe auf eine Party." }
+          ]
+        },
+        {
+          "id": "negative-be-going-to",
+          "en": "Form the negative with the negative of be + going to + base form.",
+          "de": "So bildest du die Verneinung mit going to: Verneinung von be + going to + Grundform des Verbs.",
+          "examples": [
+            { "en": "I'm not going to play tennis tomorrow.", "de": "Ich werde morgen nicht Tennis spielen." },
+            { "en": "He isn't going to do the shopping.", "de": "Er wird nicht einkaufen gehen." },
+            { "en": "We aren't going to do our homework.", "de": "Wir werden unsere Hausaufgaben nicht machen." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Negating with don't instead of the negative of be",
+          "wrong": "I don't going to play tennis.",
+          "correct": "I'm not going to play tennis."
+        },
+        {
+          "description": "Conjugating the verb after going to instead of using the base form",
+          "wrong": "She isn't going to plays tennis.",
+          "correct": "She isn't going to play tennis."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 7.txt#grammar-1"],
+      "seedV1": []
+    },
+    {
+      "key": "might",
+      "unit": 7,
+      "name": "might / might not",
+      "nameDe": "might / might not (Möglichkeit)",
+      "category": "modals",
+      "description": "Expressing that something will possibly (not) happen with might (not) + base form. Same form for all persons, no to, no third-person -s.",
+      "rules": [
+        {
+          "id": "might-possibility",
+          "en": "Use might (not) + base form to say that something will possibly (not) happen.",
+          "de": "Wenn du sagen willst, dass etwas möglicherweise (nicht) eintreten wird, verwendest du might (not) + Grundform des Verbs.",
+          "examples": [
+            { "en": "I might forget something.", "de": "Vielleicht vergesse ich etwas." },
+            { "en": "The bags might break.", "de": "Die Taschen könnten kaputtgehen." },
+            { "en": "He might not like chocolate!", "de": "Vielleicht mag er keine Schokolade!" }
+          ]
+        },
+        {
+          "id": "might-same-form",
+          "en": "might has the same form for all persons - no to and no third-person -s: I might, he might, they might.",
+          "de": "might hat für alle Personen die gleiche Form - ohne to und ohne -s in der 3. Person: I might, he might, they might.",
+          "examples": [
+            { "en": "She might come later.", "de": "Sie kommt vielleicht später." },
+            { "en": "I might not get it right.", "de": "Vielleicht mache ich es nicht richtig." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding to after might",
+          "wrong": "I might to go to the cinema.",
+          "correct": "I might go to the cinema."
+        },
+        {
+          "description": "Adding -s for the third person",
+          "wrong": "She mights come later.",
+          "correct": "She might come later."
+        },
+        {
+          "description": "Using the past form after might",
+          "wrong": "I might went to the party.",
+          "correct": "I might go to the party."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 7.txt#grammar-1"],
+      "seedV1": ["m2-u7-might"]
+    },
+    {
+      "key": "past-time-markers",
+      "unit": 8,
+      "name": "Past time markers",
+      "nameDe": "Zeitangaben in der Vergangenheit",
+      "category": "connectors",
+      "description": "Sequencing past narratives with time markers (then, after that, finally) and saying when something happened with past time expressions (half an hour ago, last night, in 2013, one day).",
+      "rules": [
+        {
+          "id": "sequence-markers",
+          "en": "Use time markers to put the events of a past story in order: First, ... Then, ... After that, ... Finally, ...",
+          "de": "Mit Zeitwörtern ordnest du die Ereignisse einer Erzählung in der Vergangenheit: First, ... Then, ... After that, ... Finally, ...",
+          "examples": [
+            { "en": "Then everything went black.", "de": "Dann wurde alles schwarz." },
+            { "en": "After that, Benson went to the old Space Centre.", "de": "Danach ging Benson zum alten Raumfahrtzentrum." },
+            { "en": "Finally, they took him back to Earth.", "de": "Schließlich brachten sie ihn zurück zur Erde." }
+          ]
+        },
+        {
+          "id": "time-expressions",
+          "en": "Say when something happened with past time expressions: half an hour ago, after a minute, last night, one day, in 2013.",
+          "de": "So drückst du aus, wann sich etwas in der Vergangenheit ereignet hat: half an hour ago, after a minute, last night, one day, in 2013.",
+          "examples": [
+            { "en": "Half an hour ago, we heard some funny noises.", "de": "Vor einer halben Stunde hörten wir seltsame Geräusche." },
+            { "en": "In 2013, there was a big investigation.", "de": "2013 gab es eine große Untersuchung." },
+            { "en": "Last night, a spaceship landed in our garden.", "de": "Letzte Nacht landete ein Raumschiff in unserem Garten." }
+          ]
+        },
+        {
+          "id": "marker-position",
+          "en": "Time markers usually open the sentence, often followed by a comma; time expressions can go at the beginning or at the end.",
+          "de": "Zeitwörter stehen meist am Satzanfang, oft mit Komma danach. Zeitangaben können am Anfang oder am Ende des Satzes stehen.",
+          "examples": [
+            { "en": "One day, James was alone in a town.", "de": "Eines Tages war James allein in einer Stadt." },
+            { "en": "After a minute, the chair stopped.", "de": "Nach einer Minute blieb der Sessel stehen." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Mixing tenses within a past narrative",
+          "wrong": "First, we went to the park. Then we play football.",
+          "correct": "First, we went to the park. Then we played football."
+        },
+        {
+          "description": "German verb-second word order after a time marker (L1 transfer)",
+          "wrong": "Then went he to school.",
+          "correct": "Then he went to school."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 8.txt#grammar-1"],
+      "seedV1": ["m2-u8-past-time-markers"]
+    },
+    {
+      "key": "one-ones",
+      "unit": 9,
+      "name": "one - ones",
+      "nameDe": "one - ones (Ersatzpronomen)",
+      "category": "pronouns",
+      "description": "Replacing a noun with one (singular) or ones (plural) to avoid repeating it.",
+      "rules": [
+        {
+          "id": "one-singular",
+          "en": "Use one when you don't want to repeat a singular noun.",
+          "de": "Du verwendest one, wenn du ein Nomen im Singular nicht wiederholen willst.",
+          "examples": [
+            { "en": "I'd like the pizza with mushrooms, and for my friend the one with ham on it.", "de": "Ich hätte gerne die Pizza mit Pilzen, und für meinen Freund die mit Schinken." },
+            { "en": "Which one would you like?", "de": "Welche möchtest du?" }
+          ]
+        },
+        {
+          "id": "ones-plural",
+          "en": "Use ones when you don't want to repeat a plural noun.",
+          "de": "Du verwendest ones, wenn du ein Nomen im Plural nicht wiederholen willst.",
+          "examples": [
+            { "en": "Those are the glasses for the water. These are the ones for the apple juice.", "de": "Das sind die Gläser für das Wasser. Das hier sind die für den Apfelsaft." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using one for plural nouns",
+          "wrong": "I like the red one. (about a pair of shoes)",
+          "correct": "I like the red ones."
+        },
+        {
+          "description": "Omitting one/ones entirely",
+          "wrong": "I like the big.",
+          "correct": "I like the big one."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 9.txt#grammar-1"],
+      "seedV1": ["m2-u9-one-ones"]
+    },
+    {
+      "key": "some-any",
+      "unit": 9,
+      "name": "some - any",
+      "nameDe": "some - any (Mengenangaben)",
+      "category": "articles",
+      "description": "Using some in positive sentences and in offers/requests, and any in negative sentences and in questions asking whether something is there.",
+      "rules": [
+        {
+          "id": "some-positive",
+          "en": "Use some in positive sentences - when you don't say exactly how many, or with things you can't count.",
+          "de": "Du verwendest some in positiven Sätzen - wenn nicht angegeben wird, wie viele es sind, oder wenn man etwas nicht zählen kann (z. B. Wasser).",
+          "examples": [
+            { "en": "I'll get some new glasses for you.", "de": "Ich hole dir ein paar neue Gläser." }
+          ]
+        },
+        {
+          "id": "any-negatives-questions",
+          "en": "Use any in negative sentences and in questions that ask whether something is (still) there.",
+          "de": "Du verwendest any in verneinten Sätzen und in Fragen, mit denen du wissen willst, ob etwas (noch) vorhanden ist.",
+          "examples": [
+            { "en": "We haven't got any pancakes left.", "de": "Wir haben keine Palatschinken mehr." },
+            { "en": "Have you got any sparkling apple juice?", "de": "Habt ihr Apfelsaft mit Kohlensäure?" },
+            { "en": "Have we got any beef?", "de": "Haben wir noch Rindfleisch?" }
+          ]
+        },
+        {
+          "id": "some-offers-requests",
+          "en": "Exception: use some (not any) in offers and polite requests, and when you ask for something you know is there.",
+          "de": "Ausnahme: Bei Angeboten und höflichen Bitten verwendest du some (nicht any) - auch wenn du nach etwas fragst, von dem du weißt, dass es vorhanden ist.",
+          "examples": [
+            { "en": "Could we have some water, please?", "de": "Könnten wir bitte etwas Wasser haben?" },
+            { "en": "Can I have some ice cream?", "de": "Kann ich etwas Eis haben?" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using some in negative sentences",
+          "wrong": "I haven't got some friends.",
+          "correct": "I haven't got any friends."
+        },
+        {
+          "description": "Using any in positive sentences",
+          "wrong": "I have any apples.",
+          "correct": "I have some apples."
+        },
+        {
+          "description": "Using any in offers instead of some",
+          "wrong": "Would you like any tea?",
+          "correct": "Would you like some tea?"
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 9.txt#grammar-1"],
+      "seedV1": ["m2-u9-some-any"]
+    },
+    {
+      "key": "like-ing",
+      "unit": 10,
+      "name": "like + -ing",
+      "nameDe": "like + -ing (gern etwas tun)",
+      "category": "other",
+      "description": "Saying that someone enjoys (or doesn't enjoy) an activity with like(s) / don't like + verb-ing.",
+      "rules": [
+        {
+          "id": "like-ing-form",
+          "en": "To say that someone enjoys doing something: person + like(s) + verb-ing.",
+          "de": "So sagst du, dass jemand etwas gerne macht: Person + like(s) + Verb mit -ing.",
+          "examples": [
+            { "en": "I like reading.", "de": "Ich lese gerne." },
+            { "en": "She likes dancing.", "de": "Sie tanzt gerne." }
+          ]
+        },
+        {
+          "id": "like-ing-negative",
+          "en": "Negative: don't like / doesn't like + verb-ing.",
+          "de": "Verneinung: don't like / doesn't like + Verb mit -ing.",
+          "examples": [
+            { "en": "She doesn't like going shopping.", "de": "Sie geht nicht gerne einkaufen." },
+            { "en": "I don't like ice skating.", "de": "Ich gehe nicht gerne eislaufen." }
+          ]
+        },
+        {
+          "id": "ing-spelling",
+          "en": "Watch the -ing spelling: run - running, swim - swimming (double the consonant); dance - dancing, write - writing (drop the -e).",
+          "de": "Achte auf die Schreibweise von -ing: run - running, swim - swimming (Konsonant verdoppeln); dance - dancing, write - writing (-e fällt weg).",
+          "examples": [
+            { "en": "He likes running in the park.", "de": "Er läuft gerne im Park." },
+            { "en": "We don't like getting up early.", "de": "Wir stehen nicht gerne früh auf." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the base form instead of -ing after like",
+          "wrong": "I like swim.",
+          "correct": "I like swimming."
+        },
+        {
+          "description": "Mixing to and -ing",
+          "wrong": "I like to swimming.",
+          "correct": "I like swimming."
+        },
+        {
+          "description": "Spelling error in the -ing form",
+          "wrong": "She likes runing every day.",
+          "correct": "She likes running every day."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 10.txt#grammar-1"],
+      "seedV1": ["m2-u10-like-ing"]
+    },
+    {
+      "key": "must",
+      "unit": 10,
+      "name": "must / mustn't",
+      "nameDe": "must / mustn't (Verpflichtung und Verbot)",
+      "category": "modals",
+      "description": "must for strong obligation and mustn't for prohibition. Crucially, mustn't means 'nicht dürfen' - NOT 'nicht müssen' (that is don't have to).",
+      "rules": [
+        {
+          "id": "must-obligation",
+          "en": "Use must + base form to say that someone has to do something.",
+          "de": "Du verwendest must, um zu sagen, dass jemand etwas tun muss.",
+          "examples": [
+            { "en": "You must be home by eight.", "de": "Du musst um acht zu Hause sein." }
+          ]
+        },
+        {
+          "id": "mustnt-prohibition",
+          "en": "mustn't (must not) + base form = it is forbidden. Careful: mustn't means 'nicht dürfen', not 'nicht müssen'.",
+          "de": "Achtung: mustn't bedeutet im Deutschen \"nicht dürfen\" und nicht \"nicht müssen\". Bildung: Person + mustn't (must not) + Grundform des Verbs.",
+          "examples": [
+            { "en": "You mustn't print things out.", "de": "Du darfst nichts ausdrucken." },
+            { "en": "You mustn't be late. The film starts at 8!", "de": "Du darfst nicht zu spät kommen. Der Film beginnt um 8!" },
+            { "en": "You mustn't swim here.", "de": "Du darfst hier nicht schwimmen." }
+          ]
+        },
+        {
+          "id": "must-mustnt-dont-have-to",
+          "en": "Keep the three meanings apart: must = necessary (müssen), mustn't = forbidden (nicht dürfen), don't/doesn't have to = not necessary (nicht müssen).",
+          "de": "Halte die drei Bedeutungen auseinander: must = müssen, mustn't = nicht dürfen (verboten), don't/doesn't have to = nicht müssen (nicht notwendig).",
+          "examples": [
+            { "en": "You mustn't run in the corridor.", "de": "Du darfst im Gang nicht laufen. (= verboten)" },
+            { "en": "You don't have to bring lunch.", "de": "Du musst kein Mittagessen mitbringen. (= nicht notwendig)" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding to after must",
+          "wrong": "You must to go home now.",
+          "correct": "You must go home now."
+        },
+        {
+          "description": "Using mustn't when the meaning is 'not necessary'",
+          "wrong": "You mustn't bring lunch. (meaning: not necessary)",
+          "correct": "You don't have to bring lunch."
+        },
+        {
+          "description": "Adding -s for the third person",
+          "wrong": "She musts go home.",
+          "correct": "She must go home."
+        },
+        {
+          "description": "Negating must with don't",
+          "wrong": "You don't must go.",
+          "correct": "You mustn't go."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 10.txt#grammar-1"],
+      "seedV1": ["m2-u10-must"]
+    },
+    {
+      "key": "possessive-pronouns",
+      "unit": 11,
+      "name": "Possessive pronouns",
+      "nameDe": "Possessivpronomen (mine, yours, ...)",
+      "category": "pronouns",
+      "description": "Possessive pronouns (mine, yours, his, hers, ours, theirs) as standalone forms, contrasted with possessive adjectives + noun.",
+      "rules": [
+        {
+          "id": "stand-alone",
+          "en": "Possessive pronouns stand alone, with no noun after them: mine, yours, his, hers, ours, theirs.",
+          "de": "Possessivpronomen stehen allein, ohne Nomen danach: mine, yours, his, hers, ours, theirs.",
+          "examples": [
+            { "en": "It's mine.", "de": "Es gehört mir." },
+            { "en": "The laptop is ours.", "de": "Der Laptop gehört uns." },
+            { "en": "The book isn't theirs.", "de": "Das Buch gehört ihnen nicht." }
+          ]
+        },
+        {
+          "id": "adjective-vs-pronoun",
+          "en": "Possessive adjective + noun vs possessive pronoun alone: my bed - mine, your basket - yours, her bag - hers.",
+          "de": "Begleiter + Nomen oder Pronomen allein: my bed - mine, your basket - yours, her bag - hers.",
+          "examples": [
+            { "en": "This is my bed, and that's his.", "de": "Das ist mein Bett, und das dort ist seins." },
+            { "en": "The bag is hers.", "de": "Die Tasche gehört ihr." },
+            { "en": "Look Fido! A new basket. It's yours.", "de": "Schau, Fido! Ein neues Körbchen. Es gehört dir." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the possessive adjective instead of the pronoun",
+          "wrong": "This book is my.",
+          "correct": "This book is mine."
+        },
+        {
+          "description": "Using the possessive pronoun before a noun",
+          "wrong": "This is mine book.",
+          "correct": "This is my book."
+        },
+        {
+          "description": "Wrong form for hers",
+          "wrong": "This is her's.",
+          "correct": "This is hers."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 11.txt#grammar-1"],
+      "seedV1": ["m2-u11-possessive-pronouns"]
+    },
+    {
+      "key": "possessive-s",
+      "unit": 11,
+      "name": "Possessive 's",
+      "nameDe": "Possessive 's (Genitiv-s)",
+      "category": "other",
+      "description": "Saying who something belongs to: 's for singular nouns, just the apostrophe for plurals and names ending in -s, and 's for irregular plurals (children's).",
+      "rules": [
+        {
+          "id": "singular-s",
+          "en": "To say who something belongs to, add 's to the person's name or the noun.",
+          "de": "Wenn du sagen willst, wem etwas gehört, hängst du an den Namen der Person oder das Nomen ein 's an.",
+          "examples": [
+            { "en": "Whose bag is this? - It's Joanna's.", "de": "Wessen Tasche ist das? - Es ist Joannas." },
+            { "en": "They're Mike's trainers.", "de": "Das sind Mikes Turnschuhe." },
+            { "en": "This is my brother's bed.", "de": "Das ist das Bett meines Bruders." }
+          ]
+        },
+        {
+          "id": "plural-apostrophe",
+          "en": "If the name or noun is plural or ends in -s, put just the apostrophe at the end of the word.",
+          "de": "Wenn der Name oder das Nomen im Plural steht oder auf -s endet, setzt du nur den Apostroph ans Ende des Wortes.",
+          "examples": [
+            { "en": "This is my parents' room.", "de": "Das ist das Zimmer meiner Eltern." },
+            { "en": "It's our neighbours' dog.", "de": "Das ist der Hund unserer Nachbarn." },
+            { "en": "That's Les' mum.", "de": "Das ist Les' Mama." }
+          ]
+        },
+        {
+          "id": "irregular-plural-s",
+          "en": "Nouns with an irregular plural (children, people, women ...) take 's at the end.",
+          "de": "Bei Wörtern mit unregelmäßiger Pluralform setzt du 's ans Ende des Wortes.",
+          "examples": [
+            { "en": "That's the children's school.", "de": "Das ist die Schule der Kinder." },
+            { "en": "Don't take other people's things!", "de": "Nimm nicht die Sachen anderer Leute!" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Missing apostrophe",
+          "wrong": "Toms bike is red.",
+          "correct": "Tom's bike is red."
+        },
+        {
+          "description": "Apostrophe before the -s for a plural possessive",
+          "wrong": "The boy's room. (meaning: the room of several boys)",
+          "correct": "The boys' room."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 11.txt#grammar-1"],
+      "seedV1": ["m2-u11-possessive-s-expanded"]
+    },
+    {
+      "key": "who-whose",
+      "unit": 11,
+      "name": "Questions with Who ...? / Whose ...?",
+      "nameDe": "Fragen mit Who ...? / Whose ...?",
+      "category": "pronouns",
+      "description": "Who as subject of a question takes no do/does/did; Whose asks who something belongs to.",
+      "rules": [
+        {
+          "id": "who-subject",
+          "en": "When Who asks about the subject, use no do/does or did.",
+          "de": "Wenn du mit Who ...? nach dem Subjekt fragst, verwendest du kein do/does oder did.",
+          "examples": [
+            { "en": "Who broke your bed?", "de": "Wer hat dein Bett kaputt gemacht?" },
+            { "en": "Who wants an ice cream machine?", "de": "Wer will eine Eismaschine?" }
+          ]
+        },
+        {
+          "id": "whose-possession",
+          "en": "To ask who something belongs to, use Whose ...?",
+          "de": "Wenn du fragen willst, wem etwas gehört, fragst du mit Whose ...?",
+          "examples": [
+            { "en": "Whose school bag is this?", "de": "Wessen Schultasche ist das?" },
+            { "en": "Whose trainers are those?", "de": "Wessen Turnschuhe sind das?" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding an unnecessary auxiliary to a who-subject question",
+          "wrong": "Who did break your bed?",
+          "correct": "Who broke your bed?"
+        },
+        {
+          "description": "Using who instead of whose for possession",
+          "wrong": "Who book is this?",
+          "correct": "Whose book is this?"
+        },
+        {
+          "description": "Confusing whose with who's (who is)",
+          "wrong": "Who's bag is this?",
+          "correct": "Whose bag is this?"
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 11.txt#grammar-1"],
+      "seedV1": ["m2-u11-who-whose"]
+    },
+    {
+      "key": "present-perfect",
+      "unit": 12,
+      "name": "Present perfect (+ just)",
+      "nameDe": "Present perfect (+ just)",
+      "category": "tenses",
+      "description": "have/has + past participle for past events with a result in the present, including just for things that happened only a moment ago.",
+      "rules": [
+        {
+          "id": "use-result-now",
+          "en": "Use the present perfect for events at an unspecified time in the past that still matter now or have a result in the present.",
+          "de": "Du verwendest das Present perfect, um über Ereignisse zu berichten, die zu einem unbestimmten Zeitpunkt in der Vergangenheit stattgefunden haben und Auswirkungen auf die Gegenwart haben.",
+          "examples": [
+            { "en": "He has fallen off his bike.", "de": "Er ist vom Fahrrad gefallen. (Es tut jetzt weh.)" },
+            { "en": "I've lost my cat.", "de": "Ich habe meine Katze verloren. (Sie ist jetzt weg.)" },
+            { "en": "David has broken his leg.", "de": "David hat sich das Bein gebrochen. (Er hat jetzt einen Gips.)" }
+          ]
+        },
+        {
+          "id": "form-have-participle",
+          "en": "Form: have/has + past participle (3rd verb form). Regular participles just add -ed; irregular ones must be learnt: go-went-gone, buy-bought-bought, fall-fell-fallen, break-broke-broken ...",
+          "de": "Bildung: have/has + Past participle (3. Form des Verbs). Bei regelmäßigen Verben hängst du einfach -ed an; unregelmäßige Formen lernst du auswendig: go-went-gone, buy-bought-bought, fall-fell-fallen, break-broke-broken ...",
+          "examples": [
+            { "en": "We've bought a new car.", "de": "Wir haben ein neues Auto gekauft." },
+            { "en": "They've gone on holiday.", "de": "Sie sind auf Urlaub gefahren." },
+            { "en": "She's cut her finger.", "de": "Sie hat sich in den Finger geschnitten." }
+          ]
+        },
+        {
+          "id": "just-recent",
+          "en": "To stress that something happened only a moment ago, put just between have/has and the past participle.",
+          "de": "Wenn du betonen willst, dass etwas erst vor Kurzem geschehen ist, ergänzt du just zwischen have/has und dem Past participle.",
+          "examples": [
+            { "en": "I've just passed my English test.", "de": "Ich habe gerade meinen Englischtest bestanden." },
+            { "en": "He's just walked into a lamp post.", "de": "Er ist gerade gegen einen Laternenpfahl gelaufen." },
+            { "en": "They've just scored a goal.", "de": "Sie haben gerade ein Tor geschossen." }
+          ]
+        },
+        {
+          "id": "perfect-vs-past",
+          "en": "Present perfect = no specific past time, result matters now. Past simple = finished past with a time expression (yesterday, last week).",
+          "de": "Present perfect = keine bestimmte Zeitangabe, die Folge zählt jetzt. Past simple = abgeschlossene Vergangenheit mit Zeitangabe (yesterday, last week).",
+          "examples": [
+            { "en": "I've broken my arm.", "de": "Ich habe mir den Arm gebrochen. (Ergebnis jetzt sichtbar)" },
+            { "en": "I broke my arm last week.", "de": "Ich habe mir letzte Woche den Arm gebrochen. (bestimmte Zeit)" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the past simple form instead of the past participle",
+          "wrong": "I have broke my arm.",
+          "correct": "I have broken my arm."
+        },
+        {
+          "description": "Using the present perfect with a specific past time marker",
+          "wrong": "I have been there yesterday.",
+          "correct": "I was there yesterday."
+        },
+        {
+          "description": "Missing have/has auxiliary",
+          "wrong": "She broken her leg.",
+          "correct": "She has broken her leg."
+        },
+        {
+          "description": "Wrong auxiliary for the person",
+          "wrong": "She have broken her leg.",
+          "correct": "She has broken her leg."
+        }
+      ],
+      "recursIn": [14],
+      "sbRefs": ["g2/sb/More 2 SB Unit 12.txt#grammar-1"],
+      "seedV1": ["m2-u12-present-perfect"]
+    },
+    {
+      "key": "adverbs-manner",
+      "unit": 13,
+      "name": "Adverbs of manner",
+      "nameDe": "Adverbien der Art und Weise",
+      "category": "word-formation",
+      "description": "Forming adverbs of manner from adjectives with -ly (slowly, carefully, happily) plus the exceptions fast and well, and using them to say how something is done.",
+      "rules": [
+        {
+          "id": "adverb-use",
+          "en": "Adverbs of manner say how someone does something or how something happens. An adjective describes a noun; an adverb describes a verb.",
+          "de": "Mit dem Adverb der Art und Weise drückst du aus, wie jemand etwas macht oder wie etwas geschieht. Mit einem Adjektiv beschreibst du ein Nomen, mit einem Adverb ein Verb.",
+          "examples": [
+            { "en": "He walked slowly to the mountain.", "de": "Er ging langsam zum Berg." },
+            { "en": "The old man shouted angrily at the sky.", "de": "Der alte Mann schrie wütend zum Himmel." }
+          ]
+        },
+        {
+          "id": "formation-ly",
+          "en": "Form: adjective + -ly (slow - slowly, quick - quickly, careful - carefully). With adjectives ending in -y, the y becomes i: happy - happily, easy - easily, angry - angrily.",
+          "de": "Bildung: Adjektiv + ly (slow - slowly, quick - quickly, careful - carefully). Bei Adjektiven, die auf y enden, wird das y zu einem i: happy - happily, easy - easily, angry - angrily.",
+          "examples": [
+            { "en": "He carefully broke the stone.", "de": "Er zerbrach den Stein vorsichtig." },
+            { "en": "I can easily stop the sun.", "de": "Ich kann die Sonne leicht aufhalten." },
+            { "en": "Look at me, flying quickly.", "de": "Schau mich an, wie schnell ich fliege." }
+          ]
+        },
+        {
+          "id": "irregular-adverbs",
+          "en": "Exceptions: fast - fast and good - well take no -ly. They must be learnt by heart.",
+          "de": "Ausnahmen: fast - fast und good - well - hier hängst du kein -ly an. Diese musst du auswendig lernen.",
+          "examples": [
+            { "en": "The weather changed so fast.", "de": "Das Wetter änderte sich so schnell." },
+            { "en": "I speak English quite well.", "de": "Ich spreche ziemlich gut Englisch." }
+          ]
+        },
+        {
+          "id": "adverb-position",
+          "en": "Adverbs of manner usually come after the verb or after its object.",
+          "de": "Adverbien der Art und Weise stehen meist nach dem Verb oder nach dem Objekt.",
+          "examples": [
+            { "en": "She played the piano beautifully.", "de": "Sie spielte wunderschön Klavier." },
+            { "en": "He read the book quickly.", "de": "Er las das Buch schnell." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the adjective instead of the adverb after a verb",
+          "wrong": "She sings beautiful.",
+          "correct": "She sings beautifully."
+        },
+        {
+          "description": "Adding -ly to irregular adverbs",
+          "wrong": "He runs fastly.",
+          "correct": "He runs fast."
+        },
+        {
+          "description": "Forming the adverb of good with -ly",
+          "wrong": "She speaks English goodly.",
+          "correct": "She speaks English well."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 13.txt#grammar-1"],
+      "seedV1": ["m2-u13-adverbs-manner"]
+    },
+    {
+      "key": "will-future",
+      "unit": 13,
+      "name": "Will-future",
+      "nameDe": "Will-future (Zukunft mit will)",
+      "category": "tenses",
+      "description": "will/won't + base form for expectations, predictions, hopes, and spontaneous decisions or promises - contrasted with going to for plans.",
+      "rules": [
+        {
+          "id": "expectations-predictions",
+          "en": "Use the will-future for expectations, guesses and hopes, and to predict what will happen.",
+          "de": "Mithilfe der will-future drückst du Erwartungen, Vermutungen und Hoffnungen für die Zukunft aus - und sagst etwas vorher.",
+          "examples": [
+            { "en": "It will never end.", "de": "Es wird nie enden." },
+            { "en": "Some heavy rain will come in from Northern Scotland.", "de": "Aus Nordschottland wird starker Regen aufziehen." },
+            { "en": "The sun won't come out for another few days.", "de": "Die Sonne wird noch ein paar Tage nicht herauskommen." }
+          ]
+        },
+        {
+          "id": "spontaneous-decisions",
+          "en": "Use will when you spontaneously decide or promise to do something.",
+          "de": "Du verwendest die will-future auch dann, wenn du dich spontan entschließt oder spontan versprichst, etwas zu tun.",
+          "examples": [
+            { "en": "I'll get an umbrella.", "de": "Ich hole einen Regenschirm." },
+            { "en": "I'll fly all around the world.", "de": "Ich werde um die ganze Welt fliegen." }
+          ]
+        },
+        {
+          "id": "will-form",
+          "en": "Form: person + will / won't + base form - the same for all persons. Short forms: I will = I'll; I will not = I won't.",
+          "de": "Bildung: Person + will / won't + Grundform des Verbs - für alle Personen gleich. Kurzformen: I will = I'll, I will not = I won't.",
+          "examples": [
+            { "en": "There'll be some showers today.", "de": "Heute wird es einige Regenschauer geben." },
+            { "en": "All this hard work will kill me.", "de": "Diese ganze harte Arbeit wird mich noch umbringen." }
+          ]
+        },
+        {
+          "id": "will-vs-going-to",
+          "en": "will = spontaneous decision, offer or prediction; going to = a plan you made before speaking.",
+          "de": "will = spontane Entscheidung, Angebot oder Vorhersage; going to = ein Plan, den du schon vor dem Sprechen gefasst hast.",
+          "examples": [
+            { "en": "Oh, you need help? I'll carry your bags!", "de": "Oh, du brauchst Hilfe? Ich trage deine Taschen! (spontan)" },
+            { "en": "I'm going to visit London next summer.", "de": "Ich besuche nächsten Sommer London. (geplant)" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Adding -s to will for the third person",
+          "wrong": "She wills come tomorrow.",
+          "correct": "She will come tomorrow."
+        },
+        {
+          "description": "Wrong negative form of will",
+          "wrong": "She willn't come.",
+          "correct": "She won't come."
+        },
+        {
+          "description": "Using will for an already-made plan",
+          "wrong": "I will visit London next summer. (already planned)",
+          "correct": "I'm going to visit London next summer."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 13.txt#grammar-1"],
+      "seedV1": ["m2-u13-will-future"]
+    },
+    {
+      "key": "present-perfect-already-yet",
+      "unit": 14,
+      "name": "Present perfect with already / yet",
+      "nameDe": "Present perfect mit already / yet",
+      "category": "tenses",
+      "description": "already to say something is already done (positive sentences) and (not) yet for things that haven't happened so far (negatives and questions).",
+      "rules": [
+        {
+          "id": "remember-no-time",
+          "en": "Remember: use the present perfect when you are not talking about a specific time in the past.",
+          "de": "Zur Erinnerung: Du verwendest das Present perfect dann, wenn du nicht über einen bestimmten Zeitpunkt in der Vergangenheit sprichst.",
+          "examples": [
+            { "en": "I've tried lots of ball sports.", "de": "Ich habe viele Ballsportarten ausprobiert. (Wann ist nicht wichtig.)" },
+            { "en": "I've given up volleyball.", "de": "Ich habe mit Volleyball aufgehört. (Wann ist unwichtig.)" }
+          ]
+        },
+        {
+          "id": "already-done",
+          "en": "Use already to say that something is already done. already goes between have/has and the past participle, in positive sentences.",
+          "de": "Wenn du sagen willst, dass jemand etwas schon gemacht hat, verwendest du already. Das Wort already steht zwischen have/has und dem Past participle.",
+          "examples": [
+            { "en": "She has already been to three competitions.", "de": "Sie war schon bei drei Wettkämpfen." },
+            { "en": "She has already won one.", "de": "Einen hat sie schon gewonnen." }
+          ]
+        },
+        {
+          "id": "not-yet",
+          "en": "Use not ... yet to say that something hasn't happened so far; yet goes at the end of the sentence. In questions, yet asks whether something has happened by now.",
+          "de": "Wenn etwas noch nicht geschehen ist, verwendest du not ... yet. Das Wort yet kommt ans Satzende. In Fragen fragst du mit yet, ob etwas schon passiert ist.",
+          "examples": [
+            { "en": "They haven't won a competition yet.", "de": "Sie haben noch keinen Wettkampf gewonnen." },
+            { "en": "He hasn't been to Europe yet.", "de": "Er war noch nicht in Europa." },
+            { "en": "Have you eaten yet?", "de": "Hast du schon gegessen?" }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Wrong position of already",
+          "wrong": "I already have done it.",
+          "correct": "I've already done it."
+        },
+        {
+          "description": "Wrong position of yet",
+          "wrong": "I haven't yet finished.",
+          "correct": "I haven't finished yet."
+        },
+        {
+          "description": "Using already in a negative sentence instead of yet",
+          "wrong": "I haven't already finished.",
+          "correct": "I haven't finished yet."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 14.txt#grammar-1"],
+      "seedV1": ["m2-u14-present-perfect-signals"]
+    },
+    {
+      "key": "present-perfect-ever-never",
+      "unit": 14,
+      "name": "Present perfect with ever / never",
+      "nameDe": "Present perfect mit ever / never",
+      "category": "tenses",
+      "description": "Talking and asking about life experiences: ever in present perfect questions, never in statements meaning 'at no time' (with positive sentence structure).",
+      "rules": [
+        {
+          "id": "ever-questions",
+          "en": "Use ever in present perfect questions to ask whether someone has done or experienced something at any time in their life. Form: have/has + ever + past participle.",
+          "de": "Um danach zu fragen, ob jemand irgendwann in der Vergangenheit etwas getan oder erlebt hat, verwendest du ever. Bildung: have/has + ever + Past participle (3. Form des Verbs).",
+          "examples": [
+            { "en": "Have you ever seen a bear?", "de": "Hast du jemals einen Bären gesehen?" },
+            { "en": "Have you ever won a competition?", "de": "Hast du jemals einen Wettkampf gewonnen?" }
+          ]
+        },
+        {
+          "id": "never-no-experience",
+          "en": "Use never to say that something has not happened at any time. The sentence stays positive in structure - no extra not! Form: have/has + never + past participle.",
+          "de": "Mit never sagst du, dass jemand etwas noch nie getan oder erlebt hat. Der Satz bleibt positiv gebaut - kein zusätzliches not! Bildung: have/has + never + Past participle.",
+          "examples": [
+            { "en": "I've never had an accident.", "de": "Ich hatte noch nie einen Unfall." },
+            { "en": "I've never met a famous person.", "de": "Ich habe noch nie eine berühmte Person getroffen." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Double negative with never",
+          "wrong": "I haven't never been to London.",
+          "correct": "I've never been to London."
+        },
+        {
+          "description": "Using ever in positive statements instead of questions",
+          "wrong": "I have ever been to London.",
+          "correct": "I have been to London."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 14.txt#grammar-2"],
+      "seedV1": []
+    },
+    {
+      "key": "so-do-i",
+      "unit": 15,
+      "name": "So do/have I. - Neither do/have I.",
+      "nameDe": "So do/have I. - Neither do/have I. (Zustimmung)",
+      "category": "other",
+      "description": "Agreeing with a positive statement (So do/have I.) and with a negative statement (Neither do/have I.), matching the auxiliary of the original statement.",
+      "rules": [
+        {
+          "id": "so-agree-positive",
+          "en": "Agree with a positive statement using So + auxiliary + I.",
+          "de": "Du verwendest 'so ... do/have ...', um einer positiven Aussage zuzustimmen: So + Hilfsverb + I.",
+          "examples": [
+            { "en": "I've got a fear of rats. - So have I.", "de": "Ich habe Angst vor Ratten. - Ich auch." },
+            { "en": "I think we're going to find something in here. - So do I.", "de": "Ich glaube, wir finden hier etwas. - Ich auch." }
+          ]
+        },
+        {
+          "id": "neither-agree-negative",
+          "en": "Agree with a negative statement using Neither + auxiliary + I.",
+          "de": "Du verwendest 'neither ... do/have ...', um einer negativen Aussage zuzustimmen: Neither + Hilfsverb + I.",
+          "examples": [
+            { "en": "I haven't thought of a name for her yet. - Neither have I.", "de": "Ich habe mir noch keinen Namen für sie überlegt. - Ich auch nicht." },
+            { "en": "I don't really like cats. - Neither do I.", "de": "Ich mag Katzen nicht besonders. - Ich auch nicht." }
+          ]
+        },
+        {
+          "id": "match-auxiliary",
+          "en": "The auxiliary must match the first statement: do/does for the present simple, have/has for have got and the present perfect, can for can.",
+          "de": "Das Hilfsverb muss zum ersten Satz passen: do/does beim Present simple, have/has bei have got und Present perfect, can bei can.",
+          "examples": [
+            { "en": "She likes music. - So does he.", "de": "Sie mag Musik. - Er auch." },
+            { "en": "I can swim. - So can I.", "de": "Ich kann schwimmen. - Ich auch." }
+          ]
+        }
+      ],
+      "commonErrors": [
+        {
+          "description": "Using the wrong auxiliary",
+          "wrong": "I've been to Paris. - So do I.",
+          "correct": "I've been to Paris. - So have I."
+        },
+        {
+          "description": "Missing inversion",
+          "wrong": "I like pizza. - So I do.",
+          "correct": "I like pizza. - So do I."
+        },
+        {
+          "description": "Using So with a negative statement instead of Neither",
+          "wrong": "I don't like spiders. - So don't I.",
+          "correct": "I don't like spiders. - Neither do I."
+        }
+      ],
+      "recursIn": [],
+      "sbRefs": ["g2/sb/More 2 SB Unit 15.txt#grammar-1"],
+      "seedV1": ["m2-u15-so-do-i"]
+    }
+  ],
+  "v1Waivers": []
+}
