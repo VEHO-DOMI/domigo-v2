@@ -12,6 +12,10 @@
  *  V-F  per-grade structures catalogs (stage 4): schema green, ids match the
  *       lock, v1 floor mapped-XOR-waived vs the committed snapshot, state-hash
  *       drift guard, sbRefs resolve against committed transcripts + overlay
+ *
+ * Units with item artifacts additionally run the item validators V-1…V-22
+ * (validate-items.ts) plus the corpus-global item checks (proper-noun harvest
+ * drift, level-grant integrity, live item-review-doc byte-regeneration).
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -24,8 +28,11 @@ import {
   unitIdPrefix,
   unitSlug,
 } from "@domigo/content-schema";
+import { readUnitItems } from "./gen-items.ts";
 import { diffV1Floor, structuresContentHash } from "./gen-structures.ts";
 import { loadGradeBoxes, validSbRefs } from "./grammar-boxes.ts";
+import { buildItemsReview } from "./review-items.ts";
+import { validateItemsGlobal, validateUnitItems } from "./validate-items.ts";
 import { readJsonIfExists } from "./json.ts";
 import {
   OVERLAYS_DIR,
@@ -260,6 +267,43 @@ export function runValidate(): void {
     infos.push("V-C skipped: no v1 snapshot on disk (run `content v1-snapshot`)");
   }
 
+  // ---- item validators V-1…V-22 (units with item artifacts only)
+  let itemUnits = 0;
+  let itemCount = 0;
+  for (const dir of dirs) {
+    const unitDir = path.join(UNITS_DIR, dir);
+    const hasItems =
+      fs.existsSync(path.join(unitDir, "vocab.json")) || fs.existsSync(path.join(unitDir, "grammar.json"));
+    if (!hasItems) continue;
+    itemUnits += 1;
+    const result = validateUnitItems(dir);
+    errors.push(...result.errors);
+    infos.push(...result.infos);
+    for (const w of result.warns) infos.push(`${dir}: warn — ${w.note}`);
+    const items = readUnitItems(dir);
+    itemCount += items.vocab.length + items.grammar.length;
+
+    // live item review doc must regenerate byte-identically (V-22 / V-E mechanics)
+    const docPath = path.join(unitDir, "review", "items.review.md");
+    if (fs.existsSync(docPath) && result.errors.length === 0) {
+      const committed = fs.readFileSync(docPath, "utf8");
+      const marker = /<!-- domigo:review items \S+ round=(\d+) items=([0-9a-f]{12}) full=([01]) -->/.exec(committed);
+      if (marker !== null) {
+        const regen = buildItemsReview(dir, { full: marker[3] === "1" });
+        if (marker[2] === regen.itemsHash12 && parseInt(marker[1]!, 10) === regen.round) {
+          if (stripVerdictLines(committed) !== stripVerdictLines(regen.markdown)) {
+            errors.push(`${dir}: V-22 — live item review doc differs from regeneration (hand-edited structure or stale tables)`);
+          }
+        }
+      }
+    }
+  }
+  if (itemUnits > 0) {
+    const globalChecks = validateItemsGlobal();
+    errors.push(...globalChecks.errors);
+    infos.push(...globalChecks.infos);
+  }
+
   // ---- V-F: per-grade structures catalogs (stage 4)
   let structuresCount = 0;
   if (fs.existsSync(STRUCTURES_DIR)) {
@@ -366,6 +410,6 @@ export function runValidate(): void {
     return;
   }
   console.log(
-    `content validate: OK — ${dirs.length} units, ${seenIds.size} entries, ${approvedSlugs.size} approved${structuresCount > 0 ? `, ${structuresCount} structures` : ""}; schemas valid, ids unique, totals match, V-A…V-F green.`,
+    `content validate: OK — ${dirs.length} units, ${seenIds.size} entries, ${approvedSlugs.size} approved${structuresCount > 0 ? `, ${structuresCount} structures` : ""}${itemUnits > 0 ? `, ${itemCount} items in ${itemUnits} unit(s)` : ""}; schemas valid, ids unique, totals match, V-A…V-F${itemUnits > 0 ? " + V-1…V-22" : ""} green.`,
   );
 }

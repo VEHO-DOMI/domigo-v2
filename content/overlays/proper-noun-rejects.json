@@ -1,0 +1,190 @@
+{
+  "schema": "proper-noun-rejects@1",
+  "rejects": [
+    {
+      "token": "Activities",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Adjektiv",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Adjektive",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Adjektiven",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Adresse",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Adverbien",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Alright",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Angebot",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Antworten",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Anweisungen",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Audio",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Bedeutung",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Bewegung",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Complete",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Description",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Descriptions",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Example",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Fragen",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Grundform",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Handlung",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Handlungen",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Image",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Let",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Meinung",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Oh",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Person",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Question",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Satz",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Scene",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Student",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Verb",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Verben",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Verbs",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Vergangenheit",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Verneinung",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Workbook",
+      "reason": "textbook heading / transcriber annotation / interjection — not a proper noun",
+      "by": "fable"
+    },
+    {
+      "token": "Wort",
+      "reason": "German instruction noun from transcript scaffolding — not an English proper noun",
+      "by": "fable"
+    }
+  ]
+}

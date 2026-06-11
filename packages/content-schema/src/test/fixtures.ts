@@ -197,6 +197,7 @@ export function grammarItem(
     distractors: [],
     pairs: [],
     groups: [],
+    gloss: [],
     hintDe: "Denk an einen Ratschlag.",
     hintEn: null,
     explainDe: "Mit should sagst du, was eine gute Idee ist.",

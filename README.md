@@ -42,9 +42,16 @@ pnpm content wordbank       # stage 2: master lists → content/corpus/units/*/w
 pnpm content v1-snapshot    # v1 vocab+grammar corpus → content/build/v1/ (parity oracle, sha-locked)
 pnpm content gen --structures --grade N --prepare|--ingest [--dry-run]
                             # stage 4: SB grammar boxes + v1 floor → per-grade structures catalog
+pnpm content gen --prepare|--ingest --unit g2-u03 [--fix] [--dry-run]
+                            # stage 5: generation briefs → drafts → vocab.json/grammar.json
+pnpm content verify --prepare|--ingest --unit g2-u03 [--dry-run]
+                            # stage 6: 4 adversarial lens briefs → merged flags, fix loop ≤2, escalate
+pnpm content harvest-nouns  # proper-noun harvest → content/build/proper-nouns.json (V-5 input)
+pnpm content review-doc --items --unit g2-u03 [--full]        # stage 8: item review doc (V-1…22 must be green)
+pnpm content ingest-review --items --unit g2-u03 [--dry-run]  # stage 8: verdicts/edits → item-fixes + state
 pnpm content review-doc --wordbank [--grade N|--unit g2-u03]   # thorough review docs (+ --allowlist)
 pnpm content ingest-review --wordbank [--dry-run]              # verdicts/edits → overlays + state
-pnpm content validate       # CI-safe deterministic checks incl. V-A…V-F gates (red blocks merge)
+pnpm content validate       # CI-safe checks: V-A…V-F + item validators V-1…V-22 (red blocks merge)
 pnpm content status         # per-unit state dashboard (round, flags)
 ```
 
@@ -56,9 +63,12 @@ nothing. Word-bank totals are asserted against each master list's self-declared 
 campaign, PRs #2–#7 — protocol in [content-review-loop](docs/runbooks/content-review-loop.md));
 core allowlist approved (135 tokens, `content/overlays/core-allowlist.json`); item + story schemas
 frozen (vocab@1 / grammar@1 / grammar-structures@1 / story@1, PR #10); **g2 structures catalog
-generated** (28 structures, 22/22 v1 ids mapped, `content/corpus/structures/g2/`); CI gates
-V-A…V-F guard approved artifacts against drift. Next: item stages 5–8 + the g2-u03 item pilot,
-then the [game layer](docs/handover/10_game_layer.md) (four standalone grade games).
+generated** (28 structures, 22/22 v1 ids mapped, `content/corpus/structures/g2/`); item stages
+5–8 tooling live (pinned prompts in `packages/content-pipeline/prompts/`, cumulative level gate,
+validators V-1…V-22 incl. the v1-unit-03 calibration suite, 4-lens verify, item review loop);
+CI gates V-A…V-F + V-1…V-22 guard approved artifacts against drift. Next: the g2-u03 item pilot
+(<5% reject exit) → item waves G2→G1→G3→G4, then the
+[game layer](docs/handover/10_game_layer.md) (four standalone grade games).
 
 ## Database rules (shared Neon project with live v1 — do not skip)
 

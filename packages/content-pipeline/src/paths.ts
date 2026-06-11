@@ -41,6 +41,12 @@ export const V1_LOCK_PATH = path.join(CONTENT_DIR, "build", "v1", "v1.lock.json"
 /** Per-grade grammar-structures catalogs (stage 4). */
 export const STRUCTURES_DIR = path.join(CONTENT_DIR, "corpus", "structures");
 
+/** Pinned generation/verification prompts (versioned; hashes stamped in briefs). */
+export const PROMPTS_DIR = path.resolve(
+  fileURLToPath(import.meta.url),
+  "../../prompts",
+);
+
 export interface GradeSources {
   grade: Grade;
   /** Master vocabulary list docx (canonical word-bank source). */
