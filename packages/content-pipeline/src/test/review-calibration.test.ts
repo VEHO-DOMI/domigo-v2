@@ -8,13 +8,17 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { buildWordbankReview } from "../review-wordbank.ts";
 
-test("g2-u03 review doc shows the known duplicate-headword flag", () => {
+test("g2-u03 review doc detects the known duplicate-headword (open or resolved-sticky)", () => {
   const review = buildWordbankReview("g2-u03");
-  const dup = review.openFlags.filter((f) => f.kind === "duplicate-headword");
-  assert.ok(dup.length >= 1, "expected the trick-or-treat duplicate to be flagged");
+  // Before ingest the flag is OPEN; after approval it appears as a sticky
+  // resolved verdict. Either way the detector must have fired.
+  const open = review.openFlags.filter(
+    (f) => f.kind === "duplicate-headword" && (f.entryId ?? "").includes("trick-or-treat"),
+  );
+  const resolved = review.resolvedEarlier.filter((r) => r.key.includes("duplicate-headword") && r.key.includes("trick-or-treat"));
   assert.ok(
-    dup.some((f) => (f.entryId ?? "").includes("trick-or-treat")),
-    `duplicate flags: ${dup.map((f) => f.entryId).join(", ")}`,
+    open.length + resolved.length >= 1,
+    `expected the trick-or-treat duplicate detected; open=[${review.openFlags.map((f) => f.key).join(",")}] resolved=[${review.resolvedEarlier.map((r) => r.key).join(",")}]`,
   );
   assert.match(review.markdown, /duplicate-headword/);
 });
