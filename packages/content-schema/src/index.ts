@@ -758,6 +758,8 @@ export const GrammarItem = z
         members: z.array(z.string().min(1)).min(2),
       }),
     ),
+    /** Inline glosses for above-level words in the carrier (level-gate escape). */
+    gloss: z.array(Gloss),
     hintDe: z.string().min(1),
     hintEn: z.string().nullable(),
     explainDe: z.string().min(1),

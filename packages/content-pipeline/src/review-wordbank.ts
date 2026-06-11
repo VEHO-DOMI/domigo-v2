@@ -12,6 +12,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { FlagKind, WordBank as WordBankT, WordBankEntry } from "@domigo/content-schema";
 import { WordBank } from "@domigo/content-schema";
+import { asciiUmlautSuspect } from "./german.ts";
 import { readJsonIfExists, sha256OfString, writeText } from "./json.ts";
 import { MULTI_SEP, renderTable } from "./mdtable.ts";
 import { TRANSCRIPTS_DIR, UNITS_DIR, V1_SNAPSHOT_DIR } from "./paths.ts";
@@ -139,8 +140,6 @@ export function crossUnitIndex(): Map<string, Array<{ slug: string; id: string }
 // flag computation
 // ---------------------------------------------------------------------------
 
-const UMLAUT_EXCEPTIONS = ["aktuell", "eventuell", "manuell", "individuell", "visuell", "virtuell", "punktuell", "statue", "fluent"];
-
 export function entryMatchesWord(e: WordBankEntry, w: string): boolean {
   // Article/particle-insensitive: "pain in the ankle" (v1) must match the
   // master list's "pain in ankle". Content tokens still compare 1:1.
@@ -202,13 +201,7 @@ function computeFlags(bank: WordBankT): FlagComputation {
       });
     }
 
-    // NOTE: "q" is excluded before "ue" — German q is always followed by u
-    // ("bequem", "überqueren"), never an ASCII umlaut.
-    const lowerDe = e.deRaw.toLowerCase();
-    if (
-      (/[bcdfghjklmnprstvwxz](ae|oe|ue)/.test(lowerDe) || /[bcdfghjklmnpqrstvwxz](ae|oe)/.test(lowerDe)) &&
-      !UMLAUT_EXCEPTIONS.some((x) => lowerDe.includes(x))
-    ) {
+    if (asciiUmlautSuspect(e.deRaw)) {
       flags.push({
         key: `ascii-umlaut-suspect:${e.id}`,
         kind: "ascii-umlaut-suspect",
