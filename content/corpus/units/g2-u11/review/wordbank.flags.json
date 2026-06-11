@@ -1,0 +1,20 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u11",
+  "round": 1,
+  "bankHash": "dbdedfccfbc4",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "duplicate-headword:g2u11.w.cellar-2",
+      "kind": "duplicate-headword",
+      "entryId": "g2u11.w.cellar-2",
+      "verdict": "ok",
+      "note": "Both source lines verified: Word File `cellar|Keller` + phrase with example (big cellar underneath). Distinct pedagogical roles, keep both. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 56/56 verbatim. Lens B noted 'seine/r/s' declension notation — verbatim source notation, kept (source canonical). Cellar duplicate adjudicated ok."
+  }
+}

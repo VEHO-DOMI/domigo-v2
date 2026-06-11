@@ -1,0 +1,34 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u01",
+  "round": 1,
+  "bankHash": "d2d12476b358",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "not-in-transcript:g2u01.w.online-safety",
+      "kind": "not-in-transcript",
+      "entryId": "g2u01.w.online-safety",
+      "verdict": "ok",
+      "note": "Master-list line verified (online safety | Internetsicherheit); absent from SB/WB Unit 1 text — list-only vocabulary, keep. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g2u01.w.opinion",
+      "kind": "not-in-transcript",
+      "entryId": "g2u01.w.opinion",
+      "verdict": "ok",
+      "note": "Master-list line verified (opinion | Meinung); list-only vocabulary, keep. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g2u01.w.webpage",
+      "kind": "not-in-transcript",
+      "entryId": "g2u01.w.webpage",
+      "verdict": "ok",
+      "note": "Master-list line verified (webpage | Internetseite); list-only vocabulary, keep. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 48/48 verbatim. Lens B: clean. 3 not-in-transcript flags adjudicated ok (master-list-only vocab)."
+  }
+}

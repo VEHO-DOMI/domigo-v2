@@ -1,0 +1,20 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g2-u15",
+  "round": 1,
+  "bankHash": "87dba11ed315",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "v1-missing:southern ocean",
+      "kind": "v1-missing",
+      "entryId": null,
+      "verdict": "ok",
+      "note": "v1 variant name; the master list canonically uses `Antarctic Ocean` (present in this bank, verified line). Leave the v1 variant out. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 24/24 verbatim. Lens B: clean. v1 'Southern Ocean' adjudicated ok-leave-out (master uses 'Antarctic Ocean', present in bank)."
+  }
+}
