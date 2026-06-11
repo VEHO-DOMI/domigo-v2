@@ -1,0 +1,1353 @@
+{
+  "slug": "unit-12",
+  "grade": 4,
+  "unit": 12,
+  "title": "Unit 12",
+  "entries": [
+    {
+      "w": "asteroid",
+      "g": "Asteroid",
+      "d": "A large rock that orbits the sun in space",
+      "s": "Scientists are tracking a large _____ that will pass close to Earth next year.",
+      "a": [
+        "asteroid",
+        "asteroids"
+      ],
+      "mc": [
+        "comet",
+        "meteor",
+        "satellite"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ASTEROID?",
+          "options": [
+            "large",
+            "track",
+            "space",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "Scientists are tracking a large _____.",
+          "options": [
+            "asteroid",
+            "paranoid",
+            "android",
+            "steroid"
+          ],
+          "answer": "asteroid"
+        }
+      ]
+    },
+    {
+      "w": "astronaut",
+      "g": "Astronaut/in",
+      "d": "A person who travels and works in space",
+      "s": "She dreams of becoming an _____ and travelling to Mars one day.",
+      "a": [
+        "astronaut",
+        "astronauts"
+      ],
+      "mc": [
+        "cosmonaut",
+        "pilot",
+        "scientist"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ASTRONAUT?",
+          "options": [
+            "become",
+            "train",
+            "space",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She dreams of being an _____.",
+          "options": [
+            "astronaut",
+            "restaurant",
+            "consultant",
+            "accountant"
+          ],
+          "answer": "astronaut"
+        }
+      ]
+    },
+    {
+      "w": "explosion",
+      "g": "Explosion",
+      "d": "A sudden and violent burst of energy, often causing damage",
+      "s": "We heard a loud _____ and then saw smoke rising from the factory.",
+      "a": [
+        "explosion",
+        "explosions"
+      ],
+      "mc": [
+        "eruption",
+        "collision",
+        "impact"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EXPLOSION?",
+          "options": [
+            "loud",
+            "cause",
+            "huge",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "We heard a loud _____.",
+          "options": [
+            "explosion",
+            "conclusion",
+            "confusion",
+            "exclusion"
+          ],
+          "answer": "explosion"
+        }
+      ]
+    },
+    {
+      "w": "orbit",
+      "g": "Umlaufbahn",
+      "d": "The curved path that a planet or spacecraft follows around a star or planet",
+      "s": "The International Space Station is in _____ about 400 kilometres above the Earth.",
+      "a": [
+        "orbits"
+      ],
+      "mc": [
+        "axis",
+        "rotation",
+        "trajectory"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ORBIT?",
+          "options": [
+            "Earth",
+            "space",
+            "around",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The station is in _____ above Earth.",
+          "options": [
+            "orbit",
+            "rabbit",
+            "habit",
+            "credit"
+          ],
+          "answer": "orbit"
+        }
+      ]
+    },
+    {
+      "w": "plaque",
+      "g": "Tafel",
+      "d": "A flat piece of metal or stone with writing on it, placed on a wall to remember an event",
+      "s": "There is a _____ on the wall of the old school showing when it was built.",
+      "a": [
+        "plaques"
+      ],
+      "mc": [
+        "medal",
+        "trophy",
+        "monument"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PLAQUE?",
+          "options": [
+            "wall",
+            "bronze",
+            "memorial",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "There is a _____ on the wall.",
+          "options": [
+            "plaque",
+            "plague",
+            "place",
+            "plane"
+          ],
+          "answer": "plaque"
+        }
+      ]
+    },
+    {
+      "w": "space shuttle",
+      "g": "Raumfähre",
+      "d": "A reusable spacecraft designed to carry astronauts into orbit and return to Earth",
+      "s": "The last American _____ flew its final mission in 2011.",
+      "a": [
+        "space shuttles"
+      ],
+      "mc": [
+        "space station",
+        "spacecraft",
+        "rocket"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SPACE SHUTTLE?",
+          "options": [
+            "launch",
+            "NASA",
+            "mission",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The last _____ flew in 2011.",
+          "options": [
+            "space shuttle",
+            "space station",
+            "space suit",
+            "space walk"
+          ],
+          "answer": "space shuttle"
+        }
+      ]
+    },
+    {
+      "w": "altogether",
+      "g": "insgesamt",
+      "d": "In total; considering everything",
+      "s": "We invited 30 guests, but _____ only 22 people came to the party.",
+      "a": [],
+      "mc": [
+        "approximately",
+        "entirely",
+        "mostly"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ALTOGETHER?",
+          "options": [
+            "quite",
+            "completely",
+            "different",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ only 22 people came.",
+          "options": [
+            "Altogether",
+            "Although",
+            "Already",
+            "Almost"
+          ],
+          "answer": "Altogether"
+        }
+      ]
+    },
+    {
+      "w": "atmosphere",
+      "g": "Atmosphäre",
+      "d": "The layer of gases surrounding the Earth or another planet",
+      "s": "Mars has a very thin _____, which makes it difficult for humans to breathe there.",
+      "a": [],
+      "mc": [
+        "stratosphere",
+        "climate",
+        "environment"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ATMOSPHERE?",
+          "options": [
+            "thin",
+            "Earth",
+            "protect",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Mars has a very thin _____.",
+          "options": [
+            "atmosphere",
+            "biosphere",
+            "hemisphere",
+            "lithosphere"
+          ],
+          "answer": "atmosphere"
+        }
+      ]
+    },
+    {
+      "w": "crew",
+      "g": "Mannschaft; Besatzung",
+      "d": "A group of people who work together, especially on a ship, aircraft, or spacecraft",
+      "s": "The _____ of the sailing boat worked together to survive the storm.",
+      "a": [
+        "crews"
+      ],
+      "mc": [
+        "team",
+        "staff",
+        "squad"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CREW?",
+          "options": [
+            "ship",
+            "brave",
+            "small",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ worked together.",
+          "options": [
+            "crew",
+            "brew",
+            "drew",
+            "flew"
+          ],
+          "answer": "crew"
+        }
+      ]
+    },
+    {
+      "w": "disgusting",
+      "g": "ekelhaft",
+      "d": "Extremely unpleasant; causing a strong feeling of dislike",
+      "s": "The milk in the fridge smells _____. I think it has gone off.",
+      "a": [],
+      "mc": [
+        "revolting",
+        "awful",
+        "dreadful"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DISGUSTING?",
+          "options": [
+            "absolutely",
+            "food",
+            "smell",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The milk smells _____.",
+          "options": [
+            "disgusting",
+            "discussing",
+            "adjusting",
+            "distrusting"
+          ],
+          "answer": "disgusting"
+        }
+      ]
+    },
+    {
+      "w": "engineering",
+      "g": "Maschinenbau; Ingenieurwesen",
+      "d": "The work of designing and building machines, bridges, roads, or systems",
+      "s": "She wants to study _____ at university because she loves building things.",
+      "a": [],
+      "mc": [
+        "architecture",
+        "technology",
+        "construction"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ENGINEERING?",
+          "options": [
+            "study",
+            "civil",
+            "mechanical",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She wants to study _____.",
+          "options": [
+            "engineering",
+            "volunteering",
+            "pioneering",
+            "interfering"
+          ],
+          "answer": "engineering"
+        }
+      ]
+    },
+    {
+      "w": "mankind",
+      "g": "Menschheit",
+      "d": "All human beings considered as a group; the human race",
+      "s": "Landing on the moon was one of the greatest achievements of _____.",
+      "a": [
+        "humankind"
+      ],
+      "mc": [
+        "humanity",
+        "civilisation",
+        "population"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MANKIND?",
+          "options": [
+            "history",
+            "benefit",
+            "future",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Landing on the moon was great for _____.",
+          "options": [
+            "mankind",
+            "command",
+            "demand",
+            "husband"
+          ],
+          "answer": "mankind"
+        }
+      ]
+    },
+    {
+      "w": "space travel",
+      "g": "Raumfahrt",
+      "d": "The activity of going beyond the Earth's atmosphere into the universe",
+      "s": "Do you think _____ will become normal for ordinary people in the future?",
+      "a": [],
+      "mc": [
+        "time travel",
+        "air travel",
+        "space exploration"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SPACE TRAVEL?",
+          "options": [
+            "future",
+            "technology",
+            "dream",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ may become normal one day.",
+          "options": [
+            "Space travel",
+            "time travel",
+            "air travel",
+            "sea travel"
+          ],
+          "answer": "Space travel"
+        }
+      ]
+    },
+    {
+      "w": "sunrise",
+      "g": "Sonnenaufgang",
+      "d": "The time when the sun first appears in the sky in the morning",
+      "s": "We woke up early to watch the _____ from the top of the mountain.",
+      "a": [
+        "sunrises"
+      ],
+      "mc": [
+        "sunset",
+        "dawn",
+        "daylight"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SUNRISE?",
+          "options": [
+            "beautiful",
+            "early",
+            "watch",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We watched the _____.",
+          "options": [
+            "sunrise",
+            "surprise",
+            "enterprise",
+            "paradise"
+          ],
+          "answer": "sunrise"
+        }
+      ]
+    },
+    {
+      "w": "sunset",
+      "g": "Sonnenuntergang",
+      "d": "The time when the sun disappears below the horizon in the evening",
+      "s": "The _____ over the lake was so beautiful that everyone stopped to take photos.",
+      "a": [
+        "sunsets"
+      ],
+      "mc": [
+        "sunrise",
+        "dusk",
+        "twilight"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SUNSET?",
+          "options": [
+            "beautiful",
+            "watch",
+            "stunning",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ was beautiful.",
+          "options": [
+            "sunset",
+            "upset",
+            "onset",
+            "offset"
+          ],
+          "answer": "sunset"
+        }
+      ]
+    },
+    {
+      "w": "warning",
+      "g": "Warnung",
+      "d": "A statement telling someone about a possible danger or problem",
+      "s": "The teacher gave him a _____ that he would fail if he didn't start studying.",
+      "a": [
+        "warnings"
+      ],
+      "mc": [
+        "threat",
+        "alarm",
+        "notice"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WARNING?",
+          "options": [
+            "give",
+            "serious",
+            "ignore",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The teacher gave him a _____.",
+          "options": [
+            "warning",
+            "morning",
+            "yawning",
+            "dawning"
+          ],
+          "answer": "warning"
+        }
+      ]
+    },
+    {
+      "w": "advert",
+      "g": "Reklame; Anzeige",
+      "d": "A notice, picture, or short film designed to sell a product (British English)",
+      "s": "I saw an _____ for cheap flights to London and booked one immediately.",
+      "a": [
+        "adverts",
+        "advertisement",
+        "ad"
+      ],
+      "mc": [
+        "poster",
+        "commercial",
+        "flyer"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ADVERT?",
+          "options": [
+            "see",
+            "TV",
+            "online",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I saw an _____ for cheap flights.",
+          "options": [
+            "advert",
+            "expert",
+            "desert",
+            "concert"
+          ],
+          "answer": "advert"
+        }
+      ]
+    },
+    {
+      "w": "spacecraft",
+      "g": "Raumfahrzeug",
+      "d": "A vehicle designed for travelling in space",
+      "s": "The _____ landed safely on Mars after a seven-month journey through space.",
+      "a": [],
+      "mc": [
+        "satellite",
+        "aircraft",
+        "rocket"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SPACECRAFT?",
+          "options": [
+            "launch",
+            "design",
+            "land",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ landed on Mars.",
+          "options": [
+            "spacecraft",
+            "witchcraft",
+            "handicraft",
+            "aircraft"
+          ],
+          "answer": "spacecraft"
+        }
+      ]
+    },
+    {
+      "w": "commercial",
+      "g": "kommerziell",
+      "d": "Related to buying and selling goods; done to make a profit",
+      "s": "The airport is used for both military and _____ flights.",
+      "a": [],
+      "mc": [
+        "industrial",
+        "financial",
+        "professional"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMMERCIAL?",
+          "options": [
+            "success",
+            "flight",
+            "TV",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "The airport is used for _____ flights.",
+          "options": [
+            "commercial",
+            "financial",
+            "industrial",
+            "mechanical"
+          ],
+          "answer": "commercial"
+        }
+      ]
+    },
+    {
+      "w": "demand",
+      "g": "verlangen",
+      "d": "To ask for something very firmly and urgently",
+      "s": "The angry customers _____ to speak to the manager right away.",
+      "a": [],
+      "mc": [
+        "request",
+        "require",
+        "insist"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DEMAND?",
+          "options": [
+            "high",
+            "increasing",
+            "meet",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The customers _____ to speak to the manager.",
+          "options": [
+            "demand",
+            "command",
+            "expand",
+            "husband"
+          ],
+          "answer": "demand"
+        }
+      ]
+    },
+    {
+      "w": "multibillion",
+      "g": "Multimilliarden-",
+      "d": "Involving many billions (of dollars, euros, etc.)",
+      "s": "The space programme is a _____ dollar industry, involving huge amounts of money from many countries.",
+      "a": [],
+      "mc": [
+        "multimillion",
+        "trillion",
+        "billion"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MULTIBILLION?",
+          "options": [
+            "dollar",
+            "industry",
+            "project",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "It's a _____ dollar industry.",
+          "options": [
+            "multibillion",
+            "multimillion",
+            "multimedia",
+            "multicolour"
+          ],
+          "answer": "multibillion"
+        }
+      ]
+    },
+    {
+      "w": "privately owned",
+      "g": "im Privatbesitz befindlich",
+      "d": "Belonging to a private person or company, not the government",
+      "s": "That island is _____, so nobody is allowed to visit without permission.",
+      "a": [],
+      "mc": [
+        "publicly owned",
+        "state-owned",
+        "government-run"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PRIVATELY OWNED?",
+          "options": [
+            "company",
+            "island",
+            "land",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "That island is _____.",
+          "options": [
+            "privately owned",
+            "publicly owned",
+            "state-owned",
+            "family-owned"
+          ],
+          "answer": "privately owned"
+        }
+      ]
+    },
+    {
+      "w": "celebrate",
+      "g": "feiern",
+      "d": "To do something special and enjoyable for an important event or achievement",
+      "s": "How are you going to _____ your birthday this year?",
+      "a": [],
+      "mc": [
+        "commemorate",
+        "honour",
+        "observe"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CELEBRATE?",
+          "options": [
+            "birthday",
+            "together",
+            "party",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "How will you _____ your birthday?",
+          "options": [
+            "celebrate",
+            "decorate",
+            "generate",
+            "operate"
+          ],
+          "answer": "celebrate"
+        }
+      ]
+    },
+    {
+      "w": "depressed",
+      "g": "deprimiert",
+      "d": "Feeling very unhappy and without hope for a long time",
+      "s": "She has been feeling _____ since she moved to a new town and left all her friends behind.",
+      "a": [],
+      "mc": [
+        "disappointed",
+        "miserable",
+        "exhausted"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DEPRESSED?",
+          "options": [
+            "feel",
+            "deeply",
+            "become",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She has been feeling _____.",
+          "options": [
+            "depressed",
+            "impressed",
+            "expressed",
+            "compressed"
+          ],
+          "answer": "depressed"
+        }
+      ]
+    },
+    {
+      "w": "disturb",
+      "g": "stören",
+      "d": "To interrupt someone or cause them to feel worried or upset",
+      "s": "Please don't _____ your sister while she is doing her homework.",
+      "a": [],
+      "mc": [
+        "interrupt",
+        "annoy",
+        "bother"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DISTURB?",
+          "options": [
+            "please",
+            "don't",
+            "work",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Please don't _____ your sister.",
+          "options": [
+            "disturb",
+            "suburb",
+            "absorb",
+            "superb"
+          ],
+          "answer": "disturb"
+        }
+      ]
+    },
+    {
+      "w": "masterpiece",
+      "g": "Meisterwerk",
+      "d": "A work of art, music, or writing that is considered the best of its kind",
+      "s": "Many people consider the Mona Lisa to be Leonardo da Vinci's greatest _____.",
+      "a": [
+        "masterpieces"
+      ],
+      "mc": [
+        "classic",
+        "original",
+        "bestseller"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MASTERPIECE?",
+          "options": [
+            "great",
+            "create",
+            "famous",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The Mona Lisa is a _____.",
+          "options": [
+            "masterpiece",
+            "centrepiece",
+            "timepiece",
+            "masterclass"
+          ],
+          "answer": "masterpiece"
+        }
+      ]
+    },
+    {
+      "w": "neither … nor",
+      "g": "weder … noch",
+      "d": "Used to say that two or more things are not true or do not happen",
+      "s": "She wanted _____ tea nor coffee, so she asked for water instead.",
+      "cf": "neither",
+      "a": [
+        "neither",
+        "neither nor",
+        "neither ... nor",
+        "neither … nor"
+      ],
+      "mc": [
+        "either … or",
+        "both … and",
+        "not only … but also"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NEITHER … NOR?",
+          "options": [
+            "option",
+            "want",
+            "like",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "She wanted _____ tea nor coffee.",
+          "options": [
+            "neither",
+            "either",
+            "weather",
+            "feather"
+          ],
+          "answer": "neither"
+        }
+      ]
+    },
+    {
+      "w": "reply",
+      "g": "erwidern; antworten",
+      "d": "To say or write something as an answer to someone",
+      "s": "I sent her a message three days ago, but she still hasn't _____.",
+      "cf": "replied",
+      "a": [
+        "reply",
+        "replied"
+      ],
+      "mc": [
+        "respond",
+        "answer",
+        "react"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REPLY?",
+          "options": [
+            "quickly",
+            "email",
+            "message",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She still hasn't _____.",
+          "options": [
+            "replied",
+            "applied",
+            "supplied",
+            "complied"
+          ],
+          "answer": "replied"
+        }
+      ]
+    },
+    {
+      "w": "biosphere",
+      "g": "Lebensraum, Biosphäre",
+      "d": "The parts of the Earth where life exists, including land, water, and air",
+      "s": "Protecting the _____ means protecting all living things on our planet.",
+      "a": [
+        "biospheres"
+      ],
+      "mc": [
+        "atmosphere",
+        "ecosystem",
+        "hemisphere"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BIOSPHERE?",
+          "options": [
+            "protect",
+            "Earth",
+            "living",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Protecting the _____ is vital.",
+          "options": [
+            "biosphere",
+            "atmosphere",
+            "hemisphere",
+            "lithosphere"
+          ],
+          "answer": "biosphere"
+        }
+      ]
+    },
+    {
+      "w": "genetic engineering",
+      "g": "Gentechnik; Genmanipulation",
+      "d": "The science of changing the genes of a living thing to give it new qualities",
+      "s": "Some scientists use _____ to create plants that can survive without much water.",
+      "a": [],
+      "mc": [
+        "biomedical science",
+        "nuclear energy",
+        "artificial intelligence"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GENETIC ENGINEERING?",
+          "options": [
+            "study",
+            "controversial",
+            "science",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ can create drought-resistant plants.",
+          "options": [
+            "Genetic engineering",
+            "civil engineering",
+            "social engineering",
+            "reverse engineering"
+          ],
+          "answer": "Genetic engineering"
+        }
+      ]
+    },
+    {
+      "w": "gravity",
+      "g": "Schwerkraft",
+      "d": "The force that pulls objects towards the Earth and keeps us on the ground",
+      "s": "On the moon, there is less _____, so astronauts can jump much higher.",
+      "a": [],
+      "mc": [
+        "magnetism",
+        "friction",
+        "pressure"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GRAVITY?",
+          "options": [
+            "force",
+            "pull",
+            "Earth",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "On the moon, there is less _____.",
+          "options": [
+            "gravity",
+            "cavity",
+            "activity",
+            "majority"
+          ],
+          "answer": "gravity"
+        }
+      ]
+    },
+    {
+      "w": "resource",
+      "g": "(Hilfs-)Mittel, Quelle",
+      "d": "Something useful that a country or person has, such as money, land, or energy",
+      "s": "Water is our most important natural _____ and we must not waste it.",
+      "a": [
+        "resources"
+      ],
+      "mc": [
+        "supply",
+        "reserve",
+        "material"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RESOURCE?",
+          "options": [
+            "natural",
+            "valuable",
+            "waste",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Water is our most important _____.",
+          "options": [
+            "resource",
+            "divorce",
+            "discourse",
+            "recourse"
+          ],
+          "answer": "resource"
+        }
+      ]
+    },
+    {
+      "w": "surface",
+      "g": "Oberfläche",
+      "d": "The outer or top part of something",
+      "s": "The _____ of the lake was perfectly still on that calm morning.",
+      "a": [
+        "surfaces"
+      ],
+      "mc": [
+        "bottom",
+        "layer",
+        "edge"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SURFACE?",
+          "options": [
+            "smooth",
+            "flat",
+            "rough",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ of the lake was still.",
+          "options": [
+            "surface",
+            "furnace",
+            "palace",
+            "terrace"
+          ],
+          "answer": "surface"
+        }
+      ]
+    },
+    {
+      "w": "uninhabitable",
+      "g": "unbewohnbar",
+      "d": "Not suitable for people to live in",
+      "s": "Without clean water, the village became _____ and people had to leave.",
+      "a": [],
+      "mc": [
+        "uninhabited",
+        "unlivable",
+        "deserted"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with UNINHABITABLE?",
+          "options": [
+            "become",
+            "completely",
+            "area",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The village became _____.",
+          "options": [
+            "uninhabitable",
+            "uninhabited",
+            "unsustainable",
+            "unbelievable"
+          ],
+          "answer": "uninhabitable"
+        }
+      ]
+    },
+    {
+      "w": "commander",
+      "g": "Kommandant/in",
+      "d": "The person in charge of a group of people, especially in the military or on a mission",
+      "s": "The _____ told the soldiers to wait for further instructions.",
+      "a": [
+        "commanders"
+      ],
+      "mc": [
+        "captain",
+        "lieutenant",
+        "officer"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMMANDER?",
+          "options": [
+            "military",
+            "chief",
+            "brave",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ told the soldiers to wait.",
+          "options": [
+            "commander",
+            "reminder",
+            "defender",
+            "surrender"
+          ],
+          "answer": "commander"
+        }
+      ]
+    },
+    {
+      "w": "tiring",
+      "g": "ermüdend",
+      "d": "Making you feel that you need to rest or sleep",
+      "s": "The hike up the mountain was really _____. We all needed a long rest afterwards.",
+      "a": [],
+      "mc": [
+        "exhausting",
+        "boring",
+        "challenging"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TIRING?",
+          "options": [
+            "very",
+            "really",
+            "extremely",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The hike was really _____.",
+          "options": [
+            "tiring",
+            "hiring",
+            "firing",
+            "wiring"
+          ],
+          "answer": "tiring"
+        }
+      ]
+    }
+  ]
+}

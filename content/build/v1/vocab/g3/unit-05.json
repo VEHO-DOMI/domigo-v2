@@ -1,0 +1,606 @@
+{
+  "slug": "unit-05",
+  "grade": 3,
+  "unit": 5,
+  "title": "Unit 5",
+  "entries": [
+    {
+      "w": "to be unlucky",
+      "g": "Pech haben",
+      "d": "To have bad luck",
+      "s": "She was very _____ today and missed the bus by just one single minute — she saw it driving away.",
+      "cf": "unlucky",
+      "a": [
+        "be unlucky",
+        "unlucky"
+      ],
+      "mc": [
+        "to be lucky",
+        "to be early",
+        "to be on time"
+      ]
+    },
+    {
+      "w": "to make a wish",
+      "g": "sich etwas wünschen",
+      "d": "To think of something you really want and hope it happens",
+      "s": "She closed her eyes tightly and _____ silently in her head before blowing out all twelve candles on her birthday cake.",
+      "cf": "made a wish",
+      "a": [
+        "make a wish",
+        "made a wish"
+      ],
+      "mc": [
+        "to sing a song",
+        "to open her mouth",
+        "to count aloud"
+      ]
+    },
+    {
+      "w": "to wish for sth.",
+      "g": "sich etw. wünschen",
+      "d": "To want something very much and hope to get it",
+      "s": "What did you secretly _____ for when you blew out the candles on your birthday cake?",
+      "cf": "wish",
+      "a": [
+        "wish for",
+        "wished for"
+      ],
+      "mc": [
+        "to ask aloud for sth.",
+        "to pay for sth.",
+        "to sell sth."
+      ]
+    },
+    {
+      "w": "to bring (good/bad) luck",
+      "g": "(Glück/Pech) bringen",
+      "d": "To cause good or bad things to happen",
+      "s": "Some superstitious people think that seeing a black cat crossing your path _____ bad luck to you.",
+      "cf": "brings",
+      "a": [
+        "bring luck",
+        "brings luck",
+        "brought luck",
+        "bring bad luck",
+        "brings bad luck"
+      ],
+      "mc": [
+        "to take away luck",
+        "to cancel luck",
+        "to clean up luck"
+      ]
+    },
+    {
+      "w": "to come true",
+      "g": "wahr werden",
+      "d": "When a wish or dream really happens",
+      "s": "I really hope my biggest dream of visiting Japan next year will _____ one day soon when I save enough money.",
+      "cf": "come true",
+      "a": [
+        "come true",
+        "came true"
+      ],
+      "mc": [
+        "to never happen",
+        "to stay a dream",
+        "to be impossible"
+      ]
+    },
+    {
+      "w": "spooky",
+      "g": "unheimlich, gruselig",
+      "d": "A bit scary and strange, like ghosts",
+      "s": "The old abandoned house on the dark hill at night looks really _____ with broken windows and creaking doors.",
+      "a": [],
+      "mc": [
+        "cheerful",
+        "bright",
+        "friendly"
+      ]
+    },
+    {
+      "w": "to have (good/bad) luck",
+      "g": "(Glück/Pech) haben",
+      "d": "When good or bad things happen to you by chance",
+      "s": "I _____ really good luck today — I found a €5 note on the street on my way to school!",
+      "cf": "had",
+      "a": [
+        "have luck",
+        "have good luck",
+        "have bad luck",
+        "had luck"
+      ],
+      "mc": [
+        "to miss out on luck",
+        "to lose all luck",
+        "to need more luck"
+      ]
+    },
+    {
+      "w": "to believe in superstitions",
+      "g": "an Aberglauben glauben",
+      "d": "To think that old beliefs about luck are true",
+      "s": "Do you really _____ in silly superstitions like walking under ladders being bad, or are you just joking?",
+      "cf": "believe",
+      "a": [
+        "believe in superstitions"
+      ],
+      "mc": [
+        "to laugh at superstitions",
+        "to study superstitions",
+        "to forget superstitions"
+      ]
+    },
+    {
+      "w": "alarm clock",
+      "g": "Wecker",
+      "d": "A device next to your bed that makes a noise to wake you up",
+      "s": "My loud ringing _____ didn't work this morning at 7 am, so I overslept and was late for the school bus.",
+      "cf": "alarm clock",
+      "a": [
+        "alarm clock",
+        "alarm clocks"
+      ],
+      "mc": [
+        "phone",
+        "TV",
+        "radio"
+      ]
+    },
+    {
+      "w": "Any luck?",
+      "g": "Hattest du Glück?",
+      "d": "A question to ask if someone was successful",
+      "s": "Did you finally find your lost house keys under the sofa? _____",
+      "cf": "Any luck",
+      "a": [
+        "Any luck"
+      ],
+      "mc": [
+        "Good luck!",
+        "Have fun!",
+        "Take care!"
+      ]
+    },
+    {
+      "w": "beside",
+      "g": "neben",
+      "d": "Next to, at the side of",
+      "s": "She sat down quietly _____ me on the sofa so close that our shoulders touched.",
+      "a": [],
+      "mc": [
+        "far from",
+        "across from",
+        "opposite"
+      ]
+    },
+    {
+      "w": "Do you mind ...?",
+      "g": "Macht es dir etwas aus ...?",
+      "d": "A polite way to ask if something is OK",
+      "s": "_____ if I open the big window? It's very hot in here and I need fresh air to cool down.",
+      "cf": "Do you mind",
+      "a": [
+        "Do you mind"
+      ],
+      "mc": [
+        "Do you like ...?",
+        "Do you want ...?",
+        "Can you ...?"
+      ]
+    },
+    {
+      "w": "evil",
+      "g": "böse",
+      "d": "Very bad, wanting to hurt others",
+      "s": "In the classic fairy tale, the _____ queen wanted to poison the beautiful young princess with a red apple.",
+      "a": [],
+      "mc": [
+        "kind",
+        "good",
+        "friendly"
+      ]
+    },
+    {
+      "w": "I'm joking.",
+      "g": "Ich scherze nur.",
+      "d": "A way to tell someone you are not being serious",
+      "s": "Don't worry and don't be upset, _____! I didn't really eat your last chocolate bar — it's in the fridge.",
+      "cf": "I'm joking",
+      "a": [
+        "I'm joking"
+      ],
+      "mc": [
+        "I'm serious.",
+        "It's true.",
+        "I mean it."
+      ]
+    },
+    {
+      "w": "to ignore",
+      "g": "ignorieren",
+      "d": "To act as if someone or something is not there",
+      "s": "She was very angry at her little brother and decided to _____ him all day by not talking or looking at him.",
+      "cf": "ignore",
+      "a": [
+        "ignore",
+        "ignored"
+      ],
+      "mc": [
+        "to hug",
+        "to play with",
+        "to help"
+      ]
+    },
+    {
+      "w": "satisfied",
+      "g": "zufrieden",
+      "d": "Happy with what you have or what happened",
+      "s": "The teacher was very _____ with my excellent test results — I got 95% and she gave me a big smile.",
+      "a": [],
+      "mc": [
+        "disappointed",
+        "angry",
+        "upset"
+      ]
+    },
+    {
+      "w": "to scream",
+      "g": "schreien",
+      "d": "To shout very loudly, often because you are scared",
+      "s": "She _____ out loud in fright when she saw the huge black spider crawling on the kitchen wall.",
+      "cf": "screamed",
+      "a": [
+        "scream",
+        "screamed"
+      ],
+      "mc": [
+        "to whisper",
+        "to smile",
+        "to sing"
+      ]
+    },
+    {
+      "w": "sleeping bag",
+      "g": "Schlafsack",
+      "d": "A warm cover you lie in when camping outdoors",
+      "s": "Don't forget to bring your warm _____ for the overnight school trip — we'll sleep inside them in the tent.",
+      "cf": "sleeping bag",
+      "a": [
+        "sleeping bag",
+        "sleeping bags"
+      ],
+      "mc": [
+        "pillow",
+        "blanket",
+        "duvet"
+      ]
+    },
+    {
+      "w": "spirit",
+      "g": "Geist",
+      "d": "A ghost or the soul of a dead person",
+      "s": "The scared children told ghost stories about a white _____ that lives in the old haunted castle on the hill.",
+      "a": [
+        "spirits"
+      ],
+      "mc": [
+        "fairy",
+        "goblin",
+        "dragon"
+      ]
+    },
+    {
+      "w": "superstition",
+      "g": "Aberglaube",
+      "d": "A belief that certain things bring good or bad luck",
+      "s": "The silly idea that the number 13 is unlucky is just a _____ — there's no real proof that it causes bad luck.",
+      "a": [
+        "superstitions"
+      ],
+      "mc": [
+        "fact",
+        "law",
+        "science"
+      ]
+    },
+    {
+      "w": "to attract",
+      "g": "anziehen, anlocken",
+      "d": "To make someone or something come closer",
+      "s": "The bright colourful flowers in our garden _____ many honey bees and butterflies during the warm summer months.",
+      "cf": "attract",
+      "a": [
+        "attract",
+        "attracted"
+      ],
+      "mc": [
+        "to chase away",
+        "to scare",
+        "to hurt"
+      ]
+    },
+    {
+      "w": "to enter",
+      "g": "betreten, eintreten",
+      "d": "To go into a place",
+      "s": "Please take off your dirty shoes at the door before you _____ the clean house — it's our family rule.",
+      "a": [
+        "enter",
+        "entered"
+      ],
+      "mc": [
+        "to leave",
+        "to exit",
+        "to run out of"
+      ]
+    },
+    {
+      "w": "haircut",
+      "g": "Haarschnitt",
+      "d": "When your hair is cut shorter by a hairdresser",
+      "s": "You look very different today — did you just get a new _____ at the hair salon? It's much shorter now.",
+      "a": [
+        "haircuts"
+      ],
+      "mc": [
+        "new hat",
+        "new jacket",
+        "new jewellery"
+      ]
+    },
+    {
+      "w": "obvious",
+      "g": "offensichtlich",
+      "d": "Easy to see or understand",
+      "s": "It was absolutely _____ that she was really tired because she kept yawning and rubbing her eyes in class.",
+      "a": [],
+      "mc": [
+        "hidden",
+        "secret",
+        "mysterious"
+      ]
+    },
+    {
+      "w": "traditional",
+      "g": "traditionell",
+      "d": "Done in the same way for a long time",
+      "s": "On Christmas Day, we always eat a _____ turkey dinner with the whole family, just like my grandparents did.",
+      "a": [],
+      "mc": [
+        "modern",
+        "new",
+        "unusual"
+      ]
+    },
+    {
+      "w": "to trick",
+      "g": "austricksen",
+      "d": "To make someone believe something that is not true",
+      "s": "My clever brother _____ me into eating a really hot chilli yesterday by telling me it was a sweet pepper.",
+      "cf": "tricked",
+      "a": [
+        "trick",
+        "tricked"
+      ],
+      "mc": [
+        "to help",
+        "to warn",
+        "to tell the truth to"
+      ]
+    },
+    {
+      "w": "unlucky",
+      "g": "unglücklich, glücklos",
+      "d": "Having or bringing bad luck",
+      "s": "Many people think that the number 13 is _____ and avoid choosing hotel rooms or flights with that number.",
+      "a": [],
+      "mc": [
+        "fortunate",
+        "blessed",
+        "favourite"
+      ]
+    },
+    {
+      "w": "to whistle",
+      "g": "pfeifen",
+      "d": "To make a high sound by blowing air through your lips",
+      "s": "He always _____ his favourite pop song while walking happily to school in the morning with his lips.",
+      "cf": "whistles",
+      "a": [
+        "whistle",
+        "whistled",
+        "whistles"
+      ],
+      "mc": [
+        "to silently think",
+        "to write",
+        "to read"
+      ]
+    },
+    {
+      "w": "crack",
+      "g": "Riss, Spalt; hier: Fuge",
+      "d": "A thin line or opening in a surface",
+      "s": "There is a big zigzag _____ in the old plaster wall of our house that needs to be fixed by a builder soon.",
+      "a": [
+        "cracks"
+      ],
+      "mc": [
+        "painting",
+        "poster",
+        "window"
+      ]
+    },
+    {
+      "w": "cuckoo",
+      "g": "Kuckuck",
+      "d": "A small grey forest bird known for its repeated two-syllable call in spring.",
+      "s": "We could clearly hear a _____ calling its name over and over from the tall green forest trees on our spring walk.",
+      "a": [
+        "cuckoos"
+      ],
+      "mc": [
+        "wolf",
+        "owl",
+        "bat"
+      ]
+    },
+    {
+      "w": "pavement",
+      "g": "Gehsteig",
+      "d": "The hard path next to a road where people walk",
+      "s": "Walk on the _____ next to the buildings, not on the busy road — it's much safer for pedestrians.",
+      "a": [
+        "pavements"
+      ],
+      "mc": [
+        "road",
+        "grass",
+        "railway"
+      ]
+    },
+    {
+      "w": "rich",
+      "g": "reich",
+      "d": "Having a lot of money",
+      "s": "The _____ businessman bought a huge mansion with 20 rooms, a swimming pool, and three sports cars.",
+      "a": [],
+      "mc": [
+        "poor",
+        "broke",
+        "homeless"
+      ]
+    },
+    {
+      "w": "to shake",
+      "g": "schütteln",
+      "d": "To move something quickly from side to side or up and down",
+      "s": "_____ the juice bottle well with your hand up and down before you drink to mix the pulp at the bottom.",
+      "cf": "Shake",
+      "a": [
+        "shake",
+        "shook",
+        "shaken"
+      ],
+      "mc": [
+        "to open",
+        "to hold",
+        "to carry"
+      ]
+    },
+    {
+      "w": "superstitious",
+      "g": "abergläubisch",
+      "d": "Believing that certain things bring good or bad luck",
+      "s": "My elderly grandmother is very _____ and refuses to walk under a ladder or break a mirror because of bad luck.",
+      "a": [],
+      "mc": [
+        "logical",
+        "scientific",
+        "realistic"
+      ]
+    },
+    {
+      "w": "to catch a cold",
+      "g": "sich verkühlen",
+      "d": "To get ill with a runny nose and cough",
+      "s": "Wear a thick warm jacket in the snow or you might _____ and be sick in bed for a week with a runny nose.",
+      "cf": "catch a cold",
+      "a": [
+        "catch a cold",
+        "caught a cold"
+      ],
+      "mc": [
+        "to stay perfectly healthy",
+        "to feel great",
+        "to get stronger"
+      ]
+    },
+    {
+      "w": "toothbrush",
+      "g": "Zahnbürste",
+      "d": "A small brush you use to clean your teeth",
+      "s": "I need a new _____ — the old one I use to clean my teeth every morning is too worn out with bent bristles.",
+      "a": [
+        "toothbrushes"
+      ],
+      "mc": [
+        "hairbrush",
+        "paintbrush",
+        "makeup brush"
+      ]
+    },
+    {
+      "w": "to arrange",
+      "g": "vereinbaren, arrangieren",
+      "d": "To plan or organise something",
+      "s": "Let's _____ a meeting for next Tuesday after school at 4 pm in the library to work on our project.",
+      "a": [
+        "arrange",
+        "arranged"
+      ],
+      "mc": [
+        "to cancel",
+        "to skip",
+        "to forget"
+      ]
+    },
+    {
+      "w": "I'm sure.",
+      "g": "Ich bin mir sicher.",
+      "d": "A way to say you are certain about something",
+      "s": "Will the train come soon? — _____. It's always exactly on time at 3:15 pm every day without fail.",
+      "cf": "I'm sure",
+      "a": [
+        "I'm sure"
+      ],
+      "mc": [
+        "I doubt it.",
+        "Maybe.",
+        "Probably not."
+      ]
+    },
+    {
+      "w": "lucky charm",
+      "g": "Glücksbringer",
+      "d": "An object that you think brings you good luck",
+      "s": "She always carries her small _____ — a tiny silver horseshoe — in her pocket during every school exam for good luck.",
+      "cf": "lucky charm",
+      "a": [
+        "lucky charm",
+        "lucky charms"
+      ],
+      "mc": [
+        "spelling book",
+        "calculator",
+        "pencil case"
+      ]
+    },
+    {
+      "w": "salt",
+      "g": "Salz",
+      "d": "White powder you put on food to give it more taste",
+      "s": "Can you please pass me the _____ shaker, please? My vegetable soup tastes a bit too bland and needs seasoning.",
+      "a": [],
+      "mc": [
+        "sugar",
+        "honey",
+        "jam"
+      ]
+    },
+    {
+      "w": "seriously",
+      "g": "ernsthaft, im Ernst",
+      "d": "Really, not joking",
+      "s": "Are you _____ going to try to eat all five big burgers by yourself? That's way too much food for one person!",
+      "a": [],
+      "mc": [
+        "jokingly",
+        "never",
+        "pretending to be"
+      ]
+    }
+  ]
+}

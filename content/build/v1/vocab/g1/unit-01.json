@@ -1,0 +1,949 @@
+{
+  "slug": "unit-01",
+  "grade": 1,
+  "unit": 1,
+  "title": "Unit 1",
+  "entries": [
+    {
+      "w": "sound system",
+      "g": "Soundsystem, Musikanlage",
+      "d": "a machine that plays music loudly",
+      "s": "We turned on the loud _____ for the party so everyone could hear the music.",
+      "a": [],
+      "mc": [
+        "projector",
+        "keyboard",
+        "microphone"
+      ]
+    },
+    {
+      "w": "projector",
+      "g": "Projektor, Beamer",
+      "d": "a machine that shows pictures on a wall",
+      "s": "The teacher used the _____ to show a film on the white wall screen.",
+      "a": [
+        "beamer"
+      ],
+      "mc": [
+        "printer",
+        "camera",
+        "microphone"
+      ]
+    },
+    {
+      "w": "board",
+      "g": "Tafel",
+      "d": "a flat surface for writing in class",
+      "s": "The teacher wrote the date on the _____ with a piece of white chalk.",
+      "a": [
+        "whiteboard",
+        "blackboard"
+      ],
+      "mc": [
+        "desk",
+        "floor",
+        "window"
+      ]
+    },
+    {
+      "w": "window",
+      "g": "Fenster",
+      "d": "glass in the wall to look outside",
+      "s": "I can see the garden through the open _____. Birds are flying outside.",
+      "a": [],
+      "mc": [
+        "cupboard",
+        "mirror",
+        "bookshelf"
+      ]
+    },
+    {
+      "w": "door",
+      "g": "Tür",
+      "d": "you open it to go into a room",
+      "s": "Please knock on the _____ before you come in and enter the room.",
+      "a": [],
+      "mc": [
+        "ceiling",
+        "floor",
+        "carpet"
+      ]
+    },
+    {
+      "w": "desk",
+      "g": "Schreibtisch, Pult",
+      "d": "a table for reading and writing",
+      "s": "My books and pens are on my _____ where I do my homework.",
+      "a": [],
+      "mc": [
+        "bed",
+        "bag",
+        "shelf"
+      ]
+    },
+    {
+      "w": "scissors",
+      "g": "Schere",
+      "d": "a tool for cutting paper",
+      "s": "I need my _____ to cut out this picture.",
+      "a": [],
+      "mc": [
+        "ruler",
+        "knife",
+        "pen"
+      ]
+    },
+    {
+      "w": "ruler",
+      "g": "Lineal",
+      "d": "a tool for drawing straight lines",
+      "s": "Use a _____ to draw a straight line.",
+      "a": [],
+      "mc": [
+        "pencil",
+        "scissors",
+        "tape"
+      ]
+    },
+    {
+      "w": "tablet",
+      "g": "Tablet",
+      "d": "a small flat computer with a screen",
+      "s": "She plays games on her touchscreen _____ after school. She taps the glass screen.",
+      "a": [],
+      "mc": [
+        "book",
+        "television",
+        "calculator"
+      ]
+    },
+    {
+      "w": "chair",
+      "g": "Stuhl, Sessel",
+      "d": "you sit on it",
+      "s": "Please sit down on your _____ at your desk during the lesson.",
+      "a": [],
+      "mc": [
+        "floor",
+        "table",
+        "door"
+      ]
+    },
+    {
+      "w": "school bag",
+      "g": "Schultasche",
+      "d": "a bag for your school things",
+      "s": "I put all my books, pens and lunch into my _____ every morning before leaving.",
+      "a": [
+        "schoolbag"
+      ],
+      "mc": [
+        "lunch box",
+        "wallet",
+        "diary"
+      ]
+    },
+    {
+      "w": "pen",
+      "g": "Kugelschreiber",
+      "d": "you write with it, it uses ink",
+      "s": "Can I borrow your blue _____ to write my name in ink on the form?",
+      "a": [],
+      "mc": [
+        "pencil",
+        "rubber",
+        "ruler"
+      ]
+    },
+    {
+      "w": "exercise book",
+      "g": "Heft",
+      "d": "a small book for writing in class",
+      "s": "Write the answers to the homework in your _____ with your name on the front.",
+      "a": [
+        "notebook"
+      ],
+      "mc": [
+        "textbook",
+        "story book",
+        "dictionary"
+      ]
+    },
+    {
+      "w": "pencil case",
+      "g": "Federmäppchen",
+      "d": "a small bag for pens and pencils",
+      "s": "My pens, pencils and ruler are in my small _____ inside my school bag.",
+      "a": [],
+      "mc": [
+        "backpack",
+        "drawer",
+        "cupboard"
+      ]
+    },
+    {
+      "w": "pencil",
+      "g": "Bleistift",
+      "d": "you write with it, you can rub it out",
+      "s": "I drew a picture of a cat with my _____ and then rubbed out a mistake.",
+      "a": [],
+      "mc": [
+        "pen",
+        "marker",
+        "chalk"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a pencil",
+          "options": [
+            "Sharpen",
+            "Cook",
+            "Drink",
+            "Ride"
+          ],
+          "answer": "Sharpen"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PENCIL?",
+          "options": [
+            "sharp",
+            "draw",
+            "write",
+            "drink"
+          ],
+          "answer": "drink"
+        }
+      ]
+    },
+    {
+      "w": "rubber",
+      "g": "Radiergummi",
+      "d": "you use it to rub out pencil marks",
+      "s": "I wrote a wrong word with my pencil, so I used my _____ to erase it.",
+      "a": [
+        "eraser"
+      ],
+      "mc": [
+        "ruler",
+        "sharpener",
+        "marker"
+      ]
+    },
+    {
+      "w": "book",
+      "g": "Buch",
+      "d": "you read it, it has many pages",
+      "s": "I am reading a very funny story _____ with 200 pages and a picture on the cover.",
+      "a": [],
+      "mc": [
+        "poster",
+        "map",
+        "letter"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a book",
+          "options": [
+            "Read",
+            "Play",
+            "Cook",
+            "Drive"
+          ],
+          "answer": "Read"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BOOK?",
+          "options": [
+            "read",
+            "funny",
+            "open",
+            "fry"
+          ],
+          "answer": "fry"
+        }
+      ]
+    },
+    {
+      "w": "hairband",
+      "g": "Haarreif, Stirnband",
+      "d": "you wear it in your hair",
+      "s": "She put a pink _____ around her long hair to keep it out of her face.",
+      "a": [
+        "hair band"
+      ],
+      "mc": [
+        "bracelet",
+        "necklace",
+        "ring"
+      ]
+    },
+    {
+      "w": "sunglasses",
+      "g": "Sonnenbrille",
+      "d": "dark glasses for sunny days",
+      "s": "It is very sunny outside, so I need my dark _____ to protect my eyes.",
+      "a": [],
+      "mc": [
+        "gloves",
+        "umbrella",
+        "scarf"
+      ]
+    },
+    {
+      "w": "hat",
+      "g": "Hut",
+      "d": "you wear it on your head",
+      "s": "He wears a warm woolly _____ on his head in winter to keep his ears warm.",
+      "a": [],
+      "mc": [
+        "scarf",
+        "coat",
+        "jacket"
+      ]
+    },
+    {
+      "w": "school tie",
+      "g": "Schulkrawatte",
+      "d": "a tie you wear with a school uniform",
+      "s": "Tom wears a blue _____ around his neck with his white school shirt.",
+      "a": [],
+      "mc": [
+        "belt",
+        "hat",
+        "badge"
+      ]
+    },
+    {
+      "w": "shirt",
+      "g": "Hemd",
+      "d": "clothes you wear on the top of your body",
+      "s": "He put on a clean white _____ with buttons and a collar for school.",
+      "a": [],
+      "mc": [
+        "T-shirt",
+        "jumper",
+        "hoodie"
+      ]
+    },
+    {
+      "w": "sweater",
+      "g": "Pullover",
+      "d": "a warm top with long sleeves",
+      "s": "It is cold today, so wear a thick woolly _____ over your shirt.",
+      "a": [
+        "pullover",
+        "jumper"
+      ],
+      "mc": [
+        "T-shirt",
+        "raincoat",
+        "swimsuit"
+      ]
+    },
+    {
+      "w": "skirt",
+      "g": "Rock",
+      "d": "girls and women wear it, it is not trousers",
+      "s": "She is wearing a red knee-length _____ today with tights underneath.",
+      "a": [],
+      "mc": [
+        "coat",
+        "shirt",
+        "hat"
+      ]
+    },
+    {
+      "w": "socks",
+      "g": "Socken",
+      "d": "you wear them on your feet inside shoes",
+      "s": "I put on my clean _____ on my feet and then my shoes every morning.",
+      "a": [],
+      "mc": [
+        "gloves",
+        "hats",
+        "scarves"
+      ]
+    },
+    {
+      "w": "shoe",
+      "g": "Schuh",
+      "d": "you wear it on your foot",
+      "s": "I lost one _____ and I am hopping on one foot to find the other.",
+      "a": [],
+      "mc": [
+        "hat",
+        "glove",
+        "sock"
+      ]
+    },
+    {
+      "w": "to give",
+      "g": "geben",
+      "d": "to put something in someone's hand",
+      "s": "Please _____ me your pen for a moment and I will hand it back soon.",
+      "cf": "give",
+      "a": [],
+      "mc": [
+        "to take",
+        "to keep",
+        "to hide"
+      ]
+    },
+    {
+      "w": "time",
+      "g": "Zeit",
+      "d": "what a clock shows",
+      "s": "What _____ is it? It's three o'clock in the afternoon.",
+      "a": [],
+      "mc": [
+        "date",
+        "day",
+        "year"
+      ]
+    },
+    {
+      "w": "to understand",
+      "g": "verstehen",
+      "d": "to know what something means",
+      "s": "I don't _____ this word. What does it mean in German?",
+      "cf": "understand",
+      "a": [],
+      "mc": [
+        "to know",
+        "to remember",
+        "to forget"
+      ]
+    },
+    {
+      "w": "to write",
+      "g": "schreiben",
+      "d": "to put words on paper",
+      "s": "Please _____ your full name at the top of the paper with a pen.",
+      "cf": "write",
+      "a": [],
+      "mc": [
+        "to read",
+        "to draw",
+        "to speak"
+      ]
+    },
+    {
+      "w": "to enjoy",
+      "g": "genießen",
+      "d": "to like something very much",
+      "s": "I really _____ playing football with my friends and always laugh a lot.",
+      "cf": "enjoy",
+      "a": [],
+      "mc": [
+        "to hate",
+        "to fear",
+        "to try"
+      ]
+    },
+    {
+      "w": "to listen",
+      "g": "zuhören",
+      "d": "to use your ears to hear something",
+      "s": "Please _____ carefully to the teacher now and don't talk.",
+      "cf": "listen",
+      "a": [],
+      "mc": [
+        "to speak",
+        "to shout",
+        "to sing"
+      ]
+    },
+    {
+      "w": "to love",
+      "g": "lieben",
+      "d": "to like very, very much",
+      "s": "I _____ my dog very much. He is my best friend in the whole world.",
+      "cf": "love",
+      "a": [],
+      "mc": [
+        "to dislike",
+        "to miss",
+        "to need"
+      ]
+    },
+    {
+      "w": "more",
+      "g": "mehr",
+      "d": "a bigger number or amount of something",
+      "s": "Can I have _____ water in my glass, please? Mine is empty.",
+      "a": [],
+      "mc": [
+        "less",
+        "no",
+        "any"
+      ]
+    },
+    {
+      "w": "to read",
+      "g": "lesen",
+      "d": "to look at words and understand them",
+      "s": "I like to _____ story books with interesting words before I go to sleep.",
+      "cf": "read",
+      "a": [],
+      "mc": [
+        "to write",
+        "to draw",
+        "to speak"
+      ]
+    },
+    {
+      "w": "their",
+      "g": "ihr/e",
+      "d": "belonging to them",
+      "s": "The children put _____ bags on the floor next to their own chairs.",
+      "a": [],
+      "mc": [
+        "my",
+        "your",
+        "his"
+      ]
+    },
+    {
+      "w": "to ask",
+      "g": "fragen",
+      "d": "to say a question to someone",
+      "s": "I want to _____ the teacher a question about my homework.",
+      "cf": "ask",
+      "a": [],
+      "mc": [
+        "to answer",
+        "to tell",
+        "to show"
+      ]
+    },
+    {
+      "w": "address",
+      "g": "(E-Mail-)Adresse",
+      "d": "where someone lives or an email name",
+      "s": "What is your email _____? I want to send you a message online.",
+      "a": [
+        "email address"
+      ],
+      "mc": [
+        "name",
+        "age",
+        "birthday"
+      ]
+    },
+    {
+      "w": "How are you?",
+      "g": "Wie geht es dir/Ihnen/euch?",
+      "d": "a question about how someone feels",
+      "s": "Hello, Tom! _____ 'I'm fine, thanks' is my usual reply.",
+      "cf": "How are you?",
+      "a": [],
+      "mc": [
+        "What's your name?",
+        "How old are you?",
+        "Where are you from?"
+      ]
+    },
+    {
+      "w": "I'm fine.",
+      "g": "Es geht mir gut.",
+      "d": "I feel good",
+      "s": "How are you? _____ Thank you!",
+      "cf": "I'm fine.",
+      "a": [
+        "I am fine."
+      ],
+      "mc": [
+        "I'm sorry.",
+        "I'm tired.",
+        "I'm hungry."
+      ]
+    },
+    {
+      "w": "to meet",
+      "g": "kennenlernen; sich treffen",
+      "d": "to see someone for the first time",
+      "s": "Nice to _____ you for the first time! My name is Anna.",
+      "cf": "meet",
+      "a": [],
+      "mc": [
+        "to see",
+        "to know",
+        "to call"
+      ]
+    },
+    {
+      "w": "then",
+      "g": "dann, danach",
+      "d": "after that, next",
+      "s": "First, read the text. _____ answer the questions at the bottom.",
+      "a": [],
+      "mc": [
+        "yesterday",
+        "last",
+        "before"
+      ]
+    },
+    {
+      "w": "your",
+      "g": "dein/e; Ihr/e; euer/eure",
+      "d": "belonging to you",
+      "s": "Is this _____ pencil or is it mine? It was on your desk.",
+      "a": [],
+      "mc": [
+        "his",
+        "her",
+        "their"
+      ]
+    },
+    {
+      "w": "to look",
+      "g": "sehen, schauen; Schau mal.",
+      "d": "to use your eyes to see something",
+      "s": "_____ at this beautiful picture on the wall! Can you see the colours?",
+      "cf": "look",
+      "a": [],
+      "mc": [
+        "to hear",
+        "to touch",
+        "to taste"
+      ]
+    },
+    {
+      "w": "or",
+      "g": "oder",
+      "d": "a word to give a choice between two things",
+      "s": "Do you want tea _____ milk with your cake? You choose one.",
+      "a": [],
+      "mc": [
+        "and",
+        "but",
+        "so"
+      ]
+    },
+    {
+      "w": "to eat",
+      "g": "essen; fressen",
+      "d": "to put food in your mouth",
+      "s": "I am very hungry. I want to _____ a sandwich with ham and cheese.",
+      "cf": "eat",
+      "a": [],
+      "mc": [
+        "to drink",
+        "to sleep",
+        "to play"
+      ]
+    },
+    {
+      "w": "to go",
+      "g": "gehen",
+      "d": "to move from one place to another",
+      "s": "I _____ to school every morning at eight o'clock on foot.",
+      "cf": "go",
+      "a": [],
+      "mc": [
+        "to stay",
+        "to come",
+        "to sleep"
+      ]
+    },
+    {
+      "w": "must",
+      "g": "müssen",
+      "d": "to have to do something",
+      "s": "It is late. I _____ go home now.",
+      "a": [],
+      "mc": [
+        "can",
+        "should",
+        "may"
+      ]
+    },
+    {
+      "w": "how many",
+      "g": "wie viele",
+      "d": "asking about the number of something",
+      "s": "_____ cats do you have at home? I have three.",
+      "cf": "How many",
+      "a": [],
+      "mc": [
+        "how long",
+        "how old",
+        "how often"
+      ]
+    },
+    {
+      "w": "to hate",
+      "g": "hassen, nicht ausstehen können",
+      "d": "to not like at all",
+      "s": "I really _____ getting up early in the morning. It is the worst part of my day.",
+      "cf": "hate",
+      "a": [],
+      "mc": [
+        "to love",
+        "to enjoy",
+        "to miss"
+      ]
+    },
+    {
+      "w": "here",
+      "g": "hier",
+      "d": "in this place",
+      "s": "Come _____ to me! I want to show you something on my phone.",
+      "a": [],
+      "mc": [
+        "there",
+        "away",
+        "up"
+      ]
+    },
+    {
+      "w": "it",
+      "g": "es",
+      "d": "a word for a thing or animal",
+      "s": "I have a pet cat. _____ is black and white and has long whiskers.",
+      "cf": "It",
+      "a": [],
+      "mc": [
+        "he",
+        "she",
+        "they"
+      ]
+    },
+    {
+      "w": "Let's",
+      "g": "Lass(t) …",
+      "d": "a word to suggest doing something together",
+      "s": "_____ go to the park together after lunch and play football!",
+      "a": [
+        "Let us"
+      ],
+      "mc": [
+        "I",
+        "He",
+        "They"
+      ]
+    },
+    {
+      "w": "midnight",
+      "g": "Mitternacht",
+      "d": "twelve o'clock at night",
+      "s": "It is _____, exactly 12 o'clock at night, and everyone is fast asleep.",
+      "a": [],
+      "mc": [
+        "morning",
+        "noon",
+        "afternoon"
+      ]
+    },
+    {
+      "w": "our",
+      "g": "unser/e",
+      "d": "belonging to us",
+      "s": "This is _____ classroom where all of us in class 1A learn together.",
+      "a": [],
+      "mc": [
+        "their",
+        "his",
+        "her"
+      ]
+    },
+    {
+      "w": "favourite",
+      "g": "Lieblings-",
+      "d": "the one you like the most",
+      "s": "Blue is my _____ colour — I love it more than any other colour in the world.",
+      "a": [
+        "favorite"
+      ],
+      "mc": [
+        "last",
+        "worst",
+        "second"
+      ]
+    },
+    {
+      "w": "to find",
+      "g": "finden",
+      "d": "to see something you were looking for",
+      "s": "I can't _____ my red pen anywhere. Have you seen it?",
+      "cf": "find",
+      "a": [],
+      "mc": [
+        "to lose",
+        "to drop",
+        "to throw"
+      ]
+    },
+    {
+      "w": "light",
+      "g": "hell",
+      "d": "not dark, a pale colour",
+      "s": "Her eyes are _____ blue, almost the colour of the sky on a sunny day.",
+      "a": [],
+      "mc": [
+        "dark",
+        "bright",
+        "deep"
+      ]
+    },
+    {
+      "w": "child",
+      "g": "Kind",
+      "d": "a young person, a boy or a girl",
+      "s": "Every _____ in the class — Tom, Anna, Max — got a new book from the teacher.",
+      "a": [],
+      "mc": [
+        "grown-up",
+        "parent",
+        "teacher"
+      ]
+    },
+    {
+      "w": "to clean",
+      "g": "sauber machen, putzen",
+      "d": "to make something not dirty",
+      "s": "Please _____ the dirty board with the cloth after the lesson.",
+      "cf": "clean",
+      "a": [],
+      "mc": [
+        "to draw on",
+        "to write on",
+        "to decorate"
+      ]
+    },
+    {
+      "w": "to close",
+      "g": "schließen, zumachen",
+      "d": "to shut something",
+      "s": "It is cold in here. Please _____ the open window to keep the warm air in.",
+      "cf": "close",
+      "a": [
+        "shut"
+      ],
+      "mc": [
+        "to open",
+        "to break",
+        "to paint"
+      ]
+    },
+    {
+      "w": "to open",
+      "g": "öffnen, aufmachen",
+      "d": "to make something not closed",
+      "s": "Please _____ your closed books now and turn to page ten.",
+      "cf": "open",
+      "a": [],
+      "mc": [
+        "to close",
+        "to break",
+        "to hide"
+      ]
+    },
+    {
+      "w": "picture",
+      "g": "Bild",
+      "d": "a drawing, painting, or photo",
+      "s": "She drew a beautiful _____ of her family with coloured pencils on paper.",
+      "a": [],
+      "mc": [
+        "story",
+        "song",
+        "video"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a picture",
+          "options": [
+            "Draw",
+            "Do",
+            "Cook",
+            "Wash"
+          ],
+          "answer": "Draw"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PICTURE?",
+          "options": [
+            "draw",
+            "pretty",
+            "take",
+            "boil"
+          ],
+          "answer": "boil"
+        }
+      ]
+    },
+    {
+      "w": "to sit down",
+      "g": "sich (hin-)setzen",
+      "d": "to move your body onto a chair",
+      "s": "Please _____ on your chair and be quiet for the lesson.",
+      "cf": "sit down",
+      "a": [],
+      "mc": [
+        "to stand up",
+        "to jump up",
+        "to run"
+      ]
+    },
+    {
+      "w": "to speak",
+      "g": "sprechen",
+      "d": "to say words, to talk",
+      "s": "Please don't _____ during the test. Keep quiet and write your answers.",
+      "cf": "speak",
+      "a": [
+        "talk"
+      ],
+      "mc": [
+        "to sleep",
+        "to eat",
+        "to stand"
+      ]
+    },
+    {
+      "w": "to stand up",
+      "g": "aufstehen",
+      "d": "to get up from a chair",
+      "s": "Please _____ from your chair when the teacher comes into the room.",
+      "cf": "stand up",
+      "a": [],
+      "mc": [
+        "to sit down",
+        "to lie down",
+        "to kneel"
+      ]
+    },
+    {
+      "w": "to take out",
+      "g": "herausnehmen",
+      "d": "to get something from inside a bag",
+      "s": "Please _____ your exercise books from your school bags and put them on your desks.",
+      "cf": "take out",
+      "a": [],
+      "mc": [
+        "to put away",
+        "to throw away",
+        "to give back"
+      ]
+    },
+    {
+      "w": "class",
+      "g": "(Schul-)Klasse",
+      "d": "a group of students who learn together",
+      "s": "There are twenty children in our _____ 1A. Our teacher is Mrs. Smith.",
+      "a": [],
+      "mc": [
+        "school",
+        "town",
+        "club"
+      ]
+    }
+  ]
+}

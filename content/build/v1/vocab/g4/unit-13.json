@@ -1,0 +1,1093 @@
+{
+  "slug": "unit-13",
+  "grade": 4,
+  "unit": 13,
+  "title": "Unit 13",
+  "entries": [
+    {
+      "w": "best wishes",
+      "g": "mit den besten Wünschen",
+      "d": "A friendly phrase used at the end of a letter or card to express kind thoughts",
+      "s": "At the end of his letter, he wrote '_____ ' as a friendly way to say goodbye.",
+      "a": [],
+      "mc": [
+        "kind regards",
+        "yours sincerely",
+        "with love"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BEST WISHES?",
+          "options": [
+            "send",
+            "card",
+            "letter",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "At the end of the card, she wrote _____.",
+          "options": [
+            "Best wishes",
+            "Best price",
+            "Best seller",
+            "Best friend"
+          ],
+          "answer": "Best wishes"
+        }
+      ]
+    },
+    {
+      "w": "edition",
+      "g": "Ausgabe",
+      "d": "A particular version of a book, newspaper, or magazine",
+      "s": "Have you seen the new _____ of the school magazine? It looks great.",
+      "a": [
+        "editions"
+      ],
+      "mc": [
+        "version",
+        "issue",
+        "volume"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EDITION?",
+          "options": [
+            "new",
+            "latest",
+            "special",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Have you seen the new _____?",
+          "options": [
+            "edition",
+            "addition",
+            "condition",
+            "tradition"
+          ],
+          "answer": "edition"
+        }
+      ]
+    },
+    {
+      "w": "scuba-diving",
+      "g": "(Sport-)Tauchen",
+      "d": "The sport of swimming underwater using special breathing equipment",
+      "s": "We tried _____ on holiday and saw colourful fish and corals under the water.",
+      "a": [
+        "scuba diving"
+      ],
+      "mc": [
+        "snorkelling",
+        "surfing",
+        "water-skiing"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SCUBA-DIVING?",
+          "options": [
+            "go",
+            "try",
+            "deep",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "We tried _____ on holiday.",
+          "options": [
+            "scuba-diving",
+            "sky-diving",
+            "cliff-diving",
+            "deep-diving"
+          ],
+          "answer": "scuba-diving"
+        }
+      ]
+    },
+    {
+      "w": "water-proof",
+      "g": "wasserdicht",
+      "d": "Not allowing water to get through",
+      "s": "Make sure your jacket is _____ before you go out in this rain.",
+      "a": [
+        "waterproof",
+        "water proof"
+      ],
+      "mc": [
+        "fire-proof",
+        "bullet-proof",
+        "windproof"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WATERPROOF?",
+          "options": [
+            "jacket",
+            "material",
+            "completely",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Make sure your jacket is _____.",
+          "options": [
+            "waterproof",
+            "fireproof",
+            "bulletproof",
+            "soundproof"
+          ],
+          "answer": "waterproof"
+        }
+      ]
+    },
+    {
+      "w": "artist",
+      "g": "Künstler/in",
+      "d": "A person who creates paintings, drawings, sculptures, or other works of art",
+      "s": "The street _____ painted a huge mural on the side of the building.",
+      "a": [
+        "artists"
+      ],
+      "mc": [
+        "musician",
+        "sculptor",
+        "designer"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ARTIST?",
+          "options": [
+            "famous",
+            "talented",
+            "street",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ painted a huge mural.",
+          "options": [
+            "artist",
+            "dentist",
+            "tourist",
+            "cyclist"
+          ],
+          "answer": "artist"
+        }
+      ]
+    },
+    {
+      "w": "autograph",
+      "g": "Autogramm",
+      "d": "The signature of a famous person, often collected by fans",
+      "s": "After the concert, fans waited outside to get the singer's _____.",
+      "a": [
+        "autographs"
+      ],
+      "mc": [
+        "signature",
+        "photograph",
+        "portrait"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AUTOGRAPH?",
+          "options": [
+            "get",
+            "sign",
+            "fan",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Fans waited to get his _____.",
+          "options": [
+            "autograph",
+            "photograph",
+            "paragraph",
+            "telegraph"
+          ],
+          "answer": "autograph"
+        }
+      ]
+    },
+    {
+      "w": "chill out",
+      "g": "relaxen, sich entspannen",
+      "d": "To relax and stop worrying or being angry",
+      "s": "After a long week of exams, all I want to do is _____ on the sofa.",
+      "a": [
+        "chill"
+      ],
+      "mc": [
+        "hang out",
+        "work out",
+        "freak out"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CHILL OUT?",
+          "options": [
+            "relax",
+            "sofa",
+            "weekend",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I just want to _____ on the sofa.",
+          "options": [
+            "chill out",
+            "hang out",
+            "work out",
+            "freak out"
+          ],
+          "answer": "chill out"
+        }
+      ]
+    },
+    {
+      "w": "elder",
+      "g": "älter",
+      "d": "Older, especially used when comparing brothers and sisters",
+      "s": "My _____ sister already has a driving licence, but I still have to wait two years.",
+      "a": [],
+      "mc": [
+        "older",
+        "younger",
+        "eldest"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ELDER?",
+          "options": [
+            "brother",
+            "sister",
+            "respect",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "My _____ sister has a driving licence.",
+          "options": [
+            "elder",
+            "older",
+            "younger",
+            "taller"
+          ],
+          "answer": "elder"
+        }
+      ]
+    },
+    {
+      "w": "highlight",
+      "g": "Höhepunkt",
+      "d": "The best, most exciting, or most important part of something",
+      "s": "Meeting the players after the match was definitely the _____ of my day.",
+      "a": [
+        "highlights"
+      ],
+      "mc": [
+        "achievement",
+        "climax",
+        "moment"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HIGHLIGHT?",
+          "options": [
+            "main",
+            "absolute",
+            "best",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Meeting the players was the _____.",
+          "options": [
+            "highlight",
+            "midnight",
+            "moonlight",
+            "spotlight"
+          ],
+          "answer": "highlight"
+        }
+      ]
+    },
+    {
+      "w": "last but not least",
+      "g": "nicht zuletzt",
+      "d": "Used to say that the final thing you mention is just as important as everything else",
+      "s": "We need to pack food, water, and _____ a first aid kit -- it's just as important as everything else.",
+      "a": [],
+      "mc": [
+        "first of all",
+        "in addition",
+        "most importantly"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LAST BUT NOT LEAST?",
+          "options": [
+            "important",
+            "mention",
+            "finally",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____, don't forget the first aid kit.",
+          "options": [
+            "Last but not least",
+            "First of all",
+            "In addition",
+            "Most importantly"
+          ],
+          "answer": "Last but not least"
+        }
+      ]
+    },
+    {
+      "w": "leisure centre",
+      "g": "Freizeitzentrum",
+      "d": "A public building with facilities for sports and fun activities",
+      "s": "The new _____ in our town has a swimming pool, a gym, and a climbing wall.",
+      "a": [
+        "leisure centres",
+        "leisure center"
+      ],
+      "mc": [
+        "shopping centre",
+        "community centre",
+        "sports club"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LEISURE CENTRE?",
+          "options": [
+            "local",
+            "new",
+            "swim",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ has a pool and a gym.",
+          "options": [
+            "leisure centre",
+            "shopping centre",
+            "community centre",
+            "sports centre"
+          ],
+          "answer": "leisure centre"
+        }
+      ]
+    },
+    {
+      "w": "occasionally",
+      "g": "ab und zu; hin und wieder",
+      "d": "Sometimes but not often",
+      "s": "I don't eat fast food every day, but I _____ have a burger on Fridays.",
+      "a": [],
+      "mc": [
+        "frequently",
+        "rarely",
+        "seldom"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with OCCASIONALLY?",
+          "options": [
+            "go",
+            "eat",
+            "visit",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "I _____ have a burger on Fridays.",
+          "options": [
+            "occasionally",
+            "professionally",
+            "traditionally",
+            "conditionally"
+          ],
+          "answer": "occasionally"
+        }
+      ]
+    },
+    {
+      "w": "apply (for)",
+      "g": "sich bewerben (für)",
+      "d": "To formally ask for something, such as a job, course, or permission",
+      "s": "She decided to _____ a summer job at the local supermarket.",
+      "cf": "apply for",
+      "a": [
+        "apply for",
+        "apply"
+      ],
+      "mc": [
+        "register (for)",
+        "sign up (for)",
+        "search (for)"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with APPLY FOR?",
+          "options": [
+            "job",
+            "university",
+            "online",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She decided to _____ a summer job.",
+          "options": [
+            "apply for",
+            "reply to",
+            "comply with",
+            "supply to"
+          ],
+          "answer": "apply for"
+        }
+      ]
+    },
+    {
+      "w": "discipline",
+      "g": "Disziplin",
+      "d": "The ability to control your behaviour and work hard in an organised way",
+      "s": "Learning a musical instrument takes a lot of practice and _____.",
+      "a": [],
+      "mc": [
+        "patience",
+        "talent",
+        "courage"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DISCIPLINE?",
+          "options": [
+            "strict",
+            "learn",
+            "practice",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Learning music takes _____.",
+          "options": [
+            "discipline",
+            "medicine",
+            "magazine",
+            "submarine"
+          ],
+          "answer": "discipline"
+        }
+      ]
+    },
+    {
+      "w": "honestly",
+      "g": "ehrlich",
+      "d": "In a truthful and sincere way",
+      "s": "_____, I think you should tell her the truth before it's too late.",
+      "a": [],
+      "mc": [
+        "frankly",
+        "seriously",
+        "obviously"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HONESTLY?",
+          "options": [
+            "speak",
+            "quite",
+            "really",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____, I think you should tell the truth.",
+          "options": [
+            "Honestly",
+            "Hopefully",
+            "Happily",
+            "Helpfully"
+          ],
+          "answer": "Honestly"
+        }
+      ]
+    },
+    {
+      "w": "tough",
+      "g": "hart; schwierig",
+      "d": "Difficult and requiring a lot of effort, strength, or determination",
+      "s": "The maths test was really _____. I couldn't answer the last three questions.",
+      "a": [],
+      "mc": [
+        "rough",
+        "strict",
+        "challenging"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TOUGH?",
+          "options": [
+            "really",
+            "very",
+            "extremely",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The test was really _____.",
+          "options": [
+            "tough",
+            "rough",
+            "enough",
+            "cough"
+          ],
+          "answer": "tough"
+        }
+      ]
+    },
+    {
+      "w": "tournament",
+      "g": "Turnier",
+      "d": "A competition with several rounds in which many players or teams take part",
+      "s": "Our school is taking part in a basketball _____ next month.",
+      "a": [
+        "tournaments"
+      ],
+      "mc": [
+        "championship",
+        "league",
+        "competition"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TOURNAMENT?",
+          "options": [
+            "win",
+            "enter",
+            "football",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Our school is in a basketball _____.",
+          "options": [
+            "tournament",
+            "parliament",
+            "department",
+            "apartment"
+          ],
+          "answer": "tournament"
+        }
+      ]
+    },
+    {
+      "w": "beggar",
+      "g": "Bettler/in",
+      "d": "A person who asks strangers for money or food in public places",
+      "s": "A _____ sat outside the train station holding a cardboard sign.",
+      "a": [
+        "beggars"
+      ],
+      "mc": [
+        "thief",
+        "stranger",
+        "homeless person"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BEGGAR?",
+          "options": [
+            "street",
+            "poor",
+            "homeless",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "A _____ sat outside the station.",
+          "options": [
+            "beggar",
+            "dagger",
+            "stagger",
+            "swagger"
+          ],
+          "answer": "beggar"
+        }
+      ]
+    },
+    {
+      "w": "coal",
+      "g": "Kohle",
+      "d": "A hard black substance found underground, burned as fuel",
+      "s": "In the past, people used _____ to heat their houses, but today we use gas or electricity.",
+      "a": [],
+      "mc": [
+        "charcoal",
+        "wood",
+        "gas"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COAL?",
+          "options": [
+            "burn",
+            "mine",
+            "black",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "People used to burn _____ for heat.",
+          "options": [
+            "coal",
+            "goal",
+            "foal",
+            "shoal"
+          ],
+          "answer": "coal"
+        }
+      ]
+    },
+    {
+      "w": "legend",
+      "g": "Legende",
+      "d": "An old, well-known story that may or may not be true",
+      "s": "According to _____, a monster lives deep in the Scottish lake.",
+      "a": [
+        "legends"
+      ],
+      "mc": [
+        "myth",
+        "fairy tale",
+        "fable"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LEGEND?",
+          "options": [
+            "old",
+            "famous",
+            "local",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "According to _____, a monster lives there.",
+          "options": [
+            "legend",
+            "present",
+            "recent",
+            "decent"
+          ],
+          "answer": "legend"
+        }
+      ]
+    },
+    {
+      "w": "ripe",
+      "g": "reif",
+      "d": "Ready to be eaten because it has fully grown and developed",
+      "s": "These bananas are not _____ yet — they are still green.",
+      "a": [],
+      "mc": [
+        "raw",
+        "fresh",
+        "rotten"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RIPE?",
+          "options": [
+            "fruit",
+            "fully",
+            "ready",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "These bananas are not _____ yet.",
+          "options": [
+            "ripe",
+            "pipe",
+            "type",
+            "wipe"
+          ],
+          "answer": "ripe"
+        }
+      ]
+    },
+    {
+      "w": "catch up on",
+      "g": "aufholen; (Versäumtes) nachholen",
+      "d": "To do something that you did not have time to do earlier",
+      "s": "I was ill last week, so now I have to _____ all the schoolwork I missed.",
+      "a": [],
+      "mc": [
+        "keep up with",
+        "fall behind on",
+        "give up on"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CATCH UP ON?",
+          "options": [
+            "work",
+            "homework",
+            "news",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "I have to _____ all the work I missed.",
+          "options": [
+            "catch up on",
+            "keep up with",
+            "fall behind on",
+            "give up on"
+          ],
+          "answer": "catch up on"
+        }
+      ]
+    },
+    {
+      "w": "get involved with",
+      "g": "sich auf etw einlassen; mitmischen (bei)",
+      "d": "To become part of an activity or start taking part in something",
+      "s": "My parents told me not to _____ the wrong group of people.",
+      "a": [
+        "get involved",
+        "getting involved"
+      ],
+      "mc": [
+        "get along with",
+        "get rid of",
+        "get used to"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GET INVOLVED WITH?",
+          "options": [
+            "activity",
+            "project",
+            "community",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Don't _____ the wrong people.",
+          "options": [
+            "get involved with",
+            "get along with",
+            "get rid of",
+            "get used to"
+          ],
+          "answer": "get involved with"
+        }
+      ]
+    },
+    {
+      "w": "help out",
+      "g": "(aus-)helfen",
+      "d": "To do some work or give assistance when someone needs it",
+      "s": "My dad always asks me to _____ in the kitchen when we have guests coming over.",
+      "a": [],
+      "mc": [
+        "find out",
+        "work out",
+        "sort out"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HELP OUT?",
+          "options": [
+            "kitchen",
+            "always",
+            "gladly",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "My dad asks me to _____ in the kitchen.",
+          "options": [
+            "help out",
+            "find out",
+            "work out",
+            "sort out"
+          ],
+          "answer": "help out"
+        }
+      ]
+    },
+    {
+      "w": "kill time",
+      "g": "sich die Zeit vertreiben",
+      "d": "To do something to keep busy while waiting",
+      "s": "Our train was delayed, so we _____ by playing cards at the station.",
+      "cf": "killed time",
+      "a": [
+        "kill time",
+        "killed time"
+      ],
+      "mc": [
+        "waste time",
+        "save time",
+        "spend time"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with KILL TIME?",
+          "options": [
+            "train",
+            "station",
+            "cards",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We _____ by playing cards.",
+          "options": [
+            "killed time",
+            "saved time",
+            "wasted time",
+            "spent time"
+          ],
+          "answer": "killed time"
+        }
+      ]
+    },
+    {
+      "w": "make money",
+      "g": "Geld machen/verdienen",
+      "d": "To earn or receive income, especially through work or business",
+      "s": "He wants to _____ by selling handmade jewellery online.",
+      "a": [
+        "money"
+      ],
+      "mc": [
+        "save money",
+        "spend money",
+        "lose money"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MAKE MONEY?",
+          "options": [
+            "quickly",
+            "easily",
+            "online",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He wants to _____ by selling jewellery.",
+          "options": [
+            "make money",
+            "save money",
+            "spend money",
+            "lose money"
+          ],
+          "answer": "make money"
+        }
+      ]
+    },
+    {
+      "w": "take care of",
+      "g": "Acht geben auf, sorgen für",
+      "d": "To look after someone or something and make sure they are safe and well",
+      "s": "When my mum is at work, my grandma comes to _____ us.",
+      "a": [],
+      "mc": [
+        "take part in",
+        "take advantage of",
+        "take note of"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TAKE CARE OF?",
+          "options": [
+            "children",
+            "always",
+            "properly",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "My grandma comes to _____ us.",
+          "options": [
+            "take care of",
+            "take part in",
+            "take note of",
+            "take advantage of"
+          ],
+          "answer": "take care of"
+        }
+      ]
+    },
+    {
+      "w": "take up",
+      "g": "anfangen",
+      "d": "To start doing a new activity, hobby, or sport",
+      "s": "After watching the tennis match on TV, she decided to _____ the sport herself.",
+      "a": [],
+      "mc": [
+        "give up",
+        "pick up",
+        "keep up"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TAKE UP?",
+          "options": [
+            "sport",
+            "hobby",
+            "tennis",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She decided to _____ tennis.",
+          "options": [
+            "take up",
+            "give up",
+            "pick up",
+            "keep up"
+          ],
+          "answer": "take up"
+        }
+      ]
+    },
+    {
+      "w": "attend",
+      "g": "an etw teilnehmen; etw besuchen",
+      "d": "To go to an event, meeting, or institution",
+      "s": "Over 500 students _____ the school concert last Friday.",
+      "cf": "attended",
+      "a": [
+        "attend",
+        "attended"
+      ],
+      "mc": [
+        "participate",
+        "arrive",
+        "visit"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ATTEND?",
+          "options": [
+            "school",
+            "event",
+            "meeting",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Over 500 students _____ the concert.",
+          "options": [
+            "attended",
+            "intended",
+            "pretended",
+            "extended"
+          ],
+          "answer": "attended"
+        }
+      ]
+    }
+  ]
+}

@@ -259,7 +259,7 @@
       "cf": null,
       "forms": [
         "right",
-        "s"
+        "right s"
       ],
       "taughtGloss": false
     },
@@ -616,8 +616,7 @@
       "theme": null,
       "en": "to attend",
       "de": [
-        "besuchen (Universität",
-        "Veranstaltung)"
+        "besuchen (Universität, Veranstaltung)"
       ],
       "deRaw": "besuchen (Universität, Veranstaltung)",
       "exampleSb": "However, girls were still not allowed to attend university.",

@@ -1,0 +1,830 @@
+{
+  "slug": "unit-04",
+  "grade": 2,
+  "unit": 4,
+  "title": "Unit 4",
+  "entries": [
+    {
+      "w": "mosquito",
+      "g": "Moskito, Stechmücke",
+      "d": "A tiny flying insect that bites you and makes you itch",
+      "s": "A _____ bit me on the arm last night.",
+      "a": [
+        "mosquitos",
+        "mosquitoes"
+      ],
+      "mc": [
+        "fly",
+        "bee",
+        "wasp"
+      ]
+    },
+    {
+      "w": "pigeon",
+      "g": "Taube",
+      "d": "A grey bird you often see in cities and parks",
+      "s": "There are many _____ in the town square.",
+      "cf": "pigeons",
+      "a": [
+        "pigeon",
+        "pigeons"
+      ],
+      "mc": [
+        "sparrow",
+        "parrot",
+        "eagle"
+      ]
+    },
+    {
+      "w": "parrot",
+      "g": "Papagei",
+      "d": "A bright bird that can copy what people say",
+      "s": "The _____ in the zoo can say 'hello' and 'goodbye'.",
+      "a": [
+        "parrots"
+      ],
+      "mc": [
+        "pigeon",
+        "peacock",
+        "canary"
+      ]
+    },
+    {
+      "w": "ostrich",
+      "g": "Strauß",
+      "d": "A very big bird that cannot fly but runs fast",
+      "s": "An _____ is taller than most people.",
+      "a": [
+        "ostriches"
+      ],
+      "mc": [
+        "eagle",
+        "flamingo",
+        "penguin"
+      ]
+    },
+    {
+      "w": "chimpanzee",
+      "g": "Schimpanse",
+      "d": "An animal like a monkey that is very smart",
+      "s": "The _____ at the zoo likes to eat bananas.",
+      "a": [
+        "chimpanzees",
+        "chimp",
+        "chimps"
+      ],
+      "mc": [
+        "gorilla",
+        "monkey",
+        "orangutan"
+      ]
+    },
+    {
+      "w": "antelope",
+      "g": "Antilope",
+      "d": "A fast animal with long legs that lives in Africa",
+      "s": "We saw an _____ running very fast across the African plain. It had long legs and small horns.",
+      "a": [
+        "antelopes"
+      ],
+      "mc": [
+        "deer",
+        "gazelle",
+        "zebra"
+      ]
+    },
+    {
+      "w": "bat",
+      "g": "Fledermaus",
+      "d": "A small animal that flies at night and sleeps upside down",
+      "s": "A _____ flew out of the old barn when it got dark.",
+      "a": [
+        "bats"
+      ],
+      "mc": [
+        "owl",
+        "eagle",
+        "moth"
+      ]
+    },
+    {
+      "w": "giraffe",
+      "g": "Giraffe",
+      "d": "A very tall animal with a long neck and spots",
+      "s": "The _____ is the tallest animal in the world.",
+      "a": [
+        "giraffes"
+      ],
+      "mc": [
+        "elephant",
+        "zebra",
+        "camel"
+      ]
+    },
+    {
+      "w": "rhino",
+      "g": "Nashorn",
+      "d": "A big grey animal with a horn on its nose",
+      "s": "A _____ looks slow but can run very fast.",
+      "a": [
+        "rhinos"
+      ],
+      "mc": [
+        "hippo",
+        "elephant",
+        "buffalo"
+      ]
+    },
+    {
+      "w": "cheetah",
+      "g": "Gepard",
+      "d": "A spotted cat that is the fastest land animal",
+      "s": "The _____ can run faster than any other animal.",
+      "a": [
+        "cheetahs"
+      ],
+      "mc": [
+        "leopard",
+        "tiger",
+        "lion"
+      ]
+    },
+    {
+      "w": "anaconda",
+      "g": "Anakonda",
+      "d": "A very long and heavy snake that lives near water",
+      "s": "The _____ in the river was as long as a car.",
+      "a": [
+        "anacondas"
+      ],
+      "mc": [
+        "cobra",
+        "python",
+        "crocodile"
+      ]
+    },
+    {
+      "w": "crocodile",
+      "g": "Krokodil",
+      "d": "A big reptile with a long mouth full of sharp teeth",
+      "s": "The _____ was lying in the sun next to the river.",
+      "a": [
+        "crocodiles"
+      ],
+      "mc": [
+        "alligator",
+        "lizard",
+        "turtle"
+      ]
+    },
+    {
+      "w": "dolphin",
+      "g": "Delfin",
+      "d": "A friendly sea animal that jumps out of the water",
+      "s": "We saw a _____ jump out of the sea on holiday.",
+      "a": [
+        "dolphins"
+      ],
+      "mc": [
+        "whale",
+        "shark",
+        "seal"
+      ]
+    },
+    {
+      "w": "whale",
+      "g": "Wal",
+      "d": "The biggest animal in the sea",
+      "s": "A blue _____ is the largest animal on Earth.",
+      "a": [
+        "whales"
+      ],
+      "mc": [
+        "dolphin",
+        "shark",
+        "walrus"
+      ]
+    },
+    {
+      "w": "shark",
+      "g": "Hai",
+      "d": "A big fish with sharp teeth that lives in the sea",
+      "s": "Some people are afraid of swimming because of _____.",
+      "cf": "sharks",
+      "a": [
+        "shark",
+        "sharks"
+      ],
+      "mc": [
+        "whale",
+        "dolphin",
+        "swordfish"
+      ]
+    },
+    {
+      "w": "(two days) ago",
+      "g": "vor (zwei Tagen)",
+      "d": "In the past, before now",
+      "s": "I started reading this book three days _____.",
+      "cf": "ago",
+      "a": [
+        "ago"
+      ],
+      "mc": [
+        "before",
+        "later",
+        "since"
+      ]
+    },
+    {
+      "w": "farmer",
+      "g": "Bauer/Bäuerin",
+      "d": "A person who grows food or keeps animals on a farm",
+      "s": "The _____ gets up early to feed the cows.",
+      "a": [
+        "farmers"
+      ],
+      "mc": [
+        "gardener",
+        "shepherd",
+        "hunter"
+      ]
+    },
+    {
+      "w": "human",
+      "g": "Mensch",
+      "d": "A person, a man, woman, or child",
+      "s": "Every _____ needs food, water, and sleep — we are all born the same way.",
+      "a": [
+        "humans"
+      ],
+      "mc": [
+        "plant",
+        "robot",
+        "rock"
+      ]
+    },
+    {
+      "w": "incredible",
+      "g": "unglaublich",
+      "d": "Very hard to believe because it is so amazing",
+      "s": "The view from the mountain was _____.",
+      "a": [
+        "incredibly"
+      ],
+      "mc": [
+        "boring",
+        "ordinary",
+        "normal"
+      ]
+    },
+    {
+      "w": "dangerous",
+      "g": "gefährlich",
+      "d": "Something that can hurt you",
+      "s": "Playing near the road is very _____.",
+      "a": [],
+      "mc": [
+        "safe",
+        "fun",
+        "boring"
+      ]
+    },
+    {
+      "w": "hairy",
+      "g": "haarig, stark behaart",
+      "d": "Having a lot of hair or fur on the body",
+      "s": "My uncle never shaves his _____ arms.",
+      "a": [
+        "hairier",
+        "hairiest"
+      ],
+      "mc": [
+        "thin",
+        "smooth",
+        "fluffy"
+      ]
+    },
+    {
+      "w": "heavy",
+      "g": "schwer",
+      "d": "Hard to pick up because it has a lot of weight",
+      "s": "My school bag is too _____ today — I have 5 thick books inside and my shoulder hurts.",
+      "a": [
+        "heavier",
+        "heaviest"
+      ],
+      "mc": [
+        "light",
+        "empty",
+        "small"
+      ]
+    },
+    {
+      "w": "strong",
+      "g": "stark",
+      "d": "Having a lot of power in your body",
+      "s": "My dad is very _____. He can carry big heavy boxes up the stairs without help.",
+      "a": [
+        "stronger",
+        "strongest"
+      ],
+      "mc": [
+        "weak",
+        "tired",
+        "small"
+      ]
+    },
+    {
+      "w": "climate change",
+      "g": "Klimawandel",
+      "d": "When the weather of the world slowly becomes different",
+      "s": "_____ is a big problem for animals in cold places.",
+      "cf": "Climate change",
+      "a": [
+        "climate change"
+      ],
+      "mc": [
+        "breakfast",
+        "pollution",
+        "natural disaster"
+      ]
+    },
+    {
+      "w": "fast",
+      "g": "schnell",
+      "d": "Moving with a lot of speed, not slow",
+      "s": "She is a very _____ runner — she finishes the 100 metres in only 12 seconds and always wins.",
+      "a": [
+        "faster",
+        "fastest"
+      ],
+      "mc": [
+        "slow",
+        "tired",
+        "young"
+      ]
+    },
+    {
+      "w": "female",
+      "g": "weiblich; Weibchen (Tierwelt)",
+      "d": "A girl or woman, or an animal that can have babies",
+      "s": "The _____ lion is the one that hunts food for the family, not the male.",
+      "a": [
+        "females"
+      ],
+      "mc": [
+        "male",
+        "young",
+        "adult"
+      ]
+    },
+    {
+      "w": "male",
+      "g": "männlich",
+      "d": "A boy or man, or a father animal",
+      "s": "The _____ peacock has beautiful colourful feathers, but the female does not.",
+      "a": [
+        "males"
+      ],
+      "mc": [
+        "female",
+        "young",
+        "adult"
+      ]
+    },
+    {
+      "w": "nobody",
+      "g": "niemand",
+      "d": "Not any person, no one",
+      "s": "I looked around but _____ was in the room.",
+      "a": [
+        "no one"
+      ],
+      "mc": [
+        "somebody",
+        "anybody",
+        "everyone"
+      ]
+    },
+    {
+      "w": "scientist",
+      "g": "Wissenschaftler/Wissenschaftlerin",
+      "d": "A person who studies how the world works",
+      "s": "The _____ discovered a new type of fish in the sea.",
+      "a": [
+        "scientists"
+      ],
+      "mc": [
+        "researcher",
+        "professor",
+        "inventor"
+      ]
+    },
+    {
+      "w": "to die out",
+      "g": "aussterben",
+      "d": "When the last of a kind of animal or plant is gone forever",
+      "s": "Dinosaurs _____ millions of years before us — now they are all gone forever.",
+      "cf": "died out",
+      "a": [
+        "die out",
+        "died out",
+        "dies out",
+        "dying out"
+      ],
+      "mc": [
+        "to live",
+        "to grow",
+        "to return"
+      ]
+    },
+    {
+      "w": "less",
+      "g": "weniger",
+      "d": "A smaller amount, not as much",
+      "s": "I eat _____ sugar now because I want to be healthy.",
+      "a": [],
+      "mc": [
+        "more",
+        "much",
+        "most"
+      ]
+    },
+    {
+      "w": "to carry",
+      "g": "tragen",
+      "d": "To hold something and take it somewhere",
+      "s": "Can you help me _____ these bags to the car?",
+      "cf": "carry",
+      "a": [
+        "carry",
+        "carries",
+        "carried"
+      ],
+      "mc": [
+        "to lift",
+        "to hold",
+        "to drag"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a bag",
+          "options": [
+            "Carry",
+            "Drink",
+            "Read",
+            "Listen"
+          ],
+          "answer": "Carry"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CARRY?",
+          "options": [
+            "a bag",
+            "a box",
+            "a baby",
+            "a song"
+          ],
+          "answer": "a song"
+        }
+      ]
+    },
+    {
+      "w": "centimetre",
+      "g": "Zentimeter",
+      "d": "A small unit to measure how long something is",
+      "s": "This pencil is about 15 _____ long.",
+      "cf": "centimetres",
+      "a": [
+        "centimetre",
+        "centimetres",
+        "centimeter",
+        "centimeters"
+      ],
+      "mc": [
+        "millimetre",
+        "metre",
+        "inch"
+      ]
+    },
+    {
+      "w": "desert",
+      "g": "Wüste",
+      "d": "A very dry and hot place with sand and almost no rain",
+      "s": "It is very hot in the _____ during the day.",
+      "a": [
+        "deserts"
+      ],
+      "mc": [
+        "jungle",
+        "forest",
+        "ocean"
+      ]
+    },
+    {
+      "w": "to die",
+      "g": "sterben",
+      "d": "To stop living",
+      "s": "The flowers _____ when they do not get water.",
+      "cf": "die",
+      "a": [
+        "die",
+        "dies",
+        "died"
+      ],
+      "mc": [
+        "to survive",
+        "to die out",
+        "to live"
+      ]
+    },
+    {
+      "w": "mammal",
+      "g": "Säugetier",
+      "d": "An animal that drinks milk from its mother when it is a baby",
+      "s": "A dog is a _____ because it feeds its babies with milk.",
+      "a": [
+        "mammals"
+      ],
+      "mc": [
+        "reptile",
+        "insect",
+        "bird"
+      ]
+    },
+    {
+      "w": "ton",
+      "g": "Tonne (1000 kg)",
+      "d": "A very heavy weight, the same as 1000 kilograms",
+      "s": "An elephant can weigh more than five _____.",
+      "cf": "tons",
+      "a": [
+        "ton",
+        "tons",
+        "tonnes"
+      ],
+      "mc": [
+        "kilogram",
+        "pound",
+        "gram"
+      ]
+    },
+    {
+      "w": "venomous",
+      "g": "giftig",
+      "d": "Having poison that can make you very sick or kill you",
+      "s": "Some snakes are _____ — their bite contains a dangerous liquid that can kill you.",
+      "a": [],
+      "mc": [
+        "friendly",
+        "harmless",
+        "small"
+      ]
+    },
+    {
+      "w": "to weigh",
+      "g": "wiegen",
+      "d": "To find out how heavy something is",
+      "s": "The baby _____ four kilograms when she was born.",
+      "cf": "weighed",
+      "a": [
+        "weigh",
+        "weighs",
+        "weighed"
+      ],
+      "mc": [
+        "to measure",
+        "to count",
+        "to lift"
+      ]
+    },
+    {
+      "w": "length",
+      "g": "Länge",
+      "d": "How long something is from one end to the other",
+      "s": "The _____ of the classroom is about ten metres.",
+      "a": [
+        "lengths"
+      ],
+      "mc": [
+        "height",
+        "width",
+        "weight"
+      ]
+    },
+    {
+      "w": "speed",
+      "g": "Geschwindigkeit, Tempo",
+      "d": "How fast something moves",
+      "s": "The car was going at a very high _____.",
+      "a": [
+        "speeds"
+      ],
+      "mc": [
+        "distance",
+        "direction",
+        "height"
+      ]
+    },
+    {
+      "w": "intelligent",
+      "g": "intelligent",
+      "d": "Very good at thinking and learning new things",
+      "s": "Dolphins are very _____ animals. Scientists say they can solve problems and think like humans.",
+      "a": [],
+      "mc": [
+        "lazy",
+        "slow",
+        "wild"
+      ]
+    },
+    {
+      "w": "reason",
+      "g": "Grund",
+      "d": "Why something happens or why you do something",
+      "s": "What is the _____ you are late for school?",
+      "a": [
+        "reasons"
+      ],
+      "mc": [
+        "colour",
+        "name",
+        "result"
+      ]
+    },
+    {
+      "w": "to share",
+      "g": "teilen; zeigen",
+      "d": "To give part of what you have to someone else",
+      "s": "My sister _____ her chocolate with me every day — she gives me half.",
+      "cf": "shares",
+      "a": [
+        "share",
+        "shares",
+        "shared"
+      ],
+      "mc": [
+        "to hide",
+        "to eat",
+        "to steal"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a room",
+          "options": [
+            "Share",
+            "Bake",
+            "Fly",
+            "Dig"
+          ],
+          "answer": "Share"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SHARE?",
+          "options": [
+            "a room",
+            "food",
+            "ideas",
+            "a cloud"
+          ],
+          "answer": "a cloud"
+        }
+      ]
+    },
+    {
+      "w": "luck",
+      "g": "Glück",
+      "d": "When good things happen to you by chance",
+      "s": "Good _____ on your test tomorrow! I hope you pass.",
+      "a": [],
+      "mc": [
+        "chance",
+        "hope",
+        "success"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "Good _____!",
+          "options": [
+            "Luck",
+            "Food",
+            "Chair",
+            "Shoe"
+          ],
+          "answer": "Luck"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LUCK?",
+          "options": [
+            "good",
+            "bad",
+            "best of",
+            "fried"
+          ],
+          "answer": "fried"
+        }
+      ]
+    },
+    {
+      "w": "powerful",
+      "g": "mächtig, kräftig",
+      "d": "Very strong and full of energy",
+      "s": "Elephants are very _____ — they can push over big trees with just their trunks.",
+      "a": [],
+      "mc": [
+        "weak",
+        "small",
+        "gentle"
+      ]
+    },
+    {
+      "w": "smart",
+      "g": "schlau",
+      "d": "Good at thinking and learning quickly",
+      "s": "Our new puppy is very _____. He learned his name and three tricks on the very first day!",
+      "a": [
+        "smarter",
+        "smartest"
+      ],
+      "mc": [
+        "naughty",
+        "lazy",
+        "hungry"
+      ]
+    },
+    {
+      "w": "truck",
+      "g": "Lastwagen",
+      "d": "A very big vehicle used to move heavy things",
+      "s": "A big _____ with six wheels brought new furniture to our school.",
+      "a": [
+        "trucks"
+      ],
+      "mc": [
+        "bicycle",
+        "car",
+        "motorbike"
+      ]
+    },
+    {
+      "w": "forever",
+      "g": "für immer",
+      "d": "For all time, never ending",
+      "s": "Best friends stay together _____ and never stop caring.",
+      "a": [],
+      "mc": [
+        "nowhere",
+        "never",
+        "sometimes"
+      ]
+    },
+    {
+      "w": "to protect",
+      "g": "(be-)schützen",
+      "d": "To keep someone or something safe from danger",
+      "s": "We must _____ wild animals and their homes from hunters and pollution.",
+      "cf": "protect",
+      "a": [
+        "protect",
+        "protects",
+        "protected"
+      ],
+      "mc": [
+        "to hunt",
+        "to hurt",
+        "to destroy"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ the environment",
+          "options": [
+            "Protect",
+            "Eat",
+            "Sing",
+            "Paint"
+          ],
+          "answer": "Protect"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PROTECT?",
+          "options": [
+            "animals",
+            "the environment",
+            "children",
+            "homework"
+          ],
+          "answer": "homework"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,549 @@
+{
+  "slug": "unit-07",
+  "grade": 3,
+  "unit": 7,
+  "title": "Unit 7",
+  "entries": [
+    {
+      "w": "to fall out with sb.",
+      "g": "sich mit jdm. zerstreiten",
+      "d": "To have a big argument and stop being friendly",
+      "s": "I _____ with my best friend Anna last week because she told everyone my private secret at school.",
+      "cf": "fell out",
+      "a": [
+        "fall out with",
+        "fell out with",
+        "fallen out with"
+      ],
+      "mc": [
+        "to become friends with sb.",
+        "to meet sb.",
+        "to visit sb."
+      ]
+    },
+    {
+      "w": "to storm out of",
+      "g": "wütend hinausstürmen",
+      "d": "To leave a room quickly because you are angry",
+      "s": "He was so angry that he _____ out of the classroom, slamming the door loudly behind him.",
+      "cf": "stormed",
+      "a": [
+        "storm out of",
+        "stormed out of"
+      ],
+      "mc": [
+        "to tiptoe out of",
+        "to creep out of",
+        "to sit in"
+      ]
+    },
+    {
+      "w": "to break up with sb.",
+      "g": "mit jdm. Schluss machen",
+      "d": "To end a romantic connection",
+      "s": "She decided to _____ with her boyfriend of two years after a big argument last weekend.",
+      "cf": "break up",
+      "a": [
+        "break up with",
+        "broke up with"
+      ],
+      "mc": [
+        "to marry sb.",
+        "to move in with sb.",
+        "to date sb."
+      ]
+    },
+    {
+      "w": "to mind your own business",
+      "g": "sich um seine eigenen Angelegenheiten kümmern",
+      "d": "To not ask about things that are not about you",
+      "s": "Stop asking me so many personal questions about my family and _____ your own business!",
+      "cf": "mind",
+      "a": [
+        "mind your own business"
+      ],
+      "mc": [
+        "to ask even more questions",
+        "to get involved",
+        "to gossip"
+      ]
+    },
+    {
+      "w": "to make up with sb.",
+      "g": "sich mit jdm. versöhnen",
+      "d": "To become friends again after an argument",
+      "s": "They had a big fight yesterday morning, but today they _____ up and are best friends again.",
+      "cf": "made",
+      "a": [
+        "make up with",
+        "made up with"
+      ],
+      "mc": [
+        "to break up",
+        "to fall out",
+        "to argue"
+      ]
+    },
+    {
+      "w": "to get on well with sb.",
+      "g": "sich gut mit jdm. verstehen",
+      "d": "To have a good, friendly connection",
+      "s": "I _____ on really well with my older cousin Sarah — we always laugh together and never argue about anything.",
+      "cf": "get",
+      "a": [
+        "get on well with",
+        "gets on well with",
+        "got on well with"
+      ],
+      "mc": [
+        "to argue with sb.",
+        "to fight with sb.",
+        "to dislike sb."
+      ]
+    },
+    {
+      "w": "It's none of my business.",
+      "g": "Das geht mich nichts an.",
+      "d": "A way to say that something is not your problem",
+      "s": "Who she chooses to talk to at break time is _____. I should not get involved or ask questions.",
+      "cf": "none of my business",
+      "a": [
+        "It's none of my business",
+        "none of my business"
+      ],
+      "mc": [
+        "my responsibility",
+        "my problem",
+        "my job"
+      ]
+    },
+    {
+      "w": "to laugh at sb.",
+      "g": "jdn. auslachen",
+      "d": "To make fun of someone by laughing",
+      "s": "The mean children in the playground pointed and _____ him when he tripped over his shoelace and fell on the ground.",
+      "cf": "laughed at",
+      "a": [
+        "laugh at",
+        "laughed at"
+      ],
+      "mc": [
+        "to help sb. up",
+        "to comfort sb.",
+        "to apologise to sb."
+      ]
+    },
+    {
+      "w": "to make up one's mind",
+      "g": "einen Entschluss fassen",
+      "d": "To decide something after thinking about it",
+      "s": "I can't _____ my mind — should I buy the blue jumper or the red one for my sister's birthday present?",
+      "cf": "make up",
+      "a": [
+        "make up my mind",
+        "make up your mind",
+        "made up my mind",
+        "made up her mind"
+      ],
+      "mc": [
+        "to lose one's mind",
+        "to speak one's mind",
+        "to have one's mind set"
+      ]
+    },
+    {
+      "w": "to make fun of sb.",
+      "g": "sich über jdn. lustig machen",
+      "d": "To say or do things to laugh at someone in a mean way",
+      "s": "Don't _____ of him just because he's new at school and doesn't know anyone yet — that's mean and unkind.",
+      "cf": "make fun",
+      "a": [
+        "make fun of",
+        "made fun of",
+        "making fun of"
+      ],
+      "mc": [
+        "to welcome sb.",
+        "to help sb.",
+        "to include sb."
+      ]
+    },
+    {
+      "w": "to move",
+      "g": "umziehen, übersiedeln",
+      "d": "To go and live in a different place",
+      "s": "We're going to _____ to a much bigger new flat next month in a different neighbourhood across town.",
+      "cf": "move",
+      "a": [
+        "move",
+        "moved"
+      ],
+      "mc": [
+        "to stay in our current flat",
+        "to clean our flat",
+        "to sell our flat"
+      ]
+    },
+    {
+      "w": "soft toy",
+      "g": "Stofftier",
+      "d": "A cuddly animal made of fabric and stuffing",
+      "s": "She sleeps every night with her favourite _____ — a fluffy stuffed elephant made of very soft brown fabric.",
+      "cf": "soft toy",
+      "a": [
+        "soft toy",
+        "soft toys"
+      ],
+      "mc": [
+        "metal robot",
+        "hard wooden doll",
+        "plastic action figure"
+      ]
+    },
+    {
+      "w": "to step in",
+      "g": "hier: eingreifen, dazwischen gehen",
+      "d": "To help or do something when there is a problem",
+      "s": "When the two angry boys started pushing each other in the playground, the teacher had to _____ and stop the fight.",
+      "cf": "step in",
+      "a": [
+        "step in",
+        "stepped in"
+      ],
+      "mc": [
+        "to step back",
+        "to walk away",
+        "to pretend not to see"
+      ]
+    },
+    {
+      "w": "relationship",
+      "g": "Beziehung",
+      "d": "The way two people feel about and behave towards each other",
+      "s": "A good, healthy _____ with your close friends based on trust and respect is very important in life.",
+      "a": [
+        "relationships"
+      ],
+      "mc": [
+        "meal",
+        "job",
+        "hobby"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RELATIONSHIP?",
+          "options": [
+            "close",
+            "good",
+            "have a",
+            "fry a"
+          ],
+          "answer": "fry a"
+        },
+        {
+          "type": "gap",
+          "prompt": "a _____ relationship",
+          "options": [
+            "close",
+            "fast",
+            "loud",
+            "sharp"
+          ],
+          "answer": "close"
+        }
+      ]
+    },
+    {
+      "w": "to own",
+      "g": "besitzen",
+      "d": "To have something that is yours",
+      "s": "Does your family _____ a car, or do you rent one every time you need to drive somewhere?",
+      "a": [
+        "own",
+        "owned",
+        "owns"
+      ],
+      "mc": [
+        "to sell",
+        "to destroy",
+        "to give away"
+      ]
+    },
+    {
+      "w": "childhood (no pl)",
+      "g": "Kindheit",
+      "d": "The time when you are a child",
+      "s": "My happiest _____ memories are from summer holidays swimming at the lake with my cousins when I was 7 or 8.",
+      "cf": "childhood",
+      "a": [
+        "childhood"
+      ],
+      "mc": [
+        "adulthood",
+        "old age",
+        "teenage years"
+      ]
+    },
+    {
+      "w": "earring",
+      "g": "Ohrring",
+      "d": "A piece of jewellery you wear on your ear",
+      "s": "She lost one of her favourite gold _____ at the swimming pool — it must have fallen out of her ear in the water.",
+      "cf": "earrings",
+      "a": [
+        "earring",
+        "earrings"
+      ],
+      "mc": [
+        "bracelet",
+        "necklace",
+        "ring"
+      ]
+    },
+    {
+      "w": "jealous",
+      "g": "eifersüchtig",
+      "d": "Wanting what someone else has, or not wanting to share",
+      "s": "She was very _____ because her classmate got a better grade on the test than she did, even though she studied harder.",
+      "a": [],
+      "mc": [
+        "proud",
+        "happy for her",
+        "glad"
+      ]
+    },
+    {
+      "w": "to keep (a) secret",
+      "g": "ein Geheimnis für sich behalten",
+      "d": "To not tell anyone about something private",
+      "s": "Can you _____ a secret? I have something important and personal to tell you — please don't tell anyone else.",
+      "cf": "keep",
+      "a": [
+        "keep a secret",
+        "keep secret",
+        "kept a secret",
+        "kept secret"
+      ],
+      "mc": [
+        "to tell (a) secret",
+        "to share (a) secret",
+        "to reveal (a) secret"
+      ]
+    },
+    {
+      "w": "questionnaire",
+      "g": "Fragebogen",
+      "d": "A list of questions you answer, often on paper",
+      "s": "Please fill in this _____ form with 20 questions about your reading habits and favourite types of books.",
+      "a": [
+        "questionnaires"
+      ],
+      "mc": [
+        "poem",
+        "song",
+        "drawing"
+      ]
+    },
+    {
+      "w": "to tell sb. off",
+      "g": "mit jdm. schimpfen",
+      "d": "To speak to someone angrily because they did something wrong",
+      "s": "My strict mum _____ me off for coming home too late from my friend's house last Friday night — I was an hour late.",
+      "cf": "told",
+      "a": [
+        "tell off",
+        "told off",
+        "tells off"
+      ],
+      "mc": [
+        "to praise sb.",
+        "to thank sb.",
+        "to reward sb."
+      ]
+    },
+    {
+      "w": "to solve",
+      "g": "lösen",
+      "d": "To find the answer to a problem",
+      "s": "Can you please help me _____ this tricky maths word problem? I've been stuck on it for 30 minutes already.",
+      "a": [
+        "solve",
+        "solved"
+      ],
+      "mc": [
+        "to create",
+        "to make harder",
+        "to cause"
+      ]
+    },
+    {
+      "w": "beloved",
+      "g": "geliebt",
+      "d": "Loved very much",
+      "s": "The kind old woman sat peacefully with her _____ old cat Whiskers on her lap, gently stroking its soft fur.",
+      "a": [],
+      "mc": [
+        "unwanted",
+        "hated",
+        "annoying"
+      ]
+    },
+    {
+      "w": "nowhere",
+      "g": "nirgends",
+      "d": "Not in any place, not anywhere",
+      "s": "There was _____ to sit because all twenty seats on the train were already taken by other passengers.",
+      "a": [],
+      "mc": [
+        "everywhere",
+        "somewhere",
+        "a place"
+      ]
+    },
+    {
+      "w": "script",
+      "g": "Drehbuch",
+      "d": "The written text of a film or play",
+      "s": "The film actors all read the _____ together around a table before they started filming the scenes with cameras.",
+      "a": [
+        "scripts"
+      ],
+      "mc": [
+        "instructions for the camera",
+        "costumes and props",
+        "lighting equipment"
+      ]
+    },
+    {
+      "w": "to struggle",
+      "g": "kämpfen, sich abmühen",
+      "d": "To try very hard to do something that is difficult",
+      "s": "He _____ a lot with his English homework because it was very hard and he didn't understand the new grammar rules.",
+      "cf": "struggled",
+      "a": [
+        "struggle",
+        "struggled"
+      ],
+      "mc": [
+        "to enjoy",
+        "to find easy",
+        "to finish quickly"
+      ]
+    },
+    {
+      "w": "to lie to sb.",
+      "g": "jdn. anlügen",
+      "d": "To say something that is not true on purpose",
+      "s": "She _____ her teacher about why she was late to school this morning — she said the bus was late but it wasn't true.",
+      "cf": "lied to",
+      "a": [
+        "lie to",
+        "lied to"
+      ],
+      "mc": [
+        "to tell the truth to sb.",
+        "to be honest with sb.",
+        "to give correct information to sb."
+      ]
+    },
+    {
+      "w": "to admit",
+      "g": "zugeben",
+      "d": "To say that something is true, especially something bad",
+      "s": "He didn't want to _____ that he broke the classroom window with his football, even though everyone saw him do it.",
+      "cf": "admit",
+      "a": [
+        "admit",
+        "admitted"
+      ],
+      "mc": [
+        "to deny",
+        "to hide",
+        "to reject"
+      ]
+    },
+    {
+      "w": "to blackmail",
+      "g": "erpressen",
+      "d": "To force someone to do what you want by saying you will tell a secret",
+      "s": "He _____ his classmate by saying he would tell the whole class her embarrassing secret unless she gave him €10.",
+      "cf": "blackmailed",
+      "a": [
+        "blackmail",
+        "blackmailed"
+      ],
+      "mc": [
+        "to help",
+        "to befriend",
+        "to protect"
+      ]
+    },
+    {
+      "w": "clumsy",
+      "g": "ungeschickt",
+      "d": "Often dropping things or falling over by accident",
+      "s": "I'm so _____ today — I've already knocked over my glass of water twice at the lunch table without meaning to.",
+      "a": [],
+      "mc": [
+        "graceful",
+        "coordinated",
+        "careful"
+      ]
+    },
+    {
+      "w": "honest",
+      "g": "ehrlich",
+      "d": "Always telling the truth",
+      "s": "Please be _____ with me and tell me the truth — did you really like my drawing or were you just being polite?",
+      "a": [],
+      "mc": [
+        "dishonest",
+        "fake",
+        "insincere"
+      ]
+    },
+    {
+      "w": "a pile of",
+      "g": "ein Stapel an",
+      "d": "A lot of things put on top of each other",
+      "s": "There is _____ dirty, smelly clothes stacked high on the floor of his messy bedroom that he hasn't washed for weeks.",
+      "cf": "a pile of",
+      "a": [
+        "a pile of",
+        "pile of"
+      ],
+      "mc": [
+        "a single",
+        "one piece of",
+        "two"
+      ]
+    },
+    {
+      "w": "rash",
+      "g": "Hautausschlag",
+      "d": "Red spots on your skin, often because of an allergy",
+      "s": "She got an itchy red _____ with bumps all over her arms and neck after touching the strange poisonous plant in the forest.",
+      "a": [
+        "rashes"
+      ],
+      "mc": [
+        "tan",
+        "sunburn",
+        "scratch"
+      ]
+    },
+    {
+      "w": "unwell",
+      "g": "unwohl, krank",
+      "d": "Not feeling well, a bit ill",
+      "s": "He looked very pale and _____, so the school teacher sent him home to rest in bed with some hot tea.",
+      "a": [],
+      "mc": [
+        "very healthy",
+        "full of energy",
+        "perfectly fine"
+      ]
+    }
+  ]
+}

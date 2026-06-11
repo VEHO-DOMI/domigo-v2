@@ -13,10 +13,11 @@ next-env.d.ts
 # vercel
 .vercel/
 
-# macOS / iCloud artifacts
+# macOS artifacts
+# (no "* 2.*" iCloud-dup patterns here — this repo lives OUTSIDE iCloud, and
+# such patterns swallow real files like "More 2 SB Unit 2.txt"; the pipeline's
+# sibling-aware filter handles true iCloud dups at the SOURCE side instead)
 .DS_Store
-* 2.*
-* 2/
 
 # NOTE: content/ (corpus, transcripts, dist artifacts) is COMMITTED by design —
 # CI validates artifacts without needing iCloud sources. Do not ignore it.

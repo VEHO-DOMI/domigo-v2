@@ -1,0 +1,747 @@
+{
+  "slug": "unit-05",
+  "grade": 2,
+  "unit": 5,
+  "title": "Unit 5",
+  "entries": [
+    {
+      "w": "cinema",
+      "g": "Kino",
+      "d": "A place where you go to watch films on a big screen",
+      "s": "We are going to the _____ to see a new film tonight.",
+      "a": [
+        "cinemas"
+      ],
+      "mc": [
+        "theatre",
+        "museum",
+        "concert hall"
+      ]
+    },
+    {
+      "w": "church",
+      "g": "Kirche",
+      "d": "A building where people go to pray",
+      "s": "There is an old _____ in the centre of our town.",
+      "a": [
+        "churches"
+      ],
+      "mc": [
+        "mosque",
+        "temple",
+        "cathedral"
+      ]
+    },
+    {
+      "w": "bank",
+      "g": "Bank",
+      "d": "A place where you keep your money safe",
+      "s": "My mum went to the _____ to get some money.",
+      "a": [
+        "banks"
+      ],
+      "mc": [
+        "post office",
+        "shop",
+        "office"
+      ]
+    },
+    {
+      "w": "restaurant",
+      "g": "Restaurant",
+      "d": "A place where you can buy and eat a meal",
+      "s": "We ate pizza at a nice _____ near the lake.",
+      "a": [
+        "restaurants"
+      ],
+      "mc": [
+        "cafe",
+        "canteen",
+        "pub"
+      ]
+    },
+    {
+      "w": "railway station",
+      "g": "Bahnhof",
+      "d": "A place where trains stop so people can get on or off",
+      "s": "We waited at the _____ for the train to Vienna.",
+      "cf": "railway station",
+      "a": [
+        "railway station",
+        "railway stations",
+        "train station"
+      ],
+      "mc": [
+        "bus stop",
+        "airport",
+        "underground"
+      ]
+    },
+    {
+      "w": "chemist's",
+      "g": "Apotheke",
+      "d": "A shop where you buy medicine when you are sick",
+      "s": "I went to the _____ to buy something for my cold.",
+      "a": [
+        "chemist",
+        "pharmacy"
+      ],
+      "mc": [
+        "hospital",
+        "dentist",
+        "doctor's"
+      ]
+    },
+    {
+      "w": "tourist office",
+      "g": "Touristeninformation",
+      "d": "A place where visitors can get maps and information",
+      "s": "We got a free map from the _____.",
+      "cf": "tourist office",
+      "a": [
+        "tourist office",
+        "tourist offices"
+      ],
+      "mc": [
+        "post office",
+        "police station",
+        "library"
+      ]
+    },
+    {
+      "w": "music shop",
+      "g": "Musikgeschäft",
+      "d": "A shop where you can buy instruments or songs",
+      "s": "I bought a new guitar at the _____.",
+      "cf": "music shop",
+      "a": [
+        "music shop",
+        "music shops"
+      ],
+      "mc": [
+        "bookshop",
+        "toy shop",
+        "clothes shop"
+      ]
+    },
+    {
+      "w": "post office",
+      "g": "Postamt",
+      "d": "A place where you send letters and packages",
+      "s": "I went to the _____ to send a letter to my grandma.",
+      "cf": "post office",
+      "a": [
+        "post office",
+        "post offices"
+      ],
+      "mc": [
+        "police station",
+        "bank",
+        "tourist office"
+      ]
+    },
+    {
+      "w": "supermarket",
+      "g": "Supermarkt",
+      "d": "A big shop where you buy food and other things",
+      "s": "We buy milk and bread at the _____ every week.",
+      "a": [
+        "supermarkets"
+      ],
+      "mc": [
+        "market square",
+        "bakery",
+        "shopping centre"
+      ]
+    },
+    {
+      "w": "hospital",
+      "g": "Krankenhaus",
+      "d": "A place where doctors help sick or hurt people",
+      "s": "My friend broke his arm and went to the _____.",
+      "a": [
+        "hospitals"
+      ],
+      "mc": [
+        "chemist's",
+        "doctor's",
+        "clinic"
+      ]
+    },
+    {
+      "w": "police station",
+      "g": "Polizeistation",
+      "d": "A building where police officers work",
+      "s": "We went to the _____ to report the lost bag.",
+      "cf": "police station",
+      "a": [
+        "police station",
+        "police stations"
+      ],
+      "mc": [
+        "fire station",
+        "post office",
+        "hospital"
+      ]
+    },
+    {
+      "w": "to go past",
+      "g": "vorbeigehen",
+      "d": "To walk by something without stopping",
+      "s": "You _____ the church without stopping and then turn left at the next corner.",
+      "cf": "go past",
+      "a": [
+        "go past",
+        "goes past",
+        "went past"
+      ],
+      "mc": [
+        "to stop at",
+        "to enter",
+        "to look inside"
+      ]
+    },
+    {
+      "w": "to go straight ahead",
+      "g": "geradeaus gehen",
+      "d": "To walk forward without turning",
+      "s": "_____ and the shop is at the end of the road.",
+      "cf": "Go straight ahead",
+      "a": [
+        "go straight ahead",
+        "goes straight ahead",
+        "went straight ahead"
+      ],
+      "mc": [
+        "to turn left",
+        "to turn right",
+        "to go back"
+      ]
+    },
+    {
+      "w": "to cross the street",
+      "g": "die Straße überqueren",
+      "d": "To walk from one side of the road to the other",
+      "s": "Look both ways before you _____ so you don't get hit by a car.",
+      "cf": "cross the street",
+      "a": [
+        "cross the street",
+        "crosses the street",
+        "crossed the street"
+      ],
+      "mc": [
+        "to go past",
+        "to turn left",
+        "to go straight on"
+      ]
+    },
+    {
+      "w": "to turn left",
+      "g": "links abbiegen",
+      "d": "To change your direction and go to the left side",
+      "s": "_____ at the traffic lights and you will see the park.",
+      "cf": "Turn left",
+      "a": [
+        "turn left",
+        "turns left",
+        "turned left"
+      ],
+      "mc": [
+        "to turn right",
+        "to go straight ahead",
+        "to go back"
+      ]
+    },
+    {
+      "w": "to take the second right",
+      "g": "die zweite rechts nehmen",
+      "d": "To turn at the second road on your right side",
+      "s": "Walk down the main road. Go past the first turning, then _____ at the next one.",
+      "cf": "take the second right",
+      "a": [
+        "take the second right",
+        "took the second right",
+        "takes the second right"
+      ],
+      "mc": [
+        "to take the first left",
+        "to turn left",
+        "to go straight on"
+      ]
+    },
+    {
+      "w": "round the corner",
+      "g": "um die Ecke",
+      "d": "Just past where two streets meet",
+      "s": "The bakery is just _____, only 20 metres away. You turn left and you will see it.",
+      "cf": "round the corner",
+      "a": [
+        "round the corner",
+        "around the corner"
+      ],
+      "mc": [
+        "very far away",
+        "in another city",
+        "across the river"
+      ]
+    },
+    {
+      "w": "as far as",
+      "g": "bis zu",
+      "d": "All the way to a certain place",
+      "s": "Walk _____ the church and then stop. Don't go past it.",
+      "cf": "as far as",
+      "a": [
+        "as far as"
+      ],
+      "mc": [
+        "as soon as",
+        "as long as",
+        "as well as"
+      ]
+    },
+    {
+      "w": "opposite",
+      "g": "gegenüber",
+      "d": "On the other side, facing something",
+      "s": "The school is _____ the supermarket. They face each other across the road.",
+      "a": [],
+      "mc": [
+        "next to",
+        "behind",
+        "between"
+      ]
+    },
+    {
+      "w": "next to",
+      "g": "neben",
+      "d": "Very close to something, right beside it",
+      "s": "My house is right _____ the bakery. The wall is shared.",
+      "cf": "next to",
+      "a": [
+        "next to"
+      ],
+      "mc": [
+        "opposite",
+        "behind",
+        "in front of"
+      ]
+    },
+    {
+      "w": "to cross",
+      "g": "überqueren",
+      "d": "To go from one side to the other",
+      "s": "We _____ the bridge to get to the other side of the river.",
+      "cf": "crossed",
+      "a": [
+        "cross",
+        "crosses",
+        "crossed"
+      ],
+      "mc": [
+        "to pass",
+        "to follow",
+        "to reach"
+      ]
+    },
+    {
+      "w": "map",
+      "g": "(Land-)Karte",
+      "d": "A picture that shows where places are",
+      "s": "We used a _____ to find the way to the hotel.",
+      "a": [
+        "maps"
+      ],
+      "mc": [
+        "compass",
+        "guide",
+        "plan"
+      ]
+    },
+    {
+      "w": "second",
+      "g": "zweiter/zweite/zweites; Sekunde",
+      "d": "The one after the first; also a very short time",
+      "s": "Don't take the first street. Take the _____ street on the right, just after the bakery.",
+      "a": [
+        "seconds"
+      ],
+      "mc": [
+        "first",
+        "third",
+        "minute"
+      ]
+    },
+    {
+      "w": "to go straight on",
+      "g": "geradeaus weitergehen",
+      "d": "To keep walking forward in the same direction",
+      "s": "Don't turn left or right here. Just _____ until you see the park.",
+      "cf": "go straight on",
+      "a": [
+        "go straight on",
+        "goes straight on",
+        "went straight on"
+      ],
+      "mc": [
+        "to turn left",
+        "to turn right",
+        "to go back"
+      ]
+    },
+    {
+      "w": "airport",
+      "g": "Flughafen",
+      "d": "A place where planes take off and land",
+      "s": "We went to the _____ very early to catch our plane.",
+      "a": [
+        "airports"
+      ],
+      "mc": [
+        "railway station",
+        "bus stop",
+        "harbour"
+      ]
+    },
+    {
+      "w": "to change trains",
+      "g": "umsteigen",
+      "d": "To get off one train and get on another",
+      "s": "We had to _____ in Linz to get to Salzburg.",
+      "cf": "change trains",
+      "a": [
+        "change trains",
+        "changed trains",
+        "changes trains"
+      ],
+      "mc": [
+        "to miss the train",
+        "to catch the bus",
+        "to get off"
+      ]
+    },
+    {
+      "w": "most of the time",
+      "g": "meistens",
+      "d": "Almost always, nearly every time",
+      "s": "_____ I walk to school, but sometimes I take the bus.",
+      "cf": "Most of the time",
+      "a": [
+        "most of the time"
+      ],
+      "mc": [
+        "sometimes",
+        "always",
+        "once in a while"
+      ]
+    },
+    {
+      "w": "pocket",
+      "g": "Tasche (bei Kleidungsstücken)",
+      "d": "A small bag in your clothes where you put things",
+      "s": "He put his hands in his _____ because they were cold.",
+      "cf": "pockets",
+      "a": [
+        "pocket",
+        "pockets"
+      ],
+      "mc": [
+        "sleeve",
+        "collar",
+        "zip"
+      ]
+    },
+    {
+      "w": "slow",
+      "g": "langsam",
+      "d": "Not fast, taking a long time",
+      "s": "This bus is very _____. We will be late for school.",
+      "a": [
+        "slower",
+        "slowest"
+      ],
+      "mc": [
+        "fast",
+        "quick",
+        "steady"
+      ]
+    },
+    {
+      "w": "somewhere",
+      "g": "irgendwo",
+      "d": "In a place, but you do not know exactly where",
+      "s": "I left my pen _____ but I cannot find it.",
+      "a": [],
+      "mc": [
+        "nowhere",
+        "everywhere",
+        "anywhere"
+      ]
+    },
+    {
+      "w": "underground",
+      "g": "U-Bahn",
+      "d": "A train that goes under the ground in a big city",
+      "s": "Many people take the _____ to get to work in big cities.",
+      "a": [],
+      "mc": [
+        "boat",
+        "plane",
+        "horse"
+      ]
+    },
+    {
+      "w": "market square",
+      "g": "Marktplatz",
+      "d": "An open space in a town where people sell things",
+      "s": "Every Saturday there is a big market on the _____.",
+      "cf": "market square",
+      "a": [
+        "market square",
+        "market squares"
+      ],
+      "mc": [
+        "playground",
+        "car park",
+        "bus stop"
+      ]
+    },
+    {
+      "w": "simply",
+      "g": "einfach",
+      "d": "In an easy and clear way",
+      "s": "It's very easy to find. _____ follow the road and you will see it.",
+      "cf": "Simply",
+      "a": [
+        "simply"
+      ],
+      "mc": [
+        "easily",
+        "actually",
+        "quickly"
+      ]
+    },
+    {
+      "w": "comment",
+      "g": "Kommentar",
+      "d": "Words you say or write about something",
+      "s": "She wrote a nice _____ under the photo to say she liked it.",
+      "a": [
+        "comments"
+      ],
+      "mc": [
+        "question",
+        "warning",
+        "joke"
+      ]
+    },
+    {
+      "w": "to comment",
+      "g": "kommentieren",
+      "d": "To say or write what you think about something",
+      "s": "Many people _____ on her photos online, writing 'so pretty!' and 'amazing!' under them.",
+      "cf": "commented",
+      "a": [
+        "comment",
+        "commented",
+        "comments"
+      ],
+      "mc": [
+        "to ignore",
+        "to hide",
+        "to delete"
+      ]
+    },
+    {
+      "w": "feedback",
+      "g": "Feedback",
+      "d": "When someone tells you what they think about your work",
+      "s": "The teacher gave us helpful _____ on our project, telling us what to improve.",
+      "a": [],
+      "mc": [
+        "grades",
+        "homework",
+        "marks"
+      ]
+    },
+    {
+      "w": "guest",
+      "g": "Gast",
+      "d": "A person who comes to your house or a place",
+      "s": "We had a special _____ at school today. A police officer talked to us.",
+      "a": [
+        "guests"
+      ],
+      "mc": [
+        "visitor",
+        "host",
+        "tourist"
+      ]
+    },
+    {
+      "w": "to offer",
+      "g": "anbieten",
+      "d": "To say you will give something to someone",
+      "s": "My neighbour _____ to help us move the table, even though we did not ask her.",
+      "cf": "offered",
+      "a": [
+        "offer",
+        "offers",
+        "offered"
+      ],
+      "mc": [
+        "to refuse",
+        "to forget",
+        "to pretend"
+      ]
+    },
+    {
+      "w": "opening",
+      "g": "Eröffnung",
+      "d": "When a new shop or place starts for the first time",
+      "s": "There is a big _____ of a new ice cream shop today!",
+      "a": [
+        "openings"
+      ],
+      "mc": [
+        "closing",
+        "beginning",
+        "entrance"
+      ]
+    },
+    {
+      "w": "positive",
+      "g": "positiv",
+      "d": "Good and helpful, not bad",
+      "s": "The teacher always says _____ things about my work, like 'well done' and 'great job'.",
+      "a": [],
+      "mc": [
+        "negative",
+        "mean",
+        "cruel"
+      ]
+    },
+    {
+      "w": "review",
+      "g": "Rezension",
+      "d": "When someone writes what they think about a film, book, or place",
+      "s": "I read a good _____ of the new film online, written by a film critic with a 5-star rating.",
+      "a": [
+        "reviews"
+      ],
+      "mc": [
+        "story",
+        "photo",
+        "trailer"
+      ]
+    },
+    {
+      "w": "the worst",
+      "g": "der/die/das schlechteste",
+      "d": "The most bad, the opposite of the best",
+      "s": "That was _____ meal I have ever had. I hated it.",
+      "cf": "the worst",
+      "a": [
+        "the worst",
+        "worst"
+      ],
+      "mc": [
+        "the best",
+        "the least",
+        "the most"
+      ]
+    },
+    {
+      "w": "to bother",
+      "g": "stören",
+      "d": "To make someone a bit angry because you take their time",
+      "s": "Sorry to _____ you when you are busy, but can you help me with this?",
+      "cf": "bother",
+      "a": [
+        "bother",
+        "bothers",
+        "bothered"
+      ],
+      "mc": [
+        "to thank",
+        "to praise",
+        "to greet"
+      ]
+    },
+    {
+      "w": "bus stop",
+      "g": "Bushaltestelle",
+      "d": "A place on the road where you wait for the bus",
+      "s": "I waited at the _____ for ten minutes in the rain.",
+      "cf": "bus stop",
+      "a": [
+        "bus stop",
+        "bus stops"
+      ],
+      "mc": [
+        "railway station",
+        "taxi rank",
+        "car park"
+      ]
+    },
+    {
+      "w": "fountain",
+      "g": "(Spring-)Brunnen",
+      "d": "Water that goes up into the air in a public place",
+      "s": "There is a beautiful _____ in the middle of the square.",
+      "a": [
+        "fountains"
+      ],
+      "mc": [
+        "statue",
+        "pond",
+        "well"
+      ]
+    },
+    {
+      "w": "to interrupt",
+      "g": "unterbrechen",
+      "d": "To start talking when someone else is speaking",
+      "s": "Please don't _____ me when I am talking. Wait until I finish my sentence.",
+      "cf": "interrupt",
+      "a": [
+        "interrupt",
+        "interrupts",
+        "interrupted"
+      ],
+      "mc": [
+        "to listen to",
+        "to agree with",
+        "to nod at"
+      ]
+    },
+    {
+      "w": "politely",
+      "g": "höflich",
+      "d": "In a nice and respectful way",
+      "s": "She said 'please' and asked _____ if she could sit down.",
+      "a": [],
+      "mc": [
+        "rudely",
+        "angrily",
+        "loudly"
+      ]
+    },
+    {
+      "w": "traffic lights",
+      "g": "Verkehrsampel",
+      "d": "Red, yellow, and green lights that tell cars when to stop or go",
+      "s": "Wait for the green _____ before you cross the road.",
+      "cf": "traffic lights",
+      "a": [
+        "traffic lights",
+        "traffic light"
+      ],
+      "mc": [
+        "bus stop",
+        "road sign",
+        "zebra crossing"
+      ]
+    }
+  ]
+}

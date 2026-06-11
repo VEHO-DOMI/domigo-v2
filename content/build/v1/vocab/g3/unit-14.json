@@ -1,0 +1,552 @@
+{
+  "slug": "unit-14",
+  "grade": 3,
+  "unit": 14,
+  "title": "Unit 14",
+  "entries": [
+    {
+      "w": "to plan a trip",
+      "g": "eine Reise planen",
+      "d": "To think about and organise a holiday or journey",
+      "s": "We are _____ a trip to sunny Italy for the summer holidays — deciding which cities to visit and how many days to stay in each.",
+      "cf": "planning",
+      "a": [
+        "plan a trip",
+        "planned a trip",
+        "planning a trip"
+      ],
+      "mc": [
+        "to forget about a trip",
+        "to cancel a trip",
+        "to refuse a trip"
+      ]
+    },
+    {
+      "w": "to book a holiday",
+      "g": "einen Urlaub buchen",
+      "d": "To reserve and pay for a trip in advance",
+      "s": "My parents _____ a holiday to Spain last week at the travel agency — they paid in advance for flights and a hotel for five nights.",
+      "cf": "booked",
+      "a": [
+        "book a holiday",
+        "booked a holiday"
+      ],
+      "mc": [
+        "to cancel a holiday",
+        "to refuse a holiday",
+        "to skip a holiday"
+      ]
+    },
+    {
+      "w": "to make a hotel reservation",
+      "g": "eine Hotelreservierung vornehmen",
+      "d": "To reserve a room at a place where travellers sleep",
+      "s": "Don't forget to _____ a hotel reservation online before we leave so we definitely have a room when we arrive at night.",
+      "cf": "make",
+      "a": [
+        "make a hotel reservation",
+        "made a hotel reservation"
+      ],
+      "mc": [
+        "to cancel a booking",
+        "to leave without a booking",
+        "to arrive without a booking"
+      ]
+    },
+    {
+      "w": "to hire a car",
+      "g": "ein Auto mieten",
+      "d": "To pay to use a vehicle for a short time",
+      "s": "We're going to _____ a car for one week at the airport when we arrive in Spain so we can drive to different beaches.",
+      "cf": "hire",
+      "a": [
+        "hire a car",
+        "hired a car"
+      ],
+      "mc": [
+        "to buy a car forever",
+        "to steal a car",
+        "to abandon a car"
+      ]
+    },
+    {
+      "w": "to check the area out online",
+      "g": "die Gegend online erkunden",
+      "d": "To look at information about a place on the internet",
+      "s": "Let's _____ the area out online with Google Maps before we go on holiday to see the streets and find interesting places.",
+      "cf": "check",
+      "a": [
+        "check the area out online",
+        "checked the area out online"
+      ],
+      "mc": [
+        "to ignore the area",
+        "to skip the planning",
+        "to travel blind"
+      ]
+    },
+    {
+      "w": "to buy a dictionary",
+      "g": "ein Wörterbuch kaufen",
+      "d": "To get a book that explains words in another language",
+      "s": "She _____ a small travel dictionary at the bookshop to help her look up new French words during her trip to Paris.",
+      "cf": "bought",
+      "a": [
+        "buy a dictionary",
+        "bought a dictionary"
+      ],
+      "mc": [
+        "to avoid a dictionary",
+        "to sell a dictionary",
+        "to burn a dictionary"
+      ]
+    },
+    {
+      "w": "to find out about good restaurants",
+      "g": "gute Restaurants herausfinden",
+      "d": "To search for nice places to eat in the area",
+      "s": "We need to _____ about good local restaurants with great reviews near our hotel before we go out hungry for dinner tonight.",
+      "cf": "find out",
+      "a": [
+        "find out about good restaurants"
+      ],
+      "mc": [
+        "to forget about restaurants",
+        "to ignore restaurants",
+        "to skip lunch"
+      ]
+    },
+    {
+      "w": "to find information about the best beaches",
+      "g": "Informationen über die besten Strände finden",
+      "d": "To search for details on the nicest places to swim and sunbathe",
+      "s": "She went online to _____ information about the best sandy beaches with clear blue water for her summer holiday in Greece.",
+      "cf": "find",
+      "a": [
+        "find information about the best beaches"
+      ],
+      "mc": [
+        "to avoid the beaches",
+        "to stay away from the water",
+        "to choose mountain hiking instead"
+      ]
+    },
+    {
+      "w": "to look at a map of the area",
+      "g": "sich eine Karte der Gegend ansehen",
+      "d": "To study a diagram of the region to find your way",
+      "s": "Let's _____ a paper map of the area together so we don't get lost in the narrow winding streets of the old town.",
+      "cf": "look at",
+      "a": [
+        "look at a map of the area"
+      ],
+      "mc": [
+        "to throw away the map",
+        "to tear up the map",
+        "to not use a map"
+      ]
+    },
+    {
+      "w": "to find out what to do there",
+      "g": "herausfinden, was man dort machen kann",
+      "d": "To learn about activities and things to see at a place",
+      "s": "Before our exciting trip, let's _____ what to do there — museums, parks, beaches, restaurants, everything we can explore.",
+      "cf": "find out",
+      "a": [
+        "find out what to do there"
+      ],
+      "mc": [
+        "to not plan anything",
+        "to decide nothing",
+        "to stay home instead"
+      ]
+    },
+    {
+      "w": "bug",
+      "g": "Insekt",
+      "d": "A small insect or creature",
+      "s": "There's a tiny red _____ with black spots on the window — I think it's a ladybird insect that flew in from outside.",
+      "a": [
+        "bugs"
+      ],
+      "mc": [
+        "dog",
+        "cat",
+        "fish"
+      ]
+    },
+    {
+      "w": "to prefer",
+      "g": "bevorzugen",
+      "d": "To like one thing more than another",
+      "s": "My mum _____ tea to coffee in the morning — she thinks tea is better and drinks three cups of it every single day.",
+      "cf": "prefers",
+      "a": [
+        "prefer",
+        "preferred",
+        "prefers"
+      ],
+      "mc": [
+        "to dislike equally",
+        "to hate both",
+        "to refuse both"
+      ]
+    },
+    {
+      "w": "official language",
+      "g": "Amtssprache",
+      "d": "The main tongue used by the government of a country",
+      "s": "English is the _____ of many countries around the world like the UK, USA, Australia, and Ireland where it's used in government.",
+      "cf": "official language",
+      "a": [
+        "official language",
+        "official languages"
+      ],
+      "mc": [
+        "secret code",
+        "private signal",
+        "forbidden word"
+      ]
+    },
+    {
+      "w": "balcony",
+      "g": "Balkon",
+      "d": "A small area outside a window, usually on a higher floor",
+      "s": "We sat on the hotel _____ attached to our fourth-floor room and watched the beautiful sunset over the sea with a drink.",
+      "a": [
+        "balconies"
+      ],
+      "mc": [
+        "basement",
+        "cellar",
+        "car park"
+      ]
+    },
+    {
+      "w": "crime",
+      "g": "Verbrechen",
+      "d": "Something that is against the law",
+      "s": "Stealing money or goods from a shop without paying is a serious _____ that can be punished by the police with a fine or prison.",
+      "a": [
+        "crimes"
+      ],
+      "mc": [
+        "gift",
+        "favour",
+        "holiday"
+      ]
+    },
+    {
+      "w": "to dig",
+      "g": "graben",
+      "d": "To make a hole in the ground",
+      "s": "The playful dog loves to _____ deep holes in the soft garden soil with his paws and bury his bones underground.",
+      "cf": "dig",
+      "a": [
+        "dig",
+        "dug"
+      ],
+      "mc": [
+        "to fill in",
+        "to cover up",
+        "to walk over"
+      ]
+    },
+    {
+      "w": "shocked",
+      "g": "schockiert",
+      "d": "Very surprised and upset by something bad",
+      "s": "Everyone was absolutely _____ when they heard the surprising sad news about the serious car accident on the motorway.",
+      "a": [],
+      "mc": [
+        "delighted",
+        "overjoyed",
+        "excited"
+      ]
+    },
+    {
+      "w": "wild animal",
+      "g": "Wildtier",
+      "d": "A creature that lives freely in nature, not kept by humans",
+      "s": "You should never ever try to touch a _____ like a bear or a wolf — they can be very dangerous and hurt you with their teeth.",
+      "cf": "wild animal",
+      "a": [
+        "wild animal",
+        "wild animals"
+      ],
+      "mc": [
+        "house pet",
+        "tame cat",
+        "trained dog"
+      ]
+    },
+    {
+      "w": "wetland",
+      "g": "Sumpfgebiet",
+      "d": "A large area of land that is very wet, often with plants and animals",
+      "s": "Many waterbirds like ducks, herons, and flamingos live in the _____ areas full of reeds near the river in our nature reserve.",
+      "a": [
+        "wetlands"
+      ],
+      "mc": [
+        "desert",
+        "mountain top",
+        "dry forest"
+      ]
+    },
+    {
+      "w": "otherwise",
+      "g": "andernfalls, sonst",
+      "d": "If not, or else",
+      "s": "You should leave home now for the station, _____ you'll definitely miss the last bus at 8 pm and have to walk home in the rain.",
+      "a": [],
+      "mc": [
+        "instead",
+        "meanwhile",
+        "besides"
+      ]
+    },
+    {
+      "w": "stuffed",
+      "g": "ausgestopft",
+      "d": "Filled with material to keep its shape (like a dead animal made to look alive)",
+      "s": "There was a _____ brown bear with glass eyes in the natural history museum — it looked very real and scary but wasn't alive.",
+      "a": [],
+      "mc": [
+        "running",
+        "sleeping",
+        "living"
+      ]
+    },
+    {
+      "w": "wildlife",
+      "g": "wilde Tierwelt",
+      "d": "Wild animals and plants living in their natural environment",
+      "s": "This protected national park is famous for its amazing _____ — you can see bears, wolves, deer, eagles, and many other wild animals.",
+      "a": [],
+      "mc": [
+        "factories",
+        "buildings",
+        "traffic"
+      ]
+    },
+    {
+      "w": "at once",
+      "g": "sofort",
+      "d": "Immediately, right now",
+      "s": "Come here right now _____! I really need your urgent help in the kitchen because I'm burning something on the stove.",
+      "cf": "at once",
+      "a": [
+        "at once"
+      ],
+      "mc": [
+        "later maybe",
+        "sometime next week",
+        "when you feel like it"
+      ]
+    },
+    {
+      "w": "branch",
+      "g": "Ast",
+      "d": "A part of a tree that grows out from the main trunk",
+      "s": "The small blue bird was sitting on a thin _____ high up in the tall oak tree that stretched out from the main trunk.",
+      "a": [
+        "branches"
+      ],
+      "mc": [
+        "root",
+        "flower",
+        "fruit"
+      ]
+    },
+    {
+      "w": "by the way",
+      "g": "übrigens",
+      "d": "Used to add something new to a conversation",
+      "s": "Oh, _____, did you hear the news that we have a surprise maths test tomorrow morning at 8 am? The teacher just announced it.",
+      "cf": "by the way",
+      "a": [
+        "by the way"
+      ],
+      "mc": [
+        "the main point is",
+        "most importantly",
+        "in conclusion"
+      ]
+    },
+    {
+      "w": "impolite",
+      "g": "unhöflich",
+      "d": "Not having good manners, rude",
+      "s": "It's very _____ to interrupt other people rudely while they are speaking — you should always wait politely for your turn to talk.",
+      "a": [],
+      "mc": [
+        "polite",
+        "well-mannered",
+        "respectful"
+      ]
+    },
+    {
+      "w": "round a bend",
+      "g": "um eine Ecke, um eine Kurve",
+      "d": "Around a curve in the road",
+      "s": "The red sports car disappeared quickly _____ in the winding mountain road and we couldn't see it any more on the straight part.",
+      "cf": "round a bend",
+      "a": [
+        "round a bend",
+        "around a bend"
+      ],
+      "mc": [
+        "on the straight road",
+        "at a complete stop",
+        "in the empty parking lot"
+      ]
+    },
+    {
+      "w": "bush",
+      "g": "Busch",
+      "d": "A short, thick plant with many branches",
+      "s": "The shy black cat was hiding quietly behind the big thick green leafy _____ in the corner of the garden to watch birds.",
+      "a": [
+        "bushes"
+      ],
+      "mc": [
+        "tall tree",
+        "flower bed",
+        "fence"
+      ]
+    },
+    {
+      "w": "cut",
+      "g": "Schnitt(-wunde)",
+      "d": "A wound made by something sharp",
+      "s": "He got a small painful _____ on his finger from the sharp edge of the paper — a tiny drop of blood came out.",
+      "a": [
+        "cuts"
+      ],
+      "mc": [
+        "bruise",
+        "burn",
+        "scratch only"
+      ]
+    },
+    {
+      "w": "to drive off",
+      "g": "wegfahren",
+      "d": "To leave quickly in a car",
+      "s": "The taxi _____ quickly from the pavement before I could get my bag from the back seat — I had to shout to stop it.",
+      "cf": "drove off",
+      "a": [
+        "drive off",
+        "drove off"
+      ],
+      "mc": [
+        "to arrive",
+        "to park",
+        "to wait patiently"
+      ]
+    },
+    {
+      "w": "engine",
+      "g": "Motor",
+      "d": "The part of a car or machine that makes it move",
+      "s": "The car _____ under the bonnet made a strange loud clunking noise, so we stopped immediately on the side of the road to check.",
+      "a": [
+        "engines"
+      ],
+      "mc": [
+        "steering wheel",
+        "windscreen",
+        "seat"
+      ]
+    },
+    {
+      "w": "front seat",
+      "g": "Vordersitz",
+      "d": "The place next to the driver where a passenger sits",
+      "s": "I always sit in the _____ next to the driver because I get bad car sickness if I sit in the back with my sister.",
+      "cf": "front seat",
+      "a": [
+        "front seat",
+        "front seats"
+      ],
+      "mc": [
+        "back seat",
+        "boot",
+        "roof"
+      ]
+    },
+    {
+      "w": "park ranger",
+      "g": "Parkwächter/Parkwächterin",
+      "d": "A person who works in a nature reserve and looks after it",
+      "s": "The friendly _____ in the green uniform at the national park told us not to feed the wild squirrels and deer with human food.",
+      "a": [
+        "park rangers"
+      ],
+      "mc": [
+        "shop assistant",
+        "waiter",
+        "teacher"
+      ]
+    },
+    {
+      "w": "sunburn",
+      "g": "Sonnenbrand",
+      "d": "Red, painful skin caused by too much sun",
+      "s": "I forgot to put on sun cream at the beach and got a bad red painful _____ all over my shoulders and back.",
+      "a": [],
+      "mc": [
+        "sun tan",
+        "cold",
+        "rash"
+      ]
+    },
+    {
+      "w": "to turn over",
+      "g": "(sich) überschlagen",
+      "d": "To flip upside down or rotate completely",
+      "s": "The small boat _____ completely in the strong waves during the storm and everyone wearing life jackets fell into the cold water.",
+      "cf": "turned over",
+      "a": [
+        "turn over",
+        "turned over"
+      ],
+      "mc": [
+        "to stay stable",
+        "to float calmly",
+        "to sail smoothly"
+      ]
+    },
+    {
+      "w": "to whisper",
+      "g": "flüstern",
+      "d": "To speak very quietly so only one person can hear",
+      "s": "She _____ the test answer very quietly to me behind her hand so the strict teacher at the front of the room wouldn't hear us.",
+      "cf": "whispered",
+      "a": [
+        "whisper",
+        "whispered"
+      ],
+      "mc": [
+        "to shout loudly",
+        "to sing",
+        "to announce"
+      ]
+    },
+    {
+      "w": "crash",
+      "g": "Unfall, Zusammenstoß",
+      "d": "An accident when a vehicle hits something hard",
+      "s": "There was a terrible car _____ with two damaged vehicles on the busy motorway this morning and the police had to close the road.",
+      "a": [
+        "crashes"
+      ],
+      "mc": [
+        "smooth ride",
+        "safe journey",
+        "holiday trip"
+      ]
+    }
+  ]
+}

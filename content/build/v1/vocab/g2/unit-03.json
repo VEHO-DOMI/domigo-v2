@@ -1,0 +1,508 @@
+{
+  "slug": "unit-03",
+  "grade": 2,
+  "unit": 3,
+  "title": "Unit 3",
+  "entries": [
+    {
+      "w": "witch",
+      "g": "Hexe",
+      "d": "A woman in stories who does magic",
+      "s": "The _____ flew across the sky on her broom.",
+      "a": [
+        "witches"
+      ],
+      "mc": [
+        "wizard",
+        "ghost",
+        "vampire"
+      ]
+    },
+    {
+      "w": "ghost",
+      "g": "Geist",
+      "d": "The spirit of a dead person that you can sometimes see",
+      "s": "My little brother is afraid of the _____ in this story.",
+      "a": [
+        "ghosts"
+      ],
+      "mc": [
+        "vampire",
+        "witch",
+        "monster"
+      ]
+    },
+    {
+      "w": "pumpkin bucket",
+      "g": "Kürbiseimer",
+      "d": "A small container shaped like a pumpkin, used to collect sweets",
+      "s": "The children carry a _____ to collect sweets.",
+      "cf": "pumpkin bucket",
+      "a": [
+        "pumpkin bucket",
+        "pumpkin buckets"
+      ],
+      "mc": [
+        "trick or treat",
+        "candy bag",
+        "sweet box"
+      ]
+    },
+    {
+      "w": "vampire",
+      "g": "Vampir",
+      "d": "A creature in stories that comes out at night and drinks blood",
+      "s": "He dressed up as a _____ with a long black cape.",
+      "a": [
+        "vampires"
+      ],
+      "mc": [
+        "ghost",
+        "witch",
+        "zombie"
+      ]
+    },
+    {
+      "w": "trick or treat",
+      "g": "Süßes oder Saures",
+      "d": "Words children say at doors to get sweets on 31 October",
+      "s": "The kids shouted _____ at every house on the street.",
+      "cf": "trick or treat",
+      "a": [
+        "trick or treat"
+      ],
+      "mc": [
+        "apple bobbing",
+        "fancy dress party",
+        "hide and seek"
+      ]
+    },
+    {
+      "w": "apple bobbing",
+      "g": "Äpfeltauchen",
+      "d": "A game where you try to catch fruit in water with your mouth",
+      "s": "We tried to catch apples in water with our teeth — that game is called _____.",
+      "cf": "apple bobbing",
+      "a": [
+        "apple bobbing"
+      ],
+      "mc": [
+        "trick or treat",
+        "treasure hunt",
+        "egg and spoon race"
+      ]
+    },
+    {
+      "w": "mask",
+      "g": "Maske",
+      "d": "Something you wear over your face to look different",
+      "s": "She wore a scary _____ over her face and nobody could see who she was underneath.",
+      "a": [
+        "masks"
+      ],
+      "mc": [
+        "scarf",
+        "tie",
+        "belt"
+      ]
+    },
+    {
+      "w": "tradition",
+      "g": "Tradition",
+      "d": "Something people do every year because they always did it",
+      "s": "Singing carols at Christmas is a nice _____ that families do every year.",
+      "a": [
+        "traditions"
+      ],
+      "mc": [
+        "surprise",
+        "accident",
+        "mistake"
+      ]
+    },
+    {
+      "w": "to fear",
+      "g": "(sich) fürchten (vor)",
+      "d": "To be afraid of something",
+      "s": "My dog _____ loud noises like thunder — he hides under the bed.",
+      "cf": "fears",
+      "a": [
+        "fear",
+        "fears",
+        "feared"
+      ],
+      "mc": [
+        "to enjoy",
+        "to ignore",
+        "to love"
+      ]
+    },
+    {
+      "w": "to cut off",
+      "g": "abschneiden",
+      "d": "To remove a piece of something with a sharp tool",
+      "s": "Dad _____ the top of the orange vegetable with a big knife.",
+      "cf": "cut off",
+      "a": [
+        "cut off",
+        "cuts off"
+      ],
+      "mc": [
+        "to cut out",
+        "to chop up",
+        "to tear off"
+      ]
+    },
+    {
+      "w": "front window",
+      "g": "Vorderfenster",
+      "d": "The glass at the front of a house that you look through",
+      "s": "We put candles on the _____ so people outside could see them.",
+      "cf": "front window",
+      "a": [
+        "front window",
+        "front windows"
+      ],
+      "mc": [
+        "front door",
+        "back door",
+        "side window"
+      ]
+    },
+    {
+      "w": "to keep",
+      "g": "(be-)halten",
+      "d": "To not give away or throw away",
+      "s": "Can I _____ this book forever? I don't want to give it back.",
+      "cf": "keep",
+      "a": [
+        "keep",
+        "keeps",
+        "kept"
+      ],
+      "mc": [
+        "to borrow",
+        "to return",
+        "to read"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a promise",
+          "options": [
+            "Keep",
+            "Do",
+            "Run",
+            "Fly"
+          ],
+          "answer": "Keep"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with KEEP?",
+          "options": [
+            "a secret",
+            "a promise",
+            "quiet",
+            "a lamp"
+          ],
+          "answer": "a lamp"
+        }
+      ]
+    },
+    {
+      "w": "stairs",
+      "g": "Treppe",
+      "d": "Steps inside a building that go up or down",
+      "s": "I ran up the wooden _____ step by step to my room on the second floor.",
+      "a": [],
+      "mc": [
+        "floor",
+        "wall",
+        "door"
+      ]
+    },
+    {
+      "w": "sticker",
+      "g": "Aufkleber, Sticker",
+      "d": "A small piece of paper with a picture that you can stick on things",
+      "s": "I put a star _____ on my notebook.",
+      "a": [
+        "stickers"
+      ],
+      "mc": [
+        "poster",
+        "stamp",
+        "badge"
+      ]
+    },
+    {
+      "w": "sweets",
+      "g": "Süßigkeiten",
+      "d": "Small sugary foods like chocolate or gummy bears",
+      "s": "I ate too many _____ and now my tummy hurts.",
+      "a": [],
+      "mc": [
+        "biscuits",
+        "crisps",
+        "chocolate"
+      ]
+    },
+    {
+      "w": "knife (pl knives)",
+      "g": "Messer",
+      "d": "A sharp tool you use to cut food",
+      "s": "Be careful with that _____! It is very sharp.",
+      "cf": "knife",
+      "a": [
+        "knife",
+        "knives"
+      ],
+      "mc": [
+        "fork",
+        "spoon",
+        "scissors"
+      ]
+    },
+    {
+      "w": "century",
+      "g": "Jahrhundert",
+      "d": "A hundred years",
+      "s": "We live in the 21st _____. One hundred years ago, people had no phones.",
+      "a": [
+        "centuries"
+      ],
+      "mc": [
+        "decade",
+        "year",
+        "millennium"
+      ]
+    },
+    {
+      "w": "costume",
+      "g": "Kostüm",
+      "d": "Special clothes you wear to look like someone else",
+      "s": "She wore a cat _____ with ears and a tail.",
+      "a": [
+        "costumes"
+      ],
+      "mc": [
+        "uniform",
+        "mask",
+        "dress"
+      ]
+    },
+    {
+      "w": "couldn't",
+      "g": "konnte/n nicht",
+      "d": "Was not able to",
+      "s": "I searched everywhere but I _____ find my keys this morning.",
+      "a": [
+        "could not"
+      ],
+      "mc": [
+        "wouldn't",
+        "shouldn't",
+        "mustn't"
+      ]
+    },
+    {
+      "w": "cute",
+      "g": "niedlich, süß",
+      "d": "Pretty and lovely to look at",
+      "s": "Look at that tiny puppy! It is so _____ with its small paws and floppy ears.",
+      "a": [
+        "cuter",
+        "cutest"
+      ],
+      "mc": [
+        "big",
+        "ugly",
+        "scary"
+      ]
+    },
+    {
+      "w": "dress",
+      "g": "Kleid",
+      "d": "A piece of clothing for girls that covers the body and legs",
+      "s": "She wore a red _____ to the school dance.",
+      "a": [
+        "dresses"
+      ],
+      "mc": [
+        "skirt",
+        "blouse",
+        "costume"
+      ]
+    },
+    {
+      "w": "graveyard",
+      "g": "Friedhof",
+      "d": "A place where dead people are put under the ground",
+      "s": "The old _____ full of tombstones next to the church looks spooky at night.",
+      "a": [
+        "graveyards"
+      ],
+      "mc": [
+        "garden",
+        "park",
+        "playground"
+      ]
+    },
+    {
+      "w": "myself",
+      "g": "mich selbst, mir selbst",
+      "d": "A word for 'me' when you do something alone",
+      "s": "I made this birthday card all by _____.",
+      "a": [],
+      "mc": [
+        "yourself",
+        "himself",
+        "herself"
+      ]
+    },
+    {
+      "w": "shall",
+      "g": "sollen; wollen",
+      "d": "A word to ask about what to do next",
+      "s": "_____ we go to the park or stay at home?",
+      "cf": "Shall",
+      "a": [
+        "shall"
+      ],
+      "mc": [
+        "should",
+        "will",
+        "could"
+      ]
+    },
+    {
+      "w": "sick",
+      "g": "übel; krank",
+      "d": "Not feeling well in your body",
+      "s": "I feel _____ today. I think I ate something bad and now my stomach hurts.",
+      "a": [],
+      "mc": [
+        "happy",
+        "strong",
+        "excited"
+      ]
+    },
+    {
+      "w": "superheroine",
+      "g": "Superheldin",
+      "d": "A strong woman in a story who saves people",
+      "s": "My favourite _____ is a brave woman who saves people and can fly.",
+      "a": [
+        "superheroines"
+      ],
+      "mc": [
+        "superhero",
+        "princess",
+        "heroine"
+      ]
+    },
+    {
+      "w": "wild",
+      "g": "wild",
+      "d": "Not calm or gentle; full of energy",
+      "s": "The children were very _____ at the party, jumping everywhere and shouting loudly.",
+      "a": [
+        "wilder",
+        "wildest"
+      ],
+      "mc": [
+        "quiet",
+        "sleepy",
+        "polite"
+      ]
+    },
+    {
+      "w": "to scare",
+      "g": "Angst machen, erschrecken",
+      "d": "To make someone feel afraid",
+      "s": "My brother likes to hide behind doors and _____ me in the dark.",
+      "cf": "scare",
+      "a": [
+        "scare",
+        "scares",
+        "scared"
+      ],
+      "mc": [
+        "to help",
+        "to call",
+        "to wake"
+      ]
+    },
+    {
+      "w": "cycle helmet",
+      "g": "Fahrradhelm",
+      "d": "A hard hat you wear on your head when riding a bike",
+      "s": "Always wear your _____ when you ride your bike.",
+      "cf": "cycle helmet",
+      "a": [
+        "cycle helmet",
+        "cycle helmets",
+        "bike helmet"
+      ],
+      "mc": [
+        "hard hat",
+        "cap",
+        "life jacket"
+      ]
+    },
+    {
+      "w": "guys",
+      "g": "Leute",
+      "d": "A friendly word for a group of people",
+      "s": "Hey _____ — Tom, Max, and Jack — do you want to play football after school?",
+      "a": [],
+      "mc": [
+        "sir",
+        "madam",
+        "teacher"
+      ]
+    },
+    {
+      "w": "to lose",
+      "g": "verlieren",
+      "d": "To not have something any more because you cannot find it",
+      "s": "Don't _____ your phone again and leave it somewhere by mistake! Keep it safe in your bag.",
+      "cf": "lose",
+      "a": [
+        "lose",
+        "loses",
+        "lost"
+      ],
+      "mc": [
+        "to use",
+        "to charge",
+        "to buy"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a game",
+          "options": [
+            "Lose",
+            "Cook",
+            "Wash",
+            "Plant"
+          ],
+          "answer": "Lose"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LOSE?",
+          "options": [
+            "a game",
+            "your keys",
+            "weight",
+            "a table"
+          ],
+          "answer": "a table"
+        }
+      ]
+    }
+  ]
+}

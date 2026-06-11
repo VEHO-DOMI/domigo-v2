@@ -62,6 +62,8 @@ export const WordBankEntry = z.object({
   forms: z.array(z.string().min(1)).min(1),
   /** True if the SB transcript glosses this word inline (harvested later). */
   taughtGloss: z.boolean(),
+  /** Absent = parsed from the master list. Set for review-recovered entries. */
+  origin: z.enum(["v1-recovery"]).optional(),
 });
 export type WordBankEntry = z.infer<typeof WordBankEntry>;
 
@@ -89,6 +91,7 @@ export type WordBank = z.infer<typeof WordBank>;
 export const UNIT_STATES = [
   "extracted",
   "wordbank_draft",
+  "wordbank_review",
   "wordbank_approved",
   "generated",
   "verified",
@@ -142,3 +145,97 @@ export const SourcesLock = z.object({
   sources: z.array(SourceLockEntry),
 });
 export type SourcesLock = z.infer<typeof SourcesLock>;
+
+// ---------------------------------------------------------------------------
+// v1 parity snapshot (content/build/v1/)
+// ---------------------------------------------------------------------------
+
+export const V1Lock = z.object({
+  schema: z.literal("v1-lock@1"),
+  base: z.string(),
+  sources: z.array(
+    z.object({
+      relPath: z.string(),
+      sha256: z.string().regex(/^[0-9a-f]{64}$/),
+      bytes: z.number().int().nonnegative(),
+      mtime: z.string(),
+      grade: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
+      unit: z.number().int().min(1).max(15),
+    }),
+  ),
+});
+export type V1Lock = z.infer<typeof V1Lock>;
+
+// ---------------------------------------------------------------------------
+// Review round artifacts (wordbank review — authored by Fable, audited)
+// ---------------------------------------------------------------------------
+
+export const ParseFixes = z.record(
+  UnitSlug,
+  z.object({
+    drop: z.array(z.string()).optional(),
+    patch: z.record(z.string(), WordBankEntry.partial()).optional(),
+    add: z.array(WordBankEntry).optional(),
+  }),
+);
+export type ParseFixes = z.infer<typeof ParseFixes>;
+
+export const FLAG_KINDS = [
+  "de-split-suspect",
+  "ascii-umlaut-suspect",
+  "duplicate-headword",
+  "not-in-transcript",
+  "no-transcript",
+  "v1-missing",
+  "v1-unit-mismatch",
+  "forms-suspect",
+  "changed-since-review",
+] as const;
+export const FlagKind = z.enum(FLAG_KINDS);
+export type FlagKind = z.infer<typeof FlagKind>;
+
+export const FLAG_VERDICTS = ["ok", "drop", "fix", "add"] as const;
+export const FlagVerdict = z.enum(FLAG_VERDICTS);
+export type FlagVerdict = z.infer<typeof FlagVerdict>;
+
+export const WordbankReviewFlags = z.object({
+  schema: z.literal("wordbank-flags@1"),
+  slug: UnitSlug,
+  round: z.number().int().min(1),
+  bankHash: z.string(),
+  reviewedBy: z.string(),
+  flags: z.array(
+    z.object({
+      key: z.string(), // durable: `${kind}:${entryId or "unit"}`
+      kind: FlagKind,
+      entryId: z.string().nullable(),
+      verdict: FlagVerdict,
+      note: z.string(),
+    }),
+  ),
+  unit: z.object({ verdict: z.enum(["ok", "changes"]), note: z.string() }),
+});
+export type WordbankReviewFlags = z.infer<typeof WordbankReviewFlags>;
+
+/** Per-row content hashes at review time — round-2 docs collapse reviewed rows. */
+export const ReviewedRows = z.object({
+  schema: z.literal("wordbank-reviewed@1"),
+  slug: UnitSlug,
+  round: z.number().int().min(1),
+  rows: z.record(z.string(), z.string()), // ref → row content hash
+});
+export type ReviewedRows = z.infer<typeof ReviewedRows>;
+
+/** Closed-class tokens assumed known at every level (the V5 escape list). */
+export const CoreAllowlist = z.object({
+  schema: z.literal("core-allowlist@1"),
+  reviewedBy: z.string(),
+  tokens: z.array(
+    z.object({
+      token: z.string().min(1),
+      category: z.string(),
+      note: z.string().nullable(),
+    }),
+  ),
+});
+export type CoreAllowlist = z.infer<typeof CoreAllowlist>;

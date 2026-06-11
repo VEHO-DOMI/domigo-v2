@@ -1,0 +1,879 @@
+{
+  "slug": "unit-09",
+  "grade": 2,
+  "unit": 9,
+  "title": "Unit 9",
+  "entries": [
+    {
+      "w": "grapes",
+      "g": "Trauben",
+      "d": "Small round fruit that grows in groups, purple or green",
+      "s": "I had some _____ with my lunch. They were very sweet.",
+      "a": [],
+      "mc": [
+        "cherries",
+        "olives",
+        "plums"
+      ]
+    },
+    {
+      "w": "plums",
+      "g": "Pflaumen",
+      "d": "Soft round fruit that is purple on the outside",
+      "s": "We picked small purple _____ with a stone inside from the tree in our garden.",
+      "a": [
+        "plum"
+      ],
+      "mc": [
+        "lemons",
+        "bananas",
+        "strawberries"
+      ]
+    },
+    {
+      "w": "pumpkin pie",
+      "g": "Kürbiskuchen",
+      "d": "A sweet dish made from an orange vegetable, often eaten in autumn",
+      "s": "My grandma makes the best _____ every October.",
+      "cf": "pumpkin pie",
+      "a": [
+        "pumpkin pie",
+        "pumpkin pies"
+      ],
+      "mc": [
+        "apple pie",
+        "cheesecake",
+        "chocolate cake"
+      ]
+    },
+    {
+      "w": "rice pudding",
+      "g": "Milchreis",
+      "d": "A soft sweet dish made from white grains cooked in milk",
+      "s": "We had _____ for dessert and it was warm and creamy.",
+      "cf": "rice pudding",
+      "a": [
+        "rice pudding"
+      ],
+      "mc": [
+        "porridge",
+        "pancakes",
+        "custard"
+      ]
+    },
+    {
+      "w": "chocolate ice cream",
+      "g": "Schokoladeneis",
+      "d": "A cold sweet treat with a brown, sweet flavour",
+      "s": "I always choose _____ when we go to the ice cream shop.",
+      "cf": "chocolate ice cream",
+      "a": [
+        "chocolate ice cream"
+      ],
+      "mc": [
+        "vanilla ice cream",
+        "strawberry ice cream",
+        "lemon sorbet"
+      ]
+    },
+    {
+      "w": "turkey",
+      "g": "Truthahn",
+      "d": "A big bird that people eat at special dinners",
+      "s": "In America, many families eat _____ at Thanksgiving.",
+      "a": [
+        "turkeys"
+      ],
+      "mc": [
+        "chicken",
+        "duck",
+        "goose"
+      ]
+    },
+    {
+      "w": "ham",
+      "g": "Schinken",
+      "d": "Meat from a pig, often eaten in sandwiches",
+      "s": "I want a _____ and cheese sandwich, please.",
+      "a": [],
+      "mc": [
+        "bacon",
+        "beef",
+        "sausage"
+      ]
+    },
+    {
+      "w": "beef",
+      "g": "Rindfleisch",
+      "d": "Meat from a cow",
+      "s": "We had _____ steak with vegetables for dinner yesterday. It came from a cow.",
+      "a": [],
+      "mc": [
+        "fish",
+        "cheese",
+        "rice"
+      ]
+    },
+    {
+      "w": "chicken",
+      "g": "Huhn, Hühnerfleisch",
+      "d": "A bird that gives eggs, or the meat from that bird",
+      "s": "Mum is making _____ soup with carrots and noodles for lunch. It's my favourite when I'm sick.",
+      "a": [
+        "chickens"
+      ],
+      "mc": [
+        "bread",
+        "salad",
+        "ice cream"
+      ]
+    },
+    {
+      "w": "apple juice",
+      "g": "Apfelsaft",
+      "d": "A drink made from the sweet fruit that grows on trees",
+      "s": "Can I have a glass of _____ please? I love the taste of apples.",
+      "cf": "apple juice",
+      "a": [
+        "apple juice"
+      ],
+      "mc": [
+        "orange juice",
+        "lemonade",
+        "mineral water"
+      ]
+    },
+    {
+      "w": "cheesecake",
+      "g": "Käsekuchen",
+      "d": "A sweet cake made with a soft white cream on top",
+      "s": "The _____ at this cafe is really delicious. It is a sweet cake made with soft white cream.",
+      "a": [
+        "cheesecakes"
+      ],
+      "mc": [
+        "pancakes",
+        "chocolate cake",
+        "pumpkin pie"
+      ]
+    },
+    {
+      "w": "pancakes",
+      "g": "Pfannkuchen",
+      "d": "Flat round food made from eggs and flour, cooked in a pan",
+      "s": "We had _____ with jam for breakfast this morning.",
+      "a": [
+        "pancake"
+      ],
+      "mc": [
+        "waffles",
+        "toast",
+        "cereal"
+      ]
+    },
+    {
+      "w": "mineral water",
+      "g": "Mineralwasser",
+      "d": "Water with tiny bubbles that you can buy in a bottle",
+      "s": "I would like a bottle of _____ please. Just water with bubbles, nothing sweet.",
+      "cf": "mineral water",
+      "a": [
+        "mineral water"
+      ],
+      "mc": [
+        "lemonade",
+        "apple juice",
+        "orange juice"
+      ]
+    },
+    {
+      "w": "tomato (pl tomatoes)",
+      "g": "Tomate",
+      "d": "A red fruit you put in salads and on pizza",
+      "s": "Can you cut the red, round _____ into slices for the salad?",
+      "cf": "tomato",
+      "a": [
+        "tomato",
+        "tomatoes"
+      ],
+      "mc": [
+        "pepper",
+        "onion",
+        "cucumber"
+      ]
+    },
+    {
+      "w": "cabbage",
+      "g": "Kohl",
+      "d": "A big round green vegetable with many leaves",
+      "s": "We grew big green _____ with thick round leaves in our garden last year.",
+      "a": [
+        "cabbages"
+      ],
+      "mc": [
+        "lettuce",
+        "spinach",
+        "broccoli"
+      ]
+    },
+    {
+      "w": "sausages",
+      "g": "Würstchen",
+      "d": "Meat shaped like a long tube, often grilled or fried",
+      "s": "We had _____ and mashed potatoes for dinner.",
+      "a": [
+        "sausage"
+      ],
+      "mc": [
+        "ham",
+        "bacon",
+        "meatballs"
+      ]
+    },
+    {
+      "w": "lamb",
+      "g": "Lamm, Lammfleisch",
+      "d": "A young woolly farm animal, or the meat from it",
+      "s": "We had roasted _____ from a baby sheep with potatoes and vegetables for Sunday dinner.",
+      "a": [
+        "lambs"
+      ],
+      "mc": [
+        "fish",
+        "cheese",
+        "rice"
+      ]
+    },
+    {
+      "w": "pears",
+      "g": "Birnen",
+      "d": "Green or yellow fruit shaped like a bell",
+      "s": "These _____ are really juicy and sweet, with a narrow top and wide bottom.",
+      "a": [
+        "pear"
+      ],
+      "mc": [
+        "apples",
+        "peaches",
+        "plums"
+      ]
+    },
+    {
+      "w": "peppers",
+      "g": "Paprika",
+      "d": "Vegetables that can be red, green, or yellow",
+      "s": "I like red and green _____ on my pizza — they are crunchy and a little sweet.",
+      "a": [
+        "pepper"
+      ],
+      "mc": [
+        "bananas",
+        "apples",
+        "grapes"
+      ]
+    },
+    {
+      "w": "onions",
+      "g": "Zwiebeln",
+      "d": "Round white or brown vegetables that make your eyes water",
+      "s": "Mum is cutting _____ and her eyes are full of tears.",
+      "a": [
+        "onion"
+      ],
+      "mc": [
+        "garlic",
+        "peppers",
+        "mushrooms"
+      ]
+    },
+    {
+      "w": "olives",
+      "g": "Oliven",
+      "d": "Small green or black fruit often used in salads or on pizza",
+      "s": "Do you want black _____ on your pizza? They are small, round and salty.",
+      "a": [
+        "olive"
+      ],
+      "mc": [
+        "cookies",
+        "bananas",
+        "cakes"
+      ]
+    },
+    {
+      "w": "mushrooms",
+      "g": "Pilze",
+      "d": "Small things that grow in forests and some you can eat",
+      "s": "I found some _____ in the garden but we did not eat them.",
+      "a": [
+        "mushroom"
+      ],
+      "mc": [
+        "onions",
+        "peppers",
+        "beans"
+      ]
+    },
+    {
+      "w": "potato (pl potatoes)",
+      "g": "Kartoffel",
+      "d": "A round brown vegetable that grows under the ground",
+      "s": "We had baked _____ with butter for dinner.",
+      "cf": "potato",
+      "a": [
+        "potato",
+        "potatoes"
+      ],
+      "mc": [
+        "carrot",
+        "onion",
+        "turnip"
+      ]
+    },
+    {
+      "w": "peaches",
+      "g": "Pfirsiche",
+      "d": "Soft round fruit with a fuzzy skin, orange inside",
+      "s": "The orange-coloured _____ from the market were sweet, juicy, and had a big stone inside.",
+      "a": [
+        "peach"
+      ],
+      "mc": [
+        "lemons",
+        "bananas",
+        "strawberries"
+      ]
+    },
+    {
+      "w": "strawberries",
+      "g": "Erdbeeren",
+      "d": "Small red fruit that grows close to the ground",
+      "s": "We picked _____ at the farm and made jam from them.",
+      "a": [
+        "strawberry"
+      ],
+      "mc": [
+        "raspberries",
+        "blueberries",
+        "cherries"
+      ]
+    },
+    {
+      "w": "chef",
+      "g": "Koch/Köchin",
+      "d": "A person who cooks food in a place where you eat out",
+      "s": "The head _____ at the Italian restaurant made a wonderful pasta dish in the kitchen.",
+      "a": [
+        "chefs"
+      ],
+      "mc": [
+        "customer",
+        "owner",
+        "cleaner"
+      ]
+    },
+    {
+      "w": "recipe",
+      "g": "Rezept",
+      "d": "A list of steps that tells you how to cook something",
+      "s": "I found a great _____ for chocolate cake online with a list of ingredients and step-by-step instructions.",
+      "a": [
+        "recipes"
+      ],
+      "mc": [
+        "song",
+        "film",
+        "book"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a recipe",
+          "options": [
+            "Follow",
+            "Drive",
+            "Catch",
+            "Wear"
+          ],
+          "answer": "Follow"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RECIPE?",
+          "options": [
+            "follow",
+            "easy",
+            "new",
+            "loud"
+          ],
+          "answer": "loud"
+        }
+      ]
+    },
+    {
+      "w": "waiter",
+      "g": "Kellner",
+      "d": "A person who brings food and drinks to your table",
+      "s": "The _____ in the black uniform brought us the menu and some water at our table.",
+      "a": [
+        "waiters",
+        "waitress",
+        "waitresses"
+      ],
+      "mc": [
+        "chef",
+        "customer",
+        "manager"
+      ]
+    },
+    {
+      "w": "cloche",
+      "g": "Speiseglocke",
+      "d": "A metal cover over a plate that keeps the food warm",
+      "s": "The _____ covered the plate until the guest was ready to eat.",
+      "a": [
+        "cloches"
+      ],
+      "mc": [
+        "lid",
+        "plate",
+        "tray"
+      ]
+    },
+    {
+      "w": "menu",
+      "g": "Speisekarte",
+      "d": "A list of food and drinks you can order in a place to eat",
+      "s": "Let me look at the restaurant _____ and choose something to eat from the list of dishes.",
+      "a": [
+        "menus"
+      ],
+      "mc": [
+        "clock",
+        "window",
+        "door"
+      ]
+    },
+    {
+      "w": "slice",
+      "g": "Stück; Scheibe",
+      "d": "A thin piece cut from something bigger",
+      "s": "Can I have another thin _____ of bread, please? Just cut one more piece.",
+      "a": [
+        "slices"
+      ],
+      "mc": [
+        "bag",
+        "loaf",
+        "crumb"
+      ]
+    },
+    {
+      "w": "actor, actress",
+      "g": "Schauspieler, Schauspielerin",
+      "d": "A person who acts in films or on stage",
+      "s": "My favourite _____ is in a new film this summer.",
+      "cf": "actor",
+      "a": [
+        "actor",
+        "actress",
+        "actors",
+        "actresses"
+      ],
+      "mc": [
+        "singer",
+        "dancer",
+        "director"
+      ]
+    },
+    {
+      "w": "main course",
+      "g": "Hauptgang, Hauptspeise",
+      "d": "The biggest and most important dish of a meal",
+      "s": "For the _____ I had fish with vegetables.",
+      "cf": "main course",
+      "a": [
+        "main course",
+        "main courses"
+      ],
+      "mc": [
+        "starter",
+        "dessert",
+        "side dish"
+      ]
+    },
+    {
+      "w": "to pour",
+      "g": "einschenken, schütten",
+      "d": "To make a liquid flow out of a bottle or jug",
+      "s": "Can you _____ some water carefully into my glass? Don't spill it.",
+      "cf": "pour",
+      "a": [
+        "pour",
+        "pours",
+        "poured"
+      ],
+      "mc": [
+        "to drink",
+        "to boil",
+        "to freeze"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ water into a glass",
+          "options": [
+            "Pour",
+            "Fly",
+            "Read",
+            "Kick"
+          ],
+          "answer": "Pour"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with POUR?",
+          "options": [
+            "water",
+            "juice",
+            "tea",
+            "homework"
+          ],
+          "answer": "homework"
+        }
+      ]
+    },
+    {
+      "w": "soup",
+      "g": "Suppe",
+      "d": "A warm liquid food made from vegetables or meat",
+      "s": "On cold winter days I love to eat a bowl of hot tomato _____ with a spoon.",
+      "a": [
+        "soups"
+      ],
+      "mc": [
+        "bread",
+        "cheese",
+        "salad"
+      ]
+    },
+    {
+      "w": "starter",
+      "g": "Vorspeise",
+      "d": "A small dish you eat before the big dish",
+      "s": "We had garlic bread as a _____ before the pasta.",
+      "a": [
+        "starters"
+      ],
+      "mc": [
+        "main course",
+        "dessert",
+        "snack"
+      ]
+    },
+    {
+      "w": "straightaway",
+      "g": "sofort",
+      "d": "Right now, without waiting",
+      "s": "I will bring your drinks _____. I am going to the kitchen right now.",
+      "a": [
+        "straight away"
+      ],
+      "mc": [
+        "tomorrow",
+        "next week",
+        "never"
+      ]
+    },
+    {
+      "w": "completely",
+      "g": "vollständig",
+      "d": "Totally, with nothing missing",
+      "s": "The glass was _____ empty. There was not a single drop of water left.",
+      "a": [],
+      "mc": [
+        "half",
+        "loudly",
+        "quickly"
+      ]
+    },
+    {
+      "w": "crane",
+      "g": "Kran",
+      "d": "A very tall machine that lifts heavy things at a building site",
+      "s": "We watched the big _____ lift steel beams onto the new building.",
+      "a": [
+        "cranes"
+      ],
+      "mc": [
+        "forklift",
+        "truck",
+        "bulldozer"
+      ]
+    },
+    {
+      "w": "to drop",
+      "g": "fallen (lassen)",
+      "d": "To let something fall from your hand",
+      "s": "Be careful! Hold it tight — don't _____ the plate on the floor.",
+      "cf": "drop",
+      "a": [
+        "drop",
+        "drops",
+        "dropped"
+      ],
+      "mc": [
+        "to wash",
+        "to eat",
+        "to buy"
+      ]
+    },
+    {
+      "w": "to entertain",
+      "g": "unterhalten",
+      "d": "To do something fun so people enjoy themselves",
+      "s": "The clown _____ the children at the birthday party by doing tricks and telling jokes.",
+      "cf": "entertained",
+      "a": [
+        "entertain",
+        "entertains",
+        "entertained"
+      ],
+      "mc": [
+        "to scare",
+        "to bore",
+        "to upset"
+      ]
+    },
+    {
+      "w": "glasses (pl)",
+      "g": "Brille",
+      "d": "Two small pieces of glass you wear in front of your eyes to see better",
+      "s": "I need my _____ to read the board at school.",
+      "a": [],
+      "mc": [
+        "sunglasses",
+        "contact lenses",
+        "goggles"
+      ]
+    },
+    {
+      "w": "platform",
+      "g": "Plattform",
+      "d": "A flat raised area where you can stand or build on",
+      "s": "The band played on a small _____ in the park.",
+      "a": [
+        "platforms"
+      ],
+      "mc": [
+        "stage",
+        "balcony",
+        "terrace"
+      ]
+    },
+    {
+      "w": "to serve",
+      "g": "servieren",
+      "d": "To bring food or drinks to someone at a table",
+      "s": "The waiter _____ us our food with a big smile.",
+      "cf": "served",
+      "a": [
+        "serve",
+        "serves",
+        "served"
+      ],
+      "mc": [
+        "to pour",
+        "to cook",
+        "to order"
+      ]
+    },
+    {
+      "w": "several",
+      "g": "einige, mehrere",
+      "d": "More than two but not very many",
+      "s": "I don't have one or two but _____ friends in my new class.",
+      "a": [],
+      "mc": [
+        "many",
+        "few",
+        "no"
+      ]
+    },
+    {
+      "w": "stew",
+      "g": "Eintopf",
+      "d": "A hot dish made by cooking meat and vegetables together slowly",
+      "s": "Grandma's _____ is the best thing to eat on a cold winter day.",
+      "a": [
+        "stews"
+      ],
+      "mc": [
+        "soup",
+        "roast",
+        "casserole"
+      ]
+    },
+    {
+      "w": "to complain",
+      "g": "sich beschweren",
+      "d": "To say you are not happy about something",
+      "s": "The man _____ to the waiter because his food was cold and wanted a new meal.",
+      "cf": "complained",
+      "a": [
+        "complain",
+        "complains",
+        "complained"
+      ],
+      "mc": [
+        "to thank",
+        "to praise",
+        "to smile"
+      ]
+    },
+    {
+      "w": "consumer",
+      "g": "Konsument/Konsumentin",
+      "d": "A person who buys things in a shop or online",
+      "s": "When you buy something from a shop and pay money for it, you are a _____.",
+      "a": [
+        "consumers"
+      ],
+      "mc": [
+        "seller",
+        "owner",
+        "worker"
+      ]
+    },
+    {
+      "w": "delivery",
+      "g": "Lieferung",
+      "d": "When someone brings something you ordered to your door",
+      "s": "The pizza _____ from the takeaway came to my house in only twenty minutes.",
+      "a": [
+        "deliveries"
+      ],
+      "mc": [
+        "menu",
+        "recipe",
+        "bill"
+      ]
+    },
+    {
+      "w": "to download",
+      "g": "herunterladen",
+      "d": "To get a file, song, or app from the internet onto your device",
+      "s": "I _____ a new game on my tablet yesterday.",
+      "cf": "downloaded",
+      "a": [
+        "download",
+        "downloads",
+        "downloaded"
+      ],
+      "mc": [
+        "to upload",
+        "to install",
+        "to save"
+      ]
+    },
+    {
+      "w": "refund",
+      "g": "Rückerstattung",
+      "d": "Money you get back when you return something you bought",
+      "s": "The shop gave me a _____ because the shoes were too small.",
+      "a": [
+        "refunds"
+      ],
+      "mc": [
+        "receipt",
+        "discount",
+        "payment"
+      ]
+    },
+    {
+      "w": "certain",
+      "g": "sicher, gewiss",
+      "d": "Very sure about something",
+      "s": "I am _____ that tomorrow is a holiday — I checked the calendar twice.",
+      "a": [],
+      "mc": [
+        "not sure",
+        "confused",
+        "wondering"
+      ]
+    },
+    {
+      "w": "to change one's mind",
+      "g": "seine Meinung ändern",
+      "d": "To think something different from before",
+      "s": "I wanted pizza but I _____ and chose pasta.",
+      "cf": "changed my mind",
+      "a": [
+        "change my mind",
+        "changed my mind",
+        "changes his mind",
+        "change your mind"
+      ],
+      "mc": [
+        "to make up one's mind",
+        "to agree",
+        "to decide"
+      ]
+    },
+    {
+      "w": "gym",
+      "g": "Turnhalle; Fitnesscenter",
+      "d": "A room or building where people do sport or exercise",
+      "s": "We play volleyball in the school _____ on Fridays. It has a wooden floor and a high ceiling.",
+      "a": [
+        "gyms"
+      ],
+      "mc": [
+        "library",
+        "cafeteria",
+        "office"
+      ]
+    },
+    {
+      "w": "to miss",
+      "g": "hier: verpassen",
+      "d": "To be too late and not catch a bus, train, or event",
+      "s": "Run faster or you will _____ the school bus!",
+      "cf": "miss",
+      "a": [
+        "miss",
+        "misses",
+        "missed"
+      ],
+      "mc": [
+        "to catch",
+        "to be late",
+        "to forget"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ the bus",
+          "options": [
+            "Miss",
+            "Cook",
+            "Plant",
+            "Draw"
+          ],
+          "answer": "Miss"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MISS?",
+          "options": [
+            "the bus",
+            "the train",
+            "a chance",
+            "a fork"
+          ],
+          "answer": "a fork"
+        }
+      ]
+    }
+  ]
+}

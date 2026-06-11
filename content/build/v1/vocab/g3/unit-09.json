@@ -1,0 +1,601 @@
+{
+  "slug": "unit-09",
+  "grade": 3,
+  "unit": 9,
+  "title": "Unit 9",
+  "entries": [
+    {
+      "w": "to dye your hair",
+      "g": "deine Haare färben",
+      "d": "To change the colour of your locks using a special product",
+      "s": "I really want to _____ bright pink this summer for fun — I'll use permanent colour to change it from brown.",
+      "cf": "dye my hair",
+      "a": [
+        "dye your hair",
+        "dye my hair",
+        "dye her hair",
+        "dyed my hair"
+      ],
+      "mc": [
+        "to cut your hair",
+        "to style your hair",
+        "to wash your hair"
+      ]
+    },
+    {
+      "w": "to get a tattoo",
+      "g": "sich tätowieren lassen",
+      "d": "To have a permanent picture or design put on your skin",
+      "s": "My older cousin _____ a small rose permanently on her arm for her 18th birthday at the tattoo parlour.",
+      "cf": "got a tattoo",
+      "a": [
+        "get a tattoo",
+        "got a tattoo"
+      ],
+      "mc": [
+        "to get a haircut",
+        "to get a sunburn",
+        "to get new clothes"
+      ]
+    },
+    {
+      "w": "to hang out in shopping centres",
+      "g": "in Einkaufszentren abhängen",
+      "d": "To spend time doing nothing special in a mall",
+      "s": "Some bored teenagers like to _____ after school, walking around the shops and just meeting friends without buying anything.",
+      "cf": "hang out in shopping centres",
+      "a": [
+        "hang out in shopping centres",
+        "hang out"
+      ],
+      "mc": [
+        "to study hard in shopping centres",
+        "to work in shopping centres",
+        "to perform in shopping centres"
+      ]
+    },
+    {
+      "w": "to go roller-skating without pads",
+      "g": "ohne Schützer Rollschuh fahren",
+      "d": "To roller-skate without wearing protection on your knees and elbows",
+      "s": "It's very dangerous to _____ without pads on your knees and elbows — you could hurt yourself badly if you fall down.",
+      "cf": "go roller-skating",
+      "a": [
+        "go roller-skating without pads"
+      ],
+      "mc": [
+        "to go roller-skating with full protective pads",
+        "to go for a walk without shoes",
+        "to sit on the sofa without cushions"
+      ]
+    },
+    {
+      "w": "to get a nose stud",
+      "g": "sich einen Nasenstecker stechen lassen",
+      "d": "To have a small piece of jewellery put through your nostril",
+      "s": "She asked her parents nervously if she could _____ — a tiny piece of silver jewellery for her nose piercing.",
+      "cf": "get a nose stud",
+      "a": [
+        "get a nose stud",
+        "got a nose stud"
+      ],
+      "mc": [
+        "to get a new computer",
+        "to get a puppy",
+        "to get new trainers"
+      ]
+    },
+    {
+      "w": "to scroll through your phone",
+      "g": "durch dein Handy scrollen",
+      "d": "To move your finger up and down on your screen to look at things",
+      "s": "He spends hours every evening just _____ through his phone, looking at social media photos and videos without really doing anything.",
+      "cf": "scrolling",
+      "a": [
+        "scroll through your phone",
+        "scrolling through your phone"
+      ],
+      "mc": [
+        "to exercise with your phone",
+        "to cook with your phone",
+        "to sleep with your phone"
+      ]
+    },
+    {
+      "w": "to have a party at home",
+      "g": "zu Hause eine Party machen",
+      "d": "To invite friends over to celebrate at your place",
+      "s": "Can I please _____ a party at home for my 13th birthday? I want to invite 10 friends over for pizza and cake.",
+      "cf": "have",
+      "a": [
+        "have a party at home",
+        "had a party at home"
+      ],
+      "mc": [
+        "to cancel a party",
+        "to skip a party",
+        "to stay home alone"
+      ]
+    },
+    {
+      "w": "to buy your own clothes",
+      "g": "deine eigene Kleidung kaufen",
+      "d": "To choose and pay for what you wear yourself",
+      "s": "My parents finally let me _____ my own clothes now with my pocket money instead of them choosing for me.",
+      "cf": "buy",
+      "a": [
+        "buy your own clothes",
+        "buy my own clothes"
+      ],
+      "mc": [
+        "to wear hand-me-downs",
+        "to share clothes with siblings",
+        "to make your own clothes"
+      ]
+    },
+    {
+      "w": "to eat too many sweets",
+      "g": "zu viele Süßigkeiten essen",
+      "d": "To have more candy and sugar than is good for you",
+      "s": "The dentist strongly said I should stop _____ too many sweets like chocolate and candy, because they're bad for my teeth.",
+      "cf": "eating",
+      "a": [
+        "eat too many sweets",
+        "eating too many sweets"
+      ],
+      "mc": [
+        "to eat too many vegetables",
+        "to drink too much water",
+        "to exercise too much"
+      ]
+    },
+    {
+      "w": "to wear earrings",
+      "g": "Ohrringe tragen",
+      "d": "To put on small pieces of jewellery on your ears",
+      "s": "She got her ears pierced last month at the jewellery shop and now she _____ every single day to school.",
+      "cf": "wears earrings",
+      "a": [
+        "wear earrings"
+      ],
+      "mc": [
+        "to wear a hat",
+        "to wear gloves",
+        "to wear a scarf"
+      ]
+    },
+    {
+      "w": "to ride your bike without a helmet",
+      "g": "ohne Helm Fahrrad fahren",
+      "d": "To cycle without wearing head protection",
+      "s": "You shouldn't _____ your bike without a helmet on busy roads — it's really not safe if you fall and hit your head.",
+      "cf": "ride",
+      "a": [
+        "ride your bike without a helmet",
+        "ride my bike without a helmet"
+      ],
+      "mc": [
+        "to ride your bike with a helmet",
+        "to walk without shoes",
+        "to drive a car"
+      ]
+    },
+    {
+      "w": "to come home after ten",
+      "g": "nach zehn Uhr nach Hause kommen",
+      "d": "To arrive at your house later than 10 p.m.",
+      "s": "My strict parents don't want me to _____ home after ten o'clock at night on school nights — I must be back by 9 pm.",
+      "cf": "come",
+      "a": [
+        "come home after ten",
+        "came home after ten"
+      ],
+      "mc": [
+        "to come home before ten",
+        "to stay at home after ten",
+        "to leave home after ten"
+      ]
+    },
+    {
+      "w": "to turn your music up loud",
+      "g": "deine Musik laut aufdrehen",
+      "d": "To increase the volume so everyone can hear",
+      "s": "Please don't _____ your music up so incredibly loud right now — I'm trying really hard to study for my exam in my bedroom.",
+      "cf": "turn",
+      "a": [
+        "turn your music up loud",
+        "turn my music up loud"
+      ],
+      "mc": [
+        "to turn your music down quietly",
+        "to switch your music off",
+        "to change your music"
+      ]
+    },
+    {
+      "w": "to go to the disco",
+      "g": "in die Disco gehen",
+      "d": "To spend an evening out dancing at a club",
+      "s": "Are you allowed by your parents to _____ to the school disco on Saturday night with loud music and dancing until 11 pm?",
+      "cf": "go",
+      "a": [
+        "go to the disco",
+        "went to the disco"
+      ],
+      "mc": [
+        "to go to bed early",
+        "to go to the library",
+        "to stay home"
+      ]
+    },
+    {
+      "w": "to play video games all day",
+      "g": "den ganzen Tag Videospiele spielen",
+      "d": "To spend hours and hours on your console or computer without stopping",
+      "s": "On rainy boring weekends at home, he really likes to _____ video games all day long from morning until evening on his console.",
+      "cf": "play",
+      "a": [
+        "play video games all day"
+      ],
+      "mc": [
+        "to read books all day",
+        "to do homework all day",
+        "to exercise outside all day"
+      ]
+    },
+    {
+      "w": "to watch TV after 10 o'clock",
+      "g": "nach 22 Uhr fernsehen",
+      "d": "To be in front of the screen later than ten in the evening",
+      "s": "I'm not allowed to _____ TV after 10 o'clock at night on school nights because mum says I need to sleep.",
+      "cf": "watch",
+      "a": [
+        "watch TV after 10 o'clock",
+        "watch TV after ten"
+      ],
+      "mc": [
+        "to watch TV before dinner",
+        "to watch TV with family on weekends",
+        "to watch TV at lunchtime"
+      ]
+    },
+    {
+      "w": "to be allowed to do sth.",
+      "g": "etw. tun dürfen",
+      "d": "To have permission to do something",
+      "s": "We are _____ to use our mobile phones during the 15-minute morning break but not during lessons in the classroom.",
+      "cf": "allowed",
+      "a": [
+        "be allowed to",
+        "allowed to"
+      ],
+      "mc": [
+        "to be banned from doing sth.",
+        "to be forbidden from doing sth.",
+        "to be punished for doing sth."
+      ]
+    },
+    {
+      "w": "It's a pity.",
+      "g": "Das ist schade.",
+      "d": "A way to say you are sorry about something disappointing",
+      "s": "You really can't come to the important football match on Saturday? _____ We really wanted you on the team because we need a goalkeeper.",
+      "cf": "It's a pity",
+      "a": [
+        "It's a pity"
+      ],
+      "mc": [
+        "Great!",
+        "How lucky!",
+        "Good for you!"
+      ]
+    },
+    {
+      "w": "strict",
+      "g": "streng",
+      "d": "Having many rules and expecting people to follow them",
+      "s": "Our maths teacher Mrs Schmidt is very _____ about homework deadlines — if you don't hand it in on time, you lose marks.",
+      "a": [],
+      "mc": [
+        "lazy",
+        "forgetful",
+        "relaxed"
+      ]
+    },
+    {
+      "w": "to adopt",
+      "g": "hier: annehmen",
+      "d": "To start using or accepting something new",
+      "s": "Our school _____ a new rule last September about mobile phones being banned during all school hours, from 8 am to 3 pm.",
+      "cf": "adopted",
+      "a": [
+        "adopt",
+        "adopted"
+      ],
+      "mc": [
+        "to forget",
+        "to ignore",
+        "to remove"
+      ]
+    },
+    {
+      "w": "community",
+      "g": "Gemeinschaft, Gemeinde",
+      "d": "A group of people who live in the same area or share something",
+      "s": "Everyone in our local _____ helped to clean up the big public park together on Saturday morning, from children to grandparents.",
+      "a": [
+        "communities"
+      ],
+      "mc": [
+        "military",
+        "prison",
+        "school class only"
+      ]
+    },
+    {
+      "w": "conservative",
+      "g": "konservativ",
+      "d": "Preferring traditional ways and not wanting to change",
+      "s": "Some _____ elderly people prefer to keep all the old traditions unchanged and don't want anything new or modern to replace them.",
+      "a": [],
+      "mc": [
+        "progressive",
+        "modern",
+        "innovative"
+      ]
+    },
+    {
+      "w": "modern technology",
+      "g": "moderne Technologie",
+      "d": "New machines, computers and other tools we use today",
+      "s": "_____ like smartphones, laptops, and tablets makes our daily lives easier in many ways by connecting us instantly to information.",
+      "cf": "Modern technology",
+      "a": [
+        "modern technology"
+      ],
+      "mc": [
+        "Ancient history",
+        "Old-fashioned machines",
+        "Outdated equipment"
+      ]
+    },
+    {
+      "w": "plenty",
+      "g": "reichlich",
+      "d": "More than enough, a lot of",
+      "s": "There is _____ of hot pizza left in the kitchen for everyone at the party — don't worry, we ordered six large pizzas!",
+      "a": [],
+      "mc": [
+        "not enough",
+        "very little",
+        "hardly any"
+      ]
+    },
+    {
+      "w": "to pray",
+      "g": "beten",
+      "d": "To talk to God or a higher power",
+      "s": "Some religious people _____ silently with their hands together before they go to bed at night, thanking God for the day.",
+      "a": [
+        "pray",
+        "prayed"
+      ],
+      "mc": [
+        "to dance",
+        "to sing loudly",
+        "to shout"
+      ]
+    },
+    {
+      "w": "to punish",
+      "g": "bestrafen",
+      "d": "To make someone suffer because they did something wrong",
+      "s": "My angry parents _____ me for my bad behaviour by taking away my phone and tablet for a whole week.",
+      "cf": "punished",
+      "a": [
+        "punish",
+        "punished"
+      ],
+      "mc": [
+        "to reward",
+        "to celebrate",
+        "to thank"
+      ]
+    },
+    {
+      "w": "It depends.",
+      "g": "Es kommt darauf an.",
+      "d": "A way to say the answer changes depending on the situation",
+      "s": "Are you coming to my party on Saturday? — _____. If it doesn't rain heavily, I'll definitely be there with a present.",
+      "cf": "It depends",
+      "a": [
+        "It depends"
+      ],
+      "mc": [
+        "Certainly yes.",
+        "Absolutely not.",
+        "Definitely no."
+      ]
+    },
+    {
+      "w": "to stay up",
+      "g": "aufbleiben",
+      "d": "To not go to bed and remain awake late",
+      "s": "We _____ awake until after midnight last Friday night watching a really scary horror film on TV with our best friends.",
+      "cf": "stayed up",
+      "a": [
+        "stay up",
+        "stayed up"
+      ],
+      "mc": [
+        "to go to sleep early",
+        "to take a nap",
+        "to fall asleep"
+      ]
+    },
+    {
+      "w": "to invite sb. over",
+      "g": "jdn. zu sich einladen",
+      "d": "To ask someone to come to your house",
+      "s": "Can I _____ my best friend Tom for dinner tonight? Mum and Dad said it's okay and there will be enough spaghetti.",
+      "cf": "invite over",
+      "a": [
+        "invite over",
+        "invited over",
+        "invite … over"
+      ],
+      "mc": [
+        "to turn sb. away",
+        "to send sb. home",
+        "to push sb. out"
+      ]
+    },
+    {
+      "w": "for a change",
+      "g": "zur Abwechslung",
+      "d": "To do something different from what you usually do",
+      "s": "Let's walk to school today _____ — we always take the lazy bus every day, so it would be nice to try something different for once.",
+      "cf": "for a change",
+      "a": [
+        "for a change"
+      ],
+      "mc": [
+        "as usual",
+        "like always",
+        "the same way"
+      ]
+    },
+    {
+      "w": "journalist",
+      "g": "Journalist/Journalistin",
+      "d": "A person who writes news for a newspaper, TV or website",
+      "s": "The _____ from the local newspaper wrote a long interesting article about our school's new science lab last week.",
+      "a": [
+        "journalists"
+      ],
+      "mc": [
+        "teacher",
+        "librarian",
+        "student"
+      ]
+    },
+    {
+      "w": "litter-picking",
+      "g": "Müllsammeln",
+      "d": "Collecting rubbish from the ground outside",
+      "s": "Our class organised a _____ volunteer day to clean up all the rubbish and plastic bottles in the public park.",
+      "cf": "litter-picking",
+      "a": [
+        "litter-picking",
+        "litter picking"
+      ],
+      "mc": [
+        "music-making",
+        "tree-climbing",
+        "flower-planting"
+      ]
+    },
+    {
+      "w": "rude",
+      "g": "unhöflich, unverschämt",
+      "d": "Not polite, saying or doing things that upset others",
+      "s": "It's very _____ to talk loudly with your mouth full of food — close your mouth and finish chewing before you speak.",
+      "a": [],
+      "mc": [
+        "polite",
+        "well-mannered",
+        "respectful"
+      ]
+    },
+    {
+      "w": "unbelievable",
+      "g": "unglaublich",
+      "d": "So amazing or strange that it is hard to believe",
+      "s": "The orange and pink sunset over the sea last night was _____! I've never seen anything so beautiful and stunning in my whole life.",
+      "a": [],
+      "mc": [
+        "ordinary",
+        "plain",
+        "dull"
+      ]
+    },
+    {
+      "w": "to freeze",
+      "g": "(er-)frieren",
+      "d": "To be or become very cold",
+      "s": "I forgot to bring my warm winter jacket to school and almost _____ on the long walk home in the snowy cold wind.",
+      "cf": "froze",
+      "a": [
+        "freeze",
+        "froze",
+        "frozen"
+      ],
+      "mc": [
+        "to boil",
+        "to warm up",
+        "to sweat"
+      ]
+    },
+    {
+      "w": "to lend",
+      "g": "(ver-)leihen",
+      "d": "To give something to someone for a short time",
+      "s": "Can you please _____ me your black pen just for this one lesson? I forgot mine at home on my desk and I'll give it back after.",
+      "a": [
+        "lend",
+        "lent"
+      ],
+      "mc": [
+        "to keep",
+        "to hide from me",
+        "to throw away"
+      ]
+    },
+    {
+      "w": "Never mind!",
+      "g": "Egal!, Schon gut!",
+      "d": "A way to say it's OK, don't worry about it",
+      "s": "Sorry I'm three minutes late for the meeting! — _____! We literally just started one minute ago, so you haven't missed anything.",
+      "cf": "Never mind",
+      "a": [
+        "Never mind"
+      ],
+      "mc": [
+        "How terrible!",
+        "That's unforgivable!",
+        "I'm furious!"
+      ]
+    },
+    {
+      "w": "to remind sb.",
+      "g": "jdn. erinnern",
+      "d": "To help someone remember something",
+      "s": "Please _____ me tomorrow morning to bring my big sports bag for PE class — I always forget on Wednesdays.",
+      "a": [
+        "remind",
+        "reminded"
+      ],
+      "mc": [
+        "to distract sb.",
+        "to confuse sb.",
+        "to ignore sb."
+      ]
+    },
+    {
+      "w": "to sort out",
+      "g": "aussortieren",
+      "d": "To organise things or decide which ones to keep",
+      "s": "I really need to _____ my messy wardrobe this weekend and give away all the old clothes I don't wear anymore.",
+      "cf": "sort out",
+      "a": [
+        "sort out",
+        "sorted out"
+      ],
+      "mc": [
+        "to mess up",
+        "to ignore",
+        "to leave alone"
+      ]
+    }
+  ]
+}

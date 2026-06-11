@@ -1,0 +1,686 @@
+{
+  "slug": "unit-13",
+  "grade": 1,
+  "unit": 13,
+  "title": "Unit 13",
+  "entries": [
+    {
+      "w": "storm",
+      "g": "Sturm",
+      "d": "very bad weather with strong wind and rain",
+      "s": "The trees fell down and windows broke during the big _____ last night with strong winds.",
+      "a": [],
+      "mc": [
+        "sunshine",
+        "rainbow",
+        "calm"
+      ]
+    },
+    {
+      "w": "jetpack",
+      "g": "Jetpack, Raketenrucksack",
+      "d": "a machine you wear on your back to fly",
+      "s": "The comic book hero put on his rocket-powered _____ on his back and flew up into the sky.",
+      "a": [],
+      "mc": [
+        "school bag",
+        "suitcase",
+        "basket"
+      ]
+    },
+    {
+      "w": "helicopter",
+      "g": "Hubschrauber",
+      "d": "a flying machine with blades on top",
+      "s": "The _____ with spinning blades on top landed on the flat roof of the hospital.",
+      "a": [],
+      "mc": [
+        "car",
+        "bicycle",
+        "train"
+      ]
+    },
+    {
+      "w": "coastguard",
+      "g": "Küstenwache",
+      "d": "people who help others at sea",
+      "s": "The _____ in their fast boat saved the swimmers from the rough sea water near the beach.",
+      "a": [],
+      "mc": [
+        "police",
+        "fire brigade",
+        "ambulance"
+      ]
+    },
+    {
+      "w": "fire brigade",
+      "g": "Feuerwehr",
+      "d": "a group that puts out fires",
+      "s": "Someone called the _____ on 999 when the old house was burning with orange flames.",
+      "a": [],
+      "mc": [
+        "coastguard",
+        "mountain rescue",
+        "ambulance"
+      ]
+    },
+    {
+      "w": "ambulance",
+      "g": "Rettungswagen, Krankenwagen",
+      "d": "a car that takes sick people to hospital",
+      "s": "The white _____ with flashing blue lights came quickly to take the hurt boy with a broken leg to hospital.",
+      "a": [],
+      "mc": [
+        "police car",
+        "fire engine",
+        "school bus"
+      ]
+    },
+    {
+      "w": "police",
+      "g": "Polizei",
+      "d": "people who stop crime and keep us safe",
+      "s": "My mum called the _____ on her phone when she saw the masked robber with a knife at the shop.",
+      "a": [],
+      "mc": [
+        "ambulance",
+        "fire brigade",
+        "coastguard"
+      ]
+    },
+    {
+      "w": "mountain rescue",
+      "g": "Bergrettung",
+      "d": "a team that saves people on mountains",
+      "s": "The brave _____ team with ropes and ice picks found the lost hikers in the deep snow on the mountain.",
+      "a": [],
+      "mc": [
+        "coastguard",
+        "fire brigade",
+        "ambulance"
+      ]
+    },
+    {
+      "w": "to shout for help",
+      "g": "um Hilfe rufen",
+      "d": "to call out loudly because you need help",
+      "s": "She was lost in the dark forest and scared, so she started _____ as loud as she could with her voice.",
+      "cf": "shouting for help",
+      "a": [],
+      "mc": [
+        "to whisper for help",
+        "to sing a song",
+        "to stay silent"
+      ]
+    },
+    {
+      "w": "to be lucky",
+      "g": "Glück haben",
+      "d": "to have good things happen to you",
+      "s": "We found the very last two concert tickets at the desk. We were _____!",
+      "cf": "lucky",
+      "a": [],
+      "mc": [
+        "to be unlucky",
+        "to be sad",
+        "to be poor"
+      ]
+    },
+    {
+      "w": "to break",
+      "g": "brechen",
+      "d": "to damage something so it is in pieces",
+      "s": "Be careful walking on the slippery ice or you might fall and _____ your arm in two pieces.",
+      "a": [],
+      "mc": [
+        "to fix",
+        "to grow",
+        "to stretch"
+      ]
+    },
+    {
+      "w": "country",
+      "g": "Land; Staat",
+      "d": "a place like Austria, England, or France",
+      "s": "Italy is a large _____ in the south of Europe, with its capital Rome.",
+      "a": [],
+      "mc": [
+        "city",
+        "village",
+        "planet"
+      ]
+    },
+    {
+      "w": "crime",
+      "g": "Verbrechen",
+      "d": "something bad that is against the law",
+      "s": "Stealing money from a shop is a serious _____ and the police will arrest you.",
+      "a": [],
+      "mc": [
+        "game",
+        "sport",
+        "joke"
+      ]
+    },
+    {
+      "w": "fire",
+      "g": "Feuer",
+      "d": "hot, bright flames that burn things",
+      "s": "We sat around the warm _____ with orange flames to stay warm on the cold night.",
+      "a": [],
+      "mc": [
+        "ice",
+        "snow",
+        "water"
+      ]
+    },
+    {
+      "w": "accident",
+      "g": "Unfall",
+      "d": "something bad that happens by surprise",
+      "s": "There was a serious car _____ on the main road this morning. Two cars crashed into each other.",
+      "a": [],
+      "mc": [
+        "concert",
+        "party",
+        "parade"
+      ]
+    },
+    {
+      "w": "to be in danger",
+      "g": "in Gefahr sein",
+      "d": "to not be safe",
+      "s": "The small kitten stuck on the high roof was _____. It might fall down and hurt itself.",
+      "cf": "in danger",
+      "a": [],
+      "mc": [
+        "to be safe",
+        "to be happy",
+        "to be calm"
+      ]
+    },
+    {
+      "w": "to fly up the mountain",
+      "g": "den Berg hinauffliegen",
+      "d": "to go up a mountain by flying",
+      "s": "The superhero man with the jetpack can _____ in just a few seconds without climbing.",
+      "a": [],
+      "mc": [
+        "to slowly walk up the mountain",
+        "to swim up the mountain",
+        "to drive up the mountain"
+      ]
+    },
+    {
+      "w": "to radio",
+      "g": "(an-)funken",
+      "d": "to send a wireless voice message over the air",
+      "s": "The helicopter pilot had to _____ the rescue team on the ground for help with the emergency.",
+      "a": [],
+      "mc": [
+        "to write a letter to",
+        "to send an email to",
+        "to text"
+      ]
+    },
+    {
+      "w": "rescue team",
+      "g": "Rettungsteam",
+      "d": "a group of people who save others",
+      "s": "The _____ with first aid kits and ropes arrived in a helicopter to help us in the emergency.",
+      "a": [],
+      "mc": [
+        "football team",
+        "school class",
+        "band"
+      ]
+    },
+    {
+      "w": "rock",
+      "g": "Stein",
+      "d": "a hard, heavy piece of stone",
+      "s": "She sat on a big grey _____ — a large heavy stone — next to the flowing river.",
+      "a": [],
+      "mc": [
+        "flower",
+        "stick",
+        "feather"
+      ]
+    },
+    {
+      "w": "to slip",
+      "g": "ausrutschen",
+      "d": "to fall because the ground is smooth or wet",
+      "s": "Be very careful! The wet kitchen floor is slippery and you could _____ and fall over.",
+      "a": [],
+      "mc": [
+        "to sing",
+        "to dance",
+        "to laugh"
+      ]
+    },
+    {
+      "w": "wet",
+      "g": "nass",
+      "d": "covered in water, not dry",
+      "s": "My socks and shoes are soaking _____ because I walked through the deep rain puddles outside.",
+      "a": [],
+      "mc": [
+        "dry",
+        "hot",
+        "boiling"
+      ]
+    },
+    {
+      "w": "to arrive",
+      "g": "(an-)kommen",
+      "d": "to come to a place",
+      "s": "What time does the train _____ at the busy station? I need to meet my grandma.",
+      "a": [],
+      "mc": [
+        "to leave",
+        "to go away",
+        "to fly off"
+      ]
+    },
+    {
+      "w": "to be safe",
+      "g": "in Sicherheit sein",
+      "d": "to be away from danger",
+      "s": "The children are all inside the warm house now, away from the storm. They are _____.",
+      "cf": "safe",
+      "a": [],
+      "mc": [
+        "to be in danger",
+        "to be hurt",
+        "to be lost"
+      ]
+    },
+    {
+      "w": "to dream",
+      "g": "träumen",
+      "d": "to see pictures in your head when you sleep",
+      "s": "I like to _____ about flying through the clouds when I am asleep in my bed at night.",
+      "a": [],
+      "mc": [
+        "to walk",
+        "to run",
+        "to jump"
+      ]
+    },
+    {
+      "w": "to fall down",
+      "g": "(hinunter-)fallen",
+      "d": "to go down suddenly to the ground",
+      "s": "Be very careful on the slippery stairs or you will _____ and hurt yourself.",
+      "a": [],
+      "mc": [
+        "to climb up",
+        "to stand up",
+        "to sit up"
+      ]
+    },
+    {
+      "w": "to land",
+      "g": "landen",
+      "d": "to come down from the sky to the ground",
+      "s": "The aeroplane from London is going to _____ at the airport in ten minutes. Passengers will get off.",
+      "a": [],
+      "mc": [
+        "to take off",
+        "to crash",
+        "to disappear"
+      ]
+    },
+    {
+      "w": "medicine",
+      "g": "Medikament; Medizin",
+      "d": "something you take when you are sick",
+      "s": "The friendly doctor gave me a bottle of pink _____ to take with a spoon for my bad cold.",
+      "a": [],
+      "mc": [
+        "toy",
+        "sweet",
+        "book"
+      ]
+    },
+    {
+      "w": "sky",
+      "g": "Himmel",
+      "d": "the blue space above you outside",
+      "s": "There were no white fluffy clouds in the blue _____ today, just bright sunshine.",
+      "a": [],
+      "mc": [
+        "ground",
+        "sea",
+        "floor"
+      ]
+    },
+    {
+      "w": "windy",
+      "g": "windig",
+      "d": "when there is a lot of wind",
+      "s": "Hold on tight to your hat! It is very _____ today and the wind is blowing hard.",
+      "a": [],
+      "mc": [
+        "calm",
+        "still",
+        "quiet"
+      ]
+    },
+    {
+      "w": "dark",
+      "g": "dunkel",
+      "d": "with no light",
+      "s": "It was very _____ outside because it was midnight and there was no moon in the sky.",
+      "a": [],
+      "mc": [
+        "light",
+        "bright",
+        "sunny"
+      ]
+    },
+    {
+      "w": "young",
+      "g": "jung",
+      "d": "not old",
+      "s": "My little baby sister is very _____. She is only three years old and still wears nappies.",
+      "a": [],
+      "mc": [
+        "old",
+        "grown-up",
+        "ancient"
+      ]
+    },
+    {
+      "w": "alone",
+      "g": "allein",
+      "d": "with nobody else, on your own",
+      "s": "She was _____ at home all by herself because her parents were out at the cinema.",
+      "a": [],
+      "mc": [
+        "with friends",
+        "with family",
+        "together"
+      ]
+    },
+    {
+      "w": "backpack",
+      "g": "Rucksack",
+      "d": "a bag you carry on your back",
+      "s": "I put my water bottle, my packed lunch, and my homework in my big blue _____ on my back.",
+      "a": [],
+      "mc": [
+        "handbag",
+        "suitcase",
+        "wallet"
+      ]
+    },
+    {
+      "w": "to happen",
+      "g": "passieren",
+      "d": "to take place, to come about",
+      "s": "What did _____ at school today? Tell me about your day and the test result.",
+      "cf": "happen",
+      "a": [],
+      "mc": [
+        "to cook",
+        "to sleep",
+        "to clean"
+      ]
+    },
+    {
+      "w": "to chase",
+      "g": "verfolgen, jagen",
+      "d": "to run after someone or something",
+      "s": "The excited dog started to _____ the scared cat around the garden. The cat ran fast!",
+      "a": [],
+      "mc": [
+        "to ignore",
+        "to help",
+        "to hug"
+      ]
+    },
+    {
+      "w": "sunny",
+      "g": "sonnig",
+      "d": "when the sun is shining",
+      "s": "It was a warm _____ day with no clouds, so we went to the park for a picnic.",
+      "a": [],
+      "mc": [
+        "rainy",
+        "snowy",
+        "cloudy"
+      ]
+    },
+    {
+      "w": "class speaker",
+      "g": "Klassensprecher/Klassensprecherin",
+      "d": "a student who speaks for the class",
+      "s": "We chose Anna as our _____ this school year. She will speak for our class to the headteacher.",
+      "a": [],
+      "mc": [
+        "class clown",
+        "class pet",
+        "class photo"
+      ]
+    },
+    {
+      "w": "democracy",
+      "g": "Demokratie",
+      "d": "a system where people can vote",
+      "s": "In a _____ country like Austria, every adult person can vote in elections for a leader.",
+      "a": [],
+      "mc": [
+        "dictatorship",
+        "kingdom",
+        "empire"
+      ]
+    },
+    {
+      "w": "mayor",
+      "g": "Bürgermeister/Bürgermeisterin",
+      "d": "the leader of a town or city",
+      "s": "The _____ of our town with a gold chain around his neck opened the new playground on Saturday.",
+      "a": [],
+      "mc": [
+        "teacher",
+        "baker",
+        "farmer"
+      ]
+    },
+    {
+      "w": "political",
+      "g": "politisch",
+      "d": "about how a country is run",
+      "s": "We talked about _____ topics like voting and elections and governments in class today.",
+      "a": [],
+      "mc": [
+        "sporty",
+        "musical",
+        "artistic"
+      ]
+    },
+    {
+      "w": "to vote",
+      "g": "wählen",
+      "d": "to choose someone in an election",
+      "s": "The students _____ by raising their hands for a new class speaker every school year.",
+      "cf": "vote",
+      "a": [],
+      "mc": [
+        "to forget",
+        "to ignore",
+        "to sleep"
+      ]
+    },
+    {
+      "w": "button",
+      "g": "Schalter; Knopf",
+      "d": "a small thing you press to make something work",
+      "s": "Press the big red _____ on the front of the machine with your finger to turn it on.",
+      "a": [],
+      "mc": [
+        "screen",
+        "wire",
+        "cover"
+      ]
+    },
+    {
+      "w": "cloud",
+      "g": "Wolke",
+      "d": "a white or grey thing in the sky",
+      "s": "A big dark grey _____ floated in front of the bright sun and it became dark.",
+      "a": [],
+      "mc": [
+        "ground",
+        "floor",
+        "path"
+      ]
+    },
+    {
+      "w": "Earth",
+      "g": "Erde",
+      "d": "the planet we live on",
+      "s": "People all over _____ — from Africa to Asia to America — want clean drinking water.",
+      "a": [],
+      "mc": [
+        "Mars",
+        "the Moon",
+        "Jupiter"
+      ]
+    },
+    {
+      "w": "to die",
+      "g": "sterben",
+      "d": "to stop living",
+      "s": "The pretty flowers in the pot will _____ and become brown if you don't give them water.",
+      "a": [],
+      "mc": [
+        "to grow",
+        "to bloom",
+        "to dance"
+      ]
+    },
+    {
+      "w": "forest",
+      "g": "Wald",
+      "d": "a big area with many trees",
+      "s": "We went for a long quiet walk through the big dark _____ full of tall pine trees and animals.",
+      "a": [],
+      "mc": [
+        "beach",
+        "desert",
+        "city"
+      ]
+    },
+    {
+      "w": "introduction",
+      "g": "Einleitung",
+      "d": "the first part of a text or story",
+      "s": "Read the short _____ on page 1 before you start chapter 1 of the novel.",
+      "a": [],
+      "mc": [
+        "ending",
+        "last chapter",
+        "back cover"
+      ]
+    },
+    {
+      "w": "space",
+      "g": "Weltall",
+      "d": "the area beyond the sky with stars and planets",
+      "s": "Brave astronauts travel into deep _____ in a big rocket, far from planet Earth.",
+      "a": [],
+      "mc": [
+        "the sea",
+        "the forest",
+        "the house"
+      ]
+    },
+    {
+      "w": "to notice",
+      "g": "bemerken",
+      "d": "to see something for the first time",
+      "s": "Did you _____ the beautiful new painting on the wall? It arrived yesterday.",
+      "a": [],
+      "mc": [
+        "to ignore",
+        "to forget",
+        "to miss"
+      ]
+    },
+    {
+      "w": "to press",
+      "g": "drücken",
+      "d": "to push something with your finger",
+      "s": "You have to _____ this green button firmly with your finger to start the game on screen.",
+      "a": [],
+      "mc": [
+        "to pull",
+        "to throw",
+        "to kick"
+      ]
+    },
+    {
+      "w": "screen",
+      "g": "Bildschirm",
+      "d": "the flat part of a computer or TV you look at",
+      "s": "The tiny words on the computer _____ were too small to read, so I made them bigger.",
+      "a": [],
+      "mc": [
+        "keyboard",
+        "mouse",
+        "speaker"
+      ]
+    },
+    {
+      "w": "adventure",
+      "g": "Abenteuer, Erlebnis",
+      "d": "an exciting thing that happens to you",
+      "s": "Going into the dark mysterious cave with a torch was a big exciting _____ for me.",
+      "a": [],
+      "mc": [
+        "chore",
+        "lesson",
+        "problem"
+      ]
+    },
+    {
+      "w": "character",
+      "g": "Figur; Person",
+      "d": "a person in a story or film",
+      "s": "My favourite _____ in the book is the brave young girl who saves the village.",
+      "a": [],
+      "mc": [
+        "writer",
+        "bookseller",
+        "reader"
+      ]
+    },
+    {
+      "w": "Guess what?",
+      "g": "Du wirst es nicht glauben.",
+      "d": "you say this before telling surprising news",
+      "s": "_____! I have great news — we are going to the big zoo tomorrow morning!",
+      "a": [],
+      "mc": [
+        "Too bad!",
+        "I'm sorry!",
+        "Not again!"
+      ]
+    },
+    {
+      "w": "Tell me more.",
+      "g": "Erzähl mir mehr.",
+      "d": "you say this when you want to hear more",
+      "s": "That sounds very interesting. _____ I want to hear every detail of your story!",
+      "a": [],
+      "mc": [
+        "Stop talking.",
+        "Be quiet.",
+        "That's enough."
+      ]
+    }
+  ]
+}

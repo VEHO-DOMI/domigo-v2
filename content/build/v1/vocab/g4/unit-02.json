@@ -1,0 +1,1732 @@
+{
+  "slug": "unit-02",
+  "grade": 4,
+  "unit": 2,
+  "title": "Unit 2",
+  "entries": [
+    {
+      "w": "illegal",
+      "g": "illegal",
+      "d": "Not allowed by the law",
+      "s": "It is _____ to drive a car without a valid licence in most countries.",
+      "a": [],
+      "mc": [
+        "unlawful",
+        "forbidden",
+        "criminal"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ILLEGAL?",
+          "options": [
+            "drugs",
+            "activity",
+            "parking",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "It is _____ to park here without a permit.",
+          "options": [
+            "illegal",
+            "digital",
+            "medical",
+            "musical"
+          ],
+          "answer": "illegal"
+        }
+      ]
+    },
+    {
+      "w": "suspect",
+      "g": "Verdächtige/r",
+      "d": "A person believed to have committed a crime",
+      "s": "The police arrested the main _____ just two hours after the robbery.",
+      "a": [
+        "suspects"
+      ],
+      "mc": [
+        "witness",
+        "victim",
+        "prisoner"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SUSPECT?",
+          "options": [
+            "main",
+            "arrest",
+            "question",
+            "delicious"
+          ],
+          "answer": "delicious"
+        },
+        {
+          "type": "gap",
+          "prompt": "The police arrested the main _____.",
+          "options": [
+            "suspect",
+            "subject",
+            "insect",
+            "respect"
+          ],
+          "answer": "suspect"
+        }
+      ]
+    },
+    {
+      "w": "criminal",
+      "g": "Verbrecher/in",
+      "d": "A person who has committed a crime",
+      "s": "The _____ was caught on CCTV stealing from the shop late at night.",
+      "a": [
+        "criminals"
+      ],
+      "mc": [
+        "prisoner",
+        "suspect",
+        "detective"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CRIMINAL?",
+          "options": [
+            "dangerous",
+            "arrest",
+            "record",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ was sentenced to five years in prison.",
+          "options": [
+            "criminal",
+            "terminal",
+            "original",
+            "minimal"
+          ],
+          "answer": "criminal"
+        }
+      ]
+    },
+    {
+      "w": "to steal",
+      "g": "stehlen",
+      "d": "To take something that belongs to someone else without permission",
+      "s": "Someone _____ her bag while she was sitting on the train.",
+      "cf": "stole",
+      "a": [
+        "steal",
+        "stole",
+        "stolen"
+      ],
+      "mc": [
+        "to rob",
+        "to cheat",
+        "to borrow"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with STEAL?",
+          "options": [
+            "money",
+            "car",
+            "wallet",
+            "sunrise"
+          ],
+          "answer": "sunrise"
+        },
+        {
+          "type": "gap",
+          "prompt": "Someone _____ my bike yesterday.",
+          "options": [
+            "stole",
+            "sold",
+            "told",
+            "rolled"
+          ],
+          "answer": "stole"
+        }
+      ]
+    },
+    {
+      "w": "evidence",
+      "g": "Beweis",
+      "d": "Facts or information that show whether something is true or not",
+      "s": "The detective found important _____ at the crime scene — a fingerprint on the window.",
+      "a": [],
+      "mc": [
+        "proof",
+        "clue",
+        "witness"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EVIDENCE?",
+          "options": [
+            "strong",
+            "clear",
+            "scientific",
+            "quick"
+          ],
+          "answer": "quick"
+        },
+        {
+          "type": "gap",
+          "prompt": "The police found important _____ at the scene.",
+          "options": [
+            "evidence",
+            "advice",
+            "audience",
+            "entrance"
+          ],
+          "answer": "evidence"
+        }
+      ]
+    },
+    {
+      "w": "victim",
+      "g": "Opfer",
+      "d": "A person who has been hurt, damaged, or killed as a result of a crime or accident",
+      "s": "The _____ of the robbery was taken to hospital with minor injuries.",
+      "a": [
+        "victims"
+      ],
+      "mc": [
+        "witness",
+        "suspect",
+        "survivor"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with VICTIM?",
+          "options": [
+            "innocent",
+            "crime",
+            "help",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ was taken to hospital.",
+          "options": [
+            "victim",
+            "system",
+            "rhythm",
+            "custom"
+          ],
+          "answer": "victim"
+        }
+      ]
+    },
+    {
+      "w": "blackmail",
+      "g": "Erpressung",
+      "d": "The crime of demanding money from someone by threatening to reveal their secrets",
+      "s": "He was charged with _____ after threatening to share private photos unless he was paid.",
+      "a": [],
+      "mc": [
+        "robbery",
+        "fraud",
+        "bribery"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BLACKMAIL?",
+          "options": [
+            "threaten",
+            "demand",
+            "money",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He was arrested for _____.",
+          "options": [
+            "blackmail",
+            "toenail",
+            "detail",
+            "email"
+          ],
+          "answer": "blackmail"
+        }
+      ]
+    },
+    {
+      "w": "murder",
+      "g": "Mord",
+      "d": "The crime of deliberately killing another person",
+      "s": "The detective was called to investigate a _____ that had taken place downtown.",
+      "a": [],
+      "mc": [
+        "assault",
+        "robbery",
+        "manslaughter"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MURDER?",
+          "options": [
+            "commit",
+            "investigate",
+            "solve",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The detective investigated the _____.",
+          "options": [
+            "murder",
+            "thunder",
+            "wonder",
+            "blunder"
+          ],
+          "answer": "murder"
+        }
+      ]
+    },
+    {
+      "w": "weapon",
+      "g": "Waffe",
+      "d": "An object used to hurt or kill someone, such as a gun or knife",
+      "s": "The police found a dangerous _____, a knife, hidden in the suspect's garden.",
+      "a": [
+        "weapons"
+      ],
+      "mc": [
+        "shield",
+        "bullet",
+        "tool"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WEAPON?",
+          "options": [
+            "dangerous",
+            "carry",
+            "hidden",
+            "tasty"
+          ],
+          "answer": "tasty"
+        },
+        {
+          "type": "gap",
+          "prompt": "The police found a _____ at the scene.",
+          "options": [
+            "weapon",
+            "reason",
+            "season",
+            "person"
+          ],
+          "answer": "weapon"
+        }
+      ]
+    },
+    {
+      "w": "witness",
+      "g": "Zeuge/Zeugin",
+      "d": "A person who sees an event happen, especially a crime or accident",
+      "s": "A _____ told the police that she saw two men running away from the building.",
+      "a": [
+        "witnesses"
+      ],
+      "mc": [
+        "suspect",
+        "victim",
+        "bystander"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WITNESS?",
+          "options": [
+            "key",
+            "reliable",
+            "statement",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "A _____ saw the whole accident.",
+          "options": [
+            "witness",
+            "fitness",
+            "illness",
+            "business"
+          ],
+          "answer": "witness"
+        }
+      ]
+    },
+    {
+      "w": "chest",
+      "g": "Brust",
+      "d": "The front part of the body between the neck and the stomach",
+      "s": "He felt a sharp pain in his _____ and decided to see a doctor.",
+      "a": [],
+      "mc": [
+        "stomach",
+        "shoulder",
+        "throat"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CHEST?",
+          "options": [
+            "pain",
+            "treasure",
+            "drawer",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "He felt a sharp pain in his _____.",
+          "options": [
+            "chest",
+            "nest",
+            "rest",
+            "best"
+          ],
+          "answer": "chest"
+        }
+      ]
+    },
+    {
+      "w": "employee",
+      "g": "Angestellte/r",
+      "d": "A person who is paid to work for a company or organisation",
+      "s": "The company has over 500 _____ working in offices around the world.",
+      "cf": "employees",
+      "a": [
+        "employee",
+        "employees"
+      ],
+      "mc": [
+        "employer",
+        "colleague",
+        "assistant"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EMPLOYEE?",
+          "options": [
+            "hire",
+            "train",
+            "full-time",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Every _____ must wear a name badge.",
+          "options": [
+            "employee",
+            "employer",
+            "envelope",
+            "employment"
+          ],
+          "answer": "employee"
+        }
+      ]
+    },
+    {
+      "w": "mystery",
+      "g": "Rätsel; Geheimnis",
+      "d": "Something strange or unknown that has not been explained",
+      "s": "Nobody knows who left the flowers on her desk — it's a complete _____.",
+      "a": [
+        "mysteries"
+      ],
+      "mc": [
+        "secret",
+        "puzzle",
+        "miracle"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MYSTERY?",
+          "options": [
+            "solve",
+            "complete",
+            "unsolved",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The disappearance remains a _____.",
+          "options": [
+            "mystery",
+            "history",
+            "misery",
+            "factory"
+          ],
+          "answer": "mystery"
+        }
+      ]
+    },
+    {
+      "w": "report",
+      "g": "Bericht",
+      "d": "A written or spoken account of something that has happened",
+      "s": "The teacher asked us to write a _____ about what happened on our school trip.",
+      "a": [
+        "reports"
+      ],
+      "mc": [
+        "article",
+        "statement",
+        "review"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REPORT?",
+          "options": [
+            "write",
+            "file",
+            "annual",
+            "raw"
+          ],
+          "answer": "raw"
+        },
+        {
+          "type": "gap",
+          "prompt": "She had to _____ a report to the police.",
+          "options": [
+            "file",
+            "cook",
+            "plant",
+            "swim"
+          ],
+          "answer": "file"
+        },
+        {
+          "type": "gap",
+          "prompt": "write a _____",
+          "options": [
+            "report",
+            "carpet",
+            "window",
+            "garden"
+          ],
+          "answer": "report"
+        }
+      ]
+    },
+    {
+      "w": "attractive",
+      "g": "attraktiv",
+      "d": "Pleasant to look at; good-looking",
+      "s": "The old town centre is very _____ to tourists, and thousands of people visit every year.",
+      "a": [],
+      "mc": [
+        "charming",
+        "handsome",
+        "elegant"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ATTRACTIVE?",
+          "options": [
+            "very",
+            "extremely",
+            "find",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The old town is very _____ to visitors.",
+          "options": [
+            "attractive",
+            "active",
+            "creative",
+            "detective"
+          ],
+          "answer": "attractive"
+        }
+      ]
+    },
+    {
+      "w": "nephew",
+      "g": "Neffe",
+      "d": "The son of your brother or sister",
+      "s": "My sister just had a baby boy, so now I have a little _____.",
+      "a": [
+        "nephews"
+      ],
+      "mc": [
+        "niece",
+        "cousin",
+        "godson"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NEPHEW?",
+          "options": [
+            "little",
+            "favourite",
+            "uncle",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "My sister's son is my _____.",
+          "options": [
+            "nephew",
+            "curfew",
+            "cashew",
+            "rescue"
+          ],
+          "answer": "nephew"
+        }
+      ]
+    },
+    {
+      "w": "office clerk",
+      "g": "Büroangestellte/r",
+      "d": "A person who works at a desk doing tasks like filing and answering calls",
+      "s": "He got a job as an _____ and spends most of his day answering emails.",
+      "a": [
+        "office clerks"
+      ],
+      "mc": [
+        "shop assistant",
+        "bank teller",
+        "receptionist"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with OFFICE CLERK?",
+          "options": [
+            "desk",
+            "filing",
+            "emails",
+            "volcano"
+          ],
+          "answer": "volcano"
+        },
+        {
+          "type": "gap",
+          "prompt": "He works as an _____ in a large company.",
+          "options": [
+            "office clerk",
+            "office chair",
+            "office plant",
+            "office door"
+          ],
+          "answer": "office clerk"
+        }
+      ]
+    },
+    {
+      "w": "keep an eye on",
+      "g": "aufpassen auf",
+      "d": "To watch someone or something carefully",
+      "s": "Can you _____ my bag for a minute while I go to the toilet?",
+      "a": [],
+      "mc": [
+        "take care of",
+        "look forward to",
+        "get rid of"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with KEEP AN EYE ON?",
+          "options": [
+            "children",
+            "luggage",
+            "closely",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "Please _____ my bag while I'm gone.",
+          "options": [
+            "keep an eye on",
+            "keep away from",
+            "keep up with",
+            "keep out of"
+          ],
+          "answer": "keep an eye on"
+        }
+      ]
+    },
+    {
+      "w": "confusion",
+      "g": "Verwirrung",
+      "d": "A state of not understanding what is happening or what something means",
+      "s": "There was a lot of _____ when the fire alarm went off during the exam.",
+      "a": [],
+      "mc": [
+        "conclusion",
+        "delusion",
+        "illusion"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CONFUSION?",
+          "options": [
+            "cause",
+            "total",
+            "great",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "There was a lot of _____ after the announcement.",
+          "options": [
+            "confusion",
+            "conclusion",
+            "collision",
+            "collection"
+          ],
+          "answer": "confusion"
+        }
+      ]
+    },
+    {
+      "w": "relative",
+      "g": "Verwandte/r",
+      "d": "A member of your family",
+      "s": "I have a _____ who lives in Canada — she's my mum's cousin.",
+      "a": [
+        "relative",
+        "relatives"
+      ],
+      "mc": [
+        "neighbour",
+        "colleague",
+        "acquaintance"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RELATIVE?",
+          "options": [
+            "close",
+            "distant",
+            "visit",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She has a _____ who lives in Canada.",
+          "options": [
+            "relative",
+            "detective",
+            "objective",
+            "adjective"
+          ],
+          "answer": "relative"
+        }
+      ]
+    },
+    {
+      "w": "retire",
+      "g": "in Pension gehen",
+      "d": "To stop working permanently, usually because of age",
+      "s": "My grandfather plans to _____ next year when he turns 65.",
+      "a": [],
+      "mc": [
+        "resign",
+        "quit",
+        "dismiss"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RETIRE?",
+          "options": [
+            "early",
+            "age",
+            "plan",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He plans to _____ when he turns 65.",
+          "options": [
+            "retire",
+            "require",
+            "admire",
+            "desire"
+          ],
+          "answer": "retire"
+        }
+      ]
+    },
+    {
+      "w": "right away",
+      "g": "sofort",
+      "d": "Immediately; without any delay",
+      "s": "The house is on fire! Call the fire brigade _____!",
+      "a": [],
+      "mc": [
+        "straight ahead",
+        "at once",
+        "on time"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT follow RIGHT AWAY?",
+          "options": [
+            "come",
+            "call",
+            "start",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "We need to leave _____!",
+          "options": [
+            "right away",
+            "right angle",
+            "right side",
+            "right turn"
+          ],
+          "answer": "right away"
+        }
+      ]
+    },
+    {
+      "w": "take over",
+      "g": "übernehmen",
+      "d": "To begin to have control of something",
+      "s": "When the manager left, Anna had to _____ her duties.",
+      "a": [],
+      "mc": [
+        "give up",
+        "hand in",
+        "carry on"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TAKE OVER?",
+          "options": [
+            "company",
+            "duties",
+            "control",
+            "sandwich"
+          ],
+          "answer": "sandwich"
+        },
+        {
+          "type": "gap",
+          "prompt": "She had to _____ the project.",
+          "options": [
+            "take over",
+            "take off",
+            "take out",
+            "take up"
+          ],
+          "answer": "take over"
+        }
+      ]
+    },
+    {
+      "w": "unlock",
+      "g": "aufschließen",
+      "d": "To open a lock using a key or code",
+      "s": "I forgot the code to _____ my phone and had to reset it.",
+      "a": [],
+      "mc": [
+        "uncover",
+        "unwrap",
+        "unfold"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with UNLOCK?",
+          "options": [
+            "door",
+            "phone",
+            "secret",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She used a key to _____ the front door.",
+          "options": [
+            "unlock",
+            "unblock",
+            "unpack",
+            "unfold"
+          ],
+          "answer": "unlock"
+        }
+      ]
+    },
+    {
+      "w": "upset",
+      "g": "verstört",
+      "d": "Unhappy or worried because something unpleasant has happened",
+      "s": "She was really _____ after her best friend moved to another city.",
+      "a": [],
+      "mc": [
+        "annoyed",
+        "disappointed",
+        "nervous"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with UPSET?",
+          "options": [
+            "really",
+            "very",
+            "deeply",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She was very _____ about the bad news.",
+          "options": [
+            "upset",
+            "sunset",
+            "closet",
+            "basket"
+          ],
+          "answer": "upset"
+        }
+      ]
+    },
+    {
+      "w": "consider",
+      "g": "erwägen",
+      "d": "To think carefully about something before making a decision",
+      "s": "Before you buy a pet, you should _____ how much time it needs.",
+      "a": [],
+      "mc": [
+        "suggest",
+        "wonder",
+        "decide"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CONSIDER?",
+          "options": [
+            "carefully",
+            "options",
+            "seriously",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "You should _____ all options before deciding.",
+          "options": [
+            "consider",
+            "deliver",
+            "discover",
+            "remember"
+          ],
+          "answer": "consider"
+        }
+      ]
+    },
+    {
+      "w": "mention",
+      "g": "erwähnen",
+      "d": "To speak or write about something briefly",
+      "s": "Did she _____ the name of the restaurant when she talked about dinner tonight?",
+      "a": [],
+      "mc": [
+        "explain",
+        "describe",
+        "whisper"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MENTION?",
+          "options": [
+            "briefly",
+            "name",
+            "never",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Did she _____ the time of the meeting?",
+          "options": [
+            "mention",
+            "station",
+            "fashion",
+            "caution"
+          ],
+          "answer": "mention"
+        }
+      ]
+    },
+    {
+      "w": "likely",
+      "g": "wahrscheinlich",
+      "d": "Probably going to happen or probably true",
+      "s": "It's very _____ that the match will be cancelled because of the snow.",
+      "a": [],
+      "mc": [
+        "possible",
+        "certain",
+        "obvious"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LIKELY?",
+          "options": [
+            "very",
+            "most",
+            "highly",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "It is _____ that it will rain tomorrow.",
+          "options": [
+            "likely",
+            "lonely",
+            "lovely",
+            "lively"
+          ],
+          "answer": "likely"
+        }
+      ]
+    },
+    {
+      "w": "besides",
+      "g": "außerdem, im Übrigen",
+      "d": "In addition to; also",
+      "s": "I don't want to go out tonight. _____, I have a lot of homework to do.",
+      "a": [],
+      "mc": [
+        "however",
+        "although",
+        "moreover"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT mean the same as BESIDES?",
+          "options": [
+            "moreover",
+            "furthermore",
+            "in addition",
+            "instead"
+          ],
+          "answer": "instead"
+        },
+        {
+          "type": "gap",
+          "prompt": "I'm tired. _____, it's too late to go out.",
+          "options": [
+            "Besides",
+            "Between",
+            "Behind",
+            "Below"
+          ],
+          "answer": "Besides"
+        }
+      ]
+    },
+    {
+      "w": "expect",
+      "g": "erwarten",
+      "d": "To think or believe that something will happen",
+      "s": "We _____ heavy rain tomorrow because the weather forecast said so.",
+      "a": [],
+      "mc": [
+        "hope",
+        "suppose",
+        "predict"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EXPECT?",
+          "options": [
+            "fully",
+            "results",
+            "rain",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We _____ the train to arrive at six.",
+          "options": [
+            "expect",
+            "except",
+            "export",
+            "explore"
+          ],
+          "answer": "expect"
+        }
+      ]
+    },
+    {
+      "w": "handkerchief",
+      "g": "Taschentuch",
+      "d": "A small piece of cloth used to wipe your nose or face",
+      "s": "He pulled out a white _____ and wiped the sweat from his forehead.",
+      "a": [
+        "handkerchiefs"
+      ],
+      "mc": [
+        "napkin",
+        "tissue",
+        "towel"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HANDKERCHIEF?",
+          "options": [
+            "white",
+            "pocket",
+            "wipe",
+            "digital"
+          ],
+          "answer": "digital"
+        },
+        {
+          "type": "gap",
+          "prompt": "He pulled out a _____ to wipe his nose.",
+          "options": [
+            "handkerchief",
+            "mischief",
+            "chief",
+            "belief"
+          ],
+          "answer": "handkerchief"
+        }
+      ]
+    },
+    {
+      "w": "Never mind.",
+      "g": "Macht nichts., Egal.",
+      "d": "Used to tell someone not to worry about something",
+      "s": "Oh no, I forgot your book! – _____ I don't need it today anyway.",
+      "cf": "Never mind.",
+      "a": [
+        "never mind",
+        "Never mind"
+      ],
+      "mc": [
+        "No worries.",
+        "Forget it.",
+        "Not at all."
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT mean the same as NEVER MIND?",
+          "options": [
+            "don't worry",
+            "forget it",
+            "it's okay",
+            "good morning"
+          ],
+          "answer": "good morning"
+        },
+        {
+          "type": "gap",
+          "prompt": "I forgot the tickets! — _____. We can buy new ones.",
+          "options": [
+            "Never mind",
+            "Never again",
+            "Never before",
+            "Never ever"
+          ],
+          "answer": "Never mind"
+        }
+      ]
+    },
+    {
+      "w": "suspicion",
+      "g": "Verdacht",
+      "d": "A feeling that someone has done something wrong, without proof",
+      "s": "I have a _____ that someone has been reading my diary.",
+      "a": [
+        "suspicions"
+      ],
+      "mc": [
+        "accusation",
+        "impression",
+        "assumption"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SUSPICION?",
+          "options": [
+            "strong",
+            "raise",
+            "under",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I have a _____ that he is lying.",
+          "options": [
+            "suspicion",
+            "supervision",
+            "suspension",
+            "superstition"
+          ],
+          "answer": "suspicion"
+        }
+      ]
+    },
+    {
+      "w": "wastepaper bin",
+      "g": "Papierkorb",
+      "d": "A container for throwing away unwanted paper and small items",
+      "s": "She crumpled up the old note and tossed it into the _____.",
+      "a": [
+        "wastepaper basket"
+      ],
+      "mc": [
+        "recycling bin",
+        "rubbish bag",
+        "dustbin"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WASTEPAPER BIN?",
+          "options": [
+            "throw",
+            "empty",
+            "office",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Throw the old paper into the _____.",
+          "options": [
+            "wastepaper bin",
+            "washing machine",
+            "water bottle",
+            "waiting room"
+          ],
+          "answer": "wastepaper bin"
+        }
+      ]
+    },
+    {
+      "w": "excellent",
+      "g": "hervorragend, großartig",
+      "d": "Extremely good; outstanding",
+      "s": "The food at the new restaurant was _____ — the best meal I've ever had.",
+      "a": [],
+      "mc": [
+        "outstanding",
+        "brilliant",
+        "remarkable"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EXCELLENT?",
+          "options": [
+            "truly",
+            "absolutely",
+            "work",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She did an _____ job on the project.",
+          "options": [
+            "excellent",
+            "elegant",
+            "elephant",
+            "element"
+          ],
+          "answer": "excellent"
+        }
+      ]
+    },
+    {
+      "w": "conclusion",
+      "g": "Schlussfolgerung",
+      "d": "A judgement or decision you reach after thinking about something",
+      "s": "After looking at all the clues, the detective came to the _____ that it was the neighbour.",
+      "a": [
+        "conclusions"
+      ],
+      "mc": [
+        "solution",
+        "decision",
+        "assumption"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CONCLUSION?",
+          "options": [
+            "draw",
+            "reach",
+            "come to",
+            "bake"
+          ],
+          "answer": "bake"
+        },
+        {
+          "type": "gap",
+          "prompt": "After reading the facts, she drew a _____.",
+          "options": [
+            "conclusion",
+            "pollution",
+            "cushion",
+            "collision"
+          ],
+          "answer": "conclusion"
+        }
+      ]
+    },
+    {
+      "w": "get hold of sth",
+      "g": "etwas in die Hände bekommen",
+      "d": "To manage to find or obtain something",
+      "s": "The book is sold out everywhere, but I'm trying to _____ a copy before school starts.",
+      "cf": "get hold of",
+      "a": [
+        "get hold of sth",
+        "get hold of something",
+        "get hold of"
+      ],
+      "mc": [
+        "get rid of sth",
+        "get used to sth",
+        "take care of sth"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GET HOLD OF?",
+          "options": [
+            "copy",
+            "ticket",
+            "information",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "I'm trying to _____ a ticket for the concert.",
+          "options": [
+            "get hold of",
+            "get rid of",
+            "get tired of",
+            "get out of"
+          ],
+          "answer": "get hold of"
+        }
+      ]
+    },
+    {
+      "w": "prove",
+      "g": "beweisen",
+      "d": "To show that something is true by providing facts or evidence",
+      "s": "She says she was at home all evening, but she can't _____ it.",
+      "a": [],
+      "mc": [
+        "confirm",
+        "convince",
+        "demonstrate"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PROVE?",
+          "options": [
+            "guilt",
+            "innocence",
+            "theory",
+            "sandwich"
+          ],
+          "answer": "sandwich"
+        },
+        {
+          "type": "gap",
+          "prompt": "Can you _____ that you were at home?",
+          "options": [
+            "prove",
+            "move",
+            "remove",
+            "approve"
+          ],
+          "answer": "prove"
+        }
+      ]
+    },
+    {
+      "w": "historical",
+      "g": "historisch",
+      "d": "Relating to events or people in the past",
+      "s": "We visited several _____ places in Rome, including the Colosseum.",
+      "a": [],
+      "mc": [
+        "ancient",
+        "traditional",
+        "cultural"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HISTORICAL?",
+          "options": [
+            "event",
+            "building",
+            "figure",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We visited many _____ sites in Rome.",
+          "options": [
+            "historical",
+            "hysterical",
+            "political",
+            "identical"
+          ],
+          "answer": "historical"
+        }
+      ]
+    },
+    {
+      "w": "commit",
+      "g": "begehen",
+      "d": "To do something illegal or harmful",
+      "s": "People who _____ crimes should be punished by the law.",
+      "a": [],
+      "mc": [
+        "perform",
+        "attempt",
+        "confess"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMMIT?",
+          "options": [
+            "a crime",
+            "a murder",
+            "a robbery",
+            "a sandwich"
+          ],
+          "answer": "a sandwich"
+        },
+        {
+          "type": "gap",
+          "prompt": "The man was arrested for _____ a serious crime.",
+          "options": [
+            "committing",
+            "cooking",
+            "climbing",
+            "collecting"
+          ],
+          "answer": "committing"
+        }
+      ]
+    },
+    {
+      "w": "escape",
+      "g": "entkommen, flüchten",
+      "d": "To get away from a dangerous place or situation",
+      "s": "The cat managed to _____ from the house through an open window.",
+      "a": [
+        "escape",
+        "escaped"
+      ],
+      "mc": [
+        "retreat",
+        "flee",
+        "hide"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ESCAPE?",
+          "options": [
+            "prison",
+            "route",
+            "narrow",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The prisoners tried to _____ through a tunnel.",
+          "options": [
+            "escape",
+            "erase",
+            "embrace",
+            "engage"
+          ],
+          "answer": "escape"
+        }
+      ]
+    },
+    {
+      "w": "investigation",
+      "g": "Ermittlungen; Untersuchung",
+      "d": "The process of trying to find out all the facts about something, especially a crime",
+      "s": "The _____ into the missing painting took the police several months.",
+      "a": [
+        "investigations"
+      ],
+      "mc": [
+        "examination",
+        "experiment",
+        "inspection"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INVESTIGATION?",
+          "options": [
+            "police",
+            "launch",
+            "thorough",
+            "tasty"
+          ],
+          "answer": "tasty"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ took several months to complete.",
+          "options": [
+            "investigation",
+            "imagination",
+            "illustration",
+            "invitation"
+          ],
+          "answer": "investigation"
+        }
+      ]
+    },
+    {
+      "w": "common",
+      "g": "häufig; gewöhnlich",
+      "d": "Happening often; usual or ordinary",
+      "s": "Headaches are very _____ when you spend too much time looking at screens.",
+      "a": [],
+      "mc": [
+        "ordinary",
+        "frequent",
+        "popular"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMMON?",
+          "options": [
+            "very",
+            "mistake",
+            "sense",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Headaches are very _____ among teenagers.",
+          "options": [
+            "common",
+            "cotton",
+            "column",
+            "custom"
+          ],
+          "answer": "common"
+        }
+      ]
+    },
+    {
+      "w": "personal",
+      "g": "persönlich",
+      "d": "Relating to or belonging to a particular person rather than a group",
+      "s": "Please don't ask me about my diary — it's _____ and not meant for other people to know.",
+      "a": [],
+      "mc": [
+        "private",
+        "individual",
+        "secret"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PERSONAL?",
+          "options": [
+            "information",
+            "space",
+            "experience",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "This is my _____ opinion, not the group's.",
+          "options": [
+            "personal",
+            "physical",
+            "musical",
+            "classical"
+          ],
+          "answer": "personal"
+        }
+      ]
+    },
+    {
+      "w": "crime scene",
+      "g": "Tatort",
+      "d": "The place where something illegal happened",
+      "s": "Nobody was allowed to enter the _____ until the detectives had finished their work.",
+      "a": [
+        "crime scenes"
+      ],
+      "mc": [
+        "court room",
+        "police station",
+        "prison cell"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CRIME SCENE?",
+          "options": [
+            "investigate",
+            "enter",
+            "evidence",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The police examined the _____ for fingerprints.",
+          "options": [
+            "crime scene",
+            "crime wave",
+            "crime rate",
+            "crime film"
+          ],
+          "answer": "crime scene"
+        }
+      ]
+    },
+    {
+      "w": "realise",
+      "g": "erkennen; begreifen",
+      "d": "To become aware of something that you did not know before",
+      "s": "I didn't _____ how late it was until I looked at my phone.",
+      "a": [
+        "realise",
+        "realize"
+      ],
+      "mc": [
+        "recognise",
+        "remember",
+        "notice"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REALISE?",
+          "options": [
+            "suddenly",
+            "quickly",
+            "mistake",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "She didn't _____ how late it was.",
+          "options": [
+            "realise",
+            "advertise",
+            "supervise",
+            "organise"
+          ],
+          "answer": "realise"
+        }
+      ]
+    }
+  ]
+}

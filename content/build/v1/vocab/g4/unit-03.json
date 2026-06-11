@@ -1,0 +1,1234 @@
+{
+  "slug": "unit-03",
+  "grade": 4,
+  "unit": 3,
+  "title": "Unit 3",
+  "entries": [
+    {
+      "w": "busy",
+      "g": "belebt, hektisch",
+      "d": "Full of activity or people",
+      "s": "London is one of the _____ cities in Europe, with millions of tourists every year.",
+      "cf": "busiest",
+      "a": [
+        "busy",
+        "busiest"
+      ],
+      "mc": [
+        "crowded",
+        "noisy",
+        "popular"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BUSY?",
+          "options": [
+            "very",
+            "extremely",
+            "street",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The city centre is always _____.",
+          "options": [
+            "busy",
+            "fussy",
+            "dizzy",
+            "fuzzy"
+          ],
+          "answer": "busy"
+        }
+      ]
+    },
+    {
+      "w": "cuisine",
+      "g": "Küche; Kulinarik",
+      "d": "A style of cooking, especially from a particular country or region",
+      "s": "I love Italian _____, especially pizza and pasta.",
+      "a": [],
+      "mc": [
+        "recipe",
+        "menu",
+        "dish"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CUISINE?",
+          "options": [
+            "Italian",
+            "French",
+            "local",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She loves French _____.",
+          "options": [
+            "cuisine",
+            "routine",
+            "machine",
+            "magazine"
+          ],
+          "answer": "cuisine"
+        }
+      ]
+    },
+    {
+      "w": "immigrant",
+      "g": "Einwanderer/Einwanderin",
+      "d": "A person who comes to live permanently in a different country",
+      "s": "Her grandparents were _____ who came to Austria from Turkey in the 1960s.",
+      "cf": "immigrants",
+      "a": [
+        "immigrant",
+        "immigrants"
+      ],
+      "mc": [
+        "emigrant",
+        "refugee",
+        "foreigner"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with IMMIGRANT?",
+          "options": [
+            "illegal",
+            "community",
+            "first-generation",
+            "plastic"
+          ],
+          "answer": "plastic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Many _____ came to the country in the 1960s.",
+          "options": [
+            "immigrants",
+            "documents",
+            "instruments",
+            "experiments"
+          ],
+          "answer": "immigrants"
+        }
+      ]
+    },
+    {
+      "w": "native",
+      "g": "einheimisch; ursprünglich",
+      "d": "Belonging to the place where you were born or grew up",
+      "s": "She is a _____ speaker of German because she grew up in Vienna.",
+      "a": [],
+      "mc": [
+        "foreign",
+        "local",
+        "original"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NATIVE?",
+          "options": [
+            "speaker",
+            "language",
+            "country",
+            "sandwich"
+          ],
+          "answer": "sandwich"
+        },
+        {
+          "type": "gap",
+          "prompt": "She is a _____ speaker of English.",
+          "options": [
+            "native",
+            "active",
+            "creative",
+            "negative"
+          ],
+          "answer": "native"
+        }
+      ]
+    },
+    {
+      "w": "nearby",
+      "g": "in der Nähe",
+      "d": "Not far away; close by",
+      "s": "Is there a pharmacy _____? I need to buy some medicine.",
+      "a": [],
+      "mc": [
+        "close",
+        "surrounding",
+        "opposite"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NEARBY?",
+          "options": [
+            "village",
+            "shop",
+            "park",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Is there a supermarket _____?",
+          "options": [
+            "nearby",
+            "faraway",
+            "midway",
+            "halfway"
+          ],
+          "answer": "nearby"
+        }
+      ]
+    },
+    {
+      "w": "origin",
+      "g": "Herkunft, Ursprung",
+      "d": "The place, situation, or type of family that someone comes from",
+      "s": "The word 'kindergarten' is of German _____.",
+      "a": [
+        "origins"
+      ],
+      "mc": [
+        "nationality",
+        "background",
+        "tradition"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ORIGIN?",
+          "options": [
+            "country",
+            "ethnic",
+            "unknown",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The word has a Latin _____.",
+          "options": [
+            "origin",
+            "opinion",
+            "onion",
+            "orphan"
+          ],
+          "answer": "origin"
+        }
+      ]
+    },
+    {
+      "w": "politics",
+      "g": "Politik",
+      "d": "Activities related to governing a country and making public decisions",
+      "s": "My uncle is very interested in _____ and always watches the news.",
+      "a": [],
+      "mc": [
+        "economics",
+        "diplomacy",
+        "government"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with POLITICS?",
+          "options": [
+            "local",
+            "discuss",
+            "interested",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "He is very interested in _____.",
+          "options": [
+            "politics",
+            "physics",
+            "ethics",
+            "lyrics"
+          ],
+          "answer": "politics"
+        }
+      ]
+    },
+    {
+      "w": "announcement",
+      "g": "Durchsage, Ankündigung",
+      "d": "A public or official statement giving information about something",
+      "s": "The _____ at the train station said that our train would be twenty minutes late.",
+      "a": [
+        "announcements"
+      ],
+      "mc": [
+        "advertisement",
+        "instruction",
+        "broadcast"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ANNOUNCEMENT?",
+          "options": [
+            "make",
+            "public",
+            "official",
+            "tasty"
+          ],
+          "answer": "tasty"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ said the train would be late.",
+          "options": [
+            "announcement",
+            "achievement",
+            "arrangement",
+            "amusement"
+          ],
+          "answer": "announcement"
+        }
+      ]
+    },
+    {
+      "w": "be in trouble",
+      "g": "in Schwierigkeiten sein",
+      "d": "To be in a difficult or dangerous situation",
+      "s": "If you don't finish your homework, you'll _____ with the teacher.",
+      "a": [
+        "be in trouble",
+        "in trouble"
+      ],
+      "mc": [
+        "be in danger",
+        "be in charge",
+        "be in doubt"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BE IN TROUBLE?",
+          "options": [
+            "big",
+            "serious",
+            "deep",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "If you cheat, you'll _____ with the teacher.",
+          "options": [
+            "be in trouble",
+            "be in charge",
+            "be in touch",
+            "be in shape"
+          ],
+          "answer": "be in trouble"
+        }
+      ]
+    },
+    {
+      "w": "blow up",
+      "g": "explodieren",
+      "d": "To suddenly burst or explode with great force",
+      "s": "The old building _____ after a gas leak was discovered too late.",
+      "cf": "blew up",
+      "a": [
+        "blow up",
+        "blew up"
+      ],
+      "mc": [
+        "break down",
+        "burn down",
+        "fall apart"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BLOW UP?",
+          "options": [
+            "building",
+            "bomb",
+            "bridge",
+            "homework"
+          ],
+          "answer": "homework"
+        },
+        {
+          "type": "gap",
+          "prompt": "The old building _____ after a gas leak.",
+          "options": [
+            "blew up",
+            "grew up",
+            "gave up",
+            "made up"
+          ],
+          "answer": "blew up"
+        }
+      ]
+    },
+    {
+      "w": "emergency landing",
+      "g": "Notlandung",
+      "d": "When a pilot has to bring the plane down quickly because of a serious problem",
+      "s": "The plane had engine problems and had to make an _____ in a field.",
+      "a": [
+        "emergency landings"
+      ],
+      "mc": [
+        "crash landing",
+        "forced takeoff",
+        "rough touchdown"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EMERGENCY LANDING?",
+          "options": [
+            "make",
+            "pilot",
+            "safe",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The plane had to make an _____.",
+          "options": [
+            "emergency landing",
+            "emergency exit",
+            "emergency room",
+            "emergency call"
+          ],
+          "answer": "emergency landing"
+        }
+      ]
+    },
+    {
+      "w": "evacuate",
+      "g": "evakuieren",
+      "d": "To move people away from a dangerous place to somewhere safe",
+      "s": "The school had to _____ all students when smoke was seen in the building.",
+      "a": [
+        "evacuate",
+        "evacuated"
+      ],
+      "mc": [
+        "escape",
+        "abandon",
+        "relocate"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EVACUATE?",
+          "options": [
+            "building",
+            "area",
+            "people",
+            "sandwich"
+          ],
+          "answer": "sandwich"
+        },
+        {
+          "type": "gap",
+          "prompt": "The school had to _____ all students.",
+          "options": [
+            "evacuate",
+            "educate",
+            "evaluate",
+            "elaborate"
+          ],
+          "answer": "evacuate"
+        }
+      ]
+    },
+    {
+      "w": "flock of birds",
+      "g": "Vogelschwarm",
+      "d": "A large group of feathered animals flying or resting together",
+      "s": "A huge _____ flew over our heads in a V-shape as we walked along the beach.",
+      "a": [],
+      "mc": [
+        "herd of cattle",
+        "pack of wolves",
+        "swarm of bees"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FLOCK OF BIRDS?",
+          "options": [
+            "large",
+            "fly",
+            "sky",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "A huge _____ flew over our heads.",
+          "options": [
+            "flock of birds",
+            "pack of wolves",
+            "school of fish",
+            "bunch of flowers"
+          ],
+          "answer": "flock of birds"
+        }
+      ]
+    },
+    {
+      "w": "glide down",
+      "g": "hinuntergleiten",
+      "d": "To move smoothly and quietly downward through the air",
+      "s": "The eagle spread its wings and began to _____ towards the river.",
+      "a": [],
+      "mc": [
+        "slide down",
+        "float down",
+        "dive down"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GLIDE DOWN?",
+          "options": [
+            "smoothly",
+            "gently",
+            "eagle",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The bird began to _____ towards the river.",
+          "options": [
+            "glide down",
+            "slide down",
+            "break down",
+            "calm down"
+          ],
+          "answer": "glide down"
+        }
+      ]
+    },
+    {
+      "w": "miracle",
+      "g": "Wunder",
+      "d": "An amazing event that cannot be explained and is believed to be caused by God or luck",
+      "s": "It was a _____ that nobody was hurt in the car crash.",
+      "a": [
+        "miracles"
+      ],
+      "mc": [
+        "wonder",
+        "mystery",
+        "blessing"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MIRACLE?",
+          "options": [
+            "absolute",
+            "believe",
+            "modern",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "It was a _____ that nobody was hurt.",
+          "options": [
+            "miracle",
+            "article",
+            "vehicle",
+            "obstacle"
+          ],
+          "answer": "miracle"
+        }
+      ]
+    },
+    {
+      "w": "on duty",
+      "g": "im Dienst",
+      "d": "Currently working or responsible, especially as part of one's job",
+      "s": "The nurse couldn't leave the hospital because she was _____ until six in the morning.",
+      "a": [],
+      "mc": [
+        "on call",
+        "on guard",
+        "on leave"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ON DUTY?",
+          "options": [
+            "nurse",
+            "police",
+            "officer",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The doctor was _____ all night.",
+          "options": [
+            "on duty",
+            "on hold",
+            "on sale",
+            "on tour"
+          ],
+          "answer": "on duty"
+        }
+      ]
+    },
+    {
+      "w": "rescue boat",
+      "g": "Rettungsboot",
+      "d": "A vessel used to save people from danger, especially at sea",
+      "s": "A _____ was sent out to help the swimmers who got caught in the storm.",
+      "a": [
+        "rescue boat",
+        "rescue boats"
+      ],
+      "mc": [
+        "lifeboat",
+        "fishing boat",
+        "sailing boat"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RESCUE BOAT?",
+          "options": [
+            "send",
+            "launch",
+            "crew",
+            "digital"
+          ],
+          "answer": "digital"
+        },
+        {
+          "type": "gap",
+          "prompt": "A _____ was sent to save the swimmers.",
+          "options": [
+            "rescue boat",
+            "rescue team",
+            "rescue mission",
+            "rescue dog"
+          ],
+          "answer": "rescue boat"
+        }
+      ]
+    },
+    {
+      "w": "runway",
+      "g": "Landebahn",
+      "d": "A long, flat surface at an airport where planes take off and land",
+      "s": "The plane waited on the _____ for ten minutes before it was allowed to take off.",
+      "a": [
+        "runways"
+      ],
+      "mc": [
+        "motorway",
+        "platform",
+        "terminal"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RUNWAY?",
+          "options": [
+            "airport",
+            "plane",
+            "long",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The plane waited on the _____.",
+          "options": [
+            "runway",
+            "motorway",
+            "doorway",
+            "hallway"
+          ],
+          "answer": "runway"
+        }
+      ]
+    },
+    {
+      "w": "takeoff",
+      "g": "Abflug, Start",
+      "d": "The moment when a plane leaves the ground and begins to fly",
+      "s": "I always feel nervous during _____ because the plane shakes a little.",
+      "a": [
+        "take-off",
+        "take off"
+      ],
+      "mc": [
+        "departure",
+        "landing",
+        "boarding"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TAKEOFF?",
+          "options": [
+            "smooth",
+            "prepare",
+            "delayed",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The plane began its _____.",
+          "options": [
+            "takeoff",
+            "standoff",
+            "playoff",
+            "cutoff"
+          ],
+          "answer": "takeoff"
+        }
+      ]
+    },
+    {
+      "w": "treatment",
+      "g": "Behandlung",
+      "d": "Medical care given to a patient for an illness or injury",
+      "s": "The doctor said she needs _____ for her knee injury.",
+      "a": [
+        "treatment",
+        "treatments"
+      ],
+      "mc": [
+        "diagnosis",
+        "surgery",
+        "therapy"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TREATMENT?",
+          "options": [
+            "medical",
+            "receive",
+            "effective",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She is receiving _____ for her injury.",
+          "options": [
+            "treatment",
+            "equipment",
+            "department",
+            "apartment"
+          ],
+          "answer": "treatment"
+        }
+      ]
+    },
+    {
+      "w": "wing",
+      "g": "Flügel",
+      "d": "One of the two flat parts on the side of a plane or a bird that help it fly",
+      "s": "One _____ of the plane was damaged during the rough landing.",
+      "a": [
+        "wing",
+        "wings"
+      ],
+      "mc": [
+        "tail",
+        "engine",
+        "propeller"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WING?",
+          "options": [
+            "bird",
+            "plane",
+            "broken",
+            "tasty"
+          ],
+          "answer": "tasty"
+        },
+        {
+          "type": "gap",
+          "prompt": "One _____ of the plane was damaged.",
+          "options": [
+            "wing",
+            "ring",
+            "king",
+            "thing"
+          ],
+          "answer": "wing"
+        }
+      ]
+    },
+    {
+      "w": "become desperate",
+      "g": "verzweifeln; aussichtslos werden",
+      "d": "To reach a state of great worry because a situation seems impossible",
+      "s": "After searching for her lost dog for three days without any clue, she started to _____ and asked everyone for help.",
+      "a": [
+        "become desperate",
+        "became desperate"
+      ],
+      "mc": [
+        "become anxious",
+        "become hopeless",
+        "become furious"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DESPERATE?",
+          "options": [
+            "situation",
+            "attempt",
+            "measures",
+            "circular"
+          ],
+          "answer": "circular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She became _____ after days of searching.",
+          "options": [
+            "desperate",
+            "separate",
+            "moderate",
+            "accurate"
+          ],
+          "answer": "desperate"
+        }
+      ]
+    },
+    {
+      "w": "collide",
+      "g": "zusammenstoßen, kollidieren",
+      "d": "To crash into something with force",
+      "s": "The two cars _____ at the crossroads because neither driver stopped.",
+      "cf": "collided",
+      "a": [
+        "collide",
+        "collided"
+      ],
+      "mc": [
+        "crash",
+        "bump",
+        "smash"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COLLIDE?",
+          "options": [
+            "head-on",
+            "cars",
+            "crash",
+            "tropical"
+          ],
+          "answer": "tropical"
+        },
+        {
+          "type": "gap",
+          "prompt": "The two buses _____ at the crossroads.",
+          "options": [
+            "collided",
+            "decided",
+            "divided",
+            "provided"
+          ],
+          "answer": "collided"
+        }
+      ]
+    },
+    {
+      "w": "explode",
+      "g": "explodieren",
+      "d": "To burst suddenly and violently with a loud noise",
+      "s": "The balloon _____ with a loud bang when it touched the candle.",
+      "cf": "exploded",
+      "a": [
+        "explode",
+        "exploded"
+      ],
+      "mc": [
+        "erupt",
+        "shatter",
+        "collapse"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EXPLODE?",
+          "options": [
+            "bomb",
+            "suddenly",
+            "violently",
+            "gently"
+          ],
+          "answer": "gently"
+        },
+        {
+          "type": "gap",
+          "prompt": "The firework _____ in the night sky.",
+          "options": [
+            "exploded",
+            "explored",
+            "exported",
+            "exposed"
+          ],
+          "answer": "exploded"
+        }
+      ]
+    },
+    {
+      "w": "bravery",
+      "g": "Mut, Tapferkeit",
+      "d": "The quality of being ready to face danger or pain without showing fear",
+      "s": "The young girl showed great _____ when she rescued her cat from the burning house.",
+      "a": [
+        "courage"
+      ],
+      "mc": [
+        "loyalty",
+        "strength",
+        "honour"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BRAVERY?",
+          "options": [
+            "show",
+            "great",
+            "act",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "She showed great _____ during the rescue.",
+          "options": [
+            "bravery",
+            "battery",
+            "bakery",
+            "gallery"
+          ],
+          "answer": "bravery"
+        }
+      ]
+    },
+    {
+      "w": "reward sb",
+      "g": "belohnen; prämieren",
+      "d": "To give something to someone because they have done something good",
+      "s": "Her parents _____ her with a new phone for getting great marks.",
+      "cf": "rewarded",
+      "a": [
+        "reward sb",
+        "reward",
+        "rewarded"
+      ],
+      "mc": [
+        "praise sb",
+        "punish sb",
+        "thank sb"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REWARD?",
+          "options": [
+            "generous",
+            "financial",
+            "offer",
+            "musical"
+          ],
+          "answer": "musical"
+        },
+        {
+          "type": "gap",
+          "prompt": "Her parents _____ her for her good marks.",
+          "options": [
+            "rewarded",
+            "recorded",
+            "reported",
+            "regarded"
+          ],
+          "answer": "rewarded"
+        }
+      ]
+    },
+    {
+      "w": "critic",
+      "g": "Kritiker/in",
+      "d": "A person who gives their opinion about things like films, books, or performances",
+      "s": "A famous film _____ wrote that the movie was boring and too long.",
+      "a": [
+        "critic",
+        "critics"
+      ],
+      "mc": [
+        "reviewer",
+        "journalist",
+        "editor"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CRITIC?",
+          "options": [
+            "film",
+            "harsh",
+            "famous",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ gave the movie a bad review.",
+          "options": [
+            "critic",
+            "fabric",
+            "metric",
+            "clinic"
+          ],
+          "answer": "critic"
+        }
+      ]
+    },
+    {
+      "w": "elevator (AE)",
+      "g": "Aufzug",
+      "d": "A machine that carries people up and down in a building (American English for lift)",
+      "s": "We took the _____ to the tenth floor because there were too many stairs to climb.",
+      "cf": "elevator",
+      "a": [
+        "elevator",
+        "elevators"
+      ],
+      "mc": [
+        "escalator",
+        "staircase",
+        "entrance"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ELEVATOR?",
+          "options": [
+            "take",
+            "floor",
+            "button",
+            "tropical"
+          ],
+          "answer": "tropical"
+        },
+        {
+          "type": "gap",
+          "prompt": "We took the _____ to the top floor.",
+          "options": [
+            "elevator",
+            "escalator",
+            "spectator",
+            "generator"
+          ],
+          "answer": "elevator"
+        }
+      ]
+    },
+    {
+      "w": "campaign",
+      "g": "Kampagne; Aktion",
+      "d": "An organised effort to achieve a particular goal",
+      "s": "Our school started a _____ to collect money for children in need.",
+      "a": [
+        "campaigns"
+      ],
+      "mc": [
+        "protest",
+        "competition",
+        "movement"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CAMPAIGN?",
+          "options": [
+            "launch",
+            "run",
+            "advertising",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The school decided to _____ a campaign against bullying.",
+          "options": [
+            "launch",
+            "wash",
+            "park",
+            "sleep"
+          ],
+          "answer": "launch"
+        }
+      ]
+    },
+    {
+      "w": "charge",
+      "g": "berechnen, verlangen",
+      "d": "To ask someone to pay a particular amount of money for something",
+      "s": "How much do they _____ for a ticket to the concert?",
+      "a": [
+        "charge",
+        "charges"
+      ],
+      "mc": [
+        "cost",
+        "refund",
+        "owe"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CHARGE?",
+          "options": [
+            "extra",
+            "free",
+            "reasonable",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "How much do they _____?",
+          "options": [
+            "charge",
+            "change",
+            "chance",
+            "choice"
+          ],
+          "answer": "charge"
+        }
+      ]
+    },
+    {
+      "w": "crowd-funding",
+      "g": "Gruppenfinanzierung",
+      "d": "The practice of collecting small amounts of money from many people online to fund a project",
+      "s": "The band used _____ to get enough money to record their first album.",
+      "a": [
+        "crowdfunding"
+      ],
+      "mc": [
+        "sponsorship",
+        "fundraising",
+        "donation"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CROWD-FUNDING?",
+          "options": [
+            "online",
+            "platform",
+            "project",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "They used _____ to finance the album.",
+          "options": [
+            "crowd-funding",
+            "crowd-surfing",
+            "crowd-pleasing",
+            "crowd-control"
+          ],
+          "answer": "crowd-funding"
+        }
+      ]
+    },
+    {
+      "w": "statement",
+      "g": "Aussage",
+      "d": "An official account of facts or opinions, spoken or written",
+      "s": "The witness gave a _____ to the police about what she had seen.",
+      "a": [
+        "statements"
+      ],
+      "mc": [
+        "announcement",
+        "comment",
+        "opinion"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with STATEMENT?",
+          "options": [
+            "official",
+            "make",
+            "public",
+            "sweet"
+          ],
+          "answer": "sweet"
+        },
+        {
+          "type": "gap",
+          "prompt": "The police made an official _____.",
+          "options": [
+            "statement",
+            "apartment",
+            "ornament",
+            "pavement"
+          ],
+          "answer": "statement"
+        }
+      ]
+    }
+  ]
+}

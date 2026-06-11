@@ -1,0 +1,1609 @@
+{
+  "slug": "unit-04",
+  "grade": 4,
+  "unit": 4,
+  "title": "Unit 4",
+  "entries": [
+    {
+      "w": "accountant",
+      "g": "Buchhalter/in",
+      "d": "A person whose job is to keep or check financial records",
+      "s": "She hired an _____ to help her with her company's taxes.",
+      "a": [
+        "accountants"
+      ],
+      "mc": [
+        "consultant",
+        "economist",
+        "cashier"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ACCOUNTANT?",
+          "options": [
+            "hire",
+            "tax",
+            "financial",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She hired an _____ for the taxes.",
+          "options": [
+            "accountant",
+            "consultant",
+            "inhabitant",
+            "lieutenant"
+          ],
+          "answer": "accountant"
+        }
+      ]
+    },
+    {
+      "w": "receptionist",
+      "g": "Rezeptionist/in",
+      "d": "A person who works at a desk in a hotel or office welcoming visitors",
+      "s": "The friendly _____ at the hotel gave us our room keys and a map of the city.",
+      "a": [
+        "receptionists"
+      ],
+      "mc": [
+        "secretary",
+        "assistant",
+        "cashier"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RECEPTIONIST?",
+          "options": [
+            "hotel",
+            "front desk",
+            "friendly",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ gave us our room keys.",
+          "options": [
+            "receptionist",
+            "perfectionist",
+            "nutritionist",
+            "protagonist"
+          ],
+          "answer": "receptionist"
+        }
+      ]
+    },
+    {
+      "w": "mechanic",
+      "g": "Mechaniker/in",
+      "d": "A person who repairs and maintains machines, especially cars",
+      "s": "I took my car to the _____ because the engine was making a strange noise.",
+      "a": [
+        "mechanics"
+      ],
+      "mc": [
+        "technician",
+        "engineer",
+        "plumber"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MECHANIC?",
+          "options": [
+            "car",
+            "repair",
+            "engine",
+            "musical"
+          ],
+          "answer": "musical"
+        },
+        {
+          "type": "gap",
+          "prompt": "I took my car to the _____.",
+          "options": [
+            "mechanic",
+            "organic",
+            "romantic",
+            "volcanic"
+          ],
+          "answer": "mechanic"
+        }
+      ]
+    },
+    {
+      "w": "nurse",
+      "g": "Krankenpfleger/in",
+      "d": "A person trained to care for sick or injured people, usually in a hospital",
+      "s": "The _____ checked my blood pressure and gave me my medication.",
+      "a": [
+        "nurses"
+      ],
+      "mc": [
+        "surgeon",
+        "pharmacist",
+        "dentist"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NURSE?",
+          "options": [
+            "hospital",
+            "patient",
+            "care",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ checked my blood pressure.",
+          "options": [
+            "nurse",
+            "purse",
+            "worse",
+            "curse"
+          ],
+          "answer": "nurse"
+        }
+      ]
+    },
+    {
+      "w": "health care",
+      "g": "Gesundheitswesen",
+      "d": "The services provided by a country or organisation for treating people who are ill",
+      "s": "Good _____ should be available to everyone, not just rich people.",
+      "a": [
+        "healthcare"
+      ],
+      "mc": [
+        "social work",
+        "child care",
+        "welfare"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HEALTH CARE?",
+          "options": [
+            "public",
+            "system",
+            "provide",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Good _____ should be available to everyone.",
+          "options": [
+            "health care",
+            "hair care",
+            "skin care",
+            "day care"
+          ],
+          "answer": "health care"
+        }
+      ]
+    },
+    {
+      "w": "marketing",
+      "g": "Marketing",
+      "d": "The business activity of promoting and selling products or services",
+      "s": "The _____ team came up with a brilliant idea for the new advert.",
+      "a": [],
+      "mc": [
+        "advertising",
+        "management",
+        "accounting"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MARKETING?",
+          "options": [
+            "digital",
+            "strategy",
+            "team",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She works in the _____ department.",
+          "options": [
+            "marketing",
+            "gardening",
+            "carpeting",
+            "welcoming"
+          ],
+          "answer": "marketing"
+        }
+      ]
+    },
+    {
+      "w": "finance",
+      "g": "Finanzwesen",
+      "d": "The management of money by governments, companies, or individuals",
+      "s": "He studied _____ at university because he wanted to work at a bank.",
+      "a": [],
+      "mc": [
+        "banking",
+        "economics",
+        "commerce"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FINANCE?",
+          "options": [
+            "study",
+            "personal",
+            "manage",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He studied _____ at university.",
+          "options": [
+            "finance",
+            "romance",
+            "distance",
+            "balance"
+          ],
+          "answer": "finance"
+        }
+      ]
+    },
+    {
+      "w": "electrician",
+      "g": "Elektriker/in",
+      "d": "A person whose job is to install and repair electrical systems",
+      "s": "We called an _____ to fix the broken wiring in the kitchen.",
+      "a": [
+        "electricians"
+      ],
+      "mc": [
+        "plumber",
+        "carpenter",
+        "technician"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ELECTRICIAN?",
+          "options": [
+            "call",
+            "wiring",
+            "qualified",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We called an _____ to fix the lights.",
+          "options": [
+            "electrician",
+            "musician",
+            "politician",
+            "magician"
+          ],
+          "answer": "electrician"
+        }
+      ]
+    },
+    {
+      "w": "secretary",
+      "g": "Sekretär/in",
+      "d": "A person who works in an office typing letters, making calls, and organising meetings",
+      "s": "The _____ answered the phone and scheduled an appointment for me.",
+      "a": [
+        "secretaries"
+      ],
+      "mc": [
+        "receptionist",
+        "assistant",
+        "manager"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SECRETARY?",
+          "options": [
+            "type",
+            "office",
+            "schedule",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ answered the phone.",
+          "options": [
+            "secretary",
+            "dictionary",
+            "missionary",
+            "anniversary"
+          ],
+          "answer": "secretary"
+        }
+      ]
+    },
+    {
+      "w": "flight attendant",
+      "g": "Flugbegleiter/in",
+      "d": "A person who looks after passengers on an aircraft",
+      "s": "The _____ showed us how to use the safety equipment before takeoff.",
+      "a": [
+        "flight attendants"
+      ],
+      "mc": [
+        "travel agent",
+        "pilot",
+        "tour guide"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FLIGHT ATTENDANT?",
+          "options": [
+            "cabin",
+            "safety",
+            "passengers",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ served drinks on the plane.",
+          "options": [
+            "flight attendant",
+            "flight simulator",
+            "flight recorder",
+            "flight path"
+          ],
+          "answer": "flight attendant"
+        }
+      ]
+    },
+    {
+      "w": "computing",
+      "g": "Datenverarbeitung; Computerwesen",
+      "d": "The use of computers and technology for processing information",
+      "s": "She wants to study _____ because she dreams of creating video games.",
+      "a": [],
+      "mc": [
+        "engineering",
+        "programming",
+        "technology"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMPUTING?",
+          "options": [
+            "study",
+            "technology",
+            "science",
+            "tasty"
+          ],
+          "answer": "tasty"
+        },
+        {
+          "type": "gap",
+          "prompt": "She wants to study _____.",
+          "options": [
+            "computing",
+            "commuting",
+            "competing",
+            "completing"
+          ],
+          "answer": "computing"
+        }
+      ]
+    },
+    {
+      "w": "sales and marketing",
+      "g": "Verkauf und Marketing",
+      "d": "The combined business activities of selling products and promoting them",
+      "s": "After university, she got a job in _____, where she promotes and sells sportswear for a big brand.",
+      "a": [],
+      "mc": [
+        "research and development",
+        "human resources",
+        "customer service"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SALES AND MARKETING?",
+          "options": [
+            "department",
+            "strategy",
+            "manager",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She works in _____ for a big brand.",
+          "options": [
+            "sales and marketing",
+            "arts and crafts",
+            "law and order",
+            "research and development"
+          ],
+          "answer": "sales and marketing"
+        }
+      ]
+    },
+    {
+      "w": "deserve",
+      "g": "verdienen",
+      "d": "To have earned something through your actions or qualities",
+      "s": "You studied so hard for this exam — you _____ a great result.",
+      "a": [
+        "deserve",
+        "deserved"
+      ],
+      "mc": [
+        "demand",
+        "desire",
+        "require"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DESERVE?",
+          "options": [
+            "truly",
+            "recognition",
+            "better",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "You worked hard — you _____ this award.",
+          "options": [
+            "deserve",
+            "observe",
+            "preserve",
+            "reserve"
+          ],
+          "answer": "deserve"
+        }
+      ]
+    },
+    {
+      "w": "female",
+      "g": "weiblich",
+      "d": "Relating to women or girls",
+      "s": "The first _____ astronaut went into space in 1963.",
+      "a": [],
+      "mc": [
+        "feminine",
+        "gentle",
+        "adult"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FEMALE?",
+          "options": [
+            "athlete",
+            "role",
+            "leader",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The first _____ pilot flew in 1911.",
+          "options": [
+            "female",
+            "final",
+            "formal",
+            "fatal"
+          ],
+          "answer": "female"
+        }
+      ]
+    },
+    {
+      "w": "male",
+      "g": "männlich",
+      "d": "Relating to men or boys",
+      "s": "In many bird species, the _____ is more colourful than the female.",
+      "a": [],
+      "mc": [
+        "masculine",
+        "mature",
+        "adult"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MALE?",
+          "options": [
+            "voice",
+            "population",
+            "typical",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ bird is more colourful.",
+          "options": [
+            "male",
+            "pale",
+            "tale",
+            "sale"
+          ],
+          "answer": "male"
+        }
+      ]
+    },
+    {
+      "w": "satisfaction",
+      "g": "Genugtuung; Zufriedenheit",
+      "d": "A pleasant feeling you get when you achieve something or when something you wanted happens",
+      "s": "Finishing the marathon gave her a great feeling of _____.",
+      "a": [],
+      "mc": [
+        "achievement",
+        "pleasure",
+        "happiness"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SATISFACTION?",
+          "options": [
+            "great",
+            "customer",
+            "job",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She felt a sense of _____.",
+          "options": [
+            "satisfaction",
+            "situation",
+            "station",
+            "imagination"
+          ],
+          "answer": "satisfaction"
+        }
+      ]
+    },
+    {
+      "w": "unemployed",
+      "g": "arbeitslos",
+      "d": "Not having a paid job",
+      "s": "After the factory closed, hundreds of workers became _____.",
+      "a": [],
+      "mc": [
+        "retired",
+        "underpaid",
+        "unskilled"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with UNEMPLOYED?",
+          "options": [
+            "become",
+            "long-term",
+            "young",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Many workers became _____.",
+          "options": [
+            "unemployed",
+            "unimpressed",
+            "underpaid",
+            "uninspired"
+          ],
+          "answer": "unemployed"
+        }
+      ]
+    },
+    {
+      "w": "career",
+      "g": "Karriere; Berufslaufbahn",
+      "d": "The series of jobs that a person has in a particular area of work",
+      "s": "He wants a _____ in medicine and hopes to become a surgeon one day.",
+      "a": [
+        "careers"
+      ],
+      "mc": [
+        "profession",
+        "position",
+        "occupation"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CAREER?",
+          "options": [
+            "pursue",
+            "successful",
+            "promising",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She wants to _____ a career in medicine.",
+          "options": [
+            "pursue",
+            "polish",
+            "punish",
+            "puzzle"
+          ],
+          "answer": "pursue"
+        },
+        {
+          "type": "gap",
+          "prompt": "He made a _____ change at the age of 40.",
+          "options": [
+            "career",
+            "carpet",
+            "carrot",
+            "cartoon"
+          ],
+          "answer": "career"
+        }
+      ]
+    },
+    {
+      "w": "be keen on",
+      "g": "von etw begeistert sein",
+      "d": "To be very interested in or enthusiastic about something",
+      "s": "She's really _____ cooking and tries a new recipe every weekend.",
+      "cf": "keen on",
+      "a": [
+        "be keen on",
+        "keen on"
+      ],
+      "mc": [
+        "be fond of",
+        "be good at",
+        "be used to"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with KEEN ON?",
+          "options": [
+            "very",
+            "really",
+            "sports",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She is _____ cooking.",
+          "options": [
+            "keen on",
+            "keep on",
+            "carry on",
+            "hold on"
+          ],
+          "answer": "keen on"
+        }
+      ]
+    },
+    {
+      "w": "be responsible for",
+      "g": "für etw verantwortlich sein",
+      "d": "To be in charge of something or to have it as your duty",
+      "s": "As class president, Tom is _____ organising school events.",
+      "cf": "responsible for",
+      "a": [
+        "be responsible for",
+        "responsible for"
+      ],
+      "mc": [
+        "be capable of",
+        "be in charge of",
+        "be involved in"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RESPONSIBLE FOR?",
+          "options": [
+            "fully",
+            "highly",
+            "safety",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He is _____ the school garden.",
+          "options": [
+            "responsible for",
+            "famous for",
+            "ready for",
+            "suitable for"
+          ],
+          "answer": "responsible for"
+        }
+      ]
+    },
+    {
+      "w": "bonus",
+      "g": "Bonus, Zulage; Prämie",
+      "d": "Extra money added to someone's pay as a reward for good work",
+      "s": "Everyone in the office got a Christmas _____ this year.",
+      "a": [
+        "bonuses"
+      ],
+      "mc": [
+        "reward",
+        "tip",
+        "raise"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BONUS?",
+          "options": [
+            "Christmas",
+            "generous",
+            "receive",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Everyone got a Christmas _____.",
+          "options": [
+            "bonus",
+            "focus",
+            "minus",
+            "virus"
+          ],
+          "answer": "bonus"
+        }
+      ]
+    },
+    {
+      "w": "deadline",
+      "g": "Frist, Abgabetermin",
+      "d": "The latest time or date by which something must be finished",
+      "s": "The _____ for the essay is Friday, so you'd better start writing today.",
+      "a": [
+        "deadlines"
+      ],
+      "mc": [
+        "timetable",
+        "schedule",
+        "due date"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DEADLINE?",
+          "options": [
+            "meet",
+            "miss",
+            "tight",
+            "delicious"
+          ],
+          "answer": "delicious"
+        },
+        {
+          "type": "gap",
+          "prompt": "We have to _____ the deadline or we lose marks.",
+          "options": [
+            "meet",
+            "eat",
+            "heat",
+            "beat"
+          ],
+          "answer": "meet"
+        },
+        {
+          "type": "gap",
+          "prompt": "It was a very _____ deadline — only two days!",
+          "options": [
+            "tight",
+            "tall",
+            "thick",
+            "thin"
+          ],
+          "answer": "tight"
+        }
+      ]
+    },
+    {
+      "w": "develop",
+      "g": "entwickeln",
+      "d": "To grow, change, or create something new over time",
+      "s": "Scientists are trying to _____ a new vaccine against the virus.",
+      "a": [
+        "develop",
+        "develops"
+      ],
+      "mc": [
+        "design",
+        "discover",
+        "improve"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DEVELOP?",
+          "options": [
+            "quickly",
+            "idea",
+            "skill",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Scientists are trying to _____ a new vaccine.",
+          "options": [
+            "develop",
+            "envelop",
+            "overlap",
+            "gallop"
+          ],
+          "answer": "develop"
+        }
+      ]
+    },
+    {
+      "w": "earn",
+      "g": "verdienen",
+      "d": "To receive money for work that you do",
+      "s": "She works at a cafe after school to _____ some extra pocket money.",
+      "a": [],
+      "mc": [
+        "gain",
+        "win",
+        "receive"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EARN?",
+          "options": [
+            "money",
+            "living",
+            "respect",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She works hard to _____ a living.",
+          "options": [
+            "earn",
+            "burn",
+            "learn",
+            "turn"
+          ],
+          "answer": "earn"
+        }
+      ]
+    },
+    {
+      "w": "launch",
+      "g": "einführen, auf den Markt bringen",
+      "d": "To start or introduce a new product, service, or project",
+      "s": "Apple plans to _____ a new smartphone next month.",
+      "a": [
+        "launch",
+        "launched"
+      ],
+      "mc": [
+        "release",
+        "publish",
+        "promote"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LAUNCH?",
+          "options": [
+            "product",
+            "campaign",
+            "rocket",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The company plans to _____ a new product.",
+          "options": [
+            "launch",
+            "search",
+            "march",
+            "reach"
+          ],
+          "answer": "launch"
+        }
+      ]
+    },
+    {
+      "w": "pros and cons",
+      "g": "Vor- und Nachteile",
+      "d": "The advantages and disadvantages of something",
+      "s": "We made a list of the _____ before deciding which school to choose.",
+      "a": [],
+      "mc": [
+        "strengths and weaknesses",
+        "dos and don'ts",
+        "rights and wrongs"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PROS AND CONS?",
+          "options": [
+            "list",
+            "weigh",
+            "discuss",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "We discussed the _____ of moving abroad.",
+          "options": [
+            "pros and cons",
+            "ups and downs",
+            "ins and outs",
+            "dos and don'ts"
+          ],
+          "answer": "pros and cons"
+        }
+      ]
+    },
+    {
+      "w": "salary",
+      "g": "Gehalt",
+      "d": "A fixed amount of money paid to an employee every month",
+      "s": "Teachers in Austria don't always get a high _____, but they love their job.",
+      "a": [
+        "salaries"
+      ],
+      "mc": [
+        "wage",
+        "income",
+        "pension"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SALARY?",
+          "options": [
+            "earn",
+            "annual",
+            "high",
+            "stormy"
+          ],
+          "answer": "stormy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She earns a good _____.",
+          "options": [
+            "salary",
+            "scenery",
+            "bakery",
+            "gallery"
+          ],
+          "answer": "salary"
+        }
+      ]
+    },
+    {
+      "w": "think up",
+      "g": "ausdenken, erfinden",
+      "d": "To create or invent an idea using your imagination",
+      "s": "We need to _____ a name for our new school band.",
+      "a": [],
+      "mc": [
+        "make up",
+        "look up",
+        "come up with"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with THINK UP?",
+          "options": [
+            "idea",
+            "plan",
+            "name",
+            "sandwich"
+          ],
+          "answer": "sandwich"
+        },
+        {
+          "type": "gap",
+          "prompt": "We need to _____ a new plan.",
+          "options": [
+            "think up",
+            "give up",
+            "make up",
+            "pick up"
+          ],
+          "answer": "think up"
+        }
+      ]
+    },
+    {
+      "w": "working hours",
+      "g": "Arbeitszeit",
+      "d": "The times of the day during which a person is at their job",
+      "s": "The company has flexible _____, so employees can choose when to start and finish.",
+      "a": [],
+      "mc": [
+        "opening hours",
+        "office hours",
+        "overtime"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WORKING HOURS?",
+          "options": [
+            "flexible",
+            "long",
+            "regular",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "The company has flexible _____.",
+          "options": [
+            "working hours",
+            "opening hours",
+            "office hours",
+            "visiting hours"
+          ],
+          "answer": "working hours"
+        }
+      ]
+    },
+    {
+      "w": "advice",
+      "g": "Ratschlag",
+      "d": "Suggestions about what someone should do in a particular situation",
+      "s": "My mum gave me some good _____ about how to deal with stress.",
+      "a": [],
+      "mc": [
+        "suggestion",
+        "instruction",
+        "warning"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ADVICE?",
+          "options": [
+            "give",
+            "take",
+            "a piece of",
+            "heavy"
+          ],
+          "answer": "heavy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Can I give you a piece of _____?",
+          "options": [
+            "advice",
+            "price",
+            "twice",
+            "rice"
+          ],
+          "answer": "advice"
+        },
+        {
+          "type": "gap",
+          "prompt": "You should _____ her advice — she knows best.",
+          "options": [
+            "take",
+            "bake",
+            "wake",
+            "shake"
+          ],
+          "answer": "take"
+        }
+      ]
+    },
+    {
+      "w": "ambition",
+      "g": "Ehrgeiz",
+      "d": "A strong desire to achieve something great, like success or power",
+      "s": "Her biggest _____ is to travel around the world before she turns thirty.",
+      "a": [
+        "ambitions"
+      ],
+      "mc": [
+        "motivation",
+        "determination",
+        "aspiration"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AMBITION?",
+          "options": [
+            "great",
+            "achieve",
+            "personal",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Her biggest _____ is to travel the world.",
+          "options": [
+            "ambition",
+            "condition",
+            "addition",
+            "position"
+          ],
+          "answer": "ambition"
+        }
+      ]
+    },
+    {
+      "w": "casual",
+      "g": "lässig; locker",
+      "d": "Relaxed and informal in style or manner",
+      "s": "You can wear _____ clothes to the party — jeans and a T-shirt are fine.",
+      "a": [],
+      "mc": [
+        "comfortable",
+        "elegant",
+        "formal"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CASUAL?",
+          "options": [
+            "wear",
+            "clothes",
+            "look",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "You can wear _____ clothes to the party.",
+          "options": [
+            "casual",
+            "visual",
+            "usual",
+            "mutual"
+          ],
+          "answer": "casual"
+        }
+      ]
+    },
+    {
+      "w": "company",
+      "g": "Unternehmen, Firma",
+      "d": "A business organisation that makes or sells goods or services",
+      "s": "My dad works for a small _____ that makes furniture.",
+      "a": [
+        "companies"
+      ],
+      "mc": [
+        "corporation",
+        "organisation",
+        "agency"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMPANY?",
+          "options": [
+            "run",
+            "start",
+            "large",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "My dad works for a small _____.",
+          "options": [
+            "company",
+            "balcony",
+            "harmony",
+            "colony"
+          ],
+          "answer": "company"
+        }
+      ]
+    },
+    {
+      "w": "confidently",
+      "g": "selbstbewusst",
+      "d": "In a way that shows you believe in yourself and your abilities",
+      "s": "Even though she was nervous, she spoke _____ during the presentation and nobody noticed her fear.",
+      "a": [],
+      "mc": [
+        "proudly",
+        "bravely",
+        "loudly"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CONFIDENTLY?",
+          "options": [
+            "speak",
+            "answer",
+            "walk",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She spoke _____ during the presentation.",
+          "options": [
+            "confidently",
+            "differently",
+            "frequently",
+            "evidently"
+          ],
+          "answer": "confidently"
+        }
+      ]
+    },
+    {
+      "w": "employer",
+      "g": "Arbeitgeber/in",
+      "d": "A person or company that pays people to work for them",
+      "s": "A good _____ treats their workers fairly and pays them on time.",
+      "a": [
+        "employers"
+      ],
+      "mc": [
+        "employee",
+        "manager",
+        "colleague"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EMPLOYER?",
+          "options": [
+            "good",
+            "hire",
+            "fair",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "A good _____ treats workers fairly.",
+          "options": [
+            "employer",
+            "employee",
+            "envelope",
+            "encounter"
+          ],
+          "answer": "employer"
+        }
+      ]
+    },
+    {
+      "w": "enthusiastic",
+      "g": "enthusiastisch, begeistert",
+      "d": "Showing a lot of excitement and interest about something",
+      "s": "The students were very _____ about the idea of a school trip to London.",
+      "a": [],
+      "mc": [
+        "passionate",
+        "motivated",
+        "curious"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ENTHUSIASTIC?",
+          "options": [
+            "very",
+            "extremely",
+            "students",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The children were very _____.",
+          "options": [
+            "enthusiastic",
+            "fantastic",
+            "romantic",
+            "dramatic"
+          ],
+          "answer": "enthusiastic"
+        }
+      ]
+    },
+    {
+      "w": "eye contact",
+      "g": "Augenkontakt",
+      "d": "The act of looking directly into another person's eyes during a conversation",
+      "s": "When giving a presentation, try to make _____ with your audience.",
+      "a": [],
+      "mc": [
+        "body language",
+        "facial expression",
+        "handshake"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EYE CONTACT?",
+          "options": [
+            "make",
+            "direct",
+            "maintain",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Try to make _____ when speaking.",
+          "options": [
+            "eye contact",
+            "eye shadow",
+            "eye drops",
+            "eye level"
+          ],
+          "answer": "eye contact"
+        }
+      ]
+    },
+    {
+      "w": "(job) interview",
+      "g": "Vorstellungsgespräch",
+      "d": "A formal meeting where someone is asked questions to see if they are right for a position",
+      "s": "He was very nervous before his first _____ at the new company.",
+      "cf": "job interview",
+      "a": [
+        "job interview",
+        "interview"
+      ],
+      "mc": [
+        "job application",
+        "job offer",
+        "job training"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with JOB INTERVIEW?",
+          "options": [
+            "attend",
+            "prepare",
+            "difficult",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She was nervous before the _____.",
+          "options": [
+            "job interview",
+            "job offer",
+            "job market",
+            "job centre"
+          ],
+          "answer": "job interview"
+        }
+      ]
+    },
+    {
+      "w": "memorise",
+      "g": "sich einprägen",
+      "d": "To learn something so well that you can remember it perfectly",
+      "s": "I need to _____ all these new vocabulary words before the test.",
+      "a": [
+        "memorise",
+        "memorize"
+      ],
+      "mc": [
+        "recognise",
+        "revise",
+        "recall"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MEMORISE?",
+          "options": [
+            "facts",
+            "words",
+            "quickly",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I need to _____ these vocabulary words.",
+          "options": [
+            "memorise",
+            "organise",
+            "advertise",
+            "supervise"
+          ],
+          "answer": "memorise"
+        }
+      ]
+    },
+    {
+      "w": "naturally",
+      "g": "natürlich",
+      "d": "In a way that is normal and expected; of course",
+      "s": "She plays the violin so well that the music seems to flow _____.",
+      "a": [],
+      "mc": [
+        "obviously",
+        "certainly",
+        "automatically"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NATURALLY?",
+          "options": [
+            "come",
+            "flow",
+            "behave",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The music seemed to flow _____.",
+          "options": [
+            "naturally",
+            "nationally",
+            "normally",
+            "nominally"
+          ],
+          "answer": "naturally"
+        }
+      ]
+    },
+    {
+      "w": "skills",
+      "g": "Fähigkeiten",
+      "d": "The abilities and knowledge needed to do something well",
+      "s": "Learning a musical instrument helps you develop many useful _____.",
+      "a": [
+        "skill"
+      ],
+      "mc": [
+        "talents",
+        "qualities",
+        "abilities"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SKILLS?",
+          "options": [
+            "develop",
+            "communication",
+            "useful",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Learning music develops many _____.",
+          "options": [
+            "skills",
+            "spills",
+            "thrills",
+            "grills"
+          ],
+          "answer": "skills"
+        }
+      ]
+    },
+    {
+      "w": "journalism",
+      "g": "Journalismus",
+      "d": "The work of collecting, writing, and publishing news and information",
+      "s": "He studied _____ because he wanted to become a reporter for a newspaper.",
+      "a": [],
+      "mc": [
+        "broadcasting",
+        "publishing",
+        "media"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with JOURNALISM?",
+          "options": [
+            "study",
+            "career",
+            "investigative",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He studied _____ at university.",
+          "options": [
+            "journalism",
+            "tourism",
+            "mechanism",
+            "criticism"
+          ],
+          "answer": "journalism"
+        }
+      ]
+    }
+  ]
+}

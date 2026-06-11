@@ -37,9 +37,10 @@ names have trailing spaces — always quote). Override the base with `DOMIGO_SOU
 touches iCloud: it validates the committed artifacts only.
 
 ```sh
-pnpm content extract     # stage 1: docx → content/build/transcripts + sources.lock.json
-pnpm content wordbank    # stage 2: master lists → content/corpus/units/*/wordbank.json
-pnpm content validate    # CI-safe deterministic checks (red blocks merge)
+pnpm content extract      # stage 1: docx → content/build/transcripts + sources.lock.json
+pnpm content wordbank     # stage 2: master lists → content/corpus/units/*/wordbank.json
+pnpm content v1-snapshot  # v1 vocab corpus → content/build/v1/ (parity oracle, sha-locked)
+pnpm content validate     # CI-safe deterministic checks (red blocks merge)
 ```
 
 Both generation stages are deterministic and byte-stable: re-runs with unchanged sources change

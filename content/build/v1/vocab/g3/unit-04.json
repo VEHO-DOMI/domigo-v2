@@ -1,0 +1,763 @@
+{
+  "slug": "unit-04",
+  "grade": 3,
+  "unit": 4,
+  "title": "Unit 4",
+  "entries": [
+    {
+      "w": "poisonous",
+      "g": "giftig",
+      "d": "Can make you very ill or kill you if you eat or touch it",
+      "s": "Don't touch that strange purple plant in the forest — it might be _____ and could make you very sick.",
+      "a": [],
+      "mc": [
+        "safe",
+        "edible",
+        "tasty"
+      ]
+    },
+    {
+      "w": "aggressive",
+      "g": "aggressiv",
+      "d": "Ready to attack or fight",
+      "s": "The big brown dog looked very _____, so we slowly walked away without looking it in the eyes.",
+      "a": [],
+      "mc": [
+        "friendly",
+        "calm",
+        "gentle"
+      ]
+    },
+    {
+      "w": "dangerous",
+      "g": "gefährlich",
+      "d": "Can hurt or harm you",
+      "s": "Swimming in that fast flowing river is very _____ because the current is strong and can pull you under.",
+      "a": [],
+      "mc": [
+        "safe",
+        "boring",
+        "easy"
+      ]
+    },
+    {
+      "w": "deadly",
+      "g": "tödlich",
+      "d": "Can kill you",
+      "s": "The bite of some tropical snakes is _____ and can kill a human in less than thirty minutes without medicine.",
+      "a": [],
+      "mc": [
+        "harmless",
+        "pleasant",
+        "painless"
+      ]
+    },
+    {
+      "w": "elegant",
+      "g": "elegant",
+      "d": "Looking beautiful and stylish",
+      "s": "The graceful white swan on the quiet lake looked very _____ as it glided smoothly over the water.",
+      "a": [],
+      "mc": [
+        "clumsy",
+        "awkward",
+        "ugly"
+      ]
+    },
+    {
+      "w": "stunning",
+      "g": "atemberaubend, umwerfend",
+      "d": "Extremely beautiful or impressive",
+      "s": "The view from the top of the mountain was so _____ that everyone just stood there silent with their mouths open in amazement.",
+      "a": [],
+      "mc": [
+        "boring",
+        "ugly",
+        "disappointing"
+      ]
+    },
+    {
+      "w": "cute",
+      "g": "niedlich, süß",
+      "d": "Pretty and attractive, often small",
+      "s": "The baby bunny rabbits in the pet shop are so small, fluffy and _____ — I just want to say 'awww!' and hug them.",
+      "a": [],
+      "mc": [
+        "ugly",
+        "scary",
+        "disgusting"
+      ]
+    },
+    {
+      "w": "furry",
+      "g": "pelzig, flauschig",
+      "d": "Covered with soft, thick hair",
+      "s": "My long-haired Persian cat is so _____ all over her body that she looks like a big ball of soft fur on the sofa.",
+      "a": [],
+      "mc": [
+        "bald",
+        "smooth",
+        "scaly"
+      ]
+    },
+    {
+      "w": "cuddly",
+      "g": "kuschelig",
+      "d": "Soft and nice to hold close",
+      "s": "She got a soft _____ teddy bear for her birthday that she hugs and sleeps with every single night.",
+      "a": [],
+      "mc": [
+        "hard",
+        "spiky",
+        "sharp"
+      ]
+    },
+    {
+      "w": "cub",
+      "g": "(Bären-)Junges",
+      "d": "A young bear, lion or wolf",
+      "s": "The little polar bear _____ stayed very close to its big mother on the ice and copied everything she did.",
+      "a": [
+        "cubs"
+      ],
+      "mc": [
+        "adult",
+        "parent",
+        "grown-up"
+      ]
+    },
+    {
+      "w": "Good luck!",
+      "g": "Viel Glück!",
+      "d": "Something you say to wish someone well before a test or event",
+      "s": "Your big maths exam is tomorrow morning? _____! I really hope you do well and pass.",
+      "cf": "Good luck",
+      "a": [
+        "Good luck"
+      ],
+      "mc": [
+        "Bad luck!",
+        "Too bad!",
+        "Sorry!"
+      ]
+    },
+    {
+      "w": "polar bear",
+      "g": "Eisbär",
+      "d": "A large white animal that lives in cold places near the Arctic",
+      "s": "The huge white _____ walked slowly across the thick snow and icy surface looking for seals to hunt.",
+      "cf": "polar bear",
+      "a": [
+        "polar bear",
+        "polar bears"
+      ],
+      "mc": [
+        "grizzly bear",
+        "panda bear",
+        "brown bear"
+      ]
+    },
+    {
+      "w": "adorable",
+      "g": "bezaubernd, liebenswert",
+      "d": "Very cute and easy to love",
+      "s": "The new tiny puppy in our family is so _____ — everyone who sees him says 'Oh, how sweet!'",
+      "a": [],
+      "mc": [
+        "horrible",
+        "frightening",
+        "disgusting"
+      ]
+    },
+    {
+      "w": "bite",
+      "g": "Biss",
+      "d": "When an animal uses its teeth to hurt you",
+      "s": "She had a red itchy mark on her arm from a mosquito _____ last night when we were outside.",
+      "a": [
+        "bites"
+      ],
+      "mc": [
+        "hug",
+        "kiss",
+        "touch"
+      ]
+    },
+    {
+      "w": "to cause",
+      "g": "verursachen",
+      "d": "To make something happen, usually something bad",
+      "s": "The heavy rain for three days _____ a big dangerous flood in the small village by the river.",
+      "cf": "caused",
+      "a": [
+        "cause",
+        "caused"
+      ],
+      "mc": [
+        "to prevent",
+        "to stop",
+        "to avoid"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CAUSE?",
+          "options": [
+            "damage",
+            "problems",
+            "an accident",
+            "a chair"
+          ],
+          "answer": "a chair"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ problems",
+          "options": [
+            "Cause",
+            "Cook",
+            "Wash",
+            "Build"
+          ],
+          "answer": "Cause"
+        }
+      ]
+    },
+    {
+      "w": "poison",
+      "g": "Gift",
+      "d": "A substance that can make you very ill or kill you",
+      "s": "Some tropical frogs have strong _____ on their skin to protect them from enemies that try to eat them.",
+      "a": [
+        "poisons"
+      ],
+      "mc": [
+        "food",
+        "water",
+        "honey"
+      ]
+    },
+    {
+      "w": "rabies",
+      "g": "Tollwut",
+      "d": "A very dangerous disease that animals can give to humans by biting",
+      "s": "If a wild angry squirrel bites you, it might have _____ — a very dangerous disease you can get from animals.",
+      "a": [],
+      "mc": [
+        "a cold",
+        "hunger",
+        "thirst"
+      ]
+    },
+    {
+      "w": "seal",
+      "g": "Robbe",
+      "d": "A sea animal with smooth fur that lives in cold water",
+      "s": "We saw a group of ten grey _____ with flippers lying together on the wet rocks by the cold blue sea.",
+      "cf": "seals",
+      "a": [
+        "seal",
+        "seals"
+      ],
+      "mc": [
+        "dog",
+        "cat",
+        "horse"
+      ]
+    },
+    {
+      "w": "swan",
+      "g": "Schwan",
+      "d": "A large white bird with a long neck that lives on water",
+      "s": "There were two beautiful long-necked white _____ swimming gracefully on the quiet lake with their babies behind them.",
+      "cf": "swans",
+      "a": [
+        "swan",
+        "swans"
+      ],
+      "mc": [
+        "duck",
+        "goose",
+        "chicken"
+      ]
+    },
+    {
+      "w": "to bite (off)",
+      "g": "(ab-)beißen",
+      "d": "To use your teeth to cut into something",
+      "s": "The hungry dog jumped up and tried to _____ a big piece of the sausage out of my hand.",
+      "cf": "bite",
+      "a": [
+        "bite",
+        "bit",
+        "bitten",
+        "bite off",
+        "bit off"
+      ],
+      "mc": [
+        "to kiss (off)",
+        "to lick (off)",
+        "to smell (off)"
+      ]
+    },
+    {
+      "w": "lizard",
+      "g": "Eidechse",
+      "d": "A small animal with four legs, a long tail and cold blood",
+      "s": "A tiny bright green _____ with scales was sitting on the warm stone in the hot sun, not moving at all.",
+      "a": [
+        "lizards"
+      ],
+      "mc": [
+        "spider",
+        "insect",
+        "butterfly"
+      ]
+    },
+    {
+      "w": "to chase away",
+      "g": "verjagen",
+      "d": "To run after someone or something to make them leave",
+      "s": "The farmer's big brown dog _____ the hungry fox from the chicken garden by barking loudly at it.",
+      "cf": "chased away",
+      "a": [
+        "chase away",
+        "chased away"
+      ],
+      "mc": [
+        "to welcome",
+        "to invite in",
+        "to feed"
+      ]
+    },
+    {
+      "w": "to complain",
+      "g": "sich beschweren",
+      "d": "To say you are not happy about something",
+      "s": "Some people in our class always _____ loudly about the school food being boring and tasteless every day.",
+      "cf": "complain",
+      "a": [
+        "complain",
+        "complained"
+      ],
+      "mc": [
+        "to praise",
+        "to compliment",
+        "to thank"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMPLAIN?",
+          "options": [
+            "about",
+            "loudly",
+            "to the manager",
+            "a cake"
+          ],
+          "answer": "a cake"
+        },
+        {
+          "type": "gap",
+          "prompt": "complain _____ the food",
+          "options": [
+            "about",
+            "on",
+            "at",
+            "with"
+          ],
+          "answer": "about"
+        }
+      ]
+    },
+    {
+      "w": "injury",
+      "g": "Verletzung",
+      "d": "Damage to a part of your body",
+      "s": "She couldn't play the big football match because of a bad knee _____ she got from falling last week.",
+      "a": [
+        "injuries"
+      ],
+      "mc": [
+        "smile",
+        "joke",
+        "prize"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INJURY?",
+          "options": [
+            "serious",
+            "suffer",
+            "knee",
+            "bake"
+          ],
+          "answer": "bake"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ an injury",
+          "options": [
+            "Suffer",
+            "Cook",
+            "Build",
+            "Wash"
+          ],
+          "answer": "Suffer"
+        }
+      ]
+    },
+    {
+      "w": "to lift",
+      "g": "aufheben",
+      "d": "To move something up from a lower place",
+      "s": "Can you please help me _____ this very heavy cardboard box full of books up onto the high top shelf?",
+      "a": [
+        "lift",
+        "lifted"
+      ],
+      "mc": [
+        "to drop",
+        "to throw",
+        "to kick"
+      ]
+    },
+    {
+      "w": "to pull down",
+      "g": "hinunterziehen",
+      "d": "To move something or someone towards the ground",
+      "s": "The strong crashing waves on the beach _____ the little swimmer under the water for a few scary seconds.",
+      "cf": "pulled down",
+      "a": [
+        "pull down",
+        "pulled down"
+      ],
+      "mc": [
+        "to lift up",
+        "to push away",
+        "to rescue"
+      ]
+    },
+    {
+      "w": "to accept",
+      "g": "akzeptieren",
+      "d": "To say yes to something or to take what is given",
+      "s": "I really hope she will kindly _____ my written apology and forgive me for what I said yesterday.",
+      "a": [
+        "accept",
+        "accepted"
+      ],
+      "mc": [
+        "to refuse",
+        "to reject",
+        "to throw away"
+      ]
+    },
+    {
+      "w": "immediately",
+      "g": "sofort",
+      "d": "Right now, without waiting",
+      "s": "When the loud fire alarm rang in the hallway, every student left the building _____ without any delay.",
+      "a": [],
+      "mc": [
+        "slowly",
+        "eventually",
+        "later"
+      ]
+    },
+    {
+      "w": "to advise (sb.) against sth.",
+      "g": "(jdn.) von etw. abraten, (jdn.) vor etw. warnen",
+      "d": "To tell someone not to do something",
+      "s": "The lifeguard _____ us strongly against swimming in the deep cold water of the lake because of the strong currents.",
+      "cf": "advised",
+      "a": [
+        "advise against",
+        "advised against"
+      ],
+      "mc": [
+        "to encourage (sb.) to do sth.",
+        "to force (sb.) to do sth.",
+        "to pay (sb.) to do sth."
+      ]
+    },
+    {
+      "w": "to bleed",
+      "g": "bluten",
+      "d": "To lose blood from your body",
+      "s": "His finger started to _____ red blood after he accidentally cut it with a sharp kitchen knife while cooking.",
+      "cf": "bleed",
+      "a": [
+        "bleed",
+        "bled"
+      ],
+      "mc": [
+        "to heal",
+        "to dry up",
+        "to stop"
+      ]
+    },
+    {
+      "w": "death",
+      "g": "Tod",
+      "d": "When a person or animal stops living",
+      "s": "The sudden _____ of our beloved old family cat Whiskers last Sunday made the whole family very sad for many weeks.",
+      "a": [
+        "deaths"
+      ],
+      "mc": [
+        "birth",
+        "wedding",
+        "holiday"
+      ]
+    },
+    {
+      "w": "to defend",
+      "g": "verteidigen",
+      "d": "To protect someone or something from attack",
+      "s": "A fierce mother brown bear will always _____ her little cubs from any predator, even much bigger animals.",
+      "a": [
+        "defend",
+        "defended"
+      ],
+      "mc": [
+        "to attack",
+        "to abandon",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "to mistake sth. for sth.",
+      "g": "etw. mit etw. verwechseln",
+      "d": "To think one thing is something else",
+      "s": "I _____ the white sugar in the bowl for salt and my morning coffee tasted absolutely terrible and gross.",
+      "cf": "mistook",
+      "a": [
+        "mistake for",
+        "mistook for",
+        "mistaken for"
+      ],
+      "mc": [
+        "to use sth. as sth.",
+        "to choose sth. over sth.",
+        "to know sth. from sth."
+      ]
+    },
+    {
+      "w": "on average",
+      "g": "durchschnittlich, im Durchschnitt",
+      "d": "The usual or typical amount",
+      "s": "_____, each student in our class reads about five books per year — some read ten, others only read two.",
+      "cf": "On average",
+      "a": [
+        "on average"
+      ],
+      "mc": [
+        "never",
+        "always",
+        "exactly"
+      ]
+    },
+    {
+      "w": "scuba diver",
+      "g": "Sporttaucher/Sporttaucherin",
+      "d": "A person who swims under water with special breathing equipment",
+      "s": "The experienced _____ with her oxygen tank saw many colourful tropical fish near the beautiful coral reef at 20 metres deep.",
+      "a": [
+        "scuba divers"
+      ],
+      "mc": [
+        "pilot",
+        "sailor",
+        "swimmer at the surface"
+      ]
+    },
+    {
+      "w": "shape",
+      "g": "Form",
+      "d": "The form or outline of something",
+      "s": "The new swimming pool in the park was built in the _____ of a five-pointed star — very unusual!",
+      "a": [
+        "shapes"
+      ],
+      "mc": [
+        "colour",
+        "temperature",
+        "depth"
+      ]
+    },
+    {
+      "w": "to suppose",
+      "g": "vermuten, annehmen",
+      "d": "To think something is probably true",
+      "s": "I _____ we should probably leave now for the station if we don't want to be late for the 6pm train to Vienna.",
+      "a": [
+        "suppose",
+        "supposed"
+      ],
+      "mc": [
+        "to refuse",
+        "to know for certain",
+        "to order"
+      ]
+    },
+    {
+      "w": "to take care",
+      "g": "aufpassen, sich hüten",
+      "d": "To be careful or to look after something",
+      "s": "Please _____ when you cross that very busy main road — look left and right carefully before stepping out.",
+      "cf": "take care",
+      "a": [
+        "take care",
+        "took care"
+      ],
+      "mc": [
+        "to be careless",
+        "to run",
+        "to ignore the traffic"
+      ]
+    },
+    {
+      "w": "victim",
+      "g": "Opfer",
+      "d": "A person who is hurt or harmed",
+      "s": "The _____ of the car accident on the motorway was quickly taken to the nearest hospital by ambulance.",
+      "a": [
+        "victims"
+      ],
+      "mc": [
+        "doctor",
+        "nurse",
+        "driver"
+      ]
+    },
+    {
+      "w": "to communicate",
+      "g": "kommunizieren",
+      "d": "To share information or talk with others",
+      "s": "Animals _____ with each other in many different ways — with sounds, body movements, smells, and colours.",
+      "cf": "communicate",
+      "a": [
+        "communicate",
+        "communicated"
+      ],
+      "mc": [
+        "to hide from",
+        "to attack",
+        "to avoid"
+      ]
+    },
+    {
+      "w": "audience",
+      "g": "Publikum",
+      "d": "The people who watch or listen to a show or speech",
+      "s": "The huge _____ of 1000 people clapped loudly and cheered after the amazing rock concert finished on stage.",
+      "a": [
+        "audiences"
+      ],
+      "mc": [
+        "performer",
+        "singer",
+        "stage crew"
+      ]
+    },
+    {
+      "w": "environment",
+      "g": "Umwelt",
+      "d": "The natural world around us — air, water, land",
+      "s": "We should all protect the _____ by using less plastic, recycling paper, and planting more trees.",
+      "a": [],
+      "mc": [
+        "money",
+        "computer",
+        "game"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ENVIRONMENT?",
+          "options": [
+            "protect",
+            "harm",
+            "clean",
+            "fry"
+          ],
+          "answer": "fry"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ the environment",
+          "options": [
+            "Protect",
+            "Cook",
+            "Wash",
+            "Paint"
+          ],
+          "answer": "Protect"
+        }
+      ]
+    },
+    {
+      "w": "Hands off!",
+      "g": "Finger weg!",
+      "d": "Don't touch!",
+      "s": "_____ That big chocolate birthday cake on the table is for the party tonight and I don't want anyone touching it!",
+      "cf": "Hands off",
+      "a": [
+        "Hands off"
+      ],
+      "mc": [
+        "Come closer!",
+        "Help yourself!",
+        "Dig in!"
+      ]
+    },
+    {
+      "w": "to inform",
+      "g": "informieren",
+      "d": "To tell someone about something important",
+      "s": "Please _____ the teacher by phone or email if you are going to be absent or late to school tomorrow.",
+      "a": [
+        "inform",
+        "informed"
+      ],
+      "mc": [
+        "to hide from",
+        "to lie to",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "to lock sb. up",
+      "g": "jdn. einsperren",
+      "d": "To put someone in a room or cage and close the door",
+      "s": "The farmer _____ the chickens inside the safe wooden coop at night to keep them safe from hungry foxes.",
+      "cf": "locks up",
+      "a": [
+        "lock up",
+        "locked up",
+        "locks up"
+      ],
+      "mc": [
+        "to let sb. free",
+        "to leave sb. out",
+        "to set sb. free"
+      ]
+    },
+    {
+      "w": "politician",
+      "g": "Politiker/Politikerin",
+      "d": "A person whose job is to work in government and make laws",
+      "s": "The _____ in the government promised to build a new big park and swimming pool in our small town next year.",
+      "a": [
+        "politicians"
+      ],
+      "mc": [
+        "shopkeeper",
+        "farmer",
+        "teacher"
+      ]
+    }
+  ]
+}

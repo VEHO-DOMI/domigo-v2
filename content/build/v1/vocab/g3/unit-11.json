@@ -1,0 +1,543 @@
+{
+  "slug": "unit-11",
+  "grade": 3,
+  "unit": 11,
+  "title": "Unit 11",
+  "entries": [
+    {
+      "w": "canyon",
+      "g": "Schlucht, Canyon",
+      "d": "A deep, narrow valley with steep sides, made by a river",
+      "s": "The huge Grand _____ was so incredibly deep that we couldn't see the tiny river at the bottom.",
+      "a": [
+        "canyons"
+      ],
+      "mc": [
+        "small ditch",
+        "little hole",
+        "shallow puddle"
+      ]
+    },
+    {
+      "w": "dirt road",
+      "g": "unbefestigte Straße",
+      "d": "A path made of earth, not covered with tar",
+      "s": "The car bumped along the narrow brown _____ through the countryside to the farm — there was no asphalt or tarmac.",
+      "cf": "dirt road",
+      "a": [
+        "dirt road",
+        "dirt roads"
+      ],
+      "mc": [
+        "motorway",
+        "highway",
+        "city street"
+      ]
+    },
+    {
+      "w": "ridge",
+      "g": "Bergrücken, Grat",
+      "d": "A long, narrow top of a mountain or hill",
+      "s": "From the high mountain _____ at the top, we could see down into the deep valleys on both the left and right sides.",
+      "a": [
+        "ridges"
+      ],
+      "mc": [
+        "valley floor",
+        "cave",
+        "basement"
+      ]
+    },
+    {
+      "w": "headquarters (pl)",
+      "g": "Hauptquartier",
+      "d": "The main office of an organisation",
+      "s": "The famous computer company's main _____ is located in sunny Silicon Valley in California, where the CEO and executives work.",
+      "cf": "headquarters",
+      "a": [
+        "headquarters"
+      ],
+      "mc": [
+        "branch office",
+        "factory",
+        "warehouse"
+      ]
+    },
+    {
+      "w": "to spot sth.",
+      "g": "etw. entdecken",
+      "d": "To see or notice something, especially something that is hard to find",
+      "s": "She carefully _____ a small brown bird hiding in the green leafy tree that nobody else noticed.",
+      "cf": "spotted",
+      "a": [
+        "spot",
+        "spotted"
+      ],
+      "mc": [
+        "to overlook",
+        "to miss",
+        "to fail to see"
+      ]
+    },
+    {
+      "w": "a dry place",
+      "g": "ein trockener Ort",
+      "d": "A location with very little rain",
+      "s": "You should always store matches in _____ in the cupboard so they don't get wet and fail to light when you need them.",
+      "cf": "dry place",
+      "a": [
+        "a dry place",
+        "dry place"
+      ],
+      "mc": [
+        "a wet place",
+        "a damp place",
+        "under water"
+      ]
+    },
+    {
+      "w": "to have no signal",
+      "g": "kein Signal haben",
+      "d": "When your device cannot connect because there is no reception",
+      "s": "Way up in the mountains we _____ at all, so calling anyone for help was impossible until we hiked back down.",
+      "cf": "had",
+      "a": [
+        "have no signal",
+        "had no signal"
+      ],
+      "mc": [
+        "to have full signal",
+        "to have strong reception",
+        "to have fast internet"
+      ]
+    },
+    {
+      "w": "backpack",
+      "g": "Rucksack",
+      "d": "A bag you carry on your back",
+      "s": "Put your water bottle, snacks, and map into your large _____ that you carry on your shoulders during the long hike.",
+      "a": [
+        "backpacks"
+      ],
+      "mc": [
+        "handbag",
+        "wallet",
+        "purse"
+      ]
+    },
+    {
+      "w": "fabulous",
+      "g": "fabelhaft",
+      "d": "Wonderful, extremely good",
+      "s": "We had a truly _____ time at the beach yesterday — the weather was perfect, the sea was warm, and the sand was clean.",
+      "a": [],
+      "mc": [
+        "awful",
+        "terrible",
+        "miserable"
+      ]
+    },
+    {
+      "w": "height",
+      "g": "Höhe",
+      "d": "How tall something is, measured from bottom to top",
+      "s": "The _____ of the new skyscraper building in Vienna is over 50 metres from the ground floor to the top roof.",
+      "a": [
+        "heights"
+      ],
+      "mc": [
+        "width",
+        "depth",
+        "area"
+      ]
+    },
+    {
+      "w": "capital",
+      "g": "Hauptstadt",
+      "d": "The most important city of a country or state",
+      "s": "Vienna is the _____ of Austria — the most important city where the parliament and government of the country are located.",
+      "a": [
+        "capitals"
+      ],
+      "mc": [
+        "village",
+        "suburb",
+        "countryside"
+      ]
+    },
+    {
+      "w": "independent",
+      "g": "unabhängig",
+      "d": "Free and not controlled by others",
+      "s": "She is very _____ and likes to do everything on her own without asking her parents or friends for help.",
+      "a": [],
+      "mc": [
+        "dependent",
+        "helpless",
+        "clingy"
+      ]
+    },
+    {
+      "w": "innovation",
+      "g": "Neuerung, Innovation",
+      "d": "A new idea, method or invention",
+      "s": "The invention of the smartphone was a huge technological _____ that completely changed how we communicate and live our lives.",
+      "a": [
+        "innovations"
+      ],
+      "mc": [
+        "tradition",
+        "repetition",
+        "old way"
+      ]
+    },
+    {
+      "w": "state",
+      "g": "Staat",
+      "d": "A country, or a part of a country with its own government",
+      "s": "California is the largest _____ — an area of land within a country — in the western United States with cities like Los Angeles.",
+      "a": [
+        "states"
+      ],
+      "mc": [
+        "city",
+        "village",
+        "country"
+      ]
+    },
+    {
+      "w": "to commute",
+      "g": "pendeln",
+      "d": "To travel regularly between home and work",
+      "s": "My dad _____ to his office job in the city by train every weekday morning at 7 am and comes home at 6 pm.",
+      "cf": "commutes",
+      "a": [
+        "commute",
+        "commuted",
+        "commutes"
+      ],
+      "mc": [
+        "to stay at home",
+        "to work from bed",
+        "to walk around the garden"
+      ]
+    },
+    {
+      "w": "connection",
+      "g": "Verbindung",
+      "d": "A link between two things, or an internet link",
+      "s": "The WiFi _____ in the old hotel room was very slow and kept dropping out when we tried to watch videos online.",
+      "a": [
+        "connections"
+      ],
+      "mc": [
+        "furniture",
+        "view",
+        "wallpaper"
+      ]
+    },
+    {
+      "w": "programmer",
+      "g": "Programmierer/Programmiererin",
+      "d": "A person who writes code for computers",
+      "s": "She works as a computer _____ at a big software company, writing code in Python and JavaScript to build websites.",
+      "a": [
+        "programmers"
+      ],
+      "mc": [
+        "chef",
+        "gardener",
+        "teacher"
+      ]
+    },
+    {
+      "w": "steep",
+      "g": "steil",
+      "d": "Going up or down at a very sharp angle",
+      "s": "The mountain hill was too _____ to ride my bike up without getting off and pushing — it was almost vertical in places.",
+      "a": [],
+      "mc": [
+        "flat",
+        "level",
+        "gentle"
+      ]
+    },
+    {
+      "w": "to crack",
+      "g": "aufbrechen; zerbrechen",
+      "d": "To break or split, often with a sharp sound",
+      "s": "The frozen ice on the lake started to _____ loudly with sharp snapping noises when the warm spring weather arrived.",
+      "cf": "crack",
+      "a": [
+        "crack",
+        "cracked"
+      ],
+      "mc": [
+        "to heal",
+        "to repair itself",
+        "to stay solid"
+      ]
+    },
+    {
+      "w": "four-wheel drive",
+      "g": "Allradantrieb",
+      "d": "A car system where all four wheels get power",
+      "s": "You definitely need a tough car with _____ to drive safely on this rough bumpy dirt road through the mountains.",
+      "cf": "four-wheel drive",
+      "a": [
+        "four-wheel drive"
+      ],
+      "mc": [
+        "one-wheel only",
+        "no wheels",
+        "two flat tyres"
+      ]
+    },
+    {
+      "w": "gold digger",
+      "g": "Goldgräber/Goldgräberin",
+      "d": "A person who searches for precious metal in the earth",
+      "s": "In the 1800s, thousands of _____ with shovels and pans came to California hoping to find valuable gold in the rivers.",
+      "cf": "gold diggers",
+      "a": [
+        "gold digger",
+        "gold diggers"
+      ],
+      "mc": [
+        "farmer",
+        "tourist",
+        "shopkeeper"
+      ]
+    },
+    {
+      "w": "gold rush",
+      "g": "Goldrausch",
+      "d": "A time when many people hurried to find precious metal",
+      "s": "The California _____ brought tens of thousands of people to the American West looking for quick riches in 1849.",
+      "cf": "gold rush",
+      "a": [
+        "gold rush"
+      ],
+      "mc": [
+        "peace and quiet",
+        "slow migration",
+        "empty desert"
+      ]
+    },
+    {
+      "w": "lip",
+      "g": "Lippe",
+      "d": "One of the two soft parts around your mouth",
+      "s": "Her _____ on her mouth were dry, red, and cracked from the freezing cold winter wind outside in January.",
+      "cf": "lips",
+      "a": [
+        "lip",
+        "lips"
+      ],
+      "mc": [
+        "ear",
+        "nose",
+        "eye"
+      ]
+    },
+    {
+      "w": "mountain range",
+      "g": "Bergkette",
+      "d": "A long line of mountains connected together",
+      "s": "The Alps are the largest and longest _____ in Europe, stretching across seven different countries from France to Slovenia.",
+      "cf": "mountain range",
+      "a": [
+        "mountain range",
+        "mountain ranges"
+      ],
+      "mc": [
+        "city",
+        "lake",
+        "river"
+      ]
+    },
+    {
+      "w": "shade (no pl)",
+      "g": "Schatten",
+      "d": "An area that is not in direct sunlight",
+      "s": "Let's sit in the cool _____ under that big leafy oak tree — it's far too hot standing in the direct sun today.",
+      "cf": "shade",
+      "a": [],
+      "mc": [
+        "direct sun",
+        "open field",
+        "middle of the road"
+      ]
+    },
+    {
+      "w": "to be situated",
+      "g": "liegen, sich befinden",
+      "d": "To be in a particular place or position",
+      "s": "The new school building _____ very conveniently near the centre of town, just five minutes' walk from the train station.",
+      "cf": "situated",
+      "a": [
+        "be situated",
+        "situated"
+      ],
+      "mc": [
+        "to be far from",
+        "to be hidden from",
+        "to have nothing to do with"
+      ]
+    },
+    {
+      "w": "thirst",
+      "g": "Durst",
+      "d": "The feeling of needing a drink",
+      "s": "After running in the burning hot sun for 30 minutes, my _____ was absolutely terrible — I needed cold water so badly.",
+      "a": [],
+      "mc": [
+        "hunger",
+        "tiredness",
+        "boredom"
+      ]
+    },
+    {
+      "w": "criminal",
+      "g": "Krimineller/Kriminelle",
+      "d": "A person who breaks the law",
+      "s": "The _____ who robbed three banks in the city was finally caught by the police after two days of searching.",
+      "a": [
+        "criminals"
+      ],
+      "mc": [
+        "police officer",
+        "judge",
+        "lawyer"
+      ]
+    },
+    {
+      "w": "cyclist",
+      "g": "Radfahrer/Radfahrerin",
+      "d": "A person who rides a bicycle",
+      "s": "There is a special painted lane just for _____ with their bicycles along the busy main road to keep them safe from cars.",
+      "cf": "cyclists",
+      "a": [
+        "cyclist",
+        "cyclists"
+      ],
+      "mc": [
+        "car driver",
+        "pedestrian",
+        "bus passenger"
+      ]
+    },
+    {
+      "w": "familiar",
+      "g": "vertraut, bekannt",
+      "d": "Well known to you, easy to recognise",
+      "s": "This old song on the radio sounds very _____ to me — I think I've definitely heard it somewhere before, maybe at my grandma's house.",
+      "a": [],
+      "mc": [
+        "completely new",
+        "never-before-heard",
+        "unknown"
+      ]
+    },
+    {
+      "w": "ferry",
+      "g": "Fähre",
+      "d": "A boat that carries people and cars across water",
+      "s": "We took a big _____ boat across the wide lake to the small island on the other side in 20 minutes.",
+      "a": [
+        "ferries"
+      ],
+      "mc": [
+        "car",
+        "train",
+        "bicycle"
+      ]
+    },
+    {
+      "w": "guided",
+      "g": "geführt, geleitet",
+      "d": "Led by someone who shows you around and explains things",
+      "s": "The _____ tour of the old medieval castle with a professional guide explaining every room lasted about one full hour.",
+      "a": [],
+      "mc": [
+        "self-led",
+        "alone",
+        "unsupervised"
+      ]
+    },
+    {
+      "w": "to take over",
+      "g": "übernehmen",
+      "d": "To get control of something",
+      "s": "The new teacher from England will _____ our class from next Monday because our old teacher is retiring at the weekend.",
+      "cf": "take over",
+      "a": [
+        "take over",
+        "took over",
+        "taken over"
+      ],
+      "mc": [
+        "to leave behind",
+        "to abandon",
+        "to walk away from"
+      ]
+    },
+    {
+      "w": "to catch (the train)",
+      "g": "(den Zug) erwischen",
+      "d": "To arrive on time to board your bus, tram or plane",
+      "s": "We need to hurry to the station right now if we want to _____ the 3:15 pm train to Vienna before it leaves.",
+      "cf": "catch",
+      "a": [
+        "catch",
+        "caught"
+      ],
+      "mc": [
+        "to miss",
+        "to wave at",
+        "to wait for"
+      ]
+    },
+    {
+      "w": "information office",
+      "g": "Informationsbüro, Auskunftsbüro",
+      "d": "A place where you can ask for help and directions",
+      "s": "Go to the _____ at the train station if you need a free map of the city or timetables for the buses.",
+      "cf": "information office",
+      "a": [
+        "information office"
+      ],
+      "mc": [
+        "lost and found",
+        "snack bar",
+        "restroom"
+      ]
+    },
+    {
+      "w": "railway",
+      "g": "Zug, Eisenbahn",
+      "d": "A system of trains and tracks",
+      "s": "The _____ station with all the train platforms is just five minutes walking distance from our comfortable hotel.",
+      "a": [
+        "railways"
+      ],
+      "mc": [
+        "bus",
+        "airport",
+        "harbour"
+      ]
+    },
+    {
+      "w": "totally",
+      "g": "total",
+      "d": "Completely, 100%",
+      "s": "I _____ agree with everything you just said — that's a brilliant idea and we should definitely do it as soon as possible.",
+      "a": [],
+      "mc": [
+        "partly",
+        "barely",
+        "slightly"
+      ]
+    }
+  ]
+}

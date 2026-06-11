@@ -1,0 +1,550 @@
+{
+  "slug": "unit-10",
+  "grade": 1,
+  "unit": 10,
+  "title": "Unit 10",
+  "entries": [
+    {
+      "w": "twenty",
+      "g": "20 zwanzig",
+      "d": "the number 20",
+      "s": "There are _____ children in our class -- ten boys and ten girls.",
+      "a": [],
+      "mc": [
+        "thirty",
+        "twelve",
+        "fifteen"
+      ]
+    },
+    {
+      "w": "thirty",
+      "g": "30 dreißig",
+      "d": "the number 30",
+      "s": "There are _____ days in September.",
+      "a": [],
+      "mc": [
+        "twenty",
+        "forty",
+        "thirteen"
+      ]
+    },
+    {
+      "w": "forty",
+      "g": "40 vierzig",
+      "d": "the number 40",
+      "s": "My dad is _____ years old.",
+      "a": [],
+      "mc": [
+        "thirty",
+        "fifty",
+        "fourteen"
+      ]
+    },
+    {
+      "w": "fifty",
+      "g": "50 fünfzig",
+      "d": "the number 50",
+      "s": "Half of one hundred is _____.",
+      "a": [],
+      "mc": [
+        "forty",
+        "sixty",
+        "fifteen"
+      ]
+    },
+    {
+      "w": "sixty",
+      "g": "60 sechzig",
+      "d": "the number 60",
+      "s": "There are _____ minutes in one hour.",
+      "a": [],
+      "mc": [
+        "fifty",
+        "seventy",
+        "sixteen"
+      ]
+    },
+    {
+      "w": "seventy",
+      "g": "70 siebzig",
+      "d": "the number 70",
+      "s": "My grandma is _____ years old.",
+      "a": [],
+      "mc": [
+        "sixty",
+        "eighty",
+        "seventeen"
+      ]
+    },
+    {
+      "w": "eighty",
+      "g": "80 achtzig",
+      "d": "the number 80",
+      "s": "My grandpa is _____ years old.",
+      "a": [],
+      "mc": [
+        "seventy",
+        "ninety",
+        "eighteen"
+      ]
+    },
+    {
+      "w": "ninety",
+      "g": "90 neunzig",
+      "d": "the number 90",
+      "s": "Ten more than _____ is one hundred.",
+      "a": [],
+      "mc": [
+        "eighty",
+        "one hundred",
+        "nineteen"
+      ]
+    },
+    {
+      "w": "one hundred",
+      "g": "100 einhundert",
+      "d": "the number 100",
+      "s": "There are _____ centimetres in one full metre. Ten times ten equals this number.",
+      "a": [],
+      "mc": [
+        "one",
+        "ten",
+        "ten thousand"
+      ]
+    },
+    {
+      "w": "one thousand",
+      "g": "1000 eintausend",
+      "d": "the number 1000",
+      "s": "There are _____ metres in one full kilometre. It is ten times one hundred.",
+      "a": [],
+      "mc": [
+        "one hundred",
+        "one million",
+        "fifty"
+      ]
+    },
+    {
+      "w": "how much",
+      "g": "wie viel kostet/kosten ...",
+      "d": "asking about the price of something",
+      "s": "_____ does this T-shirt cost? — It costs ten euros.",
+      "cf": "How much",
+      "a": [],
+      "mc": [
+        "how many",
+        "how old",
+        "how big"
+      ]
+    },
+    {
+      "w": "price",
+      "g": "Preis, Rechnungsbetrag",
+      "d": "how much money something costs",
+      "s": "The _____ of the book in the shop window is five pounds and 50 pence.",
+      "a": [],
+      "mc": [
+        "weight",
+        "colour",
+        "title"
+      ]
+    },
+    {
+      "w": "these",
+      "g": "diese",
+      "d": "the ones here, close to you",
+      "s": "I really like _____ shoes right here in front of me on the shelf.",
+      "a": [],
+      "mc": [
+        "those",
+        "that",
+        "it"
+      ]
+    },
+    {
+      "w": "those",
+      "g": "jene",
+      "d": "the ones over there, not close",
+      "s": "Can you see _____ birds over there in the tree very far from us?",
+      "a": [],
+      "mc": [
+        "these",
+        "this",
+        "it"
+      ]
+    },
+    {
+      "w": "Anything else?",
+      "g": "Darf es noch etwas sein?",
+      "d": "asking if someone wants more",
+      "s": "Here is your cup of tea and a biscuit. _____ Anything more you would like?",
+      "cf": "Anything else",
+      "a": [],
+      "mc": [
+        "Goodbye!",
+        "Hello!",
+        "I'm sorry!"
+      ]
+    },
+    {
+      "w": "Can I help you?",
+      "g": "Kann ich dir/Ihnen behilflich sein?",
+      "d": "a polite shop phrase asking what a customer wants to buy",
+      "s": "Welcome to our clothes shop. _____ What would you like to buy today?",
+      "cf": "Can I help you",
+      "a": [],
+      "mc": [
+        "Goodbye!",
+        "Thank you!",
+        "See you later!"
+      ]
+    },
+    {
+      "w": "computer game",
+      "g": "Computerspiel",
+      "d": "a game you play on a computer",
+      "s": "Tom plays his new _____ on his console with a controller every day after school.",
+      "a": [],
+      "mc": [
+        "board game",
+        "outdoor game",
+        "card game"
+      ]
+    },
+    {
+      "w": "headphones",
+      "g": "Kopfhörer",
+      "d": "things you put on your ears for music",
+      "s": "Put on your _____ over your ears so you can listen to music quietly without disturbing anyone.",
+      "a": [],
+      "mc": [
+        "glasses",
+        "hat",
+        "gloves"
+      ]
+    },
+    {
+      "w": "key ring",
+      "g": "Schlüsselanhänger",
+      "d": "a small ring to hold your keys",
+      "s": "I have a little teddy bear charm on my _____ that holds my house and bike keys together.",
+      "a": [],
+      "mc": [
+        "bracelet",
+        "ring",
+        "necklace"
+      ]
+    },
+    {
+      "w": "magazine",
+      "g": "Zeitschrift, Magazin",
+      "d": "a thin book with pictures and stories",
+      "s": "Mum likes to read a colourful fashion _____ with photos of new clothes every Sunday morning.",
+      "a": [],
+      "mc": [
+        "dictionary",
+        "textbook",
+        "phone book"
+      ]
+    },
+    {
+      "w": "mobile phone",
+      "g": "Mobiltelefon, Handy",
+      "d": "a small phone you carry with you",
+      "s": "I forgot my _____ at home, so I cannot call you or send text messages today.",
+      "a": [],
+      "mc": [
+        "bicycle",
+        "book",
+        "pen"
+      ]
+    },
+    {
+      "w": "scooter",
+      "g": "Roller",
+      "d": "a small vehicle with two wheels you stand on",
+      "s": "She rides her _____ to the park every afternoon. It has two small wheels and a handlebar.",
+      "a": [],
+      "mc": [
+        "car",
+        "horse",
+        "boat"
+      ]
+    },
+    {
+      "w": "sweets",
+      "g": "Süßigkeiten",
+      "d": "candy and chocolate",
+      "s": "Don't eat too many sugary _____ from the candy shop or your teeth will hurt.",
+      "a": [],
+      "mc": [
+        "vegetables",
+        "fruits",
+        "salads"
+      ]
+    },
+    {
+      "w": "tin",
+      "g": "Dose",
+      "d": "a metal container for food",
+      "s": "Please open a metal _____ of tomato soup with the can opener so we can heat it for dinner.",
+      "a": [],
+      "mc": [
+        "bottle",
+        "bag",
+        "jar"
+      ]
+    },
+    {
+      "w": "Congratulations!",
+      "g": "Herzlichen Glückwunsch!",
+      "d": "what you say when someone does well",
+      "s": "You won the running race at sports day! _____ That is wonderful news!",
+      "cf": "Congratulations",
+      "a": [],
+      "mc": [
+        "Too bad!",
+        "Sorry!",
+        "Bad luck!"
+      ]
+    },
+    {
+      "w": "rule",
+      "g": "Regel",
+      "d": "something that tells you what to do or not do",
+      "s": "The first classroom _____ on the poster is: no running or shouting in the corridor.",
+      "a": [],
+      "mc": [
+        "song",
+        "picture",
+        "game"
+      ]
+    },
+    {
+      "w": "customer",
+      "g": "Kunde/Kundin",
+      "d": "a person who buys things in a shop",
+      "s": "The corner shop has a friendly regular _____ who comes to buy bread every Monday morning.",
+      "a": [],
+      "mc": [
+        "shopkeeper",
+        "owner",
+        "teacher"
+      ]
+    },
+    {
+      "w": "everything",
+      "g": "alles",
+      "d": "all things, not one thing missing",
+      "s": "I packed _____ I need — clothes, shoes, toothbrush, and books — for the school trip.",
+      "a": [],
+      "mc": [
+        "nothing",
+        "almost nothing",
+        "just a few things"
+      ]
+    },
+    {
+      "w": "expensive",
+      "g": "teuer",
+      "d": "costing a lot of money",
+      "s": "That designer jacket is too _____. It costs 500 euros so I cannot afford to buy it.",
+      "a": [],
+      "mc": [
+        "cheap",
+        "free",
+        "small"
+      ]
+    },
+    {
+      "w": "to fall asleep",
+      "g": "einschlafen",
+      "d": "to start sleeping",
+      "s": "The tired baby _____ quickly in her mother's arms every night and stops crying.",
+      "cf": "falls asleep",
+      "a": [],
+      "mc": [
+        "to wake up",
+        "to run around",
+        "to cry louder"
+      ]
+    },
+    {
+      "w": "Goodbye.",
+      "g": "Auf Wiedersehen., Tschüss.",
+      "d": "what you say when you leave",
+      "s": "Thank you very much for coming to my birthday party. _____ See you next time!",
+      "cf": "Goodbye",
+      "a": [],
+      "mc": [
+        "Hello.",
+        "Welcome!",
+        "Please come in."
+      ]
+    },
+    {
+      "w": "I'd like ...",
+      "g": "Ich hätte gerne ... , Ich möchte ...",
+      "d": "a polite way to say you want something",
+      "s": "_____ a large glass of cold orange juice, please. I am very thirsty.",
+      "cf": "I'd like",
+      "a": [],
+      "mc": [
+        "I hate ...",
+        "I refuse ...",
+        "I don't want ..."
+      ]
+    },
+    {
+      "w": "No wonder.",
+      "g": "Kein Wunder.",
+      "d": "it is not surprising",
+      "s": "He only slept for four hours last night. _____ he is so tired today and yawning.",
+      "cf": "No wonder",
+      "a": [],
+      "mc": [
+        "How strange!",
+        "That's impossible!",
+        "I don't believe it!"
+      ]
+    },
+    {
+      "w": "suddenly",
+      "g": "plötzlich, auf einmal",
+      "d": "happening very quickly, without warning",
+      "s": "We were walking in the park on a sunny day when _____ dark clouds came and it started to pour with rain.",
+      "a": [],
+      "mc": [
+        "slowly",
+        "gradually",
+        "over time"
+      ]
+    },
+    {
+      "w": "town",
+      "g": "Stadt",
+      "d": "a place where many people live",
+      "s": "There is a big colourful weekend market in the middle of our small _____ with 5000 people.",
+      "a": [],
+      "mc": [
+        "city",
+        "village",
+        "country"
+      ]
+    },
+    {
+      "w": "to walk away",
+      "g": "weggehen, fortgehen",
+      "d": "to leave a place on foot",
+      "s": "The lazy cat eats the fish from its bowl and then _____ slowly without saying thank you.",
+      "cf": "walks away",
+      "a": [],
+      "mc": [
+        "to run back",
+        "to jump up",
+        "to come close"
+      ]
+    },
+    {
+      "w": "changing room",
+      "g": "Umkleidekabine",
+      "d": "a room where you try on clothes",
+      "s": "You can try the new trousers on in the _____ behind the curtain at the back of the shop.",
+      "a": [],
+      "mc": [
+        "toilet",
+        "office",
+        "storage room"
+      ]
+    },
+    {
+      "w": "No problem.",
+      "g": "Kein Problem.",
+      "d": "a way to say it is okay",
+      "s": "Sorry I am late for the meeting. — _____. Don't worry about it at all, we just started.",
+      "cf": "No problem",
+      "a": [],
+      "mc": [
+        "That's terrible!",
+        "I am angry!",
+        "Go away!"
+      ]
+    },
+    {
+      "w": "over there",
+      "g": "da/dort drüben",
+      "d": "at a place not close to you",
+      "s": "Look! The toy shop is _____, across the busy street, next to the bakery.",
+      "a": [],
+      "mc": [
+        "right here next to me",
+        "inside this room",
+        "behind you"
+      ]
+    },
+    {
+      "w": "drawer",
+      "g": "Schublade",
+      "d": "a box in a desk that you pull open",
+      "s": "My socks are neatly folded in the top _____ that I pull out from my wooden bedroom desk.",
+      "a": [],
+      "mc": [
+        "ceiling",
+        "window",
+        "door"
+      ]
+    },
+    {
+      "w": "That's better.",
+      "g": "So ist es besser.",
+      "d": "saying something has improved",
+      "s": "Put on a warm thick coat so you don't catch a cold. _____. Now you look warm enough.",
+      "cf": "That's better",
+      "a": [],
+      "mc": [
+        "That's worse.",
+        "You look cold still.",
+        "That was wrong."
+      ]
+    },
+    {
+      "w": "What can I do for you?",
+      "g": "Was kann ich für dich/Sie tun?",
+      "d": "asking how you can help someone",
+      "s": "Hello, welcome to my shop. _____ How may I help you today?",
+      "cf": "what can I do for you",
+      "a": [],
+      "mc": [
+        "Goodbye!",
+        "See you later!",
+        "Have a nice day!"
+      ]
+    },
+    {
+      "w": "Be careful.",
+      "g": "Pass(t) auf.; Sei(d) vorsichtig.",
+      "d": "warning someone about danger",
+      "s": "The stone road is slippery and wet from the rain. _____! Don't fall down and hurt yourself.",
+      "cf": "Be careful",
+      "a": [],
+      "mc": [
+        "Don't worry.",
+        "Hurry up.",
+        "Come faster."
+      ]
+    },
+    {
+      "w": "Just a minute.",
+      "g": "Einen Augenblick bitte., Moment mal.",
+      "d": "asking someone to wait a short time",
+      "s": "_____ I need to find my house keys in my bag before I can come with you.",
+      "cf": "Just a minute",
+      "a": [],
+      "mc": [
+        "Right away.",
+        "Never.",
+        "Too late."
+      ]
+    }
+  ]
+}

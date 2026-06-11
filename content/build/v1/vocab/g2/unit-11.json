@@ -1,0 +1,759 @@
+{
+  "slug": "unit-11",
+  "grade": 2,
+  "unit": 11,
+  "title": "Unit 11",
+  "entries": [
+    {
+      "w": "wardrobe",
+      "g": "Kleiderschrank",
+      "d": "A tall piece of furniture where you hang your clothes",
+      "s": "I put my dresses and jackets in the _____.",
+      "a": [
+        "wardrobes"
+      ],
+      "mc": [
+        "cupboard",
+        "chest of drawers",
+        "bookshelf"
+      ]
+    },
+    {
+      "w": "bed",
+      "g": "Bett",
+      "d": "The place where you sleep at night",
+      "s": "I go to _____ at nine o'clock every night.",
+      "a": [
+        "beds"
+      ],
+      "mc": [
+        "sofa",
+        "hammock",
+        "mattress"
+      ]
+    },
+    {
+      "w": "bedside table",
+      "g": "Nachttisch",
+      "d": "A small table next to where you sleep",
+      "s": "I put my phone on the _____ before I go to sleep.",
+      "cf": "bedside table",
+      "a": [
+        "bedside table",
+        "bedside tables"
+      ],
+      "mc": [
+        "desk",
+        "shelf",
+        "cupboard"
+      ]
+    },
+    {
+      "w": "carpet",
+      "g": "Teppich(boden)",
+      "d": "A soft covering on the floor that you walk on",
+      "s": "We have a new blue _____ covering the whole floor of the living room.",
+      "a": [
+        "carpets"
+      ],
+      "mc": [
+        "sofa",
+        "lamp",
+        "picture"
+      ]
+    },
+    {
+      "w": "fridge",
+      "g": "Kühlschrank",
+      "d": "A cold box in the kitchen where you keep food fresh",
+      "s": "The milk is in the _____ next to the yoghurt and cheese. It stays cool there.",
+      "a": [
+        "fridges"
+      ],
+      "mc": [
+        "drawer",
+        "oven",
+        "bag"
+      ]
+    },
+    {
+      "w": "cooker",
+      "g": "Herd",
+      "d": "A machine in the kitchen where you heat food",
+      "s": "Be careful near the _____ — it has four burners and is very hot when you cook on it.",
+      "a": [
+        "cookers"
+      ],
+      "mc": [
+        "table",
+        "sink",
+        "window"
+      ]
+    },
+    {
+      "w": "curtain",
+      "g": "Vorhang",
+      "d": "A piece of cloth that hangs over a window",
+      "s": "Close the long _____ in front of the window please. The sun is too bright.",
+      "cf": "curtains",
+      "a": [
+        "curtain",
+        "curtains"
+      ],
+      "mc": [
+        "book",
+        "laptop",
+        "box"
+      ]
+    },
+    {
+      "w": "sink",
+      "g": "Spülbecken",
+      "d": "The place in the kitchen where you wash dishes",
+      "s": "Put the dirty plates in the kitchen _____ so we can wash them.",
+      "a": [
+        "sinks"
+      ],
+      "mc": [
+        "cupboard",
+        "fridge",
+        "oven"
+      ]
+    },
+    {
+      "w": "cupboard",
+      "g": "Schrank",
+      "d": "A piece of furniture with doors where you keep cups and food",
+      "s": "The glasses are in the wooden _____ on the wall above the kitchen counter.",
+      "a": [
+        "cupboards"
+      ],
+      "mc": [
+        "fridge",
+        "floor",
+        "ceiling"
+      ]
+    },
+    {
+      "w": "table",
+      "g": "Tisch",
+      "d": "A flat piece of furniture with legs where you eat or work",
+      "s": "We eat dinner at the _____ every evening.",
+      "a": [
+        "tables"
+      ],
+      "mc": [
+        "desk",
+        "counter",
+        "bench"
+      ]
+    },
+    {
+      "w": "chair",
+      "g": "Stuhl",
+      "d": "A piece of furniture you sit on, with a back and four legs",
+      "s": "Please sit on the small wooden _____ with four legs and a back, and wait for your turn.",
+      "a": [
+        "chairs"
+      ],
+      "mc": [
+        "floor",
+        "bed",
+        "sofa"
+      ]
+    },
+    {
+      "w": "sofa",
+      "g": "Sofa",
+      "d": "A long soft seat for two or more people in the living room",
+      "s": "The whole family of four sits together on the big soft _____ to watch TV in the living room.",
+      "a": [
+        "sofas"
+      ],
+      "mc": [
+        "chair",
+        "table",
+        "bed"
+      ]
+    },
+    {
+      "w": "armchair",
+      "g": "Sessel",
+      "d": "A big soft seat with sides where you rest your arms",
+      "s": "Grandpa always reads his book in his favourite _____.",
+      "a": [
+        "armchairs"
+      ],
+      "mc": [
+        "sofa",
+        "chair",
+        "stool"
+      ]
+    },
+    {
+      "w": "lamp",
+      "g": "Lampe",
+      "d": "A thing that gives you light when it is dark",
+      "s": "Turn on the desk _____ please. I cannot see my book in the dark corner.",
+      "a": [
+        "lamps"
+      ],
+      "mc": [
+        "fan",
+        "radio",
+        "clock"
+      ]
+    },
+    {
+      "w": "radiator",
+      "g": "Heizkörper",
+      "d": "A metal thing on the wall that makes the room warm",
+      "s": "My cat loves to sleep next to the warm _____ in winter when the heating is on.",
+      "a": [
+        "radiators"
+      ],
+      "mc": [
+        "fridge",
+        "door",
+        "window"
+      ]
+    },
+    {
+      "w": "rug",
+      "g": "Teppich",
+      "d": "A small soft cover you put on the floor",
+      "s": "There is a nice small _____ on the floor in front of the fireplace.",
+      "a": [
+        "rugs"
+      ],
+      "mc": [
+        "carpet",
+        "mat",
+        "blanket"
+      ]
+    },
+    {
+      "w": "roof",
+      "g": "Dach",
+      "d": "The top part of a building that keeps the rain out",
+      "s": "A bird is sitting on the _____ of our house.",
+      "a": [
+        "roofs"
+      ],
+      "mc": [
+        "ceiling",
+        "floor",
+        "wall"
+      ]
+    },
+    {
+      "w": "wall",
+      "g": "Wand, Mauer",
+      "d": "The flat side of a room or building",
+      "s": "I put a poster of my favourite band on my bedroom _____.",
+      "a": [
+        "walls"
+      ],
+      "mc": [
+        "ceiling",
+        "floor",
+        "roof"
+      ]
+    },
+    {
+      "w": "window",
+      "g": "Fenster",
+      "d": "A glass opening in a room that lets you see outside",
+      "s": "Open the _____ please. It is too hot in here.",
+      "a": [
+        "windows"
+      ],
+      "mc": [
+        "door",
+        "curtain",
+        "balcony"
+      ]
+    },
+    {
+      "w": "staircase",
+      "g": "Treppe",
+      "d": "Steps inside a building that take you up or down",
+      "s": "Be careful on the marble _____ in the main hall. The steps are slippery.",
+      "a": [
+        "staircases"
+      ],
+      "mc": [
+        "floor",
+        "carpet",
+        "door"
+      ]
+    },
+    {
+      "w": "cellar",
+      "g": "Keller",
+      "d": "A room under the ground floor of a house",
+      "s": "We keep old boxes and bottles in the dark _____ below the ground floor.",
+      "a": [
+        "cellars"
+      ],
+      "mc": [
+        "kitchen",
+        "bedroom",
+        "garden"
+      ]
+    },
+    {
+      "w": "trailer (American English)",
+      "g": "Wohnwagen",
+      "d": "A home on wheels that you can pull with a car",
+      "s": "They live in a _____ near the lake. It has wheels and they can pull it with their car.",
+      "a": [
+        "trailers"
+      ],
+      "mc": [
+        "caravan",
+        "tent",
+        "cabin"
+      ]
+    },
+    {
+      "w": "tree house",
+      "g": "Baumhaus",
+      "d": "A small room built in a tree to play in",
+      "s": "We read books and played games in our _____ up in the big oak tree.",
+      "cf": "tree house",
+      "a": [
+        "tree house",
+        "tree houses",
+        "treehouse"
+      ],
+      "mc": [
+        "garden shed",
+        "tent",
+        "cabin"
+      ]
+    },
+    {
+      "w": "stilts",
+      "g": "Stelzen",
+      "d": "Long sticks or poles that hold something up above the ground",
+      "s": "In some countries, houses stand on _____ over the water.",
+      "a": [],
+      "mc": [
+        "pillars",
+        "poles",
+        "ladders"
+      ]
+    },
+    {
+      "w": "reed",
+      "g": "Schilf",
+      "d": "A tall plant that grows near water",
+      "s": "The birds hide in the _____ at the edge of the lake.",
+      "a": [
+        "reeds"
+      ],
+      "mc": [
+        "bamboo",
+        "grass",
+        "straw"
+      ]
+    },
+    {
+      "w": "island",
+      "g": "Insel",
+      "d": "A piece of land with water all around it",
+      "s": "We took a boat to a small _____ in the lake.",
+      "a": [
+        "islands"
+      ],
+      "mc": [
+        "peninsula",
+        "coast",
+        "continent"
+      ]
+    },
+    {
+      "w": "ground",
+      "g": "Boden",
+      "d": "The flat surface you walk on outside",
+      "s": "The apple fell from the high tree branch down to the _____ outside the house.",
+      "a": [],
+      "mc": [
+        "sky",
+        "ceiling",
+        "roof"
+      ]
+    },
+    {
+      "w": "ours",
+      "g": "unsere/r/s",
+      "d": "A word that means it belongs to us",
+      "s": "That house is not theirs. It is _____.",
+      "a": [],
+      "mc": [
+        "theirs",
+        "yours",
+        "mine"
+      ]
+    },
+    {
+      "w": "theirs",
+      "g": "ihre/r/s",
+      "d": "A word that means it belongs to them",
+      "s": "Our garden is small, but _____ is very big.",
+      "a": [],
+      "mc": [
+        "ours",
+        "yours",
+        "hers"
+      ]
+    },
+    {
+      "w": "mine",
+      "g": "meine/r/s",
+      "d": "A word that means it belongs to me",
+      "s": "This blue bag is _____. I bought it last week.",
+      "a": [],
+      "mc": [
+        "yours",
+        "hers",
+        "his"
+      ]
+    },
+    {
+      "w": "hers",
+      "g": "ihre/r/s (Singular)",
+      "d": "A word that means it belongs to her",
+      "s": "That is not my jacket. It is _____.",
+      "a": [],
+      "mc": [
+        "his",
+        "mine",
+        "yours"
+      ]
+    },
+    {
+      "w": "his",
+      "g": "seine/r/s",
+      "d": "A word that means it belongs to him",
+      "s": "Tom forgot _____ lunch box at home today.",
+      "a": [],
+      "mc": [
+        "hers",
+        "theirs",
+        "ours"
+      ]
+    },
+    {
+      "w": "yours",
+      "g": "deine/r/s; Ihre/r/s",
+      "d": "A word that means it belongs to you",
+      "s": "Is this pencil _____? It has your name on it.",
+      "a": [],
+      "mc": [
+        "mine",
+        "ours",
+        "theirs"
+      ]
+    },
+    {
+      "w": "furniture",
+      "g": "Möbel",
+      "d": "Things like tables, chairs, and beds in a room",
+      "s": "We need new _____ for the living room — a sofa, a table, and some chairs.",
+      "a": [],
+      "mc": [
+        "paint",
+        "carpets",
+        "curtains"
+      ]
+    },
+    {
+      "w": "whose",
+      "g": "wessen",
+      "d": "A question word to ask who owns something",
+      "s": "_____ bag is this? Someone left it in the classroom.",
+      "cf": "Whose",
+      "a": [
+        "whose"
+      ],
+      "mc": [
+        "who",
+        "which",
+        "where"
+      ]
+    },
+    {
+      "w": "American",
+      "g": "Amerikaner/in; amerikanisch",
+      "d": "A person from the USA, or something from that country",
+      "s": "My pen pal is _____. She lives in New York.",
+      "a": [
+        "Americans"
+      ],
+      "mc": [
+        "British",
+        "Australian",
+        "Canadian"
+      ]
+    },
+    {
+      "w": "Central Asia",
+      "g": "Zentralasien",
+      "d": "The area in the middle of the biggest continent",
+      "s": "Some families in _____ live in special round tents.",
+      "cf": "Central Asia",
+      "a": [
+        "Central Asia"
+      ],
+      "mc": [
+        "South America",
+        "East Africa",
+        "Northern Europe"
+      ]
+    },
+    {
+      "w": "electricity",
+      "g": "Elektrizität",
+      "d": "The power that makes lights, TVs, and fridges work",
+      "s": "We had no _____ last night because of the storm.",
+      "a": [],
+      "mc": [
+        "gas",
+        "water",
+        "energy"
+      ]
+    },
+    {
+      "w": "to float",
+      "g": "treiben; schweben",
+      "d": "To stay on top of water without going down",
+      "s": "The toy boat _____ on the water in the bathtub.",
+      "cf": "floated",
+      "a": [
+        "float",
+        "floats",
+        "floated"
+      ],
+      "mc": [
+        "to sink",
+        "to swim",
+        "to drift"
+      ]
+    },
+    {
+      "w": "moveable",
+      "g": "beweglich",
+      "d": "Can be moved from one place to another",
+      "s": "The desk has wheels so it is easy to move around the room. It is very _____.",
+      "a": [
+        "movable"
+      ],
+      "mc": [
+        "heavy",
+        "fixed",
+        "stuck"
+      ]
+    },
+    {
+      "w": "underneath",
+      "g": "unterhalb",
+      "d": "Below or under something",
+      "s": "The cat is sleeping _____ the kitchen table, right below the chairs.",
+      "a": [],
+      "mc": [
+        "on top of",
+        "next to",
+        "behind"
+      ]
+    },
+    {
+      "w": "to transport",
+      "g": "transportieren",
+      "d": "To take something from one place to another",
+      "s": "We used a big van to _____ the old furniture.",
+      "cf": "transport",
+      "a": [
+        "transport",
+        "transports",
+        "transported"
+      ],
+      "mc": [
+        "to deliver",
+        "to carry",
+        "to move"
+      ]
+    },
+    {
+      "w": "hammock",
+      "g": "Hängematte",
+      "d": "A piece of cloth you hang between two trees and lie in",
+      "s": "I love reading in the _____ in our garden.",
+      "a": [
+        "hammocks"
+      ],
+      "mc": [
+        "swing",
+        "bench",
+        "bed"
+      ]
+    },
+    {
+      "w": "cotton",
+      "g": "Baumwolle",
+      "d": "A soft white material used to make clothes",
+      "s": "This T-shirt is made of _____ and feels very soft.",
+      "a": [],
+      "mc": [
+        "wool",
+        "silk",
+        "linen"
+      ]
+    },
+    {
+      "w": "leather",
+      "g": "Leder",
+      "d": "Material made from animal skin, used for shoes and bags",
+      "s": "My dad has a brown _____ jacket. It is made from animal skin.",
+      "a": [],
+      "mc": [
+        "suede",
+        "fabric",
+        "rubber"
+      ]
+    },
+    {
+      "w": "material",
+      "g": "Material",
+      "d": "What something is made of",
+      "s": "What _____ is your school bag made of — leather, cotton, or plastic?",
+      "a": [
+        "materials"
+      ],
+      "mc": [
+        "colour",
+        "size",
+        "shape"
+      ]
+    },
+    {
+      "w": "metal",
+      "g": "Metall",
+      "d": "A hard shiny thing like iron or gold",
+      "s": "The spoon is cold and made of _____. It is shiny and heavy.",
+      "a": [
+        "metals"
+      ],
+      "mc": [
+        "wood",
+        "plastic",
+        "glass"
+      ]
+    },
+    {
+      "w": "pattern",
+      "g": "Muster",
+      "d": "A design with shapes, lines, or colours on something",
+      "s": "My new dress has a flower _____ on it.",
+      "a": [
+        "patterns"
+      ],
+      "mc": [
+        "design",
+        "shape",
+        "colour"
+      ]
+    },
+    {
+      "w": "plain",
+      "g": "einfarbig",
+      "d": "Only one colour, with no design on it",
+      "s": "She wore a _____ white T-shirt with jeans.",
+      "a": [],
+      "mc": [
+        "striped",
+        "spotted",
+        "patterned"
+      ]
+    },
+    {
+      "w": "plastic",
+      "g": "Plastik",
+      "d": "A light, cheap material used to make many things",
+      "s": "We should use less _____ to help the environment.",
+      "a": [],
+      "mc": [
+        "rubber",
+        "metal",
+        "glass"
+      ]
+    },
+    {
+      "w": "pond",
+      "g": "Teich",
+      "d": "A small area of water, smaller than a lake",
+      "s": "There are frogs in the _____ in our garden.",
+      "a": [
+        "ponds"
+      ],
+      "mc": [
+        "puddle",
+        "lake",
+        "pool"
+      ]
+    },
+    {
+      "w": "seat",
+      "g": "(Sitz-)Platz",
+      "d": "A place where you sit, like a chair or bench",
+      "s": "Please take a _____ and wait for the doctor.",
+      "a": [
+        "seats"
+      ],
+      "mc": [
+        "nap",
+        "shower",
+        "photo"
+      ]
+    },
+    {
+      "w": "spotted",
+      "g": "gepunktet",
+      "d": "Having small round shapes on it",
+      "s": "She wore a _____ dress that made her look like a ladybug.",
+      "a": [],
+      "mc": [
+        "striped",
+        "plain",
+        "checked"
+      ]
+    },
+    {
+      "w": "strap",
+      "g": "Band",
+      "d": "A thin piece of cloth or other stuff that holds something",
+      "s": "The _____ of my watch broke and it fell off.",
+      "a": [
+        "straps"
+      ],
+      "mc": [
+        "belt",
+        "buckle",
+        "ribbon"
+      ]
+    },
+    {
+      "w": "striped",
+      "g": "gestreift",
+      "d": "Having long lines of different colours",
+      "s": "He wore a _____ shirt that made him look like a zebra.",
+      "a": [],
+      "mc": [
+        "spotted",
+        "plain",
+        "checked"
+      ]
+    }
+  ]
+}

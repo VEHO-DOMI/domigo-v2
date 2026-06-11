@@ -1,0 +1,610 @@
+{
+  "slug": "unit-05",
+  "grade": 1,
+  "unit": 5,
+  "title": "Unit 5",
+  "entries": [
+    {
+      "w": "keyboard player",
+      "g": "Keyboarder/Keyboarderin",
+      "d": "a person who plays the keyboard",
+      "s": "The _____ in our band sits at an electric piano and plays with both hands during every song.",
+      "a": [],
+      "mc": [
+        "drummer",
+        "singer",
+        "guitarist"
+      ]
+    },
+    {
+      "w": "keyboard",
+      "g": "Keyboard",
+      "d": "a musical instrument with keys",
+      "s": "She plays the _____ with her fingers on all 88 black and white keys.",
+      "a": [],
+      "mc": [
+        "trumpet",
+        "violin",
+        "flute"
+      ]
+    },
+    {
+      "w": "singer",
+      "g": "Sänger/Sängerin",
+      "d": "a person who sings songs",
+      "s": "The _____ holds the microphone and uses her voice to sing the words of each song.",
+      "a": [],
+      "mc": [
+        "drummer",
+        "guitarist",
+        "keyboard player"
+      ]
+    },
+    {
+      "w": "drummer",
+      "g": "Schlagzeuger/Schlagzeugerin",
+      "d": "a person who plays the drums",
+      "s": "The _____ sits behind the drum kit and hits the drums very fast with two wooden sticks.",
+      "a": [],
+      "mc": [
+        "singer",
+        "keyboard player",
+        "flutist"
+      ]
+    },
+    {
+      "w": "drums",
+      "g": "Schlagzeug",
+      "d": "a musical instrument you hit with sticks",
+      "s": "He plays the _____ with two sticks and hits them very hard to make loud beats.",
+      "a": [],
+      "mc": [
+        "guitar",
+        "keyboard",
+        "saxophone"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ the drums",
+          "options": [
+            "Play",
+            "Write",
+            "Cook",
+            "Read"
+          ],
+          "answer": "Play"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DRUMS?",
+          "options": [
+            "play",
+            "loud",
+            "hit",
+            "eat"
+          ],
+          "answer": "eat"
+        }
+      ]
+    },
+    {
+      "w": "saxophone player",
+      "g": "Saxophonist/Saxophonistin",
+      "d": "a person who plays the saxophone",
+      "s": "The _____ holds a shiny brass instrument in her mouth and blows into it to play jazz music.",
+      "a": [],
+      "mc": [
+        "drummer",
+        "singer",
+        "guitarist"
+      ]
+    },
+    {
+      "w": "saxophone",
+      "g": "Saxophon",
+      "d": "a metal instrument you blow into",
+      "s": "She wants to learn the _____ this year — a big golden wind instrument you blow into.",
+      "a": [],
+      "mc": [
+        "piano",
+        "drums",
+        "violin"
+      ]
+    },
+    {
+      "w": "guitarist",
+      "g": "Gitarrist/Gitarristin",
+      "d": "a person who plays the guitar",
+      "s": "The _____ in the band plays the guitar with a small plastic pick in his right hand.",
+      "a": [
+        "guitar player"
+      ],
+      "mc": [
+        "drummer",
+        "singer",
+        "pianist"
+      ]
+    },
+    {
+      "w": "guitar",
+      "g": "Gitarre",
+      "d": "a string instrument you play with your hands",
+      "s": "He got a new electric _____ with six strings for his birthday and now he practices every day.",
+      "a": [],
+      "mc": [
+        "drum",
+        "trumpet",
+        "piano"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ the guitar",
+          "options": [
+            "Play",
+            "Do",
+            "Eat",
+            "Wash"
+          ],
+          "answer": "Play"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GUITAR?",
+          "options": [
+            "play",
+            "electric",
+            "new",
+            "drink"
+          ],
+          "answer": "drink"
+        }
+      ]
+    },
+    {
+      "w": "boyfriend",
+      "g": "fester Freund",
+      "d": "a boy who is your special friend",
+      "s": "Anna has a new _____ called Jack. He is a boy and he is her special friend.",
+      "a": [],
+      "mc": [
+        "little brother",
+        "baby cousin",
+        "pet dog"
+      ]
+    },
+    {
+      "w": "its",
+      "g": "sein/e; ihr/e",
+      "d": "belonging to a thing or animal",
+      "s": "The dog is wagging _____ tail because it is happy to see me.",
+      "a": [],
+      "mc": [
+        "his",
+        "her",
+        "their"
+      ]
+    },
+    {
+      "w": "to play",
+      "g": "spielen",
+      "d": "to make music or have fun",
+      "s": "Can you _____ the guitar and show me how to hold it?",
+      "cf": "play",
+      "a": [],
+      "mc": [
+        "to eat",
+        "to wash",
+        "to break"
+      ]
+    },
+    {
+      "w": "concert",
+      "g": "Konzert",
+      "d": "a live music show",
+      "s": "We are going to a rock _____ on Saturday night to hear my favourite band play live on stage.",
+      "a": [],
+      "mc": [
+        "lesson",
+        "test",
+        "meeting"
+      ]
+    },
+    {
+      "w": "to dance",
+      "g": "tanzen",
+      "d": "to move your body to music",
+      "s": "I love to _____ to the music when I hear my favourite song — I move my feet and arms.",
+      "cf": "dance",
+      "a": [],
+      "mc": [
+        "to stand still",
+        "to sit down",
+        "to sleep"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "Dance to the _____",
+          "options": [
+            "Music",
+            "Homework",
+            "Lunch",
+            "Book"
+          ],
+          "answer": "Music"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DANCE?",
+          "options": [
+            "music",
+            "fast",
+            "happy",
+            "heavy"
+          ],
+          "answer": "heavy"
+        }
+      ]
+    },
+    {
+      "w": "Don't worry.",
+      "g": "Keine Sorge.",
+      "d": "telling someone not to be afraid",
+      "s": "_____ Everything will be fine in the morning. I promise you there is no problem.",
+      "cf": "Don't worry.",
+      "a": [
+        "Don't worry"
+      ],
+      "mc": [
+        "Don't move.",
+        "Don't look.",
+        "Don't speak."
+      ]
+    },
+    {
+      "w": "job",
+      "g": "Arbeit; Aufgabe",
+      "d": "work that you do",
+      "s": "My mum has a good _____ at the hospital. She is a doctor and earns money to pay for our food and house.",
+      "a": [],
+      "mc": [
+        "toy",
+        "game",
+        "pet"
+      ]
+    },
+    {
+      "w": "perfect",
+      "g": "perfekt",
+      "d": "the best it can be, no mistakes",
+      "s": "Your English test is _____! You got ten correct answers out of ten, with zero mistakes!",
+      "a": [],
+      "mc": [
+        "terrible",
+        "bad",
+        "wrong"
+      ]
+    },
+    {
+      "w": "to carry",
+      "g": "tragen",
+      "d": "to hold something and move with it",
+      "s": "Can you help me _____ these very heavy bags of shopping from the car into the house?",
+      "cf": "carry",
+      "a": [],
+      "mc": [
+        "to drop",
+        "to leave",
+        "to throw"
+      ]
+    },
+    {
+      "w": "to stand on",
+      "g": "auf etwas stehen",
+      "d": "to put your feet on something",
+      "s": "Please don't _____ the flowers in the garden.",
+      "cf": "stand on",
+      "a": [],
+      "mc": [
+        "to lie on",
+        "to sit on",
+        "to sleep on"
+      ]
+    },
+    {
+      "w": "tongue",
+      "g": "Zunge",
+      "d": "the soft part inside your mouth",
+      "s": "The doctor said: 'Open your mouth and stick out your _____ so I can see your throat.'",
+      "a": [],
+      "mc": [
+        "hair",
+        "nose",
+        "ear"
+      ]
+    },
+    {
+      "w": "to touch",
+      "g": "berühren",
+      "d": "to put your hand on something",
+      "s": "Please don't _____ the old paintings in the museum with your fingers — they are very delicate.",
+      "cf": "touch",
+      "a": [],
+      "mc": [
+        "to look at",
+        "to listen to",
+        "to smell"
+      ]
+    },
+    {
+      "w": "to walk on",
+      "g": "auf etwas gehen",
+      "d": "to move on your feet over something",
+      "s": "Be very careful when you _____ the thin ice on the frozen pond — it might crack.",
+      "cf": "walk on",
+      "a": [],
+      "mc": [
+        "to sit near",
+        "to jump into",
+        "to fly over"
+      ]
+    },
+    {
+      "w": "to wiggle",
+      "g": "wackeln",
+      "d": "to move something from side to side quickly",
+      "s": "Can you _____ your ears up and down? I can't! I can only move my eyebrows.",
+      "cf": "wiggle",
+      "a": [],
+      "mc": [
+        "to close",
+        "to hide",
+        "to break"
+      ]
+    },
+    {
+      "w": "can",
+      "g": "Dose",
+      "d": "a metal container for food or drinks",
+      "s": "He drinks a _____ of lemonade every day.",
+      "a": [
+        "tin"
+      ],
+      "mc": [
+        "bottle",
+        "box",
+        "cup"
+      ]
+    },
+    {
+      "w": "to drink",
+      "g": "trinken",
+      "d": "to take water or juice into your mouth",
+      "s": "You must _____ a lot of water when it is very hot outside and you are running around.",
+      "cf": "drink",
+      "a": [],
+      "mc": [
+        "to eat",
+        "to pour",
+        "to make"
+      ]
+    },
+    {
+      "w": "hundred",
+      "g": "hundert",
+      "d": "the number 100",
+      "s": "There are one _____ children in our whole school — 50 boys and 50 girls.",
+      "a": [],
+      "mc": [
+        "ten",
+        "thousand",
+        "million"
+      ]
+    },
+    {
+      "w": "in one go",
+      "g": "in einem Zug, auf einmal",
+      "d": "all at one time, not stopping",
+      "s": "He was very hungry so he ate the whole pizza _____ without stopping between slices.",
+      "cf": "in one go",
+      "a": [],
+      "mc": [
+        "over three days",
+        "bit by bit",
+        "slowly"
+      ]
+    },
+    {
+      "w": "Is that so?",
+      "g": "Ach wirklich?",
+      "d": "asking if something is really true",
+      "s": "I can eat ten huge apples in one minute! — _____ That's hard to believe!",
+      "cf": "Is that so?",
+      "a": [],
+      "mc": [
+        "Me too!",
+        "I agree!",
+        "Thank you!"
+      ]
+    },
+    {
+      "w": "This is me.",
+      "g": "Das bin ich.",
+      "d": "introducing yourself",
+      "s": "Look at the old photo from when I was 5 years old. _____ The little boy in the blue shirt.",
+      "cf": "This is me.",
+      "a": [
+        "This is me"
+      ],
+      "mc": [
+        "That is him.",
+        "That is her.",
+        "That is them."
+      ]
+    },
+    {
+      "w": "economy",
+      "g": "Wirtschaft",
+      "d": "the system of money and business",
+      "s": "We learn about the _____ in our new social studies class — how money, shops, and jobs work.",
+      "a": [],
+      "mc": [
+        "planets",
+        "animals",
+        "dinosaurs"
+      ]
+    },
+    {
+      "w": "hospital",
+      "g": "Krankenhaus",
+      "d": "a place where sick people go",
+      "s": "My grandma is very sick with a broken leg. She is in the _____ where the doctors and nurses take care of her.",
+      "a": [],
+      "mc": [
+        "library",
+        "park",
+        "airport"
+      ]
+    },
+    {
+      "w": "to laugh",
+      "g": "lachen",
+      "d": "to make a happy sound, ha ha ha",
+      "s": "The clown at the circus is very funny and we all _____ out loud when he falls over.",
+      "cf": "laugh",
+      "a": [],
+      "mc": [
+        "to cry",
+        "to sleep",
+        "to sit"
+      ]
+    },
+    {
+      "w": "pocket money",
+      "g": "(Taschen-)Geld",
+      "d": "money your parents give you each week",
+      "s": "I get five euros _____ from my parents every Saturday for doing my chores.",
+      "cf": "pocket money",
+      "a": [],
+      "mc": [
+        "as a present",
+        "as a prize",
+        "as a bill"
+      ]
+    },
+    {
+      "w": "pound",
+      "g": "Pfund",
+      "d": "money used in Britain",
+      "s": "This British book costs five _____ — the official money of the UK. Not euros.",
+      "cf": "pounds",
+      "a": [],
+      "mc": [
+        "euros",
+        "dollars",
+        "yen"
+      ]
+    },
+    {
+      "w": "profit",
+      "g": "Gewinn, Profit",
+      "d": "the money you make from selling something",
+      "s": "She sells homemade lemonade at her stall. After paying for the lemons and sugar, she makes a _____ of ten euros.",
+      "a": [],
+      "mc": [
+        "debt",
+        "loss",
+        "cost"
+      ]
+    },
+    {
+      "w": "school canteen",
+      "g": "Schulkantine",
+      "d": "a place at school where you eat lunch",
+      "s": "We eat our hot lunch together in the _____ at 12 o'clock with all the other pupils.",
+      "cf": "school canteen",
+      "a": [],
+      "mc": [
+        "science lab",
+        "library",
+        "gym"
+      ]
+    },
+    {
+      "w": "table",
+      "g": "Tisch",
+      "d": "a piece of furniture with legs and a flat top",
+      "s": "Please put the dinner plates and glasses on the big wooden _____ with four legs where we eat.",
+      "a": [],
+      "mc": [
+        "floor",
+        "wall",
+        "window"
+      ]
+    },
+    {
+      "w": "teacher",
+      "g": "Lehrer/Lehrerin",
+      "d": "a person who helps you learn at school",
+      "s": "Our class _____ Mrs. Smith gives us new homework every day and marks our tests.",
+      "a": [],
+      "mc": [
+        "student",
+        "classmate",
+        "parent"
+      ]
+    },
+    {
+      "w": "uncle",
+      "g": "Onkel",
+      "d": "your mum's or dad's brother",
+      "s": "My _____ lives in London. He is my dad's brother and visits us every Christmas.",
+      "a": [],
+      "mc": [
+        "aunt",
+        "cousin",
+        "niece"
+      ]
+    },
+    {
+      "w": "to wash",
+      "g": "waschen",
+      "d": "to clean with water",
+      "s": "Please _____ your dirty hands with soap and water before you sit down to eat dinner.",
+      "cf": "wash",
+      "a": [],
+      "mc": [
+        "to dry",
+        "to shake",
+        "to raise"
+      ]
+    },
+    {
+      "w": "nothing",
+      "g": "nichts",
+      "d": "not anything",
+      "s": "There is _____ in the cardboard box. It is completely empty — not even a piece of paper.",
+      "a": [],
+      "mc": [
+        "something",
+        "everything",
+        "a lot"
+      ]
+    },
+    {
+      "w": "Sorry?",
+      "g": "Entschuldigung?, Wie bitte?",
+      "d": "asking someone to say it again",
+      "s": "_____ I did not hear what you said. Can you repeat it a little louder, please?",
+      "cf": "Sorry?",
+      "a": [],
+      "mc": [
+        "Goodbye!",
+        "Thanks!",
+        "Hello!"
+      ]
+    }
+  ]
+}

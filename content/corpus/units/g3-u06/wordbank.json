@@ -480,7 +480,8 @@
       "forms": [
         "to cough",
         "cough",
-        "up"
+        "to cough up",
+        "cough up"
       ],
       "taughtGloss": false
     },
@@ -711,7 +712,8 @@
       "forms": [
         "to earn",
         "earn",
-        "money"
+        "to earn money",
+        "earn money"
       ],
       "taughtGloss": false
     },

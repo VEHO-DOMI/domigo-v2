@@ -278,7 +278,7 @@
       "cf": null,
       "forms": [
         "childhood",
-        "no pl"
+        "childhood no pl"
       ],
       "taughtGloss": false
     },
@@ -328,7 +328,8 @@
       "forms": [
         "to keep secret",
         "keep secret",
-        "a"
+        "to keep secret a",
+        "keep secret a"
       ],
       "taughtGloss": false
     },

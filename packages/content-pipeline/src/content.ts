@@ -12,6 +12,7 @@
 import type { Grade } from "@domigo/content-schema";
 import { runExtract } from "./extract.ts";
 import { runStatus } from "./status.ts";
+import { runV1Snapshot } from "./v1snapshot.ts";
 import { runValidate } from "./validate.ts";
 import { runWordbank } from "./wordbank.ts";
 
@@ -33,6 +34,9 @@ switch (command) {
     break;
   case "wordbank":
     runWordbank(parseGrade(rest));
+    break;
+  case "v1-snapshot":
+    runV1Snapshot();
     break;
   case "validate":
     runValidate();

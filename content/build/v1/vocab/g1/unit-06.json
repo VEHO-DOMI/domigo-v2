@@ -1,0 +1,654 @@
+{
+  "slug": "unit-06",
+  "grade": 1,
+  "unit": 6,
+  "title": "Unit 6",
+  "entries": [
+    {
+      "w": "city",
+      "g": "Stadt, Großstadt",
+      "d": "a very big town",
+      "s": "London is a very big _____ with millions of people, tall skyscrapers, and many underground trains.",
+      "a": [
+        "town"
+      ],
+      "mc": [
+        "cottage",
+        "cabin",
+        "hut"
+      ]
+    },
+    {
+      "w": "park",
+      "g": "Park",
+      "d": "a green place in a town with trees",
+      "s": "Let's play football on the grass in the _____ after school, near the slides and swings.",
+      "a": [],
+      "mc": [
+        "office",
+        "hospital",
+        "classroom"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "Go to the _____",
+          "options": [
+            "Park",
+            "Pencil",
+            "Butter",
+            "Shoe"
+          ],
+          "answer": "Park"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PARK?",
+          "options": [
+            "go to",
+            "play in",
+            "big",
+            "cook"
+          ],
+          "answer": "cook"
+        }
+      ]
+    },
+    {
+      "w": "street",
+      "g": "Straße",
+      "d": "a road in a town with houses",
+      "s": "There are many shops selling clothes and food in our busy _____ in the town centre.",
+      "a": [
+        "road"
+      ],
+      "mc": [
+        "river",
+        "forest",
+        "mountain"
+      ]
+    },
+    {
+      "w": "market",
+      "g": "Markt",
+      "d": "a place where people buy and sell things",
+      "s": "We buy fresh fruit and vegetables from the farmer at the open-air _____ every Saturday morning.",
+      "a": [],
+      "mc": [
+        "library",
+        "gym",
+        "pharmacy"
+      ]
+    },
+    {
+      "w": "supermarket",
+      "g": "Supermarkt",
+      "d": "a big shop where you buy food",
+      "s": "Mum drives to the big _____ to push a trolley and buy food for the whole week.",
+      "a": [],
+      "mc": [
+        "post office",
+        "bus stop",
+        "park"
+      ]
+    },
+    {
+      "w": "river",
+      "g": "Fluss",
+      "d": "water that moves through the land",
+      "s": "We go swimming in the clear _____ in summer. The water flows between the two green banks.",
+      "a": [],
+      "mc": [
+        "bathtub",
+        "bucket",
+        "swimming pool"
+      ]
+    },
+    {
+      "w": "woods",
+      "g": "Wald",
+      "d": "a place with many trees",
+      "s": "We go for a quiet walk in the _____ on Sunday afternoons, among the tall trees and singing birds.",
+      "a": [
+        "forest"
+      ],
+      "mc": [
+        "shopping centre",
+        "car park",
+        "street"
+      ]
+    },
+    {
+      "w": "to jump into the river",
+      "g": "in den Fluss springen",
+      "d": "to leap into the water",
+      "s": "It is boiling hot outside! Let's take off our shoes and _____ and swim in the cold water.",
+      "cf": "jump into the river",
+      "a": [],
+      "mc": [
+        "to jump on the bed",
+        "to jump over the fence",
+        "to jump up and down"
+      ]
+    },
+    {
+      "w": "to look out the window",
+      "g": "aus dem Fenster schauen",
+      "d": "to see outside through the glass",
+      "s": "I _____ from my bedroom and see that it is raining cats and dogs outside.",
+      "cf": "look out the window",
+      "a": [],
+      "mc": [
+        "to look at my feet",
+        "to look at my phone",
+        "to look under the bed"
+      ]
+    },
+    {
+      "w": "to pick something up",
+      "g": "etwas aufheben",
+      "d": "to take something from the ground",
+      "s": "There is a shiny coin on the floor next to your shoe. Can you bend down and _____?",
+      "cf": "pick it up",
+      "a": [],
+      "mc": [
+        "to kick it",
+        "to step on it",
+        "to ignore it"
+      ]
+    },
+    {
+      "w": "to sit in a tree",
+      "g": "auf einem Baum sitzen",
+      "d": "to be up in a tree, not moving",
+      "s": "The songbird likes to _____ on a high branch and sing to its friends.",
+      "cf": "sit in a tree",
+      "a": [],
+      "mc": [
+        "to dig a hole",
+        "to swim in the pond",
+        "to run on the grass"
+      ]
+    },
+    {
+      "w": "to fall out of the tree",
+      "g": "vom Baum fallen",
+      "d": "to drop down from a tree",
+      "s": "Be careful on the thin branch up there! You might slip and _____ onto the hard ground!",
+      "cf": "fall out of the tree",
+      "a": [],
+      "mc": [
+        "to climb into the nest",
+        "to grab another branch",
+        "to stay safe"
+      ]
+    },
+    {
+      "w": "to bump into a tree",
+      "g": "gegen einen Baum stoßen",
+      "d": "to walk into a tree by mistake",
+      "s": "He was looking at his phone and not watching the path, so he _____ in the park and hurt his nose.",
+      "cf": "bump into a tree",
+      "a": [],
+      "mc": [
+        "to walk around a tree",
+        "to sit under a tree",
+        "to hide behind a tree"
+      ]
+    },
+    {
+      "w": "to go to the park",
+      "g": "in den Park gehen",
+      "d": "to walk to the green place in town",
+      "s": "Let's _____ in the sunshine and play on the swings and slides this afternoon.",
+      "cf": "go to the park",
+      "a": [],
+      "mc": [
+        "to go to bed",
+        "to go to the doctor",
+        "to go to the dentist"
+      ]
+    },
+    {
+      "w": "to pull",
+      "g": "ziehen",
+      "d": "to move something towards you",
+      "s": "The heavy wooden door is stuck shut. You must _____ the handle very hard towards you to open it.",
+      "cf": "pull",
+      "a": [],
+      "mc": [
+        "to push",
+        "to close",
+        "to lock"
+      ]
+    },
+    {
+      "w": "to climb up a tree",
+      "g": "auf einen Baum klettern",
+      "d": "to go up a tree using hands and feet",
+      "s": "My pet cat likes to _____ and look down at the birds sitting on the branches.",
+      "cf": "climb up a tree",
+      "a": [],
+      "mc": [
+        "to dig under a tree",
+        "to sleep under a tree",
+        "to chop down a tree"
+      ]
+    },
+    {
+      "w": "to leave the office",
+      "g": "das Büro verlassen",
+      "d": "to go out of the work room",
+      "s": "Dad _____ at exactly five o'clock every day when his work is finished, and comes home for dinner.",
+      "cf": "leave the office",
+      "a": [],
+      "mc": [
+        "to arrive at the office",
+        "to start work",
+        "to sit at the desk"
+      ]
+    },
+    {
+      "w": "to look in the mirror",
+      "g": "in den Spiegel schauen",
+      "d": "to see yourself in the glass",
+      "s": "She _____ every morning to check her hair and brush her teeth before going to school.",
+      "cf": "look in the mirror",
+      "a": [],
+      "mc": [
+        "to look at the ceiling",
+        "to look under the bed",
+        "to look in the fridge"
+      ]
+    },
+    {
+      "w": "to climb",
+      "g": "klettern",
+      "d": "to go up using your hands and feet",
+      "s": "The monkey children love to _____ up the big rocks in the playground like little mountain goats.",
+      "cf": "climb",
+      "a": [],
+      "mc": [
+        "to swim",
+        "to fly",
+        "to crawl"
+      ]
+    },
+    {
+      "w": "to jump",
+      "g": "hüpfen",
+      "d": "to push yourself up into the air",
+      "s": "The small green frog can _____ very high into the air with its long strong back legs.",
+      "cf": "jump",
+      "a": [
+        "leap"
+      ],
+      "mc": [
+        "to swim",
+        "to crawl",
+        "to sit"
+      ]
+    },
+    {
+      "w": "to leave",
+      "g": "verlassen, weggehen",
+      "d": "to go away from a place",
+      "s": "We _____ the house at eight o'clock every morning to catch the school bus.",
+      "cf": "leave",
+      "a": [],
+      "mc": [
+        "to enter",
+        "to stay in",
+        "to clean"
+      ]
+    },
+    {
+      "w": "mirror",
+      "g": "Spiegel",
+      "d": "a glass where you can see yourself",
+      "s": "There is a big round _____ on the bathroom wall. I can see my face in it when I brush my teeth.",
+      "a": [],
+      "mc": [
+        "window",
+        "door",
+        "picture"
+      ]
+    },
+    {
+      "w": "to put on",
+      "g": "aufsetzen, anziehen",
+      "d": "to place clothes on your body",
+      "s": "It is cold and windy outside. _____ your warm winter jacket before you go out!",
+      "cf": "Put on",
+      "a": [],
+      "mc": [
+        "to take off",
+        "to throw away",
+        "to fold up"
+      ]
+    },
+    {
+      "w": "away",
+      "g": "weg",
+      "d": "to or at another place, not here",
+      "s": "The scared bird flew _____ from the garden when my pet cat came running towards it.",
+      "a": [],
+      "mc": [
+        "closer",
+        "back",
+        "to me"
+      ]
+    },
+    {
+      "w": "best",
+      "g": "(welt-)bester/beste/bestes",
+      "d": "better than all others",
+      "s": "She is the _____ student in our whole class. She always gets the top mark and helps others.",
+      "a": [],
+      "mc": [
+        "worst",
+        "slowest",
+        "laziest"
+      ]
+    },
+    {
+      "w": "detective",
+      "g": "Detektiv/Detektivin",
+      "d": "a person who finds out about crimes",
+      "s": "The police _____ wears a long coat and looks for clues at the crime scene to solve the case.",
+      "a": [],
+      "mc": [
+        "farmer",
+        "baker",
+        "clown"
+      ]
+    },
+    {
+      "w": "Help me!",
+      "g": "Hilf mir!",
+      "d": "what you call out when you need someone right now",
+      "s": "I can't carry these heavy boxes alone. _____ Please come and take some!",
+      "cf": "Help me!",
+      "a": [
+        "Help me"
+      ],
+      "mc": [
+        "Leave me!",
+        "Go away!",
+        "Wait there!"
+      ]
+    },
+    {
+      "w": "office",
+      "g": "Büro",
+      "d": "a room where people work",
+      "s": "My mum works from 9 to 5 in an _____ in the city centre. She has a desk and a computer.",
+      "a": [],
+      "mc": [
+        "garden",
+        "forest",
+        "beach"
+      ]
+    },
+    {
+      "w": "to run",
+      "g": "laufen; rennen",
+      "d": "to move very fast on your feet",
+      "s": "We _____ very fast to school because we are ten minutes late and the teacher is waiting.",
+      "cf": "run",
+      "a": [],
+      "mc": [
+        "to crawl",
+        "to sit",
+        "to sleep"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "Run very _____",
+          "options": [
+            "Fast",
+            "Tall",
+            "Big",
+            "Long"
+          ],
+          "answer": "Fast"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with RUN?",
+          "options": [
+            "fast",
+            "home",
+            "away",
+            "purple"
+          ],
+          "answer": "purple"
+        }
+      ]
+    },
+    {
+      "w": "to catch",
+      "g": "fangen; erwischen; festnehmen",
+      "d": "to get hold of something moving",
+      "s": "Throw the ball to me and I will _____ it in my hands without letting it fall!",
+      "cf": "catch",
+      "a": [],
+      "mc": [
+        "to drop",
+        "to miss",
+        "to kick"
+      ]
+    },
+    {
+      "w": "clever",
+      "g": "klug, schlau",
+      "d": "good at thinking and learning",
+      "s": "She always knows the answer to the hardest questions. She is very _____ — even cleverer than the teacher sometimes.",
+      "a": [
+        "smart"
+      ],
+      "mc": [
+        "silly",
+        "slow",
+        "lazy"
+      ]
+    },
+    {
+      "w": "to come to",
+      "g": "(zu etwas) hinkommen",
+      "d": "to arrive at a place",
+      "s": "Walk down the long main street for five minutes and you _____ a big green park on your right.",
+      "cf": "come to",
+      "a": [],
+      "mc": [
+        "to leave behind",
+        "to go past",
+        "to drive away from"
+      ]
+    },
+    {
+      "w": "to live",
+      "g": "wohnen; leben",
+      "d": "to have your home in a place",
+      "s": "I _____ in a small house near the school with my mum, dad, and little brother.",
+      "cf": "live",
+      "a": [],
+      "mc": [
+        "to visit",
+        "to sleep at",
+        "to move from"
+      ]
+    },
+    {
+      "w": "nice",
+      "g": "nett; schön",
+      "d": "good, pleasant, friendly",
+      "s": "Your new summer dress is very _____ — I love the flower pattern and the soft material.",
+      "a": [
+        "lovely",
+        "pretty"
+      ],
+      "mc": [
+        "horrible",
+        "dirty",
+        "smelly"
+      ]
+    },
+    {
+      "w": "a lot of",
+      "g": "viel/e, jede Menge",
+      "d": "many, a big number of",
+      "s": "There are _____ children — about 300 — at our big school.",
+      "cf": "a lot of",
+      "a": [
+        "lots of"
+      ],
+      "mc": [
+        "just one",
+        "no",
+        "a couple of"
+      ]
+    },
+    {
+      "w": "to call",
+      "g": "(an-)rufen",
+      "d": "to phone someone or say their name",
+      "s": "I will _____ you on the phone right after school and we can talk about the party.",
+      "cf": "call",
+      "a": [
+        "phone"
+      ],
+      "mc": [
+        "to ignore",
+        "to forget",
+        "to avoid"
+      ]
+    },
+    {
+      "w": "Come on!",
+      "g": "Komm(t) jetzt!, Mach(t) schon!",
+      "d": "telling someone to hurry",
+      "s": "_____ Hurry up! We are five minutes late for the school bus and it is leaving now!",
+      "cf": "Come on!",
+      "a": [
+        "Come on"
+      ],
+      "mc": [
+        "Slow down!",
+        "Stop!",
+        "Wait here!"
+      ]
+    },
+    {
+      "w": "to solve",
+      "g": "lösen",
+      "d": "to find the answer to a problem",
+      "s": "Can you _____ this tricky maths question? The answer is hidden and I cannot work it out.",
+      "cf": "solve",
+      "a": [],
+      "mc": [
+        "to write",
+        "to read",
+        "to copy"
+      ]
+    },
+    {
+      "w": "to wait",
+      "g": "warten",
+      "d": "to stay and not go yet",
+      "s": "Please _____ here at the bus stop for two minutes. I will be back very soon with the tickets.",
+      "cf": "wait",
+      "a": [],
+      "mc": [
+        "to run",
+        "to leave",
+        "to hide"
+      ]
+    },
+    {
+      "w": "to watch",
+      "g": "beobachten, zuschauen",
+      "d": "to look at something for a time",
+      "s": "We like to _____ the colourful birds flying around the feeder in the garden through the window.",
+      "cf": "watch",
+      "a": [],
+      "mc": [
+        "to hear",
+        "to smell",
+        "to count"
+      ]
+    },
+    {
+      "w": "to get up",
+      "g": "aufstehen",
+      "d": "to stand up or wake up from bed",
+      "s": "I _____ out of bed at seven o'clock every morning when my alarm clock rings.",
+      "cf": "get up",
+      "a": [],
+      "mc": [
+        "to go to sleep",
+        "to lie down",
+        "to stay in bed"
+      ]
+    },
+    {
+      "w": "to become",
+      "g": "werden",
+      "d": "to change into something new",
+      "s": "When I finish university, I want to _____ a doctor who helps sick children in the hospital.",
+      "cf": "become",
+      "a": [],
+      "mc": [
+        "to stop being",
+        "to forget",
+        "to leave"
+      ]
+    },
+    {
+      "w": "But it's true!",
+      "g": "Aber es stimmt!",
+      "d": "saying something is really real",
+      "s": "You don't believe my crazy story about the flying elephant? _____ I saw it with my own eyes!",
+      "cf": "But it's true!",
+      "a": [
+        "But it's true"
+      ],
+      "mc": [
+        "I'm joking!",
+        "I made it up!",
+        "Sorry!"
+      ]
+    },
+    {
+      "w": "Go on.",
+      "g": "weitermachen; Erzähl weiter!",
+      "d": "telling someone to continue",
+      "s": "That's a very interesting story about your adventure. _____ Tell me what happened next!",
+      "cf": "Go on.",
+      "a": [
+        "Go on"
+      ],
+      "mc": [
+        "Stop talking.",
+        "Be quiet.",
+        "Don't tell me."
+      ]
+    },
+    {
+      "w": "Well done.",
+      "g": "Gut gemacht.",
+      "d": "saying someone did a good job",
+      "s": "You got all ten questions right on the test! _____ I am very proud of you.",
+      "cf": "Well done.",
+      "a": [
+        "Well done"
+      ],
+      "mc": [
+        "Try harder.",
+        "Do better.",
+        "Bad luck."
+      ]
+    }
+  ]
+}

@@ -74,7 +74,7 @@
       "cf": null,
       "forms": [
         "headquarters",
-        "pl"
+        "headquarters pl"
       ],
       "taughtGloss": false
     },
@@ -417,7 +417,7 @@
       "cf": null,
       "forms": [
         "shade",
-        "no pl"
+        "shade no pl"
       ],
       "taughtGloss": false
     },
@@ -568,7 +568,8 @@
       "forms": [
         "to catch",
         "catch",
-        "the train"
+        "to catch the train",
+        "catch the train"
       ],
       "taughtGloss": false
     },

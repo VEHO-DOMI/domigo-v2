@@ -1,0 +1,1102 @@
+{
+  "slug": "unit-11",
+  "grade": 4,
+  "unit": 11,
+  "title": "Unit 11",
+  "entries": [
+    {
+      "w": "screenplay",
+      "g": "Drehbuch",
+      "d": "The written text of a film, including dialogue and instructions for the actors",
+      "s": "She wrote the _____ for a short film that won an award at the school festival.",
+      "a": [
+        "screenplays"
+      ],
+      "mc": [
+        "script",
+        "manuscript",
+        "dialogue"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SCREENPLAY?",
+          "options": [
+            "write",
+            "film",
+            "award",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She wrote the _____ for a short film.",
+          "options": [
+            "screenplay",
+            "display",
+            "relay",
+            "essay"
+          ],
+          "answer": "screenplay"
+        }
+      ]
+    },
+    {
+      "w": "play",
+      "g": "Theaterstück",
+      "d": "A piece of writing performed by actors on a stage in a theatre",
+      "s": "Romeo and Juliet is probably Shakespeare's most famous _____.",
+      "a": [
+        "plays"
+      ],
+      "mc": [
+        "musical",
+        "opera",
+        "performance"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PLAY?",
+          "options": [
+            "famous",
+            "write",
+            "perform",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Romeo and Juliet is a _____.",
+          "options": [
+            "play",
+            "pray",
+            "clay",
+            "delay"
+          ],
+          "answer": "play"
+        }
+      ]
+    },
+    {
+      "w": "poetry",
+      "g": "Poesie, Lyrik",
+      "d": "Writing that uses rhythm, images, and careful word choice to express feelings",
+      "s": "She has been writing _____ since she was ten years old.",
+      "a": [],
+      "mc": [
+        "prose",
+        "fiction",
+        "literature"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with POETRY?",
+          "options": [
+            "write",
+            "beautiful",
+            "modern",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She has been writing _____.",
+          "options": [
+            "poetry",
+            "pottery",
+            "lottery",
+            "battery"
+          ],
+          "answer": "poetry"
+        }
+      ]
+    },
+    {
+      "w": "comic",
+      "g": "Comic",
+      "d": "A magazine or book with stories told mainly through pictures",
+      "s": "He spent all his pocket money on a new Batman _____ every week.",
+      "a": [
+        "comics"
+      ],
+      "mc": [
+        "cartoon",
+        "manga",
+        "graphic novel"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COMIC?",
+          "options": [
+            "read",
+            "funny",
+            "book",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He bought a new Batman _____.",
+          "options": [
+            "comic",
+            "cosmic",
+            "atomic",
+            "chronic"
+          ],
+          "answer": "comic"
+        }
+      ]
+    },
+    {
+      "w": "anthology",
+      "g": "Anthologie, Sammlung",
+      "d": "A collection of poems, stories, or songs chosen by an editor",
+      "s": "The teacher gave us an _____ of short stories by different Irish authors.",
+      "a": [
+        "anthologies"
+      ],
+      "mc": [
+        "encyclopedia",
+        "collection",
+        "volume"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ANTHOLOGY?",
+          "options": [
+            "read",
+            "collection",
+            "poetry",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The teacher gave us an _____.",
+          "options": [
+            "anthology",
+            "apology",
+            "analogy",
+            "biology"
+          ],
+          "answer": "anthology"
+        }
+      ]
+    },
+    {
+      "w": "dictionary",
+      "g": "Wörterbuch",
+      "d": "A book that lists words alphabetically and gives their meanings",
+      "s": "If you don't know a word, look it up in the _____.",
+      "a": [
+        "dictionaries"
+      ],
+      "mc": [
+        "encyclopedia",
+        "thesaurus",
+        "glossary"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DICTIONARY?",
+          "options": [
+            "look up",
+            "online",
+            "word",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Look up the word in the _____.",
+          "options": [
+            "dictionary",
+            "missionary",
+            "visionary",
+            "stationary"
+          ],
+          "answer": "dictionary"
+        }
+      ]
+    },
+    {
+      "w": "novel",
+      "g": "Roman",
+      "d": "A long written story about imaginary people and events",
+      "s": "Her favourite _____ is 'The Great Gatsby' — she has read it three times.",
+      "a": [
+        "novels"
+      ],
+      "mc": [
+        "novella",
+        "biography",
+        "memoir"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NOVEL?",
+          "options": [
+            "read",
+            "famous",
+            "write",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Her favourite _____ is The Great Gatsby.",
+          "options": [
+            "novel",
+            "shovel",
+            "travel",
+            "gravel"
+          ],
+          "answer": "novel"
+        }
+      ]
+    },
+    {
+      "w": "biography",
+      "g": "Biografie",
+      "d": "The story of a person's life written by someone else",
+      "s": "I'm reading a _____ of Nelson Mandela — his life story is truly inspiring.",
+      "a": [
+        "biographies"
+      ],
+      "mc": [
+        "autobiography",
+        "memoir",
+        "diary"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BIOGRAPHY?",
+          "options": [
+            "read",
+            "write",
+            "inspiring",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I'm reading a _____ of Mandela.",
+          "options": [
+            "biography",
+            "geography",
+            "photography",
+            "bibliography"
+          ],
+          "answer": "biography"
+        }
+      ]
+    },
+    {
+      "w": "short story",
+      "g": "Kurzgeschichte",
+      "d": "A brief work of fiction that is shorter than a novel",
+      "s": "We had to write a _____ for homework — mine was about a boy who finds a magic stone.",
+      "a": [
+        "short stories"
+      ],
+      "mc": [
+        "fairy tale",
+        "novel",
+        "fable"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SHORT STORY?",
+          "options": [
+            "write",
+            "read",
+            "homework",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "We had to write a _____.",
+          "options": [
+            "short story",
+            "short film",
+            "short cut",
+            "short break"
+          ],
+          "answer": "short story"
+        }
+      ]
+    },
+    {
+      "w": "book review",
+      "g": "Buchrezension",
+      "d": "A written opinion about a text, saying whether it is good or not",
+      "s": "I read a _____ online and it made me want to buy the book immediately.",
+      "a": [
+        "book reviews"
+      ],
+      "mc": [
+        "book report",
+        "book cover",
+        "book summary"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BOOK REVIEW?",
+          "options": [
+            "write",
+            "read",
+            "positive",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I read a _____ online.",
+          "options": [
+            "book review",
+            "book report",
+            "book cover",
+            "book club"
+          ],
+          "answer": "book review"
+        }
+      ]
+    },
+    {
+      "w": "fence",
+      "g": "Zaun",
+      "d": "A barrier made of wood or wire around a garden or field",
+      "s": "The neighbours put up a new _____ between our gardens last weekend.",
+      "a": [
+        "fences"
+      ],
+      "mc": [
+        "hedge",
+        "wall",
+        "gate"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FENCE?",
+          "options": [
+            "wooden",
+            "garden",
+            "climb",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "They put up a new _____.",
+          "options": [
+            "fence",
+            "hence",
+            "dense",
+            "sense"
+          ],
+          "answer": "fence"
+        }
+      ]
+    },
+    {
+      "w": "innocent",
+      "g": "unschuldig",
+      "d": "Not guilty of a crime; or having little experience of the world",
+      "s": "The lawyer argued that his client was completely _____ and had done nothing wrong.",
+      "a": [],
+      "mc": [
+        "guilty",
+        "harmless",
+        "honest"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INNOCENT?",
+          "options": [
+            "completely",
+            "prove",
+            "look",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "The lawyer said his client was _____.",
+          "options": [
+            "innocent",
+            "permanent",
+            "dominant",
+            "elegant"
+          ],
+          "answer": "innocent"
+        }
+      ]
+    },
+    {
+      "w": "disappointment",
+      "g": "Enttäuschung",
+      "d": "A feeling of sadness because something did not happen as you hoped",
+      "s": "Not making the football team was a huge _____ for him.",
+      "a": [
+        "disappointments"
+      ],
+      "mc": [
+        "frustration",
+        "regret",
+        "embarrassment"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DISAPPOINTMENT?",
+          "options": [
+            "huge",
+            "big",
+            "great",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Not making the team was a _____.",
+          "options": [
+            "disappointment",
+            "appointment",
+            "department",
+            "entertainment"
+          ],
+          "answer": "disappointment"
+        }
+      ]
+    },
+    {
+      "w": "prefer",
+      "g": "bevorzugen",
+      "d": "To like one thing more than another",
+      "s": "Do you _____ tea or coffee in the morning?",
+      "a": [],
+      "mc": [
+        "choose",
+        "recommend",
+        "favour"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PREFER?",
+          "options": [
+            "strongly",
+            "always",
+            "much",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Do you _____ tea or coffee?",
+          "options": [
+            "prefer",
+            "refer",
+            "defer",
+            "confer"
+          ],
+          "answer": "prefer"
+        }
+      ]
+    },
+    {
+      "w": "blurb",
+      "g": "Werbetext auf Buchumschlag; Klappentext",
+      "d": "A short description on the back cover of a book that tells you what it is about",
+      "s": "The _____ on the back of the book sounded so exciting that I bought it straight away.",
+      "a": [
+        "blurbs"
+      ],
+      "mc": [
+        "foreword",
+        "caption",
+        "subtitle"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BLURB?",
+          "options": [
+            "read",
+            "back cover",
+            "interesting",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ sounded exciting.",
+          "options": [
+            "blurb",
+            "verb",
+            "herb",
+            "curb"
+          ],
+          "answer": "blurb"
+        }
+      ]
+    },
+    {
+      "w": "millionaire",
+      "g": "Millionär/in",
+      "d": "A person who has at least one million pounds, dollars, or euros",
+      "s": "He started a small company in his garage and became a _____ by the age of 30.",
+      "a": [
+        "millionaires"
+      ],
+      "mc": [
+        "billionaire",
+        "celebrity",
+        "tycoon"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MILLIONAIRE?",
+          "options": [
+            "become",
+            "rich",
+            "famous",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He became a _____ by age 30.",
+          "options": [
+            "millionaire",
+            "questionnaire",
+            "billionaire",
+            "solitaire"
+          ],
+          "answer": "millionaire"
+        }
+      ]
+    },
+    {
+      "w": "fairy",
+      "g": "Fee",
+      "d": "A small imaginary creature with wings and magical powers",
+      "s": "In the story, a tiny _____ with silver wings helped the lost children find their way home.",
+      "a": [
+        "fairies"
+      ],
+      "mc": [
+        "witch",
+        "elf",
+        "wizard"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FAIRY?",
+          "options": [
+            "tiny",
+            "wings",
+            "magical",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "A tiny _____ helped the children.",
+          "options": [
+            "fairy",
+            "dairy",
+            "wary",
+            "hairy"
+          ],
+          "answer": "fairy"
+        }
+      ]
+    },
+    {
+      "w": "historical novel",
+      "g": "historischer Roman",
+      "d": "A long fiction story set in a particular period of the past",
+      "s": "She loves reading about the past, so a _____ is the perfect gift for her.",
+      "a": [
+        "historical novels"
+      ],
+      "mc": [
+        "science fiction",
+        "fantasy novel",
+        "detective story"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HISTORICAL NOVEL?",
+          "options": [
+            "read",
+            "write",
+            "period",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She loves reading a _____.",
+          "options": [
+            "historical novel",
+            "detective story",
+            "science fiction",
+            "fantasy novel"
+          ],
+          "answer": "historical novel"
+        }
+      ]
+    },
+    {
+      "w": "reference",
+      "g": "Bezug; Hinweis",
+      "d": "A mention of or connection to something; also a source of information",
+      "s": "The film contains a clever _____ to an old fairy tale that most people know.",
+      "a": [
+        "references"
+      ],
+      "mc": [
+        "quotation",
+        "footnote",
+        "source"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REFERENCE?",
+          "options": [
+            "make",
+            "book",
+            "clever",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The film contains a _____ to a fairy tale.",
+          "options": [
+            "reference",
+            "conference",
+            "preference",
+            "difference"
+          ],
+          "answer": "reference"
+        }
+      ]
+    },
+    {
+      "w": "trilogy",
+      "g": "Trilogie",
+      "d": "A group of three books, films, or plays that are connected and tell one big story",
+      "s": "The Lord of the Rings is a famous _____ written by J.R.R. Tolkien.",
+      "a": [
+        "trilogies"
+      ],
+      "mc": [
+        "sequel",
+        "series",
+        "prequel"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TRILOGY?",
+          "options": [
+            "famous",
+            "write",
+            "part",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Lord of the Rings is a _____.",
+          "options": [
+            "trilogy",
+            "energy",
+            "strategy",
+            "allergy"
+          ],
+          "answer": "trilogy"
+        }
+      ]
+    },
+    {
+      "w": "answer the door",
+      "g": "an die Tür gehen, jdn hereinlassen",
+      "d": "To open up when someone knocks or rings the bell",
+      "s": "Someone was knocking loudly, so I went to _____.",
+      "cf": "answer it",
+      "a": [
+        "answer the door",
+        "answer it"
+      ],
+      "mc": [
+        "knock on the door",
+        "lock the door",
+        "open the window"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ANSWER THE DOOR?",
+          "options": [
+            "knock",
+            "ring",
+            "quickly",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Someone knocked, so I went to _____.",
+          "options": [
+            "answer the door",
+            "answer the phone",
+            "answer the question",
+            "answer the email"
+          ],
+          "answer": "answer the door"
+        }
+      ]
+    },
+    {
+      "w": "clear up",
+      "g": "aufräumen",
+      "d": "To tidy and clean a place by putting things away",
+      "s": "After the party, it took us two hours to _____ the whole house.",
+      "a": [],
+      "mc": [
+        "tidy up",
+        "clean out",
+        "wash up"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CLEAR UP?",
+          "options": [
+            "room",
+            "mess",
+            "quickly",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "After the party, we had to _____.",
+          "options": [
+            "clear up",
+            "clear out",
+            "clear off",
+            "clear away"
+          ],
+          "answer": "clear up"
+        }
+      ]
+    },
+    {
+      "w": "goggles",
+      "g": "Schwimmbrille; Schutzbrille",
+      "d": "Special glasses that protect your eyes from water, chemicals, or wind",
+      "s": "Don't forget your _____ — the chlorine in the pool will hurt your eyes.",
+      "a": [],
+      "mc": [
+        "glasses",
+        "sunglasses",
+        "binoculars"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GOGGLES?",
+          "options": [
+            "swimming",
+            "wear",
+            "safety",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Don't forget your _____.",
+          "options": [
+            "goggles",
+            "giggles",
+            "toggles",
+            "bottles"
+          ],
+          "answer": "goggles"
+        }
+      ]
+    },
+    {
+      "w": "kilt",
+      "g": "Kilt, Schottenrock",
+      "d": "A traditional Scottish skirt made of tartan cloth, usually worn by men",
+      "s": "When we visited Edinburgh, we saw a man playing bagpipes and wearing a _____.",
+      "a": [
+        "kilts"
+      ],
+      "mc": [
+        "skirt",
+        "tunic",
+        "robe"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with KILT?",
+          "options": [
+            "Scottish",
+            "wear",
+            "tartan",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The man was wearing a _____.",
+          "options": [
+            "kilt",
+            "built",
+            "guilt",
+            "quilt"
+          ],
+          "answer": "kilt"
+        }
+      ]
+    },
+    {
+      "w": "sort oneself out",
+      "g": "sich ordnen; zu sich (selbst) finden",
+      "d": "To organise your life or solve your problems",
+      "s": "His room was a mess, his homework was late, and he had no plan -- he really needed to _____.",
+      "cf": "sort himself out",
+      "a": [
+        "sort oneself out",
+        "sort yourself out",
+        "sort himself out"
+      ],
+      "mc": [
+        "calm oneself down",
+        "pull oneself together",
+        "help oneself"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SORT ONESELF OUT?",
+          "options": [
+            "need",
+            "really",
+            "life",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "He really needed to _____.",
+          "options": [
+            "sort himself out",
+            "sort it out",
+            "sort them out",
+            "sort things out"
+          ],
+          "answer": "sort himself out"
+        }
+      ]
+    },
+    {
+      "w": "spot of bother",
+      "g": "Problem; Ärger",
+      "d": "A small problem or a bit of trouble (informal British English)",
+      "s": "I'm in a bit of a _____ — I've lost my house key and nobody is home.",
+      "a": [],
+      "mc": [
+        "piece of cake",
+        "waste of time",
+        "matter of fact"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SPOT OF BOTHER?",
+          "options": [
+            "bit",
+            "little",
+            "small",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "I'm in a _____ — I've lost my key.",
+          "options": [
+            "spot of bother",
+            "spot of luck",
+            "spot of rain",
+            "spot of tea"
+          ],
+          "answer": "spot of bother"
+        }
+      ]
+    },
+    {
+      "w": "wee",
+      "g": "klein, winzig",
+      "d": "Very small; tiny (used in Scottish and Irish English)",
+      "s": "Look at that _____ kitten — it fits in the palm of your hand!",
+      "a": [],
+      "mc": [
+        "tiny",
+        "little",
+        "short"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WEE?",
+          "options": [
+            "very",
+            "tiny",
+            "little",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "Look at that _____ kitten!",
+          "options": [
+            "wee",
+            "free",
+            "tree",
+            "see"
+          ],
+          "answer": "wee"
+        }
+      ]
+    },
+    {
+      "w": "obey",
+      "g": "befolgen, gehorchen",
+      "d": "To do what someone tells you to do, or to follow a rule",
+      "s": "Everyone must _____ the rules, or the game won't be fair.",
+      "a": [],
+      "mc": [
+        "follow",
+        "respect",
+        "disobey"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with OBEY?",
+          "options": [
+            "rules",
+            "always",
+            "law",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Everyone must _____ the rules.",
+          "options": [
+            "obey",
+            "delay",
+            "relay",
+            "survey"
+          ],
+          "answer": "obey"
+        }
+      ]
+    },
+    {
+      "w": "scratch",
+      "g": "kratzen",
+      "d": "To rub your skin with your fingernails, often because it itches",
+      "s": "The mosquito bite was so itchy that I couldn't stop _____ it.",
+      "cf": "scratching",
+      "a": [
+        "scratch",
+        "scratched",
+        "scratching"
+      ],
+      "mc": [
+        "rub",
+        "itch",
+        "scrape"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SCRATCH?",
+          "options": [
+            "itch",
+            "skin",
+            "hard",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I couldn't stop _____ the bite.",
+          "options": [
+            "scratching",
+            "catching",
+            "matching",
+            "watching"
+          ],
+          "answer": "scratching"
+        }
+      ]
+    }
+  ]
+}

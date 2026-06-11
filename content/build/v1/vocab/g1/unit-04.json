@@ -1,0 +1,868 @@
+{
+  "slug": "unit-04",
+  "grade": 1,
+  "unit": 4,
+  "title": "Unit 4",
+  "entries": [
+    {
+      "w": "cold",
+      "g": "kalt",
+      "d": "not warm, low temperature",
+      "s": "Please close the window — it is very _____ today. My fingers are turning blue!",
+      "a": [],
+      "mc": [
+        "hot",
+        "warm",
+        "dry"
+      ]
+    },
+    {
+      "w": "angry",
+      "g": "wütend, böse",
+      "d": "feeling mad about something",
+      "s": "Mum is _____ because I broke her favourite cup. She is shouting at me.",
+      "a": [
+        "mad"
+      ],
+      "mc": [
+        "happy",
+        "glad",
+        "excited"
+      ]
+    },
+    {
+      "w": "scared",
+      "g": "ängstlich, verängstigt",
+      "d": "feeling afraid of something",
+      "s": "The little boy is _____ of the big loud dog. He is crying and hiding behind his mother.",
+      "a": [
+        "afraid"
+      ],
+      "mc": [
+        "brave",
+        "calm",
+        "angry"
+      ]
+    },
+    {
+      "w": "excited",
+      "g": "aufgeregt",
+      "d": "feeling very happy about something coming",
+      "s": "Tomorrow is Christmas morning! The children are so _____ they can't sleep.",
+      "a": [],
+      "mc": [
+        "bored",
+        "tired",
+        "sad"
+      ]
+    },
+    {
+      "w": "hot",
+      "g": "heiß",
+      "d": "very warm, high temperature",
+      "s": "In summer it is very _____ outside. The sun is burning and everyone is sweating.",
+      "a": [],
+      "mc": [
+        "cold",
+        "freezing",
+        "snowy"
+      ]
+    },
+    {
+      "w": "bored",
+      "g": "gelangweilt",
+      "d": "not interested, nothing to do",
+      "s": "There is nothing fun to do here. I am so _____ that I am just staring at the wall.",
+      "a": [],
+      "mc": [
+        "excited",
+        "busy",
+        "interested"
+      ]
+    },
+    {
+      "w": "sad",
+      "g": "traurig",
+      "d": "feeling unhappy",
+      "s": "Her pet cat is lost and she feels very _____. Tears are running down her face.",
+      "a": [
+        "unhappy"
+      ],
+      "mc": [
+        "happy",
+        "excited",
+        "proud"
+      ]
+    },
+    {
+      "w": "hungry",
+      "g": "hungrig",
+      "d": "wanting to eat food",
+      "s": "I did not have any breakfast this morning, and now my stomach is making loud noises. I am _____.",
+      "a": [],
+      "mc": [
+        "thirsty",
+        "full",
+        "sleepy"
+      ]
+    },
+    {
+      "w": "nervous",
+      "g": "nervös",
+      "d": "feeling worried before something happens",
+      "s": "He has a big maths test today and he is _____. His hands are shaking.",
+      "a": [],
+      "mc": [
+        "calm",
+        "excited",
+        "confident"
+      ]
+    },
+    {
+      "w": "tired",
+      "g": "müde",
+      "d": "wanting to sleep or rest",
+      "s": "It is very late at night and the baby is so _____ that her eyes are closing.",
+      "a": [],
+      "mc": [
+        "awake",
+        "hungry",
+        "bored"
+      ]
+    },
+    {
+      "w": "proud",
+      "g": "stolz",
+      "d": "feeling good about something you did",
+      "s": "She won first place in the race and her dad is very _____. He is telling everyone about it.",
+      "a": [],
+      "mc": [
+        "sad",
+        "ashamed",
+        "disappointed"
+      ]
+    },
+    {
+      "w": "morning",
+      "g": "Morgen",
+      "d": "the early part of the day",
+      "s": "I eat cereal and toast for breakfast every _____ before I go to school at 8 am.",
+      "a": [],
+      "mc": [
+        "evening",
+        "night",
+        "midnight"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ morning",
+          "options": [
+            "Good",
+            "Nice",
+            "Big",
+            "Fast"
+          ],
+          "answer": "Good"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MORNING?",
+          "options": [
+            "good",
+            "early",
+            "every",
+            "heavy"
+          ],
+          "answer": "heavy"
+        }
+      ]
+    },
+    {
+      "w": "lunchtime",
+      "g": "Mittagszeit",
+      "d": "the time when you eat lunch",
+      "s": "At _____, which is 12 o'clock, we go to the canteen and eat our sandwiches.",
+      "a": [
+        "lunch time"
+      ],
+      "mc": [
+        "midnight",
+        "bedtime",
+        "breakfast time"
+      ]
+    },
+    {
+      "w": "afternoon",
+      "g": "Nachmittag",
+      "d": "the time between lunch and evening",
+      "s": "School finishes at three o'clock in the _____, after the lunch break.",
+      "a": [],
+      "mc": [
+        "morning",
+        "evening",
+        "midnight"
+      ]
+    },
+    {
+      "w": "evening",
+      "g": "Abend",
+      "d": "the time after afternoon and before night",
+      "s": "We eat dinner together as a family at 7 o'clock in the _____ after work.",
+      "a": [],
+      "mc": [
+        "morning",
+        "noon",
+        "midnight"
+      ]
+    },
+    {
+      "w": "night",
+      "g": "Nacht",
+      "d": "the dark time when you sleep",
+      "s": "The stars come out and the sky is dark at _____ when everyone is sleeping.",
+      "a": [],
+      "mc": [
+        "morning",
+        "noon",
+        "afternoon"
+      ]
+    },
+    {
+      "w": "Monday",
+      "g": "Montag",
+      "d": "the first day of the week",
+      "s": "The weekend is over. Today is _____.",
+      "a": [],
+      "mc": [
+        "Tuesday",
+        "Sunday",
+        "Wednesday"
+      ]
+    },
+    {
+      "w": "Tuesday",
+      "g": "Dienstag",
+      "d": "the second day of the week",
+      "s": "Yesterday was Monday, so today is _____.",
+      "a": [],
+      "mc": [
+        "Monday",
+        "Wednesday",
+        "Thursday"
+      ]
+    },
+    {
+      "w": "Wednesday",
+      "g": "Mittwoch",
+      "d": "the third day of the week",
+      "s": "It is the middle of the week. Today is _____.",
+      "a": [],
+      "mc": [
+        "Tuesday",
+        "Thursday",
+        "Friday"
+      ]
+    },
+    {
+      "w": "Thursday",
+      "g": "Donnerstag",
+      "d": "the fourth day of the week",
+      "s": "Tomorrow is Friday, so today is _____.",
+      "a": [],
+      "mc": [
+        "Wednesday",
+        "Friday",
+        "Tuesday"
+      ]
+    },
+    {
+      "w": "Friday",
+      "g": "Freitag",
+      "d": "the fifth day of the week",
+      "s": "Tomorrow is Saturday! Today is _____.",
+      "a": [],
+      "mc": [
+        "Thursday",
+        "Saturday",
+        "Wednesday"
+      ]
+    },
+    {
+      "w": "Saturday",
+      "g": "Samstag",
+      "d": "the sixth day, first weekend day",
+      "s": "There is no school today because it is _____.",
+      "a": [],
+      "mc": [
+        "Sunday",
+        "Friday",
+        "Monday"
+      ]
+    },
+    {
+      "w": "Sunday",
+      "g": "Sonntag",
+      "d": "the seventh day of the week",
+      "s": "We always visit grandma on _____.",
+      "a": [],
+      "mc": [
+        "Saturday",
+        "Monday",
+        "Friday"
+      ]
+    },
+    {
+      "w": "after",
+      "g": "nach",
+      "d": "later than, next in time",
+      "s": "We always play football _____ school.",
+      "a": [],
+      "mc": [
+        "before",
+        "during",
+        "until"
+      ]
+    },
+    {
+      "w": "day",
+      "g": "Tag",
+      "d": "a time of 24 hours",
+      "s": "What _____ is it today? It is Monday.",
+      "a": [],
+      "mc": [
+        "night",
+        "week",
+        "hour"
+      ]
+    },
+    {
+      "w": "end",
+      "g": "Ende",
+      "d": "the last part of something",
+      "s": "At the _____ of the film, the credits start rolling and everyone claps.",
+      "a": [],
+      "mc": [
+        "beginning",
+        "middle",
+        "opening"
+      ]
+    },
+    {
+      "w": "fun",
+      "g": "Spaß",
+      "d": "something you enjoy doing",
+      "s": "Playing board games with my friends on a rainy day is great _____ for all of us.",
+      "a": [],
+      "mc": [
+        "work",
+        "trouble",
+        "homework"
+      ]
+    },
+    {
+      "w": "Go away!",
+      "g": "Geh weg!",
+      "d": "telling someone to leave",
+      "s": "I don't want to talk to you right now. _____ and leave me alone!",
+      "cf": "Go away!",
+      "a": [],
+      "mc": [
+        "Come here!",
+        "Come closer!",
+        "Stand up!"
+      ]
+    },
+    {
+      "w": "to happen",
+      "g": "passieren, geschehen",
+      "d": "to take place",
+      "s": "What is _____ over there in the corner? I can hear shouting and people running.",
+      "cf": "happening",
+      "a": [
+        "happening"
+      ],
+      "mc": [
+        "to rest",
+        "to sleep",
+        "to stop"
+      ]
+    },
+    {
+      "w": "show",
+      "g": "Show, Vorführung",
+      "d": "a performance for people to watch",
+      "s": "We are going to watch a live _____ at the theatre with music, dancing, and actors.",
+      "a": [],
+      "mc": [
+        "book",
+        "game",
+        "homework"
+      ]
+    },
+    {
+      "w": "a day in the life of",
+      "g": "ein Tag im Leben von",
+      "d": "one typical day of a person",
+      "s": "This short story is about _____ a farmer who works from sunrise to sunset.",
+      "cf": "a day in the life of",
+      "a": [],
+      "mc": [
+        "a minute in the life of",
+        "a moment in the life of",
+        "a dream of"
+      ]
+    },
+    {
+      "w": "to be asleep",
+      "g": "schlafen",
+      "d": "to be sleeping",
+      "s": "Be very quiet! The baby is _____ in her cot, with her eyes closed.",
+      "cf": "asleep",
+      "a": [
+        "sleeping"
+      ],
+      "mc": [
+        "to be awake",
+        "to be running",
+        "to be eating"
+      ]
+    },
+    {
+      "w": "early",
+      "g": "früh",
+      "d": "near the start of the day",
+      "s": "Dad gets up at 5am, very _____. It is still dark outside and everyone else is asleep.",
+      "a": [],
+      "mc": [
+        "late",
+        "noon",
+        "afternoon"
+      ]
+    },
+    {
+      "w": "life",
+      "g": "Leben",
+      "d": "the time when you are alive",
+      "s": "My grandma tells long stories about her childhood and her whole _____ in the village 80 years ago.",
+      "a": [],
+      "mc": [
+        "day",
+        "minute",
+        "second"
+      ]
+    },
+    {
+      "w": "still",
+      "g": "noch immer",
+      "d": "even now, continuing",
+      "s": "It is ten o'clock in the morning and he is _____ in bed sleeping. He is so lazy!",
+      "a": [],
+      "mc": [
+        "already",
+        "never",
+        "sometimes"
+      ]
+    },
+    {
+      "w": "story",
+      "g": "Geschichte",
+      "d": "something you read or someone tells you",
+      "s": "Mum reads me a bedtime _____ with princes and dragons before I go to sleep.",
+      "a": [],
+      "mc": [
+        "song",
+        "recipe",
+        "menu"
+      ]
+    },
+    {
+      "w": "today",
+      "g": "heute",
+      "d": "this day, now",
+      "s": "_____ is my tenth birthday! I am going to have a party later.",
+      "a": [],
+      "mc": [
+        "yesterday",
+        "last week",
+        "next year"
+      ]
+    },
+    {
+      "w": "Are you OK?",
+      "g": "Geht's dir/euch/Ihnen gut?",
+      "d": "asking if someone is fine",
+      "s": "You look very sad and your eyes are red. _____ Please tell me what is wrong.",
+      "cf": "Are you OK?",
+      "a": [],
+      "mc": [
+        "Goodbye!",
+        "See you later!",
+        "Well done!"
+      ]
+    },
+    {
+      "w": "homework",
+      "g": "Hausaufgaben",
+      "d": "school work you do at home",
+      "s": "I must do my maths _____ assigned by the teacher before I can play outside.",
+      "a": [],
+      "mc": [
+        "sleeping",
+        "shopping",
+        "cooking"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ homework",
+          "options": [
+            "Do",
+            "Make",
+            "Cook",
+            "Wash"
+          ],
+          "answer": "Do"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HOMEWORK?",
+          "options": [
+            "do",
+            "finish",
+            "difficult",
+            "fry"
+          ],
+          "answer": "fry"
+        }
+      ]
+    },
+    {
+      "w": "into",
+      "g": "in (… hinein)",
+      "d": "going inside something",
+      "s": "The curious cat jumped _____ the big cardboard box and hid inside.",
+      "a": [],
+      "mc": [
+        "out of",
+        "under",
+        "away from"
+      ]
+    },
+    {
+      "w": "Oh dear!",
+      "g": "Du meine Güte!",
+      "d": "you say this when something is wrong",
+      "s": "_____ I forgot my expensive school bag on the bus this morning and now it is lost!",
+      "cf": "Oh dear!",
+      "a": [],
+      "mc": [
+        "Hooray!",
+        "Yippee!",
+        "Great news!"
+      ]
+    },
+    {
+      "w": "room",
+      "g": "Raum; Zimmer",
+      "d": "a part of a house or building",
+      "s": "My little sister and I share a small bedroom _____ with two beds and one wardrobe.",
+      "a": [],
+      "mc": [
+        "bed",
+        "chair",
+        "shelf"
+      ]
+    },
+    {
+      "w": "bad",
+      "g": "schlecht, böse",
+      "d": "not good",
+      "s": "The weather is very _____ today. It is raining hard and the wind is blowing.",
+      "a": [],
+      "mc": [
+        "good",
+        "nice",
+        "lovely"
+      ]
+    },
+    {
+      "w": "Don't be late.",
+      "g": "Komm(t) nicht zu spät., Sei(d) pünktlich.",
+      "d": "telling someone to come on time",
+      "s": "The school bus leaves at exactly eight o'clock. _____ Or you will miss it!",
+      "cf": "Don't be late.",
+      "a": [
+        "Don't be late"
+      ],
+      "mc": [
+        "Don't hurry.",
+        "Don't worry.",
+        "Don't rush."
+      ]
+    },
+    {
+      "w": "tomorrow",
+      "g": "morgen",
+      "d": "the day after today",
+      "s": "Today is Monday, so _____ — the day after — is Tuesday.",
+      "a": [],
+      "mc": [
+        "yesterday",
+        "last week",
+        "two days ago"
+      ]
+    },
+    {
+      "w": "birthday",
+      "g": "Geburtstag",
+      "d": "the day you were born, celebrated yearly",
+      "s": "I get lots of presents and a chocolate cake with candles on my _____ every year.",
+      "a": [],
+      "mc": [
+        "homework",
+        "test",
+        "lesson"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ birthday!",
+          "options": [
+            "Happy",
+            "Strong",
+            "Fast",
+            "Heavy"
+          ],
+          "answer": "Happy"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BIRTHDAY?",
+          "options": [
+            "happy",
+            "party",
+            "cake",
+            "homework"
+          ],
+          "answer": "homework"
+        }
+      ]
+    },
+    {
+      "w": "friend",
+      "g": "Freund/Freundin",
+      "d": "a person you like and play with",
+      "s": "Tom is my best _____. We do homework together and play at each other's houses.",
+      "a": [],
+      "mc": [
+        "teacher",
+        "parent",
+        "baby"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ friend",
+          "options": [
+            "Best",
+            "Tall",
+            "Red",
+            "Heavy"
+          ],
+          "answer": "Best"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FRIEND?",
+          "options": [
+            "best",
+            "good",
+            "new",
+            "boiled"
+          ],
+          "answer": "boiled"
+        }
+      ]
+    },
+    {
+      "w": "Be yourself.",
+      "g": "Sei du selbst.",
+      "d": "act how you really are",
+      "s": "Don't try to copy someone else at the party. _____ People will like the real you.",
+      "cf": "Be yourself.",
+      "a": [
+        "Be yourself"
+      ],
+      "mc": [
+        "Be quiet.",
+        "Be fast.",
+        "Be still."
+      ]
+    },
+    {
+      "w": "no one else",
+      "g": "niemand anders",
+      "d": "not any other person",
+      "s": "Be yourself and be sure that _____ can be a better you than you can.",
+      "cf": "no one else",
+      "a": [],
+      "mc": [
+        "everyone",
+        "anyone",
+        "someone"
+      ]
+    },
+    {
+      "w": "bottle",
+      "g": "Flasche",
+      "d": "a container for drinks",
+      "s": "Can I have a plastic _____ of cold water, please? I am very thirsty.",
+      "a": [],
+      "mc": [
+        "plate",
+        "bowl",
+        "spoon"
+      ]
+    },
+    {
+      "w": "to get back",
+      "g": "zurückholen, zurückbekommen",
+      "d": "to have something returned to you",
+      "s": "I lent Anna my favourite book last week. I want to _____ it from her today.",
+      "cf": "get back",
+      "a": [],
+      "mc": [
+        "to throw away",
+        "to lose",
+        "to give away"
+      ]
+    },
+    {
+      "w": "mad",
+      "g": "wütend, zornig",
+      "d": "feeling very angry",
+      "s": "Dad is very _____ because my football broke his favourite window. He is shouting at me.",
+      "a": [
+        "angry"
+      ],
+      "mc": [
+        "happy",
+        "proud",
+        "glad"
+      ]
+    },
+    {
+      "w": "magic",
+      "g": "magisch, Zauber-",
+      "d": "having special, impossible powers",
+      "s": "The wizard's _____ wand can make things disappear and reappear in a puff of smoke.",
+      "a": [
+        "magical"
+      ],
+      "mc": [
+        "broken",
+        "normal",
+        "real"
+      ]
+    },
+    {
+      "w": "to break",
+      "g": "(zer-)brechen",
+      "d": "to make something go into pieces",
+      "s": "Be careful with that glass cup! Don't drop it and _____ it into pieces.",
+      "cf": "break",
+      "a": [],
+      "mc": [
+        "to hold",
+        "to clean",
+        "to keep"
+      ]
+    },
+    {
+      "w": "to go to sleep",
+      "g": "schlafen gehen",
+      "d": "to close your eyes and rest at night",
+      "s": "It is past bedtime and you have school tomorrow. You must _____ right now in your bed.",
+      "cf": "go to sleep",
+      "a": [],
+      "mc": [
+        "to wake up",
+        "to get up",
+        "to run around"
+      ]
+    },
+    {
+      "w": "because",
+      "g": "weil",
+      "d": "for the reason that",
+      "s": "I am very happy today _____ it is the start of the weekend and I have no school.",
+      "a": [],
+      "mc": [
+        "but",
+        "although",
+        "however"
+      ]
+    },
+    {
+      "w": "It's me.",
+      "g": "Ich bin's.",
+      "d": "saying who you are",
+      "s": "Who is knocking at the door? — _____ Open the door, it's Anna from next door!",
+      "cf": "It's me.",
+      "a": [
+        "It's me"
+      ],
+      "mc": [
+        "It's a stranger.",
+        "Nobody is here.",
+        "I don't know."
+      ]
+    },
+    {
+      "w": "Try it!",
+      "g": "Versuch es!",
+      "d": "telling someone to do something new",
+      "s": "This chocolate birthday cake is delicious — the best I've ever eaten. _____ You'll love it!",
+      "cf": "Try it!",
+      "a": [
+        "Try it"
+      ],
+      "mc": [
+        "Don't eat it!",
+        "Throw it away!",
+        "Leave it alone!"
+      ]
+    },
+    {
+      "w": "Let go!",
+      "g": "Lass(t) los!",
+      "d": "telling someone to stop holding",
+      "s": "You are holding my arm too tight and it hurts! _____ Stop pulling me!",
+      "cf": "Let go!",
+      "a": [
+        "Let go"
+      ],
+      "mc": [
+        "Hold on!",
+        "Hold tight!",
+        "Grab it!"
+      ]
+    },
+    {
+      "w": "What's happening?",
+      "g": "Was ist (hier) los?",
+      "d": "asking what is going on",
+      "s": "I can hear a loud noise and shouting from upstairs. _____ Is everything OK?",
+      "cf": "What's happening?",
+      "a": [
+        "What is happening?"
+      ],
+      "mc": [
+        "Who is there?",
+        "Where am I?",
+        "When is it?"
+      ]
+    }
+  ]
+}

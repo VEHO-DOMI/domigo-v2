@@ -1,0 +1,462 @@
+{
+  "schema": "v1-lock@1",
+  "base": "/Users/okivehab/Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/Claude/Cowork Space/Claude Code/domigo",
+  "sources": [
+    {
+      "relPath": "data/vocab/1/unit-01.json",
+      "sha256": "e2247c2a69d31a6663da9a46a2f9a37036b238a387506f6a22575fd3d065d9b8",
+      "bytes": 21136,
+      "mtime": "2026-06-06T15:52:48.068Z",
+      "grade": 1,
+      "unit": 1
+    },
+    {
+      "relPath": "data/vocab/1/unit-02.json",
+      "sha256": "c630ccc1a645686f6e7eff44d3ed35d7ec249f693a1af25aff8721a9b4864e7b",
+      "bytes": 13555,
+      "mtime": "2026-06-06T15:52:48.069Z",
+      "grade": 1,
+      "unit": 2
+    },
+    {
+      "relPath": "data/vocab/1/unit-03.json",
+      "sha256": "fef86f49713bba78f57e3bd4b4e3e5b6ad9611282424556ba3fb3d4234825264",
+      "bytes": 11764,
+      "mtime": "2026-06-06T15:52:48.070Z",
+      "grade": 1,
+      "unit": 3
+    },
+    {
+      "relPath": "data/vocab/1/unit-04.json",
+      "sha256": "934fd269cb6459229d87ff4ab5f09b02bb7f14ecbf2e9a6c24395695e7c27933",
+      "bytes": 19852,
+      "mtime": "2026-06-06T15:52:48.071Z",
+      "grade": 1,
+      "unit": 4
+    },
+    {
+      "relPath": "data/vocab/1/unit-05.json",
+      "sha256": "c619114a47b52dd77ddbc47f196b5742ea5a83dfbef90d32afdf5f1e2da5c284",
+      "bytes": 14659,
+      "mtime": "2026-06-06T15:52:48.071Z",
+      "grade": 1,
+      "unit": 5
+    },
+    {
+      "relPath": "data/vocab/1/unit-06.json",
+      "sha256": "0b9974180d2d12510496adfdf6955d96075e4226fb23b96330c6a3d1cff67402",
+      "bytes": 16379,
+      "mtime": "2026-06-06T15:52:48.071Z",
+      "grade": 1,
+      "unit": 6
+    },
+    {
+      "relPath": "data/vocab/1/unit-07.json",
+      "sha256": "68392691d0a90d0dc8930821fe220bb36001ea62734ba8c2f67b98e517bd64fb",
+      "bytes": 24052,
+      "mtime": "2026-06-06T15:52:48.072Z",
+      "grade": 1,
+      "unit": 7
+    },
+    {
+      "relPath": "data/vocab/1/unit-08.json",
+      "sha256": "ffa96ef7eb26d68665e0a58d7893bba9422571ea513a040572d55ad71f7f0c52",
+      "bytes": 10453,
+      "mtime": "2026-06-06T15:52:48.073Z",
+      "grade": 1,
+      "unit": 8
+    },
+    {
+      "relPath": "data/vocab/1/unit-09.json",
+      "sha256": "216f115d3c76a970e272647b38e4e8d12ec77cfff03d6e5aba17f382fb5fb2e8",
+      "bytes": 16510,
+      "mtime": "2026-06-06T15:52:48.073Z",
+      "grade": 1,
+      "unit": 9
+    },
+    {
+      "relPath": "data/vocab/1/unit-10.json",
+      "sha256": "5f00ed392e241c6a735f78e070930dcf38c3a49d2d2a2f503ade5e4345dace8d",
+      "bytes": 13382,
+      "mtime": "2026-06-06T15:52:48.074Z",
+      "grade": 1,
+      "unit": 10
+    },
+    {
+      "relPath": "data/vocab/1/unit-11.json",
+      "sha256": "232991ad8e527c4343ad28637fbfe6c1175e49b3cb2e18449ddeda945bde35d7",
+      "bytes": 21094,
+      "mtime": "2026-06-06T15:52:48.075Z",
+      "grade": 1,
+      "unit": 11
+    },
+    {
+      "relPath": "data/vocab/1/unit-12.json",
+      "sha256": "1d4739c3f7e88926ea10e2cdcf130ab4d79bd6571ae71f4f85495a186a23ca15",
+      "bytes": 20867,
+      "mtime": "2026-06-06T15:52:48.076Z",
+      "grade": 1,
+      "unit": 12
+    },
+    {
+      "relPath": "data/vocab/1/unit-13.json",
+      "sha256": "3ab03c943b829dda5228661ab53a7d7a22f5fff61a7e9773bb1d48d53fcbc3f1",
+      "bytes": 17372,
+      "mtime": "2026-06-06T15:52:48.077Z",
+      "grade": 1,
+      "unit": 13
+    },
+    {
+      "relPath": "data/vocab/1/unit-14.json",
+      "sha256": "b86d8622b25ad27bd2bb0872b034807905d62176dcbd12b359dbbc722f0410c2",
+      "bytes": 17841,
+      "mtime": "2026-06-06T15:52:48.077Z",
+      "grade": 1,
+      "unit": 14
+    },
+    {
+      "relPath": "data/vocab/1/unit-15.json",
+      "sha256": "1ab6b4cc5f7ac24ea98af3e7aa91ee2dabfb91f77b29ec1b95796be1c308fff7",
+      "bytes": 7823,
+      "mtime": "2026-06-06T15:52:48.078Z",
+      "grade": 1,
+      "unit": 15
+    },
+    {
+      "relPath": "data/vocab/2/unit-01.json",
+      "sha256": "9306c65d4fbc9938b2a7620532ae61cab34e2bbdaa3df62749336b8602dcb942",
+      "bytes": 18709,
+      "mtime": "2026-06-06T15:52:48.109Z",
+      "grade": 2,
+      "unit": 1
+    },
+    {
+      "relPath": "data/vocab/2/unit-02.json",
+      "sha256": "15f2dfc4467248afd46b920bf039ec99a73e87387a1908424785d4b4afc3d659",
+      "bytes": 13570,
+      "mtime": "2026-06-06T15:52:48.110Z",
+      "grade": 2,
+      "unit": 2
+    },
+    {
+      "relPath": "data/vocab/2/unit-03.json",
+      "sha256": "a2be7910d8114c269ae8feccbbd3eb0e2183268c2277ffb9a1b082812382f537",
+      "bytes": 11342,
+      "mtime": "2026-06-06T15:52:48.110Z",
+      "grade": 2,
+      "unit": 3
+    },
+    {
+      "relPath": "data/vocab/2/unit-04.json",
+      "sha256": "c5444f0b996c16d7949d831f7470ae45bbc3996f262583c8bf59f4fec727e7fb",
+      "bytes": 17872,
+      "mtime": "2026-06-06T15:52:48.111Z",
+      "grade": 2,
+      "unit": 4
+    },
+    {
+      "relPath": "data/vocab/2/unit-05.json",
+      "sha256": "f0bf9e57d3089f04212865ba7b8dfb7c80337f5295a489ba2e8129ddc4a8f165",
+      "bytes": 17286,
+      "mtime": "2026-06-06T15:52:48.112Z",
+      "grade": 2,
+      "unit": 5
+    },
+    {
+      "relPath": "data/vocab/2/unit-06.json",
+      "sha256": "a882c1c4fc7a00b5583b96b3e4ded189212ab1b43fb2e51010bc23b6c3aec3a9",
+      "bytes": 16932,
+      "mtime": "2026-06-06T15:52:48.112Z",
+      "grade": 2,
+      "unit": 6
+    },
+    {
+      "relPath": "data/vocab/2/unit-07.json",
+      "sha256": "a28f1e4e2c8165ea4202f130605ce78910fa872349ac076dc8d7edd29c38f600",
+      "bytes": 14271,
+      "mtime": "2026-06-06T15:52:48.113Z",
+      "grade": 2,
+      "unit": 7
+    },
+    {
+      "relPath": "data/vocab/2/unit-08.json",
+      "sha256": "f93885f7e0f12e3be9c0b861e95217b0ed5b1347da1df6c55ebe5ba25385f163",
+      "bytes": 11055,
+      "mtime": "2026-06-06T15:52:48.114Z",
+      "grade": 2,
+      "unit": 8
+    },
+    {
+      "relPath": "data/vocab/2/unit-09.json",
+      "sha256": "90b40f6b08874a8d6f599e3794d1785043901decb9624ccf05d6982877509523",
+      "bytes": 20208,
+      "mtime": "2026-06-06T15:52:48.115Z",
+      "grade": 2,
+      "unit": 9
+    },
+    {
+      "relPath": "data/vocab/2/unit-10.json",
+      "sha256": "2447f7c124dfd9fffda83f6d12cf70229996ffa14f6922c331acc8e937ae4b87",
+      "bytes": 7639,
+      "mtime": "2026-06-06T15:52:48.115Z",
+      "grade": 2,
+      "unit": 10
+    },
+    {
+      "relPath": "data/vocab/2/unit-11.json",
+      "sha256": "6daad744dd5b45bd124edfb6902ea9b893e898087414041f9cced5acaeadf111",
+      "bytes": 16711,
+      "mtime": "2026-06-06T15:52:48.116Z",
+      "grade": 2,
+      "unit": 11
+    },
+    {
+      "relPath": "data/vocab/2/unit-12.json",
+      "sha256": "6907eaa6ea5a3a9cea2bfce963ed088bc48673daa63ed7dd6abd15392d56d110",
+      "bytes": 11797,
+      "mtime": "2026-06-06T15:52:48.117Z",
+      "grade": 2,
+      "unit": 12
+    },
+    {
+      "relPath": "data/vocab/2/unit-13.json",
+      "sha256": "bf6cd8c07f36f51ebf03b70564b3deae496f2a107a3a58f493f23f2c000415b2",
+      "bytes": 18550,
+      "mtime": "2026-06-06T15:52:48.117Z",
+      "grade": 2,
+      "unit": 13
+    },
+    {
+      "relPath": "data/vocab/2/unit-14.json",
+      "sha256": "984477f01aa16b85a7bec23cb0854d6852f32b6df656858e785fecc5ad4c8fdb",
+      "bytes": 12893,
+      "mtime": "2026-06-06T15:52:48.117Z",
+      "grade": 2,
+      "unit": 14
+    },
+    {
+      "relPath": "data/vocab/2/unit-15.json",
+      "sha256": "31251285b2cbfd47c7b4562c9e8af20038d20790fd46bb3e58b13e27199d6361",
+      "bytes": 9975,
+      "mtime": "2026-06-06T15:52:48.118Z",
+      "grade": 2,
+      "unit": 15
+    },
+    {
+      "relPath": "data/vocab/3/unit-01.json",
+      "sha256": "a855225c7682a8d1684bc50ff7d74905ddcd7024ee6f3a6d9e8cccfb3e2a9ff2",
+      "bytes": 16459,
+      "mtime": "2026-06-06T15:52:48.172Z",
+      "grade": 3,
+      "unit": 1
+    },
+    {
+      "relPath": "data/vocab/3/unit-02.json",
+      "sha256": "3d27e7e5667a30ee180dcec73b22673162673597b6b397505f7f31668af48c9d",
+      "bytes": 18110,
+      "mtime": "2026-06-06T15:52:48.173Z",
+      "grade": 3,
+      "unit": 2
+    },
+    {
+      "relPath": "data/vocab/3/unit-03.json",
+      "sha256": "728f3e8a7576ef45212c788792ec61df9754c305db153ac32d333ad6aa4da32c",
+      "bytes": 23951,
+      "mtime": "2026-06-06T15:52:48.173Z",
+      "grade": 3,
+      "unit": 3
+    },
+    {
+      "relPath": "data/vocab/3/unit-04.json",
+      "sha256": "dcca69e03642801abcbd2088c34b35a7c188f254e637dacbdd71d789417782e0",
+      "bytes": 19305,
+      "mtime": "2026-06-06T15:52:48.173Z",
+      "grade": 3,
+      "unit": 4
+    },
+    {
+      "relPath": "data/vocab/3/unit-05.json",
+      "sha256": "4417626b867d316b7b9082985e9964e51796ed977742191bae3bc1d4c6792fbf",
+      "bytes": 15948,
+      "mtime": "2026-06-06T15:52:48.174Z",
+      "grade": 3,
+      "unit": 5
+    },
+    {
+      "relPath": "data/vocab/3/unit-06.json",
+      "sha256": "69dba0bcb44a94f072b2dbee5c052a8394b391c9c99faafdfcb4ef4ac03623ef",
+      "bytes": 19154,
+      "mtime": "2026-06-06T15:52:48.174Z",
+      "grade": 3,
+      "unit": 6
+    },
+    {
+      "relPath": "data/vocab/3/unit-07.json",
+      "sha256": "9cdd8deae82b4403a3c857448d0c32180491b5939db8ccdb1353dcbf029d0c2d",
+      "bytes": 14807,
+      "mtime": "2026-06-06T15:52:48.175Z",
+      "grade": 3,
+      "unit": 7
+    },
+    {
+      "relPath": "data/vocab/3/unit-08.json",
+      "sha256": "9ea265cbaf58385f760611f96a2a4ff82b323789c82e6cd30874af59a4aa9765",
+      "bytes": 20415,
+      "mtime": "2026-06-06T15:52:48.175Z",
+      "grade": 3,
+      "unit": 8
+    },
+    {
+      "relPath": "data/vocab/3/unit-09.json",
+      "sha256": "05428790466d5b0638fab53fd811646f90d8491ce0437ccf0370b1a6f7fe9581",
+      "bytes": 18030,
+      "mtime": "2026-06-06T15:52:48.176Z",
+      "grade": 3,
+      "unit": 9
+    },
+    {
+      "relPath": "data/vocab/3/unit-10.json",
+      "sha256": "d3cc681ac4700bd09158a16e848ec0261fcc6befea27aa794ca4718ff0d22eb2",
+      "bytes": 25053,
+      "mtime": "2026-06-06T15:52:48.177Z",
+      "grade": 3,
+      "unit": 10
+    },
+    {
+      "relPath": "data/vocab/3/unit-11.json",
+      "sha256": "1aca683bd2b5349c795766edfd64c02a50cf014f3362d7a5df8dc4c6e0347c98",
+      "bytes": 14658,
+      "mtime": "2026-06-06T15:52:48.178Z",
+      "grade": 3,
+      "unit": 11
+    },
+    {
+      "relPath": "data/vocab/3/unit-12.json",
+      "sha256": "84055edf33acd86c6eb4b6e8f3a805420d06459e873a2e3815aceb647b03ee68",
+      "bytes": 21521,
+      "mtime": "2026-06-06T15:52:48.179Z",
+      "grade": 3,
+      "unit": 12
+    },
+    {
+      "relPath": "data/vocab/3/unit-13.json",
+      "sha256": "c42995e7496e9117f413979f2148ebc1654683b166000a0a639d2aaca61449af",
+      "bytes": 14858,
+      "mtime": "2026-06-06T15:52:48.180Z",
+      "grade": 3,
+      "unit": 13
+    },
+    {
+      "relPath": "data/vocab/3/unit-14.json",
+      "sha256": "accd083849062b83b30e6c46e960bb529b580f58d0891b77c1973810f18193a3",
+      "bytes": 15916,
+      "mtime": "2026-06-06T15:52:48.180Z",
+      "grade": 3,
+      "unit": 14
+    },
+    {
+      "relPath": "data/vocab/4/unit-01.json",
+      "sha256": "10273f2be66b9295661181fc50c959b9ae8ae857d169be81c547e19714b56f6f",
+      "bytes": 31425,
+      "mtime": "2026-06-06T15:52:48.209Z",
+      "grade": 4,
+      "unit": 1
+    },
+    {
+      "relPath": "data/vocab/4/unit-02.json",
+      "sha256": "a50cde34f964aa5efdb59c1cf3cee96978e318ab62ffea836558a4b585e6711c",
+      "bytes": 40677,
+      "mtime": "2026-06-06T15:52:48.209Z",
+      "grade": 4,
+      "unit": 2
+    },
+    {
+      "relPath": "data/vocab/4/unit-03.json",
+      "sha256": "e504845864a791c05cf17ed95e2cef3bd0f7726394604e836c26cc35d7463ff6",
+      "bytes": 29150,
+      "mtime": "2026-06-06T15:52:48.210Z",
+      "grade": 4,
+      "unit": 3
+    },
+    {
+      "relPath": "data/vocab/4/unit-04.json",
+      "sha256": "f61b46b6b3ad98a8f9be30677fa8bd98fb82e8fabd9bc2cf4dce4473057eb85a",
+      "bytes": 38296,
+      "mtime": "2026-06-06T15:52:48.211Z",
+      "grade": 4,
+      "unit": 4
+    },
+    {
+      "relPath": "data/vocab/4/unit-05.json",
+      "sha256": "261b632b09d6989c794b77b94595361347da90f370f9adc000f62bf5d39017b3",
+      "bytes": 29495,
+      "mtime": "2026-06-06T15:52:48.212Z",
+      "grade": 4,
+      "unit": 5
+    },
+    {
+      "relPath": "data/vocab/4/unit-06.json",
+      "sha256": "0603aefda2e243525465e47d98a5f22594cafa8d8e85c00808ff1613d80adf84",
+      "bytes": 16387,
+      "mtime": "2026-06-06T15:52:48.212Z",
+      "grade": 4,
+      "unit": 6
+    },
+    {
+      "relPath": "data/vocab/4/unit-07.json",
+      "sha256": "71ea6cf5df0ab1232e85b8d60d7448c7286f30bafeb9d6d3d26f3a9515966642",
+      "bytes": 26701,
+      "mtime": "2026-06-06T15:52:48.213Z",
+      "grade": 4,
+      "unit": 7
+    },
+    {
+      "relPath": "data/vocab/4/unit-08.json",
+      "sha256": "0d3fc27a32dce15c7a57d8fc64f0380b45f057afa985d1b811ef7dee6329be98",
+      "bytes": 27517,
+      "mtime": "2026-06-06T15:52:48.214Z",
+      "grade": 4,
+      "unit": 8
+    },
+    {
+      "relPath": "data/vocab/4/unit-09.json",
+      "sha256": "de10e47c1cc7f8778a61d9c8c7a5433c159fe4a200ad27715edc4e42338fee4d",
+      "bytes": 37685,
+      "mtime": "2026-06-06T15:52:48.214Z",
+      "grade": 4,
+      "unit": 9
+    },
+    {
+      "relPath": "data/vocab/4/unit-10.json",
+      "sha256": "1e8f539547e38a12aa988c3d2efecae6813396eb3f0bfd9f19fa3d1990a30ad8",
+      "bytes": 32970,
+      "mtime": "2026-06-06T15:52:48.216Z",
+      "grade": 4,
+      "unit": 10
+    },
+    {
+      "relPath": "data/vocab/4/unit-11.json",
+      "sha256": "8b653fb8b39bf672114ac308990502ab5c9c23d5fc57c73d9688d19594e8e4b5",
+      "bytes": 25958,
+      "mtime": "2026-06-06T15:52:48.217Z",
+      "grade": 4,
+      "unit": 11
+    },
+    {
+      "relPath": "data/vocab/4/unit-12.json",
+      "sha256": "22c95c0a2a54e7b2bebf15de83df9de37cb3ab7211d4f41f3b9895369bfc58c8",
+      "bytes": 32113,
+      "mtime": "2026-06-06T15:52:48.218Z",
+      "grade": 4,
+      "unit": 12
+    },
+    {
+      "relPath": "data/vocab/4/unit-13.json",
+      "sha256": "675f30b135c1bc301b297ed89e864c24b37b6f228e719a33b7304703eba835c7",
+      "bytes": 26054,
+      "mtime": "2026-06-06T15:52:48.219Z",
+      "grade": 4,
+      "unit": 13
+    }
+  ]
+}

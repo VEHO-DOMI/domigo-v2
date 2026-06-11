@@ -1,0 +1,481 @@
+{
+  "slug": "unit-08",
+  "grade": 2,
+  "unit": 8,
+  "title": "Unit 8",
+  "entries": [
+    {
+      "w": "spaceship",
+      "g": "Raumschiff",
+      "d": "a vehicle that travels through space",
+      "s": "The _____ flew past the moon and into deep darkness.",
+      "a": [
+        "spaceships"
+      ],
+      "mc": [
+        "aeroplane",
+        "rocket",
+        "satellite"
+      ]
+    },
+    {
+      "w": "commander",
+      "g": "Kommandant/in",
+      "d": "The person in charge who tells others what to do",
+      "s": "The military _____ of the ship told all the sailors to get ready for the mission.",
+      "a": [
+        "commanders"
+      ],
+      "mc": [
+        "cook",
+        "doctor",
+        "passenger"
+      ]
+    },
+    {
+      "w": "spacesuit",
+      "g": "Raumanzug",
+      "d": "Special clothes you wear to survive in space",
+      "s": "You need a _____ so you can breathe outside the ship.",
+      "a": [
+        "spacesuits"
+      ],
+      "mc": [
+        "costume",
+        "uniform",
+        "armour"
+      ]
+    },
+    {
+      "w": "alien",
+      "g": "Außerirdische/r",
+      "d": "A creature that comes from another world",
+      "s": "In the film, the _____ was green and had big eyes.",
+      "a": [
+        "aliens"
+      ],
+      "mc": [
+        "monster",
+        "robot",
+        "creature"
+      ]
+    },
+    {
+      "w": "UFO",
+      "g": "UFO",
+      "d": "A strange flying thing in the sky that nobody can explain",
+      "s": "Some people say they saw a _____ over the city last night.",
+      "a": [
+        "UFOs"
+      ],
+      "mc": [
+        "spaceship",
+        "satellite",
+        "rocket"
+      ]
+    },
+    {
+      "w": "space centre",
+      "g": "Raumfahrtzentrum",
+      "d": "A building where people plan trips to the sky and other worlds",
+      "s": "We visited the _____ and saw real rockets.",
+      "cf": "space centre",
+      "a": [
+        "space centre",
+        "space center",
+        "space centres"
+      ],
+      "mc": [
+        "airport",
+        "laboratory",
+        "observatory"
+      ]
+    },
+    {
+      "w": "planet",
+      "g": "Planet",
+      "d": "A big round thing in the sky that goes around a star",
+      "s": "Earth is the _____ where we all live.",
+      "a": [
+        "planets"
+      ],
+      "mc": [
+        "star",
+        "moon",
+        "satellite"
+      ]
+    },
+    {
+      "w": "boss",
+      "g": "Chef/Chefin",
+      "d": "The person who is in charge at work",
+      "s": "My mum's _____ at the office called her about a meeting tomorrow morning.",
+      "a": [
+        "bosses"
+      ],
+      "mc": [
+        "friend",
+        "sister",
+        "neighbour"
+      ]
+    },
+    {
+      "w": "cable",
+      "g": "Kabel",
+      "d": "A thick wire used to connect things",
+      "s": "The TV does not work because the power _____ that connects it to the wall is broken.",
+      "a": [
+        "cables"
+      ],
+      "mc": [
+        "button",
+        "remote",
+        "screen"
+      ]
+    },
+    {
+      "w": "capital",
+      "g": "Hauptstadt",
+      "d": "The most important city of a country",
+      "s": "London is the _____ of England. It is where the king and the government are.",
+      "a": [
+        "capitals"
+      ],
+      "mc": [
+        "country",
+        "region",
+        "continent"
+      ]
+    },
+    {
+      "w": "to connect",
+      "g": "anschließen; verbinden",
+      "d": "To join two things together",
+      "s": "Can you _____ your phone to the speaker so we can play music?",
+      "cf": "connect",
+      "a": [
+        "connect",
+        "connects",
+        "connected"
+      ],
+      "mc": [
+        "to hide",
+        "to throw",
+        "to break"
+      ]
+    },
+    {
+      "w": "hero, heroine",
+      "g": "Held, Heldin",
+      "d": "A brave person who helps or saves other people",
+      "s": "The firefighter was a real _____ and saved the cat.",
+      "cf": "hero",
+      "a": [
+        "hero",
+        "heroine",
+        "heroes",
+        "heroines"
+      ],
+      "mc": [
+        "villain",
+        "champion",
+        "leader"
+      ]
+    },
+    {
+      "w": "machine",
+      "g": "Maschine",
+      "d": "Something built to do a job, like a washing or coffee maker",
+      "s": "This kitchen _____ makes fresh orange juice in ten seconds when you press the button.",
+      "a": [
+        "machines"
+      ],
+      "mc": [
+        "bowl",
+        "glass",
+        "knife"
+      ]
+    },
+    {
+      "w": "to repair",
+      "g": "reparieren",
+      "d": "To fix something that is broken",
+      "s": "My dad _____ my bike after the wheel came off, using his tools in the garage.",
+      "cf": "repaired",
+      "a": [
+        "repair",
+        "repairs",
+        "repaired"
+      ],
+      "mc": [
+        "to ride",
+        "to paint",
+        "to sell"
+      ]
+    },
+    {
+      "w": "space",
+      "g": "Weltall",
+      "d": "Everything outside our world, where the stars are",
+      "s": "One day I want to travel into _____.",
+      "a": [],
+      "mc": [
+        "sky",
+        "universe",
+        "atmosphere"
+      ]
+    },
+    {
+      "w": "statue",
+      "g": "Statue",
+      "d": "A figure of a person or animal made from stone or metal",
+      "s": "There is a big bronze _____ of a horse and its rider in the town centre, made by a famous artist 100 years ago.",
+      "a": [
+        "statues"
+      ],
+      "mc": [
+        "tree",
+        "fountain",
+        "bench"
+      ]
+    },
+    {
+      "w": "to take over",
+      "g": "erobern, die Führung übernehmen",
+      "d": "To get control of something",
+      "s": "In the story, robots _____ the whole city.",
+      "cf": "take over",
+      "a": [
+        "take over",
+        "took over",
+        "takes over"
+      ],
+      "mc": [
+        "to give up",
+        "to take part",
+        "to take off"
+      ]
+    },
+    {
+      "w": "traveller",
+      "g": "Reisender/Reisende",
+      "d": "A person who goes from place to place",
+      "s": "The _____ going around the world had a big backpack, a map, and a passport with many stamps.",
+      "a": [
+        "travellers",
+        "traveler",
+        "travelers"
+      ],
+      "mc": [
+        "student",
+        "doctor",
+        "farmer"
+      ]
+    },
+    {
+      "w": "visitor",
+      "g": "Besucher/Besucherin",
+      "d": "A person who comes to see a place or a person",
+      "s": "Our school had a special _____ from England today who came to give us a talk about London.",
+      "a": [
+        "visitors"
+      ],
+      "mc": [
+        "teacher",
+        "parent",
+        "student"
+      ]
+    },
+    {
+      "w": "key",
+      "g": "Schlüssel",
+      "d": "A small metal thing you use to open a lock",
+      "s": "I forgot my _____ and couldn't get into the house.",
+      "a": [
+        "keys"
+      ],
+      "mc": [
+        "lock",
+        "code",
+        "password"
+      ]
+    },
+    {
+      "w": "crew",
+      "g": "Besatzung",
+      "d": "The group of people who work on a ship or plane",
+      "s": "The _____ on the plane was very friendly — the pilot and all five flight attendants.",
+      "a": [
+        "crews"
+      ],
+      "mc": [
+        "passenger",
+        "baggage",
+        "food"
+      ]
+    },
+    {
+      "w": "aeroplane",
+      "g": "Flugzeug",
+      "d": "A big vehicle with wings that flies through the sky",
+      "s": "The _____ flew over our house and made a loud noise.",
+      "a": [
+        "aeroplanes",
+        "airplane",
+        "airplanes"
+      ],
+      "mc": [
+        "helicopter",
+        "spaceship",
+        "glider"
+      ]
+    },
+    {
+      "w": "expert",
+      "g": "Experte/Expertin",
+      "d": "A person who knows a lot about something",
+      "s": "She is an _____ on African animals — she has studied them for 20 years and wrote three books about them.",
+      "a": [
+        "experts"
+      ],
+      "mc": [
+        "student",
+        "beginner",
+        "visitor"
+      ]
+    },
+    {
+      "w": "hoax",
+      "g": "Streich; Täuschung",
+      "d": "A trick that makes people believe something that is not true",
+      "s": "The story about the monster was just a _____.",
+      "a": [
+        "hoaxes"
+      ],
+      "mc": [
+        "trick",
+        "joke",
+        "lie"
+      ]
+    },
+    {
+      "w": "investigation",
+      "g": "Untersuchung, Ermittlung",
+      "d": "When people try to find out what really happened",
+      "s": "The police started an _____ to find the missing painting. They looked for clues everywhere.",
+      "a": [
+        "investigations"
+      ],
+      "mc": [
+        "argument",
+        "celebration",
+        "meeting"
+      ]
+    },
+    {
+      "w": "photograph",
+      "g": "Foto",
+      "d": "A picture taken with a camera",
+      "s": "She showed me an old black-and-white _____ of her grandparents taken in 1960.",
+      "a": [
+        "photographs",
+        "photo",
+        "photos"
+      ],
+      "mc": [
+        "letter",
+        "book",
+        "postcard"
+      ]
+    },
+    {
+      "w": "to destroy",
+      "g": "zerstören",
+      "d": "To break something so badly it cannot be fixed",
+      "s": "The strong storm completely _____ many trees in the park last night. Nothing was left.",
+      "cf": "destroyed",
+      "a": [
+        "destroy",
+        "destroys",
+        "destroyed"
+      ],
+      "mc": [
+        "to plant",
+        "to water",
+        "to climb"
+      ]
+    },
+    {
+      "w": "to kidnap",
+      "g": "entführen",
+      "d": "To take a person away by force",
+      "s": "In the film, bad people _____ the prince and held him in a secret castle for a week.",
+      "cf": "kidnap",
+      "a": [
+        "kidnap",
+        "kidnaps",
+        "kidnapped"
+      ],
+      "mc": [
+        "to help",
+        "to visit",
+        "to thank"
+      ]
+    },
+    {
+      "w": "nonsense",
+      "g": "Unsinn",
+      "d": "Something silly that does not make sense",
+      "s": "Don't talk _____! Of course the Earth is round — everyone knows that.",
+      "a": [],
+      "mc": [
+        "English",
+        "homework",
+        "breakfast"
+      ]
+    },
+    {
+      "w": "comfortable",
+      "g": "bequem",
+      "d": "Nice to sit or lie on, making you feel good",
+      "s": "This soft sofa is very _____. I could sit here all day without getting a sore back.",
+      "a": [],
+      "mc": [
+        "hard",
+        "rough",
+        "sharp"
+      ]
+    },
+    {
+      "w": "Calm down!",
+      "g": "Beruhige dich!",
+      "d": "Words you say to someone who is too excited or scared",
+      "s": "_____! Stop shouting and breathe slowly. Everything is going to be fine.",
+      "cf": "Calm down",
+      "a": [
+        "Calm down",
+        "Calm down!"
+      ],
+      "mc": [
+        "Run away!",
+        "Look out!",
+        "Watch out!"
+      ]
+    },
+    {
+      "w": "in that case",
+      "g": "in diesem Fall",
+      "d": "If the situation is like that, then",
+      "s": "You don't like fish? _____, let's order chicken.",
+      "cf": "In that case",
+      "a": [
+        "in that case"
+      ],
+      "mc": [
+        "if so",
+        "therefore",
+        "however"
+      ]
+    }
+  ]
+}

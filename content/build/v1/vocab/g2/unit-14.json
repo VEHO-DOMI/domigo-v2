@@ -1,0 +1,570 @@
+{
+  "slug": "unit-14",
+  "grade": 2,
+  "unit": 14,
+  "title": "Unit 14",
+  "entries": [
+    {
+      "w": "roller-skating",
+      "g": "Rollschuhlaufen",
+      "d": "Moving on shoes with small wheels on the bottom",
+      "s": "We went _____ in the park and it was so much fun!",
+      "cf": "roller-skating",
+      "a": [
+        "roller-skating",
+        "roller skating"
+      ],
+      "mc": [
+        "ice skating",
+        "skateboarding",
+        "cycling"
+      ]
+    },
+    {
+      "w": "sportsman and sportswoman",
+      "g": "Sportler und Sportlerin",
+      "d": "A man or woman who does sport, often for a job",
+      "s": "She is a famous _____ who has won many prizes.",
+      "cf": "sportswoman",
+      "a": [
+        "sportsman",
+        "sportswoman",
+        "sportsman and sportswoman"
+      ],
+      "mc": [
+        "athlete",
+        "champion",
+        "coach"
+      ]
+    },
+    {
+      "w": "snowboarding",
+      "g": "Snowboarden",
+      "d": "Sliding down a white mountain on one wide board",
+      "s": "I tried _____ for the first time and fell many times!",
+      "cf": "snowboarding",
+      "a": [
+        "snowboarding"
+      ],
+      "mc": [
+        "skiing",
+        "sledging",
+        "skateboarding"
+      ]
+    },
+    {
+      "w": "skiing",
+      "g": "Skifahren",
+      "d": "Sliding down a white mountain using two long boards on your feet",
+      "s": "We go _____ in the Alps every winter holiday.",
+      "cf": "skiing",
+      "a": [
+        "skiing"
+      ],
+      "mc": [
+        "snowboarding",
+        "ice skating",
+        "sledging"
+      ]
+    },
+    {
+      "w": "surfing",
+      "g": "Surfen",
+      "d": "Standing on a board and riding waves in the sea",
+      "s": "_____ looks amazing but it is hard to stay on the board.",
+      "cf": "Surfing",
+      "a": [
+        "surfing"
+      ],
+      "mc": [
+        "windsurfing",
+        "sailing",
+        "swimming"
+      ]
+    },
+    {
+      "w": "mountain climbing",
+      "g": "Bergsteigen",
+      "d": "Going up very high rocky land using ropes and your body",
+      "s": "_____ is exciting but can be very tiring because you go up very high rocky land.",
+      "cf": "Mountain climbing",
+      "a": [
+        "mountain climbing"
+      ],
+      "mc": [
+        "rock climbing",
+        "hiking",
+        "abseiling"
+      ]
+    },
+    {
+      "w": "windsurfing",
+      "g": "Windsurfen",
+      "d": "Standing on a board with a sail and moving over water",
+      "s": "My uncle loves _____ on the lake in summer.",
+      "cf": "windsurfing",
+      "a": [
+        "windsurfing"
+      ],
+      "mc": [
+        "surfing",
+        "sailing",
+        "canoeing"
+      ]
+    },
+    {
+      "w": "swimming",
+      "g": "Schwimmen",
+      "d": "Moving through water using your arms and legs",
+      "s": "_____ is great exercise. Moving through the water uses your whole body.",
+      "cf": "Swimming",
+      "a": [
+        "swimming"
+      ],
+      "mc": [
+        "diving",
+        "snorkelling",
+        "surfing"
+      ]
+    },
+    {
+      "w": "mountain biking",
+      "g": "Mountainbiken",
+      "d": "Riding a bike on rough paths and hills",
+      "s": "We went _____ in the hills and got very dirty.",
+      "cf": "mountain biking",
+      "a": [
+        "mountain biking"
+      ],
+      "mc": [
+        "cycling",
+        "motocross",
+        "hiking"
+      ]
+    },
+    {
+      "w": "cycling",
+      "g": "Radfahren",
+      "d": "Riding a bicycle from one place to another",
+      "s": "I go _____ to school every day. It takes ten minutes.",
+      "cf": "cycling",
+      "a": [
+        "cycling"
+      ],
+      "mc": [
+        "mountain biking",
+        "running",
+        "walking"
+      ]
+    },
+    {
+      "w": "skateboarding",
+      "g": "Skateboardfahren",
+      "d": "Riding a small board with wheels under your feet",
+      "s": "He learned _____ when he was ten and now he does tricks on his board with wheels.",
+      "cf": "skateboarding",
+      "a": [
+        "skateboarding"
+      ],
+      "mc": [
+        "roller-skating",
+        "scootering",
+        "snowboarding"
+      ]
+    },
+    {
+      "w": "to grow up",
+      "g": "erwachsen werden; aufwachsen",
+      "d": "To get bigger and become an adult",
+      "s": "I want to be a pilot when I _____.",
+      "cf": "grow up",
+      "a": [
+        "grow up",
+        "grows up",
+        "grew up"
+      ],
+      "mc": [
+        "to get older",
+        "to bring up",
+        "to look up"
+      ]
+    },
+    {
+      "w": "member",
+      "g": "Mitglied",
+      "d": "A person who belongs to a group or a team",
+      "s": "She is a _____ of the school basketball team.",
+      "a": [
+        "members"
+      ],
+      "mc": [
+        "captain",
+        "leader",
+        "coach"
+      ]
+    },
+    {
+      "w": "professional",
+      "g": "professionell; hauptberuflich",
+      "d": "Doing something as a job, not just for fun",
+      "s": "He wants to become a _____ football player one day.",
+      "a": [
+        "professionals"
+      ],
+      "mc": [
+        "amateur",
+        "beginner",
+        "expert"
+      ]
+    },
+    {
+      "w": "race",
+      "g": "Wettfahrt; Rennen",
+      "d": "A competition to see who can go the fastest",
+      "s": "I came first in the running _____ at sports day!",
+      "a": [
+        "races"
+      ],
+      "mc": [
+        "match",
+        "competition",
+        "tournament"
+      ]
+    },
+    {
+      "w": "serious",
+      "g": "ernst(haft); gravierend",
+      "d": "Important and not funny, or very bad",
+      "s": "Luckily, the accident was not _____. Nobody got hurt.",
+      "a": [],
+      "mc": [
+        "minor",
+        "funny",
+        "severe"
+      ]
+    },
+    {
+      "w": "to appear",
+      "g": "erscheinen",
+      "d": "To be seen or to come into view",
+      "s": "A rainbow _____ in the sky after the rain stopped.",
+      "cf": "appeared",
+      "a": [
+        "appear",
+        "appears",
+        "appeared"
+      ],
+      "mc": [
+        "to disappear",
+        "to arrive",
+        "to show up"
+      ]
+    },
+    {
+      "w": "competition",
+      "g": "Wettbewerb",
+      "d": "An event where people try to win",
+      "s": "Our school won first prize in the singing _____ last month.",
+      "a": [
+        "competitions"
+      ],
+      "mc": [
+        "class",
+        "concert",
+        "lesson"
+      ]
+    },
+    {
+      "w": "challenge",
+      "g": "Herausforderung",
+      "d": "Something new and hard that you must try to do",
+      "s": "Learning to ride a bike was a big _____ for me.",
+      "a": [
+        "challenges"
+      ],
+      "mc": [
+        "difficulty",
+        "problem",
+        "task"
+      ]
+    },
+    {
+      "w": "distance",
+      "g": "Abstand, Distanz",
+      "d": "How far it is from one place to another",
+      "s": "The _____ from our house to the school is two kilometres.",
+      "a": [
+        "distances"
+      ],
+      "mc": [
+        "length",
+        "height",
+        "speed"
+      ]
+    },
+    {
+      "w": "extreme",
+      "g": "extrem",
+      "d": "Very, very strong or far from normal",
+      "s": "Bungee jumping is an _____ sport that not everyone likes.",
+      "a": [
+        "extremely"
+      ],
+      "mc": [
+        "moderate",
+        "ordinary",
+        "easy"
+      ]
+    },
+    {
+      "w": "flood",
+      "g": "Flut",
+      "d": "A lot of water that covers land that is usually dry",
+      "s": "After three days of rain, there was a terrible _____.",
+      "a": [
+        "floods"
+      ],
+      "mc": [
+        "drought",
+        "storm",
+        "earthquake"
+      ]
+    },
+    {
+      "w": "to manage",
+      "g": "etw. schaffen",
+      "d": "To be able to do something, even if it is hard",
+      "s": "I _____ to finish all my homework before dinner.",
+      "cf": "managed",
+      "a": [
+        "manage",
+        "manages",
+        "managed"
+      ],
+      "mc": [
+        "to succeed",
+        "to try",
+        "to fail"
+      ]
+    },
+    {
+      "w": "official",
+      "g": "offiziell",
+      "d": "Agreed on and accepted by the people in charge",
+      "s": "The _____ start time of the match is three o'clock.",
+      "a": [
+        "officially"
+      ],
+      "mc": [
+        "unofficial",
+        "formal",
+        "proper"
+      ]
+    },
+    {
+      "w": "rather",
+      "g": "ziemlich, eher",
+      "d": "A little bit, quite",
+      "s": "The water in the pool was _____ cold today -- not freezing, but not warm either.",
+      "a": [],
+      "mc": [
+        "never",
+        "always",
+        "very"
+      ]
+    },
+    {
+      "w": "to snorkel",
+      "g": "schnorcheln",
+      "d": "To swim with a tube so you can look under water",
+      "s": "We _____ in the clear blue sea and saw lots of fish.",
+      "cf": "snorkelled",
+      "a": [
+        "snorkel",
+        "snorkels",
+        "snorkelled",
+        "snorkeled"
+      ],
+      "mc": [
+        "to dive",
+        "to swim",
+        "to surf"
+      ]
+    },
+    {
+      "w": "to take part (in)",
+      "g": "an etw. teilnehmen",
+      "d": "To join in and do something with other people",
+      "s": "She _____ in the school play last year and acted the main role.",
+      "cf": "took part",
+      "a": [
+        "take part",
+        "takes part",
+        "took part"
+      ],
+      "mc": [
+        "to skip",
+        "to miss",
+        "to avoid"
+      ]
+    },
+    {
+      "w": "without",
+      "g": "ohne",
+      "d": "Not having something, missing something",
+      "s": "I went to school _____ my lunch box today.",
+      "a": [],
+      "mc": [
+        "with",
+        "besides",
+        "except"
+      ]
+    },
+    {
+      "w": "world record",
+      "g": "Weltrekord",
+      "d": "The best result ever for something in the whole world",
+      "s": "He broke the _____ for the 100-metre sprint.",
+      "cf": "world record",
+      "a": [
+        "world record",
+        "world records"
+      ],
+      "mc": [
+        "personal best",
+        "high score",
+        "first place"
+      ]
+    },
+    {
+      "w": "nil",
+      "g": "null",
+      "d": "The number zero in a game or match",
+      "s": "Our team won the football match three to _____.",
+      "a": [],
+      "mc": [
+        "five",
+        "one",
+        "none"
+      ]
+    },
+    {
+      "w": "on one's own",
+      "g": "alleine",
+      "d": "By yourself, with nobody else",
+      "s": "I did my homework all _____. Nobody helped me at all.",
+      "cf": "on my own",
+      "a": [
+        "on my own",
+        "on his own",
+        "on her own",
+        "on your own",
+        "on one's own"
+      ],
+      "mc": [
+        "with my mum",
+        "with friends",
+        "in a group"
+      ]
+    },
+    {
+      "w": "to score",
+      "g": "erreichen, erzielen (Tore)",
+      "d": "To get a point or a goal in a game",
+      "s": "She _____ two goals in the football match today.",
+      "cf": "scored",
+      "a": [
+        "score",
+        "scores",
+        "scored"
+      ],
+      "mc": [
+        "to miss",
+        "to win",
+        "to shoot"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a goal",
+          "options": [
+            "Score",
+            "Cook",
+            "Wash",
+            "Read"
+          ],
+          "answer": "Score"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SCORE?",
+          "options": [
+            "a goal",
+            "a point",
+            "high",
+            "a pillow"
+          ],
+          "answer": "a pillow"
+        }
+      ]
+    },
+    {
+      "w": "to tackle",
+      "g": "attackieren (im Sport)",
+      "d": "To try to take the ball from another player in a game",
+      "s": "He _____ the other player and won the ball back.",
+      "cf": "tackled",
+      "a": [
+        "tackle",
+        "tackles",
+        "tackled"
+      ],
+      "mc": [
+        "to block",
+        "to foul",
+        "to pass"
+      ]
+    },
+    {
+      "w": "waste of time",
+      "g": "Zeitverschwendung",
+      "d": "Something that uses your time but gives you nothing good",
+      "s": "Watching that film was a _____. It was so bad.",
+      "cf": "waste of time",
+      "a": [
+        "waste of time"
+      ],
+      "mc": [
+        "good use of time",
+        "waste of money",
+        "loss of time"
+      ]
+    },
+    {
+      "w": "equipment",
+      "g": "Ausrüstung",
+      "d": "The things you need to do a sport or job",
+      "s": "You need a helmet and knee pads — that's the _____ for skating.",
+      "a": [],
+      "mc": [
+        "gear",
+        "uniform",
+        "supplies"
+      ]
+    },
+    {
+      "w": "success",
+      "g": "Erfolg",
+      "d": "When you do well and reach what you wanted",
+      "s": "The school play was a big _____. Everyone loved it and the audience clapped for five minutes.",
+      "a": [
+        "successes"
+      ],
+      "mc": [
+        "failure",
+        "mistake",
+        "problem"
+      ]
+    }
+  ]
+}

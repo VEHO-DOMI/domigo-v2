@@ -1,0 +1,1272 @@
+{
+  "slug": "unit-05",
+  "grade": 4,
+  "unit": 5,
+  "title": "Unit 5",
+  "entries": [
+    {
+      "w": "artificial",
+      "g": "künstlich",
+      "d": "Made by people rather than occurring naturally",
+      "s": "This cake contains no _____ colours or flavours — everything is natural.",
+      "a": [],
+      "mc": [
+        "organic",
+        "synthetic",
+        "natural"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ARTIFICIAL?",
+          "options": [
+            "colours",
+            "sweetener",
+            "intelligence",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "This juice has no _____ flavours.",
+          "options": [
+            "artificial",
+            "official",
+            "beneficial",
+            "sacrificial"
+          ],
+          "answer": "artificial"
+        }
+      ]
+    },
+    {
+      "w": "fattening",
+      "g": "dick machend",
+      "d": "Likely to make you gain weight because it contains a lot of fat or sugar",
+      "s": "Chocolate cake is delicious but very _____ if you eat too much of it.",
+      "a": [],
+      "mc": [
+        "nutritious",
+        "filling",
+        "unhealthy"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FATTENING?",
+          "options": [
+            "very",
+            "food",
+            "extremely",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "Chocolate cake is very _____.",
+          "options": [
+            "fattening",
+            "fastening",
+            "glistening",
+            "threatening"
+          ],
+          "answer": "fattening"
+        }
+      ]
+    },
+    {
+      "w": "filling",
+      "g": "sättigend",
+      "d": "Making your stomach feel full after eating",
+      "s": "I'm not hungry yet because lunch was very _____ — I had a huge plate of pasta.",
+      "a": [],
+      "mc": [
+        "fattening",
+        "satisfying",
+        "heavy"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FILLING?",
+          "options": [
+            "very",
+            "meal",
+            "quite",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The soup was very _____.",
+          "options": [
+            "filling",
+            "willing",
+            "killing",
+            "billing"
+          ],
+          "answer": "filling"
+        }
+      ]
+    },
+    {
+      "w": "revolting",
+      "g": "ekelhaft, widerlich",
+      "d": "Extremely unpleasant; disgusting",
+      "s": "The smell from the rubbish bin was absolutely _____ — I almost felt sick.",
+      "a": [],
+      "mc": [
+        "disgusting",
+        "unpleasant",
+        "bitter"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REVOLTING?",
+          "options": [
+            "absolutely",
+            "taste",
+            "smell",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The food was absolutely _____.",
+          "options": [
+            "revolting",
+            "resulting",
+            "consulting",
+            "insulting"
+          ],
+          "answer": "revolting"
+        }
+      ]
+    },
+    {
+      "w": "harmful",
+      "g": "schädlich",
+      "d": "Causing or likely to cause damage or injury",
+      "s": "Smoking is extremely _____ to your lungs and overall health.",
+      "a": [],
+      "mc": [
+        "dangerous",
+        "poisonous",
+        "unhealthy"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HARMFUL?",
+          "options": [
+            "extremely",
+            "effects",
+            "chemicals",
+            "musical"
+          ],
+          "answer": "musical"
+        },
+        {
+          "type": "gap",
+          "prompt": "Smoking is _____ to your health.",
+          "options": [
+            "harmful",
+            "cheerful",
+            "hopeful",
+            "powerful"
+          ],
+          "answer": "harmful"
+        }
+      ]
+    },
+    {
+      "w": "healthy",
+      "g": "gesund",
+      "d": "Good for your body and helping you to stay well",
+      "s": "If you want to stay _____, you should exercise regularly and get enough sleep.",
+      "a": [],
+      "mc": [
+        "fit",
+        "nutritious",
+        "organic"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HEALTHY?",
+          "options": [
+            "stay",
+            "food",
+            "lifestyle",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Fruit and vegetables are very _____.",
+          "options": [
+            "healthy",
+            "wealthy",
+            "stealthy",
+            "filthy"
+          ],
+          "answer": "healthy"
+        }
+      ]
+    },
+    {
+      "w": "nutritious",
+      "g": "nahrhaft",
+      "d": "Containing many of the substances needed for life and growth",
+      "s": "The school is trying to offer more _____ meals with extra vitamins and protein for the students.",
+      "a": [],
+      "mc": [
+        "delicious",
+        "healthy",
+        "organic"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NUTRITIOUS?",
+          "options": [
+            "very",
+            "meal",
+            "food",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "The school serves _____ lunches.",
+          "options": [
+            "nutritious",
+            "ambitious",
+            "suspicious",
+            "delicious"
+          ],
+          "answer": "nutritious"
+        }
+      ]
+    },
+    {
+      "w": "fresh",
+      "g": "frisch",
+      "d": "Recently made, picked, or prepared; not frozen or preserved",
+      "s": "The market sells _____ bread that is baked every morning.",
+      "a": [],
+      "mc": [
+        "frozen",
+        "raw",
+        "ripe"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FRESH?",
+          "options": [
+            "bread",
+            "fruit",
+            "air",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The market sells _____ bread every morning.",
+          "options": [
+            "fresh",
+            "flesh",
+            "crash",
+            "clash"
+          ],
+          "answer": "fresh"
+        }
+      ]
+    },
+    {
+      "w": "tasty",
+      "g": "lecker, schmackhaft",
+      "d": "Having a pleasant and enjoyable flavour",
+      "s": "The soup was really _____ — I had two bowls and wanted more.",
+      "a": [],
+      "mc": [
+        "delicious",
+        "spicy",
+        "flavoured"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TASTY?",
+          "options": [
+            "very",
+            "food",
+            "quite",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The soup was really _____.",
+          "options": [
+            "tasty",
+            "nasty",
+            "hasty",
+            "pasty"
+          ],
+          "answer": "tasty"
+        }
+      ]
+    },
+    {
+      "w": "vegetarian",
+      "g": "Vegetarier/in",
+      "d": "A person who does not eat meat or fish",
+      "s": "My cousin never eats meat or fish because she is a _____.",
+      "a": [
+        "vegetarians"
+      ],
+      "mc": [
+        "vegan",
+        "pescatarian",
+        "flexitarian"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with VEGETARIAN?",
+          "options": [
+            "strict",
+            "become",
+            "food",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She is a _____ and never eats meat.",
+          "options": [
+            "vegetarian",
+            "veterinarian",
+            "librarian",
+            "humanitarian"
+          ],
+          "answer": "vegetarian"
+        }
+      ]
+    },
+    {
+      "w": "afford",
+      "g": "sich leisten können",
+      "d": "To have enough money to pay for something",
+      "s": "I really want those trainers, but I can't _____ them right now.",
+      "a": [],
+      "mc": [
+        "earn",
+        "save",
+        "spend"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AFFORD?",
+          "options": [
+            "can't",
+            "barely",
+            "easily",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "I can't _____ those expensive shoes.",
+          "options": [
+            "afford",
+            "abroad",
+            "aboard",
+            "absurd"
+          ],
+          "answer": "afford"
+        }
+      ]
+    },
+    {
+      "w": "feed",
+      "g": "ernähren",
+      "d": "To give food to a person or an animal",
+      "s": "Don't forget to _____ the cat before you leave for school.",
+      "a": [],
+      "mc": [
+        "provide",
+        "supply",
+        "serve"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FEED?",
+          "options": [
+            "animals",
+            "baby",
+            "properly",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Don't forget to _____ the cat.",
+          "options": [
+            "feed",
+            "need",
+            "seed",
+            "weed"
+          ],
+          "answer": "feed"
+        }
+      ]
+    },
+    {
+      "w": "hunger",
+      "g": "Hunger",
+      "d": "The feeling or state of needing food",
+      "s": "After the long hike, we were weak with _____.",
+      "a": [],
+      "mc": [
+        "thirst",
+        "appetite",
+        "starvation"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HUNGER?",
+          "options": [
+            "extreme",
+            "suffer",
+            "world",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Millions of people die of _____.",
+          "options": [
+            "hunger",
+            "thunder",
+            "wonder",
+            "number"
+          ],
+          "answer": "hunger"
+        }
+      ]
+    },
+    {
+      "w": "intake",
+      "g": "Aufnahme",
+      "d": "The amount of food, drink, or other substance that you take into your body",
+      "s": "The doctor told him to reduce his sugar _____ to stay healthy.",
+      "a": [],
+      "mc": [
+        "portion",
+        "amount",
+        "consumption"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INTAKE?",
+          "options": [
+            "daily",
+            "sugar",
+            "reduce",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Reduce your sugar _____.",
+          "options": [
+            "intake",
+            "mistake",
+            "outtake",
+            "uptake"
+          ],
+          "answer": "intake"
+        }
+      ]
+    },
+    {
+      "w": "waste",
+      "g": "verschwenden",
+      "d": "To use more of something than is necessary or to throw it away carelessly",
+      "s": "Please don't _____ water — turn off the tap while brushing your teeth.",
+      "a": [
+        "wasting"
+      ],
+      "mc": [
+        "recycle",
+        "consume",
+        "dispose"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WASTE?",
+          "options": [
+            "food",
+            "time",
+            "money",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Don't _____ water — turn off the tap.",
+          "options": [
+            "waste",
+            "taste",
+            "paste",
+            "haste"
+          ],
+          "answer": "waste"
+        }
+      ]
+    },
+    {
+      "w": "contain",
+      "g": "enthalten",
+      "d": "To have something inside or as a part of it",
+      "s": "These sweets _____ a lot of sugar, so don't eat too many.",
+      "a": [],
+      "mc": [
+        "include",
+        "consist",
+        "involve"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CONTAIN?",
+          "options": [
+            "sugar",
+            "information",
+            "chemicals",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "These sweets _____ a lot of sugar.",
+          "options": [
+            "contain",
+            "maintain",
+            "explain",
+            "complain"
+          ],
+          "answer": "contain"
+        }
+      ]
+    },
+    {
+      "w": "cookery",
+      "g": "Koch-; Kochkunst",
+      "d": "The art or activity of preparing and cooking food",
+      "s": "My sister bought a _____ book with over 200 Italian recipes.",
+      "a": [],
+      "mc": [
+        "bakery",
+        "cuisine",
+        "catering"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COOKERY?",
+          "options": [
+            "book",
+            "class",
+            "skills",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She bought a _____ book.",
+          "options": [
+            "cookery",
+            "crockery",
+            "trickery",
+            "mockery"
+          ],
+          "answer": "cookery"
+        }
+      ]
+    },
+    {
+      "w": "diet",
+      "g": "Ernährung",
+      "d": "The food that a person or animal regularly eats",
+      "s": "A balanced _____ includes fruit, vegetables, protein, and grains.",
+      "a": [
+        "diets"
+      ],
+      "mc": [
+        "nutrition",
+        "menu",
+        "appetite"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DIET?",
+          "options": [
+            "balanced",
+            "healthy",
+            "strict",
+            "electric"
+          ],
+          "answer": "electric"
+        },
+        {
+          "type": "gap",
+          "prompt": "You should eat a _____ diet with lots of fruit and vegetables.",
+          "options": [
+            "balanced",
+            "broken",
+            "boring",
+            "blind"
+          ],
+          "answer": "balanced"
+        },
+        {
+          "type": "gap",
+          "prompt": "She decided to go on a _____.",
+          "options": [
+            "diet",
+            "debt",
+            "dust",
+            "dirt"
+          ],
+          "answer": "diet"
+        }
+      ]
+    },
+    {
+      "w": "even though",
+      "g": "obwohl",
+      "d": "Used to introduce a fact that makes the main statement surprising",
+      "s": "She went to school _____ she had a terrible headache.",
+      "a": [],
+      "mc": [
+        "as long as",
+        "in case",
+        "as if"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT follow EVEN THOUGH?",
+          "options": [
+            "tired",
+            "raining",
+            "difficult",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "She went out _____ it was raining.",
+          "options": [
+            "even though",
+            "as long as",
+            "in case",
+            "so that"
+          ],
+          "answer": "even though"
+        }
+      ]
+    },
+    {
+      "w": "health",
+      "g": "Gesundheit",
+      "d": "The state of being free from illness or injury",
+      "s": "Too much screen time can be bad for your _____.",
+      "a": [],
+      "mc": [
+        "fitness",
+        "wellness",
+        "strength"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HEALTH?",
+          "options": [
+            "good",
+            "public",
+            "mental",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Too much sugar is bad for your _____.",
+          "options": [
+            "health",
+            "wealth",
+            "stealth",
+            "filth"
+          ],
+          "answer": "health"
+        }
+      ]
+    },
+    {
+      "w": "nutrition",
+      "g": "Ernährung",
+      "d": "The process of eating the right kind of food for health and growth",
+      "s": "We learned about _____ in biology — how vitamins, proteins, and minerals keep our bodies healthy.",
+      "a": [],
+      "mc": [
+        "digestion",
+        "diet",
+        "metabolism"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NUTRITION?",
+          "options": [
+            "good",
+            "study",
+            "expert",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "Good _____ is important for children.",
+          "options": [
+            "nutrition",
+            "condition",
+            "tradition",
+            "position"
+          ],
+          "answer": "nutrition"
+        }
+      ]
+    },
+    {
+      "w": "overweight",
+      "g": "übergewichtig",
+      "d": "Heavier than is considered healthy for your height",
+      "s": "The doctor said he was slightly _____ and should exercise more.",
+      "a": [],
+      "mc": [
+        "obese",
+        "chubby",
+        "underweight"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with OVERWEIGHT?",
+          "options": [
+            "slightly",
+            "become",
+            "seriously",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The doctor said he was _____.",
+          "options": [
+            "overweight",
+            "overnight",
+            "overlook",
+            "overcome"
+          ],
+          "answer": "overweight"
+        }
+      ]
+    },
+    {
+      "w": "regularly",
+      "g": "regelmäßig",
+      "d": "At the same time or in the same way, again and again",
+      "s": "She goes swimming _____, three times a week.",
+      "a": [],
+      "mc": [
+        "frequently",
+        "constantly",
+        "occasionally"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REGULARLY?",
+          "options": [
+            "exercise",
+            "eat",
+            "sleep",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She goes swimming _____.",
+          "options": [
+            "regularly",
+            "naturally",
+            "carefully",
+            "hopefully"
+          ],
+          "answer": "regularly"
+        }
+      ]
+    },
+    {
+      "w": "dislike",
+      "g": "nicht mögen",
+      "d": "To not like someone or something",
+      "s": "I really _____ the taste of olives — they make me feel sick.",
+      "a": [],
+      "mc": [
+        "hate",
+        "avoid",
+        "refuse"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DISLIKE?",
+          "options": [
+            "really",
+            "strongly",
+            "intensely",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "I _____ the taste of olives.",
+          "options": [
+            "dislike",
+            "despite",
+            "decline",
+            "display"
+          ],
+          "answer": "dislike"
+        }
+      ]
+    },
+    {
+      "w": "habits",
+      "g": "Gewohnheiten",
+      "d": "Things that you do often or regularly, sometimes without thinking",
+      "s": "Eating breakfast every day and going to bed on time are good _____.",
+      "a": [
+        "habit"
+      ],
+      "mc": [
+        "routines",
+        "customs",
+        "manners"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HABITS?",
+          "options": [
+            "eating",
+            "bad",
+            "daily",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "You should try to break your bad _____.",
+          "options": [
+            "habits",
+            "rabbits",
+            "carpets",
+            "tickets"
+          ],
+          "answer": "habits"
+        }
+      ]
+    },
+    {
+      "w": "accept",
+      "g": "hinnehmen; akzeptieren",
+      "d": "To agree to take or receive something, or to recognise something as true",
+      "s": "You have to _____ that you made a mistake and try again.",
+      "a": [],
+      "mc": [
+        "admit",
+        "agree",
+        "approve"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ACCEPT?",
+          "options": [
+            "offer",
+            "invitation",
+            "fact",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "You have to _____ the truth.",
+          "options": [
+            "accept",
+            "except",
+            "expect",
+            "effect"
+          ],
+          "answer": "accept"
+        }
+      ]
+    },
+    {
+      "w": "afterwards",
+      "g": "nachher",
+      "d": "At a later time; after something else has happened",
+      "s": "First we had dinner at a restaurant, and _____ we went to the cinema.",
+      "a": [],
+      "mc": [
+        "meanwhile",
+        "eventually",
+        "later"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AFTERWARDS?",
+          "options": [
+            "shortly",
+            "soon",
+            "immediately",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We had dinner, and _____ we watched a film.",
+          "options": [
+            "afterwards",
+            "backwards",
+            "forwards",
+            "inwards"
+          ],
+          "answer": "afterwards"
+        }
+      ]
+    },
+    {
+      "w": "eating disorder",
+      "g": "Essstörung",
+      "d": "A serious mental health condition involving unhealthy attitudes and habits around food",
+      "s": "An _____ is a serious illness that needs professional help.",
+      "a": [
+        "eating disorders"
+      ],
+      "mc": [
+        "food allergy",
+        "food poisoning",
+        "eating habit"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EATING DISORDER?",
+          "options": [
+            "serious",
+            "suffer",
+            "treatment",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "An _____ needs professional help.",
+          "options": [
+            "eating disorder",
+            "eating habit",
+            "eating plan",
+            "eating competition"
+          ],
+          "answer": "eating disorder"
+        }
+      ]
+    },
+    {
+      "w": "gain",
+      "g": "zunehmen",
+      "d": "To increase in weight, amount, or value",
+      "s": "If you eat fast food every day, you will quickly _____ weight.",
+      "a": [
+        "gained"
+      ],
+      "mc": [
+        "lose",
+        "increase",
+        "put on"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GAIN?",
+          "options": [
+            "weight",
+            "experience",
+            "confidence",
+            "furniture"
+          ],
+          "answer": "furniture"
+        },
+        {
+          "type": "gap",
+          "prompt": "If you eat too much, you will _____ weight.",
+          "options": [
+            "gain",
+            "rain",
+            "pain",
+            "main"
+          ],
+          "answer": "gain"
+        },
+        {
+          "type": "gap",
+          "prompt": "She worked abroad to _____ experience.",
+          "options": [
+            "gain",
+            "grain",
+            "drain",
+            "plain"
+          ],
+          "answer": "gain"
+        }
+      ]
+    },
+    {
+      "w": "gym",
+      "g": "Turnhalle",
+      "d": "A room or building with equipment for physical exercise",
+      "s": "We have basketball practice in the _____ every Tuesday after school.",
+      "a": [
+        "gyms"
+      ],
+      "mc": [
+        "stadium",
+        "court",
+        "pitch"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GYM?",
+          "options": [
+            "go",
+            "school",
+            "exercise",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "We have PE in the _____ on Tuesdays.",
+          "options": [
+            "gym",
+            "gum",
+            "gem",
+            "jam"
+          ],
+          "answer": "gym"
+        }
+      ]
+    },
+    {
+      "w": "thin",
+      "g": "dünn",
+      "d": "Having very little fat on the body; not thick",
+      "s": "She was so _____ that you could see her ribs through her T-shirt.",
+      "a": [],
+      "mc": [
+        "slim",
+        "skinny",
+        "lean"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with THIN?",
+          "options": [
+            "very",
+            "extremely",
+            "paper",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She was too _____ and needed to eat more.",
+          "options": [
+            "thin",
+            "chin",
+            "pin",
+            "tin"
+          ],
+          "answer": "thin"
+        }
+      ]
+    },
+    {
+      "w": "throw up",
+      "g": "erbrechen",
+      "d": "To bring food back up from the stomach through the mouth; to vomit",
+      "s": "He felt so sick after the roller coaster that he had to _____ into a bin.",
+      "a": [],
+      "mc": [
+        "pass out",
+        "break down",
+        "give up"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with THROW UP?",
+          "options": [
+            "feel",
+            "sick",
+            "nearly",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "He felt so sick he had to _____.",
+          "options": [
+            "throw up",
+            "throw out",
+            "throw away",
+            "throw in"
+          ],
+          "answer": "throw up"
+        }
+      ]
+    },
+    {
+      "w": "(be) ashamed",
+      "g": "sich schämen",
+      "d": "To feel embarrassed or guilty about something",
+      "s": "He was _____ of his bad behaviour in front of the whole class.",
+      "cf": "ashamed",
+      "a": [
+        "be ashamed",
+        "ashamed"
+      ],
+      "mc": [
+        "(be) embarrassed",
+        "(be) guilty",
+        "(be) sorry"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ASHAMED?",
+          "options": [
+            "deeply",
+            "feel",
+            "behaviour",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He was _____ of his bad behaviour.",
+          "options": [
+            "ashamed",
+            "amazed",
+            "amused",
+            "alarmed"
+          ],
+          "answer": "ashamed"
+        }
+      ]
+    },
+    {
+      "w": "trust",
+      "g": "vertrauen",
+      "d": "To believe that someone is honest and will not hurt you",
+      "s": "I _____ my best friend with all my secrets.",
+      "a": [],
+      "mc": [
+        "rely on",
+        "believe",
+        "respect"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TRUST?",
+          "options": [
+            "fully",
+            "completely",
+            "someone",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "I _____ my best friend.",
+          "options": [
+            "trust",
+            "must",
+            "just",
+            "dust"
+          ],
+          "answer": "trust"
+        }
+      ]
+    }
+  ]
+}

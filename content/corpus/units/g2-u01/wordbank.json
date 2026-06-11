@@ -632,7 +632,7 @@
       "cf": null,
       "forms": [
         "subject",
-        "school"
+        "subject school"
       ],
       "taughtGloss": false
     },

@@ -27,6 +27,16 @@ export const SOURCES_LOCK_PATH = path.join(CONTENT_DIR, "build", "sources.lock.j
 export const UNITS_DIR = path.join(CONTENT_DIR, "corpus", "units");
 export const OVERLAYS_DIR = path.join(CONTENT_DIR, "overlays");
 
+/** v1 working copy (parity oracle; READ-ONLY — never run git there). */
+export const V1_BASE =
+  process.env["DOMIGO_V1_BASE"] ??
+  path.join(
+    process.env["HOME"] ?? "~",
+    "Library/Mobile Documents/com~apple~CloudDocs/Domi Gym/Claude/Cowork Space/Claude Code/domigo",
+  );
+export const V1_SNAPSHOT_DIR = path.join(CONTENT_DIR, "build", "v1", "vocab");
+export const V1_LOCK_PATH = path.join(CONTENT_DIR, "build", "v1", "v1.lock.json");
+
 export interface GradeSources {
   grade: Grade;
   /** Master vocabulary list docx (canonical word-bank source). */

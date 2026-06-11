@@ -1,0 +1,1035 @@
+{
+  "slug": "unit-07",
+  "grade": 1,
+  "unit": 7,
+  "title": "Unit 7",
+  "entries": [
+    {
+      "w": "ice cream",
+      "g": "Eis, Eiscreme",
+      "d": "a cold, sweet food made from milk",
+      "s": "On hot summer days, I love to eat strawberry _____ that is cold and melts in my mouth.",
+      "a": [],
+      "mc": [
+        "bread",
+        "rice",
+        "soup"
+      ]
+    },
+    {
+      "w": "chillies",
+      "g": "Chilischoten",
+      "d": "small, very hot red or green vegetables",
+      "s": "This soup is very spicy and burns my tongue because it has red _____ in it.",
+      "a": [
+        "chilis",
+        "chilies"
+      ],
+      "mc": [
+        "sugar",
+        "salt",
+        "honey"
+      ]
+    },
+    {
+      "w": "fish",
+      "g": "Fisch",
+      "d": "an animal that lives in water",
+      "s": "We bought fresh _____ with silver scales and a tail at the seafood market today for dinner.",
+      "a": [],
+      "mc": [
+        "apples",
+        "bread",
+        "cheese"
+      ]
+    },
+    {
+      "w": "chicken",
+      "g": "Huhn, Hühnchen",
+      "d": "a bird people keep for eggs and meat",
+      "s": "Mum is roasting a whole _____ with its wings and legs in the oven with rice for dinner tonight.",
+      "a": [],
+      "mc": [
+        "carrot",
+        "banana",
+        "cabbage"
+      ]
+    },
+    {
+      "w": "milk",
+      "g": "Milch",
+      "d": "a white drink from cows",
+      "s": "I pour cold white _____ from the carton over my cereal every morning before school.",
+      "a": [],
+      "mc": [
+        "juice",
+        "cola",
+        "tea"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "A glass of _____",
+          "options": [
+            "Milk",
+            "Homework",
+            "Music",
+            "Football"
+          ],
+          "answer": "Milk"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MILK?",
+          "options": [
+            "drink",
+            "cold",
+            "glass",
+            "write"
+          ],
+          "answer": "write"
+        }
+      ]
+    },
+    {
+      "w": "butter",
+      "g": "Butter",
+      "d": "a yellow food made from milk",
+      "s": "Please spread some soft yellow _____ on both sides of my bread slices.",
+      "a": [],
+      "mc": [
+        "water",
+        "salt",
+        "sugar"
+      ]
+    },
+    {
+      "w": "cheese",
+      "g": "Käse",
+      "d": "a yellow food made from milk",
+      "s": "I like melted _____ on my pizza. It comes from cow's milk and is yellow.",
+      "a": [],
+      "mc": [
+        "tomato",
+        "mushroom",
+        "pineapple"
+      ]
+    },
+    {
+      "w": "orange juice",
+      "g": "Orangensaft",
+      "d": "a drink made from oranges",
+      "s": "Can I have a big glass of freshly squeezed _____ from real oranges, please?",
+      "a": [],
+      "mc": [
+        "water",
+        "milk",
+        "tea"
+      ]
+    },
+    {
+      "w": "tea",
+      "g": "Tee",
+      "d": "a hot drink made with leaves and water",
+      "s": "My grandma drinks a hot cup of _____ with two spoons of sugar every afternoon at 4 o'clock.",
+      "a": [],
+      "mc": [
+        "cola",
+        "beer",
+        "ice cream"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ tea",
+          "options": [
+            "Drink",
+            "Eat",
+            "Ride",
+            "Write"
+          ],
+          "answer": "Drink"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TEA?",
+          "options": [
+            "drink",
+            "hot",
+            "make",
+            "kick"
+          ],
+          "answer": "kick"
+        }
+      ]
+    },
+    {
+      "w": "cucumber",
+      "g": "Gurke",
+      "d": "a long, green vegetable",
+      "s": "I put thin slices of long green _____ in my salad because they are fresh and crunchy.",
+      "a": [],
+      "mc": [
+        "onion",
+        "potato",
+        "mushroom"
+      ]
+    },
+    {
+      "w": "sausages",
+      "g": "Würstchen",
+      "d": "meat in a long, thin shape",
+      "s": "We grill long brown _____ on the barbecue in summer and eat them with mustard.",
+      "a": [],
+      "mc": [
+        "eggs",
+        "apples",
+        "cheese"
+      ]
+    },
+    {
+      "w": "beans",
+      "g": "Bohnen",
+      "d": "small seeds you can cook and eat",
+      "s": "For breakfast in England, she has toast and _____ in tomato sauce.",
+      "a": [],
+      "mc": [
+        "yoghurt",
+        "cereal",
+        "fruit"
+      ]
+    },
+    {
+      "w": "broccoli",
+      "g": "Brokkoli",
+      "d": "a small green vegetable like a tree",
+      "s": "Mum says I must eat my _____ — the little green trees on my plate — because they are healthy.",
+      "a": [],
+      "mc": [
+        "tomatoes",
+        "potatoes",
+        "corn"
+      ]
+    },
+    {
+      "w": "carrot",
+      "g": "Karotte",
+      "d": "a long, orange vegetable",
+      "s": "The grey rabbit is eating a big orange _____ from the garden with its long front teeth.",
+      "a": [],
+      "mc": [
+        "banana",
+        "grape",
+        "lettuce"
+      ]
+    },
+    {
+      "w": "onion",
+      "g": "Zwiebel",
+      "d": "a round vegetable that can make you cry",
+      "s": "Cutting a brown _____ in the kitchen always makes my eyes water and sting.",
+      "a": [],
+      "mc": [
+        "apple",
+        "pear",
+        "strawberry"
+      ]
+    },
+    {
+      "w": "peas",
+      "g": "Erbsen",
+      "d": "small, round, green vegetables",
+      "s": "The small round green _____ in my soup are nice and sweet.",
+      "a": [],
+      "mc": [
+        "raisins",
+        "blueberries",
+        "olives"
+      ]
+    },
+    {
+      "w": "apple",
+      "g": "Apfel",
+      "d": "a round red or green fruit",
+      "s": "I always take a shiny red _____ to school in my lunch box for a healthy snack.",
+      "a": [],
+      "mc": [
+        "carrot",
+        "cheese",
+        "egg"
+      ]
+    },
+    {
+      "w": "mineral water",
+      "g": "Mineralwasser",
+      "d": "water with bubbles from a bottle",
+      "s": "Can I have a bottle of cold _____ with no sugar and lots of bubbles, please?",
+      "a": [],
+      "mc": [
+        "lemonade",
+        "juice",
+        "milkshake"
+      ]
+    },
+    {
+      "w": "grapes",
+      "g": "Weintrauben",
+      "d": "small round fruits that grow together",
+      "s": "I bought a bunch of red and green _____ at the shop. They grow on vines.",
+      "a": [],
+      "mc": [
+        "bananas",
+        "watermelons",
+        "oranges"
+      ]
+    },
+    {
+      "w": "orange",
+      "g": "Orange",
+      "d": "a round juicy fruit with thick peel, eaten in segments",
+      "s": "She peels the skin off a juicy _____ and eats the segments for lunch.",
+      "a": [],
+      "mc": [
+        "potato",
+        "onion",
+        "mushroom"
+      ]
+    },
+    {
+      "w": "tomato",
+      "g": "Tomate, Paradeiser",
+      "d": "a soft, round, red fruit",
+      "s": "I need one red round _____ for the green salad. It grows on a plant.",
+      "a": [],
+      "mc": [
+        "carrot",
+        "potato",
+        "cabbage"
+      ]
+    },
+    {
+      "w": "red pepper",
+      "g": "rote Paprika",
+      "d": "a red vegetable with seeds inside",
+      "s": "I cut a crunchy _____ into thin strips and put them in the salad.",
+      "a": [],
+      "mc": [
+        "cabbage",
+        "bread",
+        "cheese"
+      ]
+    },
+    {
+      "w": "kiwi",
+      "g": "Kiwi",
+      "d": "a small brown fruit, green inside",
+      "s": "The _____ fruit is brown and fuzzy on the outside, but soft and bright green with black seeds inside.",
+      "a": [],
+      "mc": [
+        "apple",
+        "banana",
+        "lemon"
+      ]
+    },
+    {
+      "w": "spinach",
+      "g": "Spinat",
+      "d": "a vegetable with dark green leaves",
+      "s": "Mum makes a healthy smoothie with banana, milk and dark green _____ leaves.",
+      "a": [],
+      "mc": [
+        "chocolate",
+        "sugar",
+        "flour"
+      ]
+    },
+    {
+      "w": "strawberry",
+      "g": "Erdbeere",
+      "d": "a small, red, sweet fruit",
+      "s": "I pick one red heart-shaped _____ with small seeds from the garden.",
+      "a": [],
+      "mc": [
+        "apple",
+        "orange",
+        "banana"
+      ]
+    },
+    {
+      "w": "sugar",
+      "g": "Zucker",
+      "d": "a sweet white powder for food and drinks",
+      "s": "Do you want one or two spoons of white _____ in your bitter tea to make it sweet?",
+      "a": [],
+      "mc": [
+        "salt",
+        "butter",
+        "milk"
+      ]
+    },
+    {
+      "w": "bread",
+      "g": "Brot",
+      "d": "a basic food made from flour and water",
+      "s": "We need to buy a loaf of fresh _____ from the bakery for our ham sandwiches.",
+      "a": [],
+      "mc": [
+        "milk",
+        "juice",
+        "water"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "A piece of _____",
+          "options": [
+            "Bread",
+            "Football",
+            "Music",
+            "Homework"
+          ],
+          "answer": "Bread"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BREAD?",
+          "options": [
+            "eat",
+            "fresh",
+            "white",
+            "fast"
+          ],
+          "answer": "fast"
+        }
+      ]
+    },
+    {
+      "w": "rice",
+      "g": "Reis",
+      "d": "small white or brown grains you cook",
+      "s": "In Asia, people eat small white _____ grains every day with vegetables and meat.",
+      "a": [],
+      "mc": [
+        "potatoes",
+        "bread",
+        "cheese"
+      ]
+    },
+    {
+      "w": "egg",
+      "g": "Ei",
+      "d": "an oval thing that comes from a chicken",
+      "s": "I have a soft-boiled _____ in a cup with some soldiers of toast for breakfast.",
+      "a": [],
+      "mc": [
+        "banana",
+        "carrot",
+        "tomato"
+      ]
+    },
+    {
+      "w": "pasta",
+      "g": "Nudeln, Pasta",
+      "d": "a food made from flour, like spaghetti",
+      "s": "We cook long _____ noodles in boiling water and serve them with tomato sauce.",
+      "a": [],
+      "mc": [
+        "bread",
+        "rice",
+        "cheese"
+      ]
+    },
+    {
+      "w": "pizza",
+      "g": "Pizza",
+      "d": "a flat, round food with cheese on top",
+      "s": "Let's order a big round Italian _____ with melted mozzarella cheese and tomato sauce.",
+      "a": [],
+      "mc": [
+        "sandwich",
+        "salad",
+        "soup"
+      ]
+    },
+    {
+      "w": "fries",
+      "g": "Pommes frites",
+      "d": "long pieces of potato cooked in oil",
+      "s": "I always order hot salty _____ with ketchup as a side with my hamburger.",
+      "a": [
+        "french fries"
+      ],
+      "mc": [
+        "soup",
+        "salad",
+        "ice cream"
+      ]
+    },
+    {
+      "w": "chips",
+      "g": "Chips",
+      "d": "thin pieces of potato you eat as a snack",
+      "s": "We ate _____ with our fish for dinner.",
+      "a": [
+        "crisps"
+      ],
+      "mc": [
+        "eggs",
+        "apples",
+        "carrots"
+      ]
+    },
+    {
+      "w": "hamburger",
+      "g": "Hamburger",
+      "d": "meat in a round bread roll",
+      "s": "I want a juicy _____ — beef patty between two bread buns — with cheese, please.",
+      "a": [
+        "burger"
+      ],
+      "mc": [
+        "sandwich",
+        "sausage",
+        "egg"
+      ]
+    },
+    {
+      "w": "chocolate",
+      "g": "Schokolade",
+      "d": "a sweet brown food made from cocoa",
+      "s": "She got a big box of dark and milk _____ for her birthday. It is brown and sweet.",
+      "a": [],
+      "mc": [
+        "bread",
+        "cheese",
+        "butter"
+      ]
+    },
+    {
+      "w": "cake",
+      "g": "Kuchen",
+      "d": "a sweet food you bake for birthdays",
+      "s": "Mum makes a big round birthday _____ with strawberries and whipped cream on top.",
+      "a": [],
+      "mc": [
+        "sandwich",
+        "pizza",
+        "salad"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a cake",
+          "options": [
+            "Make",
+            "Do",
+            "Read",
+            "Ride"
+          ],
+          "answer": "Make"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CAKE?",
+          "options": [
+            "make",
+            "chocolate",
+            "birthday",
+            "loud"
+          ],
+          "answer": "loud"
+        }
+      ]
+    },
+    {
+      "w": "breakfast",
+      "g": "Frühstück",
+      "d": "the first meal of the day",
+      "s": "I have scrambled eggs and buttered toast for _____ every morning at 7am before school.",
+      "a": [],
+      "mc": [
+        "dinner",
+        "supper",
+        "bedtime snack"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ breakfast",
+          "options": [
+            "Have",
+            "Do",
+            "Play",
+            "Drive"
+          ],
+          "answer": "Have"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BREAKFAST?",
+          "options": [
+            "have",
+            "eat",
+            "big",
+            "ride"
+          ],
+          "answer": "ride"
+        }
+      ]
+    },
+    {
+      "w": "lunch",
+      "g": "Mittagessen",
+      "d": "the meal you eat in the middle of the day",
+      "s": "At school, we eat our _____ in the canteen at twelve o'clock during the midday break.",
+      "a": [],
+      "mc": [
+        "breakfast",
+        "midnight snack",
+        "bedtime snack"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ lunch",
+          "options": [
+            "Have",
+            "Play",
+            "Write",
+            "Ride"
+          ],
+          "answer": "Have"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LUNCH?",
+          "options": [
+            "have",
+            "eat",
+            "school",
+            "sharp"
+          ],
+          "answer": "sharp"
+        }
+      ]
+    },
+    {
+      "w": "dinner",
+      "g": "Abendessen",
+      "d": "the meal you eat in the evening",
+      "s": "The whole family sits down together at the big table and eats _____ at seven in the evening.",
+      "a": [],
+      "mc": [
+        "breakfast",
+        "morning snack",
+        "midnight feast"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ dinner",
+          "options": [
+            "Cook",
+            "Read",
+            "Write",
+            "Ride"
+          ],
+          "answer": "Cook"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DINNER?",
+          "options": [
+            "cook",
+            "eat",
+            "hot",
+            "sharp"
+          ],
+          "answer": "sharp"
+        }
+      ]
+    },
+    {
+      "w": "restaurant",
+      "g": "Restaurant",
+      "d": "a place where you go to eat food",
+      "s": "We go to an Italian _____ called 'La Pasta' on Friday evenings to eat pizza with waiters serving us.",
+      "a": [],
+      "mc": [
+        "school canteen",
+        "kitchen",
+        "supermarket"
+      ]
+    },
+    {
+      "w": "always",
+      "g": "immer",
+      "d": "at all times, every time",
+      "s": "She _____ brushes her teeth before bed every single night without fail.",
+      "a": [],
+      "mc": [
+        "never",
+        "hardly ever",
+        "rarely"
+      ]
+    },
+    {
+      "w": "usually",
+      "g": "normalerweise, gewöhnlich",
+      "d": "most of the time, almost always",
+      "s": "I _____ walk to school because it's close, but today is raining, so I am taking the bus.",
+      "a": [],
+      "mc": [
+        "rarely",
+        "never",
+        "once"
+      ]
+    },
+    {
+      "w": "often",
+      "g": "oft",
+      "d": "many times",
+      "s": "We _____ play football after school — about three or four times every week.",
+      "a": [],
+      "mc": [
+        "rarely",
+        "never",
+        "once a year"
+      ]
+    },
+    {
+      "w": "sometimes",
+      "g": "manchmal",
+      "d": "not always, but now and then",
+      "s": "I _____ eat pizza — maybe once a month — but not every week.",
+      "a": [],
+      "mc": [
+        "always",
+        "every day",
+        "never"
+      ]
+    },
+    {
+      "w": "never",
+      "g": "nie, niemals",
+      "d": "not at any time",
+      "s": "He _____ eats any vegetables at all; he hates them and pushes them off his plate.",
+      "a": [],
+      "mc": [
+        "always",
+        "usually",
+        "often"
+      ]
+    },
+    {
+      "w": "meat",
+      "g": "Fleisch",
+      "d": "food from animals like cows or pigs",
+      "s": "She does not eat any _____ from animals because she is vegetarian — no chicken, beef, or pork.",
+      "a": [],
+      "mc": [
+        "bread",
+        "fruit",
+        "rice"
+      ]
+    },
+    {
+      "w": "ham",
+      "g": "Schinken",
+      "d": "pink meat from a pig",
+      "s": "I want a _____ and cheese sandwich, please — pink pork slices in the middle of the bread.",
+      "a": [],
+      "mc": [
+        "fish",
+        "egg",
+        "jam"
+      ]
+    },
+    {
+      "w": "healthy",
+      "g": "gesund",
+      "d": "good for your body",
+      "s": "Fresh fruit and green vegetables are very _____ for your body. They give you vitamins and fibre.",
+      "a": [],
+      "mc": [
+        "unhealthy",
+        "rotten",
+        "poisonous"
+      ]
+    },
+    {
+      "w": "to like",
+      "g": "mögen",
+      "d": "to enjoy something, to think it is good",
+      "s": "I _____ bananas very much and eat one every day, but I hate sour apples.",
+      "cf": "like",
+      "a": [],
+      "mc": [
+        "to hate",
+        "to refuse",
+        "to avoid"
+      ]
+    },
+    {
+      "w": "That's nice.",
+      "g": "Das ist nett.",
+      "d": "a friendly reply to good news",
+      "s": "I got a new puppy for my birthday. — _____ I am happy for you!",
+      "a": [],
+      "mc": [
+        "That's terrible.",
+        "That's sad.",
+        "That's boring."
+      ]
+    },
+    {
+      "w": "any",
+      "g": "irgendwelche",
+      "d": "some, used in questions and negatives",
+      "s": "Have we got _____ eggs in the fridge? I want to make an omelette for breakfast.",
+      "a": [],
+      "mc": [
+        "no",
+        "every",
+        "one"
+      ]
+    },
+    {
+      "w": "to make",
+      "g": "machen; hier: zubereiten",
+      "d": "to create or prepare something",
+      "s": "Can you help me _____ a cheese and ham sandwich by putting the slices between the bread?",
+      "cf": "make",
+      "a": [],
+      "mc": [
+        "to eat",
+        "to buy",
+        "to steal"
+      ]
+    },
+    {
+      "w": "money",
+      "g": "Geld",
+      "d": "what you use to buy things",
+      "s": "I don't have enough _____ — only one euro — to buy the chocolate cake that costs five euros.",
+      "a": [],
+      "mc": [
+        "time",
+        "friends",
+        "space"
+      ]
+    },
+    {
+      "w": "sandwich",
+      "g": "Sandwich; belegtes Brot",
+      "d": "bread with food between two pieces",
+      "s": "I packed a ham and cheese _____ — two slices of bread with a filling in the middle — for lunch.",
+      "a": [],
+      "mc": [
+        "soup",
+        "ice cream",
+        "salad"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a sandwich",
+          "options": [
+            "Make",
+            "Do",
+            "Read",
+            "Play"
+          ],
+          "answer": "Make"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SANDWICH?",
+          "options": [
+            "make",
+            "eat",
+            "cheese",
+            "drive"
+          ],
+          "answer": "drive"
+        }
+      ]
+    },
+    {
+      "w": "some",
+      "g": "etwas; einige",
+      "d": "a few, a little, not none",
+      "s": "Can I have _____ milk in my tea, please? Just a little bit is enough.",
+      "a": [],
+      "mc": [
+        "none",
+        "no",
+        "much"
+      ]
+    },
+    {
+      "w": "vegetable",
+      "g": "Gemüse",
+      "d": "a plant you can eat, like a carrot",
+      "s": "My favourite red _____ is the tomato. I eat it in my salad.",
+      "a": [],
+      "mc": [
+        "fruit",
+        "meat",
+        "dessert"
+      ]
+    },
+    {
+      "w": "waiter",
+      "g": "Kellner/Kellnerin",
+      "d": "a person who brings food in a restaurant",
+      "s": "The _____ at the restaurant wrote down our order and brought us the menu.",
+      "a": [
+        "waitress"
+      ],
+      "mc": [
+        "cook",
+        "customer",
+        "farmer"
+      ]
+    },
+    {
+      "w": "Have you got ...?",
+      "g": "Hast du / Habt ihr / Haben Sie ...?",
+      "d": "a question to ask if someone has something",
+      "s": "_____ any orange juice left in the bottle? I would like a glass.",
+      "cf": "Have you got",
+      "a": [],
+      "mc": [
+        "Do you eat ...?",
+        "Can I have ...?",
+        "Would you like ...?"
+      ]
+    },
+    {
+      "w": "I've got ...",
+      "g": "Ich habe ...",
+      "d": "I have something",
+      "s": "_____ two red apples and one banana in my school bag for a snack later.",
+      "cf": "I've got",
+      "a": [],
+      "mc": [
+        "I want ...",
+        "I need ...",
+        "I hate ..."
+      ]
+    },
+    {
+      "w": "junk food",
+      "g": "Junk Food",
+      "d": "food that is not good for your body",
+      "s": "Hamburgers, pizza and chips are unhealthy _____. They are tasty but bad for you.",
+      "a": [],
+      "mc": [
+        "health food",
+        "organic food",
+        "fresh fruit"
+      ]
+    },
+    {
+      "w": "menu",
+      "g": "Speisekarte",
+      "d": "a list of food in a restaurant",
+      "s": "Let's look at the _____ that lists all the dishes and their prices, and choose what to eat.",
+      "a": [],
+      "mc": [
+        "map",
+        "schedule",
+        "receipt"
+      ]
+    },
+    {
+      "w": "Mum",
+      "g": "Mama",
+      "d": "a word for your mother",
+      "s": "_____ is cooking hot tomato soup for lunch in the kitchen. She is my mother.",
+      "a": [
+        "mum",
+        "Mom",
+        "mom"
+      ],
+      "mc": [
+        "My teacher",
+        "The shopkeeper",
+        "A stranger"
+      ]
+    },
+    {
+      "w": "plate",
+      "g": "Teller",
+      "d": "a flat, round thing you put food on",
+      "s": "He puts the hot pasta with tomato sauce on a big white _____ and eats it with a fork.",
+      "a": [],
+      "mc": [
+        "glass",
+        "bottle",
+        "spoon"
+      ]
+    },
+    {
+      "w": "salad",
+      "g": "Salat",
+      "d": "a cold dish of vegetables or fruit",
+      "s": "I eat a healthy green _____ bowl with lettuce, tomatoes and cucumber for a light lunch.",
+      "a": [],
+      "mc": [
+        "pizza",
+        "sandwich",
+        "cake"
+      ]
+    },
+    {
+      "w": "soup",
+      "g": "Suppe",
+      "d": "a hot liquid food you eat with a spoon",
+      "s": "When it is very cold outside, I like a bowl of hot tomato _____ with a spoon and some bread.",
+      "a": [],
+      "mc": [
+        "ice cream",
+        "cake",
+        "chocolate"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ soup",
+          "options": [
+            "Make",
+            "Write",
+            "Read",
+            "Play"
+          ],
+          "answer": "Make"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SOUP?",
+          "options": [
+            "hot",
+            "make",
+            "eat",
+            "ride"
+          ],
+          "answer": "ride"
+        }
+      ]
+    },
+    {
+      "w": "glass",
+      "g": "Glas",
+      "d": "a clear, hard cup you drink water from",
+      "s": "Can I have a clean _____ of cold water, please? Something I can drink from.",
+      "a": [],
+      "mc": [
+        "plate",
+        "bowl",
+        "fork"
+      ]
+    }
+  ]
+}

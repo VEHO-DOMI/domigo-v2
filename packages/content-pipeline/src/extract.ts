@@ -14,11 +14,27 @@ import { docxToText } from "./docx.ts";
 import { sha256OfFile, writeJson, writeText } from "./json.ts";
 import { GRADE_SOURCES, SOURCE_BASE, SOURCES_LOCK_PATH, TRANSCRIPTS_DIR } from "./paths.ts";
 
-/** iCloud duplicate artifacts ("Unit 3 2.docx"), Word locks, hidden files. */
-function isJunk(basename: string): boolean {
-  if (basename.startsWith(".") || basename.startsWith("~$")) return true;
-  const stem = basename.replace(/\.[^.]+$/, "");
-  return /\s\d+$/.test(stem) && / 2$| 3$/.test(stem);
+/**
+ * Filter a directory listing down to real .docx sources.
+ *
+ * iCloud sync conflicts produce "<original> 2.docx" duplicates. A " N" stem
+ * suffix alone is NOT enough to call a file junk — real files end in digits
+ * too ("More 2 SB Unit 2.docx"). A file is a duplicate only when the sibling
+ * WITHOUT the suffix exists in the same directory. (This bug previously
+ * dropped 6 real transcripts, including the pilot unit's.)
+ */
+export function filterRealDocx(names: string[]): string[] {
+  const docx = names.filter(
+    (n) => n.toLowerCase().endsWith(".docx") && !n.startsWith(".") && !n.startsWith("~$"),
+  );
+  const stems = new Set(docx.map((n) => n.replace(/\.docx$/i, "")));
+  return docx
+    .filter((n) => {
+      const stem = n.replace(/\.docx$/i, "");
+      const m = /^(.*)\s\d+$/.exec(stem);
+      return !(m?.[1] !== undefined && stems.has(m[1]));
+    })
+    .sort((a, b) => a.localeCompare(b, "en"));
 }
 
 function roleFromName(basename: string): "sb-transcript" | "wb-transcript" | "other" {
@@ -76,8 +92,7 @@ export function runExtract(onlyGrade?: Grade): void {
 
     for (const { dir, role } of src.transcriptDirs) {
       if (!fs.existsSync(dir)) throw new Error(`[g${grade}] transcript dir not found: ${dir}`);
-      const names = fs.readdirSync(dir).filter((n) => n.toLowerCase().endsWith(".docx") && !isJunk(n));
-      names.sort((a, b) => a.localeCompare(b, "en"));
+      const names = filterRealDocx(fs.readdirSync(dir));
       for (const name of names) {
         const fileRole = role === "auto" ? roleFromName(name) : role;
         const stem = name.replace(/\.docx$/i, "").trim();

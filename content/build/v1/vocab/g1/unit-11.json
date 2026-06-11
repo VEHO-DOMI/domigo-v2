@@ -1,0 +1,837 @@
+{
+  "slug": "unit-11",
+  "grade": 1,
+  "unit": 11,
+  "title": "Unit 11",
+  "entries": [
+    {
+      "w": "9 a.m.",
+      "g": "9 Uhr morgens",
+      "d": "nine o'clock in the morning",
+      "s": "School starts at _____ sharp in the morning, so we must be in the classroom by then.",
+      "a": [],
+      "mc": [
+        "9 p.m.",
+        "midnight",
+        "midday"
+      ]
+    },
+    {
+      "w": "midday",
+      "g": "Mittag",
+      "d": "twelve o'clock in the middle of the day",
+      "s": "We eat lunch at _____ when the clock shows exactly twelve o'clock in the middle of the day.",
+      "a": [],
+      "mc": [
+        "midnight",
+        "breakfast time",
+        "bedtime"
+      ]
+    },
+    {
+      "w": "9 p.m.",
+      "g": "9 Uhr abends",
+      "d": "nine o'clock in the evening",
+      "s": "My favourite late TV show is on at _____ in the evening after dinner when it is dark outside.",
+      "a": [],
+      "mc": [
+        "9 a.m.",
+        "midday",
+        "breakfast time"
+      ]
+    },
+    {
+      "w": "midnight",
+      "g": "Mitternacht",
+      "d": "twelve o'clock at night",
+      "s": "On New Year's Eve, we stay awake until _____ — 12 o'clock at night — and then shout 'Happy New Year!'",
+      "a": [],
+      "mc": [
+        "midday",
+        "early morning",
+        "afternoon"
+      ]
+    },
+    {
+      "w": "9 o'clock",
+      "g": "9 Uhr",
+      "d": "the time when it is exactly nine",
+      "s": "The evening film starts at _____ exactly, so we must take our seats by then in the cinema.",
+      "a": [],
+      "mc": [
+        "midnight",
+        "early morning",
+        "breakfast time"
+      ]
+    },
+    {
+      "w": "quarter past nine",
+      "g": "Viertel nach neun",
+      "d": "fifteen minutes after nine",
+      "s": "It is _____ — 15 minutes after 9 — so we are late for school which started at 9.",
+      "a": [],
+      "mc": [
+        "quarter to nine",
+        "half past nine",
+        "nine o'clock"
+      ]
+    },
+    {
+      "w": "half past nine",
+      "g": "halb zehn",
+      "d": "thirty minutes after nine",
+      "s": "I finish my breakfast at _____ — that is 30 minutes after 9.",
+      "a": [],
+      "mc": [
+        "quarter past nine",
+        "quarter to ten",
+        "nine o'clock"
+      ]
+    },
+    {
+      "w": "quarter to ten",
+      "g": "Viertel vor zehn",
+      "d": "fifteen minutes before ten",
+      "s": "It is _____ — 15 minutes before 10 — and the shop closes at ten, so we must hurry.",
+      "a": [],
+      "mc": [
+        "quarter past ten",
+        "half past ten",
+        "ten o'clock"
+      ]
+    },
+    {
+      "w": "to ride a bike",
+      "g": "Fahrrad fahren",
+      "d": "to travel on a bicycle",
+      "s": "I like to _____ with two wheels and pedals in the park on Sundays.",
+      "a": [],
+      "mc": [
+        "to drive a car",
+        "to ride the bus",
+        "to take a taxi"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a bike",
+          "options": [
+            "Ride",
+            "Cook",
+            "Read",
+            "Write"
+          ],
+          "answer": "Ride"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BIKE?",
+          "options": [
+            "ride",
+            "fast",
+            "new",
+            "eat"
+          ],
+          "answer": "eat"
+        }
+      ]
+    },
+    {
+      "w": "to watch TV",
+      "g": "fernsehen",
+      "d": "to look at programmes on television",
+      "s": "After dinner, we _____ together as a family on the sofa in the living room.",
+      "a": [],
+      "mc": [
+        "to go to sleep",
+        "to do homework",
+        "to eat dinner"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ TV",
+          "options": [
+            "Watch",
+            "Cook",
+            "Write",
+            "Ride"
+          ],
+          "answer": "Watch"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TV?",
+          "options": [
+            "watch",
+            "programme",
+            "turn on",
+            "chop"
+          ],
+          "answer": "chop"
+        }
+      ]
+    },
+    {
+      "w": "to play football",
+      "g": "Fußball spielen",
+      "d": "to play a game where you kick a ball",
+      "s": "The boys _____ with a round black-and-white ball on the green field every day after school.",
+      "a": [],
+      "mc": [
+        "to sing songs",
+        "to read books",
+        "to paint pictures"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ football",
+          "options": [
+            "Play",
+            "Cook",
+            "Drink",
+            "Read"
+          ],
+          "answer": "Play"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FOOTBALL?",
+          "options": [
+            "play",
+            "team",
+            "match",
+            "bake"
+          ],
+          "answer": "bake"
+        }
+      ]
+    },
+    {
+      "w": "to play computer games",
+      "g": "Computerspiele spielen",
+      "d": "to play games on a computer",
+      "s": "My older brother likes to _____ on his console with a handheld controller in his free time.",
+      "a": [],
+      "mc": [
+        "to play outside",
+        "to play music",
+        "to play tag"
+      ]
+    },
+    {
+      "w": "to play the piano",
+      "g": "Klavier spielen",
+      "d": "to make music on a piano",
+      "s": "She can _____ beautifully because she practises on her black and white keys an hour every day.",
+      "a": [],
+      "mc": [
+        "to sing opera",
+        "to paint pictures",
+        "to speak French"
+      ]
+    },
+    {
+      "w": "to ride a horse",
+      "g": "reiten",
+      "d": "to sit on a horse and move",
+      "s": "My older sister goes to a countryside farm every Sunday to _____ in the riding school.",
+      "a": [],
+      "mc": [
+        "to ride a bike",
+        "to ride a scooter",
+        "to drive a car"
+      ]
+    },
+    {
+      "w": "to skateboard",
+      "g": "Skateboard fahren",
+      "d": "to ride on a small wooden board with four wheels",
+      "s": "He likes to _____ on his wooden board with four wheels in the park with his friends.",
+      "a": [],
+      "mc": [
+        "to swim",
+        "to read",
+        "to sing"
+      ]
+    },
+    {
+      "w": "to cook",
+      "g": "kochen",
+      "d": "to make food in the kitchen",
+      "s": "My dad likes to _____ spaghetti pasta with tomato sauce for dinner on Wednesdays.",
+      "a": [],
+      "mc": [
+        "to eat",
+        "to clean",
+        "to serve"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "Cook _____",
+          "options": [
+            "Dinner",
+            "Music",
+            "Homework",
+            "Books"
+          ],
+          "answer": "Dinner"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with COOK?",
+          "options": [
+            "dinner",
+            "food",
+            "lunch",
+            "pencil"
+          ],
+          "answer": "pencil"
+        }
+      ]
+    },
+    {
+      "w": "to ride a scooter",
+      "g": "Roller fahren",
+      "d": "to travel on a scooter",
+      "s": "She likes to _____ with two small wheels and one foot pushing off the ground, to the shops.",
+      "a": [],
+      "mc": [
+        "to fly",
+        "to swim",
+        "to drive"
+      ]
+    },
+    {
+      "w": "to ski",
+      "g": "Ski fahren",
+      "d": "to go down snow on skis",
+      "s": "In winter we go up to the snowy mountains to _____ down the slopes on two long thin boards.",
+      "a": [],
+      "mc": [
+        "to swim",
+        "to sail",
+        "to surf"
+      ]
+    },
+    {
+      "w": "to snowboard",
+      "g": "snowboarden",
+      "d": "to ride a board on snow",
+      "s": "He learns to _____ down the mountain on one wide board with both feet strapped on during the winter holidays.",
+      "a": [],
+      "mc": [
+        "to walk",
+        "to cycle",
+        "to run"
+      ]
+    },
+    {
+      "w": "to skate",
+      "g": "Schlittschuh laufen",
+      "d": "to move on ice with special shoes",
+      "s": "We go to the ice rink with blades under our feet to _____ smoothly across the frozen surface every Saturday.",
+      "a": [],
+      "mc": [
+        "to swim",
+        "to run",
+        "to jump"
+      ]
+    },
+    {
+      "w": "daily",
+      "g": "täglich",
+      "d": "happening every day",
+      "s": "Walking our pet dog is my _____ job — I do it every single day before school without fail.",
+      "a": [],
+      "mc": [
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    {
+      "w": "free time",
+      "g": "Freizeit",
+      "d": "time when you can do what you want",
+      "s": "In my _____, when I don't have school or homework, I like to read books and draw pictures.",
+      "a": [],
+      "mc": [
+        "school time",
+        "lesson time",
+        "test time"
+      ]
+    },
+    {
+      "w": "What's the time?",
+      "g": "Wie spät ist es?",
+      "d": "asking what the clock shows",
+      "s": "_____ — It's half past three in the afternoon now.",
+      "cf": "What's the time",
+      "a": [],
+      "mc": [
+        "What day is it?",
+        "How are you?",
+        "Where are you?"
+      ]
+    },
+    {
+      "w": "Excuse me.",
+      "g": "Entschuldigen Sie bitte., Entschuldigung.",
+      "d": "a polite way to get someone's attention",
+      "s": "_____ Where is the train station from here? I am a tourist.",
+      "cf": "Excuse me",
+      "a": [],
+      "mc": [
+        "Goodbye.",
+        "Thank you.",
+        "Sorry."
+      ]
+    },
+    {
+      "w": "to hurry",
+      "g": "sich beeilen",
+      "d": "to move or do something fast",
+      "s": "We are very late for school and it starts in two minutes. We must _____ and run fast!",
+      "a": [],
+      "mc": [
+        "to stop",
+        "to sit down",
+        "to rest"
+      ]
+    },
+    {
+      "w": "clock",
+      "g": "Uhr",
+      "d": "a thing on the wall that shows the time",
+      "s": "I looked at the wall _____ with hands pointing to numbers and saw it was already noon.",
+      "a": [],
+      "mc": [
+        "calendar",
+        "map",
+        "book"
+      ]
+    },
+    {
+      "w": "It's 10 a.m.",
+      "g": "Es ist 10 Uhr morgens/vormittags.",
+      "d": "telling someone the morning time",
+      "s": "_____ in the morning and the maths lesson is starting right now at school.",
+      "cf": "It's 10 a.m.",
+      "a": [],
+      "mc": [
+        "It's 10 p.m.",
+        "It's midnight.",
+        "It's bedtime."
+      ]
+    },
+    {
+      "w": "It's 8 p.m.",
+      "g": "Es ist 8 Uhr abends.",
+      "d": "telling someone the evening time",
+      "s": "_____ in the evening and the young children are getting into their pyjamas ready for bed.",
+      "cf": "It's 8 p.m.",
+      "a": [],
+      "mc": [
+        "It's 8 a.m.",
+        "It's early morning.",
+        "It's breakfast time."
+      ]
+    },
+    {
+      "w": "What time is it?",
+      "g": "Wie spät ist es?",
+      "d": "asking what the clock shows now",
+      "s": "_____ I don't want to be late for the doctor's appointment at 4 o'clock!",
+      "cf": "What time is it",
+      "a": [],
+      "mc": [
+        "What day is it?",
+        "What's your name?",
+        "How old are you?"
+      ]
+    },
+    {
+      "w": "bedtime",
+      "g": "Schlafenszeit",
+      "d": "the time when you go to sleep",
+      "s": "It is nine o'clock at night, so it is _____ for the young children. They must brush teeth and sleep.",
+      "a": [],
+      "mc": [
+        "playtime",
+        "breakfast time",
+        "school time"
+      ]
+    },
+    {
+      "w": "break",
+      "g": "Pause",
+      "d": "a time to stop and rest",
+      "s": "Let's have a short _____ from studying and eat our sandwiches in the yard for fifteen minutes.",
+      "a": [],
+      "mc": [
+        "lesson",
+        "exam",
+        "test"
+      ]
+    },
+    {
+      "w": "exercise",
+      "g": "Übung; hier: (körperliche) Bewegung",
+      "d": "moving your body to stay healthy",
+      "s": "Running around the park and swimming in the pool are good kinds of _____ for your body.",
+      "a": [],
+      "mc": [
+        "sleep",
+        "rest",
+        "sitting"
+      ]
+    },
+    {
+      "w": "to go to bed",
+      "g": "schlafen gehen",
+      "d": "to get into bed to sleep",
+      "s": "I always _____ at exactly nine o'clock on school nights so I get enough sleep for the next day.",
+      "cf": "go to bed",
+      "a": [],
+      "mc": [
+        "to get up",
+        "to wake up",
+        "to get dressed"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "Go to _____",
+          "options": [
+            "Bed",
+            "Cake",
+            "Guitar",
+            "Pencil"
+          ],
+          "answer": "Bed"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BED?",
+          "options": [
+            "go to",
+            "warm",
+            "sleep",
+            "cook"
+          ],
+          "answer": "cook"
+        }
+      ]
+    },
+    {
+      "w": "to go to school",
+      "g": "in die Schule gehen",
+      "d": "to travel to school each day",
+      "s": "My little brother _____ by yellow bus every weekday morning to learn maths and English.",
+      "cf": "goes to school",
+      "a": [],
+      "mc": [
+        "to go home",
+        "to go shopping",
+        "to go swimming"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ to school",
+          "options": [
+            "Go",
+            "Eat",
+            "Cook",
+            "Play"
+          ],
+          "answer": "Go"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SCHOOL?",
+          "options": [
+            "go to",
+            "walk to",
+            "big",
+            "fry"
+          ],
+          "answer": "fry"
+        }
+      ]
+    },
+    {
+      "w": "outside",
+      "g": "draußen, außerhalb",
+      "d": "not inside a building",
+      "s": "The warm sun is shining and the birds are singing. Let's play ball games _____ in the garden!",
+      "a": [],
+      "mc": [
+        "inside the house",
+        "in bed",
+        "in the cellar"
+      ]
+    },
+    {
+      "w": "to study",
+      "g": "lernen, studieren",
+      "d": "to learn about something",
+      "s": "I need to _____ my English vocabulary and grammar for the big test tomorrow morning.",
+      "a": [],
+      "mc": [
+        "to play",
+        "to rest",
+        "to ignore"
+      ]
+    },
+    {
+      "w": "to wake somebody up",
+      "g": "jemanden aufwecken",
+      "d": "to make someone stop sleeping",
+      "s": "My mum has to _____ my little brother every morning at seven because he sleeps deeply.",
+      "cf": "wake me up",
+      "a": [],
+      "mc": [
+        "to put to bed",
+        "to leave alone",
+        "to sing a lullaby to"
+      ]
+    },
+    {
+      "w": "amazing",
+      "g": "erstaunlich, großartig",
+      "d": "very good and surprising",
+      "s": "The fireworks in the sky last night were _____! The best show I have ever seen.",
+      "a": [],
+      "mc": [
+        "boring",
+        "ordinary",
+        "terrible"
+      ]
+    },
+    {
+      "w": "to answer the door",
+      "g": "die Tür aufmachen",
+      "d": "to open the door when someone knocks",
+      "s": "Someone is knocking on the front door right now. Can you please _____?",
+      "cf": "answer the door",
+      "a": [],
+      "mc": [
+        "to lock the door",
+        "to break the door",
+        "to paint the door"
+      ]
+    },
+    {
+      "w": "bush",
+      "g": "Busch",
+      "d": "a small tree with many branches",
+      "s": "The small cat is hiding behind the big green leafy _____ in the garden. I can only see its tail.",
+      "a": [],
+      "mc": [
+        "lamp post",
+        "fence",
+        "gate"
+      ]
+    },
+    {
+      "w": "Have fun!",
+      "g": "Viel Spaß!",
+      "d": "wishing someone a good time",
+      "s": "You are going to the zoo with your class? _____ I hope you see the lions and elephants!",
+      "cf": "Have fun",
+      "a": [],
+      "mc": [
+        "Bad luck!",
+        "Too bad!",
+        "What a shame!"
+      ]
+    },
+    {
+      "w": "to hide",
+      "g": "(sich) verstecken",
+      "d": "to go where nobody can see you",
+      "s": "Let's play a game. Close your eyes for thirty seconds and I will _____ behind the big tree where you cannot see me.",
+      "a": [],
+      "mc": [
+        "to show myself",
+        "to stand in front",
+        "to run in a circle"
+      ]
+    },
+    {
+      "w": "knock",
+      "g": "Klopfen",
+      "d": "the sound when someone hits a door",
+      "s": "I heard a loud _____ — tap tap tap — at the front door. Someone was banging their fist.",
+      "a": [],
+      "mc": [
+        "whisper",
+        "song",
+        "silence"
+      ]
+    },
+    {
+      "w": "surprise",
+      "g": "Überraschung",
+      "d": "something you did not expect",
+      "s": "Close your eyes and don't peek — I have a wonderful _____ present hidden behind my back for you!",
+      "a": [],
+      "mc": [
+        "punishment",
+        "problem",
+        "lesson"
+      ]
+    },
+    {
+      "w": "to push",
+      "g": "schieben; drücken",
+      "d": "to move something away from you",
+      "s": "Please _____ the heavy door with both hands to open it — it won't move the other way.",
+      "a": [],
+      "mc": [
+        "to pull",
+        "to close",
+        "to lock"
+      ]
+    },
+    {
+      "w": "text message",
+      "g": "Textnachricht, SMS",
+      "d": "a short message you send from a phone",
+      "s": "I got a short _____ on my phone from my friend about the birthday party this Saturday.",
+      "a": [],
+      "mc": [
+        "video call",
+        "photo album",
+        "phone ring"
+      ]
+    },
+    {
+      "w": "to look after",
+      "g": "sich kümmern",
+      "d": "to take care of someone or something",
+      "s": "Can you _____ my pet dog — feed him and walk him — while I am on holiday for one week?",
+      "a": [],
+      "mc": [
+        "to ignore",
+        "to lose",
+        "to forget about"
+      ]
+    },
+    {
+      "w": "road",
+      "g": "Straße, Weg",
+      "d": "a way for cars and people to travel on",
+      "s": "Look carefully to the left and then the right before you cross the busy _____ with cars.",
+      "a": [],
+      "mc": [
+        "garden",
+        "field",
+        "forest"
+      ]
+    },
+    {
+      "w": "place",
+      "g": "Ort, Platz; hier: Wohnung, Zuhause",
+      "d": "a home or a location",
+      "s": "Come to my _____ — my house — after school today. We can play video games in my bedroom.",
+      "a": [],
+      "mc": [
+        "school",
+        "office",
+        "hospital"
+      ]
+    },
+    {
+      "w": "programme",
+      "g": "Programm, Sendung",
+      "d": "a show on TV or radio",
+      "s": "There is a funny nature _____ on TV tonight at 7 o'clock about African animals.",
+      "a": [],
+      "mc": [
+        "book",
+        "magazine",
+        "advert"
+      ]
+    },
+    {
+      "w": "clue",
+      "g": "Hinweis, Tipp",
+      "d": "a hint that helps you find an answer",
+      "s": "I cannot guess the answer to the riddle. Please give me a _____ — a small hint — to help me.",
+      "a": [],
+      "mc": [
+        "full answer",
+        "long explanation",
+        "complete solution"
+      ]
+    },
+    {
+      "w": "See you soon.",
+      "g": "Bis bald.",
+      "d": "saying you will meet again quickly",
+      "s": "I have to go now to catch my bus home. _____! I will call you tomorrow!",
+      "cf": "See you soon",
+      "a": [],
+      "mc": [
+        "Hello!",
+        "Welcome!",
+        "Nice to meet you!"
+      ]
+    },
+    {
+      "w": "to snow",
+      "g": "schneien",
+      "d": "when white ice falls from the sky",
+      "s": "Look outside the window! It is _____ and the garden is slowly turning white with soft flakes.",
+      "cf": "snowing",
+      "a": [],
+      "mc": [
+        "to rain",
+        "to shine",
+        "to blow"
+      ]
+    },
+    {
+      "w": "weather",
+      "g": "Wetter",
+      "d": "if it is sunny, rainy, cold, or warm",
+      "s": "The _____ is very nice and sunny today, so let's go to the park for a picnic.",
+      "a": [],
+      "mc": [
+        "news",
+        "music",
+        "food"
+      ]
+    },
+    {
+      "w": "half an hour",
+      "g": "eine halbe Stunde",
+      "d": "thirty minutes",
+      "s": "The next bus comes in exactly _____ — thirty minutes from now — so we must wait.",
+      "a": [],
+      "mc": [
+        "five minutes",
+        "three hours",
+        "a whole day"
+      ]
+    },
+    {
+      "w": "Hurry up.",
+      "g": "Beeil dich. / Beeilt euch.",
+      "d": "telling someone to be faster",
+      "s": "_____! The train leaves the station in five minutes and we are still walking!",
+      "cf": "Hurry up",
+      "a": [],
+      "mc": [
+        "Slow down.",
+        "Stop.",
+        "Sit down."
+      ]
+    }
+  ]
+}

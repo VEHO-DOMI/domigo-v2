@@ -1,0 +1,535 @@
+{
+  "slug": "unit-12",
+  "grade": 2,
+  "unit": 12,
+  "title": "Unit 12",
+  "entries": [
+    {
+      "w": "headache",
+      "g": "Kopfschmerzen",
+      "d": "A pain in your head that makes it hard to think",
+      "s": "I have a bad _____ and need to lie down.",
+      "a": [
+        "headaches"
+      ],
+      "mc": [
+        "toothache",
+        "earache",
+        "backache"
+      ]
+    },
+    {
+      "w": "toothache",
+      "g": "Zahnschmerzen",
+      "d": "A pain in your tooth that really hurts",
+      "s": "I can't eat anything because I have a _____.",
+      "a": [
+        "toothaches"
+      ],
+      "mc": [
+        "headache",
+        "earache",
+        "stomach ache"
+      ]
+    },
+    {
+      "w": "earache",
+      "g": "Ohrenschmerzen",
+      "d": "A pain deep inside your ear",
+      "s": "My left ear hurts. I think I have an _____.",
+      "a": [
+        "earaches"
+      ],
+      "mc": [
+        "headache",
+        "toothache",
+        "backache"
+      ]
+    },
+    {
+      "w": "stomach ache",
+      "g": "Bauchschmerzen",
+      "d": "A pain in your tummy",
+      "s": "I ate too much cake and now I have a _____.",
+      "cf": "stomach ache",
+      "a": [
+        "stomach ache",
+        "stomachache",
+        "tummy ache"
+      ],
+      "mc": [
+        "headache",
+        "backache",
+        "toothache"
+      ]
+    },
+    {
+      "w": "pain in the ankle",
+      "g": "Schmerzen im Knöchel",
+      "d": "When the joint above your foot hurts",
+      "s": "I can't walk well because of the _____. The joint above my foot really hurts.",
+      "cf": "pain in my ankle",
+      "a": [
+        "pain in the ankle",
+        "pain in ankle",
+        "pain in my ankle",
+        "ankle pain"
+      ],
+      "mc": [
+        "pain in knee",
+        "backache",
+        "headache"
+      ]
+    },
+    {
+      "w": "knee",
+      "g": "Knie",
+      "d": "The joint in the middle of your leg that bends",
+      "s": "I fell and hurt my _____ on the playground.",
+      "a": [
+        "knees"
+      ],
+      "mc": [
+        "ankle",
+        "elbow",
+        "hip"
+      ]
+    },
+    {
+      "w": "backache",
+      "g": "Rückenschmerzen",
+      "d": "A pain along the back of your body",
+      "s": "My grandpa has _____ and finds it hard to sit for long.",
+      "a": [
+        "backaches"
+      ],
+      "mc": [
+        "headache",
+        "stomach ache",
+        "toothache"
+      ]
+    },
+    {
+      "w": "throat",
+      "g": "Hals",
+      "d": "The inside part of your neck where food goes down",
+      "s": "My _____ hurts when I try to swallow water.",
+      "a": [
+        "throats"
+      ],
+      "mc": [
+        "tongue",
+        "neck",
+        "chest"
+      ]
+    },
+    {
+      "w": "bath",
+      "g": "Bad",
+      "d": "When you sit in warm water to get clean",
+      "s": "After playing in the mud, I need a hot _____.",
+      "a": [
+        "baths"
+      ],
+      "mc": [
+        "shower",
+        "pool",
+        "sink"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ a bath",
+          "options": [
+            "Take",
+            "Cook",
+            "Write",
+            "Fly"
+          ],
+          "answer": "Take"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BATH?",
+          "options": [
+            "take",
+            "have",
+            "hot",
+            "tell"
+          ],
+          "answer": "tell"
+        }
+      ]
+    },
+    {
+      "w": "medicine",
+      "g": "Medizin",
+      "d": "Something you take to feel better when you are sick",
+      "s": "The doctor gave me some _____ for my cold.",
+      "a": [
+        "medicines"
+      ],
+      "mc": [
+        "vitamin",
+        "pill",
+        "bandage"
+      ],
+      "col": [
+        {
+          "type": "gap",
+          "prompt": "_____ medicine",
+          "options": [
+            "Take",
+            "Ride",
+            "Fly",
+            "Draw"
+          ],
+          "answer": "Take"
+        },
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MEDICINE?",
+          "options": [
+            "take",
+            "give",
+            "strong",
+            "catch"
+          ],
+          "answer": "catch"
+        }
+      ]
+    },
+    {
+      "w": "memory",
+      "g": "Gedächtnis",
+      "d": "The part of your mind that remembers things",
+      "s": "She has a very good _____ and never forgets a birthday.",
+      "a": [
+        "memories"
+      ],
+      "mc": [
+        "dream",
+        "thought",
+        "imagination"
+      ]
+    },
+    {
+      "w": "patient",
+      "g": "Patient/Patientin",
+      "d": "A person who is sick and sees a doctor",
+      "s": "The doctor is talking to her _____ about the test results.",
+      "a": [
+        "patients"
+      ],
+      "mc": [
+        "doctor",
+        "nurse",
+        "dentist"
+      ]
+    },
+    {
+      "w": "spoon",
+      "g": "Löffel",
+      "d": "A small tool with a round part you use to eat soup",
+      "s": "I need a _____ for my yoghurt, not a fork.",
+      "a": [
+        "spoons"
+      ],
+      "mc": [
+        "fork",
+        "knife",
+        "cup"
+      ]
+    },
+    {
+      "w": "blood",
+      "g": "Blut",
+      "d": "The red liquid inside your body",
+      "s": "There was a little _____ on his knee after he fell.",
+      "a": [],
+      "mc": [
+        "sweat",
+        "tears",
+        "bone"
+      ]
+    },
+    {
+      "w": "lamp post",
+      "g": "Laternenmast",
+      "d": "A tall pole with a light on top next to the road",
+      "s": "The car hit the _____ on the corner of the street.",
+      "cf": "lamp post",
+      "a": [
+        "lamp post",
+        "lamp posts",
+        "lamppost"
+      ],
+      "mc": [
+        "traffic light",
+        "sign post",
+        "fence"
+      ]
+    },
+    {
+      "w": "cure",
+      "g": "Heilmittel",
+      "d": "Something that makes a sick person well again",
+      "s": "Scientists are looking for a _____ that will make sick people completely healthy again.",
+      "a": [
+        "cures"
+      ],
+      "mc": [
+        "reason",
+        "name",
+        "picture"
+      ]
+    },
+    {
+      "w": "to cure",
+      "g": "heilen",
+      "d": "To make someone healthy again after being sick",
+      "s": "This special tea can help completely _____ a cold so you feel 100% better.",
+      "cf": "cure",
+      "a": [
+        "cure",
+        "cures",
+        "cured"
+      ],
+      "mc": [
+        "to catch",
+        "to share",
+        "to enjoy"
+      ]
+    },
+    {
+      "w": "dentist",
+      "g": "Zahnarzt/Zahnärztin",
+      "d": "A doctor who looks after your teeth",
+      "s": "I go to the _____ twice a year to check my teeth.",
+      "a": [
+        "dentists"
+      ],
+      "mc": [
+        "doctor",
+        "nurse",
+        "optician"
+      ]
+    },
+    {
+      "w": "to mash",
+      "g": "zerdrücken, zerstampfen",
+      "d": "To press food into a soft mixture",
+      "s": "We cooked the potatoes, then _____ them into a soft, smooth paste and added butter.",
+      "cf": "mashed",
+      "a": [
+        "mash",
+        "mashes",
+        "mashed"
+      ],
+      "mc": [
+        "to eat",
+        "to bake",
+        "to grow"
+      ]
+    },
+    {
+      "w": "to mix",
+      "g": "vermischen",
+      "d": "To put two or more things together and stir them",
+      "s": "_____ the eggs and the flour together in a big bowl until the dough is smooth.",
+      "cf": "Mix",
+      "a": [
+        "mix",
+        "mixes",
+        "mixed"
+      ],
+      "mc": [
+        "to bake",
+        "to freeze",
+        "to serve"
+      ]
+    },
+    {
+      "w": "taste",
+      "g": "Geschmack",
+      "d": "How food or drink feels in your mouth",
+      "s": "This soup has a really nice _____ — sweet and salty at the same time.",
+      "a": [
+        "tastes"
+      ],
+      "mc": [
+        "colour",
+        "name",
+        "price"
+      ]
+    },
+    {
+      "w": "toothpaste",
+      "g": "Zahnpasta",
+      "d": "A cream you put on your toothbrush to clean your teeth",
+      "s": "I need new _____. The tube is empty.",
+      "a": [],
+      "mc": [
+        "toothbrush",
+        "mouthwash",
+        "floss"
+      ]
+    },
+    {
+      "w": "worm",
+      "g": "Wurm",
+      "d": "A small long thin animal without legs that lives in the earth",
+      "s": "I found a _____ in the garden when I was digging.",
+      "a": [
+        "worms"
+      ],
+      "mc": [
+        "caterpillar",
+        "snail",
+        "beetle"
+      ]
+    },
+    {
+      "w": "smell",
+      "g": "Geruch",
+      "d": "What you notice with your nose",
+      "s": "The _____ of fresh bread from the kitchen made me hungry. It went up my nose.",
+      "a": [
+        "smells"
+      ],
+      "mc": [
+        "colour",
+        "shape",
+        "size"
+      ]
+    },
+    {
+      "w": "first aid",
+      "g": "Erste Hilfe",
+      "d": "The first help you give to someone who is hurt",
+      "s": "We learned _____ at school so we can help in an emergency.",
+      "cf": "first aid",
+      "a": [
+        "first aid"
+      ],
+      "mc": [
+        "medicine",
+        "ambulance",
+        "hospital"
+      ]
+    },
+    {
+      "w": "helpful",
+      "g": "hilfsbereit",
+      "d": "Wanting to help and doing things for others",
+      "s": "My classmate is very _____. She always shares her notes and explains things to me when I don't understand.",
+      "a": [],
+      "mc": [
+        "lazy",
+        "mean",
+        "shy"
+      ]
+    },
+    {
+      "w": "horrible",
+      "g": "schrecklich",
+      "d": "Very bad or very ugly",
+      "s": "The weather was _____ yesterday — rain all day!",
+      "a": [],
+      "mc": [
+        "wonderful",
+        "purple",
+        "sunny"
+      ]
+    },
+    {
+      "w": "pupil",
+      "g": "Schüler/Schülerin",
+      "d": "A child who goes to school",
+      "s": "Every _____ in our class has to do a presentation in front of the teacher.",
+      "a": [
+        "pupils"
+      ],
+      "mc": [
+        "parent",
+        "visitor",
+        "animal"
+      ]
+    },
+    {
+      "w": "since",
+      "g": "seit",
+      "d": "From a time in the past until now",
+      "s": "I have lived in Vienna _____ I was five years old.",
+      "a": [],
+      "mc": [
+        "until",
+        "before",
+        "during"
+      ]
+    },
+    {
+      "w": "Believe me!",
+      "g": "Glaub mir!",
+      "d": "Words you say when you want someone to know you are telling the truth",
+      "s": "It's true, I saw a fox in the garden! _____",
+      "cf": "Believe me",
+      "a": [
+        "Believe me",
+        "Believe me!"
+      ],
+      "mc": [
+        "Trust me!",
+        "I promise!",
+        "Listen to me!"
+      ]
+    },
+    {
+      "w": "to injure",
+      "g": "verletzen",
+      "d": "To hurt a part of your body",
+      "s": "She badly _____ her leg while playing football yesterday. Now she walks with crutches.",
+      "cf": "injured",
+      "a": [
+        "injure",
+        "injures",
+        "injured"
+      ],
+      "mc": [
+        "to stretch",
+        "to clean",
+        "to paint"
+      ]
+    },
+    {
+      "w": "It doesn't matter.",
+      "g": "Das macht nichts, egal",
+      "d": "Words to say something is not important or not a problem",
+      "s": "I forgot my pencil. — _____. You can use mine.",
+      "cf": "It doesn't matter",
+      "a": [
+        "It doesn't matter",
+        "It does not matter"
+      ],
+      "mc": [
+        "Never mind.",
+        "Don't worry.",
+        "That's OK."
+      ]
+    },
+    {
+      "w": "writer",
+      "g": "Schriftsteller/-in",
+      "d": "A person who writes books or stories",
+      "s": "My favourite _____ of children's stories has a new book coming out next month in all the bookshops.",
+      "a": [
+        "writers"
+      ],
+      "mc": [
+        "singer",
+        "actor",
+        "painter"
+      ]
+    }
+  ]
+}

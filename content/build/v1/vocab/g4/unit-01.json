@@ -1,0 +1,1351 @@
+{
+  "slug": "unit-01",
+  "grade": 4,
+  "unit": 1,
+  "title": "Unit 1",
+  "entries": [
+    {
+      "w": "be aware of sth",
+      "g": "sich etw bewusst sein",
+      "d": "To know about or realise something exists or is happening",
+      "s": "Are you _____ how dangerous it is to swim in this river?",
+      "cf": "aware of",
+      "a": [
+        "be aware of sth",
+        "be aware of something",
+        "be aware of"
+      ],
+      "mc": [
+        "be afraid of sth",
+        "be ashamed of sth",
+        "be fond of sth"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AWARE?",
+          "options": [
+            "fully",
+            "well",
+            "painfully",
+            "tasty"
+          ],
+          "answer": "tasty"
+        },
+        {
+          "type": "gap",
+          "prompt": "You should be _____ of the risks.",
+          "options": [
+            "aware",
+            "awake",
+            "alive",
+            "afraid"
+          ],
+          "answer": "aware"
+        }
+      ]
+    },
+    {
+      "w": "Catholic",
+      "g": "katholisch, Katholik/in",
+      "d": "Relating to the largest Christian Church, led by the Pope",
+      "s": "My grandmother goes to a _____ church every Sunday morning.",
+      "a": [
+        "Catholics"
+      ],
+      "mc": [
+        "Protestant",
+        "Orthodox",
+        "Muslim"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CATHOLIC?",
+          "options": [
+            "church",
+            "school",
+            "tradition",
+            "sandwich"
+          ],
+          "answer": "sandwich"
+        },
+        {
+          "type": "gap",
+          "prompt": "She grew up in a _____ family.",
+          "options": [
+            "Catholic",
+            "dramatic",
+            "automatic",
+            "romantic"
+          ],
+          "answer": "Catholic"
+        }
+      ]
+    },
+    {
+      "w": "fluent",
+      "g": "fließend",
+      "d": "Able to speak a language smoothly and easily",
+      "s": "He grew up in Spain, so he is _____ in Spanish.",
+      "a": [],
+      "mc": [
+        "basic",
+        "native",
+        "advanced"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FLUENT?",
+          "options": [
+            "speak",
+            "become",
+            "perfectly",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She is _____ in three languages.",
+          "options": [
+            "fluent",
+            "frequent",
+            "fluffy",
+            "fluid"
+          ],
+          "answer": "fluent"
+        }
+      ]
+    },
+    {
+      "w": "independent",
+      "g": "unabhängig",
+      "d": "Free from the control or influence of others",
+      "s": "She moved into her own flat because she wanted to be more _____.",
+      "a": [],
+      "mc": [
+        "dependent",
+        "separate",
+        "individual"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INDEPENDENT?",
+          "options": [
+            "become",
+            "highly",
+            "fiercely",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The country became _____ in 1960.",
+          "options": [
+            "independent",
+            "intelligent",
+            "important",
+            "impossible"
+          ],
+          "answer": "independent"
+        }
+      ]
+    },
+    {
+      "w": "leading",
+      "g": "führend",
+      "d": "Most important or most successful in a particular area",
+      "s": "She is one of the _____ scientists in the field of medicine.",
+      "a": [],
+      "mc": [
+        "following",
+        "supporting",
+        "growing"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LEADING?",
+          "options": [
+            "role",
+            "expert",
+            "company",
+            "blanket"
+          ],
+          "answer": "blanket"
+        },
+        {
+          "type": "gap",
+          "prompt": "She plays a _____ role in the project.",
+          "options": [
+            "leading",
+            "reading",
+            "feeding",
+            "needing"
+          ],
+          "answer": "leading"
+        }
+      ]
+    },
+    {
+      "w": "member",
+      "g": "Mitglied",
+      "d": "A person who belongs to a group or organisation",
+      "s": "Every _____ of the football team has to come to practice on Wednesdays.",
+      "a": [
+        "member",
+        "members"
+      ],
+      "mc": [
+        "visitor",
+        "leader",
+        "supporter"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MEMBER?",
+          "options": [
+            "active",
+            "founding",
+            "senior",
+            "boiling"
+          ],
+          "answer": "boiling"
+        },
+        {
+          "type": "gap",
+          "prompt": "He is a _____ of the chess club.",
+          "options": [
+            "member",
+            "number",
+            "timber",
+            "hammer"
+          ],
+          "answer": "member"
+        }
+      ]
+    },
+    {
+      "w": "primary school",
+      "g": "Volksschule",
+      "d": "The first level of education for children aged about 6 to 10",
+      "s": "My little sister just started _____ and she already loves it.",
+      "a": [],
+      "mc": [
+        "secondary school",
+        "nursery school",
+        "grammar school"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PRIMARY SCHOOL?",
+          "options": [
+            "attend",
+            "teacher",
+            "pupils",
+            "volcano"
+          ],
+          "answer": "volcano"
+        },
+        {
+          "type": "gap",
+          "prompt": "Children start _____ at the age of six.",
+          "options": [
+            "primary school",
+            "driving school",
+            "high school",
+            "boarding school"
+          ],
+          "answer": "primary school"
+        }
+      ]
+    },
+    {
+      "w": "cattle",
+      "g": "Rinder; Vieh",
+      "d": "Cows and bulls kept on a farm for milk or meat",
+      "s": "The farmer has about fifty _____ in the field behind the barn.",
+      "a": [],
+      "mc": [
+        "poultry",
+        "livestock",
+        "sheep"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CATTLE?",
+          "options": [
+            "farm",
+            "herd",
+            "raise",
+            "download"
+          ],
+          "answer": "download"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ are grazing in the green field.",
+          "options": [
+            "cattle",
+            "battle",
+            "bottle",
+            "kettle"
+          ],
+          "answer": "cattle"
+        }
+      ]
+    },
+    {
+      "w": "cheer",
+      "g": "jubeln",
+      "d": "To shout with joy or encouragement",
+      "s": "The crowd began to _____ when the singer came on stage.",
+      "a": [
+        "cheer",
+        "cheered"
+      ],
+      "mc": [
+        "clap",
+        "whistle",
+        "shout"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CHEER?",
+          "options": [
+            "loudly",
+            "crowd",
+            "team",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The fans began to _____ for their team.",
+          "options": [
+            "cheer",
+            "steer",
+            "fear",
+            "dear"
+          ],
+          "answer": "cheer"
+        }
+      ]
+    },
+    {
+      "w": "crop",
+      "g": "Ernte",
+      "d": "A plant grown in large amounts by farmers, such as wheat or potatoes",
+      "s": "The dry weather destroyed most of the wheat _____ this summer.",
+      "a": [
+        "crops"
+      ],
+      "mc": [
+        "harvest",
+        "seed",
+        "field"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CROP?",
+          "options": [
+            "grow",
+            "harvest",
+            "wheat",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ failed because of the dry summer.",
+          "options": [
+            "crop",
+            "drop",
+            "shop",
+            "chop"
+          ],
+          "answer": "crop"
+        }
+      ]
+    },
+    {
+      "w": "famine",
+      "g": "Hungersnot",
+      "d": "A situation in which many people have no food and may die",
+      "s": "The long war led to a terrible _____ in the country.",
+      "a": [],
+      "mc": [
+        "drought",
+        "poverty",
+        "plague"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FAMINE?",
+          "options": [
+            "terrible",
+            "widespread",
+            "cause",
+            "musical"
+          ],
+          "answer": "musical"
+        },
+        {
+          "type": "gap",
+          "prompt": "Thousands suffered during the great _____.",
+          "options": [
+            "famine",
+            "fashion",
+            "failure",
+            "fountain"
+          ],
+          "answer": "famine"
+        }
+      ]
+    },
+    {
+      "w": "found",
+      "g": "gründen",
+      "d": "To start or establish an organisation, city, or institution",
+      "s": "Two students _____ a charity to help homeless people in their city.",
+      "cf": "founded",
+      "a": [
+        "found",
+        "founded"
+      ],
+      "mc": [
+        "discover",
+        "build",
+        "invent"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FOUND (= establish)?",
+          "options": [
+            "city",
+            "company",
+            "university",
+            "breakfast"
+          ],
+          "answer": "breakfast"
+        },
+        {
+          "type": "gap",
+          "prompt": "She _____ a charity for homeless animals.",
+          "options": [
+            "founded",
+            "sounded",
+            "grounded",
+            "rounded"
+          ],
+          "answer": "founded"
+        }
+      ]
+    },
+    {
+      "w": "free state",
+      "g": "Freistaat",
+      "d": "A country or region that governs itself independently",
+      "s": "After years of fighting, the region finally became a _____.",
+      "a": [],
+      "mc": [
+        "kingdom",
+        "republic",
+        "colony"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FREE STATE?",
+          "options": [
+            "declare",
+            "become",
+            "independent",
+            "delicious"
+          ],
+          "answer": "delicious"
+        },
+        {
+          "type": "gap",
+          "prompt": "The region became a _____ after the war.",
+          "options": [
+            "free state",
+            "free trial",
+            "free time",
+            "free fall"
+          ],
+          "answer": "free state"
+        }
+      ]
+    },
+    {
+      "w": "fungus",
+      "g": "Pilz",
+      "d": "A living organism like a mushroom or mould that grows on plants or dead material",
+      "s": "A dangerous _____ is killing many trees in the forest.",
+      "a": [
+        "fungi"
+      ],
+      "mc": [
+        "bacteria",
+        "virus",
+        "parasite"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FUNGUS?",
+          "options": [
+            "dangerous",
+            "spread",
+            "grow",
+            "cheerful"
+          ],
+          "answer": "cheerful"
+        },
+        {
+          "type": "gap",
+          "prompt": "A _____ is growing on the old bread.",
+          "options": [
+            "fungus",
+            "campus",
+            "surplus",
+            "census"
+          ],
+          "answer": "fungus"
+        }
+      ]
+    },
+    {
+      "w": "government",
+      "g": "Regierung",
+      "d": "The group of people who officially control and make decisions for a country",
+      "s": "The _____ has decided to build more schools in rural areas.",
+      "a": [],
+      "mc": [
+        "parliament",
+        "ministry",
+        "authority"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GOVERNMENT?",
+          "options": [
+            "form",
+            "elect",
+            "local",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ passed a new law last week.",
+          "options": [
+            "government",
+            "department",
+            "apartment",
+            "equipment"
+          ],
+          "answer": "government"
+        }
+      ]
+    },
+    {
+      "w": "grain",
+      "g": "Getreide",
+      "d": "Seeds from plants like wheat, rice, or barley used as food",
+      "s": "This region produces more _____ than any other area in the country.",
+      "a": [
+        "grains"
+      ],
+      "mc": [
+        "flour",
+        "cereal",
+        "corn"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GRAIN?",
+          "options": [
+            "harvest",
+            "store",
+            "wheat",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "Farmers grow different types of _____.",
+          "options": [
+            "grain",
+            "train",
+            "brain",
+            "chain"
+          ],
+          "answer": "grain"
+        }
+      ]
+    },
+    {
+      "w": "incident",
+      "g": "Zwischenfall",
+      "d": "An event, especially one that is unusual, unpleasant, or violent",
+      "s": "There was a serious _____ at school today — two boys got into a fight.",
+      "a": [
+        "incidents"
+      ],
+      "mc": [
+        "accident",
+        "occasion",
+        "event"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INCIDENT?",
+          "options": [
+            "serious",
+            "report",
+            "investigate",
+            "delicious"
+          ],
+          "answer": "delicious"
+        },
+        {
+          "type": "gap",
+          "prompt": "A strange _____ happened at the station.",
+          "options": [
+            "incident",
+            "president",
+            "resident",
+            "accident"
+          ],
+          "answer": "incident"
+        }
+      ]
+    },
+    {
+      "w": "intention",
+      "g": "Absicht, Vorhaben",
+      "d": "A plan or aim to do something",
+      "s": "It was never my _____ to hurt your feelings. I'm really sorry.",
+      "a": [
+        "intentions"
+      ],
+      "mc": [
+        "attention",
+        "ambition",
+        "decision"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INTENTION?",
+          "options": [
+            "good",
+            "clear",
+            "original",
+            "loud"
+          ],
+          "answer": "loud"
+        },
+        {
+          "type": "gap",
+          "prompt": "I have no _____ of leaving.",
+          "options": [
+            "intention",
+            "attention",
+            "invention",
+            "infection"
+          ],
+          "answer": "intention"
+        }
+      ]
+    },
+    {
+      "w": "interfere",
+      "g": "sich einmischen; in Konflikt geraten",
+      "d": "To get involved in a situation where you are not wanted or needed",
+      "s": "Please don't _____ when I'm talking to my friends about our problems.",
+      "a": [],
+      "mc": [
+        "interrupt",
+        "involve",
+        "interact"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with INTERFERE?",
+          "options": [
+            "constantly",
+            "affairs",
+            "privacy",
+            "strawberry"
+          ],
+          "answer": "strawberry"
+        },
+        {
+          "type": "gap",
+          "prompt": "Please do not _____ in our business.",
+          "options": [
+            "interfere",
+            "disappear",
+            "volunteer",
+            "atmosphere"
+          ],
+          "answer": "interfere"
+        }
+      ]
+    },
+    {
+      "w": "landlord",
+      "g": "Grundbesitzer; Vermieter",
+      "d": "A person who owns land or a building and rents it to others",
+      "s": "Our _____ said he would fix the broken window next week.",
+      "a": [
+        "landlords"
+      ],
+      "mc": [
+        "tenant",
+        "neighbour",
+        "owner"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LANDLORD?",
+          "options": [
+            "rent",
+            "tenant",
+            "property",
+            "homework"
+          ],
+          "answer": "homework"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ decided to raise the rent.",
+          "options": [
+            "landlord",
+            "cupboard",
+            "keyboard",
+            "backward"
+          ],
+          "answer": "landlord"
+        }
+      ]
+    },
+    {
+      "w": "majority",
+      "g": "Mehrheit",
+      "d": "The larger number or part of something; more than half",
+      "s": "The _____ of students in our class voted to go on a trip to Vienna.",
+      "a": [],
+      "mc": [
+        "minority",
+        "quantity",
+        "authority"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with MAJORITY?",
+          "options": [
+            "vast",
+            "overwhelming",
+            "clear",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ of people agreed with the plan.",
+          "options": [
+            "majority",
+            "minority",
+            "authority",
+            "priority"
+          ],
+          "answer": "majority"
+        }
+      ]
+    },
+    {
+      "w": "put down",
+      "g": "niederschlagen",
+      "d": "To stop a rebellion or protest by force",
+      "s": "The army was sent to _____ the protest in the capital.",
+      "a": [],
+      "mc": [
+        "give up",
+        "break out",
+        "carry out"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PUT DOWN?",
+          "options": [
+            "rebellion",
+            "protest",
+            "uprising",
+            "sandwich"
+          ],
+          "answer": "sandwich"
+        },
+        {
+          "type": "gap",
+          "prompt": "The army _____ the revolt quickly.",
+          "options": [
+            "put down",
+            "put up",
+            "put off",
+            "put out"
+          ],
+          "answer": "put down"
+        }
+      ]
+    },
+    {
+      "w": "shake hands",
+      "g": "Hände schütteln",
+      "d": "To hold and move another person's hand up and down as a greeting",
+      "s": "In Austria, people usually _____ when they meet for the first time.",
+      "a": [],
+      "mc": [
+        "wave goodbye",
+        "give a hug",
+        "nod the head"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SHAKE HANDS?",
+          "options": [
+            "firmly",
+            "politely",
+            "meeting",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "They _____ after signing the contract.",
+          "options": [
+            "shook hands",
+            "shook heads",
+            "shook legs",
+            "shook feet"
+          ],
+          "answer": "shook hands"
+        }
+      ]
+    },
+    {
+      "w": "starve",
+      "g": "verhungern",
+      "d": "To suffer or die because of not having enough food",
+      "s": "Without food or water, a person can _____ within a few weeks.",
+      "a": [
+        "starve",
+        "starving"
+      ],
+      "mc": [
+        "suffer",
+        "struggle",
+        "survive"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with STARVE?",
+          "options": [
+            "death",
+            "hunger",
+            "slowly",
+            "colourful"
+          ],
+          "answer": "colourful"
+        },
+        {
+          "type": "gap",
+          "prompt": "Without food, the animals will _____.",
+          "options": [
+            "starve",
+            "stare",
+            "share",
+            "spare"
+          ],
+          "answer": "starve"
+        }
+      ]
+    },
+    {
+      "w": "Guess!",
+      "g": "Rate!",
+      "d": "An exclamation telling someone to try to find the answer",
+      "s": "I'm thinking of a number between one and ten. _____! You have three tries.",
+      "a": [
+        "guess"
+      ],
+      "mc": [
+        "Think!",
+        "Imagine!",
+        "Choose!"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GUESS?",
+          "options": [
+            "wild",
+            "lucky",
+            "correct",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Can you _____ the answer to the riddle?",
+          "options": [
+            "guess",
+            "press",
+            "dress",
+            "bless"
+          ],
+          "answer": "guess"
+        }
+      ]
+    },
+    {
+      "w": "I'd rather",
+      "g": "Ich möchte eher",
+      "d": "Used to say that you prefer one thing over another",
+      "s": "No thanks, _____ stay at home tonight than go to the cinema.",
+      "a": [],
+      "mc": [
+        "I'd better",
+        "I'd prefer",
+        "I'd like"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT follow I'D RATHER?",
+          "options": [
+            "stay",
+            "not",
+            "go",
+            "purple"
+          ],
+          "answer": "purple"
+        },
+        {
+          "type": "gap",
+          "prompt": "_____ walk than take the bus.",
+          "options": [
+            "I'd rather",
+            "I'd better",
+            "I'd like",
+            "I'd love"
+          ],
+          "answer": "I'd rather"
+        }
+      ]
+    },
+    {
+      "w": "foreigner",
+      "g": "Ausländer/-in",
+      "d": "A person who comes from a different country",
+      "s": "As a _____ in Japan, she had to learn a completely new language.",
+      "a": [
+        "foreigner",
+        "foreigners"
+      ],
+      "mc": [
+        "stranger",
+        "tourist",
+        "immigrant"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FOREIGNER?",
+          "options": [
+            "country",
+            "abroad",
+            "language",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "As a _____, she found the local customs very different.",
+          "options": [
+            "foreigner",
+            "gardener",
+            "customer",
+            "teenager"
+          ],
+          "answer": "foreigner"
+        }
+      ]
+    },
+    {
+      "w": "improve",
+      "g": "verbessern",
+      "d": "To make something better, or to become better",
+      "s": "She practises the piano every day to _____ her skills.",
+      "a": [],
+      "mc": [
+        "increase",
+        "develop",
+        "advance"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with IMPROVE?",
+          "options": [
+            "skills",
+            "health",
+            "greatly",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "She wants to _____ her grades this term.",
+          "options": [
+            "improve",
+            "remove",
+            "approve",
+            "disprove"
+          ],
+          "answer": "improve"
+        }
+      ]
+    },
+    {
+      "w": "tax",
+      "g": "Steuer",
+      "d": "Money that people must pay to the government based on their income or purchases",
+      "s": "The government uses _____ money to build roads and hospitals.",
+      "a": [
+        "tax",
+        "taxes"
+      ],
+      "mc": [
+        "fee",
+        "fine",
+        "debt"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TAX?",
+          "options": [
+            "pay",
+            "income",
+            "high",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Income _____ must be paid every year.",
+          "options": [
+            "tax",
+            "fee",
+            "bill",
+            "fine"
+          ],
+          "answer": "tax"
+        }
+      ]
+    },
+    {
+      "w": "hiking",
+      "g": "Wandern",
+      "d": "The activity of going on long walks in the countryside or mountains",
+      "s": "We went _____ in the Alps last weekend and the views were amazing.",
+      "a": [],
+      "mc": [
+        "climbing",
+        "trekking",
+        "jogging"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HIKING?",
+          "options": [
+            "trail",
+            "boots",
+            "mountains",
+            "homework"
+          ],
+          "answer": "homework"
+        },
+        {
+          "type": "gap",
+          "prompt": "We went _____ in the mountains last Sunday.",
+          "options": [
+            "hiking",
+            "biking",
+            "liking",
+            "striking"
+          ],
+          "answer": "hiking"
+        }
+      ]
+    },
+    {
+      "w": "proper",
+      "g": "richtig, angemessen",
+      "d": "Correct, suitable, or appropriate for a situation",
+      "s": "You can't go to the job interview in flip-flops — you need _____ shoes.",
+      "a": [],
+      "mc": [
+        "suitable",
+        "polite",
+        "formal"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PROPER?",
+          "options": [
+            "behaviour",
+            "clothing",
+            "manners",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "You need _____ shoes for the interview.",
+          "options": [
+            "proper",
+            "popular",
+            "copper",
+            "upper"
+          ],
+          "answer": "proper"
+        }
+      ]
+    },
+    {
+      "w": "admire",
+      "g": "bewundern",
+      "d": "To look at something or someone with pleasure and respect",
+      "s": "I really _____ people who can speak more than three languages.",
+      "a": [
+        "admire",
+        "admired"
+      ],
+      "mc": [
+        "envy",
+        "appreciate",
+        "adore"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ADMIRE?",
+          "options": [
+            "greatly",
+            "secretly",
+            "deeply",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "I really _____ her talent and courage.",
+          "options": [
+            "admire",
+            "desire",
+            "require",
+            "retire"
+          ],
+          "answer": "admire"
+        }
+      ]
+    },
+    {
+      "w": "be terrified",
+      "g": "fürchterliche Angst haben",
+      "d": "To be extremely frightened",
+      "s": "My little brother is _____ of spiders — he screams whenever he sees one.",
+      "cf": "terrified",
+      "a": [
+        "be terrified",
+        "terrified"
+      ],
+      "mc": [
+        "be frightened",
+        "be worried",
+        "be shocked"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TERRIFIED?",
+          "options": [
+            "absolutely",
+            "completely",
+            "spiders",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "She is _____ of flying.",
+          "options": [
+            "terrified",
+            "satisfied",
+            "qualified",
+            "certified"
+          ],
+          "answer": "terrified"
+        }
+      ]
+    },
+    {
+      "w": "nonsense",
+      "g": "Unsinn, Quatsch",
+      "d": "Words or ideas that are silly or have no meaning",
+      "s": "Don't believe him — everything he just said was complete _____.",
+      "a": [],
+      "mc": [
+        "rubbish",
+        "mistake",
+        "rumour"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with NONSENSE?",
+          "options": [
+            "complete",
+            "total",
+            "talk",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "Stop talking _____!",
+          "options": [
+            "nonsense",
+            "sentence",
+            "suspense",
+            "defence"
+          ],
+          "answer": "nonsense"
+        }
+      ]
+    },
+    {
+      "w": "thunder",
+      "g": "Donner",
+      "d": "The loud noise in the sky during a storm, usually after lightning",
+      "s": "We saw a flash of lightning and then heard loud _____ a few seconds later.",
+      "a": [],
+      "mc": [
+        "lightning",
+        "storm",
+        "hail"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with THUNDER?",
+          "options": [
+            "loud",
+            "hear",
+            "storm",
+            "tasty"
+          ],
+          "answer": "tasty"
+        },
+        {
+          "type": "gap",
+          "prompt": "We heard _____ in the distance.",
+          "options": [
+            "thunder",
+            "blunder",
+            "wonder",
+            "plunder"
+          ],
+          "answer": "thunder"
+        }
+      ]
+    },
+    {
+      "w": "unconscious",
+      "g": "bewusstlos; unbewusst",
+      "d": "Not awake; having lost consciousness",
+      "s": "He hit his head on the door and was _____ for a few minutes.",
+      "a": [],
+      "mc": [
+        "asleep",
+        "unaware",
+        "exhausted"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with UNCONSCIOUS?",
+          "options": [
+            "fall",
+            "lie",
+            "completely",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He was knocked _____ in the accident.",
+          "options": [
+            "unconscious",
+            "conscious",
+            "anxious",
+            "precious"
+          ],
+          "answer": "unconscious"
+        }
+      ]
+    }
+  ]
+}

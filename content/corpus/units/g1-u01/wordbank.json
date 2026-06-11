@@ -629,7 +629,7 @@
       "cf": null,
       "forms": [
         "address",
-        "email"
+        "address email"
       ],
       "taughtGloss": false
     },

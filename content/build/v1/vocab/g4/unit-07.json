@@ -1,0 +1,1150 @@
+{
+  "slug": "unit-07",
+  "grade": 4,
+  "unit": 7,
+  "title": "Unit 7",
+  "entries": [
+    {
+      "w": "Aborigine",
+      "g": "Ureinwohner/in Australiens",
+      "d": "A member of the group of people who were the first to live in Australia",
+      "s": "An _____ artist painted this beautiful picture of the Australian landscape.",
+      "a": [
+        "Aborigine",
+        "Aborigines",
+        "Aboriginal"
+      ],
+      "mc": [
+        "indigenous",
+        "settler",
+        "colonist"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ABORIGINE?",
+          "options": [
+            "Australian",
+            "culture",
+            "ancient",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "An _____ artist painted this landscape.",
+          "options": [
+            "Aborigine",
+            "magazine",
+            "trampoline",
+            "figurine"
+          ],
+          "answer": "Aborigine"
+        }
+      ]
+    },
+    {
+      "w": "cheque",
+      "g": "Scheck",
+      "d": "A printed form you can use to make payments from your bank account",
+      "s": "My grandmother always sends me a _____ for my birthday instead of cash.",
+      "a": [
+        "cheques",
+        "check"
+      ],
+      "mc": [
+        "receipt",
+        "invoice",
+        "voucher"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CHEQUE?",
+          "options": [
+            "write",
+            "cash",
+            "sign",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She paid by _____.",
+          "options": [
+            "cheque",
+            "technique",
+            "unique",
+            "antique"
+          ],
+          "answer": "cheque"
+        }
+      ]
+    },
+    {
+      "w": "envelope",
+      "g": "Kuvert; Briefumschlag",
+      "d": "A flat paper container used for sending letters",
+      "s": "She wrote the address on the _____ and put a stamp on it.",
+      "a": [
+        "envelopes"
+      ],
+      "mc": [
+        "parcel",
+        "package",
+        "folder"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ENVELOPE?",
+          "options": [
+            "stamp",
+            "address",
+            "seal",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "She put the letter in an _____.",
+          "options": [
+            "envelope",
+            "antelope",
+            "telescope",
+            "horoscope"
+          ],
+          "answer": "envelope"
+        }
+      ]
+    },
+    {
+      "w": "airline",
+      "g": "Fluglinie",
+      "d": "A company that operates flights for passengers and cargo",
+      "s": "Which _____ are you flying with on your trip to London?",
+      "a": [
+        "airlines"
+      ],
+      "mc": [
+        "airport",
+        "airway",
+        "aircraft"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AIRLINE?",
+          "options": [
+            "cheap",
+            "international",
+            "fly",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "Which _____ are you flying with?",
+          "options": [
+            "airline",
+            "deadline",
+            "headline",
+            "guideline"
+          ],
+          "answer": "airline"
+        }
+      ]
+    },
+    {
+      "w": "ancestor",
+      "g": "Vorfahr/in; Ahne, Ahnin",
+      "d": "A person in your family who lived a long time before you",
+      "s": "My _____ came to Austria from Hungary more than 100 years ago.",
+      "cf": "ancestors",
+      "a": [
+        "ancestor",
+        "ancestors"
+      ],
+      "mc": [
+        "descendant",
+        "relative",
+        "predecessor"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with ANCESTOR?",
+          "options": [
+            "ancient",
+            "distant",
+            "family",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "My _____ came from Hungary.",
+          "options": [
+            "ancestor",
+            "dancer",
+            "cancer",
+            "answer"
+          ],
+          "answer": "ancestor"
+        }
+      ]
+    },
+    {
+      "w": "bush trail",
+      "g": "Buschpfad",
+      "d": "A narrow path through wild Australian landscape",
+      "s": "We walked along a narrow _____ through the dry Australian countryside.",
+      "a": [
+        "bush trails"
+      ],
+      "mc": [
+        "dirt road",
+        "hiking path",
+        "forest track"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with BUSH TRAIL?",
+          "options": [
+            "narrow",
+            "walk",
+            "dry",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We walked along a _____.",
+          "options": [
+            "bush trail",
+            "bush fire",
+            "bush baby",
+            "bush ranger"
+          ],
+          "answer": "bush trail"
+        }
+      ]
+    },
+    {
+      "w": "crawl",
+      "g": "kriechen",
+      "d": "To move forward on your hands and knees close to the ground",
+      "s": "The baby learned to _____ before she could walk.",
+      "a": [
+        "crawled"
+      ],
+      "mc": [
+        "creep",
+        "stumble",
+        "slide"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with CRAWL?",
+          "options": [
+            "floor",
+            "baby",
+            "slowly",
+            "musical"
+          ],
+          "answer": "musical"
+        },
+        {
+          "type": "gap",
+          "prompt": "The baby learned to _____.",
+          "options": [
+            "crawl",
+            "shawl",
+            "drawl",
+            "brawl"
+          ],
+          "answer": "crawl"
+        }
+      ]
+    },
+    {
+      "w": "drag",
+      "g": "schleppen",
+      "d": "To pull something heavy along the ground",
+      "s": "The suitcase was so heavy that I had to _____ it across the floor.",
+      "a": [],
+      "mc": [
+        "pull",
+        "push",
+        "carry"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DRAG?",
+          "options": [
+            "heavy",
+            "floor",
+            "along",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "He had to _____ the suitcase across the floor.",
+          "options": [
+            "drag",
+            "flag",
+            "bag",
+            "tag"
+          ],
+          "answer": "drag"
+        }
+      ]
+    },
+    {
+      "w": "excess weight",
+      "g": "Übergewicht (bei Gepäck)",
+      "d": "Baggage that is heavier than the allowed limit on a flight",
+      "s": "My suitcase was 5 kilos over the limit, so I had to pay a fee for _____.",
+      "a": [
+        "excess baggage"
+      ],
+      "mc": [
+        "hand luggage",
+        "carry-on bag",
+        "checked baggage"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with EXCESS WEIGHT?",
+          "options": [
+            "pay",
+            "luggage",
+            "fee",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "I had to pay for _____.",
+          "options": [
+            "excess weight",
+            "excess baggage",
+            "excess speed",
+            "excess water"
+          ],
+          "answer": "excess weight"
+        }
+      ]
+    },
+    {
+      "w": "gorgeous",
+      "g": "wunderschön, herrlich",
+      "d": "Extremely beautiful or attractive",
+      "s": "The sunset over the mountains last evening was absolutely _____.",
+      "a": [],
+      "mc": [
+        "stunning",
+        "lovely",
+        "magnificent"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GORGEOUS?",
+          "options": [
+            "absolutely",
+            "view",
+            "weather",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The sunset was absolutely _____.",
+          "options": [
+            "gorgeous",
+            "dangerous",
+            "generous",
+            "curious"
+          ],
+          "answer": "gorgeous"
+        }
+      ]
+    },
+    {
+      "w": "grab",
+      "g": "packen",
+      "d": "To take or seize something quickly and firmly",
+      "s": "Quick, _____ your jacket — the bus is leaving in two minutes!",
+      "a": [
+        "grabbed"
+      ],
+      "mc": [
+        "catch",
+        "snatch",
+        "grip"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with GRAB?",
+          "options": [
+            "quickly",
+            "bag",
+            "hold",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Quick, _____ your coat!",
+          "options": [
+            "grab",
+            "crab",
+            "stab",
+            "drab"
+          ],
+          "answer": "grab"
+        }
+      ]
+    },
+    {
+      "w": "headlight",
+      "g": "Scheinwerfer",
+      "d": "A large light on the front of a vehicle used for seeing in the dark",
+      "s": "One of the car's _____ was broken, so it was hard to see the road at night.",
+      "cf": "headlights",
+      "a": [
+        "headlight",
+        "headlights"
+      ],
+      "mc": [
+        "indicator",
+        "brake light",
+        "spotlight"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HEADLIGHT?",
+          "options": [
+            "broken",
+            "bright",
+            "car",
+            "salty"
+          ],
+          "answer": "salty"
+        },
+        {
+          "type": "gap",
+          "prompt": "One _____ was broken.",
+          "options": [
+            "headlight",
+            "spotlight",
+            "moonlight",
+            "sunlight"
+          ],
+          "answer": "headlight"
+        }
+      ]
+    },
+    {
+      "w": "heritage",
+      "g": "Erbe, Tradition",
+      "d": "The traditions, buildings, and culture that a country or society has developed over many years",
+      "s": "Vienna's musical _____ attracts millions of tourists every year.",
+      "a": [],
+      "mc": [
+        "tradition",
+        "culture",
+        "legacy"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with HERITAGE?",
+          "options": [
+            "cultural",
+            "rich",
+            "protect",
+            "square"
+          ],
+          "answer": "square"
+        },
+        {
+          "type": "gap",
+          "prompt": "Vienna has a rich musical _____.",
+          "options": [
+            "heritage",
+            "percentage",
+            "shortage",
+            "coverage"
+          ],
+          "answer": "heritage"
+        }
+      ]
+    },
+    {
+      "w": "jump-start",
+      "g": "Starthilfe geben",
+      "d": "To start a car by connecting its battery to another car's battery",
+      "s": "Our car wouldn't start this morning, so a neighbour helped us _____ it.",
+      "a": [
+        "jumpstart"
+      ],
+      "mc": [
+        "recharge",
+        "restart",
+        "refuel"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with JUMP-START?",
+          "options": [
+            "car",
+            "battery",
+            "engine",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We had to _____ the car.",
+          "options": [
+            "jump-start",
+            "jumpsuit",
+            "junction",
+            "jungle"
+          ],
+          "answer": "jump-start"
+        }
+      ]
+    },
+    {
+      "w": "pressure",
+      "g": "Druck",
+      "d": "A feeling of stress caused by the need to do something quickly or perfectly",
+      "s": "Students often feel a lot of _____ before important exams.",
+      "a": [],
+      "mc": [
+        "stress",
+        "tension",
+        "anxiety"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PRESSURE?",
+          "options": [
+            "peer",
+            "under",
+            "put",
+            "tiny"
+          ],
+          "answer": "tiny"
+        },
+        {
+          "type": "gap",
+          "prompt": "He works well under _____.",
+          "options": [
+            "pressure",
+            "pleasure",
+            "treasure",
+            "measure"
+          ],
+          "answer": "pressure"
+        },
+        {
+          "type": "gap",
+          "prompt": "Don't _____ pressure on your friends.",
+          "options": [
+            "put",
+            "pet",
+            "pit",
+            "pot"
+          ],
+          "answer": "put"
+        }
+      ]
+    },
+    {
+      "w": "shade",
+      "g": "Schatten",
+      "d": "An area where sunlight is blocked by something, making it cooler",
+      "s": "It was 35 degrees outside, so we stayed in the _____ under a big tree.",
+      "a": [],
+      "mc": [
+        "shadow",
+        "shelter",
+        "sunlight"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SHADE?",
+          "options": [
+            "sit",
+            "tree",
+            "cool",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "We sat in the _____ of a big tree.",
+          "options": [
+            "shade",
+            "blade",
+            "grade",
+            "trade"
+          ],
+          "answer": "shade"
+        }
+      ]
+    },
+    {
+      "w": "string",
+      "g": "Schnur; Bindfaden",
+      "d": "A thin piece of twisted thread used to tie things together",
+      "s": "She tied the parcel with a piece of _____.",
+      "a": [],
+      "mc": [
+        "thread",
+        "rope",
+        "wire"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with STRING?",
+          "options": [
+            "piece",
+            "tie",
+            "thin",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "She tied it with a piece of _____.",
+          "options": [
+            "string",
+            "spring",
+            "sting",
+            "swing"
+          ],
+          "answer": "string"
+        }
+      ]
+    },
+    {
+      "w": "reed",
+      "g": "Schilfrohr",
+      "d": "A tall plant with thin leaves that grows near water",
+      "s": "Tall _____ grew along the edges of the river.",
+      "cf": "reeds",
+      "a": [
+        "reed",
+        "reeds"
+      ],
+      "mc": [
+        "bamboo",
+        "moss",
+        "fern"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with REED?",
+          "options": [
+            "tall",
+            "water",
+            "river",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Tall _____ grew along the river.",
+          "options": [
+            "reeds",
+            "seeds",
+            "needs",
+            "feeds"
+          ],
+          "answer": "reeds"
+        }
+      ]
+    },
+    {
+      "w": "track",
+      "g": "Fährte, Spur",
+      "d": "Marks left on the ground by a person, animal, or vehicle",
+      "s": "The hunter found fresh deer _____ in the mud near the lake.",
+      "cf": "tracks",
+      "a": [
+        "track",
+        "tracks"
+      ],
+      "mc": [
+        "trail",
+        "footprint",
+        "path"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with TRACK?",
+          "options": [
+            "animal",
+            "follow",
+            "fresh",
+            "volcanic"
+          ],
+          "answer": "volcanic"
+        },
+        {
+          "type": "gap",
+          "prompt": "The hunter found fresh _____.",
+          "options": [
+            "tracks",
+            "snacks",
+            "cracks",
+            "stacks"
+          ],
+          "answer": "tracks"
+        }
+      ]
+    },
+    {
+      "w": "survival skills",
+      "g": "Überlebenstechniken, -fähigkeiten",
+      "d": "Abilities that help you stay alive in dangerous situations in nature",
+      "s": "The explorer said that without _____, he would not have made it through the night in the forest.",
+      "a": [],
+      "mc": [
+        "first aid",
+        "self-defence",
+        "outdoor skills"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with SURVIVAL SKILLS?",
+          "options": [
+            "learn",
+            "basic",
+            "wilderness",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "He learned _____ in the army.",
+          "options": [
+            "survival skills",
+            "survival kit",
+            "survival rate",
+            "survival mode"
+          ],
+          "answer": "survival skills"
+        }
+      ]
+    },
+    {
+      "w": "walkabout",
+      "g": "Buschwanderung",
+      "d": "A journey on foot through the Australian bush, traditionally done by Aboriginal people",
+      "s": "When the Aboriginal boy turned sixteen, his family prepared him for his first _____.",
+      "a": [
+        "walkabouts"
+      ],
+      "mc": [
+        "expedition",
+        "pilgrimage",
+        "safari"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with WALKABOUT?",
+          "options": [
+            "go",
+            "traditional",
+            "Australian",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The boy prepared for his first _____.",
+          "options": [
+            "walkabout",
+            "workout",
+            "lookout",
+            "knockout"
+          ],
+          "answer": "walkabout"
+        }
+      ]
+    },
+    {
+      "w": "aircraft",
+      "g": "Flugzeug",
+      "d": "A vehicle that can fly, such as a plane or helicopter",
+      "s": "The small _____ landed safely on the dirt road in the middle of nowhere.",
+      "a": [],
+      "mc": [
+        "spacecraft",
+        "helicopter",
+        "vehicle"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AIRCRAFT?",
+          "options": [
+            "small",
+            "military",
+            "land",
+            "wooden"
+          ],
+          "answer": "wooden"
+        },
+        {
+          "type": "gap",
+          "prompt": "The small _____ landed safely.",
+          "options": [
+            "aircraft",
+            "spacecraft",
+            "witchcraft",
+            "handicraft"
+          ],
+          "answer": "aircraft"
+        }
+      ]
+    },
+    {
+      "w": "ambulance",
+      "g": "Krankenwagen",
+      "d": "A vehicle used to take sick or injured people to hospital",
+      "s": "She broke her leg, so we called an _____ immediately.",
+      "a": [
+        "ambulances"
+      ],
+      "mc": [
+        "fire engine",
+        "patrol car",
+        "helicopter"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with AMBULANCE?",
+          "options": [
+            "call",
+            "arrive",
+            "hospital",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We called an _____ immediately.",
+          "options": [
+            "ambulance",
+            "appearance",
+            "assistance",
+            "allowance"
+          ],
+          "answer": "ambulance"
+        }
+      ]
+    },
+    {
+      "w": "detailed",
+      "g": "detailliert",
+      "d": "Including a lot of information and small facts",
+      "s": "The police asked her to give a _____ description of the thief.",
+      "a": [],
+      "mc": [
+        "thorough",
+        "accurate",
+        "precise"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DETAILED?",
+          "options": [
+            "very",
+            "description",
+            "report",
+            "crunchy"
+          ],
+          "answer": "crunchy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Give a _____ description of what happened.",
+          "options": [
+            "detailed",
+            "derailed",
+            "curtailed",
+            "retailed"
+          ],
+          "answer": "detailed"
+        }
+      ]
+    },
+    {
+      "w": "distance",
+      "g": "Entfernung",
+      "d": "The amount of space between two places",
+      "s": "The _____ from Vienna to Salzburg is about 300 kilometres.",
+      "a": [
+        "distances"
+      ],
+      "mc": [
+        "direction",
+        "length",
+        "range"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DISTANCE?",
+          "options": [
+            "long",
+            "short",
+            "travel",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The _____ from here to the airport is 20 km.",
+          "options": [
+            "distance",
+            "instance",
+            "substance",
+            "resistance"
+          ],
+          "answer": "distance"
+        }
+      ]
+    },
+    {
+      "w": "drugs",
+      "g": "Medikamente",
+      "d": "Substances used as medicine or taken illegally",
+      "s": "The doctor gave her some _____ to help bring down her fever.",
+      "a": [
+        "drug"
+      ],
+      "mc": [
+        "vitamins",
+        "tablets",
+        "vaccines"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with DRUGS?",
+          "options": [
+            "take",
+            "prescription",
+            "illegal",
+            "rectangular"
+          ],
+          "answer": "rectangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The doctor gave her some _____.",
+          "options": [
+            "drugs",
+            "plugs",
+            "bugs",
+            "mugs"
+          ],
+          "answer": "drugs"
+        }
+      ]
+    },
+    {
+      "w": "first aid",
+      "g": "Erste Hilfe",
+      "d": "Basic medical treatment given to someone before professional help arrives",
+      "s": "Everyone should learn _____ so they can help in an emergency.",
+      "a": [],
+      "mc": [
+        "emergency call",
+        "hospital care",
+        "medical treatment"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with FIRST AID?",
+          "options": [
+            "learn",
+            "kit",
+            "give",
+            "crispy"
+          ],
+          "answer": "crispy"
+        },
+        {
+          "type": "gap",
+          "prompt": "Everyone should learn _____.",
+          "options": [
+            "first aid",
+            "first class",
+            "first name",
+            "first floor"
+          ],
+          "answer": "first aid"
+        }
+      ]
+    },
+    {
+      "w": "landing",
+      "g": "Landung",
+      "d": "The act of an aircraft coming down to the ground",
+      "s": "The passengers clapped after the smooth _____ in rainy weather.",
+      "a": [
+        "landings"
+      ],
+      "mc": [
+        "arrival",
+        "touchdown",
+        "departure"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with LANDING?",
+          "options": [
+            "smooth",
+            "rough",
+            "emergency",
+            "spicy"
+          ],
+          "answer": "spicy"
+        },
+        {
+          "type": "gap",
+          "prompt": "The passengers clapped after the smooth _____.",
+          "options": [
+            "landing",
+            "standing",
+            "banding",
+            "handing"
+          ],
+          "answer": "landing"
+        }
+      ]
+    },
+    {
+      "w": "(the) outback",
+      "g": "Hinterland Australiens",
+      "d": "The remote, dry, inland areas of Australia far from cities",
+      "s": "When you fly over central Australia, you can see the dry red earth of _____ stretching to the horizon.",
+      "cf": "the outback",
+      "a": [
+        "outback",
+        "the outback"
+      ],
+      "mc": [
+        "the wilderness",
+        "the countryside",
+        "the desert"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with OUTBACK?",
+          "options": [
+            "Australian",
+            "dry",
+            "remote",
+            "fluffy"
+          ],
+          "answer": "fluffy"
+        },
+        {
+          "type": "gap",
+          "prompt": "We drove through the _____.",
+          "options": [
+            "outback",
+            "setback",
+            "feedback",
+            "comeback"
+          ],
+          "answer": "outback"
+        }
+      ]
+    },
+    {
+      "w": "provide",
+      "g": "versorgen; verschaffen",
+      "d": "To give someone something they need",
+      "s": "The school will _____ all the materials you need for the art project.",
+      "a": [],
+      "mc": [
+        "supply",
+        "offer",
+        "deliver"
+      ],
+      "col": [
+        {
+          "type": "odd",
+          "prompt": "Which does NOT go with PROVIDE?",
+          "options": [
+            "help",
+            "information",
+            "food",
+            "triangular"
+          ],
+          "answer": "triangular"
+        },
+        {
+          "type": "gap",
+          "prompt": "The school will _____ all materials.",
+          "options": [
+            "provide",
+            "divide",
+            "decide",
+            "arrive"
+          ],
+          "answer": "provide"
+        }
+      ]
+    }
+  ]
+}
