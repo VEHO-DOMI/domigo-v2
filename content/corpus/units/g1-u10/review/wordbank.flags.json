@@ -1,0 +1,20 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u10",
+  "round": 1,
+  "bankHash": "219f364b86ff",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "v1-missing:how much",
+      "kind": "v1-missing",
+      "entryId": null,
+      "verdict": "ok",
+      "note": "Present in bank as `how-much-is-are` ('how much is/are …' master-list line); v1 simplified the ref. Number words 20–1000 all auto-matched after numeral+word forms fix. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 44/44 verbatim. 10 number-word v1 flags auto-resolved by the numeral+word forms fix. Lens B 'sweets pl' artifact fixed by the bare-(pl) parser fix."
+  }
+}

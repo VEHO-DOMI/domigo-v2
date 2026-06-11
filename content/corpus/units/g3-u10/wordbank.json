@@ -259,7 +259,7 @@
       "cf": null,
       "forms": [
         "right",
-        "right s"
+        "rights"
       ],
       "taughtGloss": false
     },
@@ -437,7 +437,7 @@
       "en": "argument",
       "de": [
         "Argument",
-        "hier: Streit"
+        "Streit"
       ],
       "deRaw": "Argument; hier: Streit",
       "exampleSb": "Which side of the argument do you agree with?",

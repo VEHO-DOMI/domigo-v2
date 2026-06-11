@@ -1,12 +1,27 @@
 {
   "schema": "wordbank-flags@1",
   "slug": "g2-u13",
-  "round": 1,
-  "bankHash": "df69b0f7fd04",
+  "round": 2,
+  "bankHash": "5a9152db8a34",
   "reviewedBy": "fable",
-  "flags": [],
+  "flags": [
+    {
+      "key": "changed-since-review:g2u13.w.weather-presenter-meteorologist",
+      "kind": "changed-since-review",
+      "entryId": "g2u13.w.weather-presenter-meteorologist",
+      "verdict": "ok",
+      "note": "Slash-variant forms fix: both 'weather presenter' and 'meteorologist' now count as taught forms. Re-confirmed."
+    },
+    {
+      "key": "changed-since-review:g2u13.w.to-clear-up",
+      "kind": "changed-since-review",
+      "entryId": "g2u13.w.to-clear-up",
+      "verdict": "ok",
+      "note": "de improved by hier:-strip (aufheitern, label removed; deRaw unchanged). Re-confirmed."
+    }
+  ],
   "unit": {
     "verdict": "ok",
-    "note": "Lens A: verbatim (separator normalization by design). Lens B: clean. No open flags."
+    "note": "Round 2: two rows changed by parser improvements (slash variants + hier:-strip); rest collapsed."
   }
 }

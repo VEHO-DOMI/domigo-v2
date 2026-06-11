@@ -1,0 +1,27 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u11",
+  "round": 1,
+  "bankHash": "5c3fc203cee7",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "duplicate-headword:g1u11.w.to-cook-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u11.w.to-cook-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified (different examples). (Lens C)"
+    },
+    {
+      "key": "de-split-suspect:g1u11.w.place",
+      "kind": "de-split-suspect",
+      "entryId": "g1u11.w.place",
+      "verdict": "ok",
+      "note": "Now splits to Ort ; Platz ; Wohnung ; Zuhause — the 'hier:' context label is stripped by the parser (deRaw preserves the source); 4 genuine alternatives. (Lens C recommended exactly this fix)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 58/58 verbatim. The place de-split fix Lens C requested is implemented at parser level (hier:-strip)."
+  }
+}

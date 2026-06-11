@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g3-u06",
+  "round": 1,
+  "bankHash": "9580793d8313",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 45/45 verbatim vs master-list text. Lens B (all-14 sweep): clean — German correct, no Sie-address, no umlaut damage, forms valid. No open flags."
+  }
+}

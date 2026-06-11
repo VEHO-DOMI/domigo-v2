@@ -1,12 +1,20 @@
 {
   "schema": "wordbank-flags@1",
   "slug": "g2-u09",
-  "round": 1,
-  "bankHash": "bee9a27e376e",
+  "round": 2,
+  "bankHash": "fd299da73d1b",
   "reviewedBy": "fable",
-  "flags": [],
+  "flags": [
+    {
+      "key": "changed-since-review:g2u09.w.to-miss",
+      "kind": "changed-since-review",
+      "entryId": "g2u09.w.to-miss",
+      "verdict": "ok",
+      "note": "de improved by hier:-strip (context label removed from alternatives; deRaw unchanged). Re-confirmed."
+    }
+  ],
   "unit": {
     "verdict": "ok",
-    "note": "Lens A: clean, 56/56 verbatim. Lens B raised forms 'tomatoes' — that is the English inflection family working as designed; bare '(pl)' label artifact ('glasses pl') fixed in shapeEntry this wave. No open flags."
+    "note": "Round 2: one row changed by the hier:-strip improvement; rest collapsed."
   }
 }

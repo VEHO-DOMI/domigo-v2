@@ -1,0 +1,41 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u03",
+  "round": 1,
+  "bankHash": "4c3046921b06",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "not-in-transcript:g1u03.w.week",
+      "kind": "not-in-transcript",
+      "entryId": "g1u03.w.week",
+      "verdict": "ok",
+      "note": "Master-list-only vocab; list canonical. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u03.w.again",
+      "kind": "not-in-transcript",
+      "entryId": "g1u03.w.again",
+      "verdict": "ok",
+      "note": "Master-list-only vocab. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u03.w.to-paint",
+      "kind": "not-in-transcript",
+      "entryId": "g1u03.w.to-paint",
+      "verdict": "ok",
+      "note": "Master-list-only vocab (pirate craft theme). (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u03.w.woman",
+      "kind": "not-in-transcript",
+      "entryId": "g1u03.w.woman",
+      "verdict": "ok",
+      "note": "Master-list-only vocab; plural form (women) carried in forms. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 42/42 verbatim. `have got / has got` v1 flag auto-resolved by slash-variant forms."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u15",
+  "round": 1,
+  "bankHash": "d2f850cdb0ab",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "not-in-transcript:g1u15.w.to-visit-a-castle",
+      "kind": "not-in-transcript",
+      "entryId": "g1u15.w.to-visit-a-castle",
+      "verdict": "ok",
+      "note": "Master-list Word File line verified (eine Burg/ein Schloss besuchen); unit reading uses national parks instead — list canonical. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 23/23 verbatim. Lens B: clean."
+  }
+}

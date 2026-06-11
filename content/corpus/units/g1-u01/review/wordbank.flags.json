@@ -1,0 +1,27 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u01",
+  "round": 1,
+  "bankHash": "6b8c1ede4887",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "forms-suspect:g1u01.w.to-go",
+      "kind": "forms-suspect",
+      "entryId": "g1u01.w.to-go",
+      "verdict": "ok",
+      "note": "`go` IS the citation form of `to go` — short but correct; it must count as taught. (Lens C)"
+    },
+    {
+      "key": "v1-missing:i'm fine",
+      "kind": "v1-missing",
+      "entryId": null,
+      "verdict": "ok",
+      "note": "Present in this bank as `i-am-fine` (\"I am (= I'm) fine.\" master-list line); v1 used the contracted ref. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 68/68 verbatim (249 entries checked across u01–u05 batch). Lens B: `go` form adjudicated correct. Both flags resolved with evidence."
+  }
+}

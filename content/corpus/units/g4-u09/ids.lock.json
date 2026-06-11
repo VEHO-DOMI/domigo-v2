@@ -2,42 +2,230 @@
   "schema": "ids-lock@1",
   "slug": "g4-u09",
   "words": {
+    "phrase:border": "g4u09.w.border",
+    "phrase:communicate": "g4u09.w.communicate",
+    "phrase:fashionable": "g4u09.w.fashionable",
+    "phrase:firstly": "g4u09.w.firstly",
+    "phrase:funeral": "g4u09.w.funeral",
+    "phrase:health risk": "g4u09.w.health-risk",
+    "phrase:in common": "g4u09.w.in-common",
+    "phrase:needle": "g4u09.w.needle",
+    "phrase:permanent": "g4u09.w.permanent",
+    "phrase:pierced": "g4u09.w.pierced",
+    "phrase:rebellious": "g4u09.w.rebellious",
+    "phrase:religious": "g4u09.w.religious",
+    "phrase:ceremony": "g4u09.w.ceremony",
+    "phrase:bury": "g4u09.w.bury",
+    "phrase:devil": "g4u09.w.devil",
+    "phrase:confused": "g4u09.w.confused",
+    "phrase:far east": "g4u09.w.far-east",
+    "phrase:gesture": "g4u09.w.gesture",
+    "phrase:greet": "g4u09.w.greet",
+    "phrase:index finger": "g4u09.w.index-finger",
+    "phrase:insult": "g4u09.w.insult",
+    "phrase:nod the head": "g4u09.w.nod-the-head",
+    "phrase:palm": "g4u09.w.palm",
+    "phrase:pass something on": "g4u09.w.pass-something-on",
+    "phrase:thumb": "g4u09.w.thumb",
+    "phrase:victory": "g4u09.w.victory",
+    "phrase:zero": "g4u09.w.zero",
+    "phrase:decent-looking": "g4u09.w.decent-looking",
+    "phrase:embarrassed": "g4u09.w.embarrassed",
+    "phrase:giggle": "g4u09.w.giggle",
+    "phrase:goth": "g4u09.w.goth",
+    "phrase:hastily": "g4u09.w.hastily",
+    "phrase:ignore": "g4u09.w.ignore",
+    "phrase:sigh": "g4u09.w.sigh",
+    "phrase:sitting room": "g4u09.w.sitting-room",
+    "phrase:scare off": "g4u09.w.scare-off",
+    "phrase:sleeve": "g4u09.w.sleeve",
+    "phrase:possibility": "g4u09.w.possibility",
     "wordfile:wedding dress": "g4u09.w.wedding-dress",
     "wordfile:wedding suit": "g4u09.w.wedding-suit",
     "wordfile:bride": "g4u09.w.bride",
     "wordfile:bridegroom": "g4u09.w.bridegroom",
-    "wordfile:bridesmaid": "g4u09.w.bridesmaid",
-    "phrase:black market": "g4u09.w.black-market",
-    "phrase:collect": "g4u09.w.collect",
-    "phrase:collection": "g4u09.w.collection",
-    "phrase:fascination": "g4u09.w.fascination",
-    "phrase:rare": "g4u09.w.rare",
-    "phrase:auction": "g4u09.w.auction",
-    "phrase:burn to the ground": "g4u09.w.burn-to-the-ground",
-    "phrase:copy": "g4u09.w.copy",
-    "phrase:execute": "g4u09.w.execute",
-    "phrase:furious": "g4u09.w.furious",
-    "phrase:judge": "g4u09.w.judge",
-    "phrase:librarian": "g4u09.w.librarian",
-    "phrase:library": "g4u09.w.library",
-    "phrase:monastery": "g4u09.w.monastery",
-    "phrase:monk": "g4u09.w.monk",
-    "phrase:precious": "g4u09.w.precious",
-    "phrase:preserve": "g4u09.w.preserve",
-    "phrase:rob": "g4u09.w.rob",
-    "phrase:sentence to death": "g4u09.w.sentence-to-death",
-    "phrase:shorten": "g4u09.w.shorten",
-    "phrase:addict": "g4u09.w.addict",
-    "phrase:addiction": "g4u09.w.addiction",
-    "phrase:command": "g4u09.w.command",
-    "phrase:go crazy": "g4u09.w.go-crazy",
-    "phrase:miss out on sth": "g4u09.w.miss-out-on-sth",
-    "phrase:pale": "g4u09.w.pale",
-    "phrase:turn up": "g4u09.w.turn-up",
-    "phrase:whisper": "g4u09.w.whisper",
-    "phrase:sheet": "g4u09.w.sheet",
-    "phrase:confuse sb": "g4u09.w.confuse-sb",
-    "phrase:kitschy": "g4u09.w.kitschy"
+    "wordfile:bridesmaid": "g4u09.w.bridesmaid"
   },
-  "tombstones": []
+  "tombstones": [
+    {
+      "id": "g4u09.w.wedding-dress",
+      "key": "wordfile:wedding dress",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.wedding-suit",
+      "key": "wordfile:wedding suit",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.bride",
+      "key": "wordfile:bride",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.bridegroom",
+      "key": "wordfile:bridegroom",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.bridesmaid",
+      "key": "wordfile:bridesmaid",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.black-market",
+      "key": "phrase:black market",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.collect",
+      "key": "phrase:collect",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.collection",
+      "key": "phrase:collection",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.fascination",
+      "key": "phrase:fascination",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.rare",
+      "key": "phrase:rare",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.auction",
+      "key": "phrase:auction",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.burn-to-the-ground",
+      "key": "phrase:burn to the ground",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.copy",
+      "key": "phrase:copy",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.execute",
+      "key": "phrase:execute",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.furious",
+      "key": "phrase:furious",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.judge",
+      "key": "phrase:judge",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.librarian",
+      "key": "phrase:librarian",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.library",
+      "key": "phrase:library",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.monastery",
+      "key": "phrase:monastery",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.monk",
+      "key": "phrase:monk",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.precious",
+      "key": "phrase:precious",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.preserve",
+      "key": "phrase:preserve",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.rob",
+      "key": "phrase:rob",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.sentence-to-death",
+      "key": "phrase:sentence to death",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.shorten",
+      "key": "phrase:shorten",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.addict",
+      "key": "phrase:addict",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.addiction",
+      "key": "phrase:addiction",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.command",
+      "key": "phrase:command",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.go-crazy",
+      "key": "phrase:go crazy",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.miss-out-on-sth",
+      "key": "phrase:miss out on sth",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.pale",
+      "key": "phrase:pale",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.turn-up",
+      "key": "phrase:turn up",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.whisper",
+      "key": "phrase:whisper",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.sheet",
+      "key": "phrase:sheet",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.confuse-sb",
+      "key": "phrase:confuse sb",
+      "removedWith": "f28dd62d3120"
+    },
+    {
+      "id": "g4u09.w.kitschy",
+      "key": "phrase:kitschy",
+      "removedWith": "f28dd62d3120"
+    }
+  ]
 }

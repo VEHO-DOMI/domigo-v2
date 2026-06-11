@@ -22,6 +22,55 @@
       "by": "pipeline",
       "contentHash": "187285f27762fd3c8fceb51ccd2eaf2b6aa9d575cd49ab09cccf37f67ca05bab",
       "note": "re-parse changed content"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-11T16:02:20.538Z",
+      "by": "pipeline",
+      "contentHash": "6732fa924d0806b2a4ffc4228170399510bf8f08b191bb7c4066c6fd039a13c9",
+      "note": "re-parse changed content"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "6732fa924d08",
+      "note": "round 1 doc: 0 open flag(s)",
+      "at": "2026-06-11T16:02:25.853Z"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-11T16:09:54.258Z",
+      "by": "pipeline",
+      "contentHash": "6732fa924d0806b2a4ffc4228170399510bf8f08b191bb7c4066c6fd039a13c9",
+      "note": "re-parse after later state — review impact"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "6732fa924d08",
+      "note": "round 1 doc: 0 open flag(s)",
+      "at": "2026-06-11T16:09:55.954Z"
+    },
+    {
+      "state": "wordbank_draft",
+      "at": "2026-06-11T16:11:46.875Z",
+      "by": "pipeline",
+      "contentHash": "6732fa924d0806b2a4ffc4228170399510bf8f08b191bb7c4066c6fd039a13c9",
+      "note": "re-parse after later state — review impact"
+    },
+    {
+      "state": "wordbank_review",
+      "by": "pipeline",
+      "contentHash": "6732fa924d08",
+      "note": "round 1 doc: 0 open flag(s)",
+      "at": "2026-06-11T16:11:48.571Z"
+    },
+    {
+      "state": "wordbank_approved",
+      "by": "fable",
+      "contentHash": "6732fa924d0806b2a4ffc4228170399510bf8f08b191bb7c4066c6fd039a13c9",
+      "note": "round 1: 0 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
+      "at": "2026-06-11T16:12:34.385Z"
     }
   ]
 }

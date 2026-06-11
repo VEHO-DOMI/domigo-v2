@@ -1,0 +1,25 @@
+{
+  "schema": "wordbank-reviewed@1",
+  "slug": "g4-u06",
+  "round": 1,
+  "rows": {
+    "achieve": "c880d1712e48",
+    "donate": "10c3b9d193d6",
+    "drop-out": "d6cfe913933a",
+    "goal": "b8198432121a",
+    "income": "8782003dd7dd",
+    "inspire": "db67e6dee808",
+    "support": "d9126274025a",
+    "encouragement": "513487bd9dad",
+    "community": "34daf9d8dbe4",
+    "exceed": "f718055ca61b",
+    "frustrated": "4cc8ca358b77",
+    "grateful": "235257b2e52d",
+    "in-particular": "040ec1f336c1",
+    "learn-a-lesson": "a929f95444ab",
+    "range-of": "d6a5d6f3bbc8",
+    "relate-to": "bb84f2d1ec46",
+    "small-wonder": "d0ac28fd85c1",
+    "transmit": "42aceafa2d18"
+  }
+}

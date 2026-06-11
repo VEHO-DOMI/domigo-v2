@@ -168,7 +168,9 @@
       "exampleSb": null,
       "cf": null,
       "forms": [
-        "weather presenter / meteorologist"
+        "weather presenter / meteorologist",
+        "weather presenter",
+        "meteorologist"
       ],
       "taughtGloss": false
     },
@@ -343,7 +345,7 @@
       "theme": null,
       "en": "to clear up",
       "de": [
-        "hier: aufheitern"
+        "aufheitern"
       ],
       "deRaw": "hier: aufheitern",
       "exampleSb": "The bad weather will clear up by this evening.",

@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g4-u08",
+  "round": 1,
+  "bankHash": "c2962a2f7b3c",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "SOURCE ANOMALY resolved at parser level: the master list's u8/u9 Words-and-Phrases tables are swapped vs the textbook (transcripts + v1 + Koki's classroom folders agree; wedding Word File NOT swapped — traces in U9). Section-aware remap applied; all 36 round-1 flags dissolved: every word now traces in its unit's transcript and v1 parity aligns. Lens A: verbatim; Lens C: swap evidence documented."
+  }
+}

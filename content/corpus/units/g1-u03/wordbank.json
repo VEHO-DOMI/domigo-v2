@@ -475,7 +475,9 @@
       "exampleSb": "I have got brown hair. Tamara has got red hair.",
       "cf": null,
       "forms": [
-        "have got / has got"
+        "have got / has got",
+        "have got",
+        "has got"
       ],
       "taughtGloss": false
     },

@@ -1,0 +1,83 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u02",
+  "round": 1,
+  "bankHash": "8964a98699d2",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "duplicate-headword:g1u02.w.behind-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u02.w.behind-2",
+      "verdict": "ok",
+      "note": "Master list teaches `behind` in Word File AND as phrase with example — both source lines verified. (Lens C)"
+    },
+    {
+      "key": "duplicate-headword:g1u02.w.in-front-of-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u02.w.in-front-of-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified. (Lens C)"
+    },
+    {
+      "key": "duplicate-headword:g1u02.w.next-to-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u02.w.next-to-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified. (Lens C)"
+    },
+    {
+      "key": "duplicate-headword:g1u02.w.under-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u02.w.under-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u02.w.family",
+      "kind": "not-in-transcript",
+      "entryId": "g1u02.w.family",
+      "verdict": "ok",
+      "note": "Master-list-only vocab (zoo-visit context); list is canonical. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u02.w.free",
+      "kind": "not-in-transcript",
+      "entryId": "g1u02.w.free",
+      "verdict": "ok",
+      "note": "Zoo-poster vocabulary, master-list-only. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u02.w.grandma",
+      "kind": "not-in-transcript",
+      "entryId": "g1u02.w.grandma",
+      "verdict": "ok",
+      "note": "Master-list-only vocab. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u02.w.group",
+      "kind": "not-in-transcript",
+      "entryId": "g1u02.w.group",
+      "verdict": "ok",
+      "note": "Zoo-poster pricing vocab, master-list-only. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u02.w.ticket",
+      "kind": "not-in-transcript",
+      "entryId": "g1u02.w.ticket",
+      "verdict": "ok",
+      "note": "Zoo-poster vocab, master-list-only. Example typo fixed via cell edit (Adults→Adult), see unit note. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u02.w.to-want",
+      "kind": "not-in-transcript",
+      "entryId": "g1u02.w.to-want",
+      "verdict": "ok",
+      "note": "Master-list-only vocab. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 52/52 verbatim. CELL EDIT: example for `ticket` corrected 'Adults tickets are €14.40.' → 'Adult tickets are €14.40.' — obvious grammar typo in the compiled list, flagged for Koki's digest/veto (deRaw untouched)."
+  }
+}

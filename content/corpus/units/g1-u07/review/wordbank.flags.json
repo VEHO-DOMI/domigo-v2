@@ -1,0 +1,69 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u07",
+  "round": 1,
+  "bankHash": "629dca6525cf",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "not-in-transcript:g1u07.w.strawberry",
+      "kind": "not-in-transcript",
+      "entryId": "g1u07.w.strawberry",
+      "verdict": "ok",
+      "note": "Food Word-File vocab, master-list-only. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u07.w.sugar",
+      "kind": "not-in-transcript",
+      "entryId": "g1u07.w.sugar",
+      "verdict": "ok",
+      "note": "Master-list-only food vocab. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u07.w.pasta",
+      "kind": "not-in-transcript",
+      "entryId": "g1u07.w.pasta",
+      "verdict": "ok",
+      "note": "Master-list-only (distinct from 'noodles' which IS in transcript). (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u07.w.fries",
+      "kind": "not-in-transcript",
+      "entryId": "g1u07.w.fries",
+      "verdict": "ok",
+      "note": "Master-list-only food vocab. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u07.w.any",
+      "kind": "not-in-transcript",
+      "entryId": "g1u07.w.any",
+      "verdict": "ok",
+      "note": "Master-list phrase line verified ('Have you got any tomatoes?'). (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u07.w.waiter",
+      "kind": "not-in-transcript",
+      "entryId": "g1u07.w.waiter",
+      "verdict": "ok",
+      "note": "Restaurant vocab, master-list-only. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u07.w.menu",
+      "kind": "not-in-transcript",
+      "entryId": "g1u07.w.menu",
+      "verdict": "ok",
+      "note": "Restaurant vocab, master-list-only. (Lens C)"
+    },
+    {
+      "key": "not-in-transcript:g1u07.w.plate",
+      "kind": "not-in-transcript",
+      "entryId": "g1u07.w.plate",
+      "verdict": "ok",
+      "note": "Restaurant vocab, master-list-only. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 67/67 verbatim. Lens B: clean."
+  }
+}

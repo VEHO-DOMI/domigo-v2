@@ -1,0 +1,27 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u13",
+  "round": 1,
+  "bankHash": "e4abaa2bacfd",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "duplicate-headword:g1u13.w.storm-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u13.w.storm-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified. (Lens C)"
+    },
+    {
+      "key": "duplicate-headword:g1u13.w.to-shout-for-help-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u13.w.to-shout-for-help-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified. (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 58/58 verbatim. Lens B: clean."
+  }
+}

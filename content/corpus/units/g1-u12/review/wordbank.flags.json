@@ -1,0 +1,12 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u12",
+  "round": 1,
+  "bankHash": "7926349cf887",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 74/74 verbatim. All 28 round-1 flags (ordinals 1st–31st) auto-resolved by the numeral+word forms fix — every ordinal now matches v1 and traces. Lens B 'hall: Flur ; Diele' kept verbatim (source-canonical; both senses intended by the list)."
+  }
+}

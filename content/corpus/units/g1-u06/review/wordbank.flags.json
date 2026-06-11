@@ -1,0 +1,27 @@
+{
+  "schema": "wordbank-flags@1",
+  "slug": "g1-u06",
+  "round": 1,
+  "bankHash": "dfbe7bb08bcd",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "duplicate-headword:g1u06.w.street-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u06.w.street-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified (Anna lives in York Street). (Lens C)"
+    },
+    {
+      "key": "duplicate-headword:g1u06.w.to-pull-2",
+      "kind": "duplicate-headword",
+      "entryId": "g1u06.w.to-pull-2",
+      "verdict": "ok",
+      "note": "Word File + phrase source lines both verified (Sherlock Groans). (Lens C)"
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Lens A: clean, 49/49 verbatim. `a lot of / lots of` v1 flag auto-resolved by slash-variant forms."
+  }
+}

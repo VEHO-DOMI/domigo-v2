@@ -1,0 +1,30 @@
+{
+  "schema": "wordbank-reviewed@1",
+  "slug": "g1-u15",
+  "round": 1,
+  "rows": {
+    "to-fly-to": "061a19580c21",
+    "to-go-fishing": "067092f09399",
+    "to-stay-at-a-campsite": "4e54d2593862",
+    "to-swim-in-the-sea": "db682b8868c4",
+    "to-play-badminton": "f1ce4aec68ad",
+    "to-lie-in-the-sun": "56e64c955394",
+    "to-write-a-postcard": "2ba1189ccc9e",
+    "to-play-board-games": "5c59297eb4dd",
+    "to-visit-a-castle": "d1238f80369d",
+    "aunt": "e1f5b7242ce0",
+    "beach": "20fc3956525d",
+    "board-game": "9975aaf57841",
+    "campsite": "f81e4994ba28",
+    "cook": "f8bb4f67d2e6",
+    "to-drive": "ca7a798ed230",
+    "holiday": "859806f0d23c",
+    "national-park": "2d005b3a6a44",
+    "parents": "9584a233e336",
+    "plane": "3b3adfc3b20e",
+    "summer": "767c4e3ab9fc",
+    "hippo": "4414af32b2e7",
+    "to-join": "578ae85cbea2",
+    "to-invite": "7755397737c3"
+  }
+}
