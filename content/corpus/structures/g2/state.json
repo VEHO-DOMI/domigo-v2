@@ -1,0 +1,13 @@
+{
+  "schema": "unit-state@1",
+  "slug": "g2-structures",
+  "transitions": [
+    {
+      "state": "generated",
+      "by": "fable",
+      "contentHash": "aa13384e8bf5196b58a358ace1c078fc27524fdbdf5b707a1451d8b42c0709e7",
+      "note": "structures ingest: 28 total, 6 new, 22 v1-mapped, 0 waived",
+      "at": "2026-06-11T20:20:13.009Z"
+    }
+  ]
+}

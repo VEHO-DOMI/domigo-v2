@@ -1,0 +1,744 @@
+{
+  "modules": {
+    "m1": {
+      "grade": 1,
+      "structureCount": 34,
+      "itemCount": 858,
+      "structures": [
+        {
+          "id": "m1-u1-plurals",
+          "unit": 1,
+          "name": "Plurals",
+          "nameDE": "Mehrzahl (Plural)",
+          "category": "other",
+          "description": "Regular plural endings (-s, -es, -ies) and common irregular plurals."
+        },
+        {
+          "id": "m1-u1-imperatives",
+          "unit": 1,
+          "name": "Imperatives",
+          "nameDE": "Befehlsform (Imperativ)",
+          "category": "other",
+          "description": "Positive and negative commands using the base form of the verb."
+        },
+        {
+          "id": "m1-u1-contractions",
+          "unit": 1,
+          "name": "Basic Contractions",
+          "nameDE": "Kurzformen (Kontraktionen)",
+          "category": "other",
+          "description": "Common contractions used in spoken and informal written English: I'm, What's, it's, isn't, Let's."
+        },
+        {
+          "id": "m1-u2-to-be",
+          "unit": 2,
+          "name": "to be (Present Simple)",
+          "nameDE": "to be – sein (Gegenwart)",
+          "category": "tenses",
+          "description": "The verb 'to be' in affirmative, negative and question forms: am/is/are."
+        },
+        {
+          "id": "m1-u2-prepositions-place",
+          "unit": 2,
+          "name": "Prepositions of Place",
+          "nameDE": "Ortspräpositionen",
+          "category": "prepositions",
+          "description": "Basic prepositions showing where something is: in, on, under, behind, next to, in front of."
+        },
+        {
+          "id": "m1-u2-there-is-are",
+          "unit": 2,
+          "name": "there is / there are",
+          "nameDE": "there is / there are – es gibt",
+          "category": "other",
+          "description": "Using 'there is' for singular and 'there are' for plural to say that something exists."
+        },
+        {
+          "id": "m1-u2-subject-pronouns",
+          "unit": 2,
+          "name": "Subject Pronouns",
+          "nameDE": "Subjektpronomen (Personalpronomen im Nominativ)",
+          "category": "pronouns",
+          "description": "The personal pronouns used as the subject of a sentence: I, you, he, she, it, we, they."
+        },
+        {
+          "id": "m1-u3-have-got",
+          "unit": 3,
+          "name": "have got",
+          "nameDE": "have got – haben",
+          "category": "other",
+          "description": "Expressing possession with 'have got' in affirmative, negative and question forms."
+        },
+        {
+          "id": "m1-u3-possessive-s",
+          "unit": 3,
+          "name": "Possessive 's",
+          "nameDE": "Genitiv-s (Besitz mit 's)",
+          "category": "other",
+          "description": "Showing possession by adding 's to a name or noun: Tom's book, my sister's room."
+        },
+        {
+          "id": "m1-u4-adjectives-be",
+          "unit": 4,
+          "name": "Adjectives with be",
+          "nameDE": "Adjektive mit be",
+          "category": "other",
+          "description": "Using adjectives after the verb 'be': Subject + be + adjective."
+        },
+        {
+          "id": "m1-u4-because",
+          "unit": 4,
+          "name": "because",
+          "nameDE": "because – weil",
+          "category": "connectors",
+          "description": "Using 'because' to give a reason: statement + because + reason (SVO word order)."
+        },
+        {
+          "id": "m1-u4-days-of-week",
+          "unit": 4,
+          "name": "Days of the Week",
+          "nameDE": "Wochentage",
+          "category": "other",
+          "description": "The seven days of the week, always capitalised in English, used with the preposition 'on'."
+        },
+        {
+          "id": "m1-u5-possessive-adjectives",
+          "unit": 5,
+          "name": "Possessive Adjectives",
+          "nameDE": "Possessivbegleiter (besitzanzeigende Begleiter)",
+          "category": "pronouns",
+          "description": "Words that show who something belongs to: my, your, his, her, its, our, their."
+        },
+        {
+          "id": "m1-u5-can",
+          "unit": 5,
+          "name": "can / can't",
+          "nameDE": "can / can't – können",
+          "category": "modals",
+          "description": "Expressing ability and permission with 'can' and 'can't': can + base verb (no -s, no 'to')."
+        },
+        {
+          "id": "m1-u6-present-simple-affirmative",
+          "unit": 6,
+          "name": "Present Simple (Affirmative)",
+          "nameDE": "Present Simple (bejahte Form)",
+          "category": "tenses",
+          "description": "Describing habits and facts using the present simple affirmative: I/you/we/they + base verb, he/she/it + verb-s."
+        },
+        {
+          "id": "m1-u6-a-lot-of",
+          "unit": 6,
+          "name": "a lot of / lots of",
+          "nameDE": "a lot of / lots of – viel(e)",
+          "category": "other",
+          "description": "Using 'a lot of' and 'lots of' with countable and uncountable nouns to express a large quantity."
+        },
+        {
+          "id": "m1-u7-present-simple-negative",
+          "unit": 7,
+          "name": "Present Simple (Negative)",
+          "nameDE": "Present Simple (verneinte Form)",
+          "category": "tenses",
+          "description": "Forming negative sentences in the present simple with don't / doesn't + base verb."
+        },
+        {
+          "id": "m1-u7-articles",
+          "unit": 7,
+          "name": "Articles: a / an",
+          "nameDE": "Artikel: a / an – ein/eine",
+          "category": "articles",
+          "description": "The indefinite articles 'a' (before consonant sounds) and 'an' (before vowel sounds)."
+        },
+        {
+          "id": "m1-u7-adverbs-frequency",
+          "unit": 7,
+          "name": "Adverbs of Frequency",
+          "nameDE": "Häufigkeitsadverbien",
+          "category": "other",
+          "description": "Frequency adverbs (always, usually, often, sometimes, never) and their position in the sentence."
+        },
+        {
+          "id": "m1-u8-present-simple-questions",
+          "unit": 8,
+          "name": "Present Simple (Questions)",
+          "nameDE": "Present Simple (Frageform)",
+          "category": "tenses",
+          "description": "Forming yes/no questions and short answers in the present simple with Do/Does + subject + base verb."
+        },
+        {
+          "id": "m1-u9-object-pronouns",
+          "unit": 9,
+          "name": "Object Pronouns",
+          "nameDE": "Objektpronomen",
+          "category": "pronouns",
+          "description": "Personal pronouns used as the object of a verb or after a preposition: me, you, him, her, it, us, them."
+        },
+        {
+          "id": "m1-u9-question-words",
+          "unit": 9,
+          "name": "Question Words",
+          "nameDE": "Fragewörter (W-Fragen)",
+          "category": "other",
+          "description": "Using question words (who, what, where, how often, why) to ask open questions."
+        },
+        {
+          "id": "m1-u9-frequency-expressions",
+          "unit": 9,
+          "name": "Frequency Expressions",
+          "nameDE": "Häufigkeitsausdrücke",
+          "category": "other",
+          "description": "Time expressions for frequency: once a week, twice a day, three times a month, every day."
+        },
+        {
+          "id": "m1-u10-demonstratives",
+          "unit": 10,
+          "name": "Demonstratives: this/that/these/those",
+          "nameDE": "Demonstrativpronomen: this/that/these/those",
+          "category": "pronouns",
+          "description": "Pointing words: this/these (near) and that/those (far), matching singular and plural."
+        },
+        {
+          "id": "m1-u10-how-much",
+          "unit": 10,
+          "name": "How much is / are …?",
+          "nameDE": "How much is / are …? – Wie viel kostet …?",
+          "category": "other",
+          "description": "Asking about prices with 'How much is …?' (singular) and 'How much are …?' (plural)."
+        },
+        {
+          "id": "m1-u11-present-continuous",
+          "unit": 11,
+          "name": "Present Continuous",
+          "nameDE": "Present Continuous (Verlaufsform der Gegenwart)",
+          "category": "tenses",
+          "description": "Actions happening now: am/is/are + verb-ing in affirmative, negative and question forms."
+        },
+        {
+          "id": "m1-u12-past-simple-be",
+          "unit": 12,
+          "name": "Past Simple: was / were",
+          "nameDE": "Past Simple: was / were – war/waren",
+          "category": "tenses",
+          "description": "The past tense of 'be': was (I/he/she/it), were (you/we/they) in all forms."
+        },
+        {
+          "id": "m1-u12-ordinal-numbers",
+          "unit": 12,
+          "name": "Ordinal Numbers",
+          "nameDE": "Ordnungszahlen",
+          "category": "other",
+          "description": "Ordinal numbers (1st–31st) with spelling rules: most add -th, with exceptions for 1st, 2nd, 3rd."
+        },
+        {
+          "id": "m1-u12-prepositions-time",
+          "unit": 12,
+          "name": "Prepositions of Time",
+          "nameDE": "Zeitpräpositionen",
+          "category": "prepositions",
+          "description": "Prepositions used with time expressions: on (days/dates), in (months/seasons), at (times)."
+        },
+        {
+          "id": "m1-u13-past-simple-regular",
+          "unit": 13,
+          "name": "Past Simple: Regular Verbs",
+          "nameDE": "Past Simple: regelmäßige Verben",
+          "category": "tenses",
+          "description": "Forming the past simple of regular verbs by adding -ed, with spelling rules for -d, -ied, and doubled consonants."
+        },
+        {
+          "id": "m1-u13-linking-words",
+          "unit": 13,
+          "name": "Linking Words: and, but, because",
+          "nameDE": "Bindewörter: and, but, because",
+          "category": "connectors",
+          "description": "Basic linking words to join ideas: and (addition), but (contrast), because (reason)."
+        },
+        {
+          "id": "m1-u14-past-simple-negative",
+          "unit": 14,
+          "name": "Past Simple (Negative)",
+          "nameDE": "Past Simple (verneinte Form)",
+          "category": "tenses",
+          "description": "Forming negative sentences in the past simple with didn't + base verb."
+        },
+        {
+          "id": "m1-u14-irregular-verbs",
+          "unit": 14,
+          "name": "Irregular Verbs (Past Simple)",
+          "nameDE": "unregelmäßige Verben (Past Simple)",
+          "category": "tenses",
+          "description": "Common irregular verbs that do not follow the -ed pattern in the past simple."
+        },
+        {
+          "id": "m1-u15-going-to",
+          "unit": 15,
+          "name": "going to (Future)",
+          "nameDE": "going to – Zukunft (geplante Handlungen)",
+          "category": "tenses",
+          "description": "Talking about future plans and intentions with be + going to + base verb."
+        }
+      ]
+    },
+    "m2": {
+      "grade": 2,
+      "structureCount": 22,
+      "itemCount": 442,
+      "structures": [
+        {
+          "id": "m2-u2-past-simple-questions",
+          "unit": 2,
+          "name": "Past Simple Questions",
+          "nameDE": "Fragen in der einfachen Vergangenheit",
+          "category": "tenses",
+          "description": "Forming past simple questions with did + base form and was/were, including short answers."
+        },
+        {
+          "id": "m2-u2-irregular-verbs-expanded",
+          "unit": 2,
+          "name": "Irregular Verbs",
+          "nameDE": "Unregelmäßige Verben",
+          "category": "tenses",
+          "description": "Additional irregular past simple forms: buy-bought, know-knew, make-made, write-wrote, expanding the M1 set."
+        },
+        {
+          "id": "m2-u3-should",
+          "unit": 3,
+          "name": "should / shouldn't",
+          "nameDE": "should / shouldn't (Ratschläge)",
+          "category": "modals",
+          "description": "Using should/shouldn't to give advice and make suggestions. No 3rd person -s, no 'to' after should."
+        },
+        {
+          "id": "m2-u4-comparatives",
+          "unit": 4,
+          "name": "Comparatives",
+          "nameDE": "Komparativ (Vergleichsstufe)",
+          "category": "comparison",
+          "description": "Comparing two things: short adjectives + -er, long adjectives with 'more', and irregular forms (better, worse)."
+        },
+        {
+          "id": "m2-u4-superlatives",
+          "unit": 4,
+          "name": "Superlatives",
+          "nameDE": "Superlativ (Höchststufe)",
+          "category": "comparison",
+          "description": "Expressing the highest degree: the + -est for short adjectives, the most for long adjectives, irregular forms (the best, the worst)."
+        },
+        {
+          "id": "m2-u4-as-as",
+          "unit": 4,
+          "name": "as...as / not as...as",
+          "nameDE": "as...as / not as...as (Gleichheit)",
+          "category": "comparison",
+          "description": "Expressing equality (as...as) and inequality (not as...as) between two things."
+        },
+        {
+          "id": "m2-u5-prepositions-directions",
+          "unit": 5,
+          "name": "Prepositions of Place & Directions",
+          "nameDE": "Ortspräpositionen und Wegbeschreibungen",
+          "category": "prepositions",
+          "description": "Expanded prepositions (opposite, beside, round the corner) combined with direction-giving language (go straight, turn left, cross)."
+        },
+        {
+          "id": "m2-u6-have-to",
+          "unit": 6,
+          "name": "have to / don't have to",
+          "nameDE": "have to / don't have to (Notwendigkeit)",
+          "category": "modals",
+          "description": "Expressing necessity (have to) and absence of necessity (don't have to). 3rd person: has to / doesn't have to. CRITICAL: don't have to is NOT mustn't."
+        },
+        {
+          "id": "m2-u7-might",
+          "unit": 7,
+          "name": "might / might not",
+          "nameDE": "might / might not (Möglichkeit)",
+          "category": "modals",
+          "description": "Expressing possibility and uncertainty with might/might not. No 3rd person -s, no 'to'. Same form for all persons."
+        },
+        {
+          "id": "m2-u8-past-time-markers",
+          "unit": 8,
+          "name": "Past Time Markers & Narrative Sequencing",
+          "nameDE": "Zeitangaben in der Vergangenheit und Erzählstruktur",
+          "category": "connectors",
+          "description": "Using time markers (then, after that, finally, suddenly) and time expressions to sequence past narratives."
+        },
+        {
+          "id": "m2-u9-some-any",
+          "unit": 9,
+          "name": "some / any",
+          "nameDE": "some / any (Mengenangaben)",
+          "category": "articles",
+          "description": "Using some in positive sentences and offers, any in negative sentences and questions."
+        },
+        {
+          "id": "m2-u9-one-ones",
+          "unit": 9,
+          "name": "one / ones",
+          "nameDE": "one / ones (Ersatzpronomen)",
+          "category": "pronouns",
+          "description": "Using one (singular) and ones (plural) as pronoun substitutes to avoid repeating a noun."
+        },
+        {
+          "id": "m2-u10-like-ing",
+          "unit": 10,
+          "name": "like + verb-ing",
+          "nameDE": "like + verb-ing (Gerundium nach like)",
+          "category": "other",
+          "description": "Expressing enjoyment of activities using like/likes + verb-ing (gerund)."
+        },
+        {
+          "id": "m2-u10-must",
+          "unit": 10,
+          "name": "must / mustn't",
+          "nameDE": "must / mustn't (Verpflichtung und Verbot)",
+          "category": "modals",
+          "description": "must for strong obligation, mustn't for prohibition. CRITICAL: mustn't (nicht dürfen) is NOT the same as don't have to (nicht müssen)."
+        },
+        {
+          "id": "m2-u11-possessive-s-expanded",
+          "unit": 11,
+          "name": "Possessive 's",
+          "nameDE": "Genitiv-s",
+          "category": "other",
+          "description": "Expanded possessive 's including singular possessive ('s), plural possessive (s'), and irregular plural possessive (children's)."
+        },
+        {
+          "id": "m2-u11-possessive-pronouns",
+          "unit": 11,
+          "name": "Possessive Pronouns",
+          "nameDE": "Possessivpronomen",
+          "category": "pronouns",
+          "description": "Possessive pronouns (mine, yours, his, hers, ours, theirs) as standalone forms, contrasted with possessive adjectives."
+        },
+        {
+          "id": "m2-u11-who-whose",
+          "unit": 11,
+          "name": "who / whose",
+          "nameDE": "who / whose (Fragepronomen)",
+          "category": "other",
+          "description": "who for subject questions (no auxiliary needed) and whose for possession questions."
+        },
+        {
+          "id": "m2-u12-present-perfect",
+          "unit": 12,
+          "name": "Present Perfect (+ just)",
+          "nameDE": "Present Perfect (+ just)",
+          "category": "tenses",
+          "description": "have/has + past participle for recent events with present relevance. Includes 'just' for very recent completion."
+        },
+        {
+          "id": "m2-u13-will-future",
+          "unit": 13,
+          "name": "will / won't (Future)",
+          "nameDE": "will / won't (Zukunft)",
+          "category": "tenses",
+          "description": "will/won't + base form for spontaneous decisions, offers, promises, and predictions. Contrasted with going to for planned actions."
+        },
+        {
+          "id": "m2-u13-adverbs-manner",
+          "unit": 13,
+          "name": "Adverbs of Manner",
+          "nameDE": "Adverbien der Art und Weise",
+          "category": "other",
+          "description": "Forming adverbs from adjectives with -ly (slowly, carefully) and irregular adverbs (well, fast). Position: usually after the verb or object."
+        },
+        {
+          "id": "m2-u14-present-perfect-signals",
+          "unit": 14,
+          "name": "Present Perfect: already, yet, ever, never",
+          "nameDE": "Present Perfect: already, yet, ever, never (Signalwörter)",
+          "category": "tenses",
+          "description": "Present perfect signal words: already (completed, positive), yet (not completed / asking, negative/questions), ever (lifetime experience, questions), never (no experience, statements)."
+        },
+        {
+          "id": "m2-u15-so-do-i",
+          "unit": 15,
+          "name": "So do I / Neither do I",
+          "nameDE": "So do I / Neither do I (Übereinstimmung)",
+          "category": "other",
+          "description": "Expressing positive agreement (So do I / So have I) and negative agreement (Neither do I / Neither have I) with inverted word order."
+        }
+      ]
+    },
+    "m3": {
+      "grade": 3,
+      "structureCount": 18,
+      "itemCount": 606,
+      "structures": [
+        {
+          "id": "m3-u2-past-continuous",
+          "unit": 2,
+          "name": "Past Continuous",
+          "nameDE": "Vergangenheit mit Verlaufsform (Past Continuous)",
+          "category": "tenses",
+          "description": "Describing ongoing past actions with was/were + -ing, including contrast with past simple for interrupted or simultaneous actions."
+        },
+        {
+          "id": "m3-u3-time-connectors",
+          "unit": 3,
+          "name": "Time Connectors",
+          "nameDE": "Zeitliche Verbindungswörter",
+          "category": "connectors",
+          "description": "Using when, before, after, while, during, until, and by the time to connect clauses and express time relationships in narratives."
+        },
+        {
+          "id": "m3-u3-it-takes",
+          "unit": 3,
+          "name": "It takes ... to",
+          "nameDE": "It takes... to (Zeitdauer ausdrücken)",
+          "category": "other",
+          "description": "Expressing how long something takes using the construction It + take(s) + person + time + to + infinitive."
+        },
+        {
+          "id": "m3-u4-comparative-intensifiers",
+          "unit": 4,
+          "name": "Comparative and Superlative Intensifiers",
+          "nameDE": "Verstärker bei Komparativ und Superlativ",
+          "category": "comparison",
+          "description": "Intensifying comparisons with much/a lot/a bit/a little + comparative, and using (not) nearly as...as for nuanced comparisons."
+        },
+        {
+          "id": "m3-u5-first-conditional",
+          "unit": 5,
+          "name": "First Conditional",
+          "nameDE": "Erster Konditional (Bedingungssatz Typ 1)",
+          "category": "conditionals",
+          "description": "Expressing real possibilities and likely outcomes with If + present simple, will + base verb."
+        },
+        {
+          "id": "m3-u5-unless",
+          "unit": 5,
+          "name": "unless",
+          "nameDE": "unless (es sei denn)",
+          "category": "connectors",
+          "description": "Using 'unless' as a synonym for 'if...not' in conditional sentences, always followed by an affirmative verb."
+        },
+        {
+          "id": "m3-u6-relative-clauses",
+          "unit": 6,
+          "name": "Defining Relative Clauses",
+          "nameDE": "Bestimmende Relativsätze (who/which/that/whose)",
+          "category": "pronouns",
+          "description": "Combining sentences using defining relative clauses with who (people), which (things/animals), that (both), and whose (possession)."
+        },
+        {
+          "id": "m3-u7-present-perfect-for-since",
+          "unit": 7,
+          "name": "Present Perfect with for/since",
+          "nameDE": "Present Perfect mit for/since (Dauer und Zeitpunkt)",
+          "category": "tenses",
+          "description": "Using the present perfect with 'for' (duration) and 'since' (starting point) to talk about actions and states continuing to the present."
+        },
+        {
+          "id": "m3-u8-past-simple-vs-present-perfect",
+          "unit": 8,
+          "name": "Past Simple vs Present Perfect",
+          "nameDE": "Simple Past vs Present Perfect (systematischer Vergleich)",
+          "category": "tenses",
+          "description": "Systematically contrasting past simple (finished actions at a specific time) with present perfect (present relevance, no specific time, for/since)."
+        },
+        {
+          "id": "m3-u9-be-allowed-to",
+          "unit": 9,
+          "name": "be (not) allowed to",
+          "nameDE": "be (not) allowed to (Erlaubnis und Verbot)",
+          "category": "modals",
+          "description": "Expressing permission and prohibition using be (not) allowed to + verb across present, past, and future tenses."
+        },
+        {
+          "id": "m3-u9-let",
+          "unit": 9,
+          "name": "let / don't let",
+          "nameDE": "let / don't let (Erlaubnis geben/verweigern)",
+          "category": "modals",
+          "description": "Using let/don't let + object + base verb (without 'to') to express giving or withholding permission."
+        },
+        {
+          "id": "m3-u10-could-was-able-to",
+          "unit": 10,
+          "name": "could / was able to (Past Ability)",
+          "nameDE": "could / was able to (Fähigkeit in der Vergangenheit)",
+          "category": "modals",
+          "description": "Expressing past ability with could (general ability) and was/were able to (specific one-time achievement), including the full tense paradigm of be able to."
+        },
+        {
+          "id": "m3-u10-past-permission",
+          "unit": 10,
+          "name": "Past and Future Permission (was allowed to / will be allowed to)",
+          "nameDE": "Erlaubnis in Vergangenheit und Zukunft (was allowed to / will be allowed to)",
+          "category": "modals",
+          "description": "Expressing permission across all tenses using was/were (not) allowed to (past), will (not) be allowed to (future), and have/has (not) been allowed to (present perfect)."
+        },
+        {
+          "id": "m3-u10-future-pp-ability",
+          "unit": 10,
+          "name": "Future and Present Perfect Ability/Permission",
+          "nameDE": "Zukunft und Present Perfect bei Fähigkeit/Erlaubnis",
+          "category": "modals",
+          "description": "Completing the ability and permission system across all tenses: will be able to, will be allowed to, have been able to, have been allowed to."
+        },
+        {
+          "id": "m3-u11-present-perfect-continuous",
+          "unit": 11,
+          "name": "Present Perfect Continuous",
+          "nameDE": "Present Perfect Continuous (Verlaufsform des Present Perfect)",
+          "category": "tenses",
+          "description": "Expressing ongoing activities with duration using have/has + been + -ing form, often with for/since, and contrasting with present perfect simple."
+        },
+        {
+          "id": "m3-u12-passive-voice",
+          "unit": 12,
+          "name": "Passive Voice (Present and Past Simple)",
+          "nameDE": "Passiv (Gegenwartspassiv und Vergangenheitspassiv)",
+          "category": "passive",
+          "description": "Forming the present simple passive (am/is/are + past participle) and past simple passive (was/were + past participle), with optional agent (by)."
+        },
+        {
+          "id": "m3-u13-second-conditional",
+          "unit": 13,
+          "name": "Second Conditional",
+          "nameDE": "Zweiter Konditional (Bedingungssatz Typ 2)",
+          "category": "conditionals",
+          "description": "Expressing hypothetical, unlikely, or imaginary situations with If + past simple, would + base verb, and contrasting with the first conditional."
+        },
+        {
+          "id": "m3-u14-going-to-evidence",
+          "unit": 14,
+          "name": "Going to for Evidence-Based Predictions",
+          "nameDE": "Going to für Vorhersagen aufgrund von Beweisen",
+          "category": "tenses",
+          "description": "Expanding the going to future to include evidence-based predictions alongside planned actions, and contrasting with will for opinions and spontaneous decisions."
+        }
+      ]
+    },
+    "m4": {
+      "grade": 4,
+      "structureCount": 15,
+      "itemCount": 599,
+      "structures": [
+        {
+          "id": "m4-u1-past-continuous-revision",
+          "unit": 1,
+          "name": "Past Continuous",
+          "nameDE": "Past Continuous (Vertiefende Wiederholung)",
+          "category": "tenses",
+          "description": "Deep revision of past continuous (was/were + -ing) for background actions, interrupted actions, and simultaneous past actions, contrasted with past simple."
+        },
+        {
+          "id": "m4-u2-past-perfect",
+          "unit": 2,
+          "name": "Past Perfect",
+          "nameDE": "Past Perfect (Vorvergangenheit)",
+          "category": "tenses",
+          "description": "Past perfect (had + past participle) for an action completed before another past action, establishing temporal sequence in narratives."
+        },
+        {
+          "id": "m4-u3-reported-speech-statements",
+          "unit": 3,
+          "name": "Reported Speech — Statements",
+          "nameDE": "Indirekte Rede — Aussagesätze",
+          "category": "reported-speech",
+          "description": "Reported/indirect speech for statements with systematic tense backshift, pronoun shifts, and time/place expression shifts."
+        },
+        {
+          "id": "m4-u4-reported-questions",
+          "unit": 4,
+          "name": "Reported Questions",
+          "nameDE": "Indirekte Fragen",
+          "category": "reported-speech",
+          "description": "Reported/indirect questions: yes/no questions with if/whether and wh-questions with statement word order, no inversion, and tense backshift."
+        },
+        {
+          "id": "m4-u5-past-perfect-connectors",
+          "unit": 5,
+          "name": "Past Perfect with Time Connectors",
+          "nameDE": "Past Perfect mit Zeitkonnektoren (after, before, just)",
+          "category": "tenses",
+          "description": "Extension of past perfect with time connectors after, before, just, and by the time, plus connecting ideas with because, although, however, in order to, so that."
+        },
+        {
+          "id": "m4-u6-adverbs-of-manner",
+          "unit": 6,
+          "name": "Adverbs of Manner",
+          "nameDE": "Adverbien der Art und Weise (Wiederholung + Erweiterung)",
+          "category": "other",
+          "description": "Formation of adverbs from adjectives (adjective + -ly), irregular adverbs (well, fast, hard/hardly), and the linking verb rule (adjective after look, sound, feel, taste, smell)."
+        },
+        {
+          "id": "m4-u6-question-tags",
+          "unit": 6,
+          "name": "Question Tags",
+          "nameDE": "Frageanhängsel (Question Tags)",
+          "category": "other",
+          "description": "Question tags with opposite polarity: positive sentence -> negative tag, negative sentence -> positive tag. Matching the auxiliary/modal or using do/does/did."
+        },
+        {
+          "id": "m4-u7-present-simple-future",
+          "unit": 7,
+          "name": "Present Simple for Future (Timetables)",
+          "nameDE": "Present Simple für die Zukunft (Fahrplaune und feste Termine)",
+          "category": "tenses",
+          "description": "Using present simple for timetabled or scheduled future events (transport, events, fixed schedules), contrasted with going to, will, and first conditional."
+        },
+        {
+          "id": "m4-u7-want-someone-to",
+          "unit": 7,
+          "name": "want / tell / ask + object + to-infinitive",
+          "nameDE": "want / tell / ask + Person + to-Infinitiv",
+          "category": "other",
+          "description": "The pattern want/tell/ask + object (person) + to + infinitive for expressing wishes, commands, and requests involving another person."
+        },
+        {
+          "id": "m4-u8-tense-time-expression-review",
+          "unit": 8,
+          "name": "Present Perfect vs Past Simple",
+          "nameDE": "Present Perfect vs Past Simple — Systematische Wiederholung",
+          "category": "tenses",
+          "description": "Systematic review making explicit the connection between tenses and their time expressions: past simple with yesterday/ago/last, present perfect with ever/never/already/yet/just/for/since."
+        },
+        {
+          "id": "m4-u9-modals-possibility",
+          "unit": 9,
+          "name": "Modals of Possibility: might / may / could",
+          "nameDE": "Modalverben der Möglichkeit: might / may / could",
+          "category": "modals",
+          "description": "Expanding the modal possibility system with might, may, and could for expressing different degrees of certainty. Includes the certainty scale: must > may/might/could > can't."
+        },
+        {
+          "id": "m4-u10-third-conditional",
+          "unit": 10,
+          "name": "Third Conditional",
+          "nameDE": "Third Conditional (+ 1./2. Conditional Wiederholung)",
+          "category": "conditionals",
+          "description": "Third conditional (If + past perfect, would have + past participle) for hypothetical past situations, combined with systematic revision of all three conditional types."
+        },
+        {
+          "id": "m4-u11-reflexive-pronouns",
+          "unit": 11,
+          "name": "Reflexive Pronouns",
+          "nameDE": "Reflexivpronomen",
+          "category": "pronouns",
+          "description": "Reflexive pronouns (myself, yourself, himself, herself, itself, ourselves, yourselves, themselves) for reflexive and emphatic use, including verbs that do NOT take reflexives in English."
+        },
+        {
+          "id": "m4-u12-phrasal-verbs",
+          "unit": 12,
+          "name": "Phrasal Verbs",
+          "nameDE": "Phrasal Verbs (Verben mit Partikeln)",
+          "category": "other",
+          "description": "Phrasal verbs (verb + particle combinations) with changed meanings, separable vs inseparable types, and the critical pronoun placement rule."
+        },
+        {
+          "id": "m4-u13-word-formation",
+          "unit": 13,
+          "name": "Word Formation — Prefixes and Suffixes",
+          "nameDE": "Wortbildung — Vorsilben und Nachsilben",
+          "category": "word-formation",
+          "description": "Word formation using negative prefixes (un-, in-, il-, im-, ir-, dis-, mis-) and suffixes (-ness, -ful, -less) to build new words and understand unfamiliar vocabulary."
+        }
+      ]
+    }
+  }
+}

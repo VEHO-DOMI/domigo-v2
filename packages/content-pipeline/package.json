@@ -8,7 +8,8 @@
     "test": "node --test \"src/test/*.test.ts\""
   },
   "dependencies": {
-    "@domigo/content-schema": "workspace:*"
+    "@domigo/content-schema": "workspace:*",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^24",

@@ -173,8 +173,13 @@ export const V1Lock = z.object({
       sha256: z.string().regex(/^[0-9a-f]{64}$/),
       bytes: z.number().int().nonnegative(),
       mtime: z.string(),
-      grade: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
-      unit: z.number().int().min(1).max(15),
+      /** null for whole-corpus sources (grammar index). */
+      grade: z
+        .union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)])
+        .nullable(),
+      /** null for per-grade/whole-corpus sources (grammar modules, index). */
+      unit: z.number().int().min(1).max(15).nullable(),
+      role: z.enum(["vocab-unit", "grammar-module", "grammar-index"]),
     }),
   ),
 });
