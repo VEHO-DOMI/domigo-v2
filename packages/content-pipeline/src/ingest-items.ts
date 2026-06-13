@@ -280,7 +280,10 @@ export function runIngestItems(slug: string, dryRun: boolean): void {
     }
 
     if (plan.outcome === "approve") {
-      const validation = validateUnitItems(slug);
+      // content-only: the reviewer's cell edits legitimately changed the items,
+      // so gate-integrity (V-22 drift/verify-freshness) is mid-flux here — the
+      // approved transition is appended right after. We only refuse a CONTENT-red approve.
+      const validation = validateUnitItems(slug, { skipGateIntegrity: true });
       if (validation.errors.length > 0) {
         for (const e of validation.errors.slice(0, 20)) console.error(`  ✗ ${e}`);
         throw new Error(

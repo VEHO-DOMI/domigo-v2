@@ -67,6 +67,13 @@ test("V-8 definition leak is lemma-aware", () => {
     { entries: [{ id: "g2u03.w.witch", en: "witch", forms: ["witch"] }] } as never,
   );
   assert.ok(errs.some((e) => e.includes('"witches"')));
+  // closed-class connectors in a multiword headword are not "leaks"
+  const conn = definitionLeakErrors(
+    SLUG,
+    { vocab: [vocabItem({ id: "g2u03.w.fish-and-chips", w: "fish and chips", d: "A hot meal of potatoes and a sea animal you eat." })], ...noGrammar },
+    { entries: [{ id: "g2u03.w.fish-and-chips", en: "fish and chips", forms: ["fish and chips"] }] } as never,
+  );
+  assert.ok(!conn.some((e) => e.includes('"and"')), conn.join("\n"));
 });
 
 test("V-9 distractor discipline: out-of-bank + lemma clash + duplicates", () => {
@@ -96,9 +103,38 @@ test("V-9/V-17 polarity twins + granted structure tokens are legal", () => {
       presentation: { variants: [], gameMeta: { distractorPool: ["should", "must", "can", "couldn't"], chipBudget: null, minOptions: 4 }, audio: null },
     })],
   }, matcher);
-  assert.ok(!polarity.some((e) => e.includes("lemma-matches")), polarity.join("\n"));
+  assert.ok(!polarity.some((e) => e.includes("duplicate") || e.includes("disguise")), polarity.join("\n"));
   assert.ok(!polarity.some((e) => e.includes("not in the cumulative bank")), polarity.join("\n"));
-  // but a true inflection of the answer is still a clash
+
+  // grammar items TEST form: a wrong inflection of the answer ("study" for
+  // "studies") is a legitimate distractor and must NOT be flagged…
+  const inflection = distractorErrors(SLUG, {
+    vocab: [],
+    grammar: [grammarItem({
+      format: "multiple-choice",
+      id: "g2u03.gi.should.mc.002",
+      prompt: { text: "She ___ hard for the test.", lang: "en", blanks: 1 },
+      answers: [{ text: "should study", tier: "full" }],
+      distractors: ["should studies", "must study", "can study"],
+      presentation: { variants: [], gameMeta: { distractorPool: ["should studies", "must study", "can study", "could study"], chipBudget: null, minOptions: 4 }, audio: null },
+    })],
+  }, matcher);
+  assert.ok(!inflection.some((e) => e.includes("duplicate")), inflection.join("\n"));
+  // …but an EXACT duplicate of an accepted answer IS a bug
+  const exactDup = distractorErrors(SLUG, {
+    vocab: [],
+    grammar: [grammarItem({
+      format: "multiple-choice",
+      id: "g2u03.gi.should.mc.003",
+      prompt: { text: "We ___ go now.", lang: "en", blanks: 1 },
+      answers: [{ text: "should", tier: "full" }],
+      distractors: ["should", "must", "can"],
+      presentation: { variants: [], gameMeta: { distractorPool: ["should", "must", "can", "may"], chipBudget: null, minOptions: 4 }, audio: null },
+    })],
+  }, matcher);
+  assert.ok(exactDup.some((e) => e.includes("duplicates an accepted answer")));
+
+  // vocab keeps the stricter lemma guard (an inflection of the headword is a giveaway)
   const realClash = distractorErrors(SLUG, {
     vocab: [vocabItem({ mc: ["witches", "ghost", "monster"] })],
     grammar: [],
@@ -124,21 +160,30 @@ test("V-12 Sie-rule: mid-sentence red, sentence-initial warn", () => {
   assert.ok(warn.warns.some((w) => w.note.includes("sentence-initial")));
 });
 
-test("V-13 meta-talk: EN jargon everywhere; DE terms only outside carriers", () => {
+test("V-13 meta-talk: jargon vs tense-names vs DE terms", () => {
+  // abstract mechanism jargon banned everywhere — even in hints
   const en = metaTalkErrors(SLUG, { vocab: [], grammar: [grammarItem({ hintDe: "Nimm das modal verb should." })] });
   assert.ok(en.some((e) => e.includes("modal verb")));
-  const deCarrier = metaTalkErrors(SLUG, { vocab: [], grammar: [grammarItem({ prompt: { text: "Write the Grundform of go.", lang: "en", blanks: 0 }, answers: [{ text: "go", tier: "full" }], format: "free-form", id: "g2u03.gi.should.ff.001" })] });
-  assert.ok(deCarrier.some((e) => e.includes("grundform") && e.includes("carrier")));
   // DE pedagogy in hints is ALLOWED (Koki decision)
   const deHint = metaTalkErrors(SLUG, { vocab: [], grammar: [grammarItem({ explainDe: "Nach should kommt die Grundform." })] });
   assert.equal(deHint.length, 0);
+  // a DE grammar term in a CARRIER is red
+  const deCarrier = metaTalkErrors(SLUG, { vocab: [], grammar: [grammarItem({ prompt: { text: "Write the Grundform of go.", lang: "en", blanks: 0 }, answers: [{ text: "go", tier: "full" }], format: "free-form", id: "g2u03.gi.should.ff.001" })] });
+  assert.ok(deCarrier.some((e) => e.includes("grundform") && e.includes("carrier")));
+  // English tense NAMES (the textbook's labels): allowed in hints, banned in carriers
+  const tenseHint = metaTalkErrors(SLUG, { vocab: [], grammar: [grammarItem({ explainDe: "Im Present simple steht das Verb in der Grundform." })] });
+  assert.equal(tenseHint.length, 0);
+  const tenseCarrier = metaTalkErrors(SLUG, { vocab: [], grammar: [grammarItem({ prompt: { text: "Use the present simple here.", lang: "en", blanks: 0 }, answers: [{ text: "go", tier: "full" }], format: "free-form", id: "g2u03.gi.should.ff.002" })] });
+  assert.ok(tenseCarrier.some((e) => e.includes("present simple") && e.includes("carrier")));
 });
 
-test("V-14 German orthography: ASCII umlauts (with morpheme-boundary exceptions)", () => {
-  const errs = germanOrthographyErrors(SLUG, { vocab: [vocabItem({ hintDe: "Sie ist muede." })], ...noGrammar });
+test("V-14 German orthography: ASCII umlauts, English-quote + morpheme-boundary exceptions", () => {
+  const errs = germanOrthographyErrors(SLUG, { vocab: [vocabItem({ hintDe: "Sie ist muede." })], ...noGrammar }, matcher);
   assert.ok(errs.some((e) => e.includes("ASCII umlaut")));
-  const ok = germanOrthographyErrors(SLUG, { vocab: [vocabItem({ hintDe: "Zuerst kommt should, dann das Verb." })], ...noGrammar });
-  assert.equal(ok.length, 0);
+  // legitimate "ue" across a morpheme boundary
+  assert.equal(germanOrthographyErrors(SLUG, { vocab: [vocabItem({ hintDe: "Zuerst kommt should, dann das Verb." })], ...noGrammar }, matcher).length, 0);
+  // English structure words quoted in a German hint must not trip the digraph heuristic
+  assert.equal(germanOrthographyErrors(SLUG, { vocab: [], grammar: [grammarItem({ explainDe: "Verneinung mit doesn't, und er goes wird zu does." })] }, matcher).length, 0);
 });
 
 test("V-15 render shapes: pair duplicates, chip budget", () => {

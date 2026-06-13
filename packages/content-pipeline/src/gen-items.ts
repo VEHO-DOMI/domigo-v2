@@ -361,12 +361,24 @@ function assembleGrammarItem(d: GrammarDraftItemT, id: string, rev: number): Gra
   };
 }
 
+/** Order-insensitive canonical JSON — `assembleItem` builds keys in
+ *  construction order but zod (`VocabFile.parse`) returns them in schema order,
+ *  so a plain JSON.stringify compare would see identical content as different
+ *  and thrash the rev on every re-materialize. */
+function canonicalJson(value: unknown): string {
+  if (value === null || typeof value !== "object") return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  const obj = value as Record<string, unknown>;
+  return `{${Object.keys(obj)
+    .sort()
+    .map((k) => `${JSON.stringify(k)}:${canonicalJson(obj[k])}`)
+    .join(",")}}`;
+}
+
 /** rev semantics: unchanged content keeps the old object verbatim (byte-stable). */
 function withRev<T extends { id: string; rev: number }>(next: Omit<T, "rev"> & { rev: number }, prev: T | undefined): T {
   if (prev === undefined) return next as T;
-  const a = { ...next, rev: 0 };
-  const b = { ...prev, rev: 0 };
-  if (JSON.stringify(a) === JSON.stringify(b)) return prev;
+  if (canonicalJson({ ...next, rev: 0 }) === canonicalJson({ ...prev, rev: 0 })) return prev;
   return { ...next, rev: prev.rev + 1 } as T;
 }
 
@@ -652,19 +664,21 @@ function renderGrammarBrief(slug: string): string | null {
       "prompt": { "text": "…", "lang": "en", "blanks": 1 },
       "answers": [{ "text": "…", "tier": "full" }],
       "direction": null,                 // REQUIRED ("deToEn"|"enToDe") iff format=translation
-      "distractors": [], "pairs": [], "groups": [],
+      "distractors": ["plain string", "another"],   // ARRAY OF PLAIN STRINGS — never {"text":…} objects; [] for non-choice formats
+      "pairs": [],                       // [{ "left": "…", "right": "…" }] for matching/matching-pairs, else []
+      "groups": [],                      // [{ "label": "…", "members": ["…","…"] }] for group-sort, else []
       "hintDe": "…", "hintEn": null,
       "explainDe": "…", "explainEn": null,
-      "strict": false,                   // true for minimal pairs (should/shouldn't!)
+      "strict": false,                   // true for minimal pairs (should/shouldn't, study/studies!)
       "gloss": [],
-      "gameMeta": null,                  // REQUIRED for multiple-choice, context-picker, sentence-building
+      "gameMeta": null,                  // null, OR for mc/context-picker/sentence-building: { "distractorPool": ["…","…","…","…"], "chipBudget": null, "minOptions": 4 } — the key is "distractorPool" (NOT "pool"), ≥4 in-bank entries
       "seedV1": null, "sbRef": null, "note": null
     }
   ]
 }`);
   lines.push("```");
   lines.push("");
-  lines.push("Do NOT include ids — the pipeline mints them. No two items may share the same carrier+answers (duplicates are rejected).");
+  lines.push("Field shapes are STRICT: `distractors` is an array of plain strings (not objects); `gameMeta` uses the key `distractorPool` (not `pool`). Do NOT include ids — the pipeline mints them. No two items may share the same carrier+answers (duplicates are rejected).");
   lines.push("");
   return lines.join("\n");
 }
@@ -887,16 +901,19 @@ function materializeUnit(
   );
   const prevVocabById = new Map(prev.vocab.map((it) => [it.id, it]));
   const prevGrammarById = new Map(prev.grammar.map((it) => [it.id, it]));
-  let vocabItems = vocabDraftItems.map((d) =>
-    withRev<VocabItemT>(assembleVocabItem(d, prevVocabById.get(d.wordId)?.rev ?? 1), prevVocabById.get(d.wordId)),
+  // Assemble, then apply the item-fixes overlay, THEN compute rev against prev —
+  // so withRev compares the FINAL (post-fix) content to prev. Bumping rev before
+  // the overlay would thrash the rev on every re-materialize (the overlay re-adds
+  // the same edit the draft lacks, so pre-overlay content always differs).
+  const assembledVocab = vocabDraftItems.map((d) =>
+    assembleVocabItem(d, prevVocabById.get(d.wordId)?.rev ?? 1),
   );
-  let grammarItems = grammarDraftItems.map((d, i) =>
-    withRev<GrammarItemT>(
-      assembleGrammarItem(d, mint.ids[i]!, prevGrammarById.get(mint.ids[i]!)?.rev ?? 1),
-      prevGrammarById.get(mint.ids[i]!),
-    ),
+  const assembledGrammar = grammarDraftItems.map((d, i) =>
+    assembleGrammarItem(d, mint.ids[i]!, prevGrammarById.get(mint.ids[i]!)?.rev ?? 1),
   );
-  ({ vocab: vocabItems, grammar: grammarItems } = applyItemFixes(slug, { vocab: vocabItems, grammar: grammarItems }));
+  const fixed = applyItemFixes(slug, { vocab: assembledVocab, grammar: assembledGrammar });
+  let vocabItems = fixed.vocab.map((it) => withRev<VocabItemT>(it, prevVocabById.get(it.id)));
+  let grammarItems = fixed.grammar.map((it) => withRev<GrammarItemT>(it, prevGrammarById.get(it.id)));
   vocabItems.sort((a, b) => a.id.localeCompare(b.id));
   grammarItems.sort((a, b) => a.id.localeCompare(b.id));
   const vocabFile = VocabFile.parse({ schema: "vocab@1", grade, unit, slug, items: vocabItems });
