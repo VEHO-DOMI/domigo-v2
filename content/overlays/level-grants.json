@@ -225,6 +225,24 @@
       "reason": "unit-6 teaches position vocabulary left-hand / middle / right-hand; 'right' (the side) lives only inside the bank phrase 'right-hand', not as a standalone entry — needed to define left-hand by contrast",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g2-u07",
+      "itemId": null,
+      "field": null,
+      "token": "might",
+      "reason": "unit-7 SB grammar box 'might / might not (Möglichkeit)' teaches the modal 'might'; not a word-bank entry (structure token, like should in u03)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u07",
+      "itemId": null,
+      "field": null,
+      "token": "mightn't",
+      "reason": "unit-7 SB grammar box 'might / might not' teaches the negative contraction 'mightn't'; not a word-bank entry",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

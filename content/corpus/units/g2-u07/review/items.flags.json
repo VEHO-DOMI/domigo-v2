@@ -1,0 +1,294 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u07",
+  "round": 1,
+  "itemsHash": "ce0bece2461f",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g2u07.w.to-be-ashamed",
+      "kind": "new-gloss",
+      "itemId": "g2u07.w.to-be-ashamed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u07.w.to-do-the-shopping",
+      "kind": "new-gloss",
+      "itemId": "g2u07.w.to-do-the-shopping",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u07.w.to-stay-at-a-friend-s-house",
+      "kind": "new-gloss",
+      "itemId": "g2u07.w.to-stay-at-a-friend-s-house",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u07.w.to-take-it-easy",
+      "kind": "new-gloss",
+      "itemId": "g2u07.w.to-take-it-easy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u07.w.to-tell-a-lie",
+      "kind": "new-gloss",
+      "itemId": "g2u07.w.to-tell-a-lie",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.communication",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.communication",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.disappointment",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.disappointment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.excuse",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.excuse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.fancy-dress-party",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.fancy-dress-party",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.german",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.german",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.group-chat",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.group-chat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.honestly",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.honestly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.instead",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.instead",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.row",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.row",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.social-media",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.social-media",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.sold-out",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.sold-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.that-s-a-pity",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.that-s-a-pity",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.ticket",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.ticket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-be-ashamed",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-be-ashamed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-be-worried",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-be-worried",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-come-over",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-come-over",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-crash",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-crash",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-do-nothing",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-do-nothing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-do-the-shopping",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-do-the-shopping",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-do-your-homework",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-do-your-homework",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-get-into-trouble",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-get-into-trouble",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-have-a-party",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-have-a-party",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-play-basketball",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-play-basketball",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-stay-at-a-friend-s-house",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-stay-at-a-friend-s-house",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-take-it-easy",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-take-it-easy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-tell-a-lie",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-tell-a-lie",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-tidy-your-room",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-tidy-your-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.to-watch-a-film",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.to-watch-a-film",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.truth",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.truth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.w.what-a-shame",
+      "kind": "translation-audit",
+      "itemId": "g2u07.w.what-a-shame",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.gi.going-to-negative.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u07.gi.going-to-negative.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.gi.might.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u07.gi.might.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u07.gi.might.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g2u07.gi.might.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u07.w.honestly#df18d4",
+      "kind": "validator-warn",
+      "itemId": "g2u07.w.honestly",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 30 vocab + 34 grammar across two structures — might / might not (25) and going to negative (9). Grants: might / mightn't (SB box modal, like should in u03). This unit drove the V-8 \"do\" glue addition (DO nothing / DO the shopping / DO your homework — \"do\" is the light pro-verb of activity phrases, not leaked content). \"mustn't\" stays out (untaught); \"gonna\" out (informal). Smoke-check fixed 2 \"do\" leaks, a \"friend\" leak, and a German term in an anagram cue. Verify round 1: fixed a broken going-to-negative carrier (missing the be auxiliary), two true-synonym vocab distractors (that's a pity / what a shame used each other), missing strict on polarity items, and reworded carriers off two name-masked words (plans → free, isn't well → is ill); round 2 added \"isn't well\" as partial translations (correct but above-level → not the model) and constrained an open verb slot. The grammar agent had proactively set strict on 10 minimal pairs (the u06 lesson carried). 5 glosses + 33 translations adjudicated; 1 benign sentence-initial-blank validator-warn. rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 64,
+    "fullRows": 64,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

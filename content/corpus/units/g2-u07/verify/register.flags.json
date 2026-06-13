@@ -1,0 +1,14 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u07",
+  "lens": "register",
+  "itemsHash": "ce0bece2461f",
+  "promptHash": "359c6953017a",
+  "round": 2,
+  "by": "fable-lens-register",
+  "flags": [],
+  "summary": {
+    "itemsSeen": 64,
+    "flagged": 0
+  }
+}

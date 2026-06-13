@@ -1,0 +1,2434 @@
+{
+  "schema": "vocab@1",
+  "grade": 2,
+  "unit": 7,
+  "slug": "g2-u07",
+  "items": [
+    {
+      "id": "g2u07.w.communication",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "disappointment",
+            "excuse",
+            "truth",
+            "group chat",
+            "social media"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'There are many types of communication.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "communication",
+      "g": "Kommunikation",
+      "d": "when people talk, write and share with people",
+      "s": "There are many kinds of ___, like text messages and group chats.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "communication",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "communication",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "communication",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kommunikation",
+            "tier": "full"
+          },
+          {
+            "text": "Verständigung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "disappointment",
+        "excuse",
+        "truth"
+      ],
+      "hintDe": "Wenn Menschen miteinander reden und schreiben."
+    },
+    {
+      "id": "g2u07.w.disappointment",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "communication",
+            "excuse",
+            "truth",
+            "group chat",
+            "social media"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'She showed her disappointment.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "disappointment",
+      "g": "Enttäuschung",
+      "d": "how sad you are when a thing is not good",
+      "s": "She showed her ___ when there were no tickets.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "disappointment",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "disappointment",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "disappointment",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Enttäuschung",
+            "tier": "full"
+          },
+          {
+            "text": "die Enttäuschung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "communication",
+        "excuse",
+        "truth"
+      ],
+      "hintDe": "Das traurige Gefühl, wenn etwas nicht so gut ist wie erhofft."
+    },
+    {
+      "id": "g2u07.w.excuse",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "communication",
+            "disappointment",
+            "truth",
+            "honestly",
+            "row"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'There's no excuse.' (cf. SB p.55 msg B 'No excuses, please.')",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "excuse",
+      "g": "Ausrede",
+      "d": "a reason you give for a bad thing you did",
+      "s": "There's no ___. You did it!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "excuse",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "excuse",
+          "tier": "full"
+        },
+        {
+          "text": "excuses",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "excuse",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ausrede",
+            "tier": "full"
+          },
+          {
+            "text": "Entschuldigung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "communication",
+        "disappointment",
+        "truth"
+      ],
+      "hintDe": "Ein Grund, den man für etwas Schlechtes erfindet."
+    },
+    {
+      "id": "g2u07.w.fancy-dress-party",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "group chat",
+            "communication",
+            "ticket",
+            "row",
+            "excuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'My friend invited me to a fancy dress party.' (cf. SB p.59 Ex.13B)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "fancy dress party",
+      "g": "Kostümparty",
+      "d": "where all the people come in a costume",
+      "s": "My friend invited me to a ___, so I need a costume.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fancy dress party",
+          "tier": "full"
+        },
+        {
+          "text": "fancy dress parties",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fancy dress party",
+          "tier": "full"
+        },
+        {
+          "text": "fancy dress parties",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fancy dress party",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kostümparty",
+            "tier": "full"
+          },
+          {
+            "text": "Verkleidungsparty",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "group chat",
+        "communication",
+        "ticket"
+      ],
+      "hintDe": "Eine Party, zu der alle verkleidet kommen."
+    },
+    {
+      "id": "g2u07.w.german",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "English",
+            "French",
+            "row",
+            "ticket",
+            "concert"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'How do you say this in German?'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "German",
+      "g": "Deutsch",
+      "d": "what people speak in Austria, not English",
+      "s": "In Austria, many people speak ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "German",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "German",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "German",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Deutsch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "English",
+        "French",
+        "row"
+      ],
+      "hintDe": "Die Sprache, die man in Österreich spricht."
+    },
+    {
+      "id": "g2u07.w.group-chat",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "social media",
+            "communication",
+            "excuse",
+            "disappointment",
+            "truth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'My friends and I have a group chat.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "group chat",
+      "g": "Gruppenchat",
+      "d": "lots of friends write here on a mobile phone",
+      "s": "My friends and I have a ___ on our mobile phones.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "group chat",
+          "tier": "full"
+        },
+        {
+          "text": "group chats",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "group chat",
+          "tier": "full"
+        },
+        {
+          "text": "group chats",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "group chat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gruppenchat",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "social media",
+        "communication",
+        "excuse"
+      ],
+      "hintDe": "Wo viele Freunde gemeinsam am Handy schreiben."
+    },
+    {
+      "id": "g2u07.w.honestly",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "instead",
+            "truth",
+            "excuse",
+            "communication",
+            "disappointment"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'Honestly, that was only a joke!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "honestly",
+      "g": "ehrlich",
+      "d": "when you tell the truth and do not lie",
+      "s": "___, that was a joke!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "honestly",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "honestly",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "honestly",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ehrlich",
+            "tier": "full"
+          },
+          {
+            "text": "wirklich",
+            "tier": "full"
+          },
+          {
+            "text": "ehrlich gesagt",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "instead",
+        "truth",
+        "excuse"
+      ],
+      "hintDe": "Wenn du etwas wirklich ehrlich meinst."
+    },
+    {
+      "id": "g2u07.w.instead",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "honestly",
+            "truth",
+            "excuse",
+            "communication",
+            "disappointment"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'I'm going to do nothing instead.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "instead",
+      "g": "stattdessen",
+      "d": "in place of one thing",
+      "s": "I don't want to do my homework. I'm going to do nothing ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "instead",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "instead",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "instead",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stattdessen",
+            "tier": "full"
+          },
+          {
+            "text": "dafür",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "honestly",
+        "truth",
+        "excuse"
+      ],
+      "hintDe": "Du machst etwas anderes anstelle der ersten Sache."
+    },
+    {
+      "id": "g2u07.w.row",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ticket",
+            "concert",
+            "German",
+            "sold out",
+            "excuse"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'Can we have tickets for row 12, please?' (cf. SB p.61 'row 12, please.')",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "row",
+      "g": "(Sitz-)Reihe",
+      "d": "the chairs that are all next to your chair at the cinema",
+      "s": "Can we have tickets for ___ 12, please?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "row",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "row",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "row",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Reihe",
+            "tier": "full"
+          },
+          {
+            "text": "Sitzreihe",
+            "tier": "full"
+          },
+          {
+            "text": "die Reihe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ticket",
+        "concert",
+        "German"
+      ],
+      "hintDe": "Die Stühle nebeneinander im Kino, zum Beispiel Reihe 12."
+    },
+    {
+      "id": "g2u07.w.social-media",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "group chat",
+            "communication",
+            "disappointment",
+            "excuse",
+            "truth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'I'm writing a social media post.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "social media",
+      "g": "soziale Medien",
+      "d": "where people share pictures and short posts with a lot of people",
+      "s": "I'm writing a ___ post.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "social media",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "social media",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "social media",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "soziale Medien",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "group chat",
+        "communication",
+        "disappointment"
+      ],
+      "hintDe": "Wo Menschen Bilder und Beiträge mit vielen teilen."
+    },
+    {
+      "id": "g2u07.w.sold-out",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "expensive",
+            "sad",
+            "tired",
+            "bored",
+            "dangerous"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'The concert is sold out.' (cf. SB p.60 'It's sold out.')",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sold out",
+      "g": "ausverkauft",
+      "d": "when there are no more tickets",
+      "s": "The concert is ___. There are no more tickets.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sold out",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sold out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sold out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausverkauft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "expensive",
+        "sad",
+        "tired"
+      ],
+      "hintDe": "Wenn alle Karten schon weg sind."
+    },
+    {
+      "id": "g2u07.w.that-s-a-pity",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Don't worry.",
+            "Have fun!",
+            "Well done.",
+            "No problem."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'There's only one ticket for the 5 o'clock showing. That's a pity!' (cf. SB p.61)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "That's a pity.",
+      "g": "Das ist schade!",
+      "d": "you tell a friend this when you are sorry about a thing",
+      "s": "There is just one ticket for the 5 o'clock showing. ___",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "That's a pity",
+          "tier": "full"
+        },
+        {
+          "text": "That's a pity!",
+          "tier": "full"
+        },
+        {
+          "text": "That is a pity",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "That's a pity",
+          "tier": "full"
+        },
+        {
+          "text": "That's a pity!",
+          "tier": "full"
+        },
+        {
+          "text": "That is a pity",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "That's a pity",
+            "tier": "full"
+          },
+          {
+            "text": "That is a pity",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Das ist schade",
+            "tier": "full"
+          },
+          {
+            "text": "Das ist schade!",
+            "tier": "full"
+          },
+          {
+            "text": "Schade",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Don't worry.",
+        "Have fun!",
+        "Well done."
+      ],
+      "hintDe": "Das sagst du, wenn dir etwas leidtut."
+    },
+    {
+      "id": "g2u07.w.ticket",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "row",
+            "concert",
+            "German",
+            "excuse",
+            "truth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'Can I have two tickets, please?' (cf. SB p.61)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ticket",
+      "g": "Eintrittskarte",
+      "d": "you show this to go into the cinema or a concert",
+      "s": "Can I have two ___ for the cinema, please?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tickets",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ticket",
+          "tier": "full"
+        },
+        {
+          "text": "tickets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ticket",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eintrittskarte",
+            "tier": "full"
+          },
+          {
+            "text": "Ticket",
+            "tier": "full"
+          },
+          {
+            "text": "Karte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "row",
+        "concert",
+        "German"
+      ],
+      "hintDe": "Die Karte, mit der du ins Kino kommst."
+    },
+    {
+      "id": "g2u07.w.to-be-ashamed",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "proud",
+            "glad",
+            "bored",
+            "happy",
+            "nervous"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'I was very ashamed.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be ashamed",
+      "g": "sich schämen",
+      "d": "to feel very bad about a bad thing you did",
+      "s": "I did a bad thing, so I was very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ashamed",
+          "tier": "full"
+        },
+        {
+          "text": "be ashamed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be ashamed",
+          "tier": "full"
+        },
+        {
+          "text": "ashamed",
+          "tier": "full"
+        },
+        {
+          "text": "to be ashamed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be ashamed",
+            "tier": "full"
+          },
+          {
+            "text": "ashamed",
+            "tier": "full"
+          },
+          {
+            "text": "to be ashamed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich schämen",
+            "tier": "full"
+          },
+          {
+            "text": "beschämt sein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "feel",
+          "de": "fühlen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "proud",
+        "glad",
+        "bored"
+      ],
+      "hintDe": "Sich schlecht fühlen, weil man etwas Schlechtes getan hat."
+    },
+    {
+      "id": "g2u07.w.to-be-worried",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "proud",
+            "glad",
+            "bored",
+            "nervous",
+            "scared"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'William is always worried.' (cf. SB p.56 'He is worried.')",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be worried",
+      "g": "besorgt sein",
+      "d": "to think a bad thing might happen",
+      "s": "William is always ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "worried",
+          "tier": "full"
+        },
+        {
+          "text": "be worried",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be worried",
+          "tier": "full"
+        },
+        {
+          "text": "worried",
+          "tier": "full"
+        },
+        {
+          "text": "to be worried",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be worried",
+            "tier": "full"
+          },
+          {
+            "text": "worried",
+            "tier": "full"
+          },
+          {
+            "text": "to be worried",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "besorgt sein",
+            "tier": "full"
+          },
+          {
+            "text": "besorgt",
+            "tier": "full"
+          },
+          {
+            "text": "sich Sorgen machen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "proud",
+        "glad",
+        "bored"
+      ],
+      "hintDe": "Denken, dass etwas Schlimmes passieren könnte."
+    },
+    {
+      "id": "g2u07.w.to-come-over",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to take it easy",
+            "to do the shopping",
+            "to get into trouble",
+            "to stay at a friend's house",
+            "to have a party"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'She isn't going to come over today.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to come over",
+      "g": "vorbeikommen",
+      "d": "to visit a friend at their place",
+      "s": "She isn't going to ___ today because she is ill.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "come over",
+          "tier": "full"
+        },
+        {
+          "text": "to come over",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "come over",
+          "tier": "full"
+        },
+        {
+          "text": "to come over",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "come over",
+            "tier": "full"
+          },
+          {
+            "text": "to come over",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vorbeikommen",
+            "tier": "full"
+          },
+          {
+            "text": "rüberkommen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to take it easy",
+        "to do the shopping",
+        "to get into trouble"
+      ],
+      "hintDe": "Jemanden zu Hause besuchen."
+    },
+    {
+      "id": "g2u07.w.to-crash",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come over",
+            "to take it easy",
+            "to do nothing",
+            "to get into trouble",
+            "to have a party"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'Be careful or you might crash.' (cf. SB p.56 'I might crash.')",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to crash",
+      "g": "einen Unfall bauen",
+      "d": "to drive into a thing and have an accident",
+      "s": "Be careful or you might ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "crash",
+          "tier": "full"
+        },
+        {
+          "text": "to crash",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crash",
+          "tier": "full"
+        },
+        {
+          "text": "to crash",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crash",
+            "tier": "full"
+          },
+          {
+            "text": "to crash",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einen Unfall bauen",
+            "tier": "full"
+          },
+          {
+            "text": "verunglücken",
+            "tier": "partial"
+          },
+          {
+            "text": "gegen etwas fahren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to come over",
+        "to take it easy",
+        "to do nothing"
+      ],
+      "hintDe": "Mit dem Fahrrad oder Auto gegen etwas fahren."
+    },
+    {
+      "id": "g2u07.w.to-do-nothing",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to do your homework",
+            "to tidy your room",
+            "to do the shopping",
+            "to play basketball",
+            "to watch a film"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.54 Ex.3, Aishe: 'I'm going to do nothing at home tonight.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to do nothing",
+      "g": "nichts tun",
+      "d": "to not do anything at all, just take a rest",
+      "s": "I don't want to work. I'm going to ___ this afternoon.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "do nothing",
+          "tier": "full"
+        },
+        {
+          "text": "to do nothing",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "do nothing",
+          "tier": "full"
+        },
+        {
+          "text": "to do nothing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "do nothing",
+            "tier": "full"
+          },
+          {
+            "text": "to do nothing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nichts tun",
+            "tier": "full"
+          },
+          {
+            "text": "nichts machen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to do your homework",
+        "to tidy your room",
+        "to do the shopping"
+      ],
+      "hintDe": "Gar nichts machen, einfach nur faulenzen."
+    },
+    {
+      "id": "g2u07.w.to-do-the-shopping",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to do your homework",
+            "to watch a film",
+            "to have a party",
+            "to do nothing",
+            "to tidy your room"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.53 Ex.1: 'Mehmet is going to do the shopping.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to do the shopping",
+      "g": "einkaufen gehen",
+      "d": "to go to the supermarket and buy what you need",
+      "s": "My mum is going to ___ at the supermarket.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "do the shopping",
+          "tier": "full"
+        },
+        {
+          "text": "to do the shopping",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "do the shopping",
+          "tier": "full"
+        },
+        {
+          "text": "to do the shopping",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "do the shopping",
+            "tier": "full"
+          },
+          {
+            "text": "to do the shopping",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einkaufen gehen",
+            "tier": "full"
+          },
+          {
+            "text": "einkaufen",
+            "tier": "full"
+          },
+          {
+            "text": "Einkäufe machen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "buy",
+          "de": "kaufen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to do your homework",
+        "to watch a film",
+        "to have a party"
+      ],
+      "hintDe": "Im Supermarkt einkaufen, was man braucht."
+    },
+    {
+      "id": "g2u07.w.to-do-your-homework",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to do nothing",
+            "to play basketball",
+            "to come over",
+            "to watch a film",
+            "to have a party"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.54 Ex.3, Dad: 'first you have to do your homework.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to do your homework",
+      "g": "Hausaufgaben machen",
+      "d": "to do the school work your teacher gives you",
+      "s": "First you have to ___, then you can watch TV.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "do your homework",
+          "tier": "full"
+        },
+        {
+          "text": "do my homework",
+          "tier": "full"
+        },
+        {
+          "text": "to do your homework",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "do your homework",
+          "tier": "full"
+        },
+        {
+          "text": "to do your homework",
+          "tier": "full"
+        },
+        {
+          "text": "do my homework",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "do your homework",
+            "tier": "full"
+          },
+          {
+            "text": "to do your homework",
+            "tier": "full"
+          },
+          {
+            "text": "do my homework",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hausaufgaben machen",
+            "tier": "full"
+          },
+          {
+            "text": "deine Hausaufgaben machen",
+            "tier": "full"
+          },
+          {
+            "text": "die Hausaufgaben machen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to do nothing",
+        "to play basketball",
+        "to come over"
+      ],
+      "hintDe": "Die Aufgaben für die Schule machen."
+    },
+    {
+      "id": "g2u07.w.to-get-into-trouble",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to take it easy",
+            "to come over",
+            "to do the shopping",
+            "to crash",
+            "to have a party"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.57 Ex.11 sentence half f: 'I might get into trouble.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get into trouble",
+      "g": "in Schwierigkeiten geraten",
+      "d": "to do a bad thing and make the teacher angry",
+      "s": "If you don't listen to the teacher, you might ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get into trouble",
+          "tier": "full"
+        },
+        {
+          "text": "to get into trouble",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get into trouble",
+          "tier": "full"
+        },
+        {
+          "text": "to get into trouble",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get into trouble",
+            "tier": "full"
+          },
+          {
+            "text": "to get into trouble",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in Schwierigkeiten geraten",
+            "tier": "full"
+          },
+          {
+            "text": "Ärger bekommen",
+            "tier": "full"
+          },
+          {
+            "text": "Ärger kriegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to take it easy",
+        "to come over",
+        "to do the shopping"
+      ],
+      "hintDe": "Etwas Schlechtes tun und dafür Ärger bekommen."
+    },
+    {
+      "id": "g2u07.w.to-have-a-party",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to do your homework",
+            "to tidy your room",
+            "to do the shopping",
+            "to do nothing",
+            "to come over"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.59 Ex.13A: 'I'm going to have a party on Saturday at my place.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to have a party",
+      "g": "eine Party machen",
+      "d": "to ask friends to come for cake and fun",
+      "s": "It's my birthday on Saturday, so I'm going to ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "have a party",
+          "tier": "full"
+        },
+        {
+          "text": "to have a party",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "have a party",
+          "tier": "full"
+        },
+        {
+          "text": "to have a party",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "have a party",
+            "tier": "full"
+          },
+          {
+            "text": "to have a party",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Party machen",
+            "tier": "full"
+          },
+          {
+            "text": "eine Party haben",
+            "tier": "full"
+          },
+          {
+            "text": "eine Party feiern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to do your homework",
+        "to tidy your room",
+        "to do the shopping"
+      ],
+      "hintDe": "Freunde zum Feiern einladen."
+    },
+    {
+      "id": "g2u07.w.to-play-basketball",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to do nothing",
+            "to watch a film",
+            "to do the shopping",
+            "to have a party",
+            "to do your homework"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.55 Ex.4, 'Are you going to play basketball?'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to play basketball",
+      "g": "Basketball spielen",
+      "d": "you run and jump and do this fast with friends",
+      "s": "I'm going to ___ with my friends after school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "play basketball",
+          "tier": "full"
+        },
+        {
+          "text": "to play basketball",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "play basketball",
+          "tier": "full"
+        },
+        {
+          "text": "to play basketball",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "play basketball",
+            "tier": "full"
+          },
+          {
+            "text": "to play basketball",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Basketball spielen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to do nothing",
+        "to watch a film",
+        "to do the shopping"
+      ],
+      "hintDe": "Ein Spiel mit einem großen Ball und einem hohen Netz."
+    },
+    {
+      "id": "g2u07.w.to-stay-at-a-friend-s-house",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come over",
+            "to have a party",
+            "to do the shopping",
+            "to watch a film",
+            "to tidy your room"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.54 Ex.1 word box: 'stay at a friend's house'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to stay at a friend's house",
+      "g": "bei einem Freund übernachten",
+      "d": "to visit a boy or girl you like and sleep at their place for one night",
+      "s": "Can I ___ on Friday night?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stay at a friend's house",
+          "tier": "full"
+        },
+        {
+          "text": "to stay at a friend's house",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stay at a friend's house",
+          "tier": "full"
+        },
+        {
+          "text": "to stay at a friend's house",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stay at a friend's house",
+            "tier": "full"
+          },
+          {
+            "text": "to stay at a friend's house",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bei einem Freund übernachten",
+            "tier": "full"
+          },
+          {
+            "text": "bei einer Freundin übernachten",
+            "tier": "full"
+          },
+          {
+            "text": "bei einem Freund schlafen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sleep",
+          "de": "schlafen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to come over",
+        "to have a party",
+        "to do the shopping"
+      ],
+      "hintDe": "Über Nacht bei einem Freund bleiben."
+    },
+    {
+      "id": "g2u07.w.to-take-it-easy",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come over",
+            "to get into trouble",
+            "to crash",
+            "to be worried",
+            "to be ashamed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'I'm going to take it easy this afternoon.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to take it easy",
+      "g": "sich entspannen",
+      "d": "to do nothing and be calm",
+      "s": "I'm very tired. I'm going to ___ this afternoon.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "take it easy",
+          "tier": "full"
+        },
+        {
+          "text": "to take it easy",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take it easy",
+          "tier": "full"
+        },
+        {
+          "text": "to take it easy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take it easy",
+            "tier": "full"
+          },
+          {
+            "text": "to take it easy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich entspannen",
+            "tier": "full"
+          },
+          {
+            "text": "es ruhig angehen lassen",
+            "tier": "full"
+          },
+          {
+            "text": "sich ausruhen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "calm",
+          "de": "ruhig",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to come over",
+        "to get into trouble",
+        "to crash"
+      ],
+      "hintDe": "Sich ausruhen und nichts Anstrengendes tun."
+    },
+    {
+      "id": "g2u07.w.to-tell-a-lie",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come over",
+            "to take it easy",
+            "to do nothing",
+            "to get into trouble",
+            "to crash"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.55 msg H: 'Sorry for telling you a lie.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to tell a lie",
+      "g": "lügen",
+      "d": "to say a thing that is not true",
+      "s": "Always tell the truth. Don't ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tell a lie",
+          "tier": "full"
+        },
+        {
+          "text": "tell lies",
+          "tier": "full"
+        },
+        {
+          "text": "to tell a lie",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tell a lie",
+          "tier": "full"
+        },
+        {
+          "text": "to tell a lie",
+          "tier": "full"
+        },
+        {
+          "text": "tell lies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tell a lie",
+            "tier": "full"
+          },
+          {
+            "text": "to tell a lie",
+            "tier": "full"
+          },
+          {
+            "text": "tell lies",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lügen",
+            "tier": "full"
+          },
+          {
+            "text": "eine Lüge erzählen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to come over",
+        "to take it easy",
+        "to do nothing"
+      ],
+      "hintDe": "Etwas sagen, das nicht wahr ist."
+    },
+    {
+      "id": "g2u07.w.to-tidy-your-room",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to do nothing",
+            "to play basketball",
+            "to come over",
+            "to watch a film",
+            "to have a party"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.55 Ex.5 chant: 'I am going to tidy my room.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to tidy your room",
+      "g": "dein Zimmer aufräumen",
+      "d": "to make a mess clean and put your clothes away",
+      "s": "Mum is angry. I must ___ now because my clothes are all over the bed.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tidy my room",
+          "tier": "full"
+        },
+        {
+          "text": "tidy your room",
+          "tier": "full"
+        },
+        {
+          "text": "to tidy your room",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tidy your room",
+          "tier": "full"
+        },
+        {
+          "text": "to tidy your room",
+          "tier": "full"
+        },
+        {
+          "text": "tidy my room",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tidy your room",
+            "tier": "full"
+          },
+          {
+            "text": "to tidy your room",
+            "tier": "full"
+          },
+          {
+            "text": "tidy my room",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dein Zimmer aufräumen",
+            "tier": "full"
+          },
+          {
+            "text": "mein Zimmer aufräumen",
+            "tier": "full"
+          },
+          {
+            "text": "das Zimmer aufräumen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to do nothing",
+        "to play basketball",
+        "to come over"
+      ],
+      "hintDe": "Dein Zimmer sauber und ordentlich machen."
+    },
+    {
+      "id": "g2u07.w.to-watch-a-film",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to play basketball",
+            "to do the shopping",
+            "to tidy your room",
+            "to do nothing",
+            "to do your homework"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.55 Ex.4, 'I'm going to watch films.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to watch a film",
+      "g": "einen Film schauen",
+      "d": "to look at a story on a big screen at the cinema",
+      "s": "We are going to ___ on the big screen at the cinema.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "watch a film",
+          "tier": "full"
+        },
+        {
+          "text": "to watch a film",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "watch a film",
+          "tier": "full"
+        },
+        {
+          "text": "to watch a film",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "watch a film",
+            "tier": "full"
+          },
+          {
+            "text": "to watch a film",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einen Film schauen",
+            "tier": "full"
+          },
+          {
+            "text": "einen Film ansehen",
+            "tier": "full"
+          },
+          {
+            "text": "einen Film anschauen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to play basketball",
+        "to do the shopping",
+        "to tidy your room"
+      ],
+      "hintDe": "Sich eine Geschichte auf einer großen Leinwand ansehen."
+    },
+    {
+      "id": "g2u07.w.truth",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "excuse",
+            "communication",
+            "disappointment",
+            "honestly",
+            "row"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'I didn't tell her the truth.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "truth",
+      "g": "Wahrheit",
+      "d": "what is true and not a lie",
+      "s": "I didn't tell her the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "truth",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "truth",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "truth",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wahrheit",
+            "tier": "full"
+          },
+          {
+            "text": "die Wahrheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "excuse",
+        "communication",
+        "disappointment"
+      ],
+      "hintDe": "Das, was wirklich wahr ist."
+    },
+    {
+      "id": "g2u07.w.what-a-shame",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Well done.",
+            "Have fun!",
+            "Don't worry.",
+            "No problem."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "Masterlist exampleSb: 'The concert is sold out. What a shame!' (cf. SB p.60 'What a shame.')",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "What a shame!",
+      "g": "Wie schade!",
+      "d": "you tell a friend this when a bad thing happens",
+      "s": "The concert is sold out. ___",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "What a shame",
+          "tier": "full"
+        },
+        {
+          "text": "What a shame!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "What a shame",
+          "tier": "full"
+        },
+        {
+          "text": "What a shame!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "What a shame",
+            "tier": "full"
+          },
+          {
+            "text": "What a shame!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wie schade",
+            "tier": "full"
+          },
+          {
+            "text": "Wie schade!",
+            "tier": "full"
+          },
+          {
+            "text": "So ein Pech",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Well done.",
+        "Have fun!",
+        "Don't worry."
+      ],
+      "hintDe": "Das sagst du, wenn etwas Schlechtes passiert."
+    }
+  ]
+}
