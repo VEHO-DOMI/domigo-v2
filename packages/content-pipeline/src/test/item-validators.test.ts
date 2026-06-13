@@ -114,6 +114,13 @@ test("V-8 definition leak is lemma-aware", () => {
     { entries: [{ id: "g2u03.w.bus-stop", en: "bus stop", forms: ["bus stop"] }] } as never,
   );
   assert.ok(phraseLeak.some((e) => e.includes('"bus"')), phraseLeak.join("\n"));
+  // a pronoun is glue in an expression headword ("poor YOU") — not leaked content
+  const pron = definitionLeakErrors(
+    SLUG,
+    { vocab: [vocabItem({ id: "g2u03.w.poor-you", w: "poor you", d: "You say this to somebody who is sad." })], ...noGrammar },
+    { entries: [{ id: "g2u03.w.poor-you", en: "poor you", forms: ["poor you"] }] } as never,
+  );
+  assert.ok(!pron.some((e) => e.includes('"you"')), pron.join("\n"));
 });
 
 test("V-9 distractor discipline: out-of-bank + lemma clash + duplicates", () => {

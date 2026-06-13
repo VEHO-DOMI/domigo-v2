@@ -185,16 +185,19 @@ export function buildAllowedMatcher(
       let i = 0;
       while (i < tokens.length) {
         const t = tokens[i]!;
-        if (/^\d+$/.test(t) || granted.has(t)) {
-          i += 1;
-          continue;
-        }
+        // greedy longest-first: a multiword phrase ("left hand") must win over a
+        // single-token grant for one of its words ("left"), or the grant would
+        // consume "left" and orphan "hand"
         const span = Math.max(
           phraseSpanAt(index, tokens, i),
           phraseSpanAt(extra, tokens, i),
         );
         if (span > 0) {
           i += span;
+          continue;
+        }
+        if (/^\d+$/.test(t) || granted.has(t)) {
+          i += 1;
           continue;
         }
         if (index.singles.has(t) || extra.singles.has(t)) {

@@ -38,6 +38,12 @@ test("matcher: above-level tokens are unknown; gloss + grants rescue them", () =
     m.unknownTokens("They like carols.", { grantedTokens: new Set(["carols"]) }),
     [],
   );
+  // greedy longest-first: a granted single that heads a multiword phrase must not
+  // orphan the rest of the phrase ("left" granted, but "left hand" still matches)
+  assert.deepEqual(
+    m.unknownTokens("the left hand", { extraPhrases: ["left hand"], grantedTokens: new Set(["left"]) }),
+    [],
+  );
 });
 
 test("matcher: cumulative boundary — a later-unit word is unknown earlier", () => {

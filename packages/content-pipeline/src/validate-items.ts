@@ -260,6 +260,8 @@ const HEADWORD_GLUE = new Set<string>([
   "on", "in", "at", "up", "down", "out", "off", "by", "for", "with", "into", "over", "from", "about", // prepositions/particles
   "most", "more", "all", "some", "one", "two", // quantifiers/numerals
   "go", "goes", "going", "went", "gone", // the ubiquitous motion verb of direction phrases
+  "i", "you", "he", "she", "it", "we", "they", "me", "him", "her", "us", "them", // pronouns (glue in "poor YOU", "thank YOU", "tell ME")
+  "my", "your", "his", "its", "our", "their", // possessives
 ]);
 
 export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordBankT): string[] {
