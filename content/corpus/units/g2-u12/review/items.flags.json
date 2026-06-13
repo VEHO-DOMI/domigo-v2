@@ -1,0 +1,287 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u12",
+  "round": 1,
+  "itemsHash": "126cf838c1fb",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "translation-audit:g2u12.w.backache",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.backache",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.bath",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.bath",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.believe-me",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.believe-me",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.blood",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.blood",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.cure",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.cure",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.dentist",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.dentist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.earache",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.earache",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.first-aid",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.first-aid",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.headache",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.headache",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.helpful",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.helpful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.horrible",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.horrible",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.it-doesn-t-matter",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.it-doesn-t-matter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.knee",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.knee",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.lamp-post",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.lamp-post",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.medicine",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.medicine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.memory",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.memory",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.pain-in-ankle",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.pain-in-ankle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.patient",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.patient",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.pupil",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.pupil",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.since",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.since",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.smell",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.smell",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.spoon",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.spoon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.stomach-ache",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.stomach-ache",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.taste",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.taste",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.throat",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.throat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.to-cure",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.to-cure",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.to-injure",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.to-injure",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.to-mash",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.to-mash",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.to-mix",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.to-mix",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.toothache",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.toothache",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.toothpaste",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.toothpaste",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.worm",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.worm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.w.writer",
+      "kind": "translation-audit",
+      "itemId": "g2u12.w.writer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.gi.present-perfect.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u12.gi.present-perfect.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.gi.present-perfect.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u12.gi.present-perfect.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u12.gi.present-perfect.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g2u12.gi.present-perfect.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u12.gi.present-perfect.ag.001#68e1d1",
+      "kind": "validator-warn",
+      "itemId": "g2u12.gi.present-perfect.ag.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u12.gi.present-perfect.ag.002#68e1d1",
+      "kind": "validator-warn",
+      "itemId": "g2u12.gi.present-perfect.ag.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 33 vocab + 30 grammar, one structure — Present perfect (+ just) — across 13 formats, the health/injury world. Grant: ~36 common past participles (broken/eaten/seen/made/done/gone/written/taken/lost/won/found/given…) + the body parts head/back/arm (taught only inside headache/backache). Past-SIMPLE forms (broke/ate) are NOT granted, so the agent's wrong-participle distractors use regularized errors (maked/writed/hurted — which lemmatize through the gate as authentic kid mistakes) + wrong-aux/word-order. Zero glosses. Smoke-check fixed 3 empty sentence-building pools, 4 group-sort/pair items with non-empty answers (those grade from groups/pairs), the \"past participle\" jargon in 5 hints (→ German \"3. Form\"), and 2 spelling-variant answers (lamppost/stomachache → partial). Verify round 1: replaced a true-synonym distractor (cure/medicine) and added an uncontracted free-form partial; round 2 clean. Present-perfect participle correctness + just-placement keyed correctly throughout. 36 translations adjudicated; 2 \"Sie\" warns are the subject pronoun (\"die Form\"), not formal address. rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 63,
+    "fullRows": 63,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
