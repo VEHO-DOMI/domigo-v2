@@ -1,0 +1,441 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u09",
+  "round": 1,
+  "itemsHash": "701ca1d81149",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "translation-audit:g2u09.w.actor-actress",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.actor-actress",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.apple-juice",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.apple-juice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.beef",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.beef",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.cabbage",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.cabbage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.certain",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.certain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.cheesecake",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.cheesecake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.chef",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.chef",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.chicken",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.chicken",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.chocolate-ice-cream",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.chocolate-ice-cream",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.cloche",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.cloche",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.completely",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.completely",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.consumer",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.consumer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.crane",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.crane",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.delivery",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.delivery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.fridge",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.fridge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.glasses",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.glasses",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.grapes",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.grapes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.gym",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.gym",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.ham",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.ham",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.lamb",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.lamb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.main-course",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.main-course",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.menu",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.menu",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.mineral-water",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.mineral-water",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.mushrooms",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.mushrooms",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.olives",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.olives",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.onions",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.onions",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.pancakes",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.pancakes",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.peaches",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.peaches",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.pears",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.pears",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.peppers",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.peppers",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.platform",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.platform",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.plums",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.plums",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.potato",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.potato",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.pumpkin-pie",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.pumpkin-pie",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.recipe",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.recipe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.refund",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.refund",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.rice-pudding",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.rice-pudding",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.sausages",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.sausages",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.several",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.several",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.slice",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.slice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.soup",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.soup",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.starter",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.starter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.stew",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.stew",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.straightaway",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.straightaway",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.strawberries",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.strawberries",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.to-change-one-s-mind",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.to-change-one-s-mind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.to-complain",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.to-complain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.to-download",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.to-download",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.to-drop",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.to-drop",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.to-entertain",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.to-entertain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.to-miss",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.to-miss",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.to-pour",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.to-pour",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.to-serve",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.to-serve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.tomato",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.tomato",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.turkey",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.turkey",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.w.waiter",
+      "kind": "translation-audit",
+      "itemId": "g2u09.w.waiter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.gi.one-ones.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u09.gi.one-ones.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.gi.one-ones.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u09.gi.one-ones.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.gi.some-any.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u09.gi.some-any.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u09.gi.some-any.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g2u09.gi.some-any.tr.003",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 56 vocab + 48 grammar (the bank has 56 rows, not the 55 the brief stated — the gen agent caught it) across two structures: one/ones (substitute pronoun) and some/any (quantity), 12 formats each. No grants needed (one/ones/some/any are allowlist). Notably ZERO glosses — the vocab agent rephrased every definition into taught-only words (a heavily food/restaurant unit). Smoke-check fixed 4 bank-match mismatches (tomato/potato/glasses plural annotations, to-drop's de), the straightaway \"straight away\" variant (→ partial), and a V-14 false positive on the legit compound Schoko+eis (→ Schokoladeneis). Verify round 1: removed a true-synonym distractor (customer for consumer) and a superordinate (machine for crane), fixed a drink/food reply mismatch (mt apple-juice ↔ I love it), added a missing translation variant, and reworded all 4 anagram cues off German grammar terms (Nomen/Plural/Mengenangabe/Verneinung); round 2 clean. some/any precision (some=affirmative/offer, any=question/negative) keyed correctly throughout. 60 translations adjudicated (Austrian food regionalisms — Zwetschken/Erdäpfel/Paradeiser — correctly partial). rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 104,
+    "fullRows": 104,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

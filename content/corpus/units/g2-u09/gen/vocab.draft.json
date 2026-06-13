@@ -1,0 +1,4152 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g2-u09",
+  "briefBank": "fd299da73d1b",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g2u09.w.grapes",
+      "w": "grapes",
+      "g": "Trauben",
+      "d": "small green or purple food; you eat a lot of them at once",
+      "s": "I had some green ___ with my lunch. They were small and very nice.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "grapes",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "grapes",
+          "tier": "full"
+        },
+        {
+          "text": "grape",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "grapes",
+            "tier": "full"
+          },
+          {
+            "text": "grape",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Trauben",
+            "tier": "full"
+          },
+          {
+            "text": "Weintrauben",
+            "tier": "full"
+          },
+          {
+            "text": "die Trauben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "plums",
+        "olives",
+        "peppers"
+      ],
+      "hintDe": "Kleine grüne oder violette Früchte, die in einer Rispe wachsen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "plums",
+          "olives",
+          "peppers",
+          "pears",
+          "peaches"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.plums",
+      "w": "plums",
+      "g": "Pflaumen",
+      "d": "small purple food with a stone in the middle",
+      "s": "Dad, are there any ___ and peaches in the fridge?",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "plums",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plums",
+          "tier": "full"
+        },
+        {
+          "text": "plum",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "plums",
+            "tier": "full"
+          },
+          {
+            "text": "plum",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pflaumen",
+            "tier": "full"
+          },
+          {
+            "text": "die Pflaumen",
+            "tier": "full"
+          },
+          {
+            "text": "Zwetschken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pears",
+        "peaches",
+        "grapes"
+      ],
+      "hintDe": "Violette Früchte mit einem harten Kern in der Mitte.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "pears",
+          "peaches",
+          "grapes",
+          "strawberries",
+          "olives"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.74 ex 14, 'are there any plums and peaches in the fridge?'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.pumpkin-pie",
+      "w": "pumpkin pie",
+      "g": "Kürbiskuchen",
+      "d": "an orange cake that people eat in October",
+      "s": "My grandma makes the best ___ every October.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pumpkin pie",
+          "tier": "full"
+        },
+        {
+          "text": "pumpkin pies",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pumpkin pie",
+          "tier": "full"
+        },
+        {
+          "text": "pumpkin pies",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pumpkin pie",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kürbiskuchen",
+            "tier": "full"
+          },
+          {
+            "text": "der Kürbiskuchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cheesecake",
+        "pancakes",
+        "rice pudding"
+      ],
+      "hintDe": "Ein oranger Kuchen, den man besonders im Herbst isst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cheesecake",
+          "pancakes",
+          "rice pudding",
+          "chocolate ice cream",
+          "cabbage"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.rice-pudding",
+      "w": "rice pudding",
+      "g": "Milchreis",
+      "d": "a white food cooked in milk that you eat hot after dinner",
+      "s": "We had hot ___ after dinner. It was white.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "rice pudding",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rice pudding",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rice pudding",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Milchreis",
+            "tier": "full"
+          },
+          {
+            "text": "der Milchreis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cheesecake",
+        "pancakes",
+        "pumpkin pie"
+      ],
+      "hintDe": "Eine weiße Süßspeise, die man mit Milch kocht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cheesecake",
+          "pancakes",
+          "pumpkin pie",
+          "chocolate ice cream",
+          "soup"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu (desserts) / song p.73 'of rice and cabbage stew'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.chocolate-ice-cream",
+      "w": "chocolate ice cream",
+      "g": "Schokoladeneis",
+      "d": "a cold brown food that you eat after dinner",
+      "s": "I always have ___ at the restaurant. It is cold and brown.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "chocolate ice cream",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chocolate ice cream",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chocolate ice cream",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schokoladeneis",
+            "tier": "full"
+          },
+          {
+            "text": "das Schokoladeneis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cheesecake",
+        "pancakes",
+        "rice pudding"
+      ],
+      "hintDe": "Kaltes, braunes Eis mit Schokoladengeschmack.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cheesecake",
+          "pancakes",
+          "rice pudding",
+          "pumpkin pie",
+          "apple juice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu (desserts) / song p.73 'I dreamed of ice cream'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.turkey",
+      "w": "turkey",
+      "g": "Truthahn",
+      "d": "a big farm food that families eat for a holiday dinner",
+      "s": "In America, families eat ___ for a big holiday dinner.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "turkey",
+          "tier": "full"
+        },
+        {
+          "text": "turkeys",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "turkey",
+          "tier": "full"
+        },
+        {
+          "text": "turkeys",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "turkey",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Truthahn",
+            "tier": "full"
+          },
+          {
+            "text": "der Truthahn",
+            "tier": "full"
+          },
+          {
+            "text": "Pute",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "chicken",
+        "beef",
+        "lamb"
+      ],
+      "hintDe": "Ein großer Vogel, den man oft zu einem Festessen isst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "chicken",
+          "beef",
+          "lamb",
+          "ham",
+          "sausages"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu, 'Turkey with potatoes and cabbage'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.ham",
+      "w": "ham",
+      "g": "Schinken",
+      "d": "meat from a pig that you eat in a sandwich",
+      "s": "I'd like a ___ and cheese sandwich, please.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "ham",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ham",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ham",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schinken",
+            "tier": "full"
+          },
+          {
+            "text": "der Schinken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cheese",
+        "beef",
+        "chicken"
+      ],
+      "hintDe": "Fleisch vom Schwein, das man gern aufs Brot oder auf die Pizza legt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cheese",
+          "beef",
+          "chicken",
+          "sausages",
+          "turkey"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.69, 'a pizza with ham, cheese and tomatoes'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.beef",
+      "w": "beef",
+      "g": "Rindfleisch",
+      "d": "a kind of meat that you eat with chips and carrots",
+      "s": "We had ___ with chips and carrots for our main course.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "beef",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beef",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beef",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rindfleisch",
+            "tier": "full"
+          },
+          {
+            "text": "das Rindfleisch",
+            "tier": "full"
+          },
+          {
+            "text": "Rind",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "chicken",
+        "lamb",
+        "turkey"
+      ],
+      "hintDe": "Fleisch von der Kuh.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "chicken",
+          "lamb",
+          "turkey",
+          "ham",
+          "fish"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu, 'Beef with chips and carrots'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.chicken",
+      "w": "chicken",
+      "g": "Huhn",
+      "d": "the white meat that you put in a soup or eat with rice",
+      "s": "Mum is making ___ soup with carrots and rice for lunch.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "chicken",
+          "tier": "full"
+        },
+        {
+          "text": "chickens",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chicken",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chicken",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Huhn",
+            "tier": "full"
+          },
+          {
+            "text": "Hühnerfleisch",
+            "tier": "full"
+          },
+          {
+            "text": "das Huhn",
+            "tier": "full"
+          },
+          {
+            "text": "Hähnchen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "beef",
+        "lamb",
+        "turkey"
+      ],
+      "hintDe": "Das Fleisch vom Huhn, oder das Tier selbst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "beef",
+          "lamb",
+          "turkey",
+          "ham",
+          "fish"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu, 'Chicken with rice and peas'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.apple-juice",
+      "w": "apple juice",
+      "g": "Apfelsaft",
+      "d": "a drink that you make with green or red food from a tree",
+      "s": "Can I have a glass of ___, please?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "apple juice",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "apple juice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "apple juice",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Apfelsaft",
+            "tier": "full"
+          },
+          {
+            "text": "der Apfelsaft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mineral water",
+        "soup",
+        "cheese"
+      ],
+      "hintDe": "Ein Saft, den man aus Äpfeln macht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mineral water",
+          "soup",
+          "cheese",
+          "milk",
+          "tea"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.69, 'An apple juice, please.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.cheesecake",
+      "w": "cheesecake",
+      "g": "Käsekuchen",
+      "d": "You eat this white food at the end of dinner, and it is really delicious.",
+      "s": "I had a slice of ___ with strawberries after dinner.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cheesecake",
+          "tier": "full"
+        },
+        {
+          "text": "cheesecakes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cheesecake",
+          "tier": "full"
+        },
+        {
+          "text": "cheesecakes",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cheesecake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Käsekuchen",
+            "tier": "full"
+          },
+          {
+            "text": "der Käsekuchen",
+            "tier": "full"
+          },
+          {
+            "text": "Topfenkuchen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pancakes",
+        "pumpkin pie",
+        "rice pudding"
+      ],
+      "hintDe": "Ein heller Kuchen, den man mit Topfen oder Frischkäse macht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "pancakes",
+          "pumpkin pie",
+          "rice pudding",
+          "chocolate ice cream",
+          "soup"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu (desserts) / sketch 'cheesecake for dessert'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.pancakes",
+      "w": "pancakes",
+      "g": "Pfannkuchen",
+      "d": "food that you eat for breakfast, cooked from eggs",
+      "s": "We had ___ for breakfast this morning.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pancakes",
+          "tier": "full"
+        },
+        {
+          "text": "pancake",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pancakes",
+          "tier": "full"
+        },
+        {
+          "text": "pancake",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pancakes",
+            "tier": "full"
+          },
+          {
+            "text": "pancake",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pfannkuchen",
+            "tier": "full"
+          },
+          {
+            "text": "die Pfannkuchen",
+            "tier": "full"
+          },
+          {
+            "text": "Palatschinken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cheesecake",
+        "pumpkin pie",
+        "rice pudding"
+      ],
+      "hintDe": "Flache Teigfladen aus Eiern und Mehl, oft zum Frühstück.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cheesecake",
+          "pumpkin pie",
+          "rice pudding",
+          "chocolate ice cream",
+          "bread"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu (desserts) / song p.73 'I dreamed of pancakes'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.mineral-water",
+      "w": "mineral water",
+      "g": "Mineralwasser",
+      "d": "a drink in a bottle that has no sugar",
+      "s": "I'd like a bottle of ___, please.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mineral water",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mineral water",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mineral water",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mineralwasser",
+            "tier": "full"
+          },
+          {
+            "text": "das Mineralwasser",
+            "tier": "full"
+          },
+          {
+            "text": "Sprudelwasser",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "apple juice",
+        "soup",
+        "tea"
+      ],
+      "hintDe": "Wasser mit kleinen Bläschen, das man in der Flasche kauft.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "apple juice",
+          "soup",
+          "tea",
+          "milk",
+          "cheese"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.69, 'Mineral water, please.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.tomato",
+      "w": "tomato (pl tomatoes)",
+      "g": "Tomate",
+      "d": "a red food that you put in a salad or on a pizza",
+      "s": "I'd like a pizza with ham, cheese and red ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tomatoes",
+          "tier": "full"
+        },
+        {
+          "text": "tomato",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tomato",
+          "tier": "full"
+        },
+        {
+          "text": "tomatoes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tomato",
+            "tier": "full"
+          },
+          {
+            "text": "tomatoes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tomate",
+            "tier": "full"
+          },
+          {
+            "text": "die Tomate",
+            "tier": "full"
+          },
+          {
+            "text": "Tomaten",
+            "tier": "full"
+          },
+          {
+            "text": "Paradeiser",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "onions",
+        "mushrooms",
+        "peppers"
+      ],
+      "hintDe": "Rotes Gemüse, das man oft in den Salat oder auf die Pizza gibt. Plural: tomatoes.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "onions",
+          "mushrooms",
+          "peppers",
+          "olives",
+          "cabbage"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.69, 'a pizza with ham, cheese and tomatoes'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.cabbage",
+      "w": "cabbage",
+      "g": "Kohl",
+      "d": "a big green vegetable with many leaves",
+      "s": "We had turkey with potatoes and ___ for our main course.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cabbage",
+          "tier": "full"
+        },
+        {
+          "text": "cabbages",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cabbage",
+          "tier": "full"
+        },
+        {
+          "text": "cabbages",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cabbage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kohl",
+            "tier": "full"
+          },
+          {
+            "text": "der Kohl",
+            "tier": "full"
+          },
+          {
+            "text": "Kraut",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "onions",
+        "peppers",
+        "mushrooms"
+      ],
+      "hintDe": "Ein großes grünes Gemüse mit vielen Blättern.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "onions",
+          "peppers",
+          "mushrooms",
+          "potato",
+          "tomato"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu, 'Turkey with potatoes and cabbage'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.sausages",
+      "w": "sausages",
+      "g": "Würstchen",
+      "d": "long meat that you cook and eat, often for breakfast or dinner",
+      "s": "For me a pizza with ham, ___ and cheese.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sausages",
+          "tier": "full"
+        },
+        {
+          "text": "sausage",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sausages",
+          "tier": "full"
+        },
+        {
+          "text": "sausage",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sausages",
+            "tier": "full"
+          },
+          {
+            "text": "sausage",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Würstchen",
+            "tier": "full"
+          },
+          {
+            "text": "die Würstchen",
+            "tier": "full"
+          },
+          {
+            "text": "Würste",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ham",
+        "cheese",
+        "beef"
+      ],
+      "hintDe": "Längliches Fleisch in einer Hülle, das man brät oder grillt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ham",
+          "cheese",
+          "beef",
+          "chicken",
+          "olives"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.69, 'a pizza with ham, sausage and cheese'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.lamb",
+      "w": "lamb",
+      "g": "Lamm",
+      "d": "the meat from a young sheep",
+      "s": "The woman had the ___ for her main course.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lamb",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lamb",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lamb",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lamm",
+            "tier": "full"
+          },
+          {
+            "text": "Lammfleisch",
+            "tier": "full"
+          },
+          {
+            "text": "das Lamm",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "beef",
+        "chicken",
+        "turkey"
+      ],
+      "hintDe": "Das Fleisch von einem jungen Schaf.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "beef",
+          "chicken",
+          "turkey",
+          "ham",
+          "fish"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.71 sketch, 'the lamb chops for the main course'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.pears",
+      "w": "pears",
+      "g": "Birnen",
+      "d": "green food from a tree that you eat after lunch",
+      "s": "Dad, are there any ___ in the fridge? They are green and you eat them.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "pears",
+          "tier": "full"
+        },
+        {
+          "text": "pear",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pears",
+          "tier": "full"
+        },
+        {
+          "text": "pear",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pears",
+            "tier": "full"
+          },
+          {
+            "text": "pear",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Birnen",
+            "tier": "full"
+          },
+          {
+            "text": "die Birnen",
+            "tier": "full"
+          },
+          {
+            "text": "Birne",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "plums",
+        "peaches",
+        "grapes"
+      ],
+      "hintDe": "Grüne oder gelbe Früchte, die unten breiter sind als oben.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "plums",
+          "peaches",
+          "grapes",
+          "strawberries",
+          "olives"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.74 ex 14, 'There are some grapes and pears.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.peppers",
+      "w": "peppers",
+      "g": "Paprika",
+      "d": "a red or green vegetable that you put on a pizza",
+      "s": "I'd like a pizza with ham, mushrooms and green ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "peppers",
+          "tier": "full"
+        },
+        {
+          "text": "pepper",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "peppers",
+          "tier": "full"
+        },
+        {
+          "text": "pepper",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "peppers",
+            "tier": "full"
+          },
+          {
+            "text": "pepper",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Paprika",
+            "tier": "full"
+          },
+          {
+            "text": "die Paprika",
+            "tier": "full"
+          },
+          {
+            "text": "Paprikaschoten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "onions",
+        "mushrooms",
+        "olives"
+      ],
+      "hintDe": "Rotes, grünes oder gelbes Gemüse, das man gern auf die Pizza gibt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "onions",
+          "mushrooms",
+          "olives",
+          "tomato",
+          "cabbage"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.69, 'a pizza with ham, mushrooms and green peppers'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.onions",
+      "w": "onions",
+      "g": "Zwiebeln",
+      "d": "a white vegetable that makes you cry when you cook it",
+      "s": "I don't want any ___ on my pizza, please.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "onions",
+          "tier": "full"
+        },
+        {
+          "text": "onion",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "onions",
+          "tier": "full"
+        },
+        {
+          "text": "onion",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "onions",
+            "tier": "full"
+          },
+          {
+            "text": "onion",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zwiebeln",
+            "tier": "full"
+          },
+          {
+            "text": "die Zwiebeln",
+            "tier": "full"
+          },
+          {
+            "text": "Zwiebel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "peppers",
+        "mushrooms",
+        "olives"
+      ],
+      "hintDe": "Weißes Gemüse, von dem man beim Schneiden weinen muss.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "peppers",
+          "mushrooms",
+          "olives",
+          "tomato",
+          "cabbage"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.78 ex 13A, 'But I don't want any onions.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.olives",
+      "w": "olives",
+      "g": "Oliven",
+      "d": "a small green or black food that you put on a pizza or in a salad",
+      "s": "Would you like ___ on your pizza? They are small, green or black.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "olives",
+          "tier": "full"
+        },
+        {
+          "text": "olive",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "olives",
+          "tier": "full"
+        },
+        {
+          "text": "olive",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "olives",
+            "tier": "full"
+          },
+          {
+            "text": "olive",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Oliven",
+            "tier": "full"
+          },
+          {
+            "text": "die Oliven",
+            "tier": "full"
+          },
+          {
+            "text": "Olive",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mushrooms",
+        "peppers",
+        "onions"
+      ],
+      "hintDe": "Kleine grüne oder schwarze Früchte, oft auf der Pizza oder im Salat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mushrooms",
+          "peppers",
+          "onions",
+          "tomato",
+          "grapes"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.78 ex 13A, 'Would you like olives maybe?'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.mushrooms",
+      "w": "mushrooms",
+      "g": "Pilze",
+      "d": "a small food that you can put on a pizza or eat with meat",
+      "s": "I'd like a pizza with ham, ___ and green peppers.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mushrooms",
+          "tier": "full"
+        },
+        {
+          "text": "mushroom",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mushrooms",
+          "tier": "full"
+        },
+        {
+          "text": "mushroom",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mushrooms",
+            "tier": "full"
+          },
+          {
+            "text": "mushroom",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pilze",
+            "tier": "full"
+          },
+          {
+            "text": "die Pilze",
+            "tier": "full"
+          },
+          {
+            "text": "Pilz",
+            "tier": "partial"
+          },
+          {
+            "text": "Champignons",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "onions",
+        "peppers",
+        "olives"
+      ],
+      "hintDe": "Kleine Pilze, die man auf die Pizza geben oder mit Fleisch essen kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "onions",
+          "peppers",
+          "olives",
+          "tomato",
+          "cabbage"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.69, 'a pizza with ham, mushrooms and green peppers'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.potato",
+      "w": "potato (pl potatoes)",
+      "g": "Kartoffel",
+      "d": "a brown vegetable that you eat hot with butter",
+      "s": "They had turkey with ___ and cabbage.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "potatoes",
+          "tier": "full"
+        },
+        {
+          "text": "potato",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "potato",
+          "tier": "full"
+        },
+        {
+          "text": "potatoes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "potato",
+            "tier": "full"
+          },
+          {
+            "text": "potatoes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kartoffel",
+            "tier": "full"
+          },
+          {
+            "text": "die Kartoffel",
+            "tier": "full"
+          },
+          {
+            "text": "Kartoffeln",
+            "tier": "full"
+          },
+          {
+            "text": "Erdäpfel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cabbage",
+        "onions",
+        "peppers"
+      ],
+      "hintDe": "Ein braunes Gemüse, das unter der Erde wächst. Plural: potatoes.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cabbage",
+          "onions",
+          "peppers",
+          "mushrooms",
+          "tomato"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu, 'Lamb chops with potatoes and cabbage'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.peaches",
+      "w": "peaches",
+      "g": "Pfirsiche",
+      "d": "food from a tree with a stone in the middle, that you eat in summer",
+      "s": "Are there any plums and ___ in the fridge?",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "peaches",
+          "tier": "full"
+        },
+        {
+          "text": "peach",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "peaches",
+          "tier": "full"
+        },
+        {
+          "text": "peach",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "peaches",
+            "tier": "full"
+          },
+          {
+            "text": "peach",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pfirsiche",
+            "tier": "full"
+          },
+          {
+            "text": "die Pfirsiche",
+            "tier": "full"
+          },
+          {
+            "text": "Pfirsich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "plums",
+        "pears",
+        "grapes"
+      ],
+      "hintDe": "Orange Früchte mit weicher Haut und einem großen Kern.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "plums",
+          "pears",
+          "grapes",
+          "strawberries",
+          "olives"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.74 ex 14, 'are there any plums and peaches in the fridge?'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.strawberries",
+      "w": "strawberries",
+      "g": "Erdbeeren",
+      "d": "small red food that you eat in summer",
+      "s": "Here, have some red ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "strawberries",
+          "tier": "full"
+        },
+        {
+          "text": "strawberry",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "strawberries",
+          "tier": "full"
+        },
+        {
+          "text": "strawberry",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "strawberries",
+            "tier": "full"
+          },
+          {
+            "text": "strawberry",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erdbeeren",
+            "tier": "full"
+          },
+          {
+            "text": "die Erdbeeren",
+            "tier": "full"
+          },
+          {
+            "text": "Erdbeere",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "grapes",
+        "plums",
+        "peaches"
+      ],
+      "hintDe": "Kleine rote Früchte, die man im Sommer isst und zu Marmelade macht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "grapes",
+          "plums",
+          "peaches",
+          "pears",
+          "tomato"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.78 ex 7, 'Here, have some strawberries.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.chef",
+      "w": "chef",
+      "g": "Koch/Köchin",
+      "d": "the man or woman who cooks the food in a restaurant",
+      "s": "The ___ cooked a delicious pizza in the kitchen.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "chef",
+          "tier": "full"
+        },
+        {
+          "text": "chefs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chef",
+          "tier": "full"
+        },
+        {
+          "text": "chefs",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chef",
+            "tier": "full"
+          },
+          {
+            "text": "chefs",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Koch",
+            "tier": "full"
+          },
+          {
+            "text": "Köchin",
+            "tier": "full"
+          },
+          {
+            "text": "der Koch",
+            "tier": "full"
+          },
+          {
+            "text": "die Köchin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "waiter",
+        "guide",
+        "teacher"
+      ],
+      "hintDe": "Die Person, die in der Küche eines Restaurants das Essen kocht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "waiter",
+          "guide",
+          "teacher",
+          "customer",
+          "guest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.72, 'robot chefs cook the food' / p.78 'A chef is behind a window'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.recipe",
+      "w": "recipe",
+      "g": "Rezept",
+      "d": "you read this and then you can make a cake or a soup",
+      "s": "Grandma writes her ___ for chocolate cake so I can make it too.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "recipe",
+          "tier": "full"
+        },
+        {
+          "text": "recipes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "recipe",
+          "tier": "full"
+        },
+        {
+          "text": "recipes",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "recipe",
+            "tier": "full"
+          },
+          {
+            "text": "recipes",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rezept",
+            "tier": "full"
+          },
+          {
+            "text": "das Rezept",
+            "tier": "full"
+          },
+          {
+            "text": "Kochrezept",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "menu",
+        "ticket",
+        "letter"
+      ],
+      "hintDe": "Eine Anleitung, die dir zeigt, wie du etwas kochst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "menu",
+          "ticket",
+          "letter",
+          "story",
+          "picture"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78, 'A chef is behind a window holding a recipe.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.waiter",
+      "w": "waiter",
+      "g": "Kellner",
+      "d": "the man or woman who brings your food to your table in a restaurant",
+      "s": "The ___ brings us the menu and some food.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "waiter",
+          "tier": "full"
+        },
+        {
+          "text": "waiters",
+          "tier": "partial"
+        },
+        {
+          "text": "waitress",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "waiter",
+          "tier": "full"
+        },
+        {
+          "text": "waiters",
+          "tier": "partial"
+        },
+        {
+          "text": "waitress",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "waiter",
+            "tier": "full"
+          },
+          {
+            "text": "waiters",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kellner",
+            "tier": "full"
+          },
+          {
+            "text": "der Kellner",
+            "tier": "full"
+          },
+          {
+            "text": "Kellnerin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "chef",
+        "guide",
+        "teacher"
+      ],
+      "hintDe": "Die Person, die im Restaurant das Essen an den Tisch bringt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "chef",
+          "guide",
+          "teacher",
+          "customer",
+          "guest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.71 sketch, 'I'm your waiter for the evening.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.cloche",
+      "w": "cloche",
+      "g": "Speiseglocke",
+      "d": "a cover for a plate that keeps the food hot in a restaurant",
+      "s": "The waiter put the ___ over my food at the restaurant.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cloche",
+          "tier": "full"
+        },
+        {
+          "text": "cloches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cloche",
+          "tier": "full"
+        },
+        {
+          "text": "cloches",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cloche",
+            "tier": "full"
+          },
+          {
+            "text": "cloches",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Speiseglocke",
+            "tier": "full"
+          },
+          {
+            "text": "die Speiseglocke",
+            "tier": "full"
+          },
+          {
+            "text": "Glocke",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "plate",
+        "menu",
+        "recipe"
+      ],
+      "hintDe": "Eine runde Haube, die der Kellner über den Teller stellt, damit das Essen warm bleibt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "plate",
+          "menu",
+          "recipe",
+          "box",
+          "bottle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.78, 'A waiter is carrying a cloche (covered serving dish).'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.menu",
+      "w": "menu",
+      "g": "Speisekarte",
+      "d": "you read this and then you order your food in a restaurant",
+      "s": "Can I have the ___, please? I want to order some food.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "menu",
+          "tier": "full"
+        },
+        {
+          "text": "menus",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "menu",
+          "tier": "full"
+        },
+        {
+          "text": "menus",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "menu",
+            "tier": "full"
+          },
+          {
+            "text": "menus",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Speisekarte",
+            "tier": "full"
+          },
+          {
+            "text": "die Speisekarte",
+            "tier": "full"
+          },
+          {
+            "text": "Karte",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "recipe",
+        "ticket",
+        "letter"
+      ],
+      "hintDe": "Die Karte im Restaurant, auf der steht, was du bestellen kannst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "recipe",
+          "ticket",
+          "letter",
+          "story",
+          "picture"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.69, 'Read the dialogue' (ordering from the menu) / p.78 'A man is looking at the menu.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.slice",
+      "w": "slice",
+      "g": "Stück",
+      "d": "a piece of bread or cake that is not very big",
+      "s": "Can I have a ___ of your pizza?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "slice",
+          "tier": "full"
+        },
+        {
+          "text": "slices",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "slice",
+          "tier": "full"
+        },
+        {
+          "text": "slices",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "slice",
+            "tier": "full"
+          },
+          {
+            "text": "slices",
+            "tier": "partial"
+          },
+          {
+            "text": "piece",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stück",
+            "tier": "full"
+          },
+          {
+            "text": "Scheibe",
+            "tier": "full"
+          },
+          {
+            "text": "das Stück",
+            "tier": "full"
+          },
+          {
+            "text": "die Scheibe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "plate",
+        "bottle",
+        "glass"
+      ],
+      "hintDe": "Ein dünnes Stück, das man von Brot, Kuchen oder Pizza abschneidet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "plate",
+          "bottle",
+          "glass",
+          "menu",
+          "box"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb, 'Can I have a slice of your pizza?'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.actor-actress",
+      "w": "actor, actress",
+      "g": "Schauspieler",
+      "d": "a man or woman who is in a play or a show",
+      "s": "My favourite ___ is in a new show this summer.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "actor",
+          "tier": "full"
+        },
+        {
+          "text": "actress",
+          "tier": "full"
+        },
+        {
+          "text": "actors",
+          "tier": "partial"
+        },
+        {
+          "text": "actresses",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "actor",
+          "tier": "full"
+        },
+        {
+          "text": "actress",
+          "tier": "full"
+        },
+        {
+          "text": "actors",
+          "tier": "partial"
+        },
+        {
+          "text": "actresses",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "actor",
+            "tier": "full"
+          },
+          {
+            "text": "actress",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schauspieler",
+            "tier": "full"
+          },
+          {
+            "text": "Schauspielerin",
+            "tier": "full"
+          },
+          {
+            "text": "der Schauspieler",
+            "tier": "full"
+          },
+          {
+            "text": "die Schauspielerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "singer",
+        "guide",
+        "teacher"
+      ],
+      "hintDe": "Eine Person, die in Filmen oder im Theater spielt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "singer",
+          "guide",
+          "teacher",
+          "drummer",
+          "waiter"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.71 sketch, 'I want to be an actor, but I need the money.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.main-course",
+      "w": "main course",
+      "g": "Hauptgang",
+      "d": "the food you eat after the starter, like meat or fish with vegetables",
+      "s": "After the soup, we had chicken with rice for the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "main course",
+          "tier": "full"
+        },
+        {
+          "text": "main courses",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "main course",
+          "tier": "full"
+        },
+        {
+          "text": "main courses",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "main course",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hauptgang",
+            "tier": "full"
+          },
+          {
+            "text": "Hauptspeise",
+            "tier": "full"
+          },
+          {
+            "text": "der Hauptgang",
+            "tier": "full"
+          },
+          {
+            "text": "die Hauptspeise",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "starter",
+        "soup",
+        "menu"
+      ],
+      "hintDe": "Der große Gang beim Essen, den du nach der Vorspeise isst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "starter",
+          "soup",
+          "menu",
+          "stew",
+          "slice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu 'MAIN COURSES' / sketch 'Here come the main courses.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.to-pour",
+      "w": "to pour",
+      "g": "einschenken",
+      "d": "to make a drink go from a bottle into a glass",
+      "s": "Can you ___ some apple juice into my glass?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pour",
+          "tier": "full"
+        },
+        {
+          "text": "pours",
+          "tier": "partial"
+        },
+        {
+          "text": "poured",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pour",
+          "tier": "full"
+        },
+        {
+          "text": "to pour",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pour",
+            "tier": "full"
+          },
+          {
+            "text": "to pour",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einschenken",
+            "tier": "full"
+          },
+          {
+            "text": "eingießen",
+            "tier": "full"
+          },
+          {
+            "text": "schütten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drink",
+        "eat",
+        "open"
+      ],
+      "hintDe": "Ein Getränk aus einer Flasche ins Glas gießen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "drink",
+          "eat",
+          "open",
+          "cook",
+          "serve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.71 sketch, 'Let me pour it for you.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.soup",
+      "w": "soup",
+      "g": "Suppe",
+      "d": "a hot food of vegetables or meat that you eat from a plate",
+      "s": "I'd like the onion ___ for starters, please.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "soup",
+          "tier": "full"
+        },
+        {
+          "text": "soups",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "soup",
+          "tier": "full"
+        },
+        {
+          "text": "soups",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "soup",
+            "tier": "full"
+          },
+          {
+            "text": "soups",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Suppe",
+            "tier": "full"
+          },
+          {
+            "text": "die Suppe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "stew",
+        "salad",
+        "bread"
+      ],
+      "hintDe": "Ein warmes, flüssiges Essen aus Gemüse oder Fleisch.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "stew",
+          "salad",
+          "bread",
+          "cheese",
+          "rice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.71 sketch, 'Onion soup for starters, please.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.starter",
+      "w": "starter",
+      "g": "Vorspeise",
+      "d": "you eat this small food first, before the chicken or fish",
+      "s": "We had onion soup for ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "starter",
+          "tier": "full"
+        },
+        {
+          "text": "starters",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "starter",
+          "tier": "full"
+        },
+        {
+          "text": "starters",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "starter",
+            "tier": "full"
+          },
+          {
+            "text": "starters",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vorspeise",
+            "tier": "full"
+          },
+          {
+            "text": "die Vorspeise",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "main course",
+        "soup",
+        "menu"
+      ],
+      "hintDe": "Der kleine Gang, den du vor dem Hauptgang isst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "main course",
+          "soup",
+          "menu",
+          "stew",
+          "slice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.70 menu 'STARTERS' / sketch 'Onion soup for starters, please.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.straightaway",
+      "w": "straightaway",
+      "g": "sofort",
+      "d": "at once, very fast",
+      "s": "Don't wait — bring the soup ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "straightaway",
+          "tier": "full"
+        },
+        {
+          "text": "straight away",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "straightaway",
+          "tier": "full"
+        },
+        {
+          "text": "straight away",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "straightaway",
+            "tier": "full"
+          },
+          {
+            "text": "straight away",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sofort",
+            "tier": "full"
+          },
+          {
+            "text": "gleich",
+            "tier": "full"
+          },
+          {
+            "text": "auf der Stelle",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "always",
+        "never",
+        "sometimes"
+      ],
+      "hintDe": "Sofort, ohne zu warten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "always",
+          "never",
+          "sometimes",
+          "usually",
+          "completely"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.71 sketch, 'the menu coming straightaway.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.completely",
+      "w": "completely",
+      "g": "vollständig",
+      "d": "all of it, with nothing more",
+      "s": "The room was ___ dark.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "completely",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "completely",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "completely",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vollständig",
+            "tier": "full"
+          },
+          {
+            "text": "völlig",
+            "tier": "full"
+          },
+          {
+            "text": "ganz",
+            "tier": "full"
+          },
+          {
+            "text": "komplett",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "really",
+        "usually",
+        "always"
+      ],
+      "hintDe": "Ganz und gar, ohne dass etwas fehlt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "really",
+          "usually",
+          "always",
+          "sometimes",
+          "straightaway"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.72, 'the restaurant is completely dark.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.crane",
+      "w": "crane",
+      "g": "Kran",
+      "d": "a very tall machine that can hold a heavy thing up high",
+      "s": "A big ___ holds the restaurant platform high in the sky.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crane",
+          "tier": "full"
+        },
+        {
+          "text": "cranes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crane",
+          "tier": "full"
+        },
+        {
+          "text": "cranes",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crane",
+            "tier": "full"
+          },
+          {
+            "text": "cranes",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kran",
+            "tier": "full"
+          },
+          {
+            "text": "der Kran",
+            "tier": "full"
+          },
+          {
+            "text": "Baukran",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "building",
+        "ship",
+        "train"
+      ],
+      "hintDe": "Eine sehr hohe Maschine, die schwere Dinge in die Höhe hebt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "building",
+          "ship",
+          "train",
+          "platform",
+          "statue"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.72, 'A crane holds a large platform more than 50 m above the ground.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.to-drop",
+      "w": "to drop",
+      "g": "fallen (lassen)",
+      "d": "to not hold a thing well, so it falls down",
+      "s": "Hold the plate well — don't ___ it!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "drop",
+          "tier": "full"
+        },
+        {
+          "text": "drops",
+          "tier": "partial"
+        },
+        {
+          "text": "dropped",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drop",
+          "tier": "full"
+        },
+        {
+          "text": "to drop",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drop",
+            "tier": "full"
+          },
+          {
+            "text": "to drop",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fallen lassen",
+            "tier": "full"
+          },
+          {
+            "text": "fallenlassen",
+            "tier": "full"
+          },
+          {
+            "text": "fallen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hold",
+        "wash",
+        "eat"
+      ],
+      "hintDe": "Etwas aus der Hand fallen lassen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hold",
+          "wash",
+          "eat",
+          "carry",
+          "catch"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.73, 'I dropped my phone. I can't find it.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.to-entertain",
+      "w": "to entertain",
+      "g": "unterhalten",
+      "d": "to do a fun show so that people enjoy it and laugh",
+      "s": "The clown dances to ___ the children.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "entertain",
+          "tier": "full"
+        },
+        {
+          "text": "entertains",
+          "tier": "partial"
+        },
+        {
+          "text": "entertained",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "entertain",
+          "tier": "full"
+        },
+        {
+          "text": "to entertain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "entertain",
+            "tier": "full"
+          },
+          {
+            "text": "to entertain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unterhalten",
+            "tier": "full"
+          },
+          {
+            "text": "belustigen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dance",
+        "watch",
+        "enjoy"
+      ],
+      "hintDe": "Etwas Lustiges machen, damit andere Spaß haben.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "dance",
+          "watch",
+          "enjoy",
+          "laugh",
+          "serve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.72, 'the robots dance to entertain the guests.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.glasses",
+      "w": "glasses (pl)",
+      "g": "Brille",
+      "d": "you wear these on your eyes when you want to read a book or look at the board",
+      "s": "I need my ___ to read the board at school.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "glasses",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "glasses",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "glasses",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brille",
+            "tier": "full"
+          },
+          {
+            "text": "die Brille",
+            "tier": "full"
+          },
+          {
+            "text": "Augengläser",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunglasses",
+        "hat",
+        "shoes"
+      ],
+      "hintDe": "Zwei Gläser, die man vor den Augen trägt, um besser zu sehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sunglasses",
+          "hat",
+          "shoes",
+          "hairband",
+          "shirt"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.72, 'The waiters wear special glasses so they can serve the customers.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.platform",
+      "w": "platform",
+      "g": "Plattform",
+      "d": "a high place where people can stand on it",
+      "s": "There's a restaurant on a ___ in the sky.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "platform",
+          "tier": "full"
+        },
+        {
+          "text": "platforms",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "platform",
+          "tier": "full"
+        },
+        {
+          "text": "platforms",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "platform",
+            "tier": "full"
+          },
+          {
+            "text": "platforms",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Plattform",
+            "tier": "full"
+          },
+          {
+            "text": "die Plattform",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "building",
+        "machine",
+        "river"
+      ],
+      "hintDe": "Eine flache, hohe Fläche, auf der man stehen oder etwas bauen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "building",
+          "machine",
+          "river",
+          "garden",
+          "crane"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb, 'There's a restaurant on a platform in the sky.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.to-serve",
+      "w": "to serve",
+      "g": "servieren",
+      "d": "to bring food or drinks to people at a table",
+      "s": "The waiters ___ the food to the guests.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "serve",
+          "tier": "full"
+        },
+        {
+          "text": "serves",
+          "tier": "partial"
+        },
+        {
+          "text": "served",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "serve",
+          "tier": "full"
+        },
+        {
+          "text": "to serve",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "serve",
+            "tier": "full"
+          },
+          {
+            "text": "to serve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "servieren",
+            "tier": "full"
+          },
+          {
+            "text": "bringen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pour",
+        "cook",
+        "drop"
+      ],
+      "hintDe": "Jemandem Essen oder Getränke an den Tisch bringen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "pour",
+          "cook",
+          "drop",
+          "eat",
+          "drink"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.72 'They take you to your table and serve you food.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.several",
+      "w": "several",
+      "g": "einige",
+      "d": "more than two, but not very many",
+      "s": "There are ___ restaurants in my town.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "several",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "several",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "several",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einige",
+            "tier": "full"
+          },
+          {
+            "text": "mehrere",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "many",
+        "any",
+        "some"
+      ],
+      "hintDe": "Mehr als zwei, aber nicht sehr viele.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "many",
+          "any",
+          "some",
+          "more",
+          "much"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.72 'an idea that you can find in several cities'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.stew",
+      "w": "stew",
+      "g": "Eintopf",
+      "d": "a hot food of meat and vegetables cooked for a long time",
+      "s": "Can I have the cabbage ___, please?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "stew",
+          "tier": "full"
+        },
+        {
+          "text": "stews",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stew",
+          "tier": "full"
+        },
+        {
+          "text": "stews",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stew",
+            "tier": "full"
+          },
+          {
+            "text": "stews",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eintopf",
+            "tier": "full"
+          },
+          {
+            "text": "der Eintopf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "soup",
+        "salad",
+        "bread"
+      ],
+      "hintDe": "Ein warmes Gericht aus Fleisch und Gemüse, das lange zusammen kocht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "soup",
+          "salad",
+          "bread",
+          "cheese",
+          "rice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / song p.73 'of rice and cabbage stew'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.fridge",
+      "w": "fridge",
+      "g": "Kühlschrank",
+      "d": "the cold machine in the kitchen where you keep food",
+      "s": "There's nothing in the ___. Let's go to the supermarket.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fridge",
+          "tier": "full"
+        },
+        {
+          "text": "fridges",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fridge",
+          "tier": "full"
+        },
+        {
+          "text": "fridges",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fridge",
+            "tier": "full"
+          },
+          {
+            "text": "fridges",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kühlschrank",
+            "tier": "full"
+          },
+          {
+            "text": "der Kühlschrank",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "kitchen",
+        "table",
+        "drawer"
+      ],
+      "hintDe": "Die kalte Maschine in der Küche, in der du das Essen frisch hältst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "kitchen",
+          "table",
+          "drawer",
+          "box",
+          "tank"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb, 'There's nothing in the fridge. Let's go to the supermarket.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.to-complain",
+      "w": "to complain",
+      "g": "sich beschweren",
+      "d": "to tell people that you are not happy about your food",
+      "s": "The food was cold, so the man wants to ___ to the waiter.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "complain",
+          "tier": "full"
+        },
+        {
+          "text": "complains",
+          "tier": "partial"
+        },
+        {
+          "text": "complained",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "complain",
+          "tier": "full"
+        },
+        {
+          "text": "to complain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "complain",
+            "tier": "full"
+          },
+          {
+            "text": "to complain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich beschweren",
+            "tier": "full"
+          },
+          {
+            "text": "beschweren",
+            "tier": "full"
+          },
+          {
+            "text": "reklamieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "enjoy",
+        "love",
+        "thank"
+      ],
+      "hintDe": "Sagen, dass man mit etwas nicht zufrieden ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "enjoy",
+          "love",
+          "thank",
+          "laugh",
+          "serve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.75 'What did the waiter do when Jamie complained?'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.consumer",
+      "w": "consumer",
+      "g": "Konsument/Konsumentin",
+      "d": "a man or woman who pays money for food at the supermarket",
+      "s": "When you pay money for your food at the supermarket, you are a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "consumer",
+          "tier": "full"
+        },
+        {
+          "text": "consumers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "consumer",
+          "tier": "full"
+        },
+        {
+          "text": "consumers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "consumer",
+            "tier": "full"
+          },
+          {
+            "text": "consumers",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Konsument",
+            "tier": "full"
+          },
+          {
+            "text": "Konsumentin",
+            "tier": "full"
+          },
+          {
+            "text": "der Konsument",
+            "tier": "full"
+          },
+          {
+            "text": "Verbraucher",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "waiter",
+        "guest",
+        "chef"
+      ],
+      "hintDe": "Eine Person, die für Essen oder Dinge Geld bezahlt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "waiter",
+          "guest",
+          "chef",
+          "guide",
+          "traveller"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.75 'consumer ... someone who buys something'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.delivery",
+      "w": "delivery",
+      "g": "Lieferung",
+      "d": "when food or a new thing comes to your door",
+      "s": "I am waiting for my pizza ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "delivery",
+          "tier": "full"
+        },
+        {
+          "text": "deliveries",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "delivery",
+          "tier": "full"
+        },
+        {
+          "text": "deliveries",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "delivery",
+            "tier": "full"
+          },
+          {
+            "text": "deliveries",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lieferung",
+            "tier": "full"
+          },
+          {
+            "text": "die Lieferung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "menu",
+        "recipe",
+        "ticket"
+      ],
+      "hintDe": "Wenn dir etwas Bestelltes nach Hause gebracht wird.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "menu",
+          "recipe",
+          "ticket",
+          "letter",
+          "refund"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.75 'Your pizza delivery is all wrong.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.to-download",
+      "w": "to download",
+      "g": "herunterladen",
+      "d": "to put new music on your tablet",
+      "s": "Yesterday I ___ the new Dua Lipa music to my tablet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "downloaded",
+          "tier": "full"
+        },
+        {
+          "text": "download",
+          "tier": "partial"
+        },
+        {
+          "text": "downloads",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "download",
+          "tier": "full"
+        },
+        {
+          "text": "to download",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "download",
+            "tier": "full"
+          },
+          {
+            "text": "to download",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "herunterladen",
+            "tier": "full"
+          },
+          {
+            "text": "runterladen",
+            "tier": "full"
+          },
+          {
+            "text": "downloaden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "play",
+        "read",
+        "watch"
+      ],
+      "hintDe": "Etwas aus dem Internet auf dein Gerät holen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "play",
+          "read",
+          "watch",
+          "listen",
+          "stream"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.75 'I downloaded the new Dua Lipa album.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.refund",
+      "w": "refund",
+      "g": "Rückerstattung",
+      "d": "the money you get back when a new thing does not work",
+      "s": "The shoes were too small, so I asked for a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "refund",
+          "tier": "full"
+        },
+        {
+          "text": "refunds",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "refund",
+          "tier": "full"
+        },
+        {
+          "text": "refunds",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "refund",
+            "tier": "full"
+          },
+          {
+            "text": "refunds",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rückerstattung",
+            "tier": "full"
+          },
+          {
+            "text": "die Rückerstattung",
+            "tier": "full"
+          },
+          {
+            "text": "Geld zurück",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "menu",
+        "ticket",
+        "delivery"
+      ],
+      "hintDe": "Das Geld, das du zurückbekommst, wenn etwas nicht in Ordnung ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "menu",
+          "ticket",
+          "delivery",
+          "price",
+          "recipe"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.75 'refund ... to get your money back'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.certain",
+      "w": "certain",
+      "g": "sicher",
+      "d": "You really, really think it is true.",
+      "s": "Are you ___ that today is a holiday?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "certain",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "certain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "certain",
+            "tier": "full"
+          },
+          {
+            "text": "sure",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sicher",
+            "tier": "full"
+          },
+          {
+            "text": "gewiss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "happy",
+        "tired",
+        "hungry"
+      ],
+      "hintDe": "Ganz sicher; du weißt es genau.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "happy",
+          "tired",
+          "hungry",
+          "scared",
+          "proud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.71 sketch 'Are you certain?'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.to-change-one-s-mind",
+      "w": "to change one's mind",
+      "g": "seine Meinung ändern",
+      "d": "to want a new thing now, not the thing from before",
+      "s": "I wanted pizza, but I ___ and asked for pasta after all.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "changed my mind",
+          "tier": "full"
+        },
+        {
+          "text": "change my mind",
+          "tier": "partial"
+        },
+        {
+          "text": "changed her mind",
+          "tier": "partial"
+        },
+        {
+          "text": "changed his mind",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "change one's mind",
+          "tier": "full"
+        },
+        {
+          "text": "change my mind",
+          "tier": "full"
+        },
+        {
+          "text": "changed my mind",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "change one's mind",
+            "tier": "full"
+          },
+          {
+            "text": "change my mind",
+            "tier": "full"
+          },
+          {
+            "text": "changed my mind",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "seine Meinung ändern",
+            "tier": "full"
+          },
+          {
+            "text": "die Meinung ändern",
+            "tier": "full"
+          },
+          {
+            "text": "es sich anders überlegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "take it easy",
+        "tidy your room",
+        "go for a walk"
+      ],
+      "hintDe": "Sich anders entscheiden als vorher.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "take it easy",
+          "tidy your room",
+          "go for a walk",
+          "do nothing",
+          "have a party"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb / SB p.76 'I can change my mind' / 'I changed my mind. I want pizza after all.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.gym",
+      "w": "gym",
+      "g": "Turnhalle",
+      "d": "a big room or building where people do exercise",
+      "s": "We play basketball in the school ___ on Fridays.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gym",
+          "tier": "full"
+        },
+        {
+          "text": "gyms",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gym",
+          "tier": "full"
+        },
+        {
+          "text": "gyms",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gym",
+            "tier": "full"
+          },
+          {
+            "text": "gyms",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Turnhalle",
+            "tier": "full"
+          },
+          {
+            "text": "die Turnhalle",
+            "tier": "full"
+          },
+          {
+            "text": "Fitnesscenter",
+            "tier": "full"
+          },
+          {
+            "text": "Fitnessstudio",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "library",
+        "kitchen",
+        "garden"
+      ],
+      "hintDe": "Ein großer Raum, in dem man Sport macht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "library",
+          "kitchen",
+          "garden",
+          "garage",
+          "hall"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb, 'Leo goes to the gym.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u09.w.to-miss",
+      "w": "to miss",
+      "g": "verpassen",
+      "d": "to be too slow and not catch the train",
+      "s": "Hurry up — I don't want to ___ the train!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "miss",
+          "tier": "full"
+        },
+        {
+          "text": "misses",
+          "tier": "partial"
+        },
+        {
+          "text": "missed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "miss",
+          "tier": "full"
+        },
+        {
+          "text": "to miss",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "miss",
+            "tier": "full"
+          },
+          {
+            "text": "to miss",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verpassen",
+            "tier": "full"
+          },
+          {
+            "text": "versäumen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "catch",
+        "find",
+        "watch"
+      ],
+      "hintDe": "Zu spät sein und den Zug oder Bus nicht mehr bekommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "catch",
+          "find",
+          "watch",
+          "wait",
+          "drive"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "Masterlist exampleSb, 'Hurry up, I don't want to miss the bus.'",
+      "note": null
+    }
+  ]
+}

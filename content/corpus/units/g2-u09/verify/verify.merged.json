@@ -1,0 +1,28 @@
+{
+  "schema": "verify-merged@1",
+  "slug": "g2-u09",
+  "round": 2,
+  "itemsHash": "701ca1d81149",
+  "lenses": {
+    "level-gloss": {
+      "by": "fable-lens-level-gloss",
+      "flagged": 0
+    },
+    "answers": {
+      "by": "fable-lens-answers",
+      "flagged": 0
+    },
+    "translation": {
+      "by": "fable-lens-translation",
+      "flagged": 0
+    },
+    "register": {
+      "by": "fable-lens-register",
+      "flagged": 0
+    }
+  },
+  "byItem": {},
+  "fixCount": 0,
+  "warnCount": 0,
+  "escalated": []
+}
