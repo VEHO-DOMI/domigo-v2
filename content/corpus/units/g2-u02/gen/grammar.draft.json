@@ -1,0 +1,2251 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g2-u02",
+  "briefBank": "ad9510a3c2c7",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "We ___ (buy) a big box of chocolates for Mr Harris.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "bought",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "buy ist unregelmäßig. Wie heißt die Vergangenheitsform?",
+      "hintEn": null,
+      "explainDe": "buy folgt nicht dem -ed-Muster: die Vergangenheitsform ist bought.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-gf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Alan ___ (write) to all his friends in the class.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wrote",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "write ist unregelmäßig. Welche Form passt in die Vergangenheit?",
+      "hintEn": null,
+      "explainDe": "Die Vergangenheitsform von write ist wrote – nicht writed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-gf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He ___ (know) it was a secret.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "knew",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "know ist unregelmäßig. Wie lautet die Vergangenheitsform?",
+      "hintEn": null,
+      "explainDe": "know wird in der Vergangenheit zu knew – das musst du auswendig lernen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-gf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from SB \"He knew it was wrong\" (wrong/answer/shy untaught)."
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mrs Wu and Mei ___ (make) a big cake on Sunday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "made",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "make ist unregelmäßig. Welche Form brauchst du für die Vergangenheit?",
+      "hintEn": null,
+      "explainDe": "make wird in der Vergangenheit zu made.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-gf-004",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My friends ___ (buy) sweets and we ___ (make) a cake.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "bought | made",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei unregelmäßige Verben in der Vergangenheit: buy und make.",
+      "hintEn": null,
+      "explainDe": "buy wird zu bought und make wird zu made – beide sind unregelmäßig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He didn't ___ (know) where the museum was.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "know",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't kommt die Grundform – nicht die Vergangenheitsform.",
+      "hintEn": null,
+      "explainDe": "In verneinten Sätzen steht nach didn't die Grundform: didn't know, nicht didn't knew.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-gf-005",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "We didn't ___ (buy) anything at the exhibition.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "buy",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't steht die Grundform von buy.",
+      "hintEn": null,
+      "explainDe": "Nach didn't verwendest du die Grundform: didn't buy, nicht didn't bought.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-gf-006",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Yesterday my mum ___ a new jacket.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "bought",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "buy",
+        "knew",
+        "wrote"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du brauchst die Vergangenheitsform von buy.",
+      "hintEn": null,
+      "explainDe": "Die Vergangenheitsform von buy ist bought: my mum bought a jacket. buy ist die Grundform; knew und wrote gehören zu anderen Verben.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "buy",
+          "make",
+          "knew",
+          "wrote"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "verify r1: removed plausible-correct distractor 'made' (making a jacket is idiomatic); distractors now wrong-tense (buy) or wrong-verb (knew/wrote)"
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She ___ a long letter to her grandmother last week.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wrote",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "write",
+        "writes",
+        "made"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welche Form von write passt in die Vergangenheit?",
+      "hintEn": null,
+      "explainDe": "Die Vergangenheitsform von write ist wrote. write und writes stehen nicht in der Vergangenheit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "write",
+          "writes",
+          "made",
+          "bought"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mrs Wu ___ a big cake for the children yesterday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "made",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "make",
+        "makes",
+        "wrote"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welche Form von make passt in die Vergangenheit?",
+      "hintEn": null,
+      "explainDe": "make wird in der Vergangenheit zu made: Mrs Wu made a big cake. make und makes sind nicht die Vergangenheit; wrote gehört zu write.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "make",
+          "makes",
+          "wrote",
+          "knew"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "verify r1: removed plausible-correct distractor 'bought' (buying a cake is idiomatic); added 'yesterday' past anchor; distractors now wrong-tense (make/makes) or wrong-verb (wrote/knew)"
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I didn't ___ any chocolates for him.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "buy",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "bought",
+        "made",
+        "wrote"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't kommt die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach didn't steht die Grundform buy – nicht die Vergangenheitsform bought.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "bought",
+          "made",
+          "wrote",
+          "had"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She buy new trainers for PE last week.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She bought new trainers for PE last week.",
+          "tier": "full"
+        },
+        {
+          "text": "She bought new trainers for PE last week",
+          "tier": "full"
+        },
+        {
+          "text": "bought",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Letzte Woche – buy muss in die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Hier steht die Grundform statt der Vergangenheit. buy wird zu bought: She bought new trainers.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-ec-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I didn't knew the password.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I didn't know the password.",
+          "tier": "full"
+        },
+        {
+          "text": "I didn't know the password",
+          "tier": "full"
+        },
+        {
+          "text": "know",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't steht die Grundform, nicht knew.",
+      "hintEn": null,
+      "explainDe": "Nach didn't kommt die Grundform: didn't know, nicht didn't knew.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-ec-002",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from v1 \"answer to question five\" (answer is untaught)."
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Tom writed a really funny story in English class.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom wrote a really funny story in English class.",
+          "tier": "full"
+        },
+        {
+          "text": "Tom wrote a really funny story in English class",
+          "tier": "full"
+        },
+        {
+          "text": "wrote",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "write ist unregelmäßig – kein -ed.",
+      "hintEn": null,
+      "explainDe": "write bekommt kein -ed. Die richtige Form ist wrote: Tom wrote a funny story.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-ec-003",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I buy a present for the teacher. (yesterday)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I bought a present for the teacher yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "I bought a present for the teacher yesterday",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday I bought a present for the teacher.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday I bought a present for the teacher",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "yesterday zeigt die Vergangenheit. Welche Form von buy brauchst du?",
+      "hintEn": null,
+      "explainDe": "yesterday verlangt die Vergangenheit: buy wird zu bought.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Alan writes to his friends. (last night)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Alan wrote to his friends last night.",
+          "tier": "full"
+        },
+        {
+          "text": "Alan wrote to his friends last night",
+          "tier": "full"
+        },
+        {
+          "text": "Last night Alan wrote to his friends.",
+          "tier": "full"
+        },
+        {
+          "text": "Last night Alan wrote to his friends",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "last night steht in der Vergangenheit. Wie heißt write dann?",
+      "hintEn": null,
+      "explainDe": "last night verlangt die Vergangenheit: write wird zu wrote.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich habe gestern ein Buch gekauft.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I bought a book yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "I bought a book yesterday",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday I bought a book.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday I bought a book",
+          "tier": "full"
+        },
+        {
+          "text": "I bought a new book yesterday.",
+          "tier": "partial"
+        },
+        {
+          "text": "I bought a new book yesterday",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "kaufen heißt buy. Wie lautet die Vergangenheitsform?",
+      "hintEn": null,
+      "explainDe": "buy wird in der Vergangenheit zu bought: I bought a book.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-tr-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Er hat keinen Kuchen gemacht.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He didn't make a cake.",
+          "tier": "full"
+        },
+        {
+          "text": "He didn't make a cake",
+          "tier": "full"
+        },
+        {
+          "text": "He did not make a cake.",
+          "tier": "full"
+        },
+        {
+          "text": "He did not make a cake",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung in der Vergangenheit: didn't + Grundform von make.",
+      "hintEn": null,
+      "explainDe": "Nach didn't steht die Grundform: He didn't make a cake – nicht made.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-tr-002",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "wrote / she / a / long / letter / yesterday",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She wrote a long letter yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "She wrote a long letter yesterday",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday she wrote a long letter.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday she wrote a long letter",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wer macht was? Subjekt + Verb in der Vergangenheit + Rest.",
+      "hintEn": null,
+      "explainDe": "Subjekt zuerst, dann die Vergangenheitsform wrote: She wrote a long letter yesterday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "the",
+          "a",
+          "to",
+          "at"
+        ],
+        "chipBudget": 6,
+        "minOptions": null
+      },
+      "seedV1": "m2-u2-irregular-verbs-expanded-sb-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "matching",
+      "difficulty": 1,
+      "prompt": {
+        "text": "buy, know, make, write",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "buy",
+          "right": "bought"
+        },
+        {
+          "left": "know",
+          "right": "knew"
+        },
+        {
+          "left": "make",
+          "right": "made"
+        },
+        {
+          "left": "write",
+          "right": "wrote"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Diese Vergangenheitsformen musst du auswendig lernen.",
+      "hintEn": null,
+      "explainDe": "buy-bought, know-knew, make-made, write-wrote – das sind die unregelmäßigen Formen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-irregular-verbs-expanded-mt-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Last week your class made a big poster. You tell a friend.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We made a big poster for the project.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We make a big poster for the project.",
+        "We makes a big poster for the project.",
+        "We bought a big poster for the project."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um letzte Woche – welche Form von make passt?",
+      "hintEn": null,
+      "explainDe": "Für die Vergangenheit brauchst du made. make und makes stehen nicht in der Vergangenheit.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "We make a big poster for the project.",
+          "We makes a big poster for the project.",
+          "We bought a big poster for the project.",
+          "We making a big poster for the project."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u2-irregular-verbs-expanded-cp-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from v1 (\"posters\" untaught) to \"a big poster\"; project/poster probe ok."
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "buy (gestern)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "bought",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Vergangenheitsform von buy beginnt mit b und endet auf -ght.",
+      "hintEn": null,
+      "explainDe": "buy wird in der Vergangenheit zu bought.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "verify r1: anagram cue reworded from 'Die Vergangenheitsform von buy' to the term-free 'buy (gestern)' — a student-facing carrier must carry no grammar term; the hint still may"
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "know (gestern)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "knew",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Vergangenheitsform von know beginnt mit kn-.",
+      "hintEn": null,
+      "explainDe": "know wird in der Vergangenheit zu knew.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "verify r1: anagram cue reworded to the term-free 'know (gestern)'"
+    },
+    {
+      "structureId": "g2u02.s.irregular-verbs",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "play → played",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "clean → cleaned",
+          "members": [
+            "visit",
+            "open",
+            "cook",
+            "want"
+          ]
+        },
+        {
+          "label": "buy → bought",
+          "members": [
+            "make",
+            "write",
+            "know",
+            "buy"
+          ]
+        }
+      ],
+      "hintDe": "Welche Verben hängen -ed an, welche bekommen eine ganz neue Form?",
+      "hintEn": null,
+      "explainDe": "Regelmäßige Verben hängen -ed an (visit → visited). Unregelmäßige haben eine neue Form: buy → bought, make → made, write → wrote, know → knew.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Sort verbs by past-tense pattern; labels carry example transforms because \"regular/irregular/-ed/forms\" are untaught."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ you enjoy the school project? — Yes, I did.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Did",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage in der Vergangenheit mit einem normalen Verb: Womit beginnst du?",
+      "hintEn": null,
+      "explainDe": "Fragen in der Vergangenheit beginnen mit Did + Person + Grundform: Did you enjoy …?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-gf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ Chloe embarrassed at the table?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um eine Person (Chloe) und einen Zustand. Kein did!",
+      "hintEn": null,
+      "explainDe": "Bei be stellst du was/were vor das Subjekt – kein did: Was Chloe embarrassed?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-gf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Did Mei ___ (eat) the cake last night?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "eat",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach Did kommt die Grundform des Verbs.",
+      "hintEn": null,
+      "explainDe": "Nach Did steht die Grundform: Did Mei eat …? – nicht ate oder eats.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-gf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from v1 \"finish\" (untaught lemma) to \"eat\"."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ the children happy at the museum?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Were",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mehrere Kinder – welche Form von be passt?",
+      "hintEn": null,
+      "explainDe": "Bei mehreren Personen verwendest du were: Were the children happy?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-gf-004",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Where ___ you on Sunday? — I was at my grandmother's.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Antwort hat I was – frag passend danach. Kein did!",
+      "hintEn": null,
+      "explainDe": "Bei be fragst du mit was/were, nicht mit did: Where were you …?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-gf-006",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "About yesterday:",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did she visit her friend yesterday?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Did she visited her friend yesterday?",
+        "Was she visit her friend yesterday?",
+        "She did visit her friend yesterday?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Did + Person + Grundform. Achte auf die richtige Verbform und Wortstellung.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Did she visit …? – nach Did steht die Grundform und Did kommt an den Satzanfang.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Did she visited her friend yesterday?",
+          "Was she visit her friend yesterday?",
+          "She did visit her friend yesterday?",
+          "Did she visits her friend yesterday?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u2-past-simple-questions-mc-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You ask about the story.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Was the story good?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Did the story was good?",
+        "Did the story good?",
+        "Were the story good?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei be (was/were) brauchst du kein did.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Was the story good? – kein did mit was/were, und eine Sache nimmt was.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Did the story was good?",
+          "Did the story good?",
+          "Were the story good?",
+          "Was the story was good?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u2-past-simple-questions-mc-002",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from v1 \"film\" (untaught) to \"story\"."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Were you and Emma at the park? — No, ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "we weren't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "we didn't",
+        "we wasn't",
+        "we aren't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Kurzantwort auf eine Were-Frage: Welches Hilfsverb wiederholst du?",
+      "hintEn": null,
+      "explainDe": "Kurzantworten wiederholen das Hilfsverb der Frage: Were …? → No, we weren't. (nicht didn't, nicht wasn't).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "we didn't",
+          "we wasn't",
+          "we aren't",
+          "we don't"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u2-past-simple-questions-mc-003",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Did you bought a present last Friday?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did you buy a present last Friday?",
+          "tier": "full"
+        },
+        {
+          "text": "Did you buy a present last Friday",
+          "tier": "full"
+        },
+        {
+          "text": "buy",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach Did steht die Grundform, nicht die Vergangenheitsform.",
+      "hintEn": null,
+      "explainDe": "Nach Did kommt die Grundform: Did you buy …? – nicht bought.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-ec-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from v1 \"went\" (untaught) to \"bought\" — same error type (past form after Did)."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Did he was tired after the match?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Was he tired after the match?",
+          "tier": "full"
+        },
+        {
+          "text": "Was he tired after the match",
+          "tier": "full"
+        },
+        {
+          "text": "Was he",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mit was/were verwendest du kein did.",
+      "hintEn": null,
+      "explainDe": "Kein did mit was/were! Die Frage lautet Was he tired …?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-ec-002",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from v1 \"trip\" (untaught) to \"match\"."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You liked the new teacher?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did you like the new teacher?",
+          "tier": "full"
+        },
+        {
+          "text": "Did you like the new teacher",
+          "tier": "full"
+        },
+        {
+          "text": "Did you like",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Frage in der Vergangenheit braucht Did am Anfang.",
+      "hintEn": null,
+      "explainDe": "Fragen in der Vergangenheit brauchen Did + Grundform: Did you like the new teacher?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-ec-003",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "verify r1: de-clunked the explainDe compound 'Past-simple-Fragen' to clean German 'Fragen in der Vergangenheit'"
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You visited the exhibition. (?)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did you visit the exhibition?",
+          "tier": "full"
+        },
+        {
+          "text": "Did you visit the exhibition",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mach aus dem Satz eine Frage: Did + Person + Grundform.",
+      "hintEn": null,
+      "explainDe": "Aus You visited … wird die Frage Did you visit …? – Did vorne, danach die Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The museum was open. (?)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Was the museum open?",
+          "tier": "full"
+        },
+        {
+          "text": "Was the museum open",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei was/were stellst du das Verb einfach nach vorne. Kein did!",
+      "hintEn": null,
+      "explainDe": "Bei be wird aus … was open die Frage Was the museum open? – kein did.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "you / have / a good day / at school",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did you have a good day at school?",
+          "tier": "full"
+        },
+        {
+          "text": "Did you have a good day at school",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bilde eine Vergangenheitsfrage mit Did.",
+      "hintEn": null,
+      "explainDe": "Did + Person + Grundform: Did you have a good day at school?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "where / you / go / on Saturday",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Where did you go on Saturday?",
+          "tier": "full"
+        },
+        {
+          "text": "Where did you go on Saturday",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Fragewort zuerst, dann did + Person + Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei W-Fragen steht das Fragewort vorne: Where did you go …? – go bleibt in der Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-tf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Hast du die Geschichte gelesen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did you read the story?",
+          "tier": "full"
+        },
+        {
+          "text": "Did you read the story",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage in der Vergangenheit: Did + du + Grundform von read.",
+      "hintEn": null,
+      "explainDe": "Did you read …? – nach Did steht die Grundform read (gleich geschrieben wie das Präsens).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-tr-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from v1 \"film\" (untaught) to \"story\"."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "War Tom gestern krank?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Was Tom ill yesterday?",
+          "tier": "full"
+        },
+        {
+          "text": "Was Tom ill yesterday",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei be (war) fragst du mit Was – kein did.",
+      "hintEn": null,
+      "explainDe": "war heißt hier Was: Was Tom ill yesterday? – kein did mit was/were.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-tr-002",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "what / did / you / have / for lunch / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What did you have for lunch?",
+          "tier": "full"
+        },
+        {
+          "text": "What did you have for lunch",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Fragewort, dann did + Person + Grundform.",
+      "hintEn": null,
+      "explainDe": "What did you have for lunch? – das Fragewort steht vorne, dann did + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "were",
+          "do",
+          "were"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": "m2-u2-past-simple-questions-sb-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "matching",
+      "difficulty": 3,
+      "prompt": {
+        "text": "About the weekend",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Did you play in the garden?",
+          "right": "Yes, I did."
+        },
+        {
+          "left": "Did Chloe eat her cake?",
+          "right": "No, she didn't."
+        },
+        {
+          "left": "Was Jacob upset?",
+          "right": "Yes, he was."
+        },
+        {
+          "left": "Were the children happy?",
+          "right": "No, they weren't."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Welche Kurzantwort passt zu welcher Frage? Achte auf did, was und were.",
+      "hintEn": null,
+      "explainDe": "Kurzantworten wiederholen das Hilfsverb der Frage: Did …? → Yes, I did. / Was …? → Yes, he was. / Were …? → No, they weren't.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u2-past-simple-questions-mt-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from beginnings↔endings (ambiguous cross-matches) to question↔short-answer for unique mapping."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Your friend talks about Saturday. You ask about Tom.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did Tom play football on Saturday?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Did Tom played football on Saturday?",
+        "Was Tom play football on Saturday?",
+        "Tom did play football on Saturday?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Did + Person + Grundform. Welche Frage ist richtig gebaut?",
+      "hintEn": null,
+      "explainDe": "Richtig ist Did Tom play …? – nach Did steht die Grundform play, nicht played.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Did Tom played football on Saturday?",
+          "Was Tom play football on Saturday?",
+          "Tom did play football on Saturday?",
+          "Did Tom plays football on Saturday?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u2-past-simple-questions-cp-001",
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "\"brother\" untaught → Tom; \"football\" alone untaught but probes ok inside the full sentence."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-questions",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You want to ask a friend about yesterday.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did you have a good day yesterday?",
+          "tier": "full"
+        },
+        {
+          "text": "Did you watch TV yesterday?",
+          "tier": "full"
+        },
+        {
+          "text": "Did you do your homework yesterday?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit Did + you + Grundform und füge yesterday hinzu.",
+      "hintEn": null,
+      "explainDe": "Eine gute Frage ist z.B. Did you watch TV yesterday? – Did + Person + Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-negation",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I ___ listen to the lesson. I was bored.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung in der Vergangenheit mit einem normalen Verb.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung in der Vergangenheit bildest du mit didn't + Grundform: I didn't listen.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "verify r1: strict=true — single-token polarity pair (didn't vs did), the grader must not accept the opposite-meaning near-miss"
+    },
+    {
+      "structureId": "g2u02.s.past-simple-negation",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The sculpture ___ dirty.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wasn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Sache, Vergangenheit, verneint – aber kein didn't bei be!",
+      "hintEn": null,
+      "explainDe": "be verneinst du mit wasn't/weren't, nicht mit didn't: The sculpture wasn't dirty.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "verify r1: strict=true — polarity pair (wasn't vs was)"
+    },
+    {
+      "structureId": "g2u02.s.past-simple-negation",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ make a cake — we had no time.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "wasn't",
+        "weren't",
+        "don't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "make ist kein be-Verb – welche Verneinung passt?",
+      "hintEn": null,
+      "explainDe": "Normale Verben verneinst du mit didn't: We didn't make a cake. wasn't/weren't gehören nur zu be.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "wasn't",
+          "weren't",
+          "don't",
+          "doesn't"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-negation",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I didn't listened to a thing.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I didn't listen to a thing.",
+          "tier": "full"
+        },
+        {
+          "text": "I didn't listen to a thing",
+          "tier": "full"
+        },
+        {
+          "text": "listen",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't steht die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach didn't kommt die Grundform: didn't listen, nicht didn't listened.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-negation",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The jacket didn't was on the screen.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The jacket wasn't on the screen.",
+          "tier": "full"
+        },
+        {
+          "text": "The jacket wasn't on the screen",
+          "tier": "full"
+        },
+        {
+          "text": "wasn't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mit was/were verwendest du kein didn't.",
+      "hintEn": null,
+      "explainDe": "Kein didn't mit was/were! Richtig: The jacket wasn't on the screen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-negation",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Paul cleaned his room today. (not)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Paul didn't clean his room today.",
+          "tier": "full"
+        },
+        {
+          "text": "Paul didn't clean his room today",
+          "tier": "full"
+        },
+        {
+          "text": "Paul did not clean his room today.",
+          "tier": "full"
+        },
+        {
+          "text": "Paul did not clean his room today",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneine mit didn't + Grundform. Was passiert mit cleaned?",
+      "hintEn": null,
+      "explainDe": "In der Verneinung steht die Grundform: Paul didn't clean … – aus cleaned wird wieder clean.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/wb/More 2 WB Unit 2.txt#ex-10",
+      "note": "verify r2 (answers): a free-typed transformation must accept the uncontracted 'did not' form too (matches the tr.001/tr.002 convention); contraction-only would wrongly reject a correct production."
+    },
+    {
+      "structureId": "g2u02.s.past-simple-negation",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sie hat den Brief nicht gelesen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't read the letter.",
+          "tier": "full"
+        },
+        {
+          "text": "She didn't read the letter",
+          "tier": "full"
+        },
+        {
+          "text": "She did not read the letter.",
+          "tier": "full"
+        },
+        {
+          "text": "She did not read the letter",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung mit didn't + Grundform von read.",
+      "hintEn": null,
+      "explainDe": "She didn't read the letter. – nach didn't steht die Grundform read.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.past-simple-negation",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "didn't or wasn't / weren't?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "didn't",
+          "members": [
+            "I ___ buy a present.",
+            "We ___ make a cake.",
+            "She ___ read the story."
+          ]
+        },
+        {
+          "label": "wasn't / weren't",
+          "members": [
+            "The museum ___ open.",
+            "The children ___ happy."
+          ]
+        }
+      ],
+      "hintDe": "Normale Verben → didn't. be (was/were) → wasn't/weren't.",
+      "hintEn": null,
+      "explainDe": "Normale Verben verneinst du mit didn't, be mit wasn't/weren't.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.why-because",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ are you upset? — Because the museum was closed.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Why",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du fragst nach dem Grund.",
+      "hintEn": null,
+      "explainDe": "Mit Why fragst du nach dem Grund: Why are you upset?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.why-because",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Why do you like art? — ___ it is great.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du gibst einen Grund an.",
+      "hintEn": null,
+      "explainDe": "Den Grund leitest du mit Because ein: Because it is great.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Re-authored from SB \"sport is cool\" (sport+cool untaught) to \"art ... great\"."
+    },
+    {
+      "structureId": "g2u02.s.why-because",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ is the garden a mess? — Because there were lots of people there.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Why",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Because",
+        "What",
+        "Where"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Fragewort fragt nach dem Grund?",
+      "hintEn": null,
+      "explainDe": "Nach dem Grund fragst du mit Why. Because gibt den Grund – es steht in der Antwort, nicht in der Frage.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Because",
+          "What",
+          "Where",
+          "When"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.why-because",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Because art great is.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Because art is great.",
+          "tier": "full"
+        },
+        {
+          "text": "Because art is great",
+          "tier": "full"
+        },
+        {
+          "text": "art is great",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach because steht ein normaler Satz: Subjekt + Verb + Rest.",
+      "hintEn": null,
+      "explainDe": "Im Englischen steht das Verb nicht am Satzende: Because art is great.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": "Targets the L1-transfer verb-final error from the brief; \"sport is cool\" untaught → \"art is great\"."
+    },
+    {
+      "structureId": "g2u02.s.why-because",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Why and because",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Why are you upset?",
+          "right": "Because the museum was closed."
+        },
+        {
+          "left": "Why was Jacob happy?",
+          "right": "Because a neighbour called the police."
+        },
+        {
+          "left": "Why is the garden a mess?",
+          "right": "Because there were lots of people there."
+        },
+        {
+          "left": "Why do you like art?",
+          "right": "Because it is great."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Welcher Grund passt zu welcher Why-Frage?",
+      "hintEn": null,
+      "explainDe": "Jede Antwort beginnt mit Because und nennt den passenden Grund zur Frage.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.why-because",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "because / I / this one / don't / like",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Because I don't like this one.",
+          "tier": "full"
+        },
+        {
+          "text": "Because I don't like this one",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach because: Subjekt + Verb in normaler Reihenfolge.",
+      "hintEn": null,
+      "explainDe": "Nach because folgt ein ganzer Satz: Because I don't like this one.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "is",
+          "the",
+          "a",
+          "at"
+        ],
+        "chipBudget": 6,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u02.s.why-because",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Warum bist du so glücklich? — Weil ich einen Hund habe.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Why are you so happy? — Because I have a dog.",
+          "tier": "full"
+        },
+        {
+          "text": "Why are you so happy? Because I have a dog.",
+          "tier": "full"
+        },
+        {
+          "text": "Why are you so happy? — Because I have got a dog.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frag mit Why, antworte mit Because + ganzer Satz.",
+      "hintEn": null,
+      "explainDe": "Why are you so happy? – Because I have a dog. Nach Because kommt Subjekt + Verb.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 2.txt#grammar-1",
+      "note": null
+    }
+  ]
+}

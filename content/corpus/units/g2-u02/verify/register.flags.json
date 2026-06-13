@@ -1,0 +1,15 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u02",
+  "lens": "register",
+  "unit": "g2-u02",
+  "itemsHash": "0316b35dcf62",
+  "promptHash": "359c6953017a",
+  "round": 2,
+  "by": "fable-lens-register",
+  "flags": [],
+  "summary": {
+    "itemsSeen": 96,
+    "flagged": 0
+  }
+}
