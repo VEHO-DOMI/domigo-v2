@@ -1,0 +1,385 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u01",
+  "round": 1,
+  "itemsHash": "90b596aea3fb",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "lens-warn:g2u01.w.subject#above-level",
+      "kind": "lens-warn",
+      "itemId": "g2u01.w.subject",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "lens-warn:g2u01.w.webpage#distractor-plausible-correct",
+      "kind": "lens-warn",
+      "itemId": "g2u01.w.webpage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.along",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.along",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.area",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.area",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.art",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.art",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.as-soon-as",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.as-soon-as",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.bicycle-lane",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.bicycle-lane",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.break",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.break",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.calendar",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.calendar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.colourful",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.colourful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.daily",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.daily",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.design-and-technology",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.design-and-technology",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.english",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.english",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.french",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.french",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.geography",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.geography",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.glad",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.glad",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.grandmother",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.grandmother",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.history",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.history",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.information-technology",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.information-technology",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.joke",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.joke",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.kilometre",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.kilometre",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.king",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.king",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.lesson",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.lesson",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.maths",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.maths",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.music",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.music",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.noisy",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.noisy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.online-safety",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.online-safety",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.opinion",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.opinion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.physical-education",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.physical-education",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.popular",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.popular",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.queen",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.queen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.rubbish",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.rubbish",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.scary",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.scary",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.science",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.science",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.shadow",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.shadow",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.spring",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.spring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.subject",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.subject",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.supper",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.supper",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.timetable",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.timetable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-book",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-book",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-crawl",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-crawl",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-get-dressed",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-get-dressed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-go-for-a-walk",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-go-for-a-walk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-prepare",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-prepare",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-put-on",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-put-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-stay-at-home",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-stay-at-home",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-take-a-rest",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-take-a-rest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-travel",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-travel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.to-visit",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.to-visit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.w.webpage",
+      "kind": "translation-audit",
+      "itemId": "g2u01.w.webpage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u01.gi.past-simple.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u01.gi.past-simple.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u01.w.along#cedf73",
+      "kind": "validator-warn",
+      "itemId": "g2u01.w.along",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": ""
+  },
+  "metrics": {
+    "itemsReviewed": 70,
+    "fullRows": 70,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

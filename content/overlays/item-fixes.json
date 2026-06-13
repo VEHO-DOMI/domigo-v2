@@ -11,5 +11,23 @@
         "hintDe": "Der Kürbiseimer ist super gruselig! Ihn zu behalten – gute Idee oder nicht?"
       }
     }
+  },
+  "g2-u01": {
+    "patch": {
+      "g2u01.w.along": {
+        "s": "We go ___ the long street to school."
+      },
+      "g2u01.w.science": {
+        "d": "The subject where you study light, space and the Earth.",
+        "s": "We study light and space in ___."
+      },
+      "g2u01.w.subject": {
+        "s": "English is my favourite ___ of all."
+      },
+      "g2u01.w.webpage": {
+        "s": "Open the school ___ and read it on your tablet.",
+        "d": "A screen of stories and pictures that you open and read on a tablet."
+      }
+    }
   }
 }

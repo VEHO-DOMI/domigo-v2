@@ -1,0 +1,1042 @@
+{
+  "schema": "grammar@1",
+  "grade": 2,
+  "unit": 1,
+  "slug": "g2-u01",
+  "items": [
+    {
+      "id": "g2u01.gi.past-simple.cp.001",
+      "structureId": "g2u01.s.past-simple",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Last weekend, I visited my grandmother and cooked dinner.",
+            "Last weekend, I visit my grandmother and cook dinner.",
+            "Last weekend, I visiting my grandmother and cooking dinner.",
+            "Last weekend, I am visiting my grandmother and cooking dinner."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Each distractor is wrong only in the target structure (present, bare -ing, present continuous)."
+      },
+      "prompt": {
+        "text": "Your friend asks what you did last weekend.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last weekend, I visited my grandmother and cooked dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Last weekend, I visit my grandmother and cook dinner.",
+        "Last weekend, I visiting my grandmother and cooking dinner.",
+        "Last weekend, I am visiting my grandmother and cooking dinner."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„Last weekend\" ist vorbei – such den Satz, in dem beide Verben in der Mitvergangenheit stehen.",
+      "hintEn": null,
+      "explainDe": "Über das letzte Wochenende sprichst du im Past simple: Last weekend, I visited my grandmother and cooked dinner. Die anderen Sätze stehen in der falschen Zeit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.gi.past-simple.ec.001",
+      "structureId": "g2u01.s.past-simple",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Common error from brief: base form instead of past. Strict: 'watch' is one edit from 'watched'."
+      },
+      "prompt": {
+        "text": "Yesterday I watch TV.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Yesterday I watched TV.",
+          "tier": "full"
+        },
+        {
+          "text": "watched",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„Yesterday\" zeigt Vergangenheit – das Verb steht aber noch in der Grundform. Häng -ed an.",
+      "hintEn": null,
+      "explainDe": "Nach „yesterday\" brauchst du das Past simple. „watch\" bekommt ein -ed: Yesterday I watched TV.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.past-simple.ec.002",
+      "structureId": "g2u01.s.past-simple",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "be is/was contrast with a past time marker; strict so present 'is' cannot slip through."
+      },
+      "prompt": {
+        "text": "Last summer, my holiday is amazing.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last summer, my holiday was amazing.",
+          "tier": "full"
+        },
+        {
+          "text": "was",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„Last summer\" ist vorbei. Welche Vergangenheitsform von „is\" brauchst du?",
+      "hintEn": null,
+      "explainDe": "Bei „last summer\" steht „be\" im Past simple. Aus „is\" wird „was\": Last summer, my holiday was amazing.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.past-simple.ff.001",
+      "structureId": "g2u01.s.past-simple",
+      "format": "free-form",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Open production; models drawn from SPEAKING 2 / the snake-holiday story. Single-clause answer accepted as partial."
+      },
+      "prompt": {
+        "text": "Tell your friend what you did in your last holiday.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last summer, I stayed at home and watched TV.",
+          "tier": "full"
+        },
+        {
+          "text": "I visited my grandmother and we cooked dinner.",
+          "tier": "full"
+        },
+        {
+          "text": "My family had a holiday in Mexico and we visited a castle.",
+          "tier": "full"
+        },
+        {
+          "text": "I stayed at home.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erzähl in zwei Sätzen, was du gemacht hast – alle Verben in der Mitvergangenheit.",
+      "hintEn": null,
+      "explainDe": "Über die Ferien berichtest du im Past simple, z. B.: Last summer, I stayed at home and watched TV.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.gi.past-simple.gf.001",
+      "structureId": "g2u01.s.past-simple",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Irregular put-type (no change) form; spelling identical to base, so strict guards against an undetectable tense slip."
+      },
+      "prompt": {
+        "text": "After dinner, I ___ a book.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "read",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mitvergangenheit von „read\". Die Form sieht gleich aus wie die Grundform – aber du sprichst hier über gestern Abend.",
+      "hintEn": null,
+      "explainDe": "„read\" bleibt im Past simple gleich geschrieben (man spricht es nur anders aus): After dinner, I read a book.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.past-simple.gf.002",
+      "structureId": "g2u01.s.past-simple",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "verify-fix: accept BrE tidied (partial; tidy untaught at u01)"
+      },
+      "prompt": {
+        "text": "On Sunday, I ___ my homework and ___ my room.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "did | cleaned",
+          "tier": "full"
+        },
+        {
+          "text": "did | tidied",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Verben in die Mitvergangenheit setzen: „do\" ist unregelmäßig, „clean\" bekommt ein -ed.",
+      "hintEn": null,
+      "explainDe": "„do\" wird unregelmäßig zu „did\", „clean\" regelmäßig zu „cleaned\": On Sunday, I did my homework and cleaned my room.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.past-simple.mc.001",
+      "structureId": "g2u01.s.past-simple",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "did",
+            "do",
+            "does",
+            "doing"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "verify-fix: yesterday is a Signalwort, not Zeitwort"
+      },
+      "prompt": {
+        "text": "Yesterday, I ___ my homework after supper.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "did",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "do",
+        "does",
+        "doing"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„Yesterday\" zeigt: es ist vorbei. Welche Form von „do\" ist die Mitvergangenheit?",
+      "hintEn": null,
+      "explainDe": "Das Signalwort „yesterday\" verlangt das Past simple, also die unregelmäßige Form „did\": Yesterday, I did my homework after supper.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.gi.past-simple.mc.002",
+      "structureId": "g2u01.s.past-simple",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "had",
+            "have",
+            "has",
+            "having"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB story line 'My family and I had a scary holiday.'"
+      },
+      "prompt": {
+        "text": "Last year, my family ___ a scary holiday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "have",
+        "has",
+        "having"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„Last year\" ist vorbei – welche Form von „have\" passt in die Vergangenheit?",
+      "hintEn": null,
+      "explainDe": "„have\" wird im Past simple unregelmäßig zu „had\": Last year, my family had a scary holiday.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.gi.past-simple.sb.001",
+      "structureId": "g2u01.s.past-simple",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "last",
+            "summer",
+            "I",
+            "visited",
+            "my",
+            "grandmother"
+          ],
+          "chipBudget": 6,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Daily/holiday-world carrier. All 6 chips are answer tokens, no distractor chips; every chip is independently in-bank."
+      },
+      "prompt": {
+        "text": "summer / I / visited / my / grandmother / last",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last summer, I visited my grandmother.",
+          "tier": "full"
+        },
+        {
+          "text": "I visited my grandmother last summer.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bau einen Satz über die letzten Ferien. „visit\" ist schon in der Mitvergangenheit (visited).",
+      "hintEn": null,
+      "explainDe": "Mit „last summer\" passt das Past simple: Last summer, I visited my grandmother. (oder: I visited my grandmother last summer.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.gi.past-simple.tf.001",
+      "structureId": "g2u01.s.past-simple",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Present->past transformation; both word orders accepted as full."
+      },
+      "prompt": {
+        "text": "I visit my grandmother. (last spring)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I visited my grandmother last spring.",
+          "tier": "full"
+        },
+        {
+          "text": "Last spring, I visited my grandmother.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Schreib den Satz in der Mitvergangenheit – mit „last spring\" am Ende oder am Anfang.",
+      "hintEn": null,
+      "explainDe": "„last spring\" verlangt das Past simple. „visit\" bekommt -ed: I visited my grandmother last spring.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.past-simple.tr.001",
+      "structureId": "g2u01.s.past-simple",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "deToEn; accepts both word orders and dinner/supper as full, 'television' as partial."
+      },
+      "prompt": {
+        "text": "Gestern habe ich nach dem Abendessen ferngesehen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Yesterday, I watched TV after dinner.",
+          "tier": "full"
+        },
+        {
+          "text": "I watched TV after dinner yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday I watched TV after supper.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday, I watched television after dinner.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„Gestern\" verlangt das Past simple. „watch\" bekommt -ed.",
+      "hintEn": null,
+      "explainDe": "Im Englischen steht hier das Past simple: Yesterday, I watched TV after dinner.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.gi.present-simple.cp.001",
+      "structureId": "g2u01.s.present-simple",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "My sister watches TV every evening.",
+            "My sister watch TV every evening.",
+            "My sister watching TV every evening.",
+            "My sister doesn't watches TV every evening."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "It is the evening. Your sister watches TV every day, like she always does.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My sister watches TV every evening.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "My sister watch TV every evening.",
+        "My sister watching TV every evening.",
+        "My sister doesn't watches TV every evening."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Welcher Satz hat in der 3. Person Einzahl die richtige Verbform?",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it bekommt das Verb ein -s: 'she watches'. Nicht 'watch', nicht 'watching', und nach doesn't kommt die Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.present-simple.ec.001",
+      "structureId": "g2u01.s.present-simple",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My dad cook dinner every evening.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My dad cooks dinner every evening.",
+          "tier": "full"
+        },
+        {
+          "text": "cooks",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'My dad' ist 3. Person Einzahl – dem Verb fehlt das -s.",
+      "hintEn": null,
+      "explainDe": "In der 3. Person Einzahl (he/she/it) braucht das Verb ein -s: 'My dad cooks'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.present-simple.ec.002",
+      "structureId": "g2u01.s.present-simple",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He don't like history.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't like history.",
+          "tier": "full"
+        },
+        {
+          "text": "He does not like history.",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei 'he' heißt die Verneinung nicht 'don't', sondern …?",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it verneinst du mit 'doesn't' + Grundform: 'He doesn't like history.'",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.present-simple.gf.001",
+      "structureId": "g2u01.s.present-simple",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "verify-fix: strict (do/does close-match)"
+      },
+      "prompt": {
+        "text": "Every day, I ___ my homework after supper.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei 'I' bleibt das Verb in der Grundform – kein -s.",
+      "hintEn": null,
+      "explainDe": "Für Tatsachen und Gewohnheiten nimmst du das Present simple. Nach 'I' steht die Grundform: 'I do'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.present-simple.gf.002",
+      "structureId": "g2u01.s.present-simple",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#timetable-14",
+        "seedV1": null,
+        "narrative": null,
+        "note": "verify-fix: strict (have/has close-match)"
+      },
+      "prompt": {
+        "text": "On Mondays we ___ art and music.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'we' braucht die Grundform des Verbs.",
+      "hintEn": null,
+      "explainDe": "Über den Stundenplan (eine Gewohnheit) sprichst du im Present simple. Nach 'we' steht die Grundform: 'we have'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.present-simple.gf.003",
+      "structureId": "g2u01.s.present-simple",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#reading-3B",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Grace gets up early. She ___ her classroom every day.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "cleans",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "3. Person Einzahl (she) – häng ein -s an die Grundform an.",
+      "hintEn": null,
+      "explainDe": "In der 3. Person Einzahl (he/she/it) bekommt das Verb ein -s: 'she cleans'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.present-simple.gf.004",
+      "structureId": "g2u01.s.present-simple",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sam likes maths, but he ___ history.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't like",
+          "tier": "full"
+        },
+        {
+          "text": "does not like",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung in der 3. Person: doesn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bildest du mit don't/doesn't + Grundform. Bei 'he' nimmst du 'doesn't': 'he doesn't like'. Kein zweites -s am Verb.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.present-simple.mc.001",
+      "structureId": "g2u01.s.present-simple",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "studies",
+            "study",
+            "watch",
+            "go",
+            "plays",
+            "has"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My sister ___ French at school every day.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "studies",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "study",
+        "watch",
+        "go"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wer macht es? 'My sister' = 3. Person Einzahl – Verb mit -s.",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it hängst du ein -s an: 'she studies'. Bei Verben auf -y wird daraus -ies.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.gi.present-simple.qf.001",
+      "structureId": "g2u01.s.present-simple",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sam plays football every day. Ask if this is true.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does Sam play football every day?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage in der 3. Person beginnt mit 'Does' – und danach steht die Grundform.",
+      "hintEn": null,
+      "explainDe": "Fragen im Present simple bildest du mit do/does. Bei he/she/it nimmst du 'Does' und das Verb kommt in die Grundform: 'Does Sam play …?'",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u01.gi.present-simple.sb.001",
+      "structureId": "g2u01.s.present-simple",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "we",
+            "music",
+            "have",
+            "on",
+            "Mondays",
+            "does",
+            "art"
+          ],
+          "chipBudget": 7,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 1.txt#timetable-14",
+        "seedV1": null,
+        "narrative": null,
+        "note": "verify-fix: accept both music and art builds"
+      },
+      "prompt": {
+        "text": "we / music / have / on / Mondays / does / art",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have music on Mondays.",
+          "tier": "full"
+        },
+        {
+          "text": "We have art on Mondays.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit dem Subjekt 'we'. Nicht alle Wortkärtchen brauchst du.",
+      "hintEn": null,
+      "explainDe": "Im Present simple steht das Subjekt vor dem Verb: 'We have music on Mondays.' oder 'We have art on Mondays.' Das Wort 'does' brauchst du hier nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u01.gi.present-simple.tf.001",
+      "structureId": "g2u01.s.present-simple",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I study French at school. (my sister)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My sister studies French at school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wechsel von 'I' zu 'my sister' (3. Person) – denk an das -s am Verb.",
+      "hintEn": null,
+      "explainDe": "In der 3. Person Einzahl bekommt das Verb ein -s. Verben auf -y werden zu -ies: 'study' → 'studies'.",
+      "explainEn": null,
+      "strict": true
+    }
+  ]
+}

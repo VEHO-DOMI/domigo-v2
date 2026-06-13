@@ -1,0 +1,20 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u01",
+  "lens": "level-gloss",
+  "itemsHash": "015265583952",
+  "promptHash": "aefb997bf664",
+  "round": 6,
+  "by": "fable-lens-level-gloss",
+  "flags": [
+    {
+      "key": "above-level:g2u01.w.subject",
+      "kind": "above-level",
+      "itemId": "g2u01.w.subject",
+      "severity": "warn",
+      "note": "Definition 'd' = \"Maths, art, music and history are all kinds of these.\" 'kind' is taught only as the hedge 'kind of' (g1-u14, = sort of / quite); the plural count noun 'kinds of' (= types/categories, Arten) is an untaught meaning, and the cataphoric 'these' pointing forward to the gapped answer is knotty for A1+. Defensible (standing accepted warn): the four fronted examples plus the s-sentence (\"English is my favourite ___ of all.\") still scaffold the answer. Definition and carrier are byte-identical to round 5; no new issue. Sibling subject defs (science, geography, history, etc.) read cleanly.",
+      "suggestion": null
+    }
+  ],
+  "summary": { "itemsSeen": 70, "flagged": 1 }
+}

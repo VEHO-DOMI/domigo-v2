@@ -1,0 +1,3277 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g2-u01",
+  "briefBank": "d2d12476b358",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g2u01.w.english",
+      "w": "English",
+      "g": "Englisch",
+      "d": "The subject where you read and write stories from Britain.",
+      "s": "We have ___ and read stories from Britain.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "English",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "English",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "English",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Englisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "French",
+        "music",
+        "geography"
+      ],
+      "hintDe": "Die Sprache, die du gerade lernst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "French",
+          "music",
+          "geography",
+          "history",
+          "maths"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.french",
+      "w": "French",
+      "g": "Französisch",
+      "d": "The subject you study to talk to people in France.",
+      "s": "My sister studies ___ so she can talk to people in France.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "French",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "French",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "French",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Französisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "English",
+        "music",
+        "science"
+      ],
+      "hintDe": "Die Sprache, die man in Paris spricht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "English",
+          "music",
+          "science",
+          "art",
+          "geography"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.music",
+      "w": "music",
+      "g": "Musik",
+      "d": "The subject where you play the guitar.",
+      "s": "We play the guitar in our ___ lesson.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "music",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "music",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "music",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Musik",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "art",
+        "maths",
+        "geography"
+      ],
+      "hintDe": "In diesem Fach spielst du Gitarre.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "art",
+          "maths",
+          "geography",
+          "science",
+          "history"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.maths",
+      "w": "maths",
+      "g": "Mathematik",
+      "d": "The subject where you work with numbers.",
+      "s": "I like ___ because I am good with numbers.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "maths",
+          "tier": "full"
+        },
+        {
+          "text": "math",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "maths",
+          "tier": "full"
+        },
+        {
+          "text": "math",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "maths",
+            "tier": "full"
+          },
+          {
+            "text": "math",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mathematik",
+            "tier": "full"
+          },
+          {
+            "text": "Mathe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "science",
+        "geography",
+        "history"
+      ],
+      "hintDe": "In diesem Fach rechnest du mit Zahlen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "science",
+          "geography",
+          "history",
+          "music",
+          "art"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.geography",
+      "w": "geography",
+      "g": "Geografie",
+      "d": "The subject about countries, cities and rivers.",
+      "s": "In ___ we read about countries, cities and rivers.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "geography",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "geography",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "geography",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geografie",
+            "tier": "full"
+          },
+          {
+            "text": "Geographie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "history",
+        "science",
+        "maths"
+      ],
+      "hintDe": "In diesem Fach geht es um Länder und Flüsse.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "history",
+          "science",
+          "maths",
+          "art",
+          "music"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.science",
+      "w": "science",
+      "g": "Naturwissenschaften",
+      "d": "The subject about light, space and the Earth.",
+      "s": "We find out about light and space in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "science",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "science",
+          "tier": "full"
+        },
+        {
+          "text": "sciences",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "science",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Naturwissenschaften",
+            "tier": "full"
+          },
+          {
+            "text": "Naturwissenschaft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "geography",
+        "maths",
+        "history"
+      ],
+      "hintDe": "In diesem Fach lernst du über Licht und den Weltraum.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "geography",
+          "maths",
+          "history",
+          "art",
+          "music"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.physical-education",
+      "w": "physical education (PE)",
+      "g": "Sport",
+      "d": "The subject where you run, jump and play outside.",
+      "s": "In ___ we run, jump and play outside.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "PE",
+          "tier": "full"
+        },
+        {
+          "text": "physical education",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "PE",
+          "tier": "full"
+        },
+        {
+          "text": "physical education",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "PE",
+            "tier": "full"
+          },
+          {
+            "text": "physical education",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sport",
+            "tier": "full"
+          },
+          {
+            "text": "Leibeserziehung",
+            "tier": "full"
+          },
+          {
+            "text": "Turnen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "art",
+        "music",
+        "history"
+      ],
+      "hintDe": "In diesem Fach läufst du und machst Sport.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "art",
+          "music",
+          "history",
+          "maths",
+          "geography"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "verify-fix: Turnen promoted to full (everyday Austrian term)"
+    },
+    {
+      "wordId": "g2u01.w.art",
+      "w": "art",
+      "g": "Kunst",
+      "d": "The subject where you paint and make pictures.",
+      "s": "I painted a picture of my dog in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "art",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "art",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "art",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kunst",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "music",
+        "science",
+        "maths"
+      ],
+      "hintDe": "In diesem Fach malst du Bilder.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "music",
+          "science",
+          "maths",
+          "history",
+          "geography"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.history",
+      "w": "history",
+      "g": "Geschichte",
+      "d": "The school subject about kings, queens and famous people from the past.",
+      "s": "In ___ we read about famous people from the past.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "history",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "history",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "history",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geschichte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "geography",
+        "science",
+        "maths"
+      ],
+      "hintDe": "Das Schulfach, in dem du über Könige, Königinnen und die Vergangenheit lernst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "geography",
+          "science",
+          "maths",
+          "art",
+          "music"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "history",
+      "sbRef": null,
+      "note": "v1 carrier used out-of-bank 'Romans'/'learned'; rephrased with in-bank 'famous people from the past'."
+    },
+    {
+      "wordId": "g2u01.w.information-technology",
+      "w": "information technology (IT)",
+      "g": "Informatik",
+      "d": "The school subject where you work on computer games and webpages.",
+      "s": "In ___ we play computer games and make a webpage.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "information technology",
+          "tier": "full"
+        },
+        {
+          "text": "IT",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "information technology",
+          "tier": "full"
+        },
+        {
+          "text": "IT",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "information technology",
+            "tier": "full"
+          },
+          {
+            "text": "IT",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Informatik",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "science",
+        "geography",
+        "art"
+      ],
+      "hintDe": "Das Schulfach, in dem du am Computer arbeitest (kurz: IT).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "science",
+          "geography",
+          "art",
+          "music",
+          "maths"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "information technology (IT)",
+      "sbRef": null,
+      "note": "Subject = IT. v1 carrier used 'laptops'/'use' (out of bank); rephrased with in-bank 'computer games' + 'webpage'."
+    },
+    {
+      "wordId": "g2u01.w.design-and-technology",
+      "w": "design and technology",
+      "g": "Werken",
+      "d": "The school subject where you make and paint a box or a car.",
+      "s": "In ___ we make and paint a small box.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "design and technology",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "design and technology",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "design and technology",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Werken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "art",
+        "music",
+        "science"
+      ],
+      "hintDe": "Das Schulfach, in dem du mit deinen Händen Sachen baust und gestaltest (Werken).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "art",
+          "music",
+          "science",
+          "geography",
+          "maths"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "design and technology",
+      "sbRef": null,
+      "note": "Subject = DT. v1 'D&T' answer and 'built'/'tools' carrier were out of bank; rephrased with in-bank 'make and paint a small box'. Closest distractor is art."
+    },
+    {
+      "wordId": "g2u01.w.glad",
+      "w": "glad",
+      "g": "froh",
+      "d": "Very happy about a good thing.",
+      "s": "I was ___ to stay at home with my family.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "glad",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "glad",
+          "tier": "full"
+        },
+        {
+          "text": "happy",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "glad",
+            "tier": "full"
+          },
+          {
+            "text": "happy",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "froh",
+            "tier": "full"
+          },
+          {
+            "text": "glücklich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sad",
+        "angry",
+        "tired"
+      ],
+      "hintDe": "Du fühlst dich so, wenn etwas Schönes passiert.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "sad",
+          "angry",
+          "tired",
+          "scary",
+          "noisy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "glad",
+      "sbRef": "SB Unit 1 'A SONG 4 U' / Word file: 'I was glad to stay at home.'",
+      "note": "Carrier from the unit song + master-list example ('I was glad to stay at home.'). Definition avoids 'happy' as headword-free; 'happy' offered as partial answer/translation."
+    },
+    {
+      "wordId": "g2u01.w.kilometre",
+      "w": "kilometre",
+      "g": "Kilometer",
+      "d": "How long a road is. A road can be one, two or many of them.",
+      "s": "My new school is one ___ from the park.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "kilometre",
+          "tier": "full"
+        },
+        {
+          "text": "kilometer",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kilometre",
+          "tier": "full"
+        },
+        {
+          "text": "kilometres",
+          "tier": "full"
+        },
+        {
+          "text": "kilometer",
+          "tier": "partial"
+        },
+        {
+          "text": "kilometers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kilometre",
+            "tier": "full"
+          },
+          {
+            "text": "kilometer",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kilometer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "area",
+        "shadow",
+        "calendar"
+      ],
+      "hintDe": "Damit misst du, wie weit ein Ort entfernt ist (1000 Meter).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "area",
+          "shadow",
+          "calendar",
+          "timetable",
+          "spring"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "kilometre",
+      "sbRef": "SB Word file: \"My school's one kilometre from my house.\"",
+      "note": "Carrier from master-list example, reworked to keep 'house' (out of bank) out -> 'from the park'. 'metre' is not in the bank so distractors are in-bank concrete nouns. -er spelling marked partial (British -re is the taught form)."
+    },
+    {
+      "wordId": "g2u01.w.to-stay-at-home",
+      "w": "to stay at home",
+      "g": "zu Hause bleiben",
+      "d": "To not go out, but to be in with your family all day.",
+      "s": "It is cold, so we want to ___ today.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "stay at home",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stay at home",
+          "tier": "full"
+        },
+        {
+          "text": "to stay at home",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stay at home",
+            "tier": "full"
+          },
+          {
+            "text": "to stay at home",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zu Hause bleiben",
+            "tier": "full"
+          },
+          {
+            "text": "daheim bleiben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to travel",
+        "to go for a walk",
+        "to take a rest"
+      ],
+      "hintDe": "Du gehst nicht weg, sondern bleibst den ganzen Tag daheim.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to travel",
+          "to go for a walk",
+          "to take a rest",
+          "to visit",
+          "to put on"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to stay at home",
+      "sbRef": "SB Word file: 'Are you going to stay at home?'",
+      "note": "Whole phrase goes in the blank (carrier reworded from master-list example) so 'home' is never exposed alone. Distractors are in-bank verb phrases."
+    },
+    {
+      "wordId": "g2u01.w.to-travel",
+      "w": "to travel",
+      "g": "reisen",
+      "d": "To go to new places, often on a plane or a train.",
+      "s": "My family and I ___ to many countries every summer.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "travel",
+          "tier": "full"
+        },
+        {
+          "text": "travelled",
+          "tier": "partial"
+        },
+        {
+          "text": "traveled",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "travel",
+          "tier": "full"
+        },
+        {
+          "text": "to travel",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "travel",
+            "tier": "full"
+          },
+          {
+            "text": "to travel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "reisen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to stay at home",
+        "to visit",
+        "to book"
+      ],
+      "hintDe": "Du machst eine weite Reise von einem Ort zu einem anderen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to stay at home",
+          "to visit",
+          "to book",
+          "to go for a walk",
+          "to take a rest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to travel",
+      "sbRef": "SB Word file / song: 'Did you travel far?'",
+      "note": "Master-list example 'Did you travel far?' has out-of-bank 'far', so carrier reworded to a present-simple frame (blank takes 'travel'/'travels'). Past 'travelled' fits the definition but not this carrier's present frame -> partial."
+    },
+    {
+      "wordId": "g2u01.w.as-soon-as",
+      "w": "as soon as",
+      "g": "sobald (wie)",
+      "d": "At once, just after one thing happens.",
+      "s": "I have breakfast ___ I get up in the morning.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "as soon as",
+          "tier": "full"
+        },
+        {
+          "text": "after",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "as soon as",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "as soon as",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sobald",
+            "tier": "full"
+          },
+          {
+            "text": "sobald wie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "because",
+        "before",
+        "but"
+      ],
+      "hintDe": "Eine Sache passiert sofort, gleich nachdem die andere passiert (sobald).",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "because",
+          "before",
+          "but",
+          "and"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "as soon as",
+      "sbRef": "SB Word file: 'I do my homework as soon as I get home.' / Grace's text: 'As soon as I get to school, I sweep my classroom.'",
+      "note": "verify-fix: after is defensible→partial; distractors clearly wrong"
+    },
+    {
+      "wordId": "g2u01.w.to-get-dressed",
+      "w": "to get dressed",
+      "g": "sich anziehen",
+      "d": "To put your clothes on.",
+      "s": "I wash, ___ and have breakfast with my mum and dad.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get dressed",
+          "tier": "full"
+        },
+        {
+          "text": "got dressed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to get dressed",
+          "tier": "full"
+        },
+        {
+          "text": "get dressed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to get dressed",
+            "tier": "full"
+          },
+          {
+            "text": "get dressed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich anziehen",
+            "tier": "full"
+          },
+          {
+            "text": "anziehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to put on",
+        "to get up",
+        "to wash"
+      ],
+      "hintDe": "Du machst es morgens, wenn du in deine Kleidung schlüpfst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to put on",
+          "to get up",
+          "to wash",
+          "to take a rest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.to-get-dressed",
+      "sbRef": "SB p.9 (Michael's day)",
+      "note": "Carrier from Michael's text (SB p.9): 'I wash, get dressed and have breakfast'. Present-tense carrier, so 'got dressed' is partial."
+    },
+    {
+      "wordId": "g2u01.w.to-go-for-a-walk",
+      "w": "to go for a walk",
+      "g": "spazieren gehen",
+      "d": "To spend time outside on your feet, often with your dog.",
+      "s": "After school, I ___ with my dog.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "go for a walk",
+          "tier": "full"
+        },
+        {
+          "text": "went for a walk",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to go for a walk",
+          "tier": "full"
+        },
+        {
+          "text": "go for a walk",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to go for a walk",
+            "tier": "full"
+          },
+          {
+            "text": "go for a walk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "spazieren gehen",
+            "tier": "full"
+          },
+          {
+            "text": "einen Spaziergang machen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to take a rest",
+        "to stay at home",
+        "to travel"
+      ],
+      "hintDe": "Du gehst nach draußen und gehst gemütlich herum, oft mit dem Hund.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to take a rest",
+          "to stay at home",
+          "to travel",
+          "to go to bed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.to-go-for-a-walk",
+      "sbRef": "SB p.9 (Michael's day)",
+      "note": "From Michael's text 'I go for a quick walk with my dog' (SB p.9), 'quick' dropped (out of bank). Present-tense carrier, so 'went for a walk' is partial."
+    },
+    {
+      "wordId": "g2u01.w.lesson",
+      "w": "lesson",
+      "g": "Unterrichtsstunde",
+      "d": "A time at school when you study one subject.",
+      "s": "Our first ___ begins in the morning, at seven o'clock.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lesson",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lesson",
+          "tier": "full"
+        },
+        {
+          "text": "lessons",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lesson",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Unterrichtsstunde",
+            "tier": "full"
+          },
+          {
+            "text": "Stunde",
+            "tier": "full"
+          },
+          {
+            "text": "Schulstunde",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "break",
+        "timetable",
+        "subject"
+      ],
+      "hintDe": "So heißt eine einzelne Schulstunde, zum Beispiel von sieben bis acht Uhr.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "break",
+          "timetable",
+          "subject",
+          "homework"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.lesson",
+      "sbRef": "SB p.9 (Grace's day)",
+      "note": "From Grace's text 'Our first lesson starts at 7.30 a.m.' (SB p.9); 'starts/7.30' reworded to in-bank words. Singular only in this carrier; 'lessons' accepted from the definition."
+    },
+    {
+      "wordId": "g2u01.w.to-prepare",
+      "w": "to prepare",
+      "g": "(zu-)bereiten",
+      "d": "To make food before you eat it.",
+      "s": "I help my mum to ___ food for our supper.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "prepare",
+          "tier": "full"
+        },
+        {
+          "text": "cook",
+          "tier": "partial"
+        },
+        {
+          "text": "make",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to prepare",
+          "tier": "full"
+        },
+        {
+          "text": "prepare",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to prepare",
+            "tier": "full"
+          },
+          {
+            "text": "prepare",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zubereiten",
+            "tier": "full"
+          },
+          {
+            "text": "bereiten",
+            "tier": "full"
+          },
+          {
+            "text": "vorbereiten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to clean",
+        "to travel",
+        "to visit"
+      ],
+      "hintDe": "Du machst etwas fertig, zum Beispiel das Essen vor dem Abendessen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to clean",
+          "to travel",
+          "to visit",
+          "to crawl"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.to-prepare",
+      "sbRef": "SB p.9 (Grace's day)",
+      "note": "verify-fix: cook/make are synonyms→partial; distractors no longer synonyms"
+    },
+    {
+      "wordId": "g2u01.w.to-put-on",
+      "w": "to put on",
+      "g": "anziehen (Kleidung)",
+      "d": "To wear clothes like a jacket or a hat.",
+      "s": "After breakfast, I ___ my school clothes.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "put on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to put on",
+          "tier": "full"
+        },
+        {
+          "text": "put on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to put on",
+            "tier": "full"
+          },
+          {
+            "text": "put on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anziehen",
+            "tier": "full"
+          },
+          {
+            "text": "anlegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to take out",
+        "to clean",
+        "to carry"
+      ],
+      "hintDe": "Du nimmst Kleidung und ziehst sie an, zum Beispiel deine Jacke.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to take out",
+          "to clean",
+          "to carry",
+          "to wash"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.to-put-on",
+      "sbRef": "SB p.9 (Grace's day)",
+      "note": "From Grace's 'put on my school uniform' (SB p.9); 'uniform' is out of bank, reworded to 'school clothes'. 'put on' covers present and past, so one full answer. 'to wear' deliberately kept out of the distractor pool (too close in meaning)."
+    },
+    {
+      "wordId": "g2u01.w.supper",
+      "w": "supper",
+      "g": "Abendessen",
+      "d": "The food you eat in the evening.",
+      "s": "In the evening we eat ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "supper",
+          "tier": "full"
+        },
+        {
+          "text": "dinner",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "supper",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "supper",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abendessen",
+            "tier": "full"
+          },
+          {
+            "text": "Nachtmahl",
+            "tier": "full"
+          },
+          {
+            "text": "Abendbrot",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "breakfast",
+        "lunch",
+        "lesson"
+      ],
+      "hintDe": "So heißt die Mahlzeit, die du am Abend isst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "breakfast",
+          "lunch",
+          "lesson",
+          "timetable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "verify-fix: dinner is an accepted partial, removed from pool"
+    },
+    {
+      "wordId": "g2u01.w.daily",
+      "w": "daily",
+      "g": "täglich",
+      "d": "Happening every day.",
+      "s": "I get up at seven o'clock every day. It is my ___ life.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "daily",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "daily",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "daily",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "täglich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "early",
+        "free",
+        "scary"
+      ],
+      "hintDe": "Etwas, das jeden Tag passiert, ist ___.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "early",
+          "free",
+          "scary",
+          "noisy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.daily",
+      "sbRef": null,
+      "note": "Masterlist sense ('My daily routine ...'); reworded because 'routine' is out of bank. 'daily routine' as a phrase recurs in the SB headings. hintDe nudges meaning, not the answer."
+    },
+    {
+      "wordId": "g2u01.w.calendar",
+      "w": "calendar",
+      "g": "Kalender",
+      "d": "A thing that shows you all the days and months of a year.",
+      "s": "It shows all the days of the year. It is like a big ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "calendar",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "calendar",
+          "tier": "full"
+        },
+        {
+          "text": "calendars",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "calendar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kalender",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "timetable",
+        "webpage",
+        "ticket"
+      ],
+      "hintDe": "Darauf siehst du alle Tage, Wochen und Monate eines Jahres.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "timetable",
+          "webpage",
+          "ticket",
+          "book"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.calendar",
+      "sbRef": "SB p.10 (Snake adventures)",
+      "note": "From the story 'It's like a big calendar.' (SB p.10), with an in-bank lead-in for clarity. 'timetable' is a strong same-class distractor (both show days)."
+    },
+    {
+      "wordId": "g2u01.w.grandmother",
+      "w": "grandmother",
+      "g": "Großmutter",
+      "d": "the mother of your mum or dad",
+      "s": "My ___ lives in Mexico.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "grandmother",
+          "tier": "full"
+        },
+        {
+          "text": "grandmothers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "grandmother",
+          "tier": "full"
+        },
+        {
+          "text": "grandmothers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "grandmother",
+            "tier": "full"
+          },
+          {
+            "text": "grandma",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Großmutter",
+            "tier": "full"
+          },
+          {
+            "text": "Oma",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mother",
+        "aunt",
+        "daughter"
+      ],
+      "hintDe": "Das ist die Mama von deiner Mama oder deinem Papa.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mother",
+          "aunt",
+          "daughter",
+          "uncle",
+          "sister"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 1, story p.10 (\"My dad, my mum, my grandmother and I\") / MORE Words and Phrases: \"My grandmother lives in Mexico.\"",
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.joke",
+      "w": "joke",
+      "g": "Witz",
+      "d": "a short story you tell to make people laugh",
+      "s": "We all laughed at Tom's good ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "joke",
+          "tier": "full"
+        },
+        {
+          "text": "jokes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "joke",
+          "tier": "full"
+        },
+        {
+          "text": "jokes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "joke",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Witz",
+            "tier": "full"
+          },
+          {
+            "text": "Scherz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "poem",
+        "letter",
+        "picture"
+      ],
+      "hintDe": "Etwas Lustiges, das du erzählst, damit andere lachen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "poem",
+          "letter",
+          "picture",
+          "calendar"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 1, story p.11: \"It wasn't a joke!\" (carrier reworded so the answer is unambiguous)",
+      "note": "Carrier invented because the verbatim SB line \"It wasn't a joke.\" is too open as a cloze (song/lie/dream also fit)."
+    },
+    {
+      "wordId": "g2u01.w.scary",
+      "w": "scary",
+      "g": "furchterregend",
+      "d": "It makes you scared.",
+      "s": "The story was very ___ and I was scared.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "scary",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scary",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scary",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "furchterregend",
+            "tier": "full"
+          },
+          {
+            "text": "unheimlich",
+            "tier": "full"
+          },
+          {
+            "text": "gruselig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pretty",
+        "sunny",
+        "colourful"
+      ],
+      "hintDe": "Etwas, das dir Angst macht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "pretty",
+          "sunny",
+          "colourful",
+          "beautiful",
+          "noisy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.spring",
+      "w": "spring",
+      "g": "Frühling",
+      "d": "the time of year after the cold months and before summer",
+      "s": "My birthday is in ___, in May.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "spring",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spring",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spring",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Frühling",
+            "tier": "full"
+          },
+          {
+            "text": "Frühjahr",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "summer",
+        "evening",
+        "weekend"
+      ],
+      "hintDe": "Die Jahreszeit nach dem Winter, wenn es wärmer wird.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "summer",
+          "evening",
+          "weekend",
+          "morning",
+          "night"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 1, story p.11: \"In the spring and summer, the shadows ... look like a huge snake.\" (carrier reworded; SB sentence has untaught words snake/steps)",
+      "note": "\"spring\" = the season; the carrier anchors it with \"in May\" so the season reading is unambiguous against the distractor \"summer\"."
+    },
+    {
+      "wordId": "g2u01.w.area",
+      "w": "area",
+      "g": "Gebiet",
+      "d": "a place in a town or city",
+      "s": "There is a lot of rubbish in this ___ of the town.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "area",
+          "tier": "full"
+        },
+        {
+          "text": "areas",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "area",
+          "tier": "full"
+        },
+        {
+          "text": "areas",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "area",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gebiet",
+            "tier": "full"
+          },
+          {
+            "text": "Region",
+            "tier": "full"
+          },
+          {
+            "text": "Gegend",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "country",
+        "garden",
+        "river"
+      ],
+      "hintDe": "Ein Teil von einer Stadt oder einem Ort, wo Menschen leben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "country",
+          "garden",
+          "river",
+          "park",
+          "room"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.to-book",
+      "w": "to book",
+      "g": "buchen",
+      "d": "to pay for a place or ticket before you go",
+      "s": "You can ___ your holiday today.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "book",
+          "tier": "full"
+        },
+        {
+          "text": "to book",
+          "tier": "partial"
+        },
+        {
+          "text": "books",
+          "tier": "partial"
+        },
+        {
+          "text": "booked",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "book",
+          "tier": "full"
+        },
+        {
+          "text": "to book",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "book",
+            "tier": "full"
+          },
+          {
+            "text": "to book",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "buchen",
+            "tier": "full"
+          },
+          {
+            "text": "reservieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sell",
+        "visit",
+        "clean"
+      ],
+      "hintDe": "Einen Platz oder ein Ticket vorher zahlen, damit er für dich frei ist (nicht das Buch zum Lesen).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sell",
+          "visit",
+          "clean",
+          "wash",
+          "paint"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 1, leaflet p.11: \"Contact us to book today!\" + MORE Words and Phrases: \"You can book your holiday today.\"",
+      "note": "\"to book\" = reserve/pay in advance, NOT the noun \"book\" (Buch). Carrier \"book your holiday\" forces the verb reading; hintDe spells out the contrast."
+    },
+    {
+      "wordId": "g2u01.w.popular",
+      "w": "popular",
+      "g": "beliebt",
+      "d": "that many people like very much",
+      "s": "Maths is a ___ subject at our school.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "popular",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "popular",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "popular",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beliebt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "expensive",
+        "dangerous",
+        "noisy"
+      ],
+      "hintDe": "Etwas, das viele Menschen gerne mögen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "expensive",
+          "dangerous",
+          "noisy",
+          "tiny"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 1, leaflet p.11: \"This is a very popular tourist attraction in Mexico.\" (carrier reworded; SB phrase uses untaught tourist/attraction)",
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.shadow",
+      "w": "shadow",
+      "g": "Schatten",
+      "d": "a dark place on the wall behind a thing in the light",
+      "s": "Look — there is a dark ___ behind me on the wall.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "shadow",
+          "tier": "full"
+        },
+        {
+          "text": "shadows",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shadow",
+          "tier": "full"
+        },
+        {
+          "text": "shadows",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shadow",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schatten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "light",
+        "mirror",
+        "cloud"
+      ],
+      "hintDe": "Die dunkle Stelle, die entsteht, wenn etwas vor dem Licht steht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "light",
+          "mirror",
+          "cloud",
+          "window",
+          "stone"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 1, story/leaflet p.10-11: \"You can see a shadow move down the side of the pyramid steps.\" (carrier reworded; SB sentence uses untaught snake/steps/pyramid)",
+      "note": "Story-context word; carrier keeps the dark/light idea without the untaught snake/pyramid vocabulary."
+    },
+    {
+      "wordId": "g2u01.w.to-visit",
+      "w": "to visit",
+      "g": "besichtigen",
+      "d": "To go to a place or to people and be there for a time.",
+      "s": "In the holidays we ___ our grandmother in Mexico.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "visit",
+          "tier": "full"
+        },
+        {
+          "text": "visited",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "visit",
+          "tier": "full"
+        },
+        {
+          "text": "to visit",
+          "tier": "full"
+        },
+        {
+          "text": "visits",
+          "tier": "full"
+        },
+        {
+          "text": "visited",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "visit",
+            "tier": "full"
+          },
+          {
+            "text": "to visit",
+            "tier": "full"
+          },
+          {
+            "text": "visited",
+            "tier": "full"
+          },
+          {
+            "text": "visits",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "besichtigen",
+            "tier": "full"
+          },
+          {
+            "text": "besuchen",
+            "tier": "full"
+          },
+          {
+            "text": "ansehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to travel",
+        "to book",
+        "to prepare"
+      ],
+      "hintDe": "Du fährst irgendwohin, um dir einen Ort oder Menschen anzusehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to travel",
+          "to book",
+          "to prepare",
+          "to put on",
+          "to crawl"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.to-visit",
+      "sbRef": "SB Unit 1, leaflet (p.11): \"A lot of tourists visit the Mayan city of Chichen Itza.\"; masterlist exampleSb",
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.colourful",
+      "w": "colourful",
+      "g": "bunt",
+      "d": "A thing with red, purple, white and many more in it.",
+      "s": "There are many ___ parrots at the zoo.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "colourful",
+          "tier": "full"
+        },
+        {
+          "text": "colorful",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "colourful",
+          "tier": "full"
+        },
+        {
+          "text": "colorful",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "colourful",
+            "tier": "full"
+          },
+          {
+            "text": "colorful",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bunt",
+            "tier": "full"
+          },
+          {
+            "text": "farbenfroh",
+            "tier": "full"
+          },
+          {
+            "text": "farbig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "scary",
+        "popular",
+        "noisy"
+      ],
+      "hintDe": "Etwas, das ganz viele Farben hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "scary",
+          "popular",
+          "noisy",
+          "beautiful",
+          "daily"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.colourful",
+      "sbRef": "masterlist exampleSb: \"There are many colourful parrots at the zoo.\"",
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.along",
+      "w": "along",
+      "g": "entlang",
+      "d": "From one end of a thing to the end of it.",
+      "s": "We go ___ the river to the park.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "along",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "along",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "along",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entlang",
+            "tier": "full"
+          },
+          {
+            "text": "an etwas entlang",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "across",
+        "under",
+        "into"
+      ],
+      "hintDe": "Du gehst an etwas der Länge nach vorbei, z.B. an einem Fluss.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "across",
+          "under",
+          "into",
+          "near",
+          "behind"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.along",
+      "sbRef": "masterlist exampleSb: \"Snakes slide along the sand.\"; SB poem (p.13): \"...and slide along the ground.\"",
+      "note": "Carrier avoids 'snake' (out of bank) but keeps the textbook's along-a-line sense."
+    },
+    {
+      "wordId": "g2u01.w.to-crawl",
+      "w": "to crawl",
+      "g": "kriechen",
+      "d": "To go like a lizard, near the road and under stones.",
+      "s": "Lizards ___ across the road and under the stones.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "crawl",
+          "tier": "full"
+        },
+        {
+          "text": "crawled",
+          "tier": "full"
+        },
+        {
+          "text": "crawls",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crawl",
+          "tier": "full"
+        },
+        {
+          "text": "to crawl",
+          "tier": "full"
+        },
+        {
+          "text": "crawls",
+          "tier": "full"
+        },
+        {
+          "text": "crawled",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crawl",
+            "tier": "full"
+          },
+          {
+            "text": "to crawl",
+            "tier": "full"
+          },
+          {
+            "text": "crawled",
+            "tier": "full"
+          },
+          {
+            "text": "crawls",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kriechen",
+            "tier": "full"
+          },
+          {
+            "text": "krabbeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to travel",
+        "to book",
+        "to prepare"
+      ],
+      "hintDe": "Du bewegst dich ganz tief am Boden, so wie eine Eidechse.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to travel",
+          "to book",
+          "to prepare",
+          "to visit",
+          "to put on"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.to-crawl",
+      "sbRef": "masterlist exampleSb: \"Snakes crawl around and into stones.\"; SB poem (p.13): \"I crawl around the rocks and stones.\"",
+      "note": "Carrier uses 'lizards' (in bank) for the low-to-the-ground sense; 'snake' is out of bank."
+    },
+    {
+      "wordId": "g2u01.w.to-take-a-rest",
+      "w": "to take a rest",
+      "g": "sich ausruhen",
+      "d": "To sit down and be still for a short time when you are tired.",
+      "s": "After a long day at school, I ___ before I do my homework.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "take a rest",
+          "tier": "full"
+        },
+        {
+          "text": "took a rest",
+          "tier": "partial"
+        },
+        {
+          "text": "takes a rest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take a rest",
+          "tier": "full"
+        },
+        {
+          "text": "to take a rest",
+          "tier": "full"
+        },
+        {
+          "text": "takes a rest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take a rest",
+            "tier": "full"
+          },
+          {
+            "text": "to take a rest",
+            "tier": "full"
+          },
+          {
+            "text": "takes a rest",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich ausruhen",
+            "tier": "full"
+          },
+          {
+            "text": "eine Pause machen",
+            "tier": "full"
+          },
+          {
+            "text": "ausruhen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to travel",
+        "to book",
+        "to prepare"
+      ],
+      "hintDe": "Du setzt dich hin und machst kurz nichts, weil du müde bist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to travel",
+          "to book",
+          "to prepare",
+          "to put on",
+          "to visit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.to-take-a-rest",
+      "sbRef": "masterlist exampleSb: \"I take a rest after school.\"; SB poem (p.13): \"...and then I take a rest.\"",
+      "note": "Carrier subject 'I' makes only 'take a rest' grammatical (full); 3sg/past forms are partial."
+    },
+    {
+      "wordId": "g2u01.w.subject",
+      "w": "(school) subject",
+      "g": "(Schul-)Fach",
+      "d": "Maths, art, music and history are all kinds of these.",
+      "s": "English is my favourite ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "subject",
+          "tier": "full"
+        },
+        {
+          "text": "school subject",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "subject",
+          "tier": "full"
+        },
+        {
+          "text": "subjects",
+          "tier": "full"
+        },
+        {
+          "text": "school subject",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "subject",
+            "tier": "full"
+          },
+          {
+            "text": "school subject",
+            "tier": "full"
+          },
+          {
+            "text": "subjects",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fach",
+            "tier": "full"
+          },
+          {
+            "text": "Schulfach",
+            "tier": "full"
+          },
+          {
+            "text": "Unterrichtsfach",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "lesson",
+        "break",
+        "timetable"
+      ],
+      "hintDe": "Englisch, Mathe oder Kunst ist jeweils so etwas in der Schule.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "lesson",
+          "break",
+          "timetable",
+          "calendar",
+          "shadow"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.subject",
+      "sbRef": "masterlist exampleSb: \"English is my favourite subject.\"; SB 14: \"... is my favourite subject.\"",
+      "note": "V-8 fix: dropped \"at school\" (school is a (school)-subject form token)"
+    },
+    {
+      "wordId": "g2u01.w.break",
+      "w": "break",
+      "g": "Pause",
+      "d": "A short time to play and eat after a lesson at school.",
+      "s": "In the ___ we go outside and play.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "break",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "break",
+          "tier": "full"
+        },
+        {
+          "text": "breaks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "break",
+            "tier": "full"
+          },
+          {
+            "text": "breaks",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pause",
+            "tier": "full"
+          },
+          {
+            "text": "die Pause",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "lesson",
+        "subject",
+        "timetable"
+      ],
+      "hintDe": "Die kurze Zeit zwischen den Stunden, in der du spielst und isst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "lesson",
+          "subject",
+          "timetable",
+          "calendar",
+          "area"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.timetable",
+      "w": "timetable",
+      "g": "Stundenplan",
+      "d": "It shows you what lessons you have on every day of the week.",
+      "s": "She has four English lessons in her ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "timetable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "timetable",
+          "tier": "full"
+        },
+        {
+          "text": "timetables",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "timetable",
+            "tier": "full"
+          },
+          {
+            "text": "timetables",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stundenplan",
+            "tier": "full"
+          },
+          {
+            "text": "der Stundenplan",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "calendar",
+        "lesson",
+        "subject"
+      ],
+      "hintDe": "Der Plan, der dir zeigt, wann du welche Stunden hast.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "calendar",
+          "lesson",
+          "subject",
+          "shadow",
+          "area"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "g2u01.w.timetable",
+      "sbRef": "masterlist exampleSb: \"She has four English lessons in her timetable.\"; SB 13: \"Here is his timetable.\"",
+      "note": null
+    },
+    {
+      "wordId": "g2u01.w.bicycle-lane",
+      "w": "bicycle lane",
+      "g": "Radweg",
+      "d": "It is on the road, but cars do not go on it.",
+      "s": "There is a new ___ in my town now.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "bicycle lane",
+          "tier": "full"
+        },
+        {
+          "text": "bicycle lanes",
+          "tier": "partial"
+        },
+        {
+          "text": "bike lane",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bicycle lane",
+          "tier": "full"
+        },
+        {
+          "text": "bicycle lanes",
+          "tier": "full"
+        },
+        {
+          "text": "bike lane",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bicycle lane",
+            "tier": "full"
+          },
+          {
+            "text": "bike lane",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Radweg",
+            "tier": "full"
+          },
+          {
+            "text": "Fahrradweg",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "timetable",
+        "calendar",
+        "shadow"
+      ],
+      "hintDe": "Hier fährst du mit dem Rad, nicht die Autos.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "timetable",
+          "calendar",
+          "shadow",
+          "area",
+          "break"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "verify-fix: plural breaks \"a new ___\" agreement→partial"
+    },
+    {
+      "wordId": "g2u01.w.king",
+      "w": "king",
+      "g": "König",
+      "d": "A man who can make the rules.",
+      "s": "A ___ can make the rules.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "king",
+          "tier": "full"
+        },
+        {
+          "text": "kings",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "king",
+          "tier": "full"
+        },
+        {
+          "text": "kings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "king",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "König",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "queen",
+        "guide",
+        "captain"
+      ],
+      "hintDe": "Ein Mann, der ein Land regiert.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "queen",
+          "guide",
+          "captain",
+          "singer",
+          "teacher"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.15 (FIND OUT: Democracy) — \"A king, queen or person can make the rules.\"",
+      "note": "Carrier verbatim from SB p.15 Democracy task; also matches master list \"A king can make the rules.\""
+    },
+    {
+      "wordId": "g2u01.w.noisy",
+      "w": "noisy",
+      "g": "laut",
+      "d": "Making a lot of noise.",
+      "s": "I do not like ___ people.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "noisy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "noisy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "noisy",
+            "tier": "full"
+          },
+          {
+            "text": "loud",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "laut",
+            "tier": "full"
+          },
+          {
+            "text": "geräuschvoll",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "scary",
+        "colourful",
+        "popular"
+      ],
+      "hintDe": "Etwas oder jemand, der viel Lärm macht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "scary",
+          "colourful",
+          "popular",
+          "daily",
+          "glad"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.15 (Our local world) — \"noisy people\"",
+      "note": "Carrier from master list \"I don't like noisy people.\"; word also appears on SB p.15 problem list."
+    },
+    {
+      "wordId": "g2u01.w.queen",
+      "w": "queen",
+      "g": "Königin",
+      "d": "A woman who can make the rules.",
+      "s": "A ___ can make the rules.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "queen",
+          "tier": "full"
+        },
+        {
+          "text": "queens",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "queen",
+          "tier": "full"
+        },
+        {
+          "text": "queens",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "queen",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Königin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "king",
+        "guide",
+        "captain"
+      ],
+      "hintDe": "Eine Frau, die ein Land regiert.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "king",
+          "guide",
+          "captain",
+          "singer",
+          "teacher"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.15 (FIND OUT: Democracy) — \"A king, queen or person can make the rules.\"",
+      "note": "Carrier verbatim from SB p.15 Democracy task; also matches master list \"A queen can make the rules.\""
+    },
+    {
+      "wordId": "g2u01.w.rubbish",
+      "w": "rubbish",
+      "g": "Müll",
+      "d": "Food, bottles and boxes that you do not want any more.",
+      "s": "There is too much ___ in the street.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rubbish",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rubbish",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rubbish",
+            "tier": "full"
+          },
+          {
+            "text": "trash",
+            "tier": "partial"
+          },
+          {
+            "text": "garbage",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Müll",
+            "tier": "full"
+          },
+          {
+            "text": "Abfall",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "area",
+        "shadow",
+        "calendar"
+      ],
+      "hintDe": "Das wirfst du weg, zum Beispiel altes Essen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "area",
+          "shadow",
+          "calendar",
+          "joke",
+          "timetable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.15 (Our local world) — \"rubbish in the street\"",
+      "note": "verify-fix: definition was wrong (rubbish=Müll, not food only)"
+    },
+    {
+      "wordId": "g2u01.w.online-safety",
+      "w": "online safety",
+      "g": "Internetsicherheit",
+      "d": "How to be careful with a tablet or mobile phone.",
+      "s": "Our teacher talked about ___ in class today.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "online safety",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "online safety",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "online safety",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Internetsicherheit",
+            "tier": "full"
+          },
+          {
+            "text": "Online-Sicherheit",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "opinion",
+        "timetable",
+        "calendar"
+      ],
+      "hintDe": "Wie du vorsichtig bist, wenn du im Internet bist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "opinion",
+          "timetable",
+          "calendar",
+          "area",
+          "break"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Master-list sense relates to a website; carrier rephrased to taught-only words (master list 'helpful tips ... website' has untaught words). Compound kept whole; definition uses taught 'tablet'/'mobile phone' to avoid untaught 'internet'/'computer'."
+    },
+    {
+      "wordId": "g2u01.w.opinion",
+      "w": "opinion",
+      "g": "Meinung",
+      "d": "What you think about a thing.",
+      "s": "In my ___, this is the best book.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "opinion",
+          "tier": "full"
+        },
+        {
+          "text": "opinions",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "opinion",
+          "tier": "full"
+        },
+        {
+          "text": "opinions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "opinion",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Meinung",
+            "tier": "full"
+          },
+          {
+            "text": "Ansicht",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "joke",
+        "calendar",
+        "area"
+      ],
+      "hintDe": "Das, was du über eine Sache denkst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "joke",
+          "calendar",
+          "area",
+          "shadow",
+          "break"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Master list \"I always say my opinion\" uses untaught 'say'; carrier rephrased to the natural 'In my opinion, ...' frame with taught-only words."
+    },
+    {
+      "wordId": "g2u01.w.webpage",
+      "w": "webpage",
+      "g": "Internetseite",
+      "d": "You read it on a tablet or mobile phone.",
+      "s": "Read the ___ on your tablet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "webpage",
+          "tier": "full"
+        },
+        {
+          "text": "webpages",
+          "tier": "partial"
+        },
+        {
+          "text": "web page",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "webpage",
+          "tier": "full"
+        },
+        {
+          "text": "webpages",
+          "tier": "full"
+        },
+        {
+          "text": "web page",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "webpage",
+            "tier": "full"
+          },
+          {
+            "text": "web page",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Internetseite",
+            "tier": "full"
+          },
+          {
+            "text": "Webseite",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "calendar",
+        "timetable",
+        "joke"
+      ],
+      "hintDe": "So eine Seite liest du auf dem Tablet oder Handy.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "calendar",
+          "timetable",
+          "joke",
+          "area",
+          "shadow"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Master list \"Go online and read the webpage\" uses untaught 'online'; carrier rephrased to taught-only words. Definition avoids untaught 'page'/'internet'/'computer' via taught 'tablet'/'mobile phone'."
+    }
+  ]
+}
