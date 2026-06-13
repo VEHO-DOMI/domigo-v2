@@ -263,6 +263,7 @@ const HEADWORD_GLUE = new Set<string>([
   "do", "does", "did", "doing", "done", // the light/pro-verb of activity phrases (DO nothing, DO the shopping, DO your homework)
   "i", "you", "he", "she", "it", "we", "they", "me", "him", "her", "us", "them", // pronouns (glue in "poor YOU", "thank YOU", "tell ME")
   "my", "your", "his", "its", "our", "their", // possessives
+  "this", "that", "these", "those", // demonstratives (glue in "in THAT case", "at THIS time")
 ]);
 
 export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordBankT): string[] {
