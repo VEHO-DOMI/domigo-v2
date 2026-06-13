@@ -1,7 +1,15 @@
 /** Stage-5 pure pieces: fingerprints, id minting, fingerprint re-keying. */
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { itemFingerprint, mintGrammarItemIds, rekeyFingerprint, type ItemsLock } from "../gen-items.ts";
+import {
+  itemFingerprint,
+  mintGrammarItemIds,
+  readUnitItems,
+  regenerateUnitItems,
+  rekeyFingerprint,
+  type ItemsLock,
+  type UnitItems,
+} from "../gen-items.ts";
 
 const BASE = {
   structureId: "g2u03.s.should",
@@ -65,4 +73,28 @@ test("rekeyFingerprint: review edits keep the id, move the pin", () => {
   assert.equal(rekeyFingerprint(lock, "g2u03.gi.should.gf.001", "cccccccccccc"), false);
   // collision with another id is refused
   assert.throws(() => rekeyFingerprint(lock, "g2u03.gi.should.gf.001", "bbbbbbbbbbbb"), /collision/);
+});
+
+// Regenerability (design principle 10): the committed g2-u03 unit went through
+// several fix rounds (validator fixes, w.sick, w.shall, trick-or-treat hyphens)
+// plus 3 stage-8 reviewer cell-edits. `draft + item-fixes + lock` must still
+// reproduce the approved corpus — proving fix-rounds keep the drafts in sync.
+const stripRev = (items: UnitItems["vocab"] | UnitItems["grammar"]): unknown[] =>
+  items.map(({ rev, ...rest }) => rest);
+
+test("regenerateUnitItems: committed g2-u03 round-trips from draft + item-fixes", () => {
+  const committed = readUnitItems("g2-u03");
+  assert.ok(committed.vocab.length === 34 && committed.grammar.length === 27, "fixture corpus present");
+
+  // byte-reproduction with rev continuity (prev = committed)
+  assert.deepEqual(regenerateUnitItems("g2-u03"), committed);
+
+  // content fully determined by draft + item-fixes + lock alone (empty prev → all rev=1)
+  const fresh = regenerateUnitItems("g2-u03", { vocab: [], grammar: [] });
+  assert.deepEqual(stripRev(fresh.vocab), stripRev(committed.vocab));
+  assert.deepEqual(stripRev(fresh.grammar), stripRev(committed.grammar));
+  assert.ok(
+    fresh.vocab.every((i) => i.rev === 1) && fresh.grammar.every((i) => i.rev === 1),
+    "an empty prev yields rev=1 everywhere",
+  );
 });

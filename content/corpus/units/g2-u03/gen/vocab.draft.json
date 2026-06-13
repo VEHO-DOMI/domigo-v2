@@ -5,426 +5,6 @@
   "briefPrompt": "346902f9f0f1",
   "items": [
     {
-      "wordId": "g2u03.w.witch",
-      "w": "witch",
-      "g": "Hexe",
-      "d": "A woman in scary stories who can do magic.",
-      "s": "Do all ___ wear funny hats? — Yes, and they can do magic, too!",
-      "sSource": "wb",
-      "sAnswers": [
-        {
-          "text": "witches",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "witch",
-          "tier": "full"
-        },
-        {
-          "text": "a witch",
-          "tier": "full"
-        },
-        {
-          "text": "witches",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "witch",
-            "tier": "full"
-          },
-          {
-            "text": "a witch",
-            "tier": "full"
-          },
-          {
-            "text": "witches",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Hexe",
-            "tier": "full"
-          },
-          {
-            "text": "die Hexe",
-            "tier": "full"
-          },
-          {
-            "text": "eine Hexe",
-            "tier": "full"
-          },
-          {
-            "text": "Hexen",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "ghost",
-        "vampire",
-        "superheroine"
-      ],
-      "hintDe": "Denk an Besen, spitzen Hut und Zauberei.",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "ghost",
-          "vampire",
-          "superheroine",
-          "costume",
-          "mask"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "witch",
-      "sbRef": "g2/wb/More 2 WB Unit 3.txt",
-      "note": "WB Using Vocabulary ex.2(3): 'Do all witches wear funny hats?' verbatim; reply adapted ('they can fly' -> 'they can do magic') because 'fly' is above level."
-    },
-    {
-      "wordId": "g2u03.w.ghost",
-      "w": "ghost",
-      "g": "Geist",
-      "d": "A dead man or woman who can come back at night in scary stories.",
-      "s": "Edwina was dressed like a girl from the 19th century. Then she disappeared. Was she a ___?",
-      "sSource": "sb",
-      "sAnswers": [
-        {
-          "text": "ghost",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "ghost",
-          "tier": "full"
-        },
-        {
-          "text": "a ghost",
-          "tier": "full"
-        },
-        {
-          "text": "ghosts",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "ghost",
-            "tier": "full"
-          },
-          {
-            "text": "a ghost",
-            "tier": "full"
-          },
-          {
-            "text": "ghosts",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Geist",
-            "tier": "full"
-          },
-          {
-            "text": "der Geist",
-            "tier": "full"
-          },
-          {
-            "text": "ein Geist",
-            "tier": "full"
-          },
-          {
-            "text": "Gespenst",
-            "tier": "full"
-          },
-          {
-            "text": "das Gespenst",
-            "tier": "full"
-          },
-          {
-            "text": "ein Gespenst",
-            "tier": "full"
-          },
-          {
-            "text": "Geister",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "witch",
-        "vampire",
-        "superheroine"
-      ],
-      "hintDe": "Weiß und durchsichtig — buh!",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "witch",
-          "vampire",
-          "superheroine",
-          "captain"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "ghost",
-      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
-      "note": "Stitched from the SB story 'The mysterious girl': 'She was dressed like a girl from the 19th century.' + 'And then she disappeared.' — closing question added."
-    },
-    {
-      "wordId": "g2u03.w.pumpkin-bucket",
-      "w": "pumpkin bucket",
-      "g": "Kürbiseimer",
-      "d": "Children carry it when they go trick-or-treating and put their sweets in it.",
-      "s": "The child is trick-or-treating with a ___ for the sweets.",
-      "sSource": "invented",
-      "sAnswers": [
-        {
-          "text": "pumpkin bucket",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "pumpkin bucket",
-          "tier": "full"
-        },
-        {
-          "text": "a pumpkin bucket",
-          "tier": "full"
-        },
-        {
-          "text": "pumpkin buckets",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "pumpkin bucket",
-            "tier": "full"
-          },
-          {
-            "text": "a pumpkin bucket",
-            "tier": "full"
-          },
-          {
-            "text": "pumpkin buckets",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Kürbiseimer",
-            "tier": "full"
-          },
-          {
-            "text": "der Kürbiseimer",
-            "tier": "full"
-          },
-          {
-            "text": "ein Kürbiseimer",
-            "tier": "full"
-          },
-          {
-            "text": "Eimer",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "mask",
-        "sticker",
-        "costume"
-      ],
-      "hintDe": "Da kommen deine Süßigkeiten rein.",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "mask",
-          "sticker",
-          "costume",
-          "cycle helmet"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "pumpkin bucket",
-      "sbRef": null,
-      "note": "No textbook running-text sentence exists for this word; carrier modeled on the SB p.28 Word File image (child trick-or-treating with a pumpkin bucket)."
-    },
-    {
-      "wordId": "g2u03.w.vampire",
-      "w": "vampire",
-      "g": "Vampir",
-      "d": "In scary stories, a man with long teeth and a black cape. At Halloween, many children dress like him.",
-      "s": "I've got my ___ costume, but I can't find my teeth.",
-      "sSource": "wb",
-      "sAnswers": [
-        {
-          "text": "vampire",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "vampire",
-          "tier": "full"
-        },
-        {
-          "text": "a vampire",
-          "tier": "full"
-        },
-        {
-          "text": "vampires",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "vampire",
-            "tier": "full"
-          },
-          {
-            "text": "a vampire",
-            "tier": "full"
-          },
-          {
-            "text": "vampires",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Vampir",
-            "tier": "full"
-          },
-          {
-            "text": "der Vampir",
-            "tier": "full"
-          },
-          {
-            "text": "ein Vampir",
-            "tier": "full"
-          },
-          {
-            "text": "Vampire",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "ghost",
-        "witch",
-        "superheroine"
-      ],
-      "hintDe": "Er hat lange, spitze Zähne.",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "ghost",
-          "witch",
-          "superheroine",
-          "mask"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "vampire",
-      "sbRef": "g2/wb/More 2 WB Unit 3.txt",
-      "note": "WB Using Vocabulary ex.2(8) minimally adapted: above-level 'plastic' dropped from 'my plastic teeth'."
-    },
-    {
-      "wordId": "g2u03.w.trick-or-treat",
-      "w": "trick or treat",
-      "g": "Süßes oder Saures",
-      "d": "At Halloween, children knock on doors and ask for sweets.",
-      "s": "When my friends meet for ___, we go from door to door.",
-      "sSource": "sb",
-      "sAnswers": [
-        {
-          "text": "trick or treat",
-          "tier": "full"
-        },
-        {
-          "text": "trick-or-treat",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "trick or treat",
-          "tier": "full"
-        },
-        {
-          "text": "trick-or-treat",
-          "tier": "full"
-        },
-        {
-          "text": "Trick or treat!",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "trick or treat",
-            "tier": "full"
-          },
-          {
-            "text": "trick-or-treat",
-            "tier": "full"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Süßes oder Saures",
-            "tier": "full"
-          },
-          {
-            "text": "Süßes, sonst gibt's Saures",
-            "tier": "full"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "apple bobbing",
-        "picnic",
-        "tradition"
-      ],
-      "hintDe": "Von Tür zu Tür ziehen und Süßigkeiten sammeln.",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "apple bobbing",
-          "picnic",
-          "tradition",
-          "costume"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "trick or treat",
-      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
-      "note": "First clause verbatim from the SB poem 'I'm not so keen on Halloween' ('When my friends meet for trick or treat'); in-bank completion added for level and disambiguation."
-    },
-    {
       "wordId": "g2u03.w.apple-bobbing",
       "w": "apple bobbing",
       "g": "Äpfeltauchen",
@@ -492,1051 +72,6 @@
       "seedV1": "apple bobbing",
       "sbRef": "g2/sb/More 2 SB Unit 3.txt",
       "note": "Stitched from Megan's SB webpage text ('And we also play apple bobbing.', 'It's difficult, but fun.'); apple/mouth clause added in-bank to make the blank unambiguous."
-    },
-    {
-      "wordId": "g2u03.w.mask",
-      "w": "mask",
-      "g": "Maske",
-      "d": "You wear it over your eyes and nose, so you look like a ghost or a vampire.",
-      "s": "Everybody wears a ___ over their eyes. We're vampires, witches and ghosts!",
-      "sSource": "sb",
-      "sAnswers": [
-        {
-          "text": "mask",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "mask",
-          "tier": "full"
-        },
-        {
-          "text": "a mask",
-          "tier": "full"
-        },
-        {
-          "text": "masks",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "mask",
-            "tier": "full"
-          },
-          {
-            "text": "a mask",
-            "tier": "full"
-          },
-          {
-            "text": "masks",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Maske",
-            "tier": "full"
-          },
-          {
-            "text": "die Maske",
-            "tier": "full"
-          },
-          {
-            "text": "eine Maske",
-            "tier": "full"
-          },
-          {
-            "text": "Masken",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "costume",
-        "hat",
-        "dress"
-      ],
-      "hintDe": "Du trägst sie im Gesicht.",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "costume",
-          "hat",
-          "dress",
-          "cap"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "mask",
-      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
-      "note": "Megan's SB sentence 'Everyone wears a mask.' — 'everyone' is above level, so 'everybody'; 'over their eyes' added to rule out 'costume'. Second sentence verbatim Megan."
-    },
-    {
-      "wordId": "g2u03.w.tradition",
-      "w": "tradition",
-      "g": "Tradition",
-      "d": "What a family always does, year after year — at Halloween or on a birthday.",
-      "s": "What's your favourite Halloween ___ — apple bobbing or trick or treat?",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "tradition",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "tradition",
-          "tier": "full"
-        },
-        {
-          "text": "a tradition",
-          "tier": "full"
-        },
-        {
-          "text": "traditions",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "tradition",
-            "tier": "full"
-          },
-          {
-            "text": "a tradition",
-            "tier": "full"
-          },
-          {
-            "text": "traditions",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Tradition",
-            "tier": "full"
-          },
-          {
-            "text": "die Tradition",
-            "tier": "full"
-          },
-          {
-            "text": "eine Tradition",
-            "tier": "full"
-          },
-          {
-            "text": "Brauch",
-            "tier": "full"
-          },
-          {
-            "text": "der Brauch",
-            "tier": "full"
-          },
-          {
-            "text": "ein Brauch",
-            "tier": "full"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "surprise",
-        "opinion",
-        "joke"
-      ],
-      "hintDe": "Etwas, das ihr jedes Jahr wieder macht.",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "surprise",
-          "opinion",
-          "joke",
-          "secret",
-          "tip"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "tradition",
-      "sbRef": null,
-      "note": "Masterlist sentence verbatim; two in-bank example traditions appended so 'costume' no longer fits the blank."
-    },
-    {
-      "wordId": "g2u03.w.to-fear",
-      "w": "to fear",
-      "g": "(sich) fürchten (vor)",
-      "d": "To be scared of a ghost, a big dog or a scary story.",
-      "s": "We do not ___ the zombies, because we aren't scared of them!",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "fear",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "to fear",
-          "tier": "full"
-        },
-        {
-          "text": "fear",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "to fear",
-            "tier": "full"
-          },
-          {
-            "text": "fear",
-            "tier": "full"
-          },
-          {
-            "text": "to be scared of",
-            "tier": "full"
-          },
-          {
-            "text": "be scared of",
-            "tier": "full"
-          },
-          {
-            "text": "to be scared",
-            "tier": "full"
-          },
-          {
-            "text": "be scared",
-            "tier": "full"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "fürchten",
-            "tier": "full"
-          },
-          {
-            "text": "sich fürchten",
-            "tier": "full"
-          },
-          {
-            "text": "sich fürchten vor",
-            "tier": "full"
-          },
-          {
-            "text": "Angst haben vor",
-            "tier": "full"
-          },
-          {
-            "text": "Angst haben",
-            "tier": "full"
-          },
-          {
-            "text": "sich erschrecken",
-            "tier": "partial"
-          },
-          {
-            "text": "Angst",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [
-        {
-          "word": "zombies",
-          "de": "Zombies",
-          "scope": "s"
-        }
-      ],
-      "mc": [
-        "to scare",
-        "to love",
-        "to enjoy"
-      ],
-      "hintDe": "Du hast große Angst vor etwas.",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "to scare",
-          "to love",
-          "to enjoy",
-          "to hate",
-          "to lose"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "to fear",
-      "sbRef": null,
-      "note": "Masterlist sentence (SB song line) verbatim; because-clause added so 'scare' cannot fill the blank; 'zombies' kept from the song and glossed."
-    },
-    {
-      "wordId": "g2u03.w.to-cut-off",
-      "w": "to cut off",
-      "g": "abschneiden",
-      "d": "To make a piece go away with a knife",
-      "s": "Please give me the knife. I want to ___ the top of the pumpkin.",
-      "sSource": "wb",
-      "sAnswers": [
-        {
-          "text": "cut off",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "to cut off",
-          "tier": "full"
-        },
-        {
-          "text": "cut off",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "to cut off",
-            "tier": "full"
-          },
-          {
-            "text": "cut off",
-            "tier": "full"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "abschneiden",
-            "tier": "full"
-          },
-          {
-            "text": "wegschneiden",
-            "tier": "partial"
-          },
-          {
-            "text": "schneiden",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [
-        {
-          "word": "top",
-          "de": "oberer Teil",
-          "scope": "s"
-        },
-        {
-          "word": "pumpkin",
-          "de": "Kürbis",
-          "scope": "s"
-        }
-      ],
-      "mc": [
-        "to keep",
-        "to lose",
-        "to scare"
-      ],
-      "hintDe": "Das machst du mit einem Messer – zum Beispiel beim Kürbis.",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "to keep",
-          "to lose",
-          "to scare",
-          "to fear",
-          "to break"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": "g2/wb/More 2 WB Unit 3.txt",
-      "note": "WB ex. 2.7 dialogue chosen over the masterlist example: the knife context makes the verb unambiguous. The 'What for?' turn was dropped. Glosses: top, pumpkin (both out-of-bank; only 'pumpkin bucket' is taught)."
-    },
-    {
-      "wordId": "g2u03.w.front-window",
-      "w": "front window",
-      "g": "Vorderfenster",
-      "d": "The glass in a building that you look out of, into the street",
-      "s": "We put some vampire stickers on his ___.",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "front window",
-          "tier": "full"
-        },
-        {
-          "text": "front windows",
-          "tier": "full"
-        },
-        {
-          "text": "window",
-          "tier": "partial"
-        },
-        {
-          "text": "windows",
-          "tier": "partial"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "front window",
-          "tier": "full"
-        },
-        {
-          "text": "a front window",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "front window",
-            "tier": "full"
-          },
-          {
-            "text": "window",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Vorderfenster",
-            "tier": "full"
-          },
-          {
-            "text": "vorderes Fenster",
-            "tier": "full"
-          },
-          {
-            "text": "Fenster",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "stairs",
-        "graveyard",
-        "knife"
-      ],
-      "hintDe": "Das Glas vorne am Haus – da siehst du auf die Straße.",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "stairs",
-          "graveyard",
-          "knife",
-          "century",
-          "tradition"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": null,
-      "note": "Masterlist example verbatim (= Steve's SB webpage answer). 'door'/'car'/'window' deliberately kept out of mc/pool: they would also fit the carrier."
-    },
-    {
-      "wordId": "g2u03.w.to-keep",
-      "w": "to keep",
-      "g": "(be-)halten",
-      "d": "To have a thing and not give it away",
-      "s": "Let's ___ the pumpkin for Halloween.",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "keep",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "to keep",
-          "tier": "full"
-        },
-        {
-          "text": "keep",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "to keep",
-            "tier": "full"
-          },
-          {
-            "text": "keep",
-            "tier": "full"
-          },
-          {
-            "text": "to hold",
-            "tier": "partial"
-          },
-          {
-            "text": "hold",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "behalten",
-            "tier": "full"
-          },
-          {
-            "text": "halten",
-            "tier": "full"
-          },
-          {
-            "text": "aufheben",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [
-        {
-          "word": "pumpkin",
-          "de": "Kürbis",
-          "scope": "s"
-        }
-      ],
-      "mc": [
-        "to lose",
-        "to cut off",
-        "to fear"
-      ],
-      "hintDe": "Du gibst es nicht mehr her – es bleibt bei dir.",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "to lose",
-          "to cut off",
-          "to fear",
-          "to scare",
-          "to borrow"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": null,
-      "note": "Masterlist example shortened: 'for our Halloween party' → 'for Halloween' (bare 'party' is out-of-bank; only 'surprise party' is taught). Gloss: pumpkin."
-    },
-    {
-      "wordId": "g2u03.w.to-be-proud",
-      "w": "to be proud (of)",
-      "g": "stolz sein (auf)",
-      "d": "When you are very happy about a good thing that you did",
-      "s": "This year my pumpkin was the best. I was very ___ of it.",
-      "sSource": "sb",
-      "sAnswers": [
-        {
-          "text": "proud",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "to be proud of",
-          "tier": "full"
-        },
-        {
-          "text": "to be proud",
-          "tier": "full"
-        },
-        {
-          "text": "be proud of",
-          "tier": "full"
-        },
-        {
-          "text": "be proud",
-          "tier": "full"
-        },
-        {
-          "text": "proud",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "to be proud of",
-            "tier": "full"
-          },
-          {
-            "text": "to be proud",
-            "tier": "full"
-          },
-          {
-            "text": "be proud of",
-            "tier": "full"
-          },
-          {
-            "text": "be proud",
-            "tier": "full"
-          },
-          {
-            "text": "proud",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "stolz sein (auf)",
-            "tier": "full"
-          },
-          {
-            "text": "stolz sein auf",
-            "tier": "full"
-          },
-          {
-            "text": "stolz sein",
-            "tier": "full"
-          },
-          {
-            "text": "auf etwas stolz sein",
-            "tier": "full"
-          },
-          {
-            "text": "stolz",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [
-        {
-          "word": "pumpkin",
-          "de": "Kürbis",
-          "scope": "s"
-        }
-      ],
-      "mc": [
-        "to be scared of",
-        "to fear",
-        "to scare"
-      ],
-      "hintDe": "Dein Kürbis ist der beste in der Klasse – wie fühlst du dich?",
-      "difficulty": 3,
-      "gameMeta": {
-        "distractorPool": [
-          "to be scared of",
-          "to fear",
-          "to scare",
-          "to be in danger"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
-      "note": "Henry's SB text, minimally adapted: 'pumpkin face' → 'pumpkin' ('face' is out-of-bank) and '+ of it' to anchor the preposition. The masterlist sentence alone ('I was very proud.') is a bad carrier: happy/scared/excited also fit."
-    },
-    {
-      "wordId": "g2u03.w.stairs",
-      "w": "stairs",
-      "g": "Treppe",
-      "d": "In a building, you go up these to the rooms over you",
-      "s": "We go up the ___ in the dark.",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "stairs",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "stairs",
-          "tier": "full"
-        },
-        {
-          "text": "the stairs",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "stairs",
-            "tier": "full"
-          },
-          {
-            "text": "the stairs",
-            "tier": "full"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Treppe",
-            "tier": "full"
-          },
-          {
-            "text": "die Treppe",
-            "tier": "full"
-          },
-          {
-            "text": "Stiege",
-            "tier": "full"
-          },
-          {
-            "text": "Treppen",
-            "tier": "partial"
-          },
-          {
-            "text": "Stiegen",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "door",
-        "front window",
-        "garage"
-      ],
-      "hintDe": "Da gehst du Stufe für Stufe nach oben.",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "door",
-          "front window",
-          "garage",
-          "kitchen",
-          "graveyard"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": null,
-      "note": "Masterlist example with walk → go: bare 'walk' is out-of-bank (only phrase entries like 'to walk on' are taught). 'street'/'road' kept out of mc/pool: they would also fit 'up the ___ in the dark'."
-    },
-    {
-      "wordId": "g2u03.w.sticker",
-      "w": "sticker",
-      "g": "Aufkleber",
-      "d": "A small picture that you can put on a window, a book or a door",
-      "s": "I put a vampire ___ on his window.",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "sticker",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "sticker",
-          "tier": "full"
-        },
-        {
-          "text": "a sticker",
-          "tier": "full"
-        },
-        {
-          "text": "stickers",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "sticker",
-            "tier": "full"
-          },
-          {
-            "text": "stickers",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Aufkleber",
-            "tier": "full"
-          },
-          {
-            "text": "Sticker",
-            "tier": "full"
-          },
-          {
-            "text": "Pickerl",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "mask",
-        "magazine",
-        "key ring"
-      ],
-      "hintDe": "Kleine bunte Bilder für dein Heft oder dein Fenster.",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "mask",
-          "magazine",
-          "key ring",
-          "letter",
-          "tin"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": null,
-      "note": null
-    },
-    {
-      "wordId": "g2u03.w.sweets",
-      "w": "sweets",
-      "g": "Süßigkeiten",
-      "d": "Food with a lot of sugar in it, like chocolate",
-      "s": "People sometimes give us ___ at Halloween.",
-      "sSource": "sb",
-      "sAnswers": [
-        {
-          "text": "sweets",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "sweets",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "sweets",
-            "tier": "full"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Süßigkeiten",
-            "tier": "full"
-          },
-          {
-            "text": "Süßes",
-            "tier": "full"
-          },
-          {
-            "text": "Zuckerl",
-            "tier": "partial"
-          },
-          {
-            "text": "Zuckerln",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "cheese",
-        "sausages",
-        "bread"
-      ],
-      "hintDe": "Die sammelst du an Halloween im Kürbiseimer – lecker, aber schlecht für die Zähne!",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "cheese",
-          "sausages",
-          "bread",
-          "soup",
-          "salad"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
-      "note": "Masterlist example ('Children get sweets for Halloween.') uses bare 'get', which is out-of-bank (only 'to get back' etc. are taught). Switched to Steve's SB sentence 'People sometimes give us a treat – sweets, etc.', simplified ('a treat' is out-of-bank)."
-    },
-    {
-      "wordId": "g2u03.w.trick-or-treat-2",
-      "w": "Trick or treat!",
-      "g": "Süßes oder Saures (Frage beim Halloween-Umzug)",
-      "d": "Children ask this at the door at Halloween when they want sweets",
-      "s": "We knocked on the door. A woman opened it. \"___?\" Darren asked.",
-      "sSource": "wb",
-      "sAnswers": [
-        {
-          "text": "Trick or treat",
-          "tier": "full"
-        },
-        {
-          "text": "trick or treat",
-          "tier": "full"
-        },
-        {
-          "text": "Trick or treat!",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "Trick or treat!",
-          "tier": "full"
-        },
-        {
-          "text": "Trick or treat",
-          "tier": "full"
-        },
-        {
-          "text": "trick or treat",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "Trick or treat!",
-            "tier": "full"
-          },
-          {
-            "text": "Trick or treat",
-            "tier": "full"
-          },
-          {
-            "text": "trick or treat",
-            "tier": "full"
-          },
-          {
-            "text": "trick or treating",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Süßes oder Saures",
-            "tier": "full"
-          },
-          {
-            "text": "Süßes oder Saures!",
-            "tier": "full"
-          },
-          {
-            "text": "Süßes, sonst gibt's Saures",
-            "tier": "partial"
-          },
-          {
-            "text": "Streich oder Süßes",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "Go away!",
-        "Come on!",
-        "Congratulations!"
-      ],
-      "hintDe": "Diesen Ruf hörst du an Halloween an jeder Haustür.",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "Go away!",
-          "Come on!",
-          "Congratulations!",
-          "What's the matter?",
-          "Have fun!"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": "g2/wb/More 2 WB Unit 3.txt",
-      "note": "Fixed doorstep exclamation (distinct from the wordfile activity entry). Carrier from the WB ex. 11 story ('\"Trick or treat?\" Darren asked.'), trimmed: 'walked up to the front door' and 'old' dropped — walk/front/old are out-of-bank as bare tokens. The masterlist example needs 'people's' and 'say' (both out-of-bank)."
-    },
-    {
-      "wordId": "g2u03.w.knife",
-      "w": "knife (pl knives)",
-      "g": "Messer",
-      "d": "With this, you can cut off a piece of bread or cheese",
-      "s": "I need a ___ to cut vegetables.",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "knife",
-          "tier": "full"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "knife",
-          "tier": "full"
-        },
-        {
-          "text": "a knife",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "knife",
-            "tier": "full"
-          },
-          {
-            "text": "a knife",
-            "tier": "full"
-          },
-          {
-            "text": "knives",
-            "tier": "full"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Messer",
-            "tier": "full"
-          },
-          {
-            "text": "das Messer",
-            "tier": "full"
-          }
-        ]
-      },
-      "gloss": [
-        {
-          "word": "cut",
-          "de": "schneiden",
-          "scope": "s"
-        }
-      ],
-      "mc": [
-        "plate",
-        "glass",
-        "bottle"
-      ],
-      "hintDe": "Vorsicht, scharf! Damit schneidest du dein Brot.",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "plate",
-          "glass",
-          "bottle",
-          "tin",
-          "ruler"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": null,
-      "note": "Masterlist example verbatim; bare 'cut' is out-of-bank (only the phrase 'cut off' is taught), so it carries a gloss. 'knives' is full in deToEn because German 'Messer' is singular and plural. The d recycles in-bank 'cut off'."
     },
     {
       "wordId": "g2u03.w.century",
@@ -1895,10 +430,98 @@
       "note": "Masterlist sentence with cat swapped for rabbit ('cat' is not in the level gate, g1-u09 pets list has rabbit) and a third sentence added: bare 'Isn't it ___?' also accepts big, small, wild etc. The nose-and-eyes cue narrows it; pretty/beautiful/sweet remain defensible, so partial and excluded from MC. Definition adapted from the v1 seed after a token gate check."
     },
     {
+      "wordId": "g2u03.w.cycle-helmet",
+      "w": "cycle helmet",
+      "g": "Fahrradhelm",
+      "d": "A strong hat that you wear when you ride a bike.",
+      "s": "Always wear a ___ when you ride a bike.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cycle helmet",
+          "tier": "full"
+        },
+        {
+          "text": "helmet",
+          "tier": "partial"
+        },
+        {
+          "text": "bike helmet",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cycle helmet",
+          "tier": "full"
+        },
+        {
+          "text": "bike helmet",
+          "tier": "partial"
+        },
+        {
+          "text": "helmet",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cycle helmet",
+            "tier": "full"
+          },
+          {
+            "text": "bike helmet",
+            "tier": "partial"
+          },
+          {
+            "text": "helmet",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fahrradhelm",
+            "tier": "full"
+          },
+          {
+            "text": "Radhelm",
+            "tier": "full"
+          },
+          {
+            "text": "Helm",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mask",
+        "costume",
+        "dress"
+      ],
+      "hintDe": "Der schützt deinen Kopf beim Radfahren.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "mask",
+          "costume",
+          "dress",
+          "cape",
+          "school tie"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "cycle helmet",
+      "sbRef": null,
+      "note": "Masterlist carrier ('You should always wear a cycle helmet.') loses all disambiguating context once blanked, and 'should' is not in the level gate; rebuilt with taught words plus bike context. Fix round: 'ride your bike' -> banked phrase 'ride a bike' in s and d; 'bike helmet' demoted to partial in deToEn (untaught tokens may not be full-tier)."
+    },
+    {
       "wordId": "g2u03.w.dress",
       "w": "dress",
       "g": "Kleid",
-      "d": "Girls often wear it to a party - it is long, like a skirt and a shirt in one.",
+      "d": "Girls often wear it to a surprise party - it is long, like a skirt and a shirt in one.",
       "s": "Edwina wears a long ___, like a girl from the 19th century.",
       "sSource": "invented",
       "sAnswers": [
@@ -1972,14 +595,193 @@
       },
       "seedV1": null,
       "sbRef": null,
-      "note": "Masterlist carrier ('The ___ is beautiful. You can wear it to the party.') accepts mask, costume, skirt, blouse and more once blanked; rebuilt around the SB story image (Edwina, the girl from the 19th century, SB ex. 6 'The girl's dress looked very old'). skirt/costume stay grammatical, hence partial and kept out of MC."
+      "note": "Masterlist carrier ('The ___ is beautiful. You can wear it to the party.') accepts mask, costume, skirt, blouse and more once blanked; rebuilt around the SB story image (Edwina, the girl from the 19th century, SB ex. 6 'The girl's dress looked very old'). skirt/costume stay grammatical, hence partial and kept out of MC. Fix round: d 'to a party' -> banked phrase 'to a surprise party' ('party' alone is above level)."
+    },
+    {
+      "wordId": "g2u03.w.front-window",
+      "w": "front window",
+      "g": "Vorderfenster",
+      "d": "The glass in a building that you look out of, into the street",
+      "s": "We put some vampire stickers on his ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "front window",
+          "tier": "full"
+        },
+        {
+          "text": "front windows",
+          "tier": "full"
+        },
+        {
+          "text": "window",
+          "tier": "partial"
+        },
+        {
+          "text": "windows",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "front window",
+          "tier": "full"
+        },
+        {
+          "text": "a front window",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "front window",
+            "tier": "full"
+          },
+          {
+            "text": "window",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vorderfenster",
+            "tier": "full"
+          },
+          {
+            "text": "vorderes Fenster",
+            "tier": "full"
+          },
+          {
+            "text": "Fenster",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "stairs",
+        "graveyard",
+        "knife"
+      ],
+      "hintDe": "Das Glas vorne am Haus – da siehst du auf die Straße.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "stairs",
+          "graveyard",
+          "knife",
+          "century",
+          "tradition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Masterlist example verbatim (= Steve's SB webpage answer). 'door'/'car'/'window' deliberately kept out of mc/pool: they would also fit the carrier."
+    },
+    {
+      "wordId": "g2u03.w.ghost",
+      "w": "ghost",
+      "g": "Geist",
+      "d": "A dead man or woman who can come back at night in scary stories.",
+      "s": "Edwina looked white. Then she disappeared. Was she a ___?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ghost",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ghost",
+          "tier": "full"
+        },
+        {
+          "text": "a ghost",
+          "tier": "full"
+        },
+        {
+          "text": "ghosts",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ghost",
+            "tier": "full"
+          },
+          {
+            "text": "a ghost",
+            "tier": "full"
+          },
+          {
+            "text": "ghosts",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geist",
+            "tier": "full"
+          },
+          {
+            "text": "der Geist",
+            "tier": "full"
+          },
+          {
+            "text": "ein Geist",
+            "tier": "full"
+          },
+          {
+            "text": "Gespenst",
+            "tier": "full"
+          },
+          {
+            "text": "das Gespenst",
+            "tier": "full"
+          },
+          {
+            "text": "ein Gespenst",
+            "tier": "full"
+          },
+          {
+            "text": "Geister",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "king",
+        "vampire",
+        "superheroine"
+      ],
+      "hintDe": "Weiß und durchsichtig — buh!",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "king",
+          "vampire",
+          "superheroine",
+          "captain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "ghost",
+      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+      "note": "Stitched from the SB story 'The mysterious girl': 'And then she disappeared.' Fix round 2: distractor 'witch' was defensibly correct (the unit defines a witch as a woman who can do magic, and vanishing is the most magic-like event), so it is replaced with 'king' (in-bank, clearly not a girl from the 19th century who vanishes), and the carrier now anchors on 'looked white' — the ghost-defining trait that rules out witch/vampire/superheroine — instead of the costume clause."
     },
     {
       "wordId": "g2u03.w.graveyard",
       "w": "graveyard",
       "g": "Friedhof",
-      "d": "A dark place with old stones where the dead lie.",
-      "s": "There were some trees next to the ___, a dark place with old stones for the dead.",
+      "d": "A dark place with stones where the dead lie.",
+      "s": "There were some trees next to the ___, a dark place with stones for the dead.",
       "sSource": "sb",
       "sAnswers": [
         {
@@ -2048,7 +850,248 @@
       },
       "seedV1": null,
       "sbRef": "g2/sb/More 2 SB Unit 3.txt",
-      "note": "First clause verbatim from the SB story ('There were some trees next to the graveyard'); defining clause added because the bare sentence accepts park, woods, river and most other place nouns. 'stones for the dead' rules out castle, which then works as the Halloween-flavoured distractor."
+      "note": "First clause verbatim from the SB story ('There were some trees next to the graveyard'); defining clause added because the bare sentence accepts park, woods, river and most other place nouns. 'stones for the dead' rules out castle, which then works as the Halloween-flavoured distractor. Fix round: dropped above-level 'old' from d and s; 'stones for the dead' still does the disambiguating work."
+    },
+    {
+      "wordId": "g2u03.w.guys",
+      "w": "guys",
+      "g": "Leute",
+      "d": "You can call a group of friends or children this.",
+      "s": "Come on, ___. Don't look. OK?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "guys",
+          "tier": "full"
+        },
+        {
+          "text": "everybody",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "guys",
+          "tier": "full"
+        },
+        {
+          "text": "kids",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "guys",
+            "tier": "full"
+          },
+          {
+            "text": "people",
+            "tier": "full"
+          },
+          {
+            "text": "folks",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Leute",
+            "tier": "full"
+          },
+          {
+            "text": "Jungs",
+            "tier": "partial"
+          },
+          {
+            "text": "Freunde",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "teachers",
+        "parents",
+        "customers"
+      ],
+      "hintDe": "So nennst du eine ganze Gruppe von Freunden.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "teachers",
+          "parents",
+          "customers",
+          "women",
+          "neighbours"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Masterlist (Twins 1 video phrase), minimally adapted. Vocative carrier, so MC distractors are plural person nouns that are unidiomatic as a friendly address. Fix round: d rephrased without 'name' (only 'His/Her name is' is banked); bare 'Promise.' (only 'I promise.' is banked) -> core-allowlist 'OK?', keeping the appeal."
+    },
+    {
+      "wordId": "g2u03.w.knife",
+      "w": "knife (pl knives)",
+      "g": "Messer",
+      "d": "With this, you can cut off a piece of bread or cheese",
+      "s": "I need a ___ to cut vegetables.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "knife",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "knife",
+          "tier": "full"
+        },
+        {
+          "text": "a knife",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "knife",
+            "tier": "full"
+          },
+          {
+            "text": "a knife",
+            "tier": "full"
+          },
+          {
+            "text": "knives",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Messer",
+            "tier": "full"
+          },
+          {
+            "text": "das Messer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cut",
+          "de": "schneiden",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "plate",
+        "glass",
+        "bottle"
+      ],
+      "hintDe": "Vorsicht, scharf! Damit schneidest du dein Brot.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "plate",
+          "glass",
+          "bottle",
+          "tin",
+          "ruler"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Masterlist example verbatim; bare 'cut' is out-of-bank (only the phrase 'cut off' is taught), so it carries a gloss. 'knives' is full in deToEn because German 'Messer' is singular and plural. The d recycles in-bank 'cut off'."
+    },
+    {
+      "wordId": "g2u03.w.mask",
+      "w": "mask",
+      "g": "Maske",
+      "d": "You wear it over your eyes and nose, so you look like a ghost or a vampire.",
+      "s": "Everybody wears a ___ over their eyes. We're vampires, witches and ghosts!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mask",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mask",
+          "tier": "full"
+        },
+        {
+          "text": "a mask",
+          "tier": "full"
+        },
+        {
+          "text": "masks",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mask",
+            "tier": "full"
+          },
+          {
+            "text": "a mask",
+            "tier": "full"
+          },
+          {
+            "text": "masks",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Maske",
+            "tier": "full"
+          },
+          {
+            "text": "die Maske",
+            "tier": "full"
+          },
+          {
+            "text": "eine Maske",
+            "tier": "full"
+          },
+          {
+            "text": "Masken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "costume",
+        "hat",
+        "dress"
+      ],
+      "hintDe": "Du trägst sie im Gesicht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "costume",
+          "hat",
+          "dress",
+          "cap"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "mask",
+      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+      "note": "Megan's SB sentence 'Everyone wears a mask.' — 'everyone' is above level, so 'everybody'; 'over their eyes' added to rule out 'costume'. Second sentence verbatim Megan."
     },
     {
       "wordId": "g2u03.w.myself",
@@ -2135,6 +1178,161 @@
       "note": "Masterlist sentence with 'When I am alone,' added: bare 'I often talk to ___.' accepts him/her/them/you. The alone-context makes every other pronoun clearly wrong, so the digest pronouns work as distractors (v1 used himself/herself/yourself - all out of bank). Definition uses a mirror frame instead of meta-talk; 'word for me' fails the gate ('word' untaught)."
     },
     {
+      "wordId": "g2u03.w.picnic",
+      "w": "picnic",
+      "g": "Picknick",
+      "d": "Lunch outside. You sit down in the park and eat sandwiches from a basket.",
+      "s": "Let's have a ___ in the park. I can bring sandwiches and orange juice.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "picnic",
+          "tier": "full"
+        },
+        {
+          "text": "party",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "picnic",
+          "tier": "full"
+        },
+        {
+          "text": "a picnic",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "picnic",
+            "tier": "full"
+          },
+          {
+            "text": "a picnic",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Picknick",
+            "tier": "full"
+          },
+          {
+            "text": "das Picknick",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "costume",
+        "graveyard",
+        "tradition"
+      ],
+      "hintDe": "Du isst draußen im Park – mit Korb und Decke.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "costume",
+          "graveyard",
+          "tradition",
+          "mask",
+          "century"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "First sentence is masterlist verbatim; second sentence added because 'Let's have a ___ in the park.' alone also accepts party, match, concert and break from the bank. Event/meal nouns (party, sandwich, concert, match, supper) are deliberately excluded from MC as they would be defensible answers. Fix round: d 'You sit in the park' -> banked phrase 'You sit down in the park' (bare 'sit' is above level). Fix round 2: added 'a picnic' as a full answer (dAnswers + deToEn) and 'das Picknick' as a full enToDe answer, matching the unit's article-form convention ('a costume', 'das Kleid', 'der Friedhof'); 'a picnic' was previously only a 2-edit Levenshtein near-miss."
+    },
+    {
+      "wordId": "g2u03.w.pumpkin-bucket",
+      "w": "pumpkin bucket",
+      "g": "Kürbiseimer",
+      "d": "Children carry it when they go trick-or-treating and put their sweets in it.",
+      "s": "The child is trick-or-treating with a ___ for the sweets.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pumpkin bucket",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pumpkin bucket",
+          "tier": "full"
+        },
+        {
+          "text": "a pumpkin bucket",
+          "tier": "full"
+        },
+        {
+          "text": "pumpkin buckets",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pumpkin bucket",
+            "tier": "full"
+          },
+          {
+            "text": "a pumpkin bucket",
+            "tier": "full"
+          },
+          {
+            "text": "pumpkin buckets",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kürbiseimer",
+            "tier": "full"
+          },
+          {
+            "text": "der Kürbiseimer",
+            "tier": "full"
+          },
+          {
+            "text": "ein Kürbiseimer",
+            "tier": "full"
+          },
+          {
+            "text": "Eimer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mask",
+        "sticker",
+        "costume"
+      ],
+      "hintDe": "Da kommen deine Süßigkeiten rein.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mask",
+          "sticker",
+          "costume",
+          "cycle helmet"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "pumpkin bucket",
+      "sbRef": null,
+      "note": "No textbook running-text sentence exists for this word; carrier modeled on the SB p.28 Word File image (child trick-or-treating with a pumpkin bucket)."
+    },
+    {
       "wordId": "g2u03.w.shall",
       "w": "shall",
       "g": "sollen",
@@ -2174,10 +1372,6 @@
           {
             "text": "should",
             "tier": "full"
-          },
-          {
-            "text": "will",
-            "tier": "partial"
           }
         ],
         "enToDe": [
@@ -2194,15 +1388,14 @@
       "gloss": [],
       "mc": [
         "must",
-        "did",
-        "couldn't"
+        "couldn't",
+        "can't"
       ],
       "hintDe": "Du machst einen Vorschlag: Wohin ... wir gehen?",
       "difficulty": 3,
       "gameMeta": {
         "distractorPool": [
           "must",
-          "did",
           "couldn't",
           "can't",
           "don't"
@@ -2212,14 +1405,14 @@
       },
       "seedV1": null,
       "sbRef": "g2/sb/More 2 SB Unit 3.txt",
-      "note": "SB story line ('\"Where shall we go?\" she asked.') with she -> Edwina and Ron's reply kept to anchor the suggestion meaning. should/can stay defensible in the question, so partial and excluded from MC; must/did/couldn't are clearly wrong in a friendly where-question. Difficulty 3: abstract function word, two German senses (sollen/wollen)."
+      "note": "r3 fix: removed will partial; will=werden/wollen, never sollen (translation lens)"
     },
     {
       "wordId": "g2u03.w.sick",
       "w": "sick",
       "g": "übel",
       "d": "Ill and not well. You can be like this after too many sweets.",
-      "s": "I feel a bit ___. I ate too many sweets.",
+      "s": "I feel a bit ___. Too many sweets!",
       "sSource": "masterlist",
       "sAnswers": [
         {
@@ -2245,7 +1438,7 @@
           },
           {
             "text": "ill",
-            "tier": "full"
+            "tier": "partial"
           }
         ],
         "enToDe": [
@@ -2295,13 +1488,169 @@
       },
       "seedV1": null,
       "sbRef": null,
-      "note": "Masterlist sentence verbatim; 'feel' and 'a bit' are not in the cumulative bank, so both are glossed (both appear in the SB story this sentence comes from)."
+      "note": "r3 fix: ill demoted full->partial; übel≠ill (translation lens)"
+    },
+    {
+      "wordId": "g2u03.w.stairs",
+      "w": "stairs",
+      "g": "Treppe",
+      "d": "In a building, you go up these to the rooms over you",
+      "s": "We go up the ___ in the dark.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "stairs",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stairs",
+          "tier": "full"
+        },
+        {
+          "text": "the stairs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stairs",
+            "tier": "full"
+          },
+          {
+            "text": "the stairs",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Treppe",
+            "tier": "full"
+          },
+          {
+            "text": "die Treppe",
+            "tier": "full"
+          },
+          {
+            "text": "Stiege",
+            "tier": "full"
+          },
+          {
+            "text": "Treppen",
+            "tier": "partial"
+          },
+          {
+            "text": "Stiegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "door",
+        "front window",
+        "garage"
+      ],
+      "hintDe": "Da gehst du Stufe für Stufe nach oben.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "door",
+          "front window",
+          "garage",
+          "kitchen",
+          "graveyard"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Masterlist example with walk → go: bare 'walk' is out-of-bank (only phrase entries like 'to walk on' are taught). 'street'/'road' kept out of mc/pool: they would also fit 'up the ___ in the dark'."
+    },
+    {
+      "wordId": "g2u03.w.sticker",
+      "w": "sticker",
+      "g": "Aufkleber",
+      "d": "A small picture that you can put on a window, a book or a door",
+      "s": "I put a vampire ___ on his window.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sticker",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sticker",
+          "tier": "full"
+        },
+        {
+          "text": "a sticker",
+          "tier": "full"
+        },
+        {
+          "text": "stickers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sticker",
+            "tier": "full"
+          },
+          {
+            "text": "stickers",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Aufkleber",
+            "tier": "full"
+          },
+          {
+            "text": "Sticker",
+            "tier": "full"
+          },
+          {
+            "text": "Pickerl",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mask",
+        "magazine",
+        "key ring"
+      ],
+      "hintDe": "Kleine bunte Bilder für dein Heft oder dein Fenster.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mask",
+          "magazine",
+          "key ring",
+          "letter",
+          "tin"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
     },
     {
       "wordId": "g2u03.w.superheroine",
       "w": "superheroine",
       "g": "Superheldin",
-      "d": "A very strong woman from a story or film. She helps everybody and she can often fly.",
+      "d": "A very strong woman from a story or a fantasy film. She fights bad people.",
       "s": "She was dressed up as her favourite ___.",
       "sSource": "masterlist",
       "sAnswers": [
@@ -2352,8 +1701,8 @@
       },
       "gloss": [
         {
-          "word": "dressed up",
-          "de": "verkleidet",
+          "word": "dressed up as",
+          "de": "verkleidet als",
           "scope": "s"
         }
       ],
@@ -2377,91 +1726,585 @@
       },
       "seedV1": null,
       "sbRef": null,
-      "note": "Masterlist verbatim; 'dressed up' glossed exactly as the SB story glosses it (dressed up – verkleidet). MC distractors are abstract nouns on purpose: in 'dressed up as her favourite ___' any person noun (witch, vampire, ghost) is a plausible costume and so not unambiguously wrong."
+      "note": "Masterlist verbatim; MC distractors are abstract nouns on purpose: in 'dressed up as her favourite ___' any person noun (witch, vampire, ghost) is a plausible costume and so not unambiguously wrong. Fix round: gloss widened to the full SB phrase 'dressed up as' (bare 'as' is above level; only 'as soon as' is banked) so the carrier stays verbatim; d rebuilt with taught words ('film', 'helps', 'fly' were above level)."
     },
     {
-      "wordId": "g2u03.w.wild",
-      "w": "wild",
-      "g": "wild",
-      "d": "Very noisy and not careful, with a lot of running and shouting.",
-      "s": "You shouldn't play many ___ games.",
-      "sSource": "masterlist",
+      "wordId": "g2u03.w.sweets",
+      "w": "sweets",
+      "g": "Süßigkeiten",
+      "d": "Food with a lot of sugar in it, like chocolate",
+      "s": "People sometimes give us ___ at Halloween.",
+      "sSource": "sb",
       "sAnswers": [
         {
-          "text": "wild",
+          "text": "sweets",
           "tier": "full"
         },
         {
-          "text": "dangerous",
+          "text": "candy",
           "tier": "partial"
         }
       ],
       "dAnswers": [
         {
-          "text": "wild",
+          "text": "sweets",
+          "tier": "full"
+        },
+        {
+          "text": "candy",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sweets",
+            "tier": "full"
+          },
+          {
+            "text": "candy",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Süßigkeiten",
+            "tier": "full"
+          },
+          {
+            "text": "die Süßigkeiten",
+            "tier": "full"
+          },
+          {
+            "text": "Süßes",
+            "tier": "full"
+          },
+          {
+            "text": "Zuckerl",
+            "tier": "partial"
+          },
+          {
+            "text": "Zuckerln",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cheese",
+        "sausages",
+        "bread"
+      ],
+      "hintDe": "Die sammelst du an Halloween im Kürbiseimer – lecker, aber schlecht für die Zähne!",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cheese",
+          "sausages",
+          "bread",
+          "soup",
+          "salad"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+      "note": "Masterlist example ('Children get sweets for Halloween.') uses bare 'get', which is out-of-bank (only 'to get back' etc. are taught). Switched to Steve's SB sentence 'People sometimes give us a treat – sweets, etc.', simplified ('a treat' is out-of-bank). Fix round 2: added 'candy' as a partial on sAnswers + dAnswers + deToEn (AmE near-synonym, ubiquitous from media but register-marked and not in the cumulative bank, so partial / gate-exempt); added 'die Süßigkeiten' as a full enToDe answer to match the unit's article-form convention ('die Treppe', 'das Kleid')."
+    },
+    {
+      "wordId": "g2u03.w.to-be-proud",
+      "w": "to be proud (of)",
+      "g": "stolz sein (auf)",
+      "d": "When you are very happy about a good thing that you did",
+      "s": "This year my pumpkin was the best. I was very ___ of it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "proud",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be proud of",
+          "tier": "full"
+        },
+        {
+          "text": "to be proud",
+          "tier": "full"
+        },
+        {
+          "text": "be proud of",
+          "tier": "full"
+        },
+        {
+          "text": "be proud",
+          "tier": "full"
+        },
+        {
+          "text": "proud",
           "tier": "full"
         }
       ],
       "translation": {
         "deToEn": [
           {
-            "text": "wild",
+            "text": "to be proud of",
             "tier": "full"
           },
           {
-            "text": "crazy",
-            "tier": "partial"
+            "text": "to be proud",
+            "tier": "full"
           },
           {
-            "text": "mad",
+            "text": "be proud of",
+            "tier": "full"
+          },
+          {
+            "text": "be proud",
+            "tier": "full"
+          },
+          {
+            "text": "proud",
             "tier": "partial"
           }
         ],
         "enToDe": [
           {
-            "text": "wild",
+            "text": "stolz sein (auf)",
             "tier": "full"
           },
           {
-            "text": "verrückt",
+            "text": "stolz sein auf",
+            "tier": "full"
+          },
+          {
+            "text": "stolz sein",
+            "tier": "full"
+          },
+          {
+            "text": "auf etwas stolz sein",
+            "tier": "full"
+          },
+          {
+            "text": "stolz",
             "tier": "partial"
           }
         ]
       },
       "gloss": [
         {
-          "word": "shouldn't",
-          "de": "solltest nicht",
+          "word": "pumpkin",
+          "de": "Kürbis",
           "scope": "s"
         }
       ],
       "mc": [
-        "cute",
-        "sick",
-        "proud"
+        "to be scared of",
+        "to fear",
+        "to scare"
       ],
-      "hintDe": "Denk an laute Spiele, bei denen alle herumrennen.",
-      "difficulty": 1,
+      "hintDe": "Dein Kürbis ist der beste in der Klasse – wie fühlst du dich?",
+      "difficulty": 3,
       "gameMeta": {
         "distractorPool": [
-          "cute",
-          "sick",
-          "proud",
-          "sad",
-          "tired"
+          "to be scared of",
+          "to fear",
+          "to scare",
+          "to be in danger"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+      "note": "Henry's SB text, minimally adapted: 'pumpkin face' → 'pumpkin' ('face' is out-of-bank) and '+ of it' to anchor the preposition. The masterlist sentence alone ('I was very proud.') is a bad carrier: happy/scared/excited also fit."
+    },
+    {
+      "wordId": "g2u03.w.to-cut-off",
+      "w": "to cut off",
+      "g": "abschneiden",
+      "d": "To make a piece go away with a knife",
+      "s": "Please give me the knife. I want to ___ the top of the pumpkin.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "cut off",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to cut off",
+          "tier": "full"
+        },
+        {
+          "text": "cut off",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to cut off",
+            "tier": "full"
+          },
+          {
+            "text": "cut off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "abschneiden",
+            "tier": "full"
+          },
+          {
+            "text": "wegschneiden",
+            "tier": "partial"
+          },
+          {
+            "text": "schneiden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "top",
+          "de": "oberer Teil",
+          "scope": "s"
+        },
+        {
+          "word": "pumpkin",
+          "de": "Kürbis",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to keep",
+        "to lose",
+        "to scare"
+      ],
+      "hintDe": "Das machst du mit einem Messer – zum Beispiel beim Kürbis.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to keep",
+          "to lose",
+          "to scare",
+          "to fear",
+          "to break"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/wb/More 2 WB Unit 3.txt",
+      "note": "WB ex. 2.7 dialogue chosen over the masterlist example: the knife context makes the verb unambiguous. The 'What for?' turn was dropped. Glosses: top, pumpkin (both out-of-bank; only 'pumpkin bucket' is taught)."
+    },
+    {
+      "wordId": "g2u03.w.to-fear",
+      "w": "to fear",
+      "g": "(sich) fürchten (vor)",
+      "d": "To be scared of a ghost, a big dog or a scary story.",
+      "s": "We do not ___ the zombies, because we aren't scared of them!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fear",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to fear",
+          "tier": "full"
+        },
+        {
+          "text": "fear",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to fear",
+            "tier": "full"
+          },
+          {
+            "text": "fear",
+            "tier": "full"
+          },
+          {
+            "text": "to be scared of",
+            "tier": "full"
+          },
+          {
+            "text": "be scared of",
+            "tier": "full"
+          },
+          {
+            "text": "to be scared",
+            "tier": "full"
+          },
+          {
+            "text": "be scared",
+            "tier": "full"
+          },
+          {
+            "text": "to be afraid of",
+            "tier": "partial"
+          },
+          {
+            "text": "be afraid of",
+            "tier": "partial"
+          },
+          {
+            "text": "to be afraid",
+            "tier": "partial"
+          },
+          {
+            "text": "be afraid",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fürchten",
+            "tier": "full"
+          },
+          {
+            "text": "sich fürchten",
+            "tier": "full"
+          },
+          {
+            "text": "sich fürchten vor",
+            "tier": "full"
+          },
+          {
+            "text": "Angst haben vor",
+            "tier": "full"
+          },
+          {
+            "text": "Angst haben",
+            "tier": "full"
+          },
+          {
+            "text": "sich erschrecken",
+            "tier": "partial"
+          },
+          {
+            "text": "Angst",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "zombies",
+          "de": "Zombies",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to scare",
+        "to love",
+        "to enjoy"
+      ],
+      "hintDe": "Du hast große Angst vor etwas.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to scare",
+          "to love",
+          "to enjoy",
+          "to hate",
+          "to lose"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to fear",
+      "sbRef": null,
+      "note": "Masterlist sentence (SB song line) verbatim; because-clause added so 'scare' cannot fill the blank; 'zombies' kept from the song and glossed. Fix round 2: added 'to be afraid (of)' / 'be afraid (of)' / 'afraid' renderings as partial on deToEn — they are the most common student translation of '(sich) fürchten', but 'afraid' is not in the cumulative bank, so they stay partial (gate-exempt) rather than full like the taught 'to be scared of'."
+    },
+    {
+      "wordId": "g2u03.w.to-keep",
+      "w": "to keep",
+      "g": "(be-)halten",
+      "d": "To have a thing and not give it away",
+      "s": "Let's ___ the pumpkin for Halloween.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "keep",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to keep",
+          "tier": "full"
+        },
+        {
+          "text": "keep",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to keep",
+            "tier": "full"
+          },
+          {
+            "text": "keep",
+            "tier": "full"
+          },
+          {
+            "text": "to hold",
+            "tier": "partial"
+          },
+          {
+            "text": "hold",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "behalten",
+            "tier": "full"
+          },
+          {
+            "text": "halten",
+            "tier": "full"
+          },
+          {
+            "text": "aufheben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pumpkin",
+          "de": "Kürbis",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to lose",
+        "to cut off",
+        "to fear"
+      ],
+      "hintDe": "Du gibst es nicht mehr her – es bleibt bei dir.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to lose",
+          "to cut off",
+          "to fear",
+          "to scare",
+          "to borrow"
         ],
         "chipBudget": null,
         "minOptions": 4
       },
       "seedV1": null,
       "sbRef": null,
-      "note": "Masterlist verbatim. should/shouldn't is this unit's grammar focus but is absent from the vocab level gate (only 'shall' and 'couldn't' are banked), so 'shouldn't' carries a gloss to pass the deterministic check; students know it from the grammar section."
+      "note": "Masterlist example shortened: 'for our Halloween party' → 'for Halloween' (bare 'party' is out-of-bank; only 'surprise party' is taught). Gloss: pumpkin."
+    },
+    {
+      "wordId": "g2u03.w.to-lose",
+      "w": "to lose",
+      "g": "verlieren",
+      "d": "To not have it any more because you cannot find it.",
+      "s": "I don't want to ___ my mobile phone.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "lose",
+          "tier": "full"
+        },
+        {
+          "text": "break",
+          "tier": "partial"
+        },
+        {
+          "text": "forget",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lose",
+          "tier": "full"
+        },
+        {
+          "text": "to lose",
+          "tier": "full"
+        },
+        {
+          "text": "lost",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lose",
+            "tier": "full"
+          },
+          {
+            "text": "to lose",
+            "tier": "full"
+          },
+          {
+            "text": "lost",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verlieren",
+            "tier": "full"
+          },
+          {
+            "text": "verlegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "find",
+        "eat",
+        "wash"
+      ],
+      "hintDe": "Das Gegenteil von finden – denk an dein Handy.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "find",
+          "eat",
+          "wash",
+          "paint",
+          "catch"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to lose",
+      "sbRef": null,
+      "note": "Masterlist, minimally adapted. 'break' and 'sell' would be true in this sentence, so they are accepted/avoided accordingly, never used as distractors. Fix round: d 'something' -> 'it' ('something' is above level); s 'my phone' -> banked 'my mobile phone'."
     },
     {
       "wordId": "g2u03.w.to-scare",
       "w": "to scare",
       "g": "Angst machen",
-      "d": "To make somebody jump with fear, like a ghost at Halloween.",
+      "d": "When a ghost or a scary story makes you jump.",
       "s": "At Halloween, some costumes ___ me.",
       "sSource": "masterlist",
       "sAnswers": [
@@ -2558,316 +2401,541 @@
       "note": "Masterlist with 'really' dropped ('really' is not in the level gate); otherwise verbatim. 'fear' as MC distractor targets the classic scare/fear confusion (make afraid vs be afraid)."
     },
     {
-      "wordId": "g2u03.w.cycle-helmet",
-      "w": "cycle helmet",
-      "g": "Fahrradhelm",
-      "d": "A strong hat that you wear when you ride your bike.",
-      "s": "Always wear a ___ when you ride your bike.",
-      "sSource": "invented",
+      "wordId": "g2u03.w.tradition",
+      "w": "tradition",
+      "g": "Tradition",
+      "d": "What a family always does, year after year — at Halloween or on a birthday.",
+      "s": "What's your favourite Halloween ___ — apple bobbing or trick or treat?",
+      "sSource": "masterlist",
       "sAnswers": [
         {
-          "text": "cycle helmet",
+          "text": "tradition",
           "tier": "full"
-        },
-        {
-          "text": "helmet",
-          "tier": "partial"
-        },
-        {
-          "text": "bike helmet",
-          "tier": "partial"
         }
       ],
       "dAnswers": [
         {
-          "text": "cycle helmet",
+          "text": "tradition",
           "tier": "full"
         },
         {
-          "text": "bike helmet",
-          "tier": "partial"
+          "text": "a tradition",
+          "tier": "full"
         },
         {
-          "text": "helmet",
+          "text": "traditions",
           "tier": "partial"
         }
       ],
       "translation": {
         "deToEn": [
           {
-            "text": "cycle helmet",
+            "text": "tradition",
             "tier": "full"
           },
           {
-            "text": "bike helmet",
+            "text": "a tradition",
             "tier": "full"
           },
           {
-            "text": "helmet",
+            "text": "traditions",
             "tier": "partial"
           }
         ],
         "enToDe": [
           {
-            "text": "Fahrradhelm",
+            "text": "Tradition",
             "tier": "full"
           },
           {
-            "text": "Radhelm",
+            "text": "die Tradition",
             "tier": "full"
           },
           {
-            "text": "Helm",
-            "tier": "partial"
+            "text": "eine Tradition",
+            "tier": "full"
+          },
+          {
+            "text": "Brauch",
+            "tier": "full"
+          },
+          {
+            "text": "der Brauch",
+            "tier": "full"
+          },
+          {
+            "text": "ein Brauch",
+            "tier": "full"
           }
         ]
       },
       "gloss": [],
       "mc": [
-        "mask",
-        "costume",
-        "dress"
+        "surprise",
+        "opinion",
+        "joke"
       ],
-      "hintDe": "Der schützt deinen Kopf beim Radfahren.",
+      "hintDe": "Etwas, das ihr jedes Jahr wieder macht.",
       "difficulty": 2,
       "gameMeta": {
         "distractorPool": [
-          "mask",
-          "costume",
-          "dress",
-          "cape",
-          "school tie"
+          "surprise",
+          "opinion",
+          "joke",
+          "secret",
+          "tip"
         ],
         "chipBudget": null,
         "minOptions": 4
       },
-      "seedV1": "cycle helmet",
+      "seedV1": "tradition",
       "sbRef": null,
-      "note": "Masterlist carrier ('You should always wear a cycle helmet.') loses all disambiguating context once blanked, and 'should' is not in the level gate; rebuilt with taught words plus bike context (v1 carrier shape, verified token by token)."
+      "note": "Masterlist sentence verbatim; two in-bank example traditions appended so 'costume' no longer fits the blank."
     },
     {
-      "wordId": "g2u03.w.guys",
-      "w": "guys",
-      "g": "Leute",
-      "d": "A name for a group of friends or children.",
-      "s": "Come on, ___. Don't look. Promise.",
-      "sSource": "masterlist",
+      "wordId": "g2u03.w.trick-or-treat",
+      "w": "trick or treat",
+      "g": "Süßes oder Saures",
+      "d": "At Halloween, children knock on doors and ask for sweets.",
+      "s": "When my friends meet for ___, we go from door to door.",
+      "sSource": "sb",
       "sAnswers": [
         {
-          "text": "guys",
+          "text": "trick or treat",
           "tier": "full"
         },
         {
-          "text": "everybody",
-          "tier": "partial"
+          "text": "trick-or-treat",
+          "tier": "full"
         }
       ],
       "dAnswers": [
         {
-          "text": "guys",
+          "text": "trick or treat",
           "tier": "full"
         },
         {
-          "text": "kids",
+          "text": "trick-or-treat",
+          "tier": "full"
+        },
+        {
+          "text": "Trick or treat!",
           "tier": "partial"
         }
       ],
       "translation": {
         "deToEn": [
           {
-            "text": "guys",
+            "text": "trick or treat",
             "tier": "full"
           },
           {
-            "text": "people",
-            "tier": "full"
-          },
-          {
-            "text": "folks",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "Leute",
-            "tier": "full"
-          },
-          {
-            "text": "Jungs",
-            "tier": "partial"
-          },
-          {
-            "text": "Freunde",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "teachers",
-        "parents",
-        "customers"
-      ],
-      "hintDe": "So nennst du eine ganze Gruppe von Freunden.",
-      "difficulty": 1,
-      "gameMeta": {
-        "distractorPool": [
-          "teachers",
-          "parents",
-          "customers",
-          "women",
-          "neighbours"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": null,
-      "sbRef": null,
-      "note": "Masterlist verbatim (Twins 1 video phrase). Vocative carrier, so MC distractors are plural person nouns that are unidiomatic as a friendly address."
-    },
-    {
-      "wordId": "g2u03.w.to-lose",
-      "w": "to lose",
-      "g": "verlieren",
-      "d": "To not have something any more because you cannot find it.",
-      "s": "I don't want to ___ my phone.",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "lose",
-          "tier": "full"
-        },
-        {
-          "text": "break",
-          "tier": "partial"
-        },
-        {
-          "text": "forget",
-          "tier": "partial"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "lose",
-          "tier": "full"
-        },
-        {
-          "text": "to lose",
-          "tier": "full"
-        },
-        {
-          "text": "lost",
-          "tier": "partial"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "lose",
-            "tier": "full"
-          },
-          {
-            "text": "to lose",
-            "tier": "full"
-          },
-          {
-            "text": "lost",
-            "tier": "partial"
-          }
-        ],
-        "enToDe": [
-          {
-            "text": "verlieren",
-            "tier": "full"
-          },
-          {
-            "text": "verlegen",
-            "tier": "partial"
-          }
-        ]
-      },
-      "gloss": [],
-      "mc": [
-        "find",
-        "eat",
-        "wash"
-      ],
-      "hintDe": "Das Gegenteil von finden – denk an dein Handy.",
-      "difficulty": 2,
-      "gameMeta": {
-        "distractorPool": [
-          "find",
-          "eat",
-          "wash",
-          "paint",
-          "catch"
-        ],
-        "chipBudget": null,
-        "minOptions": 4
-      },
-      "seedV1": "to lose",
-      "sbRef": null,
-      "note": "Masterlist verbatim. Definition adapted from the v1 seed after a token-by-token gate check (all words taught). 'break' and 'sell' would be true in this sentence, so they are accepted/avoided accordingly, never used as distractors."
-    },
-    {
-      "wordId": "g2u03.w.picnic",
-      "w": "picnic",
-      "g": "Picknick",
-      "d": "Lunch outside. You sit in the park and eat sandwiches from a basket.",
-      "s": "Let's have a ___ in the park. I can bring sandwiches and orange juice.",
-      "sSource": "masterlist",
-      "sAnswers": [
-        {
-          "text": "picnic",
-          "tier": "full"
-        },
-        {
-          "text": "party",
-          "tier": "partial"
-        }
-      ],
-      "dAnswers": [
-        {
-          "text": "picnic",
-          "tier": "full"
-        }
-      ],
-      "translation": {
-        "deToEn": [
-          {
-            "text": "picnic",
+            "text": "trick-or-treat",
             "tier": "full"
           }
         ],
         "enToDe": [
           {
-            "text": "Picknick",
+            "text": "Süßes oder Saures",
+            "tier": "full"
+          },
+          {
+            "text": "Süßes, sonst gibt's Saures",
             "tier": "full"
           }
         ]
       },
       "gloss": [],
       "mc": [
-        "costume",
-        "graveyard",
+        "apple bobbing",
+        "picnic",
         "tradition"
       ],
-      "hintDe": "Du isst draußen im Park – mit Korb und Decke.",
+      "hintDe": "Von Tür zu Tür ziehen und Süßigkeiten sammeln.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "apple bobbing",
+          "picnic",
+          "tradition",
+          "costume"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "trick or treat",
+      "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+      "note": "First clause verbatim from the SB poem 'I'm not so keen on Halloween' ('When my friends meet for trick or treat'); in-bank completion added for level and disambiguation."
+    },
+    {
+      "wordId": "g2u03.w.trick-or-treat-2",
+      "w": "Trick or treat!",
+      "g": "Süßes oder Saures (Frage beim Halloween-Umzug)",
+      "d": "Children ask this at the door at Halloween when they want sweets",
+      "s": "We knocked on the door. A woman opened it. \"___?\" Darren asked.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "Trick or treat",
+          "tier": "full"
+        },
+        {
+          "text": "trick or treat",
+          "tier": "full"
+        },
+        {
+          "text": "Trick or treat!",
+          "tier": "full"
+        },
+        {
+          "text": "Trick-or-treat",
+          "tier": "full"
+        },
+        {
+          "text": "trick-or-treat",
+          "tier": "full"
+        },
+        {
+          "text": "Trick-or-treat!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Trick or treat!",
+          "tier": "full"
+        },
+        {
+          "text": "Trick or treat",
+          "tier": "full"
+        },
+        {
+          "text": "trick or treat",
+          "tier": "full"
+        },
+        {
+          "text": "Trick-or-treat!",
+          "tier": "full"
+        },
+        {
+          "text": "Trick-or-treat",
+          "tier": "full"
+        },
+        {
+          "text": "trick-or-treat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Trick or treat!",
+            "tier": "full"
+          },
+          {
+            "text": "Trick or treat",
+            "tier": "full"
+          },
+          {
+            "text": "trick or treat",
+            "tier": "full"
+          },
+          {
+            "text": "trick or treating",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Süßes oder Saures",
+            "tier": "full"
+          },
+          {
+            "text": "Süßes oder Saures!",
+            "tier": "full"
+          },
+          {
+            "text": "Süßes, sonst gibt's Saures",
+            "tier": "partial"
+          },
+          {
+            "text": "Streich oder Süßes",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Go away!",
+        "Come on!",
+        "Congratulations!"
+      ],
+      "hintDe": "Diesen Ruf hörst du an Halloween an jeder Haustür.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Go away!",
+          "Come on!",
+          "Congratulations!",
+          "What's the matter?",
+          "Have fun!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/wb/More 2 WB Unit 3.txt",
+      "note": "r4 fold-back: added hyphenated Trick-or-treat full variants (review fix F6)"
+    },
+    {
+      "wordId": "g2u03.w.vampire",
+      "w": "vampire",
+      "g": "Vampir",
+      "d": "In scary stories, a man with long teeth and a black cape.",
+      "s": "I've got my ___ costume, but I can't find my teeth.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "vampire",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "vampire",
+          "tier": "full"
+        },
+        {
+          "text": "a vampire",
+          "tier": "full"
+        },
+        {
+          "text": "vampires",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "vampire",
+            "tier": "full"
+          },
+          {
+            "text": "a vampire",
+            "tier": "full"
+          },
+          {
+            "text": "vampires",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vampir",
+            "tier": "full"
+          },
+          {
+            "text": "der Vampir",
+            "tier": "full"
+          },
+          {
+            "text": "ein Vampir",
+            "tier": "full"
+          },
+          {
+            "text": "Vampire",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ghost",
+        "witch",
+        "superheroine"
+      ],
+      "hintDe": "Er hat lange, spitze Zähne.",
       "difficulty": 1,
       "gameMeta": {
         "distractorPool": [
-          "costume",
-          "graveyard",
-          "tradition",
-          "mask",
-          "century"
+          "ghost",
+          "witch",
+          "superheroine",
+          "mask"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "vampire",
+      "sbRef": "g2/wb/More 2 WB Unit 3.txt",
+      "note": "WB Using Vocabulary ex.2(8) minimally adapted: above-level 'plastic' dropped from 'my plastic teeth'."
+    },
+    {
+      "wordId": "g2u03.w.wild",
+      "w": "wild",
+      "g": "wild",
+      "d": "Very noisy, with a lot of running and jumping.",
+      "s": "You shouldn't play many ___ games.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wild",
+          "tier": "full"
+        },
+        {
+          "text": "dangerous",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wild",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wild",
+            "tier": "full"
+          },
+          {
+            "text": "crazy",
+            "tier": "partial"
+          },
+          {
+            "text": "mad",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wild",
+            "tier": "full"
+          },
+          {
+            "text": "verrückt",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shouldn't",
+          "de": "solltest nicht",
+          "scope": "s"
+        },
+        {
+          "word": "games",
+          "de": "Spiele",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "cute",
+        "sick",
+        "proud"
+      ],
+      "hintDe": "Denk an laute Spiele, bei denen alle herumrennen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cute",
+          "sick",
+          "proud",
+          "sad",
+          "tired"
         ],
         "chipBudget": null,
         "minOptions": 4
       },
       "seedV1": null,
       "sbRef": null,
-      "note": "First sentence is masterlist verbatim; second sentence added because 'Let's have a ___ in the park.' alone also accepts party, match, concert and break from the bank. Event/meal nouns (party, sandwich, concert, match, supper) are deliberately excluded from MC as they would be defensible answers."
+      "note": "Masterlist verbatim. should/shouldn't is this unit's grammar focus but is absent from the vocab level gate, so 'shouldn't' carries a gloss; students know it from the grammar section. Fix round: d rebuilt with taught words ('careful', 'shouting' were above level); 'games' glossed too — the masterlist collocation 'wild games' is load-bearing and has no banked synonym."
+    },
+    {
+      "wordId": "g2u03.w.witch",
+      "w": "witch",
+      "g": "Hexe",
+      "d": "A woman in scary stories who can do magic.",
+      "s": "Do all ___ wear funny hats? — Yes, and they can do magic, too!",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "witches",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "witch",
+          "tier": "full"
+        },
+        {
+          "text": "a witch",
+          "tier": "full"
+        },
+        {
+          "text": "witches",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "witch",
+            "tier": "full"
+          },
+          {
+            "text": "a witch",
+            "tier": "full"
+          },
+          {
+            "text": "witches",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hexe",
+            "tier": "full"
+          },
+          {
+            "text": "die Hexe",
+            "tier": "full"
+          },
+          {
+            "text": "eine Hexe",
+            "tier": "full"
+          },
+          {
+            "text": "Hexen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ghost",
+        "vampire",
+        "superheroine"
+      ],
+      "hintDe": "Denk an Besen, spitzen Hut und Zauberei.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ghost",
+          "vampire",
+          "superheroine",
+          "costume",
+          "mask"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "witch",
+      "sbRef": "g2/wb/More 2 WB Unit 3.txt",
+      "note": "WB Using Vocabulary ex.2(3): 'Do all witches wear funny hats?' verbatim; reply adapted ('they can fly' -> 'they can do magic') because 'fly' is above level."
     }
   ]
 }

@@ -813,31 +813,17 @@ function structureKeyOf(structureId: string): string {
   return structureId.split(".s.")[1] ?? structureId;
 }
 
-export function runGenItemsIngest(slug: string, fix: boolean, dryRun: boolean): void {
-  if (fix) {
-    runGenItemsIngestFix(slug, dryRun);
-    return;
-  }
-  const unitDir = path.join(UNITS_DIR, slug);
-  const bank = loadBank(slug);
-  const { grade, unit } = gradeUnitOf(slug);
-  const prefix = unitIdPrefix(grade, unit);
-  const bHash = bankHash12(slug);
-  const prev = readUnitItems(slug);
+/** Structural cross-checks on draft items (independent of the brief). */
+function validateDraftStructure(
+  bank: WordBankT,
+  vocabDraftItems: VocabDraftItemT[],
+  grammarDraftItems: GrammarDraftItemT[],
+  unitStructures: Array<{ id: string }>,
+): string[] {
   const errors: string[] = [];
-
-  // ---- vocab draft
-  const vocabRaw = readJsonIfExists<unknown>(path.join(unitDir, "gen", "vocab.draft.json"));
-  if (vocabRaw === null) throw new Error(`${slug}: gen/vocab.draft.json missing — author it from the brief`);
-  const vocabDraft = VocabDraft.parse(vocabRaw);
-  if (vocabDraft.slug !== slug) errors.push(`vocab draft slug says ${vocabDraft.slug}`);
-  if (vocabDraft.briefBank !== bHash) {
-    throw new Error(`${slug}: STALE vocab draft (brief bank ${vocabDraft.briefBank} ≠ current ${bHash}) — re-run --prepare`);
-  }
-
   const bankById = new Map(bank.entries.map((e) => [e.id, e]));
   const seenWordIds = new Set<string>();
-  for (const d of vocabDraft.items) {
+  for (const d of vocabDraftItems) {
     const entry = bankById.get(d.wordId);
     if (entry === undefined) {
       errors.push(`vocab: wordId ${d.wordId} is not in the bank`);
@@ -851,42 +837,43 @@ export function runGenItemsIngest(slug: string, fix: boolean, dryRun: boolean): 
   for (const e of bank.entries) {
     if (!seenWordIds.has(e.id)) errors.push(`vocab: bank word ${e.id} has no item`);
   }
-
-  // ---- grammar draft (only when the unit has structures)
-  const catalog = loadStructuresCatalog(grade);
-  const unitStructures = (catalog?.structures ?? []).filter((s) => s.unit === unit);
-  let grammarDraftItems: GrammarDraftItemT[] = [];
-  if (unitStructures.length > 0) {
-    const grammarRaw = readJsonIfExists<unknown>(path.join(unitDir, "gen", "grammar.draft.json"));
-    if (grammarRaw === null) throw new Error(`${slug}: gen/grammar.draft.json missing — author it from the brief`);
-    const grammarDraft = GrammarDraft.parse(grammarRaw);
-    if (grammarDraft.slug !== slug) errors.push(`grammar draft slug says ${grammarDraft.slug}`);
-    if (grammarDraft.briefBank !== bHash) {
-      throw new Error(`${slug}: STALE grammar draft — re-run --prepare`);
+  const validStructureIds = new Set(unitStructures.map((s) => s.id));
+  for (const d of grammarDraftItems) {
+    if (!validStructureIds.has(d.structureId)) errors.push(`grammar: structureId ${d.structureId} is not a unit structure`);
+    if ((d.format === "multiple-choice" || d.format === "context-picker" || d.format === "sentence-building") && d.gameMeta === null) {
+      errors.push(`grammar [${d.structureId} ${d.format}]: gameMeta is required for this format`);
     }
-    grammarDraftItems = grammarDraft.items;
-    const validStructureIds = new Set(unitStructures.map((s) => s.id));
-    for (const d of grammarDraftItems) {
-      if (!validStructureIds.has(d.structureId)) {
-        errors.push(`grammar: structureId ${d.structureId} is not a unit-${unit} structure`);
-      }
-      if ((d.format === "multiple-choice" || d.format === "context-picker" || d.format === "sentence-building") && d.gameMeta === null) {
-        errors.push(`grammar [${d.structureId} ${d.format}]: gameMeta is required for this format`);
-      }
-      if (countBlanks(d.prompt.text) !== d.prompt.blanks) {
-        errors.push(`grammar [${d.structureId} ${d.format}]: ___ count ≠ blanks (${JSON.stringify(d.prompt.text)})`);
-      }
+    if (countBlanks(d.prompt.text) !== d.prompt.blanks) {
+      errors.push(`grammar [${d.structureId} ${d.format}]: ___ count ≠ blanks (${JSON.stringify(d.prompt.text)})`);
     }
   }
-  if (errors.length > 0) {
-    for (const e of errors) console.error(`  ✗ ${e}`);
-    throw new Error(`${slug}: gen ingest — ${errors.length} error(s)`);
-  }
+  return errors;
+}
 
-  // ---- mint grammar ids
-  const lockPath = path.join(unitDir, "items.lock.json");
-  const lockIn = readJsonIfExists<ItemsLock>(lockPath);
-  const draftSha = sha256OfString(JSON.stringify({ v: vocabDraft.items, g: grammarDraftItems })).slice(0, 12);
+interface MaterializeResult {
+  vocabFile: z.infer<typeof VocabFile>;
+  grammarFile: z.infer<typeof GrammarFile> | null;
+  lock: ItemsLock;
+  hash: string;
+}
+
+/**
+ * THE single regeneration path — draft items → mint ids → assemble + rev →
+ * apply the item-fixes overlay → sorted, schema-checked files. Pure (no I/O):
+ * both the full ingest and the fix ingest run through here, so `draft +
+ * item-fixes` always reproduces the committed corpus (design principle 10).
+ */
+function materializeUnit(
+  slug: string,
+  grade: Grade,
+  unit: number,
+  prefix: string,
+  vocabDraftItems: VocabDraftItemT[],
+  grammarDraftItems: GrammarDraftItemT[],
+  lockIn: ItemsLock | null,
+  prev: UnitItems,
+  stamp: string,
+): MaterializeResult {
   const mint = mintGrammarItemIds(
     slug,
     prefix,
@@ -896,13 +883,11 @@ export function runGenItemsIngest(slug: string, fix: boolean, dryRun: boolean): 
       format: d.format,
     })),
     lockIn,
-    draftSha,
+    stamp,
   );
-
-  // ---- assemble + rev + overlays
   const prevVocabById = new Map(prev.vocab.map((it) => [it.id, it]));
   const prevGrammarById = new Map(prev.grammar.map((it) => [it.id, it]));
-  let vocabItems = vocabDraft.items.map((d) =>
+  let vocabItems = vocabDraftItems.map((d) =>
     withRev<VocabItemT>(assembleVocabItem(d, prevVocabById.get(d.wordId)?.rev ?? 1), prevVocabById.get(d.wordId)),
   );
   let grammarItems = grammarDraftItems.map((d, i) =>
@@ -912,127 +897,221 @@ export function runGenItemsIngest(slug: string, fix: boolean, dryRun: boolean): 
     ),
   );
   ({ vocab: vocabItems, grammar: grammarItems } = applyItemFixes(slug, { vocab: vocabItems, grammar: grammarItems }));
-
   vocabItems.sort((a, b) => a.id.localeCompare(b.id));
   grammarItems.sort((a, b) => a.id.localeCompare(b.id));
-
   const vocabFile = VocabFile.parse({ schema: "vocab@1", grade, unit, slug, items: vocabItems });
   const grammarFile =
-    grammarItems.length > 0
-      ? GrammarFile.parse({ schema: "grammar@1", grade, unit, slug, items: grammarItems })
-      : null;
-
+    grammarItems.length > 0 ? GrammarFile.parse({ schema: "grammar@1", grade, unit, slug, items: grammarItems }) : null;
   const hash = itemsContentHash({ vocab: vocabFile.items, grammar: grammarFile?.items ?? [] });
-  const note = `gen ingest: ${vocabFile.items.length} vocab + ${grammarFile?.items.length ?? 0} grammar item(s); draft ${draftSha}`;
-  if (dryRun) {
-    console.log(`gen ingest ${slug} (dry-run): OK — ${note}; hash ${hash.slice(0, 12)}`);
+  return { vocabFile, grammarFile, lock: mint.lock, hash };
+}
+
+interface LoadedDrafts {
+  vocab: z.infer<typeof VocabDraft>;
+  grammarItems: GrammarDraftItemT[];
+  grammarEnvelope: { schema: "grammar-draft@1"; slug: string; briefBank: string; briefPrompt: string } | null;
+  unitStructures: GrammarStructuresFileT["structures"];
+}
+
+function loadDrafts(slug: string, grade: Grade, unit: number): LoadedDrafts {
+  const unitDir = path.join(UNITS_DIR, slug);
+  const vocabRaw = readJsonIfExists<unknown>(path.join(unitDir, "gen", "vocab.draft.json"));
+  if (vocabRaw === null) throw new Error(`${slug}: gen/vocab.draft.json missing — author it from the brief`);
+  const vocab = VocabDraft.parse(vocabRaw);
+
+  const catalog = loadStructuresCatalog(grade);
+  const unitStructures = (catalog?.structures ?? []).filter((s) => s.unit === unit);
+  let grammarItems: GrammarDraftItemT[] = [];
+  let grammarEnvelope: LoadedDrafts["grammarEnvelope"] = null;
+  if (unitStructures.length > 0) {
+    const grammarRaw = readJsonIfExists<unknown>(path.join(unitDir, "gen", "grammar.draft.json"));
+    if (grammarRaw === null) throw new Error(`${slug}: gen/grammar.draft.json missing — author it from the brief`);
+    const parsed = GrammarDraft.parse(grammarRaw);
+    grammarItems = [...parsed.items];
+    grammarEnvelope = { schema: parsed.schema, slug: parsed.slug, briefBank: parsed.briefBank, briefPrompt: parsed.briefPrompt };
+  }
+  return { vocab, grammarItems, grammarEnvelope, unitStructures };
+}
+
+/**
+ * Reproduce a unit's items from its committed drafts + the item-fixes overlay,
+ * WITHOUT writing anything. `prev` defaults to the committed items (for rev
+ * continuity); pass an empty `prev` to prove the content is fully determined by
+ * `draft + item-fixes + lock` alone (all revs become 1). Used by the
+ * regenerability test and available for a future `content regen-check`.
+ */
+export function regenerateUnitItems(slug: string, prev?: UnitItems): UnitItems {
+  const { grade, unit } = gradeUnitOf(slug);
+  const prefix = unitIdPrefix(grade, unit);
+  const drafts = loadDrafts(slug, grade, unit);
+  const lockIn = readJsonIfExists<ItemsLock>(path.join(UNITS_DIR, slug, "items.lock.json"));
+  const stamp = sha256OfString(JSON.stringify({ v: drafts.vocab.items, g: drafts.grammarItems })).slice(0, 12);
+  const result = materializeUnit(
+    slug,
+    grade,
+    unit,
+    prefix,
+    drafts.vocab.items,
+    drafts.grammarItems,
+    lockIn,
+    prev ?? readUnitItems(slug),
+    stamp,
+  );
+  return { vocab: result.vocabFile.items, grammar: result.grammarFile?.items ?? [] };
+}
+
+export function runGenItemsIngest(slug: string, fix: boolean, dryRun: boolean): void {
+  if (fix) {
+    runGenItemsIngestFix(slug, dryRun);
     return;
   }
-  writeJson(path.join(unitDir, "vocab.json"), vocabFile);
-  if (grammarFile !== null) writeJson(path.join(unitDir, "grammar.json"), grammarFile);
-  writeJson(lockPath, mint.lock);
-  appendTransition(unitDir, slug, { state: "generated", by: "pipeline", contentHash: hash, note });
+  const unitDir = path.join(UNITS_DIR, slug);
+  const bank = loadBank(slug);
+  const { grade, unit } = gradeUnitOf(slug);
+  const prefix = unitIdPrefix(grade, unit);
+  const bHash = bankHash12(slug);
+  const prev = readUnitItems(slug);
+
+  const drafts = loadDrafts(slug, grade, unit);
+  const errors: string[] = [];
+  if (drafts.vocab.slug !== slug) errors.push(`vocab draft slug says ${drafts.vocab.slug}`);
+  if (drafts.vocab.briefBank !== bHash) {
+    throw new Error(`${slug}: STALE vocab draft (brief bank ${drafts.vocab.briefBank} ≠ current ${bHash}) — re-run --prepare`);
+  }
+  if (drafts.grammarEnvelope !== null) {
+    if (drafts.grammarEnvelope.slug !== slug) errors.push(`grammar draft slug says ${drafts.grammarEnvelope.slug}`);
+    if (drafts.grammarEnvelope.briefBank !== bHash) throw new Error(`${slug}: STALE grammar draft — re-run --prepare`);
+  }
+  errors.push(...validateDraftStructure(bank, drafts.vocab.items, drafts.grammarItems, drafts.unitStructures));
+  if (errors.length > 0) {
+    for (const e of errors) console.error(`  ✗ ${e}`);
+    throw new Error(`${slug}: gen ingest — ${errors.length} error(s)`);
+  }
+
+  const lockPath = path.join(unitDir, "items.lock.json");
+  const lockIn = readJsonIfExists<ItemsLock>(lockPath);
+  const stamp = sha256OfString(JSON.stringify({ v: drafts.vocab.items, g: drafts.grammarItems })).slice(0, 12);
+  const result = materializeUnit(slug, grade, unit, prefix, drafts.vocab.items, drafts.grammarItems, lockIn, prev, stamp);
+
+  const note = `gen ingest: ${result.vocabFile.items.length} vocab + ${result.grammarFile?.items.length ?? 0} grammar item(s); draft ${stamp}`;
+  if (dryRun) {
+    console.log(`gen ingest ${slug} (dry-run): OK — ${note}; hash ${result.hash.slice(0, 12)}`);
+    return;
+  }
+  writeJson(path.join(unitDir, "vocab.json"), result.vocabFile);
+  if (result.grammarFile !== null) writeJson(path.join(unitDir, "grammar.json"), result.grammarFile);
+  writeJson(lockPath, result.lock);
+  appendTransition(unitDir, slug, { state: "generated", by: "pipeline", contentHash: result.hash, note });
   console.log(`gen ingest ${slug}: OK — ${note}`);
 }
 
+/**
+ * Fix round — apply the fixdraft(s) BACK INTO the committed drafts (so the
+ * draft always reflects current generation intent), re-key the lock for any
+ * fingerprint that changed, then re-materialize. `draft + item-fixes` keeps
+ * reproducing the corpus; the item-fixes overlay stays reserved for stage-8
+ * reviewer cell-edits.
+ */
 function runGenItemsIngestFix(slug: string, dryRun: boolean): void {
   const unitDir = path.join(UNITS_DIR, slug);
+  const bank = loadBank(slug);
   const { grade, unit } = gradeUnitOf(slug);
   const prefix = unitIdPrefix(grade, unit);
-  const current = readUnitItems(slug);
-  if (current.vocab.length === 0) throw new Error(`${slug}: no items yet — full ingest first`);
-  const bank = loadBank(slug);
-  const bankById = new Map(bank.entries.map((e) => [e.id, e]));
+  const prev = readUnitItems(slug);
+  if (prev.vocab.length === 0) throw new Error(`${slug}: no items yet — full ingest first`);
 
-  const vocabFixRaw = readJsonIfExists<unknown>(path.join(unitDir, "gen", "vocab.fixdraft.json"));
-  const grammarFixRaw = readJsonIfExists<unknown>(path.join(unitDir, "gen", "grammar.fixdraft.json"));
-  if (vocabFixRaw === null && grammarFixRaw === null) {
-    throw new Error(`${slug}: no fixdraft files found in gen/`);
-  }
+  const drafts = loadDrafts(slug, grade, unit);
+  const vocabDraftItems = [...drafts.vocab.items];
+  const grammarDraftItems = [...drafts.grammarItems];
 
-  const vocabById = new Map(current.vocab.map((it) => [it.id, it]));
-  const grammarById = new Map(current.grammar.map((it) => [it.id, it]));
   const lockPath = path.join(unitDir, "items.lock.json");
   const lock = readJsonIfExists<ItemsLock>(lockPath);
   if (lock === null) throw new Error(`${slug}: items.lock.json missing`);
   const lockCopy: ItemsLock = { ...lock, items: { ...lock.items }, tombstones: [...lock.tombstones] };
 
+  const vocabFixRaw = readJsonIfExists<unknown>(path.join(unitDir, "gen", "vocab.fixdraft.json"));
+  const grammarFixRaw = readJsonIfExists<unknown>(path.join(unitDir, "gen", "grammar.fixdraft.json"));
+  if (vocabFixRaw === null && grammarFixRaw === null) throw new Error(`${slug}: no fixdraft files found in gen/`);
+
   let replaced = 0;
   let minted = 0;
 
+  // ---- vocab: replace draft entries by wordId (vocab id == wordId)
   if (vocabFixRaw !== null) {
-    const fixDraft = VocabFixDraft.parse(vocabFixRaw);
-    for (const d of fixDraft.items) {
-      const prevItem = vocabById.get(d.wordId);
-      if (prevItem === undefined) throw new Error(`${slug}: vocab fix targets unknown id ${d.wordId}`);
+    const fix = VocabFixDraft.parse(vocabFixRaw);
+    const bankById = new Map(bank.entries.map((e) => [e.id, e]));
+    const indexByWordId = new Map(vocabDraftItems.map((d, i) => [d.wordId, i]));
+    for (const d of fix.items) {
+      const idx = indexByWordId.get(d.wordId);
+      if (idx === undefined) throw new Error(`${slug}: vocab fix targets ${d.wordId}, which is not in the draft`);
       const entry = bankById.get(d.wordId);
       if (entry === undefined || d.w !== entry.en) throw new Error(`${slug}: vocab fix ${d.wordId} w mismatch with bank`);
-      vocabById.set(d.wordId, withRev<VocabItemT>(assembleVocabItem(d, prevItem.rev), prevItem));
+      vocabDraftItems[idx] = d;
       replaced += 1;
     }
   }
+
+  // ---- grammar: locate the draft entry for each fixed id via fingerprint→lock,
+  //      replace it (re-keying the lock if the fingerprint changed); append new
+  //      coverage items (no id) for materialize to mint.
   if (grammarFixRaw !== null) {
-    const fixDraft = GrammarFixDraft.parse(grammarFixRaw);
-    const stamp = sha256OfString(JSON.stringify(grammarFixRaw)).slice(0, 12);
-    // serials for newly minted coverage items
-    const usedIds = new Set([...Object.values(lockCopy.items), ...lockCopy.tombstones.map((t) => t.id)]);
-    const nextSerial = new Map<string, number>();
-    for (const id of usedIds) {
-      const m = /\.gi\.([a-z0-9-]+)\.([a-z]{2})\.(\d{3})$/.exec(id);
-      if (m !== null) {
-        const k = `${m[1]}.${m[2]}`;
-        nextSerial.set(k, Math.max(nextSerial.get(k) ?? 0, parseInt(m[3]!, 10)));
-      }
-    }
-    for (const d of fixDraft.items) {
+    const fix = GrammarFixDraft.parse(grammarFixRaw);
+    const idToDraftIndex = new Map<string, number>();
+    grammarDraftItems.forEach((d, i) => {
+      const id = lockCopy.items[itemFingerprint(d)];
+      if (id !== undefined) idToDraftIndex.set(id, i);
+    });
+    const prevById = new Map(prev.grammar.map((it) => [it.id, it]));
+    for (const d of fix.items) {
+      const { id: maybeId, ...rest } = d as typeof d & { id?: string };
+      const draftShape = rest as unknown as GrammarDraftItemT;
       const fp = itemFingerprint(d);
-      const maybeId = (d as { id?: string }).id;
-      if (maybeId !== undefined && maybeId.length > 0 && grammarById.has(maybeId)) {
-        const prevItem = grammarById.get(maybeId)!;
+      if (maybeId !== undefined && maybeId.length > 0) {
+        const prevItem = prevById.get(maybeId);
+        if (prevItem === undefined) throw new Error(`${slug}: grammar fix targets unknown id ${maybeId}`);
         if (prevItem.structureId !== d.structureId || prevItem.format !== d.format) {
           throw new Error(`${slug}: fix for ${maybeId} changes structure/format — drop + regenerate instead`);
         }
-        grammarById.set(maybeId, withRev<GrammarItemT>(assembleGrammarItem(d, maybeId, prevItem.rev), prevItem));
+        const idx = idToDraftIndex.get(maybeId);
+        if (idx === undefined) {
+          throw new Error(`${slug}: cannot locate the draft entry for ${maybeId} (drafts/lock out of sync — re-sync the unit)`);
+        }
         rekeyFingerprint(lockCopy, maybeId, fp);
+        grammarDraftItems[idx] = draftShape;
         replaced += 1;
-      } else if (maybeId !== undefined && maybeId.length > 0) {
-        throw new Error(`${slug}: grammar fix targets unknown id ${maybeId}`);
       } else {
-        // new coverage item — mint
-        const key = structureKeyOf(d.structureId);
-        const code = FORMAT_CODES[d.format];
-        const sKey = `${key}.${code}`;
-        const n = (nextSerial.get(sKey) ?? 0) + 1;
-        nextSerial.set(sKey, n);
-        const id = `${prefix}.gi.${key}.${code}.${String(n).padStart(3, "0")}`;
-        if (usedIds.has(id)) throw new Error(`${slug}: minted id collision ${id}`);
         if (lockCopy.items[fp] !== undefined) throw new Error(`${slug}: new item duplicates fingerprint ${fp}`);
-        lockCopy.items[fp] = id;
-        usedIds.add(id);
-        grammarById.set(id, assembleGrammarItem(d, id, 1));
+        grammarDraftItems.push(draftShape);
         minted += 1;
       }
     }
-    void stamp;
   }
 
-  let next: UnitItems = {
-    vocab: [...vocabById.values()].sort((a, b) => a.id.localeCompare(b.id)),
-    grammar: [...grammarById.values()].sort((a, b) => a.id.localeCompare(b.id)),
-  };
-  next = applyItemFixes(slug, next);
-  const vocabFile = VocabFile.parse({ schema: "vocab@1", grade, unit, slug, items: next.vocab });
-  const grammarFile =
-    next.grammar.length > 0 ? GrammarFile.parse({ schema: "grammar@1", grade, unit, slug, items: next.grammar }) : null;
-  const hash = itemsContentHash({ vocab: vocabFile.items, grammar: grammarFile?.items ?? [] });
-  const note = `gen fix ingest: ${replaced} replaced, ${minted} new; hash ${hash.slice(0, 12)}`;
+  const structErrors = validateDraftStructure(bank, vocabDraftItems, grammarDraftItems, drafts.unitStructures);
+  if (structErrors.length > 0) {
+    for (const e of structErrors) console.error(`  ✗ ${e}`);
+    throw new Error(`${slug}: gen fix ingest — ${structErrors.length} error(s)`);
+  }
+
+  const stamp = sha256OfString(JSON.stringify({ v: vocabDraftItems, g: grammarDraftItems })).slice(0, 12);
+  const result = materializeUnit(slug, grade, unit, prefix, vocabDraftItems, grammarDraftItems, lockCopy, prev, stamp);
+  const note = `gen fix ingest: ${replaced} replaced, ${minted} new; hash ${result.hash.slice(0, 12)}`;
   if (dryRun) {
     console.log(`gen ingest --fix ${slug} (dry-run): OK — ${note}`);
     return;
   }
-  writeJson(path.join(unitDir, "vocab.json"), vocabFile);
-  if (grammarFile !== null) writeJson(path.join(unitDir, "grammar.json"), grammarFile);
-  writeJson(lockPath, lockCopy);
-  appendTransition(unitDir, slug, { state: "generated", by: "pipeline", contentHash: hash, note });
+  // persist the updated drafts (regeneration source of truth) alongside the items
+  writeJson(path.join(unitDir, "gen", "vocab.draft.json"), { ...drafts.vocab, items: vocabDraftItems });
+  if (drafts.grammarEnvelope !== null) {
+    writeJson(path.join(unitDir, "gen", "grammar.draft.json"), { ...drafts.grammarEnvelope, items: grammarDraftItems });
+  }
+  writeJson(path.join(unitDir, "vocab.json"), result.vocabFile);
+  if (result.grammarFile !== null) writeJson(path.join(unitDir, "grammar.json"), result.grammarFile);
+  writeJson(lockPath, result.lock);
+  // the fixdrafts are spent — their deltas now live in the drafts; remove them so
+  // a later --fix round can't silently re-apply a stale fixdraft.
+  fs.rmSync(path.join(unitDir, "gen", "vocab.fixdraft.json"), { force: true });
+  fs.rmSync(path.join(unitDir, "gen", "grammar.fixdraft.json"), { force: true });
+  appendTransition(unitDir, slug, { state: "generated", by: "pipeline", contentHash: result.hash, note });
   console.log(`gen ingest --fix ${slug}: OK — ${note}`);
 }
