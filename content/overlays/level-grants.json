@@ -99,6 +99,51 @@
       "reason": "unit-2 SB grammar box '▶️ More irregular verbs' teaches write/wrote (I wrote an email to the kids); the past form is not a word-bank entry (base 'write' is in-level)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": null,
+      "field": null,
+      "token": "as",
+      "reason": "unit-4 SB grammar box teaches the 'as ... as' / 'not as ... as' equality structure; 'as' is a structure token, not a standalone word-bank entry (only the phrase 'as soon as' is banked)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": null,
+      "field": null,
+      "token": "better",
+      "reason": "unit-4 SB grammar box 'Comparatives' Ausnahmen: good → better — irregular comparative, not a word-bank entry (base 'good' is in-level)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": null,
+      "field": null,
+      "token": "worse",
+      "reason": "unit-4 SB grammar box 'Comparatives' Ausnahmen: bad → worse — irregular comparative, not a word-bank entry (base 'bad' is in-level)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": null,
+      "field": null,
+      "token": "worst",
+      "reason": "unit-4 SB grammar box 'Superlatives' Ausnahmen: bad → the worst — irregular superlative, not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": "g2u04.w.mosquito",
+      "field": null,
+      "token": "mosquitoes",
+      "reason": "standard irregular plural (-oes) of the item's own headword 'mosquito'; the regular inflection family only reaches 'mosquitos', so the correct spelling needs an item-scoped grant to stay a full-tier answer",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

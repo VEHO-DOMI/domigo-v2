@@ -1,0 +1,4149 @@
+{
+  "schema": "vocab@1",
+  "grade": 2,
+  "unit": 4,
+  "slug": "g2-u04",
+  "items": [
+    {
+      "id": "g2u04.w.ago",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forever",
+            "nobody",
+            "less",
+            "fast"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "(two days) ago",
+        "narrative": null,
+        "note": "verify r1 (level-gloss): reworded the definition off 'past' (which passed the gate only by colliding with the harvested topic-name 'Past') to taught-only 'Before now; not happening now.'"
+      },
+      "w": "(two days) ago",
+      "g": "vor (zwei Tagen)",
+      "d": "Before now; not happening now.",
+      "s": "Long ___, there were many crocodiles in this river.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ago",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ago",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ago",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vor",
+            "tier": "full"
+          },
+          {
+            "text": "vor zwei Tagen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forever",
+        "nobody",
+        "less"
+      ],
+      "hintDe": "Es zeigt, wie lange etwas her ist: 'Vor zwei Tagen …'"
+    },
+    {
+      "id": "g2u04.w.anaconda",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "crocodile",
+            "dolphin",
+            "antelope",
+            "whale"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "anaconda",
+        "narrative": null,
+        "note": "Carrier invented (v1 idea reused). SB9 fact file gives anaconda max length 6 m. Glosses 'snake' in def."
+      },
+      "w": "anaconda",
+      "g": "Anakonda",
+      "d": "A very long heavy snake. It lives near rivers and can be as long as a car.",
+      "s": "The ___ in the river was as long as a car.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "anaconda",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "anaconda",
+          "tier": "full"
+        },
+        {
+          "text": "anacondas",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "anaconda",
+            "tier": "full"
+          },
+          {
+            "text": "anacondas",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Anakonda",
+            "tier": "full"
+          },
+          {
+            "text": "Anakondas",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "snake",
+          "de": "Schlange",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "crocodile",
+        "dolphin",
+        "antelope"
+      ],
+      "hintDe": "Eine sehr lange schwere Schlange, die nahe an Flüssen lebt."
+    },
+    {
+      "id": "g2u04.w.antelope",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dolphin",
+            "crocodile",
+            "shark",
+            "whale"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "antelope",
+        "narrative": null,
+        "note": "Carrier invented (v1 idea reworked into in-level words; 'lions' and 'legs' are taught). SB13/15 list antelope as a fast animal. 'mammal' in-level."
+      },
+      "w": "antelope",
+      "g": "Antilope",
+      "d": "A fast wild mammal with long legs. It lives in hot places and runs from lions.",
+      "s": "The ___ has got long legs and runs very fast from lions.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "antelope",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "antelope",
+          "tier": "full"
+        },
+        {
+          "text": "antelopes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "antelope",
+            "tier": "full"
+          },
+          {
+            "text": "antelopes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Antilope",
+            "tier": "full"
+          },
+          {
+            "text": "Antilopen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dolphin",
+        "crocodile",
+        "shark"
+      ],
+      "hintDe": "Ein schnelles wildes Säugetier mit langen Beinen, das in heißen Gegenden lebt."
+    },
+    {
+      "id": "g2u04.w.bat",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pigeon",
+            "ostrich",
+            "parrot",
+            "mosquito"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "bat",
+        "narrative": null,
+        "note": "Carrier invented (v1 'flew out of the barn' was above-level; rephrased to in-level). SB8 'BUMBLEBEE BAT ... smallest mammal' supports the mammal framing. Glosses 'fly' (s and d) and 'bird' (d)."
+      },
+      "w": "bat",
+      "g": "Fledermaus",
+      "d": "A small dark mammal that can fly at night. It is not a bird.",
+      "s": "A ___ can fly in the dark at night.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bat",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bat",
+          "tier": "full"
+        },
+        {
+          "text": "bats",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bat",
+            "tier": "full"
+          },
+          {
+            "text": "bats",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fledermaus",
+            "tier": "full"
+          },
+          {
+            "text": "Fledermäuse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fly",
+          "de": "fliegen",
+          "scope": null
+        },
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "pigeon",
+        "ostrich",
+        "parrot"
+      ],
+      "hintDe": "Ein kleines dunkles Säugetier, das nachts fliegt — aber kein Vogel ist."
+    },
+    {
+      "id": "g2u04.w.centimetre",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ton",
+            "speed",
+            "length",
+            "desert"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "centimetre",
+        "narrative": null,
+        "note": "Carrier invented (v1 idea reused; 15 cm pencil). Masterlist exampleSb ('One centimetre is 10 millimetres.') uses above-level 'millimetres'. SB8 'It is 3 centimetres long' supports the unit."
+      },
+      "w": "centimetre",
+      "g": "Zentimeter",
+      "d": "A small unit for how long a thing is.",
+      "s": "My pencil is about 15 ___ long.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "centimetres",
+          "tier": "full"
+        },
+        {
+          "text": "centimeters",
+          "tier": "partial"
+        },
+        {
+          "text": "cm",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "centimetre",
+          "tier": "full"
+        },
+        {
+          "text": "centimetres",
+          "tier": "full"
+        },
+        {
+          "text": "centimeter",
+          "tier": "partial"
+        },
+        {
+          "text": "centimeters",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "centimetre",
+            "tier": "full"
+          },
+          {
+            "text": "centimetres",
+            "tier": "full"
+          },
+          {
+            "text": "centimeter",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zentimeter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "unit",
+          "de": "Einheit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ton",
+        "speed",
+        "length"
+      ],
+      "hintDe": "Eine kleine Maßeinheit für die Länge: 100 davon sind ein Meter."
+    },
+    {
+      "id": "g2u04.w.cheetah",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "giraffe",
+            "whale",
+            "crocodile",
+            "rhino"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "cheetah",
+        "narrative": null,
+        "note": "Carrier from SB8 ('The fastest land animal in the world is the CHEETAH. It can run very fast'), rephrased to in-level words. Glosses 'cat' in def."
+      },
+      "w": "cheetah",
+      "g": "Gepard",
+      "d": "A wild cat with spots. It is the fastest mammal on land.",
+      "s": "The ___ can run faster than any car on land.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cheetah",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cheetah",
+          "tier": "full"
+        },
+        {
+          "text": "cheetahs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cheetah",
+            "tier": "full"
+          },
+          {
+            "text": "cheetahs",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gepard",
+            "tier": "full"
+          },
+          {
+            "text": "Geparde",
+            "tier": "full"
+          },
+          {
+            "text": "Geparden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cat",
+          "de": "Katze",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "giraffe",
+        "whale",
+        "crocodile"
+      ],
+      "hintDe": "Eine wilde Katze mit Flecken — das schnellste Säugetier an Land."
+    },
+    {
+      "id": "g2u04.w.chimpanzee",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "giraffe",
+            "dolphin",
+            "antelope",
+            "rhino"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "chimpanzee",
+        "narrative": null,
+        "note": "Carrier invented, echoing SB10 'He's a chimpanzee, and he's as big as me' (as...as comparison). 'mammal' and 'monkey' in-level; no gloss needed."
+      },
+      "w": "chimpanzee",
+      "g": "Schimpanse",
+      "d": "A very clever mammal, like a big monkey.",
+      "s": "The ___ at the zoo is as clever as a small child.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "chimpanzee",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chimpanzee",
+          "tier": "full"
+        },
+        {
+          "text": "chimpanzees",
+          "tier": "full"
+        },
+        {
+          "text": "chimp",
+          "tier": "partial"
+        },
+        {
+          "text": "chimps",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chimpanzee",
+            "tier": "full"
+          },
+          {
+            "text": "chimpanzees",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schimpanse",
+            "tier": "full"
+          },
+          {
+            "text": "Schimpansen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "giraffe",
+        "dolphin",
+        "antelope"
+      ],
+      "hintDe": "Ein sehr kluges Säugetier, ähnlich wie ein großer Affe."
+    },
+    {
+      "id": "g2u04.w.climate-change",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "luck",
+            "speed",
+            "length",
+            "reason"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "climate change",
+        "narrative": null,
+        "note": "Carrier verbatim from masterlist exampleSb ('Many animals die because of climate change.'); also SB6 ('golden toads died out because of climate change'). Glosses 'animals' (s), 'world' and 'warmer' (d). MC foils are in-bank single nouns."
+      },
+      "w": "climate change",
+      "g": "Klimawandel",
+      "d": "When the weather of the world becomes warmer.",
+      "s": "Many animals die because of ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "climate change",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "climate change",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "climate change",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Klimawandel",
+            "tier": "full"
+          },
+          {
+            "text": "Klimaveränderung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": "s"
+        },
+        {
+          "word": "world",
+          "de": "Welt",
+          "scope": "d"
+        },
+        {
+          "word": "warmer",
+          "de": "wärmer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "luck",
+        "speed",
+        "reason"
+      ],
+      "hintDe": "Wenn das Wetter der Welt langsam wärmer wird."
+    },
+    {
+      "id": "g2u04.w.crocodile",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dolphin",
+            "ostrich",
+            "antelope",
+            "giraffe"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "crocodile",
+        "narrative": null,
+        "note": "Carrier adapted from SB reading ('the croc on the bank of the river ... it opened its big mouth') into in-level words. Glosses 'reptile' in def."
+      },
+      "w": "crocodile",
+      "g": "Krokodil",
+      "d": "A big green reptile with long teeth. It lives near rivers in hot places.",
+      "s": "The big green ___ was next to the river with its mouth open.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crocodile",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crocodile",
+          "tier": "full"
+        },
+        {
+          "text": "crocodiles",
+          "tier": "full"
+        },
+        {
+          "text": "croc",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crocodile",
+            "tier": "full"
+          },
+          {
+            "text": "crocodiles",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Krokodil",
+            "tier": "full"
+          },
+          {
+            "text": "Krokodile",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "reptile",
+          "de": "Reptil",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "dolphin",
+        "ostrich",
+        "antelope"
+      ],
+      "hintDe": "Ein großes grünes Reptil mit langen Zähnen, das nahe an Flüssen lebt."
+    },
+    {
+      "id": "g2u04.w.dangerous",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hairy",
+            "intelligent",
+            "female",
+            "smart"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "dangerous",
+        "narrative": null,
+        "note": "Carrier from v1 idea, fully in-level. Masterlist exampleSb ('The taipan snake can be very dangerous.') uses above-level 'taipan'/'snake', so road example used instead."
+      },
+      "w": "dangerous",
+      "g": "gefährlich",
+      "d": "This can hurt you or make you ill.",
+      "s": "Playing on the road is very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dangerous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dangerous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dangerous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gefährlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hairy",
+        "intelligent",
+        "female"
+      ],
+      "hintDe": "Etwas, das dir wehtun oder dich krank machen kann."
+    },
+    {
+      "id": "g2u04.w.desert",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "centimetres",
+            "tons",
+            "trucks",
+            "reasons"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "desert",
+        "narrative": null,
+        "note": "Carrier verbatim from masterlist exampleSb ('There are no deserts in England.'); SB8 ('It lives in the deserts of Australia'). Glosses 'sand'/'almost'/'rain' (d)."
+      },
+      "w": "desert",
+      "g": "Wüste",
+      "d": "A very hot place with a lot of sand and almost no rain.",
+      "s": "There are no ___ in England.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "deserts",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "desert",
+          "tier": "full"
+        },
+        {
+          "text": "deserts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "desert",
+            "tier": "full"
+          },
+          {
+            "text": "deserts",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wüste",
+            "tier": "full"
+          },
+          {
+            "text": "Wüsten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sand",
+          "de": "Sand",
+          "scope": "d"
+        },
+        {
+          "word": "almost",
+          "de": "fast",
+          "scope": "d"
+        },
+        {
+          "word": "rain",
+          "de": "Regen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "centimetres",
+        "tons",
+        "trucks"
+      ],
+      "hintDe": "Ein sehr heißer Ort mit viel Sand und fast ohne Regen."
+    },
+    {
+      "id": "g2u04.w.dolphin",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "antelope",
+            "giraffe",
+            "rhino",
+            "crocodile"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "dolphin",
+        "narrative": null,
+        "note": "Carrier invented (v1 'jump out of the sea' rephrased to in-level 'river'). SONG calls dolphins 'the smartest animals'. Glosses 'sea' and 'water' (def only)."
+      },
+      "w": "dolphin",
+      "g": "Delfin",
+      "d": "A clever sea mammal that jumps up out of the water.",
+      "s": "The clever ___ jumped up out of the river.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "dolphin",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dolphin",
+          "tier": "full"
+        },
+        {
+          "text": "dolphins",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dolphin",
+            "tier": "full"
+          },
+          {
+            "text": "dolphins",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Delfin",
+            "tier": "full"
+          },
+          {
+            "text": "Delfine",
+            "tier": "full"
+          },
+          {
+            "text": "Delphin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "antelope",
+        "giraffe",
+        "rhino"
+      ],
+      "hintDe": "Ein kluges Meeressäugetier, das aus dem Wasser springt."
+    },
+    {
+      "id": "g2u04.w.farmer",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "scientist",
+            "human",
+            "truck",
+            "mammal"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "farmer",
+        "narrative": null,
+        "note": "Carrier from SB reading ('a farmer in Costa Rica saw a huge crocodile'); 'saw' above-level, so reframed with in-level 'had a big farm'."
+      },
+      "w": "farmer",
+      "g": "Bauer/Bäuerin",
+      "d": "A man or a woman who keeps pigs and horses.",
+      "s": "A ___ near the river had a big farm.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "farmer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "farmer",
+          "tier": "full"
+        },
+        {
+          "text": "farmers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "farmer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bauer",
+            "tier": "full"
+          },
+          {
+            "text": "Bäuerin",
+            "tier": "full"
+          },
+          {
+            "text": "Landwirt",
+            "tier": "partial"
+          },
+          {
+            "text": "Landwirtin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "scientist",
+        "human",
+        "truck"
+      ],
+      "hintDe": "Ein Mann oder eine Frau, der/die einen Bauernhof hat."
+    },
+    {
+      "id": "g2u04.w.fast",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "heavy",
+            "hairy",
+            "venomous",
+            "female"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "fast",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Cheetahs can run very fast.') + SB8 ('It can run very fast'). Definition avoids the antonym 'slow' (above-level) by using bank word 'speed'."
+      },
+      "w": "fast",
+      "g": "schnell",
+      "d": "Going at a great speed.",
+      "s": "Cheetahs can run very ___. They are faster than a car.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fast",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fast",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fast",
+            "tier": "full"
+          },
+          {
+            "text": "quick",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schnell",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "heavy",
+        "hairy",
+        "venomous"
+      ],
+      "hintDe": "Mit großer Geschwindigkeit unterwegs."
+    },
+    {
+      "id": "g2u04.w.female",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "incredible",
+            "hairy",
+            "smart",
+            "powerful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "female",
+        "narrative": null,
+        "note": "Carrier from SB6 golden toads fact ('The male was golden red, the female was dark green.'); 'male' is the bank partner word and appears as fixed text. Glosses 'toad'/'golden' (s) and 'animal' (d). 'male' is NOT in mc (it is the obvious wrong contrast)."
+      },
+      "w": "female",
+      "g": "weiblich",
+      "d": "A girl or a woman; the mother animal in a family.",
+      "s": "The ___ toad is dark green; the male toad is golden red.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "female",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "female",
+          "tier": "full"
+        },
+        {
+          "text": "females",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "female",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weiblich",
+            "tier": "full"
+          },
+          {
+            "text": "Weibchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "toad",
+          "de": "Kröte",
+          "scope": "s"
+        },
+        {
+          "word": "golden",
+          "de": "golden",
+          "scope": "s"
+        },
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "incredible",
+        "hairy",
+        "smart"
+      ],
+      "hintDe": "Ein Mädchen oder eine Frau — bei Tieren das Weibchen."
+    },
+    {
+      "id": "g2u04.w.forever",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ago",
+            "nobody",
+            "less",
+            "fast"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "forever",
+        "narrative": null,
+        "note": "Carrier verbatim from masterlist exampleSb ('We want to be best friends forever.')."
+      },
+      "w": "forever",
+      "g": "für immer",
+      "d": "For all time; with no end.",
+      "s": "We want to be best friends ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "forever",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "forever",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "forever",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "für immer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ago",
+        "nobody",
+        "less"
+      ],
+      "hintDe": "Für alle Zeit, ohne Ende."
+    },
+    {
+      "id": "g2u04.w.giraffe",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ostrich",
+            "antelope",
+            "rhino",
+            "chimpanzee"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "giraffe",
+        "narrative": null,
+        "note": "Carrier from SB13 quiz ('Which is the tallest? giraffe'), phrased as a fact. Glosses 'neck' (def), 'animal' and 'world' (carrier)."
+      },
+      "w": "giraffe",
+      "g": "Giraffe",
+      "d": "The tallest mammal on Earth. It has got a very long neck and spots.",
+      "s": "The ___ is the tallest animal in the world.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "giraffe",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "giraffe",
+          "tier": "full"
+        },
+        {
+          "text": "giraffes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "giraffe",
+            "tier": "full"
+          },
+          {
+            "text": "giraffes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Giraffe",
+            "tier": "full"
+          },
+          {
+            "text": "Giraffen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "neck",
+          "de": "Hals",
+          "scope": "d"
+        },
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "s"
+        },
+        {
+          "word": "world",
+          "de": "Welt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "ostrich",
+        "antelope",
+        "rhino"
+      ],
+      "hintDe": "Das höchste Säugetier der Welt — mit sehr langem Hals und Flecken."
+    },
+    {
+      "id": "g2u04.w.hairy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "heavy",
+            "venomous",
+            "dangerous",
+            "strong"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "hairy",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('My pet rat has got lots of fur. It's very hairy.'); 'pet rat' swapped to in-level 'dog'."
+      },
+      "w": "hairy",
+      "g": "haarig",
+      "d": "With a lot of hair or fur on it.",
+      "s": "My dog has got lots of fur. It is very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hairy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hairy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hairy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "haarig",
+            "tier": "full"
+          },
+          {
+            "text": "stark behaart",
+            "tier": "full"
+          },
+          {
+            "text": "behaart",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "heavy",
+        "venomous",
+        "dangerous"
+      ],
+      "hintDe": "Mit viel Haar oder Fell am Körper."
+    },
+    {
+      "id": "g2u04.w.heavy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hairy",
+            "fast",
+            "smart",
+            "strong"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "heavy",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('This bag is too heavy. I can't carry it.'), kept close ('school bag is too heavy to carry')."
+      },
+      "w": "heavy",
+      "g": "schwer",
+      "d": "It weighs so much that you cannot carry it.",
+      "s": "My school bag is too ___ to carry today.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "heavy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "heavy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "heavy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schwer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hairy",
+        "fast",
+        "smart"
+      ],
+      "hintDe": "So schwer, dass du es kaum tragen kannst."
+    },
+    {
+      "id": "g2u04.w.human",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mammals",
+            "farmers",
+            "scientists",
+            "rhinos"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "human",
+        "narrative": null,
+        "note": "Carrier verbatim from SB reading ('I wanted to show the animal that not all humans are bad'); 'the animal' swapped to 'the crocodile' (in-level, same referent)."
+      },
+      "w": "human",
+      "g": "Mensch",
+      "d": "A man, a woman or a child.",
+      "s": "I wanted to show the crocodile that not all ___ are bad.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "humans",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "human",
+          "tier": "full"
+        },
+        {
+          "text": "humans",
+          "tier": "full"
+        },
+        {
+          "text": "human being",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "human",
+            "tier": "full"
+          },
+          {
+            "text": "humans",
+            "tier": "full"
+          },
+          {
+            "text": "human being",
+            "tier": "partial"
+          },
+          {
+            "text": "person",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mensch",
+            "tier": "full"
+          },
+          {
+            "text": "Menschen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mammals",
+        "farmers",
+        "scientists"
+      ],
+      "hintDe": "Ein Mann, eine Frau oder ein Kind — wir alle sind das."
+    },
+    {
+      "id": "g2u04.w.incredible",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dangerous",
+            "hairy",
+            "venomous",
+            "heavy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "incredible",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('That's an incredible but true story.'), matching SB reading 'The incredible, but true story'."
+      },
+      "w": "incredible",
+      "g": "unglaublich",
+      "d": "Very, very good or very surprising.",
+      "s": "That's an ___ but true story.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "incredible",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "incredible",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "incredible",
+            "tier": "full"
+          },
+          {
+            "text": "amazing",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unglaublich",
+            "tier": "full"
+          },
+          {
+            "text": "unfassbar",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dangerous",
+        "hairy",
+        "venomous"
+      ],
+      "hintDe": "So gut oder so erstaunlich, dass man es kaum glauben kann."
+    },
+    {
+      "id": "g2u04.w.intelligent",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hairy",
+            "heavy",
+            "venomous",
+            "female"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "intelligent",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Dolphins are very intelligent animals.') = SB13. 'smart' (near-synonym, a bank word) is deliberately NOT in mc. Glosses 'able'/'learn' (d), 'animals' (s)."
+      },
+      "w": "intelligent",
+      "g": "intelligent",
+      "d": "Very good at thinking and learning.",
+      "s": "Dolphins are very ___ animals. They can think very well.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "intelligent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "intelligent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "intelligent",
+            "tier": "full"
+          },
+          {
+            "text": "clever",
+            "tier": "partial"
+          },
+          {
+            "text": "smart",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "intelligent",
+            "tier": "full"
+          },
+          {
+            "text": "klug",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "thinking",
+          "de": "Denken",
+          "scope": "d"
+        },
+        {
+          "word": "learning",
+          "de": "Lernen",
+          "scope": "d"
+        },
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "hairy",
+        "heavy",
+        "venomous"
+      ],
+      "hintDe": "Sehr gut im Denken; kann schnell Neues lernen."
+    },
+    {
+      "id": "g2u04.w.length",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "speed",
+            "ton",
+            "reason",
+            "luck"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "length",
+        "narrative": null,
+        "note": "Carrier from SB9 fact file (anaconda max length 6 m) + masterlist ('The maximum length is 6 m.'). Glosses 'metres' (s)."
+      },
+      "w": "length",
+      "g": "Länge",
+      "d": "How long a thing is from end to end.",
+      "s": "An anaconda can be six metres long. That is a very big ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "length",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "length",
+          "tier": "full"
+        },
+        {
+          "text": "lengths",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "length",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Länge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "metres",
+          "de": "Meter",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "speed",
+        "ton",
+        "reason"
+      ],
+      "hintDe": "Wie lang etwas ist, von einem Ende zum anderen."
+    },
+    {
+      "id": "g2u04.w.less",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forever",
+            "ago",
+            "nobody",
+            "fast"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "less",
+        "narrative": null,
+        "note": "Carrier from v1 idea, fully in-level. Masterlist exampleSb ('The rhino was fast, but less than 60 km/h.') uses above-level 'km/h', so the 'less sugar' example is used."
+      },
+      "w": "less",
+      "g": "weniger",
+      "d": "A smaller number; not as much.",
+      "s": "I eat ___ sugar now because I want to be healthy.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "less",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "less",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "less",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weniger",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forever",
+        "ago",
+        "nobody"
+      ],
+      "hintDe": "Eine kleinere Menge — nicht so viel."
+    },
+    {
+      "id": "g2u04.w.luck",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "speed",
+            "reason",
+            "length",
+            "ton"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "luck",
+        "narrative": null,
+        "note": "Carrier verbatim from SB song ('What animal can bring us luck?'). Glosses 'animal' (s) and 'chance' (d)."
+      },
+      "w": "luck",
+      "g": "Glück",
+      "d": "When good things happen to you by chance.",
+      "s": "What animal can bring us ___?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "luck",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "luck",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "luck",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Glück",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "s"
+        },
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "by",
+          "de": "durch",
+          "scope": "d"
+        },
+        {
+          "word": "chance",
+          "de": "Zufall",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "speed",
+        "reason",
+        "length"
+      ],
+      "hintDe": "Wenn dir gute Dinge durch Zufall passieren."
+    },
+    {
+      "id": "g2u04.w.male",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "incredible",
+            "venomous",
+            "heavy",
+            "hairy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "male",
+        "narrative": null,
+        "note": "Carrier from SB6 golden toads fact ('The male was golden red'); 'female' is the bank partner word, appears as fixed text. Glosses 'toad'/'golden' (s), 'father'/'animal' (d). 'female' is NOT in mc."
+      },
+      "w": "male",
+      "g": "männlich",
+      "d": "A boy or a man; the father animal in a family.",
+      "s": "The ___ toad is golden red; the female toad is dark green.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "male",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "male",
+          "tier": "full"
+        },
+        {
+          "text": "males",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "male",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "männlich",
+            "tier": "full"
+          },
+          {
+            "text": "Männchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "toad",
+          "de": "Kröte",
+          "scope": "s"
+        },
+        {
+          "word": "golden",
+          "de": "golden",
+          "scope": "s"
+        },
+        {
+          "word": "father",
+          "de": "Vater",
+          "scope": "d"
+        },
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "incredible",
+        "venomous",
+        "heavy"
+      ],
+      "hintDe": "Ein Junge oder ein Mann — bei Tieren das Männchen."
+    },
+    {
+      "id": "g2u04.w.mammal",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "deserts",
+            "tons",
+            "trucks",
+            "reasons"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "mammal",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Elephants and lions are mammals.') + in-level 'They give milk to their young'. Glosses 'animal'/'baby' (d)."
+      },
+      "w": "mammal",
+      "g": "Säugetier",
+      "d": "An animal that drinks milk from its mother when it is a baby.",
+      "s": "Elephants and lions are ___. They give milk to their young.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "mammals",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mammal",
+          "tier": "full"
+        },
+        {
+          "text": "mammals",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mammal",
+            "tier": "full"
+          },
+          {
+            "text": "mammals",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Säugetier",
+            "tier": "full"
+          },
+          {
+            "text": "Säugetiere",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "baby",
+          "de": "Baby",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "deserts",
+        "tons",
+        "trucks"
+      ],
+      "hintDe": "Ein Tier, das als Baby Milch von seiner Mutter trinkt."
+    },
+    {
+      "id": "g2u04.w.mosquito",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bat",
+            "pigeon",
+            "parrot",
+            "shark"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "mosquito",
+        "narrative": null,
+        "note": "Carrier adapted from SB8 ('The most dangerous animal in the world is the MOSQUITO. It can carry malaria.'). Glosses 'insect' (def) and 'malaria' (s and d)."
+      },
+      "w": "mosquito",
+      "g": "Stechmücke",
+      "d": "A tiny insect that bites you. It can carry malaria.",
+      "s": "A tiny ___ can carry malaria when it bites you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mosquito",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mosquito",
+          "tier": "full"
+        },
+        {
+          "text": "mosquitos",
+          "tier": "full"
+        },
+        {
+          "text": "mosquitoes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mosquito",
+            "tier": "full"
+          },
+          {
+            "text": "mosquitos",
+            "tier": "full"
+          },
+          {
+            "text": "mosquitoes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stechmücke",
+            "tier": "full"
+          },
+          {
+            "text": "Moskito",
+            "tier": "full"
+          },
+          {
+            "text": "Mücke",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "insect",
+          "de": "Insekt",
+          "scope": "d"
+        },
+        {
+          "word": "malaria",
+          "de": "Malaria",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "bat",
+        "pigeon",
+        "parrot"
+      ],
+      "hintDe": "Ein winziges Tier, das dich sticht und Malaria übertragen kann."
+    },
+    {
+      "id": "g2u04.w.nobody",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forever",
+            "ago",
+            "less",
+            "fast"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "nobody",
+        "narrative": null,
+        "note": "Carrier invented in-level. Masterlist/SB6 ('Nobody knows why the paradise parrot became extinct.') uses above-level 'knows'/'extinct', so a simpler park sentence is used. 'no one' accepted as a full equivalent."
+      },
+      "w": "nobody",
+      "g": "niemand",
+      "d": "No one at all.",
+      "s": "There was ___ in the park, so I played alone.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "nobody",
+          "tier": "full"
+        },
+        {
+          "text": "no one",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nobody",
+          "tier": "full"
+        },
+        {
+          "text": "no one",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nobody",
+            "tier": "full"
+          },
+          {
+            "text": "no one",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "niemand",
+            "tier": "full"
+          },
+          {
+            "text": "keiner",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forever",
+        "ago",
+        "less"
+      ],
+      "hintDe": "Keine einzige Person, gar niemand."
+    },
+    {
+      "id": "g2u04.w.ostrich",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "giraffe",
+            "pigeon",
+            "antelope",
+            "cheetah"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "ostrich",
+        "narrative": null,
+        "note": "Carrier adapted from SB13 quiz ('Which is the tallest? a giraffe b an ostrich'); reframed as a fact. Glosses 'bird' and 'fly'."
+      },
+      "w": "ostrich",
+      "g": "Strauß",
+      "d": "A very big bird that cannot fly. It runs fast on its long legs.",
+      "s": "An ___ is taller than a man.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "ostrich",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ostrich",
+          "tier": "full"
+        },
+        {
+          "text": "ostriches",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ostrich",
+            "tier": "full"
+          },
+          {
+            "text": "ostriches",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Strauß",
+            "tier": "full"
+          },
+          {
+            "text": "Strauße",
+            "tier": "full"
+          },
+          {
+            "text": "Vogel Strauß",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        },
+        {
+          "word": "fly",
+          "de": "fliegen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "giraffe",
+        "pigeon",
+        "antelope"
+      ],
+      "hintDe": "Ein sehr großer Vogel, der nicht fliegen kann, aber schnell läuft."
+    },
+    {
+      "id": "g2u04.w.parrot",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pigeon",
+            "ostrich",
+            "giraffe",
+            "dolphin"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "parrot",
+        "narrative": null,
+        "note": "Carrier invented (v1 idea reused, rephrased to in-level words; 'say' is above-level). Glosses 'bird'."
+      },
+      "w": "parrot",
+      "g": "Papagei",
+      "d": "A colourful bird that can talk like you.",
+      "s": "The ___ at the zoo can talk just like us.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "parrot",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "parrot",
+          "tier": "full"
+        },
+        {
+          "text": "parrots",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "parrot",
+            "tier": "full"
+          },
+          {
+            "text": "parrots",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Papagei",
+            "tier": "full"
+          },
+          {
+            "text": "Papageien",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "pigeon",
+        "ostrich",
+        "giraffe"
+      ],
+      "hintDe": "Ein bunter Vogel, der sprechen kann wie du."
+    },
+    {
+      "id": "g2u04.w.pigeon",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "parrot",
+            "ostrich",
+            "bat",
+            "mosquito"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "pigeon",
+        "narrative": null,
+        "note": "Carrier invented (v1 idea reused). Glosses 'bird' (above-level). SB6 references passenger pigeons but no usable blank."
+      },
+      "w": "pigeon",
+      "g": "Taube",
+      "d": "A small grey bird that lives in a city. There are many in the park.",
+      "s": "There are many grey ___ in the city.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pigeons",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pigeon",
+          "tier": "full"
+        },
+        {
+          "text": "pigeons",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pigeon",
+            "tier": "full"
+          },
+          {
+            "text": "pigeons",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Taube",
+            "tier": "full"
+          },
+          {
+            "text": "Tauben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "parrot",
+        "ostrich",
+        "bat"
+      ],
+      "hintDe": "Ein kleiner grauer Vogel, den du oft in der Stadt und im Park siehst."
+    },
+    {
+      "id": "g2u04.w.powerful",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hairy",
+            "venomous",
+            "female",
+            "incredible"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "powerful",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Rhinos are very powerful animals.') + SB song ('Rhinos are so powerful'); 'push over a tree' echoes the elephant idea. 'strong' (near-synonym, bank word) deliberately NOT in mc."
+      },
+      "w": "powerful",
+      "g": "mächtig",
+      "d": "Very strong; you can push over a big tree.",
+      "s": "Rhinos are very ___. They can push over a tree.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "powerful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "powerful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "powerful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mächtig",
+            "tier": "full"
+          },
+          {
+            "text": "kräftig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hairy",
+        "venomous",
+        "female"
+      ],
+      "hintDe": "Sehr stark — kann sogar einen großen Baum umdrücken."
+    },
+    {
+      "id": "g2u04.w.reason",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "speed",
+            "length",
+            "luck",
+            "ton"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "reason",
+        "narrative": null,
+        "note": "Carrier verbatim from masterlist exampleSb ('Is there a reason why you don't want to come over?'); 'over' trimmed (in-level either way)."
+      },
+      "w": "reason",
+      "g": "Grund",
+      "d": "Why a thing happens, or why you do a thing.",
+      "s": "Is there a ___ why you don't want to come?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "reason",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reason",
+          "tier": "full"
+        },
+        {
+          "text": "reasons",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reason",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Grund",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "speed",
+        "length",
+        "luck"
+      ],
+      "hintDe": "Warum etwas passiert oder warum du etwas tust."
+    },
+    {
+      "id": "g2u04.w.rhino",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dolphin",
+            "antelope",
+            "bat",
+            "ostrich"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "rhino",
+        "narrative": null,
+        "note": "Carrier from SONG ('I'd say let's pick a rhino, bigger than a truck'). Glosses 'horn' in def."
+      },
+      "w": "rhino",
+      "g": "Nashorn",
+      "d": "A big strong grey mammal with a horn on its nose.",
+      "s": "A ___ can be bigger than a truck.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rhino",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rhino",
+          "tier": "full"
+        },
+        {
+          "text": "rhinos",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rhino",
+            "tier": "full"
+          },
+          {
+            "text": "rhinos",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nashorn",
+            "tier": "full"
+          },
+          {
+            "text": "Nashörner",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "horn",
+          "de": "Horn",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "dolphin",
+        "antelope",
+        "bat"
+      ],
+      "hintDe": "Ein großes starkes graues Säugetier mit einem Horn auf der Nase."
+    },
+    {
+      "id": "g2u04.w.scientist",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "farmer",
+            "human",
+            "truck",
+            "mammal"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "scientist",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('I want to become a scientist and study animals.'). Glosses 'animals' (s and d) and 'nature' (d)."
+      },
+      "w": "scientist",
+      "g": "Wissenschaftler/Wissenschaftlerin",
+      "d": "A man or a woman who studies animals and nature.",
+      "s": "I want to study animals one day, so I want to be a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "scientist",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scientist",
+          "tier": "full"
+        },
+        {
+          "text": "scientists",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scientist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wissenschaftler",
+            "tier": "full"
+          },
+          {
+            "text": "Wissenschaftlerin",
+            "tier": "full"
+          },
+          {
+            "text": "Forscher",
+            "tier": "partial"
+          },
+          {
+            "text": "Forscherin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": null
+        },
+        {
+          "word": "nature",
+          "de": "Natur",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "farmer",
+        "human",
+        "truck"
+      ],
+      "hintDe": "Ein Mann oder eine Frau, der/die Tiere und die Natur erforscht."
+    },
+    {
+      "id": "g2u04.w.shark",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dolphin",
+            "antelope",
+            "giraffe",
+            "rhino"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "shark",
+        "narrative": null,
+        "note": "Carrier invented (v1 idea reused; 'scared'/'swimming in the sea' are in-level). SB13 lists 'whale shark' as longest. Glosses 'sea' (in s and d)."
+      },
+      "w": "shark",
+      "g": "Hai",
+      "d": "A big fish with long teeth that lives in the sea.",
+      "s": "Some people are scared of swimming in the sea because of ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sharks",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shark",
+          "tier": "full"
+        },
+        {
+          "text": "sharks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shark",
+            "tier": "full"
+          },
+          {
+            "text": "sharks",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hai",
+            "tier": "full"
+          },
+          {
+            "text": "Haie",
+            "tier": "full"
+          },
+          {
+            "text": "Haifisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "dolphin",
+        "antelope",
+        "giraffe"
+      ],
+      "hintDe": "Ein großer Fisch mit langen Zähnen, der im Meer lebt."
+    },
+    {
+      "id": "g2u04.w.smart",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hairy",
+            "heavy",
+            "venomous",
+            "female"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "smart",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Cats are very smart animals.'); 'cats'/'animals' above-level here, so reframed with in-level 'dog'. 'intelligent'/'smart' near-synonyms NOT in mc. Glosses 'learning'/'quickly' (d), 'word'/'say' (s)."
+      },
+      "w": "smart",
+      "g": "schlau",
+      "d": "Good at learning and thinking quickly.",
+      "s": "Our new dog is very ___. He understands every word I say.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "smart",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "smart",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "smart",
+            "tier": "full"
+          },
+          {
+            "text": "clever",
+            "tier": "partial"
+          },
+          {
+            "text": "intelligent",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schlau",
+            "tier": "full"
+          },
+          {
+            "text": "klug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "learning",
+          "de": "Lernen",
+          "scope": "d"
+        },
+        {
+          "word": "thinking",
+          "de": "Denken",
+          "scope": "d"
+        },
+        {
+          "word": "quickly",
+          "de": "schnell",
+          "scope": "d"
+        },
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": "s"
+        },
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "hairy",
+        "heavy",
+        "venomous"
+      ],
+      "hintDe": "Gut darin, schnell zu denken und zu lernen."
+    },
+    {
+      "id": "g2u04.w.speed",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "length",
+            "ton",
+            "reason",
+            "luck"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "speed",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Their speed on land is 8 km/h.'); 'km/h' above-level, so reframed with in-level 'at a very fast speed'. Definition uses bank word 'fast'."
+      },
+      "w": "speed",
+      "g": "Geschwindigkeit",
+      "d": "How fast a thing can go.",
+      "s": "A cheetah can run at a very fast ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "speed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "speed",
+          "tier": "full"
+        },
+        {
+          "text": "speeds",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "speed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geschwindigkeit",
+            "tier": "full"
+          },
+          {
+            "text": "Tempo",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "length",
+        "ton",
+        "reason"
+      ],
+      "hintDe": "Wie schnell sich etwas bewegt."
+    },
+    {
+      "id": "g2u04.w.strong",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "heavy",
+            "hairy",
+            "fast",
+            "dangerous"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "strong",
+        "narrative": null,
+        "note": "verify r1 (answers): replaced the near-synonym distractor 'powerful' (the unit even glosses powerful as 'very strong') with 'fast'/'dangerous' — all clearly NOT strong."
+      },
+      "w": "strong",
+      "g": "stark",
+      "d": "With a lot of power; you can carry heavy boxes.",
+      "s": "I'm not as ___ as my best friend. He can carry big boxes.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "strong",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "strong",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "strong",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stark",
+            "tier": "full"
+          },
+          {
+            "text": "kräftig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "heavy",
+        "hairy",
+        "fast"
+      ],
+      "hintDe": "Mit viel Kraft — du kannst schwere Kisten tragen."
+    },
+    {
+      "id": "g2u04.w.to-carry",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "weigh",
+            "protect",
+            "share",
+            "die"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "to carry",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Mosquitos can carry malaria.') = SB8 fact. Def rephrased into in-level words; glosses only 'malaria' (s)."
+      },
+      "w": "to carry",
+      "g": "tragen",
+      "d": "To hold a thing and bring it to a new place.",
+      "s": "Mosquitos can ___ malaria.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "carry",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "carry",
+          "tier": "full"
+        },
+        {
+          "text": "to carry",
+          "tier": "full"
+        },
+        {
+          "text": "carries",
+          "tier": "full"
+        },
+        {
+          "text": "carried",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "carry",
+            "tier": "full"
+          },
+          {
+            "text": "to carry",
+            "tier": "full"
+          },
+          {
+            "text": "transport",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "tragen",
+            "tier": "full"
+          },
+          {
+            "text": "übertragen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "malaria",
+          "de": "Malaria",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "weigh",
+        "protect",
+        "share"
+      ],
+      "hintDe": "Etwas festhalten und woandershin bringen (hier: eine Krankheit übertragen)."
+    },
+    {
+      "id": "g2u04.w.to-die",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "carry",
+            "weigh",
+            "share",
+            "protect"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "to die",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Millions of people die from malaria.') = SB8. 'die out' (the phrase) is NOT in mc to avoid confusion with the related bank word. Glosses 'stop' (d), 'malaria' (s)."
+      },
+      "w": "to die",
+      "g": "sterben",
+      "d": "To stop living; to come to the end of life.",
+      "s": "Many people ___ from malaria every year.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "die",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "die",
+          "tier": "full"
+        },
+        {
+          "text": "to die",
+          "tier": "full"
+        },
+        {
+          "text": "dies",
+          "tier": "full"
+        },
+        {
+          "text": "died",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "die",
+            "tier": "full"
+          },
+          {
+            "text": "to die",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sterben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stop",
+          "de": "aufhören",
+          "scope": "d"
+        },
+        {
+          "word": "malaria",
+          "de": "Malaria",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "carry",
+        "weigh",
+        "share"
+      ],
+      "hintDe": "Aufhören zu leben."
+    },
+    {
+      "id": "g2u04.w.to-die-out",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "carry",
+            "weigh",
+            "protect",
+            "share"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "to die out",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Many animals are dying out.'); 'dying' (continuous) is above-level, so reframed with 'could die out'. The blank fills with 'die' (the 'out' is fixed in the sentence); full dAnswers cover all forms of the phrase."
+      },
+      "w": "to die out",
+      "g": "aussterben",
+      "d": "When the last one of a kind is gone forever.",
+      "s": "These crocodiles could ___ out one day if we don't help them.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "die",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "die out",
+          "tier": "full"
+        },
+        {
+          "text": "to die out",
+          "tier": "full"
+        },
+        {
+          "text": "died out",
+          "tier": "full"
+        },
+        {
+          "text": "dies out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "die out",
+            "tier": "full"
+          },
+          {
+            "text": "to die out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aussterben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "kind",
+          "de": "Art",
+          "scope": "d"
+        },
+        {
+          "word": "gone",
+          "de": "weg, verschwunden",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "carry",
+        "weigh",
+        "protect"
+      ],
+      "hintDe": "Wenn das letzte Tier einer Art für immer weg ist."
+    },
+    {
+      "id": "g2u04.w.to-protect",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "carry",
+            "weigh",
+            "share",
+            "die"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "to protect",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Our stones can protect you.') reframed to the unit's conservation theme ('protect wild animals'); SB story 'Only your stones can protect you now.' Glosses 'danger' (d), 'safe' (s and d), 'animals' (s)."
+      },
+      "w": "to protect",
+      "g": "(be-)schützen",
+      "d": "To keep a friend or a thing safe from danger.",
+      "s": "We must ___ wild animals and keep them safe.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "protect",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "protect",
+          "tier": "full"
+        },
+        {
+          "text": "to protect",
+          "tier": "full"
+        },
+        {
+          "text": "protects",
+          "tier": "full"
+        },
+        {
+          "text": "protected",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "protect",
+            "tier": "full"
+          },
+          {
+            "text": "to protect",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schützen",
+            "tier": "full"
+          },
+          {
+            "text": "beschützen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "safe",
+          "de": "sicher",
+          "scope": null
+        },
+        {
+          "word": "danger",
+          "de": "Gefahr",
+          "scope": "d"
+        },
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "carry",
+        "weigh",
+        "share"
+      ],
+      "hintDe": "Jemanden oder etwas vor Gefahr sicher halten."
+    },
+    {
+      "id": "g2u04.w.to-share",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "carry",
+            "weigh",
+            "protect",
+            "die"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "to share",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('Share your notes with a partner.'); 'notes'/'partner' above-level, so reframed with in-level 'sweets'/'sister'. SB17 'Share your notes with a partner' is the source."
+      },
+      "w": "to share",
+      "g": "teilen",
+      "d": "To give some of what you have to a friend.",
+      "s": "Please ___ your sweets with your sister.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "share",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "share",
+          "tier": "full"
+        },
+        {
+          "text": "to share",
+          "tier": "full"
+        },
+        {
+          "text": "shares",
+          "tier": "full"
+        },
+        {
+          "text": "shared",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "share",
+            "tier": "full"
+          },
+          {
+            "text": "to share",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "teilen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "carry",
+        "weigh",
+        "protect"
+      ],
+      "hintDe": "Einem Freund etwas von dem geben, was du hast."
+    },
+    {
+      "id": "g2u04.w.to-weigh",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "carry",
+            "share",
+            "protect",
+            "die"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "to weigh",
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb ('A python can weigh up to 100 kg.'); 'python'/'kg' above-level, so reframed with in-level 'shark'/'tons'. Definition uses sense 'find out how heavy'."
+      },
+      "w": "to weigh",
+      "g": "wiegen",
+      "d": "To find out how heavy a thing is.",
+      "s": "A big shark can ___ more than two tons.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "weigh",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "weigh",
+          "tier": "full"
+        },
+        {
+          "text": "to weigh",
+          "tier": "full"
+        },
+        {
+          "text": "weighs",
+          "tier": "full"
+        },
+        {
+          "text": "weighed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "weigh",
+            "tier": "full"
+          },
+          {
+            "text": "to weigh",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wiegen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "carry",
+        "share",
+        "protect"
+      ],
+      "hintDe": "Herausfinden, wie schwer etwas ist (oder ein bestimmtes Gewicht haben)."
+    },
+    {
+      "id": "g2u04.w.ton",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "centimetres",
+            "deserts",
+            "lengths",
+            "speeds"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "ton",
+        "narrative": null,
+        "note": "Carrier from masterlist/SB8 ('It weighs 150 tons.' — the blue whale). Glosses 'unit'/'weight'/'kilograms' (d)."
+      },
+      "w": "ton",
+      "g": "Tonne (1000 kg)",
+      "d": "A very heavy unit of weight: one thousand kilograms.",
+      "s": "A whale can weigh 150 ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tons",
+          "tier": "full"
+        },
+        {
+          "text": "tonnes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ton",
+          "tier": "full"
+        },
+        {
+          "text": "tons",
+          "tier": "full"
+        },
+        {
+          "text": "tonne",
+          "tier": "partial"
+        },
+        {
+          "text": "tonnes",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ton",
+            "tier": "full"
+          },
+          {
+            "text": "tons",
+            "tier": "full"
+          },
+          {
+            "text": "tonne",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tonne",
+            "tier": "full"
+          },
+          {
+            "text": "Tonnen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "unit",
+          "de": "Einheit",
+          "scope": "d"
+        },
+        {
+          "word": "weight",
+          "de": "Gewicht",
+          "scope": "d"
+        },
+        {
+          "word": "kilograms",
+          "de": "Kilogramm",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "centimetres",
+        "deserts",
+        "lengths"
+      ],
+      "hintDe": "Eine sehr schwere Gewichtseinheit: gleich 1000 Kilogramm."
+    },
+    {
+      "id": "g2u04.w.truck",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "desert",
+            "mammal",
+            "scientist",
+            "farmer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "truck",
+        "narrative": null,
+        "note": "Carrier verbatim from SB song ('bigger than a truck') = masterlist exampleSb. Def rephrased into in-level words; no gloss."
+      },
+      "w": "truck",
+      "g": "Lastwagen",
+      "d": "A very big thing for the road that can bring heavy boxes from place to place.",
+      "s": "A rhino can be bigger than a ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "truck",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "truck",
+          "tier": "full"
+        },
+        {
+          "text": "trucks",
+          "tier": "full"
+        },
+        {
+          "text": "lorry",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "truck",
+            "tier": "full"
+          },
+          {
+            "text": "lorry",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lastwagen",
+            "tier": "full"
+          },
+          {
+            "text": "Lkw",
+            "tier": "full"
+          },
+          {
+            "text": "Laster",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "desert",
+        "mammal",
+        "scientist"
+      ],
+      "hintDe": "Ein sehr großes Straßenfahrzeug, das schwere Dinge transportiert."
+    },
+    {
+      "id": "g2u04.w.venomous",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hairy",
+            "heavy",
+            "female",
+            "incredible"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "venomous",
+        "narrative": null,
+        "note": "Carrier from SB9/WB ('the most venomous snake') + masterlist gloss ('A venomous animal produces poison'). Glosses 'poison' (s and d) and 'snake' (s). SB itself glosses venomous = giftig."
+      },
+      "w": "venomous",
+      "g": "giftig",
+      "d": "Having poison in its bite that can make you very ill.",
+      "s": "A ___ snake has got poison in its bite.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "venomous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "venomous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "venomous",
+            "tier": "full"
+          },
+          {
+            "text": "poisonous",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "giftig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "poison",
+          "de": "Gift",
+          "scope": null
+        },
+        {
+          "word": "snake",
+          "de": "Schlange",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "hairy",
+        "heavy",
+        "female"
+      ],
+      "hintDe": "Mit Gift im Biss, das dich sehr krank machen kann."
+    },
+    {
+      "id": "g2u04.w.whale",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "antelope",
+            "giraffe",
+            "ostrich",
+            "cheetah"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt",
+        "seedV1": "whale",
+        "narrative": null,
+        "note": "Carrier from SB8 ('The biggest animal on land or in the sea is the BLUE WHALE. It's also the heaviest.'), rephrased to in-level words with 'mammal'. Glosses 'sea' in def."
+      },
+      "w": "whale",
+      "g": "Wal",
+      "d": "The biggest mammal on Earth. It lives in the sea.",
+      "s": "The ___ is the biggest and heaviest mammal of all.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "whale",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "whale",
+          "tier": "full"
+        },
+        {
+          "text": "whales",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "whale",
+            "tier": "full"
+          },
+          {
+            "text": "whales",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wal",
+            "tier": "full"
+          },
+          {
+            "text": "Wale",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "antelope",
+        "giraffe",
+        "ostrich"
+      ],
+      "hintDe": "Das größte Säugetier der Erde — es lebt im Meer."
+    }
+  ]
+}

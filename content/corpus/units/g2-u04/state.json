@@ -71,6 +71,55 @@
       "contentHash": "072502363e275f6c904daea2729ba5464426f91fa08567b6cd52e3dbd8f8794d",
       "note": "round 2: 1 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T16:04:45.217Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "39363415760d53919f7abd0e409f98172d01861e5cca09a89b5dde0fcc5e7e30",
+      "note": "gen ingest: 50 vocab + 66 grammar item(s); draft 8222a50e2d57",
+      "at": "2026-06-13T15:23:20.951Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "32907b616834e23d493eec15409844feb93948d92d2c284df5c3a2fe9592026f",
+      "note": "gen ingest: 50 vocab + 66 grammar item(s); draft 004458511f95",
+      "at": "2026-06-13T15:28:22.167Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "b34faed5561bc5e3471903168420c7d9a0db9197241383b65eb002c487d8123d",
+      "note": "gen fix ingest: 5 replaced, 0 new; hash b34faed5561b",
+      "at": "2026-06-13T15:40:05.231Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "b34faed5561bc5e3471903168420c7d9a0db9197241383b65eb002c487d8123d",
+      "note": "verify round 2: 0 fix, 0 warn",
+      "at": "2026-06-13T15:45:08.767Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "b34faed5561bc5e3471903168420c7d9a0db9197241383b65eb002c487d8123d",
+      "note": "V-1..V-22 green (0 warn)",
+      "at": "2026-06-13T15:45:55.286Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "b34faed5561bc5e3471903168420c7d9a0db9197241383b65eb002c487d8123d",
+      "note": "round 1 doc: 86 open flag(s), 116 row(s) rendered (FULL)",
+      "at": "2026-06-13T15:45:55.324Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "b34faed5561bc5e3471903168420c7d9a0db9197241383b65eb002c487d8123d",
+      "note": "round 1: 86 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-13T15:47:30.836Z"
     }
   ]
 }
