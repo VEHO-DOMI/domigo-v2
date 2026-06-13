@@ -1,0 +1,1381 @@
+{
+  "schema": "grammar@1",
+  "grade": 2,
+  "unit": 3,
+  "slug": "g2-u03",
+  "items": [
+    {
+      "id": "g2u03.gi.should.cp.001",
+      "structureId": "g2u03.s.should",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She shoulds eat so many sweets.",
+            "She should to eat so many sweets.",
+            "She doesn't should eat so many sweets.",
+            "She should eats so many sweets."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#ex-5-story",
+        "seedV1": "m2-u3-should-mc-002",
+        "narrative": null,
+        "note": "Story scene; correct sentence adapts \"Maybe you shouldn't eat so many sweets\"."
+      },
+      "prompt": {
+        "text": "Lara is eating too many sweets. Now she is sick.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She shouldn't eat so many sweets.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She should eat so many sweets.",
+        "She don't should eat so many sweets.",
+        "She shouldn't to eat so many sweets."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wie verneinst du should? Genau ein Wort ändert sich.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von should ist shouldn't + Grundform – ohne don't und ohne to: She shouldn't eat so many sweets.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.cp.002",
+      "structureId": "g2u03.s.should",
+      "format": "context-picker",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "You shouldn't to go in there alone.",
+            "You doesn't should go in there alone.",
+            "You should going in there alone.",
+            "You don't should go in there."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Edwina wants to go into the dark building next to the graveyard. Ron is scared.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You shouldn't go in there alone.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "You should go in there alone.",
+        "You don't should go in there alone.",
+        "You shoulds go in there alone."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gefährlich! Brauchst du should oder shouldn't – und welche Form ist richtig?",
+      "hintEn": null,
+      "explainDe": "should bekommt nie ein -s und wird mit shouldn't verneint: You shouldn't go in there alone.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.ec.001",
+      "structureId": "g2u03.s.should",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+        "seedV1": "m2-u3-should-ec-001",
+        "narrative": null,
+        "note": "Prompt contains the intentional learner error 'should to + verb' (the error under correction)."
+      },
+      "prompt": {
+        "text": "You should to wear a costume at Halloween.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You should wear a costume at Halloween.",
+          "tier": "full"
+        },
+        {
+          "text": "You should wear a costume at Halloween",
+          "tier": "full"
+        },
+        {
+          "text": "should wear",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Schau genau: Steht nach should ein Wort zu viel?",
+      "hintEn": null,
+      "explainDe": "Nach should steht die Grundform ohne to: You should wear a costume at Halloween. Das to muss weg.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.ec.002",
+      "structureId": "g2u03.s.should",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+        "seedV1": "m2-u3-should-ec-002",
+        "narrative": null,
+        "note": "Prompt contains the intentional learner error 'don't should' (the error under correction)."
+      },
+      "prompt": {
+        "text": "You don't should go out alone at night.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You shouldn't go out alone at night.",
+          "tier": "full"
+        },
+        {
+          "text": "You shouldn't go out alone at night",
+          "tier": "full"
+        },
+        {
+          "text": "You should not go out alone at night.",
+          "tier": "full"
+        },
+        {
+          "text": "You should not go out alone at night",
+          "tier": "full"
+        },
+        {
+          "text": "shouldn't go",
+          "tier": "partial"
+        },
+        {
+          "text": "should not go",
+          "tier": "partial"
+        },
+        {
+          "text": "shouldn't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Verneinung von should baust du nicht mit don't. Wie heißt sie richtig?",
+      "hintEn": null,
+      "explainDe": "should verneinst du direkt: shouldn't (= should not). Ein don't brauchst du nicht: You shouldn't go out alone at night.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.ec.003",
+      "structureId": "g2u03.s.should",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Henry shoulds put a candle in the front window.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Henry should put a candle in the front window.",
+          "tier": "full"
+        },
+        {
+          "text": "Henry should put a candle in the front window",
+          "tier": "full"
+        },
+        {
+          "text": "should put",
+          "tier": "partial"
+        },
+        {
+          "text": "should",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "should ist bei allen Personen gleich – auch bei he, she und bei Namen.",
+      "hintEn": null,
+      "explainDe": "should bekommt nie ein -s: Henry should put a candle in the front window. Auch bei he/she bleibt es einfach should.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.001",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sarah's tip: You ___ wear a Halloween costume. It's fun!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "should",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ist das ein guter Tipp oder eine Warnung? Für gute Tipps nimmst du should.",
+      "hintEn": null,
+      "explainDe": "Ein Kostüm zu Halloween ist eine gute Idee. Wenn jemand etwas tun sollte, nimmst du should + Grundform: You should wear a costume.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.002",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We ___ go in there – it's dangerous.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "shouldn't",
+          "tier": "full"
+        },
+        {
+          "text": "should not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist gefährlich! Sollte man das tun – oder besser nicht?",
+      "hintEn": null,
+      "explainDe": "Es ist gefährlich, also sollte man es nicht tun. Die Verneinung heißt shouldn't (= should not): We shouldn't go in there.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.003",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You ___ always tell an adult where you are going.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "should",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Einem Erwachsenen Bescheid sagen – ist das ein guter Tipp?",
+      "hintEn": null,
+      "explainDe": "Es ist ein guter Tipp, immer einem Erwachsenen zu sagen, wo du hingehst. Darum should + Grundform: You should always tell an adult.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.004",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#grammar-1",
+        "seedV1": "m2-u3-should-qf-001",
+        "narrative": null,
+        "note": "Fix round 2: added 'shall' as a full answer — 'What shall I do?' is textbook-correct in this deliberative frame and shall is taught in this unit (w.shall)."
+      },
+      "prompt": {
+        "text": "Ron is alone at the graveyard and he is scared. He asks: 'What ___ I do?'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "should",
+          "tier": "full"
+        },
+        {
+          "text": "shall",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ron fragt um Rat. In Fragen steht should ganz vorne – gleich nach dem Fragewort.",
+      "hintEn": null,
+      "explainDe": "Wenn du um Rat fragst, stellst du should vor das Subjekt: What should I do? – Was soll ich tun?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.005",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Lara is sick. Ron is angry: 'You ___ (not) eat so many sweets!'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "shouldn't",
+          "tier": "full"
+        },
+        {
+          "text": "should not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du brauchst die Verneinung von should – aber nicht mit don't!",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von should heißt shouldn't (= should not): You shouldn't eat so many sweets. Mit don't kannst du should nicht verneinen.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.006",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "It's dark and Edwina is scared. She asks Ron: '___ I call my parents now?'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Should",
+          "tier": "full"
+        },
+        {
+          "text": "Shall",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Frage um Rat: Stell should an den Anfang, vor das I.",
+      "hintEn": null,
+      "explainDe": "Bei Fragen um Rat steht should vor dem Subjekt: Should I call my parents? Ein do brauchst du dafür nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.007",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "It's night and very dark. We ___ ___ (go) back now.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "should | go",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Was sollten wir tun? should + Grundform – ohne to.",
+      "hintEn": null,
+      "explainDe": "Nach should steht immer die Grundform ohne to: We should go back now. 'We should to go' ist falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.008",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ask your mum about your costume for Halloween: '___ I ___ (wear) my witch dress or my vampire costume?'",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Should | wear",
+          "tier": "full"
+        },
+        {
+          "text": "Shall | wear",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frag um Rat: zuerst should, dann I, dann die Grundform.",
+      "hintEn": null,
+      "explainDe": "Fragen um Rat baust du so: Should + Subjekt + Grundform. Also: Should I wear my witch dress or my vampire costume?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gf.009",
+      "structureId": "g2u03.s.should",
+      "format": "gap-fill",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sarah's tips for Halloween at school: The children ___ ___ (be) too wild.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "shouldn't | be",
+          "tier": "full"
+        },
+        {
+          "text": "should not | be",
+          "tier": "full"
+        },
+        {
+          "text": "should | not be",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zu wilde Kinder? Keine gute Idee! Du brauchst die Verneinung + Grundform.",
+      "hintEn": null,
+      "explainDe": "Zu wilde Kinder beim Schul-Halloween – das sollte nicht sein, also shouldn't. Danach kommt die Grundform: The children shouldn't be too wild.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.gs.001",
+      "structureId": "g2u03.s.should",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#ex-12",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Sarah's trick-or-treating list (SB ex. 12) + parents' rules (WB ex. 7); 'mean tricks'/'stay out very late' rephrased in-bank."
+      },
+      "prompt": {
+        "text": "Tips for trick-or-treating",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "You should …",
+          "members": [
+            "wear a costume",
+            "always go with friends",
+            "tell an adult where you are going"
+          ]
+        },
+        {
+          "label": "You shouldn't …",
+          "members": [
+            "scare very small children",
+            "stay out too long",
+            "eat all the sweets in one go",
+            "go out alone"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Gute Idee → should, schlechte Idee → shouldn't.",
+      "hintEn": null,
+      "explainDe": "Mit should sagst du, was beim Trick-or-Treating eine gute Idee ist, mit shouldn't, was du lieber nicht tun solltest.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.mc.001",
+      "structureId": "g2u03.s.should",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "should",
+            "must",
+            "couldn't",
+            "can"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 3.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You ___ scare small children. It isn't funny for them.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "shouldn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "should",
+        "must",
+        "couldn't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kleine Kinder erschrecken – ist das okay? Sicher nicht!",
+      "hintEn": null,
+      "explainDe": "Kleine Kinder zu erschrecken ist keine gute Idee. Wenn jemand etwas nicht tun sollte, nimmst du shouldn't: You shouldn't scare small children.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.mc.002",
+      "structureId": "g2u03.s.should",
+      "format": "multiple-choice",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "shouldn't",
+            "couldn't",
+            "can't",
+            "don't"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Henry's pumpkin bucket is so scary. The teacher is proud of it: 'We ___ keep it for Halloween at school.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "should",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "shouldn't",
+        "couldn't",
+        "can't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Kürbiseimer ist super gruselig! Ihn zu behalten – gute Idee oder nicht?",
+      "hintEn": null,
+      "explainDe": "Den Kürbiskübel zu behalten ist eine gute Idee. Vorschläge machst du mit should + Grundform: We should keep it for Halloween at school.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.mc.003",
+      "structureId": "g2u03.s.should",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "should",
+            "must",
+            "couldn't",
+            "is"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sarah wants good music for Halloween, but it ___ be too noisy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "shouldn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "should",
+        "must",
+        "couldn't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achtung, Gegensatz mit but: Soll die Musik zu laut sein? Sicher nicht!",
+      "hintEn": null,
+      "explainDe": "Zu laute Musik ist keine gute Idee für Halloween. Was nicht sein sollte, sagst du mit shouldn't + Grundform: it shouldn't be too noisy.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.mt.001",
+      "structureId": "g2u03.s.should",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 3.txt#ex-6",
+        "seedV1": "m2-u3-should-mt-001",
+        "narrative": null,
+        "note": "Situation→advice pattern from WB ex. 6; vampire-teeth-on-the-table scene from WB ex. 2."
+      },
+      "prompt": {
+        "text": "Tips for Halloween night",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I'm so tired.",
+          "right": "You should go to bed early."
+        },
+        {
+          "left": "It's very dark in here.",
+          "right": "You should find a candle."
+        },
+        {
+          "left": "I can't find my vampire teeth.",
+          "right": "You should look on the table."
+        },
+        {
+          "left": "I eat sweets all day.",
+          "right": "You shouldn't eat so many sweets."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lies erst das Problem, dann such den passenden Tipp mit should oder shouldn't.",
+      "hintEn": null,
+      "explainDe": "Mit should gibst du einen Tipp, mit shouldn't eine Warnung: You should go to bed early. / You shouldn't eat so many sweets.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u03.gi.should.mt.002",
+      "structureId": "g2u03.s.should",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#ex-5-story",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Lara/graveyard scenes from the story; \"keep it\" echoes Henry's pumpkin (rephrased in-bank as picture — pumpkin/face are above the gate)."
+      },
+      "prompt": {
+        "text": "What should they do?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "It's Halloween tonight.",
+          "right": "We should put on our costumes."
+        },
+        {
+          "left": "The graveyard is very dark.",
+          "right": "We shouldn't go in there now."
+        },
+        {
+          "left": "Lara is sick.",
+          "right": "She shouldn't eat more sweets."
+        },
+        {
+          "left": "The picture of the witch is so scary.",
+          "right": "We should keep it for Halloween."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wer spricht? Achte auf she und we – und ob should oder shouldn't passt.",
+      "hintEn": null,
+      "explainDe": "should = sollte, shouldn't = sollte nicht. Satz und Situation müssen zusammenpassen: Lara is sick. → She shouldn't eat more sweets.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u03.gi.should.qf.001",
+      "structureId": "g2u03.s.should",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#ex-5-story",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Story line \"you should phone your parents and tell them\" rephrased in-bank (phone is above the gate)."
+      },
+      "prompt": {
+        "text": "I should tell my parents.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Should I tell my parents?",
+          "tier": "full"
+        },
+        {
+          "text": "Should I tell my parents",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Stell should an den Anfang: Should + ich/du/wir + Grundform?",
+      "hintEn": null,
+      "explainDe": "Fragen mit should bildest du ohne do: should wandert an den Satzanfang – Should I tell my parents?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u03.gi.should.qf.002",
+      "structureId": "g2u03.s.should",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u3-should-qf-001",
+        "narrative": null,
+        "note": "Invented in the unit world (choosing a Halloween costume)."
+      },
+      "prompt": {
+        "text": "wear / should / what / I / tonight",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What should I wear tonight?",
+          "tier": "full"
+        },
+        {
+          "text": "What should I wear tonight",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Fragewort steht ganz vorn, dann kommt should, dann du selbst und die Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei Fragen mit Fragewort gilt: What + should + I + Grundform – What should I wear tonight?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u03.gi.should.sb.001",
+      "structureId": "g2u03.s.should",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to",
+            "a",
+            "the",
+            "at"
+          ],
+          "chipBudget": 6,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 3.txt#ex-5",
+        "seedV1": "m2-u3-should-sb-001",
+        "narrative": null,
+        "note": "WB ex. 5 \"He should go to bed.\" adapted to you-form."
+      },
+      "prompt": {
+        "text": "bed / should / you / to / go / don't",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You should go to bed.",
+          "tier": "full"
+        },
+        {
+          "text": "You should go to bed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wer? + should + Grundform. Das Wort don't brauchst du nicht.",
+      "hintEn": null,
+      "explainDe": "Nach should kommt die Grundform: You should go to bed. Ein do oder don't brauchst du bei should nie.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u03.gi.should.sb.002",
+      "structureId": "g2u03.s.should",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "a",
+            "the",
+            "at",
+            "we"
+          ],
+          "chipBudget": 7,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#ex-12",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB ex. 12 sentence 7 \"go on your own\" rephrased in-bank as \"go out alone\" (own is above the gate)."
+      },
+      "prompt": {
+        "text": "go / alone / you / shouldn't / out / don't / to",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You shouldn't go out alone.",
+          "tier": "full"
+        },
+        {
+          "text": "You shouldn't go out alone",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't",
+        "to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sollte nicht: shouldn't + Grundform – ohne don't und ohne to.",
+      "hintEn": null,
+      "explainDe": "should verneinst du mit shouldn't, nie mit don't: You shouldn't go out alone.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.tr.001",
+      "structureId": "g2u03.s.should",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#ex-12",
+        "seedV1": "m2-u3-should-tr-001",
+        "narrative": null,
+        "note": "SB ex. 12 sentence 5 verbatim (should filled in)."
+      },
+      "prompt": {
+        "text": "Du solltest immer mit Freunden gehen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You should always go with friends.",
+          "tier": "full"
+        },
+        {
+          "text": "You should always go with friends",
+          "tier": "full"
+        },
+        {
+          "text": "You should always go with your friends.",
+          "tier": "partial"
+        },
+        {
+          "text": "You should always go with your friends",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ratschlag geben: should + Grundform – ganz ohne to.",
+      "hintEn": null,
+      "explainDe": "Mit should sagst du, was jemand tun sollte: You should always go with friends. Nach should steht die Grundform des Verbs.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.tr.002",
+      "structureId": "g2u03.s.should",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#ex-5-story",
+        "seedV1": "m2-u3-should-tr-002",
+        "narrative": null,
+        "note": "Story line \"Maybe you shouldn't eat so many sweets\" adapted to Lara. Fix round 2: added 'candy'/'candies' renderings as partial — AmE 'candy' for 'Süßigkeiten' is ubiquitous for Austrian kids but register-marked against this BrE textbook, and 'candy' is not in the cumulative bank, so it stays partial (gate-exempt)."
+      },
+      "prompt": {
+        "text": "Lara sollte nicht so viele Süßigkeiten essen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Lara shouldn't eat so many sweets.",
+          "tier": "full"
+        },
+        {
+          "text": "Lara shouldn't eat so many sweets",
+          "tier": "full"
+        },
+        {
+          "text": "Lara should not eat so many sweets.",
+          "tier": "full"
+        },
+        {
+          "text": "Lara should not eat so many sweets",
+          "tier": "full"
+        },
+        {
+          "text": "Lara shouldn't have so many sweets.",
+          "tier": "partial"
+        },
+        {
+          "text": "Lara shouldn't have so many sweets",
+          "tier": "partial"
+        },
+        {
+          "text": "Lara shouldn't eat so much candy.",
+          "tier": "partial"
+        },
+        {
+          "text": "Lara shouldn't eat so much candy",
+          "tier": "partial"
+        },
+        {
+          "text": "Lara shouldn't eat so many candies.",
+          "tier": "partial"
+        },
+        {
+          "text": "Lara should not eat so much candy.",
+          "tier": "partial"
+        },
+        {
+          "text": "Lara should not eat so many candies.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sollte nicht … = shouldn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Wenn jemand etwas nicht tun sollte, verwendest du shouldn't (= should not): Lara shouldn't eat so many sweets.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u03.gi.should.tr.003",
+      "structureId": "g2u03.s.should",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 3.txt#grammar-1",
+        "seedV1": "m2-u3-should-qf-001",
+        "narrative": null,
+        "note": "Grammar box example verbatim."
+      },
+      "prompt": {
+        "text": "What should I do?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Was soll ich tun?",
+          "tier": "full"
+        },
+        {
+          "text": "Was soll ich tun",
+          "tier": "full"
+        },
+        {
+          "text": "Was soll ich machen?",
+          "tier": "full"
+        },
+        {
+          "text": "Was soll ich machen",
+          "tier": "full"
+        },
+        {
+          "text": "Was sollte ich tun?",
+          "tier": "full"
+        },
+        {
+          "text": "Was sollte ich tun",
+          "tier": "full"
+        },
+        {
+          "text": "Was sollte ich machen?",
+          "tier": "full"
+        },
+        {
+          "text": "Was sollte ich machen",
+          "tier": "full"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frag um Rat: Was soll ich …?",
+      "hintEn": null,
+      "explainDe": "What should I do? heißt: Was soll ich tun? Mit should fragst du um Rat.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

@@ -167,14 +167,18 @@ export function runValidate(): void {
       }
     }
 
-    // ---- V-A / V-B on approved units
+    // ---- V-A / V-B on approved units. The guard anchors on the LAST
+    // wordbank_approved transition in the log — units that progress to item
+    // states (generated/verified/…) keep their bank-drift protection.
     const log = readStateLog(unitDir);
-    const last = log?.transitions[log.transitions.length - 1];
-    if (last?.state === "wordbank_approved") {
+    const lastApproved = [...(log?.transitions ?? [])]
+      .reverse()
+      .find((t) => t.state === "wordbank_approved");
+    if (lastApproved !== undefined) {
       approvedSlugs.add(dir);
       const currentHash = entriesContentHash(bank.entries);
-      if (last.contentHash !== currentHash) {
-        errors.push(`${dir}: V-A — approved hash ${last.contentHash?.slice(0, 12)} ≠ current bank ${currentHash.slice(0, 12)} (bank drifted after approval; re-review)`);
+      if (lastApproved.contentHash !== currentHash) {
+        errors.push(`${dir}: V-A — approved hash ${lastApproved.contentHash?.slice(0, 12)} ≠ current bank ${currentHash.slice(0, 12)} (bank drifted after approval; re-review)`);
       }
       const flags = readJsonIfExists<FlagsFile>(path.join(unitDir, "review", "wordbank.flags.json"));
       if (flags === null) errors.push(`${dir}: V-B — approved but review/wordbank.flags.json is missing`);

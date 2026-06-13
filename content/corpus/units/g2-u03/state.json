@@ -36,6 +36,111 @@
       "contentHash": "6dc22386a63c6171e13dabcc37b730a17bb1e440f694443db4e72612bbd60490",
       "note": "round 1: 1 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T15:37:56.169Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "4163a9fe36fff4a6fd315a4cf0fc2d636f7553b107cdcd26e98bd90774ba1c76",
+      "note": "gen ingest: 34 vocab + 27 grammar item(s); draft 6dac11abf68a",
+      "at": "2026-06-12T04:04:32.580Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "652fc13ae8d14318bd2f51b005195bdde647e1fd3f6222cdc180a1a6de31fb5c",
+      "note": "gen fix ingest: 18 replaced, 0 new; hash 652fc13ae8d1",
+      "at": "2026-06-12T04:21:40.168Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "2d78d2ddddfaeb58e331174bf66398e09df941acfa2587304e64bc9aa1132649",
+      "note": "gen fix ingest: 18 replaced, 0 new; hash 2d78d2ddddfa",
+      "at": "2026-06-12T04:22:45.587Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "ac15ea16a6665869b2f22abbdd91dda6327e95bcba8d5c460b4d36feea95355c",
+      "note": "gen fix ingest: 24 replaced, 0 new; hash ac15ea16a666",
+      "at": "2026-06-13T09:46:23.053Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "a5718473c8e55da1de962f5f53ed8a774ef756e6272f8910b613dcb656122f2f",
+      "note": "gen fix ingest: 1 replaced, 0 new; hash a5718473c8e5",
+      "at": "2026-06-13T09:54:44.592Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "840ab38346aa33adb581d2f31b411a534cc98724b737d50bc5138320f757bba0",
+      "note": "gen fix ingest: 1 replaced, 0 new; hash 840ab38346aa",
+      "at": "2026-06-13T10:00:54.077Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "840ab38346aa33adb581d2f31b411a534cc98724b737d50bc5138320f757bba0",
+      "note": "verify round 3: 0 fix, 7 warn",
+      "at": "2026-06-13T10:03:55.995Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "840ab38346aa33adb581d2f31b411a534cc98724b737d50bc5138320f757bba0",
+      "note": "V-1..V-22 green (0 warn)",
+      "at": "2026-06-13T10:04:09.903Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "840ab38346aa33adb581d2f31b411a534cc98724b737d50bc5138320f757bba0",
+      "note": "round 1 doc: 53 open flag(s), 61 row(s) rendered (FULL)",
+      "at": "2026-06-13T10:04:09.935Z"
+    },
+    {
+      "state": "changes_requested",
+      "by": "fable",
+      "contentHash": "b0833cc08070e25a8408adc442fddcadc9ad6873af7326ab2ce5eb935b8087bb",
+      "note": "lens-warn:g2u03.w.trick-or-treat-2#answer-incomplete: Answer-set gap, not inline-editable here (answers are immutable in this doc) → must be fixed at source. Add the hyphenated spellings \"Trick-or-treat\" and \"trick-or-treat\" as full answers alongside the spaced forms, matching the sibling g2u03.w.trick-or-treat. Otherwise a student writing the standard hyphenated form is undergraded to half-XP via close-match. This is the single flag driving the unit verdict to \"changes\".",
+      "at": "2026-06-13T10:20:21.975Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "8a00bfa24670ebba4babdcd127d6d7738b9432a68a46702b31ff0abb5ec5eeaf",
+      "note": "gen fix ingest: 1 replaced, 0 new; hash 8a00bfa24670",
+      "at": "2026-06-13T10:21:54.866Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "8a00bfa24670ebba4babdcd127d6d7738b9432a68a46702b31ff0abb5ec5eeaf",
+      "note": "verify round 4: 0 fix, 4 warn",
+      "at": "2026-06-13T10:25:42.629Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "8a00bfa24670ebba4babdcd127d6d7738b9432a68a46702b31ff0abb5ec5eeaf",
+      "note": "V-1..V-22 green (0 warn)",
+      "at": "2026-06-13T10:25:43.106Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "8a00bfa24670ebba4babdcd127d6d7738b9432a68a46702b31ff0abb5ec5eeaf",
+      "note": "round 2 doc: 0 open flag(s), 61 row(s) rendered (FULL)",
+      "at": "2026-06-13T10:25:43.138Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "8a00bfa24670ebba4babdcd127d6d7738b9432a68a46702b31ff0abb5ec5eeaf",
+      "note": "round 2: 0 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-13T10:26:38.477Z"
     }
   ]
 }

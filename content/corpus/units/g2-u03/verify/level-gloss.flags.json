@@ -1,0 +1,36 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u03",
+  "lens": "level-gloss",
+  "itemsHash": "8a00bfa24670",
+  "promptHash": "aefb997bf664",
+  "round": 4,
+  "by": "fable-lens-level-gloss",
+  "flags": [
+    {
+      "key": "gloss-missing:g2u03.w.century",
+      "kind": "gloss-missing",
+      "itemId": "g2u03.w.century",
+      "severity": "warn",
+      "note": "s 'She was dressed like a girl from the 19th ___.' leaves the passive 'was dressed (like)' unglossed. The bank teaches the noun 'dress' (= Kleid, this unit) and 'to get dressed' (g2-u01), not the passive 'be dressed like' (= verkleidet/angezogen wie). Sibling w.superheroine glosses the exact parallel chunk 'dressed up as (= verkleidet als)', so by the corpus's own standard this carrier wants the same gloss. The headword stays gettable ('One hundred years - a very long time'; '19th ___'), so the student is not blocked.",
+      "suggestion": null
+    },
+    {
+      "key": "above-level:g2u03.w.front-window",
+      "kind": "above-level",
+      "itemId": "g2u03.w.front-window",
+      "severity": "warn",
+      "note": "d 'The glass in a building that you look out of, into the street' stacks a relative clause with a stranded preposition ('that you look out of') plus an appended fragment ('into the street') — parsing beyond A1+ even though every token is taught — and uses 'glass' in the window-pane sense (taught only as the drinking glass, g1-u07; German 'Glas' is polysemous the same way, so meaning survives). The transparent headword and the clean carrier s ('We put some vampire stickers on his ___.') rescue the item; only the definition syntax outruns the level.",
+      "suggestion": null
+    },
+    {
+      "key": "above-level:g2u03.w.guys",
+      "kind": "above-level",
+      "itemId": "g2u03.w.guys",
+      "severity": "warn",
+      "note": "d 'You can call a group of friends or children this.' uses 'call' in the untaught naming sense (= jemanden so nennen) — g1-u06 teaches 'to call' as rufen/anrufen — inside a call + OBJECT + OBJECT pattern with cataphoric 'this'. Austrian 'rufen' does not carry the naming sense, so the syntax/semantics outrun A1+; the gist survives but a human should confirm.",
+      "suggestion": null
+    }
+  ],
+  "summary": { "itemsSeen": 61, "flagged": 3 }
+}

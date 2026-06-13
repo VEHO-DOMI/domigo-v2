@@ -54,6 +54,8 @@ test("matcher: cumulative boundary — a later-unit word is unknown earlier", ()
 test("matcher: harvested proper nouns pass at their unit", () => {
   const m = buildAllowedMatcher("g2-u03");
   assert.deepEqual(m.unknownTokens("Emily and Ron are with Mrs White at Halloween."), []);
+  // names license their possessives (family-expanded)
+  assert.deepEqual(m.unknownTokens("Sarah's costume is scary."), []);
   const noNouns = buildAllowedMatcher("g2-u03", { nouns: false });
   assert.ok(noNouns.unknownTokens("Edwina laughed.").includes("edwina"));
 });

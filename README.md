@@ -66,8 +66,9 @@ frozen (vocab@1 / grammar@1 / grammar-structures@1 / story@1, PR #10); **g2 stru
 generated** (28 structures, 22/22 v1 ids mapped, `content/corpus/structures/g2/`); item stages
 5–8 tooling live (pinned prompts in `packages/content-pipeline/prompts/`, cumulative level gate,
 validators V-1…V-22 incl. the v1-unit-03 calibration suite, 4-lens verify, item review loop);
-CI gates V-A…V-F + V-1…V-22 guard approved artifacts against drift. Next: the g2-u03 item pilot
-(<5% reject exit) → item waves G2→G1→G3→G4, then the
+**g2-u03 item pilot PASSED** (61 items `approved`, stage-8 reject 1.6% < 5% — see
+[item-pilot-g2-u03](docs/runbooks/item-pilot-g2-u03.md)); CI gates V-A…V-F + V-1…V-22 guard
+approved artifacts against drift. Next: item waves G2→G1→G3→G4 (~5,300 items), then the
 [game layer](docs/handover/10_game_layer.md) (four standalone grade games).
 
 ## Database rules (shared Neon project with live v1 — do not skip)

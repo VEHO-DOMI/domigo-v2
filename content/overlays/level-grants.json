@@ -1,0 +1,50 @@
+{
+  "schema": "level-grants@1",
+  "grants": [
+    {
+      "slug": "g2-u03",
+      "itemId": null,
+      "field": null,
+      "token": "should",
+      "reason": "unit-3 grammar structure (g2u03.s.should): taught by the SB grammar box; structure tokens are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u03",
+      "itemId": null,
+      "field": null,
+      "token": "shouldn't",
+      "reason": "unit-3 grammar structure (g2u03.s.should): taught by the SB grammar box; structure tokens are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u03",
+      "itemId": "g2u03.gi.should.ec.003",
+      "field": "prompt",
+      "token": "shoulds",
+      "reason": "error-correction prompt deliberately contains the learner error under correction (3rd-person -s on a modal)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u03",
+      "itemId": "g2u03.gi.should.cp.001",
+      "field": null,
+      "token": "shoulds",
+      "reason": "context-picker distractor sentences deliberately contain the learner error under discrimination (3rd-person -s on a modal)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u03",
+      "itemId": "g2u03.gi.should.cp.002",
+      "field": null,
+      "token": "shoulds",
+      "reason": "context-picker distractor sentences deliberately contain the learner error under discrimination (3rd-person -s on a modal)",
+      "by": "fable",
+      "round": 1
+    }
+  ]
+}

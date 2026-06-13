@@ -81,14 +81,21 @@ function fullsAndPartials(answers: TieredAnswerT[]): string {
   return answers.map((a) => a.text).join(" ");
 }
 
+/** Only tier=full answers are displayed as "the correction" — V-5 gates those.
+ *  Partial-tier answers are grading GENEROSITY (near-miss acceptance); gating
+ *  them would force stricter grading — the v1 disease. */
+function fullsOnly(answers: TieredAnswerT[]): string {
+  return answers.filter((a) => a.tier === "full").map((a) => a.text).join(" ");
+}
+
 /** EN fields gated by V-5. mc/distractors/pool are V-9's (no gloss escape there). */
 export function vocabEnFields(it: VocabItemT): EnField[] {
   const fields: EnField[] = [
     { itemId: it.id, field: "d", text: it.d, scopes: ["d"] },
     { itemId: it.id, field: "s", text: it.s, scopes: ["s"] },
-    { itemId: it.id, field: "sAnswers", text: fullsAndPartials(it.sAnswers), scopes: ["s"] },
-    { itemId: it.id, field: "dAnswers", text: fullsAndPartials(it.dAnswers), scopes: ["d"] },
-    { itemId: it.id, field: "translation.deToEn", text: fullsAndPartials(it.translation.deToEn), scopes: [] },
+    { itemId: it.id, field: "sAnswers", text: fullsOnly(it.sAnswers), scopes: ["s"] },
+    { itemId: it.id, field: "dAnswers", text: fullsOnly(it.dAnswers), scopes: ["d"] },
+    { itemId: it.id, field: "translation.deToEn", text: fullsOnly(it.translation.deToEn), scopes: [] },
   ];
   for (const v of it.presentation.variants) {
     if (v.prompt.lang === "en") {
@@ -104,7 +111,7 @@ export function grammarEnFields(it: GrammarItemT): EnField[] {
   if (promptIsEn) fields.push({ itemId: it.id, field: "prompt", text: it.prompt.text, scopes: ["prompt"] });
   const answersAreEn = it.format !== "translation" || it.direction === "deToEn";
   if (answersAreEn && it.answers.length > 0) {
-    fields.push({ itemId: it.id, field: "answers", text: fullsAndPartials(it.answers), scopes: ["prompt"] });
+    fields.push({ itemId: it.id, field: "answers", text: fullsOnly(it.answers), scopes: ["prompt"] });
   }
   for (const [i, p] of it.pairs.entries()) {
     fields.push({ itemId: it.id, field: `pairs[${i}]`, text: `${p.left} ${p.right}`, scopes: [] });
@@ -260,13 +267,23 @@ export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordB
 
 export function distractorErrors(slug: string, items: UnitItems, matcher: AllowedMatcher): string[] {
   const errors: string[] = [];
+  const grants = grantsForUnit(slug);
+  /** In-bank, or covered by audited unit-wide level grants (e.g. the unit's
+   *  grammar-structure tokens "should"/"shouldn't" — pools must offer them). */
+  const inBankOrGranted = (s: string): boolean =>
+    matcher.hasPhrase(s) || wordTokens(s).every((t) => grants.unitWide.has(t) || matcher.has(t));
   const lemmaClash = (candidate: string, accepted: string[]): boolean => {
     const cTokens = wordTokens(candidate);
     return accepted.some((a) => {
       const aTokens = wordTokens(a);
-      return (
-        cTokens.length === aTokens.length && cTokens.every((t, i) => tokenMatches(t, aTokens[i]!))
-      );
+      if (cTokens.length !== aTokens.length) return false;
+      return cTokens.every((t, i) => {
+        const other = aTokens[i]!;
+        // a polarity pair (X vs Xn't) is a CONTRAST, not the answer in
+        // disguise — exactly what minimal-pair mc items must offer
+        if (t.endsWith("n't") !== other.endsWith("n't")) return false;
+        return tokenMatches(t, other);
+      });
     });
   };
   for (const it of items.vocab) {
@@ -284,6 +301,7 @@ export function distractorErrors(slug: string, items: UnitItems, matcher: Allowe
   for (const it of items.grammar) {
     const accepted = it.answers.map((a) => a.text);
     const seen = new Set<string>();
+    const granted = new Set([...grants.unitWide, ...(grants.byItem.get(it.id) ?? [])]);
     for (const m of it.distractors) {
       const lower = m.toLowerCase();
       if (seen.has(lower)) errors.push(`${slug}: V-9 — ${it.id}: duplicate distractor "${m}"`);
@@ -291,15 +309,26 @@ export function distractorErrors(slug: string, items: UnitItems, matcher: Allowe
       if (it.format !== "context-picker" && lemmaClash(m, accepted)) {
         errors.push(`${slug}: V-9 — ${it.id}: distractor "${m}" lemma-matches an accepted answer`);
       }
-      if (it.format === "context-picker" && accepted.some((a) => wordTokens(a).join(" ") === wordTokens(m).join(" "))) {
-        errors.push(`${slug}: V-9 — ${it.id}: context-picker distractor equals the correct sentence`);
+      if (it.format === "context-picker") {
+        if (accepted.some((a) => wordTokens(a).join(" ") === wordTokens(m).join(" "))) {
+          errors.push(`${slug}: V-9 — ${it.id}: context-picker distractor equals the correct sentence`);
+        }
+        // sentence distractors are student-facing text — gate their tokens
+        for (const token of matcher.unknownTokens(m, { grantedTokens: granted })) {
+          errors.push(`${slug}: V-9 — ${it.id}: "${token}" in a context-picker distractor is above level and unglossed`);
+        }
+      } else if (!inBankOrGranted(m)) {
+        errors.push(`${slug}: V-9 — ${it.id}: distractor "${m}" is not in the cumulative bank (or granted)`);
       }
     }
     const pool = it.presentation.gameMeta?.distractorPool ?? [];
     for (const m of pool) {
-      // sentence-level pools (context-picker) are checked by V-5 already; word pools must be in-bank
-      if (it.format !== "context-picker" && !matcher.hasPhrase(m)) {
-        errors.push(`${slug}: V-17 — ${it.id}: distractorPool "${m}" is not in the cumulative bank`);
+      if (it.format === "context-picker") {
+        for (const token of matcher.unknownTokens(m, { grantedTokens: granted })) {
+          errors.push(`${slug}: V-17 — ${it.id}: "${token}" in a pool sentence is above level and unglossed`);
+        }
+      } else if (!inBankOrGranted(m)) {
+        errors.push(`${slug}: V-17 — ${it.id}: distractorPool "${m}" is not in the cumulative bank (or granted)`);
       }
     }
   }
@@ -665,7 +694,10 @@ export function validateUnitItems(slug: string): ItemValidation {
 
   // ---- V-22 gate integrity (per unit)
   const log = readStateLog(unitDir);
-  const ITEM_STATES = new Set(["generated", "verified", "validated", "review_ready", "approved"]);
+  // every item-stage state carries a contentHash over the item layer —
+  // changes_requested too (the reviewer's inline edits land before it), so the
+  // drift guard must anchor on it, not on the prior review_ready hash.
+  const ITEM_STATES = new Set(["generated", "verified", "validated", "review_ready", "changes_requested", "approved"]);
   const lastItemState = [...(log?.transitions ?? [])].reverse().find((t) => ITEM_STATES.has(t.state));
   const currentHash = itemsContentHash(items);
   if (lastItemState !== undefined && lastItemState.contentHash !== currentHash) {
