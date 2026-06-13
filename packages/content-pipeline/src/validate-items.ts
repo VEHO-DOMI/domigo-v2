@@ -253,6 +253,15 @@ export function substitutionErrors(slug: string, items: UnitItems): { errors: st
   return { errors, warns };
 }
 
+/** Tokens that are GLUE in a multiword headword, not the leaked content (V-8). */
+const HEADWORD_GLUE = new Set<string>([
+  "a", "an", "the", "and", "or", "to", "of", // articles/connectors
+  "be", "am", "is", "are", "was", "were", "been", "being", // copula
+  "on", "in", "at", "up", "down", "out", "off", "by", "for", "with", "into", "over", "from", "about", // prepositions/particles
+  "most", "more", "all", "some", "one", "two", // quantifiers/numerals
+  "go", "goes", "going", "went", "gone", // the ubiquitous motion verb of direction phrases
+]);
+
 export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordBankT): string[] {
   const errors: string[] = [];
   const bankById = new Map(bank.entries.map((e) => [e.id, e]));
@@ -261,12 +270,13 @@ export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordB
     const headTokens = new Set<string>();
     for (const form of [it.w, ...(entry?.forms ?? [])]) {
       for (const t of wordTokens(form)) {
-        // closed-class connectors + the copula in a multiword headword ("design
-        // AND technology", "fish AND chips", "to BE part of", "to BE worth") are
-        // not the content a definition leaks
-        if (!["a", "an", "the", "to", "of", "and", "or", "be", "am", "is", "are", "was", "were", "been", "being"].includes(t)) {
-          headTokens.add(t);
-        }
+        // Glue tokens in a multiword headword are not the content a definition
+        // "leaks": closed-class connectors/prepositions ("design AND technology",
+        // "round THE corner", "go straight ON"), the copula ("to BE part of"),
+        // quantifiers ("MOST of the time") and the ubiquitous motion verb GO
+        // ("GO past", "GO straight ahead") — in a phrase headword the distinctive
+        // word is what's left (past, straight, corner, trains), never "go"/"on".
+        if (!HEADWORD_GLUE.has(t)) headTokens.add(t);
       }
     }
     for (const dTok of wordTokens(it.d)) {
@@ -283,10 +293,12 @@ export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordB
 export function distractorErrors(slug: string, items: UnitItems, matcher: AllowedMatcher): string[] {
   const errors: string[] = [];
   const grants = grantsForUnit(slug);
-  /** In-bank, or covered by audited unit-wide level grants (e.g. the unit's
-   *  grammar-structure tokens "should"/"shouldn't" — pools must offer them). */
+  /** Every token in-level — bank (phrase-aware), audited unit-wide grant, or own
+   *  gloss. Phrase-aware via unknownTokens, so a distractor SENTENCE containing a
+   *  multiword bank entry ("…at the traffic lights") is covered (the bare token
+   *  "traffic" is not a single, but the phrase "traffic lights" is in-bank). */
   const inBankOrGranted = (s: string): boolean =>
-    matcher.hasPhrase(s) || wordTokens(s).every((t) => grants.unitWide.has(t) || matcher.has(t));
+    matcher.unknownTokens(s, { grantedTokens: grants.unitWide }).length === 0;
   const lemmaClash = (candidate: string, accepted: string[]): boolean => {
     const cTokens = wordTokens(candidate);
     return accepted.some((a) => {
@@ -304,12 +316,14 @@ export function distractorErrors(slug: string, items: UnitItems, matcher: Allowe
   for (const it of items.vocab) {
     const accepted = [it.w, ...it.sAnswers.map((a) => a.text), ...it.dAnswers.map((a) => a.text)];
     for (const m of it.mc) {
-      if (!matcher.hasPhrase(m)) errors.push(`${slug}: V-9 — ${it.id}: mc distractor "${m}" is not in the cumulative bank`);
+      // a granted token (e.g. the unit's structure word "turn") is taught, so it
+      // is a legitimate distractor — honor grants here exactly as the grammar branch does
+      if (!inBankOrGranted(m)) errors.push(`${slug}: V-9 — ${it.id}: mc distractor "${m}" is not in the cumulative bank (or granted)`);
       if (lemmaClash(m, accepted)) errors.push(`${slug}: V-9 — ${it.id}: mc distractor "${m}" lemma-matches an accepted answer`);
     }
     const pool = it.presentation.gameMeta?.distractorPool ?? [];
     for (const m of pool) {
-      if (!matcher.hasPhrase(m)) errors.push(`${slug}: V-17 — ${it.id}: distractorPool "${m}" is not in the cumulative bank`);
+      if (!inBankOrGranted(m)) errors.push(`${slug}: V-17 — ${it.id}: distractorPool "${m}" is not in the cumulative bank (or granted)`);
       if (lemmaClash(m, accepted)) errors.push(`${slug}: V-17 — ${it.id}: distractorPool "${m}" lemma-matches an accepted answer`);
     }
   }

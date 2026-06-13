@@ -99,6 +99,21 @@ test("V-8 definition leak is lemma-aware", () => {
     { entries: [{ id: "g2u03.w.to-be-part-of", en: "to be part of", forms: ["to be part of"] }] } as never,
   );
   assert.ok(realLeak.some((e) => e.includes('"part"')), realLeak.join("\n"));
+  // glue tokens (the motion verb "go", prepositions, quantifiers) are not leaks in
+  // a multiword headword — the distinctive word is what's left (past, straight, time)
+  const glue = definitionLeakErrors(
+    SLUG,
+    { vocab: [vocabItem({ id: "g2u03.w.to-go-past", w: "to go past", d: "To come near a place and keep on, most of the time not stopping." })], ...noGrammar },
+    { entries: [{ id: "g2u03.w.to-go-past", en: "to go past", forms: ["to go past"] }] } as never,
+  );
+  assert.ok(!glue.some((e) => e.includes('"go"') || e.includes('"most"') || e.includes('"on"')), glue.join("\n"));
+  // but a distinctive content token of a phrase headword still leaks ("bus" in "bus stop")
+  const phraseLeak = definitionLeakErrors(
+    SLUG,
+    { vocab: [vocabItem({ id: "g2u03.w.bus-stop", w: "bus stop", d: "A place where you wait for the bus." })], ...noGrammar },
+    { entries: [{ id: "g2u03.w.bus-stop", en: "bus stop", forms: ["bus stop"] }] } as never,
+  );
+  assert.ok(phraseLeak.some((e) => e.includes('"bus"')), phraseLeak.join("\n"));
 });
 
 test("V-9 distractor discipline: out-of-bank + lemma clash + duplicates", () => {
@@ -111,6 +126,13 @@ test("V-9 distractor discipline: out-of-bank + lemma clash + duplicates", () => 
     grammar: [grammarItem({ format: "multiple-choice", id: "g2u03.gi.should.mc.001", prompt: { text: "You ___ sleep.", lang: "en", blanks: 1 }, distractors: ["can", "can", "must"], presentation: { variants: [], gameMeta: { distractorPool: ["can", "must", "may", "could"], chipBudget: null, minOptions: 4 }, audio: null } })],
   }, matcher);
   assert.ok(dup.some((e) => e.includes("duplicate distractor")));
+  // a granted structure token ("should") is a legitimate VOCAB mc distractor (taught via the structure)
+  const grantedVocab = distractorErrors(SLUG, { vocab: [vocabItem({ mc: ["should", "shouldn't", "monster"] })], ...noGrammar }, matcher);
+  assert.ok(!grantedVocab.some((e) => e.includes('"should"') && e.includes("cumulative bank")), grantedVocab.join("\n"));
+  // phrase-aware: a distractor containing a multiword bank entry passes — the bare
+  // token "front" is not a single, but the phrase "in front of" is in-bank
+  const phraseAware = distractorErrors(SLUG, { vocab: [], grammar: [grammarItem({ format: "multiple-choice", id: "g2u03.gi.should.mc.003", prompt: { text: "x", lang: "en", blanks: 0 }, answers: [{ text: "next to me", tier: "full" }], distractors: ["in front of me"], presentation: { variants: [], gameMeta: { distractorPool: ["in front of me", "next to me", "behind me", "under me"], chipBudget: null, minOptions: 4 }, audio: null } })] }, matcher);
+  assert.ok(!phraseAware.some((e) => e.includes("cumulative bank")), phraseAware.join("\n"));
 });
 
 test("V-9/V-17 polarity twins + granted structure tokens are legal", () => {
