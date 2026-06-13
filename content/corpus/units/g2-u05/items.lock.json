@@ -1,0 +1,39 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u05",
+  "items": {
+    "71e3c131f764": "g2u05.gi.prepositions-directions.gf.002",
+    "dae913b6518b": "g2u05.gi.prepositions-directions.gf.003",
+    "70d8b9d45cd1": "g2u05.gi.prepositions-directions.gf.004",
+    "2cfa121e59d4": "g2u05.gi.prepositions-directions.gf.005",
+    "025ae98cf265": "g2u05.gi.prepositions-directions.gf.006",
+    "623aa695a247": "g2u05.gi.prepositions-directions.gf.007",
+    "2276b07aacfa": "g2u05.gi.prepositions-directions.gf.008",
+    "0254e5d6802e": "g2u05.gi.prepositions-directions.mc.001",
+    "3847db3bf9e5": "g2u05.gi.prepositions-directions.mc.002",
+    "6414f62b6fee": "g2u05.gi.prepositions-directions.mc.003",
+    "91c27515c098": "g2u05.gi.prepositions-directions.cp.001",
+    "cf49889afc2d": "g2u05.gi.prepositions-directions.cp.002",
+    "1916753abfcf": "g2u05.gi.prepositions-directions.ec.001",
+    "a54321311397": "g2u05.gi.prepositions-directions.ec.002",
+    "2724266f3021": "g2u05.gi.prepositions-directions.ec.003",
+    "055a9957b44c": "g2u05.gi.prepositions-directions.ec.004",
+    "dc3346867937": "g2u05.gi.prepositions-directions.sb.001",
+    "f2e2b2f1b6c6": "g2u05.gi.prepositions-directions.sb.002",
+    "3db6358c2e5e": "g2u05.gi.prepositions-directions.sb.003",
+    "beeaabe50310": "g2u05.gi.prepositions-directions.tr.001",
+    "9bb09d79d039": "g2u05.gi.prepositions-directions.tr.002",
+    "d33acb064ca4": "g2u05.gi.prepositions-directions.qf.001",
+    "8bc1e17aa1ce": "g2u05.gi.prepositions-directions.mt.001",
+    "36b55747783e": "g2u05.gi.prepositions-directions.gs.002",
+    "67f527e5ae52": "g2u05.gi.prepositions-directions.gf.001",
+    "97d0ee017f82": "g2u05.gi.prepositions-directions.gf.009"
+  },
+  "tombstones": [
+    {
+      "id": "g2u05.gi.prepositions-directions.gs.001",
+      "key": "c7c35a579778",
+      "removedWith": "8d84679625f6"
+    }
+  ]
+}

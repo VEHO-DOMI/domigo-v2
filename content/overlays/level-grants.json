@@ -144,6 +144,69 @@
       "reason": "standard irregular plural (-oes) of the item's own headword 'mosquito'; the regular inflection family only reaches 'mosquitos', so the correct spelling needs an item-scoped grant to stay a full-tier answer",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "turn",
+      "reason": "unit-5 SB grammar box 'Directions (prepositions of place)' teaches Turn left/right; the bank holds the phrase 'to turn left' but not the token 'turn' (needed for 'turn right' too)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "left",
+      "reason": "unit-5 SB grammar box teaches Turn left / take the first left; 'left' (direction) lives only inside bank phrases (to-turn-left), not as a standalone entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "right",
+      "reason": "unit-5 SB grammar box teaches Turn right / take the second right; 'right' (direction) lives only inside bank phrases (to-take-the-second-right), not as a standalone entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "straight",
+      "reason": "unit-5 SB grammar box teaches Go straight ahead/on; 'straight' lives only inside bank phrases (to-go-straight-ahead/on), not as a standalone entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "ahead",
+      "reason": "unit-5 SB grammar box teaches Go straight ahead; 'ahead' lives only inside the bank phrase 'to go straight ahead', not as a standalone entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "corner",
+      "reason": "unit-5 SB grammar box teaches 'on the corner of the next street' / 'round the corner'; the bank holds 'round-the-corner' but not the token 'corner'",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "beside",
+      "reason": "unit-5 SB grammar box teaches 'beside the bank' as a preposition of place; not a word-bank entry (the bank has next-to/opposite)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
