@@ -81,6 +81,31 @@ test("V-9 distractor discipline: out-of-bank + lemma clash + duplicates", () => 
   assert.ok(dup.some((e) => e.includes("duplicate distractor")));
 });
 
+test("V-9/V-17 polarity twins + granted structure tokens are legal", () => {
+  // should vs shouldn't IS the discrimination — the twin is a contrast, not
+  // the answer in disguise; "should"/"shouldn't" pass pools via the audited
+  // unit-wide level grants (the unit's grammar-structure tokens)
+  const polarity = distractorErrors(SLUG, {
+    vocab: [],
+    grammar: [grammarItem({
+      format: "multiple-choice",
+      id: "g2u03.gi.should.mc.001",
+      prompt: { text: "Lara is sick. She ___ eat more sweets.", lang: "en", blanks: 1 },
+      answers: [{ text: "shouldn't", tier: "full" }],
+      distractors: ["should", "must", "can"],
+      presentation: { variants: [], gameMeta: { distractorPool: ["should", "must", "can", "couldn't"], chipBudget: null, minOptions: 4 }, audio: null },
+    })],
+  }, matcher);
+  assert.ok(!polarity.some((e) => e.includes("lemma-matches")), polarity.join("\n"));
+  assert.ok(!polarity.some((e) => e.includes("not in the cumulative bank")), polarity.join("\n"));
+  // but a true inflection of the answer is still a clash
+  const realClash = distractorErrors(SLUG, {
+    vocab: [vocabItem({ mc: ["witches", "ghost", "monster"] })],
+    grammar: [],
+  }, matcher);
+  assert.ok(realClash.some((e) => e.includes("lemma-matches")));
+});
+
 test("V-10 translation sanity: strong language mismatch red, weak warn", () => {
   const red = translationSanity(SLUG, { vocab: [vocabItem({ translation: { deToEn: [{ text: "witch", tier: "full" }], enToDe: [{ text: "the witch is here", tier: "full" }] } })], ...noGrammar });
   assert.ok(red.errors.some((e) => e.includes("enToDe")));
@@ -109,9 +134,11 @@ test("V-13 meta-talk: EN jargon everywhere; DE terms only outside carriers", () 
   assert.equal(deHint.length, 0);
 });
 
-test("V-14 German orthography: ASCII umlauts", () => {
+test("V-14 German orthography: ASCII umlauts (with morpheme-boundary exceptions)", () => {
   const errs = germanOrthographyErrors(SLUG, { vocab: [vocabItem({ hintDe: "Sie ist muede." })], ...noGrammar });
   assert.ok(errs.some((e) => e.includes("ASCII umlaut")));
+  const ok = germanOrthographyErrors(SLUG, { vocab: [vocabItem({ hintDe: "Zuerst kommt should, dann das Verb." })], ...noGrammar });
+  assert.equal(ok.length, 0);
 });
 
 test("V-15 render shapes: pair duplicates, chip budget", () => {

@@ -1,0 +1,20 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u03",
+  "round": 2,
+  "itemsHash": "8a00bfa24670",
+  "reviewedBy": "fable",
+  "flags": [],
+  "unit": {
+    "verdict": "ok",
+    "note": "Round-2 re-presentation after the round-1 fold-back. The one round-1 fix (F6, w.trick-or-treat-2 hyphenated full variants) landed; the 3 inline edits (vampire/to-scare definitions, mc.002 Kürbiseimer) persisted; round-4 verify is clean (0 fix, 4 defensible warns); all 50 round-1 audits remain ok (sticky). Approve."
+  },
+  "metrics": {
+    "itemsReviewed": 61,
+    "fullRows": 61,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

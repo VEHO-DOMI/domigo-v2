@@ -14,6 +14,7 @@ export const UMLAUT_EXCEPTIONS = [
   "punktuell",
   "statue",
   "fluent",
+  "zuerst", // zu+erst — legitimate "ue" across the morpheme boundary
 ];
 
 /**

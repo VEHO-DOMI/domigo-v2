@@ -1,0 +1,23 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u03",
+  "lens": "register",
+  "itemsHash": "8a00bfa24670",
+  "promptHash": "359c6953017a",
+  "round": 4,
+  "by": "fable-lens-register",
+  "flags": [
+    {
+      "key": "unnatural-german:g2u03.w.sweets",
+      "kind": "unnatural-german",
+      "itemId": "g2u03.w.sweets",
+      "severity": "warn",
+      "note": "hintDe: \"Die sammelst du an Halloween im Kürbiseimer – lecker, aber schlecht für die Zähne!\" — \"lecker\" is a bundesdeutsch marker; Austrian Standard German prefers \"so gut\", \"köstlich\" or \"fein\". Style only, du-form otherwise clean. Re-emitted at warn per round-4 instruction (hintDe was not inline-editable).",
+      "suggestion": "Die sammelst du an Halloween im Kürbiseimer – so gut, aber schlecht für die Zähne!"
+    }
+  ],
+  "summary": {
+    "itemsSeen": 61,
+    "flagged": 1
+  }
+}

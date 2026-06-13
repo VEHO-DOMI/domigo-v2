@@ -52,6 +52,9 @@ import { entryMatchesWord } from "./review-wordbank.ts";
 import { appendTransition, currentState } from "./state.ts";
 import { wordTokens } from "./tokenize.ts";
 import { loadV1GrammarModule, v1ItemsByStructure, type V1GrammarItem } from "./v1grammar.ts";
+// NOTE: circular with validate-items.ts — safe: both sides only use the other's
+// bindings inside function bodies, never during module evaluation.
+import { validateUnitItems } from "./validate-items.ts";
 
 // ---------------------------------------------------------------------------
 // shared unit-item plumbing (stage 6/7/8 import these)
@@ -705,10 +708,33 @@ export function collectFixTargets(slug: string): Map<string, Array<{ kind: strin
   return targets;
 }
 
+/** Deterministic validator reds, attributed per item — fix briefs carry these
+ *  alongside lens flags (red blocks; regeneration is the fix path for content). */
+export function collectValidatorRedTargets(
+  slug: string,
+  errors: string[],
+): Map<string, Array<{ kind: string; note: string; source: string }>> {
+  const targets = new Map<string, Array<{ kind: string; note: string; source: string }>>();
+  for (const e of errors) {
+    const m = /(g[1-4]u\d{2}\.(?:w\.[a-z0-9-]+|gi\.[a-z0-9-]+\.[a-z]{2}\.\d{3}))/.exec(e);
+    const id = m?.[1] ?? "unit";
+    const list = targets.get(id) ?? [];
+    list.push({ kind: "validator-red", note: e, source: "validate" });
+    targets.set(id, list);
+  }
+  return targets;
+}
+
 function renderFixBrief(slug: string): string {
   const items = readUnitItems(slug);
   const targets = collectFixTargets(slug);
-  if (targets.size === 0) throw new Error(`${slug}: nothing to fix (no fix-severity lens flags / review fix verdicts)`);
+  // deterministic validator reds ride along (red blocks; regeneration fixes content)
+  const validation = validateUnitItems(slug);
+  for (const [id, list] of collectValidatorRedTargets(slug, validation.errors).entries()) {
+    const existing = targets.get(id) ?? [];
+    targets.set(id, [...existing, ...list]);
+  }
+  if (targets.size === 0) throw new Error(`${slug}: nothing to fix (no fix-severity lens flags / review fix verdicts / validator reds)`);
   const bHash = bankHash12(slug);
   const pHash = sha256OfString(`${promptText("shared-rules")}\n${promptText("gen-fix")}`).slice(0, 12);
 

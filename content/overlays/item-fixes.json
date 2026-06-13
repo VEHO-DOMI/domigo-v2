@@ -1,0 +1,15 @@
+{
+  "g2-u03": {
+    "patch": {
+      "g2u03.w.to-scare": {
+        "d": "When a ghost or a scary story makes you jump."
+      },
+      "g2u03.w.vampire": {
+        "d": "In scary stories, a man with long teeth and a black cape."
+      },
+      "g2u03.gi.should.mc.002": {
+        "hintDe": "Der Kürbiseimer ist super gruselig! Ihn zu behalten – gute Idee oder nicht?"
+      }
+    }
+  }
+}

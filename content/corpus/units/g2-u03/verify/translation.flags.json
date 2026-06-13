@@ -1,0 +1,11 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u03",
+  "lens": "translation",
+  "itemsHash": "8a00bfa24670",
+  "promptHash": "c6328b13b073",
+  "round": 4,
+  "by": "fable-lens-translation",
+  "flags": [],
+  "summary": { "itemsSeen": 37, "flagged": 0 }
+}

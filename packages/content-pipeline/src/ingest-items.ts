@@ -228,33 +228,13 @@ export function runIngestItems(slug: string, dryRun: boolean): void {
   const grade = Number(m[1]);
   const unit = parseInt(m[2]!, 10);
 
-  if (plan.outcome === "changes") {
-    writeJson(path.join(unitDir, "review", "items.flags.json"), {
-      schema: "items-flags@1",
-      slug,
-      round: plan.round,
-      itemsHash: review.itemsHash12,
-      reviewedBy: "fable",
-      flags: plan.verdicts,
-      unit: { verdict: "changes", note: plan.unitNote },
-      metrics: plan.metrics,
-    });
-    appendTransition(unitDir, slug, {
-      state: "changes_requested",
-      by: "fable",
-      contentHash: itemsContentHash(items),
-      note:
-        plan.verdicts
-          .filter((v) => v.verdict === "fix" || v.verdict === "add")
-          .map((v) => `${v.key}: ${v.note}`)
-          .slice(0, 6)
-          .join(" | ") || plan.unitNote,
-    });
-    console.log(`${slug}: changes_requested recorded — fold back via gen --prepare --fix`);
-    return;
-  }
-
-  // ---- approve: apply consequences IN MEMORY, re-validate, then write
+  // Reviewer inline edits (editable-cell diffs) + drops become audited
+  // item-fixes patches and are materialized into vocab/grammar.json — on BOTH
+  // outcomes. On `changes` the unit still goes back (the fix-verdict items get
+  // regenerated in the fold-back), but the reviewer's accepted inline edits
+  // must survive that round, so they persist now. Only an `approve` re-validates
+  // and refuses red (a released unit must be green; a changes unit is expected
+  // to still carry open issues).
   if (plan.drops.length + Object.keys(plan.patches).length > 0) {
     const fixesAll = readJsonIfExists<ItemFixes>(ITEM_FIXES_PATH) ?? {};
     const unitFix = fixesAll[slug] ?? {};
@@ -278,7 +258,6 @@ export function runIngestItems(slug: string, dryRun: boolean): void {
         return p !== undefined ? ({ ...it, ...p, rev: it.rev + 1 } as GrammarItemT) : it;
       }),
     };
-    // refuse an approve that would go red
     const vocabFile = VocabFile.parse({ schema: "vocab@1", grade, unit, slug, items: applied.vocab });
     const grammarFile = applied.grammar.length > 0 ? GrammarFile.parse({ schema: "grammar@1", grade, unit, slug, items: applied.grammar }) : null;
     writeJson(path.join(unitDir, "vocab.json"), vocabFile);
@@ -300,13 +279,44 @@ export function runIngestItems(slug: string, dryRun: boolean): void {
       if (changed) writeJson(lockPath, lock);
     }
 
-    const validation = validateUnitItems(slug);
-    if (validation.errors.length > 0) {
-      for (const e of validation.errors.slice(0, 20)) console.error(`  ✗ ${e}`);
-      throw new Error(
-        `${slug}: review consequences make the validators RED (${validation.errors.length} error(s)) — an approve must stay green; resolve and re-run`,
-      );
+    if (plan.outcome === "approve") {
+      const validation = validateUnitItems(slug);
+      if (validation.errors.length > 0) {
+        for (const e of validation.errors.slice(0, 20)) console.error(`  ✗ ${e}`);
+        throw new Error(
+          `${slug}: review consequences make the validators RED (${validation.errors.length} error(s)) — an approve must stay green; resolve and re-run`,
+        );
+      }
     }
+  }
+
+  if (plan.outcome === "changes") {
+    const finalItems = readUnitItems(slug);
+    writeJson(path.join(unitDir, "review", "items.flags.json"), {
+      schema: "items-flags@1",
+      slug,
+      round: plan.round,
+      itemsHash: itemsContentHash(finalItems).slice(0, 12),
+      reviewedBy: "fable",
+      flags: plan.verdicts,
+      unit: { verdict: "changes", note: plan.unitNote },
+      metrics: plan.metrics,
+    });
+    appendTransition(unitDir, slug, {
+      state: "changes_requested",
+      by: "fable",
+      contentHash: itemsContentHash(finalItems),
+      note:
+        plan.verdicts
+          .filter((v) => v.verdict === "fix" || v.verdict === "add")
+          .map((v) => `${v.key}: ${v.note}`)
+          .slice(0, 6)
+          .join(" | ") || plan.unitNote,
+    });
+    console.log(
+      `${slug}: changes_requested — ${plan.editedCells} inline edit(s) persisted, ${plan.verdicts.filter((v) => v.verdict === "fix").length} fix verdict(s) to fold back (rejectRate ${(plan.metrics.rejectRate * 100).toFixed(1)}%)`,
+    );
+    return;
   }
 
   const finalItems = readUnitItems(slug);

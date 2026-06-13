@@ -145,7 +145,13 @@ export function buildAllowedMatcher(
       const allowed = new Set(cumulativeSlugs(grade, unit));
       for (const [unitKey, list] of Object.entries(nouns.units)) {
         if (!allowed.has(unitKey)) continue;
-        for (const n of list) index.singles.add(n.token.toLowerCase());
+        for (const n of list) {
+          // a name licenses its possessive ("Sarah's") — but NOT verb/plural
+          // inflections (full family expansion would let "Carol" license "carols")
+          const lower = n.token.toLowerCase();
+          index.singles.add(lower);
+          index.singles.add(`${lower}'s`);
+        }
       }
     }
   }
