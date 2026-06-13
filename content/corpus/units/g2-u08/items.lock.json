@@ -1,0 +1,63 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u08",
+  "items": {
+    "6c3edc7f6e50": "g2u08.gi.past-time-markers.gf.001",
+    "f37b40025b0a": "g2u08.gi.past-time-markers.gf.002",
+    "5796eaa24b8e": "g2u08.gi.past-time-markers.gf.003",
+    "4cc8e0077743": "g2u08.gi.past-time-markers.gf.004",
+    "db0272d29455": "g2u08.gi.past-time-markers.gf.005",
+    "1be78929825e": "g2u08.gi.past-time-markers.gf.006",
+    "a46a293d7146": "g2u08.gi.past-time-markers.gf.007",
+    "381c41f25ccf": "g2u08.gi.past-time-markers.mc.002",
+    "ab6f68f97653": "g2u08.gi.past-time-markers.mc.003",
+    "6e9cc18b1626": "g2u08.gi.past-time-markers.mc.004",
+    "88380306d527": "g2u08.gi.past-time-markers.cp.001",
+    "ebcd23e29273": "g2u08.gi.past-time-markers.cp.002",
+    "c8fdc7d854ae": "g2u08.gi.past-time-markers.ec.001",
+    "bbf4a7ff6aaa": "g2u08.gi.past-time-markers.ec.002",
+    "448942b96b0f": "g2u08.gi.past-time-markers.ec.003",
+    "80aed5304bce": "g2u08.gi.past-time-markers.ec.004",
+    "a3f8f45fab48": "g2u08.gi.past-time-markers.ec.005",
+    "acae28552280": "g2u08.gi.past-time-markers.tf.001",
+    "138807272345": "g2u08.gi.past-time-markers.tf.002",
+    "0016b8807652": "g2u08.gi.past-time-markers.tf.003",
+    "575605854e8f": "g2u08.gi.past-time-markers.sb.001",
+    "662223170dd2": "g2u08.gi.past-time-markers.sb.002",
+    "ea15f1afefcc": "g2u08.gi.past-time-markers.sb.003",
+    "a3bf7876e6c1": "g2u08.gi.past-time-markers.tr.001",
+    "9b3b4cd9530e": "g2u08.gi.past-time-markers.tr.002",
+    "effabdf153ed": "g2u08.gi.past-time-markers.mp.001",
+    "7831b6e83809": "g2u08.gi.past-time-markers.mc.005",
+    "b67e1cc2d784": "g2u08.gi.past-time-markers.ag.003",
+    "9381c8b24ece": "g2u08.gi.past-time-markers.ag.004",
+    "deb4bae65ba6": "g2u08.gi.past-time-markers.gs.003"
+  },
+  "tombstones": [
+    {
+      "id": "g2u08.gi.past-time-markers.mc.001",
+      "key": "39826ec7c5e6",
+      "removedWith": "b576d4d99f28"
+    },
+    {
+      "id": "g2u08.gi.past-time-markers.gs.001",
+      "key": "6c0a91209cbc",
+      "removedWith": "b576d4d99f28"
+    },
+    {
+      "id": "g2u08.gi.past-time-markers.ag.001",
+      "key": "a731c2994caf",
+      "removedWith": "b576d4d99f28"
+    },
+    {
+      "id": "g2u08.gi.past-time-markers.ag.002",
+      "key": "5478d787fc9f",
+      "removedWith": "b576d4d99f28"
+    },
+    {
+      "id": "g2u08.gi.past-time-markers.gs.002",
+      "key": "41f70a930c06",
+      "removedWith": "8ab227fcc51f"
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u08",
+  "round": 1,
+  "itemsHash": "60f1cbb5b841",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g2u08.w.aeroplane",
+      "kind": "new-gloss",
+      "itemId": "g2u08.w.aeroplane",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.aeroplane",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.aeroplane",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.alien",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.alien",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.boss",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.boss",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.cable",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.cable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.calm-down",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.calm-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.capital",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.capital",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.comfortable",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.comfortable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.commander",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.commander",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.crew",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.crew",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.expert",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.expert",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.hero-heroine",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.hero-heroine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.hoax",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.hoax",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.in-that-case",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.in-that-case",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.investigation",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.investigation",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.key",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.key",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.machine",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.machine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.nonsense",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.nonsense",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.photograph",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.photograph",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.planet",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.planet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.space",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.space",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.space-centre",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.space-centre",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.spaceship",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.spaceship",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.spacesuit",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.spacesuit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.statue",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.statue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.to-connect",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.to-connect",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.to-destroy",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.to-destroy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.to-kidnap",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.to-kidnap",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.to-repair",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.to-repair",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.to-take-over",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.to-take-over",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.traveller",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.traveller",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.ufo",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.ufo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.w.visitor",
+      "kind": "translation-audit",
+      "itemId": "g2u08.w.visitor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.gi.past-time-markers.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u08.gi.past-time-markers.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u08.gi.past-time-markers.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u08.gi.past-time-markers.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u08.w.commander#93578d",
+      "kind": "validator-warn",
+      "itemId": "g2u08.w.commander",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u08.w.in-that-case#b69981",
+      "kind": "validator-warn",
+      "itemId": "g2u08.w.in-that-case",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 32 vocab + 30 grammar, one structure — past time markers (built on past-simple revision), 10 formats. As a REVISION unit, a large irregular-past set is granted (took/went/ran/saw/woke/broke/knew/sang/bought/won/lost/heard/told/said/made/wrote + bases take/see/wake/sing/win/know). This drove the V-8 demonstrative-glue addition (\"in THAT case\"). Smoke-check fixed 2 anagram ___ cues, a \"take\" leak (to take over), a \"that\" leak, and US/short-form variant answers (airplane/center/travelers/photo/heroes → partial). Verify round 1: regrouped a mis-keyed time marker (\"After that\" is not a story closer), redesigned an ambiguous time-marker MC into a clear First→Then→Finally sequence, reworded the hoax def off the name-masked \"trick\", corrected the hoax enToDe tiering (Schwindel → full), and reworded 2 anagram cues off German grammar terms (Zeitwort/Zeitangabe); round 2 clean. 1 gloss (wings) + 34 translations adjudicated; 2 heuristic \"weak DE evidence\" warns are on valid German (Kommandant/Kommandantin; \"in diesem Fall\"). rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 62,
+    "fullRows": 62,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
