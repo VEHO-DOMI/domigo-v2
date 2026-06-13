@@ -32,7 +32,7 @@ export interface ItemRow {
   hash: string; // sha12 of the cells
 }
 
-export const VOCAB_COLUMNS = ["ref", "en", "d", "s", "answers", "mc", "translation", "gloss", "src", "diff", "⚑"] as const;
+export const VOCAB_COLUMNS = ["ref", "en", "d", "s", "answers", "mc", "translation", "gloss", "hintDe", "src", "diff", "⚑"] as const;
 export const GRAMMAR_COLUMNS = ["ref", "str", "fmt", "diff", "prompt", "answers", "distractors", "hintDe", "gloss", "src", "⚑"] as const;
 
 /** Cells the reviewer may edit (diff → item-fixes patch). */
@@ -67,6 +67,7 @@ export function vocabRow(it: VocabItemT): ItemRow {
     mc: it.mc.join(" ; "),
     translation: `→EN ${tiered(it.translation.deToEn)} | →DE ${tiered(it.translation.enToDe)}`,
     gloss: glossCell(it.gloss),
+    hintDe: it.hintDe,
     src: it.sSource,
     diff: String(it.difficulty),
   };
