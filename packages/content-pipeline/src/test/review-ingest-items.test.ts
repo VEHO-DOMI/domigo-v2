@@ -34,6 +34,20 @@ test("diffItemTable: editable-cell edits become patches; immutable cells throw",
   assert.throws(() => diffItemTable("g2-u03", "vocab", [unknownRef], rows, idOfRef), /unknown vocab ref/);
 });
 
+test("diffItemTable: vocab hintDe is a rendered, editable column", () => {
+  const vItem = vocabItem();
+  const row = vocabRow(vItem);
+  // hintDe is now part of the rendered cells (and therefore the row hash)
+  assert.equal(row.cells["hintDe"], vItem.hintDe);
+  const rows = [row];
+  const idOfRef = new Map([["witch", vItem.id]]);
+
+  const edited = { ...row.cells, hintDe: "Sie fliegt durch die Nacht.", "⚑": "" };
+  const { patches, editedCells } = diffItemTable("g2-u03", "vocab", [edited], rows, idOfRef);
+  assert.equal(editedCells, 1);
+  assert.deepEqual(patches[vItem.id], { hintDe: "Sie fliegt durch die Nacht." });
+});
+
 test("diffItemTable: grammar prompt edit strips the direction suffix; mc arity enforced", () => {
   const gItem = grammarItem({
     id: "g2u03.gi.should.tr.001",
