@@ -1,0 +1,3985 @@
+{
+  "schema": "vocab@1",
+  "grade": 2,
+  "unit": 6,
+  "slug": "g2-u06",
+  "items": [
+    {
+      "id": "g2u06.w.absolutely",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "actually",
+            "although",
+            "while",
+            "alive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.51, 'But the guides were absolutely furious!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "absolutely",
+      "g": "völlig",
+      "d": "more than very",
+      "s": "The guides were ___ angry when Bob jumped in the lake.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "absolutely",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "absolutely",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "absolutely",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "völlig",
+            "tier": "full"
+          },
+          {
+            "text": "absolut",
+            "tier": "full"
+          },
+          {
+            "text": "total",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "actually",
+        "although",
+        "while"
+      ],
+      "hintDe": "Stärker als 'sehr', ganz und gar."
+    },
+    {
+      "id": "g2u06.w.actually",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "absolutely",
+            "although",
+            "while",
+            "alive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.51, 'The rest of the day was actually fun!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "carrier mirrors SB sentence; 'rest' above level so glossed."
+      },
+      "w": "actually",
+      "g": "eigentlich",
+      "d": "really, when it is a surprise",
+      "s": "The rest of the day was ___ fun.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "actually",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "actually",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "actually",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eigentlich",
+            "tier": "full"
+          },
+          {
+            "text": "tatsächlich",
+            "tier": "full"
+          },
+          {
+            "text": "in Wirklichkeit",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "rest",
+          "de": "Rest",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "absolutely",
+        "although",
+        "while"
+      ],
+      "hintDe": "In Wirklichkeit, auch wenn man etwas anderes dachte."
+    },
+    {
+      "id": "g2u06.w.adventure-camp",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "campfire",
+            "picnic",
+            "waterfall",
+            "canoe",
+            "guide"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'The children are going to spend some days at the adventure camp.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "adventure camp",
+      "g": "Abenteuercamp",
+      "d": "a holiday place where children climb and have fun outside",
+      "s": "We are going to spend three days at the ___ in the mountains.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "adventure camp",
+          "tier": "full"
+        },
+        {
+          "text": "adventure camps",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "adventure camp",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "adventure camp",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abenteuercamp",
+            "tier": "full"
+          },
+          {
+            "text": "das Abenteuercamp",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "campfire",
+        "picnic",
+        "waterfall"
+      ],
+      "hintDe": "Ein Urlaubsort, wo Kinder draußen klettern und Spaß haben."
+    },
+    {
+      "id": "g2u06.w.alive",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "actually",
+            "absolutely",
+            "while",
+            "although"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53, Story of the Stones 'Darkman is alive.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "alive",
+      "g": "lebendig",
+      "d": "not dead, still living",
+      "s": "The boy was hurt, but he was still ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "alive",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "alive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "alive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lebendig",
+            "tier": "full"
+          },
+          {
+            "text": "am Leben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "actually",
+        "absolutely",
+        "while"
+      ],
+      "hintDe": "Nicht tot, noch am Leben."
+    },
+    {
+      "id": "g2u06.w.although",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "actually",
+            "absolutely",
+            "while",
+            "alive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'I enjoyed it, although I wasn't good at it.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "although",
+      "g": "obwohl",
+      "d": "this is like 'but still'",
+      "s": "I enjoyed it, ___ I wasn't very good at it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "although",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "although",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "although",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "obwohl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "actually",
+        "absolutely",
+        "while"
+      ],
+      "hintDe": "Verbindet zwei Teile wie 'aber trotzdem'."
+    },
+    {
+      "id": "g2u06.w.anorak",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hard hat",
+            "life jacket",
+            "canoe",
+            "campfire",
+            "guide"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'Wear an anorak near the waterfall.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "anorak",
+      "g": "Anorak",
+      "d": "a jacket you wear on cold and wet days",
+      "s": "Wear an ___ near the waterfall.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "anorak",
+          "tier": "full"
+        },
+        {
+          "text": "anoraks",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "anorak",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "anorak",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Anorak",
+            "tier": "full"
+          },
+          {
+            "text": "der Anorak",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hard hat",
+        "life jacket",
+        "canoe"
+      ],
+      "hintDe": "Eine Jacke für kalte und nasse Tage."
+    },
+    {
+      "id": "g2u06.w.beach",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forest",
+            "mountains",
+            "field",
+            "village",
+            "hill"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "beach",
+      "g": "Strand",
+      "d": "the place where the land meets the sea and you can play",
+      "s": "We can play on the ___ next to the sea all day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "beach",
+          "tier": "full"
+        },
+        {
+          "text": "beaches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beach",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beach",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Strand",
+            "tier": "full"
+          },
+          {
+            "text": "der Strand",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forest",
+        "mountains",
+        "field"
+      ],
+      "hintDe": "Hier triffst du Sand und das Meer."
+    },
+    {
+      "id": "g2u06.w.bottom",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "middle",
+            "left-hand",
+            "right-hand",
+            "forest",
+            "field"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'The lake is on the bottom left corner of the picture.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "def avoids untaught 'part'/'lowest'/'low' and the headword 'bottom'; uses 'the place down at the end of a thing'."
+      },
+      "w": "bottom",
+      "g": "unten",
+      "d": "the place down at the end of a thing",
+      "s": "The lake is at the ___ of the picture.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "bottom",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bottom",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bottom",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unten",
+            "tier": "full"
+          },
+          {
+            "text": "der untere Teil",
+            "tier": "partial"
+          },
+          {
+            "text": "unterer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "middle",
+        "left-hand",
+        "right-hand"
+      ],
+      "hintDe": "Ganz unten an einem Ding."
+    },
+    {
+      "id": "g2u06.w.camp",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "picnic",
+            "campfire",
+            "guide",
+            "canoe",
+            "waterfall"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "camp",
+      "g": "Lager",
+      "d": "a place where children stay outside on holiday",
+      "s": "We played in the sea all day on our summer ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "camp",
+          "tier": "full"
+        },
+        {
+          "text": "camps",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "camp",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "camp",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lager",
+            "tier": "full"
+          },
+          {
+            "text": "Camp",
+            "tier": "full"
+          },
+          {
+            "text": "das Camp",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "picnic",
+        "campfire",
+        "guide"
+      ],
+      "hintDe": "Ein Ort, wo Kinder draußen im Urlaub bleiben."
+    },
+    {
+      "id": "g2u06.w.campfire",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "picnic",
+            "canoe",
+            "guide",
+            "waterfall",
+            "camp"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.51, 'we sat around the campfire in the middle of the forest'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "campfire",
+      "g": "Lagerfeuer",
+      "d": "you make this outside at night and tell scary stories in the dark",
+      "s": "In the dark forest there was a ___, and we had fun in the light of the fire.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "campfire",
+          "tier": "full"
+        },
+        {
+          "text": "campfires",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "campfire",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "campfire",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lagerfeuer",
+            "tier": "full"
+          },
+          {
+            "text": "das Lagerfeuer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "picnic",
+        "canoe",
+        "guide"
+      ],
+      "hintDe": "Machst du draußen in der Nacht; alle sitzen darum."
+    },
+    {
+      "id": "g2u06.w.canoe",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "campfire",
+            "picnic",
+            "anorak",
+            "life jacket",
+            "hard hat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.50, 'visit a waterfall by canoe'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "canoe",
+      "g": "Kanu",
+      "d": "a small light thing you go down the river in",
+      "s": "The children can go down the river in a small ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "canoe",
+          "tier": "full"
+        },
+        {
+          "text": "canoes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "canoe",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "canoe",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kanu",
+            "tier": "full"
+          },
+          {
+            "text": "das Kanu",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "campfire",
+        "picnic",
+        "anorak"
+      ],
+      "hintDe": "Das kleine Boot, mit dem du den Fluss hinunterfährst."
+    },
+    {
+      "id": "g2u06.w.canoeing",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rock climbing",
+            "picnic",
+            "campfire",
+            "waterfall",
+            "guide"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.50, 'go canoeing, rock climbing'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "canoeing",
+      "g": "Kanufahren",
+      "d": "going down a river in a small canoe",
+      "s": "___ down the river in a canoe is great fun at camp.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "canoeing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "canoeing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "canoeing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kanufahren",
+            "tier": "full"
+          },
+          {
+            "text": "das Kanufahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rock climbing",
+        "picnic",
+        "campfire"
+      ],
+      "hintDe": "Mit dem Kanu den Fluss hinunterfahren."
+    },
+    {
+      "id": "g2u06.w.cry",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "picnic",
+            "gate",
+            "drive",
+            "camp"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53, Story of the Stones 'The children hear a cry for help.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "noun 'Schrei'; carrier 'a ___ for help' fixes the noun sense."
+      },
+      "w": "cry",
+      "g": "Schrei",
+      "d": "a call for help when you are hurt or scared",
+      "s": "There was a ___ for help from the river.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cry",
+          "tier": "full"
+        },
+        {
+          "text": "cries",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cry",
+            "tier": "full"
+          },
+          {
+            "text": "shout",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schrei",
+            "tier": "full"
+          },
+          {
+            "text": "der Schrei",
+            "tier": "full"
+          },
+          {
+            "text": "Hilferuf",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "picnic",
+        "gate",
+        "drive"
+      ],
+      "hintDe": "Ein lauter Ruf, wenn jemand Hilfe braucht."
+    },
+    {
+      "id": "g2u06.w.drive",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "road",
+            "gate",
+            "while",
+            "camp"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'It was a short drive into the forest.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "noun 'Fahrt'; carrier makes the noun sense unambiguous via 'a long ___ in the car'."
+      },
+      "w": "drive",
+      "g": "Fahrt",
+      "d": "a long time going somewhere in a car",
+      "s": "It was a long ___ in the car to the camp.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "drive",
+          "tier": "full"
+        },
+        {
+          "text": "drives",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drive",
+            "tier": "full"
+          },
+          {
+            "text": "car ride",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fahrt",
+            "tier": "full"
+          },
+          {
+            "text": "die Fahrt",
+            "tier": "full"
+          },
+          {
+            "text": "Autofahrt",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "road",
+        "gate",
+        "while"
+      ],
+      "hintDe": "Wenn du lange im Auto irgendwohin fährst."
+    },
+    {
+      "id": "g2u06.w.field",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forest",
+            "village",
+            "road",
+            "hill",
+            "valley"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.50, 'There were lots of sheep running through the field'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "field",
+      "g": "Feld",
+      "d": "the big open green land on a farm",
+      "s": "Sheep eat in the big green ___ next to the farm.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "field",
+          "tier": "full"
+        },
+        {
+          "text": "fields",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "field",
+          "tier": "full"
+        },
+        {
+          "text": "fields",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "field",
+            "tier": "full"
+          },
+          {
+            "text": "fields",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Feld",
+            "tier": "full"
+          },
+          {
+            "text": "das Feld",
+            "tier": "full"
+          },
+          {
+            "text": "Felder",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forest",
+        "village",
+        "road"
+      ],
+      "hintDe": "Das große, offene Land auf dem Bauernhof."
+    },
+    {
+      "id": "g2u06.w.forest",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "valley",
+            "river",
+            "village",
+            "field",
+            "hill"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.50, 'a short drive into a big forest'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "forest",
+      "g": "Wald",
+      "d": "a big place with lots of trees",
+      "s": "There are lots of tall trees in the dark ___ near the camp.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "forest",
+          "tier": "full"
+        },
+        {
+          "text": "forests",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "forest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "forest",
+            "tier": "full"
+          },
+          {
+            "text": "woods",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wald",
+            "tier": "full"
+          },
+          {
+            "text": "der Wald",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "valley",
+        "river",
+        "village"
+      ],
+      "hintDe": "Ein großer Ort mit vielen Bäumen."
+    },
+    {
+      "id": "g2u06.w.gate",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "road",
+            "drive",
+            "camp",
+            "forest"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'There was a huge gate with a big sign on it.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "masterlist exampleSb carrier; 'sign' above level so glossed to keep textbook sentence."
+      },
+      "w": "gate",
+      "g": "Tor",
+      "d": "A big door you open to go into a field or garden.",
+      "s": "There was a huge ___ with a big sign on it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gate",
+          "tier": "full"
+        },
+        {
+          "text": "gates",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tor",
+            "tier": "full"
+          },
+          {
+            "text": "das Tor",
+            "tier": "full"
+          },
+          {
+            "text": "Gatter",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sign",
+          "de": "Schild",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "road",
+        "drive",
+        "camp"
+      ],
+      "hintDe": "Eine große Tür in einer Mauer, durch die du gehst."
+    },
+    {
+      "id": "g2u06.w.guide",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "shepherd",
+            "canoe",
+            "picnic",
+            "campfire",
+            "guests"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.50, 'talking to the guides ... I'm one of the guides'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "guide",
+      "g": "Führer/in",
+      "d": "the man or woman who looks after a group at the camp",
+      "s": "The ___ showed the group the canoe.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "guide",
+          "tier": "full"
+        },
+        {
+          "text": "guides",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "guide",
+          "tier": "full"
+        },
+        {
+          "text": "guides",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "guide",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Führer",
+            "tier": "full"
+          },
+          {
+            "text": "Führerin",
+            "tier": "full"
+          },
+          {
+            "text": "Guide",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "shepherd",
+        "canoe",
+        "picnic"
+      ],
+      "hintDe": "Diese Person kümmert sich im Camp um die Gruppe."
+    },
+    {
+      "id": "g2u06.w.hard-hat",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "anorak",
+            "life jacket",
+            "canoe",
+            "campfire",
+            "guide"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'Wear a hard hat when building a tree house.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "hard hat",
+      "g": "Schutzhelm",
+      "d": "a strong thing you put on to build a tree house or climb",
+      "s": "When you build a tree house, you have to wear a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hard hat",
+          "tier": "full"
+        },
+        {
+          "text": "hard hats",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hard hat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hard hat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schutzhelm",
+            "tier": "full"
+          },
+          {
+            "text": "der Schutzhelm",
+            "tier": "full"
+          },
+          {
+            "text": "Helm",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "anorak",
+        "life jacket",
+        "canoe"
+      ],
+      "hintDe": "Ein starker Hut zum Bauen oder Klettern."
+    },
+    {
+      "id": "g2u06.w.hill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "valley",
+            "river",
+            "forest",
+            "field",
+            "village"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "hill",
+      "g": "Hügel",
+      "d": "high green land smaller than the mountains",
+      "s": "We can run up the small green ___ and look at the town down there.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "hill",
+          "tier": "full"
+        },
+        {
+          "text": "hills",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hill",
+          "tier": "full"
+        },
+        {
+          "text": "hills",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hill",
+            "tier": "full"
+          },
+          {
+            "text": "hills",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hügel",
+            "tier": "full"
+          },
+          {
+            "text": "der Hügel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "valley",
+        "river",
+        "forest"
+      ],
+      "hintDe": "Hoch, aber kleiner als ein Berg."
+    },
+    {
+      "id": "g2u06.w.i-m-off-now",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Poor you!",
+            "Once upon a time",
+            "Absolutely",
+            "Actually"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53, Everyday English 'I'm off now.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "I'm off now.",
+      "g": "Ich bin jetzt weg.",
+      "d": "what you tell people when you go",
+      "s": "___ Bye! I need to catch my train.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "I'm off now.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm off now",
+          "tier": "full"
+        },
+        {
+          "text": "I am off now.",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I'm off now.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm off now",
+          "tier": "full"
+        },
+        {
+          "text": "I am off now.",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I'm off now.",
+            "tier": "full"
+          },
+          {
+            "text": "I'm off now",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich bin jetzt weg.",
+            "tier": "full"
+          },
+          {
+            "text": "Ich gehe jetzt.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Poor you!",
+        "Once upon a time",
+        "Absolutely"
+      ],
+      "hintDe": "Sagst du, wenn du jetzt gehst."
+    },
+    {
+      "id": "g2u06.w.lake",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "river",
+            "mountains",
+            "forest",
+            "field",
+            "hill"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.51, 'climbed up to the top of the waterfall and jumped into the lake'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "lake def needs 'water' (no taught synonym); single-token gloss."
+      },
+      "w": "lake",
+      "g": "See",
+      "d": "a big area of water, smaller than the sea",
+      "s": "We can go canoeing on the ___ in the mountains; it is cold up there!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lake",
+          "tier": "full"
+        },
+        {
+          "text": "lakes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "See",
+            "tier": "full"
+          },
+          {
+            "text": "der See",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "river",
+        "mountains",
+        "forest"
+      ],
+      "hintDe": "Großes Wasser mit Land rundherum."
+    },
+    {
+      "id": "g2u06.w.left-hand",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "right-hand",
+            "middle",
+            "bottom",
+            "forest",
+            "field"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'On the left-hand side there's a lake.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "masterlist exampleSb carrier; 'side' above level so glossed to keep textbook sentence."
+      },
+      "w": "left-hand",
+      "g": "linker/linke/linkes",
+      "d": "The side that is not the right one.",
+      "s": "On the ___ side there's a lake.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "left-hand",
+          "tier": "full"
+        },
+        {
+          "text": "left hand",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "left-hand",
+          "tier": "full"
+        },
+        {
+          "text": "left hand",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "left-hand",
+            "tier": "full"
+          },
+          {
+            "text": "left",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "linke",
+            "tier": "full"
+          },
+          {
+            "text": "linker",
+            "tier": "full"
+          },
+          {
+            "text": "linkes",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "side",
+          "de": "Seite",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "right-hand",
+        "middle",
+        "bottom"
+      ],
+      "hintDe": "Auf der Seite deiner linken Hand."
+    },
+    {
+      "id": "g2u06.w.life-jacket",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "anorak",
+            "hard hat",
+            "canoe",
+            "campfire",
+            "guide"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.49, 'a life jacket in the boat all the time'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "life jacket",
+      "g": "Schwimmweste",
+      "d": "you wear this in a canoe so you do not go under",
+      "s": "You have to wear a ___ in the canoe all the time.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "life jacket",
+          "tier": "full"
+        },
+        {
+          "text": "life jackets",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "life jacket",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "life jacket",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwimmweste",
+            "tier": "full"
+          },
+          {
+            "text": "die Schwimmweste",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "anorak",
+        "hard hat",
+        "canoe"
+      ],
+      "hintDe": "Trägst du im Kanu, damit du oben bleibst."
+    },
+    {
+      "id": "g2u06.w.middle",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bottom",
+            "left-hand",
+            "right-hand",
+            "forest",
+            "field"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'We sat around the campfire in the middle of the forest.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "middle",
+      "g": "Mitte",
+      "d": "the inside place of a thing, not at the end",
+      "s": "In the ___ of the forest there was a campfire.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "middle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "middle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "middle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mitte",
+            "tier": "full"
+          },
+          {
+            "text": "die Mitte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bottom",
+        "left-hand",
+        "right-hand"
+      ],
+      "hintDe": "Genau in der Mitte, nicht am Rand."
+    },
+    {
+      "id": "g2u06.w.moon",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sun",
+            "stars",
+            "sea",
+            "lake",
+            "river"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.51, reading 'the moon was very bright'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "carrier 'bright' from WB source is above level; single-token gloss."
+      },
+      "w": "moon",
+      "g": "Mond",
+      "d": "the big light in the sky at night",
+      "s": "At night the ___ was big and bright in the dark sky.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "moon",
+          "tier": "full"
+        },
+        {
+          "text": "moons",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "moon",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "moon",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mond",
+            "tier": "full"
+          },
+          {
+            "text": "der Mond",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bright",
+          "de": "hell",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "sun",
+        "stars",
+        "sea"
+      ],
+      "hintDe": "Scheint am Himmel in der Nacht."
+    },
+    {
+      "id": "g2u06.w.motorway",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "road",
+            "river",
+            "valley",
+            "village",
+            "field"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.50, 'We are a long way from the motorway!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "motorway",
+      "g": "Autobahn",
+      "d": "a very big road where cars and trucks go very fast",
+      "s": "The cars go fast on the big ___ to Vienna.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "motorway",
+          "tier": "full"
+        },
+        {
+          "text": "motorways",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "motorway",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "motorway",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Autobahn",
+            "tier": "full"
+          },
+          {
+            "text": "die Autobahn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "road",
+        "river",
+        "valley"
+      ],
+      "hintDe": "Die große, schnelle Straße zwischen Städten."
+    },
+    {
+      "id": "g2u06.w.mountains",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hill",
+            "valley",
+            "forest",
+            "field",
+            "river"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.46, exercise 3 'mountain forest hills moon'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mountains",
+      "g": "Berge",
+      "d": "the very high land you climb up with snow on it",
+      "s": "There was white snow high on the ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "mountains",
+          "tier": "full"
+        },
+        {
+          "text": "mountain",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mountains",
+          "tier": "full"
+        },
+        {
+          "text": "mountain",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mountains",
+            "tier": "full"
+          },
+          {
+            "text": "mountain",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Berge",
+            "tier": "full"
+          },
+          {
+            "text": "die Berge",
+            "tier": "full"
+          },
+          {
+            "text": "Berg",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hill",
+        "valley",
+        "forest"
+      ],
+      "hintDe": "Sehr hohes Land mit Schnee oben."
+    },
+    {
+      "id": "g2u06.w.once-upon-a-time",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "poor you",
+            "i'm off now",
+            "absolutely",
+            "actually",
+            "although"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'Once upon a time, there was a young boy who lived in this forest.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "once upon a time",
+      "g": "es war einmal",
+      "d": "the first thing you read in a story about long ago",
+      "s": "___, there was a young shepherd boy who lived in the forest.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "once upon a time",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "once upon a time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "once upon a time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "es war einmal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "poor you",
+        "i'm off now",
+        "absolutely"
+      ],
+      "hintDe": "So beginnen alte Geschichten von früher."
+    },
+    {
+      "id": "g2u06.w.picnic",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "campfire",
+            "canoe",
+            "guide",
+            "waterfall",
+            "camp"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.52, email 'we went down the river ... and then we had a picnic'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "picnic",
+      "g": "Picknick",
+      "d": "food and drink you bring to eat outside",
+      "s": "We had a ___ near the river with sandwiches and orange juice.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "picnic",
+          "tier": "full"
+        },
+        {
+          "text": "picnics",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "picnic",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "picnic",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Picknick",
+            "tier": "full"
+          },
+          {
+            "text": "das Picknick",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "campfire",
+        "canoe",
+        "guide"
+      ],
+      "hintDe": "Essen und Trinken, das du draußen isst."
+    },
+    {
+      "id": "g2u06.w.poor-you",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I'm off now.",
+            "Once upon a time",
+            "Actually",
+            "Absolutely"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.53, Everyday English 'Poor you! You look very hungry.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Poor you!",
+      "g": "Du Armer!/Arme!",
+      "d": "what you tell a friend who is sad or hurt",
+      "s": "___! You look very hungry and sad.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Poor you!",
+          "tier": "full"
+        },
+        {
+          "text": "Poor you",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Poor you!",
+          "tier": "full"
+        },
+        {
+          "text": "Poor you",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Poor you!",
+            "tier": "full"
+          },
+          {
+            "text": "Poor you",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Du Armer!",
+            "tier": "full"
+          },
+          {
+            "text": "Du Arme!",
+            "tier": "full"
+          },
+          {
+            "text": "Du Armer/Arme!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "I'm off now.",
+        "Once upon a time",
+        "Actually"
+      ],
+      "hintDe": "Sagst du zu jemandem, dem es schlecht geht."
+    },
+    {
+      "id": "g2u06.w.right-hand",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "left-hand",
+            "middle",
+            "bottom",
+            "forest",
+            "field"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'On the right-hand side there's a waterfall.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "masterlist exampleSb carrier; 'side' above level so glossed to keep textbook sentence."
+      },
+      "w": "right-hand",
+      "g": "rechter/rechte/rechtes",
+      "d": "The side that is not the left one.",
+      "s": "On the ___ side there's a waterfall.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "right-hand",
+          "tier": "full"
+        },
+        {
+          "text": "right hand",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "right-hand",
+          "tier": "full"
+        },
+        {
+          "text": "right hand",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "right-hand",
+            "tier": "full"
+          },
+          {
+            "text": "right",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "rechte",
+            "tier": "full"
+          },
+          {
+            "text": "rechter",
+            "tier": "full"
+          },
+          {
+            "text": "rechtes",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "side",
+          "de": "Seite",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "left-hand",
+        "middle",
+        "bottom"
+      ],
+      "hintDe": "Auf der Seite deiner rechten Hand."
+    },
+    {
+      "id": "g2u06.w.river",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "road",
+            "forest",
+            "mountains",
+            "hill",
+            "field"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "river",
+      "g": "Fluss",
+      "d": "the long thing that fish live in and runs to the sea",
+      "s": "There are lots of fish in the ___ that runs down to the sea.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "river",
+          "tier": "full"
+        },
+        {
+          "text": "rivers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "river",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "river",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fluss",
+            "tier": "full"
+          },
+          {
+            "text": "der Fluss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "road",
+        "forest",
+        "mountains"
+      ],
+      "hintDe": "Wasser, das durch das Land zum Meer fließt."
+    },
+    {
+      "id": "g2u06.w.road",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "motorway",
+            "river",
+            "forest",
+            "field",
+            "hill"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "road",
+      "g": "Straße",
+      "d": "the long thing that cars and trucks drive on",
+      "s": "Cars and trucks drive on the new ___ from our village.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "road",
+          "tier": "full"
+        },
+        {
+          "text": "roads",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "road",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "road",
+            "tier": "full"
+          },
+          {
+            "text": "street",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Straße",
+            "tier": "full"
+          },
+          {
+            "text": "die Straße",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "motorway",
+        "river",
+        "forest"
+      ],
+      "hintDe": "Hier fahren Autos und Lastwagen."
+    },
+    {
+      "id": "g2u06.w.rock-climbing",
+      "rev": 4,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "canoeing",
+            "picnic",
+            "campfire",
+            "waterfall",
+            "canoe"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.49, 'GO ROCK CLIMBING!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "rock climbing",
+      "g": "Klettern",
+      "d": "Going up very high places for fun.",
+      "s": "You can do ___ on the high rocks at the camp, but be careful!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rock climbing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rock climbing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rock climbing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Klettern",
+            "tier": "full"
+          },
+          {
+            "text": "das Klettern",
+            "tier": "full"
+          },
+          {
+            "text": "Felsklettern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "canoeing",
+        "picnic",
+        "campfire"
+      ],
+      "hintDe": "An hohen Felsen oder einer Wand hochklettern."
+    },
+    {
+      "id": "g2u06.w.sea",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forest",
+            "mountains",
+            "village",
+            "river",
+            "lake"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sea",
+      "g": "Meer",
+      "d": "the big place fish live in, next to the beach",
+      "s": "We played in the ___ all day on our holiday at the beach.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sea",
+          "tier": "full"
+        },
+        {
+          "text": "seas",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sea",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sea",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Meer",
+            "tier": "full"
+          },
+          {
+            "text": "das Meer",
+            "tier": "full"
+          },
+          {
+            "text": "See",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forest",
+        "mountains",
+        "village"
+      ],
+      "hintDe": "Das große, salzige Wasser am Strand."
+    },
+    {
+      "id": "g2u06.w.sheep",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "shepherd",
+            "guide",
+            "camp",
+            "picnic",
+            "canoe"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'There were lots of sheep in the fields.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "def avoids untaught 'animal'/'wool'; uses the shepherd relation (non-circular for 'sheep')."
+      },
+      "w": "sheep (pl sheep)",
+      "g": "Schaf",
+      "d": "the white farm thing a shepherd looks after on the hill",
+      "s": "There were lots of ___ in the green fields.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sheep",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sheep",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sheep",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schaf",
+            "tier": "full"
+          },
+          {
+            "text": "das Schaf",
+            "tier": "full"
+          },
+          {
+            "text": "Schafe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "shepherd",
+        "guide",
+        "camp"
+      ],
+      "hintDe": "Das weiße Tier, um das sich der Schäfer kümmert."
+    },
+    {
+      "id": "g2u06.w.shepherd",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "guide",
+            "sheep",
+            "camp",
+            "picnic",
+            "canoe"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'The shepherd boy loved to play in the forest.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "shepherd",
+      "g": "Schäfer/Schäferin",
+      "d": "the boy or girl who looks after sheep on a hill",
+      "s": "The ___ boy looked after the sheep on the hill.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "shepherd",
+          "tier": "full"
+        },
+        {
+          "text": "shepherds",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shepherd",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shepherd",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schäfer",
+            "tier": "full"
+          },
+          {
+            "text": "Schäferin",
+            "tier": "full"
+          },
+          {
+            "text": "Hirte",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "guide",
+        "sheep",
+        "camp"
+      ],
+      "hintDe": "Der oder die sich um die Schafe kümmert."
+    },
+    {
+      "id": "g2u06.w.stars",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "moon",
+            "sun",
+            "lake",
+            "sea",
+            "river"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.51, reading 'there were lots of stars and the moon was very bright'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "stars",
+      "g": "Sterne",
+      "d": "small lights high in the sky at night",
+      "s": "At night we looked at the ___ and the moon in the dark sky.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "stars",
+          "tier": "full"
+        },
+        {
+          "text": "star",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stars",
+          "tier": "full"
+        },
+        {
+          "text": "star",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stars",
+            "tier": "full"
+          },
+          {
+            "text": "star",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sterne",
+            "tier": "full"
+          },
+          {
+            "text": "die Sterne",
+            "tier": "full"
+          },
+          {
+            "text": "Stern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "moon",
+        "sun",
+        "lake"
+      ],
+      "hintDe": "Die kleinen Lichter am Nachthimmel."
+    },
+    {
+      "id": "g2u06.w.sun",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "moon",
+            "stars",
+            "lake",
+            "sea",
+            "river"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.50, reading 'Lost in the forest'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sun",
+      "g": "Sonne",
+      "d": "the big thing in the sky that gives us light in the day",
+      "s": "The ___ was very hot, so we had a lot of orange juice.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "sun",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sun",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sun",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sonne",
+            "tier": "full"
+          },
+          {
+            "text": "die Sonne",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "moon",
+        "stars",
+        "lake"
+      ],
+      "hintDe": "Steht am Himmel und scheint am Tag."
+    },
+    {
+      "id": "g2u06.w.to-be-afraid",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "good at",
+            "alive",
+            "actually",
+            "although",
+            "while"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.51, 'He wasn't afraid. He jumped down into the lake!'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "headword indexes as phrase 'be afraid'; bare carrier blank avoids the token, MC/def avoid 'afraid'."
+      },
+      "w": "to be afraid (of)",
+      "g": "Angst haben (vor)",
+      "d": "to be scared of a thing that can hurt you",
+      "s": "The shepherd boy was not ___ of the dark forest.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "afraid",
+          "tier": "full"
+        },
+        {
+          "text": "afraid of",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be afraid",
+          "tier": "full"
+        },
+        {
+          "text": "to be afraid",
+          "tier": "full"
+        },
+        {
+          "text": "afraid",
+          "tier": "full"
+        },
+        {
+          "text": "be afraid of",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be afraid",
+            "tier": "full"
+          },
+          {
+            "text": "to be afraid of",
+            "tier": "full"
+          },
+          {
+            "text": "afraid",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Angst haben",
+            "tier": "full"
+          },
+          {
+            "text": "Angst haben vor",
+            "tier": "full"
+          },
+          {
+            "text": "sich fürchten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "good at",
+        "alive",
+        "actually"
+      ],
+      "hintDe": "Vor etwas Angst haben, das dir wehtun kann."
+    },
+    {
+      "id": "g2u06.w.to-be-good-at-sth",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "alive",
+            "actually",
+            "while",
+            "although",
+            "absolutely"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'I wasn't very good at building a tree house.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": "carrier blank takes 'good at' so 'be' stays in the frame; matches SB sentence."
+      },
+      "w": "to be good at sth.",
+      "g": "etw. gut können",
+      "d": "to do a thing really well",
+      "s": "I wasn't very ___ building a tree house.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "good at",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be good at",
+          "tier": "full"
+        },
+        {
+          "text": "to be good at",
+          "tier": "full"
+        },
+        {
+          "text": "good at",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be good at",
+            "tier": "full"
+          },
+          {
+            "text": "to be good at sth",
+            "tier": "full"
+          },
+          {
+            "text": "good at",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas gut können",
+            "tier": "full"
+          },
+          {
+            "text": "gut in etwas sein",
+            "tier": "full"
+          },
+          {
+            "text": "gut können",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "alive",
+        "actually",
+        "while"
+      ],
+      "hintDe": "Etwas wirklich gut machen können."
+    },
+    {
+      "id": "g2u06.w.to-build-a-tree-house",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rock climbing",
+            "canoeing",
+            "picnic",
+            "campfire",
+            "canoe"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to build a tree house",
+      "g": "ein Baumhaus bauen",
+      "d": "to make a small room up high in the leaves",
+      "s": "My dad helped me ___ in the big tree.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "build a tree house",
+          "tier": "full"
+        },
+        {
+          "text": "to build a tree house",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "build a tree house",
+          "tier": "full"
+        },
+        {
+          "text": "to build a tree house",
+          "tier": "full"
+        },
+        {
+          "text": "built a tree house",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "build a tree house",
+            "tier": "full"
+          },
+          {
+            "text": "to build a tree house",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein Baumhaus bauen",
+            "tier": "full"
+          },
+          {
+            "text": "ein Baumhaus bauen gehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rock climbing",
+        "canoeing",
+        "picnic"
+      ],
+      "hintDe": "Ein kleines Zimmer oben in einem Baum machen."
+    },
+    {
+      "id": "g2u06.w.to-care",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "trust",
+            "build a tree house",
+            "wash up",
+            "be afraid",
+            "good at"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'The boy didn't care.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to care",
+      "g": "sich kümmern",
+      "d": "to look after a thing or a friend because you love them",
+      "s": "The boy didn't ___ about the rules.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "care",
+          "tier": "full"
+        },
+        {
+          "text": "to care",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "care",
+          "tier": "full"
+        },
+        {
+          "text": "to care",
+          "tier": "full"
+        },
+        {
+          "text": "cares",
+          "tier": "partial"
+        },
+        {
+          "text": "cared",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "care",
+            "tier": "full"
+          },
+          {
+            "text": "to care",
+            "tier": "full"
+          },
+          {
+            "text": "care about",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich kümmern",
+            "tier": "full"
+          },
+          {
+            "text": "kümmern",
+            "tier": "full"
+          },
+          {
+            "text": "sich sorgen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "trust",
+        "build a tree house",
+        "wash up"
+      ],
+      "hintDe": "Sich um etwas kümmern, weil es dir wichtig ist."
+    },
+    {
+      "id": "g2u06.w.to-trust",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "care",
+            "wash up",
+            "build a tree house",
+            "be afraid",
+            "good at"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'Follow me! You can trust me.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to trust",
+      "g": "vertrauen",
+      "d": "to think a friend is good and tell them your secrets",
+      "s": "You have to ___ me. I am your friend.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "trust",
+          "tier": "full"
+        },
+        {
+          "text": "to trust",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "trust",
+          "tier": "full"
+        },
+        {
+          "text": "to trust",
+          "tier": "full"
+        },
+        {
+          "text": "trusts",
+          "tier": "partial"
+        },
+        {
+          "text": "trusted",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "trust",
+            "tier": "full"
+          },
+          {
+            "text": "to trust",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vertrauen",
+            "tier": "full"
+          },
+          {
+            "text": "jemandem vertrauen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "care",
+        "wash up",
+        "build a tree house"
+      ],
+      "hintDe": "Glauben, dass ein Freund gut ist."
+    },
+    {
+      "id": "g2u06.w.to-wash-up",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "care",
+            "trust",
+            "build a tree house",
+            "be afraid",
+            "good at"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'We don't have to wash up.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to wash up",
+      "g": "abspülen",
+      "d": "to clean the plates after dinner",
+      "s": "We don't have to ___ the dirty plates after dinner.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wash up",
+          "tier": "full"
+        },
+        {
+          "text": "to wash up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wash up",
+          "tier": "full"
+        },
+        {
+          "text": "to wash up",
+          "tier": "full"
+        },
+        {
+          "text": "washes up",
+          "tier": "partial"
+        },
+        {
+          "text": "washed up",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wash up",
+            "tier": "full"
+          },
+          {
+            "text": "to wash up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "abspülen",
+            "tier": "full"
+          },
+          {
+            "text": "abwaschen",
+            "tier": "full"
+          },
+          {
+            "text": "Geschirr spülen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "care",
+        "trust",
+        "build a tree house"
+      ],
+      "hintDe": "Nach dem Essen das Geschirr sauber machen."
+    },
+    {
+      "id": "g2u06.w.town",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "village",
+            "forest",
+            "valley",
+            "field",
+            "hill"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "town",
+      "g": "Stadt",
+      "d": "a place where many people live, bigger than a village",
+      "s": "Our ___ is bigger than a village, with lots of streets and people.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "town",
+          "tier": "full"
+        },
+        {
+          "text": "towns",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "town",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "town",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stadt",
+            "tier": "full"
+          },
+          {
+            "text": "die Stadt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "village",
+        "forest",
+        "valley"
+      ],
+      "hintDe": "Größer als ein Dorf, mit vielen Straßen."
+    },
+    {
+      "id": "g2u06.w.valley",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hill",
+            "mountains",
+            "town",
+            "forest",
+            "field"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.50, 'Just past a small town and through the valley'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "valley",
+      "g": "Tal",
+      "d": "the green land down in the middle of the mountains",
+      "s": "A river runs down the green ___ in the middle of the mountains.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "valley",
+          "tier": "full"
+        },
+        {
+          "text": "valleys",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "valley",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "valley",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tal",
+            "tier": "full"
+          },
+          {
+            "text": "das Tal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hill",
+        "mountains",
+        "town"
+      ],
+      "hintDe": "Das tiefe Land mitten zwischen den Bergen."
+    },
+    {
+      "id": "g2u06.w.village",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "town",
+            "forest",
+            "valley",
+            "field",
+            "hill"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "village",
+      "g": "Dorf",
+      "d": "a very small place in the country, smaller than a town",
+      "s": "My grandma lives in a small ___ in the mountains, not a big town.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "village",
+          "tier": "full"
+        },
+        {
+          "text": "villages",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "village",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "village",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dorf",
+            "tier": "full"
+          },
+          {
+            "text": "das Dorf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "town",
+        "forest",
+        "valley"
+      ],
+      "hintDe": "Kleiner als eine Stadt, nur wenige Häuser."
+    },
+    {
+      "id": "g2u06.w.waterfall",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forest",
+            "river",
+            "mountains",
+            "lake",
+            "campfire"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.50, 'visit a waterfall by canoe'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "waterfall",
+      "g": "Wasserfall",
+      "d": "white river going down high rocks",
+      "s": "We can visit a ___ in the forest near the camp.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "waterfall",
+          "tier": "full"
+        },
+        {
+          "text": "waterfalls",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "waterfall",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "waterfall",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wasserfall",
+            "tier": "full"
+          },
+          {
+            "text": "der Wasserfall",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forest",
+        "river",
+        "mountains"
+      ],
+      "hintDe": "Das weiße Wasser, das die hohen Felsen hinunterfällt."
+    },
+    {
+      "id": "g2u06.w.while",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drive",
+            "gate",
+            "camp",
+            "road"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases: 'We chatted with our friends for a while.'",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "while",
+      "g": "Weile",
+      "d": "a short time, not long",
+      "s": "We waited for a ___ and then the train arrived.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "while",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "while",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "while",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Weile",
+            "tier": "full"
+          },
+          {
+            "text": "eine Weile",
+            "tier": "full"
+          },
+          {
+            "text": "kurze Zeit",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drive",
+        "gate",
+        "camp"
+      ],
+      "hintDe": "Eine kurze Zeit, nicht lange."
+    }
+  ]
+}

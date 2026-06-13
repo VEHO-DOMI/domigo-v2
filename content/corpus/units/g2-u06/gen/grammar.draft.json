@@ -1,0 +1,1062 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g2-u06",
+  "briefBank": "37f6ae9948d7",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "You ___ wear a life jacket in the canoe.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "has to",
+        "have",
+        "must to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"du musst\" – die Form für you. Vergiss das kleine to nicht.",
+      "hintEn": null,
+      "explainDe": "Bei you, we, they und I heißt es have to. Danach kommt die Grundform: have to wear.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-gf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-3-dialogue",
+      "note": "SB ex 3: \"you have to ... a life jacket in the boat all the time.\" (boat untaught → canoe). Distractors: has to (wrong person), have (missing to), must to (no to after must)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She ___ get up early. The camp day is at 7.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "have to",
+        "has",
+        "haves to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"sie muss\" – bei he, she, it ändert sich have to. Wie heißt die 3. Person?",
+      "hintEn": null,
+      "explainDe": "Bei he, she, it heißt es has to (nicht have to). Richtig: She has to get up early.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-gf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Third-person has to. Distractors: have to (wrong person), has (missing to), haves to (no -s on have)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You ___ wash up. The guides do it at this camp.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't have to",
+          "tier": "full"
+        },
+        {
+          "text": "do not have to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "doesn't have to",
+        "haven't to",
+        "hasn't to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"du musst nicht\" – etwas ist nicht notwendig. Bei you brauchst du don't.",
+      "hintEn": null,
+      "explainDe": "don't have to heißt: es ist nicht notwendig (du darfst es aber). Verneint wird have to mit don't / doesn't, nie mit haven't.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-gf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "SB box: \"You don't have to wash up.\" Distractors: doesn't have to (wrong person), haven't to / hasn't to (no do-support)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He ___ wear an anorak today. The sun is out.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't have to",
+          "tier": "full"
+        },
+        {
+          "text": "does not have to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't have to",
+        "hasn't to",
+        "haven't to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"er muss nicht\" – nicht notwendig, und bei he. Welches kleine Wort brauchst du statt don't?",
+      "hintEn": null,
+      "explainDe": "Bei he, she, it heißt die Verneinung doesn't have to. Richtig: He doesn't have to wear an anorak.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-gf-005",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Third-person negative doesn't have to. Distractors: don't have to (wrong person), hasn't to / haven't to (no do-support)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ you have to wear a hard hat to build a tree house?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Does",
+        "Have",
+        "Are"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Frage mit you. Womit beginnt die Frage – Do oder Does?",
+      "hintEn": null,
+      "explainDe": "Fragen mit have to beginnen mit Do / Does. Bei you heißt es Do you have to ...?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-4-notices",
+      "note": "SB notice: \"Bring a hard hat!\" for building a tree house → recast as a question. Distractors: Does (wrong person), Have/Are (wrong question word for have to)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ Dana have to do all the camp jobs every day?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Does",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do",
+        "Has",
+        "Is"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage über eine Person (Dana = she). Beginnt die Frage mit Do oder Does?",
+      "hintEn": null,
+      "explainDe": "Bei he, she, it (auch bei einem Namen wie Dana) beginnt die Frage mit Does ... have to ...? Das have bleibt dann ohne -s.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#reading-story",
+      "note": "Story character Dana at the camp. Third-person question Does ... have to. Distractors: Do (wrong person), Has/Is (wrong question word)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It is a camp rule: every child wears a life jacket in the canoe.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has to wear a life jacket.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She have to wear a life jacket.",
+        "She has wear a life jacket.",
+        "She haves to wear a life jacket."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she heißt es has to – und das to darf nicht fehlen.",
+      "hintEn": null,
+      "explainDe": "Richtig: She has to wear ... Bei he, she, it nimmt man has to (nicht have to, nicht haves to) und das to bleibt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She have to wear a life jacket.",
+          "She has wear a life jacket.",
+          "She haves to wear a life jacket.",
+          "She have wear a life jacket.",
+          "She must to wear a life jacket."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u6-have-to-mc-001",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-4-notices",
+      "note": "Context fixes that it is necessary; the contrast is purely the form of has to. All options in-bank."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "At this camp the guides wash up, so it isn't your job.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You don't have to wash up.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "You haven't to wash up.",
+        "You hasn't to wash up.",
+        "You don't have wash up."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"nicht notwendig\" = don't have to. Achte darauf, dass to nach have steht.",
+      "hintEn": null,
+      "explainDe": "Richtig: You don't have to wash up. Verneint wird mit don't have to – nie mit haven't to, und das to muss bleiben.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "You haven't to wash up.",
+          "You hasn't to wash up.",
+          "You don't have wash up.",
+          "You doesn't have to wash up.",
+          "You not have to wash up."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u6-have-to-mc-002",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "SB box meaning (not necessary). Targets the do-support negation; all options in-bank function words."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It's a camp rule: every child in a canoe wears a life jacket.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You have to wear a life jacket.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "You don't have to wear a life jacket.",
+        "You have wear a life jacket.",
+        "You has to wear a life jacket."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Schild sagt, es ist notwendig. Welcher Satz drückt \"du musst\" richtig aus?",
+      "hintEn": null,
+      "explainDe": "Es ist notwendig → You have to wear a life jacket. don't have to würde \"nicht notwendig\" heißen, und have / has to sind die falsche Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "You don't have to wear a life jacket.",
+          "You have wear a life jacket.",
+          "You has to wear a life jacket.",
+          "You doesn't have to wear a life jacket.",
+          "You must to wear a life jacket."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Context (it is necessary) makes only have to right; one distractor flips the meaning, two break the form. All in-bank."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sam writes to her mum: at this camp the guides do the washing up.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We don't have to wash up.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We have to wash up.",
+        "We haven't to wash up.",
+        "We doesn't have to wash up."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Gute Nachricht = es ist nicht notwendig. Welcher Satz sagt das richtig mit don't have to?",
+      "hintEn": null,
+      "explainDe": "Nicht notwendig → We don't have to wash up. have to wäre \"müssen\", haven't to / doesn't (bei we) sind falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "We have to wash up.",
+          "We haven't to wash up.",
+          "We doesn't have to wash up.",
+          "We hasn't to wash up.",
+          "We not have to wash up."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-10-email",
+      "note": "SB email (Sam): \"we don't have to wash up - that's good.\" Context fixes not-necessary; distractors flip meaning or break do-support."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She have to wear a life jacket in the canoe.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has to wear a life jacket in the canoe.",
+          "tier": "full"
+        },
+        {
+          "text": "has to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she stimmt die Form von have to nicht. Wie muss es heißen?",
+      "hintEn": null,
+      "explainDe": "Bei he, she, it heißt es has to. Richtig: She has to wear a life jacket.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-ec-001",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Common error from brief: She have to → She has to."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You haven't to wash up at the camp.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You don't have to wash up at the camp.",
+          "tier": "full"
+        },
+        {
+          "text": "You do not have to wash up at the camp.",
+          "tier": "full"
+        },
+        {
+          "text": "don't have to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "have to wird nicht mit haven't verneint. Welches kleine Wort brauchst du?",
+      "hintEn": null,
+      "explainDe": "Man verneint have to mit don't / doesn't, nie mit haven't. Richtig: You don't have to wash up.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Common error from brief: haven't to → don't have to (do-support)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He hasn't to get up early on the free camp day.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't have to get up early on the free camp day.",
+          "tier": "full"
+        },
+        {
+          "text": "He does not have to get up early on the free camp day.",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't have to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he wird have to verneint mit ... ? Nicht mit hasn't.",
+      "hintEn": null,
+      "explainDe": "Bei he, she, it heißt die Verneinung doesn't have to. Richtig: He doesn't have to get up early.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-ec-002",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Common error: hasn't to → doesn't have to (third-person do-support)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You have wear a hard hat to build a tree house.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You have to wear a hard hat to build a tree house.",
+          "tier": "full"
+        },
+        {
+          "text": "have to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein kleines Wort fehlt zwischen have und wear. Welches?",
+      "hintEn": null,
+      "explainDe": "Nach have kommt to: have to wear. Richtig: You have to wear a hard hat.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-4-notices",
+      "note": "Common error from brief: omitting to (have wear → have to wear). SB notice: hard hat for tree house."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Do you have wash up after dinner?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you have to wash up after dinner?",
+          "tier": "full"
+        },
+        {
+          "text": "have to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Auch in der Frage fehlt ein kleines Wort nach have. Welches?",
+      "hintEn": null,
+      "explainDe": "In der Frage bleibt have to zusammen: Do you have to wash up? Das to darf nicht fehlen.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Omitting to inside a question (have wash → have to wash)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Your friend doesn't want to do the camp jobs. Tell her: 'You ___ (not / wash up) — the guides do it.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't have to wash up",
+          "tier": "full"
+        },
+        {
+          "text": "do not have to wash up",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"nicht notwendig\" bei you: don't have to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Nicht notwendig → don't have to wash up. Die Grundform wash up bleibt nach to.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-tf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Produce don't have to from a not-necessary trigger. Camp world (washing up)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "A new girl asks about the camp rules. Tell her: 'You ___ (wear) a life jacket in the canoe.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have to wear",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Regel ist notwendig: have to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Eine Regel sagst du mit have to: You have to wear a life jacket. Nach to kommt die Grundform wear.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-tf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-3-dialogue",
+      "note": "Produce have to from a necessity trigger; camp rule about life jackets."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Tell the new boy about Dana: 'She ___ (get up) early because the canoe group leaves at 7.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has to get up",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she und notwendig: has to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei she heißt es has to: She has to get up early. Nach to bleibt die Grundform get up.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#reading-story",
+      "note": "Third-person has to in production; story character Dana, early canoe trip."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She has to wear a life jacket. Ask about the rule.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she have to wear a life jacket?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage über she: Beginne mit Does, dann she have to ...?",
+      "hintEn": null,
+      "explainDe": "Richtig: Does she have to wear a life jacket? Bei she beginnt die Frage mit Does, und have bleibt ohne -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-qf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Statement → third-person question (Does she have to ...?)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You want the camp rules for tonight. Ask your guide: you / get up early tomorrow.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do we have to get up early tomorrow?",
+          "tier": "full"
+        },
+        {
+          "text": "Do I have to get up early tomorrow?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage an den guide: Beginne mit Do, dann we/I have to ...?",
+      "hintEn": null,
+      "explainDe": "Richtig: Do we have to get up early tomorrow? Bei we / I beginnt die Frage mit Do.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Form a first-person have-to question from chips; camp world."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du musst eine Schwimmweste im Kanu tragen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You have to wear a life jacket in the canoe.",
+          "tier": "full"
+        },
+        {
+          "text": "You have to wear a life jacket in the canoe",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"du musst\" = you have to. \"Schwimmweste\" = life jacket, \"Kanu\" = canoe.",
+      "hintEn": null,
+      "explainDe": "Du musst ... = You have to ... Nach have to kommt die Grundform: have to wear.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-tr-001",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-3-dialogue",
+      "note": "deToEn; SB dialogue about the life jacket in the boat (boat → canoe)."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du musst nicht abwaschen. Die Anleiter machen das.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You don't have to wash up. The guides do it.",
+          "tier": "full"
+        },
+        {
+          "text": "You don't have to wash up. The guides do it",
+          "tier": "full"
+        },
+        {
+          "text": "You do not have to wash up. The guides do it.",
+          "tier": "full"
+        },
+        {
+          "text": "You don't have to wash up.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"du musst nicht\" = you don't have to. \"abwaschen\" = wash up, \"Anleiter\" = guides.",
+      "hintEn": null,
+      "explainDe": "Du musst nicht ... = You don't have to ... Das heißt: nicht notwendig (du darfst aber). Nach to kommt wash up.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-tr-002",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-10-email",
+      "note": "deToEn; SB email line \"we don't have to wash up\". First sentence alone accepted as partial."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "to / have / you / a life jacket / wear",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You have to wear a life jacket.",
+          "tier": "full"
+        },
+        {
+          "text": "You have to wear a life jacket",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "has",
+        "must"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt + have to + Grundform + Rest: You have to wear ...",
+      "hintEn": null,
+      "explainDe": "You have to wear a life jacket. Bei you heißt es have to – die Chips has und must brauchst du nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "has",
+          "must",
+          "have",
+          "do"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": "m2-u6-have-to-sb-001",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-3-dialogue",
+      "note": "5 answer chips + 2 distractor chips = 7 ≤ 10. Distractors has/must tempt wrong person and wrong modal."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "to / has / she / early / get up",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has to get up early.",
+          "tier": "full"
+        },
+        {
+          "text": "She has to get up early",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "have",
+        "must"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she: has to + Grundform. She has to get up early.",
+      "hintEn": null,
+      "explainDe": "She has to get up early. Bei she heißt es has to – have und must passen hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "have",
+          "must",
+          "haves",
+          "do"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "5 answer chips + 2 distractor chips = 7 ≤ 10. Distractor have baits the third-person error."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "have / does / to / she / a hard hat / wear",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she have to wear a hard hat?",
+          "tier": "full"
+        },
+        {
+          "text": "Does she have to wear a hard hat",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "do",
+        "has"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage über she: Does + she + have to + Grundform?",
+      "hintEn": null,
+      "explainDe": "Does she have to wear a hard hat? Bei she beginnt die Frage mit Does, und have bleibt ohne -s. do und has brauchst du nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "do",
+          "has",
+          "have",
+          "is"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-4-notices",
+      "note": "6 answer chips + 2 distractor chips = 8 ≤ 10. Builds a third-person question; distractors do/has bait wrong auxiliary."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "camp jobs: which rule fits?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "You are going out in a canoe.",
+          "right": "You have to wear a life jacket."
+        },
+        {
+          "left": "The guides do the washing up.",
+          "right": "You don't have to wash up."
+        },
+        {
+          "left": "You are building a tree house.",
+          "right": "You have to wear a hard hat."
+        },
+        {
+          "left": "The camp food is free for you.",
+          "right": "You don't have to bring food."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Ist es notwendig (have to) oder nicht notwendig (don't have to)? Lies jede Situation.",
+      "hintEn": null,
+      "explainDe": "have to = es ist notwendig, don't have to = es ist nicht notwendig. Jede Situation passt zu genau einer Regel.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u6-have-to-mt-001",
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-4-notices",
+      "note": "Situation ↔ have-to / don't-have-to rule, all camp world, both sides in-bank."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "camp rules: have to or don't have to?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "You have to (it is a rule)",
+          "members": [
+            "wear a life jacket in the canoe",
+            "wear a hard hat to build a tree house",
+            "be at the gate at 8 a.m.",
+            "read the camp guide"
+          ]
+        },
+        {
+          "label": "You don't have to (not a rule)",
+          "members": [
+            "wash up after dinner",
+            "do all the camp jobs",
+            "bring food",
+            "come canoeing with us"
+          ]
+        }
+      ],
+      "hintDe": "Sortiere: Was ist notwendig (have to) und was ist nicht notwendig (don't have to)?",
+      "hintEn": null,
+      "explainDe": "Bei have to ist etwas notwendig, bei don't have to nicht. So teilst du die Camp-Regeln in zwei Gruppen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#ex-4-notices",
+      "note": "Sorts necessary vs not-necessary actions; mirrors the SB box's two halves. All members in-bank."
+    },
+    {
+      "structureId": "g2u06.s.have-to",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form von have brauchst du bei he, she, it? (er/sie/es muss)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "has",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die 3.-Person-Form von have. Drei Buchstaben.",
+      "hintEn": null,
+      "explainDe": "Bei he, she, it heißt es has to. Die Form von have ist hier has.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 6.txt#grammar-1",
+      "note": "Single word 'has' — the third-person form learners forget. German cue, no English jargon."
+    }
+  ]
+}
