@@ -450,6 +450,15 @@
       "reason": "unit-10 SB grammar box must / mustn't (Verpflichtung und Verbot) teaches the negative modal; must is allowlist but mustn't is not a word-bank entry",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g2-u11",
+      "itemId": null,
+      "field": null,
+      "token": "broke",
+      "reason": "unit-11 SB who-question box example \"Who broke your bed?\"; irregular past not a word-bank entry (regular -ed pasts and present who-questions are native; this is the SB example)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

@@ -1,0 +1,609 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u11",
+  "round": 1,
+  "itemsHash": "0d6edd9ab760",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g2u11.w.cellar",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.cellar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.central-asia",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.central-asia",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.cotton",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.cotton",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.hammock",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.hammock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.island",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.island",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.leather",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.leather",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.material",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.material",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.moveable",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.moveable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.pattern",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.pattern",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.plain",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.plain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.plastic",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.plastic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.pond",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.pond",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.reed",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.reed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.roof",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.roof",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.staircase",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.staircase",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.stilts",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.stilts",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.striped",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.striped",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.to-float",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.to-float",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.to-transport",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.to-transport",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.trailer",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.trailer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.underneath",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.underneath",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u11.w.wall",
+      "kind": "new-gloss",
+      "itemId": "g2u11.w.wall",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.american",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.american",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.armchair",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.armchair",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.bed",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.bed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.bedside-table",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.bedside-table",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.carpet",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.carpet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.cellar",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.cellar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.cellar-2",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.cellar-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.central-asia",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.central-asia",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.chair",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.chair",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.cooker",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.cooker",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.cotton",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.cotton",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.cupboard",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.cupboard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.curtain",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.curtain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.electricity",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.electricity",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.fridge",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.fridge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.furniture",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.furniture",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.ground",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.ground",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.hammock",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.hammock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.hers",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.hers",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.his",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.his",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.island",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.island",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.lamp",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.lamp",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.leather",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.leather",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.material",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.material",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.metal",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.metal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.mine",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.mine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.moveable",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.moveable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.ours",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.ours",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.pattern",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.pattern",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.plain",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.plain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.plastic",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.plastic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.pond",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.pond",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.radiator",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.radiator",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.reed",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.reed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.roof",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.roof",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.rug",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.rug",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.seat",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.seat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.sink",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.sink",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.sofa",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.sofa",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.spotted",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.spotted",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.staircase",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.staircase",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.stilts",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.stilts",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.strap",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.strap",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.striped",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.striped",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.table",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.table",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.theirs",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.theirs",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.to-float",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.to-float",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.to-transport",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.to-transport",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.trailer",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.trailer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.tree-house",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.tree-house",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.underneath",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.underneath",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.wall",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.wall",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.wardrobe",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.wardrobe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.whose",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.whose",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.window",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.window",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.w.yours",
+      "kind": "translation-audit",
+      "itemId": "g2u11.w.yours",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.gi.possessive-pronouns.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u11.gi.possessive-pronouns.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.gi.possessive-pronouns.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u11.gi.possessive-pronouns.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.gi.possessive-s.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u11.gi.possessive-s.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.gi.possessive-s.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u11.gi.possessive-s.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.gi.who-whose.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u11.gi.who-whose.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u11.gi.who-whose.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u11.gi.who-whose.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 56 vocab + 68 grammar across three structures — possessive pronouns (24), possessive 's (23), Who/Whose questions (21). Grant: broke (SB who-question example; possessive pronouns mine/yours/his/hers/ours/theirs/whose are bank words). GRADER CONTRACT (Track B note for Koki): six possessive-'s / possessive-pronoun selection items distinguish options by apostrophe — these require an apostrophe-AWARE grader; per docs/handover/02 the documented canonicalization strips only trailing .!? and does NOT strip apostrophes, so they grade correctly (confirmed). Smoke-check fixed 5 possessive-pronoun definitions that circularly leaked the possessive adjective (his/her/our/their/your inflect to the pronoun), a formal \"Ihre\" → du-form, a duplicate-left matching item, and an apostrophe-malformed distractor. Verify round 1: replaced a true-synonym distractor (carry/transport), reworded tree-house off the name-masked \"oak\", and demoted plural/infinitive forms that broke their carriers; round 2 added strict to four Who/Whose & yours/ours gap-fills (the contrast word was within the Levenshtein budget). 22 glosses (home/material domain) + 62 translations adjudicated. NOTE: gloss-heavy (~22 tokens) — home/material vocab (made/water/animal/stripes) is untaught yet needed. rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 124,
+    "fullRows": 124,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
