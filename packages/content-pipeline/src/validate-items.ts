@@ -156,18 +156,28 @@ export function levelGateErrors(
 ): string[] {
   const errors: string[] = [];
   const grants = grantsForUnit(slug);
-  const check = (fields: EnField[], gloss: Array<{ word: string; scope: string | null }>): void => {
+  const check = (
+    fields: EnField[],
+    gloss: Array<{ word: string; scope: string | null }>,
+    ownTokens: string[] = [],
+  ): void => {
     for (const f of fields) {
       const applicable = gloss
         .filter((g) => g.scope === null || f.scopes.includes(g.scope))
         .map((g) => g.word);
+      // A vocab item teaches its OWN headword — for a multiword entry ("to be
+      // part of", "what's the matter") the carrier blanks a component word, so
+      // that word is the answer and naturally sits in the item's own fields.
+      // Its tokens are in-level WITHIN this item (the definition is still guarded
+      // against leaks by V-8). Single-word headwords already ride the bank.
+      const extraPhrases = ownTokens.length > 0 ? [...applicable, ...ownTokens] : applicable;
       const granted = new Set([...grants.unitWide, ...(grants.byItem.get(f.itemId) ?? [])]);
-      for (const token of matcher.unknownTokens(f.text, { extraPhrases: applicable, grantedTokens: granted })) {
+      for (const token of matcher.unknownTokens(f.text, { extraPhrases, grantedTokens: granted })) {
         errors.push(`${slug}: V-5 — "${token}" in ${f.itemId}.${f.field} is above level and unglossed`);
       }
     }
   };
-  for (const it of items.vocab) check(vocabEnFields(it), it.gloss);
+  for (const it of items.vocab) check(vocabEnFields(it), it.gloss, wordTokens(it.w));
   for (const it of items.grammar) check(grammarEnFields(it), it.gloss);
   return errors;
 }
@@ -251,9 +261,12 @@ export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordB
     const headTokens = new Set<string>();
     for (const form of [it.w, ...(entry?.forms ?? [])]) {
       for (const t of wordTokens(form)) {
-        // closed-class connectors in a multiword headword ("design AND
-        // technology", "fish AND chips") are not content the definition leaks
-        if (!["a", "an", "the", "to", "of", "and", "or"].includes(t)) headTokens.add(t);
+        // closed-class connectors + the copula in a multiword headword ("design
+        // AND technology", "fish AND chips", "to BE part of", "to BE worth") are
+        // not the content a definition leaks
+        if (!["a", "an", "the", "to", "of", "and", "or", "be", "am", "is", "are", "was", "were", "been", "being"].includes(t)) {
+          headTokens.add(t);
+        }
       }
     }
     for (const dTok of wordTokens(it.d)) {
@@ -424,7 +437,9 @@ const EN_JARGON = [
  */
 const EN_TENSE_NAMES = [
   "past simple", "simple past", "present perfect", "past continuous",
-  "present simple", "present continuous", "will-future", "going to",
+  "present simple", "present continuous", "will-future",
+  // NB: bare "going to" is NOT here — it is everyday English ("going to the zoo",
+  // "going to do it"), not a meta-label. The will-future label covers future meta-talk.
 ];
 /** DE pedagogical terms — allowed ONLY in hintDe/explainDe (textbook precedent). */
 const DE_TERMS = [

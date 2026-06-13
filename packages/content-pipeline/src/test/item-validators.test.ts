@@ -35,6 +35,17 @@ test("V-5 level gate: unglossed above-level token in any EN field", () => {
   // grammar prompts are gated too
   const g = levelGateErrors(SLUG, { vocab: [], grammar: [grammarItem({ prompt: { text: "You ___ obey the regulations.", lang: "en", blanks: 1 } })] }, matcher);
   assert.ok(g.some((e) => e.includes('"obey"') || e.includes('"regulations"')));
+  // a MULTIWORD headword teaches its own component word: "part" is not a standalone
+  // bank single, but it IS the answer to "to be part of" — in-level within this item
+  const ownHead = levelGateErrors(
+    SLUG,
+    { vocab: [vocabItem({ w: "to be part of", s: "I want to be ___ of the team.", sAnswers: [{ text: "part", tier: "full" }], d: "Inside a bigger group and not alone." })], ...noGrammar },
+    matcher,
+  );
+  assert.ok(!ownHead.some((e) => e.includes('"part"')), ownHead.join("\n"));
+  // control: the same token in an UNRELATED item (headword "witch") still flags
+  const foreign = levelGateErrors(SLUG, { vocab: [vocabItem({ s: "She did her ___ of the work." , sAnswers: [{ text: "part", tier: "full" }] })], ...noGrammar }, matcher);
+  assert.ok(foreign.some((e) => e.includes('"part"')), foreign.join("\n"));
 });
 
 test("V-6 gloss correctness: stale gloss + gloss-unneeded", () => {
@@ -74,6 +85,20 @@ test("V-8 definition leak is lemma-aware", () => {
     { entries: [{ id: "g2u03.w.fish-and-chips", en: "fish and chips", forms: ["fish and chips"] }] } as never,
   );
   assert.ok(!conn.some((e) => e.includes('"and"')), conn.join("\n"));
+  // the copula in a "to be …" headword is a function word, not leaked content
+  const copula = definitionLeakErrors(
+    SLUG,
+    { vocab: [vocabItem({ id: "g2u03.w.to-be-part-of", w: "to be part of", d: "To be inside a bigger group and not alone." })], ...noGrammar },
+    { entries: [{ id: "g2u03.w.to-be-part-of", en: "to be part of", forms: ["to be part of"] }] } as never,
+  );
+  assert.ok(!copula.some((e) => e.includes('"be"')), copula.join("\n"));
+  // but a real content token of the headword still leaks ("part" in the definition)
+  const realLeak = definitionLeakErrors(
+    SLUG,
+    { vocab: [vocabItem({ id: "g2u03.w.to-be-part-of", w: "to be part of", d: "When you are part of something bigger." })], ...noGrammar },
+    { entries: [{ id: "g2u03.w.to-be-part-of", en: "to be part of", forms: ["to be part of"] }] } as never,
+  );
+  assert.ok(realLeak.some((e) => e.includes('"part"')), realLeak.join("\n"));
 });
 
 test("V-9 distractor discipline: out-of-bank + lemma clash + duplicates", () => {
@@ -175,6 +200,11 @@ test("V-13 meta-talk: jargon vs tense-names vs DE terms", () => {
   assert.equal(tenseHint.length, 0);
   const tenseCarrier = metaTalkErrors(SLUG, { vocab: [], grammar: [grammarItem({ prompt: { text: "Use the present simple here.", lang: "en", blanks: 0 }, answers: [{ text: "go", tier: "full" }], format: "free-form", id: "g2u03.gi.should.ff.002" })] });
   assert.ok(tenseCarrier.some((e) => e.includes("present simple") && e.includes("carrier")));
+  // bare "going to" is everyday English (movement / informal future), NOT a tense name
+  const goingMove = metaTalkErrors(SLUG, { vocab: [vocabItem({ s: "Going to the zoo for the first time was really ___!" })], ...noGrammar });
+  assert.equal(goingMove.length, 0, goingMove.join("\n"));
+  const goingFut = metaTalkErrors(SLUG, { vocab: [vocabItem({ d: "You tell somebody you are going to do a thing for them." })], ...noGrammar });
+  assert.equal(goingFut.length, 0, goingFut.join("\n"));
 });
 
 test("V-14 German orthography: ASCII umlauts, English-quote + morpheme-boundary exceptions", () => {
