@@ -1,0 +1,68 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u10",
+  "items": {
+    "8c587d0d68c2": "g2u10.gi.like-ing.gf.001",
+    "4338cdb4acb1": "g2u10.gi.like-ing.gf.002",
+    "20322ed9ee73": "g2u10.gi.like-ing.gf.003",
+    "b4c71c050798": "g2u10.gi.like-ing.gf.004",
+    "9c3eb2f4107f": "g2u10.gi.like-ing.gf.005",
+    "1ec7a9cf0913": "g2u10.gi.like-ing.mc.001",
+    "e847fa114787": "g2u10.gi.like-ing.mc.002",
+    "67839dfa16c3": "g2u10.gi.like-ing.mc.003",
+    "45a5605c2108": "g2u10.gi.like-ing.ec.001",
+    "b3357f7a77c7": "g2u10.gi.like-ing.ec.002",
+    "1e051c9634f7": "g2u10.gi.like-ing.ec.003",
+    "1eee5856ccd3": "g2u10.gi.like-ing.tf.001",
+    "282fb27b52ef": "g2u10.gi.like-ing.qf.001",
+    "24ec2be8421d": "g2u10.gi.like-ing.tr.001",
+    "9ed46894f2b0": "g2u10.gi.like-ing.tr.002",
+    "9a6b93b6a5e4": "g2u10.gi.like-ing.sb.001",
+    "a01e1dfbab42": "g2u10.gi.like-ing.sb.002",
+    "2c922a529117": "g2u10.gi.like-ing.ag.001",
+    "a7b7aa7fdfef": "g2u10.gi.like-ing.ag.002",
+    "519f90d801d6": "g2u10.gi.like-ing.mt.001",
+    "f0ce902d8add": "g2u10.gi.like-ing.ff.001",
+    "ffa6dea8f9cf": "g2u10.gi.like-ing.mp.001",
+    "406fd6e8130e": "g2u10.gi.like-ing.cp.001",
+    "94afbfa8fd45": "g2u10.gi.must.gf.001",
+    "0eff30703286": "g2u10.gi.must.gf.002",
+    "e1293c60bc2d": "g2u10.gi.must.gf.003",
+    "eb9ae66570bf": "g2u10.gi.must.gf.004",
+    "3965801cc4fe": "g2u10.gi.must.mc.001",
+    "e858946b10e2": "g2u10.gi.must.mc.002",
+    "09891f1e4e4c": "g2u10.gi.must.ec.001",
+    "59a8cb5d131f": "g2u10.gi.must.ec.002",
+    "0810e629d73e": "g2u10.gi.must.ec.003",
+    "3bfabc9da20f": "g2u10.gi.must.ec.004",
+    "b2db372e9517": "g2u10.gi.must.tf.001",
+    "7e888a1d5aa5": "g2u10.gi.must.tf.002",
+    "1c9e09e2457e": "g2u10.gi.must.tr.001",
+    "c2c245a60d88": "g2u10.gi.must.tr.002",
+    "39fadeabb3f6": "g2u10.gi.must.sb.001",
+    "df1820d6594c": "g2u10.gi.must.cp.001",
+    "1707064b6e58": "g2u10.gi.must.mt.001",
+    "da0ef8fe0b1a": "g2u10.gi.must.gs.001",
+    "17cc9f08db69": "g2u10.gi.must.ag.001",
+    "428b330d152f": "g2u10.gi.like-ing.tf.003",
+    "d7366b69195e": "g2u10.gi.must.gf.006",
+    "a44416977622": "g2u10.gi.must.ff.002"
+  },
+  "tombstones": [
+    {
+      "id": "g2u10.gi.like-ing.tf.002",
+      "key": "04fc63c76c6f",
+      "removedWith": "ab34e26b358d"
+    },
+    {
+      "id": "g2u10.gi.must.gf.005",
+      "key": "feba5350f46a",
+      "removedWith": "ab34e26b358d"
+    },
+    {
+      "id": "g2u10.gi.must.ff.001",
+      "key": "5ad9e8f5256a",
+      "removedWith": "ab34e26b358d"
+    }
+  ]
+}

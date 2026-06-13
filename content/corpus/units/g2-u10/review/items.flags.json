@@ -1,0 +1,217 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u10",
+  "round": 1,
+  "itemsHash": "4a29b0e5ca4a",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "translation-audit:g2u10.w.auntie",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.auntie",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.calm",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.calm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.divorced",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.divorced",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.fault",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.fault",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.file",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.file",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.foreign-language",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.foreign-language",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.girlfriend",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.girlfriend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.hopefully",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.hopefully",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.ice-skating",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.ice-skating",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.public",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.public",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.sense-of-humour",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.sense-of-humour",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.to-be-proud-of",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.to-be-proud-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.to-be-related-to",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.to-be-related-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.to-breathe",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.to-breathe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.to-burn",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.to-burn",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.to-delete",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.to-delete",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.to-panic",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.to-panic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.to-print-out",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.to-print-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.tool",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.tool",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.tractor",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.tractor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.ugly",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.ugly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.w.virus",
+      "kind": "translation-audit",
+      "itemId": "g2u10.w.virus",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.gi.like-ing.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u10.gi.like-ing.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.gi.like-ing.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u10.gi.like-ing.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.gi.must.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u10.gi.must.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u10.gi.must.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u10.gi.must.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u10.w.hopefully#df18d4",
+      "kind": "validator-warn",
+      "itemId": "g2u10.w.hopefully",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u10.w.to-panic#a639b6",
+      "kind": "validator-warn",
+      "itemId": "g2u10.w.to-panic",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 22 vocab + 45 grammar across two structures — like + -ing (gerund, 24) and must / mustn't (obligation/prohibition, 21), 13 formats total. Grant: mustn't (SB modal box; must is allowlist). Zero glosses (vocab agent rephrased). Smoke-check fixed a group-sort group with <2 members, an anagram ___ cue, and an anagram German cue's lang tag (en→de). Verify round 1: added the uncontracted \"must not\"/\"does not\" forms to two strict free-typed items (would have mis-graded), and reworded a free-form prompt off the name-masked \"imagine\"; round 2 clean. The unit's core trap — must (obligation) vs mustn't (PROHIBITION) vs don't have to (not necessary) — is drilled correctly across MC/error-correction/group-sort/matching, with explainDe naming the meaning difference. 26 translations adjudicated; 2 benign warns (sentence-initial-lowercase; valid German \"in Panik geraten\"). rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 67,
+    "fullRows": 67,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

@@ -441,6 +441,15 @@
       "reason": "unit-8 SB grammar box Past simple (revision): know/knew — base needed for didn't-negation; not a word-bank single",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g2-u10",
+      "itemId": null,
+      "field": null,
+      "token": "mustn't",
+      "reason": "unit-10 SB grammar box must / mustn't (Verpflichtung und Verbot) teaches the negative modal; must is allowlist but mustn't is not a word-bank entry",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
