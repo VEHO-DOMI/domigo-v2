@@ -38,6 +38,7 @@ or any sub-agent import is right — verify item by item, against the textbook.*
 of a real 10-year-old is the failure mode that matters. See `04` and `08`.
 
 ## Status as of this handover (2026-06-10)
+- **Live content-wave status → [`docs/runbooks/items-wave.md`](../runbooks/items-wave.md)** (added 2026-06-14): the items wave is 41/57 units approved at 0.0% reject (G1 ✓, G2 ✓, G3 11/14, G4 pending); that runbook is the source of truth for progress, the per-unit rhythm, recurring fixes, and open decisions (incl. the song/band bank gap, §7).
 - v1 is live at `https://domigo-silk.vercel.app` (repo `VEHO-DOMI/domigo`, private).
 - Latest corpus fix merged: [#41 — grammar matching data](https://github.com/VEHO-DOMI/domigo/pull/41)
   (all 115 `matching` items now render).
