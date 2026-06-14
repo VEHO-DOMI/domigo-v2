@@ -1,0 +1,924 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u13",
+  "round": 1,
+  "itemsHash": "8c52fe76eab1",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u13.w.accident",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.accident",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.adventure",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.adventure",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.alone",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.alone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.ambulance",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.ambulance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.backpack",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.backpack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.button",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.button",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.character",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.character",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.class-speaker",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.class-speaker",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.cloud",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.cloud",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.coastguard",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.coastguard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.country",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.country",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.crime",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.crime",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.dark",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.dark",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.democracy",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.democracy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.earth",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.earth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.fire",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.fire",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.fire-brigade",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.fire-brigade",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.guess-what",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.guess-what",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.helicopter",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.helicopter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.introduction",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.introduction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.jetpack",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.jetpack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.mayor",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.mayor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.medicine",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.medicine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.mountain-rescue",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.mountain-rescue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.political",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.political",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.rescue-team",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.rescue-team",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.rock",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.rock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.screen",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.screen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.space",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.space",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.storm",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.storm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.storm-2",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.storm-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.tell-me-more",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.tell-me-more",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-arrive",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-arrive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-be-in-danger",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-be-in-danger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-be-lucky",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-be-lucky",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-be-safe",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-be-safe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-break",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-break",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-chase",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-chase",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-die",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-die",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-dream",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-dream",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-fall-down",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-fall-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-fly-up-the-mountain",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-fly-up-the-mountain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-happen",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-happen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-land",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-land",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-notice",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-notice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-press",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-press",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-radio",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-radio",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-shout-for-help",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-shout-for-help",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-shout-for-help-2",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-shout-for-help-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-slip",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-slip",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.to-vote",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.to-vote",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.wet",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.wet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.windy",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.windy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.w.young",
+      "kind": "new-gloss",
+      "itemId": "g1u13.w.young",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.gi.linking-words.cp.001",
+      "kind": "new-gloss",
+      "itemId": "g1u13.gi.linking-words.cp.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.gi.linking-words.ec.003",
+      "kind": "new-gloss",
+      "itemId": "g1u13.gi.linking-words.ec.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.gi.linking-words.sb.001",
+      "kind": "new-gloss",
+      "itemId": "g1u13.gi.linking-words.sb.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.gi.linking-words.tf.003",
+      "kind": "new-gloss",
+      "itemId": "g1u13.gi.linking-words.tf.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u13.gi.linking-words.tr.003",
+      "kind": "new-gloss",
+      "itemId": "g1u13.gi.linking-words.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.accident",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.accident",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.adventure",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.adventure",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.alone",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.alone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.ambulance",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.ambulance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.backpack",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.backpack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.button",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.button",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.character",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.character",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.class-speaker",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.class-speaker",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.cloud",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.cloud",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.coastguard",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.coastguard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.country",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.country",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.crime",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.crime",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.dark",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.dark",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.democracy",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.democracy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.earth",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.earth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.fire",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.fire",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.fire-brigade",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.fire-brigade",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.forest",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.forest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.guess-what",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.guess-what",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.helicopter",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.helicopter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.introduction",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.introduction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.jetpack",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.jetpack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.mayor",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.mayor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.medicine",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.medicine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.mountain-rescue",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.mountain-rescue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.police",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.police",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.political",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.political",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.rescue-team",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.rescue-team",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.rock",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.rock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.screen",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.screen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.sky",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.sky",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.space",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.space",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.storm",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.storm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.storm-2",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.storm-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.sunny",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.sunny",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.tell-me-more",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.tell-me-more",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-arrive",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-arrive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-be-in-danger",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-be-in-danger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-be-lucky",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-be-lucky",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-be-safe",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-be-safe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-break",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-break",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-chase",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-chase",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-die",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-die",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-dream",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-dream",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-fall-down",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-fall-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-fly-up-the-mountain",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-fly-up-the-mountain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-happen",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-happen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-land",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-land",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-notice",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-notice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-press",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-press",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-radio",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-radio",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-shout-for-help",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-shout-for-help",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-shout-for-help-2",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-shout-for-help-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-slip",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-slip",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.to-vote",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.to-vote",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.wet",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.wet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.windy",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.windy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.w.young",
+      "kind": "translation-audit",
+      "itemId": "g1u13.w.young",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.gi.linking-words.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u13.gi.linking-words.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.gi.linking-words.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u13.gi.linking-words.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.gi.linking-words.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u13.gi.linking-words.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.gi.past-simple-regular.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u13.gi.past-simple-regular.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u13.gi.past-simple-regular.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u13.gi.past-simple-regular.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u13.w.to-be-in-danger#e3dc3c",
+      "kind": "validator-warn",
+      "itemId": "g1u13.w.to-be-in-danger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u13.w.to-be-safe#bf0b25",
+      "kind": "validator-warn",
+      "itemId": "g1u13.w.to-be-safe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u13.gi.linking-words.gf.003#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g1u13.gi.linking-words.gf.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u13.gi.linking-words.gf.008#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g1u13.gi.linking-words.gf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u13.gi.linking-words.gf.014#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g1u13.gi.linking-words.gf.014",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u13.gi.linking-words.mc.003#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g1u13.gi.linking-words.mc.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u13.gi.linking-words.sb.003#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g1u13.gi.linking-words.sb.003",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 138 rows across 2 structures (linking-words and/but/because; past-simple-regular -ed). Verify: translation CLEAN, register CLEAN (the 5 sentence-initial \"Sie\" are \"she\" translating She-subject examples; \"Konsonant\"/\"verdoppeln\" in the German spelling-sort prompts are acceptable plain language, lens-cleared). Fixed level-gloss 2 (to-be-safe take=bringen for \"take you home\", not nehmen; to-shout-for-help-2 got=hat for \"has not got a phone\", not bekam) and answers 2 (gf.003 now accepts \"and\" partial for \"tired but/and happy\"; mc.006 dropped the grammatical \"and\" distractor → \"so\"). This unit carries 84 audited level-grants — the bulk are unavoidable: the past-simple-regular structure must teach ~20 regular verbs in BASE form (walk/stop/shout/arrive/notice/carry…), their -ed PASTS, AND deliberate wrong -ed spellings (sliped/arriveed/carryed) as distractors; the rest are rescue-theme words (mountain/danger/rescue/team/spaceship) and common A1 words untaught at the floor (lucky/old/film/little/bus/home). Incidental vocab glossed with context-correct German (lens-verified: pick=wählen for civics, fall=fallen, see=sehen, etc.). Validator-warns: 5×\"Sie\"=she, 2× weak-DE-evidence on the correct German phrases \"in Gefahr sein\"/\"in Sicherheit sein\" (translation lens confirmed correct). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 138,
+    "fullRows": 138,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

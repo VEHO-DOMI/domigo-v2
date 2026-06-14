@@ -1,0 +1,4310 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g1-u13",
+  "briefBank": "e4abaa2bacfd",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g1u13.w.storm",
+      "w": "storm",
+      "g": "Sturm",
+      "d": "very bad weather with a lot of strong wind and rain.",
+      "s": "There is a big ___ tonight, so the sky is dark and it is very windy.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "storm",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "storm",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "storm",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sturm",
+            "tier": "full"
+          },
+          {
+            "text": "Unwetter",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wind",
+          "de": "Wind",
+          "scope": "d"
+        },
+        {
+          "word": "rain",
+          "de": "Regen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "fire",
+        "cloud",
+        "accident"
+      ],
+      "hintDe": "Sehr schlechtes Wetter mit viel Wind und Regen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fire",
+          "cloud",
+          "accident",
+          "rock"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.jetpack",
+      "w": "jetpack",
+      "g": "Jetpack",
+      "d": "a machine you wear on your back so you can fly up into the sky.",
+      "s": "The man from the rescue team can put on a ___ and fly up the mountain.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "jetpack",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "jetpack",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "jetpack",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Jetpack",
+            "tier": "full"
+          },
+          {
+            "text": "Raketenrucksack",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "machine",
+          "de": "Maschine, Gerät",
+          "scope": "d"
+        },
+        {
+          "word": "fly",
+          "de": "fliegen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "backpack",
+        "helicopter",
+        "screen"
+      ],
+      "hintDe": "Damit kannst du auf dem Rücken in die Luft fliegen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "backpack",
+          "helicopter",
+          "screen",
+          "button"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.helicopter",
+      "w": "helicopter",
+      "g": "Hubschrauber",
+      "d": "a flying machine that can go up and come down on a small place.",
+      "s": "It is too windy, so the ___ from mountain rescue cannot land on the mountain.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "helicopter",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "helicopter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "helicopter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hubschrauber",
+            "tier": "full"
+          },
+          {
+            "text": "Heli",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flying",
+          "de": "fliegend",
+          "scope": "d"
+        },
+        {
+          "word": "machine",
+          "de": "Maschine, Gerät",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "jetpack",
+        "ambulance",
+        "backpack"
+      ],
+      "hintDe": "Eine Flugmaschine, die senkrecht starten und landen kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "jetpack",
+          "ambulance",
+          "backpack",
+          "screen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.coastguard",
+      "w": "coastguard",
+      "g": "Küstenwache",
+      "d": "the people who help you when your boat is in danger on the sea.",
+      "s": "Their boat is in danger on the sea, so they call the ___ for help.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "coastguard",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "coastguard",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "coastguard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Küstenwache",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "boat",
+          "de": "Boot",
+          "scope": null
+        },
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "police",
+        "fire brigade",
+        "ambulance"
+      ],
+      "hintDe": "Die Küstenwache hilft dir, wenn dein Boot auf dem Meer in Not ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "police",
+          "fire brigade",
+          "ambulance",
+          "mountain rescue"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.fire-brigade",
+      "w": "fire brigade",
+      "g": "Feuerwehr",
+      "d": "the people you call when a building is hot and red with flames.",
+      "s": "Help! There is a fire in our school. Call the ___!",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "fire brigade",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fire brigade",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fire brigade",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Feuerwehr",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flames",
+          "de": "Flammen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "coastguard",
+        "ambulance",
+        "police"
+      ],
+      "hintDe": "Die rufst du, wenn es in einem Gebäude brennt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "coastguard",
+          "ambulance",
+          "police",
+          "mountain rescue"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.ambulance",
+      "w": "ambulance",
+      "g": "Rettungswagen",
+      "d": "the car that takes an ill or hurt person to hospital.",
+      "s": "I think my leg is broken. Call an ___!",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "ambulance",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ambulance",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ambulance",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rettungswagen",
+            "tier": "full"
+          },
+          {
+            "text": "Krankenwagen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "takes",
+          "de": "bringt",
+          "scope": "d"
+        },
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "broken",
+          "de": "gebrochen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "police",
+        "fire brigade",
+        "coastguard"
+      ],
+      "hintDe": "Das Auto, das eine kranke oder verletzte Person ins Krankenhaus bringt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "police",
+          "fire brigade",
+          "coastguard",
+          "helicopter"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.police",
+      "w": "police",
+      "g": "Polizei",
+      "d": "the people you call when there is a crime.",
+      "s": "There is a crime in our street. Call the ___!",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "police",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "police",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "police",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Polizei",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ambulance",
+        "fire brigade",
+        "coastguard"
+      ],
+      "hintDe": "Die rufst du, wenn es ein Verbrechen gibt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ambulance",
+          "fire brigade",
+          "coastguard",
+          "mountain rescue"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.mountain-rescue",
+      "w": "mountain rescue",
+      "g": "Bergrettung",
+      "d": "the team you call to help people who are in danger high up on a hill.",
+      "s": "Two climbers are in danger on the mountain and cannot get down. Call ___!",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "mountain rescue",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mountain rescue",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mountain rescue",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bergrettung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "high",
+          "de": "hoch",
+          "scope": "d"
+        },
+        {
+          "word": "hill",
+          "de": "Berg",
+          "scope": "d"
+        },
+        {
+          "word": "climbers",
+          "de": "Kletterer",
+          "scope": "s"
+        },
+        {
+          "word": "get",
+          "de": "bekommen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "coastguard",
+        "fire brigade",
+        "ambulance"
+      ],
+      "hintDe": "Das Team, das Menschen hoch oben am Berg hilft.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "coastguard",
+          "fire brigade",
+          "ambulance",
+          "police"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-shout-for-help",
+      "w": "to shout for help",
+      "g": "um Hilfe rufen",
+      "d": "to call out very loud because you are in danger and you need people.",
+      "s": "She is alone on the mountain and very scared, so she has to ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shout for help",
+          "tier": "full"
+        },
+        {
+          "text": "to shout for help",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shout for help",
+          "tier": "full"
+        },
+        {
+          "text": "to shout for help",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shout for help",
+            "tier": "full"
+          },
+          {
+            "text": "to shout for help",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "um Hilfe rufen",
+            "tier": "full"
+          },
+          {
+            "text": "um Hilfe schreien",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "loud",
+          "de": "laut",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to slip",
+        "to dream",
+        "to land"
+      ],
+      "hintDe": "Ganz laut rufen, weil du Hilfe brauchst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to slip",
+          "to dream",
+          "to land",
+          "to chase"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-be-lucky",
+      "w": "to be lucky",
+      "g": "Glück haben",
+      "d": "when something good is there for you, so you are very happy.",
+      "s": "You fall on the mountain, but you ___ because you have a phone with you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "are lucky",
+          "tier": "full"
+        },
+        {
+          "text": "be lucky",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be lucky",
+          "tier": "full"
+        },
+        {
+          "text": "be lucky",
+          "tier": "full"
+        },
+        {
+          "text": "lucky",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be lucky",
+            "tier": "full"
+          },
+          {
+            "text": "be lucky",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Glück haben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "fall",
+          "de": "fallen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to be safe",
+        "to be in danger",
+        "to die"
+      ],
+      "hintDe": "Wenn dir etwas Gutes passiert und du froh bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to be safe",
+          "to be in danger",
+          "to die",
+          "to dream"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-break",
+      "w": "to break",
+      "g": "brechen",
+      "d": "to fall on a bone so that it is in two pieces and you cannot walk.",
+      "s": "Be careful on the wet rock or you can fall and ___ your leg.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "break",
+          "tier": "full"
+        },
+        {
+          "text": "to break",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "break",
+          "tier": "full"
+        },
+        {
+          "text": "to break",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "break",
+            "tier": "full"
+          },
+          {
+            "text": "to break",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "brechen",
+            "tier": "full"
+          },
+          {
+            "text": "kaputt machen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bone",
+          "de": "Knochen",
+          "scope": "d"
+        },
+        {
+          "word": "fall",
+          "de": "fallen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "to slip",
+        "to chase",
+        "to vote"
+      ],
+      "hintDe": "Etwas in Stücke gehen lassen, zum Beispiel ein Bein.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to slip",
+          "to chase",
+          "to vote",
+          "to land"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.country",
+      "w": "country",
+      "g": "Land",
+      "d": "a big place with its own name, like Austria or England.",
+      "s": "Austria is a ___ in Europe, and Vienna is its big city.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "country",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "country",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "country",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Land",
+            "tier": "full"
+          },
+          {
+            "text": "Staat",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "own",
+          "de": "eigenen",
+          "scope": "d"
+        },
+        {
+          "word": "europe",
+          "de": "Europa",
+          "scope": "s"
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "forest",
+        "space",
+        "crime"
+      ],
+      "hintDe": "Ein großes Gebiet mit eigenem Namen, wie Österreich.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "forest",
+          "space",
+          "crime",
+          "screen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.crime",
+      "w": "crime",
+      "g": "Verbrechen",
+      "d": "something very bad that you are not allowed to do.",
+      "s": "A robbery is a ___, so you have to call the police.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "crime",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crime",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crime",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verbrechen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "allowed",
+          "de": "erlaubt",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "accident",
+        "adventure",
+        "storm"
+      ],
+      "hintDe": "Etwas sehr Schlimmes, das verboten ist, wie ein Raub.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accident",
+          "adventure",
+          "storm",
+          "fire"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.fire",
+      "w": "fire",
+      "g": "Feuer",
+      "d": "the hot, bright, red and orange light that can burn a building.",
+      "s": "Help! There is a ___ in Hammond Street, and the building is very hot!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fire",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fire",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fire",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Feuer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bright",
+          "de": "hell",
+          "scope": "d"
+        },
+        {
+          "word": "burn",
+          "de": "verbrennen",
+          "scope": "d"
+        },
+        {
+          "word": "orange",
+          "de": "orange",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "storm",
+        "accident",
+        "rock"
+      ],
+      "hintDe": "Das heiße, helle, rote Licht, das ein Gebäude verbrennen kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "storm",
+          "accident",
+          "rock",
+          "cloud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.accident",
+      "w": "accident",
+      "g": "Unfall",
+      "d": "a bad thing that you do not want, like when one car hits another car.",
+      "s": "One car hits another car on the road. There is an ___ in Bolt Street.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "accident",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "accident",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "accident",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Unfall",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hits",
+          "de": "stößt gegen",
+          "scope": "d"
+        },
+        {
+          "word": "another",
+          "de": "ein anderes",
+          "scope": null
+        },
+        {
+          "word": "hits",
+          "de": "stößt gegen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "crime",
+        "adventure",
+        "fire"
+      ],
+      "hintDe": "Etwas Schlimmes, das du nicht willst, zum Beispiel ein Zusammenstoß von Autos.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "crime",
+          "adventure",
+          "fire",
+          "storm"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-be-in-danger",
+      "w": "to be in danger",
+      "g": "in Gefahr sein",
+      "d": "when you are not safe and something bad can happen to you.",
+      "s": "Their boat is on the sea in the storm. The people on it ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "are in danger",
+          "tier": "full"
+        },
+        {
+          "text": "be in danger",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be in danger",
+          "tier": "full"
+        },
+        {
+          "text": "be in danger",
+          "tier": "full"
+        },
+        {
+          "text": "in danger",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be in danger",
+            "tier": "full"
+          },
+          {
+            "text": "be in danger",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in Gefahr sein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "boat",
+          "de": "Boot",
+          "scope": "s"
+        },
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to be safe",
+        "to be lucky",
+        "to dream"
+      ],
+      "hintDe": "Wenn du nicht in Sicherheit bist und dir etwas passieren kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to be safe",
+          "to be lucky",
+          "to dream",
+          "to land"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-fly-up-the-mountain",
+      "w": "to fly up the mountain",
+      "g": "den Berg hinauffliegen",
+      "d": "to go up high to the top of a hill in the air, not on your feet.",
+      "s": "The man has a jetpack, so he can ___ in only a minute.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fly up the mountain",
+          "tier": "full"
+        },
+        {
+          "text": "to fly up the mountain",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fly up the mountain",
+          "tier": "full"
+        },
+        {
+          "text": "to fly up the mountain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fly up the mountain",
+            "tier": "full"
+          },
+          {
+            "text": "to fly up the mountain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "den Berg hinauffliegen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "high",
+          "de": "hoch",
+          "scope": "d"
+        },
+        {
+          "word": "top",
+          "de": "Spitze, oberster Punkt",
+          "scope": "d"
+        },
+        {
+          "word": "hill",
+          "de": "Berg",
+          "scope": "d"
+        },
+        {
+          "word": "air",
+          "de": "Luft",
+          "scope": "d"
+        },
+        {
+          "word": "only",
+          "de": "nur",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to fall down",
+        "to slip",
+        "to radio"
+      ],
+      "hintDe": "Durch die Luft nach oben zum Gipfel kommen, nicht zu Fuß.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to fall down",
+          "to slip",
+          "to radio",
+          "to chase"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-radio",
+      "w": "to radio",
+      "g": "(an-)funken",
+      "d": "to send your voice to a team that is far away with a small box.",
+      "s": "The man can find the girl, and then he has to ___ his team for help.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "radio",
+          "tier": "full"
+        },
+        {
+          "text": "to radio",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "radio",
+          "tier": "full"
+        },
+        {
+          "text": "to radio",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "radio",
+            "tier": "full"
+          },
+          {
+            "text": "to radio",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anfunken",
+            "tier": "full"
+          },
+          {
+            "text": "funken",
+            "tier": "full"
+          },
+          {
+            "text": "über Funk rufen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "send",
+          "de": "schicken",
+          "scope": "d"
+        },
+        {
+          "word": "voice",
+          "de": "Stimme",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to land",
+        "to slip",
+        "to dream"
+      ],
+      "hintDe": "Deine Stimme über Funk an ein weit entferntes Team schicken.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to land",
+          "to slip",
+          "to dream",
+          "to notice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.rescue-team",
+      "w": "rescue team",
+      "g": "Rettungsteam",
+      "d": "a group of people who help others in danger.",
+      "s": "The ___ can come in a helicopter and help the girl on the mountain.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rescue team",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rescue team",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rescue team",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rettungsteam",
+            "tier": "full"
+          },
+          {
+            "text": "Rettungsmannschaft",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "others",
+          "de": "andere",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "coastguard",
+        "backpack",
+        "screen"
+      ],
+      "hintDe": "Eine Gruppe von Menschen, die anderen in Gefahr hilft.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "coastguard",
+          "backpack",
+          "screen",
+          "ambulance"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.rock",
+      "w": "rock",
+      "g": "Stein",
+      "d": "a big, hard, heavy stone on a mountain.",
+      "s": "It is wet on the mountain because there is a lot of rain on the big ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rock",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rock",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stein",
+            "tier": "full"
+          },
+          {
+            "text": "Fels",
+            "tier": "partial"
+          },
+          {
+            "text": "Felsen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hard",
+          "de": "hart",
+          "scope": "d"
+        },
+        {
+          "word": "heavy",
+          "de": "schwer",
+          "scope": "d"
+        },
+        {
+          "word": "rain",
+          "de": "Regen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "cloud",
+        "backpack",
+        "forest"
+      ],
+      "hintDe": "Ein großer, harter, schwerer Stein am Berg.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cloud",
+          "backpack",
+          "forest",
+          "button"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-shout-for-help-2",
+      "w": "to shout for help",
+      "g": "um Hilfe rufen",
+      "d": "to use a very loud voice so that people come to you in danger.",
+      "s": "She has not got a phone, so all she can do is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shout for help",
+          "tier": "full"
+        },
+        {
+          "text": "to shout for help",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shout for help",
+          "tier": "full"
+        },
+        {
+          "text": "to shout for help",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shout for help",
+            "tier": "full"
+          },
+          {
+            "text": "to shout for help",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "um Hilfe rufen",
+            "tier": "full"
+          },
+          {
+            "text": "um Hilfe schreien",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": "d"
+        },
+        {
+          "word": "loud",
+          "de": "laut",
+          "scope": "d"
+        },
+        {
+          "word": "voice",
+          "de": "Stimme",
+          "scope": "d"
+        },
+        {
+          "word": "got",
+          "de": "hat",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to notice",
+        "to press",
+        "to die"
+      ],
+      "hintDe": "Mit lauter Stimme rufen, damit Leute dir helfen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to notice",
+          "to press",
+          "to die",
+          "to vote"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-slip",
+      "w": "to slip",
+      "g": "ausrutschen",
+      "d": "to fall down because the ground under your feet is wet.",
+      "s": "The rock is wet. Be careful or you can ___ and fall down.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "slip",
+          "tier": "full"
+        },
+        {
+          "text": "to slip",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "slip",
+          "tier": "full"
+        },
+        {
+          "text": "to slip",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "slip",
+            "tier": "full"
+          },
+          {
+            "text": "to slip",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausrutschen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "ground",
+          "de": "Boden",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to land",
+        "to dream",
+        "to vote"
+      ],
+      "hintDe": "Hinfallen, weil der Boden unter deinen Füßen nass ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to land",
+          "to dream",
+          "to vote",
+          "to chase"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.storm-2",
+      "w": "storm",
+      "g": "Sturm",
+      "d": "a time of bad weather when the wind is very strong and dangerous.",
+      "s": "There is a big ___ with very strong wind, and a tree is now on the ground.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "storm",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "storm",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "storm",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sturm",
+            "tier": "full"
+          },
+          {
+            "text": "Unwetter",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wind",
+          "de": "Wind",
+          "scope": null
+        },
+        {
+          "word": "ground",
+          "de": "Boden",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "accident",
+        "fire",
+        "adventure"
+      ],
+      "hintDe": "Eine Zeit mit schlechtem Wetter und sehr starkem Wind.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "accident",
+          "fire",
+          "adventure",
+          "crime"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.wet",
+      "w": "wet",
+      "g": "nass",
+      "d": "covered in water, not dry.",
+      "s": "There is a lot of rain on the mountain, so the rock is ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nass",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "covered",
+          "de": "bedeckt",
+          "scope": "d"
+        },
+        {
+          "word": "dry",
+          "de": "trocken",
+          "scope": "d"
+        },
+        {
+          "word": "rain",
+          "de": "Regen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "dark",
+        "sunny",
+        "young"
+      ],
+      "hintDe": "Voll mit Wasser, nicht trocken.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "dark",
+          "sunny",
+          "young",
+          "windy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-arrive",
+      "w": "to arrive",
+      "g": "(an-)kommen",
+      "d": "to come to a place at the end of your way.",
+      "s": "We wait on the mountain for an hour, and then the rescue team ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "arrives",
+          "tier": "full"
+        },
+        {
+          "text": "arrive",
+          "tier": "partial"
+        },
+        {
+          "text": "to arrive",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "arrive",
+          "tier": "full"
+        },
+        {
+          "text": "to arrive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "arrive",
+            "tier": "full"
+          },
+          {
+            "text": "to arrive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ankommen",
+            "tier": "full"
+          },
+          {
+            "text": "kommen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "way",
+          "de": "Weg",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to slip",
+        "to dream",
+        "to die"
+      ],
+      "hintDe": "Am Ende des Weges an einem Ort eintreffen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to slip",
+          "to dream",
+          "to die",
+          "to chase"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-be-safe",
+      "w": "to be safe",
+      "g": "in Sicherheit sein",
+      "d": "when you are away from danger and nothing bad can happen to you.",
+      "s": "The helicopter can take you home, away from the storm. Now you ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "are safe",
+          "tier": "full"
+        },
+        {
+          "text": "be safe",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be safe",
+          "tier": "full"
+        },
+        {
+          "text": "be safe",
+          "tier": "full"
+        },
+        {
+          "text": "safe",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be safe",
+            "tier": "full"
+          },
+          {
+            "text": "be safe",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in Sicherheit sein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "home",
+          "de": "nach Hause",
+          "scope": "s"
+        },
+        {
+          "word": "take",
+          "de": "bringen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to be in danger",
+        "to be lucky",
+        "to slip"
+      ],
+      "hintDe": "Wenn du weg von der Gefahr bist und dir nichts passieren kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to be in danger",
+          "to be lucky",
+          "to slip",
+          "to fall down"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-dream",
+      "w": "to dream",
+      "g": "träumen",
+      "d": "to see a picture in your head when you are asleep at night.",
+      "s": "A man is flying up to you with a jetpack! Are you ill, or do you ___?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "dream",
+          "tier": "full"
+        },
+        {
+          "text": "to dream",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dream",
+          "tier": "full"
+        },
+        {
+          "text": "to dream",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dream",
+            "tier": "full"
+          },
+          {
+            "text": "to dream",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "träumen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "head",
+          "de": "Kopf",
+          "scope": "d"
+        },
+        {
+          "word": "flying",
+          "de": "fliegend",
+          "scope": "s"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        },
+        {
+          "word": "asleep",
+          "de": "schlafend",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to slip",
+        "to radio",
+        "to land"
+      ],
+      "hintDe": "Bilder im Kopf sehen, wenn du nachts schläfst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to slip",
+          "to radio",
+          "to land",
+          "to vote"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-fall-down",
+      "w": "to fall down",
+      "g": "(hinunter-)fallen",
+      "d": "to go down to the ground all of a sudden, often when you slip.",
+      "s": "Be careful on the wet rock! You can slip and ___ and hurt your leg.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fall down",
+          "tier": "full"
+        },
+        {
+          "text": "to fall down",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fall down",
+          "tier": "full"
+        },
+        {
+          "text": "to fall down",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fall down",
+            "tier": "full"
+          },
+          {
+            "text": "to fall down",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinunterfallen",
+            "tier": "full"
+          },
+          {
+            "text": "hinfallen",
+            "tier": "full"
+          },
+          {
+            "text": "umfallen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "ground",
+          "de": "Boden",
+          "scope": "d"
+        },
+        {
+          "word": "sudden",
+          "de": "plötzlich",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to land",
+        "to arrive",
+        "to vote"
+      ],
+      "hintDe": "Plötzlich zu Boden gehen, oft wenn du ausrutschst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to land",
+          "to arrive",
+          "to vote",
+          "to notice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-land",
+      "w": "to land",
+      "g": "landen",
+      "d": "to come down from the sky to the ground.",
+      "s": "It is too windy, so it is hard for the helicopter to ___ on the mountain.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "land",
+          "tier": "full"
+        },
+        {
+          "text": "to land",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "land",
+          "tier": "full"
+        },
+        {
+          "text": "to land",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "land",
+            "tier": "full"
+          },
+          {
+            "text": "to land",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "landen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "ground",
+          "de": "Boden",
+          "scope": "d"
+        },
+        {
+          "word": "hard",
+          "de": "schwer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to slip",
+        "to chase",
+        "to die"
+      ],
+      "hintDe": "Vom Himmel auf den Boden herunterkommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to slip",
+          "to chase",
+          "to die",
+          "to dream"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.medicine",
+      "w": "medicine",
+      "g": "Medikament",
+      "d": "something you take when you are ill so that you get well.",
+      "s": "On the mountain the rescue team can give you ___ and keep you warm.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "medicine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "medicine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "medicine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Medikament",
+            "tier": "full"
+          },
+          {
+            "text": "Medizin",
+            "tier": "full"
+          },
+          {
+            "text": "Arznei",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "keep",
+          "de": "halten",
+          "scope": "s"
+        },
+        {
+          "word": "warm",
+          "de": "warm",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "take",
+          "de": "nehmen",
+          "scope": "d"
+        },
+        {
+          "word": "get",
+          "de": "bekommen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "backpack",
+        "button",
+        "screen"
+      ],
+      "hintDe": "Etwas, das du nimmst, wenn du krank bist, damit es dir besser geht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "backpack",
+          "button",
+          "screen",
+          "rock"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.sky",
+      "w": "sky",
+      "g": "Himmel",
+      "d": "the big space over you when you look up outside.",
+      "s": "It is night on the mountain, and the ___ is very dark.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sky",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sky",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sky",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Himmel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forest",
+        "rock",
+        "screen"
+      ],
+      "hintDe": "Der große Raum über dir, wenn du draußen nach oben schaust.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "forest",
+          "rock",
+          "screen",
+          "cloud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.windy",
+      "w": "windy",
+      "g": "windig",
+      "d": "when there is a lot of strong wind outside.",
+      "s": "There is a storm on the mountain, so it is very ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "windy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "windy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "windy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "windig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wind",
+          "de": "Wind",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sunny",
+        "wet",
+        "dark"
+      ],
+      "hintDe": "Wenn draußen viel starker Wind weht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "sunny",
+          "wet",
+          "dark",
+          "young"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.dark",
+      "w": "dark",
+      "g": "dunkel",
+      "d": "with no light, so you cannot see.",
+      "s": "It is night and there is no light, so the forest is very ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "dark",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dark",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dark",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dunkel",
+            "tier": "full"
+          },
+          {
+            "text": "finster",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sunny",
+        "wet",
+        "windy"
+      ],
+      "hintDe": "Ohne Licht, sodass du nichts sehen kannst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "sunny",
+          "wet",
+          "windy",
+          "young"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.young",
+      "w": "young",
+      "g": "jung",
+      "d": "not old.",
+      "s": "She is a teenager of 15. She is still very ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "young",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "young",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "young",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "teenager",
+          "de": "Teenager, Jugendliche/r",
+          "scope": "s"
+        },
+        {
+          "word": "old",
+          "de": "alt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "dark",
+        "wet",
+        "alone"
+      ],
+      "hintDe": "Nicht alt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "dark",
+          "wet",
+          "alone",
+          "sunny"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.alone",
+      "w": "alone",
+      "g": "allein",
+      "d": "with no people around you.",
+      "s": "There were no people on the mountain with me. I was all ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "alone",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "alone",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "alone",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "allein",
+            "tier": "full"
+          },
+          {
+            "text": "alleine",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "around",
+          "de": "um dich herum",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "young",
+        "wet",
+        "dark"
+      ],
+      "hintDe": "Ohne Menschen um dich herum.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "young",
+          "wet",
+          "dark",
+          "windy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.backpack",
+      "w": "backpack",
+      "g": "Rucksack",
+      "d": "a bag that you carry on your back.",
+      "s": "My phone was not in my hand. It was in my ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "backpack",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "backpack",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "backpack",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rucksack",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hand",
+          "de": "Hand",
+          "scope": "s"
+        },
+        {
+          "word": "bag",
+          "de": "Tasche",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "jetpack",
+        "button",
+        "screen"
+      ],
+      "hintDe": "Eine Tasche, die du auf dem Rücken trägst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "jetpack",
+          "button",
+          "screen",
+          "medicine"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-happen",
+      "w": "to happen",
+      "g": "passieren",
+      "d": "when a new thing is there, and it is a big surprise.",
+      "s": "Guess what! An amazing thing did ___ to me on my way to school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "happen",
+          "tier": "full"
+        },
+        {
+          "text": "to happen",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "happen",
+          "tier": "full"
+        },
+        {
+          "text": "to happen",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "happen",
+            "tier": "full"
+          },
+          {
+            "text": "to happen",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "passieren",
+            "tier": "full"
+          },
+          {
+            "text": "geschehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "way",
+          "de": "Weg",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to chase",
+        "to vote",
+        "to radio"
+      ],
+      "hintDe": "Wenn etwas geschieht, oft ganz überraschend.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to chase",
+          "to vote",
+          "to radio",
+          "to notice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-chase",
+      "w": "to chase",
+      "g": "verfolgen",
+      "d": "to run fast after a person or an animal to catch them.",
+      "s": "My dog can run fast and ___ the cat all around our garden.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "chase",
+          "tier": "full"
+        },
+        {
+          "text": "to chase",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chase",
+          "tier": "full"
+        },
+        {
+          "text": "to chase",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chase",
+            "tier": "full"
+          },
+          {
+            "text": "to chase",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verfolgen",
+            "tier": "full"
+          },
+          {
+            "text": "jagen",
+            "tier": "full"
+          },
+          {
+            "text": "nachlaufen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fast",
+          "de": "schnell",
+          "scope": null
+        },
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "cat",
+          "de": "Katze",
+          "scope": "s"
+        },
+        {
+          "word": "around",
+          "de": "herum",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to slip",
+        "to land",
+        "to vote"
+      ],
+      "hintDe": "Schnell hinter jemandem oder einem Tier herlaufen, um es zu fangen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to slip",
+          "to land",
+          "to vote",
+          "to dream"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.sunny",
+      "w": "sunny",
+      "g": "sonnig",
+      "d": "when there is a lot of light and no cloud in the sky.",
+      "s": "There was no cloud in the sky in the morning. It was a ___ day.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "sunny",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sunny",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sunny",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sonnig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "windy",
+        "wet",
+        "dark"
+      ],
+      "hintDe": "Wenn viel Licht da ist und keine Wolke am Himmel.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "windy",
+          "wet",
+          "dark",
+          "young"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.class-speaker",
+      "w": "class speaker",
+      "g": "Klassensprecher/Klassensprecherin",
+      "d": "A child the others pick to talk to the teacher.",
+      "s": "At the beginning of the school year, all of us want Emma to be our ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "class speaker",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "class speaker",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "class speaker",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Klassensprecher",
+            "tier": "full"
+          },
+          {
+            "text": "Klassensprecherin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pick",
+          "de": "wählen",
+          "scope": "d"
+        },
+        {
+          "word": "others",
+          "de": "andere",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "mayor",
+        "democracy",
+        "character"
+      ],
+      "hintDe": "Das Mädchen oder der Bub, das eine Klasse wählt, um für alle zu sprechen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "mayor",
+          "democracy",
+          "character",
+          "rescue team"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.democracy",
+      "w": "democracy",
+      "g": "Demokratie",
+      "d": "a country where the people pick who is the leader.",
+      "s": "In a ___ like Austria, the people vote for a leader.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "democracy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "democracy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "democracy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Demokratie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "leader",
+          "de": "Anführer/in",
+          "scope": null
+        },
+        {
+          "word": "pick",
+          "de": "wählen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "crime",
+        "country",
+        "adventure"
+      ],
+      "hintDe": "Ein Land, in dem die Menschen wählen, wer regiert.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "crime",
+          "country",
+          "adventure",
+          "introduction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.mayor",
+      "w": "mayor",
+      "g": "Bürgermeister/Bürgermeisterin",
+      "d": "the leader of a town or a city.",
+      "s": "The ___ of our town can open the new park on Saturday.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mayor",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mayor",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mayor",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bürgermeister",
+            "tier": "full"
+          },
+          {
+            "text": "Bürgermeisterin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "leader",
+          "de": "Anführer/in, Oberhaupt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "class speaker",
+        "character",
+        "democracy"
+      ],
+      "hintDe": "Das Oberhaupt einer Stadt oder eines Ortes.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "class speaker",
+          "character",
+          "democracy",
+          "screen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.political",
+      "w": "political",
+      "g": "politisch",
+      "d": "about how leaders run a country or a town.",
+      "s": "In class today we talk about voting and other ___ things.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "political",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "political",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "political",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "politisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "leaders",
+          "de": "Anführer",
+          "scope": "d"
+        },
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "s"
+        },
+        {
+          "word": "things",
+          "de": "Dinge, Themen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "young",
+        "wet",
+        "alone"
+      ],
+      "hintDe": "Wenn es darum geht, wie ein Land oder eine Stadt regiert wird.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "young",
+          "wet",
+          "alone",
+          "sunny"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-vote",
+      "w": "to vote",
+      "g": "wählen",
+      "d": "to pick a person from a list with your hand or a card.",
+      "s": "All the children in our class ___ for a new class speaker.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "vote",
+          "tier": "full"
+        },
+        {
+          "text": "to vote",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "vote",
+          "tier": "full"
+        },
+        {
+          "text": "to vote",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "vote",
+            "tier": "full"
+          },
+          {
+            "text": "to vote",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wählen",
+            "tier": "full"
+          },
+          {
+            "text": "abstimmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "list",
+          "de": "Liste",
+          "scope": "d"
+        },
+        {
+          "word": "hand",
+          "de": "Hand",
+          "scope": "d"
+        },
+        {
+          "word": "card",
+          "de": "Zettel, Karte",
+          "scope": "d"
+        },
+        {
+          "word": "pick",
+          "de": "wählen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to chase",
+        "to slip",
+        "to radio"
+      ],
+      "hintDe": "Eine Person von einer Liste auswählen, durch Handheben oder einen Zettel.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to chase",
+          "to slip",
+          "to radio",
+          "to notice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.button",
+      "w": "button",
+      "g": "Knopf",
+      "d": "a small round part that you press to make a machine work.",
+      "s": "Diana has to press the ___ to make the robot arm go.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "button",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "button",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "button",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Knopf",
+            "tier": "full"
+          },
+          {
+            "text": "Schalter",
+            "tier": "full"
+          },
+          {
+            "text": "Taste",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "round",
+          "de": "rund",
+          "scope": "d"
+        },
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "machine",
+          "de": "Maschine, Gerät",
+          "scope": "d"
+        },
+        {
+          "word": "robot",
+          "de": "Roboter",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "screen",
+        "rock",
+        "backpack"
+      ],
+      "hintDe": "Ein kleiner runder Teil, den du drückst, damit ein Gerät funktioniert.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "screen",
+          "rock",
+          "backpack",
+          "cloud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.cloud",
+      "w": "cloud",
+      "g": "Wolke",
+      "d": "a white or grey thing in the sky that can bring rain.",
+      "s": "The sky is dark because a big grey ___ is in front of the sun.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cloud",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cloud",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cloud",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wolke",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "rain",
+          "de": "Regen",
+          "scope": "d"
+        },
+        {
+          "word": "sun",
+          "de": "Sonne",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "rock",
+        "sky",
+        "screen"
+      ],
+      "hintDe": "Ein weißes oder graues Etwas am Himmel, das Regen bringen kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "rock",
+          "sky",
+          "screen",
+          "forest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.earth",
+      "w": "Earth",
+      "g": "Erde",
+      "d": "the place in space where all people live.",
+      "s": "There are no more trees, and the ___ is dying in the year 3231.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Earth",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Earth",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Earth",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erde",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "dying",
+          "de": "stirbt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "space",
+        "forest",
+        "sky"
+      ],
+      "hintDe": "Der Ort im Weltall, auf dem alle Menschen leben.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "space",
+          "forest",
+          "sky",
+          "country"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-die",
+      "w": "to die",
+      "g": "sterben",
+      "d": "to stop living.",
+      "s": "If you do not give the flower water, it will ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "die",
+          "tier": "full"
+        },
+        {
+          "text": "to die",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "die",
+          "tier": "full"
+        },
+        {
+          "text": "to die",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "die",
+            "tier": "full"
+          },
+          {
+            "text": "to die",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sterben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stop",
+          "de": "aufhören",
+          "scope": "d"
+        },
+        {
+          "word": "flower",
+          "de": "Blume",
+          "scope": "s"
+        },
+        {
+          "word": "will",
+          "de": "wird",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to chase",
+        "to vote",
+        "to land"
+      ],
+      "hintDe": "Aufhören zu leben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to chase",
+          "to vote",
+          "to land",
+          "to slip"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.forest",
+      "w": "forest",
+      "g": "Wald",
+      "d": "a big place with a lot of trees.",
+      "s": "We go for a long walk in the dark ___ with all its tall trees.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "forest",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "forest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "forest",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wald",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "country",
+        "space",
+        "sky"
+      ],
+      "hintDe": "Ein großer Ort mit ganz vielen Bäumen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "country",
+          "space",
+          "sky",
+          "rock"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.introduction",
+      "w": "introduction",
+      "g": "Einleitung",
+      "d": "the first short part of a story or a book.",
+      "s": "Read the ___ to the radio story before you read all of it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "introduction",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "introduction",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "introduction",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Einleitung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "adventure",
+        "character",
+        "crime"
+      ],
+      "hintDe": "Der erste kurze Teil einer Geschichte oder eines Buches.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "adventure",
+          "character",
+          "crime",
+          "screen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.space",
+      "w": "space",
+      "g": "Weltall",
+      "d": "the dark place far over the sky where the Earth and the stars are.",
+      "s": "People are living on big spaceships in ___, far away from Earth.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "space",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "space",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "space",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Weltall",
+            "tier": "full"
+          },
+          {
+            "text": "Weltraum",
+            "tier": "full"
+          },
+          {
+            "text": "All",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stars",
+          "de": "Sterne",
+          "scope": "d"
+        },
+        {
+          "word": "spaceships",
+          "de": "Raumschiffe",
+          "scope": "s"
+        },
+        {
+          "word": "far",
+          "de": "weit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "forest",
+        "country",
+        "sky"
+      ],
+      "hintDe": "Der dunkle Ort weit über dem Himmel, wo die Erde und die Sterne sind.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "forest",
+          "country",
+          "sky",
+          "screen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-notice",
+      "w": "to notice",
+      "g": "bemerken",
+      "d": "to see something new for the first time.",
+      "s": "All of a sudden, Diana and the pilot can ___ a small spaceship.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "notice",
+          "tier": "full"
+        },
+        {
+          "text": "to notice",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "notice",
+          "tier": "full"
+        },
+        {
+          "text": "to notice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "notice",
+            "tier": "full"
+          },
+          {
+            "text": "to notice",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bemerken",
+            "tier": "full"
+          },
+          {
+            "text": "wahrnehmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sudden",
+          "de": "plötzlich",
+          "scope": "s"
+        },
+        {
+          "word": "pilot",
+          "de": "Pilot/in",
+          "scope": "s"
+        },
+        {
+          "word": "spaceship",
+          "de": "Raumschiff",
+          "scope": "s"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to press",
+        "to radio",
+        "to chase"
+      ],
+      "hintDe": "Etwas zum ersten Mal sehen, oft ganz überraschend.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to press",
+          "to radio",
+          "to chase",
+          "to vote"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.to-press",
+      "w": "to press",
+      "g": "drücken",
+      "d": "to put your finger on a button to make a machine work.",
+      "s": "Diana has to ___ the button to make the robot arm go.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "press",
+          "tier": "full"
+        },
+        {
+          "text": "to press",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "press",
+          "tier": "full"
+        },
+        {
+          "text": "to press",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "press",
+            "tier": "full"
+          },
+          {
+            "text": "to press",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "drücken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "machine",
+          "de": "Maschine, Gerät",
+          "scope": "d"
+        },
+        {
+          "word": "robot",
+          "de": "Roboter",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to notice",
+        "to land",
+        "to chase"
+      ],
+      "hintDe": "Einen Knopf mit dem Finger drücken, damit ein Gerät funktioniert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to notice",
+          "to land",
+          "to chase",
+          "to slip"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.screen",
+      "w": "screen",
+      "g": "Bildschirm",
+      "d": "the flat part of a computer or a TV that you look at.",
+      "s": "Diana and the pilot are in front of a big ___ in the spaceship.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "screen",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "screen",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "screen",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bildschirm",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flat",
+          "de": "flach",
+          "scope": "d"
+        },
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "pilot",
+          "de": "Pilot/in",
+          "scope": "s"
+        },
+        {
+          "word": "spaceship",
+          "de": "Raumschiff",
+          "scope": "s"
+        },
+        {
+          "word": "computer",
+          "de": "Computer",
+          "scope": "d"
+        },
+        {
+          "word": "tv",
+          "de": "Fernseher",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "button",
+        "rock",
+        "backpack"
+      ],
+      "hintDe": "Der flache Teil eines Computers oder Fernsehers, auf den du schaust.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "button",
+          "rock",
+          "backpack",
+          "cloud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.adventure",
+      "w": "adventure",
+      "g": "Abenteuer",
+      "d": "an exciting time when something new and a little dangerous is there for you.",
+      "s": "Diana and the pilot are in space. That is a great ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "adventure",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "adventure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "adventure",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abenteuer",
+            "tier": "full"
+          },
+          {
+            "text": "Erlebnis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "wenig, bisschen",
+          "scope": "d"
+        },
+        {
+          "word": "pilot",
+          "de": "Pilot/in",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "accident",
+        "crime",
+        "introduction"
+      ],
+      "hintDe": "Eine spannende Zeit, in der etwas Neues und ein bisschen Gefährliches passiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "accident",
+          "crime",
+          "introduction",
+          "democracy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.character",
+      "w": "character",
+      "g": "Figur",
+      "d": "a man, woman or child in a story or a film.",
+      "s": "In the space story, the ___ I like best is Captain Diana.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "character",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "character",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "character",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Figur",
+            "tier": "full"
+          },
+          {
+            "text": "Person",
+            "tier": "full"
+          },
+          {
+            "text": "Charakter",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "adventure",
+        "introduction",
+        "mayor"
+      ],
+      "hintDe": "Ein Mann, eine Frau oder ein Kind in einer Geschichte oder einem Film.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "adventure",
+          "introduction",
+          "mayor",
+          "screen"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.guess-what",
+      "w": "Guess what?",
+      "g": "Du wirst es nicht glauben.",
+      "d": "you say this before you tell people surprising news.",
+      "s": "___ An amazing thing happened to me on my way to school today!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Guess what?",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Guess what?",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Guess what?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Du wirst es nicht glauben.",
+            "tier": "full"
+          },
+          {
+            "text": "Rate mal!",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagst",
+          "scope": "d"
+        },
+        {
+          "word": "news",
+          "de": "Neuigkeit",
+          "scope": "d"
+        },
+        {
+          "word": "way",
+          "de": "Weg",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Tell me more.",
+        "adventure",
+        "crime"
+      ],
+      "hintDe": "Das sagst du, bevor du jemandem überraschende Neuigkeiten erzählst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Tell me more.",
+          "adventure",
+          "crime",
+          "accident"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u13.w.tell-me-more",
+      "w": "Tell me more.",
+      "g": "Erzähl mir mehr.",
+      "d": "you say this when you want to hear more.",
+      "s": "That is so exciting! ___ I want to hear all of it!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Tell me more.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Tell me more.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Tell me more.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erzähl mir mehr.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagst",
+          "scope": "d"
+        },
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "Guess what?",
+        "adventure",
+        "crime"
+      ],
+      "hintDe": "Das sagst du, wenn du mehr hören möchtest.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Guess what?",
+          "adventure",
+          "crime",
+          "accident"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

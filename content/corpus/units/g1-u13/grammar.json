@@ -1,0 +1,3717 @@
+{
+  "schema": "grammar@1",
+  "grade": 1,
+  "unit": 13,
+  "slug": "g1-u13",
+  "items": [
+    {
+      "id": "g1u13.gi.linking-words.cp.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I like dogs because friendly they are.",
+            "I like dogs because of they are friendly.",
+            "I like dogs because are they friendly.",
+            "I like dogs because of friendly."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du sagst, warum du Hunde magst. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like dogs because they are friendly.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I like dogs because friendly they are.",
+        "I like dogs because of they are friendly.",
+        "I like dogs because are they friendly."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "friendly",
+          "de": "freundlich",
+          "scope": null
+        }
+      ],
+      "hintDe": "Nach because steht normal: erst they, dann are. Kein of dazwischen.",
+      "hintEn": null,
+      "explainDe": "Richtig ist because they are friendly. Nach because kommt Person + Verb in normaler Reihenfolge, ohne of.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.cp.002",
+      "structureId": "g1u13.s.linking-words",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The sky was dark because it was windy.",
+            "The sky was dark but it was windy.",
+            "The sky was dark or it was windy.",
+            "The sky was dark so it was windy."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du erzählst von dem Sturm. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The sky was dark and it was windy.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The sky was dark because it was windy.",
+        "The sky was dark but it was windy.",
+        "The sky was dark or it was windy."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Dinge passen zusammen und beschreiben dasselbe schlechte Wetter. Welches Wort reiht sie aneinander?",
+      "hintEn": null,
+      "explainDe": "Hier passen beide Teile zusammen, deshalb and: dunkler Himmel und Wind gehören zum Sturm.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.cp.003",
+      "structureId": "g1u13.s.linking-words",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She was lucky because of her phone was in her backpack.",
+            "She was lucky because her phone in her backpack was.",
+            "She was lucky but her phone was in her backpack.",
+            "She was lucky because of her phone in her backpack."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#11",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du erklärst, warum Sophia das Handy nehmen konnte. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was lucky because her phone was in her backpack.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She was lucky because of her phone was in her backpack.",
+        "She was lucky because her phone in her backpack was.",
+        "She was lucky but her phone was in her backpack."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der zweite Teil ist der Grund fürs Glück. Nach because steht normal Person + Verb, ohne of.",
+      "hintEn": null,
+      "explainDe": "because gibt den Grund an, danach normale Reihenfolge: because her phone was in her backpack.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.ec.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He wanted to climb because it was too windy.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He wanted to climb but it was too windy.",
+          "tier": "full"
+        },
+        {
+          "text": "but",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Klettern wollen und schlechtes Wetter passt nicht zusammen. Welches Bindewort zeigt den Gegensatz?",
+      "hintEn": null,
+      "explainDe": "Hier passt but, nicht because: Er wollte klettern, aber es war zu windig.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.ec.002",
+      "structureId": "g1u13.s.linking-words",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I like pizza because is delicious.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like pizza because it is delicious.",
+          "tier": "full"
+        },
+        {
+          "text": "it",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach because muss zuerst die Person oder das Ding kommen. Wer oder was ist lecker?",
+      "hintEn": null,
+      "explainDe": "Nach because braucht es ein Subjekt: because it is delicious. Das it darf nicht fehlen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.ec.003",
+      "structureId": "g1u13.s.linking-words",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I like summer because sunny it is.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like summer because it is sunny.",
+          "tier": "full"
+        },
+        {
+          "text": "because it is sunny",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "summer",
+          "de": "Sommer",
+          "scope": null
+        }
+      ],
+      "hintDe": "Nach because steht im Englischen NICHT das Verb am Ende. Reihenfolge: it is warm.",
+      "hintEn": null,
+      "explainDe": "Im Englischen steht nach because die normale Reihenfolge: because it is warm, nicht warm it is.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.ec.004",
+      "structureId": "g1u13.s.linking-words",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I am happy because of I have a dog.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am happy because I have a dog.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm happy because I have a dog.",
+          "tier": "full"
+        },
+        {
+          "text": "because I have a dog",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor einem ganzen Satzteil steht kein of nach because. Streiche das of.",
+      "hintEn": null,
+      "explainDe": "Vor einem Satz heißt es nur because, ohne of: because I have a dog.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.ec.005",
+      "structureId": "g1u13.s.linking-words",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I stayed in my room but I was ill.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I stayed in my room because I was ill.",
+          "tier": "full"
+        },
+        {
+          "text": "I stayed in my room so I was ill.",
+          "tier": "partial"
+        },
+        {
+          "text": "because",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im Zimmer bleiben und krank sein ist kein Gegensatz. Welches Wort nennt den Grund?",
+      "hintEn": null,
+      "explainDe": "Hier passt because (Grund), nicht but: Ich blieb im Zimmer, weil ich krank war.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.ff.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "free-form",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-ff-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib den Satz fertig: I like summer ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because it is sunny",
+          "tier": "full"
+        },
+        {
+          "text": "because it is hot",
+          "tier": "full"
+        },
+        {
+          "text": "but I do not like winter",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nenn einen Grund mit because, danach normale Reihenfolge: because it is ...",
+      "hintEn": null,
+      "explainDe": "Mit because nennst du einen Grund: I like summer because it is sunny.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I was hungry ___ I wanted a sandwich.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "and",
+          "tier": "full"
+        },
+        {
+          "text": "so",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Teile passen gut zusammen: erst der Hunger, dann das Essen. Welches Wort reiht zwei Dinge aneinander?",
+      "hintEn": null,
+      "explainDe": "and verbindet zwei Dinge, die zusammenpassen: Ich war hungrig und habe gegessen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.002",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He was scared ___ it was dark.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der zweite Teil sagt den Grund: Warum hatte er Angst? Welches Wort nennt einen Grund?",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund: Er hatte Angst, weil es dunkel war.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.003",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She was tired ___ she was happy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "but",
+          "tier": "full"
+        },
+        {
+          "text": "and",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die beiden Teile passen nicht zusammen: müde, aber trotzdem glücklich. Welches Wort zeigt einen Gegensatz?",
+      "hintEn": null,
+      "explainDe": "but zeigt einen Gegensatz: Sie war müde, aber sie war glücklich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.004",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The rocks are wet ___ there was a storm.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Warum sind die Steine nass? Der zweite Teil nennt den Grund.",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund: Die Steine sind nass, weil es einen Sturm gab.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.005",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He falls down ___ breaks his leg.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "and",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst das eine, dann das andere. Welches Wort reiht zwei Dinge aneinander?",
+      "hintEn": null,
+      "explainDe": "and verbindet zwei Dinge nacheinander: Er fällt hin und bricht sich das Bein.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.006",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You are lucky ___ you have a phone with you.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Warum hast du Glück? Der zweite Teil gibt den Grund an.",
+      "hintEn": null,
+      "explainDe": "because gibt den Grund an: Du hast Glück, weil du ein Handy dabeihast.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.007",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We wanted to go to the park ___ it was windy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "but",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der zweite Teil passt nicht zum Wunsch: Wir wollten in den Park, aber das Wetter war schlecht.",
+      "hintEn": null,
+      "explainDe": "but zeigt den Gegensatz: Wir wollten in den Park, aber es war windig.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.008",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She did not go to school ___ she was ill.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Warum ging sie nicht zur Schule? Der zweite Teil nennt den Grund.",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund: Sie ging nicht zur Schule, weil sie krank war.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.009",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-gf-009",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I like dogs ___ my sister likes rabbits.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "but",
+          "tier": "full"
+        },
+        {
+          "text": "and",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du und deine Schwester mögen verschiedene Tiere. Welches Wort zeigt den Unterschied am besten?",
+      "hintEn": null,
+      "explainDe": "but zeigt den Gegensatz: Ich mag Hunde, aber meine Schwester mag Kaninchen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.010",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The man gives you medicine ___ helps you.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "and",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Mann macht zwei gute Dinge nacheinander. Welches Wort reiht sie aneinander?",
+      "hintEn": null,
+      "explainDe": "and verbindet zwei Dinge, die zusammenpassen: Er gibt dir Medizin und hilft dir.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.011",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I like my school ___ my friends are there.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Warum magst du deine Schule? Der zweite Teil sagt den Grund.",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund: Ich mag meine Schule, weil meine Freunde dort sind.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.012",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Diana wanted to help ___ her friends were in danger.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Warum wollte Diana helfen? Der zweite Teil nennt den Grund.",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund: Diana wollte helfen, weil ihre Freunde in Gefahr waren.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.013",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "It is too windy for a helicopter, ___ the rescue team can help.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "but",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Schlechte Nachricht, dann gute Nachricht. Welches Wort zeigt diesen Gegensatz?",
+      "hintEn": null,
+      "explainDe": "but zeigt den Gegensatz: Es ist zu windig, aber das Rettungsteam kann helfen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gf.014",
+      "structureId": "g1u13.s.linking-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#11",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sophia was alone ___ scared on the mountain.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "and",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Wörter passen zusammen und sind beide schlimm. Welches Wort reiht sie aneinander?",
+      "hintEn": null,
+      "explainDe": "and verbindet zwei Dinge, die zusammenpassen: Sie war allein und hatte Angst.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gs.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-gs-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere die Sätze: Passt and, but oder because?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "and",
+          "members": [
+            "Tom and Lisa are friends.",
+            "She slips and falls down.",
+            "We climbed and played football."
+          ]
+        },
+        {
+          "label": "but",
+          "members": [
+            "It is old but nice.",
+            "She is tired but happy.",
+            "I like dogs but not rabbits."
+          ]
+        },
+        {
+          "label": "because",
+          "members": [
+            "I stayed in my room because I was ill.",
+            "She is happy because it is sunny.",
+            "We were scared because it was dark."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "and reiht aneinander, but zeigt einen Gegensatz, because nennt einen Grund.",
+      "hintEn": null,
+      "explainDe": "and verbindet Gleiches, but zeigt Gegensätze, because gibt einen Grund an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.gs.002",
+      "structureId": "g1u13.s.linking-words",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: Welches Bindewort verbindet die beiden Teile?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "and",
+          "members": [
+            "He radios his team and lands next to you.",
+            "We climbed up and looked down."
+          ]
+        },
+        {
+          "label": "but",
+          "members": [
+            "We wanted to climb but it was windy.",
+            "She was scared but she was safe."
+          ]
+        },
+        {
+          "label": "because",
+          "members": [
+            "You are lucky because you have a phone.",
+            "He was scared because it was dark."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Frag dich: Reihen sich die Teile aneinander (and), stehen sie im Gegensatz (but) oder nennt der zweite einen Grund (because)?",
+      "hintEn": null,
+      "explainDe": "and reiht Gleiches aneinander, but zeigt einen Gegensatz, because nennt den Grund.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.mc.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "but",
+            "and",
+            "or",
+            "so"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Wort nennt einen Grund?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "but",
+        "and",
+        "or"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mit welchem Wort sagst du, WARUM etwas passiert?",
+      "hintEn": null,
+      "explainDe": "because nennt einen Grund. and reiht aneinander, but zeigt einen Gegensatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.mc.003",
+      "structureId": "g1u13.s.linking-words",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "but",
+            "because",
+            "or",
+            "so"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She slips ___ falls down.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "and",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "but",
+        "because",
+        "or"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst rutscht sie aus, dann fällt sie hin. Welches Wort reiht zwei Dinge aneinander?",
+      "hintEn": null,
+      "explainDe": "and verbindet zwei Dinge nacheinander: Sie rutscht aus und fällt hin.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.mc.004",
+      "structureId": "g1u13.s.linking-words",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I stayed in my room because tired I was.",
+            "I stayed in my room because of I was tired.",
+            "I stayed in my room because was I tired.",
+            "Because I stayed in my room I was tired."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I stayed in my room because I was tired.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I stayed in my room because tired I was.",
+        "I stayed in my room because of I was tired.",
+        "I stayed in my room because was I tired."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach because steht ganz normal: zuerst die Person, dann das Verb (I was ...).",
+      "hintEn": null,
+      "explainDe": "Nach because kommt die normale Reihenfolge: because I was tired. Kein of, und das Verb steht nicht am Ende.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.mc.005",
+      "structureId": "g1u13.s.linking-words",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "because of it is sunny",
+            "because sunny it is",
+            "because is it sunny",
+            "because of sunny"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She is happy ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "because it is sunny",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "because of it is sunny",
+        "because sunny it is",
+        "because is it sunny"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach because kommt die normale Reihenfolge: it is sunny. Kein of dazwischen.",
+      "hintEn": null,
+      "explainDe": "Richtig ist because it is sunny. Nach because steht normal Person + Verb, ohne of.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.mc.006",
+      "structureId": "g1u13.s.linking-words",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "so",
+            "because",
+            "or",
+            "so"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I like dogs ___ I do not like rabbits.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "but",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "so",
+        "because",
+        "or"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du magst das eine, aber das andere nicht. Welches Wort zeigt diesen Gegensatz?",
+      "hintEn": null,
+      "explainDe": "but zeigt den Gegensatz: Ich mag Hunde, aber ich mag keine Kaninchen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.mp.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Was passt zusammen? Satzanfang und Grund.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "She stayed in her room because",
+          "right": "she was ill."
+        },
+        {
+          "left": "He was scared because",
+          "right": "it was dark."
+        },
+        {
+          "left": "You are lucky because",
+          "right": "you have a phone."
+        },
+        {
+          "left": "We were happy because",
+          "right": "we were safe."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach because kommt immer der Grund. Such die passende Erklärung.",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund: krank → zu Hause geblieben, dunkel → Angst, Handy → Glück.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.mt.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Grund passt zu welchem Gefühl?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I am tired because",
+          "right": "I played all day."
+        },
+        {
+          "left": "I am happy because",
+          "right": "it is my birthday."
+        },
+        {
+          "left": "I am sad because",
+          "right": "my dog is ill."
+        },
+        {
+          "left": "I am hungry because",
+          "right": "I did not eat lunch."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lies jeden Anfang und such den Grund, der wirklich dazu passt.",
+      "hintEn": null,
+      "explainDe": "Nach because steht der Grund: müde, weil früh aufgestanden; hungrig, weil nichts gegessen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.mt.002",
+      "structureId": "g1u13.s.linking-words",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher zweite Teil passt zum ersten?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "It was too windy for a helicopter, but",
+          "right": "the rescue team helped you."
+        },
+        {
+          "left": "Diana wanted to help because",
+          "right": "her friends were in danger."
+        },
+        {
+          "left": "He landed next to me and",
+          "right": "radioed his team."
+        },
+        {
+          "left": "The rocks were wet because",
+          "right": "there was a storm."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf das Bindewort am Ende des ersten Teils: but braucht einen Gegensatz, because einen Grund, and etwas Weiteres.",
+      "hintEn": null,
+      "explainDe": "and reiht an, but zeigt den Gegensatz, because nennt den Grund. Such den Teil, der dazu passt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.qf.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib den Grund als Antwort. Frage: Why is she happy? (it / be / sunny)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Because it is sunny.",
+          "tier": "full"
+        },
+        {
+          "text": "Because it's sunny.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Antworten auf Why? beginnen mit Because. Danach kommt der Grund in normaler Reihenfolge.",
+      "hintEn": null,
+      "explainDe": "Auf Why? antwortest du mit Because + Grund: Because it is sunny.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.sb.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "but",
+            "and",
+            "I like summer because it is sunny.",
+            "because"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I / like / summer / because / sunny / it / is",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like summer because it is sunny.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "summer",
+          "de": "Sommer",
+          "scope": null
+        }
+      ],
+      "hintDe": "Nach because: erst it, dann is, dann sunny.",
+      "hintEn": null,
+      "explainDe": "Nach because steht normal Person + Verb: because it is sunny.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.sb.002",
+      "structureId": "g1u13.s.linking-words",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "and",
+            "but",
+            "I'm happy because it is sunny.",
+            "because"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-sb-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I'm / happy / because / is / it / sunny",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm happy because it is sunny.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach because: erst it, dann is, dann sunny.",
+      "hintEn": null,
+      "explainDe": "Nach because kommt die normale Reihenfolge: because it is sunny.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.sb.003",
+      "structureId": "g1u13.s.linking-words",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "and",
+            "because",
+            "She shouted for help but she was alone.",
+            "but"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#11",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She / shouted / for / help / but / was / she / alone",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She shouted for help but she was alone.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst die eine Sache, dann der Gegensatz mit but: but she was alone.",
+      "hintEn": null,
+      "explainDe": "but verbindet zwei gegensätzliche Teile: Sie rief um Hilfe, aber sie war allein.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.tf.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde die Sätze mit because: I am tired. I played football.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am tired because I played football.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm tired because I played football.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der erste Satz ist die Folge, der zweite der Grund. Setze because dazwischen.",
+      "hintEn": null,
+      "explainDe": "because verbindet Folge und Grund: I am tired because I played football.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.tf.002",
+      "structureId": "g1u13.s.linking-words",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde die Sätze mit because: She is happy. It is sunny.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is happy because it is sunny.",
+          "tier": "full"
+        },
+        {
+          "text": "She's happy because it's sunny.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach because kommt der Grund in normaler Reihenfolge: it is sunny.",
+      "hintEn": null,
+      "explainDe": "because nennt den Grund, danach normale Reihenfolge: because it is sunny.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.tf.003",
+      "structureId": "g1u13.s.linking-words",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde die Sätze mit but: I wanted an ice cream. The shop was closed.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I wanted an ice cream but the shop was closed.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Laden, Geschäft",
+          "scope": null
+        }
+      ],
+      "hintDe": "Du wolltest etwas, aber es ging nicht. Setze but dazwischen.",
+      "hintEn": null,
+      "explainDe": "but zeigt den Gegensatz: Ich wollte ein Eis, aber der Laden war zu.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.tf.004",
+      "structureId": "g1u13.s.linking-words",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#7",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde die Sätze mit and: He lands next to me. He gives me medicine.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He lands next to me and gives me medicine.",
+          "tier": "full"
+        },
+        {
+          "text": "He lands next to me and he gives me medicine.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwei Dinge passieren nacheinander. Setze and dazwischen.",
+      "hintEn": null,
+      "explainDe": "and reiht zwei Dinge aneinander: Er landet neben mir und gibt mir Medizin.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.tr.001",
+      "structureId": "g1u13.s.linking-words",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-linking-words-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er war müde, aber er spielte weiter.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He was tired but he played on.",
+          "tier": "full"
+        },
+        {
+          "text": "He was tired but he played football.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "aber heißt auf Englisch but. Es zeigt den Gegensatz.",
+      "hintEn": null,
+      "explainDe": "aber wird zu but: He was tired but he kept playing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.tr.002",
+      "structureId": "g1u13.s.linking-words",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ich bin traurig, weil mein Hund krank ist.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am sad because my dog is ill.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm sad because my dog is ill.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "weil heißt auf Englisch because. Danach steht ganz normal: my dog is ill.",
+      "hintEn": null,
+      "explainDe": "weil wird zu because, danach normale Reihenfolge: because my dog is ill.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.linking-words.tr.003",
+      "structureId": "g1u13.s.linking-words",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u4-because-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ich mag den Sommer, weil es sonnig ist.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like summer because it is sunny.",
+          "tier": "full"
+        },
+        {
+          "text": "I like summer because it's sunny.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "summer",
+          "de": "Sommer",
+          "scope": null
+        }
+      ],
+      "hintDe": "Nach because kommt die normale Reihenfolge: it is sunny, nicht sunny it is.",
+      "hintEn": null,
+      "explainDe": "weil wird zu because, danach it is sunny in normaler Reihenfolge.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.ag.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-ag-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Die Vergangenheitsform von 'play':",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "played",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hänge einfach -ed an play an.",
+      "hintEn": null,
+      "explainDe": "play + ed = played. So bildest du bei den meisten Verben die Vergangenheit.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.ag.002",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-ag-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Die Vergangenheitsform von 'stop':",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "stopped",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach kurzem Vokal verdoppelst du den letzten Konsonanten, dann -ed.",
+      "hintEn": null,
+      "explainDe": "stop wird stopped: der Konsonant wird verdoppelt und dann kommt -ed.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.ag.003",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-ag-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Die Vergangenheitsform von 'carry':",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "carried",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "carry endet auf Konsonant + y. Das y wird zu -ied.",
+      "hintEn": null,
+      "explainDe": "carry wird carried: Konsonant + y wird zu -ied.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.cp.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I slip on the wet rocks.",
+            "I sliped on the wet rocks.",
+            "I did slipped on the wet rocks.",
+            "I slipping on the wet rocks.",
+            "I slipped on the wet rocks."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sophia erzählt von gestern am Berg. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I slipped on the wet rocks.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I slip on the wet rocks.",
+        "I sliped on the wet rocks.",
+        "I did slipped on the wet rocks."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist gestern passiert. Bei slip wird der Konsonant verdoppelt: slipped.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I slipped on the wet rocks: slip wird slipped (Konsonant verdoppelt), ohne did davor.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.cp.002",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He radio his team and help me.",
+            "He radioed his team and helps me.",
+            "He did radio his team and helped me.",
+            "He radioing his team and helped me.",
+            "He radioed his team and helped me."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du erzählst, was der Rettungsmann gemacht hat. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He radioed his team and helped me.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He radio his team and help me.",
+        "He radioed his team and helps me.",
+        "He did radio his team and helped me."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Verben sind vorbei: radio wird radioed, help wird helped.",
+      "hintEn": null,
+      "explainDe": "Richtig ist He radioed his team and helped me: beide Verben bekommen -ed, ohne did davor.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.ec.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Yesterday I watch a great film.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Yesterday I watched a great film.",
+          "tier": "full"
+        },
+        {
+          "text": "watched",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Wort yesterday zeigt: es ist vorbei. Dem Verb fehlt die Endung -ed.",
+      "hintEn": null,
+      "explainDe": "Es muss watched heißen: für Vergangenes hängst du -ed an watch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.ec.002",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He stoped the car.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He stopped the car.",
+          "tier": "full"
+        },
+        {
+          "text": "stopped",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach kurzem Vokal musst du den letzten Konsonanten verdoppeln.",
+      "hintEn": null,
+      "explainDe": "Richtig ist stopped mit doppeltem p: nach kurzem Vokal wird der Konsonant verdoppelt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.ec.003",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The helicopter arriveed an hour later.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The helicopter arrived an hour later.",
+          "tier": "full"
+        },
+        {
+          "text": "arrived",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "arrive endet schon auf -e. Dann kommt nur ein -d dazu, nicht -ed.",
+      "hintEn": null,
+      "explainDe": "Richtig ist arrived: endet das Verb auf -e, hängst du nur -d an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.ec.004",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I did walked to the park yesterday.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I walked to the park yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "walked",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du brauchst nicht did UND -ed zusammen. Das Verb mit -ed reicht.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I walked to the park: das Verb mit -ed reicht, ein did davor ist zu viel.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Yesterday Sophia ___ (want) to go up a mountain.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wanted",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist gestern passiert. Hänge an die Grundform want die Endung -ed an.",
+      "hintEn": null,
+      "explainDe": "Was gestern passiert ist, schreibst du mit -ed: want wird wanted. Die Form ist für alle Personen gleich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.002",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#15",
+        "seedV1": "m1-u13-past-simple-regular-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We ___ (play) football after school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "played",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist schon vorbei. An play hängst du -ed an.",
+      "hintEn": null,
+      "explainDe": "play wird played. Für die Vergangenheit hängst du bei regelmäßigen Verben -ed an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.003",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#15",
+        "seedV1": "m1-u13-past-simple-regular-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Yesterday I ___ (walk) to the park.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "walked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gestern ist vorbei. Hänge an walk die Endung -ed an.",
+      "hintEn": null,
+      "explainDe": "walk wird walked. Für Vergangenes hängst du -ed an die Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.004",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The man with the jetpack ___ (land) next to me.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "landed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist in der Geschichte schon passiert. Hänge an land die Endung -ed an.",
+      "hintEn": null,
+      "explainDe": "land wird landed. Für Vergangenes hängst du -ed an die Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.005",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#18",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Diana ___ (press) a button and the front of the spaceship opened.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "pressed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist schon passiert. Hänge an press die Endung -ed an.",
+      "hintEn": null,
+      "explainDe": "press wird pressed. Für Vergangenes hängst du -ed an die Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.006",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The mountain rescue team ___ (arrive) an hour later.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "arrived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "arrive endet schon auf -e. Dann hängst du nur ein -d an.",
+      "hintEn": null,
+      "explainDe": "Endet das Verb auf -e, hängst du nur -d an: arrive wird arrived.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.007",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#18",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Suddenly they ___ (notice) a little spaceship.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "noticed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "notice endet auf -e. Dann hängst du nur ein -d an.",
+      "hintEn": null,
+      "explainDe": "Endet das Verb auf -e, hängst du nur -d an: notice wird noticed.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.008",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The bus ___ (stop) at the corner.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "stopped",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kurzer Vokal und nur ein Konsonant am Ende? Dann verdoppelst du den letzten Buchstaben vor -ed.",
+      "hintEn": null,
+      "explainDe": "Nach kurzem Vokal verdoppelst du den letzten Konsonanten: stop wird stopped.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.009",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "They ___ (carry) the bags home.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "carried",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "carry endet auf Konsonant + y. Das y wird zu -ied.",
+      "hintEn": null,
+      "explainDe": "Konsonant + y wird zu -ied: carry wird carried.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.010",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#5",
+        "seedV1": "m1-u13-past-simple-regular-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She ___ (slip) on the wet rocks and ___ (shout) for help.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "slipped | shouted",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei slip verdoppelst du den letzten Buchstaben (kurzer Vokal). Bei shout hängst du einfach -ed an.",
+      "hintEn": null,
+      "explainDe": "slip wird slipped (Konsonant verdoppelt), shout wird shouted (einfach -ed).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.011",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#14",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Yesterday my dog ___ (chase) our cat and the cat ___ (jump) into a tree.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "chased | jumped",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "chase endet auf -e (nur -d anhängen). Bei jump hängst du -ed an.",
+      "hintEn": null,
+      "explainDe": "chase wird chased (nur -d), jump wird jumped (einfach -ed).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gf.012",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Then I ___ (notice) my phone and ___ (radio) the rescue team.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "noticed | radioed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "notice endet auf -e (nur -d). radio endet auf -o, da hängst du einfach -ed an.",
+      "hintEn": null,
+      "explainDe": "notice wird noticed (nur -d), radio wird radioed (einfach -ed).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gs.003",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#grammar-1",
+        "seedV1": "m1-u13-past-simple-regular-gs-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wird der Konsonant verdoppelt oder nicht? Sortiere die Verben.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "like walked",
+          "members": [
+            "walk",
+            "play",
+            "want",
+            "shout",
+            "open",
+            "happen"
+          ]
+        },
+        {
+          "label": "like stopped",
+          "members": [
+            "stop",
+            "slip",
+            "plan",
+            "drop"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Verdoppeln musst du nur nach kurzem Vokal mit einem Konsonanten am Ende (stop, slip).",
+      "hintEn": null,
+      "explainDe": "walk, play und shout bekommen einfach -ed. stop und slip verdoppeln den letzten Konsonanten: stopped, slipped.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.gs.004",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Nur -d oder y wird zu -ied? Sortiere die Verben.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "like arrived",
+          "members": [
+            "arrive",
+            "notice",
+            "chase",
+            "like",
+            "close"
+          ]
+        },
+        {
+          "label": "like carried",
+          "members": [
+            "carry",
+            "study"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Endet das Verb auf -e, kommt nur -d. Endet es auf Konsonant + y, wird das y zu -ied.",
+      "hintEn": null,
+      "explainDe": "arrive und notice enden auf -e, also nur -d (arrived, noticed). carry und study haben Konsonant + y: carried, studied.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.mc.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "stoped",
+            "stopd",
+            "stoppd",
+            "stopt",
+            "stopped"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form ist richtig geschrieben?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "stopped",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "stoped",
+        "stopd",
+        "stoppd"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach kurzem Vokal wird der letzte Konsonant verdoppelt: stop + p + ed.",
+      "hintEn": null,
+      "explainDe": "Richtig ist stopped: der Konsonant wird verdoppelt und dann kommt -ed.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.mc.002",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "arriveed",
+            "arrivd",
+            "arryved",
+            "arived",
+            "arrived"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form ist richtig geschrieben?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "arrived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "arriveed",
+        "arrivd",
+        "arryved"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "arrive endet schon auf -e. Dann kommt nur ein -d dazu.",
+      "hintEn": null,
+      "explainDe": "Richtig ist arrived: endet das Verb auf -e, hängst du nur -d an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.mc.003",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "carryed",
+            "carryd",
+            "carrd",
+            "carried",
+            "carried"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Form ist richtig geschrieben?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "carried",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "carryed",
+        "carryd",
+        "carrd"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "carry endet auf Konsonant + y. Das y wird zu -ied.",
+      "hintEn": null,
+      "explainDe": "Richtig ist carried: Konsonant + y wird zu -ied.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.mc.004",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Yesterday I walk to school.",
+            "Yesterday I was walked to school.",
+            "Yesterday I did walked to school.",
+            "Yesterday I walks to school.",
+            "Yesterday I walked to school."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Yesterday I walked to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Yesterday I walk to school.",
+        "Yesterday I was walked to school.",
+        "Yesterday I did walked to school."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Für gestern brauchst du das Verb mit -ed. Kein extra was oder did davor.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Yesterday I walked to school: nur walk + ed, ohne was oder did davor.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.mp.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#grammar-1",
+        "seedV1": "m1-u13-past-simple-regular-mp-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "walk",
+          "right": "walked"
+        },
+        {
+          "left": "play",
+          "right": "played"
+        },
+        {
+          "left": "arrive",
+          "right": "arrived"
+        },
+        {
+          "left": "stop",
+          "right": "stopped"
+        },
+        {
+          "left": "carry",
+          "right": "carried"
+        },
+        {
+          "left": "shout",
+          "right": "shouted"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Manche Verben verdoppeln den Konsonanten (stop) oder ändern y zu -ied (carry).",
+      "hintEn": null,
+      "explainDe": "Meist hängst du -ed an. Aber: stop wird stopped, carry wird carried, arrive wird arrived.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.mp.003",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "land",
+          "right": "landed"
+        },
+        {
+          "left": "slip",
+          "right": "slipped"
+        },
+        {
+          "left": "notice",
+          "right": "noticed"
+        },
+        {
+          "left": "press",
+          "right": "pressed"
+        },
+        {
+          "left": "chase",
+          "right": "chased"
+        },
+        {
+          "left": "happen",
+          "right": "happened"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf die Schreibweise: slip verdoppelt das p, chase und notice bekommen nur -d.",
+      "hintEn": null,
+      "explainDe": "slip wird slipped (Konsonant verdoppelt); chase und notice enden auf -e, also nur -d.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.sb.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "help",
+            "helps",
+            "did",
+            "I helped my mum yesterday."
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I / helped / my / mum / yesterday",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I helped my mum yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday I helped my mum.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: zuerst I, dann das Verb mit -ed (helped), dann der Rest.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I helped my mum yesterday: das Verb help bekommt -ed (helped).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.sb.002",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "arrive",
+            "arrives",
+            "did",
+            "The helicopter arrived an hour later."
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "the / helicopter / arrived / an / hour / later",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The helicopter arrived an hour later.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: zuerst the helicopter, dann das Verb mit -d (arrived), dann der Rest.",
+      "hintEn": null,
+      "explainDe": "Richtig ist The helicopter arrived an hour later: arrive endet auf -e, also nur -d (arrived).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.tf.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib die Vergangenheitsform: play → ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "played",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hänge einfach -ed an play an.",
+      "hintEn": null,
+      "explainDe": "play + ed = played. So bildest du bei den meisten Verben die Vergangenheit.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.tf.002",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib die Vergangenheitsform: arrive → ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "arrived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "arrive endet auf -e. Dann kommt nur ein -d dazu.",
+      "hintEn": null,
+      "explainDe": "Endet das Verb auf -e, hängst du nur -d an: arrive wird arrived.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.tf.003",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib die Vergangenheitsform: slip → ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "slipped",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kurzer Vokal und ein Konsonant am Ende: den letzten Buchstaben verdoppeln, dann -ed.",
+      "hintEn": null,
+      "explainDe": "Nach kurzem Vokal verdoppelst du den Konsonanten: slip wird slipped.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.tr.001",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u13-past-simple-regular-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gestern hat sie ihre Oma besucht.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Yesterday she visited her grandma.",
+          "tier": "full"
+        },
+        {
+          "text": "She visited her grandma yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist gestern passiert. visit bekommt die Endung -ed.",
+      "hintEn": null,
+      "explainDe": "visit wird visited. Für Vergangenes hängst du -ed an die Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u13.gi.past-simple-regular.tr.002",
+      "structureId": "g1u13.s.past-simple-regular",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 13 Help!.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Der Rettungsmann landete neben mir und half mir.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The rescue man landed next to me and helped me.",
+          "tier": "full"
+        },
+        {
+          "text": "The man landed next to me and helped me.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Verben sind vorbei: land wird landed, help wird helped.",
+      "hintEn": null,
+      "explainDe": "land wird landed und help wird helped. Beide bekommen -ed für die Vergangenheit.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

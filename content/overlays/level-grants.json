@@ -2043,6 +2043,762 @@
       "reason": "component of bank phrases half past / half an hour",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "arrived",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carried",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "chased",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "happened",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "helped",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "jumped",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "landed",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "noticed",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "played",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "pressed",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "radioed",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "shouted",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "slipped",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "stopped",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "visited",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "walked",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "wanted",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "watched",
+      "reason": "past simple -ed form of a taught regular verb (structure under test)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "arived",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "arrivd",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "arriveed",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "arryved",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carrd",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carryd",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carryed",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "sliped",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "stopd",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "stoped",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "stoppd",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "stopt",
+      "reason": "deliberate wrong -ed spelling (distractor for past-simple-regular)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "mountain",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "danger",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "team",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "rescue",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "spaceship",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "cat",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "safe",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "phone",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "arm",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "later",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "hour",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "minute",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "helps",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "water",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "sky",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "sea",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "boat",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "robot",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "pilot",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "walk",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "play",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "want",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "shout",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "open",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "happen",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "stop",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "slip",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "plan",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "drop",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "arrive",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "notice",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "chase",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "like",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "close",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carry",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "study",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "land",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "press",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "jump",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "visit",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "watch",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "help",
+      "reason": "unit-13 rescue/adventure theme word OR base verb conjugated in past-simple-regular",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "lucky",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "friendly",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "old",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "film",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "front",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "little",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "bus",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "corner",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "bags",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "home",
+      "reason": "common word in a natural carrier, untaught at g1 floor (rescue/past-narrative context)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "summer",
+      "reason": "season word in linking-words carriers (I like summer because…)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u13",
+      "itemId": null,
+      "field": null,
+      "token": "walks",
+      "reason": "deliberate wrong-form decoy (present 3sg vs past) in mc distractor",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
