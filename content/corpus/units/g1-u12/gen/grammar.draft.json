@@ -1,0 +1,3208 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g1-u12",
+  "briefBank": "7926349cf887",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The ___ piece is for Sue. (1)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "first",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei 1 hängst du nicht -th an. Die 1 ist eine der drei Ausnahmen am Anfang.",
+      "hintEn": null,
+      "explainDe": "Bei 1 sagst du first, nicht oneth. Merke: 1 → first, 2 → second, 3 → third, sonst -th.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-gf-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The ___ piece is for Peter. (3)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "third",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei 3 hängst du nicht einfach -th an. Auch die 3 ist eine Ausnahme.",
+      "hintEn": null,
+      "explainDe": "Bei 3 sagst du third, nicht threeth. Merke: 1 → first, 2 → second, 3 → third.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-gf-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "January is the ___ month of the year. (1)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "first",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welche Zahl ist January in der Reihe der Monate? Es ist die erste.",
+      "hintEn": null,
+      "explainDe": "January ist der erste Monat: the first month. Bei 1 sagst du first.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-gf-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "February is the ___ month of the year. (2)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "second",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Monat kommt nach January? Es ist der zweite.",
+      "hintEn": null,
+      "explainDe": "Bei 2 sagst du second, nicht twoth. February ist the second month.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She came ___ in the race. (5th place)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "fifth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Pass auf die Schreibweise auf: bei five ändert sich etwas, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "Aus five wird fifth, nicht fiveth. Das v wird zu f, dann kommt -th.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-gf-003",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Today is the ___ of March. (9)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ninth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei nine fällt etwas weg, bevor -th kommt. Schau genau hin.",
+      "hintEn": null,
+      "explainDe": "Aus nine wird ninth, nicht nineth. Das e fällt weg, dann kommt -th.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-gf-004",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "December is the ___ month of the year. (12)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "twelfth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei twelve ändert sich die Schreibweise, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "Aus twelve wird twelfth, nicht twelveth. Das ve wird zu f, dann kommt -th.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "My birthday is on the ___ of June. (21)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "twenty-first",
+          "tier": "full"
+        },
+        {
+          "text": "21st",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei Zahlen über 20 zählt nur die letzte Ziffer. Wie heißt die 1 als Ordnungszahl?",
+      "hintEn": null,
+      "explainDe": "Bei 21 wird nur der letzte Teil zur Ordnungszahl: twenty-first. Die 1 wird zu first, mit Bindestrich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-gf-007",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "December has 31 days. The last day is the ___. (31)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "thirty-first",
+          "tier": "full"
+        },
+        {
+          "text": "31st",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei 31 wird nur die letzte Ziffer zur Ordnungszahl. Wie heißt die 1?",
+      "hintEn": null,
+      "explainDe": "Bei 31 sagst du thirty-first: thirty bleibt, die 1 wird zu first, mit Bindestrich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-gf-008",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Jessie's cake had twelve candles. The robbery was on the ___ of May, on her birthday. (23)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "twenty-third",
+          "tier": "full"
+        },
+        {
+          "text": "23rd",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei 23 zählt nur die letzte Ziffer. Wie heißt die 3 als Ordnungszahl?",
+      "hintEn": null,
+      "explainDe": "Bei 23 sagst du twenty-third: die 3 wird zu third, mit Bindestrich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Wie schreibt man 2. als Wort?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "second",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "twoth",
+        "twond",
+        "secend"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die 2 ist eine Ausnahme: sie endet nicht auf -th.",
+      "hintEn": null,
+      "explainDe": "2 wird zu second. Nicht twoth und nicht secend - second ist richtig geschrieben.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "twoth",
+          "twond",
+          "secend",
+          "twoeth",
+          "twonth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u12-ordinal-numbers-mc-003",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie schreibt man 12. als Wort richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "twelfth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "twelveth",
+        "twelvth",
+        "twelfeth"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei twelve ändert sich das ve, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "12 wird zu twelfth: das ve wird zu f. Nicht twelveth.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "twelveth",
+          "twelvth",
+          "twelfeth",
+          "twelthe",
+          "twelth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u12-ordinal-numbers-mc-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie schreibt man 8. als Wort richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "eighth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "eightth",
+        "eigthth",
+        "eighteth"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "eight endet schon auf t. Du hängst nur noch -h an, nicht -th.",
+      "hintEn": null,
+      "explainDe": "8 wird zu eighth: an eight kommt nur -h, also eigh-t-h. Nicht eightth.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "eightth",
+          "eigthth",
+          "eighteth",
+          "eigth",
+          "eight"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u12-ordinal-numbers-mc-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wie schreibt man 5. als Wort richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "fifth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "fiveth",
+        "fith",
+        "fifeth"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei five wird das v zu f, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "5 wird zu fifth: das v wird zu f. Nicht fiveth und nicht fith.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "fiveth",
+          "fith",
+          "fifeth",
+          "fivth",
+          "fiffth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My birthday is on the nineth of June.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My birthday is on the ninth of June.",
+          "tier": "full"
+        },
+        {
+          "text": "ninth",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Schau dir die Ordnungszahl an. Bei nine fällt etwas weg, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "Richtig ist ninth, nicht nineth. Bei nine fällt das e weg, bevor -th kommt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-ec-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She was fiveth in the race.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was fifth in the race.",
+          "tier": "full"
+        },
+        {
+          "text": "fifth",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei five ändert sich die Schreibweise, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "Richtig ist fifth, nicht fiveth. Das v wird zu f, dann kommt -th.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-ec-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "December is the twelveth month.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "December is the twelfth month.",
+          "tier": "full"
+        },
+        {
+          "text": "twelfth",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei twelve ändert sich das ve, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "Richtig ist twelfth, nicht twelveth. Das ve wird zu f, dann kommt -th.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-ec-003",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The eightth piece of cake is for you.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The eighth piece of cake is for you.",
+          "tier": "full"
+        },
+        {
+          "text": "eighth",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "eight endet schon auf t. Du hängst nur -h an, nicht -th.",
+      "hintEn": null,
+      "explainDe": "Richtig ist eighth, nicht eightth. An eight kommt nur -h dazu.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib als Wort: 20th → ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "twentieth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei twenty wird das y zu ie, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "20 wird zu twentieth: das y wird zu ie, dann kommt -th. Nicht twentyth.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-tf-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib als Wort: 30th → ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "thirtieth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei thirty wird das y zu ie, genau wie bei twenty.",
+      "hintEn": null,
+      "explainDe": "30 wird zu thirtieth: das y wird zu ie, dann kommt -th.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Heute ist der letzte Tag des Monats. Schreib als Wort: 31st → ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "thirty-first",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei 31 zählt nur die letzte Ziffer. Wie heißt die 1 als Ordnungszahl? Vergiss den Bindestrich nicht.",
+      "hintEn": null,
+      "explainDe": "31 wird zu thirty-first: thirty bleibt, die 1 wird zu first, mit Bindestrich.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-tf-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mein Geburtstag ist am dritten Mai.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My birthday is on the third of May.",
+          "tier": "full"
+        },
+        {
+          "text": "My birthday is on the 3rd of May.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für das Datum brauchst du die Ordnungszahl. Wie heißt die 3 auf Englisch?",
+      "hintEn": null,
+      "explainDe": "Beim Datum nimmst du die Ordnungszahl: the third of May. Die 3 wird zu third.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-tr-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Heute ist der fünfzehnte Dezember.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Today is the fifteenth of December.",
+          "tier": "full"
+        },
+        {
+          "text": "Today is the 15th of December.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wie heißt die 15 als Ordnungszahl? Sie endet normal auf -th.",
+      "hintEn": null,
+      "explainDe": "15 wird zu fifteenth: an fifteen kommt -th. Beim Datum: the fifteenth of December.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-tr-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "8. als Wort — wie heißt es?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "eighth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "eight endet schon auf t. Du hängst nur -h an.",
+      "hintEn": null,
+      "explainDe": "8 wird zu eighth: an eight kommt nur -h dazu.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-ag-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "anagram",
+      "difficulty": 3,
+      "prompt": {
+        "text": "12. als Wort — wie heißt es?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "twelfth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei twelve wird das ve zu f, bevor -th kommt.",
+      "hintEn": null,
+      "explainDe": "12 wird zu twelfth: das ve wird zu f, dann kommt -th.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-ag-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was passt zusammen? Zahl und Wort.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "one",
+          "right": "first"
+        },
+        {
+          "left": "two",
+          "right": "second"
+        },
+        {
+          "left": "three",
+          "right": "third"
+        },
+        {
+          "left": "five",
+          "right": "fifth"
+        },
+        {
+          "left": "eight",
+          "right": "eighth"
+        },
+        {
+          "left": "twelve",
+          "right": "twelfth"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte besonders auf die Ausnahmen: 1, 2, 3 und die kniffligen Schreibweisen bei 5, 8 und 12.",
+      "hintEn": null,
+      "explainDe": "1 → first, 2 → second, 3 → third, 5 → fifth, 8 → eighth, 12 → twelfth. Das sind die wichtigsten Ausnahmen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-ordinal-numbers-mp-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was passt zusammen? Verbinde jede Zahl mit dem passenden Wort.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "four",
+          "right": "fourth"
+        },
+        {
+          "left": "six",
+          "right": "sixth"
+        },
+        {
+          "left": "seven",
+          "right": "seventh"
+        },
+        {
+          "left": "nine",
+          "right": "ninth"
+        },
+        {
+          "left": "ten",
+          "right": "tenth"
+        },
+        {
+          "left": "eleven",
+          "right": "eleventh"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Die meisten enden einfach auf -th. Pass nur bei nine auf - da fällt das e weg.",
+      "hintEn": null,
+      "explainDe": "4 → fourth, 6 → sixth, 7 → seventh, 9 → ninth, 10 → tenth, 11 → eleventh. Bei nine fällt das e weg.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.ordinal-numbers",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere: einfach -th anhängen oder Schreibweise ändern?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "like sixth",
+          "members": [
+            "fourth",
+            "sixth",
+            "seventh",
+            "tenth"
+          ]
+        },
+        {
+          "label": "like fifth",
+          "members": [
+            "fifth",
+            "ninth",
+            "twelfth",
+            "twentieth"
+          ]
+        }
+      ],
+      "hintDe": "Bei welchen Wörtern hast du einfach -th angehängt? Bei welchen musstest du vorher etwas ändern?",
+      "hintEn": null,
+      "explainDe": "fourth, sixth, seventh, tenth hängen nur -th an. Bei fifth, ninth, twelfth, twentieth ändert sich vorher die Schreibweise.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I ___ at school yesterday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu I gehört eine Form für die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Zu I gehört was: I was at school yesterday. yesterday zeigt dir, dass es vorbei ist.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gf-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Peter and John ___ at school last Monday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei zwei Personen brauchst du die Mehrzahl-Form.",
+      "hintEn": null,
+      "explainDe": "Peter and John sind zwei Personen, darum were: Peter and John were at school.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gf-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She ___ very tired after the birthday party.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu she gehört dieselbe Form wie zu he und it.",
+      "hintEn": null,
+      "explainDe": "Zu she gehört was: She was very tired. was passt zu he, she und it.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gf-003",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": "carrier uses 'party' (in birthday/robbery theme; not a standalone bank headword)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ in London last night.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu we gehört die Mehrzahl-Form.",
+      "hintEn": null,
+      "explainDe": "Zu we gehört were: We were in London. were passt zu you, we und they.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gf-004",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The birthday cake ___ delicious!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Cake ist eine Sache (it), darum dieselbe Form wie zu it.",
+      "hintEn": null,
+      "explainDe": "The cake ist wie it, darum was: The birthday cake was delicious.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gf-005",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#10",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___ you at the cinema yesterday?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Were",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage steht die Form zuerst. Zu you gehört were.",
+      "hintEn": null,
+      "explainDe": "Zu you gehört Were am Satzanfang: Were you at the cinema yesterday?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gf-007",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#13",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She ___ happy because her dog ___ ill.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "wasn't | was",
+          "tier": "full"
+        },
+        {
+          "text": "was not | was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erste Lücke: verneint. Zweite Lücke: ganz normal. Beide gehören zu she/dog (it).",
+      "hintEn": null,
+      "explainDe": "She wasn't happy (verneint) because her dog was ill. Zu she und dog (it) gehört was bzw. wasn't.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gf-006",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The children ___ in the garden. They were in the kitchen.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't",
+          "tier": "full"
+        },
+        {
+          "text": "were not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Children sind mehrere (they). Hier brauchst du die verneinte Mehrzahl-Form.",
+      "hintEn": null,
+      "explainDe": "The children sind wie they, verneint also weren't: The children weren't in the garden.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gf-008",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#13",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Last night there ___ a robbery in the kitchen.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine robbery (Einzahl) – darum die Einzahl-Form nach there.",
+      "hintEn": null,
+      "explainDe": "Eine Sache in der Einzahl: there was a robbery. Bei mehreren Dingen heißt es there were.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#10",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They were very happy yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They was very happy yesterday.",
+        "They are very happy yesterday.",
+        "They is very happy yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu they gehört die Mehrzahl-Form, und yesterday zeigt: vorbei.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They were very happy yesterday. Zu they gehört were, nicht was oder are.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "They was very happy yesterday.",
+          "They are very happy yesterday.",
+          "They is very happy yesterday.",
+          "They am very happy yesterday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u12-past-simple-be-mc-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was at the park last Saturday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I were at the park last Saturday.",
+        "I am at the park last Saturday.",
+        "I are at the park last Saturday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu I gehört dieselbe Form wie zu he und she.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I was at the park. Zu I gehört was, nicht were.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I were at the park last Saturday.",
+          "I am at the park last Saturday.",
+          "I are at the park last Saturday.",
+          "I is at the park last Saturday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "'Were you at the party?' – 'No, ___.' Welche Antwort ist richtig?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "I wasn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I weren't",
+        "I wasn't not",
+        "you wasn't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Kurzantwort antwortest du mit I. Zu I gehört wasn't.",
+      "hintEn": null,
+      "explainDe": "Richtig ist No, I wasn't. Zu I gehört wasn't, nicht weren't.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I weren't",
+          "I wasn't not",
+          "you wasn't",
+          "I weren't not"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u12-past-simple-be-mc-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#19",
+      "note": "negation item -> strict:true; carrier uses 'party'",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du erzählst von gestern. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were at the zoo yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We was at the zoo yesterday.",
+        "We are at the zoo yesterday.",
+        "We is at the zoo yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu we gehört die Mehrzahl-Form, und yesterday zeigt: vorbei.",
+      "hintEn": null,
+      "explainDe": "Richtig ist We were at the zoo yesterday. Zu we gehört were.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "We was at the zoo yesterday.",
+          "We are at the zoo yesterday.",
+          "We is at the zoo yesterday.",
+          "We am at the zoo yesterday."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u12-past-simple-be-cp-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Deine Lehrerin fragt nach dem Schulausflug von gestern. Welche Antwort ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It was excellent!",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It were excellent!",
+        "It is excellent!",
+        "It are excellent!"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "It ist Einzahl – darum dieselbe Form wie zu he und she.",
+      "hintEn": null,
+      "explainDe": "Richtig ist It was excellent! Zu it gehört was, nicht were.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It were excellent!",
+          "It is excellent!",
+          "It are excellent!",
+          "It am excellent!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u12-past-simple-be-cp-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#10",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "They was at the zoo yesterday.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They were at the zoo yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "were",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Schau zu they: passt da was oder were?",
+      "hintEn": null,
+      "explainDe": "Zu they gehört were: They were at the zoo yesterday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-ec-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I were at the cinema last night.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was at the cinema last night.",
+          "tier": "full"
+        },
+        {
+          "text": "was",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Schau zu I: passt da was oder were?",
+      "hintEn": null,
+      "explainDe": "Zu I gehört was: I was at the cinema last night.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-ec-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I was been tired yesterday.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was tired yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Wort ist hier zu viel. was steht schon allein.",
+      "hintEn": null,
+      "explainDe": "was steht allein: I was tired yesterday. been gehört nicht dazu.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "been",
+          "de": "zweite Form von be",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-ec-003",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": "exploits the 'was been' error from the brief; 'been' is out of bank -> glossed + flagged for granting",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I am happy. → Yesterday I ___ happy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday I was happy.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mach aus am die Form für die Vergangenheit. Zu I gehört was.",
+      "hintEn": null,
+      "explainDe": "Aus am wird in der Vergangenheit was: Yesterday I was happy.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-tf-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He was in the living room. → ___ he in the living room?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Was",
+          "tier": "full"
+        },
+        {
+          "text": "Was he in the living room?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für die Frage stellst du die Form an den Anfang. Zu he gehört Was.",
+      "hintEn": null,
+      "explainDe": "Für die Frage kommt Was nach vorne: Was he in the living room?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-tf-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#13",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "They were at school. → Mach den Satz verneint: They ___ at school.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't",
+          "tier": "full"
+        },
+        {
+          "text": "were not",
+          "tier": "full"
+        },
+        {
+          "text": "They weren't at school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aus were wird in der verneinten Form weren't.",
+      "hintEn": null,
+      "explainDe": "Verneint heißt were dann weren't: They weren't at school.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": "negation item -> strict:true",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She was in the kitchen. Stell eine Ja/Nein-Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Was she in the kitchen?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Stell die Form an den Anfang. Zu she gehört Was.",
+      "hintEn": null,
+      "explainDe": "Für die Frage kommt Was nach vorne: Was she in the kitchen?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-qf-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#13",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sandra and Kate were in the garden. Stell eine Ja/Nein-Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Were Sandra and Kate in the garden?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Personen – darum die Mehrzahl-Form an den Anfang.",
+      "hintEn": null,
+      "explainDe": "Zu zwei Personen gehört Were am Anfang: Were Sandra and Kate in the garden?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#13",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Wir waren gestern im Kino.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were at the cinema yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday we were at the cinema.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "waren = were. Denk an at the cinema.",
+      "hintEn": null,
+      "explainDe": "waren heißt were: We were at the cinema yesterday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-tr-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Er war gestern nicht in der Schule.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He wasn't at school yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "He was not at school yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday he wasn't at school.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "war nicht = wasn't. Zu he gehört wasn't.",
+      "hintEn": null,
+      "explainDe": "war nicht heißt wasn't: He wasn't at school yesterday.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-tr-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": "negation item -> strict:true",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "we / were / yesterday / at / the park",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were at the park yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "Yesterday we were at the park.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: we + were + Ort + Zeit.",
+      "hintEn": null,
+      "explainDe": "Zuerst we, dann were, dann der Ort: We were at the park yesterday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "are",
+          "is",
+          "am"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m1-u12-past-simple-be-sb-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Tom / at / wasn't / the / party",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom wasn't at the party.",
+          "tier": "full"
+        },
+        {
+          "text": "Tom was not at the party.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: Tom + wasn't + Ort. Tom ist wie he.",
+      "hintEn": null,
+      "explainDe": "Tom ist wie he, verneint also wasn't: Tom wasn't at the party.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "weren't",
+          "were",
+          "isn't",
+          "aren't"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": "negation item -> strict:true; carrier uses 'party'",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Frage und passende Kurzantwort",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Was Tom in the garden?",
+          "right": "Yes, he was."
+        },
+        {
+          "left": "Were you at the cinema?",
+          "right": "Yes, I was."
+        },
+        {
+          "left": "Were Sandra and Kate there?",
+          "right": "No, they weren't."
+        },
+        {
+          "left": "Was the cake delicious?",
+          "right": "Yes, it was."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte auf das erste Wort (Was/Were) und ob die Antwort ja oder nein ist.",
+      "hintEn": null,
+      "explainDe": "Die Kurzantwort passt zur Person: Was Tom …? → Yes, he was. Were …? → Yes, I was / No, they weren't.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#13",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "was oder were? Sortiere die Wörter.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "was",
+          "members": [
+            "I",
+            "he",
+            "she",
+            "it"
+          ]
+        },
+        {
+          "label": "were",
+          "members": [
+            "you",
+            "we",
+            "they"
+          ]
+        }
+      ],
+      "hintDe": "Zu einer Person (I/he/she/it) gehört die eine Form, zu mehreren die andere.",
+      "hintEn": null,
+      "explainDe": "Zu I, he, she, it gehört was. Zu you, we, they gehört were.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gs-001",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere: ein Satz ohne nicht oder ein Satz mit nicht (verneint)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "Yes",
+          "members": [
+            "I was happy.",
+            "She was in the kitchen.",
+            "They were at school."
+          ]
+        },
+        {
+          "label": "No",
+          "members": [
+            "I wasn't tired.",
+            "Tom wasn't there.",
+            "They weren't at the zoo."
+          ]
+        }
+      ],
+      "hintDe": "Steht n't (wasn't/weren't) im Satz, ist er verneint.",
+      "hintEn": null,
+      "explainDe": "Sätze mit wasn't oder weren't sind verneint. Sätze mit was oder were sind ohne nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-past-simple-be-gs-002",
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#16",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Die Vergangenheits-Form von be zu they:",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zu they, we und you gehört diese Form.",
+      "hintEn": null,
+      "explainDe": "Zu they gehört were: They were happy.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.past-simple-was-were",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Die verneinte Form von was:",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "wasn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hänge n't an was an.",
+      "hintEn": null,
+      "explainDe": "was + n't = wasn't. So verneinst du was: Tom wasn't there.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 12 The birthday cake.txt#grammar-1",
+      "note": "negation item -> strict:true",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I have English ___ Monday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei Wochentagen (Monday, Tuesday …) nimmst du ein bestimmtes Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor Wochentagen steht on: on Monday, on Friday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-gf-001",
+      "sbRef": null,
+      "note": "carriers in-bank: English (proper-noun list), Monday (g1-u04)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "My birthday is ___ March.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "in",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei Monaten (March, May …) nimmst du ein bestimmtes Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor Monaten steht in: in March, in December.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The concert is ___ 8 o'clock.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "at",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei Uhrzeiten (8 o'clock, half past nine …) nimmst du ein bestimmtes Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor Uhrzeiten steht at: at 8 o'clock, at half past nine.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-gf-003",
+      "sbRef": null,
+      "note": "concert in-bank (g1-u05); o'clock (g1-u11)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "We go to bed ___ night.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "at",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für night gibt es ein besonderes Vorwort — nicht in oder on.",
+      "hintEn": null,
+      "explainDe": "Es heißt at night. Das ist eine feste Wendung, die du dir merken musst.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "SB Unit 12 grammar box: We go to bed late at night.",
+      "note": "night (g1-u04); go to bed (g1-u11)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Her birthday is ___ May 25th.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei einem genauen Datum (May 28th) nimmst du dasselbe Vorwort wie bei Tagen.",
+      "hintEn": null,
+      "explainDe": "Vor einem Datum steht on: on May 28th, on February 12th.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-gf-005",
+      "sbRef": "SB Unit 12 grammar box: My birthday is on February 12th / May 28th.",
+      "note": "date pattern month+ordinal from book",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I wake up early ___ the morning.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "in",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei Tageszeiten wie the morning, the afternoon nimmst du dasselbe Vorwort wie bei Monaten.",
+      "hintEn": null,
+      "explainDe": "Es heißt in the morning, in the afternoon, in the evening. Aber: at night!",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-gf-006",
+      "sbRef": null,
+      "note": "wake up (g1-u11 wake somebody up); morning (g1-u04)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We have a match ___ Saturday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Saturday ist ein Wochentag — welches Vorwort passt?",
+      "hintEn": null,
+      "explainDe": "Vor Wochentagen steht on: on Saturday, on Sunday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-mc-003",
+      "sbRef": null,
+      "note": "match (g1-u12); Saturday (g1-u04)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The cinema opens ___ half past six ___ the evening.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "at | in",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst kommt eine Uhrzeit, dann eine Tageszeit — jede braucht ihr eigenes Vorwort.",
+      "hintEn": null,
+      "explainDe": "Bei der Uhrzeit steht at (at half past six), bei der Tageszeit steht in (in the evening).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "cinema (g1-u12); half past (g1-u11); evening (g1-u04). open (g1-u01 to open)",
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "My birthday is ___ December, ___ the 21st.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "in | on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst kommt ein Monat, dann ein genaues Datum — beide brauchen ihr eigenes Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor dem Monat steht in (in December), vor dem Datum steht on (on the 21st).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "December (g1-u12); 21st twenty-first (g1-u12)",
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "My sister's birthday is ___ June.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "in",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "on",
+        "at",
+        "to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "June ist ein Monat.",
+      "hintEn": null,
+      "explainDe": "Vor Monaten steht in: in June.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "on",
+          "at",
+          "to",
+          "for"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 12 grammar box: My sister's birthday is in December / April / June.",
+      "note": "sister (g1-u03/u05); June (g1-u12)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I have English ___ the afternoon.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "in",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "on",
+        "at",
+        "to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "the afternoon ist eine Tageszeit — wie the morning.",
+      "hintEn": null,
+      "explainDe": "Es heißt in the afternoon, genau wie in the morning und in the evening.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "on",
+          "at",
+          "to",
+          "for"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 12 grammar box: I have maths in the morning / the afternoon.",
+      "note": "afternoon (g1-u04); English (proper-noun list). Swapped SB's 'maths' (out-of-bank) for 'English'",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The match is ___ Thursday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "on",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "in",
+        "at",
+        "to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Thursday ist ein Wochentag.",
+      "hintEn": null,
+      "explainDe": "Vor Wochentagen steht on: on Thursday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "in",
+          "at",
+          "to",
+          "for"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "match (g1-u12); Thursday (g1-u04)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The concert is on Saturday at 7 o'clock.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The concert is in Saturday at 7 o'clock.",
+        "The concert is on Saturday in 7 o'clock.",
+        "The concert is at Saturday on 7 o'clock."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Achte auf beide Vorwörter: eines vor dem Tag, eines vor der Uhrzeit.",
+      "hintEn": null,
+      "explainDe": "Vor dem Tag steht on (on Saturday), vor der Uhrzeit steht at (at 7 o'clock).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The concert is in Saturday at 7 o'clock.",
+          "The concert is on Saturday in 7 o'clock.",
+          "The concert is at Saturday on 7 o'clock.",
+          "The concert is on Saturday on 7 o'clock."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u12-prepositions-time-mc-001",
+      "sbRef": null,
+      "note": "concert (g1-u05); Saturday (g1-u04)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du erzählst, wann dein Geburtstag ist. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My birthday is in May.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "My birthday is on May.",
+        "My birthday is at May.",
+        "My birthday is to May."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "May ist ein Monat.",
+      "hintEn": null,
+      "explainDe": "Vor Monaten steht in: in May.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "My birthday is on May.",
+          "My birthday is at May.",
+          "My birthday is to May.",
+          "My birthday is for May."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "May (g1-u12); birthday (g1-u04)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du sagst, wann du ins Bett gehst. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I go to bed at night.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I go to bed in night.",
+        "I go to bed on night.",
+        "I go to bed in the night."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für night gibt es eine feste Wendung mit einem besonderen Vorwort.",
+      "hintEn": null,
+      "explainDe": "Es heißt at night — nicht in night oder on night.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I go to bed in night.",
+          "I go to bed on night.",
+          "I go to bed in the night.",
+          "I go to bed on the night."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 12 grammar box: We go to bed late at night.",
+      "note": "go to bed (g1-u11); night (g1-u04)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I have English in Monday.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have English on Monday.",
+          "tier": "full"
+        },
+        {
+          "text": "on",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor einem Wochentag steht ein anderes Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor Wochentagen steht on, nicht in: on Monday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-ec-001",
+      "sbRef": null,
+      "note": "English (proper-noun list); Monday (g1-u04)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My birthday is on December.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My birthday is in December.",
+          "tier": "full"
+        },
+        {
+          "text": "in",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor einem Monat steht ein anderes Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor Monaten steht in, nicht on: in December.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-ec-002",
+      "sbRef": null,
+      "note": "December (g1-u12)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The concert is on 7 o'clock.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The concert is at 7 o'clock.",
+          "tier": "full"
+        },
+        {
+          "text": "at",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor einer Uhrzeit steht ein anderes Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor Uhrzeiten steht at, nicht on: at 7 o'clock.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-ec-003",
+      "sbRef": "SB Unit 12 grammar box: The film starts at 7 o'clock.",
+      "note": "o'clock (g1-u11); concert (g1-u05). Swapped SB's 'The film starts' (film+starts out-of-bank) for 'The concert is'",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I wake up in the morning, but my sister gets up on the afternoon.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I wake up in the morning, but my sister gets up in the afternoon.",
+          "tier": "full"
+        },
+        {
+          "text": "in",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Tageszeiten brauchen alle dasselbe Vorwort.",
+      "hintEn": null,
+      "explainDe": "Es heißt in the afternoon — genau wie in the morning. Der Fehler steckt im zweiten Satzteil.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "morning/afternoon (g1-u04); wake up (g1-u11); get up (g1-u06); sister (g1-u03/u05)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze die richtigen Vorwörter ein: I go skating ___ Thursdays ___ January.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "on | in",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst kommt ein Wochentag, dann ein Monat.",
+      "hintEn": null,
+      "explainDe": "Vor dem Tag steht on (on Thursdays), vor dem Monat steht in (in January).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-tf-002",
+      "sbRef": null,
+      "note": "skate (g1-u11); Thursday (g1-u04); January (g1-u12)",
+      "blanks": 2
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setze die richtigen Vorwörter ein: The match is ___ Saturday, ___ the afternoon, ___ 3 o'clock.",
+        "lang": "de",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "on | in | at",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Drei Lücken: ein Tag, eine Tageszeit und eine Uhrzeit — jede mit ihrem eigenen Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor dem Tag steht on, vor der Tageszeit in, vor der Uhrzeit at: on Saturday, in the afternoon, at 3 o'clock.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-tf-001",
+      "sbRef": null,
+      "note": "Saturday/afternoon (g1-u04); o'clock (g1-u11); match (g1-u12). Swapped v1 'party' (out-of-bank) for 'match'",
+      "blanks": 3
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich habe am Freitag ein Match.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have a match on Friday.",
+          "tier": "full"
+        },
+        {
+          "text": "I have got a match on Friday.",
+          "tier": "full"
+        },
+        {
+          "text": "I've got a match on Friday.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Freitag ist ein Wochentag — denk an das richtige Vorwort.",
+      "hintEn": null,
+      "explainDe": "Vor Wochentagen steht on: on Friday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-tr-001",
+      "sbRef": null,
+      "note": "Friday (g1-u04); match (g1-u12). Swapped v1 'test' (out-of-bank) for 'match'",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Der Geburtstag meiner Schwester ist im Dezember.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My sister's birthday is in December.",
+          "tier": "full"
+        },
+        {
+          "text": "My sister's birthday's in December.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Dezember ist ein Monat — welches Vorwort passt vor Monaten?",
+      "hintEn": null,
+      "explainDe": "Vor Monaten steht in: in December.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "SB Unit 12 grammar box: My sister's birthday is in December.",
+      "note": "sister (g1-u03/u05); December (g1-u12)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "is / on / The match / Saturday / .",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The match is on Saturday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Vorwort gehört vor den Wochentag?",
+      "hintEn": null,
+      "explainDe": "Vor Wochentagen steht on: The match is on Saturday.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "in",
+          "at",
+          "on",
+          "May"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": "m1-u12-prepositions-time-sb-001",
+      "sbRef": null,
+      "note": "match (g1-u12); Saturday (g1-u04). chips: 5 prompt chips + 2 distractor prep chips = 7 <= 12",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "go to bed / at / We / night / .",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We go to bed at night.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für night gibt es eine feste Wendung mit at.",
+      "hintEn": null,
+      "explainDe": "Es heißt at night: We go to bed at night.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "in",
+          "on",
+          "at",
+          "May"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "SB Unit 12 grammar box: We go to bed late at night.",
+      "note": "go to bed (g1-u11); night (g1-u04)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere die Zeitangaben nach dem richtigen kleinen Wort.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "in",
+          "members": [
+            "May",
+            "December",
+            "the morning",
+            "the afternoon"
+          ]
+        },
+        {
+          "label": "on",
+          "members": [
+            "Monday",
+            "Saturday",
+            "May 25th",
+            "my birthday"
+          ]
+        },
+        {
+          "label": "at",
+          "members": [
+            "7 o'clock",
+            "half past eight",
+            "night",
+            "midnight"
+          ]
+        }
+      ],
+      "hintDe": "Monate und Tageszeiten gehören zusammen; Tage und Daten gehören zusammen; Uhrzeiten und night gehören zusammen.",
+      "hintEn": null,
+      "explainDe": "in vor Monaten und Tageszeiten, on vor Tagen und Daten, at vor Uhrzeiten und bei night.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-gs-001",
+      "sbRef": null,
+      "note": "all members in-bank: months/dates/ordinals (g1-u12), days+parts-of-day (g1-u04), o'clock/half past/midnight (g1-u11). Dropped v1 'the weekend','noon','summer','2024' as out-of-bank",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welches kleine Wort passt? Sortiere in zwei Gruppen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "in",
+          "members": [
+            "January",
+            "June",
+            "October"
+          ]
+        },
+        {
+          "label": "on",
+          "members": [
+            "Tuesday",
+            "Friday",
+            "Sunday"
+          ]
+        }
+      ],
+      "hintDe": "Eine Gruppe sind Monate, die andere sind Wochentage.",
+      "hintEn": null,
+      "explainDe": "Vor Monaten steht in, vor Wochentagen steht on.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "months (g1-u12); days (g1-u04)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g1u12.s.prepositions-time",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verbinde jede Zeitangabe mit der richtigen Form.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Monday",
+          "right": "on Monday"
+        },
+        {
+          "left": "May",
+          "right": "in May"
+        },
+        {
+          "left": "7 o'clock",
+          "right": "at 7 o'clock"
+        },
+        {
+          "left": "night",
+          "right": "at night"
+        },
+        {
+          "left": "the morning",
+          "right": "in the morning"
+        },
+        {
+          "left": "my birthday",
+          "right": "on my birthday"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Überlege bei jeder Zeitangabe, ob in, on oder at davor gehört.",
+      "hintEn": null,
+      "explainDe": "in vor Monaten und Tageszeiten, on vor Tagen und Daten, at vor Uhrzeiten und bei night.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u12-prepositions-time-mt-001",
+      "sbRef": null,
+      "note": "unique right-sides; reworked from v1 mt (which had non-unique in/on/at right-sides). All tokens in-bank",
+      "blanks": 0
+    }
+  ]
+}

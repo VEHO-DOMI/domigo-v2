@@ -1,0 +1,190 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g1-u12",
+  "items": {
+    "e776b817d685": "g1u12.gi.ordinal-numbers.gf.001",
+    "af054e55e7c4": "g1u12.gi.ordinal-numbers.gf.002",
+    "a69cb4f3a499": "g1u12.gi.ordinal-numbers.gf.003",
+    "842764e2b8ec": "g1u12.gi.ordinal-numbers.gf.004",
+    "e47769ed6fa1": "g1u12.gi.ordinal-numbers.gf.005",
+    "d5688d6e3be8": "g1u12.gi.ordinal-numbers.gf.006",
+    "85a0c0f883d3": "g1u12.gi.ordinal-numbers.gf.007",
+    "58145f3518ff": "g1u12.gi.ordinal-numbers.gf.008",
+    "fa0030a969b1": "g1u12.gi.ordinal-numbers.gf.009",
+    "3a2c45425aeb": "g1u12.gi.ordinal-numbers.gf.010",
+    "40c12480ad78": "g1u12.gi.ordinal-numbers.ec.001",
+    "974b4b028928": "g1u12.gi.ordinal-numbers.ec.002",
+    "bc79d303d854": "g1u12.gi.ordinal-numbers.ec.003",
+    "f860931aecb4": "g1u12.gi.ordinal-numbers.ec.004",
+    "cc89193d2717": "g1u12.gi.ordinal-numbers.tr.001",
+    "dc148fd8d17c": "g1u12.gi.ordinal-numbers.tr.002",
+    "f3392d8379dd": "g1u12.gi.past-simple-was-were.gf.001",
+    "60bf45dc3949": "g1u12.gi.past-simple-was-were.gf.002",
+    "22c5895cd876": "g1u12.gi.past-simple-was-were.gf.003",
+    "041e5254c959": "g1u12.gi.past-simple-was-were.gf.004",
+    "dd93ac4af538": "g1u12.gi.past-simple-was-were.gf.005",
+    "3efa1bede101": "g1u12.gi.past-simple-was-were.gf.006",
+    "870d11138ee9": "g1u12.gi.past-simple-was-were.gf.007",
+    "4f684cb54010": "g1u12.gi.past-simple-was-were.gf.008",
+    "e077749d14a8": "g1u12.gi.past-simple-was-were.gf.009",
+    "807bf5cb95f6": "g1u12.gi.past-simple-was-were.mc.001",
+    "101e04d65fbc": "g1u12.gi.past-simple-was-were.mc.002",
+    "f32cb9a87717": "g1u12.gi.past-simple-was-were.mc.003",
+    "c1161aafa2dd": "g1u12.gi.past-simple-was-were.cp.001",
+    "4ae7fb55cfa8": "g1u12.gi.past-simple-was-were.cp.002",
+    "0d818a3651d3": "g1u12.gi.past-simple-was-were.ec.001",
+    "385366097de4": "g1u12.gi.past-simple-was-were.ec.002",
+    "e39a6b120687": "g1u12.gi.past-simple-was-were.ec.003",
+    "591b742158ae": "g1u12.gi.past-simple-was-were.tf.001",
+    "c4af0997bbc7": "g1u12.gi.past-simple-was-were.tf.002",
+    "2a7d5af9b8b7": "g1u12.gi.past-simple-was-were.tf.003",
+    "190dcac6b055": "g1u12.gi.past-simple-was-were.qf.001",
+    "eb7b92486364": "g1u12.gi.past-simple-was-were.qf.002",
+    "4789d9291252": "g1u12.gi.past-simple-was-were.tr.001",
+    "893f37ed9ea1": "g1u12.gi.past-simple-was-were.tr.002",
+    "89a57b61f915": "g1u12.gi.past-simple-was-were.sb.001",
+    "a27017912834": "g1u12.gi.past-simple-was-were.sb.002",
+    "cc80b22521d7": "g1u12.gi.past-simple-was-were.mt.001",
+    "1d21fef2d13d": "g1u12.gi.past-simple-was-were.gs.001",
+    "4f2ce579f24b": "g1u12.gi.past-simple-was-were.ag.001",
+    "c988bbeba36d": "g1u12.gi.past-simple-was-were.ag.002",
+    "2a807d4bd48d": "g1u12.gi.prepositions-time.gf.001",
+    "72369d4527d4": "g1u12.gi.prepositions-time.gf.002",
+    "33546452bd8c": "g1u12.gi.prepositions-time.gf.003",
+    "bf982a12e552": "g1u12.gi.prepositions-time.gf.006",
+    "436f20966412": "g1u12.gi.prepositions-time.gf.007",
+    "9d6964b1b702": "g1u12.gi.prepositions-time.gf.008",
+    "19ce662c514a": "g1u12.gi.prepositions-time.gf.009",
+    "90c3a5bdc61f": "g1u12.gi.prepositions-time.mc.001",
+    "7eaa600f4919": "g1u12.gi.prepositions-time.mc.002",
+    "2be87cc86b37": "g1u12.gi.prepositions-time.mc.003",
+    "e4ffa05877b9": "g1u12.gi.prepositions-time.mc.004",
+    "3d55074ad4cb": "g1u12.gi.prepositions-time.cp.001",
+    "fa17a687c6e1": "g1u12.gi.prepositions-time.cp.002",
+    "9858fd61938f": "g1u12.gi.prepositions-time.ec.001",
+    "879364376cc2": "g1u12.gi.prepositions-time.ec.002",
+    "6f64baab969c": "g1u12.gi.prepositions-time.ec.003",
+    "42a76c5e4a85": "g1u12.gi.prepositions-time.ec.004",
+    "8bc61387ee10": "g1u12.gi.prepositions-time.tf.001",
+    "e0a08d38d758": "g1u12.gi.prepositions-time.tf.002",
+    "497f16e4e534": "g1u12.gi.prepositions-time.tr.001",
+    "5dcd19784a5b": "g1u12.gi.prepositions-time.tr.002",
+    "a4c2da9403b0": "g1u12.gi.prepositions-time.sb.001",
+    "051f4ab27c36": "g1u12.gi.prepositions-time.sb.002",
+    "8f08b7037e61": "g1u12.gi.prepositions-time.mp.001",
+    "8c69ce72141a": "g1u12.gi.ordinal-numbers.gs.002",
+    "78c634c4425e": "g1u12.gi.past-simple-was-were.gs.003",
+    "e0f89352fae5": "g1u12.gi.prepositions-time.gf.010",
+    "935e8d7d8f8e": "g1u12.gi.prepositions-time.gf.011",
+    "a9d30e67a3a6": "g1u12.gi.ordinal-numbers.mc.005",
+    "dab6fc371015": "g1u12.gi.ordinal-numbers.mc.006",
+    "4165c8d95373": "g1u12.gi.ordinal-numbers.mc.007",
+    "acea029bd6df": "g1u12.gi.ordinal-numbers.mc.008",
+    "53dc84e64fa7": "g1u12.gi.ordinal-numbers.tf.004",
+    "ffa5223b2ef6": "g1u12.gi.ordinal-numbers.tf.005",
+    "f6d1935f10c5": "g1u12.gi.ordinal-numbers.tf.006",
+    "78559c2a25ab": "g1u12.gi.ordinal-numbers.ag.003",
+    "23f05f2c1cd5": "g1u12.gi.ordinal-numbers.ag.004",
+    "dd9e27429f40": "g1u12.gi.ordinal-numbers.mp.003",
+    "ab670227e8ce": "g1u12.gi.ordinal-numbers.mp.004",
+    "342817bd4d81": "g1u12.gi.prepositions-time.gs.004",
+    "03b75063ee98": "g1u12.gi.prepositions-time.gs.005"
+  },
+  "tombstones": [
+    {
+      "id": "g1u12.gi.ordinal-numbers.gs.001",
+      "key": "9808cfa056d5",
+      "removedWith": "132efa3f3a77"
+    },
+    {
+      "id": "g1u12.gi.past-simple-was-were.mp.001",
+      "key": "8154d8c296a9",
+      "removedWith": "132efa3f3a77"
+    },
+    {
+      "id": "g1u12.gi.past-simple-was-were.gs.002",
+      "key": "619d1c40ad32",
+      "removedWith": "132efa3f3a77"
+    },
+    {
+      "id": "g1u12.gi.prepositions-time.gf.004",
+      "key": "51234ad41649",
+      "removedWith": "132efa3f3a77"
+    },
+    {
+      "id": "g1u12.gi.prepositions-time.gf.005",
+      "key": "23c12105f4e0",
+      "removedWith": "132efa3f3a77"
+    },
+    {
+      "id": "g1u12.gi.prepositions-time.gs.001",
+      "key": "6ec81ac2e8e4",
+      "removedWith": "132efa3f3a77"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.mc.001",
+      "key": "3b6a1511145d",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.mc.002",
+      "key": "63a6e29046bb",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.mc.003",
+      "key": "8ec6f247e547",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.mc.004",
+      "key": "e977a65fc391",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.tf.001",
+      "key": "b9b16a670fd4",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.tf.002",
+      "key": "ced048427b76",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.tf.003",
+      "key": "6a68cbc6b8ef",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.ag.001",
+      "key": "a3dd45faff57",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.ag.002",
+      "key": "74b88eff08eb",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.mp.001",
+      "key": "4a3cb989197e",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.ordinal-numbers.mp.002",
+      "key": "2b66ab398e17",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.prepositions-time.gs.002",
+      "key": "640c02f9d669",
+      "removedWith": "75ae6e4d708d"
+    },
+    {
+      "id": "g1u12.gi.prepositions-time.gs.003",
+      "key": "96a428cbc189",
+      "removedWith": "75ae6e4d708d"
+    }
+  ]
+}
