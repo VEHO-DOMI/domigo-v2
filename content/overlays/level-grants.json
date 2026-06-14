@@ -4806,6 +4806,924 @@
       "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "taller",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "bigger",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "smaller",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "faster",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "colder",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "hotter",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "heavier",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "harder",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "easier",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "cheaper",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "better",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "exciting",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "dangerous",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "beautiful",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "popular",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "tall",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "big",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "small",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "fast",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "cold",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "hot",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "heavy",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "hard",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "easy",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "cheap",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "expensive",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "students",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "cars",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "apples",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "sweets",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "people",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "sharks",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "bears",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "water",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "sugar",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "time",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "homework",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "much",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "far",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "slightly",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "fewer",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "less",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "nearly",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "elephant",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "cat",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "dog",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "lion",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "seal",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "whale",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "brother",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "father",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "mother",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "phone",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "tablet",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "book",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "beach",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "park",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "river",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "road",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "box",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "storm",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "class",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "week",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "tea",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "film",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "expensiver",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "popularer",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "excitinger",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "dangerouser",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "peoples",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "lesser",
+      "reason": "comparative-intensifiers: adjective/comparative form, countable/uncountable noun, intensifier, carrier noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "bled",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "mistook",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "took",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "almost",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "as",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "b",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "baby",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "bear",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "bit",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "blue",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "count",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "difference",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "football",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "game",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "got",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "little",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "lot",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "luckily",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "next",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "old",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "only",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "same",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "should",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "start",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "switzerland",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "tennis",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "test",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "video",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "warmer",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "winter",
+      "reason": "comparative unit carrier/theme word or inflection untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u04",
+      "itemId": null,
+      "field": null,
+      "token": "fewest",
+      "reason": "deliberate wrong-form decoy (fewest for fewer) in mc distractor",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

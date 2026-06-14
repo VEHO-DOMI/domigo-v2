@@ -1,0 +1,2130 @@
+{
+  "schema": "grammar@1",
+  "grade": 3,
+  "unit": 4,
+  "slug": "g3-u04",
+  "items": [
+    {
+      "id": "g3u04.gi.comparative-intensifiers.ag.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "ag single word; grant: much, bigger, big, elephant(s), cat(s)"
+      },
+      "prompt": {
+        "text": "Welches Wort fehlt? An elephant is ___ bigger than a cat. (großer Unterschied, 4 Buchstaben)",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "much",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vier Buchstaben, beginnt mit m; es zeigt einen großen Unterschied.",
+      "hintEn": null,
+      "explainDe": "much verstärkt den Komparativ bei großem Unterschied: An elephant is much bigger than a cat.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.cp.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "This phone is very more expensive than that one.",
+            "This phone is more expensive much than that one.",
+            "This phone is much more expensiver than that one.",
+            "This phone is a lot more expensiver than that one."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-tf-001",
+        "narrative": null,
+        "note": "cp big-diff; errors: very / position / double-comp; grant: more expensive, expensive, phone"
+      },
+      "prompt": {
+        "text": "Du vergleichst zwei Handys. Das eine kostet 1.200 Euro, das andere 400 Euro. Betone den großen Unterschied.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This phone is much more expensive than that one.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "This phone is very more expensive than that one.",
+        "This phone is more expensive much than that one.",
+        "This phone is much more expensiver than that one."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Großer Unterschied: much direkt vor more expensive.",
+      "hintEn": null,
+      "explainDe": "Bei einem großen Unterschied steht much vor more expensive: This phone is much more expensive than that one.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.cp.002",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "My brother is much taller than me.",
+            "My brother is a bit more taller than me.",
+            "My brother is a bit taller than I.",
+            "My brother is taller a bit than me."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-tf-002",
+        "narrative": null,
+        "note": "cp small-diff; errors: big-not-small / double-comp / wrong-pronoun; grant: taller, tall, brother"
+      },
+      "prompt": {
+        "text": "Dein Bruder ist 175 cm groß, du bist 172 cm. Der Unterschied ist klein. Sag es.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My brother is a bit taller than me.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "My brother is much taller than me.",
+        "My brother is a bit more taller than me.",
+        "My brother is a bit taller than I."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nur ein kleiner Unterschied, also a bit, und kein doppelter Komparativ.",
+      "hintEn": null,
+      "explainDe": "Bei einem kleinen Unterschied steht a bit vor taller, ohne zweites more: My brother is a bit taller than me.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.cp.003",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "There are less people in the park today.",
+            "There are fewer peoples in the park today.",
+            "There are more less people in the park today.",
+            "There are lesser people in the park today."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "cp fewer-countable; errors: less-for-countable / wrong-plural / double; grant: fewer, people, park"
+      },
+      "prompt": {
+        "text": "Im Park sind heute viel weniger Menschen als sonst. Sag es.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are fewer people in the park today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "There are less people in the park today.",
+        "There are fewer peoples in the park today.",
+        "There are more less people in the park today."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "people kann man zählen.",
+      "hintEn": null,
+      "explainDe": "people ist zählbar, deshalb fewer und nicht less: There are fewer people in the park today.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.ec.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-ec-020",
+        "narrative": null,
+        "note": "ec very->much; grant: bigger, big, dog(s)"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: My dog is very bigger than yours.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My dog is much bigger than yours.",
+          "tier": "full"
+        },
+        {
+          "text": "My dog is a lot bigger than yours.",
+          "tier": "full"
+        },
+        {
+          "text": "My dog is far bigger than yours.",
+          "tier": "full"
+        },
+        {
+          "text": "much bigger",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor einem Komparativ steht nicht very.",
+      "hintEn": null,
+      "explainDe": "very passt nicht vor einen Komparativ; richtig ist much (oder a lot/far): My dog is much bigger than yours.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.ec.002",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-ec-003",
+        "narrative": null,
+        "note": "ec double-comp more+er; grant: faster, fast, brother"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: He is more faster than his brother.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He is much faster than his brother.",
+          "tier": "full"
+        },
+        {
+          "text": "He is a lot faster than his brother.",
+          "tier": "full"
+        },
+        {
+          "text": "He is far faster than his brother.",
+          "tier": "full"
+        },
+        {
+          "text": "He is faster than his brother.",
+          "tier": "full"
+        },
+        {
+          "text": "much faster",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "faster ist schon der Komparativ; ein zweites more ist falsch.",
+      "hintEn": null,
+      "explainDe": "Man bildet den Komparativ nur einmal: kein more vor faster. Richtig ist (much) faster than his brother.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.ec.003",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-ec-021",
+        "narrative": null,
+        "note": "ec much+double-comp; grant: harder, hard"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: Science is much more harder than art.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Science is much harder than art.",
+          "tier": "full"
+        },
+        {
+          "text": "much harder",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "harder ist schon gesteigert; lass more weg, aber behalte den Verstärker.",
+      "hintEn": null,
+      "explainDe": "Vor harder darf kein more stehen, der Verstärker much bleibt: Science is much harder than art.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.ec.004",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "ec position after->before; grant: heavier, heavy, whale(s), elephant(s)"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: A whale is heavier much than an elephant.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A whale is much heavier than an elephant.",
+          "tier": "full"
+        },
+        {
+          "text": "A whale is a lot heavier than an elephant.",
+          "tier": "full"
+        },
+        {
+          "text": "A whale is far heavier than an elephant.",
+          "tier": "full"
+        },
+        {
+          "text": "much heavier",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Verstärker gehört vor den Komparativ, nicht dahinter.",
+      "hintEn": null,
+      "explainDe": "much steht vor heavier, nicht danach: A whale is much heavier than an elephant.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.ec.005",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-ec-002",
+        "narrative": null,
+        "note": "ec less->fewer + are; grant: fewer, apples, box"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: There is less apples in this box.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are fewer apples in this box.",
+          "tier": "full"
+        },
+        {
+          "text": "fewer apples",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "apples kann man zählen, und es sind mehrere.",
+      "hintEn": null,
+      "explainDe": "Bei zählbaren Nomen steht fewer, und der Plural braucht are: There are fewer apples in this box.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.ec.006",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "ec fewer->less; grant: less, time"
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: I have fewer time than yesterday.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have less time than yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "less time",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "time kann man nicht zählen.",
+      "hintEn": null,
+      "explainDe": "time ist nicht zählbar, deshalb less und nicht fewer: I have less time than yesterday.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-gf-001",
+        "narrative": null,
+        "note": "gf big-diff; grant: bigger, big, elephant(s), cat(s)"
+      },
+      "prompt": {
+        "text": "An elephant is ___ bigger than a cat.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "much",
+          "tier": "full"
+        },
+        {
+          "text": "a lot",
+          "tier": "full"
+        },
+        {
+          "text": "far",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du brauchst einen Verstärker für einen großen Unterschied, nicht very.",
+      "hintEn": null,
+      "explainDe": "Vor einem Komparativ steht für einen großen Unterschied much, a lot oder far, nie very: An elephant is much bigger than a cat.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.002",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-gf-020",
+        "narrative": null,
+        "note": "gf big-diff; grant: faster, fast, cheetah(s), human(s)"
+      },
+      "prompt": {
+        "text": "A cheetah is ___ faster than a human.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "much",
+          "tier": "full"
+        },
+        {
+          "text": "a lot",
+          "tier": "full"
+        },
+        {
+          "text": "far",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Unterschied ist riesig, also ein starker Verstärker.",
+      "hintEn": null,
+      "explainDe": "Für einen großen Unterschied steht much, a lot oder far vor dem Komparativ: A cheetah is much faster than a human.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.003",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-gf-002",
+        "narrative": null,
+        "note": "gf big-diff with more+adj; grant: exciting, more exciting, shark(s), film"
+      },
+      "prompt": {
+        "text": "This film about sharks is ___ more exciting than the last one.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a lot",
+          "tier": "full"
+        },
+        {
+          "text": "much",
+          "tier": "full"
+        },
+        {
+          "text": "far",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein großer Unterschied: viel spannender.",
+      "hintEn": null,
+      "explainDe": "a lot, much oder far machen den Komparativ stärker: a lot more exciting than the last one.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.004",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-gf-022",
+        "narrative": null,
+        "note": "gf small-diff; grant: harder, hard"
+      },
+      "prompt": {
+        "text": "This test was only ___ harder than the last one. Don't worry!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a bit",
+          "tier": "full"
+        },
+        {
+          "text": "a little",
+          "tier": "full"
+        },
+        {
+          "text": "slightly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nur ein kleiner Unterschied.",
+      "hintEn": null,
+      "explainDe": "Für einen kleinen Unterschied steht a bit, a little oder slightly vor dem Komparativ: only a bit harder.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.005",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "gf small-diff; grant: smaller, small, seal(s), mother"
+      },
+      "prompt": {
+        "text": "The baby seal is ___ smaller than its mother.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a bit",
+          "tier": "full"
+        },
+        {
+          "text": "a little",
+          "tier": "full"
+        },
+        {
+          "text": "slightly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Unterschied ist klein.",
+      "hintEn": null,
+      "explainDe": "Ein kleiner Unterschied: a bit, a little oder slightly vor dem Komparativ, hier a bit smaller.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.006",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-gf-023",
+        "narrative": null,
+        "note": "gf big-diff; grant: colder, cold, warmer, jacket"
+      },
+      "prompt": {
+        "text": "Today is ___ colder than yesterday, so I need a warmer jacket.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "much",
+          "tier": "full"
+        },
+        {
+          "text": "a lot",
+          "tier": "full"
+        },
+        {
+          "text": "far",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Großer Unterschied beim Wetter; very passt hier nicht vor dem Komparativ.",
+      "hintEn": null,
+      "explainDe": "Vor dem Komparativ colder steht much, a lot oder far, nie very: Today is much colder than yesterday.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.007",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-gf-003",
+        "narrative": null,
+        "note": "gf fewer-countable; grant: fewer, students"
+      },
+      "prompt": {
+        "text": "There are ___ students in our class than in theirs.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "fewer",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "students kann man zählen.",
+      "hintEn": null,
+      "explainDe": "Bei zählbaren Nomen wie students steht fewer, nicht less: fewer students.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.008",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "gf fewer-countable; grant: fewer, sharks, beach"
+      },
+      "prompt": {
+        "text": "Luckily, there are ___ sharks near this beach than near the next one.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "fewer",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "sharks kann man zählen.",
+      "hintEn": null,
+      "explainDe": "sharks ist zählbar, deshalb fewer und nicht less: fewer sharks.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.009",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-gf-004",
+        "narrative": null,
+        "note": "gf less-uncountable; grant: less, sugar, tea"
+      },
+      "prompt": {
+        "text": "We should drink ___ sugar in our tea.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "less",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "sugar kann man nicht zählen.",
+      "hintEn": null,
+      "explainDe": "Bei nicht zählbaren Nomen wie sugar steht less, nicht fewer: less sugar.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.010",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "gf less-uncountable; grant: less, water, river, storm"
+      },
+      "prompt": {
+        "text": "After the storm, there is ___ water in the river.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "less",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "water kann man nicht zählen.",
+      "hintEn": null,
+      "explainDe": "water ist nicht zählbar, deshalb less und nicht fewer: less water.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gf.012",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-gf-025",
+        "narrative": null,
+        "note": "gf two-blank small+big; grant: more expensive, expensive, faster, fast, tablet"
+      },
+      "prompt": {
+        "text": "The new tablet is only ___ more expensive than the old one, but it is ___ faster.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "a bit | much",
+          "tier": "full"
+        },
+        {
+          "text": "a little | much",
+          "tier": "full"
+        },
+        {
+          "text": "slightly | much",
+          "tier": "full"
+        },
+        {
+          "text": "a bit | a lot",
+          "tier": "full"
+        },
+        {
+          "text": "a little | a lot",
+          "tier": "full"
+        },
+        {
+          "text": "slightly | far",
+          "tier": "full"
+        },
+        {
+          "text": "a bit | far",
+          "tier": "full"
+        },
+        {
+          "text": "a little | far",
+          "tier": "full"
+        },
+        {
+          "text": "slightly | a lot",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst ein kleiner Unterschied beim Preis, dann ein großer beim Tempo.",
+      "hintEn": null,
+      "explainDe": "Kleiner Unterschied: a bit/a little/slightly; großer Unterschied: much/a lot/far. So entsteht a bit more expensive, but much faster.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gs.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "gs big-vs-small intensifiers; grant: (none new)"
+      },
+      "prompt": {
+        "text": "Sortiere: großer oder kleiner Unterschied?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "much / a lot (✓✓✓)",
+          "members": [
+            "much",
+            "a lot",
+            "far"
+          ]
+        },
+        {
+          "label": "a bit / a little (✓)",
+          "members": [
+            "a bit",
+            "a little",
+            "slightly"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "much, a lot und far stehen für einen großen Unterschied, a bit, a little und slightly für einen kleinen.",
+      "hintEn": null,
+      "explainDe": "Für einen großen Unterschied nimmst du much/a lot/far, für einen kleinen a bit/a little/slightly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.gs.002",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "gs fewer-vs-less nouns; grant: people, students, cars, sweets, water, sugar, time, homework"
+      },
+      "prompt": {
+        "text": "Sortiere: passt fewer oder less? (zählen ✓ → fewer, zählen ✗ → less)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "fewer + …",
+          "members": [
+            "people",
+            "students",
+            "cars",
+            "sweets"
+          ]
+        },
+        {
+          "label": "less + …",
+          "members": [
+            "water",
+            "sugar",
+            "time",
+            "homework"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Zählbare Nomen bekommen fewer, nicht zählbare less.",
+      "hintEn": null,
+      "explainDe": "people, students, cars und sweets kann man zählen (fewer); water, sugar, time und homework nicht (less).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.mc.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Summer is very hotter than winter.",
+            "Summer is more hotter than winter.",
+            "Summer is much more hotter than winter.",
+            "Summer is most hotter than winter."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-mc-020",
+        "narrative": null,
+        "note": "mc errors: very-before-er / double-comp / much+double; grant: hotter, hot"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Summer is much hotter than winter.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Summer is very hotter than winter.",
+        "Summer is more hotter than winter.",
+        "Summer is much more hotter than winter."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor dem Komparativ steht much, und der Komparativ wird nicht doppelt gebildet.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Summer is much hotter than winter: nur much + hotter, kein very und kein doppeltes more ... -er.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.mc.002",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "This book is very more exciting than that one.",
+            "This book is more much exciting than that one.",
+            "This book is much more excitinger than that one.",
+            "This book is a lot more excitinger than that one."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-mc-001",
+        "narrative": null,
+        "note": "mc errors: very-before-more / wrong-position / double-comp; grant: more exciting, exciting, book"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This book is much more exciting than that one.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "This book is very more exciting than that one.",
+        "This book is more much exciting than that one.",
+        "This book is much more excitinger than that one."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Verstärker steht direkt vor dem Komparativ, und exciting wird mit more gesteigert.",
+      "hintEn": null,
+      "explainDe": "Richtig ist much more exciting: much steht vor more exciting, nicht very, nicht more much und nicht excitinger.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.mc.003",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "A lion is dangerous much more than a cat.",
+            "A lion is more dangerous much than a cat.",
+            "A lion is very more dangerous than a cat.",
+            "A lion is much more dangerouser than a cat."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "mc errors: position-after / position-mid / very; grant: more dangerous, dangerous, lion(s), cat(s)"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A lion is much more dangerous than a cat.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "A lion is dangerous much more than a cat.",
+        "A lion is more dangerous much than a cat.",
+        "A lion is very more dangerous than a cat."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte darauf, wo der Verstärker steht: direkt vor dem Komparativ.",
+      "hintEn": null,
+      "explainDe": "much steht vor more dangerous, nicht dahinter und nicht als very: A lion is much more dangerous than a cat.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.mc.004",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "You should eat fewer sugar and less sweets.",
+            "You should eat less sugar and less sweets.",
+            "You should eat fewer sugar and fewer sweets.",
+            "You should eat less sugar and lesser sweets."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-mc-003",
+        "narrative": null,
+        "note": "mc fewer/less mix; grant: less, fewer, sugar, sweets"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You should eat less sugar and fewer sweets.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "You should eat fewer sugar and less sweets.",
+        "You should eat less sugar and less sweets.",
+        "You should eat fewer sugar and fewer sweets."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "sugar kann man nicht zählen, sweets schon.",
+      "hintEn": null,
+      "explainDe": "less steht bei sugar (nicht zählbar) und fewer bei sweets (zählbar): less sugar and fewer sweets.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.mc.005",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "There are less cars on the road today.",
+            "There are fewest cars on the road today.",
+            "There are more fewer cars on the road today.",
+            "There are lesser cars on the road today."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-mc-002",
+        "narrative": null,
+        "note": "mc fewer-countable; grant: fewer, cars, road"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are fewer cars on the road today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "There are less cars on the road today.",
+        "There are fewest cars on the road today.",
+        "There are more fewer cars on the road today."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "cars kann man zählen.",
+      "hintEn": null,
+      "explainDe": "Bei zählbaren Nomen wie cars steht fewer, nicht less: There are fewer cars on the road today.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.mc.006",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "A baby bear is nearly as bigger as a dog.",
+            "A baby bear is nearly so big as a dog.",
+            "A baby bear is nearly as big than a dog.",
+            "A baby bear is nearly than as big a dog."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "mc nearly-as-as form; grant: big, bear(s), dog(s)"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A baby bear is nearly as big as a dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "A baby bear is nearly as bigger as a dog.",
+        "A baby bear is nearly so big as a dog.",
+        "A baby bear is nearly as big than a dog."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der Klammer aus zwei Wörtern steht die Grundform, und beide Male as.",
+      "hintEn": null,
+      "explainDe": "nearly as ... as steht mit der Grundform big und zweimal as: A baby bear is nearly as big as a dog.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.mp.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "matching-pairs meaning; grant: dangerous, tall, fewer, sharks, less, water, cat(s), lion(s)"
+      },
+      "prompt": {
+        "text": "Welche Erklärung passt zu welchem Satz?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "A cat is not nearly as dangerous as a lion.",
+          "right": "There is a big difference."
+        },
+        {
+          "left": "Tom is nearly as tall as his father.",
+          "right": "They are almost the same."
+        },
+        {
+          "left": "There are fewer sharks here.",
+          "right": "You can count them."
+        },
+        {
+          "left": "There is less water here.",
+          "right": "You cannot count it."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "not nearly as ... as = großer Unterschied; nearly as ... as = fast gleich; fewer = zählbar; less = nicht zählbar.",
+      "hintEn": null,
+      "explainDe": "not nearly as ... as zeigt einen großen Unterschied, nearly as ... as fast Gleichheit; fewer steht bei zählbaren, less bei nicht zählbaren Nomen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.mt.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "matching halves unique rights; grant: bigger, harder, fewer, cars, less, sugar, elephant(s), dog(s)"
+      },
+      "prompt": {
+        "text": "Welches Ende passt zu welchem Anfang?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "An elephant is much",
+          "right": "bigger than a dog."
+        },
+        {
+          "left": "This test was only a bit",
+          "right": "harder than the last one."
+        },
+        {
+          "left": "There are fewer",
+          "right": "cars on the road today."
+        },
+        {
+          "left": "We should drink less",
+          "right": "sugar in our tea."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "much/a bit kommen vor einen Komparativ, fewer vor zählbare und less vor nicht zählbare Nomen.",
+      "hintEn": null,
+      "explainDe": "Jeder Anfang braucht das passende Ende: much/a bit vor dem Komparativ, fewer vor cars, less vor sugar.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.qf.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-qf-001",
+        "narrative": null,
+        "note": "qf yes/no; grant: bigger, big"
+      },
+      "prompt": {
+        "text": "London is much bigger than Vienna. Ask about London. Start with 'Is'.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is London much bigger than Vienna?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Stell is nach vorne; der Verstärker much bleibt vor bigger.",
+      "hintEn": null,
+      "explainDe": "Aus London is much bigger ... wird die Frage Is London much bigger than Vienna?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.qf.002",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "question-formation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "qf how-much; grant: heavier, heavy, whale(s), elephant(s)"
+      },
+      "prompt": {
+        "text": "A blue whale is much heavier than an elephant. Ask how much heavier. Start with 'How much'.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How much heavier is a blue whale than an elephant?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit How much heavier ...? und dreh is nach vorn.",
+      "hintEn": null,
+      "explainDe": "Um nach dem Unterschied zu fragen, beginnst du mit How much heavier is a whale than an elephant?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.sb.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "very",
+            "more",
+            "tall",
+            "bigger"
+          ],
+          "chipBudget": 7,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-sb-001",
+        "narrative": null,
+        "note": "sb 7 chips; grant: taller, tall, brother"
+      },
+      "prompt": {
+        "text": "than / is / brother / much / my / taller / me",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My brother is much taller than me.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Subjekt + is + Verstärker + Komparativ + than + ...",
+      "hintEn": null,
+      "explainDe": "My brother is much taller than me: erst das Subjekt, dann is, dann much vor taller und than am Schluss.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.sb.002",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "very",
+            "much",
+            "popularer",
+            "most"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-sb-020",
+        "narrative": null,
+        "note": "sb 7 chips; grant: more popular, popular"
+      },
+      "prompt": {
+        "text": "than / is / a lot / football / popular / more / tennis",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Football is a lot more popular than tennis.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Verstärker a lot steht vor more popular.",
+      "hintEn": null,
+      "explainDe": "Football is a lot more popular than tennis: a lot vor more popular, dann than tennis.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.sb.003",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "less",
+            "lesser",
+            "much",
+            "more"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "sb 8 chips fewer-countable; grant: fewer, people, park"
+      },
+      "prompt": {
+        "text": "people / are / fewer / there / today / in / park / the",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are fewer people in the park today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "people kann man zählen, also fewer.",
+      "hintEn": null,
+      "explainDe": "There are fewer people in the park today: bei zählbarem people steht fewer.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tf.003",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "tf -> not-nearly-as-as; grant: dangerous, cat(s), lion(s)"
+      },
+      "prompt": {
+        "text": "Schreib um, sodass ein großer Unterschied entsteht: A cat is much less dangerous than a lion. (not nearly as ... as)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A cat is not nearly as dangerous as a lion.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei einem großen Unterschied nimmst du not nearly as ... as mit der Grundform.",
+      "hintEn": null,
+      "explainDe": "not nearly as ... as zeigt einen großen Unterschied und steht mit der Grundform: A cat is not nearly as dangerous as a lion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tf.004",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "tf -> nearly-as-as; grant: tall, taller, father"
+      },
+      "prompt": {
+        "text": "Schreib um, sodass es fast gleich klingt: Tom is only a little taller than his father. (nearly as ... as)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom is nearly as tall as his father.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fast gleich groß heißt nearly as ... as mit der Grundform.",
+      "hintEn": null,
+      "explainDe": "nearly as ... as bedeutet fast gleich und steht mit der Grundform tall: Tom is nearly as tall as his father.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tf.005",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-tf-020",
+        "narrative": null,
+        "note": "tf build big+small; grant: cheaper, cheap, more beautiful, beautiful"
+      },
+      "prompt": {
+        "text": "Vergleiche zwei Reiseziele: Croatia is ___ (much/cheap) than Switzerland, but Switzerland is ___ (a bit/beautiful).",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Croatia is much cheaper than Switzerland, but Switzerland is a bit more beautiful.",
+          "tier": "partial"
+        },
+        {
+          "text": "much cheaper | a bit more beautiful",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "cheap wird mit -er gesteigert, beautiful mit more; davor der jeweilige Verstärker.",
+      "hintEn": null,
+      "explainDe": "much cheaper (großer Unterschied) und a bit more beautiful (kleiner Unterschied): cheap → cheaper, beautiful → more beautiful.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tf.006",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-tf-021",
+        "narrative": null,
+        "note": "tf build small+big; grant: easier, easy, more exciting, exciting"
+      },
+      "prompt": {
+        "text": "Vergleiche zwei Videospiele: Game A is only ___ (slightly/easy) than Game B, but Game B is ___ (far/exciting).",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Game A is only slightly easier than Game B, but Game B is far more exciting.",
+          "tier": "partial"
+        },
+        {
+          "text": "slightly easier | far more exciting",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "easy wird zu easier, exciting zu more exciting; davor der passende Verstärker.",
+      "hintEn": null,
+      "explainDe": "slightly easier (kleiner Unterschied) und far more exciting (großer Unterschied): easy → easier, exciting → more exciting.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tr.001",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-tr-001",
+        "narrative": null,
+        "note": "tr deToEn big-diff; grant: taller, tall, brother"
+      },
+      "prompt": {
+        "text": "Mein Bruder ist viel größer als ich.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My brother is much taller than me.",
+          "tier": "full"
+        },
+        {
+          "text": "My brother is a lot taller than me.",
+          "tier": "full"
+        },
+        {
+          "text": "My brother is far taller than me.",
+          "tier": "full"
+        },
+        {
+          "text": "My brother is much taller than I am.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "viel + Komparativ heißt much/a lot/far + taller.",
+      "hintEn": null,
+      "explainDe": "viel größer wird zu much taller (oder a lot/far taller): My brother is much taller than me.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tr.002",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-tr-002",
+        "narrative": null,
+        "note": "tr deToEn less-uncountable; grant: less, homework, week"
+      },
+      "prompt": {
+        "text": "Wir haben weniger Hausaufgaben als letzte Woche.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We have less homework than last week.",
+          "tier": "full"
+        },
+        {
+          "text": "We've got less homework than last week.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "homework kann man nicht zählen.",
+      "hintEn": null,
+      "explainDe": "homework ist nicht zählbar, deshalb less und nicht fewer: We have less homework than last week.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tr.003",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "tr deToEn fewer-countable; grant: fewer, students, class"
+      },
+      "prompt": {
+        "text": "In unserer Klasse sind weniger Schüler als in eurer.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are fewer students in our class than in yours.",
+          "tier": "full"
+        },
+        {
+          "text": "We have fewer students in our class than you.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Schüler kann man zählen.",
+      "hintEn": null,
+      "explainDe": "students ist zählbar, deshalb fewer und nicht less: There are fewer students in our class than in yours.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u04.gi.comparative-intensifiers.tr.004",
+      "structureId": "g3u04.s.comparative-intensifiers",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u4-comparative-intensifiers-tr-021",
+        "narrative": null,
+        "note": "tr deToEn small+big; grant: more expensive, expensive, better"
+      },
+      "prompt": {
+        "text": "Das neue Videospiel ist nur ein bisschen teurer als das alte, aber es ist viel besser.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The new video game is only a bit more expensive than the old one, but it is much better.",
+          "tier": "full"
+        },
+        {
+          "text": "The new video game is only a little more expensive than the old one, but it is much better.",
+          "tier": "full"
+        },
+        {
+          "text": "The new video game is only slightly more expensive than the old one, but it's much better.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst ein kleiner Unterschied (a bit), dann ein großer (much).",
+      "hintEn": null,
+      "explainDe": "ein bisschen teurer wird zu a bit more expensive, viel besser zu much better: ... a bit more expensive ..., but it is much better.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

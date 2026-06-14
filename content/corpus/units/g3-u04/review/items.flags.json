@@ -1,0 +1,448 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u04",
+  "round": 1,
+  "itemsHash": "c6b91f93f1fd",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u04.w.bite",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.bite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.elegant",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.elegant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.environment",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.environment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.lizard",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.lizard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.politician",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.politician",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.rabies",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.rabies",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.shape",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.shape",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.swan",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.swan",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.to-cause",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.to-cause",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.to-communicate",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.to-communicate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u04.w.to-lock-sb-up",
+      "kind": "new-gloss",
+      "itemId": "g3u04.w.to-lock-sb-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.adorable",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.adorable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.aggressive",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.aggressive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.audience",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.audience",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.bite",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.bite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.cub",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.cub",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.cuddly",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.cuddly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.cute",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.cute",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.dangerous",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.dangerous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.deadly",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.deadly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.death",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.death",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.elegant",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.elegant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.environment",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.environment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.furry",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.furry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.good-luck",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.good-luck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.hands-off",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.hands-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.immediately",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.immediately",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.injury",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.injury",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.lizard",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.lizard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.on-average",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.on-average",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.poison",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.poison",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.poisonous",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.poisonous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.polar-bear",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.polar-bear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.politician",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.politician",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.rabies",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.rabies",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.scuba-diver",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.scuba-diver",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.seal",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.seal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.shape",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.shape",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.stunning",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.stunning",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.swan",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.swan",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-accept",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-accept",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-advise-against-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-advise-against-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-bite",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-bite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-bleed",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-bleed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-cause",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-cause",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-chase-away",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-chase-away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-communicate",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-communicate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-complain",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-complain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-defend",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-defend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-inform",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-inform",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-lift",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-lift",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-lock-sb-up",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-lock-sb-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-mistake-sth-for-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-mistake-sth-for-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-pull-down",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-pull-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-suppose",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-suppose",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.to-take-care",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.to-take-care",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.w.victim",
+      "kind": "translation-audit",
+      "itemId": "g3u04.w.victim",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.gi.comparative-intensifiers.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u04.gi.comparative-intensifiers.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.gi.comparative-intensifiers.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u04.gi.comparative-intensifiers.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.gi.comparative-intensifiers.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u04.gi.comparative-intensifiers.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u04.gi.comparative-intensifiers.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u04.gi.comparative-intensifiers.tr.004",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 90 rows (structure: comparative intensifiers — much/a-lot vs a-bit/a-little/slightly before comparatives; (not) nearly as…as; fewer vs less). Verify: register CLEAN, then fixed answers 1 (gf.012 keyed only 6 of 9 valid small×big intensifier combos → added the missing 3), level-gloss 1 (to-inform carrier \"the new voting\" → \"the news\"), translation 2 (to-advise-against \"warnen\" + to-take-care \"sich hüten\" demoted to partial — loose synonyms). The structure is correctly taught: big-diff carriers take much/a-lot/far, small-diff take a-bit/a-little/slightly; double-comparative/wrong-position/very+comparative are distractors; fewer↔countable, less↔uncountable. ~100 audited grants — the g3 gate gates even ordinary adjectives/comparatives/nouns as untaught (the bank indexes multiword entries as phrases). tf.001/002 redundant full-sentence answers demoted (pipe-split fills kept); \"blue\" reworded out of an explainDe (ASCII-umlaut false positive on \"ue\"). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 90,
+    "fullRows": 90,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
