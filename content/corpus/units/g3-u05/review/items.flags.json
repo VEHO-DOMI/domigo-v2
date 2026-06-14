@@ -1,0 +1,553 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u05",
+  "round": 1,
+  "itemsHash": "e1ddda3c1db0",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u05.w.crack",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.crack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.cuckoo",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.cuckoo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.lucky-charm",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.lucky-charm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.obvious",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.obvious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.rich",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.rich",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.seriously",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.seriously",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.sleeping-bag",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.sleeping-bag",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.spooky",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.spooky",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.superstition",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.superstition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.to-believe-in-superstitions",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.to-believe-in-superstitions",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.to-bring-luck",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.to-bring-luck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.to-catch-a-cold",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.to-catch-a-cold",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.to-have-luck",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.to-have-luck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.w.to-shake",
+      "kind": "new-gloss",
+      "itemId": "g3u05.w.to-shake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.cp.003",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.cp.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.ec.006",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.ec.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.ec.007",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.ec.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.gf.014",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.gf.014",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.gf.015",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.gf.015",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.mc.004",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.mc.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.mc.005",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.mc.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.mp.002",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.mp.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.mt.001",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.mt.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.mt.002",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.mt.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.tf.004",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.tf.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u05.gi.unless.tf.005",
+      "kind": "new-gloss",
+      "itemId": "g3u05.gi.unless.tf.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.alarm-clock",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.alarm-clock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.any-luck",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.any-luck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.beside",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.beside",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.crack",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.crack",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.cuckoo",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.cuckoo",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.do-you-mind",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.do-you-mind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.evil",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.evil",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.haircut",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.haircut",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.i-m-joking",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.i-m-joking",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.i-m-sure",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.i-m-sure",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.lucky-charm",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.lucky-charm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.obvious",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.obvious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.pavement",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.pavement",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.rich",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.rich",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.salt",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.salt",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.satisfied",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.satisfied",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.seriously",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.seriously",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.sleeping-bag",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.sleeping-bag",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.spirit",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.spirit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.spooky",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.spooky",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.superstition",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.superstition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.superstitious",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.superstitious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-arrange",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-arrange",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-attract",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-attract",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-be-unlucky",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-be-unlucky",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-believe-in-superstitions",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-believe-in-superstitions",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-bring-luck",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-bring-luck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-catch-a-cold",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-catch-a-cold",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-come-true",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-come-true",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-enter",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-enter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-have-luck",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-have-luck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-ignore",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-ignore",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-make-a-wish",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-make-a-wish",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-scream",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-scream",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-shake",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-shake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-trick",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-trick",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-whistle",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-whistle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.to-wish-for-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.to-wish-for-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.toothbrush",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.toothbrush",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.traditional",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.traditional",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.w.unlucky",
+      "kind": "translation-audit",
+      "itemId": "g3u05.w.unlucky",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.first-conditional.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.first-conditional.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.first-conditional.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.first-conditional.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.first-conditional.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.first-conditional.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.first-conditional.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.first-conditional.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.unless.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.unless.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.unless.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.unless.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.unless.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.unless.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.unless.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.unless.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u05.gi.unless.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g3u05.gi.unless.tr.005",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 142 rows, 2 structures (1st conditional: If+present, will+base; unless = if…not). Answers lens verified all 101 grammar items: if-clause stays present (not will/not -ing), main clause will+base, the unless=if-not paraphrase and the if/unless contrast all correct; fixed the one inconsistency (3 unless gap-fills demoted 'll/won't to partial → promoted to full to match the first-conditional items). Translation CLEAN. Register: fixed 6 ASCII-umlauts the agents wrote (gehört/hängst/Sätze/Hör/wünschen/über/heißt/Übung) + 5 prompts that named grammar terms (Verb→Wort, \"1st-Bedingungssatz\"→\"if-Satz mit will\", Satzteil/Hauptsatz→if-Teil/will-Teil). Level-gloss findings were granted words the lens couldn't see (non-actionable). ~130 audited grants — the conditional structures need every clause verb form (present-3sg/base/-ing+past decoys) plus will/won't/contraction-clitic fragments (ll/t) and superstition-theme carriers. Reworded the 2 luck def-leaks off good/bad. \"Present simple\" in hints is the permitted MORE!-textbook tense label. 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 142,
+    "fullRows": 142,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

@@ -1,0 +1,4900 @@
+{
+  "schema": "grammar@1",
+  "grade": 3,
+  "unit": 5,
+  "slug": "g3-u05",
+  "items": [
+    {
+      "id": "g3u05.gi.first-conditional.cp.001",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If we will go to the zoo, I'll take my camera.",
+            "If we went to the zoo, I'll take my camera.",
+            "If we go to the zoo, I take my camera.",
+            "If we are going to the zoo, I'll take my camera."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-cp-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Mutter sagt: 'Wir gehen vielleicht in den Zoo.' Welche Antwort ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If we go to the zoo, I'll take my camera.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If we will go to the zoo, I'll take my camera.",
+        "If we went to the zoo, I'll take my camera.",
+        "If we go to the zoo, I take my camera."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit I'll.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + go (Present simple) + I'll take. will im if-Satz, went und I take ohne will sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.cp.002",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If you will say 'Candyman' three times, a spirit will appear.",
+            "If you say 'Candyman' three times, a spirit appears.",
+            "If you are saying 'Candyman' three times, a spirit will appear.",
+            "If you said 'Candyman' three times, a spirit will appear."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from Candyman play scene 1."
+      },
+      "prompt": {
+        "text": "Nick will dich am Lagerfeuer erschrecken. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you say 'Candyman' three times, a spirit will appear.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If you will say 'Candyman' three times, a spirit will appear.",
+        "If you say 'Candyman' three times, a spirit appears.",
+        "If you are saying 'Candyman' three times, a spirit will appear."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + say + a spirit will appear. will im if-Satz, a spirit appears ohne will und are saying sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.cp.004",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If the band will play in Brighton, we'll go to the concert.",
+            "If the band plays in Brighton, we go to the concert.",
+            "If the band is playing in Brighton, we'll go to the concert.",
+            "If the band played in Brighton, we'll go to the concert."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from Tom & Kate concert dialogue (SB p.48)."
+      },
+      "prompt": {
+        "text": "Du redest mit Kate über den Freitag. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If the band plays in Brighton, we'll go to the concert.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If the band will play in Brighton, we'll go to the concert.",
+        "If the band plays in Brighton, we go to the concert.",
+        "If the band is playing in Brighton, we'll go to the concert."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple (bei the band mit -s), Hauptsatz mit we'll.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + plays + we'll go. will im if-Satz, we go ohne will und is playing sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.ec.001",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: If it will rain, we will stay inside.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it rains, we will stay inside.",
+          "tier": "full"
+        },
+        {
+          "text": "If it rains, we'll stay inside.",
+          "tier": "full"
+        },
+        {
+          "text": "rains",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz darf kein will stehen - nur das Present simple.",
+      "hintEn": null,
+      "explainDe": "Falsch ist will rain im if-Satz. Richtig: if it rains. will bleibt nur im Hauptsatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.ec.002",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: If you eat too much, you feel sick.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you eat too much, you will feel sick.",
+          "tier": "full"
+        },
+        {
+          "text": "If you eat too much, you'll feel sick.",
+          "tier": "full"
+        },
+        {
+          "text": "will feel",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Folge im Hauptsatz braucht will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Im Hauptsatz fehlt will. Richtig: you will feel sick. Der if-Satz bleibt im Present simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.ec.003",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Targets the present-continuous-in-if-clause error from the brief."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: If it is raining tomorrow, we'll stay inside.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it rains tomorrow, we'll stay inside.",
+          "tier": "full"
+        },
+        {
+          "text": "If it rains tomorrow, we will stay inside.",
+          "tier": "full"
+        },
+        {
+          "text": "rains",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das einfache Present simple, nicht die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Falsch ist is raining im if-Satz. Richtig: if it rains. Die Verlaufsform gehört hier nicht hin.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.ec.004",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-ec-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: If she will study hard, she will pass the exam.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If she studies hard, she will pass the exam.",
+          "tier": "full"
+        },
+        {
+          "text": "If she studies hard, she'll pass the exam.",
+          "tier": "full"
+        },
+        {
+          "text": "studies",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das Present simple, bei she mit -s.",
+      "hintEn": null,
+      "explainDe": "Falsch ist will study im if-Satz. Richtig: if she studies. will bleibt nur im Hauptsatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.ec.005",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "error-correction",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-ec-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: If you won't hurry, we'll be late for school.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you don't hurry, we'll be late for school.",
+          "tier": "full"
+        },
+        {
+          "text": "If you don't hurry, we will be late for school.",
+          "tier": "full"
+        },
+        {
+          "text": "don't hurry",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Verneinung im if-Satz heißt don't, nicht won't.",
+      "hintEn": null,
+      "explainDe": "Falsch ist won't hurry im if-Satz. Richtig: if you don't hurry. won't gehört in den Hauptsatz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.ec.006",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB 6 (walk under a ladder); targets present-continuous error."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: If you are walking under a ladder, you'll have bad luck.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you walk under a ladder, you'll have bad luck.",
+          "tier": "full"
+        },
+        {
+          "text": "If you walk under a ladder, you will have bad luck.",
+          "tier": "full"
+        },
+        {
+          "text": "walk",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das einfache Present simple, nicht die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Falsch ist are walking im if-Satz. Richtig: if you walk. Die Verlaufsform passt hier nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.001",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt#grammar-1",
+        "seedV1": "m3-u5-first-conditional-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If you ___ (break) a mirror, you will have bad luck.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "break",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das Verb im Present simple - nie mit will. Bei du/you bleibt die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach if kommt das Present simple: break. Will steht nur im Hauptsatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.002",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If she ___ (work) hard, she will get good marks.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "works",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei he/she/it bekommt das Verb im Present simple ein -s.",
+      "hintEn": null,
+      "explainDe": "Nach if steht das Present simple, und bei she hängst du -s an: works.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.003",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If you study hard, you ___ pass the test.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will",
+          "tier": "full"
+        },
+        {
+          "text": "'ll",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im Hauptsatz steht will + Grundform, weil es um die Folge in der Zukunft geht.",
+      "hintEn": null,
+      "explainDe": "Die Folge steht im Hauptsatz mit will: you will pass. Im if-Satz steht schon das Present simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.004",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from Norway superstition text (SB 5a)."
+      },
+      "prompt": {
+        "text": "If you whistle when the sun is shining, it ___ shine for two more hours.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will",
+          "tier": "full"
+        },
+        {
+          "text": "'ll",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Folge im Hauptsatz braucht will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Der Aberglaube aus Norwegen: Die Folge steht mit will - it will shine.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.005",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB 6 listening superstitions list."
+      },
+      "prompt": {
+        "text": "If you ___ (hear) a cuckoo, you will get rich.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hear",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz Present simple, bei du/you ohne -s.",
+      "hintEn": null,
+      "explainDe": "Nach if steht das Present simple: hear. Die Folge mit will steht schon da.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.006",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We ___ (go) to the beach if the weather is nice.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will go",
+          "tier": "full"
+        },
+        {
+          "text": "'ll go",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das ist der Hauptsatz - also will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Der Hauptsatz steht mit will + Grundform: will go. Der if-Satz hat schon is.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.007",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I ___ (have) enough money, I'll buy a new skateboard.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das Present simple - kein will, auch wenn es um die Zukunft geht.",
+      "hintEn": null,
+      "explainDe": "Nach if steht das Present simple have. Die Folge mit 'll buy ist schon da.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.008",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB grammar box / Caribbean text."
+      },
+      "prompt": {
+        "text": "If you ___ (put) your handbag on the floor, you will never have money.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "put",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz Present simple; bei you bleibt put gleich.",
+      "hintEn": null,
+      "explainDe": "Der Aberglaube aus der Karibik: Nach if steht das Present simple put.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.009",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-024",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If the weather ___ (be) nice tomorrow, we ___ (go) to the beach.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "is | will go",
+          "tier": "full"
+        },
+        {
+          "text": "is | 'll go",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst der if-Satz im Present simple, dann der Hauptsatz mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "if + Present simple (is), Hauptsatz mit will + Grundform (will go). Beistrich, weil der if-Satz zuerst kommt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.010",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from WB ex 7.1."
+      },
+      "prompt": {
+        "text": "If you ___ (break) your phone, I ___ (buy) you a new one.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "break | will buy",
+          "tier": "full"
+        },
+        {
+          "text": "break | 'll buy",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "if + Present simple (break), dann will + Grundform (will buy).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.011",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB 5a Vietnam text."
+      },
+      "prompt": {
+        "text": "If you ___ (get) a haircut before the exam, you ___ (forget) everything.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "get | will forget",
+          "tier": "full"
+        },
+        {
+          "text": "get | 'll forget",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Der Aberglaube aus Vietnam: if + get (Present simple), dann will forget.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.012",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If she ___ (not / hurry), she will miss the bus.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't hurry",
+          "tier": "full"
+        },
+        {
+          "text": "does not hurry",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung im Present simple bei she: doesn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach if steht das verneinte Present simple: doesn't hurry. Kein won't im if-Satz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.013",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If you ___ (not / eat) breakfast, you won't have energy for PE.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't eat",
+          "tier": "full"
+        },
+        {
+          "text": "do not eat",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung im Present simple bei you: don't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach if steht die Verneinung im Present simple: don't eat. won't gehört in den Hauptsatz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.014",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-025",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I ___ (not / pass) the exam if I ___ (not / study) harder.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "won't pass | don't study",
+          "tier": "full"
+        },
+        {
+          "text": "will not pass | do not study",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hauptsatz mit won't, if-Satz mit don't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Im Hauptsatz steht die Verneinung mit won't (won't pass), im if-Satz mit don't (don't study).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.015",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-gf-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "We ___ be late if we don't hurry up.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will",
+          "tier": "full"
+        },
+        {
+          "text": "'ll",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im Hauptsatz steht will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Folge braucht will: we will be late. Der if-Satz hat schon don't hurry.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.016",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB 7 stressed-words sentences."
+      },
+      "prompt": {
+        "text": "If you ___ (kill) a spider in the house, you will have bad luck.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "kill",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das Present simple, bei you ohne -s.",
+      "hintEn": null,
+      "explainDe": "Nach if steht das Present simple: kill. will steht schon im Hauptsatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gf.017",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB 6 listening superstitions list (black cat)."
+      },
+      "prompt": {
+        "text": "If a black cat ___ (cross) the street, you ___ (have) bad luck.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "crosses | will have",
+          "tier": "full"
+        },
+        {
+          "text": "crosses | 'll have",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple (bei a cat mit -s), Hauptsatz mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "if + crosses (a cat -> -s), Hauptsatz mit will have. Dieser Aberglaube steht in der Hör-Liste.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gs.004",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere die if-Sätze: richtig (✓) oder falsch (✗)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "If it rains, we will stay inside.",
+            "If you study, you'll pass.",
+            "If she hurries, she'll catch the bus."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "If it will rain, we will stay inside.",
+            "If you will study, you'll pass.",
+            "If she is hurrying, she'll catch the bus."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das Present simple - nie will und nie die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + Present simple. Falsch sind will im if-Satz (If it will rain) und die Verlaufsform (If she is hurrying).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.gs.005",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: Was gehört zum if-Teil, was zum will-Teil?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "if ...",
+          "members": [
+            "If it rains",
+            "If you study hard",
+            "If she breaks a mirror",
+            "If we miss the bus"
+          ]
+        },
+        {
+          "label": "... will ...",
+          "members": [
+            "we will stay inside",
+            "you'll pass the test",
+            "she'll have bad luck",
+            "we'll be late"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Der if-Satz beginnt mit If und steht im Present simple. Die Folge hat will/'ll.",
+      "hintEn": null,
+      "explainDe": "Links die if-Sätze (Present simple), rechts die Folgen mit will/'ll. So ist der 1st Bedingungssatz aufgebaut.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mc.001",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If it will snow tomorrow, we will build a snowman.",
+            "If it snowed tomorrow, we will build a snowman.",
+            "If it is snowing tomorrow, we will build a snowman.",
+            "If it would snow tomorrow, we will build a snowman."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it snows tomorrow, we will build a snowman.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If it will snow tomorrow, we will build a snowman.",
+        "If it snowed tomorrow, we will build a snowman.",
+        "If it is snowing tomorrow, we will build a snowman."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das einfache Present simple - kein will, kein -ing, keine Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + snows (Present simple) + will build. will, snowed und is snowing sind im if-Satz falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mc.002",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If you will touch that, you'll burn your hand.",
+            "If you touch that, you burn your hand.",
+            "If you touched that, you'll burn your hand.",
+            "If you are touching that, you'll burn your hand."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-mc-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you touch that, you'll burn your hand.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If you will touch that, you'll burn your hand.",
+        "If you touch that, you burn your hand.",
+        "If you touched that, you'll burn your hand."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit will/'ll.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + touch (Present simple) + you'll burn. will im if-Satz, you burn ohne will und touched sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mc.003",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If you will break a mirror, you'll have bad luck.",
+            "If you break a mirror, you have bad luck.",
+            "If you are breaking a mirror, you'll have bad luck.",
+            "If you broke a mirror, you'll have bad luck."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB 7 stressed-words list."
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you break a mirror, you'll have bad luck.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If you will break a mirror, you'll have bad luck.",
+        "If you break a mirror, you have bad luck.",
+        "If you are breaking a mirror, you'll have bad luck."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit you'll.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + break (Present simple) + you'll have. will im if-Satz, you have ohne will und are breaking sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mc.004",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If it will rain tomorrow, we won't go on the trip.",
+            "If it rains tomorrow, we don't go on the trip.",
+            "If it is raining tomorrow, we won't go on the trip.",
+            "If it rained tomorrow, we won't go on the trip."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-mc-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it rains tomorrow, we won't go on the trip.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If it will rain tomorrow, we won't go on the trip.",
+        "If it rains tomorrow, we don't go on the trip.",
+        "If it is raining tomorrow, we won't go on the trip."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple; im Hauptsatz steht die Verneinung won't.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + rains + we won't go. will im if-Satz, we don't go statt won't go und is raining sind falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mc.005",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I won't go to the party if I won't feel better.",
+            "I don't go to the party if I don't feel better.",
+            "I won't go to the party if I'm not feeling better.",
+            "I won't go to the party if I didn't feel better."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I won't go to the party if I don't feel better.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I won't go to the party if I won't feel better.",
+        "I don't go to the party if I don't feel better.",
+        "I won't go to the party if I'm not feeling better."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht die Verneinung im Present simple (don't), nicht won't.",
+      "hintEn": null,
+      "explainDe": "Richtig ist won't go ... if ... don't feel. won't im if-Satz, don't go im Hauptsatz und I'm not feeling sind falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mc.006",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If you will walk on the cracks, you'll have bad luck.",
+            "If you walk on the cracks, you have bad luck.",
+            "If you are walking on the cracks, you'll have bad luck.",
+            "If you walked on the cracks, you'll have bad luck."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB grammar box pavement example."
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you walk on the cracks, you'll have bad luck.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If you will walk on the cracks, you'll have bad luck.",
+        "If you walk on the cracks, you have bad luck.",
+        "If you are walking on the cracks, you'll have bad luck."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit you'll.",
+      "hintEn": null,
+      "explainDe": "Richtig ist if + walk + you'll have. will im if-Satz, you have ohne will und are walking sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mp.001",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Pairs harvested from SB 5a/6 superstition texts."
+      },
+      "prompt": {
+        "text": "Finde die Paare: if-Satz und passende Folge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "If you walk under a ladder,",
+          "right": "you'll have bad luck."
+        },
+        {
+          "left": "If you hear a cuckoo,",
+          "right": "you'll get rich."
+        },
+        {
+          "left": "If you put your handbag on the floor,",
+          "right": "you'll never have money."
+        },
+        {
+          "left": "If you whistle,",
+          "right": "the sun will shine longer."
+        },
+        {
+          "left": "If you see a rainbow,",
+          "right": "you can make a wish."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jeder Aberglaube hat eine if-Bedingung und eine Folge mit will/'ll.",
+      "hintEn": null,
+      "explainDe": "Verbinde jeden if-Satz (Present simple) mit der richtigen Folge. Alle stammen aus den Aberglauben der Unit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mt.002",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "matching",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from WB ex 4 sentence halves."
+      },
+      "prompt": {
+        "text": "Welche Folge passt? Verbinde jeden if-Satz mit dem richtigen Ende.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "If you wear that T-shirt,",
+          "right": "you'll look really good."
+        },
+        {
+          "left": "If you touch that dog,",
+          "right": "it'll bite you."
+        },
+        {
+          "left": "If he drives that fast,",
+          "right": "he'll have an accident."
+        },
+        {
+          "left": "If we leave now,",
+          "right": "we'll be home by ten."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der if-Satz nennt die Bedingung, die Folge steht mit will/'ll.",
+      "hintEn": null,
+      "explainDe": "Jeder if-Satz (Present simple) passt zu genau einer Folge mit will/'ll. Diese Paare kommen aus der WB-Übung.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.mt.003",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Hälfte passt? Verbinde jeden if-Satz mit seiner Folge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "If it rains,",
+          "right": "we'll get wet."
+        },
+        {
+          "left": "If you don't study,",
+          "right": "you'll fail the test."
+        },
+        {
+          "left": "If we hurry,",
+          "right": "we'll catch the train."
+        },
+        {
+          "left": "If she calls me,",
+          "right": "I'll tell her the news."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der if-Satz nennt die Bedingung, die Folge steht mit will/'ll.",
+      "hintEn": null,
+      "explainDe": "Jeder if-Satz (Present simple) passt zu genau einer Folge mit will/'ll.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.qf.001",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB grammar box question."
+      },
+      "prompt": {
+        "text": "Bilde die Frage aus den Teilen: what / happen / if / you / break a mirror / ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What will happen if you break a mirror?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Frage beginnt mit What will ...; der if-Satz bleibt im Present simple.",
+      "hintEn": null,
+      "explainDe": "Frage mit will: What will happen, dann if you break (Present simple). Genau so steht es im Buch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.qf.002",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from WB ex 8.1."
+      },
+      "prompt": {
+        "text": "Bilde die Frage aus den Teilen: what / you / do / if / it / rain / at the weekend / ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What will you do if it rains at the weekend?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "What will you do ...? plus if-Satz im Present simple (it rains).",
+      "hintEn": null,
+      "explainDe": "Frage mit will: What will you do, dann if it rains (Present simple, bei it mit -s).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.sb.005",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "miss",
+            "the",
+            "bus",
+            "if",
+            "hurry",
+            "you",
+            "will",
+            "don't"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-sb-001",
+        "narrative": null,
+        "note": "Chips are the answer tokens; no extra distractor chips."
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you don't hurry, you will miss the bus.",
+          "tier": "full"
+        },
+        {
+          "text": "If you don't hurry, you'll miss the bus.",
+          "tier": "full"
+        },
+        {
+          "text": "You will miss the bus if you don't hurry.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz mit don't, Hauptsatz mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "if you don't hurry, dann you will miss. Der if-Satz steht im verneinten Present simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.sb.006",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "if",
+            "rains",
+            "it",
+            "won't",
+            "we",
+            "go",
+            "the",
+            "to",
+            "park"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-sb-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it rains, we won't go to the park.",
+          "tier": "full"
+        },
+        {
+          "text": "We won't go to the park if it rains.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit der Verneinung won't.",
+      "hintEn": null,
+      "explainDe": "if it rains, dann we won't go. Die Verneinung won't steht im Hauptsatz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.sb.007",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "if",
+            "break",
+            "you",
+            "a",
+            "mirror",
+            "have",
+            "you'll",
+            "bad",
+            "luck"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from Candyman play (break a mirror -> bad luck)."
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you break a mirror, you'll have bad luck.",
+          "tier": "full"
+        },
+        {
+          "text": "If you break a mirror, you will have bad luck.",
+          "tier": "full"
+        },
+        {
+          "text": "You'll have bad luck if you break a mirror.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit you'll.",
+      "hintEn": null,
+      "explainDe": "if you break a mirror, dann you'll have bad luck. Genau dieser Aberglaube kommt im Stück vor.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.sb.008",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "if",
+            "hear",
+            "you",
+            "a",
+            "cuckoo",
+            "get",
+            "you'll",
+            "rich"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB 6 superstition (cuckoo -> rich)."
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you hear a cuckoo, you'll get rich.",
+          "tier": "full"
+        },
+        {
+          "text": "If you hear a cuckoo, you will get rich.",
+          "tier": "full"
+        },
+        {
+          "text": "You'll get rich if you hear a cuckoo.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz im Present simple, Hauptsatz mit you'll.",
+      "hintEn": null,
+      "explainDe": "if you hear a cuckoo, dann you'll get rich. So lautet der Aberglaube aus dem Interview.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.tf.007",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-tf-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib den Satz mit dem Wort in Klammern fertig: If you ___ (practise) every day, you will play really well.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "practise",
+          "tier": "full"
+        },
+        {
+          "text": "practice",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht das Present simple, bei you ohne -s.",
+      "hintEn": null,
+      "explainDe": "Nach if steht das Present simple: practise. will steht schon im Hauptsatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.tf.008",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-tf-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setz beide Wörter richtig ein: If she ___ (not / finish) her homework, Mum ___ (not / let) her play outside.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "doesn't finish | won't let",
+          "tier": "full"
+        },
+        {
+          "text": "does not finish | will not let",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if-Satz mit doesn't (she), Hauptsatz mit won't.",
+      "hintEn": null,
+      "explainDe": "Verneint: if she doesn't finish, Hauptsatz mit won't let. doesn't bei she, won't im Hauptsatz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.tf.009",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB 9 model (drop toothbrush -> catch a cold)."
+      },
+      "prompt": {
+        "text": "Bilde einen if-Satz mit will aus diesen Teilen: you / drop your toothbrush -> catch a cold.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you drop your toothbrush, you'll catch a cold.",
+          "tier": "full"
+        },
+        {
+          "text": "If you drop your toothbrush, you will catch a cold.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + Present simple, dann will + Grundform. Beistrich nach dem if-Satz.",
+      "hintEn": null,
+      "explainDe": "if + drop (Present simple), Hauptsatz mit you'll catch. So baut die Aufgabe in 9 im Buch lustige Aberglauben.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.tf.010",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde einen if-Satz mit will: it / snow -> we / build a snowman.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it snows, we'll build a snowman.",
+          "tier": "full"
+        },
+        {
+          "text": "If it snows, we will build a snowman.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + Present simple (it snows), Hauptsatz mit we'll.",
+      "hintEn": null,
+      "explainDe": "if + snows, dann we'll build. Bei it bekommt das Present simple ein -s: snows.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.tr.001",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wenn es morgen regnet, werden wir zu Hause bleiben.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If it rains tomorrow, we will stay at home.",
+          "tier": "full"
+        },
+        {
+          "text": "If it rains tomorrow, we'll stay at home.",
+          "tier": "full"
+        },
+        {
+          "text": "We will stay at home if it rains tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + Present simple (rains), Hauptsatz mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "if it rains (Present simple), we will stay (will + Grundform). Kein will im if-Satz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.tr.002",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wenn du nicht bald kommst, gehe ich ohne dich.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you don't come soon, I will go without you.",
+          "tier": "full"
+        },
+        {
+          "text": "If you don't come soon, I'll go without you.",
+          "tier": "full"
+        },
+        {
+          "text": "I will go without you if you don't come soon.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung im if-Satz mit don't, Hauptsatz mit will.",
+      "hintEn": null,
+      "explainDe": "if you don't come (verneintes Present simple), I will go (will + Grundform).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.first-conditional.tr.005",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-tr-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wenn wir den Bus verpassen, werden wir zu spät in die Schule kommen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If we miss the bus, we will be late for school.",
+          "tier": "full"
+        },
+        {
+          "text": "If we miss the bus, we'll be late for school.",
+          "tier": "full"
+        },
+        {
+          "text": "We will be late for school if we miss the bus.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + Present simple (miss), Hauptsatz mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "if we miss (Present simple), we will be late (will + Grundform).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.first-conditional.tr.006",
+      "structureId": "g3u05.s.first-conditional",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from Candyman play (rainbow -> make a wish)."
+      },
+      "prompt": {
+        "text": "Wenn du einen Regenbogen siehst, kannst du dir etwas wünschen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you see a rainbow, you can make a wish.",
+          "tier": "full"
+        },
+        {
+          "text": "If you see a rainbow, you'll make a wish.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + Present simple (see), Hauptsatz mit can + Grundform.",
+      "hintEn": null,
+      "explainDe": "if you see (Present simple), you can make a wish. So sagt es Nick im Stück.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.cp.001",
+      "structureId": "g3u05.s.unless",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Unless you do not leave now, you will be late.",
+            "Unless you will leave now, you will be late.",
+            "If you leave now, you will be late.",
+            "Unless you left now, you will be late."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund sitzt noch auf dem Sofa und die Schule beginnt in zehn Minuten. Warne ihn. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless you leave now, you will be late.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Unless you do not leave now, you will be late.",
+        "Unless you will leave now, you will be late.",
+        "If you leave now, you will be late."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du meinst: \"wenn du nicht jetzt gehst\". Nach \"unless\" kein zweites \"not\" und kein \"will\".",
+      "hintEn": null,
+      "explainDe": "\"Unless you leave now\" = \"wenn du nicht jetzt gehst, kommst du zu spät\". \"if you leave\" würde das Gegenteil sagen.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.unless.cp.002",
+      "structureId": "g3u05.s.unless",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Unless the rain does not stop, we will not have the picnic.",
+            "Unless the rain will stop, we will not have the picnic.",
+            "If the rain stops, we will not have the picnic.",
+            "We will have the picnic unless the rain stops."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-sb-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Es sieht nach Regen aus und ihr wollt ein Picknick machen. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless the rain stops, we will not have the picnic.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Unless the rain does not stop, we will not have the picnic.",
+        "Unless the rain will stop, we will not have the picnic.",
+        "If the rain stops, we will not have the picnic."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Picknick geht nur, \"wenn der Regen aufhört\". Nach \"unless\" bejahtes Verb, kein \"will\".",
+      "hintEn": null,
+      "explainDe": "\"Unless the rain stops\" = \"wenn der Regen nicht aufhört, gibt es kein Picknick\". Kein zweites \"not\", kein \"will\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.cp.003",
+      "structureId": "g3u05.s.unless",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Unless you do not practise, you will not improve.",
+            "Unless you will practise, you will not improve.",
+            "If you practise, you will not improve.",
+            "Unless you practise, you will improve."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Mitspielerin kommt nie zum Training. Erkläre ihr die Folge. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless you practise, you will not improve.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Unless you do not practise, you will not improve.",
+        "Unless you will practise, you will not improve.",
+        "If you practise, you will not improve."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "practise",
+          "de": "üben",
+          "scope": "prompt"
+        },
+        {
+          "word": "improve",
+          "de": "besser werden",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Du wirst nur besser, \"wenn du übst\". Nach \"unless\" steht \"practise\" bejaht und ohne \"will\".",
+      "hintEn": null,
+      "explainDe": "\"Unless you practise\" = \"wenn du nicht übst, wirst du nicht besser\". Kein \"not\", kein \"will\" nach \"unless\", und \"if\" wäre hier unlogisch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.ec.001",
+      "structureId": "g3u05.s.unless",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: \"I will not go unless you do not come with me.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will not go unless you come with me.",
+          "tier": "full"
+        },
+        {
+          "text": "unless you come",
+          "tier": "partial"
+        },
+        {
+          "text": "unless you come with me",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach \"unless\" darf kein zweites \"not\" stehen - die Verneinung steckt schon im Wort.",
+      "hintEn": null,
+      "explainDe": "\"unless\" heißt bereits \"wenn ... nicht\". \"unless you do not come\" ist eine doppelte Verneinung - richtig: \"unless you come\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.ec.002",
+      "structureId": "g3u05.s.unless",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-ec-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: \"Unless you do not hurry, we will miss the bus.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless you hurry, we will miss the bus.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you hurry",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Streiche das überflüssige \"not\" nach \"unless\".",
+      "hintEn": null,
+      "explainDe": "\"unless\" trägt das \"nicht\" schon in sich. \"unless you do not hurry\" ist doppelt verneint - richtig: \"unless you hurry\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.ec.003",
+      "structureId": "g3u05.s.unless",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: \"We will be late unless we will hurry.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We will be late unless we hurry.",
+          "tier": "full"
+        },
+        {
+          "text": "unless we hurry",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach \"unless\" steht die einfache Gegenwart - dort gehört kein \"will\" hin.",
+      "hintEn": null,
+      "explainDe": "Wie im if-Satz steht nach \"unless\" die einfache Gegenwart (hurry), nie \"will\". \"will\" bleibt nur im Hauptsatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.ec.004",
+      "structureId": "g3u05.s.unless",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-ec-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: \"Unless you will study, you will not pass the test.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless you study, you will not pass the test.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you study",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im unless-Satz darf kein \"will\" stehen. Nimm die einfache Gegenwart.",
+      "hintEn": null,
+      "explainDe": "Nach \"unless\" steht die einfache Gegenwart: \"Unless you study\". Das \"will\" bleibt allein im Hauptsatz (will not pass).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.ec.005",
+      "structureId": "g3u05.s.unless",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: \"Unless you do not finish your homework, you can not play outside.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless you finish your homework, you can not play outside.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you finish your homework",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Doppelte Verneinung: streiche das \"not\" direkt nach \"unless\".",
+      "hintEn": null,
+      "explainDe": "\"unless\" heißt schon \"wenn ... nicht\". \"unless you finish\" = \"wenn du nicht fertig machst\" - kein zusätzliches \"not\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.ec.006",
+      "structureId": "g3u05.s.unless",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Exploits using unless where a positive condition needs if."
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: \"Unless you study, you will pass the exam.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If you study, you will pass the exam.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you study, you will not pass the exam.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "exam",
+          "de": "Prüfung",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Lernen führt doch zum Bestehen - die Bedingung ist positiv. Dann passt \"unless\" hier nicht.",
+      "hintEn": null,
+      "explainDe": "Mit \"unless\" wäre der Satz unlogisch (\"wenn du nicht lernst, bestehst du\"). Richtig mit \"if\", oder \"unless ... will not pass\".",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.unless.ec.007",
+      "structureId": "g3u05.s.unless",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-ec-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: \"I will come to the party if not you tell me it is cancelled.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will come to the party unless you tell me it is cancelled.",
+          "tier": "full"
+        },
+        {
+          "text": "unless you tell me",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "party",
+          "de": "Party, Fest",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "\"if not\" lässt sich in ein einziges Wort zusammenziehen.",
+      "hintEn": null,
+      "explainDe": "\"if ... not\" wird zu \"unless\": \"unless you tell me\" = \"wenn du mir nicht sagst\". Danach steht das Verb bejaht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.001",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt#grammar-1",
+        "seedV1": "m3-u5-unless-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze: \"I will not go to the party ___ you come with me.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gemeint ist die einzige Ausnahme: \"wenn du nicht mitkommst\". Welches eine Wort sagt das?",
+      "hintEn": null,
+      "explainDe": "\"unless\" heißt \"wenn ... nicht\". \"I will not go unless you come\" = \"wenn du nicht mitkommst, gehe ich nicht\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.002",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze: \"You will be late ___ you leave now.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du kommst zu spät - es sei denn, du gehst jetzt. Setze das eine Wort für \"wenn ... nicht\" ein.",
+      "hintEn": null,
+      "explainDe": "\"unless you leave\" = \"wenn du nicht gehst\". Nach \"unless\" bleibt das Verb bejaht (leave, nicht don't leave).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.003",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-023",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze: \"You will get sunburnt ___ you put on sunscreen.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sonnenbrand kommt nur, \"wenn du keine Sonnencreme aufträgst\". Ein Wort dafür.",
+      "hintEn": null,
+      "explainDe": "\"unless you put on sunscreen\" = \"wenn du keine Sonnencreme aufträgst\". \"if\" würde das Gegenteil bedeuten.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.004",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-025",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze: \"They will not let you into the pool ___ you wear a swimming cap.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nur die eine Bedingung lässt dich rein: \"wenn du eine Badekappe trägst\". Sonst nicht.",
+      "hintEn": null,
+      "explainDe": "\"unless you wear a swimming cap\" = \"wenn du keine Badekappe trägst, lassen sie dich nicht rein\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.005",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze: \"We can not have the picnic ___ it stops raining.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Picknick geht nur, \"wenn der Regen aufhört\". Welches Wort drückt \"wenn ... nicht\" aus?",
+      "hintEn": null,
+      "explainDe": "\"unless it stops\" = \"wenn es nicht aufhört\". \"unless\" trägt das \"nicht\" schon in sich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.006",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze mit \"if\" oder \"unless\": \"I will lend you my book ___ you promise to give it back.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "if",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hier ist es eine positive Bedingung (du versprichst es), kein \"... nicht\". Dann passt nicht \"unless\".",
+      "hintEn": null,
+      "explainDe": "Hier brauchst du \"if\": \"if you promise\" = \"wenn du versprichst\". \"unless\" würde \"wenn du nicht versprichst\" heißen - das ist falsch gemeint.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.unless.gf.010",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze: \"She will not pass the test ___ she studies harder.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Bestehen klappt nur, \"wenn sie mehr lernt\". Welches Wort sagt \"wenn ... nicht\"?",
+      "hintEn": null,
+      "explainDe": "\"unless she studies harder\" = \"wenn sie nicht mehr lernt\". Nach \"unless\" steht studies bejaht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.011",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-024",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze: \"The match will be cancelled ___ the rain stops.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Spiel findet nur statt, \"wenn der Regen aufhört\". Sonst wird es abgesagt.",
+      "hintEn": null,
+      "explainDe": "\"unless the rain stops\" = \"wenn der Regen nicht aufhört, wird das Spiel abgesagt\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.012",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze: \"I will go to the cinema tomorrow ___ I have too much homework.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du gehst ins Kino - es sei denn, du hast zu viele Hausaufgaben. Ein Wort für diese Ausnahme.",
+      "hintEn": null,
+      "explainDe": "\"unless I have too much homework\" = \"wenn ich nicht zu viele Hausaufgaben habe\". Die Ausnahme drückt \"unless\" aus.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.013",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze beide Lücken: \"Unless you ___ (hurry), you ___ (be) late.\"",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "hurry | will be",
+          "tier": "full"
+        },
+        {
+          "text": "hurry | 'll be",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach \"unless\" steht die einfache Gegenwart ohne \"will\". Im Hauptsatz steht \"will\" + Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach \"unless\" kommt die einfache Gegenwart (hurry), im Hauptsatz \"will\" + Grundform (will be). Kein \"will\" nach \"unless\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.014",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze beide Lücken: \"Unless we ___ (bring) an umbrella, we ___ (get) wet.\"",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "bring | will get",
+          "tier": "full"
+        },
+        {
+          "text": "bring | 'll get",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "get",
+          "de": "werden",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Nach \"unless\" die einfache Gegenwart (bring). Der Hauptsatz braucht \"will\".",
+      "hintEn": null,
+      "explainDe": "\"Unless we bring an umbrella\" = \"wenn wir keinen Schirm mitbringen\". Hauptsatz: will + Grundform (will get).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gf.015",
+      "structureId": "g3u05.s.unless",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ergänze beide Lücken: \"Unless you ___ (practise), you ___ (not improve).\"",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "practise | will not improve",
+          "tier": "full"
+        },
+        {
+          "text": "practise | won't improve",
+          "tier": "full"
+        },
+        {
+          "text": "practice | will not improve",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "practise",
+          "de": "üben",
+          "scope": "prompt"
+        },
+        {
+          "word": "improve",
+          "de": "besser werden",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Nach \"unless\" kein \"will\". Die Verneinung im Hauptsatz heißt \"will not\".",
+      "hintEn": null,
+      "explainDe": "Nach \"unless\" einfache Gegenwart (practise). Im Hauptsatz steht die Verneinung mit \"will not\" + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gs.001",
+      "structureId": "g3u05.s.unless",
+      "format": "group-sort",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Sorts correct unless-sentences vs the two error types (double-negative, will-in-clause)."
+      },
+      "prompt": {
+        "text": "Sortiere: Ist der Satz richtig (✓) oder falsch (✗)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "Unless you hurry, you will be late.",
+            "I will not go unless you come with me.",
+            "Unless she studies, she will fail."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "Unless you do not hurry, you will be late.",
+            "Unless you will come, I will not go.",
+            "Unless she will study, she will fail."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Falsch ist ein Satz, wenn nach \"unless\" ein \"not\" oder ein \"will\" steht.",
+      "hintEn": null,
+      "explainDe": "Nach \"unless\" steht das Verb bejaht und in der einfachen Gegenwart - kein \"not\", kein \"will\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.gs.002",
+      "structureId": "g3u05.s.unless",
+      "format": "group-sort",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Sorts contexts needing unless (if-not meaning) vs if (positive condition)."
+      },
+      "prompt": {
+        "text": "Sortiere: Braucht der Satz \"unless\" oder \"if\"?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "unless",
+          "members": [
+            "You will be late ___ you leave now.",
+            "I will not help you ___ you ask me.",
+            "We will not go out ___ it stops raining."
+          ]
+        },
+        {
+          "label": "if",
+          "members": [
+            "I will lend you my book ___ you promise to give it back.",
+            "She will be happy ___ you invite her.",
+            "I will give you a sweet ___ you help me."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "\"unless\" passt, wenn du \"wenn ... nicht\" meinst. \"if\" passt bei einer positiven Bedingung.",
+      "hintEn": null,
+      "explainDe": "\"unless\" steht für die Ausnahme (\"wenn ... nicht\"). Bei einer positiven Bedingung (etwas passiert, WENN ...) brauchst du \"if\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mc.001",
+      "structureId": "g3u05.s.unless",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I will not help you unless you do not ask me.",
+            "I will help you unless you ask me.",
+            "I will not help you if you ask me.",
+            "I will help you if you do not ask me."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz bedeutet dasselbe wie \"I will not help you if you do not ask me\"?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will not help you unless you ask me.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I will not help you unless you do not ask me.",
+        "I will help you unless you ask me.",
+        "I will not help you if you ask me."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"unless\" enthält schon das \"nicht\" - also kommt danach kein zweites \"not\".",
+      "hintEn": null,
+      "explainDe": "\"if you do not ask\" wird zu \"unless you ask\". Kein doppeltes \"not\", und \"will not help\" bleibt verneint.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mc.002",
+      "structureId": "g3u05.s.unless",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If you clean your room, you can not go out.",
+            "Unless you do not clean your room, you can not go out.",
+            "While you clean your room, you can not go out.",
+            "Because you clean your room, you can not go out."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-mc-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz bedeutet dasselbe wie \"If you do not clean your room, you can not go out\"?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless you clean your room, you can not go out.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If you clean your room, you can not go out.",
+        "Unless you do not clean your room, you can not go out.",
+        "While you clean your room, you can not go out."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"wenn ... nicht\" in einem Wort ist \"unless\" - und danach steht kein weiteres \"not\".",
+      "hintEn": null,
+      "explainDe": "\"If you do not clean\" = \"Unless you clean\". \"unless\" ohne zweites \"not\", sonst hebt sich die Verneinung auf.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mc.003",
+      "structureId": "g3u05.s.unless",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Unless you do not hurry, we will miss the train.",
+            "Unless you will hurry, we will miss the train.",
+            "If you hurry, we will miss the train.",
+            "Unless you hurried, we will miss the train."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-mc-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless you hurry, we will miss the train.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Unless you do not hurry, we will miss the train.",
+        "Unless you will hurry, we will miss the train.",
+        "If you hurry, we will miss the train."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf zwei Fallen: kein \"not\" nach \"unless\" und kein \"will\" nach \"unless\".",
+      "hintEn": null,
+      "explainDe": "Richtig: \"Unless you hurry\" - kein \"not\", kein \"will\" im unless-Satz. \"If you hurry\" hätte hier die falsche Bedeutung.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.unless.mc.004",
+      "structureId": "g3u05.s.unless",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "We will not go on the trip unless the rain does not stop.",
+            "We will not go on the trip unless the rain will stop.",
+            "We will not go on the trip if the rain stops.",
+            "We will go on the trip unless the rain stops."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We will not go on the trip unless the rain stops.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We will not go on the trip unless the rain does not stop.",
+        "We will not go on the trip unless the rain will stop.",
+        "We will not go on the trip if the rain stops."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "trip",
+          "de": "Ausflug",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Nach \"unless\" steht die einfache Gegenwart, bejaht und ohne \"will\". Und \"if\" hätte die falsche Bedeutung.",
+      "hintEn": null,
+      "explainDe": "Richtig ist \"unless the rain stops\" = \"wenn der Regen nicht aufhört\". Kein \"not\", kein \"will\" danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mc.005",
+      "structureId": "g3u05.s.unless",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "\"Unless you say sorry, she will be angry.\" = \"If you say sorry, she will be angry.\"",
+            "\"Unless you do not say sorry, she will be angry.\" = \"If you do not say sorry, she will be angry.\"",
+            "\"Unless you say sorry, she will be happy.\" = \"If you do not say sorry, she will be angry.\"",
+            "\"Unless you say sorry, she will be angry.\" = \"When you say sorry, she will be angry.\""
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche zwei Sätze bedeuten GENAU dasselbe?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "\"Unless you say sorry, she will be angry.\" = \"If you do not say sorry, she will be angry.\"",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "\"Unless you say sorry, she will be angry.\" = \"If you say sorry, she will be angry.\"",
+        "\"Unless you do not say sorry, she will be angry.\" = \"If you do not say sorry, she will be angry.\"",
+        "\"Unless you say sorry, she will be happy.\" = \"If you do not say sorry, she will be angry.\""
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "\"unless X\" ist gleichbedeutend mit \"if ... not X\" - der Rest des Satzes bleibt gleich.",
+      "hintEn": null,
+      "explainDe": "\"Unless you say sorry\" = \"If you do not say sorry\". Beide Sätze müssen Wort für Wort dieselbe Aussage machen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mc.006",
+      "structureId": "g3u05.s.unless",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "if",
+            "because",
+            "when",
+            "while",
+            "so"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Wort passt? \"You will catch a cold ___ you wear a hat.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "if",
+        "because",
+        "when"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gemeint ist \"wenn du keine Mütze trägst\". Welches Wort sagt das in einem Wort?",
+      "hintEn": null,
+      "explainDe": "\"unless you wear a hat\" = \"wenn du keine Mütze trägst, wirst du dich erkälten\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mc.007",
+      "structureId": "g3u05.s.unless",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "if",
+            "while",
+            "after",
+            "because",
+            "before"
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Wort passt? \"We will have the picnic ___ it rains.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "if",
+        "while",
+        "after"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Picknick findet statt - es sei denn, es regnet. Welches Wort drückt die Ausnahme aus?",
+      "hintEn": null,
+      "explainDe": "\"unless it rains\" = \"wenn es nicht regnet, machen wir das Picknick\". \"if\" würde das Gegenteil bedeuten.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u05.gi.unless.mp.001",
+      "structureId": "g3u05.s.unless",
+      "format": "matching-pairs",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde die Paare: \"unless\"-Satz und gleichbedeutender \"if ... not\"-Satz.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Unless you wear a hat, you will catch a cold.",
+          "right": "If you do not wear a hat, you will catch a cold."
+        },
+        {
+          "left": "Unless you ask, I will not help you.",
+          "right": "If you do not ask, I will not help you."
+        },
+        {
+          "left": "Unless you leave now, you will miss the bus.",
+          "right": "If you do not leave now, you will miss the bus."
+        },
+        {
+          "left": "Unless we hurry, we will be late.",
+          "right": "If we do not hurry, we will be late."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jeder \"unless\"-Satz hat genau einen \"if ... not\"-Partner mit derselben Aussage.",
+      "hintEn": null,
+      "explainDe": "\"unless X\" = \"if ... not X\". Die rechte Seite trägt das \"not\", die linke Seite hat das bejahte Verb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mp.002",
+      "structureId": "g3u05.s.unless",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 5.txt#grammar-1",
+        "seedV1": "m3-u5-unless-mt-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Finde die Paare: \"unless\"-Satz und gleichbedeutender \"if ... not\"-Satz.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Unless you whistle, there will be no rain.",
+          "right": "If you do not whistle, there will be no rain."
+        },
+        {
+          "left": "Unless you cover your ears, the noise will scare you.",
+          "right": "If you do not cover your ears, the noise will scare you."
+        },
+        {
+          "left": "Unless she calls me, I will be worried.",
+          "right": "If she does not call me, I will be worried."
+        },
+        {
+          "left": "Unless we leave early, we will miss the train.",
+          "right": "If we do not leave early, we will miss the train."
+        },
+        {
+          "left": "Unless you find your ticket, you will not get in.",
+          "right": "If you do not find your ticket, you will not get in."
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "worried",
+          "de": "besorgt",
+          "scope": null
+        }
+      ],
+      "hintDe": "\"unless X\" = \"if ... not X\". Bei \"she\" heißt die \"if\"-Form \"if she does not ...\".",
+      "hintEn": null,
+      "explainDe": "Jeder \"unless\"-Satz wird zu \"if ... not\". Bei he/she/it steht auf der if-Seite \"does not\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mt.001",
+      "structureId": "g3u05.s.unless",
+      "format": "matching",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde jeden \"unless\"-Satz mit seiner Bedeutung mit \"if ... not\".",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Unless you hurry, you will be late.",
+          "right": "If you do not hurry, you will be late."
+        },
+        {
+          "left": "Unless it stops raining, we will stay inside.",
+          "right": "If it does not stop raining, we will stay inside."
+        },
+        {
+          "left": "She will be angry unless you say sorry.",
+          "right": "She will be angry if you do not say sorry."
+        },
+        {
+          "left": "I will not come unless you ask me.",
+          "right": "I will not come if you do not ask me."
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": null
+        }
+      ],
+      "hintDe": "\"unless X\" ist immer dasselbe wie \"if ... not X\". Suche zu jedem Satz die gleiche Aussage.",
+      "hintEn": null,
+      "explainDe": "Jeder \"unless\"-Satz lässt sich in \"if ... not\" umformen, ohne die Bedeutung zu ändern.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.mt.002",
+      "structureId": "g3u05.s.unless",
+      "format": "matching",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-mt-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Verbinde jeden \"unless\"-Satz mit seiner Bedeutung mit \"if ... not\".",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Unless you study, you will fail.",
+          "right": "If you do not study, you will fail."
+        },
+        {
+          "left": "I will not go unless you come.",
+          "right": "I will not go if you do not come."
+        },
+        {
+          "left": "Unless it rains, we will have a picnic.",
+          "right": "If it does not rain, we will have a picnic."
+        },
+        {
+          "left": "We will not win unless we try harder.",
+          "right": "We will not win if we do not try harder."
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "win",
+          "de": "gewinnen",
+          "scope": null
+        },
+        {
+          "word": "try",
+          "de": "versuchen",
+          "scope": null
+        }
+      ],
+      "hintDe": "\"unless\" ersetzt \"if ... not\". Achte darauf, dass die Verneinung auf der \"if\"-Seite steht.",
+      "hintEn": null,
+      "explainDe": "Auf der \"unless\"-Seite ist das Verb bejaht, auf der \"if\"-Seite steht das \"not\". Die Aussage bleibt gleich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.qf.001",
+      "structureId": "g3u05.s.unless",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde aus \"We will not go unless the weather is nice\" die passende Frage. Beginne mit \"Will\".",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Will we go if the weather is not nice?",
+          "tier": "full"
+        },
+        {
+          "text": "Will we go if the weather isn't nice?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"unless the weather is nice\" bedeutet \"if the weather is not nice\". Mach daraus eine Frage mit \"Will we go ...?\".",
+      "hintEn": null,
+      "explainDe": "\"unless the weather is nice\" = \"if the weather is not nice\". Die Frage prüft genau diesen Fall: \"Will we go if the weather is not nice?\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.qf.002",
+      "structureId": "g3u05.s.unless",
+      "format": "question-formation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde aus \"You will not pass unless you study\" eine Frage. Beginne mit \"Will\".",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Will you pass if you do not study?",
+          "tier": "full"
+        },
+        {
+          "text": "Will you pass if you don't study?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"unless you study\" heißt \"if you do not study\". Forme das in eine Frage mit \"Will you pass ...?\" um.",
+      "hintEn": null,
+      "explainDe": "\"unless you study\" = \"if you do not study\". Die Frage \"Will you pass if you do not study?\" prüft genau diesen Fall.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.sb.001",
+      "structureId": "g3u05.s.unless",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "not",
+            "if",
+            "will",
+            "do",
+            "when"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-sb-001",
+        "narrative": null,
+        "note": "Chips: I / will / not / go / unless / you / come / with / me (9). distractorPool decoys catch double-negative + if-swap + will-in-clause."
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will not go unless you come with me.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you come with me, I will not go.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit \"I will not go\" und hänge die Ausnahme mit \"unless\" an. Nach \"unless\" kein \"not\".",
+      "hintEn": null,
+      "explainDe": "\"I will not go unless you come with me\" = \"ich gehe nicht, es sei denn, du kommst mit\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.sb.002",
+      "structureId": "g3u05.s.unless",
+      "format": "sentence-building",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "not",
+            "if",
+            "will",
+            "when"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-sb-020",
+        "narrative": null,
+        "note": "Chips: She / will / not / invite / you / unless / you / apologise (8) + decoys. 'apologise' granted."
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She will not invite you unless you apologise.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you apologise, she will not invite you.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du wirst nur eingeladen, \"wenn du dich entschuldigst\". Nach \"unless\" steht \"apologise\" ohne \"not\" und ohne \"will\".",
+      "hintEn": null,
+      "explainDe": "\"She will not invite you unless you apologise\" = \"wenn du dich nicht entschuldigst, lädt sie dich nicht ein\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.sb.003",
+      "structureId": "g3u05.s.unless",
+      "format": "sentence-building",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "not",
+            "if",
+            "will",
+            "when"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-first-conditional-sb-001",
+        "narrative": null,
+        "note": "Chips: Unless / you / hurry / you / will / miss / the / bus (8) + decoys."
+      },
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless you hurry, you will miss the bus.",
+          "tier": "full"
+        },
+        {
+          "text": "You will miss the bus unless you hurry.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du verpasst den Bus, \"wenn du dich nicht beeilst\". Nach \"unless\" steht \"hurry\" allein, ohne \"will\".",
+      "hintEn": null,
+      "explainDe": "\"Unless you hurry, you will miss the bus\" = \"wenn du dich nicht beeilst, verpasst du den Bus\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tf.001",
+      "structureId": "g3u05.s.unless",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 5.txt#unless-rewrite",
+        "seedV1": "m3-u5-unless-tf-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreibe mit \"unless\", ohne die Bedeutung zu ändern: \"I will not help him with his work if he does not ask me to.\" → \"I will not help him with his work ___.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "unless he asks me to",
+          "tier": "full"
+        },
+        {
+          "text": "unless he asks me",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lass \"if\" und \"does not\" weg und beginne mit \"unless\". Das Verb wird dann bejaht.",
+      "hintEn": null,
+      "explainDe": "\"if he does not ask\" wird zu \"unless he asks\". Das \"nicht\" wandert in \"unless\", das Verb bleibt bejaht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tf.002",
+      "structureId": "g3u05.s.unless",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 5.txt#unless-rewrite",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreibe mit \"unless\", ohne die Bedeutung zu ändern: \"He will be sick if he does not stop eating.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He will be sick unless he stops eating.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless he stops eating, he will be sick.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"if ... does not stop\" wird zu \"unless ... stops\". Achte auf das -s bei \"he\".",
+      "hintEn": null,
+      "explainDe": "Aus \"if he does not stop\" wird \"unless he stops\". Bei \"he\" hängst du das -s an (stops). Das \"nicht\" steckt jetzt in \"unless\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tf.003",
+      "structureId": "g3u05.s.unless",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 5.txt#unless-rewrite",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreibe mit \"unless\", ohne die Bedeutung zu ändern: \"You will not be here in time if you do not run.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You will not be here in time unless you run.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you run, you will not be here in time.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"if you do not run\" wird zu \"unless you run\". Der Hauptsatz mit \"will not\" bleibt gleich.",
+      "hintEn": null,
+      "explainDe": "\"if you do not run\" = \"unless you run\". Die Verneinung des Hauptsatzes (will not be) bleibt unverändert.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tf.004",
+      "structureId": "g3u05.s.unless",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tf-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreibe mit \"unless\", ohne die Bedeutung zu ändern: \"If Tom does not apologise, I will not talk to him again.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Unless Tom apologises, I will not talk to him again.",
+          "tier": "full"
+        },
+        {
+          "text": "I will not talk to him again unless Tom apologises.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "apologises",
+          "de": "sich entschuldigt",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Lass \"if\" und \"does not\" weg, beginne mit \"Unless Tom ...\" und hänge bei \"Tom\" das -s an.",
+      "hintEn": null,
+      "explainDe": "\"If Tom does not apologise\" wird zu \"Unless Tom apologises\". Bei Tom (= he) steht das Verb mit -s (apologises).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tf.005",
+      "structureId": "g3u05.s.unless",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreibe mit \"unless\", ohne die Bedeutung zu ändern: \"You will get wet if you do not bring an umbrella.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You will get wet unless you bring an umbrella.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you bring an umbrella, you will get wet.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "get",
+          "de": "werden",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "\"if you do not bring\" wird zu \"unless you bring\". Das Verb wird bejaht.",
+      "hintEn": null,
+      "explainDe": "\"if you do not bring an umbrella\" = \"unless you bring an umbrella\". Das \"nicht\" steckt jetzt in \"unless\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tr.001",
+      "structureId": "g3u05.s.unless",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische: \"Ich gehe nicht schwimmen, es sei denn, du kommst mit.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will not go swimming unless you come with me.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you come with me, I will not go swimming.",
+          "tier": "full"
+        },
+        {
+          "text": "I won't go swimming unless you come with me.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"es sei denn\" ist \"unless\". Danach steht das Verb bejaht (you come), nicht verneint.",
+      "hintEn": null,
+      "explainDe": "\"es sei denn, du kommst mit\" = \"unless you come with me\". Nach \"unless\" kein \"not\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tr.002",
+      "structureId": "g3u05.s.unless",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische: \"Du wirst den Test nicht bestehen, wenn du nicht mehr lernst.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You will not pass the test unless you study more.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you study more, you will not pass the test.",
+          "tier": "full"
+        },
+        {
+          "text": "You won't pass the test unless you study more.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"wenn du nicht mehr lernst\" kannst du mit \"unless you study more\" sagen - das \"nicht\" steckt in \"unless\".",
+      "hintEn": null,
+      "explainDe": "\"wenn du nicht lernst\" = \"unless you study\". Der Hauptsatz bleibt verneint: \"will not pass\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tr.003",
+      "structureId": "g3u05.s.unless",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tr-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische: \"Wir werden zu spät kommen, es sei denn, wir laufen schneller.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We will be late unless we run faster.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless we run faster, we will be late.",
+          "tier": "full"
+        },
+        {
+          "text": "We'll be late unless we run faster.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"es sei denn\" ist \"unless\". Danach steht \"we run\" ohne \"will\".",
+      "hintEn": null,
+      "explainDe": "\"es sei denn, wir laufen schneller\" = \"unless we run faster\". Nach \"unless\" einfache Gegenwart, kein \"will\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tr.004",
+      "structureId": "g3u05.s.unless",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u5-unless-tr-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische: \"Du darfst nicht mit deinen Freunden spielen, wenn du deine Hausaufgaben nicht machst.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You can not play with your friends unless you do your homework.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you do your homework, you can not play with your friends.",
+          "tier": "full"
+        },
+        {
+          "text": "You can't play with your friends unless you do your homework.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"wenn du ... nicht machst\" sagst du mit \"unless you do\". Das \"nicht\" geht in \"unless\".",
+      "hintEn": null,
+      "explainDe": "\"wenn du deine Hausaufgaben nicht machst\" = \"unless you do your homework\". Nach \"unless\" steht das Verb bejaht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u05.gi.unless.tr.005",
+      "structureId": "g3u05.s.unless",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Übersetze ins Englische: \"Du wirst dich erkälten, es sei denn, du trägst eine Mütze.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You will catch a cold unless you wear a hat.",
+          "tier": "full"
+        },
+        {
+          "text": "Unless you wear a hat, you will catch a cold.",
+          "tier": "full"
+        },
+        {
+          "text": "You'll catch a cold unless you wear a hat.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"es sei denn\" ist \"unless\". Danach steht das Verb bejaht (you wear), nicht verneint.",
+      "hintEn": null,
+      "explainDe": "\"es sei denn, du trägst eine Mütze\" = \"unless you wear a hat\". Nach \"unless\" steht kein \"not\".",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}
