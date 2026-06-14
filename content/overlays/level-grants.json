@@ -810,6 +810,420 @@
       "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "will",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "won't",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "'ll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "ll",
+      "reason": "unit-13 Will-future contraction 'll: the cumulative-bank tokenizer strips the leading apostrophe, so the bare contraction surfaces as token 'll' (without apostrophe) — e.g. the transformation answer \"'ll call\". The pronoun forms (i'll, we'll, …) already match as whole tokens; this grants the standalone form.",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "i'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "you'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "he'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "she'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "it'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "we'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "they'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "slowly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "quickly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carefully",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "angrily",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "beautifully",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "easily",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "happily",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "loudly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "badly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "quietly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "nicely",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "sadly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "brightly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "safely",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "proudly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "nervously",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "hungrily",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "perfectly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "clearly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "warmly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "strongly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "suddenly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "already",
+      "reason": "unit-14 SB grammar box Present perfect: signal word already (already/yet/ever) positions the present perfect; not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "yet",
+      "reason": "unit-14 SB grammar box Present perfect: signal word yet (already/yet/ever) positions the present perfect; not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "ever",
+      "reason": "unit-14 SB grammar box Present perfect: signal word ever (already/yet/ever) positions the present perfect; not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "unit-14 SB grammar box Present perfect: past participle been (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "unit-14 SB grammar box Present perfect: past participle won (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "tried",
+      "reason": "unit-14 SB grammar box Present perfect: past participle tried (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "given",
+      "reason": "unit-14 SB grammar box Present perfect: past participle given (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "seen",
+      "reason": "unit-14 SB grammar box Present perfect: past participle seen (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "taken",
+      "reason": "unit-14 SB grammar box Present perfect: past participle taken (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "finished",
+      "reason": "unit-14 SB grammar box Present perfect: past participle finished (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "started",
+      "reason": "unit-14 SB grammar box Present perfect: past participle started (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "met",
+      "reason": "unit-14 SB grammar box Present perfect: past participle met (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "part",
+      "reason": "unit-14 Present perfect of bank phrase \"take part\" → \"taken part\"; the participle form leaves \"part\" as a bare token",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

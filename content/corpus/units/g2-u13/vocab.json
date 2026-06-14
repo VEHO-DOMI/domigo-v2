@@ -1,0 +1,3995 @@
+{
+  "schema": "vocab@1",
+  "grade": 2,
+  "unit": 13,
+  "slug": "g2-u13",
+  "items": [
+    {
+      "id": "g2u13.w.average",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "western",
+            "mild",
+            "thick",
+            "wet",
+            "bright"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "average",
+      "g": "durchschnittlich",
+      "d": "In the middle: not the most and not the smallest.",
+      "s": "The ___ rainfall here is 120 inches of rain every year.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "average",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "average",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "average",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "durchschnittlich",
+            "tier": "full"
+          },
+          {
+            "text": "Durchschnitts-",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "western",
+        "mild",
+        "thick"
+      ],
+      "hintDe": "In der Mitte -- nicht am meisten, nicht am wenigsten."
+    },
+    {
+      "id": "g2u13.w.axe",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "binoculars",
+            "scale",
+            "formula",
+            "tan",
+            "coast"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "axe",
+      "g": "Axt",
+      "d": "A heavy metal tool for breaking a tree into small pieces.",
+      "s": "The man put down his heavy metal ___ next to the tree.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "axe",
+          "tier": "full"
+        },
+        {
+          "text": "axes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "axe",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "axe",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Axt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "binoculars",
+        "scale",
+        "formula"
+      ],
+      "hintDe": "Schweres Metallwerkzeug, um Holz zu spalten."
+    },
+    {
+      "id": "g2u13.w.below",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "towards",
+            "generally",
+            "average",
+            "western",
+            "throughout the year"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "below",
+      "g": "unter(-halb)",
+      "d": "Under a thing, not over it.",
+      "s": "The temperature will be ___ 0 degrees tomorrow.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "below",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "below",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "below",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unter",
+            "tier": "full"
+          },
+          {
+            "text": "unterhalb",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "towards",
+        "generally",
+        "average"
+      ],
+      "hintDe": "Unter etwas, nicht darüber."
+    },
+    {
+      "id": "g2u13.w.binoculars",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "axe",
+            "scale",
+            "tan",
+            "coast",
+            "formula"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "binoculars",
+      "g": "Fernglas",
+      "d": "A tool with two glasses for looking at a thing far away.",
+      "s": "I look at the stars at night with my ___ .",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "binoculars",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "binoculars",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "binoculars",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fernglas",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "axe",
+        "scale",
+        "tan"
+      ],
+      "hintDe": "Werkzeug mit zwei Gläsern -- für weit Entferntes."
+    },
+    {
+      "id": "g2u13.w.bright",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dark",
+            "cold",
+            "wet",
+            "thick",
+            "mild"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bright",
+      "g": "hell",
+      "d": "Giving a lot of light.",
+      "s": "The stars were very ___ in the sky last night.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bright",
+          "tier": "full"
+        },
+        {
+          "text": "brighter",
+          "tier": "partial"
+        },
+        {
+          "text": "brightest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bright",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bright",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hell",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dark",
+        "cold",
+        "wet"
+      ],
+      "hintDe": "Voller Licht, leuchtend."
+    },
+    {
+      "id": "g2u13.w.career",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forecast",
+            "outlook",
+            "small talk",
+            "hope",
+            "scale"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "career",
+      "g": "Karriere",
+      "d": "The work that a man or woman does for many years.",
+      "s": "She wants to be a doctor for many years. It will be a long ___ for her.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "career",
+          "tier": "full"
+        },
+        {
+          "text": "careers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "career",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "career",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Karriere",
+            "tier": "full"
+          },
+          {
+            "text": "Laufbahn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forecast",
+        "outlook",
+        "small talk"
+      ],
+      "hintDe": "Die Arbeit, die man viele Jahre lang macht."
+    },
+    {
+      "id": "g2u13.w.cloudy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunny",
+            "hot",
+            "dry",
+            "snowy",
+            "mild"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cloudy",
+      "g": "bewölkt",
+      "d": "A day when grey clouds are over you and you cannot look at the sun.",
+      "s": "It is very ___ today. The sky is grey and I think it will rain.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cloudy",
+          "tier": "full"
+        },
+        {
+          "text": "cloudier",
+          "tier": "partial"
+        },
+        {
+          "text": "cloudiest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cloudy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cloudy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bewölkt",
+            "tier": "full"
+          },
+          {
+            "text": "wolkig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunny",
+        "hot",
+        "dry"
+      ],
+      "hintDe": "Der Himmel ist grau, keine Sonne."
+    },
+    {
+      "id": "g2u13.w.coast",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forecast",
+            "scale",
+            "hope",
+            "outlook",
+            "temperature"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "coast",
+      "g": "Küste",
+      "d": "The land next to the sea.",
+      "s": "We had a day at the ___ , next to the sea.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "coast",
+          "tier": "full"
+        },
+        {
+          "text": "coasts",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "coast",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "coast",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Küste",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forecast",
+        "scale",
+        "hope"
+      ],
+      "hintDe": "Das Land direkt am Meer."
+    },
+    {
+      "id": "g2u13.w.cold",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hot",
+            "sunny",
+            "dry",
+            "mild",
+            "bright"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cold",
+      "g": "kalt",
+      "d": "A temperature that makes you want a thick jacket and a hat.",
+      "s": "Wear a thick jacket and a hat because it is very ___ outside.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cold",
+          "tier": "full"
+        },
+        {
+          "text": "colder",
+          "tier": "partial"
+        },
+        {
+          "text": "coldest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cold",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cold",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kalt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hot",
+        "sunny",
+        "dry"
+      ],
+      "hintDe": "Zieh eine dicke Jacke an."
+    },
+    {
+      "id": "g2u13.w.cool",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hot",
+            "dry",
+            "sunny",
+            "wet",
+            "thick"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cool",
+      "g": "kühl",
+      "d": "Not hot, but not really cold.",
+      "s": "In the day it is hot, but at night it is quite ___ .",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cool",
+          "tier": "full"
+        },
+        {
+          "text": "cooler",
+          "tier": "partial"
+        },
+        {
+          "text": "coolest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cool",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cool",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kühl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hot",
+        "dry",
+        "sunny"
+      ],
+      "hintDe": "Nicht heiß, aber auch nicht richtig kalt."
+    },
+    {
+      "id": "g2u13.w.degree",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "scale",
+            "temperature",
+            "forecast",
+            "formula",
+            "outlook"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "degree",
+      "g": "Grad (°)",
+      "d": "How we show how hot or cold it is, with a number like 20.",
+      "s": "Tomorrow it will be 25 ___ -- nice and hot!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "degrees",
+          "tier": "full"
+        },
+        {
+          "text": "degree",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "degree",
+          "tier": "full"
+        },
+        {
+          "text": "degrees",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "degree",
+            "tier": "full"
+          },
+          {
+            "text": "degrees",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Grad",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "scale",
+        "temperature",
+        "forecast"
+      ],
+      "hintDe": "Damit misst man die Temperatur, z. B. 25°."
+    },
+    {
+      "id": "g2u13.w.dry",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "wet",
+            "cold",
+            "foggy",
+            "rainy",
+            "cool"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "dry",
+      "g": "trocken",
+      "d": "Having no rain and no wet weather.",
+      "s": "We had very ___ weather for our holidays last year. It did not rain at all.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dry",
+          "tier": "full"
+        },
+        {
+          "text": "drier",
+          "tier": "partial"
+        },
+        {
+          "text": "driest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "trocken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wet",
+        "cold",
+        "foggy"
+      ],
+      "hintDe": "Kein Regen, kein Wasser."
+    },
+    {
+      "id": "g2u13.w.flash-of-light",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "thunderstorm",
+            "sunshine",
+            "forecast",
+            "rainfall",
+            "outlook"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "flash of light",
+      "g": "Lichtblitz",
+      "d": "A very bright, fast thing in the sky in a storm.",
+      "s": "There was a ___ in the sky, bright like the sun for one second.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "flash of light",
+          "tier": "full"
+        },
+        {
+          "text": "flashes of light",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "flash of light",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "flash of light",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lichtblitz",
+            "tier": "full"
+          },
+          {
+            "text": "Blitz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "thunderstorm",
+        "sunshine",
+        "forecast"
+      ],
+      "hintDe": "Ein ganz kurzes, helles Licht am Himmel."
+    },
+    {
+      "id": "g2u13.w.fog",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunshine",
+            "rainfall",
+            "outlook",
+            "forecast",
+            "thunderstorm"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "fog",
+      "g": "Nebel",
+      "d": "A thick grey cloud near the ground, so you cannot look very well.",
+      "s": "Heavy ___ in the South will clear up in the afternoon.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fog",
+          "tier": "full"
+        },
+        {
+          "text": "fogs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fog",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fog",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nebel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunshine",
+        "rainfall",
+        "outlook"
+      ],
+      "hintDe": "Dichte, graue Wolke direkt am Boden."
+    },
+    {
+      "id": "g2u13.w.foggy",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunny",
+            "hot",
+            "dry",
+            "windy",
+            "cold"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "foggy",
+      "g": "neblig",
+      "d": "When grey clouds come down near the ground and you cannot look very well.",
+      "s": "Drive carefully. It is very ___ this morning and you cannot look very well.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "foggy",
+          "tier": "full"
+        },
+        {
+          "text": "foggier",
+          "tier": "partial"
+        },
+        {
+          "text": "foggiest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "foggy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "foggy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neblig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunny",
+        "hot",
+        "dry"
+      ],
+      "hintDe": "Du siehst kaum die Straße."
+    },
+    {
+      "id": "g2u13.w.forecast",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "coast",
+            "scale",
+            "temperature",
+            "sunshine",
+            "career"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "forecast",
+      "g": "Vorhersage",
+      "d": "What the weather will be like, that you can read or watch before it happens.",
+      "s": "The ___ is very good for tomorrow -- hot and sunny.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "forecast",
+          "tier": "full"
+        },
+        {
+          "text": "forecasts",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "forecast",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "forecast",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vorhersage",
+            "tier": "full"
+          },
+          {
+            "text": "Wettervorhersage",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "coast",
+        "scale",
+        "temperature"
+      ],
+      "hintDe": "Sie sagt dir das Wetter für morgen voraus."
+    },
+    {
+      "id": "g2u13.w.formula",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "scale",
+            "forecast",
+            "outlook",
+            "degree",
+            "career"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "formula",
+      "g": "Formel",
+      "d": "Numbers and letters that show you how to work it out.",
+      "s": "We used a ___ with numbers and letters to work it out.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "formula",
+          "tier": "full"
+        },
+        {
+          "text": "formulas",
+          "tier": "partial"
+        },
+        {
+          "text": "formulae",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "formula",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "formula",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Formel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "scale",
+        "forecast",
+        "outlook"
+      ],
+      "hintDe": "Zahlen und Buchstaben zum Ausrechnen."
+    },
+    {
+      "id": "g2u13.w.generally",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "below",
+            "towards",
+            "average",
+            "western",
+            "throughout the year"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "generally",
+      "g": "im Allgemeinen",
+      "d": "Most of the time, usually.",
+      "s": "Death Valley is ___ hot, dry and sunny all year.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "generally",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "generally",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "generally",
+            "tier": "full"
+          },
+          {
+            "text": "usually",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "im Allgemeinen",
+            "tier": "full"
+          },
+          {
+            "text": "meistens",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "below",
+        "towards",
+        "average"
+      ],
+      "hintDe": "Meistens, in der Regel."
+    },
+    {
+      "id": "g2u13.w.have-a-nice-day",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "small talk",
+            "forecast",
+            "outlook",
+            "sunshine",
+            "hope"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "The headword is a fixed spoken greeting with no in-bank near-synonyms, so distractors are other in-bank lexical items that are clearly not a goodbye phrase."
+      },
+      "w": "Have a nice day!",
+      "g": "Einen schönen Tag noch!",
+      "d": "A good thing you tell a friend before they go.",
+      "s": "Goodbye! ___ Enjoy the sunshine!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Have a nice day!",
+          "tier": "full"
+        },
+        {
+          "text": "Have a nice day",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Have a nice day!",
+          "tier": "full"
+        },
+        {
+          "text": "Have a nice day",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Have a nice day!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Einen schönen Tag noch!",
+            "tier": "full"
+          },
+          {
+            "text": "Schönen Tag noch!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "small talk",
+        "forecast",
+        "outlook"
+      ],
+      "hintDe": "Nettes Abschiedsgrußwort -- mit Rufzeichen!"
+    },
+    {
+      "id": "g2u13.w.heavy-rain",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunshine",
+            "fog",
+            "small talk",
+            "forecast",
+            "outlook"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "heavy rain",
+      "g": "starker Regen",
+      "d": "A storm with very strong water from the sky.",
+      "s": "After the storm, the ___ came down and my clothes were wet.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "heavy rain",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "heavy rain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "heavy rain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "starker Regen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sunshine",
+        "fog",
+        "small talk"
+      ],
+      "hintDe": "Sehr starker Regen -- du wirst schnell nass."
+    },
+    {
+      "id": "g2u13.w.hope",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forecast",
+            "scale",
+            "coast",
+            "outlook",
+            "career"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "hope",
+      "g": "Hoffnung",
+      "d": "The feeling that good weather will come.",
+      "s": "Do not give up. There is still ___ .",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hope",
+          "tier": "full"
+        },
+        {
+          "text": "hopes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hope",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hope",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hoffnung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forecast",
+        "scale",
+        "coast"
+      ],
+      "hintDe": "Das Gefühl, dass etwas Gutes kommt."
+    },
+    {
+      "id": "g2u13.w.hot",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cold",
+            "cloudy",
+            "rainy",
+            "wet",
+            "foggy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "hot",
+      "g": "heiß",
+      "d": "A very high temperature, when you want a cold drink and go to the beach.",
+      "s": "It is so ___ today! Let's go to the beach and have a swim in the sea.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "hot",
+          "tier": "full"
+        },
+        {
+          "text": "hotter",
+          "tier": "partial"
+        },
+        {
+          "text": "hottest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hot",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hot",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "heiß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cold",
+        "cloudy",
+        "rainy"
+      ],
+      "hintDe": "Sehr warm -- ab zum Schwimmen!"
+    },
+    {
+      "id": "g2u13.w.inch",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mile",
+            "degree",
+            "scale",
+            "rainfall",
+            "coast"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "inch (pl inches)",
+      "g": "Zoll",
+      "d": "A small length, like 2.54 centimetres.",
+      "s": "My tablet screen is about six ___ wide.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "inches",
+          "tier": "full"
+        },
+        {
+          "text": "inch",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "inch",
+          "tier": "full"
+        },
+        {
+          "text": "inches",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "inch",
+            "tier": "full"
+          },
+          {
+            "text": "inches",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zoll",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mile",
+        "degree",
+        "scale"
+      ],
+      "hintDe": "Kleines Längenmaß, ca. 2,54 cm."
+    },
+    {
+      "id": "g2u13.w.mild",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dry",
+            "wet",
+            "bright",
+            "thick",
+            "western"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mild",
+      "g": "mild",
+      "d": "Not too hot and not too cold.",
+      "s": "The cold months here are quite ___ . It is not too hot and not too cold.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mild",
+          "tier": "full"
+        },
+        {
+          "text": "milder",
+          "tier": "partial"
+        },
+        {
+          "text": "mildest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mild",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mild",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mild",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dry",
+        "wet",
+        "bright"
+      ],
+      "hintDe": "Nicht zu heiß und nicht zu kalt."
+    },
+    {
+      "id": "g2u13.w.mile",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "inch",
+            "degree",
+            "scale",
+            "coast",
+            "rainfall"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mile",
+      "g": "Meile (= 1,6 Kilometer)",
+      "d": "A long length, about 1.6 kilometres.",
+      "s": "Seathwaite is one ___ away from Seatoller.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "mile",
+          "tier": "full"
+        },
+        {
+          "text": "miles",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mile",
+          "tier": "full"
+        },
+        {
+          "text": "miles",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mile",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Meile",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "inch",
+        "degree",
+        "scale"
+      ],
+      "hintDe": "Langes Längenmaß, ca. 1,6 km."
+    },
+    {
+      "id": "g2u13.w.outlook",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forecast",
+            "scale",
+            "coast",
+            "temperature",
+            "career"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "outlook",
+      "g": "Aussicht",
+      "d": "What the weather will probably be like in the days to come.",
+      "s": "The ___ for the weekend is hot and sunny.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "outlook",
+          "tier": "full"
+        },
+        {
+          "text": "outlooks",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "outlook",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "outlook",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Aussicht",
+            "tier": "full"
+          },
+          {
+            "text": "Ausblick",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forecast",
+        "scale",
+        "coast"
+      ],
+      "hintDe": "Wie das Wetter in den nächsten Tagen wird."
+    },
+    {
+      "id": "g2u13.w.rainfall",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunshine",
+            "fog",
+            "forecast",
+            "thunderstorm",
+            "outlook"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "rainfall",
+      "g": "Niederschlag",
+      "d": "All the rain from the sky in a place over a year.",
+      "s": "The average ___ here is 120 inches of rain every year.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rainfall",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rainfall",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rainfall",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Niederschlag",
+            "tier": "full"
+          },
+          {
+            "text": "Regenmenge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunshine",
+        "fog",
+        "forecast"
+      ],
+      "hintDe": "Der ganze Regen an einem Ort, z. B. in einem Jahr."
+    },
+    {
+      "id": "g2u13.w.rainy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunny",
+            "hot",
+            "dry",
+            "snowy",
+            "windy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "rainy",
+      "g": "regnerisch",
+      "d": "A day with grey clouds and a lot of rain.",
+      "s": "Wear a jacket. It is going to be a ___ day with a lot of rain.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "rainy",
+          "tier": "full"
+        },
+        {
+          "text": "rainier",
+          "tier": "partial"
+        },
+        {
+          "text": "rainiest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rainy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rainy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "regnerisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunny",
+        "hot",
+        "dry"
+      ],
+      "hintDe": "Nimm den Regenschirm mit."
+    },
+    {
+      "id": "g2u13.w.scale",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "formula",
+            "forecast",
+            "degree",
+            "outlook",
+            "temperature"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "scale",
+      "g": "Skala",
+      "d": "A row of numbers from one to ten for giving a mark.",
+      "s": "On a ___ from 1 to 10, how good was your day?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "scale",
+          "tier": "full"
+        },
+        {
+          "text": "scales",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scale",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scale",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Skala",
+            "tier": "full"
+          },
+          {
+            "text": "Maßstab",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "formula",
+        "forecast",
+        "degree"
+      ],
+      "hintDe": "Eine Reihe von Zahlen, z. B. 1 bis 10."
+    },
+    {
+      "id": "g2u13.w.sea-level",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "coast",
+            "sunshine",
+            "rainfall",
+            "forecast",
+            "outlook"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sea level",
+      "g": "Meeresspiegel",
+      "d": "How high the land is over the big water below.",
+      "s": "Death Valley is 282 feet below ___ .",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sea level",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sea level",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sea level",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Meeresspiegel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "coast",
+        "sunshine",
+        "rainfall"
+      ],
+      "hintDe": "Die Höhe des Meeres -- Bezugslinie für Höhen."
+    },
+    {
+      "id": "g2u13.w.small-talk",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forecast",
+            "outlook",
+            "hope",
+            "career",
+            "sunshine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "small talk",
+      "g": "Plauderei",
+      "d": "Short chat about the weather or the weekend.",
+      "s": "There is lots of ___ about the weather. People have these short, nice talks every day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "small talk",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "small talk",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "small talk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Plauderei",
+            "tier": "full"
+          },
+          {
+            "text": "Small Talk",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "chat",
+          "de": "Plauderei",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "forecast",
+        "outlook",
+        "hope"
+      ],
+      "hintDe": "Kurzes, nettes Reden, z. B. übers Wetter."
+    },
+    {
+      "id": "g2u13.w.snowy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rainy",
+            "sunny",
+            "hot",
+            "foggy",
+            "cloudy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "snowy",
+      "g": "verschneit",
+      "d": "A day when everything outside is cold and white.",
+      "s": "It was a cold, ___ day and the children played in the white snow outside.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "snowy",
+          "tier": "full"
+        },
+        {
+          "text": "snowier",
+          "tier": "partial"
+        },
+        {
+          "text": "snowiest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "snowy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "snowy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verschneit",
+            "tier": "full"
+          },
+          {
+            "text": "schneereich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rainy",
+        "sunny",
+        "hot"
+      ],
+      "hintDe": "Denk an einen Tag mit viel Schnee."
+    },
+    {
+      "id": "g2u13.w.sunny",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cloudy",
+            "rainy",
+            "cold",
+            "foggy",
+            "snowy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sunny",
+      "g": "sonnig",
+      "d": "A day with lots of light, when you can look up at the sun.",
+      "s": "It is a ___ day with lots of light -- perfect for a picnic in the park.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sunny",
+          "tier": "full"
+        },
+        {
+          "text": "sunnier",
+          "tier": "partial"
+        },
+        {
+          "text": "sunniest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sunny",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sunny",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sonnig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cloudy",
+        "rainy",
+        "cold"
+      ],
+      "hintDe": "Viel Licht, perfekt fürs Picknick."
+    },
+    {
+      "id": "g2u13.w.sunshine",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rainfall",
+            "fog",
+            "forecast",
+            "thunderstorm",
+            "outlook"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sunshine",
+      "g": "Sonnenschein",
+      "d": "The bright light from the sun on a nice day.",
+      "s": "There will be lots of ___ tomorrow. Perfect weather for a picnic.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sunshine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sunshine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sunshine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sonnenschein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rainfall",
+        "fog",
+        "forecast"
+      ],
+      "hintDe": "Das helle Licht der Sonne."
+    },
+    {
+      "id": "g2u13.w.tan",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "coast",
+            "scale",
+            "career",
+            "outlook",
+            "axe"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tan",
+      "g": "(Sonnen-)Bräune",
+      "d": "When your skin becomes darker because of the sun.",
+      "s": "You have a great ___ ! Were you on holiday in the sun?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tan",
+          "tier": "full"
+        },
+        {
+          "text": "tans",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tan",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tan",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bräune",
+            "tier": "full"
+          },
+          {
+            "text": "Sonnenbräune",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "coast",
+        "scale",
+        "career"
+      ],
+      "hintDe": "Deine Haut wird durch die Sonne dunkler."
+    },
+    {
+      "id": "g2u13.w.temperature",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "forecast",
+            "outlook",
+            "sunshine",
+            "scale",
+            "rainfall"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "temperature",
+      "g": "Temperatur",
+      "d": "How hot or cold it is.",
+      "s": "The ___ dropped to 0 degrees last night.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "temperature",
+          "tier": "full"
+        },
+        {
+          "text": "temperatures",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "temperature",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "temperature",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Temperatur",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "forecast",
+        "outlook",
+        "sunshine"
+      ],
+      "hintDe": "Sagt, wie warm oder kalt es ist."
+    },
+    {
+      "id": "g2u13.w.thick",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dry",
+            "cold",
+            "bright",
+            "wet",
+            "mild"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "thick",
+      "g": "dicht",
+      "d": "So close and heavy, like grey fog in the morning.",
+      "s": "There is ___ fog here, so drive carefully.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "thick",
+          "tier": "full"
+        },
+        {
+          "text": "thicker",
+          "tier": "partial"
+        },
+        {
+          "text": "thickest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thick",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thick",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dicht",
+            "tier": "full"
+          },
+          {
+            "text": "dick",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dry",
+        "cold",
+        "bright"
+      ],
+      "hintDe": "Dicht und schwer, kaum Platz dazwischen."
+    },
+    {
+      "id": "g2u13.w.throughout-the-year",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "below",
+            "towards",
+            "generally",
+            "western",
+            "average"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "throughout the year",
+      "g": "das ganze Jahr (über)",
+      "d": "All the time, from January to December.",
+      "s": "It is usually sunny ___ , from January to December.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "throughout the year",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "throughout the year",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "throughout the year",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "das ganze Jahr über",
+            "tier": "full"
+          },
+          {
+            "text": "das ganze Jahr",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "below",
+        "towards",
+        "generally"
+      ],
+      "hintDe": "Das ganze Jahr, von Jänner bis Dezember."
+    },
+    {
+      "id": "g2u13.w.thunderstorm",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "fog",
+            "sunshine",
+            "outlook",
+            "rainfall",
+            "forecast"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "thunderstorm",
+      "g": "Gewitter",
+      "d": "Bad weather with dark clouds, a big noise and a bright flash of light in the sky.",
+      "s": "We stayed inside because of the big ___ last night, with its big noise and bright flashes of light.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "thunderstorm",
+          "tier": "full"
+        },
+        {
+          "text": "thunderstorms",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thunderstorm",
+          "tier": "full"
+        },
+        {
+          "text": "thunderstorms",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thunderstorm",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gewitter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fog",
+        "sunshine",
+        "outlook"
+      ],
+      "hintDe": "Donner, Blitz und dunkle Wolken zusammen."
+    },
+    {
+      "id": "g2u13.w.to-be-mad-about-sth",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "be afraid of",
+            "be interested in",
+            "be proud of",
+            "be good at sth.",
+            "be scared of"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier uses the in-context form 'mad about' (+ noun); the headword 'to be mad about sth.' keeps its bank annotation verbatim in `w`."
+      },
+      "w": "to be mad about sth.",
+      "g": "für etw. schwärmen",
+      "d": "To like a thing very, very much.",
+      "s": "My sister is ___ horses. She loves them very much.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mad about",
+          "tier": "full"
+        },
+        {
+          "text": "be mad about",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be mad about",
+          "tier": "full"
+        },
+        {
+          "text": "to be mad about",
+          "tier": "full"
+        },
+        {
+          "text": "mad about",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be mad about",
+            "tier": "full"
+          },
+          {
+            "text": "to be mad about",
+            "tier": "full"
+          },
+          {
+            "text": "mad about",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "für etwas schwärmen",
+            "tier": "full"
+          },
+          {
+            "text": "verrückt nach etwas sein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "be afraid of",
+        "be interested in",
+        "be proud of"
+      ],
+      "hintDe": "Etwas ganz, ganz toll finden."
+    },
+    {
+      "id": "g2u13.w.to-clear-up",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "continue",
+            "give way",
+            "rise",
+            "shine",
+            "record"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to clear up",
+      "g": "aufheitern",
+      "d": "When bad weather ends and the sky becomes nice again.",
+      "s": "The bad weather will ___ in the afternoon and the sun will come out.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "clear up",
+          "tier": "full"
+        },
+        {
+          "text": "clears up",
+          "tier": "partial"
+        },
+        {
+          "text": "cleared up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "clear up",
+          "tier": "full"
+        },
+        {
+          "text": "to clear up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "clear up",
+            "tier": "full"
+          },
+          {
+            "text": "to clear up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufheitern",
+            "tier": "full"
+          },
+          {
+            "text": "aufklaren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "continue",
+        "give way",
+        "rise"
+      ],
+      "hintDe": "Das schlechte Wetter geht, der Himmel wird wieder schön."
+    },
+    {
+      "id": "g2u13.w.to-continue",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "clear up",
+            "rise",
+            "give way",
+            "shine",
+            "record"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to continue",
+      "g": "andauern",
+      "d": "To keep going and not go away.",
+      "s": "The bad weather will ___ all day and will not go away.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "continue",
+          "tier": "full"
+        },
+        {
+          "text": "continues",
+          "tier": "partial"
+        },
+        {
+          "text": "continued",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "continue",
+          "tier": "full"
+        },
+        {
+          "text": "to continue",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "continue",
+            "tier": "full"
+          },
+          {
+            "text": "to continue",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "andauern",
+            "tier": "full"
+          },
+          {
+            "text": "weitergehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "clear up",
+        "rise",
+        "give way"
+      ],
+      "hintDe": "Es geht weiter, hört nicht auf."
+    },
+    {
+      "id": "g2u13.w.to-earn",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rise",
+            "continue",
+            "record",
+            "shine",
+            "clear up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to earn",
+      "g": "(Geld) verdienen",
+      "d": "To make money for the work you do.",
+      "s": "Most people do not ___ money with their job.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "earn",
+          "tier": "full"
+        },
+        {
+          "text": "earns",
+          "tier": "partial"
+        },
+        {
+          "text": "earned",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "earn",
+          "tier": "full"
+        },
+        {
+          "text": "to earn",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "earn",
+            "tier": "full"
+          },
+          {
+            "text": "to earn",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verdienen",
+            "tier": "full"
+          },
+          {
+            "text": "Geld verdienen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rise",
+        "continue",
+        "record"
+      ],
+      "hintDe": "Geld für deine Arbeit bekommen."
+    },
+    {
+      "id": "g2u13.w.to-give-way",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "continue",
+            "rise",
+            "clear up",
+            "shine",
+            "record"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to give way",
+      "g": "Platz machen",
+      "d": "To slowly go away so that a new thing can come.",
+      "s": "The clouds in the morning will ___ to sun in the afternoon.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "give way",
+          "tier": "full"
+        },
+        {
+          "text": "gives way",
+          "tier": "partial"
+        },
+        {
+          "text": "gave way",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "give way",
+          "tier": "full"
+        },
+        {
+          "text": "to give way",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "give way",
+            "tier": "full"
+          },
+          {
+            "text": "to give way",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Platz machen",
+            "tier": "full"
+          },
+          {
+            "text": "weichen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "continue",
+        "rise",
+        "clear up"
+      ],
+      "hintDe": "Etwas geht weg, etwas Neues kommt."
+    },
+    {
+      "id": "g2u13.w.to-make-sure",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "give way",
+            "clear up",
+            "rise",
+            "continue",
+            "record"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to make sure",
+      "g": "darauf achten",
+      "d": "To look again so a thing is done well.",
+      "s": "___ you close the windows before you go!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Make sure",
+          "tier": "full"
+        },
+        {
+          "text": "make sure",
+          "tier": "full"
+        },
+        {
+          "text": "Makes sure",
+          "tier": "partial"
+        },
+        {
+          "text": "Made sure",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make sure",
+          "tier": "full"
+        },
+        {
+          "text": "to make sure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make sure",
+            "tier": "full"
+          },
+          {
+            "text": "to make sure",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "darauf achten",
+            "tier": "full"
+          },
+          {
+            "text": "sich vergewissern",
+            "tier": "full"
+          },
+          {
+            "text": "dafür sorgen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "give way",
+        "clear up",
+        "rise"
+      ],
+      "hintDe": "Schau noch einmal, dass alles passt."
+    },
+    {
+      "id": "g2u13.w.to-record",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rise",
+            "shine",
+            "continue",
+            "give way",
+            "clear up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to record",
+      "g": "aufzeichnen",
+      "d": "To write it down so you can keep it.",
+      "s": "Scientists write down and ___ the temperatures every day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "record",
+          "tier": "full"
+        },
+        {
+          "text": "records",
+          "tier": "partial"
+        },
+        {
+          "text": "recorded",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "record",
+          "tier": "full"
+        },
+        {
+          "text": "to record",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "record",
+            "tier": "full"
+          },
+          {
+            "text": "to record",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufzeichnen",
+            "tier": "full"
+          },
+          {
+            "text": "festhalten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rise",
+        "shine",
+        "continue"
+      ],
+      "hintDe": "Etwas aufschreiben und behalten."
+    },
+    {
+      "id": "g2u13.w.to-rise",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "continue",
+            "clear up",
+            "give way",
+            "shine",
+            "record"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to rise",
+      "g": "(an-)steigen",
+      "d": "To go up and not come down.",
+      "s": "The temperatures will ___ to 20 degrees.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rise",
+          "tier": "full"
+        },
+        {
+          "text": "rises",
+          "tier": "partial"
+        },
+        {
+          "text": "rose",
+          "tier": "partial"
+        },
+        {
+          "text": "risen",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rise",
+          "tier": "full"
+        },
+        {
+          "text": "to rise",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rise",
+            "tier": "full"
+          },
+          {
+            "text": "to rise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ansteigen",
+            "tier": "full"
+          },
+          {
+            "text": "steigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "continue",
+        "clear up",
+        "give way"
+      ],
+      "hintDe": "Nach oben gehen, höher werden."
+    },
+    {
+      "id": "g2u13.w.to-shine",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rise",
+            "continue",
+            "clear up",
+            "give way",
+            "record"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to shine",
+      "g": "scheinen",
+      "d": "To give out light.",
+      "s": "The sun will come out and ___ on us all day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shine",
+          "tier": "full"
+        },
+        {
+          "text": "shines",
+          "tier": "partial"
+        },
+        {
+          "text": "shone",
+          "tier": "partial"
+        },
+        {
+          "text": "shined",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shine",
+          "tier": "full"
+        },
+        {
+          "text": "to shine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shine",
+            "tier": "full"
+          },
+          {
+            "text": "to shine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "scheinen",
+            "tier": "full"
+          },
+          {
+            "text": "leuchten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rise",
+        "continue",
+        "clear up"
+      ],
+      "hintDe": "Licht geben, leuchten."
+    },
+    {
+      "id": "g2u13.w.towards",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "below",
+            "generally",
+            "average",
+            "throughout the year",
+            "western"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "towards",
+      "g": "in Richtung",
+      "d": "Going nearer and nearer to a place or a time.",
+      "s": "It will be sunny ___ the end of the week.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "towards",
+          "tier": "full"
+        },
+        {
+          "text": "toward",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "towards",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "towards",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in Richtung",
+            "tier": "full"
+          },
+          {
+            "text": "gegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "below",
+        "generally",
+        "average"
+      ],
+      "hintDe": "Immer näher zu einem Ort oder einer Zeit hin."
+    },
+    {
+      "id": "g2u13.w.weather-presenter-meteorologist",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cook",
+            "driver",
+            "gardener",
+            "doctor",
+            "guide"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "weather presenter / meteorologist",
+      "g": "Wettermoderator/in / Meteorologe/Meteorologin",
+      "d": "The man or woman who shows you the sun and rain on the news.",
+      "s": "The ___ on the news showed the weather map for tomorrow.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "weather presenter",
+          "tier": "full"
+        },
+        {
+          "text": "meteorologist",
+          "tier": "full"
+        },
+        {
+          "text": "weather presenters",
+          "tier": "partial"
+        },
+        {
+          "text": "meteorologists",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "weather presenter",
+          "tier": "full"
+        },
+        {
+          "text": "meteorologist",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "weather presenter",
+            "tier": "full"
+          },
+          {
+            "text": "meteorologist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wettermoderator",
+            "tier": "full"
+          },
+          {
+            "text": "Wettermoderatorin",
+            "tier": "full"
+          },
+          {
+            "text": "Meteorologe",
+            "tier": "full"
+          },
+          {
+            "text": "Meteorologin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cook",
+        "driver",
+        "gardener"
+      ],
+      "hintDe": "Diese Person sagt im Fernsehen das Wetter an."
+    },
+    {
+      "id": "g2u13.w.western",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mild",
+            "average",
+            "generally",
+            "below",
+            "thick"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "western",
+      "g": "westlich",
+      "d": "In or from the west, where the sun is in the evening.",
+      "s": "In Austria, the high mountains are in the west. The ___ mountains are very high.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "western",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "western",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "western",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "westlich",
+            "tier": "full"
+          },
+          {
+            "text": "West-",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mild",
+        "average",
+        "generally"
+      ],
+      "hintDe": "Im Westen, dort wo abends die Sonne steht."
+    },
+    {
+      "id": "g2u13.w.wet",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dry",
+            "hot",
+            "bright",
+            "mild",
+            "cool"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wet",
+      "g": "nass",
+      "d": "Covered with rain, not dry.",
+      "s": "All my clothes are ___ because of the rain.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wet",
+          "tier": "full"
+        },
+        {
+          "text": "wetter",
+          "tier": "partial"
+        },
+        {
+          "text": "wettest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nass",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dry",
+        "hot",
+        "bright"
+      ],
+      "hintDe": "Voller Wasser, nicht trocken."
+    },
+    {
+      "id": "g2u13.w.windy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sunny",
+            "hot",
+            "dry",
+            "cloudy",
+            "foggy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "windy",
+      "g": "windig",
+      "d": "When you must hold on to your hat because the trees are not still.",
+      "s": "Hold your hat! It is very ___ outside and the trees are not still.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "windy",
+          "tier": "full"
+        },
+        {
+          "text": "windier",
+          "tier": "partial"
+        },
+        {
+          "text": "windiest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "windy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "windy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "windig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sunny",
+        "hot",
+        "dry"
+      ],
+      "hintDe": "Halt deinen Hut fest!"
+    }
+  ]
+}

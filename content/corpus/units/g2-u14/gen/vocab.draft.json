@@ -1,0 +1,2788 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g2-u14",
+  "briefBank": "dd3a79bc401b",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g2u14.w.roller-skating",
+      "w": "roller-skating",
+      "g": "Rollschuhlaufen",
+      "d": "Going fast along the ground on shoes with small wheels.",
+      "s": "We love ___ in the park and we do it all day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "roller-skating",
+          "tier": "full"
+        },
+        {
+          "text": "roller skating",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "roller-skating",
+          "tier": "full"
+        },
+        {
+          "text": "roller skating",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "roller-skating",
+            "tier": "full"
+          },
+          {
+            "text": "roller skating",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rollschuhlaufen",
+            "tier": "full"
+          },
+          {
+            "text": "Rollschuh fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ice skating",
+        "skateboarding",
+        "cycling"
+      ],
+      "hintDe": "Du fährst auf Schuhen mit kleinen Rädern.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ice skating",
+          "skateboarding",
+          "cycling",
+          "swimming"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.sportsman-and-sportswoman",
+      "w": "sportsman and sportswoman",
+      "g": "Sportler und Sportlerin",
+      "d": "A man or a woman who plays or runs very well, often for money.",
+      "s": "Who is your favourite ___ to watch on a big match day?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sportsman",
+          "tier": "full"
+        },
+        {
+          "text": "sportswoman",
+          "tier": "full"
+        },
+        {
+          "text": "sportsman and sportswoman",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sportsman",
+          "tier": "full"
+        },
+        {
+          "text": "sportswoman",
+          "tier": "full"
+        },
+        {
+          "text": "sportsman and sportswoman",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sportsman",
+            "tier": "full"
+          },
+          {
+            "text": "sportswoman",
+            "tier": "full"
+          },
+          {
+            "text": "sportsman and sportswoman",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sportler",
+            "tier": "full"
+          },
+          {
+            "text": "Sportlerin",
+            "tier": "full"
+          },
+          {
+            "text": "Sportler und Sportlerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "member",
+        "professional",
+        "challenge"
+      ],
+      "hintDe": "Eine Frau oder ein Mann, die sehr gut Sport machen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "member",
+          "professional",
+          "challenge",
+          "race"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.ice-skating",
+      "w": "ice skating",
+      "g": "Eislaufen",
+      "d": "Going fast over a cold, frozen lake on special shoes in winter.",
+      "s": "In winter we love ___ on the frozen lake in the park.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "ice skating",
+          "tier": "full"
+        },
+        {
+          "text": "ice-skating",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ice skating",
+          "tier": "full"
+        },
+        {
+          "text": "ice-skating",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ice skating",
+            "tier": "full"
+          },
+          {
+            "text": "ice-skating",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eislaufen",
+            "tier": "full"
+          },
+          {
+            "text": "Schlittschuhlaufen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "frozen",
+          "de": "gefroren",
+          "scope": null
+        },
+        {
+          "word": "special",
+          "de": "besondere",
+          "scope": "d"
+        },
+        {
+          "word": "winter",
+          "de": "Winter",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "roller-skating",
+        "swimming",
+        "cycling"
+      ],
+      "hintDe": "Du fährst auf besonderen Schuhen über einen gefrorenen See.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "roller-skating",
+          "swimming",
+          "cycling",
+          "surfing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.snowboarding",
+      "w": "snowboarding",
+      "g": "Snowboarden",
+      "d": "Going fast down a snowy mountain while you stand on one wide board.",
+      "s": "I do a lot of ___ and I can now go very fast down the snow.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "snowboarding",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "snowboarding",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "snowboarding",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Snowboarden",
+            "tier": "full"
+          },
+          {
+            "text": "Snowboard fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "skiing",
+        "skateboarding",
+        "surfing"
+      ],
+      "hintDe": "Du stehst auf einem breiten Brett und fährst den Berg hinunter.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "skiing",
+          "skateboarding",
+          "surfing",
+          "ice skating"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.skiing",
+      "w": "skiing",
+      "g": "Skifahren",
+      "d": "Going fast down a snowy mountain with two long boards on your feet.",
+      "s": "We go ___ in the Alps every winter holiday.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "skiing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "skiing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "skiing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Skifahren",
+            "tier": "full"
+          },
+          {
+            "text": "Ski fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "winter",
+          "de": "Winter",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "snowboarding",
+        "ice skating",
+        "cycling"
+      ],
+      "hintDe": "Du fährst mit zwei langen Brettern den Berg hinunter.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "snowboarding",
+          "ice skating",
+          "cycling",
+          "swimming"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.surfing",
+      "w": "surfing",
+      "g": "Surfen",
+      "d": "Standing on a board and going along the big sea when it moves.",
+      "s": "___ looks amazing, but it is not easy to stay on the board.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "surfing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "surfing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "surfing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Surfen",
+            "tier": "full"
+          },
+          {
+            "text": "Wellenreiten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "moves",
+          "de": "sich bewegt",
+          "scope": "d"
+        },
+        {
+          "word": "easy",
+          "de": "leicht, einfach",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "windsurfing",
+        "swimming",
+        "cycling"
+      ],
+      "hintDe": "Du stehst auf einem Brett auf dem Meer.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "windsurfing",
+          "swimming",
+          "cycling",
+          "skateboarding"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.mountain-climbing",
+      "w": "mountain climbing",
+      "g": "Bergsteigen",
+      "d": "Going up high rocks on a very tall hill with your feet and your strong arms.",
+      "s": "___ is exciting, but you have to be strong to go so high.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mountain climbing",
+          "tier": "full"
+        },
+        {
+          "text": "mountain-climbing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mountain climbing",
+          "tier": "full"
+        },
+        {
+          "text": "mountain-climbing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mountain climbing",
+            "tier": "full"
+          },
+          {
+            "text": "mountain-climbing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bergsteigen",
+            "tier": "full"
+          },
+          {
+            "text": "Klettern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "arms",
+          "de": "Arme",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "skiing",
+        "swimming",
+        "cycling"
+      ],
+      "hintDe": "Du steigst mit Händen und Füßen einen hohen Berg hinauf.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "skiing",
+          "swimming",
+          "cycling",
+          "surfing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.windsurfing",
+      "w": "windsurfing",
+      "g": "Windsurfen",
+      "d": "Standing on a board with a sail and going over a windy lake.",
+      "s": "My uncle loves ___ on the lake on windy summer days.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "windsurfing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "windsurfing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "windsurfing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Windsurfen",
+            "tier": "full"
+          },
+          {
+            "text": "Windsurfing",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sail",
+          "de": "Segel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "surfing",
+        "swimming",
+        "cycling"
+      ],
+      "hintDe": "Du stehst auf einem Brett mit Segel auf dem Wasser.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "surfing",
+          "swimming",
+          "cycling",
+          "snowboarding"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.swimming",
+      "w": "swimming",
+      "g": "Schwimmen",
+      "d": "Going along in a lake or in the sea using your arms and legs.",
+      "s": "When it is hot, we go ___ in the lake every day.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "swimming",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "swimming",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "swimming",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwimmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "arms",
+          "de": "Arme",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "surfing",
+        "skiing",
+        "cycling"
+      ],
+      "hintDe": "Du bewegst dich mit Armen und Beinen durch das Wasser.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "surfing",
+          "skiing",
+          "cycling",
+          "snowboarding"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.mountain-biking",
+      "w": "mountain biking",
+      "g": "Mountainbiken",
+      "d": "Going fast down hills and along bumpy roads outside on two wheels.",
+      "s": "We go ___ in the hills and it is so much fun.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mountain biking",
+          "tier": "full"
+        },
+        {
+          "text": "mountain-biking",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mountain biking",
+          "tier": "full"
+        },
+        {
+          "text": "mountain-biking",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mountain biking",
+            "tier": "full"
+          },
+          {
+            "text": "mountain-biking",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mountainbiken",
+            "tier": "full"
+          },
+          {
+            "text": "Mountainbike fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bumpy",
+          "de": "holprig",
+          "scope": "d"
+        },
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "cycling",
+        "skateboarding",
+        "swimming"
+      ],
+      "hintDe": "Du fährst mit dem Rad über holprige Wege in den Bergen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cycling",
+          "skateboarding",
+          "swimming",
+          "skiing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.cycling",
+      "w": "cycling",
+      "g": "Radfahren",
+      "d": "Riding a bike from place to place on the road.",
+      "s": "I go ___ to school every day and it is not far.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cycling",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cycling",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cycling",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Radfahren",
+            "tier": "full"
+          },
+          {
+            "text": "Rad fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "far",
+          "de": "weit",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "mountain biking",
+        "skateboarding",
+        "swimming"
+      ],
+      "hintDe": "Du fährst mit dem Rad von einem Ort zum nächsten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mountain biking",
+          "skateboarding",
+          "swimming",
+          "roller-skating"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.skateboarding",
+      "w": "skateboarding",
+      "g": "Skateboardfahren",
+      "d": "Going along the ground on a small board while you do clever tricks.",
+      "s": "I do a lot of ___ and now I can do many tricks on my board.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "skateboarding",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "skateboarding",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "skateboarding",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Skateboardfahren",
+            "tier": "full"
+          },
+          {
+            "text": "Skateboard fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tricks",
+          "de": "Kunststücke, Tricks",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "roller-skating",
+        "snowboarding",
+        "cycling"
+      ],
+      "hintDe": "Du stehst auf einem kleinen Brett und machst Tricks.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "roller-skating",
+          "snowboarding",
+          "cycling",
+          "surfing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.to-grow-up",
+      "w": "to grow up",
+      "g": "aufwachsen",
+      "d": "To become bigger every year and slowly become an adult.",
+      "s": "When I ___, I want to be an Olympic skier.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "grow up",
+          "tier": "full"
+        },
+        {
+          "text": "grow",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "grow up",
+          "tier": "full"
+        },
+        {
+          "text": "to grow up",
+          "tier": "full"
+        },
+        {
+          "text": "grows up",
+          "tier": "partial"
+        },
+        {
+          "text": "grew up",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "grow up",
+            "tier": "full"
+          },
+          {
+            "text": "to grow up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erwachsen werden",
+            "tier": "full"
+          },
+          {
+            "text": "aufwachsen",
+            "tier": "full"
+          },
+          {
+            "text": "groß werden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "slowly",
+          "de": "langsam",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "appear",
+        "manage",
+        "score"
+      ],
+      "hintDe": "Du wirst von Jahr zu Jahr größer und wirst erwachsen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "appear",
+          "manage",
+          "score",
+          "tackle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.member",
+      "w": "member",
+      "g": "Mitglied",
+      "d": "One of the people who are in a group or a club.",
+      "s": "She is a ___ of the school running club.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "member",
+          "tier": "full"
+        },
+        {
+          "text": "members",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "member",
+          "tier": "full"
+        },
+        {
+          "text": "members",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "member",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mitglied",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "club",
+          "de": "Verein, Klub",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "professional",
+        "challenge",
+        "race"
+      ],
+      "hintDe": "Jemand, der zu einer Gruppe oder einem Verein gehört.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "professional",
+          "challenge",
+          "race",
+          "success"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.professional",
+      "w": "professional",
+      "g": "professionell",
+      "d": "Doing a sport or a job for money, not just for fun.",
+      "s": "I want to play ___ basketball when I am big.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "professional",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "professional",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "professional",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "professionell",
+            "tier": "full"
+          },
+          {
+            "text": "hauptberuflich",
+            "tier": "partial"
+          },
+          {
+            "text": "Profi-",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sport",
+          "de": "Sport",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "serious",
+        "official",
+        "extreme"
+      ],
+      "hintDe": "Du machst etwas als Beruf für Geld, nicht nur zum Spaß.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "serious",
+          "official",
+          "extreme",
+          "member"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.race",
+      "w": "race",
+      "g": "Rennen",
+      "d": "A run or a ride where all the people try to be the fastest and come first.",
+      "s": "I came first in the running ___ on our school day!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "race",
+          "tier": "full"
+        },
+        {
+          "text": "races",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "race",
+          "tier": "full"
+        },
+        {
+          "text": "races",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "race",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rennen",
+            "tier": "full"
+          },
+          {
+            "text": "Wettfahrt",
+            "tier": "full"
+          },
+          {
+            "text": "Wettrennen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "ride",
+          "de": "Fahrt",
+          "scope": "d"
+        },
+        {
+          "word": "try",
+          "de": "versuchen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "competition",
+        "challenge",
+        "member"
+      ],
+      "hintDe": "Alle wollen die schnellsten sein und zuerst ankommen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "competition",
+          "challenge",
+          "member",
+          "success"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.serious",
+      "w": "serious",
+      "g": "ernst(haft)",
+      "d": "Very bad, or so big that nobody is laughing about it.",
+      "s": "Have you had any ___ accidents while doing sport?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "serious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "serious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "serious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ernst",
+            "tier": "full"
+          },
+          {
+            "text": "ernsthaft",
+            "tier": "full"
+          },
+          {
+            "text": "schlimm",
+            "tier": "full"
+          },
+          {
+            "text": "gravierend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sport",
+          "de": "Sport",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "official",
+        "extreme",
+        "professional"
+      ],
+      "hintDe": "Sehr schlimm oder sehr wichtig, gar nicht zum Lachen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "official",
+          "extreme",
+          "professional",
+          "rather"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.to-appear",
+      "w": "to appear",
+      "g": "erscheinen",
+      "d": "To show up so that all the people can suddenly watch you, often on a screen.",
+      "s": "Would you like to ___ on television one day?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "appear",
+          "tier": "full"
+        },
+        {
+          "text": "appears",
+          "tier": "partial"
+        },
+        {
+          "text": "appeared",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "appear",
+          "tier": "full"
+        },
+        {
+          "text": "to appear",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "appear",
+            "tier": "full"
+          },
+          {
+            "text": "to appear",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erscheinen",
+            "tier": "full"
+          },
+          {
+            "text": "auftreten",
+            "tier": "full"
+          },
+          {
+            "text": "auftauchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "television",
+          "de": "Fernsehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "manage",
+        "score",
+        "grow up"
+      ],
+      "hintDe": "Du tauchst plötzlich auf, oft so, dass dich Leute sehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "manage",
+          "score",
+          "grow up",
+          "tackle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.competition",
+      "w": "competition",
+      "g": "Wettbewerb",
+      "d": "A day when many people play or run and all try to be the best.",
+      "s": "Have you ever won a ___ at your school?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "competition",
+          "tier": "full"
+        },
+        {
+          "text": "competitions",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "competition",
+          "tier": "full"
+        },
+        {
+          "text": "competitions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "competition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wettbewerb",
+            "tier": "full"
+          },
+          {
+            "text": "Wettkampf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "try",
+          "de": "versuchen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "race",
+        "challenge",
+        "distance"
+      ],
+      "hintDe": "Viele Leute machen mit und wollen die besten sein.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "race",
+          "challenge",
+          "distance",
+          "success"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.challenge",
+      "w": "challenge",
+      "g": "Herausforderung",
+      "d": "Something new and difficult that you have to work for.",
+      "s": "The competition was a big ___ for me, but I did it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "challenge",
+          "tier": "full"
+        },
+        {
+          "text": "challenges",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "challenge",
+          "tier": "full"
+        },
+        {
+          "text": "challenges",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "challenge",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Herausforderung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "competition",
+        "race",
+        "distance"
+      ],
+      "hintDe": "Etwas Neues und Schwieriges, für das du dich anstrengen musst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "competition",
+          "race",
+          "distance",
+          "success"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.distance",
+      "w": "distance",
+      "g": "Distanz",
+      "d": "How much space there is from place to place.",
+      "s": "You have to throw the egg over a big ___ in this sport.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "distance",
+          "tier": "full"
+        },
+        {
+          "text": "distances",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "distance",
+          "tier": "full"
+        },
+        {
+          "text": "distances",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "distance",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Distanz",
+            "tier": "full"
+          },
+          {
+            "text": "Abstand",
+            "tier": "full"
+          },
+          {
+            "text": "Entfernung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "throw",
+          "de": "werfen",
+          "scope": "s"
+        },
+        {
+          "word": "sport",
+          "de": "Sport",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "challenge",
+        "competition",
+        "race"
+      ],
+      "hintDe": "Wie weit es von einem Ort zu einem anderen ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "challenge",
+          "competition",
+          "race",
+          "success"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.extreme",
+      "w": "extreme",
+      "g": "extrem",
+      "d": "So strong, so fast or so dangerous that it is much more than usual.",
+      "s": "I have never done any ___ sports because they scare me.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "extreme",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "extreme",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "extreme",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "extrem",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "usual",
+          "de": "üblich, normal",
+          "scope": "d"
+        },
+        {
+          "word": "sports",
+          "de": "Sportarten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "serious",
+        "official",
+        "professional"
+      ],
+      "hintDe": "Viel stärker, schneller oder gefährlicher als sonst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "serious",
+          "official",
+          "professional",
+          "rather"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.flood",
+      "w": "flood",
+      "g": "Flut",
+      "d": "A lot of rain that covers dry land where there is usually no river.",
+      "s": "After days of rain, there is a big ___ in the village.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "flood",
+          "tier": "full"
+        },
+        {
+          "text": "floods",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "flood",
+          "tier": "full"
+        },
+        {
+          "text": "floods",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "flood",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flut",
+            "tier": "full"
+          },
+          {
+            "text": "Überschwemmung",
+            "tier": "full"
+          },
+          {
+            "text": "Hochwasser",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "distance",
+        "challenge",
+        "race"
+      ],
+      "hintDe": "Sehr viel Wasser bedeckt das sonst trockene Land.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "distance",
+          "challenge",
+          "race",
+          "competition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.to-manage",
+      "w": "to manage",
+      "g": "etw. schaffen",
+      "d": "To do something well in the end, even when it is difficult.",
+      "s": "A team from New Zealand ___ to make a new world record.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "managed",
+          "tier": "full"
+        },
+        {
+          "text": "manage",
+          "tier": "partial"
+        },
+        {
+          "text": "manages",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "manage",
+          "tier": "full"
+        },
+        {
+          "text": "to manage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "manage",
+            "tier": "full"
+          },
+          {
+            "text": "to manage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schaffen",
+            "tier": "full"
+          },
+          {
+            "text": "etwas schaffen",
+            "tier": "full"
+          },
+          {
+            "text": "hinbekommen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "even",
+          "de": "sogar",
+          "scope": "d"
+        },
+        {
+          "word": "team",
+          "de": "Mannschaft, Team",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "appear",
+        "score",
+        "grow up"
+      ],
+      "hintDe": "Du bringst etwas Schwieriges am Ende doch zustande.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "appear",
+          "score",
+          "grow up",
+          "tackle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.official",
+      "w": "official",
+      "g": "offiziell",
+      "d": "The people who are in charge say yes to it, so everybody can trust it.",
+      "s": "Is there an ___ world record in this sport?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "official",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "official",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "official",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "offiziell",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "in charge",
+          "de": "verantwortlich, zuständig",
+          "scope": "d"
+        },
+        {
+          "word": "sport",
+          "de": "Sport",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "serious",
+        "extreme",
+        "professional"
+      ],
+      "hintDe": "Von den verantwortlichen Leuten anerkannt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "serious",
+          "extreme",
+          "professional",
+          "rather"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.rather",
+      "w": "rather",
+      "g": "ziemlich",
+      "d": "Quite, more than a bit but not very much.",
+      "s": "The match was ___ long, so we were all tired at the end.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "rather",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rather",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rather",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ziemlich",
+            "tier": "full"
+          },
+          {
+            "text": "eher",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bit",
+          "de": "bisschen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "serious",
+        "extreme",
+        "official"
+      ],
+      "hintDe": "So viel wie „ziemlich“ – mehr als ein bisschen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "serious",
+          "extreme",
+          "official",
+          "without"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.to-snorkel",
+      "w": "to snorkel",
+      "g": "schnorcheln",
+      "d": "To go just under the sea with a short tube so you can breathe and look at fish.",
+      "s": "I love to ___ in the sea and watch all the fish.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "snorkel",
+          "tier": "full"
+        },
+        {
+          "text": "snorkels",
+          "tier": "partial"
+        },
+        {
+          "text": "snorkelled",
+          "tier": "partial"
+        },
+        {
+          "text": "snorkeled",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "snorkel",
+          "tier": "full"
+        },
+        {
+          "text": "to snorkel",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "snorkel",
+            "tier": "full"
+          },
+          {
+            "text": "to snorkel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schnorcheln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tube",
+          "de": "Schlauch, Röhre",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "appear",
+        "manage",
+        "tackle"
+      ],
+      "hintDe": "Du tauchst mit einem Röhrchen knapp unter die Meeresoberfläche.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "appear",
+          "manage",
+          "tackle",
+          "score"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.to-take-part",
+      "w": "to take part (in)",
+      "g": "an etw. teilnehmen",
+      "d": "To join in and do something with a group of people.",
+      "s": "Do you want to ___ part in the running competition?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "take",
+          "tier": "full"
+        },
+        {
+          "text": "take part",
+          "tier": "full"
+        },
+        {
+          "text": "take part in",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take part",
+          "tier": "full"
+        },
+        {
+          "text": "to take part",
+          "tier": "full"
+        },
+        {
+          "text": "take part in",
+          "tier": "full"
+        },
+        {
+          "text": "takes part",
+          "tier": "partial"
+        },
+        {
+          "text": "took part",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take part",
+            "tier": "full"
+          },
+          {
+            "text": "to take part",
+            "tier": "full"
+          },
+          {
+            "text": "take part in",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "teilnehmen",
+            "tier": "full"
+          },
+          {
+            "text": "an etwas teilnehmen",
+            "tier": "full"
+          },
+          {
+            "text": "mitmachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "appear",
+        "manage",
+        "grow up"
+      ],
+      "hintDe": "Du machst gemeinsam mit anderen bei etwas mit.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "appear",
+          "manage",
+          "grow up",
+          "score"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.without",
+      "w": "without",
+      "g": "ohne",
+      "d": "When you do not have a thing or a friend with you.",
+      "s": "You have to throw the egg ___ breaking it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "without",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "without",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "without",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ohne",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "throw",
+          "de": "werfen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "rather",
+        "serious",
+        "official"
+      ],
+      "hintDe": "Etwas ist nicht da oder nicht dabei.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "rather",
+          "serious",
+          "official",
+          "extreme"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.world-record",
+      "w": "world record",
+      "g": "Weltrekord",
+      "d": "The very best that anyone has ever done in a sport.",
+      "s": "There is an official ___ for throwing an egg the furthest.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "world record",
+          "tier": "full"
+        },
+        {
+          "text": "world records",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "world record",
+          "tier": "full"
+        },
+        {
+          "text": "world records",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "world record",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Weltrekord",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sport",
+          "de": "Sport",
+          "scope": "d"
+        },
+        {
+          "word": "throwing",
+          "de": "Werfen",
+          "scope": "s"
+        },
+        {
+          "word": "furthest",
+          "de": "am weitesten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "competition",
+        "challenge",
+        "success"
+      ],
+      "hintDe": "Das Beste, was je jemand auf der ganzen Welt geschafft hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "competition",
+          "challenge",
+          "success",
+          "race"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.nil",
+      "w": "nil",
+      "g": "null",
+      "d": "The number nothing when people tell the score in a match.",
+      "s": "The score in the running match was twenty to ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "nil",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nil",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nil",
+            "tier": "full"
+          },
+          {
+            "text": "zero",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "null",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "distance",
+        "success",
+        "race"
+      ],
+      "hintDe": "So sagt man die Zahl Null beim Spielstand.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "distance",
+          "success",
+          "race",
+          "challenge"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.on-one-s-own",
+      "w": "on one's own",
+      "g": "alleine",
+      "d": "When you are alone and nobody is with you.",
+      "s": "So there I was, all on my ___, with no friends at all.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "own",
+          "tier": "full"
+        },
+        {
+          "text": "on my own",
+          "tier": "partial"
+        },
+        {
+          "text": "on his own",
+          "tier": "partial"
+        },
+        {
+          "text": "on her own",
+          "tier": "partial"
+        },
+        {
+          "text": "on your own",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "on one's own",
+          "tier": "full"
+        },
+        {
+          "text": "on my own",
+          "tier": "full"
+        },
+        {
+          "text": "on your own",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "on one's own",
+            "tier": "full"
+          },
+          {
+            "text": "on my own",
+            "tier": "full"
+          },
+          {
+            "text": "alone",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "alleine",
+            "tier": "full"
+          },
+          {
+            "text": "allein",
+            "tier": "full"
+          },
+          {
+            "text": "für sich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "without",
+        "rather",
+        "serious"
+      ],
+      "hintDe": "Du bist ganz allein, niemand sonst ist da.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "without",
+          "rather",
+          "serious",
+          "official"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.to-score",
+      "w": "to score",
+      "g": "erzielen (Tore)",
+      "d": "To make a point for your team in a match.",
+      "s": "She wants to ___ a goal for her team in the match.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "score",
+          "tier": "full"
+        },
+        {
+          "text": "scores",
+          "tier": "partial"
+        },
+        {
+          "text": "scored",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "score",
+          "tier": "full"
+        },
+        {
+          "text": "to score",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "score",
+            "tier": "full"
+          },
+          {
+            "text": "to score",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erzielen",
+            "tier": "full"
+          },
+          {
+            "text": "ein Tor erzielen",
+            "tier": "full"
+          },
+          {
+            "text": "erreichen",
+            "tier": "full"
+          },
+          {
+            "text": "punkten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "point",
+          "de": "Punkt",
+          "scope": "d"
+        },
+        {
+          "word": "team",
+          "de": "Mannschaft, Team",
+          "scope": null
+        },
+        {
+          "word": "goal",
+          "de": "Tor",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "tackle",
+        "appear",
+        "manage"
+      ],
+      "hintDe": "Du machst einen Punkt oder ein Tor für deine Mannschaft.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "tackle",
+          "appear",
+          "manage",
+          "grow up"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.to-tackle",
+      "w": "to tackle",
+      "g": "attackieren (im Sport)",
+      "d": "To run at another player in a match and push them away from the ball.",
+      "s": "In the match, Helen ___ Eddie.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tackled",
+          "tier": "full"
+        },
+        {
+          "text": "tackle",
+          "tier": "partial"
+        },
+        {
+          "text": "tackles",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tackle",
+          "tier": "full"
+        },
+        {
+          "text": "to tackle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tackle",
+            "tier": "full"
+          },
+          {
+            "text": "to tackle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "attackieren",
+            "tier": "full"
+          },
+          {
+            "text": "angreifen",
+            "tier": "full"
+          },
+          {
+            "text": "tackeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "another",
+          "de": "anderen, anderer",
+          "scope": "d"
+        },
+        {
+          "word": "ball",
+          "de": "Ball",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "score",
+        "appear",
+        "manage"
+      ],
+      "hintDe": "Du läufst einen Spieler an, um ihm den Ball abzunehmen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "score",
+          "appear",
+          "manage",
+          "grow up"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.waste-of-time",
+      "w": "waste of time",
+      "g": "Zeitverschwendung",
+      "d": "Something boring that gives you nothing good back.",
+      "s": "This match is so boring. It is a ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "waste of time",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "waste of time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "waste of time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeitverschwendung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "world record",
+        "challenge",
+        "success"
+      ],
+      "hintDe": "Etwas kostet Zeit, bringt dir aber nichts Gutes.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "world record",
+          "challenge",
+          "success",
+          "competition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.equipment",
+      "w": "equipment",
+      "g": "Ausrüstung",
+      "d": "All the things you need to have so you can do a sport or a job.",
+      "s": "You do not need a lot of ___ to go running.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "equipment",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "equipment",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "equipment",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ausrüstung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge, Sachen",
+          "scope": "d"
+        },
+        {
+          "word": "sport",
+          "de": "Sport",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "challenge",
+        "success",
+        "distance"
+      ],
+      "hintDe": "Alle Sachen, die du für einen Sport oder Beruf brauchst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "challenge",
+          "success",
+          "distance",
+          "competition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u14.w.success",
+      "w": "success",
+      "g": "Erfolg",
+      "d": "When something is very good and people are happy with it.",
+      "s": "Was the fun day a ___? Did everybody have a good time?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "success",
+          "tier": "full"
+        },
+        {
+          "text": "successes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "success",
+          "tier": "full"
+        },
+        {
+          "text": "successes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "success",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erfolg",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "challenge",
+        "competition",
+        "race"
+      ],
+      "hintDe": "Etwas läuft sehr gut und die Leute sind zufrieden.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "challenge",
+          "competition",
+          "race",
+          "distance"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

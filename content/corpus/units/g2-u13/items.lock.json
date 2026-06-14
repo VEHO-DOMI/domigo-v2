@@ -1,0 +1,75 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u13",
+  "items": {
+    "11223089f8ec": "g2u13.gi.adverbs-manner.gf.001",
+    "fc762cb854dd": "g2u13.gi.adverbs-manner.gf.002",
+    "997b1583bce2": "g2u13.gi.adverbs-manner.gf.003",
+    "1171865870d8": "g2u13.gi.adverbs-manner.gf.004",
+    "b962efe6a7f3": "g2u13.gi.adverbs-manner.gf.005",
+    "c8ec386946dd": "g2u13.gi.adverbs-manner.gf.006",
+    "e91a7db8a08b": "g2u13.gi.adverbs-manner.mc.001",
+    "0c473e9abc41": "g2u13.gi.adverbs-manner.mc.002",
+    "a66ca678abb3": "g2u13.gi.adverbs-manner.ec.001",
+    "b273e14b3cd0": "g2u13.gi.adverbs-manner.ec.002",
+    "4db97531d03b": "g2u13.gi.adverbs-manner.ec.003",
+    "864a31b71099": "g2u13.gi.adverbs-manner.tf.001",
+    "7529d44d77c5": "g2u13.gi.adverbs-manner.tf.002",
+    "abb28dc8c335": "g2u13.gi.adverbs-manner.tr.001",
+    "18f2cb03e880": "g2u13.gi.adverbs-manner.tr.002",
+    "e99959f54d30": "g2u13.gi.adverbs-manner.sb.001",
+    "d780e1c2e23f": "g2u13.gi.adverbs-manner.mt.001",
+    "faa961247b72": "g2u13.gi.adverbs-manner.mp.001",
+    "dfa696aec650": "g2u13.gi.adverbs-manner.gs.001",
+    "f6f4c68660cf": "g2u13.gi.adverbs-manner.ff.001",
+    "bff85c45879d": "g2u13.gi.adverbs-manner.gf.007",
+    "50dccd89f25e": "g2u13.gi.adverbs-manner.mc.003",
+    "808f4911ac8f": "g2u13.gi.will-future.gf.001",
+    "2430b06be828": "g2u13.gi.will-future.gf.002",
+    "cc07f1675837": "g2u13.gi.will-future.gf.003",
+    "00d15b88fce7": "g2u13.gi.will-future.gf.004",
+    "b3778585383b": "g2u13.gi.will-future.gf.005",
+    "13fe84e9b472": "g2u13.gi.will-future.mc.001",
+    "dce4d4d1c47b": "g2u13.gi.will-future.mc.002",
+    "33002263d16e": "g2u13.gi.will-future.cp.001",
+    "645afc96ddc2": "g2u13.gi.will-future.cp.002",
+    "452b3de1be86": "g2u13.gi.will-future.ec.001",
+    "332933c4e778": "g2u13.gi.will-future.ec.002",
+    "dd0fe908fc67": "g2u13.gi.will-future.tf.002",
+    "f0f7ded420f8": "g2u13.gi.will-future.qf.001",
+    "ab7288828e90": "g2u13.gi.will-future.tr.001",
+    "d181927aa735": "g2u13.gi.will-future.tr.002",
+    "3b061f25dff6": "g2u13.gi.will-future.sb.001",
+    "2f25feb74328": "g2u13.gi.will-future.sb.002",
+    "942259c7a506": "g2u13.gi.will-future.mp.001",
+    "28dd9b585de4": "g2u13.gi.will-future.ag.001",
+    "5c6ca079119f": "g2u13.gi.will-future.ff.001",
+    "e6a3880111d4": "g2u13.gi.will-future.gf.006",
+    "ca897c2efaf6": "g2u13.gi.will-future.gs.002",
+    "080c065e873d": "g2u13.gi.adverbs-manner.ag.003",
+    "86802719a1cd": "g2u13.gi.adverbs-manner.ag.004",
+    "be9530478304": "g2u13.gi.will-future.tf.003"
+  },
+  "tombstones": [
+    {
+      "id": "g2u13.gi.will-future.gs.001",
+      "key": "8ea54dd1a131",
+      "removedWith": "11b1a843b752"
+    },
+    {
+      "id": "g2u13.gi.adverbs-manner.ag.001",
+      "key": "3746f84444d9",
+      "removedWith": "c6cce0f10b50"
+    },
+    {
+      "id": "g2u13.gi.adverbs-manner.ag.002",
+      "key": "b14709eeba74",
+      "removedWith": "c6cce0f10b50"
+    },
+    {
+      "id": "g2u13.gi.will-future.tf.001",
+      "key": "6e900e6d9f70",
+      "removedWith": "5fb9f8b35a48"
+    }
+  ]
+}

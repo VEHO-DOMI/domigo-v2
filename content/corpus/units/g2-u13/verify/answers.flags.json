@@ -1,0 +1,63 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u13",
+  "lens": "answers",
+  "itemsHash": "376ee6dc23ce",
+  "promptHash": "70fa2d8cdf22",
+  "round": 1,
+  "by": "fable-carryforward",
+  "flags": [
+    {
+      "key": "distractor-plausible-correct:g2u13.gi.adverbs-manner.gf.007",
+      "kind": "distractor-plausible-correct",
+      "itemId": "g2u13.gi.adverbs-manner.gf.007",
+      "severity": "warn",
+      "note": "Carrier 'The dog can run very ___.' has no disambiguating context, so all three distractors yield fully grammatical, true sentences: 'can run very well', 'can run very slowly', 'can run very badly'. Only the intended-target convention (fast = irregular adverb) separates 'fast' from 'well'; 'The dog can run very well' is unimpeachable English. Grader does exact button match, so a defensible pick is mis-graded.",
+      "suggestion": "Add context that forces fast (e.g. 'It won the race. It can run very ___.') or swap 'well' for a clearly-wrong option."
+    },
+    {
+      "key": "distractor-plausible-correct:g2u13.gi.adverbs-manner.gf.002",
+      "kind": "distractor-plausible-correct",
+      "itemId": "g2u13.gi.adverbs-manner.gf.002",
+      "severity": "warn",
+      "note": "Carrier 'Please close the door ___. The child is in bed.' -> quietly. Distractors 'slowly' and 'nicely' are grammatical, sensible imperatives ('close the door slowly' to avoid noise is defensible given the same context). Context cues quietly but does not exclude them.",
+      "suggestion": "Replace 'slowly'/'nicely' with manner adverbs that clash with the context (e.g. 'loudly', 'angrily')."
+    },
+    {
+      "key": "distractor-plausible-correct:g2u13.gi.adverbs-manner.gf.006",
+      "kind": "distractor-plausible-correct",
+      "itemId": "g2u13.gi.adverbs-manner.gf.006",
+      "severity": "warn",
+      "note": "Carrier 'She did her homework ___ because she wanted to watch TV.' -> quickly. Distractor 'badly' is grammatical and plausibly motivated by the same clause (rushing to watch TV -> did it badly). 'She did her homework badly because she wanted to watch TV' reads as correct English.",
+      "suggestion": "Swap 'badly' for an option the 'wanted to watch TV' motive cannot license (e.g. 'beautifully', 'carefully')."
+    },
+    {
+      "key": "distractor-plausible-correct:g2u13.gi.will-future.gf.001",
+      "kind": "distractor-plausible-correct",
+      "itemId": "g2u13.gi.will-future.gf.001",
+      "severity": "warn",
+      "note": "Carrier 'It's cold! I ___ close the window.' -> will (spontaneous decision). Distractor 'can' yields the natural, grammatical offer 'I can close the window.' Same systemic 'can' modal-distractor issue recurs in will gf.002 and (as 'can't') gf.006; each produces a grammatical alternative reading. Grader exact-matches the button, so 'can' is mis-graded as wrong despite being acceptable English.",
+      "suggestion": "Replace 'can' with a distractor that is ungrammatical in the slot (e.g. 'be', 'to') across gf.001/gf.002, and reconsider 'can't' in gf.006."
+    },
+    {
+      "key": "distractor-plausible-correct:g2u13.gi.will-future.gf.002",
+      "kind": "distractor-plausible-correct",
+      "itemId": "g2u13.gi.will-future.gf.002",
+      "severity": "warn",
+      "note": "Carrier 'Don't worry, I ___ help you with your homework.' -> will. Distractor 'can' yields the natural, grammatical offer 'I can help you with your homework.' Defensible alternative reading; same pattern as gf.001.",
+      "suggestion": "Replace 'can' with an option that is ungrammatical before the bare infinitive (e.g. 'be', 'to')."
+    },
+    {
+      "key": "distractor-plausible-correct:g2u13.gi.will-future.gf.006",
+      "kind": "distractor-plausible-correct",
+      "itemId": "g2u13.gi.will-future.gf.006",
+      "severity": "warn",
+      "note": "Carrier 'It's a big job. We ___ be at school before nine.' -> won't. Distractor 'can't' yields 'We can't be at school before nine,' which is grammatical and arguably MORE natural for inability given 'It's a big job.' Strong ambiguity between negated-future and negated-ability.",
+      "suggestion": "Replace 'can't' with an option that is ungrammatical here (e.g. 'aren't going' is too advanced; use 'don't'/'aren't' only and drop 'can't')."
+    }
+  ],
+  "summary": {
+    "itemsSeen": 100,
+    "flagged": 6
+  }
+}

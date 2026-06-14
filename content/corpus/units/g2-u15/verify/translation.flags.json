@@ -1,0 +1,14 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u15",
+  "lens": "translation",
+  "itemsHash": "cd275e120ce2",
+  "promptHash": "c6328b13b073",
+  "round": 1,
+  "by": "fable-lens",
+  "flags": [],
+  "summary": {
+    "itemsSeen": 59,
+    "flagged": 0
+  }
+}

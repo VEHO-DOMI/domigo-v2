@@ -1,0 +1,68 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u15",
+  "items": {
+    "06b788952525": "g2u15.gi.so-do-i.gf.001",
+    "b395338b7a3d": "g2u15.gi.so-do-i.gf.002",
+    "0a73768174b3": "g2u15.gi.so-do-i.gf.003",
+    "74dd2384d192": "g2u15.gi.so-do-i.gf.004",
+    "08005684c69b": "g2u15.gi.so-do-i.gf.005",
+    "623b9a926ac4": "g2u15.gi.so-do-i.gf.006",
+    "5e8bed3ffda9": "g2u15.gi.so-do-i.gf.007",
+    "6e85218552ef": "g2u15.gi.so-do-i.gf.008",
+    "deb670bd6d74": "g2u15.gi.so-do-i.mc.001",
+    "13cf73d9638e": "g2u15.gi.so-do-i.mc.002",
+    "4beefee1e805": "g2u15.gi.so-do-i.mc.003",
+    "2100fc576bd9": "g2u15.gi.so-do-i.mc.004",
+    "d85d3149b027": "g2u15.gi.so-do-i.ec.001",
+    "b210b5a2dcab": "g2u15.gi.so-do-i.ec.002",
+    "5924c7ddda36": "g2u15.gi.so-do-i.ec.003",
+    "8c567ec9429c": "g2u15.gi.so-do-i.ec.004",
+    "4d03c7a993ea": "g2u15.gi.so-do-i.tf.001",
+    "9d94e1a12255": "g2u15.gi.so-do-i.tf.002",
+    "0739e17e80ef": "g2u15.gi.so-do-i.tf.003",
+    "f7a435410b2e": "g2u15.gi.so-do-i.sb.001",
+    "194ad07f56e8": "g2u15.gi.so-do-i.sb.002",
+    "fea0189fe9de": "g2u15.gi.so-do-i.sb.003",
+    "5b5011d52302": "g2u15.gi.so-do-i.mp.001",
+    "b4c26ad1a05c": "g2u15.gi.so-do-i.mp.002",
+    "455de060a114": "g2u15.gi.so-do-i.gs.001",
+    "f90edfa73ebd": "g2u15.gi.so-do-i.tr.001",
+    "a5c0f1fdf80a": "g2u15.gi.so-do-i.tr.002",
+    "7fd65854ee38": "g2u15.gi.so-do-i.gf.009",
+    "8cfb66772f00": "g2u15.gi.so-do-i.mc.005",
+    "0112420bf10e": "g2u15.gi.so-do-i.gf.010",
+    "375baf8f6071": "g2u15.gi.so-do-i.gs.003",
+    "1590f6fad32a": "g2u15.gi.so-do-i.cp.003",
+    "67ece6493652": "g2u15.gi.so-do-i.cp.004",
+    "758999f9a962": "g2u15.gi.so-do-i.ff.003",
+    "bd192604177d": "g2u15.gi.so-do-i.ff.004"
+  },
+  "tombstones": [
+    {
+      "id": "g2u15.gi.so-do-i.gs.002",
+      "key": "ad80d3bffa7a",
+      "removedWith": "0e1a270ad693"
+    },
+    {
+      "id": "g2u15.gi.so-do-i.cp.001",
+      "key": "2600f78c14a1",
+      "removedWith": "038075b2d231"
+    },
+    {
+      "id": "g2u15.gi.so-do-i.cp.002",
+      "key": "1f68b64b9374",
+      "removedWith": "038075b2d231"
+    },
+    {
+      "id": "g2u15.gi.so-do-i.ff.001",
+      "key": "af3e4bfc53ce",
+      "removedWith": "038075b2d231"
+    },
+    {
+      "id": "g2u15.gi.so-do-i.ff.002",
+      "key": "bfc481ce74c8",
+      "removedWith": "038075b2d231"
+    }
+  ]
+}

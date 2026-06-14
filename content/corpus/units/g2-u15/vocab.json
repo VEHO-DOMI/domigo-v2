@@ -1,0 +1,2074 @@
+{
+  "schema": "vocab@1",
+  "grade": 2,
+  "unit": 15,
+  "slug": "g2-u15",
+  "items": [
+    {
+      "id": "g2u15.w.antarctic-ocean",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "emperor penguin",
+            "sand",
+            "cage",
+            "space"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Antarctic Ocean",
+      "g": "Antarktischer Ozean",
+      "d": "the cold sea in the south where penguins live and eat",
+      "s": "Penguins eat fish that live in the cold ___ Ocean.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Antarctic",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Antarctic Ocean",
+          "tier": "full"
+        },
+        {
+          "text": "the Antarctic Ocean",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Antarctic Ocean",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Antarktischer Ozean",
+            "tier": "full"
+          },
+          {
+            "text": "der Antarktische Ozean",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "emperor penguin",
+        "sand",
+        "cage"
+      ],
+      "hintDe": "Das kalte Meer ganz im Süden."
+    },
+    {
+      "id": "g2u15.w.cage",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "litter tray",
+            "sand",
+            "space",
+            "vet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cage",
+      "g": "Käfig",
+      "d": "a metal home where you keep a small animal",
+      "s": "The mouse runs about in its ___ all night.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cage",
+          "tier": "full"
+        },
+        {
+          "text": "cages",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cage",
+          "tier": "full"
+        },
+        {
+          "text": "a cage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Käfig",
+            "tier": "full"
+          },
+          {
+            "text": "der Käfig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "litter tray",
+        "sand",
+        "space"
+      ],
+      "hintDe": "Darin lebt ein kleines Tier, oft aus Metall."
+    },
+    {
+      "id": "g2u15.w.emperor-penguin",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Antarctic Ocean",
+            "sand",
+            "vet",
+            "cage"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "emperor penguin",
+      "g": "Kaiserpinguin",
+      "d": "a big black and white animal in the cold Antarctic Ocean",
+      "s": "The ___ is the biggest penguin of all and it lives where it is very cold.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "emperor penguin",
+          "tier": "full"
+        },
+        {
+          "text": "emperor penguins",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "emperor penguin",
+          "tier": "full"
+        },
+        {
+          "text": "an emperor penguin",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "emperor penguin",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kaiserpinguin",
+            "tier": "full"
+          },
+          {
+            "text": "der Kaiserpinguin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Antarctic Ocean",
+        "sand",
+        "vet"
+      ],
+      "hintDe": "Der größte und schwerste von allen Pinguinen."
+    },
+    {
+      "id": "g2u15.w.litter-tray",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cage",
+            "sand",
+            "space",
+            "vet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "litter tray",
+      "g": "Katzenklo",
+      "d": "the box of sand where a cat does its toilet",
+      "s": "Every day I clean out the dirty ___ so my cat has a clean toilet.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "litter tray",
+          "tier": "full"
+        },
+        {
+          "text": "litter trays",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "litter tray",
+          "tier": "full"
+        },
+        {
+          "text": "a litter tray",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "litter tray",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Katzenklo",
+            "tier": "full"
+          },
+          {
+            "text": "das Katzenklo",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cat",
+          "de": "Katze",
+          "scope": null
+        },
+        {
+          "word": "toilet",
+          "de": "Klo, Toilette",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "cage",
+        "sand",
+        "space"
+      ],
+      "hintDe": "Darin macht die Katze ihr Geschäft."
+    },
+    {
+      "id": "g2u15.w.neither-do-i",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So do I.",
+            "to stroke",
+            "to release",
+            "to tidy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Neither do I.",
+      "g": "Ich auch nicht.",
+      "d": "this is what you tell a friend when you also do not like a thing they do not like",
+      "s": "I do not like getting up early at all. — ___ I also hate it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        },
+        {
+          "text": "Neither do I",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        },
+        {
+          "text": "Neither do I",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Neither do I.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich auch nicht.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "So do I.",
+        "to stroke",
+        "to release"
+      ],
+      "hintDe": "So stimmst du zu, wenn jemand etwas nicht mag."
+    },
+    {
+      "id": "g2u15.w.pyjamas",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cage",
+            "sand",
+            "litter tray",
+            "space"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pyjamas",
+      "g": "Pyjama",
+      "d": "the clothes you put on in bed at night",
+      "s": "He wears striped ___ in bed.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pyjamas",
+          "tier": "full"
+        },
+        {
+          "text": "pajamas",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pyjamas",
+          "tier": "full"
+        },
+        {
+          "text": "pajamas",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pyjamas",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pyjama",
+            "tier": "full"
+          },
+          {
+            "text": "Schlafanzug",
+            "tier": "full"
+          },
+          {
+            "text": "der Schlafanzug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cage",
+        "sand",
+        "litter tray"
+      ],
+      "hintDe": "Das ziehst du im Bett zum Schlafen an."
+    },
+    {
+      "id": "g2u15.w.sand",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cage",
+            "space",
+            "litter tray",
+            "vet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sand",
+      "g": "Sand",
+      "d": "tiny pieces of rock you find at the beach or in the desert",
+      "s": "We can play in the ___ on the beach all day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sand",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sand",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sand",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sand",
+            "tier": "full"
+          },
+          {
+            "text": "der Sand",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cage",
+        "space",
+        "litter tray"
+      ],
+      "hintDe": "Die kleinen Körner am Strand."
+    },
+    {
+      "id": "g2u15.w.so-do-i",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Neither do I.",
+            "to stroke",
+            "to release",
+            "to tidy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "So do I.",
+      "g": "Ich auch.",
+      "d": "this is what you tell a friend when you also like a thing they like",
+      "s": "I love pizza! — ___ It is my favourite food too.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "So do I.",
+          "tier": "full"
+        },
+        {
+          "text": "So do I",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "So do I.",
+          "tier": "full"
+        },
+        {
+          "text": "So do I",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "So do I.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich auch.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Neither do I.",
+        "to stroke",
+        "to release"
+      ],
+      "hintDe": "So stimmst du zu, wenn jemand etwas mag."
+    },
+    {
+      "id": "g2u15.w.space",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cage",
+            "sand",
+            "vet",
+            "litter tray"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "space",
+      "g": "Platz",
+      "d": "free room where a big dog can be and run",
+      "s": "We do not have a big home, so there is no ___ for a dog.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "space",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "space",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "space",
+            "tier": "full"
+          },
+          {
+            "text": "room",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Platz",
+            "tier": "full"
+          },
+          {
+            "text": "Raum",
+            "tier": "full"
+          },
+          {
+            "text": "der Platz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cage",
+        "sand",
+        "vet"
+      ],
+      "hintDe": "Genug freier Platz, damit etwas hineinpasst."
+    },
+    {
+      "id": "g2u15.w.to-brush",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to stroke",
+            "to feed your pet",
+            "to walk your pet",
+            "to dry your pet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to brush",
+      "g": "bürsten",
+      "d": "you do this to the fur so it looks nice and tidy",
+      "s": "I ___ my dog every morning so its fur looks nice and tidy.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "brush",
+          "tier": "full"
+        },
+        {
+          "text": "brushes",
+          "tier": "partial"
+        },
+        {
+          "text": "brushed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "brush",
+          "tier": "full"
+        },
+        {
+          "text": "to brush",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to brush",
+            "tier": "full"
+          },
+          {
+            "text": "brush",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bürsten",
+            "tier": "full"
+          },
+          {
+            "text": "kämmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to stroke",
+        "to feed your pet",
+        "to walk your pet"
+      ],
+      "hintDe": "Du machst das Fell mit einer Bürste schön."
+    },
+    {
+      "id": "g2u15.w.to-clean-out-the-litter-tray",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to clean out your pet's cage",
+            "to tidy",
+            "to dry your pet",
+            "to give your pet a bath"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to clean out the litter tray",
+      "g": "das Katzenklo sauber machen",
+      "d": "to put the dirty sand out of the box where a cat does its toilet",
+      "s": "I have to ___ every day so it does not smell bad.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "clean out the litter tray",
+          "tier": "full"
+        },
+        {
+          "text": "clean out the litter tray",
+          "tier": "full"
+        },
+        {
+          "text": "clean the litter tray",
+          "tier": "partial"
+        },
+        {
+          "text": "cleaned out the litter tray",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "clean out the litter tray",
+          "tier": "full"
+        },
+        {
+          "text": "to clean out the litter tray",
+          "tier": "full"
+        },
+        {
+          "text": "clean out the litter tray",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to clean out the litter tray",
+            "tier": "full"
+          },
+          {
+            "text": "clean out the litter tray",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "das Katzenklo sauber machen",
+            "tier": "full"
+          },
+          {
+            "text": "das Katzenklo säubern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cat",
+          "de": "Katze",
+          "scope": "d"
+        },
+        {
+          "word": "toilet",
+          "de": "Klo, Toilette",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to clean out your pet's cage",
+        "to tidy",
+        "to dry your pet"
+      ],
+      "hintDe": "Du machst das Klo der Katze wieder sauber."
+    },
+    {
+      "id": "g2u15.w.to-clean-out-your-pet-s-cage",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to clean out the litter tray",
+            "to tidy",
+            "to give your pet a bath",
+            "to walk your pet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to clean out your pet's cage",
+      "g": "den Käfig deines Haustieres säubern",
+      "d": "to make the home of a small animal nice and tidy",
+      "s": "Every week I have to ___ so it does not look dirty.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "clean out your pet's cage",
+          "tier": "full"
+        },
+        {
+          "text": "clean out my pet's cage",
+          "tier": "full"
+        },
+        {
+          "text": "clean out the cage",
+          "tier": "partial"
+        },
+        {
+          "text": "cleaned out the cage",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "clean out your pet's cage",
+          "tier": "full"
+        },
+        {
+          "text": "to clean out your pet's cage",
+          "tier": "full"
+        },
+        {
+          "text": "clean out my pet's cage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to clean out your pet's cage",
+            "tier": "full"
+          },
+          {
+            "text": "clean out your pet's cage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "den Käfig deines Haustieres säubern",
+            "tier": "full"
+          },
+          {
+            "text": "den Käfig deines Haustiers sauber machen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to clean out the litter tray",
+        "to tidy",
+        "to give your pet a bath"
+      ],
+      "hintDe": "Du machst den Käfig deines Tieres sauber."
+    },
+    {
+      "id": "g2u15.w.to-dry-your-pet",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give your pet a bath",
+            "to brush",
+            "to feed your pet",
+            "to stroke"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to dry your pet",
+      "g": "dein Haustier abtrocknen",
+      "d": "to make a wet animal not wet any more",
+      "s": "After the bath I ___ so it is not wet any more.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "dry your pet",
+          "tier": "full"
+        },
+        {
+          "text": "dry my pet",
+          "tier": "full"
+        },
+        {
+          "text": "dry my dog",
+          "tier": "full"
+        },
+        {
+          "text": "dry the dog",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dry your pet",
+          "tier": "full"
+        },
+        {
+          "text": "to dry your pet",
+          "tier": "full"
+        },
+        {
+          "text": "dry my pet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to dry your pet",
+            "tier": "full"
+          },
+          {
+            "text": "dry your pet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dein Haustier abtrocknen",
+            "tier": "full"
+          },
+          {
+            "text": "das Haustier abtrocknen",
+            "tier": "full"
+          },
+          {
+            "text": "dein Haustier trocknen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to give your pet a bath",
+        "to brush",
+        "to feed your pet"
+      ],
+      "hintDe": "Du machst dein nasses Tier wieder trocken."
+    },
+    {
+      "id": "g2u15.w.to-feed-your-pet",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to walk your pet",
+            "to give your pet a bath",
+            "to brush",
+            "to dry your pet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to feed your pet",
+      "g": "dein Haustier füttern",
+      "d": "to give food to the animal you keep at home",
+      "s": "Every morning I ___ before I go to school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "feed your pet",
+          "tier": "full"
+        },
+        {
+          "text": "feed my pet",
+          "tier": "full"
+        },
+        {
+          "text": "feed my dog",
+          "tier": "full"
+        },
+        {
+          "text": "feed the dog",
+          "tier": "partial"
+        },
+        {
+          "text": "feed her",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "feed your pet",
+          "tier": "full"
+        },
+        {
+          "text": "to feed your pet",
+          "tier": "full"
+        },
+        {
+          "text": "feed my pet",
+          "tier": "full"
+        },
+        {
+          "text": "feed",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to feed your pet",
+            "tier": "full"
+          },
+          {
+            "text": "feed your pet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dein Haustier füttern",
+            "tier": "full"
+          },
+          {
+            "text": "dein Haustier füttern",
+            "tier": "full"
+          },
+          {
+            "text": "das Haustier füttern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to walk your pet",
+        "to give your pet a bath",
+        "to brush"
+      ],
+      "hintDe": "Du gibst deinem Tier sein Fressen."
+    },
+    {
+      "id": "g2u15.w.to-give-your-pet-a-bath",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to dry your pet",
+            "to brush",
+            "to feed your pet",
+            "to stroke"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to give your pet a bath",
+      "g": "dein Haustier baden",
+      "d": "to wash your dirty animal so it is clean again",
+      "s": "The dog is dirty so it is time to ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "give your pet a bath",
+          "tier": "full"
+        },
+        {
+          "text": "give my pet a bath",
+          "tier": "full"
+        },
+        {
+          "text": "give my dog a bath",
+          "tier": "full"
+        },
+        {
+          "text": "give the dog a bath",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "give your pet a bath",
+          "tier": "full"
+        },
+        {
+          "text": "to give your pet a bath",
+          "tier": "full"
+        },
+        {
+          "text": "give my pet a bath",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to give your pet a bath",
+            "tier": "full"
+          },
+          {
+            "text": "give your pet a bath",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dein Haustier baden",
+            "tier": "full"
+          },
+          {
+            "text": "das Haustier baden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to dry your pet",
+        "to brush",
+        "to feed your pet"
+      ],
+      "hintDe": "Du badest dein Tier im Wasser."
+    },
+    {
+      "id": "g2u15.w.to-have-got-a-fear-of",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to keep sb. company",
+            "to release",
+            "to stroke",
+            "to tidy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to have got a fear of",
+      "g": "Angst haben vor",
+      "d": "to be very scared of a thing so you do not want to go near it",
+      "s": "My sister has got a big ___ of dogs, she is very scared of them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fear",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "have got a fear of",
+          "tier": "full"
+        },
+        {
+          "text": "has got a fear of",
+          "tier": "full"
+        },
+        {
+          "text": "to have got a fear of",
+          "tier": "full"
+        },
+        {
+          "text": "have a fear of",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to have got a fear of",
+            "tier": "full"
+          },
+          {
+            "text": "have got a fear of",
+            "tier": "full"
+          },
+          {
+            "text": "to be scared of",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Angst haben vor",
+            "tier": "full"
+          },
+          {
+            "text": "Angst vor etwas haben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to keep sb. company",
+        "to release",
+        "to stroke"
+      ],
+      "hintDe": "Du hast große Angst vor etwas."
+    },
+    {
+      "id": "g2u15.w.to-keep-sb-company",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to have got a fear of",
+            "to release",
+            "to tidy",
+            "to stroke"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to keep sb. company",
+      "g": "jdm. Gesellschaft leisten",
+      "d": "to stay with somebody so they are not alone",
+      "s": "My dog stays next to me and ___ me so I am not alone.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "keeps me company",
+          "tier": "full"
+        },
+        {
+          "text": "keep me company",
+          "tier": "partial"
+        },
+        {
+          "text": "kept me company",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "keep sb. company",
+          "tier": "full"
+        },
+        {
+          "text": "keep somebody company",
+          "tier": "full"
+        },
+        {
+          "text": "to keep sb. company",
+          "tier": "full"
+        },
+        {
+          "text": "keep me company",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to keep sb. company",
+            "tier": "full"
+          },
+          {
+            "text": "keep somebody company",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemandem Gesellschaft leisten",
+            "tier": "full"
+          },
+          {
+            "text": "jdm. Gesellschaft leisten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to have got a fear of",
+        "to release",
+        "to tidy"
+      ],
+      "hintDe": "Du bist da, damit jemand nicht allein ist."
+    },
+    {
+      "id": "g2u15.w.to-play-with-your-pet",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to walk your pet",
+            "to stroke",
+            "to feed your pet",
+            "to brush"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to play with your pet",
+      "g": "mit deinem Haustier spielen",
+      "d": "to have fun with your animal",
+      "s": "After school I always ___ in the garden.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "play with your pet",
+          "tier": "full"
+        },
+        {
+          "text": "play with my pet",
+          "tier": "full"
+        },
+        {
+          "text": "play with my dog",
+          "tier": "full"
+        },
+        {
+          "text": "play with the dog",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "play with your pet",
+          "tier": "full"
+        },
+        {
+          "text": "to play with your pet",
+          "tier": "full"
+        },
+        {
+          "text": "play with my pet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to play with your pet",
+            "tier": "full"
+          },
+          {
+            "text": "play with your pet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mit deinem Haustier spielen",
+            "tier": "full"
+          },
+          {
+            "text": "mit dem Haustier spielen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to walk your pet",
+        "to stroke",
+        "to feed your pet"
+      ],
+      "hintDe": "Du hast Spaß zusammen mit deinem Tier."
+    },
+    {
+      "id": "g2u15.w.to-release",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to stroke",
+            "to brush",
+            "to tidy",
+            "to feed your pet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to release",
+      "g": "frei lassen",
+      "d": "to make an animal free so it can go back to the wild",
+      "s": "After some months they ___ it back into the wild.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "released",
+          "tier": "full"
+        },
+        {
+          "text": "release",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "release",
+          "tier": "full"
+        },
+        {
+          "text": "to release",
+          "tier": "full"
+        },
+        {
+          "text": "released",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to release",
+            "tier": "full"
+          },
+          {
+            "text": "release",
+            "tier": "full"
+          },
+          {
+            "text": "to free",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "frei lassen",
+            "tier": "full"
+          },
+          {
+            "text": "freilassen",
+            "tier": "full"
+          },
+          {
+            "text": "befreien",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to stroke",
+        "to brush",
+        "to tidy"
+      ],
+      "hintDe": "Du lässt ein Tier wieder frei."
+    },
+    {
+      "id": "g2u15.w.to-stroke",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to brush",
+            "to feed your pet",
+            "to walk your pet",
+            "to dry your pet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to stroke",
+      "g": "streicheln",
+      "d": "to touch an animal's fur in a loving way again and again",
+      "s": "My dog loves it when I ___ its fur.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "stroke",
+          "tier": "full"
+        },
+        {
+          "text": "strokes",
+          "tier": "partial"
+        },
+        {
+          "text": "stroked",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stroke",
+          "tier": "full"
+        },
+        {
+          "text": "to stroke",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to stroke",
+            "tier": "full"
+          },
+          {
+            "text": "stroke",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "streicheln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to brush",
+        "to feed your pet",
+        "to walk your pet"
+      ],
+      "hintDe": "Du fährst sanft mit der Hand über das Fell."
+    },
+    {
+      "id": "g2u15.w.to-take-your-pet-to-the-vet",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give your pet a bath",
+            "to feed your pet",
+            "to walk your pet",
+            "to brush"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to take your pet to the vet",
+      "g": "dein Haustier zum Tierarzt bringen",
+      "d": "to bring your sick animal to the animal doctor for help",
+      "s": "Our dog is sick so we have to ___ today.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "take your pet to the vet",
+          "tier": "full"
+        },
+        {
+          "text": "take my pet to the vet",
+          "tier": "full"
+        },
+        {
+          "text": "take my dog to the vet",
+          "tier": "full"
+        },
+        {
+          "text": "take him to the vet",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take your pet to the vet",
+          "tier": "full"
+        },
+        {
+          "text": "to take your pet to the vet",
+          "tier": "full"
+        },
+        {
+          "text": "take my pet to the vet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to take your pet to the vet",
+            "tier": "full"
+          },
+          {
+            "text": "take your pet to the vet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dein Haustier zum Tierarzt bringen",
+            "tier": "full"
+          },
+          {
+            "text": "das Haustier zum Tierarzt bringen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to give your pet a bath",
+        "to feed your pet",
+        "to walk your pet"
+      ],
+      "hintDe": "Du bringst dein krankes Tier zum Tierarzt."
+    },
+    {
+      "id": "g2u15.w.to-tidy",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to release",
+            "to brush",
+            "to stroke",
+            "to feed your pet"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to tidy (up)",
+      "g": "aufräumen",
+      "d": "to put everything in its place so a room looks clean and nice",
+      "s": "Please ___ up your messy room before your friends come over.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tidy",
+          "tier": "full"
+        },
+        {
+          "text": "tidies",
+          "tier": "partial"
+        },
+        {
+          "text": "tidied",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tidy",
+          "tier": "full"
+        },
+        {
+          "text": "tidy up",
+          "tier": "full"
+        },
+        {
+          "text": "to tidy",
+          "tier": "full"
+        },
+        {
+          "text": "to tidy up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to tidy",
+            "tier": "full"
+          },
+          {
+            "text": "to tidy up",
+            "tier": "full"
+          },
+          {
+            "text": "tidy up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufräumen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to release",
+        "to brush",
+        "to stroke"
+      ],
+      "hintDe": "Du machst dein Zimmer ordentlich."
+    },
+    {
+      "id": "g2u15.w.to-walk-your-pet",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to feed your pet",
+            "to play with your pet",
+            "to brush",
+            "to stroke"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to walk your pet",
+      "g": "mit deinem Haustier spazieren gehen",
+      "d": "to go outside with your animal so it can run and play",
+      "s": "Every day I ___ in the park before school.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "walk your pet",
+          "tier": "full"
+        },
+        {
+          "text": "walk my pet",
+          "tier": "full"
+        },
+        {
+          "text": "walk my dog",
+          "tier": "full"
+        },
+        {
+          "text": "walk the dog",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "walk your pet",
+          "tier": "full"
+        },
+        {
+          "text": "to walk your pet",
+          "tier": "full"
+        },
+        {
+          "text": "walk my dog",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to walk your pet",
+            "tier": "full"
+          },
+          {
+            "text": "walk your pet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mit deinem Haustier spazieren gehen",
+            "tier": "full"
+          },
+          {
+            "text": "mit dem Hund spazieren gehen",
+            "tier": "full"
+          },
+          {
+            "text": "den Hund ausführen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to feed your pet",
+        "to play with your pet",
+        "to brush"
+      ],
+      "hintDe": "Du gehst mit deinem Tier nach draußen."
+    },
+    {
+      "id": "g2u15.w.vet",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cage",
+            "litter tray",
+            "space",
+            "sand"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "vet (veterinarian)",
+      "g": "Tierarzt/Tierärztin",
+      "d": "the doctor you go to when your animal is sick",
+      "s": "When a dog is ill you go to the animal doctor we call a ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "vet",
+          "tier": "full"
+        },
+        {
+          "text": "veterinarian",
+          "tier": "full"
+        },
+        {
+          "text": "vets",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "vet",
+          "tier": "full"
+        },
+        {
+          "text": "veterinarian",
+          "tier": "full"
+        },
+        {
+          "text": "a vet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "vet",
+            "tier": "full"
+          },
+          {
+            "text": "veterinarian",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tierarzt",
+            "tier": "full"
+          },
+          {
+            "text": "Tierärztin",
+            "tier": "full"
+          },
+          {
+            "text": "der Tierarzt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cage",
+        "litter tray",
+        "space"
+      ],
+      "hintDe": "Dieser Arzt kümmert sich um Tiere."
+    }
+  ]
+}
