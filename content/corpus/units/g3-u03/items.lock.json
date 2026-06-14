@@ -1,0 +1,217 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g3-u03",
+  "items": {
+    "66b34d7acdee": "g3u03.gi.it-takes.gf.001",
+    "d3e409364795": "g3u03.gi.it-takes.gf.002",
+    "646b49f6dad5": "g3u03.gi.it-takes.gf.003",
+    "12040d95297b": "g3u03.gi.it-takes.gf.004",
+    "667452f7b79c": "g3u03.gi.it-takes.gf.005",
+    "3a87d38860e2": "g3u03.gi.it-takes.gf.006",
+    "01516a83ff50": "g3u03.gi.it-takes.gf.007",
+    "d835d7fdc75b": "g3u03.gi.it-takes.gf.008",
+    "b15a70ae4d0e": "g3u03.gi.it-takes.gf.009",
+    "cb7dabb4789c": "g3u03.gi.it-takes.gf.010",
+    "f9fbecfcfc97": "g3u03.gi.it-takes.gf.011",
+    "0f48e75b6dbb": "g3u03.gi.it-takes.gf.012",
+    "fa08f8e6431b": "g3u03.gi.it-takes.gf.013",
+    "5bae6b25c513": "g3u03.gi.it-takes.ec.001",
+    "aaa32eeeb737": "g3u03.gi.it-takes.ec.002",
+    "26ca92ed38a6": "g3u03.gi.it-takes.ec.003",
+    "e95769b870ed": "g3u03.gi.it-takes.ec.004",
+    "e803afd06161": "g3u03.gi.it-takes.ec.005",
+    "01c33a5bfe06": "g3u03.gi.it-takes.ec.006",
+    "64c8ca7d58df": "g3u03.gi.it-takes.tf.002",
+    "cce6e114f3c6": "g3u03.gi.it-takes.tf.004",
+    "119261f96edb": "g3u03.gi.it-takes.tf.005",
+    "e13c77a3f89c": "g3u03.gi.it-takes.tr.002",
+    "f9895ee85e78": "g3u03.gi.it-takes.tr.003",
+    "65913b0503db": "g3u03.gi.it-takes.tr.004",
+    "74721edfa855": "g3u03.gi.it-takes.sb.001",
+    "9afd27a7556d": "g3u03.gi.it-takes.sb.002",
+    "2c8e20f6e488": "g3u03.gi.it-takes.sb.003",
+    "49041bb2e59a": "g3u03.gi.it-takes.sb.004",
+    "6c2cf65bdd3d": "g3u03.gi.it-takes.qf.001",
+    "01139c0b4d36": "g3u03.gi.it-takes.gf.014",
+    "5df5ad9fc3fc": "g3u03.gi.it-takes.gf.015",
+    "39d2eb3e86e1": "g3u03.gi.it-takes.mc.005",
+    "b6033ca5b29a": "g3u03.gi.it-takes.mc.006",
+    "e232cc79998d": "g3u03.gi.it-takes.ec.007",
+    "66b1604ffe99": "g3u03.gi.time-connectors.gf.001",
+    "760302bd205f": "g3u03.gi.time-connectors.gf.002",
+    "61401c0facd5": "g3u03.gi.time-connectors.gf.003",
+    "f8aeab5a23d8": "g3u03.gi.time-connectors.gf.005",
+    "a83d5bcf9d27": "g3u03.gi.time-connectors.gf.006",
+    "b98398620078": "g3u03.gi.time-connectors.gf.007",
+    "31c6da4fdc35": "g3u03.gi.time-connectors.gf.008",
+    "d187c943e37a": "g3u03.gi.time-connectors.gf.009",
+    "6e520fb760eb": "g3u03.gi.time-connectors.gf.010",
+    "f46e5a199bea": "g3u03.gi.time-connectors.gf.011",
+    "f43253bb3741": "g3u03.gi.time-connectors.gf.012",
+    "b5ee0d61c989": "g3u03.gi.time-connectors.gf.013",
+    "baddd5cba34b": "g3u03.gi.time-connectors.gf.014",
+    "8d092a0c312a": "g3u03.gi.time-connectors.gf.015",
+    "9bd489b422c6": "g3u03.gi.time-connectors.gf.016",
+    "0b90d8ca038b": "g3u03.gi.time-connectors.gf.017",
+    "012d27196ac9": "g3u03.gi.time-connectors.gf.018",
+    "607a72b6bc9d": "g3u03.gi.time-connectors.gf.019",
+    "cb52d39deabd": "g3u03.gi.time-connectors.mc.001",
+    "f1928107be76": "g3u03.gi.time-connectors.mc.002",
+    "6104e9b1c245": "g3u03.gi.time-connectors.mc.003",
+    "d0bd7e4b411e": "g3u03.gi.time-connectors.mc.004",
+    "f2996da9ee49": "g3u03.gi.time-connectors.mc.005",
+    "1d8c2e0e9af3": "g3u03.gi.time-connectors.cp.001",
+    "e009391d360d": "g3u03.gi.time-connectors.cp.002",
+    "19b985f2e3ca": "g3u03.gi.time-connectors.cp.003",
+    "1cfcc725e88b": "g3u03.gi.time-connectors.ec.001",
+    "a7ec2db00210": "g3u03.gi.time-connectors.ec.002",
+    "1108662a9406": "g3u03.gi.time-connectors.ec.003",
+    "47a4912bec5b": "g3u03.gi.time-connectors.ec.004",
+    "1dd0f6a3687f": "g3u03.gi.time-connectors.ec.005",
+    "e22248d23e10": "g3u03.gi.time-connectors.tf.001",
+    "1fa8f72e3d27": "g3u03.gi.time-connectors.tf.002",
+    "c702bab23141": "g3u03.gi.time-connectors.tf.003",
+    "530dce08b925": "g3u03.gi.time-connectors.tf.004",
+    "d0364803cf59": "g3u03.gi.time-connectors.tr.001",
+    "5fa2ae072f15": "g3u03.gi.time-connectors.tr.002",
+    "342f4ebaac15": "g3u03.gi.time-connectors.tr.003",
+    "f0edba3db0c0": "g3u03.gi.time-connectors.tr.004",
+    "bafc43722dbb": "g3u03.gi.time-connectors.sb.001",
+    "eaf44b686bc5": "g3u03.gi.time-connectors.sb.002",
+    "ab219c1599a0": "g3u03.gi.time-connectors.sb.003",
+    "eca70b9ad15e": "g3u03.gi.time-connectors.qf.001",
+    "a45d7ee58fbf": "g3u03.gi.time-connectors.qf.002",
+    "ed4077cba693": "g3u03.gi.time-connectors.mt.001",
+    "d5f860a93d91": "g3u03.gi.time-connectors.mt.002",
+    "3a8ecc097081": "g3u03.gi.time-connectors.gs.001",
+    "bf8dd3edd8d2": "g3u03.gi.time-connectors.gs.002",
+    "7e689c8d27aa": "g3u03.gi.time-connectors.mp.001",
+    "9081a13ab39f": "g3u03.gi.time-connectors.gf.020",
+    "dbcb7cd81764": "g3u03.gi.time-connectors.gf.021",
+    "33eb2a507ccd": "g3u03.gi.time-connectors.gf.022",
+    "3c17ad81b2e9": "g3u03.gi.time-connectors.gf.023",
+    "4dd3ca8c18dd": "g3u03.gi.time-connectors.mc.006",
+    "ee47c44ed7b0": "g3u03.gi.time-connectors.ec.006",
+    "f59155a4b9a6": "g3u03.gi.time-connectors.tf.005",
+    "c8b762e7e2c0": "g3u03.gi.time-connectors.gf.024",
+    "973248bad1f2": "g3u03.gi.time-connectors.gf.025",
+    "3659887cf3ef": "g3u03.gi.time-connectors.mc.007",
+    "11f634f6bdd4": "g3u03.gi.time-connectors.gf.026",
+    "7f31c9a6a50e": "g3u03.gi.time-connectors.gf.027",
+    "dec9bf1acb16": "g3u03.gi.time-connectors.mc.008",
+    "fe0bb836472c": "g3u03.gi.it-takes.mc.007",
+    "45311dff403b": "g3u03.gi.it-takes.mc.008",
+    "ff038a9a4f73": "g3u03.gi.it-takes.mc.010",
+    "1c538d3242f5": "g3u03.gi.it-takes.cp.004",
+    "ef424999fb62": "g3u03.gi.it-takes.cp.005",
+    "5423c3d4778c": "g3u03.gi.it-takes.cp.006",
+    "e0cb3cd95a96": "g3u03.gi.it-takes.qf.003",
+    "9cadcd05d9a2": "g3u03.gi.it-takes.mt.002",
+    "c5c1aaf4f83b": "g3u03.gi.it-takes.mp.002",
+    "1a70093bb16a": "g3u03.gi.it-takes.gs.004",
+    "8900dab0cbd6": "g3u03.gi.it-takes.gs.005",
+    "ff65a30d83a1": "g3u03.gi.it-takes.mc.011",
+    "ca0d2b07ac30": "g3u03.gi.it-takes.tf.006",
+    "fa34be4e0c45": "g3u03.gi.it-takes.tf.007",
+    "d28562590e1a": "g3u03.gi.it-takes.tr.005",
+    "70a77ed9277b": "g3u03.gi.time-connectors.gf.028",
+    "cf7afe8ce4ee": "g3u03.gi.time-connectors.tr.006"
+  },
+  "tombstones": [
+    {
+      "id": "g3u03.gi.it-takes.mc.001",
+      "key": "6f1d12f605e6",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.mc.002",
+      "key": "97cd0f999830",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.mc.003",
+      "key": "a081df428af5",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.mc.004",
+      "key": "d5c6a7668da2",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.cp.001",
+      "key": "1c1966e3374c",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.cp.002",
+      "key": "7dd54b250bbc",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.cp.003",
+      "key": "96acdf3f710d",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.qf.002",
+      "key": "0398a812d226",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.mt.001",
+      "key": "0310de017dd9",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.mp.001",
+      "key": "8686ff0dd7a3",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.gs.001",
+      "key": "bd29aa7224cb",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.gs.002",
+      "key": "2a11cc4c53cc",
+      "removedWith": "0ed490b94c58"
+    },
+    {
+      "id": "g3u03.gi.it-takes.gs.003",
+      "key": "016f2ffb98f4",
+      "removedWith": "9c27b9aaa51c"
+    },
+    {
+      "id": "g3u03.gi.it-takes.tf.001",
+      "key": "bf95120df526",
+      "removedWith": "d611e38035b4"
+    },
+    {
+      "id": "g3u03.gi.it-takes.tf.003",
+      "key": "4b93803f9f93",
+      "removedWith": "d611e38035b4"
+    },
+    {
+      "id": "g3u03.gi.it-takes.tr.001",
+      "key": "dff2563bec45",
+      "removedWith": "d611e38035b4"
+    },
+    {
+      "id": "g3u03.gi.time-connectors.gf.004",
+      "key": "b1d6b75b3f27",
+      "removedWith": "d611e38035b4"
+    },
+    {
+      "id": "g3u03.gi.time-connectors.tr.005",
+      "key": "10285f7a4ae3",
+      "removedWith": "d611e38035b4"
+    },
+    {
+      "id": "g3u03.gi.it-takes.mc.009",
+      "key": "57f26b138578",
+      "removedWith": "d611e38035b4"
+    }
+  ]
+}

@@ -4500,6 +4500,312 @@
       "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "fix",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "know",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "takes",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "took",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "taking",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "taked",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "minutes",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "hour",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "hours",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "walk",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "get",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "finish",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "learn",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "cycle",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "fifteen",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "already",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "asleep",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "blind",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "bus",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "by",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "cycled",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "far",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "fell",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "film",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "raining",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "ran",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "see",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "sleeping",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "started",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "tent",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "till",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "until",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "water",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u03",
+      "itemId": null,
+      "field": null,
+      "token": "went",
+      "reason": "it-takes/time-connectors: inflection, base verb after to, connector, or harvesting-gap word (cumulative g1-g3 bank indexes multiword entries as phrases)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

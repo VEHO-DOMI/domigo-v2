@@ -1,0 +1,4530 @@
+{
+  "schema": "vocab@1",
+  "grade": 3,
+  "unit": 3,
+  "slug": "g3-u03",
+  "items": [
+    {
+      "id": "g3u03.w.all-in-all",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "even though",
+            "unfortunately",
+            "on foot",
+            "recently"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "all in all",
+      "g": "alles in allem",
+      "d": "this shows that you have everything in your head at once",
+      "s": "___, we had a great time and we want to go back one day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "All in all",
+          "tier": "full"
+        },
+        {
+          "text": "all in all",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "all in all",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "all in all",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "alles in allem",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "even though",
+        "unfortunately",
+        "on foot"
+      ],
+      "hintDe": "So sagst du, wenn du alles zusammen betrachtest."
+    },
+    {
+      "id": "g3u03.w.awake",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "thirsty",
+            "lonely",
+            "curious",
+            "painful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "awake",
+      "g": "wach",
+      "d": "not sleeping",
+      "s": "It was very dark outside, but the children were still wide ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "awake",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "awake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "awake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sleeping",
+          "de": "schlafend",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "thirsty",
+        "lonely",
+        "curious"
+      ],
+      "hintDe": "Du schläfst nicht."
+    },
+    {
+      "id": "g3u03.w.curious",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "lonely",
+            "thirsty",
+            "awake",
+            "painful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "curious",
+      "g": "neugierig",
+      "d": "really wanting to find out about a new thing",
+      "s": "Reading about all these faraway places makes me very ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "curious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "curious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "curious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neugierig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "faraway",
+          "de": "weit entfernt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "lonely",
+        "thirsty",
+        "awake"
+      ],
+      "hintDe": "Du willst unbedingt etwas Neues herausfinden."
+    },
+    {
+      "id": "g3u03.w.decision",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "journey",
+            "experience",
+            "departure",
+            "flight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "decision",
+      "g": "Entscheidung",
+      "d": "what you think is the best thing to do",
+      "s": "For Holman, travelling was the best ___ of his whole life.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "decision",
+          "tier": "full"
+        },
+        {
+          "text": "decisions",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "decision",
+          "tier": "full"
+        },
+        {
+          "text": "decisions",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "decision",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Entscheidung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "journey",
+        "experience",
+        "departure"
+      ],
+      "hintDe": "Das, wofür du dich nach langem Nachdenken entscheidest."
+    },
+    {
+      "id": "g3u03.w.departure",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "flight",
+            "journey",
+            "experience",
+            "decision"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "departure",
+      "g": "Abflug",
+      "d": "the time when a plane or train leaves",
+      "s": "The big screen at the airport shows the ___ time of every plane.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "departure",
+          "tier": "full"
+        },
+        {
+          "text": "departures",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "departure",
+          "tier": "full"
+        },
+        {
+          "text": "departures",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "departure",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abflug",
+            "tier": "full"
+          },
+          {
+            "text": "Abfahrt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "flight",
+        "journey",
+        "experience"
+      ],
+      "hintDe": "Die Zeit, zu der ein Flugzeug, Bus oder Zug abfährt."
+    },
+    {
+      "id": "g3u03.w.even-though",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "all in all",
+            "unfortunately",
+            "recently",
+            "pretty"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "even though",
+      "g": "obwohl",
+      "d": "this shows that a thing is still true",
+      "s": "___ it was cold, we still had a great time on holiday.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Even though",
+          "tier": "full"
+        },
+        {
+          "text": "even though",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "even though",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "even though",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "obwohl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "all in all",
+        "unfortunately",
+        "recently"
+      ],
+      "hintDe": "Damit fügst du einen Teil hinzu, der den Rest überraschend macht."
+    },
+    {
+      "id": "g3u03.w.experience",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "decision",
+            "journey",
+            "departure",
+            "flight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "experience",
+      "g": "Erfahrung",
+      "d": "a thing that happens to you and that you keep in your head",
+      "s": "And in China he had a very painful ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "experience",
+          "tier": "full"
+        },
+        {
+          "text": "experiences",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "experience",
+          "tier": "full"
+        },
+        {
+          "text": "experiences",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "experience",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erfahrung",
+            "tier": "full"
+          },
+          {
+            "text": "Erlebnis",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "decision",
+        "journey",
+        "departure"
+      ],
+      "hintDe": "Etwas, das dir passiert und woran du dich erinnerst."
+    },
+    {
+      "id": "g3u03.w.explorer",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "traveller",
+            "journey",
+            "decision",
+            "experience"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "explorer",
+      "g": "Entdecker/Entdeckerin",
+      "d": "somebody who travels to new places to find out about them",
+      "s": "Mary Kingsley is still one of the great female ___ of the 19th century.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "explorers",
+          "tier": "full"
+        },
+        {
+          "text": "explorer",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "explorer",
+          "tier": "full"
+        },
+        {
+          "text": "explorers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "explorer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Entdecker",
+            "tier": "full"
+          },
+          {
+            "text": "Entdeckerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "traveller",
+        "journey",
+        "decision"
+      ],
+      "hintDe": "Jemand, der an neue Orte reist, um sie zu erforschen."
+    },
+    {
+      "id": "g3u03.w.flight",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "departure",
+            "journey",
+            "decision",
+            "experience"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "flight",
+      "g": "Flug",
+      "d": "a trip in a plane from one place to a faraway place",
+      "s": "Our ___ to London leaves from gate 12 at 3 p.m.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "flight",
+          "tier": "full"
+        },
+        {
+          "text": "flights",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "flight",
+          "tier": "full"
+        },
+        {
+          "text": "flights",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "flight",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "trip",
+          "de": "Reise",
+          "scope": "d"
+        },
+        {
+          "word": "faraway",
+          "de": "weit entfernt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "departure",
+        "journey",
+        "decision"
+      ],
+      "hintDe": "Eine Reise im Flugzeug von einem Ort zum anderen."
+    },
+    {
+      "id": "g3u03.w.hut",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "wilderness",
+            "journey",
+            "departure",
+            "flight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "hut",
+      "g": "Hütte",
+      "d": "a very small and simple home to live in",
+      "s": "Mary lived with the people in their ___ and shared their food.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "huts",
+          "tier": "full"
+        },
+        {
+          "text": "hut",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hut",
+          "tier": "full"
+        },
+        {
+          "text": "huts",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hut",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hütte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "simple",
+          "de": "einfach",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "wilderness",
+        "journey",
+        "departure"
+      ],
+      "hintDe": "Ein ganz kleines, einfaches Zuhause zum Wohnen."
+    },
+    {
+      "id": "g3u03.w.impossible",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "painful",
+            "thirsty",
+            "curious",
+            "awake"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "impossible",
+      "g": "unmöglich",
+      "d": "not able to be done at all",
+      "s": "The room was so noisy all night that it was ___ to close my eyes.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "impossible",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "impossible",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "impossible",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unmöglich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "able",
+          "de": "fähig",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "painful",
+        "thirsty",
+        "curious"
+      ],
+      "hintDe": "Es lässt sich überhaupt nicht machen."
+    },
+    {
+      "id": "g3u03.w.it-takes",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to land",
+            "to fly (back)",
+            "to drive (home)",
+            "to get to (the airport)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "it takes (an hour)",
+      "g": "es dauert (eine Stunde)",
+      "d": "this shows how much time you need to do a thing",
+      "s": "___ Celia many days to cross the whole country on her journey.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "It takes",
+          "tier": "full"
+        },
+        {
+          "text": "it takes",
+          "tier": "full"
+        },
+        {
+          "text": "It took",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "it takes",
+          "tier": "full"
+        },
+        {
+          "text": "it takes an hour",
+          "tier": "full"
+        },
+        {
+          "text": "it took",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "it takes",
+            "tier": "full"
+          },
+          {
+            "text": "it takes an hour",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "es dauert",
+            "tier": "full"
+          },
+          {
+            "text": "es dauert eine Stunde",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to land",
+        "to fly (back)",
+        "to drive (home)"
+      ],
+      "hintDe": "So sagst du, wie viel Zeit du für etwas brauchst."
+    },
+    {
+      "id": "g3u03.w.journey",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "decision",
+            "experience",
+            "explorer",
+            "flight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "journey",
+      "g": "Reise",
+      "d": "the long way you travel from one place to a place far away",
+      "s": "Holman's first ___ to France was long and lonely.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "journey",
+          "tier": "full"
+        },
+        {
+          "text": "journeys",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "journey",
+          "tier": "full"
+        },
+        {
+          "text": "journeys",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "journey",
+            "tier": "full"
+          },
+          {
+            "text": "trip",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Reise",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "decision",
+        "experience",
+        "explorer"
+      ],
+      "hintDe": "Eine lange Reise von einem Ort zu einem anderen, weit entfernten Ort."
+    },
+    {
+      "id": "g3u03.w.lonely",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "curious",
+            "thirsty",
+            "awake",
+            "painful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "lonely",
+      "g": "einsam",
+      "d": "feeling sad because you are all alone",
+      "s": "Holman's first journey to France was ___ because no one near him could speak English.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lonely",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lonely",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lonely",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einsam",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "curious",
+        "thirsty",
+        "awake"
+      ],
+      "hintDe": "Du bist traurig, weil du ganz allein bist."
+    },
+    {
+      "id": "g3u03.w.on-foot",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "all in all",
+            "even though",
+            "pretty",
+            "recently"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "on foot",
+      "g": "zu Fuß",
+      "d": "when you go to a place on your two feet, not in a car or train",
+      "s": "Holman crossed Zanzibar and Tasmania ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "on foot",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "on foot",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "on foot",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zu Fuß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "all in all",
+        "even though",
+        "pretty"
+      ],
+      "hintDe": "Indem du gehst, nicht mit Auto, Bus oder Zug."
+    },
+    {
+      "id": "g3u03.w.painful",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "thirsty",
+            "curious",
+            "awake",
+            "lonely"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "painful",
+      "g": "schmerzhaft",
+      "d": "hurting you very much",
+      "s": "The wasps in China hurt Holman, and it was very ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "painful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "painful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "painful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schmerzhaft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wasps",
+          "de": "Wespen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "thirsty",
+        "curious",
+        "awake"
+      ],
+      "hintDe": "Es tut dir sehr weh."
+    },
+    {
+      "id": "g3u03.w.pretty",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "unfortunately",
+            "recently",
+            "all in all",
+            "even though"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pretty",
+      "g": "ziemlich",
+      "d": "rather, but not very much",
+      "s": "The lake was ___ cold, but after a while it wasn't too bad.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pretty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pretty",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pretty",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ziemlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "unfortunately",
+        "recently",
+        "all in all"
+      ],
+      "hintDe": "Eher, aber nicht sehr stark. Hier: ziemlich."
+    },
+    {
+      "id": "g3u03.w.recently",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "unfortunately",
+            "pretty",
+            "all in all",
+            "on foot"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "recently",
+      "g": "vor Kurzem",
+      "d": "a short time ago, not long ago",
+      "s": "Your family had a short holiday ___, but it was a really bad journey.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "recently",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "recently",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "recently",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vor Kurzem",
+            "tier": "full"
+          },
+          {
+            "text": "letztens",
+            "tier": "full"
+          },
+          {
+            "text": "kürzlich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "unfortunately",
+        "pretty",
+        "all in all"
+      ],
+      "hintDe": "Vor kurzer Zeit, nicht lange her."
+    },
+    {
+      "id": "g3u03.w.thirsty",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "awake",
+            "curious",
+            "lonely",
+            "painful"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "thirsty",
+      "g": "durstig",
+      "d": "wanting a drink",
+      "s": "I was really ___, so I asked for a glass of cold water.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "thirsty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thirsty",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thirsty",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "durstig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "awake",
+        "curious",
+        "lonely"
+      ],
+      "hintDe": "Du möchtest etwas trinken."
+    },
+    {
+      "id": "g3u03.w.to-become",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to reach",
+            "to explore",
+            "to behave",
+            "to turn out"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "carrier needs past form 'became' (irregular, untaught), so the full answer lives in dAnswers; sAnswers stay partial"
+      },
+      "w": "to become",
+      "g": "werden",
+      "d": "to begin to be a thing that you were not before",
+      "s": "Holman loved travelling so much that he wanted to ___ a man of adventure.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "become",
+          "tier": "full"
+        },
+        {
+          "text": "became",
+          "tier": "partial"
+        },
+        {
+          "text": "becomes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "become",
+          "tier": "full"
+        },
+        {
+          "text": "to become",
+          "tier": "full"
+        },
+        {
+          "text": "became",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "become",
+            "tier": "full"
+          },
+          {
+            "text": "to become",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "werden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to reach",
+        "to explore",
+        "to behave"
+      ],
+      "hintDe": "Du fängst an, etwas zu sein, das du vorher nicht warst."
+    },
+    {
+      "id": "g3u03.w.to-behave",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to become",
+            "to reach",
+            "to explore",
+            "to turn out"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to behave",
+      "g": "verhalten",
+      "d": "to do what is good and nice when you are with people",
+      "s": "When we visit a new country, we must ___ well.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "behave",
+          "tier": "full"
+        },
+        {
+          "text": "behaved",
+          "tier": "partial"
+        },
+        {
+          "text": "behaves",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "behave",
+          "tier": "full"
+        },
+        {
+          "text": "to behave",
+          "tier": "full"
+        },
+        {
+          "text": "behaved",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "behave",
+            "tier": "full"
+          },
+          {
+            "text": "to behave",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich verhalten",
+            "tier": "full"
+          },
+          {
+            "text": "sich benehmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to become",
+        "to reach",
+        "to explore"
+      ],
+      "hintDe": "Du verhältst dich gut und höflich."
+    },
+    {
+      "id": "g3u03.w.to-criticise",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to recommend",
+            "to promise",
+            "to explore",
+            "to behave"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to criticise",
+      "g": "kritisieren",
+      "d": "to tell people what is bad about a thing they do",
+      "s": "Back in England, Mary ___ the Europeans for what they did in Africa.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "criticised",
+          "tier": "full"
+        },
+        {
+          "text": "criticise",
+          "tier": "partial"
+        },
+        {
+          "text": "criticises",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "criticise",
+          "tier": "full"
+        },
+        {
+          "text": "to criticise",
+          "tier": "full"
+        },
+        {
+          "text": "criticised",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "criticise",
+            "tier": "full"
+          },
+          {
+            "text": "to criticise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kritisieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to recommend",
+        "to promise",
+        "to explore"
+      ],
+      "hintDe": "Du sagst Leuten, was an dem, was sie tun, schlecht ist."
+    },
+    {
+      "id": "g3u03.w.to-cross",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to escape (the midday heat)",
+            "to reach",
+            "to rent (a car)",
+            "to sail"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to cross (a river)",
+      "g": "(einen Fluss) überqueren",
+      "d": "to go over water or a road to where you want to be.",
+      "s": "Celia carried her backpack to ___ a river on her way across the country.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cross",
+          "tier": "full"
+        },
+        {
+          "text": "cross a river",
+          "tier": "full"
+        },
+        {
+          "text": "crossed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cross",
+          "tier": "full"
+        },
+        {
+          "text": "to cross",
+          "tier": "full"
+        },
+        {
+          "text": "to cross a river",
+          "tier": "full"
+        },
+        {
+          "text": "crossed",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cross",
+            "tier": "full"
+          },
+          {
+            "text": "to cross",
+            "tier": "full"
+          },
+          {
+            "text": "cross a river",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "überqueren",
+            "tier": "full"
+          },
+          {
+            "text": "einen Fluss überqueren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to escape (the midday heat)",
+        "to reach",
+        "to rent (a car)"
+      ],
+      "hintDe": "Du gehst von einer Seite auf die andere Seite."
+    },
+    {
+      "id": "g3u03.w.to-drive",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to fly (back)",
+            "to sail",
+            "to rent (a car)",
+            "to cross (a river)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to drive (home)",
+      "g": "(nach Hause) fahren",
+      "d": "to make a car go where you want to go",
+      "s": "After the flight back, she ___ home from the airport in her car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "drives",
+          "tier": "full"
+        },
+        {
+          "text": "drives home",
+          "tier": "full"
+        },
+        {
+          "text": "drive",
+          "tier": "partial"
+        },
+        {
+          "text": "drove",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drive",
+          "tier": "full"
+        },
+        {
+          "text": "to drive",
+          "tier": "full"
+        },
+        {
+          "text": "drive home",
+          "tier": "full"
+        },
+        {
+          "text": "drove",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drive",
+            "tier": "full"
+          },
+          {
+            "text": "to drive",
+            "tier": "full"
+          },
+          {
+            "text": "drive home",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fahren",
+            "tier": "full"
+          },
+          {
+            "text": "nach Hause fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to fly (back)",
+        "to sail",
+        "to rent (a car)"
+      ],
+      "hintDe": "Du sitzt im Auto und lenkst es dorthin, wohin du willst."
+    },
+    {
+      "id": "g3u03.w.to-escape",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to reach",
+            "to cross (a river)",
+            "to behave",
+            "to get close to (nature)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to escape (the midday heat)",
+      "g": "(der Mittagshitze) entkommen",
+      "d": "to go away from a thing that is not nice",
+      "s": "On a long hot day you cannot ___ the midday sun.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "escape",
+          "tier": "full"
+        },
+        {
+          "text": "escape the midday heat",
+          "tier": "full"
+        },
+        {
+          "text": "escaped",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "escape",
+          "tier": "full"
+        },
+        {
+          "text": "to escape",
+          "tier": "full"
+        },
+        {
+          "text": "to escape the midday heat",
+          "tier": "full"
+        },
+        {
+          "text": "escaped",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "escape",
+            "tier": "full"
+          },
+          {
+            "text": "to escape",
+            "tier": "full"
+          },
+          {
+            "text": "escape the midday heat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entkommen",
+            "tier": "full"
+          },
+          {
+            "text": "der Mittagshitze entkommen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to reach",
+        "to cross (a river)",
+        "to behave"
+      ],
+      "hintDe": "Du kommst von etwas weg, das du nicht magst."
+    },
+    {
+      "id": "g3u03.w.to-explore",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to reach",
+            "to escape (the midday heat)",
+            "to criticise",
+            "to cross (a river)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to explore",
+      "g": "erkunden",
+      "d": "to travel into a new place to find out what is there",
+      "s": "Holman loved to ___ the streets of a new city all alone.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "explore",
+          "tier": "full"
+        },
+        {
+          "text": "explored",
+          "tier": "partial"
+        },
+        {
+          "text": "explores",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "explore",
+          "tier": "full"
+        },
+        {
+          "text": "to explore",
+          "tier": "full"
+        },
+        {
+          "text": "explored",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "explore",
+            "tier": "full"
+          },
+          {
+            "text": "to explore",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erkunden",
+            "tier": "full"
+          },
+          {
+            "text": "erforschen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to reach",
+        "to escape (the midday heat)",
+        "to criticise"
+      ],
+      "hintDe": "Du reist durch einen neuen Ort, um herauszufinden, was es dort gibt."
+    },
+    {
+      "id": "g3u03.w.to-fix-sth",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to note",
+            "to promise",
+            "to recommend",
+            "to make a reservation"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "bank entry indexes only as the exact phrase 'fix sth.'; bare 'fix' is untaught, so it lives in answers as partial"
+      },
+      "w": "to fix sth.",
+      "g": "etw. beheben",
+      "d": "to make a thing work again after it breaks",
+      "s": "My dad is good with tools and can ___ anything in our home.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fix",
+          "tier": "full"
+        },
+        {
+          "text": "fix sth.",
+          "tier": "full"
+        },
+        {
+          "text": "fixed",
+          "tier": "partial"
+        },
+        {
+          "text": "fixes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fix sth.",
+          "tier": "full"
+        },
+        {
+          "text": "to fix sth.",
+          "tier": "full"
+        },
+        {
+          "text": "fix",
+          "tier": "partial"
+        },
+        {
+          "text": "fixed",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fix sth.",
+            "tier": "full"
+          },
+          {
+            "text": "to fix sth.",
+            "tier": "full"
+          },
+          {
+            "text": "fix",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beheben",
+            "tier": "full"
+          },
+          {
+            "text": "reparieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to note",
+        "to promise",
+        "to recommend"
+      ],
+      "hintDe": "Du machst eine Sache wieder funktionsfähig, nachdem sie kaputtgeht."
+    },
+    {
+      "id": "g3u03.w.to-fly",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to drive (home)",
+            "to sail",
+            "to land",
+            "to get on (a plane)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to fly (back)",
+      "g": "(zurück-)fliegen",
+      "d": "to travel high up in the sky in a plane",
+      "s": "After a short break in Munich, she will ___ back to London in the afternoon.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fly",
+          "tier": "full"
+        },
+        {
+          "text": "fly back",
+          "tier": "full"
+        },
+        {
+          "text": "flew",
+          "tier": "partial"
+        },
+        {
+          "text": "flew back",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fly",
+          "tier": "full"
+        },
+        {
+          "text": "to fly",
+          "tier": "full"
+        },
+        {
+          "text": "fly back",
+          "tier": "full"
+        },
+        {
+          "text": "flew",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fly",
+            "tier": "full"
+          },
+          {
+            "text": "to fly",
+            "tier": "full"
+          },
+          {
+            "text": "fly back",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fliegen",
+            "tier": "full"
+          },
+          {
+            "text": "zurückfliegen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to drive (home)",
+        "to sail",
+        "to land"
+      ],
+      "hintDe": "Du reist hoch oben im Himmel mit dem Flugzeug."
+    },
+    {
+      "id": "g3u03.w.to-get-close-to",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to escape (the midday heat)",
+            "to cross (a river)",
+            "to sleep in a tent",
+            "to meet up with (people)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get close to (nature)",
+      "g": "(der Natur) nahe kommen",
+      "d": "to come very near to a thing",
+      "s": "On her long journey across the country, Celia wanted to ___ nature.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get close to",
+          "tier": "full"
+        },
+        {
+          "text": "got close to",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get close to",
+          "tier": "full"
+        },
+        {
+          "text": "to get close to",
+          "tier": "full"
+        },
+        {
+          "text": "to get close to nature",
+          "tier": "full"
+        },
+        {
+          "text": "got close to",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get close to",
+            "tier": "full"
+          },
+          {
+            "text": "to get close to",
+            "tier": "full"
+          },
+          {
+            "text": "get close to nature",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nahe kommen",
+            "tier": "full"
+          },
+          {
+            "text": "der Natur nahe kommen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "nature",
+          "de": "Natur",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to escape (the midday heat)",
+        "to cross (a river)",
+        "to sleep in a tent"
+      ],
+      "hintDe": "Du kommst etwas ganz nahe."
+    },
+    {
+      "id": "g3u03.w.to-get-into",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to get out of (the car)",
+            "to rent (a car)",
+            "to drive (home)",
+            "to get on (a plane)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get into (a car)",
+      "g": "in (ein Auto) einsteigen",
+      "d": "to climb inside and sit down to travel somewhere.",
+      "s": "Celia opens the door and ___ her green car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "gets into",
+          "tier": "full"
+        },
+        {
+          "text": "get into",
+          "tier": "partial"
+        },
+        {
+          "text": "got into",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get into",
+          "tier": "full"
+        },
+        {
+          "text": "to get into",
+          "tier": "full"
+        },
+        {
+          "text": "to get into a car",
+          "tier": "full"
+        },
+        {
+          "text": "got into",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get into",
+            "tier": "full"
+          },
+          {
+            "text": "to get into",
+            "tier": "full"
+          },
+          {
+            "text": "get into a car",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einsteigen",
+            "tier": "full"
+          },
+          {
+            "text": "in ein Auto einsteigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to get out of (the car)",
+        "to rent (a car)",
+        "to drive (home)"
+      ],
+      "hintDe": "Du steigst ins Auto ein und setzt dich hinein."
+    },
+    {
+      "id": "g3u03.w.to-get-lost",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to set off (for work)",
+            "to reach",
+            "to turn out",
+            "to get to (the airport)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get lost",
+      "g": "sich verirren",
+      "d": "to lose your way so you cannot find where you are",
+      "s": "People often ___ in this big dark forest with no map.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get lost",
+          "tier": "full"
+        },
+        {
+          "text": "got lost",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get lost",
+          "tier": "full"
+        },
+        {
+          "text": "to get lost",
+          "tier": "full"
+        },
+        {
+          "text": "got lost",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get lost",
+            "tier": "full"
+          },
+          {
+            "text": "to get lost",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich verirren",
+            "tier": "full"
+          },
+          {
+            "text": "sich verlaufen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to set off (for work)",
+        "to reach",
+        "to turn out"
+      ],
+      "hintDe": "Du weißt nicht mehr, wo du bist oder wohin du gehen musst."
+    },
+    {
+      "id": "g3u03.w.to-get-off",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to get on (a plane)",
+            "to take off",
+            "to fly (back)",
+            "to get out of (the car)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get off (the plane)",
+      "g": "aus (dem Flugzeug) aussteigen",
+      "d": "to climb out of a train or a bus after you travel in it.",
+      "s": "When she flies back, she ___ the plane at about 3 p.m.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "gets off",
+          "tier": "full"
+        },
+        {
+          "text": "get off",
+          "tier": "partial"
+        },
+        {
+          "text": "got off",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get off",
+          "tier": "full"
+        },
+        {
+          "text": "to get off",
+          "tier": "full"
+        },
+        {
+          "text": "to get off the plane",
+          "tier": "full"
+        },
+        {
+          "text": "got off",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get off",
+            "tier": "full"
+          },
+          {
+            "text": "to get off",
+            "tier": "full"
+          },
+          {
+            "text": "get off the plane",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aussteigen",
+            "tier": "full"
+          },
+          {
+            "text": "aus dem Flugzeug aussteigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to get on (a plane)",
+        "to take off",
+        "to fly (back)"
+      ],
+      "hintDe": "Du steigst aus dem Bus, dem Zug oder dem Flugzeug aus."
+    },
+    {
+      "id": "g3u03.w.to-get-on",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to get off (the plane)",
+            "to take off",
+            "to land",
+            "to get into (a car)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get on (a plane)",
+      "g": "in (ein Flugzeug) einsteigen",
+      "d": "to climb on a train or a bus so you can travel in it.",
+      "s": "She ___ the plane at 6.50 a.m., before the passengers.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "gets on",
+          "tier": "full"
+        },
+        {
+          "text": "get on",
+          "tier": "partial"
+        },
+        {
+          "text": "got on",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get on",
+          "tier": "full"
+        },
+        {
+          "text": "to get on",
+          "tier": "full"
+        },
+        {
+          "text": "to get on a plane",
+          "tier": "full"
+        },
+        {
+          "text": "got on",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get on",
+            "tier": "full"
+          },
+          {
+            "text": "to get on",
+            "tier": "full"
+          },
+          {
+            "text": "get on a plane",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einsteigen",
+            "tier": "full"
+          },
+          {
+            "text": "in ein Flugzeug einsteigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to get off (the plane)",
+        "to take off",
+        "to land"
+      ],
+      "hintDe": "Du steigst in den Bus, den Zug oder das Flugzeug ein."
+    },
+    {
+      "id": "g3u03.w.to-get-out-of",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to get into (a car)",
+            "to drive (home)",
+            "to rent (a car)",
+            "to get off (the plane)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get out of (the car)",
+      "g": "aus (dem Auto) aussteigen",
+      "d": "to climb out and come down when you arrive somewhere.",
+      "s": "She drives home and ___ the car at about 5 p.m.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "gets out of",
+          "tier": "full"
+        },
+        {
+          "text": "get out of",
+          "tier": "partial"
+        },
+        {
+          "text": "got out of",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get out of",
+          "tier": "full"
+        },
+        {
+          "text": "to get out of",
+          "tier": "full"
+        },
+        {
+          "text": "to get out of the car",
+          "tier": "full"
+        },
+        {
+          "text": "got out of",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get out of",
+            "tier": "full"
+          },
+          {
+            "text": "to get out of",
+            "tier": "full"
+          },
+          {
+            "text": "get out of the car",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aussteigen",
+            "tier": "full"
+          },
+          {
+            "text": "aus dem Auto aussteigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to get into (a car)",
+        "to drive (home)",
+        "to rent (a car)"
+      ],
+      "hintDe": "Du steigst aus dem Auto aus, wenn du ankommst."
+    },
+    {
+      "id": "g3u03.w.to-get-to",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to take off",
+            "to land",
+            "to fly (back)",
+            "to set off (for work)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get to (the airport)",
+      "g": "zum (Flughafen) kommen",
+      "d": "to arrive at a place where you want to be",
+      "s": "She drives fast in the morning so she can ___ the airport in time.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "get to",
+          "tier": "full"
+        },
+        {
+          "text": "get to the airport",
+          "tier": "full"
+        },
+        {
+          "text": "got to",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get to",
+          "tier": "full"
+        },
+        {
+          "text": "to get to",
+          "tier": "full"
+        },
+        {
+          "text": "to get to the airport",
+          "tier": "full"
+        },
+        {
+          "text": "got to",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get to",
+            "tier": "full"
+          },
+          {
+            "text": "to get to",
+            "tier": "full"
+          },
+          {
+            "text": "get to the airport",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kommen",
+            "tier": "full"
+          },
+          {
+            "text": "zum Flughafen kommen",
+            "tier": "full"
+          },
+          {
+            "text": "ankommen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to take off",
+        "to land",
+        "to fly (back)"
+      ],
+      "hintDe": "Du erreichst den Ort, an den du willst."
+    },
+    {
+      "id": "g3u03.w.to-get-to-know-sb-sth",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to meet up with (people)",
+            "to set off (for work)",
+            "to get lost",
+            "to get close to (nature)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "bank entry indexes only as the exact phrase 'get to know sb./sth.'; bare 'get to know' is untaught (token 'know'), so it lives in answers as partial"
+      },
+      "w": "to get to know sb./sth.",
+      "g": "jdn./etw. näher kennenlernen",
+      "d": "to find out more and more about a place or a friend",
+      "s": "Kate wanted to ___ the area near her new home.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get to know",
+          "tier": "full"
+        },
+        {
+          "text": "get to know sb./sth.",
+          "tier": "full"
+        },
+        {
+          "text": "got to know",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get to know sb./sth.",
+          "tier": "full"
+        },
+        {
+          "text": "to get to know sb./sth.",
+          "tier": "full"
+        },
+        {
+          "text": "get to know",
+          "tier": "partial"
+        },
+        {
+          "text": "got to know",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get to know sb./sth.",
+            "tier": "full"
+          },
+          {
+            "text": "to get to know sb./sth.",
+            "tier": "full"
+          },
+          {
+            "text": "get to know",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "näher kennenlernen",
+            "tier": "full"
+          },
+          {
+            "text": "kennenlernen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to meet up with (people)",
+        "to set off (for work)",
+        "to get lost"
+      ],
+      "hintDe": "Du lernst einen Ort oder einen Freund langsam besser kennen."
+    },
+    {
+      "id": "g3u03.w.to-land",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to take off",
+            "to get on (a plane)",
+            "to fly (back)",
+            "to drive (home)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to land",
+      "g": "landen",
+      "d": "when a plane touches the ground at the end of a flight",
+      "s": "After a long flight, the plane ___ at the airport at about 9 a.m.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lands",
+          "tier": "full"
+        },
+        {
+          "text": "land",
+          "tier": "partial"
+        },
+        {
+          "text": "landed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "land",
+          "tier": "full"
+        },
+        {
+          "text": "to land",
+          "tier": "full"
+        },
+        {
+          "text": "landed",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "land",
+            "tier": "full"
+          },
+          {
+            "text": "to land",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "landen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to take off",
+        "to get on (a plane)",
+        "to fly (back)"
+      ],
+      "hintDe": "Das Flugzeug geht herunter und berührt den Boden."
+    },
+    {
+      "id": "g3u03.w.to-make-a-reservation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to set off (for work)",
+            "to get lost",
+            "to fix sth.",
+            "to recommend"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to make a reservation",
+      "g": "eine Reservierung vornehmen",
+      "d": "to book a table or seat before you come",
+      "s": "I want to ___ for a table for two people at seven o'clock tonight.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "make a reservation",
+          "tier": "full"
+        },
+        {
+          "text": "made a reservation",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make a reservation",
+          "tier": "full"
+        },
+        {
+          "text": "to make a reservation",
+          "tier": "full"
+        },
+        {
+          "text": "made a reservation",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make a reservation",
+            "tier": "full"
+          },
+          {
+            "text": "to make a reservation",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Reservierung vornehmen",
+            "tier": "full"
+          },
+          {
+            "text": "reservieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to set off (for work)",
+        "to get lost",
+        "to fix sth."
+      ],
+      "hintDe": "Du buchst einen Tisch oder Platz, bevor du kommst."
+    },
+    {
+      "id": "g3u03.w.to-meet-up-with",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to get close to (nature)",
+            "to escape (the midday heat)",
+            "to set off (for work)",
+            "to get to know sb./sth."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to meet up with (people)",
+      "g": "sich mit (Leuten) treffen",
+      "d": "to come and be with friends at a time you both agree on",
+      "s": "Near the end of the journey, Celia is going to ___ with her boyfriend.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "meet up",
+          "tier": "full"
+        },
+        {
+          "text": "meet up with",
+          "tier": "full"
+        },
+        {
+          "text": "met up with",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "meet up with",
+          "tier": "full"
+        },
+        {
+          "text": "to meet up with",
+          "tier": "full"
+        },
+        {
+          "text": "to meet up with people",
+          "tier": "full"
+        },
+        {
+          "text": "met up with",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "meet up with",
+            "tier": "full"
+          },
+          {
+            "text": "to meet up with",
+            "tier": "full"
+          },
+          {
+            "text": "meet up with people",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich treffen mit",
+            "tier": "full"
+          },
+          {
+            "text": "sich mit Leuten treffen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to get close to (nature)",
+        "to escape (the midday heat)",
+        "to set off (for work)"
+      ],
+      "hintDe": "Du kommst mit Freunden zu einer Zeit zusammen, die ihr ausgemacht habt."
+    },
+    {
+      "id": "g3u03.w.to-note",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to promise",
+            "to recommend",
+            "to behave",
+            "to fix sth."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to note",
+      "g": "beachten",
+      "d": "to read a thing well and keep it in your head because it is a big thing",
+      "s": "Please ___ that you have to be at the airport early for your flight.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "note",
+          "tier": "full"
+        },
+        {
+          "text": "noted",
+          "tier": "partial"
+        },
+        {
+          "text": "notes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "note",
+          "tier": "full"
+        },
+        {
+          "text": "to note",
+          "tier": "full"
+        },
+        {
+          "text": "noted",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "note",
+            "tier": "full"
+          },
+          {
+            "text": "to note",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beachten",
+            "tier": "full"
+          },
+          {
+            "text": "feststellen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to promise",
+        "to recommend",
+        "to behave"
+      ],
+      "hintDe": "Du liest etwas genau und merkst es dir, weil es wichtig ist."
+    },
+    {
+      "id": "g3u03.w.to-promise",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to recommend",
+            "to note",
+            "to behave",
+            "to fix sth."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to promise",
+      "g": "versprechen",
+      "d": "to tell somebody that you will really do a thing",
+      "s": "I ___ to help you with your homework after school today.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "promise",
+          "tier": "full"
+        },
+        {
+          "text": "promised",
+          "tier": "partial"
+        },
+        {
+          "text": "promises",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "promise",
+          "tier": "full"
+        },
+        {
+          "text": "to promise",
+          "tier": "full"
+        },
+        {
+          "text": "promised",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "promise",
+            "tier": "full"
+          },
+          {
+            "text": "to promise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "versprechen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to recommend",
+        "to note",
+        "to behave"
+      ],
+      "hintDe": "Du sagst jemandem, dass du etwas wirklich tun wirst."
+    },
+    {
+      "id": "g3u03.w.to-reach",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to explore",
+            "to escape (the midday heat)",
+            "to behave",
+            "to cross (a river)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to reach",
+      "g": "(er-)reichen",
+      "d": "to arrive at the place you were going to",
+      "s": "After a long climb up the mountain, they were happy to ___ the hut.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "reach",
+          "tier": "full"
+        },
+        {
+          "text": "reached",
+          "tier": "partial"
+        },
+        {
+          "text": "reaches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reach",
+          "tier": "full"
+        },
+        {
+          "text": "to reach",
+          "tier": "full"
+        },
+        {
+          "text": "reached",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reach",
+            "tier": "full"
+          },
+          {
+            "text": "to reach",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erreichen",
+            "tier": "full"
+          },
+          {
+            "text": "reichen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to explore",
+        "to escape (the midday heat)",
+        "to behave"
+      ],
+      "hintDe": "Du kommst an dem Ort an, zu dem du wolltest."
+    },
+    {
+      "id": "g3u03.w.to-recommend",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to promise",
+            "to note",
+            "to criticise",
+            "to behave"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to recommend",
+      "g": "empfehlen",
+      "d": "to tell people a thing is good so they will try it too",
+      "s": "There's a short way and a long way, but I ___ the long way because it's prettier.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "recommend",
+          "tier": "full"
+        },
+        {
+          "text": "recommended",
+          "tier": "partial"
+        },
+        {
+          "text": "recommends",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "recommend",
+          "tier": "full"
+        },
+        {
+          "text": "to recommend",
+          "tier": "full"
+        },
+        {
+          "text": "recommended",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "recommend",
+            "tier": "full"
+          },
+          {
+            "text": "to recommend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "empfehlen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to promise",
+        "to note",
+        "to criticise"
+      ],
+      "hintDe": "Du sagst Leuten, dass etwas gut ist, damit sie es auch ausprobieren."
+    },
+    {
+      "id": "g3u03.w.to-rent",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to drive (home)",
+            "to fly (back)",
+            "to sail",
+            "to cross (a river)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to rent (a car)",
+      "g": "(ein Auto) mieten",
+      "d": "to pay money so you can have a thing for a short time",
+      "s": "Some people ___ a car to visit more of the country.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rent",
+          "tier": "full"
+        },
+        {
+          "text": "rent a car",
+          "tier": "full"
+        },
+        {
+          "text": "rented",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rent",
+          "tier": "full"
+        },
+        {
+          "text": "to rent",
+          "tier": "full"
+        },
+        {
+          "text": "to rent a car",
+          "tier": "full"
+        },
+        {
+          "text": "rented",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rent",
+            "tier": "full"
+          },
+          {
+            "text": "to rent",
+            "tier": "full"
+          },
+          {
+            "text": "rent a car",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mieten",
+            "tier": "full"
+          },
+          {
+            "text": "ein Auto mieten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to drive (home)",
+        "to fly (back)",
+        "to sail"
+      ],
+      "hintDe": "Du zahlst Geld, um etwas für kurze Zeit zu benutzen."
+    },
+    {
+      "id": "g3u03.w.to-sail",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to fly (back)",
+            "to drive (home)",
+            "to reach",
+            "to cross (a river)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to sail",
+      "g": "segeln",
+      "d": "to travel across the sea on a ship",
+      "s": "Holman was on a ship to ___ across the Atlantic Ocean.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sail",
+          "tier": "full"
+        },
+        {
+          "text": "sailed",
+          "tier": "partial"
+        },
+        {
+          "text": "sails",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sail",
+          "tier": "full"
+        },
+        {
+          "text": "to sail",
+          "tier": "full"
+        },
+        {
+          "text": "sailed",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sail",
+            "tier": "full"
+          },
+          {
+            "text": "to sail",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "segeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to fly (back)",
+        "to drive (home)",
+        "to reach"
+      ],
+      "hintDe": "Du reist über das Meer auf einem Schiff, das der Wind bewegt."
+    },
+    {
+      "id": "g3u03.w.to-set-off",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to get to (the airport)",
+            "to land",
+            "to turn out",
+            "to reach"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to set off (for work)",
+      "g": "(zur Arbeit) aufbrechen",
+      "d": "to leave home and begin a journey",
+      "s": "Celia ___ for work at about 5.30 a.m. while it is still dark outside.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sets off",
+          "tier": "full"
+        },
+        {
+          "text": "set off",
+          "tier": "partial"
+        },
+        {
+          "text": "set off for work",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "set off",
+          "tier": "full"
+        },
+        {
+          "text": "to set off",
+          "tier": "full"
+        },
+        {
+          "text": "to set off for work",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "set off",
+            "tier": "full"
+          },
+          {
+            "text": "to set off",
+            "tier": "full"
+          },
+          {
+            "text": "set off for work",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "zur Arbeit aufbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "losfahren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to get to (the airport)",
+        "to land",
+        "to turn out"
+      ],
+      "hintDe": "Du verlässt zu Hause und beginnst eine Reise."
+    },
+    {
+      "id": "g3u03.w.to-sleep-in-a-tent",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to rent (a car)",
+            "to cross (a river)",
+            "to escape (the midday heat)",
+            "to get close to (nature)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to sleep in a tent",
+      "g": "in einem Zelt schlafen",
+      "d": "to spend the night outside under a small cloth home",
+      "s": "On the long journey you ___ at night, far away from any hotel.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sleep in a tent",
+          "tier": "full"
+        },
+        {
+          "text": "slept in a tent",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sleep in a tent",
+          "tier": "full"
+        },
+        {
+          "text": "to sleep in a tent",
+          "tier": "full"
+        },
+        {
+          "text": "slept in a tent",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sleep in a tent",
+            "tier": "full"
+          },
+          {
+            "text": "to sleep in a tent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in einem Zelt schlafen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tent",
+          "de": "Zelt",
+          "scope": "s"
+        },
+        {
+          "word": "cloth",
+          "de": "Stoff",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to rent (a car)",
+        "to cross (a river)",
+        "to escape (the midday heat)"
+      ],
+      "hintDe": "Du verbringst die Nacht draußen unter einem kleinen Stoffdach."
+    },
+    {
+      "id": "g3u03.w.to-suffer-from-altitude-sickness",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to take off",
+            "to set off (for work)",
+            "to make a reservation",
+            "to get lost"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to suffer from altitude sickness",
+      "g": "an Höhenkrankheit leiden",
+      "d": "to feel sick because you are very high up in the mountains",
+      "s": "Very high up in the mountains, some people ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "suffer from altitude sickness",
+          "tier": "full"
+        },
+        {
+          "text": "suffered from altitude sickness",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "suffer from altitude sickness",
+          "tier": "full"
+        },
+        {
+          "text": "to suffer from altitude sickness",
+          "tier": "full"
+        },
+        {
+          "text": "suffered from altitude sickness",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "suffer from altitude sickness",
+            "tier": "full"
+          },
+          {
+            "text": "to suffer from altitude sickness",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "an Höhenkrankheit leiden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to take off",
+        "to set off (for work)",
+        "to make a reservation"
+      ],
+      "hintDe": "Dir wird hoch oben in den Bergen schlecht."
+    },
+    {
+      "id": "g3u03.w.to-take-off",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to land",
+            "to drive (home)",
+            "to sail",
+            "to get on (a plane)"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to take off",
+      "g": "abheben",
+      "d": "when a plane leaves the ground and rises into the sky",
+      "s": "The plane ___ at 7.30 a.m. and climbs up into the sky.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "takes off",
+          "tier": "full"
+        },
+        {
+          "text": "take off",
+          "tier": "partial"
+        },
+        {
+          "text": "took off",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take off",
+          "tier": "full"
+        },
+        {
+          "text": "to take off",
+          "tier": "full"
+        },
+        {
+          "text": "took off",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take off",
+            "tier": "full"
+          },
+          {
+            "text": "to take off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "abheben",
+            "tier": "full"
+          },
+          {
+            "text": "starten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to land",
+        "to drive (home)",
+        "to sail"
+      ],
+      "hintDe": "Das Flugzeug hebt vom Boden ab und steigt in den Himmel."
+    },
+    {
+      "id": "g3u03.w.to-turn-out",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to become",
+            "to behave",
+            "to reach",
+            "to explore"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to turn out",
+      "g": "sich herausstellen",
+      "d": "to be true in the end",
+      "s": "The Fang people ___ to be quite nice, which surprised Mary.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "turned out",
+          "tier": "full"
+        },
+        {
+          "text": "turn out",
+          "tier": "partial"
+        },
+        {
+          "text": "turns out",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "turn out",
+          "tier": "full"
+        },
+        {
+          "text": "to turn out",
+          "tier": "full"
+        },
+        {
+          "text": "turned out",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "turn out",
+            "tier": "full"
+          },
+          {
+            "text": "to turn out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich herausstellen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to become",
+        "to behave",
+        "to reach"
+      ],
+      "hintDe": "Am Ende stellt sich etwas als wahr heraus."
+    },
+    {
+      "id": "g3u03.w.to-work-on",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to escape (the midday heat)",
+            "to rent (a car)",
+            "to behave",
+            "to fix sth."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to work on (a blog)",
+      "g": "an (einem Blog) arbeiten",
+      "d": "to spend time making or doing a thing",
+      "s": "Every evening, Celia ___ her blog and posts pictures from the day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "works on",
+          "tier": "full"
+        },
+        {
+          "text": "work on",
+          "tier": "partial"
+        },
+        {
+          "text": "worked on",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "work on",
+          "tier": "full"
+        },
+        {
+          "text": "to work on",
+          "tier": "full"
+        },
+        {
+          "text": "to work on a blog",
+          "tier": "full"
+        },
+        {
+          "text": "worked on",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "work on",
+            "tier": "full"
+          },
+          {
+            "text": "to work on",
+            "tier": "full"
+          },
+          {
+            "text": "work on a blog",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "an etwas arbeiten",
+            "tier": "full"
+          },
+          {
+            "text": "daran arbeiten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "blog",
+          "de": "Blog",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to escape (the midday heat)",
+        "to rent (a car)",
+        "to behave"
+      ],
+      "hintDe": "Du verbringst Zeit damit, etwas zu machen oder zu erstellen."
+    },
+    {
+      "id": "g3u03.w.traveller",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "explorer",
+            "decision",
+            "journey",
+            "experience"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "traveller",
+      "g": "Reisender/Reisende",
+      "d": "somebody who travels to many places",
+      "s": "James Holman was a record ___ who travelled more than anyone before him.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "traveller",
+          "tier": "full"
+        },
+        {
+          "text": "travellers",
+          "tier": "partial"
+        },
+        {
+          "text": "traveler",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "traveller",
+          "tier": "full"
+        },
+        {
+          "text": "travellers",
+          "tier": "partial"
+        },
+        {
+          "text": "traveler",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "traveller",
+            "tier": "full"
+          },
+          {
+            "text": "traveler",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Reisender",
+            "tier": "full"
+          },
+          {
+            "text": "Reisende",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "explorer",
+        "decision",
+        "journey"
+      ],
+      "hintDe": "Jemand, der viele Reisen an viele Orte macht."
+    },
+    {
+      "id": "g3u03.w.unfortunately",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "recently",
+            "pretty",
+            "all in all",
+            "even though"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "unfortunately",
+      "g": "leider",
+      "d": "this shows that you are sorry about a thing",
+      "s": "___, our holiday came to an end and we had to fly home after a week.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Unfortunately",
+          "tier": "full"
+        },
+        {
+          "text": "unfortunately",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unfortunately",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unfortunately",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "leider",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "recently",
+        "pretty",
+        "all in all"
+      ],
+      "hintDe": "So sagst du, wenn dir etwas leidtut."
+    },
+    {
+      "id": "g3u03.w.wilderness",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hut",
+            "journey",
+            "departure",
+            "flight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wilderness",
+      "g": "Wildnis",
+      "d": "a wild area, a long way from any town, where no people live",
+      "s": "Mary had many dangerous adventures in the ___, a long way from any town.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "wilderness",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wilderness",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wilderness",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wildnis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hut",
+        "journey",
+        "departure"
+      ],
+      "hintDe": "Ein wildes Gebiet, weit weg von jeder Stadt, in dem keine Menschen leben."
+    }
+  ]
+}
