@@ -426,6 +426,11 @@ export function sieRule(slug: string, items: UnitItems): { errors: string[]; war
       const tokens = sentence.match(/[A-Za-zÄÖÜäöüß']+/g) ?? [];
       for (let i = 0; i < tokens.length; i += 1) {
         if (!SIE_RE.test(tokens[i]!)) continue;
+        // Carve-out: a register-variant slash-list gloss (e.g. "Wie geht es
+        // dir/Ihnen/euch?") lists the du/Sie/ihr translations of a phrase — it
+        // is NOT the app formally addressing the student. Real formal address is
+        // space-flanked ("geht es Ihnen"); a register list is slash-flanked.
+        if (new RegExp(`[/]\\s*${tokens[i]!}\\b|\\b${tokens[i]!}\\s*[/]`).test(text)) continue;
         if (i === 0) {
           warns.push({ key: `validator-warn:${itemId}`, kind: "validator-warn", itemId, note: `sentence-initial "${tokens[i]!}" in ${field} — she/they or formal address? Human call.` });
         } else {

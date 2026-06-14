@@ -214,6 +214,15 @@ test("V-12 Sie-rule: mid-sentence red, sentence-initial warn", () => {
   assert.ok(warn.warns.some((w) => w.note.includes("sentence-initial")));
 });
 
+test("V-12 Sie-rule: register-list slash-gloss exempt; space-flanked formal still red", () => {
+  // "Wie geht es dir/Ihnen/euch?" lists du/Sie/ihr translations — not formal address.
+  const ok = sieRule(SLUG, { vocab: [vocabItem({ hintDe: "Wie geht es dir/Ihnen/euch?" })], ...noGrammar });
+  assert.equal(ok.errors.length, 0);
+  // real space-flanked formal address is still red.
+  const red = sieRule(SLUG, { vocab: [vocabItem({ hintDe: "Wie geht es Ihnen heute?" })], ...noGrammar });
+  assert.ok(red.errors.some((e) => e.includes('"Ihnen"')));
+});
+
 test("V-13 meta-talk: jargon vs tense-names vs DE terms", () => {
   // abstract mechanism jargon banned everywhere — even in hints
   const en = metaTalkErrors(SLUG, { vocab: [], grammar: [grammarItem({ hintDe: "Nimm das modal verb should." })] });
