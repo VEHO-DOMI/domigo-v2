@@ -1,0 +1,735 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u06",
+  "round": 1,
+  "itemsHash": "ca33d0b51fc1",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "lens-warn:g1u06.w.river#gloss-wrong",
+      "kind": "lens-warn",
+      "itemId": "g1u06.w.river",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "lens-warn:g1u06.w.to-catch#gloss-wrong",
+      "kind": "lens-warn",
+      "itemId": "g1u06.w.to-catch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "lens-warn:g1u06.w.to-jump#above-level",
+      "kind": "lens-warn",
+      "itemId": "g1u06.w.to-jump",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "lens-warn:g1u06.w.to-live#gloss-wrong",
+      "kind": "lens-warn",
+      "itemId": "g1u06.w.to-live",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.away",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.but-it-s-true",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.but-it-s-true",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.city",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.city",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.clever",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.clever",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.come-on",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.come-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.go-on",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.go-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.market",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.market",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.mirror",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.mirror",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.park",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.park",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.river",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.river",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.street",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.street",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.street-2",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.street-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.supermarket",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.supermarket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-become",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-become",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-bump-into-a-tree",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-bump-into-a-tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-call",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-call",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-catch",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-catch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-climb",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-climb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-climb-up-a-tree",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-climb-up-a-tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-come-to",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-come-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-fall-out-of-the-tree",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-fall-out-of-the-tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-get-up",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-get-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-go-to-the-park",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-go-to-the-park",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-jump",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-jump",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-jump-into-the-river",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-jump-into-the-river",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-leave",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-leave",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-leave-the-office",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-leave-the-office",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-look-in-the-mirror",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-look-in-the-mirror",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-look-out-the-window",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-look-out-the-window",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-pick-something-up",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-pick-something-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-put-on",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-put-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-run",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-run",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-sit-in-a-tree",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-sit-in-a-tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-solve",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-solve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-wait",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-wait",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.to-watch",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.to-watch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.tree",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u06.w.woods",
+      "kind": "new-gloss",
+      "itemId": "g1u06.w.woods",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.a-lot-of-lots-of",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.a-lot-of-lots-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.away",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.best",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.best",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.but-it-s-true",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.but-it-s-true",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.city",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.city",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.clever",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.clever",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.come-on",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.come-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.detective",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.detective",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.go-on",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.go-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.help-me",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.help-me",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.market",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.market",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.mirror",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.mirror",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.nice",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.nice",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.office",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.office",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.park",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.park",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.river",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.river",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.street",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.street",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.street-2",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.street-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.supermarket",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.supermarket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-become",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-become",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-bump-into-a-tree",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-bump-into-a-tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-call",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-call",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-catch",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-catch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-climb",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-climb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-climb-up-a-tree",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-climb-up-a-tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-come-to",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-come-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-fall-out-of-the-tree",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-fall-out-of-the-tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-find",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-find",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-get-up",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-get-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-go-to-the-park",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-go-to-the-park",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-jump",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-jump",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-jump-into-the-river",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-jump-into-the-river",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-leave",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-leave",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-leave-the-office",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-leave-the-office",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-live",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-live",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-look-in-the-mirror",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-look-in-the-mirror",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-look-out-the-window",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-look-out-the-window",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-pick-something-up",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-pick-something-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-pull",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-pull",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-pull-2",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-pull-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-put-on",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-put-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-run",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-run",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-sit-in-a-tree",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-sit-in-a-tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-solve",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-solve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-wait",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-wait",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.to-watch",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.to-watch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.tree",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.tree",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.well-done",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.well-done",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.w.woods",
+      "kind": "translation-audit",
+      "itemId": "g1u06.w.woods",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.gi.a-lot-of.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u06.gi.a-lot-of.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.gi.a-lot-of.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u06.gi.a-lot-of.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.gi.a-lot-of.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u06.gi.a-lot-of.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.gi.present-simple.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u06.gi.present-simple.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.gi.present-simple.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u06.gi.present-simple.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u06.gi.present-simple.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g1u06.gi.present-simple.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u06.w.to-go-to-the-park#75f790",
+      "kind": "validator-warn",
+      "itemId": "g1u06.w.to-go-to-the-park",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u06.w.to-jump-into-the-river#865564",
+      "kind": "validator-warn",
+      "itemId": "g1u06.w.to-jump-into-the-river",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u06.w.to-look-in-the-mirror#f6679b",
+      "kind": "validator-warn",
+      "itemId": "g1u06.w.to-look-in-the-mirror",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u06.gi.a-lot-of.tr.003#2c51f2",
+      "kind": "validator-warn",
+      "itemId": "g1u06.gi.a-lot-of.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u06.gi.present-simple.tr.002#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g1u06.gi.present-simple.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 103 rows + 102 flags reviewed (FULL). Verify: 0 fix, 4 advisory warn; rejectRate 0%. 38 gloss + 55 translation audits lens-verified (deToEn EN / enToDe DE clean). 5 validator-warns benign. Full v1 parity: 54 grammar (present-simple 30, a-lot-of 24) over the 46 floor; grants goes/study/lot. VERY gloss-heavy (detective vocab, 104 glosses — flag for Koki)."
+  },
+  "metrics": {
+    "itemsReviewed": 103,
+    "fullRows": 103,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

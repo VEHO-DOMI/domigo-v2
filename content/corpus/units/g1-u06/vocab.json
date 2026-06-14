@@ -1,0 +1,4395 @@
+{
+  "schema": "vocab@1",
+  "grade": 1,
+  "unit": 6,
+  "slug": "g1-u06",
+  "items": [
+    {
+      "id": "g1u06.w.a-lot-of-lots-of",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "big",
+            "long",
+            "small",
+            "nice",
+            "best"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "GRAMMAR: a lot of / lots of",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "a lot of / lots of",
+      "g": "viel/e",
+      "d": "This is many, a big number.",
+      "s": "There are ___ trees in the park.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "a lot of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "a lot of",
+          "tier": "full"
+        },
+        {
+          "text": "lots of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "a lot of",
+            "tier": "full"
+          },
+          {
+            "text": "lots of",
+            "tier": "full"
+          },
+          {
+            "text": "many",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "viele",
+            "tier": "full"
+          },
+          {
+            "text": "viel",
+            "tier": "full"
+          },
+          {
+            "text": "jede Menge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "big",
+        "long",
+        "small"
+      ],
+      "hintDe": "„viele“ – eine große Zahl von etwas. Du kannst a lot of oder lots of sagen."
+    },
+    {
+      "id": "g1u06.w.away",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "back",
+            "here",
+            "best",
+            "nice",
+            "clever"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: away",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "away",
+      "g": "weg",
+      "d": "Not here, at a far place.",
+      "s": "Go ___! I do not want you here.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "away",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "away",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "away",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weg",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "far",
+          "de": "weit weg",
+          "scope": "d"
+        },
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "back",
+        "here",
+        "best"
+      ],
+      "hintDe": "Nicht hier, sondern an einem anderen Ort – wie in „Geh weg!“"
+    },
+    {
+      "id": "g1u06.w.best",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "clever",
+            "nice",
+            "big",
+            "small",
+            "long"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: (world's) best",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "(world's) best",
+      "g": "(welt-)bester/beste/bestes",
+      "d": "The very good one, more good than all.",
+      "s": "Sherlock is the world's ___ detective.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "best",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "best",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "best",
+            "tier": "full"
+          },
+          {
+            "text": "world's best",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bester",
+            "tier": "full"
+          },
+          {
+            "text": "beste",
+            "tier": "full"
+          },
+          {
+            "text": "bestes",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "clever",
+        "nice",
+        "big"
+      ],
+      "hintDe": "Besser als alle anderen – die Nummer eins."
+    },
+    {
+      "id": "g1u06.w.but-it-s-true",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Well done.",
+            "Go on.",
+            "Come on!",
+            "Help me!",
+            "Go away!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "EVERYDAY ENGLISH: But it's true",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "But it's true!",
+      "g": "Aber es stimmt!",
+      "d": "You call this out when a thing is real, not a joke.",
+      "s": "You do not believe me? ___ I saw it!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "But it's true!",
+          "tier": "full"
+        },
+        {
+          "text": "But it's true",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "But it's true!",
+          "tier": "full"
+        },
+        {
+          "text": "But it's true",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "But it's true!",
+            "tier": "full"
+          },
+          {
+            "text": "But it's true",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Aber es stimmt!",
+            "tier": "full"
+          },
+          {
+            "text": "Aber es stimmt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "real",
+          "de": "echt, wirklich",
+          "scope": "d"
+        },
+        {
+          "word": "joke",
+          "de": "Witz, Scherz",
+          "scope": "d"
+        },
+        {
+          "word": "believe",
+          "de": "glauben",
+          "scope": "s"
+        },
+        {
+          "word": "saw",
+          "de": "sah, habe gesehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Well done.",
+        "Go on.",
+        "Come on!"
+      ],
+      "hintDe": "Das sagst du, wenn etwas wirklich wahr ist und kein Scherz."
+    },
+    {
+      "id": "g1u06.w.city",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "park",
+            "street",
+            "river",
+            "market",
+            "woods"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Around town",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "city",
+      "g": "Stadt",
+      "d": "A very big place with lots of houses, cars, and shops.",
+      "s": "London is a very big ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "city",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "city",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "city",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stadt",
+            "tier": "full"
+          },
+          {
+            "text": "Großstadt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        },
+        {
+          "word": "houses",
+          "de": "Häuser",
+          "scope": "d"
+        },
+        {
+          "word": "shops",
+          "de": "Geschäfte",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "park",
+        "street",
+        "river"
+      ],
+      "hintDe": "Ein ganz großer Ort mit vielen Häusern und Autos – größer als ein Dorf."
+    },
+    {
+      "id": "g1u06.w.clever",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "nice",
+            "best",
+            "happy",
+            "big",
+            "strong"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: clever",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "clever",
+      "g": "klug",
+      "d": "Very good at school; you learn well and find the answer.",
+      "s": "Sherlock is very ___; he always finds the answer.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "clever",
+          "tier": "full"
+        },
+        {
+          "text": "smart",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "clever",
+          "tier": "full"
+        },
+        {
+          "text": "smart",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "clever",
+            "tier": "full"
+          },
+          {
+            "text": "smart",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "klug",
+            "tier": "full"
+          },
+          {
+            "text": "schlau",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "learn",
+          "de": "lernen",
+          "scope": "d"
+        },
+        {
+          "word": "answer",
+          "de": "Antwort",
+          "scope": null
+        },
+        {
+          "word": "always",
+          "de": "immer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "nice",
+        "best",
+        "happy"
+      ],
+      "hintDe": "Gut im Denken und Lernen – findet schnell die Lösung."
+    },
+    {
+      "id": "g1u06.w.come-on",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Go away!",
+            "Well done.",
+            "Help me!",
+            "Go on.",
+            "But it's true!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SONG: Come on, come on!",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Come on!",
+      "g": "Komm(t) jetzt!",
+      "d": "You call this out so a friend is here now.",
+      "s": "___ Hurry up, we are late!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Come on!",
+          "tier": "full"
+        },
+        {
+          "text": "Come on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Come on!",
+          "tier": "full"
+        },
+        {
+          "text": "Come on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Come on!",
+            "tier": "full"
+          },
+          {
+            "text": "Come on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Komm jetzt!",
+            "tier": "full"
+          },
+          {
+            "text": "Kommt jetzt!",
+            "tier": "full"
+          },
+          {
+            "text": "Mach schon!",
+            "tier": "full"
+          },
+          {
+            "text": "Macht schon!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hurry",
+          "de": "sich beeilen",
+          "scope": "s"
+        },
+        {
+          "word": "late",
+          "de": "spät, zu spät",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Go away!",
+        "Well done.",
+        "Help me!"
+      ],
+      "hintDe": "Das rufst du, damit jemand sich beeilt und mitkommt."
+    },
+    {
+      "id": "g1u06.w.detective",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "office",
+            "mirror",
+            "market",
+            "city",
+            "tree"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: detective",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "detective",
+      "g": "Detektiv/Detektivin",
+      "d": "A man or woman who finds bad men and women.",
+      "s": "Sherlock Groans is a very good ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "detective",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "detective",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "detective",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Detektiv",
+            "tier": "full"
+          },
+          {
+            "text": "Detektivin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "office",
+        "mirror",
+        "market"
+      ],
+      "hintDe": "Jemand, der die bösen Leute findet und Rätsel löst."
+    },
+    {
+      "id": "g1u06.w.go-on",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Well done.",
+            "Come on!",
+            "Help me!",
+            "Go away!",
+            "But it's true!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "EVERYDAY ENGLISH: Go on",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Go on.",
+      "g": "weitermachen",
+      "d": "You want a friend to go on with the story.",
+      "s": "That is a good story. ___ What happens next?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Go on.",
+          "tier": "full"
+        },
+        {
+          "text": "Go on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Go on.",
+          "tier": "full"
+        },
+        {
+          "text": "Go on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Go on.",
+            "tier": "full"
+          },
+          {
+            "text": "Go on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erzähl weiter!",
+            "tier": "full"
+          },
+          {
+            "text": "Mach weiter!",
+            "tier": "full"
+          },
+          {
+            "text": "weitermachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "next",
+          "de": "als Nächstes",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Well done.",
+        "Come on!",
+        "Help me!"
+      ],
+      "hintDe": "Das sagst du, wenn jemand weitererzählen soll."
+    },
+    {
+      "id": "g1u06.w.help-me",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Go away!",
+            "Come on!",
+            "Well done.",
+            "Go on.",
+            "But it's true!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: Help me!",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Help me!",
+      "g": "Hilf mir!",
+      "d": "You call this out when you want a friend now.",
+      "s": "___ I can not carry this big box.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Help me!",
+          "tier": "full"
+        },
+        {
+          "text": "Help me",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Help me!",
+          "tier": "full"
+        },
+        {
+          "text": "Help me",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Help me!",
+            "tier": "full"
+          },
+          {
+            "text": "Help me",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hilf mir!",
+            "tier": "full"
+          },
+          {
+            "text": "Hilf mir",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Go away!",
+        "Come on!",
+        "Well done."
+      ],
+      "hintDe": "Das rufst du, wenn du dringend Hilfe brauchst."
+    },
+    {
+      "id": "g1u06.w.market",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "supermarket",
+            "park",
+            "office",
+            "city",
+            "street"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Around town",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "market",
+      "g": "Markt",
+      "d": "You go here in the city to buy food.",
+      "s": "We buy fresh food at the ___ every Saturday.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "market",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "market",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "market",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Markt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "buy",
+          "de": "kaufen",
+          "scope": null
+        },
+        {
+          "word": "food",
+          "de": "Essen",
+          "scope": null
+        },
+        {
+          "word": "fresh",
+          "de": "frisch",
+          "scope": "s"
+        },
+        {
+          "word": "every",
+          "de": "jede/r/s",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "supermarket",
+        "park",
+        "office"
+      ],
+      "hintDe": "Dort kaufst du draußen Obst und Gemüse, oft am Samstag."
+    },
+    {
+      "id": "g1u06.w.mirror",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "office",
+            "detective",
+            "tree",
+            "city",
+            "street"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: mirror",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "mirror",
+      "g": "Spiegel",
+      "d": "A thing on the wall. You look at you in it.",
+      "s": "There is a ___ on the wall.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "mirror",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mirror",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mirror",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Spiegel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wall",
+          "de": "Wand",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "office",
+        "detective",
+        "tree"
+      ],
+      "hintDe": "Hineinschauen und dein Gesicht sehen – hängt oft an der Wand."
+    },
+    {
+      "id": "g1u06.w.nice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "clever",
+            "best",
+            "big",
+            "small",
+            "happy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB: It's a nice day.",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "nice",
+      "g": "nett",
+      "d": "Good and happy; a friend to all.",
+      "s": "The park is very ___ and beautiful.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "nice",
+          "tier": "full"
+        },
+        {
+          "text": "lovely",
+          "tier": "partial"
+        },
+        {
+          "text": "pretty",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nice",
+          "tier": "full"
+        },
+        {
+          "text": "lovely",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nice",
+            "tier": "full"
+          },
+          {
+            "text": "lovely",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nett",
+            "tier": "full"
+          },
+          {
+            "text": "schön",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "clever",
+        "best",
+        "big"
+      ],
+      "hintDe": "Gut, schön und freundlich."
+    },
+    {
+      "id": "g1u06.w.office",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mirror",
+            "detective",
+            "market",
+            "park",
+            "city"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words / SB story",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "office",
+      "g": "Büro",
+      "d": "A room where a man or woman does their work.",
+      "s": "Sherlock looks in the mirror in his ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "office",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "office",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "office",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Büro",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mirror",
+        "detective",
+        "market"
+      ],
+      "hintDe": "Ein Raum, in dem jemand arbeitet – mit Schreibtisch und Computer."
+    },
+    {
+      "id": "g1u06.w.park",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "city",
+            "street",
+            "market",
+            "river",
+            "supermarket"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Around town",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "park",
+      "g": "Park",
+      "d": "A big and beautiful place in the city. You can play and run here, and it has trees.",
+      "s": "There are lots of beautiful trees in the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "park",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "park",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "park",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Park",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "city",
+        "street",
+        "market"
+      ],
+      "hintDe": "Ein grüner Ort in der Stadt mit Bäumen, wo du spielen kannst."
+    },
+    {
+      "id": "g1u06.w.river",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "woods",
+            "tree",
+            "street",
+            "park",
+            "market"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Around town",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "river",
+      "g": "Fluss",
+      "d": "This is long and cold and runs in the woods. You can swim in it.",
+      "s": "We go swimming in the cold ___ in summer.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "river",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "river",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "river",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fluss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "swim",
+          "de": "schwimmen",
+          "scope": "d"
+        },
+        {
+          "word": "swimming",
+          "de": "schwimmen",
+          "scope": "s"
+        },
+        {
+          "word": "summer",
+          "de": "Sommer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "woods",
+        "tree",
+        "street"
+      ],
+      "hintDe": "Langes, kaltes Wasser, das durch den Wald fließt – darin kannst du schwimmen."
+    },
+    {
+      "id": "g1u06.w.street",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "river",
+            "woods",
+            "park",
+            "city",
+            "tree"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Around town",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "street",
+      "g": "Straße",
+      "d": "Cars go on this in the city, and houses are next to it.",
+      "s": "Cars and buses go down our busy ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "street",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "street",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "street",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Straße",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "houses",
+          "de": "Häuser",
+          "scope": "d"
+        },
+        {
+          "word": "buses",
+          "de": "Busse",
+          "scope": "s"
+        },
+        {
+          "word": "busy",
+          "de": "voll, viel los",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "river",
+        "woods",
+        "park"
+      ],
+      "hintDe": "Hier fahren die Autos, und die Häuser stehen daneben."
+    },
+    {
+      "id": "g1u06.w.street-2",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "river",
+            "park",
+            "woods",
+            "city",
+            "office"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: street (Anna lives in York Street)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "second 'street' bank row (MORE Words list)"
+      },
+      "w": "street",
+      "g": "Straße",
+      "d": "Cars go on this, and houses are next to it.",
+      "s": "He lives in York ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Street",
+          "tier": "full"
+        },
+        {
+          "text": "street",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "street",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "street",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Straße",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "houses",
+          "de": "Häuser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "river",
+        "park",
+        "woods"
+      ],
+      "hintDe": "Hier fahren die Autos – wie „York Street“."
+    },
+    {
+      "id": "g1u06.w.supermarket",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "market",
+            "office",
+            "park",
+            "city",
+            "river"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Around town",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "supermarket",
+      "g": "Supermarkt",
+      "d": "A very big shop in the city where you buy food.",
+      "s": "Mum can buy a lot of food at the big ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "supermarket",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "supermarket",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "supermarket",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Supermarkt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Geschäft",
+          "scope": "d"
+        },
+        {
+          "word": "buy",
+          "de": "kaufen",
+          "scope": null
+        },
+        {
+          "word": "food",
+          "de": "Essen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "market",
+        "office",
+        "park"
+      ],
+      "hintDe": "Ein großes Geschäft, in dem du alle Lebensmittel für die Woche bekommst."
+    },
+    {
+      "id": "g1u06.w.to-become",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to find",
+            "to call",
+            "to watch",
+            "to live",
+            "to come to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to become (Emma becomes a tiger)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to become",
+      "g": "werden",
+      "d": "To stop being one thing and be a new one.",
+      "s": "She rubs the stone and ___ a tiger.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "becomes",
+          "tier": "full"
+        },
+        {
+          "text": "become",
+          "tier": "partial"
+        },
+        {
+          "text": "to become",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "become",
+          "tier": "full"
+        },
+        {
+          "text": "to become",
+          "tier": "full"
+        },
+        {
+          "text": "becomes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to become",
+            "tier": "full"
+          },
+          {
+            "text": "become",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "werden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stop",
+          "de": "aufhören",
+          "scope": "d"
+        },
+        {
+          "word": "being",
+          "de": "zu sein",
+          "scope": "d"
+        },
+        {
+          "word": "new",
+          "de": "neu",
+          "scope": "d"
+        },
+        {
+          "word": "rubs",
+          "de": "reibt",
+          "scope": "s"
+        },
+        {
+          "word": "tiger",
+          "de": "Tiger",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to find",
+        "to call",
+        "to watch"
+      ],
+      "hintDe": "Zu etwas Neuem werden – „Er wird ein Tiger.“"
+    },
+    {
+      "id": "g1u06.w.to-bump-into-a-tree",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to climb up a tree",
+            "to sit in a tree",
+            "to go to the park",
+            "to fall out of the tree",
+            "to look out the window"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to bump into a tree",
+      "g": "gegen einen Baum stoßen",
+      "d": "To run into something big and hard because you do not look.",
+      "s": "He is not looking, so he will ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bump into a tree",
+          "tier": "full"
+        },
+        {
+          "text": "to bump into a tree",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bump into a tree",
+          "tier": "full"
+        },
+        {
+          "text": "to bump into a tree",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to bump into a tree",
+            "tier": "full"
+          },
+          {
+            "text": "bump into a tree",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gegen einen Baum stoßen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "hard",
+          "de": "hart",
+          "scope": "d"
+        },
+        {
+          "word": "will",
+          "de": "wird",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to climb up a tree",
+        "to sit in a tree",
+        "to go to the park"
+      ],
+      "hintDe": "Aus Versehen gegen einen Baum laufen, weil man nicht schaut."
+    },
+    {
+      "id": "g1u06.w.to-call",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to wait",
+            "to watch",
+            "to find",
+            "to solve",
+            "to leave"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to call",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to call",
+      "g": "(an-)rufen",
+      "d": "To talk to a friend who is not here, on the phone.",
+      "s": "Sherlock ___ Doctor Grey on the phone.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "calls",
+          "tier": "full"
+        },
+        {
+          "text": "call",
+          "tier": "partial"
+        },
+        {
+          "text": "to call",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "call",
+          "tier": "full"
+        },
+        {
+          "text": "to call",
+          "tier": "full"
+        },
+        {
+          "text": "calls",
+          "tier": "full"
+        },
+        {
+          "text": "phone",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to call",
+            "tier": "full"
+          },
+          {
+            "text": "call",
+            "tier": "full"
+          },
+          {
+            "text": "to phone",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anrufen",
+            "tier": "full"
+          },
+          {
+            "text": "rufen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "phone",
+          "de": "Telefon",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "to wait",
+        "to watch",
+        "to find"
+      ],
+      "hintDe": "Jemanden am Telefon anrufen."
+    },
+    {
+      "id": "g1u06.w.to-catch",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to leave",
+            "to live",
+            "to wait",
+            "to find",
+            "to pull"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to catch",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to catch",
+      "g": "fangen",
+      "d": "The dog runs and gets the ball in its mouth.",
+      "s": "Detectives always ___ the bad people.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "catch",
+          "tier": "full"
+        },
+        {
+          "text": "to catch",
+          "tier": "partial"
+        },
+        {
+          "text": "catches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "catch",
+          "tier": "full"
+        },
+        {
+          "text": "to catch",
+          "tier": "full"
+        },
+        {
+          "text": "catches",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to catch",
+            "tier": "full"
+          },
+          {
+            "text": "catch",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fangen",
+            "tier": "full"
+          },
+          {
+            "text": "erwischen",
+            "tier": "full"
+          },
+          {
+            "text": "festnehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "gets",
+          "de": "schnappt sich",
+          "scope": "d"
+        },
+        {
+          "word": "ball",
+          "de": "Ball",
+          "scope": "d"
+        },
+        {
+          "word": "always",
+          "de": "immer",
+          "scope": "s"
+        },
+        {
+          "word": "people",
+          "de": "Leute",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to leave",
+        "to live",
+        "to wait"
+      ],
+      "hintDe": "Etwas Bewegtes schnappen und festhalten – wie die bösen Leute."
+    },
+    {
+      "id": "g1u06.w.to-climb",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to jump",
+            "to run",
+            "to pull",
+            "to catch",
+            "to wait"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to climb",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to climb",
+      "g": "klettern",
+      "d": "To go up a tree or a wall.",
+      "s": "Sherlock ___ up a tree to get his hat.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "climbs",
+          "tier": "full"
+        },
+        {
+          "text": "climb",
+          "tier": "partial"
+        },
+        {
+          "text": "to climb",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "climb",
+          "tier": "full"
+        },
+        {
+          "text": "to climb",
+          "tier": "full"
+        },
+        {
+          "text": "climbs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to climb",
+            "tier": "full"
+          },
+          {
+            "text": "climb",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "klettern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wall",
+          "de": "Wand, Mauer",
+          "scope": "d"
+        },
+        {
+          "word": "get",
+          "de": "holen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to jump",
+        "to run",
+        "to pull"
+      ],
+      "hintDe": "Mit Händen und Füßen nach oben steigen."
+    },
+    {
+      "id": "g1u06.w.to-climb-up-a-tree",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to sit in a tree",
+            "to fall out of the tree",
+            "to go to the park",
+            "to bump into a tree",
+            "to jump into the river"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to climb up a tree",
+      "g": "auf einen Baum klettern",
+      "d": "To go up high, with your hands and feet, into the woods.",
+      "s": "My dog wants to ___ and look at the birds.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "climb up a tree",
+          "tier": "full"
+        },
+        {
+          "text": "to climb up a tree",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "climb up a tree",
+          "tier": "full"
+        },
+        {
+          "text": "to climb up a tree",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to climb up a tree",
+            "tier": "full"
+          },
+          {
+            "text": "climb up a tree",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf einen Baum klettern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "high",
+          "de": "hoch",
+          "scope": "d"
+        },
+        {
+          "word": "hands",
+          "de": "Hände",
+          "scope": "d"
+        },
+        {
+          "word": "birds",
+          "de": "Vögel",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to sit in a tree",
+        "to fall out of the tree",
+        "to go to the park"
+      ],
+      "hintDe": "Mit Händen und Füßen einen Baum hinaufklettern."
+    },
+    {
+      "id": "g1u06.w.to-come-to",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to leave",
+            "to live",
+            "to watch",
+            "to find",
+            "to wait"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to come to",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to come to",
+      "g": "(zu etwas) hinkommen",
+      "d": "To go up to a place and be there.",
+      "s": "Go down the street and you ___ a big park.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "come to",
+          "tier": "full"
+        },
+        {
+          "text": "to come to",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "come to",
+          "tier": "full"
+        },
+        {
+          "text": "to come to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to come to",
+            "tier": "full"
+          },
+          {
+            "text": "come to",
+            "tier": "full"
+          },
+          {
+            "text": "to arrive at",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinkommen",
+            "tier": "full"
+          },
+          {
+            "text": "ankommen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to leave",
+        "to live",
+        "to watch"
+      ],
+      "hintDe": "An einen Ort hinkommen – wie „du kommst zum Park“."
+    },
+    {
+      "id": "g1u06.w.to-fall-out-of-the-tree",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to climb up a tree",
+            "to sit in a tree",
+            "to go to the park",
+            "to bump into a tree",
+            "to jump into the river"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to fall out of the tree",
+      "g": "vom Baum fallen",
+      "d": "You are up high, then you go down to the floor.",
+      "s": "Be careful! You can ___ and hurt your head.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fall out of the tree",
+          "tier": "full"
+        },
+        {
+          "text": "to fall out of the tree",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fall out of the tree",
+          "tier": "full"
+        },
+        {
+          "text": "to fall out of the tree",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to fall out of the tree",
+            "tier": "full"
+          },
+          {
+            "text": "fall out of the tree",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vom Baum fallen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "high",
+          "de": "hoch",
+          "scope": "d"
+        },
+        {
+          "word": "floor",
+          "de": "Boden",
+          "scope": "d"
+        },
+        {
+          "word": "careful",
+          "de": "vorsichtig",
+          "scope": "s"
+        },
+        {
+          "word": "hurt",
+          "de": "wehtun, verletzen",
+          "scope": "s"
+        },
+        {
+          "word": "head",
+          "de": "Kopf",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to climb up a tree",
+        "to sit in a tree",
+        "to go to the park"
+      ],
+      "hintDe": "Von oben aus dem Baum nach unten fallen."
+    },
+    {
+      "id": "g1u06.w.to-find",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to leave",
+            "to wait",
+            "to live",
+            "to catch",
+            "to solve"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to find",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to find",
+      "g": "finden",
+      "d": "To look for a thing and come to it.",
+      "s": "The dog ___ Sherlock Groans in the woods.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "finds",
+          "tier": "full"
+        },
+        {
+          "text": "find",
+          "tier": "partial"
+        },
+        {
+          "text": "to find",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "find",
+          "tier": "full"
+        },
+        {
+          "text": "to find",
+          "tier": "full"
+        },
+        {
+          "text": "finds",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to find",
+            "tier": "full"
+          },
+          {
+            "text": "find",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "finden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to leave",
+        "to wait",
+        "to live"
+      ],
+      "hintDe": "Etwas suchen und es dann bekommen."
+    },
+    {
+      "id": "g1u06.w.to-get-up",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to leave",
+            "to come to",
+            "to watch",
+            "to call",
+            "to find"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to get up",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get up",
+      "g": "aufstehen",
+      "d": "To stand up out of bed in the morning.",
+      "s": "Sherlock ___ at seven o'clock in the morning.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gets up",
+          "tier": "full"
+        },
+        {
+          "text": "get up",
+          "tier": "partial"
+        },
+        {
+          "text": "to get up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get up",
+          "tier": "full"
+        },
+        {
+          "text": "to get up",
+          "tier": "full"
+        },
+        {
+          "text": "gets up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to get up",
+            "tier": "full"
+          },
+          {
+            "text": "get up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufstehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "o'clock",
+          "de": "Uhr (Uhrzeit)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to leave",
+        "to come to",
+        "to watch"
+      ],
+      "hintDe": "Am Morgen aus dem Bett aufstehen."
+    },
+    {
+      "id": "g1u06.w.to-go-to-the-park",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to leave the office",
+            "to climb up a tree",
+            "to look in the mirror",
+            "to jump into the river",
+            "to sit in a tree"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to go to the park",
+      "g": "in den Park gehen",
+      "d": "To walk to the green place with trees and play there.",
+      "s": "Let's ___ and play on the swings.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "go to the park",
+          "tier": "full"
+        },
+        {
+          "text": "to go to the park",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "go to the park",
+          "tier": "full"
+        },
+        {
+          "text": "to go to the park",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to go to the park",
+            "tier": "full"
+          },
+          {
+            "text": "go to the park",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in den Park gehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "walk",
+          "de": "gehen, laufen",
+          "scope": "d"
+        },
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "d"
+        },
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        },
+        {
+          "word": "swings",
+          "de": "Schaukeln",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to leave the office",
+        "to climb up a tree",
+        "to look in the mirror"
+      ],
+      "hintDe": "Zum Park gehen, um dort zu spielen."
+    },
+    {
+      "id": "g1u06.w.to-jump",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to climb",
+            "to run",
+            "to pull",
+            "to catch",
+            "to wait"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to jump",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to jump",
+      "g": "hüpfen",
+      "d": "To go up into the air with your feet.",
+      "s": "A bird ___ on Sherlock's head.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "jumps",
+          "tier": "full"
+        },
+        {
+          "text": "jump",
+          "tier": "partial"
+        },
+        {
+          "text": "to jump",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "jump",
+          "tier": "full"
+        },
+        {
+          "text": "to jump",
+          "tier": "full"
+        },
+        {
+          "text": "jumps",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to jump",
+            "tier": "full"
+          },
+          {
+            "text": "jump",
+            "tier": "full"
+          },
+          {
+            "text": "to leap",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hüpfen",
+            "tier": "full"
+          },
+          {
+            "text": "springen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "air",
+          "de": "Luft",
+          "scope": "d"
+        },
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "s"
+        },
+        {
+          "word": "head",
+          "de": "Kopf",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to climb",
+        "to run",
+        "to pull"
+      ],
+      "hintDe": "Mit den Füßen vom Boden in die Luft hochspringen."
+    },
+    {
+      "id": "g1u06.w.to-jump-into-the-river",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to climb up a tree",
+            "to sit in a tree",
+            "to go to the park",
+            "to look out the window",
+            "to leave the office"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to jump into the river",
+      "g": "in den Fluss springen",
+      "d": "You are hot, so you hop down into the cold water.",
+      "s": "It is very hot. Let's ___ now!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "jump into the river",
+          "tier": "full"
+        },
+        {
+          "text": "to jump into the river",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "jump into the river",
+          "tier": "full"
+        },
+        {
+          "text": "to jump into the river",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to jump into the river",
+            "tier": "full"
+          },
+          {
+            "text": "jump into the river",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in den Fluss springen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hop",
+          "de": "hüpfen",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to climb up a tree",
+        "to sit in a tree",
+        "to go to the park"
+      ],
+      "hintDe": "Mit einem großen Sprung ins kalte Wasser hüpfen."
+    },
+    {
+      "id": "g1u06.w.to-leave",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to find",
+            "to wait",
+            "to live",
+            "to come to",
+            "to run"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to leave",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to leave",
+      "g": "verlassen",
+      "d": "To go away from a place.",
+      "s": "Doctor Grey ___ the office and closes the door.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "leaves",
+          "tier": "full"
+        },
+        {
+          "text": "leave",
+          "tier": "partial"
+        },
+        {
+          "text": "to leave",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "leave",
+          "tier": "full"
+        },
+        {
+          "text": "to leave",
+          "tier": "full"
+        },
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to leave",
+            "tier": "full"
+          },
+          {
+            "text": "leave",
+            "tier": "full"
+          },
+          {
+            "text": "to go away",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verlassen",
+            "tier": "full"
+          },
+          {
+            "text": "weggehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to find",
+        "to wait",
+        "to live"
+      ],
+      "hintDe": "Von einem Ort weggehen."
+    },
+    {
+      "id": "g1u06.w.to-leave-the-office",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come to",
+            "to go to the park",
+            "to look in the mirror",
+            "to climb up a tree",
+            "to look out the window"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to leave the office",
+      "g": "das Büro verlassen",
+      "d": "To go out of your work room.",
+      "s": "Doctor Grey will ___ at five o'clock.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "leave the office",
+          "tier": "full"
+        },
+        {
+          "text": "to leave the office",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "leave the office",
+          "tier": "full"
+        },
+        {
+          "text": "to leave the office",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to leave the office",
+            "tier": "full"
+          },
+          {
+            "text": "leave the office",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "das Büro verlassen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "will",
+          "de": "wird",
+          "scope": "s"
+        },
+        {
+          "word": "o'clock",
+          "de": "Uhr (Uhrzeit)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to come to",
+        "to go to the park",
+        "to look in the mirror"
+      ],
+      "hintDe": "Aus dem Büro hinausgehen, wenn die Arbeit fertig ist."
+    },
+    {
+      "id": "g1u06.w.to-live",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to leave",
+            "to find",
+            "to come to",
+            "to wait",
+            "to watch"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to live",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to live",
+      "g": "wohnen",
+      "d": "To have your room and bed in a city.",
+      "s": "Peter's Grandma ___ in York.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "lives",
+          "tier": "full"
+        },
+        {
+          "text": "live",
+          "tier": "partial"
+        },
+        {
+          "text": "to live",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "live",
+          "tier": "full"
+        },
+        {
+          "text": "to live",
+          "tier": "full"
+        },
+        {
+          "text": "lives",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to live",
+            "tier": "full"
+          },
+          {
+            "text": "live",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wohnen",
+            "tier": "full"
+          },
+          {
+            "text": "leben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to leave",
+        "to find",
+        "to come to"
+      ],
+      "hintDe": "Wo du dein Zuhause hast – „Er wohnt in York.“"
+    },
+    {
+      "id": "g1u06.w.to-look-in-the-mirror",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to look out the window",
+            "to pick something up",
+            "to go to the park",
+            "to sit in a tree",
+            "to leave the office"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to look in the mirror",
+      "g": "in den Spiegel schauen",
+      "d": "To watch your own face in the glass on the wall.",
+      "s": "She wants to ___ in the morning.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "look in the mirror",
+          "tier": "full"
+        },
+        {
+          "text": "to look in the mirror",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "look in the mirror",
+          "tier": "full"
+        },
+        {
+          "text": "to look in the mirror",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to look in the mirror",
+            "tier": "full"
+          },
+          {
+            "text": "look in the mirror",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in den Spiegel schauen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "own",
+          "de": "eigene/r/s",
+          "scope": "d"
+        },
+        {
+          "word": "face",
+          "de": "Gesicht",
+          "scope": "d"
+        },
+        {
+          "word": "glass",
+          "de": "Glas",
+          "scope": "d"
+        },
+        {
+          "word": "wall",
+          "de": "Wand",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to look out the window",
+        "to pick something up",
+        "to go to the park"
+      ],
+      "hintDe": "In den Spiegel schauen und sich selbst ansehen."
+    },
+    {
+      "id": "g1u06.w.to-look-out-the-window",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to look in the mirror",
+            "to pick something up",
+            "to go to the park",
+            "to sit in a tree",
+            "to leave the office"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to look out the window",
+      "g": "aus dem Fenster schauen",
+      "d": "From your room, you watch what is outside.",
+      "s": "I ___ and watch the rain.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "look out the window",
+          "tier": "full"
+        },
+        {
+          "text": "to look out the window",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "look out the window",
+          "tier": "full"
+        },
+        {
+          "text": "to look out the window",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to look out the window",
+            "tier": "full"
+          },
+          {
+            "text": "look out the window",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aus dem Fenster schauen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "outside",
+          "de": "draußen",
+          "scope": "d"
+        },
+        {
+          "word": "rain",
+          "de": "Regen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to look in the mirror",
+        "to pick something up",
+        "to go to the park"
+      ],
+      "hintDe": "Durch das Fenster nach draußen schauen."
+    },
+    {
+      "id": "g1u06.w.to-pick-something-up",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to look out the window",
+            "to climb up a tree",
+            "to sit in a tree",
+            "to go to the park",
+            "to look in the mirror"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to pick something up",
+      "g": "etwas aufheben",
+      "d": "He bends down and takes his hat up from the floor.",
+      "s": "There is a coin on the floor. Can you ___?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pick something up",
+          "tier": "full"
+        },
+        {
+          "text": "to pick something up",
+          "tier": "partial"
+        },
+        {
+          "text": "pick it up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pick something up",
+          "tier": "full"
+        },
+        {
+          "text": "to pick something up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to pick something up",
+            "tier": "full"
+          },
+          {
+            "text": "pick something up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas aufheben",
+            "tier": "full"
+          },
+          {
+            "text": "aufheben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bends",
+          "de": "bückt sich",
+          "scope": "d"
+        },
+        {
+          "word": "takes",
+          "de": "nimmt",
+          "scope": "d"
+        },
+        {
+          "word": "floor",
+          "de": "Boden",
+          "scope": null
+        },
+        {
+          "word": "coin",
+          "de": "Münze",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to look out the window",
+        "to climb up a tree",
+        "to sit in a tree"
+      ],
+      "hintDe": "Sich bücken und etwas vom Boden hochnehmen."
+    },
+    {
+      "id": "g1u06.w.to-pull",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to run",
+            "to climb",
+            "to wait",
+            "to catch",
+            "to jump"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": "first of two 'to pull' bank rows (Around town list)"
+      },
+      "w": "to pull",
+      "g": "ziehen",
+      "d": "To bring a thing to you, not away from you.",
+      "s": "The dog can ___ Sherlock out of the river.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pull",
+          "tier": "full"
+        },
+        {
+          "text": "to pull",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pull",
+          "tier": "full"
+        },
+        {
+          "text": "to pull",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to pull",
+            "tier": "full"
+          },
+          {
+            "text": "pull",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ziehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to run",
+        "to climb",
+        "to wait"
+      ],
+      "hintDe": "Etwas zu dir heranziehen, nicht wegstoßen."
+    },
+    {
+      "id": "g1u06.w.to-pull-2",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to run",
+            "to catch",
+            "to wait",
+            "to climb",
+            "to find"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to pull",
+        "seedV1": null,
+        "narrative": null,
+        "note": "second 'to pull' bank row (MORE Words list, dog pulls Sherlock out of the river)"
+      },
+      "w": "to pull",
+      "g": "ziehen",
+      "d": "To bring a thing to you.",
+      "s": "The dog ___ Sherlock out of the river.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pulls",
+          "tier": "full"
+        },
+        {
+          "text": "pull",
+          "tier": "partial"
+        },
+        {
+          "text": "to pull",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pull",
+          "tier": "full"
+        },
+        {
+          "text": "to pull",
+          "tier": "full"
+        },
+        {
+          "text": "pulls",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to pull",
+            "tier": "full"
+          },
+          {
+            "text": "pull",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ziehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to run",
+        "to catch",
+        "to wait"
+      ],
+      "hintDe": "Etwas zu dir heranziehen – wie der Hund Sherlock aus dem Fluss."
+    },
+    {
+      "id": "g1u06.w.to-put-on",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to find",
+            "to pull",
+            "to wait",
+            "to catch",
+            "to call"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to put on",
+        "seedV1": null,
+        "narrative": null,
+        "note": "blank answer 'puts ... on' is split around 'his hat'; sAnswers accept the verb form"
+      },
+      "w": "to put on",
+      "g": "aufsetzen",
+      "d": "You do this with a hat or a coat to your body.",
+      "s": "Sherlock ___ his hat on his head.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "puts",
+          "tier": "full"
+        },
+        {
+          "text": "puts on",
+          "tier": "partial"
+        },
+        {
+          "text": "put on",
+          "tier": "partial"
+        },
+        {
+          "text": "put",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "put on",
+          "tier": "full"
+        },
+        {
+          "text": "to put on",
+          "tier": "full"
+        },
+        {
+          "text": "puts on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to put on",
+            "tier": "full"
+          },
+          {
+            "text": "put on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufsetzen",
+            "tier": "full"
+          },
+          {
+            "text": "anziehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "coat",
+          "de": "Mantel, Jacke",
+          "scope": "d"
+        },
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        },
+        {
+          "word": "head",
+          "de": "Kopf",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to find",
+        "to pull",
+        "to wait"
+      ],
+      "hintDe": "Sich einen Hut oder eine Jacke anziehen."
+    },
+    {
+      "id": "g1u06.w.to-run",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to climb",
+            "to wait",
+            "to find",
+            "to jump",
+            "to catch"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB story (runs out / down the street)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to run",
+      "g": "laufen",
+      "d": "To go very fast on your feet.",
+      "s": "We ___ to school very fast.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "run",
+          "tier": "full"
+        },
+        {
+          "text": "to run",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "run",
+          "tier": "full"
+        },
+        {
+          "text": "to run",
+          "tier": "full"
+        },
+        {
+          "text": "runs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to run",
+            "tier": "full"
+          },
+          {
+            "text": "run",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "laufen",
+            "tier": "full"
+          },
+          {
+            "text": "rennen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fast",
+          "de": "schnell",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "to climb",
+        "to wait",
+        "to find"
+      ],
+      "hintDe": "Sehr schnell auf den Füßen vorwärts – schneller als gehen."
+    },
+    {
+      "id": "g1u06.w.to-sit-in-a-tree",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to climb up a tree",
+            "to fall out of the tree",
+            "to bump into a tree",
+            "to go to the park",
+            "to jump into the river"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Action verbs",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to sit in a tree",
+      "g": "auf einem Baum sitzen",
+      "d": "To be up high in the woods, not on the floor.",
+      "s": "The small bird wants to ___ and sing.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sit in a tree",
+          "tier": "full"
+        },
+        {
+          "text": "to sit in a tree",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sit in a tree",
+          "tier": "full"
+        },
+        {
+          "text": "to sit in a tree",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to sit in a tree",
+            "tier": "full"
+          },
+          {
+            "text": "sit in a tree",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf einem Baum sitzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "high",
+          "de": "hoch",
+          "scope": "d"
+        },
+        {
+          "word": "floor",
+          "de": "Boden",
+          "scope": "d"
+        },
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "s"
+        },
+        {
+          "word": "sing",
+          "de": "singen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to climb up a tree",
+        "to fall out of the tree",
+        "to bump into a tree"
+      ],
+      "hintDe": "Oben in einem Baum sitzen und sich nicht bewegen."
+    },
+    {
+      "id": "g1u06.w.to-solve",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to watch",
+            "to wait",
+            "to call",
+            "to find",
+            "to catch"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words / SONG: he solves the problem",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to solve",
+      "g": "lösen",
+      "d": "To find out the answer to a problem.",
+      "s": "Sherlock can ___ this hard problem.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "solve",
+          "tier": "full"
+        },
+        {
+          "text": "to solve",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "solve",
+          "tier": "full"
+        },
+        {
+          "text": "to solve",
+          "tier": "full"
+        },
+        {
+          "text": "solves",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to solve",
+            "tier": "full"
+          },
+          {
+            "text": "solve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lösen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "answer",
+          "de": "Antwort",
+          "scope": "d"
+        },
+        {
+          "word": "problem",
+          "de": "Problem",
+          "scope": null
+        },
+        {
+          "word": "hard",
+          "de": "schwierig",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to watch",
+        "to wait",
+        "to call"
+      ],
+      "hintDe": "Die Antwort auf ein Problem finden."
+    },
+    {
+      "id": "g1u06.w.to-wait",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to run",
+            "to leave",
+            "to find",
+            "to watch",
+            "to call"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to wait",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to wait",
+      "g": "warten",
+      "d": "You do this and you do not go now.",
+      "s": "Please ___ here for me at the bus stop.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wait",
+          "tier": "full"
+        },
+        {
+          "text": "to wait",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wait",
+          "tier": "full"
+        },
+        {
+          "text": "to wait",
+          "tier": "full"
+        },
+        {
+          "text": "waits",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to wait",
+            "tier": "full"
+          },
+          {
+            "text": "wait",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "warten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bus",
+          "de": "Bus",
+          "scope": "s"
+        },
+        {
+          "word": "stop",
+          "de": "Haltestelle",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to run",
+        "to leave",
+        "to find"
+      ],
+      "hintDe": "Bleiben und noch nicht gehen."
+    },
+    {
+      "id": "g1u06.w.to-watch",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to call",
+            "to wait",
+            "to solve",
+            "to find",
+            "to live"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words: to watch",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to watch",
+      "g": "beobachten",
+      "d": "To look at a thing for a long time.",
+      "s": "Sherlock ___ the people in the streets.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "watches",
+          "tier": "full"
+        },
+        {
+          "text": "watch",
+          "tier": "partial"
+        },
+        {
+          "text": "to watch",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "watch",
+          "tier": "full"
+        },
+        {
+          "text": "to watch",
+          "tier": "full"
+        },
+        {
+          "text": "watches",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to watch",
+            "tier": "full"
+          },
+          {
+            "text": "watch",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beobachten",
+            "tier": "full"
+          },
+          {
+            "text": "zuschauen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "people",
+          "de": "Leute",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to call",
+        "to wait",
+        "to solve"
+      ],
+      "hintDe": "Etwas lange ansehen und genau beobachten."
+    },
+    {
+      "id": "g1u06.w.tree",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "river",
+            "park",
+            "woods",
+            "city",
+            "street"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Around town",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tree",
+      "g": "Baum",
+      "d": "This is big and tall and has lots of leaves. You can climb it.",
+      "s": "A small bird sits in the ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "tree",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tree",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tree",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Baum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bird",
+          "de": "Vogel",
+          "scope": "s"
+        },
+        {
+          "word": "sits",
+          "de": "sitzt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "river",
+        "park",
+        "woods"
+      ],
+      "hintDe": "Etwas Großes und Hohes mit Blättern – du kannst hinaufklettern."
+    },
+    {
+      "id": "g1u06.w.well-done",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Go on.",
+            "Come on!",
+            "Help me!",
+            "Go away!",
+            "But it's true!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "EVERYDAY ENGLISH: Well done",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Well done.",
+      "g": "Gut gemacht.",
+      "d": "This is what you call out when a friend does good work.",
+      "s": "You did very good work. ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Well done.",
+          "tier": "full"
+        },
+        {
+          "text": "Well done",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Well done.",
+          "tier": "full"
+        },
+        {
+          "text": "Well done",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Well done.",
+            "tier": "full"
+          },
+          {
+            "text": "Well done",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gut gemacht.",
+            "tier": "full"
+          },
+          {
+            "text": "Gut gemacht",
+            "tier": "full"
+          },
+          {
+            "text": "Bravo!",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Go on.",
+        "Come on!",
+        "Help me!"
+      ],
+      "hintDe": "Das sagst du, wenn jemand etwas gut gemacht hat – ein Lob."
+    },
+    {
+      "id": "g1u06.w.woods",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "river",
+            "city",
+            "market",
+            "park",
+            "street"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WORD FILE: Around town",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "woods",
+      "g": "Wald",
+      "d": "A big place with a lot of trees.",
+      "s": "We go for a long walk in the ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "woods",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "woods",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "woods",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wald",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        },
+        {
+          "word": "walk",
+          "de": "Spaziergang",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "river",
+        "city",
+        "market"
+      ],
+      "hintDe": "Ein großer Ort mit ganz vielen Bäumen."
+    }
+  ]
+}

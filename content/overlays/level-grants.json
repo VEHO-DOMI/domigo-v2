@@ -1458,6 +1458,33 @@
       "reason": "unit-3 have got / haven't got structure (SB box): the have-got family forms are not separate word-bank entries",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u06",
+      "itemId": null,
+      "field": null,
+      "token": "goes",
+      "reason": "unit-6 Present simple: 3rd-person form go→goes (spelling change)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u06",
+      "itemId": null,
+      "field": null,
+      "token": "study",
+      "reason": "unit-6 Present simple: base verb study (used with -s family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u06",
+      "itemId": null,
+      "field": null,
+      "token": "lot",
+      "reason": "unit-6 a-lot-of: bare \"lot\" exposed in the deliberate-error item \"a lot friends\" (missing of)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

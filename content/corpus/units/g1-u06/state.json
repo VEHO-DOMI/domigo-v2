@@ -50,6 +50,62 @@
       "contentHash": "dfbe7bb08bcd31ab4b05e3e25334708905373fdb61983f58ec64b3ba614a8e5c",
       "note": "round 1: 2 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T16:04:44.595Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "4b640f79fee383ce2d192634829aae575929c7d71cca2439ed6cc9708bc7a152",
+      "note": "gen ingest: 49 vocab + 54 grammar item(s); draft be1015baacb7",
+      "at": "2026-06-14T07:30:09.666Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "6f2b8ca4c4cff4746196e0c92092f3c00b112e03e908f4a4a9a30cd9834c0422",
+      "note": "gen ingest: 49 vocab + 54 grammar item(s); draft 1b4cb57e1dca",
+      "at": "2026-06-14T07:31:43.952Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "9e8f040dbe420d7951481b7248a669d84c9304c0e7d719d0bccdad7070e7d66f",
+      "note": "gen ingest: 49 vocab + 54 grammar item(s); draft 170faa0a891a",
+      "at": "2026-06-14T07:32:06.776Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "ca33d0b51fc1b0c8c3ed6892676c908a0525d2e473dc8ba918aa5e81458bd4e6",
+      "note": "gen ingest: 49 vocab + 54 grammar item(s); draft 69ef5e4fa000",
+      "at": "2026-06-14T07:39:54.806Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "ca33d0b51fc1b0c8c3ed6892676c908a0525d2e473dc8ba918aa5e81458bd4e6",
+      "note": "verify round 1: 0 fix, 4 warn",
+      "at": "2026-06-14T07:40:31.944Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "ca33d0b51fc1b0c8c3ed6892676c908a0525d2e473dc8ba918aa5e81458bd4e6",
+      "note": "V-1..V-22 green (6 warn)",
+      "at": "2026-06-14T07:40:51.554Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "ca33d0b51fc1b0c8c3ed6892676c908a0525d2e473dc8ba918aa5e81458bd4e6",
+      "note": "round 1 doc: 102 open flag(s), 103 row(s) rendered (FULL)",
+      "at": "2026-06-14T07:40:51.601Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "ca33d0b51fc1b0c8c3ed6892676c908a0525d2e473dc8ba918aa5e81458bd4e6",
+      "note": "round 1: 102 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-14T07:41:45.987Z"
     }
   ]
 }

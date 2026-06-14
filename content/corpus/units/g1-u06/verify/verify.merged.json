@@ -1,0 +1,69 @@
+{
+  "schema": "verify-merged@1",
+  "slug": "g1-u06",
+  "round": 1,
+  "itemsHash": "ca33d0b51fc1",
+  "lenses": {
+    "level-gloss": {
+      "by": "fable-carryforward",
+      "flagged": 4
+    },
+    "answers": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "translation": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "register": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    }
+  },
+  "byItem": {
+    "g1u06.w.to-live": [
+      {
+        "key": "gloss-wrong:g1u06.w.to-live",
+        "kind": "gloss-wrong",
+        "itemId": "g1u06.w.to-live",
+        "severity": "warn",
+        "note": "TRUTH/SENSE: d \"To have your room and bed in a city.\" wrongly restricts live (g=wohnen) to a CITY. One lives in a village, the woods, anywhere — the city only appears because the carrier uses York. The definition encodes a false restriction; a student infers live = 'have a home in a city'.",
+        "lens": "level-gloss"
+      }
+    ],
+    "g1u06.w.to-catch": [
+      {
+        "key": "gloss-wrong:g1u06.w.to-catch",
+        "kind": "gloss-wrong",
+        "itemId": "g1u06.w.to-catch",
+        "severity": "warn",
+        "note": "TRUTH/SENSE: d \"The dog runs and gets the ball in its mouth.\" defines catch as grabbing a thrown object in the mouth, but the carrier s \"Detectives always ___ the bad people.\" uses catch = apprehend/festnehmen. The definition's scenario does not license the sentence's sense; a child reading the dog-and-ball d cannot derive 'catch the bad people'.",
+        "lens": "level-gloss"
+      }
+    ],
+    "g1u06.w.to-jump": [
+      {
+        "key": "above-level:g1u06.w.to-jump",
+        "kind": "above-level",
+        "itemId": "g1u06.w.to-jump",
+        "severity": "warn",
+        "note": "TRUTH/SENSE: carrier s \"A bird ___ on Sherlock's head.\" with full answer 'jumps' is an unnatural collocation — birds land or hop onto a head, they do not 'jump on' it. Models a false-to-life use of jump for the student.",
+        "lens": "level-gloss"
+      }
+    ],
+    "g1u06.w.river": [
+      {
+        "key": "gloss-wrong:g1u06.w.river",
+        "kind": "gloss-wrong",
+        "itemId": "g1u06.w.river",
+        "severity": "warn",
+        "note": "TRUTH/SENSE: d \"This is long and cold and runs in the woods. You can swim in it.\" presents 'cold' and 'runs in the woods' as defining properties of a river. Rivers are not inherently cold and most do not run in woods; these are narrative props (swimming in summer) misframed as part of the meaning of river (g=Fluss).",
+        "lens": "level-gloss"
+      }
+    ]
+  },
+  "fixCount": 0,
+  "warnCount": 4,
+  "escalated": []
+}
