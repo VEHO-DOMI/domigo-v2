@@ -1,0 +1,111 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g1-u10",
+  "items": {
+    "786516514e7e": "g1u10.gi.how-much.gf.001",
+    "87a344a70fe2": "g1u10.gi.how-much.gf.002",
+    "2d1c58a1e2d7": "g1u10.gi.how-much.gf.003",
+    "7bd483f02f18": "g1u10.gi.how-much.gf.004",
+    "fd03526a8537": "g1u10.gi.how-much.gf.005",
+    "b605e9579017": "g1u10.gi.how-much.gf.006",
+    "cc6e5cdc16df": "g1u10.gi.how-much.gf.007",
+    "da63528bcbd9": "g1u10.gi.how-much.gf.008",
+    "cb12bd7e3c3f": "g1u10.gi.how-much.gf.009",
+    "2ec7034d80fc": "g1u10.gi.how-much.mc.001",
+    "8293e974c915": "g1u10.gi.how-much.mc.002",
+    "442133a2f5a2": "g1u10.gi.how-much.cp.001",
+    "7a7a71cb3de0": "g1u10.gi.how-much.cp.002",
+    "fc2b6ef18a36": "g1u10.gi.how-much.ec.001",
+    "d07a58ff90a2": "g1u10.gi.how-much.ec.002",
+    "572d9562aab2": "g1u10.gi.how-much.ec.003",
+    "c76249becdc8": "g1u10.gi.how-much.tf.001",
+    "d4a279ac9e92": "g1u10.gi.how-much.tf.002",
+    "6d8e94d0b664": "g1u10.gi.how-much.qf.001",
+    "bb9f9dfc1783": "g1u10.gi.how-much.qf.002",
+    "162b82b12211": "g1u10.gi.how-much.sb.001",
+    "81e8871d58fe": "g1u10.gi.how-much.sb.002",
+    "beb003b58d26": "g1u10.gi.how-much.gs.001",
+    "0ef9027b98a8": "g1u10.gi.how-much.mt.001",
+    "e6c9e8c676ba": "g1u10.gi.how-much.mp.001",
+    "2420f7ded076": "g1u10.gi.how-much.ag.001",
+    "1dd054a41ed6": "g1u10.gi.how-much.ag.002",
+    "1cb490f55189": "g1u10.gi.how-much.gf.010",
+    "b1160da1073c": "g1u10.gi.how-much.gf.011",
+    "c2f202b249fe": "g1u10.gi.how-much.mc.005",
+    "394ac5326c37": "g1u10.gi.this-that-these-those.gf.001",
+    "da0f835a5dc7": "g1u10.gi.this-that-these-those.gf.002",
+    "5844c56182f4": "g1u10.gi.this-that-these-those.gf.003",
+    "9d3c25dd6434": "g1u10.gi.this-that-these-those.gf.004",
+    "c3fd792a4e4c": "g1u10.gi.this-that-these-those.gf.005",
+    "0d2f4d8a969f": "g1u10.gi.this-that-these-those.gf.006",
+    "e1cead98a4bf": "g1u10.gi.this-that-these-those.gf.008",
+    "88412acc1331": "g1u10.gi.this-that-these-those.mc.001",
+    "7c60a2a2cbe9": "g1u10.gi.this-that-these-those.mc.002",
+    "812ae01977db": "g1u10.gi.this-that-these-those.cp.001",
+    "1079d76f4997": "g1u10.gi.this-that-these-those.cp.002",
+    "f7feb355bb16": "g1u10.gi.this-that-these-those.ec.001",
+    "e5a5e519afc3": "g1u10.gi.this-that-these-those.ec.002",
+    "42eddc65e678": "g1u10.gi.this-that-these-those.ec.003",
+    "b9fceb029a35": "g1u10.gi.this-that-these-those.ec.004",
+    "5f1f568f9a2d": "g1u10.gi.this-that-these-those.tf.001",
+    "f3ec971fb2ef": "g1u10.gi.this-that-these-those.tf.002",
+    "bd4648700183": "g1u10.gi.this-that-these-those.tf.003",
+    "1bcd799ced23": "g1u10.gi.this-that-these-those.sb.001",
+    "c6534c92a8b9": "g1u10.gi.this-that-these-those.sb.002",
+    "6f7328dd3ca2": "g1u10.gi.this-that-these-those.gs.002",
+    "d8ab99a29aaa": "g1u10.gi.this-that-these-those.ag.001",
+    "e5245c0c0d8b": "g1u10.gi.this-that-these-those.ag.002",
+    "150cd805167a": "g1u10.gi.this-that-these-those.tr.001",
+    "700b18b52d84": "g1u10.gi.this-that-these-those.tr.002",
+    "0795742e26aa": "g1u10.gi.how-much.mc.006",
+    "f187e1a76468": "g1u10.gi.how-much.mc.007",
+    "1d660f46b34f": "g1u10.gi.this-that-these-those.gf.009",
+    "ac6f4f34e9e2": "g1u10.gi.this-that-these-those.mc.005",
+    "8993a432369e": "g1u10.gi.this-that-these-those.mc.006",
+    "0c317b584fae": "g1u10.gi.this-that-these-those.mt.003",
+    "1fdd581c9f4a": "g1u10.gi.this-that-these-those.mt.004",
+    "b31907a8ed5d": "g1u10.gi.this-that-these-those.gs.003"
+  },
+  "tombstones": [
+    {
+      "id": "g1u10.gi.how-much.mc.003",
+      "key": "be4e972439f0",
+      "removedWith": "9558f260a669"
+    },
+    {
+      "id": "g1u10.gi.how-much.mc.004",
+      "key": "cece870b0005",
+      "removedWith": "9558f260a669"
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gf.007",
+      "key": "51d88782a8d1",
+      "removedWith": "9558f260a669"
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mc.003",
+      "key": "6f6476b9d9c7",
+      "removedWith": "9558f260a669"
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mc.004",
+      "key": "a8df77ceac52",
+      "removedWith": "9558f260a669"
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mt.001",
+      "key": "c66acdd655ea",
+      "removedWith": "9558f260a669"
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.mt.002",
+      "key": "68f241a62e68",
+      "removedWith": "9558f260a669"
+    },
+    {
+      "id": "g1u10.gi.this-that-these-those.gs.001",
+      "key": "67e47cd41a98",
+      "removedWith": "9558f260a669"
+    }
+  ]
+}

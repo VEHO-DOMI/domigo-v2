@@ -1584,6 +1584,33 @@
       "reason": "unit-9 possessive: deliberate missing-apostrophe error form (Tom + s)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u10",
+      "itemId": null,
+      "field": null,
+      "token": "costs",
+      "reason": "how-much: deliberate wrong-verb error form (costs instead of How much is/are)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u10",
+      "itemId": null,
+      "field": null,
+      "token": "jeans",
+      "reason": "how-much: textbook plural-noun example for How much ARE…?",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u10",
+      "itemId": null,
+      "field": null,
+      "token": "game",
+      "reason": "how-much: anagram component of bank phrase computer game",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
