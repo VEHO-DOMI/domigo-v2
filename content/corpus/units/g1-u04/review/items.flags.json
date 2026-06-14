@@ -1,0 +1,665 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u04",
+  "round": 1,
+  "itemsHash": "22d315a2d185",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u04.w.after",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.after",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.are-you-ok",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.are-you-ok",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.be-yourself",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.be-yourself",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.because",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.because",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.birthday",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.birthday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.bottle",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.bottle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.early",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.early",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.end",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.end",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.friend",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.friend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.fun",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.fun",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.happy",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.happy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.let-go",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.let-go",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.magic",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.magic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.monday",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.monday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.nervous",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.nervous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.night",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.night",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.sad",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.sad",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.still",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.still",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.story",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.story",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.to-get-back",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.to-get-back",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.to-go-to-sleep",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.to-go-to-sleep",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.try-it",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.try-it",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u04.w.what-s-happening",
+      "kind": "new-gloss",
+      "itemId": "g1u04.w.what-s-happening",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.a-day-in-the-life-of",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.a-day-in-the-life-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.after",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.after",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.afternoon",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.afternoon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.angry",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.angry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.are-you-ok",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.are-you-ok",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.bad",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.bad",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.be-yourself",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.be-yourself",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.because",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.because",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.birthday",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.birthday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.bored",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.bored",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.bottle",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.bottle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.cold",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.cold",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.day",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.day",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.don-t-be-late",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.don-t-be-late",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.early",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.early",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.end",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.end",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.evening",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.evening",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.excited",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.excited",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.friday",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.friday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.friend",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.friend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.fun",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.fun",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.go-away",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.go-away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.happy",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.happy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.homework",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.homework",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.hot",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.hot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.hungry",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.hungry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.into",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.into",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.it-s-me",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.it-s-me",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.let-go",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.let-go",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.life",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.life",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.lunchtime",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.lunchtime",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.mad",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.mad",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.magic",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.magic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.monday",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.monday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.morning",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.morning",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.nervous",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.nervous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.night",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.night",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.no-one-else",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.no-one-else",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.oh-dear",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.oh-dear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.proud",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.proud",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.room",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.sad",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.sad",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.saturday",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.saturday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.scared",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.scared",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.show",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.show",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.still",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.still",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.story",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.story",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.sunday",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.sunday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.thursday",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.thursday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.tired",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.tired",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.to-be-asleep",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.to-be-asleep",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.to-break",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.to-break",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.to-get-back",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.to-get-back",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.to-go-to-sleep",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.to-go-to-sleep",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.to-happen",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.to-happen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.today",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.today",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.tomorrow",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.tomorrow",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.try-it",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.try-it",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.tuesday",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.tuesday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.wednesday",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.wednesday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.w.what-s-happening",
+      "kind": "translation-audit",
+      "itemId": "g1u04.w.what-s-happening",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.gi.to-be-negative.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u04.gi.to-be-negative.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.gi.to-be-negative.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u04.gi.to-be-negative.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u04.gi.to-be-questions.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u04.gi.to-be-questions.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u04.w.after#df18d4",
+      "kind": "validator-warn",
+      "itemId": "g1u04.w.after",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u04.w.into#b0c312",
+      "kind": "validator-warn",
+      "itemId": "g1u04.w.into",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u04.gi.to-be-negative.cp.002#e7455a",
+      "kind": "validator-warn",
+      "itemId": "g1u04.gi.to-be-negative.cp.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u04.gi.to-be-negative.tr.002#68e1d1",
+      "kind": "validator-warn",
+      "itemId": "g1u04.gi.to-be-negative.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u04.gi.to-be-negative.tr.002#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g1u04.gi.to-be-negative.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 105 rows + 92 flags reviewed (FULL). Verify clean (0 fix, 0 warn); rejectRate 0%. 23 gloss + 64 translation audits lens-verified (deToEn EN / enToDe DE confirmed). 5 validator-warns benign (sentence-initial Sie/Ihr = she/possessive; lowercase-cap; weak-DE \"hinein ins in\" for into — directional gloss, V-12 carve-out covers the are-you-ok slash-gloss). Full v1 parity: 44 grammar (to-be-negative 26, to-be-questions 18) over the 20 floor; no grants needed (forms in allowlist). Verify fixes landed: truth-def rewrites (sad \"not happy/want to cry\", happy \"glad not sad\", mad \"very angry\", it-s-me, let-go); bad enToDe \"böse\"→partial; 9 DE-terms out of prompts (\"(be – verneint)\"→\"(–)\", Subjekte→Wörter, Kurzantwort→Antwort); homework hintDe Schularbeit→Hausübung; 4 weekday/day carriers disambiguated (day-after cues)."
+  },
+  "metrics": {
+    "itemsReviewed": 105,
+    "fullRows": 105,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

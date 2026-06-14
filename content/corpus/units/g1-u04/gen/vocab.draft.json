@@ -1,0 +1,3951 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g1-u04",
+  "briefBank": "07ed93df8cb9",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "wordId": "g1u04.w.cold",
+      "w": "cold",
+      "g": "kalt",
+      "d": "it is not hot",
+      "s": "It is early morning. Richard is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cold",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cold",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cold",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kalt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hot",
+        "happy",
+        "tired"
+      ],
+      "hintDe": "Im Winter und mit Schnee ist es so.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "hot",
+          "happy",
+          "tired",
+          "sad"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "cold",
+      "sbRef": "SB p.32",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.angry",
+      "w": "angry",
+      "g": "wütend",
+      "d": "you are very mad, not happy",
+      "s": "No, no, no, Mike. Now Harry is ___. He isn't happy!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "angry",
+          "tier": "full"
+        },
+        {
+          "text": "mad",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "angry",
+          "tier": "full"
+        },
+        {
+          "text": "mad",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "angry",
+            "tier": "full"
+          },
+          {
+            "text": "mad",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wütend",
+            "tier": "full"
+          },
+          {
+            "text": "böse",
+            "tier": "full"
+          },
+          {
+            "text": "zornig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "happy",
+        "proud",
+        "excited"
+      ],
+      "hintDe": "Wenn du sehr böse bist und schreien willst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "happy",
+          "proud",
+          "excited",
+          "bored"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "angry",
+      "sbRef": "SB p.31",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.happy",
+      "w": "happy",
+      "g": "glücklich",
+      "d": "you are glad and not sad.",
+      "s": "Mike is ___. He is not sad.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "happy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "happy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "happy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "glücklich",
+            "tier": "full"
+          },
+          {
+            "text": "fröhlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "glad",
+          "de": "froh",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sad",
+        "angry",
+        "bored"
+      ],
+      "hintDe": "Wenn es dir richtig gut geht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "sad",
+          "angry",
+          "bored",
+          "tired"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "happy",
+      "sbRef": "SB p.31",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.scared",
+      "w": "scared",
+      "g": "ängstlich",
+      "d": "a big dog can do this to you, so you don't want it here",
+      "s": "We're very ___. There's a dog in our room.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "scared",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scared",
+          "tier": "full"
+        },
+        {
+          "text": "afraid",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scared",
+            "tier": "full"
+          },
+          {
+            "text": "afraid",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ängstlich",
+            "tier": "full"
+          },
+          {
+            "text": "verängstigt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "happy",
+        "proud",
+        "hot"
+      ],
+      "hintDe": "Wenn du Angst vor etwas hast.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "happy",
+          "proud",
+          "hot",
+          "excited"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "scared",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.excited",
+      "w": "excited",
+      "g": "aufgeregt",
+      "d": "a good thing is here now and you want it now",
+      "s": "Tomorrow is the school show. I'm in it! Mike is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "excited",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "excited",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "excited",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufgeregt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bored",
+        "tired",
+        "sad"
+      ],
+      "hintDe": "Wenn du dich auf etwas freust und nicht warten kannst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bored",
+          "tired",
+          "sad",
+          "cold"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "excited",
+      "sbRef": "SB p.31",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.hot",
+      "w": "hot",
+      "g": "heiß",
+      "d": "it is not cold",
+      "s": "It's afternoon. Richard isn't cold now. He's ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hot",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hot",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hot",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "heiß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cold",
+        "bored",
+        "sad"
+      ],
+      "hintDe": "Wenn die Sonne brennt, ist es so.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cold",
+          "bored",
+          "sad",
+          "nervous"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "hot",
+      "sbRef": "SB p.32",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.bored",
+      "w": "bored",
+      "g": "gelangweilt",
+      "d": "you have no work and no fun to do, so the time is long",
+      "s": "It's evening. Is Richard tired? No, he's ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bored",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bored",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bored",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gelangweilt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "excited",
+        "happy",
+        "hungry"
+      ],
+      "hintDe": "Wenn dir langweilig ist und du nichts zu tun hast.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "excited",
+          "happy",
+          "hungry",
+          "proud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "bored",
+      "sbRef": "SB p.32",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.sad",
+      "w": "sad",
+      "g": "traurig",
+      "d": "you are not happy; you want to cry.",
+      "s": "No, no, no, Mike. Harry isn't happy now. He's ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sad",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sad",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sad",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "traurig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cry",
+          "de": "weinen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "happy",
+        "excited",
+        "proud"
+      ],
+      "hintDe": "Wenn du weinen möchtest und es dir nicht gut geht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "happy",
+          "excited",
+          "proud",
+          "hot"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "sad",
+      "sbRef": "SB p.31",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.hungry",
+      "w": "hungry",
+      "g": "hungrig",
+      "d": "you want to eat now",
+      "s": "It's lunchtime. Richard isn't happy. He wants to eat. He's ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hungry",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hungry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hungry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hungrig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tired",
+        "cold",
+        "proud"
+      ],
+      "hintDe": "Wenn du etwas essen möchtest.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "tired",
+          "cold",
+          "proud",
+          "bored"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "hungry",
+      "sbRef": "SB p.32",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.nervous",
+      "w": "nervous",
+      "g": "nervös",
+      "d": "a big day is here and you can't be still",
+      "s": "There are a lot of girls and boys here! Mike is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "nervous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nervous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nervous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nervös",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lot",
+          "de": "viele, eine Menge",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "proud",
+        "happy",
+        "cold"
+      ],
+      "hintDe": "Wenn du vor etwas ganz zappelig bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "proud",
+          "happy",
+          "cold",
+          "bored"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "nervous",
+      "sbRef": "SB p.31",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.tired",
+      "w": "tired",
+      "g": "müde",
+      "d": "you want to go to bed and close your eyes",
+      "s": "It's Monday. Gina is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tired",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tired",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tired",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "müde",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "excited",
+        "happy",
+        "hot"
+      ],
+      "hintDe": "Wenn du ins Bett möchtest und die Augen zumachst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "excited",
+          "happy",
+          "hot",
+          "angry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "tired",
+      "sbRef": "SB p.34",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.proud",
+      "w": "proud",
+      "g": "stolz",
+      "d": "you do good work and it is very good for you",
+      "s": "Mum is very ___ of me today.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "proud",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "proud",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "proud",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stolz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sad",
+        "scared",
+        "bored"
+      ],
+      "hintDe": "Wenn du etwas gut machst und es dich freut.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sad",
+          "scared",
+          "bored",
+          "angry"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "proud",
+      "sbRef": "SB p.31",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.morning",
+      "w": "morning",
+      "g": "Morgen",
+      "d": "it is the time of the day when you open your eyes in bed",
+      "s": "It's early ___. Richard's cold.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "morning",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "morning",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "morning",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Morgen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "evening",
+        "night",
+        "afternoon"
+      ],
+      "hintDe": "Die frühe Zeit am Tag, wenn du aufstehst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "evening",
+          "night",
+          "afternoon",
+          "lunchtime"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "morning",
+      "sbRef": "SB p.32",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.lunchtime",
+      "w": "lunchtime",
+      "g": "Mittagszeit",
+      "d": "it is the time in the day when you eat",
+      "s": "It's ___ and the children eat at school.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "lunchtime",
+          "tier": "full"
+        },
+        {
+          "text": "lunch time",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lunchtime",
+          "tier": "full"
+        },
+        {
+          "text": "lunch time",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lunchtime",
+            "tier": "full"
+          },
+          {
+            "text": "lunch time",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mittagszeit",
+            "tier": "full"
+          },
+          {
+            "text": "Mittagspause",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "morning",
+        "evening",
+        "night"
+      ],
+      "hintDe": "Die Zeit am Tag, wenn du zu Mittag isst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "morning",
+          "evening",
+          "night",
+          "afternoon"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "lunchtime",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.afternoon",
+      "w": "afternoon",
+      "g": "Nachmittag",
+      "d": "it is the time after lunchtime, before the evening",
+      "s": "It's ___. It is not cold now. Richard is hot.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "afternoon",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "afternoon",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "afternoon",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nachmittag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "morning",
+        "evening",
+        "night"
+      ],
+      "hintDe": "Die Zeit nach dem Mittag, vor dem Abend.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "morning",
+          "evening",
+          "night",
+          "lunchtime"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "afternoon",
+      "sbRef": "SB p.32",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.evening",
+      "w": "evening",
+      "g": "Abend",
+      "d": "it is the time after the afternoon, before night",
+      "s": "It's ___. Is Richard tired? No, he's bored.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "evening",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "evening",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "evening",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "morning",
+        "afternoon",
+        "night"
+      ],
+      "hintDe": "Die Zeit nach dem Nachmittag, vor der Nacht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "morning",
+          "afternoon",
+          "night",
+          "lunchtime"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "evening",
+      "sbRef": "SB p.32",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.night",
+      "w": "night",
+      "g": "Nacht",
+      "d": "it is the dark time when you go to bed",
+      "s": "It's late at ___ and we are in bed.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "night",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "night",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "night",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nacht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "dark",
+          "de": "dunkel",
+          "scope": "d"
+        },
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "morning",
+        "afternoon",
+        "lunchtime"
+      ],
+      "hintDe": "Die dunkle Zeit, wenn du schlafen gehst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "morning",
+          "afternoon",
+          "lunchtime",
+          "evening"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "night",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.monday",
+      "w": "Monday",
+      "g": "Montag",
+      "d": "it is the day after the weekend, before Tuesday",
+      "s": "The day after Sunday is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Monday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Monday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Monday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Montag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "weekend",
+          "de": "Wochenende",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Tuesday",
+        "Sunday",
+        "Wednesday"
+      ],
+      "hintDe": "Der erste Tag nach dem Wochenende.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Tuesday",
+          "Sunday",
+          "Wednesday",
+          "Friday"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Monday",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.tuesday",
+      "w": "Tuesday",
+      "g": "Dienstag",
+      "d": "it is the day after Monday",
+      "s": "The day after Monday is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Tuesday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Tuesday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Tuesday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dienstag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Monday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "hintDe": "Der Tag nach Montag.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Monday",
+          "Wednesday",
+          "Thursday",
+          "Sunday"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Tuesday",
+      "sbRef": "SB p.34",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.wednesday",
+      "w": "Wednesday",
+      "g": "Mittwoch",
+      "d": "it is the day after Tuesday",
+      "s": "Monday, Tuesday, ___ – no more school!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Wednesday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Wednesday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Wednesday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mittwoch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Tuesday",
+        "Thursday",
+        "Friday"
+      ],
+      "hintDe": "Der Tag nach Dienstag.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Tuesday",
+          "Thursday",
+          "Friday",
+          "Monday"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Wednesday",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.thursday",
+      "w": "Thursday",
+      "g": "Donnerstag",
+      "d": "it is the day after Wednesday",
+      "s": "___, Friday – no more school!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Thursday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Thursday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Thursday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Donnerstag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Wednesday",
+        "Friday",
+        "Tuesday"
+      ],
+      "hintDe": "Der Tag nach Mittwoch.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Wednesday",
+          "Friday",
+          "Tuesday",
+          "Sunday"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Thursday",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.friday",
+      "w": "Friday",
+      "g": "Freitag",
+      "d": "it is the day before Saturday",
+      "s": "Thursday, ___ – no more school!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Friday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Friday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Friday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Freitag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Thursday",
+        "Saturday",
+        "Wednesday"
+      ],
+      "hintDe": "Der Tag vor Samstag.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Thursday",
+          "Saturday",
+          "Wednesday",
+          "Monday"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Friday",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.saturday",
+      "w": "Saturday",
+      "g": "Samstag",
+      "d": "it is the day after Friday, with no school",
+      "s": "___ and Sunday – great!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Saturday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Saturday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Saturday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Samstag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Sunday",
+        "Friday",
+        "Monday"
+      ],
+      "hintDe": "Der erste Tag am Wochenende, ohne Schule.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Sunday",
+          "Friday",
+          "Monday",
+          "Tuesday"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Saturday",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.sunday",
+      "w": "Sunday",
+      "g": "Sonntag",
+      "d": "it is the day after Saturday, before Monday",
+      "s": "Saturday and ___ – great!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Sunday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Sunday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Sunday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sonntag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Saturday",
+        "Monday",
+        "Friday"
+      ],
+      "hintDe": "Der Tag nach Samstag, vor Montag.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Saturday",
+          "Monday",
+          "Friday",
+          "Wednesday"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Sunday",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.after",
+      "w": "after",
+      "g": "nach",
+      "d": "it is later in time, not before",
+      "s": "___ school I meet my friends.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "after",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "after",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "after",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "later",
+          "de": "später",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "into",
+        "still",
+        "early"
+      ],
+      "hintDe": "Etwas kommt danach, nicht davor.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "into",
+          "still",
+          "early",
+          "today"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "after",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.day",
+      "w": "day",
+      "g": "Tag",
+      "d": "it has morning, afternoon and night in it; Monday is one",
+      "s": "On the big ___, Mike is nervous.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "day",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "day",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "day",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "night",
+        "end",
+        "story"
+      ],
+      "hintDe": "Hat Morgen, Nachmittag und Nacht; Montag ist einer.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "night",
+          "end",
+          "story",
+          "life"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "day",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.end",
+      "w": "end",
+      "g": "Ende",
+      "d": "it is at the back of a story or a show, not at the start",
+      "s": "At the ___ of the play, Mike is very happy.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "end",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "end",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "end",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ende",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "start",
+          "de": "Anfang",
+          "scope": "d"
+        },
+        {
+          "word": "play",
+          "de": "Theaterstück",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "day",
+        "room",
+        "story"
+      ],
+      "hintDe": "Es ist hinten bei einer Geschichte, nicht am Anfang.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "day",
+          "room",
+          "story",
+          "morning"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "end",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.fun",
+      "w": "fun",
+      "g": "Spaß",
+      "d": "it is a thing you enjoy, not work",
+      "s": "It's a lot of work, but it's ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fun",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fun",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fun",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Spaß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lot",
+          "de": "viel, eine Menge",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "story",
+        "room",
+        "show"
+      ],
+      "hintDe": "Etwas Schönes, das dir Freude macht, keine Arbeit.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "story",
+          "room",
+          "show",
+          "bottle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "fun",
+      "sbRef": "SB p.31",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.go-away",
+      "w": "Go away!",
+      "g": "Geh weg!",
+      "d": "you want a friend to go from here, not to be next to you",
+      "s": "Please, ___! I don't want you here.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Go away",
+          "tier": "full"
+        },
+        {
+          "text": "go away",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Go away",
+          "tier": "full"
+        },
+        {
+          "text": "go away",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Go away",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geh weg",
+            "tier": "full"
+          },
+          {
+            "text": "Geh weg!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Try it!",
+        "Let go!",
+        "Be yourself."
+      ],
+      "hintDe": "Du willst, dass jemand weggeht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Try it!",
+          "Let go!",
+          "Be yourself.",
+          "Don't be late."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Go away!",
+      "sbRef": "SB p.31",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.to-happen",
+      "w": "to happen",
+      "g": "passieren",
+      "d": "to go on, when you ask what is here now",
+      "s": "What's ___? Is it OK?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "happening",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "happen",
+          "tier": "full"
+        },
+        {
+          "text": "to happen",
+          "tier": "full"
+        },
+        {
+          "text": "happening",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "happen",
+            "tier": "full"
+          },
+          {
+            "text": "to happen",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "passieren",
+            "tier": "full"
+          },
+          {
+            "text": "geschehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to break",
+        "to get back",
+        "to go to sleep"
+      ],
+      "hintDe": "Wenn du fragst, was gerade los ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to break",
+          "to get back",
+          "to go to sleep",
+          "to be asleep"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to happen",
+      "sbRef": "SB p.37",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.show",
+      "w": "show",
+      "g": "Show",
+      "d": "you go and look at it, with boys and girls in it at school",
+      "s": "At the end of the ___, she's proud.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "show",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "show",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "show",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Show",
+            "tier": "full"
+          },
+          {
+            "text": "Vorführung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "story",
+        "room",
+        "bottle"
+      ],
+      "hintDe": "Etwas, das du dir anschaust, zum Beispiel in der Schule.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "story",
+          "room",
+          "bottle",
+          "end"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "show",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.a-day-in-the-life-of",
+      "w": "a day in the life of",
+      "g": "ein Tag im Leben von",
+      "d": "from morning to night for one boy or girl",
+      "s": "The story is about ___ Richard.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "a day in the life of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "a day in the life of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "a day in the life of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein Tag im Leben von",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "no one else",
+        "Are you OK?",
+        "Oh dear!"
+      ],
+      "hintDe": "Ein ganzer Tag von jemandem, von früh bis spät.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "no one else",
+          "Are you OK?",
+          "Oh dear!",
+          "It's me."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "a day in the life of",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.to-be-asleep",
+      "w": "to be asleep",
+      "g": "schlafen",
+      "d": "you are in bed and your eyes are not open",
+      "s": "Richard is in bed. He's ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "asleep",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be asleep",
+          "tier": "full"
+        },
+        {
+          "text": "to be asleep",
+          "tier": "full"
+        },
+        {
+          "text": "asleep",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be asleep",
+            "tier": "full"
+          },
+          {
+            "text": "to be asleep",
+            "tier": "full"
+          },
+          {
+            "text": "asleep",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schlafen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to break",
+        "to get back",
+        "to happen"
+      ],
+      "hintDe": "Du liegst im Bett und deine Augen sind zu.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to break",
+          "to get back",
+          "to happen",
+          "to go to sleep"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to be asleep",
+      "sbRef": "SB p.32",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.early",
+      "w": "early",
+      "g": "früh",
+      "d": "it is at the start of the day, when it is still morning",
+      "s": "It's ___. He's still in bed.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "early",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "early",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "early",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "früh",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "start",
+          "de": "Anfang",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "today",
+        "still",
+        "after"
+      ],
+      "hintDe": "Ganz am Anfang vom Tag, am Morgen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "today",
+          "still",
+          "after",
+          "tomorrow"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "early",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.life",
+      "w": "life",
+      "g": "Leben",
+      "d": "all your time, from when you are small to when you are big",
+      "s": "The story is about a day in the ___ of Richard.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "life",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "life",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "life",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Leben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "day",
+        "story",
+        "end"
+      ],
+      "hintDe": "Deine ganze Zeit, von klein bis groß.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "day",
+          "story",
+          "end",
+          "night"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "life",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.still",
+      "w": "still",
+      "g": "noch immer",
+      "d": "it is now and it is not over, it goes on",
+      "s": "It's early. He's ___ in bed.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "still",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "still",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "still",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "noch immer",
+            "tier": "full"
+          },
+          {
+            "text": "immer noch",
+            "tier": "full"
+          },
+          {
+            "text": "noch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "goes",
+          "de": "geht (weiter)",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "today",
+        "early",
+        "after"
+      ],
+      "hintDe": "Es ist immer noch so wie vorher, nicht vorbei.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "today",
+          "early",
+          "after",
+          "tomorrow"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "still",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.story",
+      "w": "story",
+      "g": "Geschichte",
+      "d": "you read it or Mum tells it to you in bed",
+      "s": "It's a ___ about a boy in a school play.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "story",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "story",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "story",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geschichte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tells",
+          "de": "erzählt",
+          "scope": "d"
+        },
+        {
+          "word": "play",
+          "de": "Theaterstück",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "show",
+        "room",
+        "day"
+      ],
+      "hintDe": "Etwas, das du liest oder das dir die Mama erzählt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "show",
+          "room",
+          "day",
+          "bottle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "story",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.today",
+      "w": "today",
+      "g": "heute",
+      "d": "it is this day, now, not tomorrow",
+      "s": "It is not tomorrow; it is ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Today",
+          "tier": "full"
+        },
+        {
+          "text": "today",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "today",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "today",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "heute",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tomorrow",
+        "morning",
+        "evening"
+      ],
+      "hintDe": "An diesem Tag, jetzt, nicht morgen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "tomorrow",
+          "morning",
+          "evening",
+          "night"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "today",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.are-you-ok",
+      "w": "Are you OK?",
+      "g": "Geht's dir/euch/Ihnen gut?",
+      "d": "ask a friend this when they look sad, is everything fine",
+      "s": "You look sad. ___ Why?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Are you OK",
+          "tier": "full"
+        },
+        {
+          "text": "Are you OK?",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Are you OK",
+          "tier": "full"
+        },
+        {
+          "text": "Are you OK?",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Are you OK",
+            "tier": "full"
+          },
+          {
+            "text": "Are you OK?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geht's dir gut?",
+            "tier": "full"
+          },
+          {
+            "text": "Geht es dir gut?",
+            "tier": "full"
+          },
+          {
+            "text": "Alles okay?",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "fine",
+          "de": "in Ordnung, gut",
+          "scope": "d"
+        },
+        {
+          "word": "everything",
+          "de": "alles",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "What's happening?",
+        "Try it!",
+        "Let go!"
+      ],
+      "hintDe": "Du fragst, ob es jemandem gut geht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "What's happening?",
+          "Try it!",
+          "Let go!",
+          "Go away!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Are you OK?",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.homework",
+      "w": "homework (no pl)",
+      "g": "Hausaufgaben",
+      "d": "it is school work you do for class, but not in class",
+      "s": "We have got a big ___ for school today.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "homework",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "homework",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "homework",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hausaufgaben",
+            "tier": "full"
+          },
+          {
+            "text": "Hausübung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fun",
+        "story",
+        "room"
+      ],
+      "hintDe": "Hausübung, die du zu Hause machst, nicht in der Klasse.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fun",
+          "story",
+          "room",
+          "show"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "homework",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.into",
+      "w": "into",
+      "g": "in (… hinein)",
+      "d": "you go in, you do not go out",
+      "s": "Go ___ the classroom!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "into",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "into",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "into",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinein",
+            "tier": "full"
+          },
+          {
+            "text": "ins",
+            "tier": "full"
+          },
+          {
+            "text": "in",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "after",
+        "still",
+        "early"
+      ],
+      "hintDe": "Du gehst hinein, nicht hinaus.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "after",
+          "still",
+          "early",
+          "today"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "into",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.oh-dear",
+      "w": "Oh dear!",
+      "g": "Du meine Güte!",
+      "d": "a thing is bad, not good, and you are not happy",
+      "s": "___ Why? I'm not very happy.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Oh dear",
+          "tier": "full"
+        },
+        {
+          "text": "Oh dear!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Oh dear",
+          "tier": "full"
+        },
+        {
+          "text": "Oh dear!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Oh dear",
+            "tier": "full"
+          },
+          {
+            "text": "Oh dear!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Du meine Güte!",
+            "tier": "full"
+          },
+          {
+            "text": "Oje!",
+            "tier": "full"
+          },
+          {
+            "text": "Oh je!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Try it!",
+        "Let go!",
+        "Go away!"
+      ],
+      "hintDe": "Das sagst du, wenn etwas nicht gut ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Try it!",
+          "Let go!",
+          "Go away!",
+          "Be yourself."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Oh dear!",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.room",
+      "w": "room",
+      "g": "Raum",
+      "d": "it has a door and a window; you go to bed in it",
+      "s": "There's a dog in our ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "room",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "room",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "room",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Raum",
+            "tier": "full"
+          },
+          {
+            "text": "Zimmer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "story",
+        "show",
+        "day"
+      ],
+      "hintDe": "Hat eine Tür und ein Fenster; dein Schlafzimmer ist eins.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "story",
+          "show",
+          "day",
+          "bottle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "room",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.bad",
+      "w": "bad",
+      "g": "schlecht",
+      "d": "it is not good",
+      "s": "Thursday and Friday aren't ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bad",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bad",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bad",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schlecht",
+            "tier": "full"
+          },
+          {
+            "text": "böse",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "happy",
+        "proud",
+        "excited"
+      ],
+      "hintDe": "Es ist nicht gut.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "happy",
+          "proud",
+          "excited",
+          "tired"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "bad",
+      "sbRef": "SB p.36",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.don-t-be-late",
+      "w": "Don't be late.",
+      "g": "Komm(t) nicht zu spät.",
+      "d": "you want a friend here on time, not after the time",
+      "s": "Tomorrow's Monday – ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Don't be late",
+          "tier": "full"
+        },
+        {
+          "text": "Don't be late.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Don't be late",
+          "tier": "full"
+        },
+        {
+          "text": "Don't be late.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Don't be late",
+            "tier": "full"
+          },
+          {
+            "text": "Don't be late.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Komm nicht zu spät.",
+            "tier": "full"
+          },
+          {
+            "text": "Sei pünktlich.",
+            "tier": "full"
+          },
+          {
+            "text": "Kommt nicht zu spät.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Be yourself.",
+        "Let go!",
+        "Try it!"
+      ],
+      "hintDe": "Du willst, dass jemand rechtzeitig da ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Be yourself.",
+          "Let go!",
+          "Try it!",
+          "Go away!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Don't be late.",
+      "sbRef": "SB p.33",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.tomorrow",
+      "w": "tomorrow",
+      "g": "morgen",
+      "d": "it is the day after today",
+      "s": "It is not today. The day after today is ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Tomorrow",
+          "tier": "full"
+        },
+        {
+          "text": "tomorrow",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tomorrow",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tomorrow",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "morgen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "today",
+        "morning",
+        "night"
+      ],
+      "hintDe": "Der Tag nach heute.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "today",
+          "morning",
+          "night",
+          "evening"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "tomorrow",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.birthday",
+      "w": "birthday",
+      "g": "Geburtstag",
+      "d": "it is your big day in the year, with a cake",
+      "s": "Happy ___, David!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "birthday",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "birthday",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "birthday",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geburtstag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cake",
+          "de": "Kuchen, Torte",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "day",
+        "end",
+        "show"
+      ],
+      "hintDe": "Dein großer Tag jedes Jahr, mit Torte und Freunden.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "day",
+          "end",
+          "show",
+          "story"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "birthday",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.friend",
+      "w": "friend",
+      "g": "Freund/Freundin",
+      "d": "a boy or girl you like and play with",
+      "s": "Tom is his ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "friend",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "friend",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "friend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Freund",
+            "tier": "full"
+          },
+          {
+            "text": "Freundin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "like",
+          "de": "mögen",
+          "scope": "d"
+        },
+        {
+          "word": "play",
+          "de": "spielen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "story",
+        "room",
+        "day"
+      ],
+      "hintDe": "Ein Bub oder Mädchen, das du magst und mit dem du spielst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "story",
+          "room",
+          "day",
+          "show"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "friend",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.be-yourself",
+      "w": "Be yourself.",
+      "g": "Sei du selbst.",
+      "d": "you want a friend to be who they are, not a new boy or girl",
+      "s": "___ and no one else.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Be yourself",
+          "tier": "full"
+        },
+        {
+          "text": "Be yourself.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Be yourself",
+          "tier": "full"
+        },
+        {
+          "text": "Be yourself.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Be yourself",
+            "tier": "full"
+          },
+          {
+            "text": "Be yourself.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sei du selbst.",
+            "tier": "full"
+          },
+          {
+            "text": "Sei du selbst",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "new",
+          "de": "neu, anders",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Let go!",
+        "Try it!",
+        "Go away!"
+      ],
+      "hintDe": "Du willst, dass jemand so ist, wie er wirklich ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Let go!",
+          "Try it!",
+          "Go away!",
+          "Don't be late."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Be yourself.",
+      "sbRef": "SB p.34",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.no-one-else",
+      "w": "no one else",
+      "g": "niemand anders",
+      "d": "you, and not a boy or a girl is with you.",
+      "s": "Be yourself and ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "no one else",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "no one else",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "no one else",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "niemand anders",
+            "tier": "full"
+          },
+          {
+            "text": "sonst niemand",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Go away!",
+        "Try it!",
+        "Let go!"
+      ],
+      "hintDe": "Kein anderer Bub oder kein anderes Mädchen, nur du.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "Go away!",
+          "Try it!",
+          "Let go!",
+          "Be yourself."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "no one else",
+      "sbRef": "SB p.34",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.bottle",
+      "w": "bottle",
+      "g": "Flasche",
+      "d": "you can put water in it and drink from it",
+      "s": "The feelings are in the magic ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bottle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bottle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bottle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flasche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        },
+        {
+          "word": "drink",
+          "de": "trinken",
+          "scope": "d"
+        },
+        {
+          "word": "feelings",
+          "de": "Gefühle",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "room",
+        "story",
+        "show"
+      ],
+      "hintDe": "Da kannst du Wasser hineinfüllen und daraus trinken.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "room",
+          "story",
+          "show",
+          "day"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "bottle",
+      "sbRef": "SB p.35",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.to-get-back",
+      "w": "to get back",
+      "g": "zurückholen",
+      "d": "to have it with you one more time",
+      "s": "I am Jill and I will ___ the feelings.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get back",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get back",
+          "tier": "full"
+        },
+        {
+          "text": "to get back",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get back",
+            "tier": "full"
+          },
+          {
+            "text": "to get back",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zurückholen",
+            "tier": "full"
+          },
+          {
+            "text": "zurückbekommen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "will",
+          "de": "werde(n)",
+          "scope": "s"
+        },
+        {
+          "word": "feelings",
+          "de": "Gefühle",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to break",
+        "to happen",
+        "to go to sleep"
+      ],
+      "hintDe": "Etwas wieder zu dir holen, sodass es wieder bei dir ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to break",
+          "to happen",
+          "to go to sleep",
+          "to be asleep"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to get back",
+      "sbRef": "SB p.35",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.mad",
+      "w": "mad",
+      "g": "wütend",
+      "d": "you are very, very angry.",
+      "s": "I am good, Bob is bad. I am nice, Bob is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mad",
+          "tier": "full"
+        },
+        {
+          "text": "angry",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mad",
+          "tier": "full"
+        },
+        {
+          "text": "angry",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mad",
+            "tier": "full"
+          },
+          {
+            "text": "angry",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wütend",
+            "tier": "full"
+          },
+          {
+            "text": "zornig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "happy",
+        "proud",
+        "excited"
+      ],
+      "hintDe": "Du bist sehr böse und willst schreien.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "happy",
+          "proud",
+          "excited",
+          "bored"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "mad",
+      "sbRef": "SB p.35",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.magic",
+      "w": "magic",
+      "g": "magisch",
+      "d": "you find it in stories; it can do what is not for real",
+      "s": "This is a ___ bottle.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "magic",
+          "tier": "full"
+        },
+        {
+          "text": "magical",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "magic",
+          "tier": "full"
+        },
+        {
+          "text": "magical",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "magic",
+            "tier": "full"
+          },
+          {
+            "text": "magical",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "magisch",
+            "tier": "full"
+          },
+          {
+            "text": "Zauber-",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "real",
+          "de": "echt, wirklich",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "bad",
+        "cold",
+        "hot"
+      ],
+      "hintDe": "Es hat Zauber in sich und kann Dinge, die nicht echt sind.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bad",
+          "cold",
+          "hot",
+          "mad"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "magic",
+      "sbRef": "SB p.35",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.to-break",
+      "w": "to break",
+      "g": "(zer-)brechen",
+      "d": "to put it into two or more, so it is not one",
+      "s": "I must ___ the bottle.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "break",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "break",
+          "tier": "full"
+        },
+        {
+          "text": "to break",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "break",
+            "tier": "full"
+          },
+          {
+            "text": "to break",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "brechen",
+            "tier": "full"
+          },
+          {
+            "text": "zerbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "kaputt machen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to happen",
+        "to get back",
+        "to go to sleep"
+      ],
+      "hintDe": "Etwas in zwei oder mehr Teile machen, sodass es nicht mehr eins ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to happen",
+          "to get back",
+          "to go to sleep",
+          "to be asleep"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to break",
+      "sbRef": "SB p.35",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.to-go-to-sleep",
+      "w": "to go to sleep",
+      "g": "schlafen gehen",
+      "d": "to close your eyes in bed at night",
+      "s": "It's late. Go back to ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sleep",
+          "tier": "full"
+        },
+        {
+          "text": "go to sleep",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "go to sleep",
+          "tier": "full"
+        },
+        {
+          "text": "to go to sleep",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "go to sleep",
+            "tier": "full"
+          },
+          {
+            "text": "to go to sleep",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schlafen gehen",
+            "tier": "full"
+          },
+          {
+            "text": "einschlafen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to break",
+        "to happen",
+        "to get back"
+      ],
+      "hintDe": "Im Bett die Augen zumachen, in der Nacht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to break",
+          "to happen",
+          "to get back",
+          "to be asleep"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to go to sleep",
+      "sbRef": "SB p.37",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.because",
+      "w": "because",
+      "g": "weil",
+      "d": "you give the why for it with this",
+      "s": "I'm happy ___ it's the weekend.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "because",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "because",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weil",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "weekend",
+          "de": "Wochenende",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "after",
+        "still",
+        "today"
+      ],
+      "hintDe": "Damit gibst du den Grund für etwas an.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "after",
+          "still",
+          "today",
+          "into"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "because",
+      "sbRef": "MORE p.39",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.it-s-me",
+      "w": "It's me.",
+      "g": "Ich bin's.",
+      "d": "a friend is at the door, and the one there is you.",
+      "s": "Who is at the door? — ___ Open the door!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "It's me",
+          "tier": "full"
+        },
+        {
+          "text": "It's me.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It's me",
+          "tier": "full"
+        },
+        {
+          "text": "It's me.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It's me",
+            "tier": "full"
+          },
+          {
+            "text": "It's me.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich bin's.",
+            "tier": "full"
+          },
+          {
+            "text": "Ich bin es.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Try it!",
+        "Let go!",
+        "Go away!"
+      ],
+      "hintDe": "Damit sagst du, wer da ist, wenn dich niemand sieht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Try it!",
+          "Let go!",
+          "Go away!",
+          "Be yourself."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "It's me.",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.try-it",
+      "w": "Try it!",
+      "g": "Versuch es!",
+      "d": "you want a friend to do a new thing one time",
+      "s": "This birthday cake is very good. ___ You will love it!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Try it",
+          "tier": "full"
+        },
+        {
+          "text": "Try it!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Try it",
+          "tier": "full"
+        },
+        {
+          "text": "Try it!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Try it",
+            "tier": "full"
+          },
+          {
+            "text": "Try it!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Versuch es!",
+            "tier": "full"
+          },
+          {
+            "text": "Probier es!",
+            "tier": "full"
+          },
+          {
+            "text": "Probier's!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "new",
+          "de": "neu",
+          "scope": "d"
+        },
+        {
+          "word": "cake",
+          "de": "Kuchen, Torte",
+          "scope": "s"
+        },
+        {
+          "word": "will",
+          "de": "wirst",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Let go!",
+        "Go away!",
+        "Be yourself."
+      ],
+      "hintDe": "Du willst, dass jemand etwas Neues einmal ausprobiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Let go!",
+          "Go away!",
+          "Be yourself.",
+          "Don't be late."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Try it!",
+      "sbRef": "SB p.37",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.let-go",
+      "w": "Let go!",
+      "g": "Lass(t) los!",
+      "d": "you want a friend to open the hand and not hold your arm.",
+      "s": "You are holding my arm too tight! ___",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Let go",
+          "tier": "full"
+        },
+        {
+          "text": "Let go!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Let go",
+          "tier": "full"
+        },
+        {
+          "text": "Let go!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Let go",
+            "tier": "full"
+          },
+          {
+            "text": "Let go!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lass los!",
+            "tier": "full"
+          },
+          {
+            "text": "Lasst los!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "arm",
+          "de": "Arm",
+          "scope": null
+        },
+        {
+          "word": "holding",
+          "de": "halten, festhalten",
+          "scope": "s"
+        },
+        {
+          "word": "tight",
+          "de": "fest",
+          "scope": "s"
+        },
+        {
+          "word": "hold",
+          "de": "halten",
+          "scope": "d"
+        },
+        {
+          "word": "hand",
+          "de": "Hand",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "Try it!",
+        "Go away!",
+        "Be yourself."
+      ],
+      "hintDe": "Du willst, dass jemand dich loslässt und nicht festhält.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Try it!",
+          "Go away!",
+          "Be yourself.",
+          "Don't be late."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Let go!",
+      "sbRef": "SB p.37",
+      "note": null
+    },
+    {
+      "wordId": "g1u04.w.what-s-happening",
+      "w": "What's happening?",
+      "g": "Was ist (hier) los?",
+      "d": "you ask about a thing that is here now; you cannot look at it.",
+      "s": "I can hear it. ___ Is it OK?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "What's happening",
+          "tier": "full"
+        },
+        {
+          "text": "What's happening?",
+          "tier": "full"
+        },
+        {
+          "text": "What is happening?",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "What's happening",
+          "tier": "full"
+        },
+        {
+          "text": "What's happening?",
+          "tier": "full"
+        },
+        {
+          "text": "What is happening?",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "What's happening",
+            "tier": "full"
+          },
+          {
+            "text": "What's happening?",
+            "tier": "full"
+          },
+          {
+            "text": "What is happening?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Was ist los?",
+            "tier": "full"
+          },
+          {
+            "text": "Was ist hier los?",
+            "tier": "full"
+          },
+          {
+            "text": "Was passiert?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Try it!",
+        "Let go!",
+        "Go away!"
+      ],
+      "hintDe": "Du fragst, was gerade los ist, wenn du Lärm hörst.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "Try it!",
+          "Let go!",
+          "Go away!",
+          "Are you OK?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "What's happening?",
+      "sbRef": "SB p.37",
+      "note": null
+    }
+  ]
+}

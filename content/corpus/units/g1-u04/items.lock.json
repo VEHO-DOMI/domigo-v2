@@ -1,0 +1,97 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g1-u04",
+  "items": {
+    "24b6807521ae": "g1u04.gi.to-be-negative.mc.001",
+    "3e804b8b7af4": "g1u04.gi.to-be-negative.mc.002",
+    "b76b16539e10": "g1u04.gi.to-be-negative.mc.003",
+    "f7b6cbde028c": "g1u04.gi.to-be-negative.mc.004",
+    "a17bd2da8f2d": "g1u04.gi.to-be-negative.cp.001",
+    "f6b7fae2f426": "g1u04.gi.to-be-negative.cp.002",
+    "d0e1b83fb0e3": "g1u04.gi.to-be-negative.ec.001",
+    "86522fa04a14": "g1u04.gi.to-be-negative.ec.002",
+    "2e0903b866c7": "g1u04.gi.to-be-negative.ec.003",
+    "576067d2a7c1": "g1u04.gi.to-be-negative.tf.001",
+    "6a5d4f5cb484": "g1u04.gi.to-be-negative.tf.002",
+    "23f9944d048b": "g1u04.gi.to-be-negative.tf.003",
+    "7399ee746103": "g1u04.gi.to-be-negative.tr.001",
+    "1df416962dd2": "g1u04.gi.to-be-negative.tr.002",
+    "3bd98a30eaa1": "g1u04.gi.to-be-negative.sb.001",
+    "60790f60deb8": "g1u04.gi.to-be-negative.sb.002",
+    "93a708d8e4e4": "g1u04.gi.to-be-negative.mt.001",
+    "09c84f929144": "g1u04.gi.to-be-negative.mp.001",
+    "2d358b9c358d": "g1u04.gi.to-be-negative.ag.001",
+    "819106f004f1": "g1u04.gi.to-be-questions.gf.001",
+    "d844700d349b": "g1u04.gi.to-be-questions.gf.002",
+    "1e2b015a1a49": "g1u04.gi.to-be-questions.gf.003",
+    "95a68b4a1a12": "g1u04.gi.to-be-questions.mc.001",
+    "9002b8daaf21": "g1u04.gi.to-be-questions.mc.002",
+    "8dabdf10239a": "g1u04.gi.to-be-questions.cp.001",
+    "c3170c6ec222": "g1u04.gi.to-be-questions.ec.001",
+    "746e066ac472": "g1u04.gi.to-be-questions.ec.002",
+    "06594fd1ad32": "g1u04.gi.to-be-questions.tf.001",
+    "e5ac6f11a9db": "g1u04.gi.to-be-questions.tf.002",
+    "757080792b8f": "g1u04.gi.to-be-questions.qf.001",
+    "be5e867bc3c4": "g1u04.gi.to-be-questions.qf.002",
+    "39b0167b10ac": "g1u04.gi.to-be-questions.sb.001",
+    "7072ce2b5c29": "g1u04.gi.to-be-questions.gs.001",
+    "1294e0bc4f49": "g1u04.gi.to-be-questions.tr.001",
+    "a6579c03643f": "g1u04.gi.to-be-questions.ag.001",
+    "c91cebeefece": "g1u04.gi.to-be-negative.gf.007",
+    "ccce716fe11e": "g1u04.gi.to-be-negative.gf.008",
+    "5f8c93d11306": "g1u04.gi.to-be-negative.gf.009",
+    "3ea531663216": "g1u04.gi.to-be-negative.gf.010",
+    "8ae514f2185e": "g1u04.gi.to-be-negative.gf.011",
+    "a7466b87927d": "g1u04.gi.to-be-negative.gf.012",
+    "45957d9f69a2": "g1u04.gi.to-be-negative.gs.002",
+    "afb0ec04b790": "g1u04.gi.to-be-questions.cp.003",
+    "686a751bc4f5": "g1u04.gi.to-be-questions.mt.002"
+  },
+  "tombstones": [
+    {
+      "id": "g1u04.gi.to-be-negative.gf.001",
+      "key": "427bf15fb723",
+      "removedWith": "86b0912a3209"
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.002",
+      "key": "7028c5334849",
+      "removedWith": "86b0912a3209"
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.003",
+      "key": "25c3abf5d665",
+      "removedWith": "86b0912a3209"
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.004",
+      "key": "1ad4c0340c70",
+      "removedWith": "86b0912a3209"
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.005",
+      "key": "f58a81ab7dd8",
+      "removedWith": "86b0912a3209"
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gf.006",
+      "key": "4f32198f3279",
+      "removedWith": "86b0912a3209"
+    },
+    {
+      "id": "g1u04.gi.to-be-negative.gs.001",
+      "key": "58e07b648d68",
+      "removedWith": "86b0912a3209"
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.cp.002",
+      "key": "54cbbe72c71e",
+      "removedWith": "86b0912a3209"
+    },
+    {
+      "id": "g1u04.gi.to-be-questions.mt.001",
+      "key": "39dc017effb4",
+      "removedWith": "86b0912a3209"
+    }
+  ]
+}
