@@ -9315,6 +9315,1032 @@
       "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "allowed",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "permission",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "let",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "lets",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "be",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "go",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "play",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "run",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "talk",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "eat",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "use",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "take",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "watch",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "ride",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "wear",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "hold",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "feed",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "buy",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "get",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "dye",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "hang",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "stay",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "charge",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "come",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "have",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "help",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "drive",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "leave",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "borrow",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "work",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "phone",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "phones",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "video",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "games",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "tv",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "disco",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "tattoo",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "stud",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "earrings",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "hair",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "sweets",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "clothes",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "party",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "parties",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "park",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "bike",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "pads",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "dictionary",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "corridor",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "library",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "museum",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "classroom",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "test",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "photos",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "pictures",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "animals",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "kids",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "home",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "late",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "loud",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "own",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "until",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "playing",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "eating",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "using",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "taking",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "riding",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "running",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "rides",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "talks",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "allow",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "letted",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "going",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "staying",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "borrowing",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "colour",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "cycle",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "follow",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "got",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "hear",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "hours",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "local",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "paper",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "pierced",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "rings",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "safe",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "strange",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "arm",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "chats",
+      "reason": "be-allowed-to/let: base verb after allowed-to/let, permission-theme noun, or wrong-form decoy (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "bikes",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "brother",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "computer",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "course",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "later",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "none",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "older",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "only",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "say",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "something",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "students",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "tours",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "turn",
+      "reason": "permission unit carrier word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "being",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "amn't",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "working",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "groups",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "yourself",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "change",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "grows",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "through",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "face",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "wheels",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "everyone",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u09",
+      "itemId": null,
+      "field": null,
+      "token": "around",
+      "reason": "permission def/carrier word or wrong-form decoy untaught at g3",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

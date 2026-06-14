@@ -1,0 +1,2743 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g3-u09",
+  "briefBank": "d66ad0eea339",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g3u09.w.to-dye-your-hair",
+      "w": "to dye your hair",
+      "g": "deine Haare färben",
+      "d": "to change the colour of what grows on your head.",
+      "s": "Mum lets you ___ a bright green for the summer.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "dye your hair",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to dye your hair",
+          "tier": "full"
+        },
+        {
+          "text": "dye your hair",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to dye your hair",
+            "tier": "full"
+          },
+          {
+            "text": "dye your hair",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "deine Haare färben",
+            "tier": "full"
+          },
+          {
+            "text": "sich die Haare färben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "colour",
+          "de": "Farbe",
+          "scope": "d"
+        },
+        {
+          "word": "lets",
+          "de": "lässt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to wear earrings",
+        "to get a tattoo",
+        "to get a nose stud"
+      ],
+      "hintDe": "Du machst deine Haare bunt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to wear earrings",
+          "to get a tattoo",
+          "to get a nose stud",
+          "to buy your own clothes"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-get-a-tattoo",
+      "w": "to get a tattoo",
+      "g": "sich tätowieren lassen",
+      "d": "to have a picture put on your skin that stays forever",
+      "s": "My big sister wants to ___ of a small rose on her arm.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get a tattoo",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to get a tattoo",
+          "tier": "full"
+        },
+        {
+          "text": "get a tattoo",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to get a tattoo",
+            "tier": "full"
+          },
+          {
+            "text": "get a tattoo",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich tätowieren lassen",
+            "tier": "full"
+          },
+          {
+            "text": "sich ein Tattoo machen lassen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "arm",
+          "de": "Arm",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to get a nose stud",
+        "to dye your hair",
+        "to wear earrings"
+      ],
+      "hintDe": "Du bekommst ein Bild für immer auf die Haut.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to get a nose stud",
+          "to dye your hair",
+          "to wear earrings",
+          "to buy your own clothes"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-hang-out-in-shopping-centres",
+      "w": "to hang out in shopping centres",
+      "g": "in Einkaufszentren abhängen",
+      "d": "to spend time with friends in the shops and do nothing much",
+      "s": "After school we like to ___ and look at the shops.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "hang out in shopping centres",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to hang out in shopping centres",
+          "tier": "full"
+        },
+        {
+          "text": "hang out in shopping centres",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to hang out in shopping centres",
+            "tier": "full"
+          },
+          {
+            "text": "hang out in shopping centres",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in Einkaufszentren abhängen",
+            "tier": "full"
+          },
+          {
+            "text": "in Einkaufszentren herumhängen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to go to the disco",
+        "to play video games all day",
+        "to have a party at home"
+      ],
+      "hintDe": "Du verbringst Zeit mit Freunden bei den Geschäften.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to go to the disco",
+          "to play video games all day",
+          "to have a party at home",
+          "to come home after ten"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-go-roller-skating-without-pads",
+      "w": "to go roller-skating without pads",
+      "g": "ohne Schützer Rollschuh fahren",
+      "d": "to move fast on wheels with nothing on your knees to protect you.",
+      "s": "It is dangerous to ___ because you can hurt your knees when you fall down.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "go roller-skating without pads",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to go roller-skating without pads",
+          "tier": "full"
+        },
+        {
+          "text": "go roller-skating without pads",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to go roller-skating without pads",
+            "tier": "full"
+          },
+          {
+            "text": "go roller-skating without pads",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ohne Schützer Rollschuh fahren",
+            "tier": "full"
+          },
+          {
+            "text": "ohne Schoner Rollschuh fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to ride your bike without a helmet",
+        "to go to the disco",
+        "to play video games all day"
+      ],
+      "hintDe": "Du fährst Rollschuh, aber nichts schützt deine Knie.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to ride your bike without a helmet",
+          "to go to the disco",
+          "to play video games all day",
+          "to come home after ten"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-get-a-nose-stud",
+      "w": "to get a nose stud",
+      "g": "sich einen Nasenstecker stechen lassen",
+      "d": "to have a small piece of metal put through the skin on your face.",
+      "s": "My little sister wants to ___ but Mum hates them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get a nose stud",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to get a nose stud",
+          "tier": "full"
+        },
+        {
+          "text": "get a nose stud",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to get a nose stud",
+            "tier": "full"
+          },
+          {
+            "text": "get a nose stud",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich einen Nasenstecker stechen lassen",
+            "tier": "full"
+          },
+          {
+            "text": "einen Nasenstecker bekommen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "face",
+          "de": "Gesicht",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to get a tattoo",
+        "to wear earrings",
+        "to dye your hair"
+      ],
+      "hintDe": "Du bekommst ein kleines Stück Metall in die Nase.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to get a tattoo",
+          "to wear earrings",
+          "to dye your hair",
+          "to buy your own clothes"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-scroll-through-your-phone",
+      "w": "to scroll through your phone",
+      "g": "durch dein Handy scrollen",
+      "d": "to move your finger up and down on a small screen to look at pictures and chats",
+      "s": "You can be on the sofa for hours and ___, looking at pictures.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "scroll through your phone",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to scroll through your phone",
+          "tier": "full"
+        },
+        {
+          "text": "scroll through your phone",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to scroll through your phone",
+            "tier": "full"
+          },
+          {
+            "text": "scroll through your phone",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "durch dein Handy scrollen",
+            "tier": "full"
+          },
+          {
+            "text": "durch das Handy scrollen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "chats",
+          "de": "Chats",
+          "scope": "d"
+        },
+        {
+          "word": "hours",
+          "de": "Stunden",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to play video games all day",
+        "to watch TV after 10 o'clock",
+        "to turn your music up loud"
+      ],
+      "hintDe": "Du wischst mit dem Finger über den Bildschirm.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to play video games all day",
+          "to watch TV after 10 o'clock",
+          "to turn your music up loud",
+          "to hang out in shopping centres"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-have-a-party-at-home",
+      "w": "to have a party at home",
+      "g": "zu Hause eine Party machen",
+      "d": "to invite friends over to your place to eat and dance",
+      "s": "Can I ___ for my birthday and ask ten friends over?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "have a party at home",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to have a party at home",
+          "tier": "full"
+        },
+        {
+          "text": "have a party at home",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to have a party at home",
+            "tier": "full"
+          },
+          {
+            "text": "have a party at home",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zu Hause eine Party machen",
+            "tier": "full"
+          },
+          {
+            "text": "zu Hause eine Party feiern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to go to the disco",
+        "to hang out in shopping centres",
+        "to play video games all day"
+      ],
+      "hintDe": "Du lädst Freunde zu dir nach Hause ein zum Feiern.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to go to the disco",
+          "to hang out in shopping centres",
+          "to play video games all day",
+          "to turn your music up loud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-buy-your-own-clothes",
+      "w": "to buy your own clothes",
+      "g": "deine eigene Kleidung kaufen",
+      "d": "to pay for what you wear yourself, with your pocket money.",
+      "s": "You are allowed to ___ now with your own pocket money.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "buy your own clothes",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to buy your own clothes",
+          "tier": "full"
+        },
+        {
+          "text": "buy your own clothes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to buy your own clothes",
+            "tier": "full"
+          },
+          {
+            "text": "buy your own clothes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "deine eigene Kleidung kaufen",
+            "tier": "full"
+          },
+          {
+            "text": "deine eigenen Sachen kaufen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "allowed",
+          "de": "dürfen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to have a party at home",
+        "to wear earrings",
+        "to go to the disco"
+      ],
+      "hintDe": "Du zahlst deine Kleidung mit deinem eigenen Taschengeld.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to have a party at home",
+          "to wear earrings",
+          "to go to the disco",
+          "to dye your hair"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-eat-too-many-sweets",
+      "w": "to eat too many sweets",
+      "g": "zu viele Süßigkeiten essen",
+      "d": "to have more sugar and chocolate than is good for your teeth",
+      "s": "It is not good for your teeth to ___ every day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "eat too many sweets",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to eat too many sweets",
+          "tier": "full"
+        },
+        {
+          "text": "eat too many sweets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to eat too many sweets",
+            "tier": "full"
+          },
+          {
+            "text": "eat too many sweets",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zu viele Süßigkeiten essen",
+            "tier": "full"
+          },
+          {
+            "text": "zu viel Süßes essen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to play video games all day",
+        "to ride your bike without a helmet",
+        "to go to the disco"
+      ],
+      "hintDe": "Du isst zu viel Zucker, das ist schlecht für die Zähne.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to play video games all day",
+          "to ride your bike without a helmet",
+          "to go to the disco",
+          "to have a party at home"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-wear-earrings",
+      "w": "to wear earrings",
+      "g": "Ohrringe tragen",
+      "d": "to have small rings on your ears",
+      "s": "She got her ears pierced and now likes to ___ to school every day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "wear earrings",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to wear earrings",
+          "tier": "full"
+        },
+        {
+          "text": "wear earrings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to wear earrings",
+            "tier": "full"
+          },
+          {
+            "text": "wear earrings",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ohrringe tragen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "rings",
+          "de": "Ringe",
+          "scope": "d"
+        },
+        {
+          "word": "pierced",
+          "de": "gestochen",
+          "scope": "s"
+        },
+        {
+          "word": "got",
+          "de": "ließ",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to get a nose stud",
+        "to get a tattoo",
+        "to dye your hair"
+      ],
+      "hintDe": "Du hast kleine Ringe an den Ohren.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to get a nose stud",
+          "to get a tattoo",
+          "to dye your hair",
+          "to buy your own clothes"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-ride-your-bike-without-a-helmet",
+      "w": "to ride your bike without a helmet",
+      "g": "ohne Helm Fahrrad fahren",
+      "d": "to cycle with nothing on your head to protect you",
+      "s": "You should not ___ on a busy road because it is not safe.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ride your bike without a helmet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to ride your bike without a helmet",
+          "tier": "full"
+        },
+        {
+          "text": "ride your bike without a helmet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to ride your bike without a helmet",
+            "tier": "full"
+          },
+          {
+            "text": "ride your bike without a helmet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ohne Helm Fahrrad fahren",
+            "tier": "full"
+          },
+          {
+            "text": "ohne Helm Rad fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cycle",
+          "de": "Rad fahren",
+          "scope": "d"
+        },
+        {
+          "word": "safe",
+          "de": "sicher",
+          "scope": "s"
+        },
+        {
+          "word": "should",
+          "de": "solltest",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to go roller-skating without pads",
+        "to come home after ten",
+        "to play video games all day"
+      ],
+      "hintDe": "Du fährst Rad, aber nichts schützt deinen Kopf.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to go roller-skating without pads",
+          "to come home after ten",
+          "to play video games all day",
+          "to go to the disco"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-come-home-after-ten",
+      "w": "to come home after ten",
+      "g": "nach zehn Uhr nach Hause kommen",
+      "d": "to be back at your place late in the evening.",
+      "s": "My strict parents do not let me ___ on school nights.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "come home after ten",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to come home after ten",
+          "tier": "full"
+        },
+        {
+          "text": "come home after ten",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to come home after ten",
+            "tier": "full"
+          },
+          {
+            "text": "come home after ten",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nach zehn Uhr nach Hause kommen",
+            "tier": "full"
+          },
+          {
+            "text": "nach zehn nach Hause kommen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "let",
+          "de": "lassen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to stay up",
+        "to go to the disco",
+        "to have a party at home"
+      ],
+      "hintDe": "Du bist später als zehn Uhr abends wieder zu Hause.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to stay up",
+          "to go to the disco",
+          "to have a party at home",
+          "to turn your music up loud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-turn-your-music-up-loud",
+      "w": "to turn your music up loud",
+      "g": "deine Musik laut aufdrehen",
+      "d": "to make a sound so strong that everyone around can hear it.",
+      "s": "Please do not ___ now because I want to study.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "turn your music up loud",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to turn your music up loud",
+          "tier": "full"
+        },
+        {
+          "text": "turn your music up loud",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to turn your music up loud",
+            "tier": "full"
+          },
+          {
+            "text": "turn your music up loud",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "deine Musik laut aufdrehen",
+            "tier": "full"
+          },
+          {
+            "text": "die Musik laut aufdrehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "loud",
+          "de": "laut",
+          "scope": "d"
+        },
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to have a party at home",
+        "to go to the disco",
+        "to play video games all day"
+      ],
+      "hintDe": "Du machst deine Musik so laut, dass alle sie hören.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to have a party at home",
+          "to go to the disco",
+          "to play video games all day",
+          "to scroll through your phone"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-go-to-the-disco",
+      "w": "to go to the disco",
+      "g": "in die Disco gehen",
+      "d": "to spend an evening out dancing to music",
+      "s": "Are you allowed to ___ on Saturday and dance?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "go to the disco",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to go to the disco",
+          "tier": "full"
+        },
+        {
+          "text": "go to the disco",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to go to the disco",
+            "tier": "full"
+          },
+          {
+            "text": "go to the disco",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in die Disco gehen",
+            "tier": "full"
+          },
+          {
+            "text": "auf die Disco gehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "allowed",
+          "de": "dürfen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to have a party at home",
+        "to hang out in shopping centres",
+        "to stay up"
+      ],
+      "hintDe": "Du gehst am Abend aus und tanzt zur Musik.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to have a party at home",
+          "to hang out in shopping centres",
+          "to stay up",
+          "to come home after ten"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-play-video-games-all-day",
+      "w": "to play video games all day",
+      "g": "den ganzen Tag Videospiele spielen",
+      "d": "to spend many hours at a screen, from morning to night.",
+      "s": "On rainy days he likes to ___ from morning to night.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "play video games all day",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to play video games all day",
+          "tier": "full"
+        },
+        {
+          "text": "play video games all day",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to play video games all day",
+            "tier": "full"
+          },
+          {
+            "text": "play video games all day",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "den ganzen Tag Videospiele spielen",
+            "tier": "full"
+          },
+          {
+            "text": "den ganzen Tag Videospiele zocken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hours",
+          "de": "Stunden",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to watch TV after 10 o'clock",
+        "to scroll through your phone",
+        "to go to the disco"
+      ],
+      "hintDe": "Du sitzt den ganzen Tag am Bildschirm und spielst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to watch TV after 10 o'clock",
+          "to scroll through your phone",
+          "to go to the disco",
+          "to hang out in shopping centres"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-watch-tv-after-10-o-clock",
+      "w": "to watch TV after 10 o'clock",
+      "g": "nach 22 Uhr fernsehen",
+      "d": "to be in front of a screen very late at night.",
+      "s": "I am not allowed to ___ on school nights, so I go to bed early.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "watch TV after 10 o'clock",
+          "tier": "full"
+        },
+        {
+          "text": "watch TV after ten",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to watch TV after 10 o'clock",
+          "tier": "full"
+        },
+        {
+          "text": "watch TV after 10 o'clock",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to watch TV after 10 o'clock",
+            "tier": "full"
+          },
+          {
+            "text": "watch TV after 10 o'clock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nach 22 Uhr fernsehen",
+            "tier": "full"
+          },
+          {
+            "text": "nach zehn Uhr fernsehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "allowed",
+          "de": "dürfen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to stay up",
+        "to play video games all day",
+        "to come home after ten"
+      ],
+      "hintDe": "Du sitzt nach zehn Uhr abends noch vor dem Fernseher.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to stay up",
+          "to play video games all day",
+          "to come home after ten",
+          "to scroll through your phone"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-be-allowed-to-do-sth",
+      "w": "to be allowed to do sth.",
+      "g": "etw. tun dürfen",
+      "d": "to have permission to do a thing",
+      "s": "We are ___ use our tablets at break, but not in class.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "allowed to",
+          "tier": "full"
+        },
+        {
+          "text": "be allowed to",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to be allowed to do sth.",
+          "tier": "full"
+        },
+        {
+          "text": "be allowed to do sth.",
+          "tier": "full"
+        },
+        {
+          "text": "to be allowed to",
+          "tier": "full"
+        },
+        {
+          "text": "allowed to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be allowed to do sth.",
+            "tier": "full"
+          },
+          {
+            "text": "to be allowed to do something",
+            "tier": "full"
+          },
+          {
+            "text": "be allowed to do sth.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etw. tun dürfen",
+            "tier": "full"
+          },
+          {
+            "text": "etwas tun dürfen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "permission",
+          "de": "Erlaubnis",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to stay up",
+        "to invite sb. over",
+        "to sort out"
+      ],
+      "hintDe": "Du hast die Erlaubnis, etwas zu tun.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to stay up",
+          "to invite sb. over",
+          "to sort out",
+          "to remind sb."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.it-s-a-pity",
+      "w": "It's a pity.",
+      "g": "Das ist schade.",
+      "d": "a way to show you feel bad that a good thing did not happen",
+      "s": "You can't come to the match on Saturday? ___ We wanted you with us.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "It's a pity.",
+          "tier": "full"
+        },
+        {
+          "text": "It's a pity",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It's a pity.",
+          "tier": "full"
+        },
+        {
+          "text": "It's a pity",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It's a pity.",
+            "tier": "full"
+          },
+          {
+            "text": "It's a pity",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Das ist schade.",
+            "tier": "full"
+          },
+          {
+            "text": "Schade.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "It depends.",
+        "Never mind!",
+        "for a change"
+      ],
+      "hintDe": "Du zeigst, dass du etwas schade findest.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "It depends.",
+          "Never mind!",
+          "for a change",
+          "unbelievable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.strict",
+      "w": "strict",
+      "g": "streng",
+      "d": "having many rules and wanting people to follow them",
+      "s": "Our maths teacher is very ___ and we must do everything on time.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "strict",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "strict",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "strict",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "streng",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "follow",
+          "de": "befolgen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "rude",
+        "conservative",
+        "unbelievable"
+      ],
+      "hintDe": "Du hast viele Regeln und willst, dass alle sie einhalten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "rude",
+          "conservative",
+          "unbelievable",
+          "plenty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-adopt",
+      "w": "to adopt",
+      "g": "annehmen",
+      "d": "to begin using a new way",
+      "s": "Our school will ___ a new rule about mobile phones from September.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "adopt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to adopt",
+          "tier": "full"
+        },
+        {
+          "text": "adopt",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to adopt",
+            "tier": "full"
+          },
+          {
+            "text": "adopt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "annehmen",
+            "tier": "full"
+          },
+          {
+            "text": "übernehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to pray",
+        "to punish",
+        "to sort out"
+      ],
+      "hintDe": "Du beginnst, etwas Neues anzuwenden.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to pray",
+          "to punish",
+          "to sort out",
+          "to remind sb."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.community",
+      "w": "community",
+      "g": "Gemeinschaft",
+      "d": "the people who live in one place",
+      "s": "All the people in our ___ work to keep the park clean.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "community",
+          "tier": "full"
+        },
+        {
+          "text": "communities",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "community",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "community",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gemeinschaft",
+            "tier": "full"
+          },
+          {
+            "text": "Gemeinde",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "journalist",
+        "modern technology",
+        "litter-picking"
+      ],
+      "hintDe": "Das sind die Menschen, die an einem Ort wohnen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "journalist",
+          "modern technology",
+          "litter-picking",
+          "plenty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.conservative",
+      "w": "conservative",
+      "g": "konservativ",
+      "d": "wanting to keep the old way of life and not wanting anything new",
+      "s": "The most ___ groups keep all the old traditions and use no machines.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "conservative",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "conservative",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "conservative",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "konservativ",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "strict",
+        "rude",
+        "modern technology"
+      ],
+      "hintDe": "Du willst das Alte behalten und nichts Neues.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "strict",
+          "rude",
+          "modern technology",
+          "unbelievable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.modern-technology",
+      "w": "modern technology",
+      "g": "moderne Technologie",
+      "d": "new tools and machines like tablets that we use today",
+      "s": "The most conservative Amish groups do not use ___, like machines.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "modern technology",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "modern technology",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "modern technology",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "moderne Technologie",
+            "tier": "full"
+          },
+          {
+            "text": "moderne Technik",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "community",
+        "journalist",
+        "litter-picking"
+      ],
+      "hintDe": "Das sind neue Geräte und Maschinen von heute.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "community",
+          "journalist",
+          "litter-picking",
+          "plenty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.plenty",
+      "w": "plenty",
+      "g": "reichlich",
+      "d": "more than you need of a thing",
+      "s": "There is ___ of pizza for all the guests.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "plenty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plenty",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "plenty",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "reichlich",
+            "tier": "full"
+          },
+          {
+            "text": "genug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "strict",
+        "rude",
+        "conservative"
+      ],
+      "hintDe": "Du hast mehr als genug von etwas.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "strict",
+          "rude",
+          "conservative",
+          "unbelievable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-pray",
+      "w": "to pray",
+      "g": "beten",
+      "d": "to talk to God",
+      "s": "The families in her church group often meet to ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pray",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to pray",
+          "tier": "full"
+        },
+        {
+          "text": "pray",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to pray",
+            "tier": "full"
+          },
+          {
+            "text": "pray",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "God",
+          "de": "Gott",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to punish",
+        "to adopt",
+        "to freeze"
+      ],
+      "hintDe": "Du sprichst zu Gott.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to punish",
+          "to adopt",
+          "to freeze",
+          "to lend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-punish",
+      "w": "to punish",
+      "g": "bestrafen",
+      "d": "to give a child a bad time because they were bad",
+      "s": "My parents ___ me when I am bad and take away my tablet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "punish",
+          "tier": "full"
+        },
+        {
+          "text": "punished",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to punish",
+          "tier": "full"
+        },
+        {
+          "text": "punish",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to punish",
+            "tier": "full"
+          },
+          {
+            "text": "punish",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bestrafen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to pray",
+        "to remind sb.",
+        "to adopt"
+      ],
+      "hintDe": "Du gibst einem Kind etwas Schlimmes, weil es böse war.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to pray",
+          "to remind sb.",
+          "to adopt",
+          "to lend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.it-depends",
+      "w": "It depends.",
+      "g": "Es kommt darauf an.",
+      "d": "a way to tell a friend it is not always yes or no",
+      "s": "Are you allowed to stay up at the weekend? — ___ I can, but not on school nights.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "It depends.",
+          "tier": "full"
+        },
+        {
+          "text": "It depends",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It depends.",
+          "tier": "full"
+        },
+        {
+          "text": "It depends",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It depends.",
+            "tier": "full"
+          },
+          {
+            "text": "It depends",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Es kommt darauf an.",
+            "tier": "full"
+          },
+          {
+            "text": "Das hängt davon ab.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "allowed",
+          "de": "dürfen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "It's a pity.",
+        "Never mind!",
+        "for a change"
+      ],
+      "hintDe": "Du sagst, es ist nicht immer ja oder nein.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "It's a pity.",
+          "Never mind!",
+          "for a change",
+          "unbelievable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-stay-up",
+      "w": "to stay up",
+      "g": "aufbleiben",
+      "d": "to be awake at night and not go to bed",
+      "s": "On Saturdays I can ___ and watch a film with my friends.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stay up",
+          "tier": "full"
+        },
+        {
+          "text": "stayed up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to stay up",
+          "tier": "full"
+        },
+        {
+          "text": "stay up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to stay up",
+            "tier": "full"
+          },
+          {
+            "text": "stay up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufbleiben",
+            "tier": "full"
+          },
+          {
+            "text": "wach bleiben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to invite sb. over",
+        "to sort out",
+        "to remind sb."
+      ],
+      "hintDe": "Du gehst nicht ins Bett und bleibst spät wach.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to invite sb. over",
+          "to sort out",
+          "to remind sb.",
+          "to come home after ten"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-invite-sb-over",
+      "w": "to invite sb. over",
+      "g": "jdn. zu sich einladen",
+      "d": "to ask a friend to come to your place",
+      "s": "Are you allowed to ___ for dinner tonight?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "invite friends over",
+          "tier": "full"
+        },
+        {
+          "text": "invite a friend over",
+          "tier": "full"
+        },
+        {
+          "text": "invite sb. over",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to invite sb. over",
+          "tier": "full"
+        },
+        {
+          "text": "invite sb. over",
+          "tier": "full"
+        },
+        {
+          "text": "invite over",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to invite sb. over",
+            "tier": "full"
+          },
+          {
+            "text": "invite sb. over",
+            "tier": "full"
+          },
+          {
+            "text": "to invite somebody over",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jdn. zu sich einladen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden zu sich einladen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "allowed",
+          "de": "dürfen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to stay up",
+        "to sort out",
+        "to remind sb."
+      ],
+      "hintDe": "Du bittest einen Freund, zu dir zu kommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to stay up",
+          "to sort out",
+          "to remind sb.",
+          "to lend"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.for-a-change",
+      "w": "for a change",
+      "g": "zur Abwechslung",
+      "d": "when you do one thing not like you always do",
+      "s": "Let's go to school on foot today ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "for a change",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "for a change",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "for a change",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zur Abwechslung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "It depends.",
+        "Never mind!",
+        "plenty"
+      ],
+      "hintDe": "Du machst einmal etwas anderes als sonst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "It depends.",
+          "Never mind!",
+          "plenty",
+          "It's a pity."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.journalist",
+      "w": "journalist",
+      "g": "Journalist/Journalistin",
+      "d": "a man or woman who writes stories for a newspaper",
+      "s": "My dad's friend is a ___ at the local paper.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "journalist",
+          "tier": "full"
+        },
+        {
+          "text": "journalists",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "journalist",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "journalist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Journalist",
+            "tier": "full"
+          },
+          {
+            "text": "Journalistin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "local",
+          "de": "örtlich",
+          "scope": "s"
+        },
+        {
+          "word": "paper",
+          "de": "Zeitung",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "community",
+        "modern technology",
+        "litter-picking"
+      ],
+      "hintDe": "Diese Person schreibt Berichte für eine Zeitung.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "community",
+          "modern technology",
+          "litter-picking",
+          "plenty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.litter-picking",
+      "w": "litter-picking",
+      "g": "Müllsammeln",
+      "d": "cleaning rubbish from the ground outside",
+      "s": "How about we organise a ___ day at the park?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "litter-picking",
+          "tier": "full"
+        },
+        {
+          "text": "litter picking",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "litter-picking",
+          "tier": "full"
+        },
+        {
+          "text": "litter picking",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "litter-picking",
+            "tier": "full"
+          },
+          {
+            "text": "litter picking",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Müllsammeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "journalist",
+        "community",
+        "modern technology"
+      ],
+      "hintDe": "Du sammelst Müll vom Boden draußen auf.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "journalist",
+          "community",
+          "modern technology",
+          "plenty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.rude",
+      "w": "rude",
+      "g": "unhöflich",
+      "d": "not nice when you speak to people",
+      "s": "When some people asked them to stop, they were ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rude",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rude",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rude",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unhöflich",
+            "tier": "full"
+          },
+          {
+            "text": "unverschämt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "strict",
+        "conservative",
+        "unbelievable"
+      ],
+      "hintDe": "Du bist nicht nett, wenn du mit Leuten sprichst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "strict",
+          "conservative",
+          "unbelievable",
+          "plenty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.unbelievable",
+      "w": "unbelievable",
+      "g": "unglaublich",
+      "d": "so amazing or strange that it is very surprising",
+      "s": "There was rubbish all over the park. It's ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "unbelievable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unbelievable",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unbelievable",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unglaublich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "strange",
+          "de": "seltsam",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "rude",
+        "strict",
+        "conservative"
+      ],
+      "hintDe": "Etwas ist so erstaunlich, dass man es kaum glauben kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "rude",
+          "strict",
+          "conservative",
+          "plenty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-freeze",
+      "w": "to freeze",
+      "g": "(er-)frieren",
+      "d": "to become very cold",
+      "s": "She is from a hot country, so she will ___ over here in the snow.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "freeze",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to freeze",
+          "tier": "full"
+        },
+        {
+          "text": "freeze",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to freeze",
+            "tier": "full"
+          },
+          {
+            "text": "freeze",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "frieren",
+            "tier": "full"
+          },
+          {
+            "text": "erfrieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to pray",
+        "to lend",
+        "to punish"
+      ],
+      "hintDe": "Dir wird sehr kalt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to pray",
+          "to lend",
+          "to punish",
+          "to sort out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-lend",
+      "w": "to lend",
+      "g": "(ver-)leihen",
+      "d": "to give a thing to a friend for a short time",
+      "s": "I could ___ her some of my clothes if you like.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lend",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to lend",
+          "tier": "full"
+        },
+        {
+          "text": "lend",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to lend",
+            "tier": "full"
+          },
+          {
+            "text": "lend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "leihen",
+            "tier": "full"
+          },
+          {
+            "text": "verleihen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to freeze",
+        "to remind sb.",
+        "to sort out"
+      ],
+      "hintDe": "Du gibst einem Freund eine Sache für kurze Zeit.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to freeze",
+          "to remind sb.",
+          "to sort out",
+          "to invite sb. over"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.never-mind",
+      "w": "Never mind!",
+      "g": "Egal!",
+      "d": "a way to tell a friend it is OK and not bad",
+      "s": "Sorry about that! — ___ It is no problem.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Never mind!",
+          "tier": "full"
+        },
+        {
+          "text": "Never mind",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Never mind!",
+          "tier": "full"
+        },
+        {
+          "text": "Never mind",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Never mind!",
+            "tier": "full"
+          },
+          {
+            "text": "Never mind",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Egal!",
+            "tier": "full"
+          },
+          {
+            "text": "Schon gut!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "It depends.",
+        "It's a pity.",
+        "for a change"
+      ],
+      "hintDe": "Du sagst einem Freund, dass es in Ordnung ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "It depends.",
+          "It's a pity.",
+          "for a change",
+          "unbelievable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-remind-sb",
+      "w": "to remind sb.",
+      "g": "jdn. erinnern",
+      "d": "to make a friend think of a thing again",
+      "s": "Please ___ me to bring my book tomorrow.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "remind",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to remind sb.",
+          "tier": "full"
+        },
+        {
+          "text": "remind sb.",
+          "tier": "full"
+        },
+        {
+          "text": "remind",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to remind sb.",
+            "tier": "full"
+          },
+          {
+            "text": "remind sb.",
+            "tier": "full"
+          },
+          {
+            "text": "to remind somebody",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jdn. erinnern",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden erinnern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to lend",
+        "to invite sb. over",
+        "to sort out"
+      ],
+      "hintDe": "Du sorgst dafür, dass ein Freund wieder an etwas denkt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to lend",
+          "to invite sb. over",
+          "to sort out",
+          "to punish"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u09.w.to-sort-out",
+      "w": "to sort out",
+      "g": "aussortieren",
+      "d": "to look at all your clothes and keep some and give some away",
+      "s": "I'm going to ___ my clothes and give the old ones to Bianca.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sort out",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to sort out",
+          "tier": "full"
+        },
+        {
+          "text": "sort out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to sort out",
+            "tier": "full"
+          },
+          {
+            "text": "sort out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aussortieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to invite sb. over",
+        "to remind sb.",
+        "to lend"
+      ],
+      "hintDe": "Du schaust deine Sachen durch und entscheidest, was bleibt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to invite sb. over",
+          "to remind sb.",
+          "to lend",
+          "to stay up"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}
