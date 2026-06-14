@@ -1485,6 +1485,24 @@
       "reason": "unit-6 a-lot-of: bare \"lot\" exposed in the deliberate-error item \"a lot friends\" (missing of)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u07",
+      "itemId": null,
+      "field": null,
+      "token": "don't",
+      "reason": "unit-7 Present simple negative (SB box): do not/does not contractions",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u07",
+      "itemId": null,
+      "field": null,
+      "token": "doesn't",
+      "reason": "unit-7 Present simple negative (SB box): do not/does not contractions",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

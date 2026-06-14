@@ -1,0 +1,3694 @@
+{
+  "schema": "grammar@1",
+  "grade": 1,
+  "unit": 7,
+  "slug": "g1-u07",
+  "items": [
+    {
+      "id": "g1u07.gi.adverbs-frequency.ag.001",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: sometimes. Single token, 9 letters."
+      },
+      "prompt": {
+        "text": "manchmal (etwa 50%)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "sometimes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das englische Wort für „manchmal\" – es beginnt mit s.",
+      "hintEn": null,
+      "explainDe": "„manchmal\" heißt auf Englisch „sometimes\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.ag.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: never. Single token, 5 letters."
+      },
+      "prompt": {
+        "text": "nie (0%)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "never",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das englische Wort für „nie\" – es beginnt mit n.",
+      "hintEn": null,
+      "explainDe": "„nie\" heißt auf Englisch „never\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.cp.001",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I always eat breakfast.",
+            "I eat always breakfast.",
+            "Always I eat breakfast.",
+            "I eat breakfast always."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: always. Each distractor wrong only in adverb position."
+      },
+      "prompt": {
+        "text": "Your friend asks about breakfast. You eat breakfast 100% of the time.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I always eat breakfast.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I eat always breakfast.",
+        "Always I eat breakfast.",
+        "I eat breakfast always."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such den Satz, in dem das Häufigkeitswort direkt vor dem Verb steht.",
+      "hintEn": null,
+      "explainDe": "Nur „I always eat breakfast.\" hat das Wort an der richtigen Stelle – vor dem Hauptverb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.cp.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She is always hungry.",
+            "She always is hungry.",
+            "She is hungry always.",
+            "Always she is hungry."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: always. be-position context-picker; first distractor is the before-be error."
+      },
+      "prompt": {
+        "text": "Your friend asks about your sister. She is hungry all the time.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is always hungry.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She always is hungry.",
+        "She is hungry always.",
+        "Always she is hungry."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei „is\" (be) steht das Häufigkeitswort danach. Such diesen Satz.",
+      "hintEn": null,
+      "explainDe": "Beim Verb be steht das Wort nach dem Verb: She is always hungry. Die anderen Sätze haben es an der falschen Stelle.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.ec.001",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: always. Common error from brief: adverb after main verb (German order)."
+      },
+      "prompt": {
+        "text": "I eat always breakfast.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I always eat breakfast.",
+          "tier": "full"
+        },
+        {
+          "text": "always eat",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Häufigkeitswort steht im Deutschen nach dem Verb, im Englischen aber davor.",
+      "hintEn": null,
+      "explainDe": "„always\" muss vor das Hauptverb: I always eat breakfast. Nicht „eat always\".",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.ec.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: always. Common error from brief: adverb before be."
+      },
+      "prompt": {
+        "text": "She always is happy.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is always happy.",
+          "tier": "full"
+        },
+        {
+          "text": "is always",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei „is\" (be) steht das Häufigkeitswort danach, nicht davor.",
+      "hintEn": null,
+      "explainDe": "Beim Verb be steht das Wort nach dem Verb: She is always happy. Nicht „She always is …\".",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.ec.003",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: never. Wrong-position error; 3rd-person verb stays drinks."
+      },
+      "prompt": {
+        "text": "He drinks never milk.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He never drinks milk.",
+          "tier": "full"
+        },
+        {
+          "text": "never drinks",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„never\" gehört vor das Hauptverb „drinks\", nicht danach.",
+      "hintEn": null,
+      "explainDe": "„never\" steht vor dem Hauptverb: He never drinks milk. Nicht „drinks never\".",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.gf.001",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": "m1-u7-adverbs-frequency-gf-001",
+        "narrative": null,
+        "note": "Adverb used: always. Carrier from SB grammar box pattern (I'm always …)."
+      },
+      "prompt": {
+        "text": "I ___ eat breakfast before school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "always",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Wort für „immer\" (100%) steht direkt vor dem Verb „eat\".",
+      "hintEn": null,
+      "explainDe": "Häufigkeitswörter wie „always\" stehen vor dem Hauptverb: I always eat breakfast.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.gf.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: never. Carrier verbatim from SB box (I never drink milk.)."
+      },
+      "prompt": {
+        "text": "I ___ drink milk. I don't like it. (0%)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "never",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "0% heißt „nie\". Das Wort steht direkt vor dem Verb „drink\".",
+      "hintEn": null,
+      "explainDe": "„never\" (0%) steht vor dem Hauptverb: I never drink milk.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.gf.003",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": "m1-u7-adverbs-frequency-gf-002",
+        "narrative": null,
+        "note": "Adverb used: usually."
+      },
+      "prompt": {
+        "text": "She ___ eats cheese for lunch. (80%)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "usually",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "80% ist „gewöhnlich/normalerweise\". Das Wort steht vor dem Verb „eats\".",
+      "hintEn": null,
+      "explainDe": "„usually\" (etwa 80%) steht vor dem Hauptverb: She usually eats cheese.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.gf.004",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": "m1-u7-adverbs-frequency-gf-004",
+        "narrative": null,
+        "note": "Adverb used: sometimes. Mirrors SB box (We sometimes have curry.)."
+      },
+      "prompt": {
+        "text": "We ___ have pizza for dinner. (50%)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "sometimes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "50% heißt „manchmal\". Das Wort steht vor dem Verb „have\".",
+      "hintEn": null,
+      "explainDe": "„sometimes\" (etwa 50%) steht vor dem Hauptverb: We sometimes have pizza.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.gf.005",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: always. be-case, carrier verbatim from SB box (I'm always hungry.)."
+      },
+      "prompt": {
+        "text": "I'm ___ hungry in the morning. (100%)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "always",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach „I'm\" (be) steht das Häufigkeitswort. 100% = immer.",
+      "hintEn": null,
+      "explainDe": "Beim Verb be steht das Häufigkeitswort danach: I'm always hungry.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.gf.006",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverbs used: often, always. Two-blank: contrasts main-verb position vs be-position in one carrier."
+      },
+      "prompt": {
+        "text": "He ___ eats rice, and his sister is ___ hungry. (often / always)",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "often | always",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor dem Hauptverb „eats\" steht „often\". Nach „is\" (be) steht „always\".",
+      "hintEn": null,
+      "explainDe": "Vor dem Hauptverb: He often eats rice. Nach be: his sister is always hungry. Beide Stellungen in einem Satz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.gs.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": "m1-u7-adverbs-frequency-gs-001",
+        "narrative": null,
+        "note": "Adverbs used: never, sometimes, always. 3 groups x 2 members; in-bank %-labels; members are full carriers."
+      },
+      "prompt": {
+        "text": "Wie oft? Sortiere von 0% bis 100%.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "0%",
+          "members": [
+            "I never eat fish.",
+            "She never drinks milk."
+          ]
+        },
+        {
+          "label": "50%",
+          "members": [
+            "We sometimes have pizza.",
+            "He sometimes eats cake."
+          ]
+        },
+        {
+          "label": "100%",
+          "members": [
+            "I always eat breakfast.",
+            "They always drink tea."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "never = 0%, sometimes = etwa 50%, always = 100%.",
+      "hintEn": null,
+      "explainDe": "Häufigkeit von wenig zu viel: never (0%), sometimes (50%), always (100%).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.mc.004",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She always eats cheese.",
+            "She eats always cheese.",
+            "Always she eats cheese.",
+            "She eats cheese always."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-mc-001",
+        "narrative": null,
+        "note": "Adverb used: always. Each distractor is wrong only in adverb position."
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She always eats cheese.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She eats always cheese.",
+        "Always she eats cheese.",
+        "She eats cheese always."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Häufigkeitswort steht direkt vor dem Hauptverb „eats\".",
+      "hintEn": null,
+      "explainDe": "„always\" steht vor dem Hauptverb: She always eats cheese. Nicht nach dem Verb.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.mc.005",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He is always hungry.",
+            "He always is hungry.",
+            "Always he is hungry.",
+            "He is hungry always."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-mc-002",
+        "narrative": null,
+        "note": "Adverb used: always. be-position minimal pair; first distractor is the classic before-be error."
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He is always hungry.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He always is hungry.",
+        "Always he is hungry.",
+        "He is hungry always."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei „is\" (be) steht das Häufigkeitswort danach, nicht davor.",
+      "hintEn": null,
+      "explainDe": "Beim Verb be steht das Wort nach dem Verb: He is always hungry. Nicht „He always is …\".",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.mc.006",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I never eat fish.",
+            "I eat never fish.",
+            "I don't never eat fish.",
+            "Never I eat fish."
+          ],
+          "chipBudget": null,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-mc-003",
+        "narrative": null,
+        "note": "Adverb used: never. Tests position + double-negative trap."
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I never eat fish.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I eat never fish.",
+        "I don't never eat fish.",
+        "Never I eat fish."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„never\" steht vor dem Hauptverb – und ein zweites „not/don't\" brauchst du nicht.",
+      "hintEn": null,
+      "explainDe": "„never\" steht vor dem Hauptverb und ist schon verneint: I never eat fish. Kein „don't\" dazu.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.mp.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverbs used: always, sometimes, never, often. En-En, 4 unique right-sides; left-sides already show correct adverb position."
+      },
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I always eat breakfast",
+          "right": "in the morning."
+        },
+        {
+          "left": "We sometimes have pizza",
+          "right": "for lunch."
+        },
+        {
+          "left": "She never drinks milk",
+          "right": "at school."
+        },
+        {
+          "left": "He often has soup",
+          "right": "for dinner."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Welcher zweite Teil passt zur Mahlzeit oder Tageszeit?",
+      "hintEn": null,
+      "explainDe": "Jeder Satzanfang mit Häufigkeitswort passt zu genau einem Ende: breakfast in the morning, pizza for lunch, milk at school, soup for dinner.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.mt.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverbs used: never, usually, often, sometimes. En-En, 4 unique right-sides."
+      },
+      "prompt": {
+        "text": "Wie oft? Bilde die Sätze.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I never",
+          "right": "eat fish."
+        },
+        {
+          "left": "She usually",
+          "right": "drinks tea."
+        },
+        {
+          "left": "We often",
+          "right": "have rice."
+        },
+        {
+          "left": "He sometimes",
+          "right": "eats cake."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf das Verb: nach he/she steht eats/drinks, nach I/we steht eat/have.",
+      "hintEn": null,
+      "explainDe": "Das Häufigkeitswort steht vor dem Hauptverb, und nach he/she bekommt das Verb ein -s: She usually drinks tea, He sometimes eats cake.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.sb.001",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I",
+            "always",
+            "eat",
+            "breakfast",
+            "never",
+            "drinks"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-sb-001",
+        "narrative": null,
+        "note": "Adverb used: always. 4 answer chips + 2 in-bank distractor chips (never, drinks)."
+      },
+      "prompt": {
+        "text": "always / I / eat / breakfast",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I always eat breakfast.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Wer? – Häufigkeitswort – Verb – Rest.",
+      "hintEn": null,
+      "explainDe": "Das Häufigkeitswort steht vor dem Hauptverb: I always eat breakfast.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.sb.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She",
+            "is",
+            "always",
+            "hungry",
+            "never",
+            "happy"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-sb-003",
+        "narrative": null,
+        "note": "Adverb used: always. be-position word order; 4 answer chips + 2 in-bank distractor chips (never, happy)."
+      },
+      "prompt": {
+        "text": "is / She / always / hungry",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is always hungry.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei „is\" (be) kommt „always\" nach dem Verb: is + always.",
+      "hintEn": null,
+      "explainDe": "Beim Verb be steht das Wort danach: She is always hungry.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.sb.003",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "We",
+            "never",
+            "drink",
+            "milk",
+            "always",
+            "eat"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: never. 4 answer chips + 2 in-bank distractor chips (always, eat)."
+      },
+      "prompt": {
+        "text": "never / We / drink / milk",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We never drink milk.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„never\" steht vor dem Hauptverb „drink\".",
+      "hintEn": null,
+      "explainDe": "Das Häufigkeitswort steht vor dem Hauptverb: We never drink milk.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.tf.001",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-tf-001",
+        "narrative": null,
+        "note": "Adverb used: usually. Insert adverb before main verb."
+      },
+      "prompt": {
+        "text": "I drink tea. (usually)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I usually drink tea.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Setz „usually\" an die richtige Stelle: direkt vor das Hauptverb „drink\".",
+      "hintEn": null,
+      "explainDe": "Das Häufigkeitswort steht vor dem Hauptverb: I usually drink tea.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.tf.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-tf-002",
+        "narrative": null,
+        "note": "Adverb used: often. be-case insertion (after the verb)."
+      },
+      "prompt": {
+        "text": "They are happy. (often)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They are often happy.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei „are\" (be) steht „often\" nach dem Verb.",
+      "hintEn": null,
+      "explainDe": "Beim Verb be steht das Wort danach: They are often happy.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.tf.003",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#reading",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adverb used: never. From reading text (Lethabo's sister never eats meat)."
+      },
+      "prompt": {
+        "text": "She eats meat. (never)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She never eats meat.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„never\" kommt vor das Hauptverb – das Verb bleibt „eats\".",
+      "hintEn": null,
+      "explainDe": "„never\" steht vor dem Hauptverb: She never eats meat. Das -s am Verb bleibt.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.tr.001",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-tr-001",
+        "narrative": null,
+        "note": "Adverb used: always. deToEn; eat/have both full."
+      },
+      "prompt": {
+        "text": "Ich esse immer Frühstück.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I always eat breakfast.",
+          "tier": "full"
+        },
+        {
+          "text": "I always have breakfast.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„immer\" = always, und es steht vor dem Hauptverb.",
+      "hintEn": null,
+      "explainDe": "„always\" steht vor dem Hauptverb: I always eat breakfast. (auch: I always have breakfast.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.adverbs-frequency.tr.002",
+      "structureId": "g1u07.s.adverbs-frequency",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-adverbs-frequency-tr-002",
+        "narrative": null,
+        "note": "Adverb used: sometimes. deToEn; be-position, sentence-initial variant also full."
+      },
+      "prompt": {
+        "text": "Sie ist manchmal hungrig.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She is sometimes hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "Sometimes she is hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "She's sometimes hungry.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei „is\" (be) steht „sometimes\" nach dem Verb – oder ganz am Anfang.",
+      "hintEn": null,
+      "explainDe": "Beim Verb be steht das Wort danach: She is sometimes hungry. (auch am Satzanfang: Sometimes she is hungry.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.cp.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I want a ice cream.",
+            "I want the ice cream.",
+            "I want ice cream.",
+            "I want some ice cream.",
+            "I want a an ice cream."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "an + ice cream; ice cream is bare-valid so wrong-article distractors stay gate-clean"
+      },
+      "prompt": {
+        "text": "Du zeigst auf den Nachtisch und sagst, was du willst. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want an ice cream.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I want a ice cream.",
+        "I want the ice cream.",
+        "I want ice cream."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ice cream beginnt mit einem Selbstlaut. Welcher Satz hat die richtige Form davor?",
+      "hintEn": null,
+      "explainDe": "I want an ice cream. Vor dem Selbstlaut i steht an, nicht a.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.cp.002",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I want an hamburger.",
+            "I want the hamburger.",
+            "I want hamburger.",
+            "I want some hamburger.",
+            "I want a an hamburger."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "a + hamburger; distractors gate-clean, flawed in the article only"
+      },
+      "prompt": {
+        "text": "Du sagst dem Kellner, was du möchtest. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want a hamburger.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I want an hamburger.",
+        "I want the hamburger.",
+        "I want hamburger."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "hamburger beginnt mit einem Mitlaut. Welcher Satz hat die richtige Form?",
+      "hintEn": null,
+      "explainDe": "I want a hamburger. Vor dem Mitlaut h steht a, nicht an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.ec.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-ec-001",
+        "narrative": null,
+        "note": "a → an before onion (vowel sound)"
+      },
+      "prompt": {
+        "text": "Finde den Fehler und verbessere ihn: It is a onion.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is an onion.",
+          "tier": "full"
+        },
+        {
+          "text": "an onion",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "onion beginnt mit einem Selbstlaut. Vor a oder an muss der richtige Laut passen.",
+      "hintEn": null,
+      "explainDe": "onion beginnt mit einem Selbstlaut, also an onion — nicht a onion.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.ec.002",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "an → a before pizza (consonant sound)"
+      },
+      "prompt": {
+        "text": "Finde den Fehler und verbessere ihn: She has an pizza.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has a pizza.",
+          "tier": "full"
+        },
+        {
+          "text": "a pizza",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "pizza beginnt mit einem Mitlaut. Welche Form muss davor stehen?",
+      "hintEn": null,
+      "explainDe": "pizza beginnt mit einem Mitlaut, also a pizza — nicht an pizza.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.ec.003",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-ec-002",
+        "narrative": null,
+        "note": "a → an before egg (vowel sound)"
+      },
+      "prompt": {
+        "text": "Finde den Fehler und verbessere ihn: I want a egg for breakfast.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want an egg for breakfast.",
+          "tier": "full"
+        },
+        {
+          "text": "an egg",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "egg beginnt mit einem Selbstlaut. Verbessere die Form davor.",
+      "hintEn": null,
+      "explainDe": "Vor dem Selbstlaut e steht an: an egg — nicht a egg.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.gf.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": "m1-u7-articles-gf-003",
+        "narrative": null,
+        "note": "an + egg (vowel sound)"
+      },
+      "prompt": {
+        "text": "He wants ___ egg for breakfast.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "an",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "egg beginnt mit einem Selbstlaut (e). Welche Form passt vor einem Selbstlaut?",
+      "hintEn": null,
+      "explainDe": "Vor einem Selbstlaut (a, e, i, o, u) steht an: an egg.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.gf.002",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1",
+        "seedV1": "m1-u7-articles-gf-001",
+        "narrative": null,
+        "note": "a + hot dog (consonant sound)"
+      },
+      "prompt": {
+        "text": "I eat ___ hot dog.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "hot dog beginnt mit einem Mitlaut (h). Welche Form passt vor einem Mitlaut?",
+      "hintEn": null,
+      "explainDe": "Vor einem Mitlaut (Konsonant) steht a: a hot dog.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.gf.003",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "a + pizza (consonant sound)"
+      },
+      "prompt": {
+        "text": "She has ___ pizza for lunch.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "a",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "pizza beginnt mit einem Mitlaut (p). Welche Form passt?",
+      "hintEn": null,
+      "explainDe": "Vor einem Mitlaut steht a: a pizza.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.gf.004",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "an + onion (vowel sound)"
+      },
+      "prompt": {
+        "text": "It is ___ onion.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "an",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "onion beginnt mit einem Selbstlaut (o). Welche Form steht davor?",
+      "hintEn": null,
+      "explainDe": "Vor einem Selbstlaut steht an: an onion.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.gf.005",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "an + ice cream (vowel sound)"
+      },
+      "prompt": {
+        "text": "Do you want ___ ice cream?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "an",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ice cream beginnt mit einem Selbstlaut (i). Welche Form passt davor?",
+      "hintEn": null,
+      "explainDe": "Vor einem Selbstlaut steht an: an ice cream.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.gf.006",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-gf-004",
+        "narrative": null,
+        "note": "an + egg / a + hot dog; multi-blank pipe-split in answer order"
+      },
+      "prompt": {
+        "text": "I want ___ egg and ___ hot dog.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "an | a",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "egg beginnt mit einem Selbstlaut, hot dog mit einem Mitlaut. Fülle beide Lücken passend.",
+      "hintEn": null,
+      "explainDe": "an egg (Selbstlaut) und a hot dog (Mitlaut). Schau dir den ersten Laut jedes Wortes an.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.gf.007",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "a + tomato / an + onion; multi-blank pipe-split"
+      },
+      "prompt": {
+        "text": "She has ___ tomato and ___ onion.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "a | an",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "tomato beginnt mit einem Mitlaut, onion mit einem Selbstlaut. Achte auf den ersten Laut.",
+      "hintEn": null,
+      "explainDe": "a tomato (Mitlaut) und an onion (Selbstlaut). Der erste Laut entscheidet.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.gs.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-gs-001",
+        "narrative": null,
+        "note": "2 groups, 5 members each; labels a/an in-bank; members full a/an phrases (all gate-clean)"
+      },
+      "prompt": {
+        "text": "a oder an? Sortiere die Wörter.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "a",
+          "members": [
+            "a hot dog",
+            "a pizza",
+            "a tomato",
+            "a carrot",
+            "a sandwich"
+          ]
+        },
+        {
+          "label": "an",
+          "members": [
+            "an egg",
+            "an apple",
+            "an orange",
+            "an onion",
+            "an ice cream"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Mitlaut am Anfang → a. Selbstlaut am Anfang → an. Sortiere danach.",
+      "hintEn": null,
+      "explainDe": "a steht vor Mitlauten (a hot dog), an vor Selbstlauten (an egg).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.mc.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "a",
+            "the",
+            "some",
+            "any",
+            "one"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "an + egg; distractors a/the/some/any/one all in-bank, wrong before a vowel sound"
+      },
+      "prompt": {
+        "text": "Welches Wort passt vor egg?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "an",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "a",
+        "the",
+        "some"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "egg beginnt mit einem Selbstlaut (e). Welche Form steht dann davor?",
+      "hintEn": null,
+      "explainDe": "Vor einem Selbstlaut steht an: an egg. a steht vor Mitlauten.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.mc.002",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "an",
+            "the",
+            "some",
+            "any",
+            "one"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "a + pizza; distractors all in-bank, wrong before a consonant sound"
+      },
+      "prompt": {
+        "text": "Welches Wort passt vor pizza?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "a",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "an",
+        "the",
+        "some"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "pizza beginnt mit einem Mitlaut (p). Welche Form passt?",
+      "hintEn": null,
+      "explainDe": "Vor einem Mitlaut steht a: a pizza. an steht vor Selbstlauten.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.mc.003",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He wants a egg.",
+            "He wants the egg.",
+            "He wants egg.",
+            "He wants some egg.",
+            "He want an egg."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-mc-003",
+        "narrative": null,
+        "note": "an + egg; full-sentence distractors all gate-clean (egg is bare-valid), each flawed in the article"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He wants an egg.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He wants a egg.",
+        "He wants the egg.",
+        "He wants egg."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf den ersten Laut von egg. Welcher Satz hat die richtige Form?",
+      "hintEn": null,
+      "explainDe": "He wants an egg. egg beginnt mit einem Selbstlaut, also an — nicht a.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.mc.004",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "It is a onion.",
+            "It is the onion.",
+            "It is onion.",
+            "It is some onion.",
+            "It an onion."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "an + onion; full-sentence distractors gate-clean (onion bare-valid), flawed in the article"
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is an onion.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It is a onion.",
+        "It is the onion.",
+        "It is onion."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "onion beginnt mit einem Selbstlaut. Welcher Satz hat die richtige Form?",
+      "hintEn": null,
+      "explainDe": "It is an onion. Vor dem Selbstlaut o steht an, nicht a.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.mp.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "matching-pairs word→article phrase; 6 unique right-sides; all in-bank phrases, English↔English"
+      },
+      "prompt": {
+        "text": "Finde die Paare: Wort und richtige Form.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "onion",
+          "right": "an onion"
+        },
+        {
+          "left": "tomato",
+          "right": "a tomato"
+        },
+        {
+          "left": "egg",
+          "right": "an egg"
+        },
+        {
+          "left": "sandwich",
+          "right": "a sandwich"
+        },
+        {
+          "left": "ice cream",
+          "right": "an ice cream"
+        },
+        {
+          "left": "carrot",
+          "right": "a carrot"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Selbstlaut am Anfang → an. Mitlaut am Anfang → a. Suche zu jedem Wort die Form.",
+      "hintEn": null,
+      "explainDe": "an onion, an egg, an ice cream (Selbstlaut) — a tomato, a sandwich, a carrot (Mitlaut).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.mt.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-mt-001",
+        "narrative": null,
+        "note": "matching word→article phrase; unique right-sides; all in-bank, English↔English"
+      },
+      "prompt": {
+        "text": "Verbinde das Wort mit der richtigen Form.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "egg",
+          "right": "an egg"
+        },
+        {
+          "left": "hot dog",
+          "right": "a hot dog"
+        },
+        {
+          "left": "onion",
+          "right": "an onion"
+        },
+        {
+          "left": "pizza",
+          "right": "a pizza"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginnt das Wort mit einem Selbstlaut, kommt an davor; bei einem Mitlaut a.",
+      "hintEn": null,
+      "explainDe": "an egg, an onion (Selbstlaut) — a hot dog, a pizza (Mitlaut).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.sb.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "a",
+            "the",
+            "eats",
+            "for"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-sb-001",
+        "narrative": null,
+        "note": "an + egg; distractor chips a/the/eats/for all in-bank"
+      },
+      "prompt": {
+        "text": "an / egg / want / I",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want an egg.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit I want. egg beginnt mit einem Selbstlaut, also an egg.",
+      "hintEn": null,
+      "explainDe": "I want an egg. Vor dem Selbstlaut e steht an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.sb.002",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "an",
+            "the",
+            "eat",
+            "and"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "a + hot dog; distractor chips an/the/eat/and all in-bank"
+      },
+      "prompt": {
+        "text": "a / hot / dog / wants / He",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He wants a hot dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit He wants. hot dog beginnt mit einem Mitlaut, also a hot dog.",
+      "hintEn": null,
+      "explainDe": "He wants a hot dog. Vor dem Mitlaut h steht a.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.sb.003",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "the",
+            "eats",
+            "for",
+            "She"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "an + egg / a + hot dog; answer tokens 8 + 4 distractor chips = 12 ≤ budget"
+      },
+      "prompt": {
+        "text": "an / and / a / want / hot / dog / I / egg",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want an egg and a hot dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwei Lebensmittel: an egg (Selbstlaut) und a hot dog (Mitlaut). Verbinde sie mit and.",
+      "hintEn": null,
+      "explainDe": "I want an egg and a hot dog. an vor egg (Selbstlaut), a vor hot dog (Mitlaut).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.tf.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-tf-001",
+        "narrative": null,
+        "note": "an + ice cream (vowel sound)"
+      },
+      "prompt": {
+        "text": "Setze a oder an ein: I eat ___ ice cream.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "I eat an ice cream.",
+          "tier": "full"
+        },
+        {
+          "text": "an",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ice cream beginnt mit einem Selbstlaut (i). Welche Form passt davor?",
+      "hintEn": null,
+      "explainDe": "Vor einem Selbstlaut steht an: an ice cream.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.tf.002",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "a + carrot (consonant sound)"
+      },
+      "prompt": {
+        "text": "Setze a oder an ein: She wants ___ carrot.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "She wants a carrot.",
+          "tier": "full"
+        },
+        {
+          "text": "a",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "carrot beginnt mit einem Mitlaut (c). Welche Form passt davor?",
+      "hintEn": null,
+      "explainDe": "Vor einem Mitlaut steht a: a carrot.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.tr.001",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-articles-tr-001",
+        "narrative": null,
+        "note": "an + apple (vowel sound); full phrase 'an apple' kept intact"
+      },
+      "prompt": {
+        "text": "Ich möchte einen Apfel.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want an apple.",
+          "tier": "full"
+        },
+        {
+          "text": "I would like an apple.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "apple beginnt mit einem Selbstlaut. Denk an die richtige Form davor.",
+      "hintEn": null,
+      "explainDe": "I want an apple. Vor dem Selbstlaut a steht an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.articles-a-an.tr.002",
+      "structureId": "g1u07.s.articles-a-an",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "a + pizza (consonant sound)"
+      },
+      "prompt": {
+        "text": "Sie isst eine Pizza.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She eats a pizza.",
+          "tier": "full"
+        },
+        {
+          "text": "She has a pizza.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "pizza beginnt mit einem Mitlaut. Welche Form steht davor?",
+      "hintEn": null,
+      "explainDe": "She eats a pizza. Vor dem Mitlaut p steht a.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.ag.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1 (He/She/It doesn't (does not) like rice.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single token, 7 letters (>=3). Negative form used: doesn't (flag doesn't for grant). German cue -> lang=de."
+      },
+      "prompt": {
+        "text": "das Wort für nicht (mit do) bei he/she/it (kurze Form von does not):",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "doesn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei he/she/it heißt die kurze Verneinung doesn't.",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it bildest du die Verneinung mit doesn't: He doesn't like rice.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.cp.001",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She don't eat meat.",
+            "She doesn't eats meat.",
+            "She not eat meat.",
+            "She no eat meat."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt (She never eats meat or sausages.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "German cue -> lang=de. Negative form used: doesn't eat (answer); distractor sentences each wrong only in the negative structure (don't / -s on verb / missing does). flag doesn't, don't for grant. Pool 4 gate-clean."
+      },
+      "prompt": {
+        "text": "Ein Mädchen isst kein Fleisch. Welcher Satz stimmt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She doesn't eat meat.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She don't eat meat.",
+        "She doesn't eats meat.",
+        "She not eat meat."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei she steht doesn't und danach die Grundform ohne -s.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She doesn't eat meat. don't passt nur zu I/you/we/they, doesn't eats hat ein falsches -s, not eat ohne does ist unvollständig.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.cp.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "We doesn't like rice.",
+            "We don't likes rice.",
+            "We not like rice.",
+            "We no like rice."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1 (We don't (do not) like carrots.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "German cue -> lang=de. Negative form used: don't like (answer); distractor sentences each wrong only in the negative structure. flag don't, doesn't for grant. Pool 4 gate-clean."
+      },
+      "prompt": {
+        "text": "Du und deine Freunde mögt keinen Reis. Welcher Satz stimmt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We don't like rice.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We doesn't like rice.",
+        "We don't likes rice.",
+        "We not like rice."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei we nimmst du don't und danach die Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist We don't like rice. doesn't passt nur zu he/she/it, don't likes hat ein falsches -s, not like ohne do ist unvollständig.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.ec.001",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-ec-001",
+        "narrative": null,
+        "note": "Negative forms used: don't (the error), doesn't / does not (the fix) (flag don't, doesn't, does not for grant). Carrier gate-clean (he, like, vegetables)."
+      },
+      "prompt": {
+        "text": "He don't like vegetables.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't like vegetables.",
+          "tier": "full"
+        },
+        {
+          "text": "He does not like vegetables.",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't",
+          "tier": "partial"
+        },
+        {
+          "text": "does not",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei he heißt es nicht don't, sondern doesn't.",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it nimmst du doesn't, nicht don't: He doesn't like vegetables.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.ec.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-ec-002",
+        "narrative": null,
+        "note": "Negative form used: doesn't eat (the fix; error is doesn't eats) (flag doesn't, does not for grant). Carrier gate-clean (she, eat, broccoli)."
+      },
+      "prompt": {
+        "text": "She doesn't eats broccoli.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She doesn't eat broccoli.",
+          "tier": "full"
+        },
+        {
+          "text": "She does not eat broccoli.",
+          "tier": "full"
+        },
+        {
+          "text": "eat",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach doesn't steht die Grundform ohne -s.",
+      "hintEn": null,
+      "explainDe": "Nach doesn't bleibt das Verb in der Grundform: doesn't eat, nicht doesn't eats.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.ec.003",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-ec-003",
+        "narrative": null,
+        "note": "Negative form used: doesn't like (the fix; error is don't) (flag don't, doesn't, does not for grant). Carrier gate-clean (dog from g1-u02, like, grapes)."
+      },
+      "prompt": {
+        "text": "The dog don't like grapes.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The dog doesn't like grapes.",
+          "tier": "full"
+        },
+        {
+          "text": "The dog does not like grapes.",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "The dog ist wie it (= he/she/it), also doesn't.",
+      "hintEn": null,
+      "explainDe": "The dog = it, also doesn't like, nicht don't like. Bei he/she/it immer doesn't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.gf.001",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1 (I don't (do not) like vegetables.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Negative forms used: don't / do not (flag both for grant). Carrier gate-clean (I, like, rice)."
+      },
+      "prompt": {
+        "text": "I ___ like rice.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't",
+          "tier": "full"
+        },
+        {
+          "text": "do not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei I nimmst du don't (= do not).",
+      "hintEn": null,
+      "explainDe": "Bei I/you/we/they bildest du die Verneinung mit don't (do not): I don't like rice.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.gf.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1 (He/She/It doesn't (does not) like rice.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Negative forms used: doesn't / does not (flag both for grant). Carrier gate-clean (he, like, carrots)."
+      },
+      "prompt": {
+        "text": "He ___ like carrots.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't",
+          "tier": "full"
+        },
+        {
+          "text": "does not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei he nimmst du doesn't (= does not).",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it bildest du die Verneinung mit doesn't (does not): He doesn't like carrots.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.gf.003",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt (only my sister doesn't – she's a vegetarian. She never eats meat.)",
+        "seedV1": "m1-u7-present-simple-negative-gf-002",
+        "narrative": null,
+        "note": "Negative forms used: doesn't eat / does not eat (flag doesn't, does not for grant). Carrier gate-clean (she, eat, meat)."
+      },
+      "prompt": {
+        "text": "She ___ (not / eat) meat.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't eat",
+          "tier": "full"
+        },
+        {
+          "text": "does not eat",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei she steht doesn't und danach die Grundform ohne -s.",
+      "hintEn": null,
+      "explainDe": "Bei she nimmst du doesn't + Grundform: doesn't eat. Das Verb bekommt nach doesn't kein -s.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.gf.004",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1 (We don't (do not) like carrots.)",
+        "seedV1": "m1-u7-present-simple-negative-gf-003",
+        "narrative": null,
+        "note": "Negative forms used: don't like / do not like (flag don't, do not for grant). Carrier gate-clean (they, like, fish)."
+      },
+      "prompt": {
+        "text": "They ___ (not / like) fish.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't like",
+          "tier": "full"
+        },
+        {
+          "text": "do not like",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei they steht don't und danach die Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei they nimmst du don't + Grundform: don't like. Bei I/you/we/they immer don't, nie doesn't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.gf.005",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-gf-005",
+        "narrative": null,
+        "note": "Negative forms used: doesn't eat / don't eat / does not eat / do not eat (flag doesn't, don't, does not, do not for grant). 2 blanks, pipe-split. Carrier gate-clean (Tom proper noun, friends, eat, broccoli)."
+      },
+      "prompt": {
+        "text": "Tom ___ (not / eat) broccoli and his friends ___ (not / eat) it.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "doesn't eat | don't eat",
+          "tier": "full"
+        },
+        {
+          "text": "does not eat | do not eat",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Tom ist wie he (doesn't), his friends sind wie they (don't).",
+      "hintEn": null,
+      "explainDe": "Tom = he, also doesn't eat. his friends = they, also don't eat. Achte auf den Wechsel von doesn't zu don't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.gf.006",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Negative forms used: doesn't drink / does not drink (flag doesn't, does not for grant). Carrier gate-clean (sister, drink, milk)."
+      },
+      "prompt": {
+        "text": "My sister ___ (not / drink) milk.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't drink",
+          "tier": "full"
+        },
+        {
+          "text": "does not drink",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "My sister ist wie she, also doesn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "My sister = she, also doesn't drink. Nach doesn't bleibt das Verb in der Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.gs.001",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1 (I don't ... He/She/It doesn't ... We don't ...)",
+        "seedV1": "m1-u7-present-simple-negative-gs-001",
+        "narrative": null,
+        "note": "2 groups, 4+3 members. Labels don't / doesn't are in-bank (core-allowlist) (flag don't, doesn't for grant). Members are pronouns (core-allowlist). Unique right-sides not applicable (group-sort)."
+      },
+      "prompt": {
+        "text": "Sortiere: braucht der Satz don't oder doesn't?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "don't",
+          "members": [
+            "I",
+            "you",
+            "we",
+            "they"
+          ]
+        },
+        {
+          "label": "doesn't",
+          "members": [
+            "he",
+            "she",
+            "it"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Nur he, she und it bekommen doesn't.",
+      "hintEn": null,
+      "explainDe": "I/you/we/they nehmen don't. Nur bei he/she/it heißt es doesn't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.gs.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "2 groups, 3+3 members (full sentences). Labels yes/no (core-allowlist, gate-clean) standing for richtig/falsch — explained in prompt+hintDe to avoid German labels the gate rejects. Negative forms used: doesn't like, don't eat, doesn't drink (correct); don't (wrong subj), doesn't (wrong subj), doesn't drinks (wrong -s) (flag don't, doesn't for grant). All members gate-clean. German prompt -> lang=de."
+      },
+      "prompt": {
+        "text": "Welche Sätze sind richtig (yes), welche falsch (no)?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "yes",
+          "members": [
+            "He doesn't like rice.",
+            "We don't eat meat.",
+            "She doesn't drink milk."
+          ]
+        },
+        {
+          "label": "no",
+          "members": [
+            "He don't like rice.",
+            "We doesn't eat meat.",
+            "She doesn't drinks milk."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "yes = richtig, no = falsch. Achte auf don't/doesn't und auf das -s am Verb.",
+      "hintEn": null,
+      "explainDe": "Richtig (yes): he/she -> doesn't + Grundform, we -> don't. Falsch (no): don't bei he, doesn't bei we, oder ein -s am Verb nach doesn't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.mc.001",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "don't drink",
+            "doesn't drinks",
+            "drinks not",
+            "don't drinks"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-mc-001",
+        "narrative": null,
+        "note": "Negative forms used: doesn't drink (answer); distractors don't drink, doesn't drinks, drinks not, don't drinks (flag don't, doesn't for grant). All options word-distinct (not apostrophe-only). Pool 4 entries gate-clean. Carrier gate-clean (Tom proper noun, drink, tea)."
+      },
+      "prompt": {
+        "text": "Tom ___ tea in the morning.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't drink",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't drink",
+        "doesn't drinks",
+        "drinks not"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Tom ist wie he: doesn't und danach die Grundform ohne -s.",
+      "hintEn": null,
+      "explainDe": "Tom = he, also doesn't drink. don't passt nur zu I/you/we/they; doesn't drinks hat ein falsches -s.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.mc.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "doesn't eat",
+            "don't eats",
+            "eat not",
+            "doesn't eats"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Negative forms used: don't eat (answer); distractors doesn't eat, don't eats, eat not, doesn't eats (flag don't, doesn't for grant). Options word-distinct. Pool 4 entries gate-clean (we, eat, vegetables, breakfast)."
+      },
+      "prompt": {
+        "text": "We ___ vegetables for breakfast.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't eat",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "doesn't eat",
+        "don't eats",
+        "eat not"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei we nimmst du don't und danach die Grundform.",
+      "hintEn": null,
+      "explainDe": "we = I/you/we/they-Gruppe, also don't eat. doesn't passt nur zu he/she/it; don't eats hat ein falsches -s.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.mc.003",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "don't like",
+            "doesn't likes",
+            "like not",
+            "don't likes"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Negative forms used: doesn't like (answer); distractors don't like, doesn't likes, like not, don't likes (flag don't, doesn't for grant). Options word-distinct. Pool 4 entries gate-clean (friend, like, tomatoes)."
+      },
+      "prompt": {
+        "text": "My friend ___ tomatoes.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't like",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't like",
+        "doesn't likes",
+        "like not"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "My friend ist eine Person (= he/she), also doesn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "My friend ist wie he/she, also doesn't like. don't passt nicht; doesn't likes hat ein falsches -s.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.mt.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-mt-001",
+        "narrative": null,
+        "note": "English<->English; UNIQUE right-sides (4 distinct phrases). Negative forms used: don't eat, doesn't like, doesn't drink, don't eat-fish (flag don't, doesn't for grant). All sides gate-clean (pronouns, eat/like/drink, meat/rice/milk/fish)."
+      },
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I",
+          "right": "don't eat meat"
+        },
+        {
+          "left": "He",
+          "right": "doesn't like rice"
+        },
+        {
+          "left": "She",
+          "right": "doesn't drink milk"
+        },
+        {
+          "left": "They",
+          "right": "don't eat fish"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "I/you/we/they -> don't; he/she/it -> doesn't.",
+      "hintEn": null,
+      "explainDe": "Bei I und they steht don't, bei he und she steht doesn't. Jede rechte Seite passt nur zu einem Subjekt.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.sb.001",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "don't",
+            "eats",
+            "like",
+            "rice"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-sb-001",
+        "narrative": null,
+        "note": "Negative form used: doesn't eat (flag doesn't, does not for grant). Distractor chips don't, eats, like, rice all gate-clean (4 chips). Answer tokens 4 + 4 distractors = 8 <= 12."
+      },
+      "prompt": {
+        "text": "eat / doesn't / She / meat",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She doesn't eat meat.",
+          "tier": "full"
+        },
+        {
+          "text": "She does not eat meat.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Subjekt zuerst, dann doesn't, dann die Grundform.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: She + doesn't + eat + meat. Nach doesn't steht die Grundform ohne -s.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.sb.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "doesn't",
+            "likes",
+            "eat",
+            "meat"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 7- I love noodles.txt#grammar-1 (We don't (do not) like carrots.)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Negative form used: don't like (flag don't, do not for grant). Distractor chips doesn't, likes, eat, meat all gate-clean (4 chips). Answer tokens 4 + 4 distractors = 8 <= 12."
+      },
+      "prompt": {
+        "text": "like / don't / We / carrots",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We don't like carrots.",
+          "tier": "full"
+        },
+        {
+          "text": "We do not like carrots.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Subjekt zuerst, dann don't, dann die Grundform.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: We + don't + like + carrots. Bei we steht don't, nicht doesn't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.tf.001",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-tf-001",
+        "narrative": null,
+        "note": "Arrow-pattern transformation with 1 blank (matches v1 seed tf-001 shape). Negative form used: don't like / do not like (flag don't, do not for grant). Both blank-fill and full-sentence answers accepted. Carrier gate-clean (I, like, spinach)."
+      },
+      "prompt": {
+        "text": "I like spinach. → I ___ spinach.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't like",
+          "tier": "full"
+        },
+        {
+          "text": "do not like",
+          "tier": "full"
+        },
+        {
+          "text": "I don't like spinach.",
+          "tier": "full"
+        },
+        {
+          "text": "I do not like spinach.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Setze don't (= do not) vor die Grundform.",
+      "hintEn": null,
+      "explainDe": "Um bei I zu verneinen, setzt du don't vor das Verb: I don't like spinach.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.tf.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-tf-002",
+        "narrative": null,
+        "note": "Arrow-pattern transformation with 1 blank. Negative form used: doesn't like / does not like (flag doesn't, does not for grant); source 'likes' -> drop -s after doesn't. Both blank-fill and full-sentence answers accepted. Carrier gate-clean (he, like, peas)."
+      },
+      "prompt": {
+        "text": "He likes peas. → He ___ peas.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't like",
+          "tier": "full"
+        },
+        {
+          "text": "does not like",
+          "tier": "full"
+        },
+        {
+          "text": "He doesn't like peas.",
+          "tier": "full"
+        },
+        {
+          "text": "He does not like peas.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Setze doesn't vor die Grundform und nimm das -s vom Verb weg.",
+      "hintEn": null,
+      "explainDe": "Aus likes wird doesn't like: das -s wandert zu doesn't, das Verb bleibt in der Grundform: He doesn't like peas.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.tr.001",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-tr-001",
+        "narrative": null,
+        "note": "Negative form used: don't like / do not like (flag don't, do not for grant). English answers gate-clean (I, like, fish)."
+      },
+      "prompt": {
+        "text": "Ich mag keinen Fisch.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I don't like fish.",
+          "tier": "full"
+        },
+        {
+          "text": "I do not like fish.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "kein + Verb wird im Englischen don't + like.",
+      "hintEn": null,
+      "explainDe": "mögen heißt to like. Bei I verneinst du mit don't: I don't like fish.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.tr.002",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u7-present-simple-negative-tr-002",
+        "narrative": null,
+        "note": "Negative form used: doesn't like / does not like (flag doesn't, does not for grant). English answers gate-clean (sister, like, rice)."
+      },
+      "prompt": {
+        "text": "Meine Schwester mag keinen Reis.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My sister doesn't like rice.",
+          "tier": "full"
+        },
+        {
+          "text": "My sister does not like rice.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "My sister ist wie she, also doesn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "My sister = she, also doesn't like: My sister doesn't like rice.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u07.gi.present-simple-negative.tr.003",
+      "structureId": "g1u07.s.present-simple-negative",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Negative form used: don't like (English prompt) (flag don't for grant). English prompt gate-clean (I, like, soup); German answers du-form."
+      },
+      "prompt": {
+        "text": "I don't like soup.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Ich mag keine Suppe.",
+          "tier": "full"
+        },
+        {
+          "text": "Ich mag Suppe nicht.",
+          "tier": "full"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "don't like heißt mag nicht / mag kein.",
+      "hintEn": null,
+      "explainDe": "I don't like soup heißt Ich mag keine Suppe. don't drückt die Verneinung aus.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}
