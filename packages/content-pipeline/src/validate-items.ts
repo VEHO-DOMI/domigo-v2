@@ -431,6 +431,11 @@ export function sieRule(slug: string, items: UnitItems): { errors: string[]; war
         // is NOT the app formally addressing the student. Real formal address is
         // space-flanked ("geht es Ihnen"); a register list is slash-flanked.
         if (new RegExp(`[/]\\s*${tokens[i]!}\\b|\\b${tokens[i]!}\\s*[/]`).test(text)) continue;
+        // Broader register-list: slash-separated phrase alternatives that
+        // include an informal du/ihr form (e.g. "Hast du / Habt ihr / Haben
+        // Sie ...?") are register-variant glosses of a phrase, not formal
+        // address of the student.
+        if (text.includes("/") && /\b(du|dir|dich|dein\w*|euch|euer|eure\w*)\b/i.test(text)) continue;
         if (i === 0) {
           warns.push({ key: `validator-warn:${itemId}`, kind: "validator-warn", itemId, note: `sentence-initial "${tokens[i]!}" in ${field} — she/they or formal address? Human call.` });
         } else {
