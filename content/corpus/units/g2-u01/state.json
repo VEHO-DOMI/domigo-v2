@@ -50,6 +50,160 @@
       "contentHash": "d2d12476b35844454d49b1c6cbf3435e723d1a422bb12b6479ea56b355b00106",
       "note": "round 1: 3 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T15:53:19.251Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "37d0999306d2f9a584916969bdad830da724aa4595c419f6a3bfde9908268e56",
+      "note": "gen ingest: 48 vocab + 22 grammar item(s); draft 5466a75b9b5b",
+      "at": "2026-06-13T11:44:09.880Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "5ab06793f3c2cf454a29f09b83e5871464e7b26ee84c39cb17fc33f34d4724a2",
+      "note": "gen fix ingest: 1 replaced, 0 new; hash 5ab06793f3c2",
+      "at": "2026-06-13T11:51:47.064Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "308aa93ee41e51f2d8337b417000dbad195efe9337988aebb4b475b0c6a8fee9",
+      "note": "gen fix ingest: 8 replaced, 0 new; hash 308aa93ee41e",
+      "at": "2026-06-13T12:01:16.975Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "8b1129850f68900b46dadd93a2da6301b023d2394177e3c9eaa6ce2fa63adf45",
+      "note": "gen fix ingest: 4 replaced, 0 new; hash 8b1129850f68",
+      "at": "2026-06-13T12:10:11.351Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "133bea672850327f5a47d3033bc8a6854a6a7b8913c351b8901ac50a23d3fab7",
+      "note": "gen fix ingest: 1 replaced, 0 new; hash 133bea672850",
+      "at": "2026-06-13T12:11:41.381Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "133bea672850327f5a47d3033bc8a6854a6a7b8913c351b8901ac50a23d3fab7",
+      "note": "verify round 3: 0 fix, 5 warn",
+      "at": "2026-06-13T12:15:21.994Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "133bea672850327f5a47d3033bc8a6854a6a7b8913c351b8901ac50a23d3fab7",
+      "note": "V-1..V-22 green (1 warn)",
+      "at": "2026-06-13T12:15:22.637Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "133bea672850327f5a47d3033bc8a6854a6a7b8913c351b8901ac50a23d3fab7",
+      "note": "round 1 doc: 55 open flag(s), 70 row(s) rendered (FULL)",
+      "at": "2026-06-13T12:15:22.684Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "05889ee9b4a27b0285a37745c8a892ffd50cd4cd03e02c908c67743692c82b9a",
+      "note": "gen ingest: 48 vocab + 22 grammar item(s); draft 26cc52be2e46",
+      "at": "2026-06-13T12:27:34.682Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "f4d2793e71ed85e563af0260ab7d41c20f627c104e8bbc24c12c9348d5341738",
+      "note": "gen ingest: 48 vocab + 22 grammar item(s); draft 26cc52be2e46",
+      "at": "2026-06-13T12:28:00.702Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "f5ce1e7707ed64d34e01d732f2fa6f0f80ded83686a27e9250500682cc93c438",
+      "note": "gen ingest: 48 vocab + 22 grammar item(s); draft 26cc52be2e46",
+      "at": "2026-06-13T12:32:11.929Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "a434e22c90e5e94d6c5aa50f80a7bb426c33b002a769d5935bd9d79a9270caec",
+      "note": "gen ingest: 48 vocab + 22 grammar item(s); draft 26cc52be2e46",
+      "at": "2026-06-13T12:32:12.516Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "a434e22c90e5e94d6c5aa50f80a7bb426c33b002a769d5935bd9d79a9270caec",
+      "note": "verify round 4: 2 unresolved lens flag(s) ESCALATED to review; 3 warn",
+      "at": "2026-06-13T12:42:21.555Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "c09ae6a5d7e43c3ec78f1fe077caa55d04151f498df368f6e0509a3a85f33801",
+      "note": "gen fix ingest: 3 replaced, 0 new; hash c09ae6a5d7e4",
+      "at": "2026-06-13T12:43:57.461Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "c09ae6a5d7e43c3ec78f1fe077caa55d04151f498df368f6e0509a3a85f33801",
+      "note": "verify round 5: 0 fix, 2 warn",
+      "at": "2026-06-13T12:49:21.182Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "c09ae6a5d7e43c3ec78f1fe077caa55d04151f498df368f6e0509a3a85f33801",
+      "note": "V-1..V-22 green (1 warn)",
+      "at": "2026-06-13T12:49:21.664Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "c09ae6a5d7e43c3ec78f1fe077caa55d04151f498df368f6e0509a3a85f33801",
+      "note": "round 1 doc: 52 open flag(s), 70 row(s) rendered (FULL)",
+      "at": "2026-06-13T12:49:21.702Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "01526558395242b34447c3d9fce9a7a89aabfe5b7e42790fef5edf408e2e6b08",
+      "note": "gen ingest: 48 vocab + 22 grammar item(s); draft bfb861639ede",
+      "at": "2026-06-13T13:02:14.896Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "01526558395242b34447c3d9fce9a7a89aabfe5b7e42790fef5edf408e2e6b08",
+      "note": "verify round 6: 0 fix, 2 warn",
+      "at": "2026-06-13T13:10:08.231Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "01526558395242b34447c3d9fce9a7a89aabfe5b7e42790fef5edf408e2e6b08",
+      "note": "V-1..V-22 green (1 warn)",
+      "at": "2026-06-13T13:10:08.698Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "01526558395242b34447c3d9fce9a7a89aabfe5b7e42790fef5edf408e2e6b08",
+      "note": "round 1 doc: 52 open flag(s), 70 row(s) rendered (FULL)",
+      "at": "2026-06-13T13:10:08.735Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "90b596aea3fbdc1f6e85dba7fd23b49578978749f3eb2fdc8c042a604f9478b7",
+      "note": "round 1: 52 verdict(s), 1 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-13T13:16:53.899Z"
     }
   ]
 }

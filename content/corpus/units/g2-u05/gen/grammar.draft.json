@@ -1,0 +1,1030 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g2-u05",
+  "briefBank": "e4e84149755f",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The post office is ___ the bank. They are very close.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "beside",
+          "tier": "full"
+        },
+        {
+          "text": "next to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "round the corner",
+        "opposite",
+        "over"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welche Ortspräposition heißt \"daneben\" und steht direkt vor the bank?",
+      "hintEn": null,
+      "explainDe": "beside (oder next to) heißt \"neben\". Direkt davor kommt das Ziel: beside the bank.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-gf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "verify r1 (answers): replaced distractor 'behind' (a building directly behind another is also 'very close', so defensibly correct) with 'round the corner' (clearly NOT adjacent)."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The restaurant is ___ the church. It is across the street.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "opposite",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "behind",
+        "beside",
+        "round the corner"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"gegenüber\" – direkt auf der anderen Straßenseite. Welche Ortspräposition passt?",
+      "hintEn": null,
+      "explainDe": "opposite heißt \"gegenüber\". Es steht ohne kleines Wort direkt vor dem Ziel: opposite the church.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-gf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "SB grammar box: \"The restaurant is opposite the church.\""
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The cinema is ___ the music shop. Go past the music shop to find it.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "behind",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "opposite",
+        "beside",
+        "in front of"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Kino liegt \"hinter\" dem Musikgeschäft. Welche Ortspräposition heißt das?",
+      "hintEn": null,
+      "explainDe": "behind heißt \"hinter\" und steht direkt vor dem Ziel: behind the music shop.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#ex-3-dialogue-2",
+      "note": "SB Dialogue 2: \"The cinema is behind the large music shop.\" (large dropped — untaught at this level)."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Don't turn here. Go ___ ahead and then turn right at the traffic lights.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "straight",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "left",
+        "right",
+        "past"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei der Wegbeschreibung heißt \"geradeaus\" einfach ___ ahead.",
+      "hintEn": null,
+      "explainDe": "Es heißt straight ahead (\"geradeaus\"). Erst später biegst du ab.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-gf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "SB grammar box: \"Go straight ahead.\" Distractors are real direction words, wrong before \"ahead\"."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Turn ___ at the church and the hospital is on your right.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "to left",
+        "in the left",
+        "on left"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"Biege links ab\": Nach turn kommt direkt left – ohne Präposition davor.",
+      "hintEn": null,
+      "explainDe": "Im Englischen sagt man Turn left – ohne to oder in davor. \"Turn to left\" ist falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-gf-005",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "SB grammar box: \"Turn left / right.\" Distractors are the L1 preposition-transfer error (Go in the left)."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Go ___ the post office and the bank is on your right.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "past",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "over",
+        "to",
+        "behind"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"an etwas vorbeigehen\": Go ___ the post office. Welches kleine Wort passt?",
+      "hintEn": null,
+      "explainDe": "Go past heißt \"an etwas vorbeigehen\". Du gehst weiter, das Gebäude bleibt hinter dir.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-gf-006",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "SB grammar box: \"Go past the post office.\" Distractors are in-bank prepositions wrong for a pass-by route."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You can't find the bank from here. It is just ___, beside the supermarket.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "round the corner",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "in front of",
+        "next to",
+        "on the corner of"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"gleich um die Ecke\" – diese feste Wendung mit corner passt hier.",
+      "hintEn": null,
+      "explainDe": "round the corner heißt \"um die Ecke\". Die drei Wörter gehören fest zusammen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-gf-004",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "SB grammar box: \"It's just round the corner, beside the bank.\" Answer is the whole fixed phrase."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "There's a park ___ you. Go straight ahead and the cinema is on the right.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "in front of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "behind",
+        "opposite",
+        "beside"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"vor dir\" – diese Ortspräposition besteht aus drei kleinen Wörtern und endet auf of.",
+      "hintEn": null,
+      "explainDe": "in front of heißt \"vor\". Alle drei Wörter gehören zusammen: in front of you.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "SB grammar box: \"There's a little park in front of you.\" (little dropped — untaught)."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Go to the end of the road. There's a big bank ___ George Street.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "on the corner of",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "in the corner of",
+        "to the corner of",
+        "round the corner"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"an der Ecke der …-Straße\": Diese Wendung benutzt on, nicht in.",
+      "hintEn": null,
+      "explainDe": "Man sagt on the corner of George Street (\"an der Ecke der George Street\"). Mit in the corner of (= drinnen in einer Ecke) ist es falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "verify r1 (answers): 'at the corner of' is standard idiomatic English (same meaning as 'on the corner of'), so it was a false distractor — replaced with 'to the corner of' (directional, wrong for stating location); explainDe no longer claims 'at' is wrong."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The cinema is across the street from the restaurant.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The cinema is opposite the restaurant.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The cinema is opposite of the restaurant.",
+        "The cinema is opposite to the restaurant.",
+        "The cinema is opposite from the restaurant."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach opposite kommt sofort das Ziel – ohne kleines Wort dazwischen.",
+      "hintEn": null,
+      "explainDe": "opposite steht direkt vor dem Ziel: opposite the restaurant. opposite of / to / from sind alle falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The cinema is opposite of the restaurant.",
+          "The cinema is opposite to the restaurant.",
+          "The cinema is opposite from the restaurant.",
+          "The cinema is behind of the restaurant.",
+          "The cinema is beside of the restaurant."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u5-prepositions-directions-mc-001",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Context line fixes the meaning; every option is in-bank, the contrast is the spurious of/to/from after opposite."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You want to go to the church. The traffic lights are in front of you.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Turn left at the traffic lights.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Turn to the left at the traffic lights.",
+        "Turn in the left at the traffic lights.",
+        "Turn on the left at the traffic lights."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach turn folgt direkt left – ohne to, in oder on davor.",
+      "hintEn": null,
+      "explainDe": "Im Englischen heißt es Turn left – ganz ohne Präposition. \"Turn to/in/on the left\" ist falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Turn to the left at the traffic lights.",
+          "Turn in the left at the traffic lights.",
+          "Turn on the left at the traffic lights.",
+          "Turn to left at the traffic lights.",
+          "Turn on left at the traffic lights."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u5-prepositions-directions-mc-002",
+      "sbRef": "g2/tw/The Twins 2 Unit 5.txt#dialogue-2",
+      "note": "THE TWINS 2 line: \"turn left at the traffic lights.\" Targets L1 preposition transfer (turn to/in/on the left)."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "directions to the railway station",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Go straight ahead and turn right at the traffic lights.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Go straight ahead and turn to the right at the traffic lights.",
+        "Go straight ahead and turn in the right at the traffic lights.",
+        "Go straight ahead and turn on the right at the traffic lights."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach turn kommt direkt die Richtung – kein to, in oder on davor.",
+      "hintEn": null,
+      "explainDe": "Richtig ist turn right. Nach turn kommt kein to/in/on. straight ahead bleibt gleich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Go straight ahead and turn to the right at the traffic lights.",
+          "Go straight ahead and turn in the right at the traffic lights.",
+          "Go straight ahead and turn on the right at the traffic lights.",
+          "Go straight on and turn to the right at the traffic lights.",
+          "Go straight on and turn on the right at the traffic lights."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u5-prepositions-directions-mc-002",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Two-clause route; all options in-bank, the error is the spurious preposition after turn."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The bank is across the street from the supermarket.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The bank is opposite the supermarket.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The bank is opposite of the supermarket.",
+        "The bank is opposite to the supermarket.",
+        "The bank is behind of the supermarket."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"gegenüber\": Welcher Satz benutzt opposite richtig – ganz ohne kleines Wort danach?",
+      "hintEn": null,
+      "explainDe": "The bank is opposite the supermarket ist richtig. opposite of / opposite to passen nicht, und behind heißt etwas anderes.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The bank is opposite of the supermarket.",
+          "The bank is opposite to the supermarket.",
+          "The bank is behind of the supermarket.",
+          "The bank is opposite from the supermarket.",
+          "The bank is beside of the supermarket."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Context (across the street) fixes the meaning so only the preposition surface is under test."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You are at the bus stop. The railway station is straight on, after the second corner on the right.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Go straight ahead and take the second right.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Go straight ahead and turn on the second right.",
+        "Go straight ahead and turn to the second right.",
+        "Go straight ahead and turn in the second right."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für \"die zweite Straße rechts\" sagt man take the second right – nicht turn on/to/in.",
+      "hintEn": null,
+      "explainDe": "Richtig: Go straight ahead and take the second right. Bei einer nummerierten Abzweigung nimmt man take, nicht turn on/to/in.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Go straight ahead and turn on the second right.",
+          "Go straight ahead and turn to the second right.",
+          "Go straight ahead and turn in the second right.",
+          "Go straight on and turn on the second right.",
+          "Go straight on and turn to the second right."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#ex-1-directions",
+      "note": "SB vocabulary illustrations: \"go straight ahead\" + \"take the second right.\" Contrast take vs turn for a numbered turn."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The hospital is opposite of the church.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The hospital is opposite the church.",
+          "tier": "full"
+        },
+        {
+          "text": "opposite the church",
+          "tier": "partial"
+        },
+        {
+          "text": "opposite",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein kleines Wort zu viel: Was steht hier falsch nach opposite?",
+      "hintEn": null,
+      "explainDe": "Nach opposite kommt kein of. Richtig: opposite the church.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-ec-001",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Common error from the brief: opposite of → opposite. Error is in-bank words wrongly combined."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Turn to the left at the church.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Turn left at the church.",
+          "tier": "full"
+        },
+        {
+          "text": "Turn left",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach turn ist ein kleines Wort zu viel. Was muss weg?",
+      "hintEn": null,
+      "explainDe": "Es heißt Turn left – ohne to the davor. \"Turn to the left\" ist falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-ec-002",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Common error from the brief: L1 transfer Go in the left → Turn left."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The post office is behind of the bank.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The post office is behind the bank.",
+          "tier": "full"
+        },
+        {
+          "text": "behind the bank",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welche Ortspräposition braucht hier kein of?",
+      "hintEn": null,
+      "explainDe": "behind steht direkt vor dem Ziel: behind the bank. Kein of dahinter.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Same of-insertion error class as opposite, applied to behind."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Go past the church and turn on the right.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Go past the church and turn right.",
+          "tier": "full"
+        },
+        {
+          "text": "turn right",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach turn ist ein kleines Wort zu viel. Was muss weg?",
+      "hintEn": null,
+      "explainDe": "Es heißt turn right – ohne on the davor. \"turn on the right\" ist falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-ec-003",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Turn-preposition error (turn on the right → turn right) after a route verb. All in-bank words, no span break."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "traffic lights / the / turn / at / left",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Turn left at the traffic lights.",
+          "tier": "full"
+        },
+        {
+          "text": "Turn left at the traffic lights",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "to",
+        "on"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst die Anweisung (turn + Richtung), dann wo: at the traffic lights.",
+      "hintEn": null,
+      "explainDe": "Turn left at the traffic lights. Nach turn kommt direkt left – die Extra-Chips to und on brauchst du nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "to",
+          "on",
+          "in",
+          "the"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": "m2-u5-prepositions-directions-sb-001",
+      "sbRef": "g2/tw/The Twins 2 Unit 5.txt#dialogue-2",
+      "note": "5 answer chips + 2 distractor chips = 7 ≤ 10. Distractors to/on tempt the turn-to/on-left error."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "opposite / the / cinema / is / the / restaurant",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The cinema is opposite the restaurant.",
+          "tier": "full"
+        },
+        {
+          "text": "The cinema is opposite the restaurant",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "of",
+        "to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt + is + Ortspräposition + Ziel. Nach opposite kein extra Wort.",
+      "hintEn": null,
+      "explainDe": "The cinema is opposite the restaurant. opposite steht direkt vor dem Ziel – of und to brauchst du nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "of",
+          "to",
+          "from",
+          "near"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "6 answer chips + 2 distractor chips = 8 ≤ 10. Distractors of/to bait the opposite-of error."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "the / past / go / and / turn / left / supermarket",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Go past the supermarket and turn left.",
+          "tier": "full"
+        },
+        {
+          "text": "Go past the supermarket and turn left",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "to",
+        "on"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Anweisungen mit and verbunden: erst Go past …, dann turn left.",
+      "hintEn": null,
+      "explainDe": "Go past the supermarket and turn left. Nach turn kommt direkt left – ohne to oder on.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "to",
+          "on",
+          "in",
+          "at"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "7 answer chips + 2 distractor chips = 9 ≤ 10. Two-clause route, harder ordering."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Das Restaurant ist gegenüber der Kirche.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The restaurant is opposite the church.",
+          "tier": "full"
+        },
+        {
+          "text": "The restaurant is opposite the church",
+          "tier": "full"
+        },
+        {
+          "text": "The restaurant is across from the church.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"gegenüber\" heißt opposite – und danach kommt direkt das Ziel, ohne of.",
+      "hintEn": null,
+      "explainDe": "gegenüber = opposite. Richtig: opposite the church (kein of). across from versteht man auch, aber opposite passt besser zum Lernstoff.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-tr-001",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "SB grammar box line. across from accepted as partial (correct but off-target vocabulary)."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Geh geradeaus und biege dann rechts ab.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Go straight ahead and then turn right.",
+          "tier": "full"
+        },
+        {
+          "text": "Go straight ahead and then turn right",
+          "tier": "full"
+        },
+        {
+          "text": "Go straight on and then turn right.",
+          "tier": "full"
+        },
+        {
+          "text": "Go straight and then turn right.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"geradeaus\" = straight ahead (oder straight on), \"rechts abbiegen\" = turn right.",
+      "hintEn": null,
+      "explainDe": "Go straight ahead and then turn right. straight ahead und straight on sind beide richtig; turn right braucht kein to.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-tr-002",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Two-clause route. straight ahead / straight on both full; bare straight is partial."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You are in town. You want to go to the railway station. Ask politely.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Excuse me, where's the railway station?",
+          "tier": "full"
+        },
+        {
+          "text": "Excuse me, where is the railway station?",
+          "tier": "full"
+        },
+        {
+          "text": "Excuse me, can you tell me where the railway station is?",
+          "tier": "full"
+        },
+        {
+          "text": "Where's the railway station?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne höflich mit Excuse me, dann frag nach dem Ort: where's …?",
+      "hintEn": null,
+      "explainDe": "Höflich fragst du: Excuse me, where's the railway station? Excuse me macht die Frage freundlich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-qf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#ex-3-dialogue-1",
+      "note": "SB dialogues open with \"Excuse me, where's the post office?\" Without Excuse me it is correct but not polite → partial."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "matching",
+      "difficulty": 1,
+      "prompt": {
+        "text": "places and where they are",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Where's the post office?",
+          "right": "It's next to the bank."
+        },
+        {
+          "left": "Where's the cinema?",
+          "right": "It's opposite the restaurant."
+        },
+        {
+          "left": "Where's the hospital?",
+          "right": "It's behind the church."
+        },
+        {
+          "left": "Where's the bank?",
+          "right": "It's round the corner."
+        },
+        {
+          "left": "Where's the tourist office?",
+          "right": "It's on the corner of the street."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Lies jede Antwort: Welche Ortspräposition passt zu welchem Ort?",
+      "hintEn": null,
+      "explainDe": "Jede Antwort sagt mit einer Ortspräposition, wo der Ort ist: next to, opposite, behind, round the corner, on the corner of.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u5-prepositions-directions-mt-001",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Reworked from v1 meaning-match (whose English glosses used untaught words). Q to A, both sides in-bank."
+    },
+    {
+      "structureId": "g2u05.s.prepositions-directions",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "go straight ahead / turn left / opposite / behind",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "How to go there",
+          "members": [
+            "go straight ahead",
+            "turn left",
+            "go past",
+            "cross the street",
+            "take the second right"
+          ]
+        },
+        {
+          "label": "Saying where it is",
+          "members": [
+            "opposite",
+            "behind",
+            "next to",
+            "round the corner",
+            "in front of"
+          ]
+        }
+      ],
+      "hintDe": "Sind das Anweisungen (was tust du?) oder beschreiben sie nur den Ort (wo ist es?)?",
+      "hintEn": null,
+      "explainDe": "Anweisungen sagen, was du tun sollst (go, turn, cross). Ortspräpositionen sagen nur, wo etwas ist (opposite, behind, next to).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt#grammar-1",
+      "note": "Mirrors the SB box's two halves (giving the route vs saying where). All members in-bank."
+    }
+  ]
+}

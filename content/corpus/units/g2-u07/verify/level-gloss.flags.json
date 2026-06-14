@@ -1,0 +1,14 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u07",
+  "lens": "level-gloss",
+  "itemsHash": "ce0bece2461f",
+  "promptHash": "aefb997bf664",
+  "round": 2,
+  "by": "fable-lens-level-gloss",
+  "flags": [],
+  "summary": {
+    "itemsSeen": 64,
+    "flagged": 0
+  }
+}

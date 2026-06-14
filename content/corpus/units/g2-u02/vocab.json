@@ -1,0 +1,2820 @@
+{
+  "schema": "vocab@1",
+  "grade": 2,
+  "unit": 2,
+  "slug": "g2-u02",
+  "items": [
+    {
+      "id": "g2u02.w.admission-fee",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "museum",
+            "sculpture",
+            "exhibition",
+            "artist",
+            "secret"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb; '5 pounds' kept (pounds taught, matches SB leaflet '£5')."
+      },
+      "w": "admission fee",
+      "g": "Eintritt",
+      "d": "The money you pay to go into a place.",
+      "s": "The ___ to the museum is five pounds for adults.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "admission fee",
+          "tier": "full"
+        },
+        {
+          "text": "admission fees",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "admission fee",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "admission fee",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eintritt",
+            "tier": "full"
+          },
+          {
+            "text": "Eintrittspreis",
+            "tier": "full"
+          },
+          {
+            "text": "Eintrittsgeld",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "museum",
+        "sculpture",
+        "exhibition"
+      ],
+      "hintDe": "Das Geld, das du bezahlst, um hineinzukommen."
+    },
+    {
+      "id": "g2u02.w.anyone",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "password",
+            "secret",
+            "behaviour",
+            "mess",
+            "tip"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p19 online safety",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB online-safety text 'Don't give your passwords to anyone.' (masterlist 'Don't give your computer password to anyone.' has untaught 'computer'). MC are nouns; 'anyone' tests recognition by elimination."
+      },
+      "w": "anyone",
+      "g": "irgendjemand",
+      "d": "Any man, woman, or child at all.",
+      "s": "Don't tell your password to ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "anyone",
+          "tier": "full"
+        },
+        {
+          "text": "anybody",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "anyone",
+          "tier": "full"
+        },
+        {
+          "text": "anybody",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "anyone",
+            "tier": "full"
+          },
+          {
+            "text": "anybody",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "irgendjemand",
+            "tier": "full"
+          },
+          {
+            "text": "jemand",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "password",
+        "secret",
+        "behaviour"
+      ],
+      "hintDe": "Egal welche Person, ganz egal wer."
+    },
+    {
+      "id": "g2u02.w.artist",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "museum",
+            "exhibition",
+            "sculpture",
+            "secret",
+            "tip"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier verbatim from masterlist exampleSb."
+      },
+      "w": "artist",
+      "g": "Künstler/Künstlerin",
+      "d": "Somebody who makes beautiful pictures or music.",
+      "s": "He made this beautiful painting. He's a great ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "artist",
+          "tier": "full"
+        },
+        {
+          "text": "artists",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "artist",
+          "tier": "full"
+        },
+        {
+          "text": "an artist",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "artist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Künstler",
+            "tier": "full"
+          },
+          {
+            "text": "Künstlerin",
+            "tier": "full"
+          },
+          {
+            "text": "Künstler/Künstlerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "museum",
+        "exhibition",
+        "sculpture"
+      ],
+      "hintDe": "Jemand, der Bilder malt oder Musik macht."
+    },
+    {
+      "id": "g2u02.w.awesome",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "boring",
+            "confusing",
+            "difficult",
+            "dirty",
+            "modern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p20 ex10",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'Sport is awesome!' ('sport' untaught -> 'computer game', an in-level phrase). 'awesome' is in the SB ex10 adjectives box."
+      },
+      "w": "awesome",
+      "g": "großartig",
+      "d": "Really great and amazing.",
+      "s": "The new computer game is ___! I really like it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "awesome",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "awesome",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "awesome",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "großartig",
+            "tier": "full"
+          },
+          {
+            "text": "fantastisch",
+            "tier": "full"
+          },
+          {
+            "text": "beeindruckend",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "boring",
+        "confusing",
+        "difficult"
+      ],
+      "hintDe": "Richtig toll und beeindruckend."
+    },
+    {
+      "id": "g2u02.w.behaviour",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "secret",
+            "password",
+            "mess",
+            "tip",
+            "plate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb 'There is a lot of wrong behaviour on the web.' ('wrong' untaught -> 'bad'; 'web' glossed, matches SB text 'wrong behaviour on the web')."
+      },
+      "w": "behaviour",
+      "g": "Verhalten",
+      "d": "How good or bad somebody is to people.",
+      "s": "There is a lot of bad ___ on the web.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "behaviour",
+          "tier": "full"
+        },
+        {
+          "text": "behavior",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "behaviour",
+          "tier": "full"
+        },
+        {
+          "text": "behavior",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "behaviour",
+            "tier": "full"
+          },
+          {
+            "text": "behavior",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verhalten",
+            "tier": "full"
+          },
+          {
+            "text": "Benehmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "web",
+          "de": "Internet",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "secret",
+        "password",
+        "mess"
+      ],
+      "hintDe": "Wie sich jemand benimmt, gut oder schlecht."
+    },
+    {
+      "id": "g2u02.w.boring",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "exciting",
+            "awesome",
+            "funny",
+            "confusing",
+            "modern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p20 ex10",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb 'This film is very boring...' ('film' untaught -> 'show', taught g1). SB ex11: 'Because it's boring.' 'something'/'else' glossed in d."
+      },
+      "w": "boring",
+      "g": "langweilig",
+      "d": "Not fun at all. It makes you tired and you want to do something else.",
+      "s": "This show is very ___. I don't want to watch it any more.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "boring",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "boring",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "boring",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "langweilig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "else",
+          "de": "anderes",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "exciting",
+        "awesome",
+        "funny"
+      ],
+      "hintDe": "Gar nicht spannend — du wirst müde dabei."
+    },
+    {
+      "id": "g2u02.w.confusing",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "exciting",
+            "funny",
+            "awesome",
+            "boring",
+            "modern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p12 ex2",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier verbatim from masterlist exampleSb. WB ex2: 'I don't really understand it. I think it's confusing.' 'hard' glossed in d."
+      },
+      "w": "confusing",
+      "g": "verwirrend",
+      "d": "Hard to understand, so you do not know what is what.",
+      "s": "I don't understand this exercise. It's very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "confusing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "confusing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "confusing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verwirrend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hard",
+          "de": "schwer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "exciting",
+        "funny",
+        "awesome"
+      ],
+      "hintDe": "So schwer zu verstehen, dass du durcheinanderkommst."
+    },
+    {
+      "id": "g2u02.w.difficult",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "modern",
+            "dirty",
+            "possible",
+            "boring",
+            "such"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p13 ex3",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'I don't think the text is difficult. It's easy.' ('easy' untaught in carrier -> reworded). WB ex3: 'sometimes I find it very difficult.' 'easy' glossed in d."
+      },
+      "w": "difficult",
+      "g": "schwierig",
+      "d": "Not easy to do or to understand.",
+      "s": "This homework is very ___. I can't do it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "difficult",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "difficult",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "difficult",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schwierig",
+            "tier": "full"
+          },
+          {
+            "text": "schwer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "easy",
+          "de": "leicht",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "modern",
+        "dirty",
+        "possible"
+      ],
+      "hintDe": "Nicht leicht zu machen oder zu verstehen."
+    },
+    {
+      "id": "g2u02.w.dirty",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "modern",
+            "possible",
+            "funny",
+            "boring",
+            "exciting"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'The floor was very dirty after the party.' ('floor', 'party' untaught alone)."
+      },
+      "w": "dirty",
+      "g": "schmutzig",
+      "d": "Not clean at all.",
+      "s": "My shoes are very ___ because I played in the garden.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dirty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dirty",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dirty",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schmutzig",
+            "tier": "full"
+          },
+          {
+            "text": "dreckig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "modern",
+        "possible",
+        "funny"
+      ],
+      "hintDe": "So sind deine Schuhe nach dem Spielen im Garten."
+    },
+    {
+      "id": "g2u02.w.embarrassed",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "upset",
+            "boring",
+            "dirty",
+            "confusing",
+            "modern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p21 sketch",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb 'I was so embarrassed. I didn't know what to say.' ('say' untaught) reworded with 'mess' (in-bank). SB sketch repeats 'I'm so embarrassed.'"
+      },
+      "w": "embarrassed",
+      "g": "verlegen",
+      "d": "When you are not happy because you did a funny thing and people looked at you.",
+      "s": "I was so ___ when I made a big mess in front of the class.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "embarrassed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "embarrassed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "embarrassed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verlegen",
+            "tier": "full"
+          },
+          {
+            "text": "beschämt",
+            "tier": "full"
+          },
+          {
+            "text": "es war mir peinlich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "upset",
+        "boring",
+        "dirty"
+      ],
+      "hintDe": "Wenn dir etwas peinlich ist und alle hinschauen."
+    },
+    {
+      "id": "g2u02.w.exciting",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "boring",
+            "confusing",
+            "dirty",
+            "difficult",
+            "modern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p12 ex1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'There's an exciting film on TV...' ('film'/'TV' untaught). WB ex1 lists 'exciting'."
+      },
+      "w": "exciting",
+      "g": "spannend",
+      "d": "Making you very happy, so you can't wait for it.",
+      "s": "Going to the zoo for the first time was really ___!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "exciting",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "exciting",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "exciting",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "spannend",
+            "tier": "full"
+          },
+          {
+            "text": "aufregend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "boring",
+        "confusing",
+        "dirty"
+      ],
+      "hintDe": "Es macht dich ganz aufgeregt und froh."
+    },
+    {
+      "id": "g2u02.w.exhibition",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "museum",
+            "artist",
+            "sculpture",
+            "admission fee",
+            "plate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'I'm going to see the new exhibition at the museum.' ('see' untaught) — grounded by SB leaflet 'An exhibition of work from the artist'."
+      },
+      "w": "exhibition",
+      "g": "Ausstellung",
+      "d": "A place where people show their art for you to look at.",
+      "s": "There is a new art ___ at the museum.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "exhibition",
+          "tier": "full"
+        },
+        {
+          "text": "exhibitions",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "exhibition",
+          "tier": "full"
+        },
+        {
+          "text": "an exhibition",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "exhibition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ausstellung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "museum",
+        "artist",
+        "sculpture"
+      ],
+      "hintDe": "Hier kannst du Kunst anschauen, oft im Museum."
+    },
+    {
+      "id": "g2u02.w.funny",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "boring",
+            "confusing",
+            "dirty",
+            "difficult",
+            "modern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb 'That was funny. I laughed a lot.' reworded for an unambiguous blank. SB sketch: 'That is so funny.'"
+      },
+      "w": "funny",
+      "g": "lustig",
+      "d": "Making you want to laugh.",
+      "s": "The clown was very ___. We all laughed.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "funny",
+          "tier": "full"
+        },
+        {
+          "text": "funnier",
+          "tier": "partial"
+        },
+        {
+          "text": "funniest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "funny",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "funny",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lustig",
+            "tier": "full"
+          },
+          {
+            "text": "komisch",
+            "tier": "full"
+          },
+          {
+            "text": "witzig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "boring",
+        "confusing",
+        "dirty"
+      ],
+      "hintDe": "Es bringt dich zum Lachen."
+    },
+    {
+      "id": "g2u02.w.i-promise",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "What's the matter?",
+            "secret",
+            "tip",
+            "mess",
+            "behaviour"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p23 everyday english",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB Everyday English ('I promise' completes the comic) + masterlist exampleSb 'I'll help you. I promise.' 'I'll' glossed in s. Distractors are other in-bank words (only one other bank expression exists)."
+      },
+      "w": "I promise.",
+      "g": "Ich verspreche es.",
+      "d": "You tell somebody this so they know you are going to do a thing for them.",
+      "s": "I'll help you with your homework tomorrow. ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "I promise.",
+          "tier": "full"
+        },
+        {
+          "text": "I promise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I promise.",
+          "tier": "full"
+        },
+        {
+          "text": "I promise",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I promise.",
+            "tier": "full"
+          },
+          {
+            "text": "I promise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich verspreche es.",
+            "tier": "full"
+          },
+          {
+            "text": "Versprochen!",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "I'll",
+          "de": "ich werde",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "What's the matter?",
+        "secret",
+        "tip"
+      ],
+      "hintDe": "Das sagst du, wenn du etwas fest zusagst."
+    },
+    {
+      "id": "g2u02.w.mess",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "secret",
+            "tip",
+            "password",
+            "plate",
+            "behaviour"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'The garden was a mess.' to a clearer room context; 'should' glossed in d (no taught modal fits)."
+      },
+      "w": "mess",
+      "g": "Unordnung",
+      "d": "When a room is not clean and nothing is where it should be.",
+      "s": "My room is a big ___. I need to clean it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "mess",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mess",
+          "tier": "full"
+        },
+        {
+          "text": "a mess",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mess",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Unordnung",
+            "tier": "full"
+          },
+          {
+            "text": "Durcheinander",
+            "tier": "full"
+          },
+          {
+            "text": "Chaos",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "should",
+          "de": "sollten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "secret",
+        "tip",
+        "password"
+      ],
+      "hintDe": "Wenn alles unordentlich herumliegt."
+    },
+    {
+      "id": "g2u02.w.modern",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dirty",
+            "funny",
+            "boring",
+            "difficult",
+            "awesome"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier invented with taught words; SB exampleSb 'The modern sculpture was missing.' ('missing' untaught) used as idea."
+      },
+      "w": "modern",
+      "g": "modern",
+      "d": "New and from the time we live in now.",
+      "s": "Their new school is very ___, with big windows and a garden.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "modern",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "modern",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "modern",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "modern",
+            "tier": "full"
+          },
+          {
+            "text": "neu",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dirty",
+        "funny",
+        "boring"
+      ],
+      "hintDe": "Neu und aus unserer heutigen Zeit."
+    },
+    {
+      "id": "g2u02.w.museum",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "exhibition",
+            "artist",
+            "sculpture",
+            "admission fee",
+            "plate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'She works in a museum.' ('works' untaught)."
+      },
+      "w": "museum",
+      "g": "Museum",
+      "d": "A big building where you go to look at art and beautiful pictures.",
+      "s": "We can look at art and beautiful pictures at the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "museum",
+          "tier": "full"
+        },
+        {
+          "text": "museums",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "museum",
+          "tier": "full"
+        },
+        {
+          "text": "a museum",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "museum",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Museum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "exhibition",
+        "artist",
+        "sculpture"
+      ],
+      "hintDe": "Ein großes Gebäude, in dem du Kunst anschauen kannst."
+    },
+    {
+      "id": "g2u02.w.password",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "secret",
+            "behaviour",
+            "mess",
+            "tip",
+            "posting"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p19 online safety",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB online-safety text 'Don't give your passwords to anyone.' (masterlist exampleSb has untaught 'computer'/'other'). 'account' glossed in d; note 'secret' is a sibling bank word used in d but not the headword."
+      },
+      "w": "password",
+      "g": "Passwort",
+      "d": "A secret that you need so people cannot go into your account.",
+      "s": "Never tell your ___ to anyone.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "password",
+          "tier": "full"
+        },
+        {
+          "text": "passwords",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "password",
+          "tier": "full"
+        },
+        {
+          "text": "a password",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "password",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Passwort",
+            "tier": "full"
+          },
+          {
+            "text": "Kennwort",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "account",
+          "de": "Konto",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "secret",
+        "behaviour",
+        "mess"
+      ],
+      "hintDe": "Das geheime Wort, mit dem du dich anmeldest."
+    },
+    {
+      "id": "g2u02.w.plate",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "secret",
+            "mess",
+            "tip",
+            "password",
+            "behaviour"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p20 sketch",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb 'The waiter puts the plate down.' ('puts' untaught) reworded. SB sketch serves dumplings 'on a plate'."
+      },
+      "w": "plate",
+      "g": "Teller",
+      "d": "A thing that you put your food on when you eat.",
+      "s": "Put the pasta on the ___ and eat it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "plate",
+          "tier": "full"
+        },
+        {
+          "text": "plates",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plate",
+          "tier": "full"
+        },
+        {
+          "text": "a plate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "plate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Teller",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "secret",
+        "mess",
+        "tip"
+      ],
+      "hintDe": "Darauf legst du dein Essen."
+    },
+    {
+      "id": "g2u02.w.possible",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "difficult",
+            "modern",
+            "dirty",
+            "boring",
+            "such"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p19 ex8",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb 'I can't finish all this homework. It's not possible.' ('finish' untaught -> 'do'). SB dialogue: 'Why is that not possible?'"
+      },
+      "w": "possible",
+      "g": "möglich",
+      "d": "A thing that can happen or that you can do.",
+      "s": "I can't do all this homework. It's not ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "possible",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "possible",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "possible",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "möglich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "difficult",
+        "modern",
+        "dirty"
+      ],
+      "hintDe": "Etwas, das man machen oder schaffen kann."
+    },
+    {
+      "id": "g2u02.w.posting",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "password",
+            "secret",
+            "tip",
+            "mess",
+            "behaviour"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p19 online safety",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB online-safety text 'check who can see your postings'; masterlist exampleSb 'Check who can see your posting.' ('check'/'see' untaught). 'web'/'online' glossed."
+      },
+      "w": "posting",
+      "g": "Posting",
+      "d": "A picture or a story that you put on the web for people to look at.",
+      "s": "Many people can look at your ___, so be careful what you put online.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "posting",
+          "tier": "full"
+        },
+        {
+          "text": "postings",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "posting",
+          "tier": "full"
+        },
+        {
+          "text": "a posting",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "posting",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Posting",
+            "tier": "full"
+          },
+          {
+            "text": "Beitrag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "web",
+          "de": "Internet",
+          "scope": "d"
+        },
+        {
+          "word": "online",
+          "de": "im Internet",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "password",
+        "secret",
+        "tip"
+      ],
+      "hintDe": "Ein Beitrag, den du ins Internet stellst."
+    },
+    {
+      "id": "g2u02.w.sculpture",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "museum",
+            "exhibition",
+            "artist",
+            "admission fee",
+            "plate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'The sculpture is huge.' plus SB-grounded idea; def avoids untaught 'walk around'/'metal'/'wood'."
+      },
+      "w": "sculpture",
+      "g": "Skulptur",
+      "d": "Art that an artist makes from stone for people to look at.",
+      "s": "There is a big stone ___ of a horse in the park.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sculpture",
+          "tier": "full"
+        },
+        {
+          "text": "sculptures",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sculpture",
+          "tier": "full"
+        },
+        {
+          "text": "a sculpture",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sculpture",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Skulptur",
+            "tier": "full"
+          },
+          {
+            "text": "Statue",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "museum",
+        "exhibition",
+        "artist"
+      ],
+      "hintDe": "Kunst aus Stein, um die du herumgehen kannst."
+    },
+    {
+      "id": "g2u02.w.secret",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mess",
+            "tip",
+            "password",
+            "behaviour",
+            "plate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p21 sketch",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'Your secret is safe with me.' ('safe' untaught). SB sketch: 'Your secret is safe with me.' 'other' glossed in d."
+      },
+      "w": "secret",
+      "g": "Geheimnis",
+      "d": "A thing that you do not tell other people.",
+      "s": "Don't tell anyone. It's a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "secret",
+          "tier": "full"
+        },
+        {
+          "text": "secrets",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "secret",
+          "tier": "full"
+        },
+        {
+          "text": "a secret",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "secret",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geheimnis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "mess",
+        "tip",
+        "password"
+      ],
+      "hintDe": "Etwas, das du niemandem verrätst."
+    },
+    {
+      "id": "g2u02.w.such",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "possible",
+            "difficult",
+            "modern",
+            "dirty",
+            "boring"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier reworked from SB story 'Jacob isn't the only one to make such a mistake.' ('only'/'mistake' untaught) into a 'such a + adjective' frame the SB models. Definition shows usage without grammar jargon."
+      },
+      "w": "such",
+      "g": "so (ein)",
+      "d": "You put this before 'a' to make 'a good day' into 'a very good day'.",
+      "s": "It was ___ a good day. We were all very happy.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "such",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "such",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "such",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "so ein",
+            "tier": "full"
+          },
+          {
+            "text": "solch",
+            "tier": "full"
+          },
+          {
+            "text": "so eine",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "possible",
+        "difficult",
+        "modern"
+      ],
+      "hintDe": "'so ein' — macht das nächste Wort stärker."
+    },
+    {
+      "id": "g2u02.w.surprise-party",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "exhibition",
+            "admission fee",
+            "sculpture",
+            "museum",
+            "tip"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier invented (masterlist 'They planned a surprise party.' displays untaught 'planned'); SB story plot 'They planned a surprise party.' is the idea source."
+      },
+      "w": "surprise party",
+      "g": "Überraschungsparty",
+      "d": "A big fun day that friends make for you when you do not know about it before.",
+      "s": "My friends made a ___ for me, and I did not know about it.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "surprise party",
+          "tier": "full"
+        },
+        {
+          "text": "surprise parties",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "surprise party",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "surprise party",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Überraschungsparty",
+            "tier": "full"
+          },
+          {
+            "text": "Überraschungsfest",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "exhibition",
+        "admission fee",
+        "sculpture"
+      ],
+      "hintDe": "Ein Fest, von dem die Person vorher nichts weiß."
+    },
+    {
+      "id": "g2u02.w.tip",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "secret",
+            "mess",
+            "password",
+            "behaviour",
+            "plate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'Here is an important tip for when you go online.' ('important'/'online' untaught). SB text: 'here are some important tips for when you go online'."
+      },
+      "w": "tip",
+      "g": "Tipp",
+      "d": "A good thing somebody shows you to help you do well.",
+      "s": "Here is a good ___ to help you do well at school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tip",
+          "tier": "full"
+        },
+        {
+          "text": "tips",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tip",
+          "tier": "full"
+        },
+        {
+          "text": "a tip",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tip",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tipp",
+            "tier": "full"
+          },
+          {
+            "text": "Hinweis",
+            "tier": "full"
+          },
+          {
+            "text": "Ratschlag",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "secret",
+        "mess",
+        "password"
+      ],
+      "hintDe": "Ein guter Hinweis, der dir hilft."
+    },
+    {
+      "id": "g2u02.w.to-add",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to contact",
+            "to organise",
+            "to pass on",
+            "to post",
+            "to be worth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p22 ex16",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from v1 idea ('add sugar to tea'); masterlist exampleSb 'You should add a good title to the story.' ('should'/'title' untaught)."
+      },
+      "w": "to add",
+      "g": "hinzufügen",
+      "d": "To put more to a thing that you have.",
+      "s": "You can ___ more sugar to your tea.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "add",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "add",
+          "tier": "full"
+        },
+        {
+          "text": "to add",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "add",
+            "tier": "full"
+          },
+          {
+            "text": "to add",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinzufügen",
+            "tier": "full"
+          },
+          {
+            "text": "dazugeben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to contact",
+        "to organise",
+        "to pass on"
+      ],
+      "hintDe": "Grundform: noch etwas dazugeben."
+    },
+    {
+      "id": "g2u02.w.to-be-part-of",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to be worth",
+            "to add",
+            "to contact",
+            "to organise",
+            "to pass on"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p17 ex3b",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB story 'Modern art' ('The jacket with the roses was part of a sculpture'); masterlist exampleSb 'The jacket was part of a sculpture.' Blank holds 'part of'; 'be/was' stays outside the blank in the sentence frame."
+      },
+      "w": "to be part of",
+      "g": "Teil von etw. sein",
+      "d": "To be inside a bigger thing and not alone.",
+      "s": "The jacket was ___ a big sculpture.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "part of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "part of",
+          "tier": "full"
+        },
+        {
+          "text": "be part of",
+          "tier": "full"
+        },
+        {
+          "text": "to be part of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be part of",
+            "tier": "full"
+          },
+          {
+            "text": "to be part of",
+            "tier": "full"
+          },
+          {
+            "text": "part of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Teil von etwas sein",
+            "tier": "full"
+          },
+          {
+            "text": "zu etwas gehören",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to be worth",
+        "to add",
+        "to contact"
+      ],
+      "hintDe": "Zu etwas Größerem gehören, nicht für sich allein sein."
+    },
+    {
+      "id": "g2u02.w.to-be-worth",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to be part of",
+            "to add",
+            "to post",
+            "to contact",
+            "to organise"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'The sculpture was worth a lot of money.' Blank holds 'worth'; 'be/is' stays in the frame."
+      },
+      "w": "to be worth",
+      "g": "wert sein",
+      "d": "To have a price, like a lot of money.",
+      "s": "This painting is ___ a lot of money.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "worth",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "worth",
+          "tier": "full"
+        },
+        {
+          "text": "be worth",
+          "tier": "full"
+        },
+        {
+          "text": "to be worth",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be worth",
+            "tier": "full"
+          },
+          {
+            "text": "to be worth",
+            "tier": "full"
+          },
+          {
+            "text": "worth",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wert sein",
+            "tier": "full"
+          },
+          {
+            "text": "wert",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to be part of",
+        "to add",
+        "to post"
+      ],
+      "hintDe": "Einen Preis haben, zum Beispiel viel Geld."
+    },
+    {
+      "id": "g2u02.w.to-contact",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to pass on",
+            "to add",
+            "to organise",
+            "to post",
+            "to be worth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'Please contact us if you have any questions.' ('questions' untaught)."
+      },
+      "w": "to contact",
+      "g": "kontaktieren",
+      "d": "To call or write to somebody.",
+      "s": "Please ___ me if you need help.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "contact",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "contact",
+          "tier": "full"
+        },
+        {
+          "text": "to contact",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "contact",
+            "tier": "full"
+          },
+          {
+            "text": "to contact",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kontaktieren",
+            "tier": "full"
+          },
+          {
+            "text": "sich melden bei",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to pass on",
+        "to add",
+        "to organise"
+      ],
+      "hintDe": "Grundform: jemanden anrufen oder anschreiben."
+    },
+    {
+      "id": "g2u02.w.to-fail",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to add",
+            "to contact",
+            "to organise",
+            "to pass on",
+            "to post"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "verify r2 (level-gloss): removed 'mark' (school grade) from d and s — it was untaught and only passed the gate via the harvested NAME 'Mark' (proper-noun masking). Reworded to taught-only 'do well at school' / 'fail at school'; meaning (durchfallen) preserved, no gloss needed."
+      },
+      "w": "to fail",
+      "g": "durchfallen",
+      "d": "To not do well at school.",
+      "s": "I studied very much because I didn't want to ___ at school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fail",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fail",
+          "tier": "full"
+        },
+        {
+          "text": "to fail",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fail",
+            "tier": "full"
+          },
+          {
+            "text": "to fail",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "durchfallen",
+            "tier": "full"
+          },
+          {
+            "text": "scheitern",
+            "tier": "full"
+          },
+          {
+            "text": "nicht bestehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to add",
+        "to contact",
+        "to organise"
+      ],
+      "hintDe": "Grundform: nicht bestehen, eine schlechte Note bekommen."
+    },
+    {
+      "id": "g2u02.w.to-organise",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to add",
+            "to contact",
+            "to post",
+            "to pass on",
+            "to fail"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to organise",
+      "g": "organisieren",
+      "d": "To make a fun day happen and do all the work for it.",
+      "s": "We want to ___ a surprise party for our teacher.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "organise",
+          "tier": "full"
+        },
+        {
+          "text": "organize",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "organise",
+          "tier": "full"
+        },
+        {
+          "text": "to organise",
+          "tier": "full"
+        },
+        {
+          "text": "organize",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "organise",
+            "tier": "full"
+          },
+          {
+            "text": "to organise",
+            "tier": "full"
+          },
+          {
+            "text": "organize",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "organisieren",
+            "tier": "full"
+          },
+          {
+            "text": "veranstalten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to add",
+        "to contact",
+        "to post"
+      ],
+      "hintDe": "Grundform: alles für ein Fest planen und vorbereiten."
+    },
+    {
+      "id": "g2u02.w.to-pass-on",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to contact",
+            "to add",
+            "to organise",
+            "to post",
+            "to fail"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from masterlist exampleSb 'Please pass on the message to your mum.' ('message' untaught -> 'letter'). SB text uses 'don't pass it on to other people'."
+      },
+      "w": "to pass on",
+      "g": "weitergeben",
+      "d": "To give a thing or a letter to a friend.",
+      "s": "Can you ___ this letter to your mum for me?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pass on",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pass on",
+          "tier": "full"
+        },
+        {
+          "text": "to pass on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pass on",
+            "tier": "full"
+          },
+          {
+            "text": "to pass on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weitergeben",
+            "tier": "full"
+          },
+          {
+            "text": "weiterleiten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to contact",
+        "to add",
+        "to organise"
+      ],
+      "hintDe": "Grundform: etwas an jemand anderen weitergeben."
+    },
+    {
+      "id": "g2u02.w.to-post",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to add",
+            "to contact",
+            "to organise",
+            "to pass on",
+            "to be worth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p19 online safety",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB online-safety text 'Think before you post something and check who can see it.' ('something' untaught -> 'a picture'). 'web' glossed in d."
+      },
+      "w": "to post",
+      "g": "posten",
+      "d": "To put a picture or a story on the web for people to look at.",
+      "s": "Think before you ___ a picture for everybody to look at.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "post",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "post",
+          "tier": "full"
+        },
+        {
+          "text": "to post",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "post",
+            "tier": "full"
+          },
+          {
+            "text": "to post",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "posten",
+            "tier": "full"
+          },
+          {
+            "text": "online stellen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "web",
+          "de": "Internet",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to add",
+        "to contact",
+        "to organise"
+      ],
+      "hintDe": "Grundform: etwas ins Internet stellen."
+    },
+    {
+      "id": "g2u02.w.upset",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "embarrassed",
+            "funny",
+            "modern",
+            "boring",
+            "dirty"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p17 ex4",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier adapted from masterlist exampleSb 'The little girl looked upset because she couldn't have her favourite toy.' ('couldn't'/'favourite'/'took' untaught). SB ex4: 'You look upset.' 'little' glossed in s."
+      },
+      "w": "upset",
+      "g": "verärgert",
+      "d": "When you are sad and angry because a bad thing happened.",
+      "s": "The little girl was ___ because she had a bad day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "upset",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "upset",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "upset",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verärgert",
+            "tier": "full"
+          },
+          {
+            "text": "aufgebracht",
+            "tier": "full"
+          },
+          {
+            "text": "traurig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "klein",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "embarrassed",
+        "funny",
+        "modern"
+      ],
+      "hintDe": "Traurig und verärgert wegen etwas Schlimmem."
+    },
+    {
+      "id": "g2u02.w.what-s-the-matter",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I promise.",
+            "secret",
+            "behaviour",
+            "mess",
+            "tip"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p17 ex4",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier verbatim from SB ex4 speaking prompt 'What's the matter? You look upset.' Distractors are other in-bank words (only one other bank expression exists, so noun foils complete the set)."
+      },
+      "w": "What's the matter?",
+      "g": "Was ist los?",
+      "d": "You ask this when somebody looks sad or upset.",
+      "s": "You look sad. ___ You look upset.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "What's the matter?",
+          "tier": "full"
+        },
+        {
+          "text": "What's the matter",
+          "tier": "full"
+        },
+        {
+          "text": "What is the matter?",
+          "tier": "full"
+        },
+        {
+          "text": "Whats the matter?",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "What's the matter?",
+          "tier": "full"
+        },
+        {
+          "text": "What is the matter?",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "What's the matter?",
+            "tier": "full"
+          },
+          {
+            "text": "What is the matter?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Was ist los?",
+            "tier": "full"
+          },
+          {
+            "text": "Was ist denn los?",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "I promise.",
+        "secret",
+        "behaviour"
+      ],
+      "hintDe": "Das fragst du, wenn jemand traurig aussieht."
+    }
+  ]
+}

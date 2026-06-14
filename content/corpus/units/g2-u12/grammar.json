@@ -1,0 +1,1417 @@
+{
+  "schema": "grammar@1",
+  "grade": 2,
+  "unit": 12,
+  "slug": "g2-u12",
+  "items": [
+    {
+      "id": "g2u12.gi.present-perfect.ag.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Englisch für 'gebrochen' (sie hat sich den Arm ...):",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "broken",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sie endet auf -en und steht nach have/has.",
+      "hintEn": null,
+      "explainDe": "break – broke – broken. Nach have/has steht broken.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.ag.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Englisch für 'geschrieben' (er hat einen Brief ...):",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "written",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sie hat ein doppeltes t und endet auf -en.",
+      "hintEn": null,
+      "explainDe": "write – wrote – written. Nach have/has steht written.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.cp.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He has hurted his knee.",
+            "He have hurt his knee.",
+            "He hurt his knee yesterday.",
+            "He has hurt his knee yesterday."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#act-5",
+        "seedV1": "m2-u12-present-perfect-cp-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Your friend is holding his knee and crying. What do you tell the teacher?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has hurt his knee.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He has hurted his knee.",
+        "He have hurt his knee.",
+        "He hurt his knee yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist gerade passiert und tut jetzt weh — also Present perfect mit dem richtigen Hilfsverb und der richtigen Form.",
+      "hintEn": null,
+      "explainDe": "hurt bleibt in der 3. Form gleich (hurt, nicht hurted), und bei he heißt das Hilfsverb has. \"yesterday\" passt nicht zum Present perfect.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.cp.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I've just hurted my finger.",
+            "I just have hurt my finger.",
+            "I has just hurt my finger.",
+            "I've hurt my finger yesterday."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#act-7",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "There is blood on your friend's shirt. He is holding his finger.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I've just hurt my finger.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I've just hurted my finger.",
+        "I just have hurt my finger.",
+        "I has just hurt my finger."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist gerade eben passiert — wo steht just, und welche Form von hurt brauchst du?",
+      "hintEn": null,
+      "explainDe": "just steht zwischen have und dem Partizip, und die 3. Form von hurt ist hurt (nicht hurted). Bei I heißt das Hilfsverb have (I've).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.ec.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She have just made a cake.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has just made a cake.",
+          "tier": "full"
+        },
+        {
+          "text": "She's just made a cake.",
+          "tier": "full"
+        },
+        {
+          "text": "has",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Passt das Hilfsverb zu \"she\"?",
+      "hintEn": null,
+      "explainDe": "In der 3. Person (she) wird have zu has: She has just made a cake.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u12.gi.present-perfect.ec.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 12.txt#act-6",
+        "seedV1": "m2-u12-present-perfect-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He has writed a letter to his grandma.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has written a letter to his grandma.",
+          "tier": "full"
+        },
+        {
+          "text": "He's written a letter to his grandma.",
+          "tier": "full"
+        },
+        {
+          "text": "written",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "write ist unregelmäßig — \"writed\" gibt es nicht. Wie heißt die 3. Form?",
+      "hintEn": null,
+      "explainDe": "write – wrote – written. Die 3. Form ist written, nicht writed: He has written a letter.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u12.gi.present-perfect.ec.003",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#act-6",
+        "seedV1": "m2-u12-present-perfect-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "David has fallen and he broken his arm.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "David has fallen and he has broken his arm.",
+          "tier": "full"
+        },
+        {
+          "text": "David has fallen and he's broken his arm.",
+          "tier": "full"
+        },
+        {
+          "text": "he has broken his arm",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor dem Partizip broken fehlt etwas — das Hilfsverb.",
+      "hintEn": null,
+      "explainDe": "Das Present perfect braucht immer have/has. Bei \"he\" heißt es has: he has broken his arm.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u12.gi.present-perfect.ff.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "free-form",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#act-17",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Your knee hurts and you want the doctor. What do you tell the teacher?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I've hurt my knee.",
+          "tier": "full"
+        },
+        {
+          "text": "I have hurt my knee.",
+          "tier": "full"
+        },
+        {
+          "text": "I've just hurt my knee.",
+          "tier": "full"
+        },
+        {
+          "text": "I have just hurt my knee.",
+          "tier": "full"
+        },
+        {
+          "text": "I've hurt my leg.",
+          "tier": "partial"
+        },
+        {
+          "text": "I have hurt my leg.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Benutze das Present perfect: I + have/'ve + 3. Form. hurt bleibt in der 3. Form gleich.",
+      "hintEn": null,
+      "explainDe": "I've hurt my knee. — have + Partizip zeigt, dass etwas passiert ist und jetzt wehtut. just kannst du fürs \"gerade eben\" ergänzen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.gf.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I ___ just hurt my knee.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei \"I\" brauchst du die Form von have, die zu \"ich\" passt.",
+      "hintEn": null,
+      "explainDe": "Das Present perfect bildest du mit have/has + Partizip. Bei \"I\" heißt das Hilfsverb have (kurz: I've).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.gf.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She ___ just broken her arm.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei \"she\" (er/sie/es) ändert sich das Hilfsverb.",
+      "hintEn": null,
+      "explainDe": "In der 3. Person (he/she/it) wird have zu has (kurz: she's). Also: She has just broken her arm.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.gf.003",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "They ___ gone to the dentist.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"They\" ist Mehrzahl — welches Hilfsverb passt?",
+      "hintEn": null,
+      "explainDe": "Bei einer Mehrzahl (they/we/you) heißt das Hilfsverb have: They have gone to the dentist.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.gf.004",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 12.txt#act-10",
+        "seedV1": "m2-u12-present-perfect-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The dog has ___ all the cake! (eat)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "eaten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach has brauchst du die 3. Form (3. Form) von eat, nicht die Grundform.",
+      "hintEn": null,
+      "explainDe": "Die 3. Form von eat ist eaten. Nach have/has steht immer die 3. Form: has eaten.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.gf.005",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 12.txt#act-6",
+        "seedV1": "m2-u12-present-perfect-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She has just ___ a letter to her grandma. (write)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "written",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die 3. Form von write ist unregelmäßig — sie endet auf -en.",
+      "hintEn": null,
+      "explainDe": "write – wrote – written. Nach has steht die 3. Form written: She has just written a letter.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.gf.006",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Call a doctor! David ___ ___ his leg. (break)",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "has | broken",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zuerst das richtige Hilfsverb für \"David\", dann die 3. Form von break.",
+      "hintEn": null,
+      "explainDe": "David ist 3. Person, also has. Die 3. Form von break ist broken: David has broken his leg.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.gs.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "broken / break / eaten / eat / written / write / gone / go",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "after have/has",
+          "members": [
+            "broken",
+            "eaten",
+            "written",
+            "gone"
+          ]
+        },
+        {
+          "label": "not after have/has",
+          "members": [
+            "break",
+            "eat",
+            "write",
+            "go"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Nach have/has steht die 3. Form. Welche Wörter sind 3. Formen, welche sind Grundformen?",
+      "hintEn": null,
+      "explainDe": "broken, eaten, written, gone sind 3. Formen und stehen nach have/has. break, eat, write, go sind die Grundformen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.mc.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She has just maked a cake.",
+            "She have just made a cake.",
+            "She just has made a cake.",
+            "She has maked a cake."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Your mum made a cake just now.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has just made a cake.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She has just maked a cake.",
+        "She have just made a cake.",
+        "She just has made a cake."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf das Hilfsverb bei \"she\", auf die richtige 3. Form und darauf, wo just steht.",
+      "hintEn": null,
+      "explainDe": "Bei she heißt es has, die 3. Form von make ist made (nicht maked), und just steht zwischen has und dem Partizip.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.mc.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I have losed my keys.",
+            "I has lost my keys.",
+            "I have lose my keys.",
+            "I have losing my keys."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 12.txt#act-7",
+        "seedV1": "m2-u12-present-perfect-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You can't find your keys.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have lost my keys.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have losed my keys.",
+        "I has lost my keys.",
+        "I have lose my keys."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Welche Form ist die richtige 3. Form von lose, und welches Hilfsverb passt zu \"I\"?",
+      "hintEn": null,
+      "explainDe": "Bei I heißt das Hilfsverb have, und die 3. Form von lose ist lost (nicht losed, nicht lose).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.mp.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 12.txt#act-6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I've hurt … / she has broken … / he has eaten …",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I've hurt",
+          "right": "my knee."
+        },
+        {
+          "left": "She has broken",
+          "right": "her arm."
+        },
+        {
+          "left": "They have gone",
+          "right": "to the dentist."
+        },
+        {
+          "left": "He has eaten",
+          "right": "all the cake."
+        },
+        {
+          "left": "I have lost",
+          "right": "my keys."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lies jeden Satzanfang und such das Ende, das logisch dazupasst.",
+      "hintEn": null,
+      "explainDe": "Jeder Satz ist im Present perfect (have/has + 3. Form). Verbinde Anfang und Ende so, dass ein sinnvoller Satz entsteht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.mt.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "matching",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "break, eat, lose, write, find",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "break",
+          "right": "broken"
+        },
+        {
+          "left": "eat",
+          "right": "eaten"
+        },
+        {
+          "left": "lose",
+          "right": "lost"
+        },
+        {
+          "left": "write",
+          "right": "written"
+        },
+        {
+          "left": "find",
+          "right": "found"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die 3. Form (3. Form) findest du in der dritten Spalte der Verbliste.",
+      "hintEn": null,
+      "explainDe": "break-broken, eat-eaten, lose-lost, write-written, find-found. Diese 3. Formen brauchst du fürs Present perfect.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.mt.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "matching",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-mt-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "go, make, do, hurt, drop",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "go",
+          "right": "gone"
+        },
+        {
+          "left": "make",
+          "right": "made"
+        },
+        {
+          "left": "do",
+          "right": "done"
+        },
+        {
+          "left": "hurt",
+          "right": "hurt"
+        },
+        {
+          "left": "drop",
+          "right": "dropped"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Manche 3. Formen sehen ganz anders aus als die Grundform — lern sie auswendig.",
+      "hintEn": null,
+      "explainDe": "go-gone, make-made, do-done, hurt-hurt (bleibt gleich), drop-dropped. Das sind die 3. Forms.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.qf.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#act-18",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Your friend looks ill. Ask your friend about the dentist.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you seen the dentist?",
+          "tier": "full"
+        },
+        {
+          "text": "Have you been to the dentist?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei der Frage steht das Hilfsverb (Have) ganz vorne, dann \"you\", dann die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Im Present perfect bildest du Fragen mit Have/Has am Anfang: Have you seen the dentist?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.qf.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#act-18",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Her head hurts. Ask about her and her medicine.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Has she taken her medicine?",
+          "tier": "full"
+        },
+        {
+          "text": "Has she had her medicine?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei \"she\" beginnt die Frage mit Has. Danach kommt die 3. Form von take.",
+      "hintEn": null,
+      "explainDe": "In der 3. Person fragst du mit Has: Has she taken her medicine? take – took – taken.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.sb.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "have",
+            "his",
+            "leg",
+            "head"
+          ],
+          "chipBudget": 6,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "just / has / her / she / arm / broken",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has just broken her arm.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Person + has + just + 3. Form + Rest.",
+      "hintEn": null,
+      "explainDe": "She has just broken her arm. — just steht immer zwischen has und der 3. Form.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.sb.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "has",
+            "eat",
+            "drunk",
+            "seen"
+          ],
+          "chipBudget": 6,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 12.txt#act-3",
+        "seedV1": "m2-u12-present-perfect-sb-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "have / I / eaten / much / just / too",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have just eaten too much.",
+          "tier": "full"
+        },
+        {
+          "text": "I've just eaten too much.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Person + have + just + 3. Form von eat + Rest.",
+      "hintEn": null,
+      "explainDe": "I have just eaten too much. — die 3. Form von eat ist eaten, und just steht zwischen have und eaten.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.sb.003",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "has",
+            "did",
+            "eaten",
+            "gone"
+          ],
+          "chipBudget": 6,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#act-18",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "you / the / Have / seen / doctor / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you seen the doctor?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei der Frage steht Have ganz vorne, dann you, dann die 3. Form.",
+      "hintEn": null,
+      "explainDe": "Have you seen the doctor? — die Frage beginnt mit dem Hilfsverb Have, dann folgt das Partizip seen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.tf.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#act-7",
+        "seedV1": "m2-u12-present-perfect-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Tom hurt his knee just now. Tell your friend: 'Tom ___ (just / hurt) his knee.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has just hurt",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Hilfsverb + just + 3. Form. Die 3. Form von hurt bleibt hurt.",
+      "hintEn": null,
+      "explainDe": "Bei Tom (3. Person) heißt es has, just steht dahinter, dann das Partizip hurt: has just hurt.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u12.gi.present-perfect.tf.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-tf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The children found a spoon just now: 'The children ___ (just / find) a spoon.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have just found",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"The children\" ist Mehrzahl — welches Hilfsverb? Danach just und die 3. Form von find.",
+      "hintEn": null,
+      "explainDe": "Bei einer Mehrzahl (the children) heißt das Hilfsverb have. find – found – found, also: have just found.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u12.gi.present-perfect.tr.001",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er hat sich gerade das Bein gebrochen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has just broken his leg.",
+          "tier": "full"
+        },
+        {
+          "text": "He's just broken his leg.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"gerade\" = just, und es steht zwischen has und der 3. Form von break.",
+      "hintEn": null,
+      "explainDe": "He has just broken his leg. — just steht zwischen has und der 3. Form broken.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.tr.002",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 12.txt#grammar-1",
+        "seedV1": "m2-u12-present-perfect-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ich habe gerade meine Schlüssel verloren.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have just lost my keys.",
+          "tier": "full"
+        },
+        {
+          "text": "I've just lost my keys.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"verloren\" ist die 3. Form von lose. Wo setzt du \"gerade\" (just) ein?",
+      "hintEn": null,
+      "explainDe": "I've just lost my keys. — lose – lost – lost; just steht zwischen have und lost.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u12.gi.present-perfect.tr.003",
+      "structureId": "g2u12.s.present-perfect",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 12.txt#act-3",
+        "seedV1": "m2-u12-present-perfect-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I have just eaten too much.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Ich habe gerade zu viel gegessen.",
+          "tier": "full"
+        },
+        {
+          "text": "Ich hab gerade zu viel gegessen.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"have eaten\" ist das Present perfect von eat — im Deutschen das Perfekt mit \"haben\".",
+      "hintEn": null,
+      "explainDe": "have/has + Partizip entspricht im Deutschen meist dem Perfekt: I have just eaten = Ich habe gerade gegessen.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

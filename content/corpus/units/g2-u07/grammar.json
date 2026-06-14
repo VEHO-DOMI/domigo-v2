@@ -1,0 +1,1638 @@
+{
+  "schema": "grammar@1",
+  "grade": 2,
+  "unit": 7,
+  "slug": "g2-u07",
+  "items": [
+    {
+      "id": "g2u07.gi.going-to-negative.cp.001",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I don't going to come along.",
+            "I'm not going come along.",
+            "I'm not going to does come along.",
+            "I'm not go to come along.",
+            "I not going to come along."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-7-message-D",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB message D ('I'm not going to come along to see Grandma'); reframed with in-bank words. 'come along' in g1-u06. Distractors flaw the going-to negative only; 'comes'/'amn't' dropped (untaught). Pool 5, all gate-legal."
+      },
+      "prompt": {
+        "text": "Mia has a lot of work for school, so she isn't going to visit Grandma.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm not going to come along.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I don't going to come along.",
+        "I'm not going come along.",
+        "I'm not going to does come along."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "I'm not + going to + Grundform. be wird verneint (I'm not), nicht mit don't.",
+      "hintEn": null,
+      "explainDe": "Richtig: I'm not going to come along. be wird verneint (I'm not), to darf nicht fehlen, und nach to steht die Grundform ohne Hilfsverb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.ec.001",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Drills the don't-negation error (brief). One error. strict:true (don't→I'm not flips the form)."
+      },
+      "prompt": {
+        "text": "I don't going to do my homework tonight.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm not going to do my homework tonight.",
+          "tier": "full"
+        },
+        {
+          "text": "I am not going to do my homework tonight.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm not going to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "going to wird nicht mit don't verneint, sondern über be: I'm not …",
+      "hintEn": null,
+      "explainDe": "Bei going to verneinst du be, nicht mit don't: I'm not going to do … (nicht I don't going to).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.ec.002",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-5-chant",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Drills missing-'to' error (brief). 'tidy your room' surface (gate-safe). strict:true."
+      },
+      "prompt": {
+        "text": "I'm not going tidy your room.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm not going to tidy your room.",
+          "tier": "full"
+        },
+        {
+          "text": "I am not going to tidy your room.",
+          "tier": "full"
+        },
+        {
+          "text": "going to tidy your room",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwischen going und dem Verb fehlt ein kleines Wort: to.",
+      "hintEn": null,
+      "explainDe": "Es heißt going to + Grundform: I'm not going to tidy … Das to darf nicht fehlen.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.gf.003",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-5-chant",
+        "seedV1": null,
+        "narrative": null,
+        "note": "From SB chant ('I'm not going to tidy my room'); 'tidy your room' surface used (gate: 'tidy my room' fails, 'tidy your room' passes). 3 blanks: not | going | to."
+      },
+      "prompt": {
+        "text": "I'm tired. I'm ___ ___ ___ tidy your room today.",
+        "lang": "en",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "not | going | to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung von be (I'm …) + going to + Grundform. Es fehlen drei kleine Wörter.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bildest du mit der Verneinung von be + going to + Grundform: I'm not going to tidy …",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.gf.004",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-7-message-C",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB message C (Mia: 'She's not going to come over today'). Two blanks isn't | going; accept 'is not'."
+      },
+      "prompt": {
+        "text": "She ___ ___ to come over today. She is ill.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "isn't | going",
+          "tier": "full"
+        },
+        {
+          "text": "is not | going",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei she heißt die Verneinung von be: isn't. Danach kommt going to.",
+      "hintEn": null,
+      "explainDe": "Verneinung mit going to: isn't (Verneinung von be) + going to + Grundform. She isn't going to come over.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.mc.001",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He doesn't going to play basketball today.",
+            "He isn't going to plays basketball today.",
+            "He isn't going play basketball today.",
+            "He don't going to play basketball today.",
+            "He not going to play basketball today."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Drills all three brief errors: don't-negation, -s after going to, missing 'to'. 'plays' gate-legal. Pool 5."
+      },
+      "prompt": {
+        "text": "Tom has a lot of work for school today.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He isn't going to play basketball today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He doesn't going to play basketball today.",
+        "He isn't going to plays basketball today.",
+        "He isn't going play basketball today."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneint wird be (isn't), nicht mit doesn't. Danach going to + Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig: He isn't going to play. Man verneint be (isn't), nicht mit doesn't; nach going to steht die Grundform ohne -s, und to darf nicht fehlen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.sb.001",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "don't",
+            "to do",
+            "doesn't",
+            "going"
+          ],
+          "chipBudget": 10,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-3-dialogue",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB dialogue ('I'm not going to do any work'). 7 answer chips + 2 distractor chips = 9 ≤ 10. Pool 4."
+      },
+      "prompt": {
+        "text": "not / going / I'm / to / do / homework / my",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm not going to do my homework.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm not going to do my homework",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't",
+        "to do"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "I'm + not + going + to + Grundform. Verneine be, nicht mit don't.",
+      "hintEn": null,
+      "explainDe": "I'm not going to do my homework: Verneinung von be (I'm not) + going to + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.tf.001",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB box example 'He isn't going to do the shopping.' Blank = 'isn't going to'; the rest of the carrier is in-bank in the prompt. strict:true (negation must be exact)."
+      },
+      "prompt": {
+        "text": "He ___ do the shopping today. He's at school all day.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't going to",
+          "tier": "full"
+        },
+        {
+          "text": "is not going to",
+          "tier": "full"
+        },
+        {
+          "text": "He isn't going to do the shopping today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneine be (isn't) und behalte going to: He isn't going to do …",
+      "hintEn": null,
+      "explainDe": "Die Verneinung: He isn't going to do the shopping. be wird verneint (isn't), going to und die Grundform bleiben.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.tr.001",
+      "structureId": "g2u07.s.going-to-negative",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-3-dialogue",
+        "seedV1": null,
+        "narrative": null,
+        "note": "deToEn. strict:true (negation form). Carrier 'do my homework' in-bank."
+      },
+      "prompt": {
+        "text": "Ich werde meine Hausaufgaben heute nicht machen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'm not going to do my homework today.",
+          "tier": "full"
+        },
+        {
+          "text": "I am not going to do my homework today.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm not going to do my homework today",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Plan in der Verneinung: I'm not going to + Grundform. Hausaufgaben machen = do my homework.",
+      "hintEn": null,
+      "explainDe": "I'm not going to do my homework: Verneinung von be (I'm not) + going to + Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.might.ag.002",
+      "structureId": "g2u07.s.might",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single word 'might' (5 letters ≥3). German cue, du-form."
+      },
+      "prompt": {
+        "text": "Welches Wort bedeutet \"möglich, aber nicht sicher\"? (z. B. ... come over am Samstag)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "5 Buchstaben. Es ist für alle Personen gleich: I ___, she ___, they ___.",
+      "hintEn": null,
+      "explainDe": "Das Wort ist might. Es zeigt eine Möglichkeit und bleibt für alle Personen gleich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.cp.003",
+      "structureId": "g2u07.s.might",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I might to play basketball this afternoon.",
+            "I might played basketball this afternoon.",
+            "I might plays basketball this afternoon.",
+            "I might does play basketball this afternoon.",
+            "I might play basketball this afternoon not."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-4-plans",
+        "seedV1": "m2-u7-might-cp-001",
+        "narrative": null,
+        "note": "Reworked seed cp-001 into a sentence-pick. Prompt framing simplified to in-bank words. 'mights' dropped (untaught). Each distractor breaks might-form only; pool 5."
+      },
+      "prompt": {
+        "text": "This afternoon she is free. It's possible: play basketball.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I might play basketball this afternoon.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I might to play basketball this afternoon.",
+        "I might played basketball this afternoon.",
+        "I might plays basketball this afternoon."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Für eine offene Möglichkeit nimmst du might + Grundform, ohne to und ohne -s. Welcher Satz ist richtig?",
+      "hintEn": null,
+      "explainDe": "I might play sagt: es ist möglich, aber nicht sicher. Kein to (to play), keine Vergangenheit (played), kein -s (plays).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.cp.004",
+      "structureId": "g2u07.s.might",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She doesn't might come over today.",
+            "She might not comes over today.",
+            "She might not to come over today.",
+            "She not might come over today.",
+            "She might does not come over today."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-7-message-C",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier from SB message C (Mia 'not going to come over today') reframed as a might-possibility. Distractors flaw negation/form; pool 5."
+      },
+      "prompt": {
+        "text": "Mia is ill. It's possible she isn't going to come over.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might not come over today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She doesn't might come over today.",
+        "She might not comes over today.",
+        "She might not to come over today."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"vielleicht nicht\" ist might not + Grundform. might selbst wird nie mit doesn't verneint.",
+      "hintEn": null,
+      "explainDe": "Richtig: She might not come over. Man verneint might mit not (might not), nicht mit doesn't, und danach steht die Grundform ohne to und ohne -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.ec.001",
+      "structureId": "g2u07.s.might",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-ec-002",
+        "narrative": null,
+        "note": "Seed ec-002. One error: 'plays' → 'play' (no 3rd-person -s after might). strict:true (one-token flip). 'plays' is a gate-legal surface."
+      },
+      "prompt": {
+        "text": "He might plays basketball after school.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He might play basketball after school.",
+          "tier": "full"
+        },
+        {
+          "text": "might play",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach might steht die Grundform. Schau dir das -s am Verb an.",
+      "hintEn": null,
+      "explainDe": "might hat in der 3. Person kein -s am folgenden Verb: He might play (nicht plays). might + Grundform.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.might.ec.002",
+      "structureId": "g2u07.s.might",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Drills 'might to' error (brief common error). Carrier 'come over' (g2-u07). strict:true."
+      },
+      "prompt": {
+        "text": "She might to come over today.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might come over today.",
+          "tier": "full"
+        },
+        {
+          "text": "might come",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach might kommt kein to. Streiche das überflüssige Wort.",
+      "hintEn": null,
+      "explainDe": "might steht ohne to: She might come over (nicht might to come). Direkt die Grundform nach might.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.might.ec.003",
+      "structureId": "g2u07.s.might",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-ec-003",
+        "narrative": null,
+        "note": "Seed ec-003 (past after might). Reworked to in-bank 'watch a film tonight'. One error watched→watch. strict:true."
+      },
+      "prompt": {
+        "text": "He might watched a film tonight.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He might watch a film tonight.",
+          "tier": "full"
+        },
+        {
+          "text": "might watch",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "might spricht über die Zukunft, also keine Vergangenheitsform. Nimm die Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach might steht immer die Grundform, nie die Vergangenheit: He might watch a film (nicht watched).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.might.gf.001",
+      "structureId": "g2u07.s.might",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-gf-001",
+        "narrative": null,
+        "note": "Seed gf-001 used 'rain' (untaught) → swapped to snow (taught, g1-u11). 'Be careful' from g1-u10 bank. Distractors: might to (no to), might snows (no -s), might does (no aux)."
+      },
+      "prompt": {
+        "text": "Be careful — it ___ snow today.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "might to",
+        "might snows",
+        "might does"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Etwas ist möglich, aber nicht sicher. Nach diesem Wort kommt die Grundform: ___ snow.",
+      "hintEn": null,
+      "explainDe": "might + Grundform sagt, dass etwas möglicherweise passiert: It might snow. Kein to und kein -s dahinter.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.gf.002",
+      "structureId": "g2u07.s.might",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-gf-002",
+        "narrative": null,
+        "note": "Seed gf-002 (swimming pool untaught) → basketball + Saturday (in-bank). Distractors all gate-checked: might plays (-s legal surface), might to, might does."
+      },
+      "prompt": {
+        "text": "We ___ play basketball on Saturday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "might to",
+        "might plays",
+        "might does"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"vielleicht\" – etwas ist noch nicht sicher. Welches Wort passt vor play?",
+      "hintEn": null,
+      "explainDe": "might zeigt, dass etwas möglich ist, aber nicht sicher: We might play. Danach steht die Grundform, ohne to und ohne -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.gf.003",
+      "structureId": "g2u07.s.might",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-gf-003",
+        "narrative": null,
+        "note": "Seed gf-003 ('the party' untaught surface) → 'come over' (g2-u07). Blank = modal slot. Distractors: might to, might does, doesn't — all gate-legal, all wrong for the possibility meaning."
+      },
+      "prompt": {
+        "text": "She ___ come over today.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "might to",
+        "might does",
+        "doesn't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei she ändert sich nichts: kein -s nach diesem Wort. Etwas ist möglich, aber nicht sicher.",
+      "hintEn": null,
+      "explainDe": "might hat für alle Personen die gleiche Form: I might, she might. Kein -s in der 3. Person, kein to: She might come over.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.gf.004",
+      "structureId": "g2u07.s.might",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-gf-004",
+        "narrative": null,
+        "note": "Seed gf-004 (football→basketball). Blank = full 'might not'; distractors flaw the form (might not to / might nots / might not does). 'His leg hurts' from SB seed context."
+      },
+      "prompt": {
+        "text": "Tom ___ play basketball tomorrow. His leg hurts.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "might not to",
+        "might nots",
+        "might not does"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist möglich, dass Tom nicht spielt. Du brauchst die Verneinung: might + Verneinung + Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung heißt might not + Grundform: Tom might not play. Kein to und kein -s nach might not.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.gf.005",
+      "structureId": "g2u07.s.might",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-gf-005",
+        "narrative": null,
+        "note": "Seed gf-005 (weather/rain untaught) → stay at home / go to the park (in-bank). Two-blank, both 'might', joined with ' | '."
+      },
+      "prompt": {
+        "text": "On Sunday we ___ stay at home or we ___ go to the park.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "might | might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Möglichkeiten sind offen. In beide Lücken kommt dasselbe Wort für \"vielleicht\".",
+      "hintEn": null,
+      "explainDe": "Wenn zwei Dinge möglich sind, steht in beiden Lücken might + Grundform: We might stay … or we might go.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.gf.007",
+      "structureId": "g2u07.s.might",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-1-activities",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Unit-theme carrier (have a party, in-bank phrase). New item to reach floor. Distractors gate-legal: might to, might has, might does."
+      },
+      "prompt": {
+        "text": "We ___ have a party on Saturday. I haven't asked Mum.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "might to",
+        "might has",
+        "might does"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist noch nicht sicher – \"vielleicht\". Welches Wort passt vor have?",
+      "hintEn": null,
+      "explainDe": "might + Grundform: We might have a party. Kein to und kein -s nach might.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.gf.008",
+      "structureId": "g2u07.s.might",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-1-activities",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Unit-theme carrier ('stay at a friend's house', in-bank phrase). Replaced an awkward might-inversion QF (unnatural English) with this gap-fill. Distractors gate-legal: might to, might stays, might does."
+      },
+      "prompt": {
+        "text": "We ___ stay at a friend's house on Saturday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "might to",
+        "might stays",
+        "might does"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist möglich, aber nicht sicher. Nach diesem Wort kommt die Grundform: ___ stay.",
+      "hintEn": null,
+      "explainDe": "might + Grundform für eine Möglichkeit: We might stay … Kein to und kein -s nach might.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.gf.010",
+      "structureId": "g2u07.s.might",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-gf-006",
+        "narrative": null,
+        "note": "Seed gf-006 reworked. 'busy' is untaught → replaced with 'He has a lot of homework' (all in-bank). Two blanks: might not | help."
+      },
+      "prompt": {
+        "text": "He ___ (not / help) us today. He has a lot of homework.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might not help",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"vielleicht nicht\" plus die Grundform von help. Zuerst die Verneinung, dann das Verb ohne -s.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung ist might not, danach die Grundform: He might not help us. Kein -s und kein to nach might not.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.gs.001",
+      "structureId": "g2u07.s.might",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-4-plans",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Contrasts might (possibility) vs going to (plan). All members in-bank, unit activity phrases."
+      },
+      "prompt": {
+        "text": "might or going to?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "It's possible (might)",
+          "members": [
+            "I might play basketball.",
+            "We might have a party.",
+            "She might come over today.",
+            "It might snow."
+          ]
+        },
+        {
+          "label": "It's going to happen (going to)",
+          "members": [
+            "I'm going to do my homework.",
+            "We're going to do the shopping.",
+            "She's going to stay at a friend's house.",
+            "He's going to watch a film."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "might = nicht sicher, nur möglich. going to = ein fester Plan.",
+      "hintEn": null,
+      "explainDe": "Mit might ist etwas nur möglich (noch offen). Mit going to ist es ein fester Plan, der schon feststeht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.mc.002",
+      "structureId": "g2u07.s.might",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "It might not snows.",
+            "It might not to snow.",
+            "It might snow not.",
+            "It doesn't might snow.",
+            "It might does not snow."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-mc-002",
+        "narrative": null,
+        "note": "Seed mc-002 (used 'snow' instead of seed's other verbs to keep all options in-bank). Distractors flaw negation/form only; pool ≥4 (5)."
+      },
+      "prompt": {
+        "text": "It's possible: no snow today.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It might not snow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It might not snows.",
+        "It might not to snow.",
+        "It might snow not."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such den Satz für \"vielleicht schneit es nicht\": might not + Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung ist might not + Grundform: It might not snow. Kein -s, kein to, und not steht direkt nach might.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.mc.003",
+      "structureId": "g2u07.s.might",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She might visits us tomorrow.",
+            "She might to visit us tomorrow.",
+            "She might visited us tomorrow.",
+            "She might does visit us tomorrow.",
+            "She might visit us tomorrow not."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-mc-001",
+        "narrative": null,
+        "note": "Seed mc-001. 'next week' untaught → tomorrow; framing moved to hintDe. Errors flaw might-form only; 'mights' dropped (untaught token). Pool 5, all gate-legal."
+      },
+      "prompt": {
+        "text": "Emma is free tomorrow.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might visit us tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She might visits us tomorrow.",
+        "She might to visit us tomorrow.",
+        "She might visited us tomorrow."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such den richtigen Satz: might bleibt für alle Personen gleich – ohne -s, ohne to, mit der Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She might visit us: might + Grundform. Kein -s (visits), kein to (to visit), keine Vergangenheit (visited).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.mp.001",
+      "structureId": "g2u07.s.might",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "English↔English logical pairs, all might-sentences in-bank. Distinct from the 'matching' item (William worries)."
+      },
+      "prompt": {
+        "text": "What might happen?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "We have free time on Saturday.",
+          "right": "We might play basketball."
+        },
+        {
+          "left": "Mia is ill.",
+          "right": "She might not come over."
+        },
+        {
+          "left": "It's very cold today.",
+          "right": "It might snow today."
+        },
+        {
+          "left": "I haven't asked Mum.",
+          "right": "We might have a party."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jeder Satzanfang passt zu einer Möglichkeit mit might.",
+      "hintEn": null,
+      "explainDe": "Jede rechte Seite ist eine Möglichkeit mit might (might play, might not come …) und passt logisch zum Anfang links.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.mt.001",
+      "structureId": "g2u07.s.might",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-11-halves",
+        "seedV1": "m2-u7-might-mt-001",
+        "narrative": null,
+        "note": "Reworked seed mt-001 to William's-worries theme (SB ex 11). All right sides are might-possibilities, all in-bank (crash, bite, sold out, get into trouble)."
+      },
+      "prompt": {
+        "text": "Why not? What might happen?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I'm not going to ride a bike.",
+          "right": "I might crash."
+        },
+        {
+          "left": "I'm not going to do the shopping.",
+          "right": "It might be sold out."
+        },
+        {
+          "left": "I'm not going near that dog.",
+          "right": "It might bite."
+        },
+        {
+          "left": "I'm not going to do that.",
+          "right": "I might get into trouble."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jede Sorge passt zu einem Plan. Achte darauf, was schiefgehen könnte.",
+      "hintEn": null,
+      "explainDe": "Jede rechte Seite ist eine Möglichkeit mit might (might crash, might bite …) und erklärt, warum William etwas nicht tun will.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.sb.001",
+      "structureId": "g2u07.s.might",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "does",
+            "plays",
+            "doesn't",
+            "not"
+          ],
+          "chipBudget": 10,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-sb-001",
+        "narrative": null,
+        "note": "Seed sb-001. 6 answer chips + 2 distractor chips = 8 ≤ 10. Pool 4, all gate-safe (does/plays/doesn't/not). 'might does'/'might plays' would be the form errors."
+      },
+      "prompt": {
+        "text": "we / the park / might / to / go",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We might go to the park.",
+          "tier": "full"
+        },
+        {
+          "text": "We might go to the park",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "does",
+        "plays"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit We, dann might + Grundform. \"to the park\" gehört zu go.",
+      "hintEn": null,
+      "explainDe": "We might go to the park: might + Grundform. Mit dem Verb go gehört to the park (Richtung).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.sb.002",
+      "structureId": "g2u07.s.might",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to",
+            "does",
+            "plays",
+            "doesn't"
+          ],
+          "chipBudget": 10,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "5 answer chips + 2 distractor chips = 7 ≤ 10. Pool 4, all gate-safe (to/does/plays/doesn't). 'to' chip would create the might-to error if placed; 'does' the might-does error."
+      },
+      "prompt": {
+        "text": "might / she / come / over / not",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might not come over.",
+          "tier": "full"
+        },
+        {
+          "text": "She might not come over",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "to",
+        "does"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: she + might + not + Grundform. not steht direkt nach might.",
+      "hintEn": null,
+      "explainDe": "She might not come over: might not + Grundform. not kommt direkt nach might, danach das Verb ohne to und ohne -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u07.gi.might.tf.001",
+      "structureId": "g2u07.s.might",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-1-activities",
+        "seedV1": "m2-u7-might-tf-001",
+        "narrative": null,
+        "note": "Seed tf-001 ('buy a new game' untaught) → 'do the shopping' (in-bank). Trigger in parentheses (g2-u06 convention). strict:true."
+      },
+      "prompt": {
+        "text": "I ___ (might / do the shopping) for Mum on Saturday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might do the shopping",
+          "tier": "full"
+        },
+        {
+          "text": "I might do the shopping for Mum on Saturday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Setze might + Grundform ein: might do. Kein will und kein to.",
+      "hintEn": null,
+      "explainDe": "Für eine Möglichkeit nimmst du might + Grundform: I might do the shopping. Kein -s und kein to.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.might.tf.003",
+      "structureId": "g2u07.s.might",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-tf-002",
+        "narrative": null,
+        "note": "Seed tf-002 kept (all in-bank). strict:true — might-not vs might flips meaning."
+      },
+      "prompt": {
+        "text": "Emma ___ (not / come) to school tomorrow. She is ill.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might not come",
+          "tier": "full"
+        },
+        {
+          "text": "Emma might not come to school tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"vielleicht nicht\" ist might not, danach die Grundform von come.",
+      "hintEn": null,
+      "explainDe": "Verneinung: might not + Grundform. She might not come. Kein -s, kein to, not steht direkt nach might.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.might.tr.001",
+      "structureId": "g2u07.s.might",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#grammar-1",
+        "seedV1": "m2-u7-might-tr-001",
+        "narrative": null,
+        "note": "Seed tr-001. deToEn. Accept with/without final period."
+      },
+      "prompt": {
+        "text": "Wir gehen vielleicht morgen ins Kino.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We might go to the cinema tomorrow.",
+          "tier": "full"
+        },
+        {
+          "text": "We might go to the cinema tomorrow",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"vielleicht\" + Verb wird zu might + Grundform. ins Kino = to the cinema.",
+      "hintEn": null,
+      "explainDe": "We might go to the cinema: might + Grundform für eine Möglichkeit. Kein to und kein -s nach might.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u07.gi.might.tr.003",
+      "structureId": "g2u07.s.might",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 7.txt#ex-7-message-C",
+        "seedV1": "m2-u7-might-tr-002",
+        "narrative": null,
+        "note": "Seed tr-002 (sick→'isn't well'/'is ill' to stay in-bank; 'come over' from g2-u07). deToEn, strict:true (might not vs might)."
+      },
+      "prompt": {
+        "text": "Er kommt heute vielleicht nicht vorbei. Es geht ihm nicht gut.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He might not come over today. He is ill.",
+          "tier": "full"
+        },
+        {
+          "text": "He might not come over today. He is ill",
+          "tier": "full"
+        },
+        {
+          "text": "He might not come over today. He isn't well.",
+          "tier": "partial"
+        },
+        {
+          "text": "He might not come over today. He's not well.",
+          "tier": "partial"
+        },
+        {
+          "text": "He might not come over today. He's not feeling well.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"vielleicht nicht\" = might not + Grundform. vorbeikommen = come over.",
+      "hintEn": null,
+      "explainDe": "He might not come over: might not + Grundform für \"vielleicht nicht\". come over = vorbeikommen.",
+      "explainEn": null,
+      "strict": true
+    }
+  ]
+}

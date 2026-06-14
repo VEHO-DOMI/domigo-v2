@@ -1,0 +1,217 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u15",
+  "round": 1,
+  "itemsHash": "cd275e120ce2",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g2u15.w.litter-tray",
+      "kind": "new-gloss",
+      "itemId": "g2u15.w.litter-tray",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u15.w.to-clean-out-the-litter-tray",
+      "kind": "new-gloss",
+      "itemId": "g2u15.w.to-clean-out-the-litter-tray",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.antarctic-ocean",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.antarctic-ocean",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.cage",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.cage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.emperor-penguin",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.emperor-penguin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.litter-tray",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.litter-tray",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.neither-do-i",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.neither-do-i",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.pyjamas",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.pyjamas",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.sand",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.sand",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.so-do-i",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.so-do-i",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.space",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.space",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-brush",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-brush",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-clean-out-the-litter-tray",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-clean-out-the-litter-tray",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-clean-out-your-pet-s-cage",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-clean-out-your-pet-s-cage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-dry-your-pet",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-dry-your-pet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-feed-your-pet",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-feed-your-pet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-give-your-pet-a-bath",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-give-your-pet-a-bath",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-have-got-a-fear-of",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-have-got-a-fear-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-keep-sb-company",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-keep-sb-company",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-play-with-your-pet",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-play-with-your-pet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-release",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-release",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-stroke",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-stroke",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-take-your-pet-to-the-vet",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-take-your-pet-to-the-vet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-tidy",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-tidy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.to-walk-your-pet",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.to-walk-your-pet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.w.vet",
+      "kind": "translation-audit",
+      "itemId": "g2u15.w.vet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.gi.so-do-i.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u15.gi.so-do-i.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u15.gi.so-do-i.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u15.gi.so-do-i.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 59 rows + 28 flags reviewed (FULL render). Verify was fully clean (0 fix, 0 warn). Zero stage-8 fix/drop → rejectRate 0%."
+  },
+  "metrics": {
+    "itemsReviewed": 59,
+    "fullRows": 59,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

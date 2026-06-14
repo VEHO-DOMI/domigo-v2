@@ -1,0 +1,560 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u14",
+  "round": 1,
+  "itemsHash": "3b3f1280995c",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "lens-warn:g2u14.gi.present-perfect-already-yet.mc.001#distractor-plausible-correct",
+      "kind": "lens-warn",
+      "itemId": "g2u14.gi.present-perfect-already-yet.mc.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.challenge",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.challenge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.competition",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.competition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.cycling",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.cycling",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.distance",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.distance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.equipment",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.equipment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.extreme",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.extreme",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.ice-skating",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.ice-skating",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.member",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.member",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.mountain-biking",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.mountain-biking",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.mountain-climbing",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.mountain-climbing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.official",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.official",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.professional",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.professional",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.race",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.race",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.rather",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.rather",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.roller-skating",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.roller-skating",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.serious",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.serious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.skateboarding",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.skateboarding",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.skiing",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.skiing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.success",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.success",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.surfing",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.surfing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.swimming",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.swimming",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.to-appear",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.to-appear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.to-grow-up",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.to-grow-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.to-manage",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.to-manage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.to-score",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.to-score",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.to-snorkel",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.to-snorkel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.to-tackle",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.to-tackle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.to-take-part",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.to-take-part",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.waste-of-time",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.waste-of-time",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.windsurfing",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.windsurfing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.without",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.without",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u14.w.world-record",
+      "kind": "new-gloss",
+      "itemId": "g2u14.w.world-record",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.challenge",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.challenge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.competition",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.competition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.cycling",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.cycling",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.distance",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.distance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.equipment",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.equipment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.extreme",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.extreme",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.flood",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.flood",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.ice-skating",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.ice-skating",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.member",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.member",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.mountain-biking",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.mountain-biking",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.mountain-climbing",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.mountain-climbing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.nil",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.nil",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.official",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.official",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.on-one-s-own",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.on-one-s-own",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.professional",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.professional",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.race",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.race",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.rather",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.rather",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.roller-skating",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.roller-skating",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.serious",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.serious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.skateboarding",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.skateboarding",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.skiing",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.skiing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.snowboarding",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.snowboarding",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.sportsman-and-sportswoman",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.sportsman-and-sportswoman",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.success",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.success",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.surfing",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.surfing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.swimming",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.swimming",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.to-appear",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.to-appear",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.to-grow-up",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.to-grow-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.to-manage",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.to-manage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.to-score",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.to-score",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.to-snorkel",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.to-snorkel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.to-tackle",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.to-tackle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.to-take-part",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.to-take-part",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.waste-of-time",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.waste-of-time",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.windsurfing",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.windsurfing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.without",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.without",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.w.world-record",
+      "kind": "translation-audit",
+      "itemId": "g2u14.w.world-record",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.gi.present-perfect-already-yet.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u14.gi.present-perfect-already-yet.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.gi.present-perfect-already-yet.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u14.gi.present-perfect-already-yet.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u14.gi.present-perfect-ever-never.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u14.gi.present-perfect-ever-never.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u14.w.mountain-climbing#df18d4",
+      "kind": "validator-warn",
+      "itemId": "g2u14.w.mountain-climbing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u14.w.surfing#df18d4",
+      "kind": "validator-warn",
+      "itemId": "g2u14.w.surfing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u14.w.to-take-part#52e478",
+      "kind": "validator-warn",
+      "itemId": "g2u14.w.to-take-part",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u14.gi.present-perfect-already-yet.tr.001#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g2u14.gi.present-perfect-already-yet.tr.001",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 71 rows + 77 flags reviewed (FULL render). Zero fix/drop → rejectRate 0%."
+  },
+  "metrics": {
+    "itemsReviewed": 71,
+    "fullRows": 71,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

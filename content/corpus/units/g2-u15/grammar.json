@@ -1,0 +1,1653 @@
+{
+  "schema": "grammar@1",
+  "grade": 2,
+  "unit": 15,
+  "slug": "g2-u15",
+  "items": [
+    {
+      "id": "g2u15.gi.so-do-i.cp.003",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So do I.",
+            "Neither I do.",
+            "Neither have I.",
+            "Neither can I.",
+            "So have I."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 15.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Adapted from SB picture story (A: I don't really like cats. B: Neither do I.); 'cats' untaught, swapped to 'dogs'."
+      },
+      "prompt": {
+        "text": "Alice sagt: \"I don't like dogs.\" Bob sieht das genauso. Was sagt Bob?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "So do I.",
+        "Neither I do.",
+        "Neither have I."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Alice verneint (don't like), darum stimmt Bob mit 'Neither do I.' zu.",
+      "hintEn": null,
+      "explainDe": "Zu einer Verneinung mit 'don't' passt 'Neither do I.' 'So do I.' wäre für einen positiven Satz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.cp.004",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So do I.",
+            "So I have.",
+            "Neither have I.",
+            "So can I.",
+            "So am I."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 15.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB picture story: A: I've got a fear of rats. B: So have I."
+      },
+      "prompt": {
+        "text": "Alice sagt: \"I have got a fear of rats.\" Bob sieht das genauso. Was sagt Bob?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So have I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "So do I.",
+        "So I have.",
+        "Neither have I."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Alice sagt etwas Positives mit 'have got', darum: So + have + I.",
+      "hintEn": null,
+      "explainDe": "Positiver 'have got'-Satz → 'So have I.' 'So do I.' hätte das falsche Hilfsverb.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.ec.001",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I love rats.\" — \"So I do.\"",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So do I.",
+          "tier": "full"
+        },
+        {
+          "text": "do I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Reihenfolge ist falsch: Das Hilfsverb muss vor 'I' stehen — So + do + I.",
+      "hintEn": null,
+      "explainDe": "Bei der Zustimmung kommt zuerst 'So', dann das Hilfsverb, dann 'I': So do I.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.ec.002",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I can't dance.\" — \"So can I.\"",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither can I.",
+          "tier": "full"
+        },
+        {
+          "text": "Neither can I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der erste Satz ist verneint (can't). Du musst 'So' durch 'Neither' ersetzen: Neither can I.",
+      "hintEn": null,
+      "explainDe": "Zu einem verneinten Satz gehört 'Neither', nicht 'So'. Richtig: Neither can I.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.ec.003",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"She has got a fear of dogs.\" — \"So do I.\"",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So have I.",
+          "tier": "full"
+        },
+        {
+          "text": "So have I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der erste Satz benutzt 'has got'. Das Hilfsverb muss 'have' sein, nicht 'do': So have I.",
+      "hintEn": null,
+      "explainDe": "Das Hilfsverb muss zum ersten Satz passen. Zu 'has got' gehört 'have': So have I.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.ec.004",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I don't want to go to bed.\" — \"So do I.\"",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        },
+        {
+          "text": "Neither do I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der erste Satz ist verneint (don't want). Statt 'So' brauchst du 'Neither': Neither do I.",
+      "hintEn": null,
+      "explainDe": "Bei einer Verneinung stimmst du mit 'Neither do I.' zu, nicht mit 'So do I.'",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.ff.003",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "free-form",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund sagt: \"I love my pets.\" Du siehst das genauso. Antworte zustimmend.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So do I.",
+          "tier": "full"
+        },
+        {
+          "text": "So do I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Positiver Satz mit do/does → So + do + I.",
+      "hintEn": null,
+      "explainDe": "Du stimmst einem positiven Satz mit 'So do I.' zu.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.ff.004",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "free-form",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund sagt: \"I don't like rats.\" Du siehst das genauso. Antworte zustimmend.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        },
+        {
+          "text": "Neither do I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinter Satz mit 'don't' → Neither + do + I.",
+      "hintEn": null,
+      "explainDe": "Du stimmst einer Verneinung mit 'Neither do I.' zu.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.001",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I like pizza.\" — \"So ___ I.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im ersten Satz steht ein einfaches Verb (like), darum nimmst du das Hilfsverb 'do': So + do + I.",
+      "hintEn": null,
+      "explainDe": "Bei einem positiven Satz mit do/does stimmst du mit 'So do I.' zu. Das Hilfsverb 'do' steht vor 'I'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.002",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I love music.\" — \"So do ___.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "I",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei der Zustimmung steht das Hilfsverb vor 'I': So do I. — nicht 'So do me'.",
+      "hintEn": null,
+      "explainDe": "Die richtige Reihenfolge ist So + do + I. Du sagst immer 'I', nie 'me'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.003",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 15.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB grammar box: A: I've got a fear of rats. B: So have I."
+      },
+      "prompt": {
+        "text": "\"I have got a fear of rats.\" — \"So ___ I.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der erste Satz benutzt 'have got', also passt das Hilfsverb dazu: So + have + I.",
+      "hintEn": null,
+      "explainDe": "Steht im ersten Satz 'have got', nimmst du 'have' für die Zustimmung: So have I.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.004",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I can cook.\" — \"So ___ I.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Steht im ersten Satz 'can', dann nimmst du auch 'can': So + can + I.",
+      "hintEn": null,
+      "explainDe": "Das Hilfsverb muss zum ersten Satz passen. Bei 'can' antwortest du mit 'So can I.'",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.005",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 15.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB grammar box: A: I don't really like cats. B: Neither do I."
+      },
+      "prompt": {
+        "text": "\"I don't like spiders.\" — \"Neither ___ I.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der erste Satz ist verneint (don't like), darum 'Neither'. Das Hilfsverb bleibt 'do': Neither + do + I.",
+      "hintEn": null,
+      "explainDe": "Bei einer Verneinung mit 'don't' stimmst du mit 'Neither do I.' zu.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.006",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I can't cook.\" — \"Neither ___ I.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinter Satz mit 'can't' → 'Neither'. Das Hilfsverb bleibt 'can': Neither + can + I.",
+      "hintEn": null,
+      "explainDe": "Bei 'I can't ...' stimmst du verneint zu mit 'Neither can I.'",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.007",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Bob doesn't like rats.\" — \"Neither ___ I.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "do",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Auch wenn der erste Satz 'doesn't' hat: du sprichst über dich, darum 'Neither do I.'",
+      "hintEn": null,
+      "explainDe": "Du stimmst für dich selbst zu, also 'do' (zu 'I'). 'doesn't' im ersten Satz gehört nur zu Bob.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.008",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"She likes music.\" — \"So ___ he.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "does",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Hier stimmt 'he' zu, darum brauchst du 'does': So + does + he.",
+      "hintEn": null,
+      "explainDe": "Bei 'he/she' heißt das Hilfsverb 'does'. So does he.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.009",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am tired.\" — \"So ___ I.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "am",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Steht im ersten Satz 'am', dann nimmst du auch 'am': So + am + I.",
+      "hintEn": null,
+      "explainDe": "Auch mit 'be' geht das: zu 'I am ...' gehört 'So am I.'",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gf.010",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"She has got a fear of dogs.\" — \"So ___ I.\"",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Auch wenn der erste Satz 'has' hat: du sprichst über dich (I), darum 'have': So have I.",
+      "hintEn": null,
+      "explainDe": "Bei 'have got' ist das Hilfsverb 'have'. Zu 'I' gehört 'have', nicht 'has': So have I.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gs.001",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "group-sort",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "So oder Neither?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "So ... I.",
+          "members": [
+            "I love music.",
+            "I can cook.",
+            "I have got a fear of rats.",
+            "I play basketball."
+          ]
+        },
+        {
+          "label": "Neither ... I.",
+          "members": [
+            "I don't like spiders.",
+            "I can't cook.",
+            "I don't want to go to bed.",
+            "I don't want to go to school."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Positive Sätze stimmst du mit 'So' zu, verneinte (don't, can't, haven't) mit 'Neither'.",
+      "hintEn": null,
+      "explainDe": "Schau, ob der Satz positiv oder verneint ist. Positiv → So, verneint → Neither.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.gs.003",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Antwort passt zu jeder Aussage?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "So do I.",
+          "members": [
+            "I love dogs.",
+            "I read a lot of magazines.",
+            "I like art."
+          ]
+        },
+        {
+          "label": "So have I.",
+          "members": [
+            "I have got a fear of rats.",
+            "I have got a fear of spiders."
+          ]
+        },
+        {
+          "label": "So can I.",
+          "members": [
+            "I can cook.",
+            "I can dance.",
+            "I can ride a bike."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Das Hilfsverb der Antwort muss zum ersten Satz passen: like/read → do, have got → have, can → can.",
+      "hintEn": null,
+      "explainDe": "Bei like/read/play → do, bei 'have got' → have, bei 'can' → can. So passt die Zustimmung zum ersten Satz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.mc.001",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "multiple-choice",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So I do.",
+            "Neither do I.",
+            "So am I.",
+            "So have I.",
+            "Me too."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I love chocolate.\" — Welche Antwort bedeutet 'Ich auch.'?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So do I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "So I do.",
+        "Neither do I.",
+        "So am I."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Positiver Satz mit 'love' → So + do + I. Das Hilfsverb steht vor 'I'.",
+      "hintEn": null,
+      "explainDe": "'So do I.' stimmt zu. 'So I do.' hat die falsche Reihenfolge, 'Neither do I.' wäre eine Verneinung.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.mc.002",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "multiple-choice",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So do I.",
+            "So I have.",
+            "Neither have I.",
+            "So can I.",
+            "So am I."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I have got a fear of dogs.\" — Welche Antwort stimmt richtig zu?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So have I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "So do I.",
+        "So I have.",
+        "Neither have I."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der erste Satz benutzt 'have got', also passt nur 'have' als Hilfsverb: So have I.",
+      "hintEn": null,
+      "explainDe": "Zu 'have got' gehört 'have': So have I. 'So do I.' hätte das falsche Hilfsverb.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.mc.003",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "multiple-choice",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So can I.",
+            "Neither do I.",
+            "Neither I can.",
+            "Neither have I.",
+            "So I can."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I can't ride a bike.\" — Welche Antwort stimmt richtig zu?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither can I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "So can I.",
+        "Neither do I.",
+        "Neither I can."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinter Satz mit 'can't' → 'Neither', und das Hilfsverb bleibt 'can': Neither can I.",
+      "hintEn": null,
+      "explainDe": "Bei 'I can't ...' antwortest du mit 'Neither can I.' 'So can I.' wäre für einen positiven Satz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.mc.004",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "multiple-choice",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So do I.",
+            "Neither I do.",
+            "Neither am I.",
+            "Neither can I.",
+            "Neither have I."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I don't like dogs.\" — Welche Antwort stimmt richtig zu?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "So do I.",
+        "Neither I do.",
+        "Neither am I."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinter Satz mit 'don't' → 'Neither do I.' Achte auf die Reihenfolge: do steht vor I.",
+      "hintEn": null,
+      "explainDe": "Zu 'I don't like ...' passt 'Neither do I.' 'So do I.' wäre Zustimmung zu einem positiven Satz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.mc.005",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "multiple-choice",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So do I.",
+            "So I do.",
+            "Neither am I.",
+            "Neither have I.",
+            "Neither can I."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I don't like spiders.\" — Welche Antwort stimmt richtig zu?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "So do I.",
+        "So I do.",
+        "Neither am I."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneint mit 'don't' → 'Neither do I.' Das Hilfsverb 'do' steht vor 'I'.",
+      "hintEn": null,
+      "explainDe": "Zu 'I don't like ...' gehört 'Neither do I.' 'So do I.' wäre für einen positiven Satz.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u15.gi.so-do-i.mp.001",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "matching-pairs",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Aussage und passende Zustimmung",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I love dogs.",
+          "right": "So do I."
+        },
+        {
+          "left": "I can cook.",
+          "right": "So can I."
+        },
+        {
+          "left": "I have got a fear of rats.",
+          "right": "So have I."
+        },
+        {
+          "left": "I don't like spiders.",
+          "right": "Neither do I."
+        },
+        {
+          "left": "I can't cook.",
+          "right": "Neither can I."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf zwei Dinge: positiv (So) oder verneint (Neither), und welches Hilfsverb der erste Satz hat.",
+      "hintEn": null,
+      "explainDe": "Positive Sätze bekommen 'So', verneinte 'Neither'. Das Hilfsverb (do/have/can) muss zum ersten Satz passen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.mp.002",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "matching-pairs",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Aussage und passende Zustimmung",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I don't like rats.",
+          "right": "Neither do I."
+        },
+        {
+          "left": "I can't dance.",
+          "right": "Neither can I."
+        },
+        {
+          "left": "I love pizza.",
+          "right": "So do I."
+        },
+        {
+          "left": "I have got a fear of spiders.",
+          "right": "So have I."
+        },
+        {
+          "left": "She likes music.",
+          "right": "So does he."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei 'he/she' wird das Hilfsverb zu 'does'. Sonst gilt: positiv → So, verneint → Neither.",
+      "hintEn": null,
+      "explainDe": "Das Hilfsverb passt zum ersten Satz: do/does/have/can. Verneinte Sätze bekommen 'Neither'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.sb.001",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "do",
+            "can",
+            "am",
+            "me",
+            "does"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "have / I / So",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So have I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: zuerst 'So', dann das Hilfsverb, dann 'I'.",
+      "hintEn": null,
+      "explainDe": "Die Zustimmung lautet So + have + I.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.sb.002",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "So",
+            "have",
+            "can",
+            "am",
+            "me"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "do / Neither / I",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei einer Verneinung beginnst du mit 'Neither', dann Hilfsverb, dann 'I'.",
+      "hintEn": null,
+      "explainDe": "Die verneinte Zustimmung lautet Neither + do + I.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.sb.003",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "do",
+            "have",
+            "am",
+            "me",
+            "does"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "can / So / I",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So can I.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: 'So', dann das Hilfsverb 'can', dann 'I'.",
+      "hintEn": null,
+      "explainDe": "Die Zustimmung zu 'I can ...' lautet So + can + I.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.tf.001",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "transformation",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I read a lot of magazines.\" (du auch — stimme zu mit So ... I)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So do I.",
+          "tier": "full"
+        },
+        {
+          "text": "So do I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Positiver Satz mit do/does → So + do + I.",
+      "hintEn": null,
+      "explainDe": "Du stimmst einem positiven Satz mit 'So do I.' zu. Das Hilfsverb 'do' steht vor 'I'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.tf.002",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I can play the guitar.\" (du auch — stimme zu mit So ... I)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "So can I.",
+          "tier": "full"
+        },
+        {
+          "text": "So can I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Steht 'can' im ersten Satz, dann nimmst du auch 'can': So + can + I.",
+      "hintEn": null,
+      "explainDe": "Das Hilfsverb muss passen. Zu 'I can ...' gehört 'So can I.'",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.tf.003",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "transformation",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I don't want to tidy my room.\" (du auch nicht — stimme zu mit Neither ... I)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Neither do I.",
+          "tier": "full"
+        },
+        {
+          "text": "Neither do I",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneint mit 'don't' → 'Neither', und das Hilfsverb bleibt 'do': Neither do I.",
+      "hintEn": null,
+      "explainDe": "Zu einem verneinten Satz mit do/does gehört 'Neither do I.'",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.tr.001",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Ich mag Musik.\" — \"Ich auch.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "\"I like music.\" — \"So do I.\"",
+          "tier": "full"
+        },
+        {
+          "text": "I like music. So do I.",
+          "tier": "full"
+        },
+        {
+          "text": "I love music. So do I.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'Ich auch.' nach einem positiven Satz heißt 'So do I.' — Hilfsverb vor 'I'.",
+      "hintEn": null,
+      "explainDe": "Positiver Satz mit do/does, darum 'So do I.' für 'Ich auch.'",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u15.gi.so-do-i.tr.002",
+      "structureId": "g2u15.s.so-do-i",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u15-so-do-i-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Ich kann nicht kochen.\" — \"Ich auch nicht.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "\"I can't cook.\" — \"Neither can I.\"",
+          "tier": "full"
+        },
+        {
+          "text": "I can't cook. Neither can I.",
+          "tier": "full"
+        },
+        {
+          "text": "I cannot cook. Neither can I.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'Ich auch nicht.' nach 'can't' heißt 'Neither can I.' — verneint, mit 'can' als Hilfsverb.",
+      "hintEn": null,
+      "explainDe": "Verneinter 'can'-Satz, darum 'Neither can I.' für 'Ich auch nicht.'",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

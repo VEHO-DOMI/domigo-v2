@@ -43,6 +43,55 @@
       "contentHash": "96a3bd6f6117355af95d09d4f782ec5db8afa91211eb71c37a29e2c0cf7f7b3c",
       "note": "round 1: 0 verdict(s), 0 edit(s), 0 drop(s), 0 add(s)",
       "at": "2026-06-11T15:53:19.258Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "14342841eb772b6e270b74493d754acd248410ee6c0621aaa8105a01609679b0",
+      "note": "gen ingest: 22 vocab + 45 grammar item(s); draft 8c00f2dce69e",
+      "at": "2026-06-13T20:01:42.741Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "bb22c808344d9139659970fa880d3e3cb79749ad711dd0cefa25e8c199613d69",
+      "note": "gen ingest: 22 vocab + 45 grammar item(s); draft e14d26ada7a1",
+      "at": "2026-06-13T20:02:09.900Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "4a29b0e5ca4a71a6e743a9930899a076609aa7ed36eefc6c0c64555d98b91cc4",
+      "note": "gen ingest: 22 vocab + 45 grammar item(s); draft ab34e26b358d",
+      "at": "2026-06-13T20:09:04.947Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "4a29b0e5ca4a71a6e743a9930899a076609aa7ed36eefc6c0c64555d98b91cc4",
+      "note": "verify round 2: 0 fix, 0 warn",
+      "at": "2026-06-13T20:13:47.900Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "4a29b0e5ca4a71a6e743a9930899a076609aa7ed36eefc6c0c64555d98b91cc4",
+      "note": "V-1..V-22 green (2 warn)",
+      "at": "2026-06-13T20:13:58.563Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "4a29b0e5ca4a71a6e743a9930899a076609aa7ed36eefc6c0c64555d98b91cc4",
+      "note": "round 1 doc: 28 open flag(s), 67 row(s) rendered (FULL)",
+      "at": "2026-06-13T20:13:58.598Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "4a29b0e5ca4a71a6e743a9930899a076609aa7ed36eefc6c0c64555d98b91cc4",
+      "note": "round 1: 28 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-13T20:14:43.411Z"
     }
   ]
 }

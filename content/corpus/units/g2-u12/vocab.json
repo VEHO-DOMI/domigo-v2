@@ -1,0 +1,2801 @@
+{
+  "schema": "vocab@1",
+  "grade": 2,
+  "unit": 12,
+  "slug": "g2-u12",
+  "items": [
+    {
+      "id": "g2u12.w.backache",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headache",
+            "stomach ache",
+            "toothache",
+            "earache",
+            "throat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "backache",
+      "g": "Rückenschmerzen",
+      "d": "you have this when your back hurts",
+      "s": "My back hurts when I stand up. I have got ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "backache",
+          "tier": "full"
+        },
+        {
+          "text": "a backache",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "backache",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "backache",
+            "tier": "full"
+          },
+          {
+            "text": "a backache",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rückenschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "Rückenweh",
+            "tier": "full"
+          },
+          {
+            "text": "Rückenschmerz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "headache",
+        "stomach ache",
+        "toothache"
+      ],
+      "hintDe": "Das hast du, wenn dir der Rücken wehtut."
+    },
+    {
+      "id": "g2u12.w.bath",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spoon",
+            "medicine",
+            "memory",
+            "toothpaste",
+            "blood"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bath",
+      "g": "Bad",
+      "d": "you wash in this when you are dirty",
+      "s": "I have to give my dog a ___. She is very dirty.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "bath",
+          "tier": "full"
+        },
+        {
+          "text": "baths",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bath",
+          "tier": "full"
+        },
+        {
+          "text": "a bath",
+          "tier": "full"
+        },
+        {
+          "text": "baths",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bath",
+            "tier": "full"
+          },
+          {
+            "text": "a bath",
+            "tier": "full"
+          },
+          {
+            "text": "baths",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bad",
+            "tier": "full"
+          },
+          {
+            "text": "Vollbad",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spoon",
+        "medicine",
+        "memory"
+      ],
+      "hintDe": "Darin wäschst du dich, wenn du schmutzig bist."
+    },
+    {
+      "id": "g2u12.w.believe-me",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "It doesn't matter.",
+            "Calm down!",
+            "Poor you!",
+            "What a shame!",
+            "I promise."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idiom: blank takes whole phrase. Distractors are other in-bank fixed phrases (all gate-clean), none a variant of the answer."
+      },
+      "w": "Believe me!",
+      "g": "Glaub mir!",
+      "d": "you said this when you want people to think a thing is true",
+      "s": "It is true! ___ I am not telling a lie.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Believe me!",
+          "tier": "full"
+        },
+        {
+          "text": "Believe me",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Believe me!",
+          "tier": "full"
+        },
+        {
+          "text": "Believe me",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Believe me!",
+            "tier": "full"
+          },
+          {
+            "text": "Believe me",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Glaub mir!",
+            "tier": "full"
+          },
+          {
+            "text": "Glaub mir",
+            "tier": "full"
+          },
+          {
+            "text": "Glaube mir!",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "It doesn't matter.",
+        "Calm down!",
+        "Poor you!"
+      ],
+      "hintDe": "Das sagst du, wenn andere dir glauben sollen."
+    },
+    {
+      "id": "g2u12.w.blood",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "taste",
+            "smell",
+            "medicine",
+            "cure",
+            "memory"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "blood",
+      "g": "Blut",
+      "d": "this red wet thing is inside you",
+      "s": "There is ___ on your shirt. It is all red.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "blood",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "blood",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "blood",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Blut",
+            "tier": "full"
+          },
+          {
+            "text": "das Blut",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "taste",
+        "smell",
+        "medicine"
+      ],
+      "hintDe": "Das Rote, das aus dir kommt, wenn du dich verletzt."
+    },
+    {
+      "id": "g2u12.w.cure",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "smell",
+            "taste",
+            "memory",
+            "blood",
+            "spoon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cure",
+      "g": "Heilmittel",
+      "d": "a thing that makes you well again when you are ill",
+      "s": "In Ancient Egypt, a dead mouse was a ___ for toothache.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cure",
+          "tier": "full"
+        },
+        {
+          "text": "cures",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cure",
+          "tier": "full"
+        },
+        {
+          "text": "a cure",
+          "tier": "full"
+        },
+        {
+          "text": "cures",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cure",
+            "tier": "full"
+          },
+          {
+            "text": "a cure",
+            "tier": "full"
+          },
+          {
+            "text": "cures",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Heilmittel",
+            "tier": "full"
+          },
+          {
+            "text": "Mittel",
+            "tier": "partial"
+          },
+          {
+            "text": "Heilung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "smell",
+        "taste",
+        "memory"
+      ],
+      "hintDe": "Etwas, das einen kranken Menschen wieder gesund macht."
+    },
+    {
+      "id": "g2u12.w.dentist",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "patient",
+            "writer",
+            "pupil",
+            "worm",
+            "spoon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "dentist",
+      "g": "Zahnarzt/Zahnärztin",
+      "d": "the doctor who looks after your teeth",
+      "s": "I want to become a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dentist",
+          "tier": "full"
+        },
+        {
+          "text": "dentists",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dentist",
+          "tier": "full"
+        },
+        {
+          "text": "a dentist",
+          "tier": "full"
+        },
+        {
+          "text": "dentists",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dentist",
+            "tier": "full"
+          },
+          {
+            "text": "a dentist",
+            "tier": "full"
+          },
+          {
+            "text": "dentists",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zahnarzt",
+            "tier": "full"
+          },
+          {
+            "text": "Zahnärztin",
+            "tier": "full"
+          },
+          {
+            "text": "Zahnarzt/Zahnärztin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "patient",
+        "writer",
+        "pupil"
+      ],
+      "hintDe": "Der Arzt, der sich um deine Zähne kümmert."
+    },
+    {
+      "id": "g2u12.w.earache",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headache",
+            "toothache",
+            "backache",
+            "stomach ache",
+            "throat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "earache",
+      "g": "Ohrenschmerzen",
+      "d": "you have this when your ear hurts",
+      "s": "My ear hurts, so I have got ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "earache",
+          "tier": "full"
+        },
+        {
+          "text": "an earache",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "earache",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "earache",
+            "tier": "full"
+          },
+          {
+            "text": "an earache",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ohrenschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "Ohrenweh",
+            "tier": "full"
+          },
+          {
+            "text": "Ohrenschmerz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "headache",
+        "toothache",
+        "backache"
+      ],
+      "hintDe": "Das hast du, wenn dir das Ohr wehtut."
+    },
+    {
+      "id": "g2u12.w.first-aid",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "medicine",
+            "toothpaste",
+            "bath",
+            "cure",
+            "spoon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "first aid",
+      "g": "Erste Hilfe",
+      "d": "the help you give somebody who is hurt, before the doctor is there",
+      "s": "We have ___ classes at school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "first aid",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "first aid",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "first aid",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erste Hilfe",
+            "tier": "full"
+          },
+          {
+            "text": "erste Hilfe",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "medicine",
+        "toothpaste",
+        "bath"
+      ],
+      "hintDe": "Die schnelle Hilfe für Verletzte, bevor der Arzt da ist."
+    },
+    {
+      "id": "g2u12.w.headache",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "toothache",
+            "earache",
+            "backache",
+            "stomach ache",
+            "throat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "headache",
+      "g": "Kopfschmerzen",
+      "d": "you have this when your head hurts",
+      "s": "My head hurts. I have got a bad ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "headache",
+          "tier": "full"
+        },
+        {
+          "text": "headaches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "headache",
+          "tier": "full"
+        },
+        {
+          "text": "a headache",
+          "tier": "full"
+        },
+        {
+          "text": "headaches",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "headache",
+            "tier": "full"
+          },
+          {
+            "text": "a headache",
+            "tier": "full"
+          },
+          {
+            "text": "headaches",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kopfschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "Kopfweh",
+            "tier": "full"
+          },
+          {
+            "text": "Kopfschmerz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "toothache",
+        "earache",
+        "backache"
+      ],
+      "hintDe": "Das hast du, wenn dein Kopf wehtut."
+    },
+    {
+      "id": "g2u12.w.helpful",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "horrible",
+            "dead",
+            "alive",
+            "ill",
+            "sick"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "helpful",
+      "g": "hilfsbereit",
+      "d": "always happy to help people",
+      "s": "She has always been a great and ___ friend.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "helpful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "helpful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "helpful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hilfsbereit",
+            "tier": "full"
+          },
+          {
+            "text": "hilfreich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "horrible",
+        "dead",
+        "alive"
+      ],
+      "hintDe": "Wenn jemand gerne anderen hilft."
+    },
+    {
+      "id": "g2u12.w.horrible",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "helpful",
+            "dead",
+            "alive",
+            "ill",
+            "sick"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "horrible",
+      "g": "schrecklich",
+      "d": "very bad and not nice at all",
+      "s": "The accident was ___!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "horrible",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "horrible",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "horrible",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schrecklich",
+            "tier": "full"
+          },
+          {
+            "text": "furchtbar",
+            "tier": "full"
+          },
+          {
+            "text": "grauenhaft",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "helpful",
+        "dead",
+        "alive"
+      ],
+      "hintDe": "Sehr schlimm, ganz und gar nicht schön."
+    },
+    {
+      "id": "g2u12.w.it-doesn-t-matter",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Believe me!",
+            "Calm down!",
+            "Poor you!",
+            "What a shame!",
+            "I promise."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Idiom from STORY OF THE STONES everyday-English box. Distractors are other in-bank fixed phrases (all gate-clean)."
+      },
+      "w": "It doesn't matter.",
+      "g": "Das macht nichts",
+      "d": "you said this to tell somebody a thing is not bad",
+      "s": "I have lost your pen. - ___ I have one more for you.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "It doesn't matter.",
+          "tier": "full"
+        },
+        {
+          "text": "It doesn't matter",
+          "tier": "full"
+        },
+        {
+          "text": "It does not matter.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It doesn't matter.",
+          "tier": "full"
+        },
+        {
+          "text": "It doesn't matter",
+          "tier": "full"
+        },
+        {
+          "text": "It does not matter.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It doesn't matter.",
+            "tier": "full"
+          },
+          {
+            "text": "It doesn't matter",
+            "tier": "full"
+          },
+          {
+            "text": "It does not matter.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Das macht nichts.",
+            "tier": "full"
+          },
+          {
+            "text": "Das macht nichts",
+            "tier": "full"
+          },
+          {
+            "text": "Egal.",
+            "tier": "full"
+          },
+          {
+            "text": "Das ist egal.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Believe me!",
+        "Calm down!",
+        "Poor you!"
+      ],
+      "hintDe": "Das sagst du, wenn etwas kein Problem ist."
+    },
+    {
+      "id": "g2u12.w.knee",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "throat",
+            "shoulder",
+            "ear",
+            "nose",
+            "mouth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "knee",
+      "g": "Knie",
+      "d": "the middle of your leg that you go down on",
+      "s": "Jacob has hurt his ___ in the middle of his leg, so he cannot play football.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "knee",
+          "tier": "full"
+        },
+        {
+          "text": "knees",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "knee",
+          "tier": "full"
+        },
+        {
+          "text": "knees",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "knee",
+            "tier": "full"
+          },
+          {
+            "text": "knees",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Knie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "throat",
+        "shoulder",
+        "ear"
+      ],
+      "hintDe": "Das ist in der Mitte deines Beins."
+    },
+    {
+      "id": "g2u12.w.lamp-post",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spoon",
+            "toothpaste",
+            "bath",
+            "blood",
+            "medicine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "masterlist 'walked into a lamp post' uses untaught walked; SB present-perfect frame with taught 'run' used instead."
+      },
+      "w": "lamp post",
+      "g": "Laternenmast",
+      "d": "a tall thing in the street with a light on it",
+      "s": "He has just run into a ___ in the street.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lamp post",
+          "tier": "full"
+        },
+        {
+          "text": "lamppost",
+          "tier": "partial"
+        },
+        {
+          "text": "lamp posts",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lamp post",
+          "tier": "full"
+        },
+        {
+          "text": "a lamp post",
+          "tier": "full"
+        },
+        {
+          "text": "lamppost",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lamp post",
+            "tier": "full"
+          },
+          {
+            "text": "a lamp post",
+            "tier": "full"
+          },
+          {
+            "text": "lamppost",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Laternenmast",
+            "tier": "full"
+          },
+          {
+            "text": "Laterne",
+            "tier": "full"
+          },
+          {
+            "text": "Straßenlaterne",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spoon",
+        "toothpaste",
+        "bath"
+      ],
+      "hintDe": "So ein hohes Ding an der Straße mit einem Licht oben."
+    },
+    {
+      "id": "g2u12.w.medicine",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bath",
+            "spoon",
+            "toothpaste",
+            "blood",
+            "worm"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "masterlist sentence 'you should take your medicine' uses untaught take/should; reworded with taught words, sense preserved."
+      },
+      "w": "medicine",
+      "g": "Medizin",
+      "d": "you have this when you are ill and it makes you well again",
+      "s": "The doctor gives me ___ when I am ill.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "medicine",
+          "tier": "full"
+        },
+        {
+          "text": "some medicine",
+          "tier": "partial"
+        },
+        {
+          "text": "medicines",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "medicine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "medicine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Medizin",
+            "tier": "full"
+          },
+          {
+            "text": "Arznei",
+            "tier": "full"
+          },
+          {
+            "text": "Medikament",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bath",
+        "spoon",
+        "toothpaste"
+      ],
+      "hintDe": "Das nimmst du, wenn du krank bist, damit es dir besser geht."
+    },
+    {
+      "id": "g2u12.w.memory",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "medicine",
+            "taste",
+            "smell",
+            "cure",
+            "bath"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "masterlist 'remember lots of facts' uses untaught remember/facts; reworded, sense preserved."
+      },
+      "w": "memory",
+      "g": "Gedächtnis",
+      "d": "what you keep in your head, so you can bring days and people back",
+      "s": "Grandma has a very good ___. She can keep lots of birthdays in her head.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "memory",
+          "tier": "full"
+        },
+        {
+          "text": "memories",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "memory",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "memory",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gedächtnis",
+            "tier": "full"
+          },
+          {
+            "text": "Erinnerung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "medicine",
+        "taste",
+        "smell"
+      ],
+      "hintDe": "Damit behältst du Namen und Tage im Kopf."
+    },
+    {
+      "id": "g2u12.w.pain-in-ankle",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "backache",
+            "headache",
+            "toothache",
+            "earache",
+            "stomach ache"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pain in ankle",
+      "g": "Schmerzen im Knöchel",
+      "d": "you have this when the bottom of your leg, just over your foot, hurts",
+      "s": "Emily cannot stand on her foot. She has got ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pain in ankle",
+          "tier": "full"
+        },
+        {
+          "text": "a pain in the ankle",
+          "tier": "full"
+        },
+        {
+          "text": "a pain in her ankle",
+          "tier": "full"
+        },
+        {
+          "text": "pain in the ankle",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pain in ankle",
+          "tier": "full"
+        },
+        {
+          "text": "pain in the ankle",
+          "tier": "full"
+        },
+        {
+          "text": "ankle pain",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pain in ankle",
+            "tier": "full"
+          },
+          {
+            "text": "pain in the ankle",
+            "tier": "full"
+          },
+          {
+            "text": "a pain in the ankle",
+            "tier": "full"
+          },
+          {
+            "text": "ankle pain",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schmerzen im Knöchel",
+            "tier": "full"
+          },
+          {
+            "text": "Knöchelschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "Schmerz im Knöchel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "backache",
+        "headache",
+        "toothache"
+      ],
+      "hintDe": "Das hast du, wenn dir der Knöchel über dem Fuß wehtut."
+    },
+    {
+      "id": "g2u12.w.patient",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dentist",
+            "writer",
+            "pupil",
+            "worm",
+            "spoon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "patient",
+      "g": "Patient/Patientin",
+      "d": "somebody who is ill and that a doctor looks after",
+      "s": "The doctor looks after every ___ at the hospital.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "patient",
+          "tier": "full"
+        },
+        {
+          "text": "patients",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "patient",
+          "tier": "full"
+        },
+        {
+          "text": "a patient",
+          "tier": "full"
+        },
+        {
+          "text": "patients",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "patient",
+            "tier": "full"
+          },
+          {
+            "text": "a patient",
+            "tier": "full"
+          },
+          {
+            "text": "patients",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Patient",
+            "tier": "full"
+          },
+          {
+            "text": "Patientin",
+            "tier": "full"
+          },
+          {
+            "text": "der Patient",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dentist",
+        "writer",
+        "pupil"
+      ],
+      "hintDe": "So nennt man einen Kranken, wenn er beim Arzt ist."
+    },
+    {
+      "id": "g2u12.w.pupil",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "writer",
+            "dentist",
+            "patient",
+            "worm",
+            "spoon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pupil",
+      "g": "Schüler/Schülerin",
+      "d": "a child at school",
+      "s": "Every ___ in our class does a text in front of the teacher.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pupil",
+          "tier": "full"
+        },
+        {
+          "text": "pupils",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pupil",
+          "tier": "full"
+        },
+        {
+          "text": "a pupil",
+          "tier": "full"
+        },
+        {
+          "text": "pupils",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pupil",
+            "tier": "full"
+          },
+          {
+            "text": "a pupil",
+            "tier": "full"
+          },
+          {
+            "text": "pupils",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schüler",
+            "tier": "full"
+          },
+          {
+            "text": "Schülerin",
+            "tier": "full"
+          },
+          {
+            "text": "Schüler/Schülerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "writer",
+        "dentist",
+        "patient"
+      ],
+      "hintDe": "Ein Kind, das in die Schule geht."
+    },
+    {
+      "id": "g2u12.w.since",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "helpful",
+            "horrible",
+            "writer",
+            "dead",
+            "alive"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "since is a function word; mc are other non-noun bank words. Difficulty 3: abstract, no concrete referent."
+      },
+      "w": "since",
+      "g": "seit",
+      "d": "from a time in the past up to now",
+      "s": "I have been in hospital ___ last week.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "since",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "since",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "seit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "helpful",
+        "horrible",
+        "writer"
+      ],
+      "hintDe": "Von einem Zeitpunkt in der Vergangenheit bis jetzt."
+    },
+    {
+      "id": "g2u12.w.smell",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "taste",
+            "memory",
+            "cure",
+            "blood",
+            "medicine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "smell",
+      "g": "Geruch",
+      "d": "what your nose finds; bad fish has a really bad one",
+      "s": "The ___ of fish was really bad.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "smell",
+          "tier": "full"
+        },
+        {
+          "text": "smells",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "smell",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "smell",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geruch",
+            "tier": "full"
+          },
+          {
+            "text": "der Geruch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "taste",
+        "memory",
+        "cure"
+      ],
+      "hintDe": "Das, was du mit der Nase wahrnimmst."
+    },
+    {
+      "id": "g2u12.w.spoon",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bath",
+            "lamp post",
+            "toothpaste",
+            "medicine",
+            "blood"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "spoon",
+      "g": "Löffel",
+      "d": "you eat your soup with this, not with a knife",
+      "s": "I need a ___ to eat my soup.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "spoon",
+          "tier": "full"
+        },
+        {
+          "text": "spoons",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spoon",
+          "tier": "full"
+        },
+        {
+          "text": "a spoon",
+          "tier": "full"
+        },
+        {
+          "text": "spoons",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spoon",
+            "tier": "full"
+          },
+          {
+            "text": "a spoon",
+            "tier": "full"
+          },
+          {
+            "text": "spoons",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Löffel",
+            "tier": "full"
+          },
+          {
+            "text": "der Löffel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bath",
+        "lamp post",
+        "toothpaste"
+      ],
+      "hintDe": "Damit isst du deine Suppe."
+    },
+    {
+      "id": "g2u12.w.stomach-ache",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headache",
+            "backache",
+            "toothache",
+            "earache",
+            "throat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "d avoids the headword's tokens 'stomach'/'ache'; describes the body location instead."
+      },
+      "w": "stomach ache",
+      "g": "Bauchschmerzen",
+      "d": "you have this when you eat too much and the middle of you hurts",
+      "s": "Jacob has eaten too much cake, so now he has ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stomach ache",
+          "tier": "full"
+        },
+        {
+          "text": "stomachache",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stomach ache",
+          "tier": "full"
+        },
+        {
+          "text": "stomachache",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stomach ache",
+            "tier": "full"
+          },
+          {
+            "text": "stomachache",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bauchschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "Bauchweh",
+            "tier": "full"
+          },
+          {
+            "text": "Magenschmerzen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "headache",
+        "backache",
+        "toothache"
+      ],
+      "hintDe": "Das hast du oft, wenn du zu viel gegessen hast."
+    },
+    {
+      "id": "g2u12.w.taste",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "smell",
+            "memory",
+            "cure",
+            "blood",
+            "medicine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "taste",
+      "g": "Geschmack",
+      "d": "what a food or drink is like in your mouth, good or bad",
+      "s": "The ___ was very good.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "taste",
+          "tier": "full"
+        },
+        {
+          "text": "tastes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "taste",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "taste",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geschmack",
+            "tier": "full"
+          },
+          {
+            "text": "der Geschmack",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "smell",
+        "memory",
+        "cure"
+      ],
+      "hintDe": "Wie etwas im Mund schmeckt."
+    },
+    {
+      "id": "g2u12.w.throat",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "knee",
+            "shoulder",
+            "nose",
+            "ear",
+            "finger"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "throat",
+      "g": "Hals",
+      "d": "the inside place that food and drink go down after your mouth",
+      "s": "My ___ hurts when I drink cold milk.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "throat",
+          "tier": "full"
+        },
+        {
+          "text": "throats",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "throat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "throat",
+            "tier": "full"
+          },
+          {
+            "text": "throats",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hals",
+            "tier": "full"
+          },
+          {
+            "text": "Kehle",
+            "tier": "full"
+          },
+          {
+            "text": "Rachen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "knee",
+        "shoulder",
+        "nose"
+      ],
+      "hintDe": "Da gehen Essen und Trinken hinunter."
+    },
+    {
+      "id": "g2u12.w.to-cure",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mash",
+            "mix",
+            "injure",
+            "smell",
+            "taste"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to cure",
+      "g": "heilen",
+      "d": "to make somebody well again when they are ill",
+      "s": "Long ago, people said worms could ___ stomach ache.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cure",
+          "tier": "full"
+        },
+        {
+          "text": "cured",
+          "tier": "partial"
+        },
+        {
+          "text": "cures",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cure",
+          "tier": "full"
+        },
+        {
+          "text": "to cure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cure",
+            "tier": "full"
+          },
+          {
+            "text": "to cure",
+            "tier": "full"
+          },
+          {
+            "text": "heal",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "heilen",
+            "tier": "full"
+          },
+          {
+            "text": "gesund machen",
+            "tier": "full"
+          },
+          {
+            "text": "kurieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mash",
+        "mix",
+        "injure"
+      ],
+      "hintDe": "Einen kranken Menschen wieder gesund machen."
+    },
+    {
+      "id": "g2u12.w.to-injure",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mix",
+            "mash",
+            "cure",
+            "smell",
+            "taste"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "'hurt' is a defensible near-synonym in the sentence, so it is a partial answer (the cued word is 'injure')."
+      },
+      "w": "to injure",
+      "g": "verletzen",
+      "d": "to hurt your arm, leg or knee in an accident",
+      "s": "I do not want to ___ my knee again.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "injure",
+          "tier": "full"
+        },
+        {
+          "text": "hurt",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "injure",
+          "tier": "full"
+        },
+        {
+          "text": "to injure",
+          "tier": "full"
+        },
+        {
+          "text": "injured",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "injure",
+            "tier": "full"
+          },
+          {
+            "text": "to injure",
+            "tier": "full"
+          },
+          {
+            "text": "hurt",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verletzen",
+            "tier": "full"
+          },
+          {
+            "text": "sich verletzen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mix",
+        "mash",
+        "cure"
+      ],
+      "hintDe": "Sich einen Körperteil wehtun, zum Beispiel bei einem Unfall."
+    },
+    {
+      "id": "g2u12.w.to-mash",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mix",
+            "cure",
+            "injure",
+            "smell",
+            "taste"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Carrier is the SB 'Medicine from the past' text verbatim; blank takes the past form 'mashed' (parallel with 'mixed')."
+      },
+      "w": "to mash",
+      "g": "zerdrücken",
+      "d": "to push food down so it is not in pieces",
+      "s": "They ___ a dead mouse and mixed it with food.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mashed",
+          "tier": "full"
+        },
+        {
+          "text": "mash",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mash",
+          "tier": "full"
+        },
+        {
+          "text": "to mash",
+          "tier": "full"
+        },
+        {
+          "text": "mashed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mash",
+            "tier": "full"
+          },
+          {
+            "text": "to mash",
+            "tier": "full"
+          },
+          {
+            "text": "mashed",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zerdrücken",
+            "tier": "full"
+          },
+          {
+            "text": "zerstampfen",
+            "tier": "full"
+          },
+          {
+            "text": "zerquetschen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mix",
+        "cure",
+        "injure"
+      ],
+      "hintDe": "Essen so weich drücken, dass keine Stücke mehr da sind."
+    },
+    {
+      "id": "g2u12.w.to-mix",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mash",
+            "cure",
+            "injure",
+            "smell",
+            "taste"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "masterlist 'I mix my pet's medicine with its food' uses genitive 'pet's' (untaught token); reworded to 'the dog'."
+      },
+      "w": "to mix",
+      "g": "vermischen",
+      "d": "to put a food and a drink into one so they become one thing",
+      "s": "I ___ the medicine into the food, so the dog eats it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "mix",
+          "tier": "full"
+        },
+        {
+          "text": "mixed",
+          "tier": "partial"
+        },
+        {
+          "text": "mixes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mix",
+          "tier": "full"
+        },
+        {
+          "text": "to mix",
+          "tier": "full"
+        },
+        {
+          "text": "mixed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mix",
+            "tier": "full"
+          },
+          {
+            "text": "to mix",
+            "tier": "full"
+          },
+          {
+            "text": "mixed",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vermischen",
+            "tier": "full"
+          },
+          {
+            "text": "mischen",
+            "tier": "full"
+          },
+          {
+            "text": "verrühren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mash",
+        "cure",
+        "injure"
+      ],
+      "hintDe": "Zwei Dinge zu einem zusammenrühren."
+    },
+    {
+      "id": "g2u12.w.toothache",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headache",
+            "earache",
+            "stomach ache",
+            "backache",
+            "throat"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "toothache",
+      "g": "Zahnschmerzen",
+      "d": "you have this when one of your teeth hurts",
+      "s": "One of my teeth hurts, so I have got ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "toothache",
+          "tier": "full"
+        },
+        {
+          "text": "a toothache",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "toothache",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "toothache",
+            "tier": "full"
+          },
+          {
+            "text": "a toothache",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zahnschmerzen",
+            "tier": "full"
+          },
+          {
+            "text": "Zahnweh",
+            "tier": "full"
+          },
+          {
+            "text": "Zahnschmerz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "headache",
+        "earache",
+        "stomach ache"
+      ],
+      "hintDe": "Das hast du, wenn dir ein Zahn wehtut."
+    },
+    {
+      "id": "g2u12.w.toothpaste",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "medicine",
+            "spoon",
+            "bath",
+            "blood",
+            "cure"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "toothpaste",
+      "g": "Zahnpasta",
+      "d": "you clean your teeth with this every morning and night",
+      "s": "In Ancient Rome, people did not have ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "toothpaste",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "toothpaste",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "toothpaste",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zahnpasta",
+            "tier": "full"
+          },
+          {
+            "text": "Zahncreme",
+            "tier": "full"
+          },
+          {
+            "text": "Zahnpaste",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "medicine",
+        "spoon",
+        "bath"
+      ],
+      "hintDe": "Damit putzt du dir die Zähne."
+    },
+    {
+      "id": "g2u12.w.worm",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "spoon",
+            "dentist",
+            "patient",
+            "writer",
+            "pupil"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "worm",
+      "g": "Wurm",
+      "d": "a long thing with no legs that lives in the ground",
+      "s": "A ___ lives under the ground.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "worm",
+          "tier": "full"
+        },
+        {
+          "text": "worms",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "worm",
+          "tier": "full"
+        },
+        {
+          "text": "a worm",
+          "tier": "full"
+        },
+        {
+          "text": "worms",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "worm",
+            "tier": "full"
+          },
+          {
+            "text": "a worm",
+            "tier": "full"
+          },
+          {
+            "text": "worms",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wurm",
+            "tier": "full"
+          },
+          {
+            "text": "der Wurm",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spoon",
+        "dentist",
+        "patient"
+      ],
+      "hintDe": "So ein langes Tier ohne Beine, das im Boden lebt."
+    },
+    {
+      "id": "g2u12.w.writer",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pupil",
+            "dentist",
+            "patient",
+            "worm",
+            "spoon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "writer",
+      "g": "Schriftsteller/-in",
+      "d": "somebody who makes books and stories for people to read",
+      "s": "My favourite ___ has a new book out this week.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "writer",
+          "tier": "full"
+        },
+        {
+          "text": "writers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "writer",
+          "tier": "full"
+        },
+        {
+          "text": "a writer",
+          "tier": "full"
+        },
+        {
+          "text": "writers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "writer",
+            "tier": "full"
+          },
+          {
+            "text": "a writer",
+            "tier": "full"
+          },
+          {
+            "text": "writers",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schriftsteller",
+            "tier": "full"
+          },
+          {
+            "text": "Schriftstellerin",
+            "tier": "full"
+          },
+          {
+            "text": "Autor",
+            "tier": "full"
+          },
+          {
+            "text": "Autorin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pupil",
+        "dentist",
+        "patient"
+      ],
+      "hintDe": "Jemand, der Bücher oder Geschichten schreibt."
+    }
+  ]
+}

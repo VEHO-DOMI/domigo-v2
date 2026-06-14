@@ -1,0 +1,3116 @@
+{
+  "schema": "grammar@1",
+  "grade": 2,
+  "unit": 4,
+  "slug": "g2-u04",
+  "items": [
+    {
+      "id": "g2u04.gi.as-as.cp.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "My rat is so big as your rat.",
+            "My rat is as bigger as your rat.",
+            "My rat is as big like your rat.",
+            "My rat is as big than your rat.",
+            "My rat is big as your rat."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Rats are in-bank (g1-u09); equality context forces as ... as."
+      },
+      "prompt": {
+        "text": "You and a friend look at two rats. They are both very big.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My rat is as big as your rat.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "My rat is so big as your rat.",
+        "My rat is as bigger as your rat.",
+        "My rat is as big like your rat."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gleich groß → as big as. Beide Male as.",
+      "hintEn": null,
+      "explainDe": "as big as: zwei Mal as, Grundform big dazwischen. so ... as und as ... like sind L1-Fehler.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.ec.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-as-as-ec-001",
+        "narrative": null,
+        "note": "verify r1 (answers): swapped to a TRUE equality — an ostrich is NOT as tall as a giraffe (false; the unit even glosses the giraffe as the tallest mammal), but an anaconda and a crocodile are comparably long. The so→as error under correction is unchanged."
+      },
+      "prompt": {
+        "text": "An anaconda is so long as a crocodile.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "An anaconda is as long as a crocodile.",
+          "tier": "full"
+        },
+        {
+          "text": "as long as",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nicht so ... as, sondern as ... as.",
+      "hintEn": null,
+      "explainDe": "Im Englischen sagt man as ... as, nicht so ... as: as long as.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.ec.002",
+      "structureId": "g2u04.s.as-as",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-as-as-ec-002",
+        "narrative": null,
+        "note": "SB common-error comparative inside as...as; rhino & hippo are in-bank (strong is unit adjective)."
+      },
+      "prompt": {
+        "text": "A rhino is as stronger as a hippo.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A rhino is as strong as a hippo.",
+          "tier": "full"
+        },
+        {
+          "text": "as strong as",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwischen as ... as steht die Grundform: strong, nicht stronger.",
+      "hintEn": null,
+      "explainDe": "Bei as ... as bleibt das Adjektiv in der Grundform: as strong as, nicht as stronger as.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.ec.003",
+      "structureId": "g2u04.s.as-as",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-as-as-ec-003",
+        "narrative": null,
+        "note": "SB common-error like→as; smart is unit adjective, both animals are 'intelligent' quiz options."
+      },
+      "prompt": {
+        "text": "A dolphin is as smart like a chimpanzee.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A dolphin is as smart as a chimpanzee.",
+          "tier": "full"
+        },
+        {
+          "text": "as smart as",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das zweite Wort ist as, nicht like.",
+      "hintEn": null,
+      "explainDe": "Beide Male steht as: as smart as. like ist hier falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.gf.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-10",
+        "seedV1": "m2-u4-as-as-mc-001",
+        "narrative": null,
+        "note": "SB ex. 10 Sounds Right \"he's a chimpanzee, and he's as big as me\"; clever is unit adjective (ex. 4). child is g1."
+      },
+      "prompt": {
+        "text": "A chimpanzee is ___ a child. They are both clever.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "as clever as",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "so clever as",
+        "as cleverer as",
+        "as clever like"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gleichheit: as + Adjektiv + as. Beide Wörter sind as.",
+      "hintEn": null,
+      "explainDe": "Wenn etwas gleich ist, nimmst du as ... as: as clever as. Nicht so ... as und nicht as ... like.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.gf.002",
+      "structureId": "g2u04.s.as-as",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-10",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB ex. 10: \"he's as big as me.\" boy is g1."
+      },
+      "prompt": {
+        "text": "The boy is ___ the chimpanzee. They are both very big.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "as big as",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "so big as",
+        "as bigger as",
+        "as big like"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gleich groß → as big as.",
+      "hintEn": null,
+      "explainDe": "as big as: zwischen den beiden as steht die Grundform big, nicht bigger.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.gf.003",
+      "structureId": "g2u04.s.as-as",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-9",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Anaconda & crocodile are unit reptiles, both long animals."
+      },
+      "prompt": {
+        "text": "An anaconda is ___ a crocodile. They are both very long.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "as long as",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "so long as",
+        "as longer as",
+        "as long like"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gleich lang → as long as. Grundform long, kein longer.",
+      "hintEn": null,
+      "explainDe": "as long as: die Grundform long steht zwischen as und as, nicht longer.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.gf.004",
+      "structureId": "g2u04.s.as-as",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Brief seed pattern \"not as fast as a cheetah\"; antelope & cheetah are both 'fast' quiz options (SB ex. 13). leopard out-of-bank → antelope."
+      },
+      "prompt": {
+        "text": "An antelope is fast, but it is ___ a cheetah. The cheetah is faster.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "not as fast as",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "not so fast as",
+        "not as faster as",
+        "as not fast as"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ungleich → not as ... as. Das Erste hat weniger davon.",
+      "hintEn": null,
+      "explainDe": "not as fast as bedeutet: das Erste ist weniger schnell. not so fast as ist falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.gf.005",
+      "structureId": "g2u04.s.as-as",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 4.txt#ex-7",
+        "seedV1": null,
+        "narrative": null,
+        "note": "WB ex. 7 \"... isn't as dangerous as the mosquito\" pattern; sharks & dolphins are unit sea-animals."
+      },
+      "prompt": {
+        "text": "A dolphin is ___ a shark. The shark is more dangerous.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "not as dangerous as",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "not so dangerous as",
+        "as not dangerous as",
+        "not as more dangerous as"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "not as dangerous as – die Grundform dangerous, ohne more.",
+      "hintEn": null,
+      "explainDe": "not as dangerous as: zwischen as und as steht dangerous ohne more, weil as ... as keinen Komparativ braucht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.gf.006",
+      "structureId": "g2u04.s.as-as",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB box \"It was as small as a mouse\" pattern; pigeon & parrot are unit birds."
+      },
+      "prompt": {
+        "text": "A pigeon is ___ a parrot. They are both quite small.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "as small as",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "so small as",
+        "as smaller as",
+        "as small like"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gleich klein → as small as.",
+      "hintEn": null,
+      "explainDe": "as small as: Grundform small zwischen den beiden as.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.gf.007",
+      "structureId": "g2u04.s.as-as",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#more-words",
+        "seedV1": null,
+        "narrative": null,
+        "note": "MORE Words: \"I'm not as strong as my best friend.\" (strong example sentence) — here positive as...as."
+      },
+      "prompt": {
+        "text": "I am ___ my best friend. We are both quite strong.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "as strong as",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "so strong as",
+        "as stronger as",
+        "as strong like"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Gleich stark → as strong as.",
+      "hintEn": null,
+      "explainDe": "as strong as: Grundform strong zwischen den beiden as.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.gs.002",
+      "structureId": "g2u04.s.as-as",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 4.txt#ex-7",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Meaning sort (equal vs not equal); all sentences unit animals."
+      },
+      "prompt": {
+        "text": "How big? How fast?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "as … as",
+          "members": [
+            "An anaconda is as long as a crocodile.",
+            "A chimpanzee is as clever as a dolphin."
+          ]
+        },
+        {
+          "label": "not as … as",
+          "members": [
+            "An antelope is not as fast as a cheetah.",
+            "A dolphin is not as dangerous as a shark."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "as ... as = gleich. not as ... as = nicht gleich.",
+      "hintEn": null,
+      "explainDe": "as ... as heißt, beide sind gleich. not as ... as heißt, das Erste hat weniger davon.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.mc.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "A chimpanzee is so clever as a dolphin.",
+            "A chimpanzee is as cleverer as a dolphin.",
+            "A chimpanzee is as clever like a dolphin.",
+            "A chimpanzee is as clever than a dolphin.",
+            "A chimpanzee is clever as a dolphin."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": "m2-u4-as-as-mc-001",
+        "narrative": null,
+        "note": "Chimpanzee & dolphin = the two 'most intelligent' quiz animals (SB ex. 13)."
+      },
+      "prompt": {
+        "text": "A chimpanzee and a dolphin are both clever.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A chimpanzee is as clever as a dolphin.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "A chimpanzee is so clever as a dolphin.",
+        "A chimpanzee is as cleverer as a dolphin.",
+        "A chimpanzee is as clever like a dolphin."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such die richtige as ... as Form: beide Male as, Grundform dazwischen.",
+      "hintEn": null,
+      "explainDe": "Richtig ist as clever as: zwei Mal as und die Grundform clever. so ... as, ...cleverer... und ...like sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.mc.002",
+      "structureId": "g2u04.s.as-as",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "An antelope is not so heavy as an elephant.",
+            "An antelope is as not heavy as an elephant.",
+            "An antelope is not as heavier as an elephant.",
+            "An antelope is not as heavy like an elephant.",
+            "An antelope is not heavy as an elephant."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 4.txt#ex-7",
+        "seedV1": "m2-u4-as-as-mc-002",
+        "narrative": null,
+        "note": "WB ex. 7 \"Elephants aren't as heavy as blue whales\" pattern; antelope & elephant are unit mammals."
+      },
+      "prompt": {
+        "text": "An elephant weighs much more than an antelope.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "An antelope is not as heavy as an elephant.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "An antelope is not so heavy as an elephant.",
+        "An antelope is as not heavy as an elephant.",
+        "An antelope is not as heavier as an elephant."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "not as heavy as: Grundform heavy, kein heavier, und die Wortstellung not as ... as.",
+      "hintEn": null,
+      "explainDe": "not as heavy as: not + as + Grundform + as. Nicht so ... as, nicht heavier, und das not steht vorne.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.mt.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": "m2-u4-as-as-mt-001",
+        "narrative": null,
+        "note": "Sentence-half matching; all subjects unit animals."
+      },
+      "prompt": {
+        "text": "as ... as",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "A chimpanzee is as clever",
+          "right": "as a dolphin."
+        },
+        {
+          "left": "A pigeon is not as big",
+          "right": "as an ostrich."
+        },
+        {
+          "left": "An anaconda is as long",
+          "right": "as a crocodile."
+        },
+        {
+          "left": "An antelope is not as fast",
+          "right": "as a cheetah."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jede Hälfte endet mit as + Tier. Achte auf den Sinn (gleich oder nicht gleich).",
+      "hintEn": null,
+      "explainDe": "Bei as ... as gehört nach dem Adjektiv immer as + das zweite Tier: as clever as a dolphin.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.qf.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": "m2-u4-as-as-qf-001",
+        "narrative": null,
+        "note": "Cheetah & antelope are both 'fast' quiz options (SB ex. 13)."
+      },
+      "prompt": {
+        "text": "a cheetah / fast / an antelope",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is a cheetah as fast as an antelope?",
+          "tier": "full"
+        },
+        {
+          "text": "Is a cheetah as fast as an antelope",
+          "tier": "full"
+        },
+        {
+          "text": "Is an antelope as fast as a cheetah?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit Is am Anfang: Is ... as fast as ...?",
+      "hintEn": null,
+      "explainDe": "as...as-Frage: Is a cheetah as fast as an antelope? – is vorne, Grundform fast zwischen den as.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.sb.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "like",
+            "so",
+            "than",
+            "more"
+          ],
+          "chipBudget": 9,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": "m2-u4-as-as-sb-001",
+        "narrative": null,
+        "note": "Dolphin & chimpanzee are the two 'intelligent' quiz animals; 'like' chip traps the L1 error. 8 answer tokens + 1 distractor = 9 ≤ 12."
+      },
+      "prompt": {
+        "text": "as / is / a / dolphin / as / a / chimpanzee / smart",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A dolphin is as smart as a chimpanzee.",
+          "tier": "full"
+        },
+        {
+          "text": "A dolphin is as smart as a chimpanzee",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "like"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "as + smart + as. Das Wort like brauchst du nicht.",
+      "hintEn": null,
+      "explainDe": "A dolphin is as smart as a chimpanzee. Beide Male as, niemals like.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.tf.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-as-as-tf-001",
+        "narrative": null,
+        "note": "Comparative→equality transformation from v1 seed; dog & tortoise in-bank."
+      },
+      "prompt": {
+        "text": "A dog is faster than a tortoise. (not as ... as) A tortoise is ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "not as fast as a dog",
+          "tier": "full"
+        },
+        {
+          "text": "a tortoise is not as fast as a dog",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "langsamer = nicht so schnell: not as fast as.",
+      "hintEn": null,
+      "explainDe": "Wenn die Schildkröte langsamer ist, ist sie not as fast as der Hund – Grundform fast zwischen den beiden as.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.tf.002",
+      "structureId": "g2u04.s.as-as",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-as-as-tf-003",
+        "narrative": null,
+        "note": "verify r1 (answers): made the transform coherent — the source now compares the SAME subject across both halves ('Your room' vs 'my room'), removing the unsignalled pronoun remap that let a careful student be marked wrong."
+      },
+      "prompt": {
+        "text": "Your room is smaller than my room. (not as ... as) Your room is ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "not as big as my room",
+          "tier": "full"
+        },
+        {
+          "text": "your room is not as big as my room",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "kleiner = nicht so groß: not as big as.",
+      "hintEn": null,
+      "explainDe": "smaller bedeutet not as big as: Grundform big zwischen den as.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.tr.001",
+      "structureId": "g2u04.s.as-as",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-as-as-tr-001",
+        "narrative": null,
+        "note": "Standard as...as translation; 'brother/father' are out-of-bank so subject is 'I' and 'dad' (in-bank)."
+      },
+      "prompt": {
+        "text": "Ich bin so groß wie mein Papa.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I am as tall as my dad.",
+          "tier": "full"
+        },
+        {
+          "text": "I am as tall as my dad",
+          "tier": "full"
+        },
+        {
+          "text": "I'm as tall as my dad.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm as tall as my dad",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "so ... wie = as ... as. groß bei Personen = tall.",
+      "hintEn": null,
+      "explainDe": "so groß wie heißt as tall as – beide Male as, Grundform tall dazwischen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.as-as.tr.002",
+      "structureId": "g2u04.s.as-as",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 4.txt#ex-7",
+        "seedV1": "m2-u4-as-as-tr-002",
+        "narrative": null,
+        "note": "not as...as translation; dolphin & shark are unit sea-animals; Hai = shark."
+      },
+      "prompt": {
+        "text": "Ein Delfin ist nicht so gefährlich wie ein Hai.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A dolphin is not as dangerous as a shark.",
+          "tier": "full"
+        },
+        {
+          "text": "A dolphin is not as dangerous as a shark",
+          "tier": "full"
+        },
+        {
+          "text": "A dolphin isn't as dangerous as a shark.",
+          "tier": "full"
+        },
+        {
+          "text": "A dolphin isn't as dangerous as a shark",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nicht so ... wie = not as ... as.",
+      "hintEn": null,
+      "explainDe": "nicht so gefährlich wie heißt not as dangerous as – die Grundform dangerous bleibt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.ag.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single-word comparative form drill; English carrier (anagram answer is the one word 'faster'). Antelope faster than elephant — true and in-bank."
+      },
+      "prompt": {
+        "text": "An antelope is ___ than an elephant.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "faster",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "fast + die Endung für den Komparativ.",
+      "hintEn": null,
+      "explainDe": "fast → faster: einsilbiges Adjektiv plus -er.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.ag.002",
+      "structureId": "g2u04.s.comparatives",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Spelling-change comparative (y→ier); answer is the single word 'heavier'. SB box \"An elephant is heavier than a mouse.\""
+      },
+      "prompt": {
+        "text": "An elephant is ___ than a mouse.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "heavier",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "heavy endet auf -y – denk an die Schreibänderung.",
+      "hintEn": null,
+      "explainDe": "heavy → heavier: das -y wird zu -ier.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.cp.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The cheetah is more fast than the rhino.",
+            "The cheetah is faster as the rhino.",
+            "The cheetah is more faster than the rhino.",
+            "The cheetah is fast than the rhino.",
+            "The cheetah is the faster than the rhino."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Speeds (cheetah 110; western black rhino up to 55) from SB facts ex. 6 + ex. 8; 'km/h' dropped (tokenises to out-of-bank km+h), 'speed' is g2-u04 vocab. Bare numbers pass."
+      },
+      "prompt": {
+        "text": "A cheetah's speed is 110. A rhino's speed is 55.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The cheetah is faster than the rhino.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The cheetah is more fast than the rhino.",
+        "The cheetah is faster as the rhino.",
+        "The cheetah is more faster than the rhino."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vergleich mit than, und fast bekommt nur -er.",
+      "hintEn": null,
+      "explainDe": "Beim Vergleich brauchst du than (nicht as): faster than. fast bekommt nur -er, kein more.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.ec.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-ec-001",
+        "narrative": null,
+        "note": "SB common-error \"A lion is more fast than a turtle\" → unit/in-bank animals (tortoise is g1-u09)."
+      },
+      "prompt": {
+        "text": "A cheetah is more fast than a tortoise.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A cheetah is faster than a tortoise.",
+          "tier": "full"
+        },
+        {
+          "text": "faster",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "fast ist kurz – kein more. Nur -er anhängen.",
+      "hintEn": null,
+      "explainDe": "Kurze Adjektive nehmen kein more: aus more fast wird faster.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.ec.002",
+      "structureId": "g2u04.s.comparatives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-ec-002",
+        "narrative": null,
+        "note": "SB common-error double comparative; unit animals."
+      },
+      "prompt": {
+        "text": "A giraffe is more bigger than a chimpanzee.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A giraffe is bigger than a chimpanzee.",
+          "tier": "full"
+        },
+        {
+          "text": "bigger",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Doppelte Steigerung! Entweder more oder -er, nie beides.",
+      "hintEn": null,
+      "explainDe": "more bigger ist doppelt gesteigert. Richtig ist nur bigger – mit -er und ohne more.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.ec.003",
+      "structureId": "g2u04.s.comparatives",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-ec-003",
+        "narrative": null,
+        "note": "verify r1 (answers): reversed subjects — ostriches ARE famous runners, so 'a pigeon is better at running than an ostrich' was false; 'an ostrich is better than a pigeon' is true. The good→better error under correction is unchanged."
+      },
+      "prompt": {
+        "text": "An ostrich is more good at running than a pigeon.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "An ostrich is better at running than a pigeon.",
+          "tier": "full"
+        },
+        {
+          "text": "better",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good ist unregelmäßig: good → better. Kein more good.",
+      "hintEn": null,
+      "explainDe": "Die Steigerung von good ist better. more good gibt es nicht – good → better musst du auswendig lernen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.gf.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": "m2-u4-comparatives-gf-001",
+        "narrative": null,
+        "note": "SB ex. 8 facts: cheetah is the fastest land animal; rhino tops out at 55 km/h. Both unit animals."
+      },
+      "prompt": {
+        "text": "A cheetah is ___ (fast) than a rhino.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "faster",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "more fast",
+        "fastest",
+        "more faster"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kurzes Adjektiv (eine Silbe): häng einfach -er an die Grundform.",
+      "hintEn": null,
+      "explainDe": "Bei einsilbigen Adjektiven bildest du den Komparativ mit -er: fast → faster. Kein more davor.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.gf.002",
+      "structureId": "g2u04.s.comparatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": "m2-u4-comparatives-gf-002",
+        "narrative": null,
+        "note": "From the Animal Quiz \"Which is the tallest? giraffe / ostrich / elephant\" (SB ex. 13)."
+      },
+      "prompt": {
+        "text": "A giraffe is ___ (tall) than an ostrich.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "taller",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "more tall",
+        "tallest",
+        "more taller"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "tall hat eine Silbe – einfach -er anhängen.",
+      "hintEn": null,
+      "explainDe": "tall → taller. Einsilbige Adjektive bekommen nur -er, niemals more.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.gf.003",
+      "structureId": "g2u04.s.comparatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-9",
+        "seedV1": "m2-u4-comparatives-gf-003",
+        "narrative": null,
+        "note": "Anaconda & crocodile are unit reptiles; fact-file ex. 9 weighs snakes."
+      },
+      "prompt": {
+        "text": "An anaconda is ___ (heavy) than a crocodile.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "heavier",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "more heavy",
+        "the most heavy",
+        "more heavier"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "heavy endet auf -y: das -y wird zu -ier.",
+      "hintEn": null,
+      "explainDe": "Bei Adjektiven auf -y wird das y zu -ier: heavy → heavier. Nicht more heavy.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.gf.004",
+      "structureId": "g2u04.s.comparatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 4.txt#ex-6",
+        "seedV1": "m2-u4-comparatives-gf-004",
+        "narrative": null,
+        "note": "WB ex. 6 model \"Elephants are bigger than rhinos.\""
+      },
+      "prompt": {
+        "text": "An elephant is ___ (big) than a rhino.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "bigger",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "biger",
+        "more big",
+        "more bigger"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "big: den Endkonsonanten verdoppeln, dann -er: bigger.",
+      "hintEn": null,
+      "explainDe": "Bei big verdoppelst du das g: big → bigger. Ein einzelnes g (biger) ist falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.gf.005",
+      "structureId": "g2u04.s.comparatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": "m2-u4-comparatives-gf-005",
+        "narrative": null,
+        "note": "From Animal Quiz \"Which is the most intelligent? dolphin / pig / chimpanzee\" (SB ex. 13)."
+      },
+      "prompt": {
+        "text": "A dolphin is ___ (intelligent) than a pigeon.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "more intelligent",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "intelligenter",
+        "most intelligent",
+        "more intelligenter"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "intelligent hat vier Silben – nimm more davor, nicht -er.",
+      "hintEn": null,
+      "explainDe": "Lange Adjektive (3+ Silben) steigerst du mit more + Adjektiv: more intelligent. Kein -er.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.gf.006",
+      "structureId": "g2u04.s.comparatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-gf-006",
+        "narrative": null,
+        "note": "SB box exception bad → worse; \"he's worse than me\" pattern, animal-themed (rabbit & pig in-bank)."
+      },
+      "prompt": {
+        "text": "A rabbit is bad at climbing, but a pig is ___ (bad) than a rabbit.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "worse",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "badder",
+        "more bad",
+        "the worst"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "bad ist unregelmäßig: bad → worse. Auswendig lernen!",
+      "hintEn": null,
+      "explainDe": "bad hat eine unregelmäßige Steigerung: bad → worse. Nicht badder und nicht more bad.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.gf.007",
+      "structureId": "g2u04.s.comparatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#more-words",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Two-blank guided production; \"My pet rat has got lots of fur. It's very hairy.\" (MORE Words ex. 4); rat is g1-u09."
+      },
+      "prompt": {
+        "text": "My rat is ___ (hairy) than your dog, and it is ___ (small) too.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "hairier | smaller",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst hairy (y → -ier), dann small (nur -er). Trenne deine Antworten in der richtigen Reihenfolge.",
+      "hintEn": null,
+      "explainDe": "hairy → hairier (y wird zu -ier), small → smaller (nur -er). Beide sind kurze Adjektive ohne more.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.gs.002",
+      "structureId": "g2u04.s.comparatives",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Concept sort: -er adjectives vs more adjectives, all unit-relevant describing words."
+      },
+      "prompt": {
+        "text": "Which is bigger?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "big → bigger",
+          "members": [
+            "fast",
+            "tall",
+            "strong",
+            "small"
+          ]
+        },
+        {
+          "label": "difficult → more difficult",
+          "members": [
+            "dangerous",
+            "intelligent",
+            "powerful",
+            "beautiful"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Eine Silbe → -er. Drei oder mehr Silben → more.",
+      "hintEn": null,
+      "explainDe": "Kurze Adjektive (fast, tall …) nehmen -er. Lange Adjektive (dangerous, intelligent …) nehmen more.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.mc.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "A dog is more big than a mouse.",
+            "A dog is the bigger than a mouse.",
+            "A dog is more bigger than a mouse.",
+            "A dog is biger than a mouse.",
+            "A dog is big than a mouse."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-5",
+        "seedV1": "m2-u4-comparatives-mc-004",
+        "narrative": null,
+        "note": "Pet-comparison frame from SB ex. 5 speaking task; dog & mouse in-bank."
+      },
+      "prompt": {
+        "text": "Look at a dog and a mouse.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A dog is bigger than a mouse.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "A dog is more bigger than a mouse.",
+        "A dog is biger than a mouse.",
+        "A dog is big than a mouse."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such die richtige Form von big: -er, ein doppeltes g, und kein zweites Steigerungswort.",
+      "hintEn": null,
+      "explainDe": "Richtig ist bigger than: big verdoppelt das g und braucht kein more. Doppelte Steigerung (more bigger) ist immer falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.mc.002",
+      "structureId": "g2u04.s.comparatives",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The weather is more bad today than yesterday.",
+            "The weather is more worse today than yesterday.",
+            "The weather is badder today than yesterday.",
+            "The weather is the worse today than yesterday.",
+            "The weather is the most bad today than yesterday."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-mc-002",
+        "narrative": null,
+        "note": "Irregular worse; weather frame fully in-bank (g1)."
+      },
+      "prompt": {
+        "text": "It is a cold, wet morning.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The weather is worse today than yesterday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The weather is more bad today than yesterday.",
+        "The weather is more worse today than yesterday.",
+        "The weather is the worse today than yesterday."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "bad → worse ist unregelmäßig. Es gibt kein worser und kein more davor.",
+      "hintEn": null,
+      "explainDe": "Die Steigerung von bad ist worse – ohne extra Endung und ohne more. more worse gibt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.mc.003",
+      "structureId": "g2u04.s.comparatives",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "more small",
+            "smallest",
+            "more smaller",
+            "the smaller",
+            "small than"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Mosquito & bat are unit animals; bumblebee bat is the smallest mammal (SB ex. 8)."
+      },
+      "prompt": {
+        "text": "A mosquito is ___ (small) than a bat.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "smaller",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "more small",
+        "smallest",
+        "more smaller"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "small ist kurz: nur -er anhängen.",
+      "hintEn": null,
+      "explainDe": "small → smaller. Kurzes Adjektiv, nur -er, kein more.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.mt.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-mt-001",
+        "narrative": null,
+        "note": "Form-drill covering all three patterns (regular -er, -y→-ier, more, irregular)."
+      },
+      "prompt": {
+        "text": "big, bigger, biggest",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "good",
+          "right": "better"
+        },
+        {
+          "left": "big",
+          "right": "bigger"
+        },
+        {
+          "left": "happy",
+          "right": "happier"
+        },
+        {
+          "left": "dangerous",
+          "right": "more dangerous"
+        },
+        {
+          "left": "bad",
+          "right": "worse"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kurze Adjektive: -er. Lange: more. good und bad sind unregelmäßig.",
+      "hintEn": null,
+      "explainDe": "big → bigger, happy → happier, dangerous → more dangerous. good → better und bad → worse sind Ausnahmen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.qf.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-5",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Mirrors SB ex. 5 guessing game (\"Is it a guinea pig?\"); rhino & hippo in-bank."
+      },
+      "prompt": {
+        "text": "a rhino / heavy / a hippo",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is a rhino heavier than a hippo?",
+          "tier": "full"
+        },
+        {
+          "text": "Is a rhino heavier than a hippo",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage mit Is am Anfang: Is ... heavier than ...?",
+      "hintEn": null,
+      "explainDe": "Komparativ-Frage: Is a rhino heavier than a hippo? – is an den Anfang, heavy → heavier, dann than.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.sb.002",
+      "structureId": "g2u04.s.comparatives",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "as",
+            "the",
+            "is",
+            "than"
+          ],
+          "chipBudget": 10,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 4.txt#ex-6",
+        "seedV1": "m2-u4-comparatives-sb-001",
+        "narrative": null,
+        "note": "Sharks & dolphins are unit sea-animals; long-adjective ordering. 7 answer tokens + 3 distractor chips = 10."
+      },
+      "prompt": {
+        "text": "is / a / shark / than / dolphin / a / more dangerous",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A shark is more dangerous than a dolphin.",
+          "tier": "full"
+        },
+        {
+          "text": "A shark is more dangerous than a dolphin",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "as",
+        "the"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wer? + is + more dangerous + than + Wer? more und dangerous gehören zusammen.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: A shark is more dangerous than a dolphin. dangerous ist lang, also more dangerous.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.tf.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-tf-001",
+        "narrative": null,
+        "note": "SB box example \"An elephant is heavier than a mouse.\" light/heavy both in-bank."
+      },
+      "prompt": {
+        "text": "An elephant is heavy. A mouse is light. (heavy) An elephant is ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "heavier than a mouse",
+          "tier": "full"
+        },
+        {
+          "text": "an elephant is heavier than a mouse",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "heavy endet auf -y: heavy → heavier, dann than.",
+      "hintEn": null,
+      "explainDe": "heavy → heavier (y wird zu -ier) + than: heavier than a mouse.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.tf.002",
+      "structureId": "g2u04.s.comparatives",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-tf-002",
+        "narrative": null,
+        "note": "Long-adjective more + than; school subjects are g2-u01 vocab."
+      },
+      "prompt": {
+        "text": "Maths is difficult. English is not. (difficult) Maths is ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "more difficult than English",
+          "tier": "full"
+        },
+        {
+          "text": "maths is more difficult than English",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "difficult hat drei Silben → more difficult than.",
+      "hintEn": null,
+      "explainDe": "Lange Adjektive steigerst du mit more: more difficult than. Nicht difficulter.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.tr.001",
+      "structureId": "g2u04.s.comparatives",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-tr-001",
+        "narrative": null,
+        "note": "Standard comparative translation; 'cat' is out-of-bank so swapped to 'mouse'/'Maus' (g1-u09)."
+      },
+      "prompt": {
+        "text": "Mein Hund ist größer als deine Maus.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My dog is bigger than your mouse.",
+          "tier": "full"
+        },
+        {
+          "text": "My dog is bigger than your mouse",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "groß → big → bigger (g verdoppeln) + than.",
+      "hintEn": null,
+      "explainDe": "big → bigger (Endkonsonant verdoppeln) und als = than: bigger than your mouse.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.comparatives.tr.002",
+      "structureId": "g2u04.s.comparatives",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-comparatives-tr-002",
+        "narrative": null,
+        "note": "Adapts SB box \"The whale is bigger than a dolphin\" to heavy; whale & dolphin are unit animals."
+      },
+      "prompt": {
+        "text": "Ein Wal ist schwerer als ein Delfin.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A whale is heavier than a dolphin.",
+          "tier": "full"
+        },
+        {
+          "text": "A whale is heavier than a dolphin",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "schwer → heavy → heavier (y wird -ier) + than.",
+      "hintEn": null,
+      "explainDe": "heavy → heavier und als = than: A whale is heavier than a dolphin.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.ag.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single-word superlative spelling change (y→iest); answer is 'heaviest'. SB ex. 8 whale fact. 'the' is in the carrier so the anagram word is just 'heaviest'."
+      },
+      "prompt": {
+        "text": "The whale is the ___ mammal.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "heaviest",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "heavy endet auf -y – denk an die Schreibänderung beim Superlativ.",
+      "hintEn": null,
+      "explainDe": "heavy → heaviest: das -y wird zu -iest.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.cp.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The giraffe is tallest.",
+            "The giraffe is the most tall.",
+            "The giraffe is the most tallest.",
+            "The giraffe is the taller.",
+            "The giraffe is more tall."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": "m2-u4-superlatives-mc-001",
+        "narrative": null,
+        "note": "Animal Quiz \"Which is the tallest?\" (SB ex. 13)."
+      },
+      "prompt": {
+        "text": "The giraffe is taller than the ostrich and the elephant.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The giraffe is the tallest.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The giraffe is tallest.",
+        "The giraffe is the most tall.",
+        "The giraffe is the most tallest."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "the + tall + -est = the tallest. the nicht vergessen, kein most.",
+      "hintEn": null,
+      "explainDe": "the tallest: the + -est. Ohne the (tallest) oder mit most (the most tall) ist es falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.ec.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": "m2-u4-superlatives-ec-002",
+        "narrative": null,
+        "note": "SB common-error double superlative; whale is biggest mammal (SB ex. 8)."
+      },
+      "prompt": {
+        "text": "The whale is the most biggest mammal.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The whale is the biggest mammal.",
+          "tier": "full"
+        },
+        {
+          "text": "the biggest",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Doppelter Superlativ! Entweder most oder -est, nie beides.",
+      "hintEn": null,
+      "explainDe": "the most biggest ist doppelt. Richtig ist the biggest – nur -est, ohne most.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.ec.002",
+      "structureId": "g2u04.s.superlatives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": "m2-u4-superlatives-mc-004",
+        "narrative": null,
+        "note": "SB common-error missing 'the'; SB ex. 8 cheetah fact."
+      },
+      "prompt": {
+        "text": "The cheetah is fastest land mammal.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The cheetah is the fastest land mammal.",
+          "tier": "full"
+        },
+        {
+          "text": "the fastest",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor dem Superlativ fehlt the.",
+      "hintEn": null,
+      "explainDe": "Beim Superlativ muss the davor: the fastest land mammal.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.ec.003",
+      "structureId": "g2u04.s.superlatives",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-superlatives-ec-003",
+        "narrative": null,
+        "note": "Irregular good→the best; \"best book I have read\" pattern, mammals-themed."
+      },
+      "prompt": {
+        "text": "This is the most good book about mammals I have read.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is the best book about mammals I have read.",
+          "tier": "full"
+        },
+        {
+          "text": "the best",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good ist unregelmäßig: good → the best. Kein the most good.",
+      "hintEn": null,
+      "explainDe": "Der Superlativ von good ist the best. the most good gibt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.gf.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": "m2-u4-superlatives-gf-005",
+        "narrative": null,
+        "note": "SB ex. 8 fact \"The fastest land animal ... is the CHEETAH\" — 'animal' swapped to in-bank 'land mammal'."
+      },
+      "prompt": {
+        "text": "The cheetah is ___ (fast) land mammal.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "the fastest",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "fastest",
+        "the most fast",
+        "the faster"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Superlativ: the + Adjektiv + -est.",
+      "hintEn": null,
+      "explainDe": "fast → the fastest. Beim Superlativ steht immer the davor und -est am Ende.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.gf.002",
+      "structureId": "g2u04.s.superlatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": "m2-u4-superlatives-gf-006",
+        "narrative": null,
+        "note": "SB ex. 8: \"... It's also the heaviest.\" 'on land or in the sea' → 'of all' ('sea' is out-of-bank); whale is heaviest mammal."
+      },
+      "prompt": {
+        "text": "The whale is ___ (heavy) mammal of all.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "the heaviest",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "the most heavy",
+        "heaviest",
+        "the more heavy"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "heavy endet auf -y: -y wird zu -iest, und the davor.",
+      "hintEn": null,
+      "explainDe": "heavy → the heaviest. Das -y wird zu -iest, davor steht the.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.gf.003",
+      "structureId": "g2u04.s.superlatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB ex. 8: estuarine crocodiles are the longest crocodiles; 'reptile' is out-of-bank, so head noun is 'crocodile(s)'."
+      },
+      "prompt": {
+        "text": "A crocodile can be ___ (long) of all crocodiles.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "the longest",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "the most long",
+        "longest",
+        "the longer"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "long ist kurz: the longest.",
+      "hintEn": null,
+      "explainDe": "long → the longest. Einsilbiges Adjektiv, the + -est, kein most.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.gf.004",
+      "structureId": "g2u04.s.superlatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB ex. 8: \"The most dangerous animal ... is the MOSQUITO.\" Mosquito is an insect, so worded 'most dangerous for people of all' (not 'mammal'). 'malaria'/'illness' dropped (both out-of-bank)."
+      },
+      "prompt": {
+        "text": "The mosquito is ___ (dangerous) for people of all.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "the most dangerous",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "the dangerousest",
+        "most dangerous",
+        "the more dangerous"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "dangerous hat drei Silben: the most dangerous.",
+      "hintEn": null,
+      "explainDe": "Lange Adjektive: the most + Adjektiv. the most dangerous – nicht dangerousest.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.gf.005",
+      "structureId": "g2u04.s.superlatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Animal Quiz ex. 13 \"Which is the most intelligent?\"; 'of all' replaces out-of-bank 'in the sea/water'."
+      },
+      "prompt": {
+        "text": "I think the dolphin is ___ (intelligent) mammal of all.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "the most intelligent",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "the intelligentest",
+        "most intelligent",
+        "the more intelligent"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "intelligent ist lang: the most intelligent.",
+      "hintEn": null,
+      "explainDe": "the most intelligent: lange Adjektive nehmen the most, nicht -est.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.gf.006",
+      "structureId": "g2u04.s.superlatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-superlatives-gf-006",
+        "narrative": null,
+        "note": "Irregular bad→the worst; carrier in-bank and animal-themed (climbing passes)."
+      },
+      "prompt": {
+        "text": "A pig is bad at climbing, but a hippo is ___ (bad) at it.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "the worst",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "the baddest",
+        "the most bad",
+        "worst"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "bad ist unregelmäßig: bad → the worst.",
+      "hintEn": null,
+      "explainDe": "Der Superlativ von bad ist the worst. Nicht the baddest und nicht the most bad.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.gf.007",
+      "structureId": "g2u04.s.superlatives",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/wb/More 2 WB Unit 4.txt#ex-11",
+        "seedV1": null,
+        "narrative": null,
+        "note": "WB ex. 11 \"The anaconda is one of the longest snakes\" → 'one of the longest of all' ('snakes'/'reptile' both out-of-bank)."
+      },
+      "prompt": {
+        "text": "The anaconda is one of ___ (long) of all.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "the longest",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "the longer",
+        "longest",
+        "the most long"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "long → the longest.",
+      "hintEn": null,
+      "explainDe": "long → the longest: the + -est, kein most.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.gs.002",
+      "structureId": "g2u04.s.superlatives",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Concept sort: -est adjectives vs most adjectives, unit describing words."
+      },
+      "prompt": {
+        "text": "Which is the biggest?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "the biggest",
+          "members": [
+            "tall",
+            "long",
+            "heavy",
+            "fast"
+          ]
+        },
+        {
+          "label": "the most difficult",
+          "members": [
+            "dangerous",
+            "intelligent",
+            "venomous",
+            "powerful"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Kurze Adjektive → the …-est. Lange → the most …",
+      "hintEn": null,
+      "explainDe": "tall → the tallest, heavy → the heaviest. Lange Adjektive wie dangerous → the most dangerous.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.mc.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Sam is the most fastest runner in our class.",
+            "Sam is the faster runner in our class.",
+            "Sam is fastest runner in our class.",
+            "Sam is more fast runner in our class.",
+            "Sam is the most fast runner in our class."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": "m2-u4-superlatives-mc-004",
+        "narrative": null,
+        "note": "Class-context superlative; double superlative + missing-the distractors. 'Anna' is out-of-bank so swapped to 'Sam' (harvested proper noun)."
+      },
+      "prompt": {
+        "text": "Sam runs faster than anyone in the class.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sam is the fastest runner in our class.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Sam is the most fastest runner in our class.",
+        "Sam is the faster runner in our class.",
+        "Sam is fastest runner in our class."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Superlativ braucht the + -est: the fastest. Kein most davor.",
+      "hintEn": null,
+      "explainDe": "Richtig ist the fastest runner: the + -est, ohne most. Und das the darf nie fehlen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.mc.002",
+      "structureId": "g2u04.s.superlatives",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The whale is the powerfulest mammal of all.",
+            "The whale is most powerful mammal of all.",
+            "The whale is the more powerful mammal of all.",
+            "The whale is the most powerfulest mammal of all.",
+            "The whale is powerful mammal of all."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": "m2-u4-superlatives-mc-002",
+        "narrative": null,
+        "note": "Long-adjective the most + missing-the/over-regularised distractors; whale is a unit sea-mammal ('of all' avoids out-of-bank locatives)."
+      },
+      "prompt": {
+        "text": "No mammal is more powerful than the whale.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The whale is the most powerful mammal of all.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The whale is the powerfulest mammal of all.",
+        "The whale is most powerful mammal of all.",
+        "The whale is the more powerful mammal of all."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "powerful ist lang: the most powerful. the darf nicht fehlen.",
+      "hintEn": null,
+      "explainDe": "Lange Adjektive: the most powerful. Nicht powerfulest, und the muss dabei sein.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.mt.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-superlatives-mt-001",
+        "narrative": null,
+        "note": "Form-drill across all three superlative patterns + irregulars."
+      },
+      "prompt": {
+        "text": "big and the biggest",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "good",
+          "right": "the best"
+        },
+        {
+          "left": "bad",
+          "right": "the worst"
+        },
+        {
+          "left": "happy",
+          "right": "the happiest"
+        },
+        {
+          "left": "beautiful",
+          "right": "the most beautiful"
+        },
+        {
+          "left": "big",
+          "right": "the biggest"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kurz: the + -est. Lang: the most. good und bad sind unregelmäßig.",
+      "hintEn": null,
+      "explainDe": "big → the biggest, happy → the happiest, beautiful → the most beautiful. good → the best und bad → the worst sind Ausnahmen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.qf.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-13",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Reconstructs the Animal Quiz header \"Which is the tallest?\" (SB ex. 13)."
+      },
+      "prompt": {
+        "text": "which / tall / a giraffe / an ostrich / an elephant",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Which is the tallest?",
+          "tier": "full"
+        },
+        {
+          "text": "Which is the tallest",
+          "tier": "full"
+        },
+        {
+          "text": "Which is the tallest, a giraffe, an ostrich or an elephant?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Quizfrage: Which is the + Superlativ? tall → the tallest.",
+      "hintEn": null,
+      "explainDe": "Which is the tallest? – die typische Quizfrage aus dem Buch. the + -est.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.sb.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "most",
+            "more",
+            "as",
+            "than"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": "m2-u4-superlatives-sb-001",
+        "narrative": null,
+        "note": "SB ex. 8 cheetah fact, scrambled; 'most' chip traps double superlative. 6 answer tokens (land mammal = 2) + 1 distractor = 7 ≤ 12."
+      },
+      "prompt": {
+        "text": "the / is / cheetah / land mammal / the / fastest",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The cheetah is the fastest land mammal.",
+          "tier": "full"
+        },
+        {
+          "text": "The cheetah is the fastest land mammal",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "most"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "the + cheetah + is + the fastest + land mammal. most brauchst du nicht.",
+      "hintEn": null,
+      "explainDe": "The cheetah is the fastest land mammal. fast nimmt -est und braucht kein most.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.tf.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB ex. 8: \"The BUMBLEBEE BAT ... is the smallest mammal in the world.\" (bat = unit animal; 'bumblebee' modifier dropped as out-of-bank)."
+      },
+      "prompt": {
+        "text": "The bat is small. No mammal is smaller. (small) The bat is ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "the smallest mammal",
+          "tier": "full"
+        },
+        {
+          "text": "the bat is the smallest mammal",
+          "tier": "partial"
+        },
+        {
+          "text": "the smallest",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "small → the smallest. the + -est.",
+      "hintEn": null,
+      "explainDe": "small → the smallest mammal: the + -est. Kein most.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.tr.001",
+      "structureId": "g2u04.s.superlatives",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#ex-8",
+        "seedV1": "m2-u4-superlatives-tr-001",
+        "narrative": null,
+        "note": "SB ex. 8 fact translated; Säugetier = mammal (in-bank head noun)."
+      },
+      "prompt": {
+        "text": "Der Wal ist das größte Säugetier.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The whale is the biggest mammal.",
+          "tier": "full"
+        },
+        {
+          "text": "The whale is the biggest mammal",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "größte → big → the biggest (g verdoppeln). Säugetier = mammal.",
+      "hintEn": null,
+      "explainDe": "big → the biggest (Endkonsonant verdoppeln), mit the davor: the biggest mammal.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u04.gi.superlatives.tr.002",
+      "structureId": "g2u04.s.superlatives",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 4.txt#grammar-1",
+        "seedV1": "m2-u4-superlatives-tr-002",
+        "narrative": null,
+        "note": "Long-adjective the most; subjects are g2-u01 vocab."
+      },
+      "prompt": {
+        "text": "Mathe ist das schwierigste Fach.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Maths is the most difficult subject.",
+          "tier": "full"
+        },
+        {
+          "text": "Maths is the most difficult subject",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "schwierig hat ein langes englisches Adjektiv: the most difficult.",
+      "hintEn": null,
+      "explainDe": "difficult ist lang: the most difficult subject. Nicht difficultest.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

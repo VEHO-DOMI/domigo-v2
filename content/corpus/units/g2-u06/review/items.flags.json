@@ -1,0 +1,448 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u06",
+  "round": 1,
+  "itemsHash": "294d10cc9c5d",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g2u06.w.actually",
+      "kind": "new-gloss",
+      "itemId": "g2u06.w.actually",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u06.w.gate",
+      "kind": "new-gloss",
+      "itemId": "g2u06.w.gate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u06.w.lake",
+      "kind": "new-gloss",
+      "itemId": "g2u06.w.lake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u06.w.left-hand",
+      "kind": "new-gloss",
+      "itemId": "g2u06.w.left-hand",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u06.w.moon",
+      "kind": "new-gloss",
+      "itemId": "g2u06.w.moon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u06.w.right-hand",
+      "kind": "new-gloss",
+      "itemId": "g2u06.w.right-hand",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.absolutely",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.absolutely",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.actually",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.actually",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.adventure-camp",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.adventure-camp",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.alive",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.alive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.although",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.although",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.anorak",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.anorak",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.beach",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.beach",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.bottom",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.bottom",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.camp",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.camp",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.campfire",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.campfire",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.canoe",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.canoe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.canoeing",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.canoeing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.cry",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.cry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.drive",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.drive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.field",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.field",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.forest",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.forest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.gate",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.gate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.guide",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.guide",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.hard-hat",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.hard-hat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.hill",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.hill",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.i-m-off-now",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.i-m-off-now",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.lake",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.lake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.left-hand",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.left-hand",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.life-jacket",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.life-jacket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.middle",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.middle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.moon",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.moon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.motorway",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.motorway",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.mountains",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.mountains",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.once-upon-a-time",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.once-upon-a-time",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.picnic",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.picnic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.poor-you",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.poor-you",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.right-hand",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.right-hand",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.river",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.river",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.road",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.road",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.rock-climbing",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.rock-climbing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.sea",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.sea",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.sheep",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.sheep",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.shepherd",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.shepherd",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.stars",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.stars",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.sun",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.sun",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.to-be-afraid",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.to-be-afraid",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.to-be-good-at-sth",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.to-be-good-at-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.to-build-a-tree-house",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.to-build-a-tree-house",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.to-care",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.to-care",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.to-trust",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.to-trust",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.to-wash-up",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.to-wash-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.town",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.town",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.valley",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.valley",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.village",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.village",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.waterfall",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.waterfall",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.w.while",
+      "kind": "translation-audit",
+      "itemId": "g2u06.w.while",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.gi.have-to.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u06.gi.have-to.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u06.gi.have-to.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u06.gi.have-to.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u06.w.canoeing#df18d4",
+      "kind": "validator-warn",
+      "itemId": "g2u06.w.canoeing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u06.w.once-upon-a-time#df18d4",
+      "kind": "validator-warn",
+      "itemId": "g2u06.w.once-upon-a-time",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 51 vocab + 28 grammar (one structure: have to / don't have to, 11 formats). No grants needed for the structure (have/has/to/don't/doesn't are function words); granted left/right for the unit's position vocab (left-hand/middle/right-hand). This unit drove two systemic refinements (committed): V-8 HEADWORD_GLUE now includes pronouns (so \"poor you\"'s def isn't flagged for \"you\"), and the matcher's unknownTokens now does greedy phrase-match BEFORE the granted-single shortcut (granting \"left\" no longer orphaned \"hand\" in \"left hand\"). Smoke-check fixed an invalid 2-letter anagram (\"to\"), 10 vocab pools that wrongly included the headword as a distractor, two anagram cues with a stray ___, and circular/leaking defs. Verify: round 1 set strict on 7 meaning-flip/agreement minimal pairs + reworded two \"wall\"-masked defs (gate, rock-climbing); round 2 caught 2 more strict siblings (ec.004/005) — all fixed, then clean. The don't-have-to ≠ mustn't distinction is taught in German explainDe (mustn't is untaught). 6 glosses + 53 translations adjudicated; 2 validator-warns are the benign sentence-initial-blank/lowercase-answer pattern (grader normalizes case). rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 79,
+    "fullRows": 79,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

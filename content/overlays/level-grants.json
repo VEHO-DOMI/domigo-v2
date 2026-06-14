@@ -45,6 +45,1185 @@
       "reason": "context-picker distractor sentences deliberately contain the learner error under discrimination (3rd-person -s on a modal)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g2-u02",
+      "itemId": null,
+      "field": null,
+      "token": "buy",
+      "reason": "unit-2 SB grammar box '▶️ More irregular verbs' teaches buy/bought (We bought a big box of chocolates); the verb and its past form are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u02",
+      "itemId": null,
+      "field": null,
+      "token": "bought",
+      "reason": "unit-2 SB grammar box '▶️ More irregular verbs' teaches buy/bought (We bought a big box of chocolates); the past form is not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u02",
+      "itemId": null,
+      "field": null,
+      "token": "know",
+      "reason": "unit-2 SB grammar box '▶️ More irregular verbs' teaches know/knew (He knew it was wrong); the verb and its past form are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u02",
+      "itemId": null,
+      "field": null,
+      "token": "knew",
+      "reason": "unit-2 SB grammar box '▶️ More irregular verbs' teaches know/knew (He knew it was wrong); the past form is not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u02",
+      "itemId": null,
+      "field": null,
+      "token": "made",
+      "reason": "unit-2 SB grammar box '▶️ More irregular verbs' teaches make/made (Jacob made a terrible mistake); the past form is not a word-bank entry (base 'make' is in-level)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u02",
+      "itemId": null,
+      "field": null,
+      "token": "wrote",
+      "reason": "unit-2 SB grammar box '▶️ More irregular verbs' teaches write/wrote (I wrote an email to the kids); the past form is not a word-bank entry (base 'write' is in-level)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": null,
+      "field": null,
+      "token": "as",
+      "reason": "unit-4 SB grammar box teaches the 'as ... as' / 'not as ... as' equality structure; 'as' is a structure token, not a standalone word-bank entry (only the phrase 'as soon as' is banked)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": null,
+      "field": null,
+      "token": "better",
+      "reason": "unit-4 SB grammar box 'Comparatives' Ausnahmen: good → better — irregular comparative, not a word-bank entry (base 'good' is in-level)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": null,
+      "field": null,
+      "token": "worse",
+      "reason": "unit-4 SB grammar box 'Comparatives' Ausnahmen: bad → worse — irregular comparative, not a word-bank entry (base 'bad' is in-level)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": null,
+      "field": null,
+      "token": "worst",
+      "reason": "unit-4 SB grammar box 'Superlatives' Ausnahmen: bad → the worst — irregular superlative, not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u04",
+      "itemId": "g2u04.w.mosquito",
+      "field": null,
+      "token": "mosquitoes",
+      "reason": "standard irregular plural (-oes) of the item's own headword 'mosquito'; the regular inflection family only reaches 'mosquitos', so the correct spelling needs an item-scoped grant to stay a full-tier answer",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "turn",
+      "reason": "unit-5 SB grammar box 'Directions (prepositions of place)' teaches Turn left/right; the bank holds the phrase 'to turn left' but not the token 'turn' (needed for 'turn right' too)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "left",
+      "reason": "unit-5 SB grammar box teaches Turn left / take the first left; 'left' (direction) lives only inside bank phrases (to-turn-left), not as a standalone entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "right",
+      "reason": "unit-5 SB grammar box teaches Turn right / take the second right; 'right' (direction) lives only inside bank phrases (to-take-the-second-right), not as a standalone entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "straight",
+      "reason": "unit-5 SB grammar box teaches Go straight ahead/on; 'straight' lives only inside bank phrases (to-go-straight-ahead/on), not as a standalone entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "ahead",
+      "reason": "unit-5 SB grammar box teaches Go straight ahead; 'ahead' lives only inside the bank phrase 'to go straight ahead', not as a standalone entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "corner",
+      "reason": "unit-5 SB grammar box teaches 'on the corner of the next street' / 'round the corner'; the bank holds 'round-the-corner' but not the token 'corner'",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u05",
+      "itemId": null,
+      "field": null,
+      "token": "beside",
+      "reason": "unit-5 SB grammar box teaches 'beside the bank' as a preposition of place; not a word-bank entry (the bank has next-to/opposite)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u06",
+      "itemId": null,
+      "field": null,
+      "token": "left",
+      "reason": "unit-6 teaches position vocabulary left-hand / middle / right-hand; 'left' (the side) lives only inside the bank phrase 'left-hand', not as a standalone entry — needed to define right-hand by contrast",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u06",
+      "itemId": null,
+      "field": null,
+      "token": "right",
+      "reason": "unit-6 teaches position vocabulary left-hand / middle / right-hand; 'right' (the side) lives only inside the bank phrase 'right-hand', not as a standalone entry — needed to define left-hand by contrast",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u07",
+      "itemId": null,
+      "field": null,
+      "token": "might",
+      "reason": "unit-7 SB grammar box 'might / might not (Möglichkeit)' teaches the modal 'might'; not a word-bank entry (structure token, like should in u03)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u07",
+      "itemId": null,
+      "field": null,
+      "token": "mightn't",
+      "reason": "unit-7 SB grammar box 'might / might not' teaches the negative contraction 'mightn't'; not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "took",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "went",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ran",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "saw",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "woke",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "broke",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "knew",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "sang",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "bought",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "lost",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "take",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "see",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "wake",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "sing",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "win",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "heard",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "told",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "said",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "made",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "wrote",
+      "reason": "unit-8 SB grammar box \"Past simple (revision)\" — irregular past forms revised this unit (be/take/come/go/run/see/wake/break/know/sing/buy/win/lose) plus common narration verbs needed by the past-time-markers structure; not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u08",
+      "itemId": null,
+      "field": null,
+      "token": "know",
+      "reason": "unit-8 SB grammar box Past simple (revision): know/knew — base needed for didn't-negation; not a word-bank single",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u10",
+      "itemId": null,
+      "field": null,
+      "token": "mustn't",
+      "reason": "unit-10 SB grammar box must / mustn't (Verpflichtung und Verbot) teaches the negative modal; must is allowlist but mustn't is not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u11",
+      "itemId": null,
+      "field": null,
+      "token": "broke",
+      "reason": "unit-11 SB who-question box example \"Who broke your bed?\"; irregular past not a word-bank entry (regular -ed pasts and present who-questions are native; this is the SB example)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "broken",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "eaten",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "seen",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "made",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "written",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "gone",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "taken",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "lost",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "found",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "given",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "done",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "said",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "told",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "heard",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "drunk",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "sung",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "bought",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "brought",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "caught",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "fallen",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "kept",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "known",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "left",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "met",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "paid",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "sent",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "spent",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "forgotten",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "woken",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "worn",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "felt",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "begun",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "become",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "run",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "head",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "back",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u12",
+      "itemId": null,
+      "field": null,
+      "token": "arm",
+      "reason": "unit-12 Present perfect (+ just): present perfect forms the participle of any taught verb; common irregular past participles + the health-theme body parts (head/back/arm, taught inside headache/backache) are not word-bank singles",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "will",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "won't",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "'ll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "ll",
+      "reason": "unit-13 Will-future contraction 'll: the cumulative-bank tokenizer strips the leading apostrophe, so the bare contraction surfaces as token 'll' (without apostrophe) — e.g. the transformation answer \"'ll call\". The pronoun forms (i'll, we'll, …) already match as whole tokens; this grants the standalone form.",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "i'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "you'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "he'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "she'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "it'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "we'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "they'll",
+      "reason": "unit-13 SB grammar box Will-future: will / won't / 'll express future predictions and decisions; the modal and its contractions are not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "slowly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "quickly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carefully",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "angrily",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "beautifully",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "easily",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "happily",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "loudly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "badly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "quietly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "nicely",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "sadly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "brightly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "safely",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "proudly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "nervously",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "hungrily",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "perfectly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "clearly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "warmly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "strongly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u13",
+      "itemId": null,
+      "field": null,
+      "token": "suddenly",
+      "reason": "unit-13 SB grammar box Adverbs of manner: adjective + -ly; the -ly adverb forms of taught adjectives are not word-bank singles (the inflection family does not reach -ly)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "already",
+      "reason": "unit-14 SB grammar box Present perfect: signal word already (already/yet/ever) positions the present perfect; not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "yet",
+      "reason": "unit-14 SB grammar box Present perfect: signal word yet (already/yet/ever) positions the present perfect; not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "ever",
+      "reason": "unit-14 SB grammar box Present perfect: signal word ever (already/yet/ever) positions the present perfect; not a word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "unit-14 SB grammar box Present perfect: past participle been (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "unit-14 SB grammar box Present perfect: past participle won (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "tried",
+      "reason": "unit-14 SB grammar box Present perfect: past participle tried (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "given",
+      "reason": "unit-14 SB grammar box Present perfect: past participle given (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "seen",
+      "reason": "unit-14 SB grammar box Present perfect: past participle seen (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "taken",
+      "reason": "unit-14 SB grammar box Present perfect: past participle taken (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "finished",
+      "reason": "unit-14 SB grammar box Present perfect: past participle finished (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "started",
+      "reason": "unit-14 SB grammar box Present perfect: past participle started (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "met",
+      "reason": "unit-14 SB grammar box Present perfect: past participle met (have/has + 3rd form); participles are structure forms, not word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g2-u14",
+      "itemId": null,
+      "field": null,
+      "token": "part",
+      "reason": "unit-14 Present perfect of bank phrase \"take part\" → \"taken part\"; the participle form leaves \"part\" as a bare token",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

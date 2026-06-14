@@ -1,0 +1,41 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u06",
+  "items": {
+    "ece803cde6c1": "g2u06.gi.have-to.gf.001",
+    "262a06f5f284": "g2u06.gi.have-to.gf.002",
+    "2a7f76b4ffac": "g2u06.gi.have-to.gf.003",
+    "9f3c24d76206": "g2u06.gi.have-to.gf.004",
+    "0b31a57dd09e": "g2u06.gi.have-to.gf.005",
+    "5dcdd9b070d0": "g2u06.gi.have-to.gf.006",
+    "05324f82f017": "g2u06.gi.have-to.mc.001",
+    "9a00af84e72d": "g2u06.gi.have-to.mc.002",
+    "4438c87fbc4c": "g2u06.gi.have-to.cp.001",
+    "45c66a8fca1d": "g2u06.gi.have-to.cp.002",
+    "ab90a657c01d": "g2u06.gi.have-to.ec.001",
+    "5a681e88b4af": "g2u06.gi.have-to.ec.002",
+    "236461157a3e": "g2u06.gi.have-to.ec.003",
+    "af9d84988fca": "g2u06.gi.have-to.ec.004",
+    "d92f0c278756": "g2u06.gi.have-to.ec.005",
+    "42a81d5c9878": "g2u06.gi.have-to.tf.001",
+    "5d28a65aed84": "g2u06.gi.have-to.tf.002",
+    "3650f682ff31": "g2u06.gi.have-to.tf.003",
+    "8d6a09c9265c": "g2u06.gi.have-to.qf.001",
+    "dd02a0b3cbad": "g2u06.gi.have-to.qf.002",
+    "5552cfdd95ef": "g2u06.gi.have-to.tr.001",
+    "7a420a522a96": "g2u06.gi.have-to.tr.002",
+    "9f1bfd9501be": "g2u06.gi.have-to.sb.001",
+    "2892dd6d3146": "g2u06.gi.have-to.sb.002",
+    "1d31c29cb90e": "g2u06.gi.have-to.sb.003",
+    "181d4fac8f60": "g2u06.gi.have-to.mt.001",
+    "58328480620a": "g2u06.gi.have-to.gs.001",
+    "2fbb41b57c6a": "g2u06.gi.have-to.ag.001"
+  },
+  "tombstones": [
+    {
+      "id": "g2u06.gi.have-to.ag.002",
+      "key": "de5539d22ec7",
+      "removedWith": "bac88c75fd8e"
+    }
+  ]
+}

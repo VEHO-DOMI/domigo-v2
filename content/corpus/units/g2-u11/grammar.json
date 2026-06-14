@@ -1,0 +1,3098 @@
+{
+  "schema": "grammar@1",
+  "grade": 2,
+  "unit": 11,
+  "slug": "g2-u11",
+  "items": [
+    {
+      "id": "g2u11.gi.possessive-pronouns.ag.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Es gehört mir.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "mine",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vier Buchstaben. Das Pronomen, das zu \"ich\" gehört und allein steht.",
+      "hintEn": null,
+      "explainDe": "\"mine\" bedeutet \"meins\" und steht immer allein, ohne Nomen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.ag.002",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Es gehört uns.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "ours",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vier Buchstaben. Das Pronomen für \"wir\", das allein steht und auf -s endet.",
+      "hintEn": null,
+      "explainDe": "\"ours\" bedeutet \"unseres\" und steht allein, ohne Nomen danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.cp.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "This is my bed, and that's her.",
+            "This is my bed, and that's her bed hers.",
+            "This is mine bed, and that's hers.",
+            "This is my bed, and that's his her."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Nick shares his room. He points to one bed for him and one bed for his sister.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is my bed, and that's hers.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "This is my bed, and that's her.",
+        "This is my bed, and that's her bed hers.",
+        "This is mine bed, and that's hers."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Am Satzende steht das Pronomen allein für ein Mädchen, ohne Nomen danach.",
+      "hintEn": null,
+      "explainDe": "\"that's hers\" steht allein für \"ihr Bett\". \"her\" wäre ein Begleiter und bräuchte ein Nomen danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.cp.002",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "They're our.",
+            "They're ours books.",
+            "They're our's.",
+            "They're us."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "A camp guide holds up some books for Fred and Hannah. The books are for them.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They're ours.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They're our.",
+        "They're ours books.",
+        "They're our's."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Bücher gehören euch beiden. Das Pronomen für \"we\" steht allein, ohne Nomen.",
+      "hintEn": null,
+      "explainDe": "\"They're ours.\" — das Pronomen steht allein ohne Nomen und ohne Apostroph.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.ec.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This is mine pen.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is my pen.",
+          "tier": "full"
+        },
+        {
+          "text": "my",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor einem Nomen brauchst du den Begleiter, nicht das Pronomen.",
+      "hintEn": null,
+      "explainDe": "Vor \"pen\" muss \"my\" stehen. \"mine\" steht immer allein, ohne Nomen danach.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.ec.002",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This skateboard is her's.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This skateboard is hers.",
+          "tier": "full"
+        },
+        {
+          "text": "hers",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Possessivpronomen für \"she\" wird ohne Apostroph geschrieben.",
+      "hintEn": null,
+      "explainDe": "Richtig ist \"hers\" — ein Wort, kein Apostroph. \"her's\" gibt es nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.ec.003",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "That tablet is my, not your.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That tablet is mine, not yours.",
+          "tier": "full"
+        },
+        {
+          "text": "mine, not yours",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Wörter stehen allein am Satzende — also die Pronomen-Formen mit -s.",
+      "hintEn": null,
+      "explainDe": "Ohne Nomen danach brauchst du \"mine\" und \"yours\", nicht die Begleiter \"my\"/\"your\".",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.gf.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Is this your pen? — Yes, it's ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "mine",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Possessivpronomen steht allein, ohne Nomen danach. Welche Form passt zu \"ich\"?",
+      "hintEn": null,
+      "explainDe": "Statt \"my pen\" sagst du nur \"mine\" — das Pronomen ersetzt Begleiter und Nomen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.gf.002",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "That's not my rug. It's ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "yours",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es gehört dir. Das Pronomen für \"you\" endet auf -s und steht allein.",
+      "hintEn": null,
+      "explainDe": "\"yours\" steht ohne Nomen. \"your\" wäre ein Begleiter und bräuchte ein Nomen danach.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.gf.003",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Whose is it? Is it Mike's? — No, it isn't ___. Ask Lucy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "his",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es gehört einem Jungen (Mike). Welches Pronomen steht hier allein für \"er\"?",
+      "hintEn": null,
+      "explainDe": "Für einen Jungen heißt das Possessivpronomen \"his\" — hier ohne Nomen danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.gf.004",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "These books aren't mine. Whose is it? Is it Sue's? — Yes, it's ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hers",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es gehört einem Mädchen (Sue). Die Form für \"she\" endet auf -s und steht allein.",
+      "hintEn": null,
+      "explainDe": "Für ein Mädchen heißt das Possessivpronomen \"hers\" — niemals \"her's\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.gf.005",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mike and Sam have got books. We can't find ours, so can we borrow ___?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "theirs",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es gehört mehreren anderen Leuten. Die Form für \"they\" endet auf -s und steht allein.",
+      "hintEn": null,
+      "explainDe": "\"theirs\" steht ohne Nomen für etwas, das mehreren gehört. \"their\" bräuchte ein Nomen danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.gf.006",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I like your painting, but I think ___ is nicer. We painted it.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ours",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es gehört dir und mir zusammen. Die Form für \"we\" endet auf -s und steht allein.",
+      "hintEn": null,
+      "explainDe": "\"ours\" steht allein für etwas, das uns gehört. \"our\" bräuchte ein Nomen danach.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.gs.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "my / mine / your / yours / our / ours / their / theirs",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "my bed, your bed …",
+          "members": [
+            "my",
+            "your",
+            "our",
+            "their"
+          ]
+        },
+        {
+          "label": "It's mine, It's yours …",
+          "members": [
+            "mine",
+            "yours",
+            "ours",
+            "theirs"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Begleiter brauchen ein Nomen danach. Pronomen stehen allein.",
+      "hintEn": null,
+      "explainDe": "my/your/our/their sind Begleiter (brauchen ein Nomen). mine/yours/ours/theirs stehen allein.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.mc.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "my",
+            "me",
+            "I",
+            "your",
+            "his",
+            "her"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This sofa is for me. — This sofa is ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "mine",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "my",
+        "me",
+        "I"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ohne Nomen danach brauchst du das Possessivpronomen, nicht den Begleiter \"my\".",
+      "hintEn": null,
+      "explainDe": "Nach \"is\" steht das Pronomen allein: \"mine\". \"my\" bräuchte ein Nomen danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.mc.002",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "This lamp is my.",
+            "This is mine lamp.",
+            "This lamp is mine's.",
+            "This lamp is me."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This lamp is for me.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This lamp is mine.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "This lamp is my.",
+        "This is mine lamp.",
+        "This lamp is mine's."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Possessivpronomen steht allein nach \"is\" — und niemals ein Nomen direkt dahinter.",
+      "hintEn": null,
+      "explainDe": "\"This lamp is mine.\" ist richtig: das Pronomen steht allein, ohne Nomen und ohne extra -'s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.mc.003",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Is that pencil case your or her?",
+            "Is that pencil case yours or her's?",
+            "Is that pencil case your's or hers?",
+            "Is that pencil case my or her?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You ask if a pencil case is for you or for her.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is that pencil case yours or hers?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Is that pencil case your or her?",
+        "Is that pencil case yours or her's?",
+        "Is that pencil case your's or hers?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Pronomen stehen allein und enden auf -s — aber ohne Apostroph.",
+      "hintEn": null,
+      "explainDe": "\"yours\" und \"hers\" schreibt man ohne Apostroph. \"your's\"/\"her's\" gibt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.mp.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "my and mine, your and yours …",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "my",
+          "right": "mine"
+        },
+        {
+          "left": "your",
+          "right": "yours"
+        },
+        {
+          "left": "his",
+          "right": "his"
+        },
+        {
+          "left": "her",
+          "right": "hers"
+        },
+        {
+          "left": "our",
+          "right": "ours"
+        },
+        {
+          "left": "their",
+          "right": "theirs"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Begleiter links, Pronomen rechts. Die meisten Pronomen enden auf -s.",
+      "hintEn": null,
+      "explainDe": "Zu jedem Begleiter gehört ein Pronomen: my–mine, your–yours, her–hers, our–ours, their–theirs; nur \"his\" bleibt gleich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.qf.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "is / this / yours / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is this yours?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei einer Frage steht das Verb am Anfang. Das Pronomen steht allein.",
+      "hintEn": null,
+      "explainDe": "\"Is this yours?\" fragt, ob es dir gehört — das Pronomen steht allein, ohne Nomen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.sb.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hers",
+            "ours",
+            "your",
+            "my"
+          ],
+          "chipBudget": 9,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "yours / is / or / this / mine / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is this yours or mine?",
+          "tier": "full"
+        },
+        {
+          "text": "Is this mine or yours?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei einer Frage steht das Verb am Anfang. Beide Pronomen stehen allein.",
+      "hintEn": null,
+      "explainDe": "\"Is this yours or mine?\" — die Pronomen stehen allein, ohne Nomen danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.tf.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "It's my rug. → This rug is ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "This rug is mine.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mach aus \"my rug\" das Pronomen allein: Welche Form passt zu \"ich\"?",
+      "hintEn": null,
+      "explainDe": "Aus \"my rug\" wird \"mine\" am Satzende — das Pronomen ersetzt Begleiter und Nomen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.tf.002",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Those are their trainers. → Are those ___?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Are those theirs?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mach aus \"their trainers\" das Pronomen allein für \"they\".",
+      "hintEn": null,
+      "explainDe": "Aus \"their trainers\" wird \"theirs\" — das Pronomen steht allein, ohne Nomen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.tr.001",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dieses Bett gehört mir.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This bed is mine.",
+          "tier": "full"
+        },
+        {
+          "text": "This is my bed.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"gehört mir\" wird im Englischen oft mit \"is mine\" ausgedrückt — Pronomen allein.",
+      "hintEn": null,
+      "explainDe": "\"This bed is mine.\" nutzt das Possessivpronomen allein. Auch \"This is my bed.\" ist möglich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-pronouns.tr.002",
+      "structureId": "g2u11.s.possessive-pronouns",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-pronouns-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ist dieser Rucksack deiner oder ihrer?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is this backpack yours or hers?",
+          "tier": "full"
+        },
+        {
+          "text": "Is that backpack yours or hers?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Pronomen stehen allein und enden auf -s, aber ohne Apostroph.",
+      "hintEn": null,
+      "explainDe": "\"yours\" und \"hers\" ersetzen Begleiter und Nomen. Niemals \"your's\" oder \"her's\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.ag.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Es ist Mikes. (Antwort auf \"Whose is it?\")",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mike's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "An den Namen \"Mike\" hängst du ein 's mit Apostroph an.",
+      "hintEn": null,
+      "explainDe": "\"Mike's\" — das 's am Namen zeigt, dass es Mike gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.cp.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "It's my sisters.",
+            "It's my sister.",
+            "It's my sisters'.",
+            "It's my sister's'."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mum finds a school bag on the sofa. It is for your sister.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It's my sister's.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It's my sisters.",
+        "It's my sister.",
+        "It's my sisters'."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "An das Nomen \"sister\" hängst du ein 's mit Apostroph an.",
+      "hintEn": null,
+      "explainDe": "\"It's my sister's.\" — das 's mit Apostroph zeigt, dass die Tasche deiner Schwester gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.ec.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This is my sisters bed.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is my sister's bed.",
+          "tier": "full"
+        },
+        {
+          "text": "sister's",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist nur eine Schwester — der Apostroph fehlt vor dem -s.",
+      "hintEn": null,
+      "explainDe": "Eine Schwester: \"my sister's bed\" mit Apostroph vor dem -s.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.possessive-s.ec.002",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The girls share a room. The girls room is very big.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The girls' room is very big.",
+          "tier": "full"
+        },
+        {
+          "text": "girls'",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mehrere Mädchen — der Plural \"girls\" endet auf -s, der Apostroph steht danach.",
+      "hintEn": null,
+      "explainDe": "Mehrere Mädchen: \"the girls' room\" — nur der Apostroph nach dem Plural-s.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.possessive-s.ec.003",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The childrens room is here.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The children's room is here.",
+          "tier": "full"
+        },
+        {
+          "text": "children's",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"children\" ist unregelmäßiger Plural — 's ans Ende, mit Apostroph.",
+      "hintEn": null,
+      "explainDe": "Bei \"children\" hängst du 's an: \"the children's room\".",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.possessive-s.ff.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "free-form",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You find a hat. It is for Sam. Whose is it?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It's Sam's.",
+          "tier": "full"
+        },
+        {
+          "text": "It's Sam's hat.",
+          "tier": "full"
+        },
+        {
+          "text": "This is Sam's hat.",
+          "tier": "partial"
+        },
+        {
+          "text": "That's Sam's.",
+          "tier": "partial"
+        },
+        {
+          "text": "Sam's.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "An den Namen \"Sam\" hängst du ein 's an, um zu zeigen, wem der Hut gehört.",
+      "hintEn": null,
+      "explainDe": "\"It's Sam's.\" — das 's am Namen zeigt, dass der Hut Sam gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.gf.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Whose school bag is this? — It's ___. (Joanna)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Joanna's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "An den Namen hängst du ein 's, um zu zeigen, wem es gehört.",
+      "hintEn": null,
+      "explainDe": "Das 's am Namen zeigt, wem etwas gehört: \"Joanna's\" = Joannas.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.gf.002",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This is ___ bed. (my sister)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "my sister's",
+          "tier": "full"
+        },
+        {
+          "text": "sister's",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "An das Nomen \"sister\" hängst du ein 's an.",
+      "hintEn": null,
+      "explainDe": "\"my sister's bed\" — das 's zeigt, dass das Bett deiner Schwester gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.gf.003",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Those are ___ trainers. (Mike)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Mike's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "An den Namen \"Mike\" hängst du ein 's, um zu zeigen, wem die Schuhe gehören.",
+      "hintEn": null,
+      "explainDe": "\"Mike's trainers\" — das 's am Namen zeigt, wem die Turnschuhe gehören.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.gf.004",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "This is my ___ room. (parents)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "parents'",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Wort steht im Plural und endet auf -s — dann kommt nur der Apostroph ans Ende.",
+      "hintEn": null,
+      "explainDe": "Bei Plural auf -s setzt du nur den Apostroph: \"my parents' room\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.gf.005",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "It's our ___ dog. (neighbours)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "neighbours'",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Plural auf -s: Der Apostroph steht ganz am Ende, ohne weiteres -s.",
+      "hintEn": null,
+      "explainDe": "\"our neighbours' dog\" — bei Plural auf -s nur der Apostroph am Ende.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.gf.006",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "That's the ___ school. (children)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "children's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"children\" ist eine unregelmäßige Pluralform — hier kommt 's ans Ende.",
+      "hintEn": null,
+      "explainDe": "Bei unregelmäßigem Plural wie \"children\" hängst du 's an: \"the children's school\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.gs.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "my sister / Mike / my parents / the boys / the children / the men / the girls / our neighbours",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "like sister's, Mike's",
+          "members": [
+            "my sister",
+            "Mike",
+            "the children",
+            "the men"
+          ]
+        },
+        {
+          "label": "like parents', boys'",
+          "members": [
+            "my parents",
+            "the boys",
+            "the girls",
+            "our neighbours"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Einzahl und unregelmäßiger Plural bekommen 's. Plural auf -s bekommt nur den Apostroph.",
+      "hintEn": null,
+      "explainDe": "sister/Mike + 's; children/men (unregelmäßig) + 's; parents/boys/girls/neighbours enden auf -s, also nur Apostroph.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.mc.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "My sisters lamp is new.",
+            "My sister lamp is new.",
+            "My sisters' lamp is new.",
+            "My sister's' lamp is new."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "My sister has got a new lamp.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My sister's lamp is new.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "My sisters lamp is new.",
+        "My sister lamp is new.",
+        "My sisters' lamp is new."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist nur eine Schwester — also 's mit Apostroph vor dem -s.",
+      "hintEn": null,
+      "explainDe": "\"my sister's lamp\" ist richtig: das 's mit Apostroph zeigt, wem die Lampe gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.mc.003",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The womens room is here.",
+            "The womens' room is here.",
+            "The woman's room is here.",
+            "The womens room' is here."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The women have got a room at school.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The women's room is here.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The womens room is here.",
+        "The womens' room is here.",
+        "The woman's room is here."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"women\" ist eine unregelmäßige Pluralform — also 's ans Ende.",
+      "hintEn": null,
+      "explainDe": "Bei unregelmäßigem Plural \"women\" hängst du 's an: \"the women's room\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.mc.005",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The boy's room is very big.",
+            "The boys room is very big.",
+            "The boys room's is very big.",
+            "The boys' room are very big."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Three boys share one room.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The boys' room is very big.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The boy's room is very big.",
+        "The boys room's is very big.",
+        "The boys' room are very big."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mehrere Jungen — der Plural \"boys\" endet auf -s, also nur der Apostroph.",
+      "hintEn": null,
+      "explainDe": "Mehrere Jungen: \"the boys' room\". \"boy's\" wäre nur ein Junge.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.mt.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "the owner and the desk",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "the teacher (one)",
+          "right": "the teacher's desk"
+        },
+        {
+          "left": "the teachers (two)",
+          "right": "the teachers' desk"
+        },
+        {
+          "left": "the children",
+          "right": "the children's desk"
+        },
+        {
+          "left": "my friend",
+          "right": "my friend's desk"
+        },
+        {
+          "left": "the men",
+          "right": "the men's desk"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Einzahl: 's. Plural auf -s: nur Apostroph. Unregelmäßiger Plural: 's.",
+      "hintEn": null,
+      "explainDe": "teacher's (eine), teachers' (mehrere), children's und men's (unregelmäßiger Plural).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.qf.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "the book / whose / is / it / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Whose book is it?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frag mit \"Whose\", wenn du wissen willst, wem etwas gehört.",
+      "hintEn": null,
+      "explainDe": "\"Whose book is it?\" fragt nach dem Besitzer. Die Antwort käme dann mit 's.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.sb.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mum's",
+            "sister's",
+            "are",
+            "this"
+          ],
+          "chipBudget": 9,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "is / where / dad's / my / chair / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Where is my dad's chair?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei einer Frage mit \"where\" steht das Verb danach. \"dad's\" zeigt den Besitzer.",
+      "hintEn": null,
+      "explainDe": "\"Where is my dad's chair?\" — das 's an \"dad\" zeigt, wem der Stuhl gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.tf.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "the chair of my friend →",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "my friend's chair",
+          "tier": "full"
+        },
+        {
+          "text": "friend's chair",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mach aus \"the chair of my friend\" eine Form mit 's: Besitzer zuerst.",
+      "hintEn": null,
+      "explainDe": "Im Englischen steht der Besitzer mit 's vorne: \"my friend's chair\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.tf.002",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "the room of the boys →",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "the boys' room",
+          "tier": "full"
+        },
+        {
+          "text": "boys' room",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"boys\" ist Plural auf -s — der Apostroph steht ganz am Ende.",
+      "hintEn": null,
+      "explainDe": "Mehrere Jungen: \"the boys' room\" — nur der Apostroph nach dem Plural-s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.tr.001",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sams Bett ist neu.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sam's bed is new.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "An den Namen \"Sam\" hängst du ein 's mit Apostroph an.",
+      "hintEn": null,
+      "explainDe": "\"Sam's bed\" — das 's zeigt, dass das Bett Sam gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.possessive-s.tr.002",
+      "structureId": "g2u11.s.possessive-s",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-possessive-s-expanded-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Das ist das Zimmer der Kinder.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is the children's room.",
+          "tier": "full"
+        },
+        {
+          "text": "It's the children's room.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"children\" ist unregelmäßiger Plural — hier kommt 's ans Ende.",
+      "hintEn": null,
+      "explainDe": "\"the children's room\" — bei unregelmäßigem Plural hängst du 's an.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.ag.002",
+      "structureId": "g2u11.s.who-whose",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mit diesem Wort fragst du, wem etwas gehört.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fünf Buchstaben. Das Fragewort nach dem Besitzer.",
+      "hintEn": null,
+      "explainDe": "\"whose\" fragt, wem etwas gehört — zum Beispiel \"Whose lamp is this?\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.cp.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Who did break my bed?",
+            "Whose broke my bed?",
+            "Who does break my bed?",
+            "Who did broke my bed?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Robert's bed is in pieces. He can't find out who did it.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who broke my bed?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Who did break my bed?",
+        "Whose broke my bed?",
+        "Who does break my bed?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage nach der Person, die es getan hat — kein did, Verb in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "\"Who broke my bed?\" — bei der Frage nach dem Subjekt kein did dazu.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.ec.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Who does want ice cream?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who wants ice cream?",
+          "tier": "full"
+        },
+        {
+          "text": "wants",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei der Frage nach dem Subjekt steht kein does. Das Verb bekommt -s.",
+      "hintEn": null,
+      "explainDe": "\"Who wants ice cream?\" — kein does, das Verb endet auf -s.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.who-whose.ec.002",
+      "structureId": "g2u11.s.who-whose",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Who's chair is that?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Whose chair is that?",
+          "tier": "full"
+        },
+        {
+          "text": "Whose",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst nach dem Besitzer — das schreibt man ohne Apostroph.",
+      "hintEn": null,
+      "explainDe": "\"Whose\" fragt nach dem Besitzer. \"Who's\" hieße \"who is\" und passt hier nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.who-whose.ec.003",
+      "structureId": "g2u11.s.who-whose",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Who did break the lamp?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who broke the lamp?",
+          "tier": "full"
+        },
+        {
+          "text": "broke",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei der Frage nach dem Subjekt steht kein did — das Verb selbst kommt in die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "\"Who broke the lamp?\" — ohne did, das Verb steht in der Vergangenheit.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.who-whose.gf.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ is your best friend?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Who",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst nach einer Person (dem Subjekt), nicht nach einem Besitzer.",
+      "hintEn": null,
+      "explainDe": "\"Who\" fragt nach der Person. \"Whose\" würde nach dem Besitzer fragen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.gf.002",
+      "structureId": "g2u11.s.who-whose",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ lamp is this?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du willst wissen, wem die Lampe gehört.",
+      "hintEn": null,
+      "explainDe": "\"Whose\" fragt, wem etwas gehört. \"Who's\" hieße \"who is\" und passt hier nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.who-whose.gf.003",
+      "structureId": "g2u11.s.who-whose",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ has got a sofa in their bedroom?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Who",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst nach der Person (dem Subjekt) — also kein \"does\" dazu.",
+      "hintEn": null,
+      "explainDe": "\"Who has got ...?\" fragt nach dem Subjekt — ohne do/does.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.gf.004",
+      "structureId": "g2u11.s.who-whose",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ trainers are those?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du willst wissen, wem die Turnschuhe gehören.",
+      "hintEn": null,
+      "explainDe": "\"Whose trainers are those?\" fragt nach dem Besitzer der Schuhe.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u11.gi.who-whose.gf.005",
+      "structureId": "g2u11.s.who-whose",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ broke your bed?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Who",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst nach der Person, die etwas getan hat — kein \"did\" dazu.",
+      "hintEn": null,
+      "explainDe": "\"Who broke your bed?\" fragt nach dem Subjekt — ohne did, das Verb steht in der Vergangenheit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.gs.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "who did it, or whose it is",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "Who did it?",
+          "members": [
+            "Who broke the bed?",
+            "Who wants a hammock?",
+            "Who cleaned the room?"
+          ]
+        },
+        {
+          "label": "Whose is it?",
+          "members": [
+            "Whose lamp is this?",
+            "Whose trainers are those?",
+            "Whose is this?"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "\"Who\" + Tätigkeit fragt nach der Person; \"Whose\" + Sache fragt nach dem Besitzer.",
+      "hintEn": null,
+      "explainDe": "\"Who ...?\" fragt nach der Person, die etwas tut. \"Whose ...?\" fragt, wem etwas gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.mc.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Who does",
+            "Whose",
+            "Who do",
+            "Who did"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "___ wants an ice cream machine?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Who",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Who does",
+        "Whose",
+        "Who do"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst nach der Person (dem Subjekt) — also ohne do/does.",
+      "hintEn": null,
+      "explainDe": "\"Who wants ...?\" — bei der Frage nach dem Subjekt steht kein do/does.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.mc.002",
+      "structureId": "g2u11.s.who-whose",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Who does live here?",
+            "Who do lives here?",
+            "Whose lives here?",
+            "Who do live here?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You want to ask who lives here.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who lives here?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Who does live here?",
+        "Who do lives here?",
+        "Whose lives here?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage nach dem Subjekt: kein do/does, das Verb bekommt -s.",
+      "hintEn": null,
+      "explainDe": "\"Who lives here?\" — ohne does, und das Verb endet auf -s.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.mc.003",
+      "structureId": "g2u11.s.who-whose",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Who's chair is this?",
+            "Who chair is this?",
+            "Whose is chair this?",
+            "Who is chair this?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You want to ask whose chair this is.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Whose chair is this?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Who's chair is this?",
+        "Who chair is this?",
+        "Whose is chair this?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst nach dem Besitzer — und schreibst es ohne Apostroph.",
+      "hintEn": null,
+      "explainDe": "\"Whose chair is this?\" fragt nach dem Besitzer. \"Who's\" hieße \"who is\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.mt.002",
+      "structureId": "g2u11.s.who-whose",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Who or Whose, and the ending",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Who broke the bed?",
+          "right": "Tom did."
+        },
+        {
+          "left": "Whose trainers are those?",
+          "right": "They're Mike's."
+        },
+        {
+          "left": "Who wants this lamp?",
+          "right": "I do."
+        },
+        {
+          "left": "Whose room is this?",
+          "right": "It's my sister's."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"Who\" fragt nach der Person, \"Whose\" fragt nach dem Besitzer.",
+      "hintEn": null,
+      "explainDe": "\"Who\" + Tätigkeit (broke, wants); \"Whose\" + Besitz (trainers, room).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.qf.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "the / painted / who / wall / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who painted the wall?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage nach dem Subjekt mit \"Who\" — kein did, das Verb steht in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "\"Who painted the wall?\" — bei der Frage nach dem Subjekt kein did.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.qf.002",
+      "structureId": "g2u11.s.who-whose",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mike put the lamp on the sofa. → Ask who.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who put the lamp on the sofa?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage nach der Person mit \"Who\" — kein did dazu.",
+      "hintEn": null,
+      "explainDe": "\"Who put the lamp on the sofa?\" — bei der Frage nach dem Subjekt kein did.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.sb.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "who",
+            "who's",
+            "are",
+            "those"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "is / whose / this / pen / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Whose pen is this?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frag mit \"Whose\", wenn du wissen willst, wem der Stift gehört.",
+      "hintEn": null,
+      "explainDe": "\"Whose pen is this?\" fragt nach dem Besitzer des Stifts.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.tf.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Lucy cleaned the kitchen. → Who ___?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Who cleaned the kitchen?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage nach der Person — kein did, das Verb bleibt in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "\"Who cleaned the kitchen?\" — ohne did, das Verb steht in der Vergangenheit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.tr.001",
+      "structureId": "g2u11.s.who-whose",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wessen Hund ist das?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Whose dog is that?",
+          "tier": "full"
+        },
+        {
+          "text": "Whose dog is this?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"Wessen\" fragt nach dem Besitzer — auf Englisch \"Whose\".",
+      "hintEn": null,
+      "explainDe": "\"Whose dog is that?\" fragt, wem der Hund gehört.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u11.gi.who-whose.tr.002",
+      "structureId": "g2u11.s.who-whose",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g2/sb/More 2 SB Unit 11.txt#grammar-1",
+        "seedV1": "m2-u11-who-whose-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wer hat die Vorhänge gewaschen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who washed the curtains?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frag nach der Person mit \"Who\" — kein did, das Verb steht in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "\"Who washed the curtains?\" — bei der Frage nach dem Subjekt kein did dazu.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u07",
+  "items": {
+    "49c62db1a735": "g2u07.gi.might.gf.001",
+    "3ada49062707": "g2u07.gi.might.gf.002",
+    "a13e3713a7db": "g2u07.gi.might.gf.003",
+    "b3059bfee44c": "g2u07.gi.might.gf.004",
+    "d788d2eefc4c": "g2u07.gi.might.gf.005",
+    "31ebd0eb9a13": "g2u07.gi.might.gf.007",
+    "7d5e111a5259": "g2u07.gi.might.mc.002",
+    "d2a9b916d2e6": "g2u07.gi.might.ec.001",
+    "2a703ea07738": "g2u07.gi.might.ec.002",
+    "778f2aba05a6": "g2u07.gi.might.ec.003",
+    "2fbc21567750": "g2u07.gi.might.tf.001",
+    "d53abcf8c5c5": "g2u07.gi.might.tr.001",
+    "e851c8d37a0c": "g2u07.gi.might.sb.001",
+    "ec6366b5b7d1": "g2u07.gi.might.sb.002",
+    "6f9f7f895d79": "g2u07.gi.might.mt.001",
+    "3d23655698eb": "g2u07.gi.might.mp.001",
+    "66f85e1ed890": "g2u07.gi.might.gs.001",
+    "ba363bb64d8d": "g2u07.gi.might.gf.008",
+    "014ebb17e70f": "g2u07.gi.going-to-negative.mc.001",
+    "08a1e47f1e6f": "g2u07.gi.going-to-negative.cp.001",
+    "6966a48cd46e": "g2u07.gi.going-to-negative.ec.001",
+    "79669dadba4a": "g2u07.gi.going-to-negative.ec.002",
+    "cc2bdb093d16": "g2u07.gi.going-to-negative.tf.001",
+    "d337269528a1": "g2u07.gi.going-to-negative.sb.001",
+    "6bb2d8b69986": "g2u07.gi.going-to-negative.tr.001",
+    "d5cf2f627498": "g2u07.gi.might.ag.002",
+    "bb28778a3bef": "g2u07.gi.might.mc.003",
+    "a39bc82b2656": "g2u07.gi.might.cp.003",
+    "7215bf64799e": "g2u07.gi.might.cp.004",
+    "4084717dc932": "g2u07.gi.might.tf.003",
+    "020b4b961be8": "g2u07.gi.might.tr.003",
+    "0c73c3bb7a49": "g2u07.gi.going-to-negative.gf.003",
+    "73ade5bc0955": "g2u07.gi.going-to-negative.gf.004",
+    "1a655d91c24c": "g2u07.gi.might.gf.010"
+  },
+  "tombstones": [
+    {
+      "id": "g2u07.gi.might.ag.001",
+      "key": "0bf7f7fc6d1f",
+      "removedWith": "23490a066b0e"
+    },
+    {
+      "id": "g2u07.gi.might.gf.006",
+      "key": "6ff8087cd85d",
+      "removedWith": "677021140902"
+    },
+    {
+      "id": "g2u07.gi.might.mc.001",
+      "key": "9ea865738c74",
+      "removedWith": "677021140902"
+    },
+    {
+      "id": "g2u07.gi.might.cp.001",
+      "key": "df43a745bfc3",
+      "removedWith": "677021140902"
+    },
+    {
+      "id": "g2u07.gi.might.cp.002",
+      "key": "2f3581f2afcb",
+      "removedWith": "677021140902"
+    },
+    {
+      "id": "g2u07.gi.might.tf.002",
+      "key": "69bf8634823c",
+      "removedWith": "677021140902"
+    },
+    {
+      "id": "g2u07.gi.might.tr.002",
+      "key": "7ee49fbbb9ba",
+      "removedWith": "677021140902"
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.gf.001",
+      "key": "be318152e34c",
+      "removedWith": "677021140902"
+    },
+    {
+      "id": "g2u07.gi.going-to-negative.gf.002",
+      "key": "a0606c8782bd",
+      "removedWith": "677021140902"
+    },
+    {
+      "id": "g2u07.gi.might.gf.009",
+      "key": "f6bf3b94226a",
+      "removedWith": "ef4b24fc67ca"
+    }
+  ]
+}

@@ -1,0 +1,1760 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g2-u13",
+  "briefBank": "5a9152db8a34",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She plays the piano very ___. I love it.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "beautifully",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "beautiful",
+        "nice",
+        "happy"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Gesucht ist das Wie-Wort (Art und Weise) zu beautiful: Adjektiv + -ly.",
+      "hintEn": null,
+      "explainDe": "Nach dem Verb plays beschreibst du mit einem Wie-Wort, WIE sie spielt: beautiful + -ly = beautifully.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-gf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Please close the door ___. The child is in bed.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "quietly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "slowly",
+        "sadly",
+        "nicely"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wie soll man die Tür schließen? Das Wie-Wort zu quiet endet auf -ly.",
+      "hintEn": null,
+      "explainDe": "Das Wie-Wort der Art und Weise heißt quietly und sagt, WIE du die Tür schließen sollst.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-gf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He plays the guitar really ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "well",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "good",
+        "nice",
+        "happy"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wie-Wort zu good ist eine Ausnahme - es heißt nicht goodly.",
+      "hintEn": null,
+      "explainDe": "good ist eine Ausnahme: Das Wie-Wort der Art und Weise heißt well (nicht goodly). He plays the guitar well.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-gf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The children played ___ in the garden all afternoon.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "happily",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "happy",
+        "sadly",
+        "badly"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Adjektive auf -y: Das y wird zu i, dann + -ly. happy wird zu ...",
+      "hintEn": null,
+      "explainDe": "Bei happy wird das y zu i: happy - happily. Das Wie-Wort sagt, WIE die Kinder gespielt haben.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-gf-004",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It will be hot, so the sun will shine ___ all day.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "brightly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "bright",
+        "strong",
+        "nice"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wie-Wort zu bright: Adjektiv + -ly.",
+      "hintEn": null,
+      "explainDe": "Nach shine sagt das Wie-Wort brightly, WIE die Sonne scheint: bright + -ly = brightly.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#act-8",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She did her homework ___ because she wanted to watch TV.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "quickly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "slowly",
+        "badly",
+        "sadly"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Sie wollte fernsehen - also machte sie die Hausaufgaben WIE? Wie-Wort zu quick.",
+      "hintEn": null,
+      "explainDe": "quick + -ly = quickly. Das Wie-Wort sagt, WIE schnell sie die Hausaufgaben gemacht hat.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-gf-006",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She is a slow driver. So she ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "drives slowly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "drives slow",
+        "drives more slow",
+        "drive slowly"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach dem Verb drives brauchst du das Wie-Wort (-ly), nicht das Adjektiv.",
+      "hintEn": null,
+      "explainDe": "Ein Adjektiv (slow) beschreibt ein Nomen (driver). Nach dem Verb drives brauchst du das Wie-Wort: slowly.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "drives slow",
+          "drives more slow",
+          "drive slowly",
+          "drives slowest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u13-adverbs-manner-mc-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "He is a ___ singer.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "good",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "well",
+        "happily",
+        "badly"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor dem Nomen singer steht das Adjektiv, nicht das Wie-Wort.",
+      "hintEn": null,
+      "explainDe": "Ein Nomen (singer) beschreibst du mit einem Adjektiv: good. Das Wie-Wort well würde nach einem Verb stehen (He sings well).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "well",
+          "happily",
+          "badly",
+          "nicely"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u13-adverbs-manner-mc-002",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "They played football very bad.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They played football very badly.",
+          "tier": "full"
+        },
+        {
+          "text": "badly",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach dem Verb played brauchst du das Wie-Wort (-ly), nicht das Adjektiv.",
+      "hintEn": null,
+      "explainDe": "WIE haben sie gespielt? Nach played steht das Wie-Wort: bad wird zu badly.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-ec-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#act-13",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She speaks English very good.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She speaks English very well.",
+          "tier": "full"
+        },
+        {
+          "text": "well",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wie-Wort zu good ist eine Ausnahme.",
+      "hintEn": null,
+      "explainDe": "good ist eine Ausnahme: Das Wie-Wort heißt well (nicht goodly). She speaks English well.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-ec-002",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He read the forecast very slow.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He read the forecast very slowly.",
+          "tier": "full"
+        },
+        {
+          "text": "slowly",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach dem Verb read brauchst du das Wie-Wort auf -ly.",
+      "hintEn": null,
+      "explainDe": "WIE hat er gelesen? Nach read steht das Wie-Wort: slow wird zu slowly.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She is a slow reader. How does she read? 'She reads ___.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "slowly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aus dem Adjektiv slow machst du das Wie-Wort: + -ly.",
+      "hintEn": null,
+      "explainDe": "Das Adjektiv slow beschreibt reader. Für das Verb reads brauchst du das Wie-Wort: slowly.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-tf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He is an angry man. How does he look at you? 'He looks at you ___.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "angrily",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Adjektiv auf -y: Das y wird zu i, dann + -ly. angry wird zu ...",
+      "hintEn": null,
+      "explainDe": "Bei angry wird das y zu i: angry - angrily. Das Wie-Wort sagt, WIE er dich ansieht.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#act-8",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Er spricht sehr leise.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He speaks very quietly.",
+          "tier": "full"
+        },
+        {
+          "text": "He talks very quietly.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "leise = quiet. Nach dem Verb steht das Wie-Wort: quietly.",
+      "hintEn": null,
+      "explainDe": "Nach speaks sagt das Wie-Wort, WIE er spricht: quietly.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-tr-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Er liest sehr gut.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He reads very well.",
+          "tier": "full"
+        },
+        {
+          "text": "He can read very well.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wie-Wort zu good ist eine Ausnahme - nicht goodly.",
+      "hintEn": null,
+      "explainDe": "gut = well (Ausnahme, nicht goodly). Nach reads steht das Wie-Wort well.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-tr-002",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "the / slowly / boy / very / reads",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The boy reads very slowly.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wie-Wort der Art und Weise steht nach dem Verb (reads).",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: Subjekt + Verb + Wie-Wort. Das Wie-Wort slowly steht nach reads: The boy reads very slowly.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "slow",
+          "quickly",
+          "well",
+          "fast"
+        ],
+        "chipBudget": 8,
+        "minOptions": null
+      },
+      "seedV1": "m2-u13-adverbs-manner-sb-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "matching",
+      "difficulty": 1,
+      "prompt": {
+        "text": "happy, good, fast, slow, angry",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "happy",
+          "right": "happily"
+        },
+        {
+          "left": "good",
+          "right": "well"
+        },
+        {
+          "left": "fast",
+          "right": "fast"
+        },
+        {
+          "left": "slow",
+          "right": "slowly"
+        },
+        {
+          "left": "angry",
+          "right": "angrily"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Meistens Adjektiv + -ly. Bei good und fast gibt es Ausnahmen.",
+      "hintEn": null,
+      "explainDe": "happy-happily, slow-slowly, angry-angrily. Ausnahmen: good-well und fast-fast (kein -ly).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-mt-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She plays … / He drives … / The sun shines …",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "She plays the piano",
+          "right": "beautifully."
+        },
+        {
+          "left": "He drives the car",
+          "right": "carefully."
+        },
+        {
+          "left": "The sun shines",
+          "right": "brightly."
+        },
+        {
+          "left": "The children laugh",
+          "right": "loudly."
+        },
+        {
+          "left": "He plays the guitar",
+          "right": "well."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Jedes Wie-Wort passt zu einem Verb und sagt, WIE etwas gemacht wird.",
+      "hintEn": null,
+      "explainDe": "Jedes Wie-Wort (beautifully, carefully, brightly, loudly, well) steht nach dem Verb und beschreibt, WIE die Handlung geschieht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "slowly / slow / happily / happy / brightly / bright / nervous / nervously",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "He runs slowly",
+          "members": [
+            "slowly",
+            "happily",
+            "brightly",
+            "nervously"
+          ]
+        },
+        {
+          "label": "a slow dog",
+          "members": [
+            "slow",
+            "happy",
+            "bright",
+            "nervous"
+          ]
+        }
+      ],
+      "hintDe": "Wie-Wörter (mit -ly) beschreiben ein Verb. Adjektive beschreiben ein Nomen.",
+      "hintEn": null,
+      "explainDe": "Wörter auf -ly (slowly, happily, brightly, nervously) sind Wie-Wörter und beschreiben ein Verb. slow, happy, bright, nervous sind Adjektive für ein Nomen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Englisch für 'vorsichtig' (er fährt sehr ...):",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "carefully",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Adjektiv careful + -ly.",
+      "hintEn": null,
+      "explainDe": "careful + -ly = carefully. Das Wie-Wort sagt, WIE er fährt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Englisch für 'fröhlich' als Art und Weise (die Kinder spielen ...):",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "happily",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "happy: Das y wird zu i, dann + -ly.",
+      "hintEn": null,
+      "explainDe": "happy - happily (y wird zu i). Das Wie-Wort sagt, WIE die Kinder spielen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You are a good reader. Your friend asks how you read. What do you tell her?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I read well.",
+          "tier": "full"
+        },
+        {
+          "text": "I can read well.",
+          "tier": "full"
+        },
+        {
+          "text": "I read very well.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach dem Verb read brauchst du das Wie-Wort zu good - und das ist eine Ausnahme.",
+      "hintEn": null,
+      "explainDe": "Das Wie-Wort zu good ist well (Ausnahme, nicht goodly): I read well.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#act-15",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The dog can run very ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "fast",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "slowly",
+        "well",
+        "badly"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "fast ist eine Ausnahme - hier hängst du kein -ly an.",
+      "hintEn": null,
+      "explainDe": "fast ist eine Ausnahme: Das Wie-Wort bleibt fast (nicht fastly).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-adverbs-manner-gf-005",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.adverbs-manner",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "One is good English. Which one?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They played football badly.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They played football bad.",
+        "They played football more bad.",
+        "They badly played football badly."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach dem Verb played steht das Wie-Wort (-ly), und nur einmal.",
+      "hintEn": null,
+      "explainDe": "Nach played brauchst du das Wie-Wort badly - genau einmal und nicht das Adjektiv bad.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "They played football bad.",
+          "They played football more bad.",
+          "They badly played football badly.",
+          "They played football very bad."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u13-adverbs-manner-mc-003",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It's cold! I ___ close the window.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will",
+          "tier": "full"
+        },
+        {
+          "text": "'ll",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "am",
+        "do",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Spontane Entscheidung jetzt: Person + will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Du entscheidest dich gerade spontan - dafür nimmst du die will-future: I will close (kurz: I'll close).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-gf-001",
+      "sbRef": "g2/wb/More 2 WB Unit 13.txt#act-4",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Don't worry, I ___ help you with your homework.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will",
+          "tier": "full"
+        },
+        {
+          "text": "'ll",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "am",
+        "do",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Spontanes Versprechen: Person + will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Du versprichst spontan zu helfen - dafür steht die will-future: I will help (kurz: I'll help).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-gf-002",
+      "sbRef": "g2/wb/More 2 WB Unit 13.txt#act-4",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I think it ___ rain tomorrow.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will",
+          "tier": "full"
+        },
+        {
+          "text": "'ll",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is",
+        "does",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vorhersage für die Zukunft: will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Mit einer Vermutung über die Zukunft (I think ...) nimmst du die will-future: it will rain.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-gf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#act-7",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I don't want to go out today. I ___ go out.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "won't",
+          "tier": "full"
+        },
+        {
+          "text": "will not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't",
+        "am not",
+        "can't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung der will-future: will not = won't.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von will ist won't (= will not): I won't go out today.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-gf-005",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The sun ___ come out today. It will rain all day.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "won't",
+          "tier": "full"
+        },
+        {
+          "text": "will not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "doesn't",
+        "isn't",
+        "can't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vorhersage in der Verneinung: won't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Sonne kommt nicht heraus - Verneinung der will-future: The sun won't come out.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "One is good English. Which one?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I think it will rain tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I think it will to rain tomorrow.",
+        "I think it is will rain tomorrow.",
+        "I think it will be rain tomorrow."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach will steht die Grundform - ohne to und ohne is davor.",
+      "hintEn": null,
+      "explainDe": "Nach will kommt die Grundform: will rain (nicht will to rain, nicht is will rain, nicht will be rain).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I think it will to rain tomorrow.",
+          "I think it is will rain tomorrow.",
+          "I think it will be rain tomorrow.",
+          "I think it is going to will rain tomorrow."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u13-will-future-mc-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I'm tired. I think I ___ go to bed.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will",
+          "tier": "full"
+        },
+        {
+          "text": "'ll",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "am",
+        "do",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Spontane Entscheidung: will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Du entscheidest dich gerade - dafür steht die will-future: I will go to bed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "am",
+          "do",
+          "can",
+          "is"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u13-will-future-mc-002",
+      "sbRef": "g2/wb/More 2 WB Unit 13.txt#act-4",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Your friend drops her heavy box and needs help now. What do you tell her?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'll carry that box for you.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I carry that box for you.",
+        "I will carries that box for you.",
+        "I will to carry that box for you."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Spontane Hilfe jetzt: I'll + Grundform.",
+      "hintEn": null,
+      "explainDe": "Du hilfst spontan - dafür steht die will-future: I'll carry (will + Grundform, ohne to, ohne -s).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I carry that box for you.",
+          "I will carries that box for you.",
+          "I will to carry that box for you.",
+          "I am will carry that box for you."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u13-will-future-cp-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#act-5",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You look at the dark clouds. What do you tell your friend about the weather?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It will rain tonight.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It will to rain tonight.",
+        "It is will rain tonight.",
+        "It is going to will rain tonight."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vorhersage: will + Grundform - ohne to, und kein is davor.",
+      "hintEn": null,
+      "explainDe": "Für die Vorhersage nimmst du will + Grundform: It will rain tonight (ohne to, kein is davor).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It will to rain tonight.",
+          "It is will rain tonight.",
+          "It is going to will rain tonight.",
+          "It will be rain tonight."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I will to help you carry the box.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will help you carry the box.",
+          "tier": "full"
+        },
+        {
+          "text": "I'll help you carry the box.",
+          "tier": "full"
+        },
+        {
+          "text": "help",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach will steht die Grundform direkt - ohne to.",
+      "hintEn": null,
+      "explainDe": "Nach will kommt die Grundform ohne to: I will help (nicht will to help).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-ec-003",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It is will rain in the north tomorrow.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It will rain in the north tomorrow.",
+          "tier": "full"
+        },
+        {
+          "text": "It'll rain in the north tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die will-future braucht kein is davor: nur will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Vor will steht kein is. Richtig ist: It will rain (Person + will + Grundform).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You will call your friend tonight. Tell her: 'I ___ (call) you tonight.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "will call",
+          "tier": "full"
+        },
+        {
+          "text": "'ll call",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Versprechen mit will + Grundform.",
+      "hintEn": null,
+      "explainDe": "Ein Versprechen bildest du mit will + Grundform: I will call you tonight (kurz: I'll call).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-tf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You don't think the sun will come out today. Tell your friend: 'The sun ___ (not come out) today.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "won't come out",
+          "tier": "full"
+        },
+        {
+          "text": "will not come out",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung der will-future: won't (= will not) + Grundform.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von will ist won't: The sun won't come out today.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-tf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You want to ask about tomorrow's weather. Ask if it will be sunny.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Will it be sunny tomorrow?",
+          "tier": "full"
+        },
+        {
+          "text": "Will it be sunny?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage: Will steht ganz vorne, dann das Subjekt, dann die Grundform.",
+      "hintEn": null,
+      "explainDe": "Fragen mit der will-future bildest du mit Will am Anfang: Will it be sunny tomorrow?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-tf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#act-6",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich werde dir helfen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will help you.",
+          "tier": "full"
+        },
+        {
+          "text": "I'll help you.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "will-future: Person + will + Grundform.",
+      "hintEn": null,
+      "explainDe": "werde ... helfen = will help. I will help you (kurz: I'll help you).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-tr-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Er wird morgen nicht kommen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He won't come tomorrow.",
+          "tier": "full"
+        },
+        {
+          "text": "He will not come tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "wird nicht ... = won't. Verneinung der will-future.",
+      "hintEn": null,
+      "explainDe": "wird nicht kommen = won't come. He won't come tomorrow (= will not come).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u13-will-future-tr-002",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "will / you / I / call",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I will call you.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: Person + will + Grundform + Rest.",
+      "hintEn": null,
+      "explainDe": "I will call you. - nach will steht die Grundform call.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "to",
+          "be",
+          "can",
+          "is"
+        ],
+        "chipBudget": 8,
+        "minOptions": null
+      },
+      "seedV1": "m2-u13-will-future-sb-001",
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "be / it / sunny / will / tomorrow",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It will be sunny tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: It + will + be + Adjektiv + Zeit.",
+      "hintEn": null,
+      "explainDe": "It will be sunny tomorrow. - nach will steht die Grundform be.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "is",
+          "to",
+          "are",
+          "won't"
+        ],
+        "chipBudget": 8,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#act-17",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It's cold in here. … / It's a secret. … / I'm hungry. …",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "It's cold in here.",
+          "right": "I'll close the window."
+        },
+        {
+          "left": "The car is dirty.",
+          "right": "I'll clean it for you."
+        },
+        {
+          "left": "It's a secret.",
+          "right": "I won't tell you."
+        },
+        {
+          "left": "I'm hungry.",
+          "right": "I'll make you a sandwich."
+        },
+        {
+          "left": "It's a long job.",
+          "right": "We won't be at school before nine."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Jede Antwort ist eine spontane Entscheidung mit I'll / won't.",
+      "hintEn": null,
+      "explainDe": "Auf jede Situation reagierst du mit der will-future: I'll close, I'll clean, I won't tell ...",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/wb/More 2 WB Unit 13.txt#act-8",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It will rain. / The sun won't come out. / It will be cold. / It won't be sunny.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "will (yes)",
+          "members": [
+            "It will rain.",
+            "It will be cold."
+          ]
+        },
+        {
+          "label": "won't (no)",
+          "members": [
+            "The sun won't come out.",
+            "It won't be sunny."
+          ]
+        }
+      ],
+      "hintDe": "will sagt, dass etwas passiert. won't sagt, dass etwas NICHT passiert.",
+      "hintEn": null,
+      "explainDe": "will = etwas wird passieren. won't (= will not) = etwas wird NICHT passieren.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Kurzform von 'will not' (die Sonne ... morgen nicht scheinen):",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "won't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "will not = won't.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von will ist won't (= will not).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 13.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Your friend's box is very heavy. You want to help now. What do you tell her?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'll carry it for you.",
+          "tier": "full"
+        },
+        {
+          "text": "I will carry it for you.",
+          "tier": "full"
+        },
+        {
+          "text": "I'll help you.",
+          "tier": "full"
+        },
+        {
+          "text": "I will help you.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Spontane Hilfe: I'll + Grundform.",
+      "hintEn": null,
+      "explainDe": "Du hilfst spontan - dafür steht die will-future: I'll carry it for you (will + Grundform).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/wb/More 2 WB Unit 13.txt#act-5",
+      "note": null
+    },
+    {
+      "structureId": "g2u13.s.will-future",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It's a big job. We ___ be at school before nine.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "won't",
+          "tier": "full"
+        },
+        {
+          "text": "will not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't",
+        "aren't",
+        "can't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vorhersage in der Verneinung: won't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Verneinung der will-future: We won't be at school before nine (= will not be).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/wb/More 2 WB Unit 13.txt#act-4",
+      "note": null
+    }
+  ]
+}

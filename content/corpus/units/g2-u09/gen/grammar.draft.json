@@ -1,0 +1,1723 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g2-u09",
+  "briefBank": "fd299da73d1b",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I don't want this menu. Can I have the new ___?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "one",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um EIN einzelnes Ding (eine Speisekarte). Welches Ersatzpronomen passt im Singular?",
+      "hintEn": null,
+      "explainDe": "Statt das Nomen menu zu wiederholen, sagst du one. Bei einem einzelnen Ding im Singular nimmst du immer one.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-gf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "These glasses are too small. I need bigger ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ones",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Glasses ist Plural (mehrere Gläser). Welches Ersatzpronomen passt im Plural?",
+      "hintEn": null,
+      "explainDe": "Glasses steht im Plural, darum ones. Bei mehreren gleichen Dingen nimmst du ones statt one.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-gf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 9.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Which cake do you want? — The chocolate ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "one",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du sprichst über EINEN Kuchen. Welches Wort ersetzt cake im Singular?",
+      "hintEn": null,
+      "explainDe": "The chocolate one steht für the chocolate cake. So musst du cake nicht wiederholen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-gf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 9.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Those are the glasses for the apple juice. These are the ___ for the soup.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ones",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Glasses ist Plural. Mit welchem Wort meinst du \"die Gläser\", ohne glasses noch einmal zu sagen?",
+      "hintEn": null,
+      "explainDe": "Diesen Satz gibt es fast genauso im Sketch: the ones for steht für the glasses for. Plural, also ones.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 9.txt#grammar-1",
+      "note": "Adapted from sketch line 'These are the ones for the apple juice.'"
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "There are two soups. Do you want the tomato ___ or the onion ___?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "one | one",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Jede Lücke steht für EINE einzelne Suppe. Beide Male Singular.",
+      "hintEn": null,
+      "explainDe": "Beide Lücken meinen je eine Suppe (Singular), darum zweimal one: the tomato one, the onion one.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-gf-005",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I like these peaches, but the ___ on that plate look nicer.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ones",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Peaches ist Plural. Welches Wort steht hier für \"die Pfirsiche\"?",
+      "hintEn": null,
+      "explainDe": "The ones on that plate meint the peaches on that plate. Plural, darum ones. Achtung: das Verb ist look, weil es um mehrere geht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-gf-006",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Which pizza is yours? — The small ___, please.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "one",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "ones",
+        "it",
+        "that"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um EINE Pizza. Welches Wort passt im Singular?",
+      "hintEn": null,
+      "explainDe": "Eine Pizza ist Singular, also the small one. ones wäre Plural, it und that ersetzen das Nomen hier nicht richtig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "ones",
+          "it",
+          "that",
+          "those"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u9-one-ones-mc-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I'd like two of those pears, please. — The green ___?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ones",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "one",
+        "them",
+        "those"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um ZWEI Birnen. Welches Wort passt im Plural?",
+      "hintEn": null,
+      "explainDe": "Zwei Birnen sind Plural, darum the green ones. one wäre nur eine, them und those ersetzen pears hier nicht passend.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "one",
+          "them",
+          "those",
+          "it"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u9-one-ones-mc-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The waiter asks which grapes you want. You like the green grapes.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'd like the green ones, please.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I'd like the green one, please.",
+        "I'd like the green, please.",
+        "I'd like the green grapes ones, please."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Grapes (Trauben) sind immer Plural. Welcher Satz nimmt das richtige Ersatzpronomen?",
+      "hintEn": null,
+      "explainDe": "Grapes ist Plural, darum the green ones. one wäre Singular, ganz ohne one fehlt das Ersatzwort, und grapes ones wiederholt das Nomen doppelt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I'd like the green one, please.",
+          "I'd like the green, please.",
+          "I'd like the green grapes ones, please.",
+          "I'd like the green it, please."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u9-one-ones-mc-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The waiter asks which glass is for the apple juice. You tell him.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That's the one for the apple juice.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "That's the ones for the apple juice.",
+        "That's the for the apple juice.",
+        "That's the glass one for the apple juice."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um EIN Glas. Welcher Satz nimmt das richtige Ersatzpronomen im Singular?",
+      "hintEn": null,
+      "explainDe": "Ein Glas ist Singular, darum the one. ones wäre Plural, ohne one fehlt das Wort, und glass one wiederholt das Nomen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "That's the ones for the apple juice.",
+          "That's the for the apple juice.",
+          "That's the glass one for the apple juice.",
+          "That's the it for the apple juice."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 9.txt#grammar-1",
+      "note": "Built on sketch's water/apple-juice glasses moment."
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Which hat do you want? — I like the red ones.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Which hat do you want? — I like the red one.",
+          "tier": "full"
+        },
+        {
+          "text": "the red one",
+          "tier": "partial"
+        },
+        {
+          "text": "one",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wie viele Hüte sind gemeint? Schau dir hat genau an.",
+      "hintEn": null,
+      "explainDe": "Hat steht im Singular (ein Hut), darum muss es one heißen, nicht ones. ones wäre nur bei mehreren Hüten richtig.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-ec-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "These plums are good, but the one on that plate are nicer.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "These plums are good, but the ones on that plate are nicer.",
+          "tier": "full"
+        },
+        {
+          "text": "the ones on that plate",
+          "tier": "partial"
+        },
+        {
+          "text": "ones",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Plums ist Plural, und das Verb ist are. Passt one dazu?",
+      "hintEn": null,
+      "explainDe": "Plums ist Plural und das Verb heißt are, darum braucht es ones, nicht one. Das Ersatzpronomen muss zur Mehrzahl passen.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-ec-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I don't want the red tomato. I want the green tomato. (one)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I don't want the red one. I want the green one.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Tomate ist Singular. Ersetze tomato beide Male durch dasselbe kurze Wort.",
+      "hintEn": null,
+      "explainDe": "Tomato ist Singular, darum zweimal one statt tomato: the red one, the green one. So wiederholst du das Nomen nicht.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-tf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Which glasses do you want? (the new …)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'd like the new ones.",
+          "tier": "full"
+        },
+        {
+          "text": "The new ones.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Glasses ist Plural. Welches Ersatzpronomen ersetzt das Wort in der Mehrzahl?",
+      "hintEn": null,
+      "explainDe": "Glasses ist Plural, also the new ones statt the new glasses. Bei Mehrzahl immer ones.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-tf-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Suppe möchtest du? — Die Tomatensuppe.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Which soup do you want? — The tomato one.",
+          "tier": "full"
+        },
+        {
+          "text": "Which soup would you like? — The tomato one.",
+          "tier": "full"
+        },
+        {
+          "text": "Which soup do you want? The tomato one.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"Die Tomatensuppe\" ist eine Suppe (Singular). Nimm one statt soup zu wiederholen.",
+      "hintEn": null,
+      "explainDe": "The tomato one steht für the tomato soup. Eine Suppe ist Singular, darum one.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-tr-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ich mag die grünen nicht. Ich mag die roten. (Trauben)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I don't like the green ones. I like the red ones.",
+          "tier": "full"
+        },
+        {
+          "text": "I do not like the green ones. I like the red ones.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Trauben sind Plural. Beide Male ersetzt du das Nomen durch ones.",
+      "hintEn": null,
+      "explainDe": "Es geht um grapes (Plural), darum the green ones und the red ones. Bei Mehrzahl nimmst du ones.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-tr-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "like / the / I / small / one",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like the small one.",
+          "tier": "full"
+        },
+        {
+          "text": "I like the small one",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Fang mit I an. Es geht um ein einzelnes Ding, darum one am Ende.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: Subjekt + Verb + the + Adjektiv + one. one ersetzt das einzelne Nomen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "ones",
+          "it",
+          "them",
+          "those"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": "m2-u9-one-ones-sb-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "want / the / red / I / ones",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I want the red ones.",
+          "tier": "full"
+        },
+        {
+          "text": "I want the red ones",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hier geht es um mehrere Dinge. Welches Wort gehört ans Ende?",
+      "hintEn": null,
+      "explainDe": "Bei mehreren Dingen steht ones am Satzende: I want the red ones.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "one",
+          "it",
+          "them",
+          "this"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ask your friend which cake they want.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Which one do you want?",
+          "tier": "full"
+        },
+        {
+          "text": "Which one would you like?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit Which und ersetze cake durch das Ersatzpronomen im Singular. Es geht um EINEN Kuchen.",
+      "hintEn": null,
+      "explainDe": "Which one do you want? nimmt one statt cake. Genau diese Frage steht auch in der Grammatikbox.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-qf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 9.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Match the cake and pizza replies.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Which cake do you want?",
+          "right": "The chocolate one, please."
+        },
+        {
+          "left": "Which pears do you want?",
+          "right": "The green ones, please."
+        },
+        {
+          "left": "Which pizza is yours?",
+          "right": "The big one."
+        },
+        {
+          "left": "Which glasses are for the soup?",
+          "right": "The small ones."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte darauf, ob die Frage nach einem Ding (one) oder mehreren Dingen (ones) fragt.",
+      "hintEn": null,
+      "explainDe": "Singular-Fragen (cake, pizza) werden mit one beantwortet, Plural-Fragen (pears, glasses) mit ones.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-one-ones-mt-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Put them into the one group or the ones group.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "one",
+          "members": [
+            "the chocolate cake",
+            "the tomato soup",
+            "the cheese pizza"
+          ]
+        },
+        {
+          "label": "ones",
+          "members": [
+            "the green grapes",
+            "the red peppers",
+            "the small plums"
+          ]
+        }
+      ],
+      "hintDe": "Singular-Wörter (eine Sache) werden zu one, Plural-Wörter (mehrere) werden zu ones. Sortiere danach.",
+      "hintEn": null,
+      "explainDe": "Ein einzelnes Nomen wird zu one (the chocolate cake → the chocolate one), ein Mehrzahl-Nomen zu ones (the green grapes → the green ones).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Sort singular food phrases (→ one) vs plural food phrases (→ ones); the label is the substitute pronoun each would take."
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Dieses kurze Wort steht für ein einzelnes Ding, damit du das Wort nicht wiederholst: \"the red ___\".",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "one",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Drei Buchstaben. Du verwendest es im Singular statt das Nomen zu wiederholen.",
+      "hintEn": null,
+      "explainDe": "one ersetzt ein einzelnes Nomen, zum Beispiel the red one statt the red apple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Dieses Wort steht für mehrere Dinge, damit du das Wort nicht wiederholst: \"the green ___\".",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ones",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vier Buchstaben. Es ersetzt ein Nomen in der Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "ones ersetzt ein Mehrzahl-Nomen, zum Beispiel the green ones statt the green peppers.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.one-ones",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "There are two pizzas on the menu: a ham one and a cheese one. Tell the waiter which one you want and why.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I'd like the ham one, please. I really like ham.",
+          "tier": "full"
+        },
+        {
+          "text": "Can I have the cheese one? I don't like ham.",
+          "tier": "full"
+        },
+        {
+          "text": "I'd like the cheese one.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Sag the ham one oder the cheese one, statt pizza zu wiederholen. Beides ist Singular, also one.",
+      "hintEn": null,
+      "explainDe": "Du sprichst über eine Pizza, darum the ham one / the cheese one. one ersetzt das Nomen pizza.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Open production; one full single-clause answer accepted as partial."
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "There are ___ grapes in the fridge.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "some",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist ein positiver Satz (es gibt etwas). Welche Mengenangabe passt?",
+      "hintEn": null,
+      "explainDe": "In positiven Sätzen verwendest du some, wenn du nicht sagst, wie viele es sind.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-gf-001",
+      "sbRef": "g2/sb/More 2 SB Unit 9.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "We don't have ___ peaches.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "any",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist ein verneinter Satz (don't). Welche Mengenangabe passt?",
+      "hintEn": null,
+      "explainDe": "In verneinten Sätzen nimmst du any: We don't have any peaches.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-gf-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Are there ___ strawberries in the fridge?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "any",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist eine Frage, ob etwas da ist. Welche Mengenangabe passt?",
+      "hintEn": null,
+      "explainDe": "In Fragen, ob etwas vorhanden ist, verwendest du any: Are there any strawberries?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-gf-003",
+      "sbRef": "g2/sb/More 2 SB Unit 9.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Would you like ___ cheesecake?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "some",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist ein Angebot. Welche Mengenangabe nimmst du bei höflichen Angeboten?",
+      "hintEn": null,
+      "explainDe": "Bei Angeboten und höflichen Bitten verwendest du some, auch wenn es eine Frage ist: Would you like some cheesecake?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-gf-004",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "There isn't ___ soup, but there is ___ stew.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "any | some",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der erste Teil ist verneint, der zweite ist positiv. Jede Lücke braucht ein anderes Wort.",
+      "hintEn": null,
+      "explainDe": "Nach der Verneinung isn't kommt any, im positiven Teil there is kommt some.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-gf-005",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Can I have ___ mineral water, please? — Sorry, there isn't ___ mineral water.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "some | any",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zuerst eine höfliche Bitte, dann eine Verneinung. Beide Lücken brauchen ein anderes Wort.",
+      "hintEn": null,
+      "explainDe": "In der höflichen Bitte Can I have ... nimmst du some, nach der Verneinung there isn't kommt any.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-gf-006",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "There ___ some olives, but there aren't any mushrooms.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "are",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is",
+        "have",
+        "has"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Olives ist Plural. Welche Form von \"to be\" passt vor some olives?",
+      "hintEn": null,
+      "explainDe": "Olives ist Plural, darum there are some olives. is wäre Singular, have und has passen hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "is",
+          "have",
+          "has",
+          "be"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "Tests some in an affirmative plural existential; choice is the be-form so the some/any logic stays fixed by the carrier."
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Offer your guest some soup.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Would you like some soup?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Would you like any soup?",
+        "Do you like any soup?",
+        "Would you like the some soup?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist ein Angebot. Welcher Satz nimmt die richtige Mengenangabe?",
+      "hintEn": null,
+      "explainDe": "Bei Angeboten nimmst du some: Would you like some soup? any wäre hier falsch, und the some gibt es nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Would you like any soup?",
+          "Do you like any soup?",
+          "Would you like the some soup?",
+          "Would you like a some soup?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u9-some-any-mc-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You look in the fridge for your dad. Tell him there are no pears.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There aren't any pears in the fridge.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "There aren't some pears in the fridge.",
+        "There are any pears in the fridge.",
+        "There aren't no pears in the fridge."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Satz ist verneint (es gibt keine). Welche Mengenangabe passt nach aren't?",
+      "hintEn": null,
+      "explainDe": "Nach der Verneinung aren't kommt any: There aren't any pears. some passt nicht in die Verneinung, und no wäre eine doppelte Verneinung.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "There aren't some pears in the fridge.",
+          "There are any pears in the fridge.",
+          "There aren't no pears in the fridge.",
+          "There is any pears in the fridge."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u9-some-any-tf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I don't have some money.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I don't have any money.",
+          "tier": "full"
+        },
+        {
+          "text": "any",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Satz ist verneint (don't). Welche Mengenangabe gehört in eine Verneinung?",
+      "hintEn": null,
+      "explainDe": "In verneinten Sätzen steht any, nicht some: I don't have any money.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-ec-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Would you like any tea?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Would you like some tea?",
+          "tier": "full"
+        },
+        {
+          "text": "some",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist ein Angebot. Welche Mengenangabe gehört in höfliche Angebote?",
+      "hintEn": null,
+      "explainDe": "Bei Angeboten verwendest du some statt any: Would you like some tea?",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-ec-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "There's any cheese in the fridge.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There's some cheese in the fridge.",
+          "tier": "full"
+        },
+        {
+          "text": "There is some cheese in the fridge.",
+          "tier": "full"
+        },
+        {
+          "text": "some",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist ein positiver Satz (There's = there is). Welche Mengenangabe passt?",
+      "hintEn": null,
+      "explainDe": "There's ist positiv, darum some: There's some cheese. any gehört nur in Fragen und Verneinungen.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-ec-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ask if there are any pancakes: 'There are some pancakes.'",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are there any pancakes?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In einer Frage, ob etwas da ist, ändert sich some zu any. Stell are nach vorne.",
+      "hintEn": null,
+      "explainDe": "Aus dem Aussagesatz wird eine Frage: are kommt nach vorne und some wird zu any: Are there any pancakes?",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Now there are no peppers: 'There are some peppers.'",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There aren't any peppers.",
+          "tier": "full"
+        },
+        {
+          "text": "There are not any peppers.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Verneinung wird some zu any. Mach are zu aren't.",
+      "hintEn": null,
+      "explainDe": "In der Verneinung wird some zu any und are zu aren't: There aren't any peppers.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Möchtest du etwas Kuchen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Would you like some cake?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you want some cake?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist ein höfliches Angebot. Welche Mengenangabe gehört dazu?",
+      "hintEn": null,
+      "explainDe": "Bei Angeboten verwendest du some, nicht any: Would you like some cake?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-tr-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Gibt es noch Trauben? — Nein, es gibt keine Trauben mehr.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Are there any grapes? — No, there aren't any grapes.",
+          "tier": "full"
+        },
+        {
+          "text": "Are there any grapes? No, there aren't any grapes.",
+          "tier": "full"
+        },
+        {
+          "text": "Are there any grapes? — No, there aren't any.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage braucht any, die Verneinung braucht auch any.",
+      "hintEn": null,
+      "explainDe": "In der Frage und in der Verneinung steht jeweils any: Are there any apples? No, there aren't any.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-tr-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "any / have / don't / I / pears",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I don't have any pears.",
+          "tier": "full"
+        },
+        {
+          "text": "I don't have any pears",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Satz ist verneint (don't), darum any. Fang mit I an.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: I + don't + have + any + Nomen. In der Verneinung steht any.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "some",
+          "much",
+          "many",
+          "no"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": "m2-u9-some-any-sb-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "some / there / strawberries / are",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are some strawberries.",
+          "tier": "full"
+        },
+        {
+          "text": "There are some strawberries",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Positiver Satz, darum some. Beginne mit There.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: There + are + some + Nomen. Im positiven Satz steht some.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "any",
+          "much",
+          "many",
+          "is"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ask if there is beef in the fridge.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is there any beef in the fridge?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frag mit Is there ... Welche Mengenangabe gehört in die Frage?",
+      "hintEn": null,
+      "explainDe": "In Fragen, ob etwas vorhanden ist, nimmst du any: Is there any beef in the fridge?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-qf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Match the food and drink replies.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Would you like some apple juice?",
+          "right": "Yes, please. I love it."
+        },
+        {
+          "left": "Have you got any olives?",
+          "right": "No, sorry. There aren't any."
+        },
+        {
+          "left": "Is there any cheesecake?",
+          "right": "Yes, there's some in the fridge."
+        },
+        {
+          "left": "Can I have some mineral water?",
+          "right": "OK. Here you are."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Lies, ob die Frage ein Angebot, eine Bitte oder eine Frage nach Vorrat ist. Die Antwort muss dazu passen.",
+      "hintEn": null,
+      "explainDe": "Angebote und Bitten mit some werden zugesagt; eine any-Frage nach Vorrat kann auch verneint werden (There aren't any).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-mt-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Put them into the some group or the any group.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "some",
+          "members": [
+            "There are ___ grapes.",
+            "Would you like ___ cake?",
+            "Can I have ___ soup, please?"
+          ]
+        },
+        {
+          "label": "any",
+          "members": [
+            "Are there ___ pears?",
+            "We don't have ___ beef.",
+            "There isn't ___ stew."
+          ]
+        }
+      ],
+      "hintDe": "Positive Sätze, Angebote und Bitten bekommen some. Fragen nach Vorrat und Verneinungen bekommen any.",
+      "hintEn": null,
+      "explainDe": "some steht in positiven Sätzen und bei Angeboten/Bitten; any steht in Fragen, ob etwas da ist, und in Verneinungen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u9-some-any-mt-001",
+      "sbRef": null,
+      "note": "Members are carrier sentences with a blank; the group label is the word that fills it."
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Dieses Wort sagt, dass ein bisschen von etwas da ist (auch bei Angeboten): \"There are ___ plums.\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "some",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vier Buchstaben. Du verwendest es in positiven Sätzen und bei höflichen Angeboten.",
+      "hintEn": null,
+      "explainDe": "some steht in positiven Sätzen und bei Angeboten, zum Beispiel There are some plums.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Dieses Wort verwendest du, wenn du fragst oder wenn etwas nicht da ist: \"Are there ___ peaches?\"",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "any",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Drei Buchstaben. Du verwendest es in Fragen, ob etwas da ist, und in Verneinungen.",
+      "hintEn": null,
+      "explainDe": "any steht in Fragen und Verneinungen, zum Beispiel Are there any peaches?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u09.s.some-any",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Your dad is making a salad. Look in the fridge and tell him what there is and what there isn't.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are some grapes, but there aren't any peaches.",
+          "tier": "full"
+        },
+        {
+          "text": "There are some plums and some pears, but there aren't any strawberries.",
+          "tier": "full"
+        },
+        {
+          "text": "There are some grapes.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Was da ist: There are some ... Was fehlt: There aren't any ...",
+      "hintEn": null,
+      "explainDe": "Im positiven Teil nimmst du some, im verneinten Teil any: There are some grapes, but there aren't any peaches.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 9.txt#grammar-1",
+      "note": "Open production modelled on the fridge/fruit-salad dialogue (SB ex. 14); single positive clause accepted as partial."
+    }
+  ]
+}

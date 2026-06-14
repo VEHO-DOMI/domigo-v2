@@ -1,0 +1,1091 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g2-u08",
+  "briefBank": "7b3557fe606c",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "___, the spaceship landed. Then, an alien came out.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "First",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Zeitwort steht ganz am Anfang einer Erzählung?",
+      "hintEn": null,
+      "explainDe": "First leitet das erste Ereignis einer Geschichte ein. Danach kommen Then, After that und am Schluss Finally.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-gf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "First, the cable broke. ___, everything went black.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Then",
+          "tier": "full"
+        },
+        {
+          "text": "After that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Zeitwort zeigt, was als Nächstes passierte?",
+      "hintEn": null,
+      "explainDe": "Then oder After that zeigen das nächste Ereignis in der Reihenfolge. First wäre der Anfang, Finally das Ende.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-gf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "First, the crew repaired the machine. Then, the spaceship landed. ___, they came back to Earth.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Finally",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Zeitwort steht beim letzten Ereignis der Geschichte?",
+      "hintEn": null,
+      "explainDe": "Finally markiert das letzte Ereignis einer Erzählung. Es kommt nach First, Then und After that.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I saw that UFO two days ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ago",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wie sagst du, dass etwas vor einer bestimmten Zeit passiert ist? Das Wort steht nach der Zeitangabe.",
+      "hintEn": null,
+      "explainDe": "Mit ago sagst du, wie lange etwas her ist: two days ago = vor zwei Tagen. Es steht immer hinter der Zeitangabe.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-gf-004",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ night, a spaceship landed in our garden.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Last",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welches Wort ergibt zusammen mit night die Zeitangabe „letzte Nacht“?",
+      "hintEn": null,
+      "explainDe": "Last night heißt „letzte Nacht“ und sagt, wann etwas passiert ist. Diese Zeitangabe kann am Satzanfang stehen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-gf-006",
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "First, we visited the space centre. Then, we saw the spaceship. ___, we went inside. ___, we landed on the planet!",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "After that | Finally",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Lücken kommen nach First und Then. Welches Zeitwort steht in der Mitte, welches ganz am Schluss?",
+      "hintEn": null,
+      "explainDe": "Die Reihenfolge ist First → Then → After that → Finally. After that führt weiter, Finally schließt die Geschichte ab.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-gf-005",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ 2013, there was a big investigation ___ the photograph.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "In | into",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mit welchem kleinen Wort sagst du ein Jahr? Und welches Wort passt zu „eine Untersuchung … etwas“?",
+      "hintEn": null,
+      "explainDe": "Vor einem Jahr steht in: in 2013 = im Jahr 2013. Diese Zeitangabe leitet den Satz ein und sagt, wann etwas passiert ist.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "First, we saw a light. ___, the spaceship landed. Finally, an alien came out.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Then",
+          "tier": "full"
+        },
+        {
+          "text": "After that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "First",
+        "Finally",
+        "Half an hour ago"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welche Zeitangabe sagt genau, wann ihr die Geräusche gehört habt?",
+      "hintEn": null,
+      "explainDe": "Half an hour ago sagt, wann etwas passiert ist (vor einer halben Stunde). Finally, After that und One day ordnen Ereignisse, sagen aber nicht den genauen Zeitpunkt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "First",
+          "Finally",
+          "Half an hour ago",
+          "Last night"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Then ___ to the door.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "she ran",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "ran she",
+        "she runs",
+        "she run"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach Then bleibt die normale Wortstellung: zuerst die Person, dann das Verb in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Im Englischen kommt auch nach Then zuerst die Person und dann das Verb: Then she ran. Nicht „Then ran she“ wie im Deutschen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "ran she",
+          "she runs",
+          "she run",
+          "run she",
+          "she running"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u8-past-time-markers-mc-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Benson told the class a story.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After that, the commander went outside.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "After that, went the commander outside.",
+        "After that, the commander going outside.",
+        "After that, the commander go outside."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Achte auf die Wortstellung nach After that und auf die richtige Vergangenheitsform.",
+      "hintEn": null,
+      "explainDe": "Nach After that steht zuerst die Person, dann das Verb in der Vergangenheit: the commander went. „went the commander“ ist deutsche Wortstellung, „going/go“ sind die falschen Formen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "After that, went the commander outside.",
+          "After that, the commander going outside.",
+          "After that, the commander go outside.",
+          "After that, outside the commander went.",
+          "After that, the commander run outside."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u8-past-time-markers-mc-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Put the story in order.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "First, the cable broke. Then, Benson woke up on a spaceship. After that, an alien came out. Finally, they took him back to Earth.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Finally, the cable broke. Then, Benson woke up on a spaceship. First, an alien came out. After that, they took him back to Earth.",
+        "After that, the cable broke. First, Benson woke up on a spaceship. Finally, an alien came out. Then, they took him back to Earth.",
+        "Then, the cable broke. After that, Benson woke up on a spaceship. Finally, an alien came out. First, they took him back to Earth."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welche Reihenfolge der Zeitwörter ergibt eine sinnvolle Geschichte? Beginne mit First und ende mit Finally.",
+      "hintEn": null,
+      "explainDe": "Eine Erzählung läuft First → Then → After that → Finally. Nur so ergeben die Ereignisse eine logische Reihenfolge.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Finally, the cable broke. Then, Benson woke up on a spaceship. First, an alien came out. After that, they took him back to Earth.",
+          "After that, the cable broke. First, Benson woke up on a spaceship. Finally, an alien came out. Then, they took him back to Earth.",
+          "Then, the cable broke. After that, Benson woke up on a spaceship. Finally, an alien came out. First, they took him back to Earth.",
+          "Finally, the cable broke. First, Benson woke up on a spaceship. Then, an alien came out. After that, they took him back to Earth."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u8-past-time-markers-mc-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Here is a story about a UFO.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "First, we saw a light. Then, a spaceship landed.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "First, we see a light. Then, a spaceship lands.",
+        "First, we saw a light. Then, a spaceship lands.",
+        "First, we saw a light. Then, a spaceship is landing."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In einer Geschichte über gestern müssen beide Verben in der Vergangenheit stehen.",
+      "hintEn": null,
+      "explainDe": "In einer Erzählung über die Vergangenheit stehen alle Verben im Past simple: saw und landed. Man darf nicht zwischen Gegenwart und Vergangenheit wechseln.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "First, we see a light. Then, a spaceship lands.",
+          "First, we saw a light. Then, a spaceship lands.",
+          "First, we saw a light. Then, a spaceship is landing.",
+          "First, we see a light. Then, a spaceship landed."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u8-past-time-markers-cp-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Here is a story about a spaceship.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last night, the commander heard a noise.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The commander last night heard a noise.",
+        "Last night, heard the commander a noise.",
+        "The commander heard last night a noise."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Zeitangabe steht meist am Satzanfang, oft mit Komma. Danach kommt die normale Wortstellung.",
+      "hintEn": null,
+      "explainDe": "Zeitangaben wie Last night stehen am Satzanfang, danach folgt Person + Verb: Last night, the commander heard … Das Verb darf nicht vor die Person springen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The commander last night heard a noise.",
+          "Last night, heard the commander a noise.",
+          "The commander heard last night a noise.",
+          "Heard the commander a noise last night."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "First, we went to the park. Then we play football.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "First, we went to the park. Then we played football.",
+          "tier": "full"
+        },
+        {
+          "text": "played",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Sätze erzählen von gestern. Steht das zweite Verb auch in der Vergangenheit?",
+      "hintEn": null,
+      "explainDe": "In einer Erzählung über die Vergangenheit muss auch nach Then das Verb im Past simple stehen: play wird zu played.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-ec-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "First, the alien came out. Then it look at Benson.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "First, the alien came out. Then it looked at Benson.",
+          "tier": "full"
+        },
+        {
+          "text": "looked",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Geschichte spielt in der Vergangenheit. Welche Form von look fehlt?",
+      "hintEn": null,
+      "explainDe": "Auch das zweite Verb gehört in die Vergangenheit: look wird zu looked. So bleiben beide Sätze im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Then went the commander outside.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Then the commander went outside.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im Englischen kommt nach Then nicht das Verb, sondern zuerst die Person.",
+      "hintEn": null,
+      "explainDe": "Nach Then steht zuerst die Person und dann das Verb: Then the commander went … Die deutsche Wortstellung „Then went the commander“ ist falsch.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She didn't took a photograph of the UFO.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She didn't take a photograph of the UFO.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach didn't steht das Verb in der Grundform, nicht in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bildest du mit didn't + Grundform: didn't take (nicht didn't took). Das didn't trägt schon die Vergangenheit.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He goed back to the spaceship.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He went back to the spaceship.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "go ist ein unregelmäßiges Verb. Wie heißt seine Vergangenheitsform?",
+      "hintEn": null,
+      "explainDe": "go ist unregelmäßig: die Vergangenheit ist went, nicht „goed“. Nur regelmäßige Verben bekommen -ed.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Put in order: 'We saw a light. A spaceship landed.' (First … Then …)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "First, we saw a light. Then, a spaceship landed.",
+          "tier": "full"
+        },
+        {
+          "text": "First we saw a light. Then a spaceship landed.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Setze First vor das erste Ereignis und Then vor das zweite. Beide Verben bleiben in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "First markiert das erste Ereignis, Then das nächste. Die Verben saw und landed bleiben im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-tf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "We went to the space centre. We see a statue. (make it past and join: First … Then …)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "First, we went to the space centre. Then, we saw a statue.",
+          "tier": "full"
+        },
+        {
+          "text": "First we went to the space centre. Then we saw a statue.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verbinde die Sätze mit First und Then und bring das zweite Verb in die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "see muss zu saw werden, damit die ganze Erzählung in der Vergangenheit bleibt. First und Then ordnen die Ereignisse.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-tf-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "A spaceship landed in our garden last night. (begin with the time)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last night, a spaceship landed in our garden.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Stell die Zeitangabe an den Satzanfang und setze ein Komma danach. Die übrige Wortstellung bleibt gleich.",
+      "hintEn": null,
+      "explainDe": "Zeitangaben dürfen an den Satzanfang wandern, oft mit Komma: Last night, a spaceship landed … Person und Verb bleiben in normaler Reihenfolge.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Then / he / ran / outside",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Then he ran outside.",
+          "tier": "full"
+        },
+        {
+          "text": "Then he ran outside",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit dem Zeitwort, dann kommt die Person und das Verb in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Nach Then folgt die Person und dann das Verb: Then he ran … So bleibt die englische Wortstellung richtig. run wird in der Vergangenheit zu ran.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "run",
+          "go",
+          "she",
+          "saw"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": "m2-u8-past-time-markers-ec-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "After that, / an / alien / came / out",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "After that, an alien came out.",
+          "tier": "full"
+        },
+        {
+          "text": "After that, an alien came out",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Zeitwort steht vorne, dann kommt die Person und das Verb in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "After that leitet das nächste Ereignis ein, danach steht Person + Verb in der Vergangenheit: came. come wird zu came.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "come",
+          "go",
+          "a",
+          "saw"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": "m2-u8-past-time-markers-ec-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Last night, / a / UFO / landed",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last night, a UFO landed.",
+          "tier": "full"
+        },
+        {
+          "text": "Last night, a UFO landed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Zeitangabe „letzte Nacht“ steht am Anfang, danach Person/Sache und Verb in der Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Last night sagt, wann etwas passiert ist, und steht am Satzanfang. Danach folgt a UFO landed im Past simple.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "land",
+          "lands",
+          "ago",
+          "saw"
+        ],
+        "chipBudget": 10,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Letzte Nacht landete ein Raumschiff in unserem Garten.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Last night, a spaceship landed in our garden.",
+          "tier": "full"
+        },
+        {
+          "text": "Last night a spaceship landed in our garden.",
+          "tier": "full"
+        },
+        {
+          "text": "Last night, a spaceship landed in our garden",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit der Zeitangabe „Last night“, danach kommt das Past simple von land.",
+      "hintEn": null,
+      "explainDe": "Last night steht am Satzanfang, oft mit Komma. land wird im Past simple zu landed.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Dann ging er zum Raumfahrtzentrum.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Then he went to the space centre.",
+          "tier": "full"
+        },
+        {
+          "text": "Then, he went to the space centre.",
+          "tier": "full"
+        },
+        {
+          "text": "Then he went to the space centre",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach „Then“ kommt im Englischen zuerst die Person, dann das Verb. go wird in der Vergangenheit zu went.",
+      "hintEn": null,
+      "explainDe": "Anders als im Deutschen steht nach Then zuerst die Person: Then he went … Die unregelmäßige Vergangenheit von go ist went.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u8-past-time-markers-tf-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Match the opener with what came after.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "First, the cable broke.",
+          "right": "Then, Benson was lost in space."
+        },
+        {
+          "left": "Half an hour ago, we heard a noise.",
+          "right": "After that, we saw a UFO."
+        },
+        {
+          "left": "One day, an alien came to Earth.",
+          "right": "Finally, it took Benson back to Earth."
+        },
+        {
+          "left": "In 2013, there was a big investigation.",
+          "right": "Then, the experts studied the photograph."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Welcher zweite Satz passt zeitlich und inhaltlich zum ersten?",
+      "hintEn": null,
+      "explainDe": "Die Zeitwörter zeigen die Reihenfolge: First/Half an hour ago/One day/In 2013 eröffnen, Then/After that/Finally führen die Erzählung weiter.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Open or close a story?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "opens a story",
+          "members": [
+            "First",
+            "One day",
+            "Last night"
+          ]
+        },
+        {
+          "label": "in the middle or at the end",
+          "members": [
+            "After that",
+            "Then",
+            "Finally"
+          ]
+        }
+      ],
+      "hintDe": "Welche Zeitwörter stehen am Anfang einer Erzählung, welche bringen sie weiter zum Schluss?",
+      "hintEn": null,
+      "explainDe": "First, One day und Last night eröffnen oft eine Geschichte. After that führt weiter und Finally markiert das Ende.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Dieses Wort steht am Ende und zeigt, dass die Geschichte vorbei ist.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Finally",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es bedeutet „schließlich“ und kommt ganz am Ende der Erzählung.",
+      "hintEn": null,
+      "explainDe": "Finally heißt „schließlich“ und markiert das letzte Ereignis einer Geschichte.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 8.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u08.s.past-time-markers",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Kleines Wort, das zeigt, wie lange etwas her ist (z. B. two days …).",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "ago",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es steht immer hinter der Zeitangabe und sagt, wie lange etwas her ist.",
+      "hintEn": null,
+      "explainDe": "ago steht hinter der Zeitangabe und drückt aus, wie lange etwas zurückliegt: two days ago = vor zwei Tagen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

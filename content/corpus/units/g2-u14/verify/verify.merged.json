@@ -1,0 +1,39 @@
+{
+  "schema": "verify-merged@1",
+  "slug": "g2-u14",
+  "round": 1,
+  "itemsHash": "3b3f1280995c",
+  "lenses": {
+    "level-gloss": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "answers": {
+      "by": "fable-carryforward",
+      "flagged": 1
+    },
+    "translation": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "register": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    }
+  },
+  "byItem": {
+    "g2u14.gi.present-perfect-already-yet.mc.001": [
+      {
+        "key": "distractor-plausible-correct:g2u14.gi.present-perfect-already-yet.mc.001",
+        "kind": "distractor-plausible-correct",
+        "itemId": "g2u14.gi.present-perfect-already-yet.mc.001",
+        "severity": "warn",
+        "note": "Unchanged since round 1 (not in the round-2 fix set). Prompt 'She ___ won a competition.' target 'has already' (correct, taught order). Distractor 'already has' -> 'She already has won a competition.' is defensible emphatic/pre-auxiliary English and is graded wrong by the strict button match. The other two distractors ('has won already', 'won already') give a broken double-'won' sentence and are safely wrong. Low risk at A2 since 'has already' is the singular taught neutral order, hence warn not fix.",
+        "lens": "answers"
+      }
+    ]
+  },
+  "fixCount": 0,
+  "warnCount": 1,
+  "escalated": []
+}

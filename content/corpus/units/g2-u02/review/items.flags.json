@@ -1,0 +1,399 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u02",
+  "round": 1,
+  "itemsHash": "0316b35dcf62",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g2u02.w.behaviour",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.behaviour",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.boring",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.boring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.confusing",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.confusing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.difficult",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.difficult",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.i-promise",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.i-promise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.mess",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.mess",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.password",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.password",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.posting",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.posting",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.secret",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.secret",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.to-post",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.to-post",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u02.w.upset",
+      "kind": "new-gloss",
+      "itemId": "g2u02.w.upset",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.admission-fee",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.admission-fee",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.anyone",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.anyone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.artist",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.artist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.awesome",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.awesome",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.behaviour",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.behaviour",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.boring",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.boring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.confusing",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.confusing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.difficult",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.difficult",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.dirty",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.dirty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.embarrassed",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.embarrassed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.exciting",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.exciting",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.exhibition",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.exhibition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.funny",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.funny",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.i-promise",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.i-promise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.mess",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.mess",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.modern",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.modern",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.museum",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.museum",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.password",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.password",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.plate",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.plate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.possible",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.possible",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.posting",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.posting",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.sculpture",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.sculpture",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.secret",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.secret",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.such",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.such",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.surprise-party",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.surprise-party",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.tip",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.tip",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.to-add",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.to-add",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.to-be-part-of",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.to-be-part-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.to-be-worth",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.to-be-worth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.to-contact",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.to-contact",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.to-fail",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.to-fail",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.to-organise",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.to-organise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.to-pass-on",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.to-pass-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.to-post",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.to-post",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.upset",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.upset",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.w.what-s-the-matter",
+      "kind": "translation-audit",
+      "itemId": "g2u02.w.what-s-the-matter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.gi.irregular-verbs.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u02.gi.irregular-verbs.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.gi.irregular-verbs.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u02.gi.irregular-verbs.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.gi.past-simple-negation.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u02.gi.past-simple-negation.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.gi.past-simple-questions.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u02.gi.past-simple-questions.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.gi.past-simple-questions.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u02.gi.past-simple-questions.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u02.gi.why-because.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u02.gi.why-because.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u02.gi.past-simple-negation.tr.001#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g2u02.gi.past-simple-negation.tr.001",
+      "verdict": "ok",
+      "note": "\"Sie hat den Brief nicht gelesen.\" is the subject pronoun \"she\" (→ \"She didn't read the letter.\"), not formal address. Confirmed independently by the translation and register lenses (round 2). du-form holds throughout the unit."
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 36 vocab + 60 grammar, full chain with pilot rigor. Stage-7 calibration hardened 3 systemic validators (V-5 own-multiword-headword exemption, V-8 copula skip, V-13 bare \"going to\" is everyday English not a tense name); 6 audited level-grants for the unit's \"More irregular verbs\" box (buy/bought, know/knew, made, wrote). Verify took 2 rounds: round 1 fixed mc.003/mc.001 plausible-correct distractors, gf.001/002 polarity strict, the anagram-prompt grammar terms, and ec.003's clunky compound; round 2 caught \"mark\" (untaught, masked by the name \"Mark\") in to-fail and tf.001's missing uncontracted negative — all fixed. Stage-8 adjudication: all 11 glosses correct + genuinely above level (level-gloss r2), all 42 translations accurate both directions (translation r2 + read), F54 \"Sie\"=\"She\" subject. Grammar set is textbook-faithful (the 4 box verbs, Did/Was-Were rule, why-because) across 10 formats, difficulties 1–3, du-form hints with allowed German pedagogical terms. rejectRate target < 5%."
+  },
+  "metrics": {
+    "itemsReviewed": 96,
+    "fullRows": 96,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

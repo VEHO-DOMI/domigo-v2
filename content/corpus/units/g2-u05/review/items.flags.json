@@ -1,0 +1,427 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u05",
+  "round": 1,
+  "itemsHash": "3621d84f92f0",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g2u05.w.church",
+      "kind": "new-gloss",
+      "itemId": "g2u05.w.church",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u05.w.cinema",
+      "kind": "new-gloss",
+      "itemId": "g2u05.w.cinema",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u05.w.fountain",
+      "kind": "new-gloss",
+      "itemId": "g2u05.w.fountain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u05.w.post-office",
+      "kind": "new-gloss",
+      "itemId": "g2u05.w.post-office",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u05.w.supermarket",
+      "kind": "new-gloss",
+      "itemId": "g2u05.w.supermarket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u05.w.to-change-trains",
+      "kind": "new-gloss",
+      "itemId": "g2u05.w.to-change-trains",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.airport",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.airport",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.as-far-as",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.as-far-as",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.bank",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.bank",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.bus-stop",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.bus-stop",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.chemist-s",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.chemist-s",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.church",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.church",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.cinema",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.cinema",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.comment",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.comment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.feedback",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.feedback",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.fountain",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.fountain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.guest",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.guest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.hospital",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.hospital",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.map",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.map",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.market-square",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.market-square",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.most-of-the-time",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.most-of-the-time",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.music-shop",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.music-shop",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.next-to",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.next-to",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.opening",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.opening",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.opposite",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.opposite",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.pocket",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.pocket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.police-station",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.police-station",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.politely",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.politely",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.positive",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.positive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.post-office",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.post-office",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.railway-station",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.railway-station",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.restaurant",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.restaurant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.review",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.review",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.round-the-corner",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.round-the-corner",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.second",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.second",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.simply",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.simply",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.slow",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.slow",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.somewhere",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.somewhere",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.supermarket",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.supermarket",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.the-worst",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.the-worst",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-bother",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-bother",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-change-trains",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-change-trains",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-comment",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-comment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-cross",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-cross",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-cross-the-street",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-cross-the-street",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-go-past",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-go-past",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-go-straight-ahead",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-go-straight-ahead",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-go-straight-on",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-go-straight-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-interrupt",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-interrupt",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-offer",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-offer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-take-the-second-right",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-take-the-second-right",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.to-turn-left",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.to-turn-left",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.tourist-office",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.tourist-office",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.traffic-lights",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.traffic-lights",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.w.underground",
+      "kind": "translation-audit",
+      "itemId": "g2u05.w.underground",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.gi.prepositions-directions.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u05.gi.prepositions-directions.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u05.gi.prepositions-directions.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u05.gi.prepositions-directions.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g2u05.w.to-go-past#7d7580",
+      "kind": "validator-warn",
+      "itemId": "g2u05.w.to-go-past",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 49 vocab + 26 grammar (one rich directions/prepositions-of-place structure, 9 formats). Grants: turn/left/right/straight/ahead/corner/beside (SB directions box). This unit drove two systemic validator refinements (committed): V-8 now treats motion-verb/preposition/quantifier glue (go, on, most) as non-leaking in a multiword headword — defining \"to go past\" without \"go\" is impossible at A1 — while still flagging distinctive content (bus, train, lights); and V-9/V-17 distractor gating is now phrase-aware (a distractor sentence \"…at the traffic lights\" passes) and honors grants for vocab mc. Smoke-check fixed 5 circular direction-phrase definitions + a chip/carrier/label cluster. Verify round 1 caught two defensibly-correct distractors (behind in gf.001; \"at the corner of\" in gf.009, plus its explainDe wrongly calling \"at\" wrong) and one orphaned gloss I introduced (bus on bus-stop) — all fixed; round 2 clean. Stage-8: 6 glosses correct, 51 translations accurate (F58 \"weak evidence\" on to-go-past's German is a heuristic — vorbeigehen/vorbeigehen an/vorbei gehen are all correct). rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 75,
+    "fullRows": 75,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

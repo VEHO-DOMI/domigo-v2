@@ -1,0 +1,2322 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g2-u08",
+  "briefBank": "7b3557fe606c",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g2u08.w.spaceship",
+      "w": "spaceship",
+      "g": "Raumschiff",
+      "d": "a ship that travels in space",
+      "s": "A ___ is a ship that travels in space.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "spaceship",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spaceship",
+          "tier": "full"
+        },
+        {
+          "text": "spaceships",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spaceship",
+            "tier": "full"
+          },
+          {
+            "text": "spaceships",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Raumschiff",
+            "tier": "full"
+          },
+          {
+            "text": "das Raumschiff",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aeroplane",
+        "spacesuit",
+        "planet"
+      ],
+      "hintDe": "Damit fliegt man durch das Weltall.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "aeroplane",
+          "spacesuit",
+          "planet",
+          "statue",
+          "machine"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.commander",
+      "w": "commander",
+      "g": "Kommandant/in",
+      "d": "the boss of a spaceship who gives the crew their jobs",
+      "s": "The ___ told the crew what to do.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "commander",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "commander",
+          "tier": "full"
+        },
+        {
+          "text": "commanders",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "commander",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kommandant",
+            "tier": "full"
+          },
+          {
+            "text": "Kommandantin",
+            "tier": "full"
+          },
+          {
+            "text": "Kommandant/in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "visitor",
+        "traveller",
+        "expert"
+      ],
+      "hintDe": "Diese Person hat auf dem Raumschiff das Sagen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "visitor",
+          "traveller",
+          "expert",
+          "alien",
+          "crew"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.62, story 'Benson's bad luck'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.spacesuit",
+      "w": "spacesuit",
+      "g": "Raumanzug",
+      "d": "the clothes you wear out in space",
+      "s": "Benson wears a ___ outside the spaceship.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "spacesuit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spacesuit",
+          "tier": "full"
+        },
+        {
+          "text": "spacesuits",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spacesuit",
+            "tier": "full"
+          },
+          {
+            "text": "spacesuits",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Raumanzug",
+            "tier": "full"
+          },
+          {
+            "text": "der Raumanzug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spaceship",
+        "cable",
+        "machine"
+      ],
+      "hintDe": "Diese Kleidung schützt dich draußen im Weltall.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "spaceship",
+          "cable",
+          "machine",
+          "statue",
+          "key"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.62, 'Benson connected a cable to his spacesuit.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.alien",
+      "w": "alien",
+      "g": "Außerirdische/r",
+      "d": "a living thing that is not from Earth",
+      "s": "A green ___ came to Earth from space.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "alien",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "alien",
+          "tier": "full"
+        },
+        {
+          "text": "aliens",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "alien",
+            "tier": "full"
+          },
+          {
+            "text": "aliens",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Außerirdischer",
+            "tier": "full"
+          },
+          {
+            "text": "Außerirdische",
+            "tier": "full"
+          },
+          {
+            "text": "Außerirdische/r",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commander",
+        "traveller",
+        "visitor"
+      ],
+      "hintDe": "Dieses Wesen kommt von einem anderen Planeten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "commander",
+          "traveller",
+          "visitor",
+          "expert",
+          "boss"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.62, 'An alien was next to him.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.ufo",
+      "w": "UFO",
+      "g": "UFO",
+      "d": "a thing in the sky that some people think is from space",
+      "s": "We saw a ___ in the sky last night, but nobody knew what it was.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "UFO",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "UFO",
+          "tier": "full"
+        },
+        {
+          "text": "UFOs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "UFO",
+            "tier": "full"
+          },
+          {
+            "text": "UFOs",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "UFO",
+            "tier": "full"
+          },
+          {
+            "text": "das UFO",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aeroplane",
+        "statue",
+        "cable"
+      ],
+      "hintDe": "Ein Flugobjekt, das niemand erklären kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "aeroplane",
+          "statue",
+          "cable",
+          "key",
+          "machine"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.64, 'UFOs - are they really out there?'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.space-centre",
+      "w": "space centre",
+      "g": "Raumfahrtzentrum",
+      "d": "the place on Earth where people work on spaceships",
+      "s": "We visited the ___ and looked at the spaceships.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "space centre",
+          "tier": "full"
+        },
+        {
+          "text": "space center",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "space centre",
+          "tier": "full"
+        },
+        {
+          "text": "space center",
+          "tier": "partial"
+        },
+        {
+          "text": "space centres",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "space centre",
+            "tier": "full"
+          },
+          {
+            "text": "space center",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Raumfahrtzentrum",
+            "tier": "full"
+          },
+          {
+            "text": "das Raumfahrtzentrum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spaceship",
+        "spacesuit",
+        "statue"
+      ],
+      "hintDe": "Ein Ort auf der Erde, von dem aus man ins Weltall startet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "spaceship",
+          "spacesuit",
+          "statue",
+          "capital",
+          "machine"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.63, 'He went to the old Space Centre on Earth.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.planet",
+      "w": "planet",
+      "g": "Planet",
+      "d": "a big thing in space where people or aliens can live, like Earth or Mars",
+      "s": "Earth is the ___ where we all live.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "planet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "planet",
+          "tier": "full"
+        },
+        {
+          "text": "planets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "planet",
+            "tier": "full"
+          },
+          {
+            "text": "planets",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Planet",
+            "tier": "full"
+          },
+          {
+            "text": "der Planet",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "spaceship",
+        "statue",
+        "machine"
+      ],
+      "hintDe": "Die Erde und der Mars sind je so ein Himmelskörper.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "spaceship",
+          "statue",
+          "machine",
+          "cable",
+          "key"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.62, 'We are travellers from the planet Arconia.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.boss",
+      "w": "boss",
+      "g": "Chef/Chefin",
+      "d": "the man or woman you work for",
+      "s": "My mum has a new ___ at the office.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "boss",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "boss",
+          "tier": "full"
+        },
+        {
+          "text": "bosses",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "boss",
+            "tier": "full"
+          },
+          {
+            "text": "bosses",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Chef",
+            "tier": "full"
+          },
+          {
+            "text": "Chefin",
+            "tier": "full"
+          },
+          {
+            "text": "Chef/Chefin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "visitor",
+        "traveller",
+        "expert"
+      ],
+      "hintDe": "Diese Person ist bei der Arbeit über dir.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "visitor",
+          "traveller",
+          "expert",
+          "commander",
+          "crew"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB p.66, 'He wanted to warn the boss of the Space Centre.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.cable",
+      "w": "cable",
+      "g": "Kabel",
+      "d": "a long thing that connects two machines",
+      "s": "Benson connected a ___ to his spacesuit.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cable",
+          "tier": "full"
+        },
+        {
+          "text": "cables",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cable",
+            "tier": "full"
+          },
+          {
+            "text": "cables",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kabel",
+            "tier": "full"
+          },
+          {
+            "text": "das Kabel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "key",
+        "machine",
+        "statue"
+      ],
+      "hintDe": "Damit verbindest du zwei Geräte.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "key",
+          "machine",
+          "statue",
+          "spacesuit",
+          "photograph"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'Benson connected a cable to his spacesuit.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.capital",
+      "w": "capital",
+      "g": "Hauptstadt",
+      "d": "the city of a country where the king or queen lives",
+      "s": "Vienna is the ___ of Austria.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "capital",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "capital",
+          "tier": "full"
+        },
+        {
+          "text": "capitals",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "capital",
+            "tier": "full"
+          },
+          {
+            "text": "capitals",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hauptstadt",
+            "tier": "full"
+          },
+          {
+            "text": "die Hauptstadt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "space centre",
+        "statue",
+        "key"
+      ],
+      "hintDe": "Die wichtigste Stadt eines Landes.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "space centre",
+          "statue",
+          "key",
+          "machine",
+          "photograph"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'Vienna is the capital of Austria.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.to-connect",
+      "w": "to connect",
+      "g": "verbinden",
+      "d": "to join two machines with a cable",
+      "s": "You have to ___ the cable to the spacesuit.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "connect",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "connect",
+          "tier": "full"
+        },
+        {
+          "text": "to connect",
+          "tier": "full"
+        },
+        {
+          "text": "connects",
+          "tier": "full"
+        },
+        {
+          "text": "connected",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "connect",
+            "tier": "full"
+          },
+          {
+            "text": "to connect",
+            "tier": "full"
+          },
+          {
+            "text": "join",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verbinden",
+            "tier": "full"
+          },
+          {
+            "text": "anschließen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to repair",
+        "to destroy",
+        "to kidnap"
+      ],
+      "hintDe": "Zwei Dinge mit einem Kabel zusammenbringen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to repair",
+          "to destroy",
+          "to kidnap",
+          "to take over",
+          "to clean"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'You have to connect the cable to the spacesuit.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.hero-heroine",
+      "w": "hero, heroine",
+      "g": "Held",
+      "d": "a great man people love and thank for what he did",
+      "s": "Commander Benson is our ___ - we all love and thank him.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hero",
+          "tier": "full"
+        },
+        {
+          "text": "heroine",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hero",
+          "tier": "full"
+        },
+        {
+          "text": "heroine",
+          "tier": "full"
+        },
+        {
+          "text": "heroes",
+          "tier": "partial"
+        },
+        {
+          "text": "heroines",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hero",
+            "tier": "full"
+          },
+          {
+            "text": "heroine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Held",
+            "tier": "full"
+          },
+          {
+            "text": "Heldin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commander",
+        "visitor",
+        "expert"
+      ],
+      "hintDe": "So nennt man jemanden, der etwas Mutiges und Gutes getan hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "commander",
+          "visitor",
+          "expert",
+          "traveller",
+          "boss"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.63 song, 'Commander Benson's our hero.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.machine",
+      "w": "machine",
+      "g": "Maschine",
+      "d": "a thing that does a job for you, like washing clothes",
+      "s": "Benson used a ___ to talk to the alien.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "machine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "machine",
+          "tier": "full"
+        },
+        {
+          "text": "machines",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "machine",
+            "tier": "full"
+          },
+          {
+            "text": "machines",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Maschine",
+            "tier": "full"
+          },
+          {
+            "text": "die Maschine",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cable",
+        "key",
+        "statue"
+      ],
+      "hintDe": "Ein Gerät, das eine Arbeit für dich erledigt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cable",
+          "key",
+          "statue",
+          "spaceship",
+          "photograph"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.62, 'The alien gave him a little machine.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.to-repair",
+      "w": "to repair",
+      "g": "reparieren",
+      "d": "to make a thing work again after it breaks",
+      "s": "Benson went outside to ___ the spaceship.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "repair",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "repair",
+          "tier": "full"
+        },
+        {
+          "text": "to repair",
+          "tier": "full"
+        },
+        {
+          "text": "repairs",
+          "tier": "full"
+        },
+        {
+          "text": "repaired",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "repair",
+            "tier": "full"
+          },
+          {
+            "text": "to repair",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "reparieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to connect",
+        "to destroy",
+        "to kidnap"
+      ],
+      "hintDe": "Etwas Kaputtes wieder ganz machen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to connect",
+          "to destroy",
+          "to kidnap",
+          "to take over",
+          "to clean"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'Benson went outside to repair the broken spaceship.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.space",
+      "w": "space",
+      "g": "Weltall",
+      "d": "everything far away from Earth, where the stars and planets are",
+      "s": "There are lots of stars and planets out there in ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "space",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "space",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "space",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Weltall",
+            "tier": "full"
+          },
+          {
+            "text": "das Weltall",
+            "tier": "full"
+          },
+          {
+            "text": "All",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "capital",
+        "crew",
+        "key"
+      ],
+      "hintDe": "Dort draußen sind die Sterne und Planeten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "capital",
+          "crew",
+          "key",
+          "statue",
+          "machine"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'There are lots of stars and planets out there in space.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.statue",
+      "w": "statue",
+      "g": "Statue",
+      "d": "a big thing made of stone that looks like a famous man",
+      "s": "There's a ___ of Lord Nelson at Trafalgar Square.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "statue",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "statue",
+          "tier": "full"
+        },
+        {
+          "text": "statues",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "statue",
+            "tier": "full"
+          },
+          {
+            "text": "statues",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Statue",
+            "tier": "full"
+          },
+          {
+            "text": "die Statue",
+            "tier": "full"
+          },
+          {
+            "text": "Standbild",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "machine",
+        "cable",
+        "key"
+      ],
+      "hintDe": "Ein großes Standbild aus Stein, oft von einer berühmten Person.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "machine",
+          "cable",
+          "key",
+          "photograph",
+          "spaceship"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'There's a statue of Lord Nelson at Trafalgar Square.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.to-take-over",
+      "w": "to take over",
+      "g": "erobern",
+      "d": "to become the new boss of a place and rule it",
+      "s": "The aliens want to ___ the Earth.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "take over",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take over",
+          "tier": "full"
+        },
+        {
+          "text": "to take over",
+          "tier": "full"
+        },
+        {
+          "text": "takes over",
+          "tier": "full"
+        },
+        {
+          "text": "took over",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take over",
+            "tier": "full"
+          },
+          {
+            "text": "to take over",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erobern",
+            "tier": "full"
+          },
+          {
+            "text": "die Führung übernehmen",
+            "tier": "full"
+          },
+          {
+            "text": "übernehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to repair",
+        "to connect",
+        "to destroy"
+      ],
+      "hintDe": "Ein Land oder einen Ort unter seine Kontrolle bringen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to repair",
+          "to connect",
+          "to destroy",
+          "to kidnap",
+          "to clean"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'The aliens want to take over the Earth.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.traveller",
+      "w": "traveller",
+      "g": "Reisender/Reisende",
+      "d": "a man or woman who travels from place to place",
+      "s": "I'm a ___ from planet Arconia.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "traveller",
+          "tier": "full"
+        },
+        {
+          "text": "traveler",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "traveller",
+          "tier": "full"
+        },
+        {
+          "text": "traveler",
+          "tier": "partial"
+        },
+        {
+          "text": "travellers",
+          "tier": "full"
+        },
+        {
+          "text": "travelers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "traveller",
+            "tier": "full"
+          },
+          {
+            "text": "traveler",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Reisender",
+            "tier": "full"
+          },
+          {
+            "text": "Reisende",
+            "tier": "full"
+          },
+          {
+            "text": "Reisender/Reisende",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commander",
+        "expert",
+        "boss"
+      ],
+      "hintDe": "Jemand, der von Ort zu Ort unterwegs ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "commander",
+          "expert",
+          "boss",
+          "visitor",
+          "crew"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'I'm a traveller from planet Arconia.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.visitor",
+      "w": "visitor",
+      "g": "Besucher/Besucherin",
+      "d": "a man or woman who comes to a place to see it",
+      "s": "Today we had a ___ from England who told us about London.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "visitor",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "visitor",
+          "tier": "full"
+        },
+        {
+          "text": "visitors",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "visitor",
+            "tier": "full"
+          },
+          {
+            "text": "visitors",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Besucher",
+            "tier": "full"
+          },
+          {
+            "text": "Besucherin",
+            "tier": "full"
+          },
+          {
+            "text": "Besucher/Besucherin",
+            "tier": "full"
+          },
+          {
+            "text": "Gast",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commander",
+        "expert",
+        "boss"
+      ],
+      "hintDe": "Jemand, der zu Besuch kommt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "commander",
+          "expert",
+          "boss",
+          "traveller",
+          "crew"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'It's good to have you as a visitor.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.key",
+      "w": "key",
+      "g": "Schlüssel",
+      "d": "a small thing that opens a door or a car",
+      "s": "He put the ___ in the door and opened it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "key",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "key",
+          "tier": "full"
+        },
+        {
+          "text": "keys",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "key",
+            "tier": "full"
+          },
+          {
+            "text": "keys",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlüssel",
+            "tier": "full"
+          },
+          {
+            "text": "der Schlüssel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cable",
+        "machine",
+        "statue"
+      ],
+      "hintDe": "Damit sperrst du eine Tür auf.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cable",
+          "machine",
+          "statue",
+          "photograph",
+          "spacesuit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.63, 'He found a gold key on the ground.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.crew",
+      "w": "crew",
+      "g": "Besatzung",
+      "d": "all the people who work on a ship or a plane",
+      "s": "Benson wants to help his ___ on the spaceship.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "crew",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crew",
+          "tier": "full"
+        },
+        {
+          "text": "crews",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crew",
+            "tier": "full"
+          },
+          {
+            "text": "crews",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Besatzung",
+            "tier": "full"
+          },
+          {
+            "text": "die Besatzung",
+            "tier": "full"
+          },
+          {
+            "text": "Mannschaft",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "commander",
+        "visitor",
+        "expert"
+      ],
+      "hintDe": "Alle, die auf einem Schiff zusammenarbeiten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "commander",
+          "visitor",
+          "expert",
+          "traveller",
+          "boss"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'Benson has to save his crew on the spaceship.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.aeroplane",
+      "w": "aeroplane",
+      "g": "Flugzeug",
+      "d": "a big thing with wings that carries people high in the sky",
+      "s": "Yesterday, I saw a huge ___ in the sky.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "aeroplane",
+          "tier": "full"
+        },
+        {
+          "text": "airplane",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "aeroplane",
+          "tier": "full"
+        },
+        {
+          "text": "airplane",
+          "tier": "partial"
+        },
+        {
+          "text": "aeroplanes",
+          "tier": "full"
+        },
+        {
+          "text": "airplanes",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "aeroplane",
+            "tier": "full"
+          },
+          {
+            "text": "airplane",
+            "tier": "partial"
+          },
+          {
+            "text": "plane",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flugzeug",
+            "tier": "full"
+          },
+          {
+            "text": "das Flugzeug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wings",
+          "de": "Flügel, Tragflächen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "spaceship",
+        "statue",
+        "machine"
+      ],
+      "hintDe": "Damit fliegen Menschen über die Wolken.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "spaceship",
+          "statue",
+          "machine",
+          "cable",
+          "key"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'Yesterday, I saw a huge aeroplane in the sky.'",
+      "note": "'wings' glossed (above level); needed to make the definition unambiguous vs spaceship."
+    },
+    {
+      "wordId": "g2u08.w.expert",
+      "w": "expert",
+      "g": "Experte/Expertin",
+      "d": "a man or woman who is very good at one thing",
+      "s": "She studied space for many years, so she is an ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "expert",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "expert",
+          "tier": "full"
+        },
+        {
+          "text": "experts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "expert",
+            "tier": "full"
+          },
+          {
+            "text": "experts",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Experte",
+            "tier": "full"
+          },
+          {
+            "text": "Expertin",
+            "tier": "full"
+          },
+          {
+            "text": "Experte/Expertin",
+            "tier": "full"
+          },
+          {
+            "text": "Fachmann",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "visitor",
+        "traveller",
+        "crew"
+      ],
+      "hintDe": "Jemand, der sich mit einer Sache richtig gut auskennt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "visitor",
+          "traveller",
+          "crew",
+          "commander",
+          "boss"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'She's an expert.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.hoax",
+      "w": "hoax",
+      "g": "Täuschung",
+      "d": "a false story that people are told is true",
+      "s": "The news isn't true. It's a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hoax",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hoax",
+          "tier": "full"
+        },
+        {
+          "text": "hoaxes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hoax",
+            "tier": "full"
+          },
+          {
+            "text": "hoaxes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Täuschung",
+            "tier": "full"
+          },
+          {
+            "text": "Streich",
+            "tier": "partial"
+          },
+          {
+            "text": "Schwindel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "investigation",
+        "photograph",
+        "machine"
+      ],
+      "hintDe": "Eine Lüge, die echt aussehen soll.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "investigation",
+          "photograph",
+          "machine",
+          "statue",
+          "cable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'The news isn't true. It's a hoax.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.investigation",
+      "w": "investigation",
+      "g": "Untersuchung",
+      "d": "the work the police do to find out what really happened",
+      "s": "The police did an ___ to find out what happened.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "investigation",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "investigation",
+          "tier": "full"
+        },
+        {
+          "text": "investigations",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "investigation",
+            "tier": "full"
+          },
+          {
+            "text": "investigations",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Untersuchung",
+            "tier": "full"
+          },
+          {
+            "text": "Ermittlung",
+            "tier": "full"
+          },
+          {
+            "text": "die Untersuchung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "photograph",
+        "hoax",
+        "statue"
+      ],
+      "hintDe": "Damit findet die Polizei heraus, was wirklich passiert ist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "photograph",
+          "hoax",
+          "statue",
+          "machine",
+          "cable"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'The police started their investigation yesterday.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.photograph",
+      "w": "photograph",
+      "g": "Foto",
+      "d": "a picture you take to keep",
+      "s": "My grandma showed me a ___ of her sister.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "photograph",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "photograph",
+          "tier": "full"
+        },
+        {
+          "text": "photo",
+          "tier": "partial"
+        },
+        {
+          "text": "photographs",
+          "tier": "full"
+        },
+        {
+          "text": "photos",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "photograph",
+            "tier": "full"
+          },
+          {
+            "text": "photo",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Foto",
+            "tier": "full"
+          },
+          {
+            "text": "das Foto",
+            "tier": "full"
+          },
+          {
+            "text": "Fotografie",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "statue",
+        "machine",
+        "cable"
+      ],
+      "hintDe": "Ein Bild, das du mit der Kamera machst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "statue",
+          "machine",
+          "cable",
+          "key",
+          "investigation"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'My grandma showed me an old photograph.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.to-destroy",
+      "w": "to destroy",
+      "g": "zerstören",
+      "d": "to break a place so much that nothing is there",
+      "s": "In the story, aliens want to ___ the town and all the buildings.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "destroy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "destroy",
+          "tier": "full"
+        },
+        {
+          "text": "to destroy",
+          "tier": "full"
+        },
+        {
+          "text": "destroys",
+          "tier": "full"
+        },
+        {
+          "text": "destroyed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "destroy",
+            "tier": "full"
+          },
+          {
+            "text": "to destroy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zerstören",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to repair",
+        "to connect",
+        "to kidnap"
+      ],
+      "hintDe": "Etwas so kaputt machen, dass nichts übrig bleibt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to repair",
+          "to connect",
+          "to kidnap",
+          "to take over",
+          "to clean"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'In the film, aliens try to destroy Earth.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.to-kidnap",
+      "w": "to kidnap",
+      "g": "entführen",
+      "d": "to take people away and keep them, often for money",
+      "s": "I think aliens want to ___ people from Earth.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "kidnap",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kidnap",
+          "tier": "full"
+        },
+        {
+          "text": "to kidnap",
+          "tier": "full"
+        },
+        {
+          "text": "kidnaps",
+          "tier": "full"
+        },
+        {
+          "text": "kidnapped",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kidnap",
+            "tier": "full"
+          },
+          {
+            "text": "to kidnap",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entführen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to repair",
+        "to connect",
+        "to destroy"
+      ],
+      "hintDe": "Einen Menschen mit Gewalt wegbringen und festhalten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to repair",
+          "to connect",
+          "to destroy",
+          "to take over",
+          "to clean"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'I think aliens want to kidnap people from Earth.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.nonsense",
+      "w": "nonsense",
+      "g": "Unsinn",
+      "d": "talk that is mad and not true",
+      "s": "You're talking ___! That story can't be true.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "nonsense",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nonsense",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nonsense",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Unsinn",
+            "tier": "full"
+          },
+          {
+            "text": "Quatsch",
+            "tier": "full"
+          },
+          {
+            "text": "Blödsinn",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hoax",
+        "investigation",
+        "statue"
+      ],
+      "hintDe": "Wenn jemand etwas Dummes sagt, das nicht stimmt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hoax",
+          "investigation",
+          "statue",
+          "machine",
+          "crew"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'I'm sorry, but this is just nonsense.'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.comfortable",
+      "w": "comfortable",
+      "g": "bequem",
+      "d": "nice to be on and you are not tired",
+      "s": "The chair was very ___ and I did not want to get up.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "comfortable",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "comfortable",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "comfortable",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bequem",
+            "tier": "full"
+          },
+          {
+            "text": "gemütlich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "nervous",
+        "dangerous",
+        "famous"
+      ],
+      "hintDe": "So fühlt sich ein weicher Sessel an.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "nervous",
+          "dangerous",
+          "famous",
+          "noisy",
+          "scary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'The chair was very comfortable!'",
+      "note": null
+    },
+    {
+      "wordId": "g2u08.w.calm-down",
+      "w": "Calm down!",
+      "g": "Beruhige dich!",
+      "d": "you call this out to a friend who is too excited or scared",
+      "s": "___! There is nothing to be afraid of.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Calm down",
+          "tier": "full"
+        },
+        {
+          "text": "Calm down!",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Calm down",
+          "tier": "full"
+        },
+        {
+          "text": "Calm down!",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Calm down",
+            "tier": "full"
+          },
+          {
+            "text": "Calm down!",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Beruhige dich",
+            "tier": "full"
+          },
+          {
+            "text": "Beruhige dich!",
+            "tier": "full"
+          },
+          {
+            "text": "Beruhig dich!",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Go away!",
+        "Hurry up.",
+        "Be careful."
+      ],
+      "hintDe": "Das sagst du zu jemandem, der zu aufgeregt ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Go away!",
+          "Hurry up.",
+          "Be careful.",
+          "Don't worry.",
+          "Come on!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB p.65, 'Calm down, Gillian. You're safe here with us.'",
+      "note": "Fixed phrase; distractors are wrong forms/phrases, never the headword."
+    },
+    {
+      "wordId": "g2u08.w.in-that-case",
+      "w": "in that case",
+      "g": "in diesem Fall",
+      "d": "if that is so, then",
+      "s": "You don't like fish? ___, let's have chicken.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "in that case",
+          "tier": "full"
+        },
+        {
+          "text": "In that case",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in that case",
+          "tier": "full"
+        },
+        {
+          "text": "In that case",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in that case",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in diesem Fall",
+            "tier": "full"
+          },
+          {
+            "text": "dann",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Calm down!",
+        "Don't worry.",
+        "No problem."
+      ],
+      "hintDe": "Wenn das so ist, dann ...",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "Calm down!",
+          "Don't worry.",
+          "No problem.",
+          "Well done.",
+          "Come on!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "masterlist exampleSb: 'In that case, we should give him morphing powers.'",
+      "note": "Fixed phrase; distractors are wrong but plausible phrases, headword never present."
+    }
+  ]
+}

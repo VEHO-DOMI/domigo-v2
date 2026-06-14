@@ -1,0 +1,1548 @@
+{
+  "schema": "grammar@1",
+  "grade": 2,
+  "unit": 14,
+  "slug": "g2-u14",
+  "items": [
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.ag.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: already"
+      },
+      "prompt": {
+        "text": "Das Wort für 'schon' im positiven Perfektsatz (zwischen have/has und der dritten Form):",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "already",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es steht zwischen have/has und der dritten Form und bedeutet schon.",
+      "hintEn": null,
+      "explainDe": "already = schon, im positiven Satz zwischen have/has und dritter Form.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.cp.002",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "No thanks, I have seen it yet.",
+            "No thanks, I have already seen it yet.",
+            "No thanks, I has already seen it.",
+            "No thanks, I have ever seen it."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-cp-001",
+        "narrative": null,
+        "note": "PP tokens: already, seen"
+      },
+      "prompt": {
+        "text": "Your friend wants to watch the cycling race with you, but you watched it last week. What do you tell her?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "No thanks, I have already seen it.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "No thanks, I have seen it yet.",
+        "No thanks, I have already seen it yet.",
+        "No thanks, I has already seen it."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du hast es schon gesehen: have + already + Perfekt-Form (seen). already nicht mit yet verwechseln.",
+      "hintEn": null,
+      "explainDe": "Im positiven Satz nutzt du already + dritte Form: I have already seen it. yet gehört in Verneinung und Frage.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.ec.002",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: yet, finished"
+      },
+      "prompt": {
+        "text": "She hasn't yet finished the swimming race.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She hasn't finished the swimming race yet.",
+          "tier": "full"
+        },
+        {
+          "text": "She has not finished the swimming race yet.",
+          "tier": "full"
+        },
+        {
+          "text": "finished the swimming race yet",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der Verneinung gehört das Wort für noch nicht ans Satzende, nicht in die Satzmitte.",
+      "hintEn": null,
+      "explainDe": "yet steht in Verneinungen am Satzende: She hasn't finished it yet.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.ec.003",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: already, yet, taken"
+      },
+      "prompt": {
+        "text": "We haven't already taken part in a competition.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We haven't taken part in a competition yet.",
+          "tier": "full"
+        },
+        {
+          "text": "We have not taken part in a competition yet.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In einer Verneinung darfst du nicht already nehmen. Hier brauchst du yet am Satzende.",
+      "hintEn": null,
+      "explainDe": "In verneinten Sätzen verwendest du not ... yet statt already: We haven't taken part yet.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.ec.004",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: already, won"
+      },
+      "prompt": {
+        "text": "I already have won my first race.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have already won my first race.",
+          "tier": "full"
+        },
+        {
+          "text": "I've already won my first race.",
+          "tier": "full"
+        },
+        {
+          "text": "have already won",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Wort für schon steht an der falschen Stelle. Es gehört zwischen have und die Perfekt-Form (won).",
+      "hintEn": null,
+      "explainDe": "already steht zwischen have/has und der dritten Form, nicht davor: I have already won.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.gf.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-001",
+        "narrative": null,
+        "note": "PP tokens: already"
+      },
+      "prompt": {
+        "text": "I have ___ done my homework, so I can train now.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "already",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du willst sagen, dass du etwas SCHON gemacht hast. Das passende Wort steht zwischen have und der Perfekt-Form (done).",
+      "hintEn": null,
+      "explainDe": "already heißt schon und steht im positiven Satz zwischen have/has und der dritten Form des Verbs: I have already done it.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.gf.002",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-005",
+        "narrative": null,
+        "note": "PP tokens: yet"
+      },
+      "prompt": {
+        "text": "Hurry up! Have you done your training ___?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "yet",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In einer Frage fragst du, ob etwas schon passiert ist. Das passende Wort steht ganz am Satzende.",
+      "hintEn": null,
+      "explainDe": "yet steht in Fragen und Verneinungen am Satzende: Have you done it yet?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.gf.003",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-003",
+        "narrative": null,
+        "note": "PP tokens: yet, won"
+      },
+      "prompt": {
+        "text": "She hasn't won a race ___, but she keeps training.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "yet",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Etwas ist noch nicht geschehen. In der Verneinung gehört das Wort für noch nicht ans Satzende.",
+      "hintEn": null,
+      "explainDe": "Bei not ... yet sagst du, dass etwas bis jetzt noch nicht passiert ist. yet kommt ans Ende: She hasn't won a race yet.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.gf.004",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-006",
+        "narrative": null,
+        "note": "PP tokens: already, won"
+      },
+      "prompt": {
+        "text": "We have ___ won two races today. Let's go for a third!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "already",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist mehr passiert, als man erwartet hätte. Das Wort für schon steht zwischen have und der Perfekt-Form.",
+      "hintEn": null,
+      "explainDe": "already betont, dass etwas (früher als gedacht) schon passiert ist, und steht zwischen have/has und der dritten Form: We have already won.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.gf.005",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-005",
+        "narrative": null,
+        "note": "PP tokens: yet, finished"
+      },
+      "prompt": {
+        "text": "Has your sister finished the race ___? — No, she's still swimming.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "yet",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Antwort zeigt: noch nicht. In der Frage fragst du mit dem Wort am Satzende, ob es schon so weit ist.",
+      "hintEn": null,
+      "explainDe": "In Fragen fragt yet, ob etwas bis jetzt passiert ist. Es steht am Ende: Has she finished yet?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.gf.006",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-001",
+        "narrative": null,
+        "note": "PP tokens: already, given"
+      },
+      "prompt": {
+        "text": "I can't go cycling with you. I have ___ given my skateboard to my sister.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "already",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du erklärst, dass etwas schon erledigt ist. Das Wort steht zwischen have und der Perfekt-Form (given).",
+      "hintEn": null,
+      "explainDe": "already steht im positiven Satz zwischen have/has und der dritten Form: I have already given it away.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.gs.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: already, yet, won"
+      },
+      "prompt": {
+        "text": "already / yet",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "She has already …",
+          "members": [
+            "She has already won a race.",
+            "We have already done our homework.",
+            "They have already won two races."
+          ]
+        },
+        {
+          "label": "They haven't … yet",
+          "members": [
+            "They haven't won a race yet.",
+            "Have you done your training yet?",
+            "I haven't done my homework yet."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "already gehört in positive Aussagesätze, yet in Verneinungen und Fragen.",
+      "hintEn": null,
+      "explainDe": "Positive Sätze nehmen already (in der Mitte). Verneinungen und Fragen nehmen yet (am Ende).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.mc.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "already has",
+            "has won already",
+            "won already",
+            "already won"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-mc-001",
+        "narrative": null,
+        "note": "PP tokens: already, won"
+      },
+      "prompt": {
+        "text": "She ___ won a competition.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has already",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "already has",
+        "has won already",
+        "won already"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Wort für schon steht zwischen have/has und der Perfekt-Form, nicht davor und nicht ganz hinten.",
+      "hintEn": null,
+      "explainDe": "already steht direkt zwischen have/has und der dritten Form des Verbs: has already won.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.mc.002",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "isn't",
+            "doesn't",
+            "wasn't",
+            "didn't"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: started"
+      },
+      "prompt": {
+        "text": "He ___ started training for the competition.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hasn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "isn't",
+        "doesn't",
+        "wasn't"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vor der Perfekt-Form (started) brauchst du has/have. Verneint heißt das hasn't.",
+      "hintEn": null,
+      "explainDe": "Das Perfekt wird mit have/has gebildet. Bei he/she/it ist die Verneinung hasn't: He hasn't started yet.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.mp.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-mt-001",
+        "narrative": null,
+        "note": "PP tokens: already, yet, won"
+      },
+      "prompt": {
+        "text": "She has already … / They haven't … / Have you …",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "She has already",
+          "right": "won her first race."
+        },
+        {
+          "left": "I haven't",
+          "right": "done my homework yet."
+        },
+        {
+          "left": "Have you done",
+          "right": "your training yet?"
+        },
+        {
+          "left": "They have already",
+          "right": "won two races."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "already passt in positive Sätze (in der Satzmitte), yet ans Ende von Fragen und Verneinungen.",
+      "hintEn": null,
+      "explainDe": "already steht zwischen have/has und dritter Form; yet steht am Satzende von Verneinung und Frage.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.qf.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-tf-003",
+        "narrative": null,
+        "note": "PP tokens: yet, finished"
+      },
+      "prompt": {
+        "text": "You want to ask Tom about his training. Ask if he is finished, using a word that goes at the end and means 'bis jetzt'.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you finished your training yet?",
+          "tier": "full"
+        },
+        {
+          "text": "Have you finished training yet?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage im Perfekt: Have you + dritte Form (finished) ...? Das Fragewort für schon (yet) steht ganz am Ende.",
+      "hintEn": null,
+      "explainDe": "Perfekt-Frage mit yet am Ende: Have you finished your training yet?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.sb.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "have",
+            "yet",
+            "ever",
+            "never"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-sb-001",
+        "narrative": null,
+        "note": "PP tokens: already, won"
+      },
+      "prompt": {
+        "text": "already / has / won / she / a race",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has already won a race.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge im positiven Perfektsatz: Subjekt + has + already + dritte Form + Rest.",
+      "hintEn": null,
+      "explainDe": "already steht zwischen has und der dritten Form: She has already won a race.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.sb.002",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "has",
+            "already",
+            "ever",
+            "won"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-ec-002",
+        "narrative": null,
+        "note": "PP tokens: yet, finished"
+      },
+      "prompt": {
+        "text": "the / cycling / race / they / haven't / yet / finished",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They haven't finished the cycling race yet.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der Verneinung steht das Wort für noch nicht ganz am Satzende.",
+      "hintEn": null,
+      "explainDe": "yet kommt in der Verneinung ans Ende: They haven't finished the cycling race yet.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.tf.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-tf-001",
+        "narrative": null,
+        "note": "PP tokens: already, won"
+      },
+      "prompt": {
+        "text": "Your friend has won a race today. It happened a short time ago. 'She has ___ won a race.'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "already",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es ist gerade erst passiert. Nimm das Wort für schon zwischen has und der dritten Form (won).",
+      "hintEn": null,
+      "explainDe": "already betont, dass etwas schon passiert ist: She has already won a race.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.tf.003",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-tf-001",
+        "narrative": null,
+        "note": "PP tokens: yet"
+      },
+      "prompt": {
+        "text": "Your coach asks about your training. You have not done it. 'I ___ my training ___.'",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "haven't done | yet",
+          "tier": "full"
+        },
+        {
+          "text": "have not done | yet",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneine im Perfekt: haven't + dritte Form (done). Das Wort für noch nicht kommt ans Satzende.",
+      "hintEn": null,
+      "explainDe": "Verneinung im Perfekt mit not ... yet: I haven't done it yet. yet steht am Ende.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.tr.001",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-tr-002",
+        "narrative": null,
+        "note": "PP tokens: already, won"
+      },
+      "prompt": {
+        "text": "Sie hat schon drei Wettkämpfe gewonnen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has already won three competitions.",
+          "tier": "full"
+        },
+        {
+          "text": "She's already won three competitions.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "schon = already, und es steht zwischen has und der dritten Form (won).",
+      "hintEn": null,
+      "explainDe": "schon im positiven Satz ist already, zwischen has/have und dritter Form: She has already won.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.tr.002",
+      "structureId": "g2u14.s.present-perfect-already-yet",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-tr-001",
+        "narrative": null,
+        "note": "PP tokens: yet, been"
+      },
+      "prompt": {
+        "text": "Er war noch nicht bei einem Wettkampf.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He hasn't been to a competition yet.",
+          "tier": "full"
+        },
+        {
+          "text": "He has not been to a competition yet.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "noch nicht = not ... yet. yet steht am Satzende, die Perfekt-Form von 'sein' ist been.",
+      "hintEn": null,
+      "explainDe": "noch nicht ist not ... yet im Perfekt: He hasn't been there yet.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.ag.001",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: (none need granting; never already taught)"
+      },
+      "prompt": {
+        "text": "Das Wort für 'noch nie' im Perfekt (der Satz bleibt positiv, kein extra not):",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "never",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es bedeutet noch nie und steht zwischen have/has und der dritten Form, ohne extra not.",
+      "hintEn": null,
+      "explainDe": "never = noch nie, im positiv gebauten Perfektsatz zwischen have/has und dritter Form.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.ec.001",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-ec-001",
+        "narrative": null,
+        "note": "PP tokens: been"
+      },
+      "prompt": {
+        "text": "I haven't never been snorkelling.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have never been snorkelling.",
+          "tier": "full"
+        },
+        {
+          "text": "I've never been snorkelling.",
+          "tier": "full"
+        },
+        {
+          "text": "have never been snorkelling",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "never ist schon verneinend. Mit haven't hast du eine doppelte Verneinung. Nimm nur eine davon.",
+      "hintEn": null,
+      "explainDe": "Mit never bleibt der Satz positiv: I have never been ... Kein zusätzliches not/haven't.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.ec.002",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: ever, been"
+      },
+      "prompt": {
+        "text": "I have ever been to a windsurfing competition.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have been to a windsurfing competition.",
+          "tier": "full"
+        },
+        {
+          "text": "I've been to a windsurfing competition.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ever gehört in Fragen, nicht in eine positive Aussage. Streiche es hier einfach.",
+      "hintEn": null,
+      "explainDe": "ever steht nur in Fragen. In der positiven Aussage lässt du es weg: I have been there.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.gf.001",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-002",
+        "narrative": null,
+        "note": "PP tokens: ever, been"
+      },
+      "prompt": {
+        "text": "Have you ___ been mountain climbing?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ever",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst, ob jemand IRGENDWANN im Leben etwas getan hat. Das Wort steht zwischen have und der Perfekt-Form (been).",
+      "hintEn": null,
+      "explainDe": "In Fragen nach Erlebnissen nutzt du ever: Have you ever been ...? Es steht zwischen have/has und dritter Form.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.gf.002",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-004",
+        "narrative": null,
+        "note": "PP tokens: tried"
+      },
+      "prompt": {
+        "text": "I have ___ tried surfing. I don't think I would like it.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "never",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du sagst, dass du etwas noch NIE gemacht hast. Achtung: kein zusätzliches not!",
+      "hintEn": null,
+      "explainDe": "never heißt noch nie. Der Satz bleibt positiv gebaut, kein extra not: I have never tried it.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.gf.003",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: ever, won"
+      },
+      "prompt": {
+        "text": "Have you ___ won a race? — No, I ___ have.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "ever | never",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der Frage steht ever (jemals), in der kurzen Antwort sagst du mit never, dass es noch nie passiert ist.",
+      "hintEn": null,
+      "explainDe": "Frage mit ever, Antwort mit never: Have you ever ...? — No, I never have.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.mc.001",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "haven't never",
+            "have ever",
+            "never have",
+            "haven't ever"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-mc-001",
+        "narrative": null,
+        "note": "PP tokens: won"
+      },
+      "prompt": {
+        "text": "I ___ won a competition, but I love taking part.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have never",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "haven't never",
+        "have ever",
+        "never have"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mit never bleibt der Satz positiv gebaut, kein zusätzliches not. ever gehört in Fragen, nicht in solche Aussagen.",
+      "hintEn": null,
+      "explainDe": "never ist schon verneinend, also kein extra not. ever steht nur in Fragen: I have never won.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.mc.003",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ever",
+            "already",
+            "yet",
+            "just"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-gf-002",
+        "narrative": null,
+        "note": "PP tokens: ever, won"
+      },
+      "prompt": {
+        "text": "I have ___ won a race. I always come last!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "never",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "ever",
+        "already",
+        "yet"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'I always come last' heißt: Du hast noch NIE gewonnen. never steht im positiven Satz -- ohne extra not.",
+      "hintEn": null,
+      "explainDe": "never (noch nie) sagt, dass etwas zu keiner Zeit passiert ist. Der Perfekt-Satz bleibt positiv, kein not dazu: I have never won a race.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.mt.001",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: ever, won, met, been"
+      },
+      "prompt": {
+        "text": "Have you ever …?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Have you ever won a competition?",
+          "right": "Yes, I have. I won a race last year."
+        },
+        {
+          "left": "Have you ever met famous people?",
+          "right": "No, I never have. One day, I would love to!"
+        },
+        {
+          "left": "Have you ever been mountain climbing?",
+          "right": "Yes, I have. It was an amazing challenge."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ever steht in der Frage, never in der verneinenden Antwort. Die Antwort passt vom Inhalt her zur Frage.",
+      "hintEn": null,
+      "explainDe": "Frage mit ever, Antwort positiv (Yes, I have) oder mit never (No, I never have).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.sb.001",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "sentence-building",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ever",
+            "yet",
+            "already",
+            "been"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "PP tokens: won"
+      },
+      "prompt": {
+        "text": "never / I've / a race / won",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I've never won a race.",
+          "tier": "full"
+        },
+        {
+          "text": "I have never won a race.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "never steht zwischen have/'ve und der dritten Form (won). Kein extra not.",
+      "hintEn": null,
+      "explainDe": "never steht zwischen have/has und dritter Form: I've never won a race.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.tf.001",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-tf-003",
+        "narrative": null,
+        "note": "PP tokens: ever, won"
+      },
+      "prompt": {
+        "text": "You want to ask your friend about her life. Ask if she has won a race at any time. 'Have you ___ won a race?'",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ever",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du fragst nach einer Erfahrung im ganzen Leben. Nimm das Wort für jemals zwischen have und der dritten Form (won).",
+      "hintEn": null,
+      "explainDe": "Frage nach Erlebnissen mit ever: Have you ever won a race?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.tr.001",
+      "structureId": "g2u14.s.present-perfect-ever-never",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m2-u14-present-perfect-signals-tr-001",
+        "narrative": null,
+        "note": "PP tokens: met"
+      },
+      "prompt": {
+        "text": "Ich habe noch nie berühmte Leute getroffen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have never met famous people.",
+          "tier": "full"
+        },
+        {
+          "text": "I've never met famous people.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "noch nie = never (kein extra not). Die Perfekt-Form von treffen ist met.",
+      "hintEn": null,
+      "explainDe": "never (noch nie) hält den Satz positiv: I have never met ... Kein zusätzliches not.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

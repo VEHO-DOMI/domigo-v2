@@ -1,0 +1,1640 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g2-u10",
+  "briefBank": "96a3bd6f6117",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I like ___ books before bedtime.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "reading",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach like steht die -ing-Form. Wie heißt read mit -ing?",
+      "hintEn": null,
+      "explainDe": "Nach like kommt das Verb mit -ing, also reading. Nicht read und nicht to read.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-gf-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She likes ___ in the kitchen.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "cooking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach likes steht die -ing-Form. Bilde cook mit -ing.",
+      "hintEn": null,
+      "explainDe": "Auch nach likes nimmst du das Verb mit -ing: cooking. Das -s steckt schon in likes.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My uncle likes ___ pictures of the mountains.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "painting",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "paint bekommt die -ing-Endung.",
+      "hintEn": null,
+      "explainDe": "paint + -ing = painting. Nach like(s) steht immer die -ing-Form, egal wer es macht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We don't like ___ early at the weekend.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "getting up",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Achtung Schreibweise: get verdoppelt das t vor -ing.",
+      "hintEn": null,
+      "explainDe": "Bei get wird das t verdoppelt: getting up. Nach don't like steht das Verb mit -ing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-gf-004",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "My grandpa likes ___ a fire and ___ it.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "making | watching",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Verben nach likes brauchen die -ing-Form. Bei make fällt das -e weg.",
+      "hintEn": null,
+      "explainDe": "Beide Verben hängen an likes, also making und watching. Bei make wird das -e vor -ing weggelassen, bei watch nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-gf-006",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Lucy loves music.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Lucy likes dancing.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Lucy likes dance.",
+        "Lucy like dancing.",
+        "Lucy likes to dancing."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es braucht likes (3. Person mit -s) und danach die -ing-Form ohne to.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Lucy likes dancing: likes mit -s für she/Lucy, dann dancing. Kein to und kein dance.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Lucy likes dance.",
+          "Lucy like dancing.",
+          "Lucy likes to dancing.",
+          "Lucy is like dancing.",
+          "Lucy likes danced."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u10-like-ing-mc-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "You want to ask a friend about cooking.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you like cooking?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do you like cook?",
+        "Does you like cooking?",
+        "Do you likes cooking?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage bleibt like ohne -s, und nach like steht die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Richtig: Do you like cooking? Do steht vorne, like bleibt gleich, danach cooking mit -ing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Do you like cook?",
+          "Does you like cooking?",
+          "Do you likes cooking?",
+          "Are you like cooking?",
+          "Do you like to cooking?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u10-like-ing-mc-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "A friend asks about your free time.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like playing computer games.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I like play computer games.",
+        "I like to playing computer games.",
+        "I am like playing computer games."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach I like kommt die -ing-Form, ohne to und ohne am.",
+      "hintEn": null,
+      "explainDe": "Richtig ist I like playing computer games. Nach like steht playing mit -ing, kein to und kein am.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I like play computer games.",
+          "I like to playing computer games.",
+          "I am like playing computer games.",
+          "I likes playing computer games.",
+          "I like to play computer games to."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u10-like-ing-mc-004",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I like read in bed.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like reading in bed.",
+          "tier": "full"
+        },
+        {
+          "text": "reading",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach like muss das Verb die -ing-Form haben.",
+      "hintEn": null,
+      "explainDe": "Statt read muss reading stehen: I like reading in bed. Nach like immer die -ing-Form.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-ec-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He like playing computer games.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He likes playing computer games.",
+          "tier": "full"
+        },
+        {
+          "text": "likes",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he/she/it bekommt like ein -s.",
+      "hintEn": null,
+      "explainDe": "Bei he heißt es likes: He likes playing computer games. Das -s gehört zu like, nicht zum zweiten Verb.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-ec-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She likes to cooking pasta.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She likes cooking pasta.",
+          "tier": "full"
+        },
+        {
+          "text": "cooking",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "to und -ing gleichzeitig geht nicht. Nimm nur die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Du kannst nicht to und -ing mischen. Richtig: She likes cooking pasta, nur die -ing-Form.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-ec-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I / like / paint pictures →",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like painting pictures.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Setze das zweite Verb in die -ing-Form (paint fällt nichts weg).",
+      "hintEn": null,
+      "explainDe": "Aus paint wird painting: I like painting pictures. Nach like steht die -ing-Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-tf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He ___ (not like / watch) the news.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "He doesn't like watching the news.",
+          "tier": "full"
+        },
+        {
+          "text": "He does not like watching the news.",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't like watching",
+          "tier": "partial"
+        },
+        {
+          "text": "does not like watching",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung mit doesn't like, danach das Verb mit -ing.",
+      "hintEn": null,
+      "explainDe": "Bei he heißt die Verneinung doesn't like, und watch wird zu watching: He doesn't like watching the news.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-tf-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "they / like / play computer games",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do they like playing computer games?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage mit Do am Anfang, like bleibt gleich, danach die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Do they like playing computer games? Do vorne, like ohne -s, play wird zu playing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-tf-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich spiele gern Gitarre.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like playing the guitar.",
+          "tier": "full"
+        },
+        {
+          "text": "I like playing guitar.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "gern + Tätigkeit = like + Verb mit -ing. \"Gitarre spielen\" = play the guitar.",
+      "hintEn": null,
+      "explainDe": "\"gern\" wird zu like, play wird zu playing: I like playing the guitar.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-tr-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Meine Schwester kocht nicht gern.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My sister doesn't like cooking.",
+          "tier": "full"
+        },
+        {
+          "text": "My sister does not like cooking.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"nicht gern\" = doesn't like, danach das Verb mit -ing.",
+      "hintEn": null,
+      "explainDe": "\"nicht gern\" wird zu doesn't like, kochen zu cooking: My sister doesn't like cooking.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-tr-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "she / likes / her / reading / books",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She likes reading her books.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: Person + likes + Verb mit -ing + Rest.",
+      "hintEn": null,
+      "explainDe": "She likes reading her books. Erst die Person, dann likes, dann reading mit -ing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "read",
+          "reads",
+          "to",
+          "like"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": "m2-u10-like-ing-sb-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "doesn't / he / like / up / washing",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't like washing up.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung: Person + doesn't like + Verb mit -ing + Rest.",
+      "hintEn": null,
+      "explainDe": "He doesn't like washing up. Nach doesn't like steht washing mit -ing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "wash",
+          "washes",
+          "to",
+          "likes"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "tanzen, mit -ing",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "dancing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Von dance: das -e fällt weg, dann -ing dran.",
+      "hintEn": null,
+      "explainDe": "dance verliert das -e und bekommt -ing: dancing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Das macht jemand gern, der in der Küche Essen zubereitet (mit -ing).",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "cooking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Von cook: einfach -ing anhängen.",
+      "hintEn": null,
+      "explainDe": "cook + -ing = cooking. Nach likes steht die -ing-Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "What they like doing.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I",
+          "right": "like reading."
+        },
+        {
+          "left": "She",
+          "right": "likes cooking."
+        },
+        {
+          "left": "We don't",
+          "right": "like dancing."
+        },
+        {
+          "left": "Does he",
+          "right": "like painting?"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte auf das passende Verb: I/we like, she/he likes. Nach like(s) steht die -ing-Form.",
+      "hintEn": null,
+      "explainDe": "Nur eine Form passt: I like reading, She likes cooking, We don't like dancing, Does he like painting?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-like-ing-mt-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Tell your new pen friend about one thing you like doing in your free time.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like reading.",
+          "tier": "full"
+        },
+        {
+          "text": "I like playing computer games.",
+          "tier": "full"
+        },
+        {
+          "text": "I like cooking.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit I like und hänge ein Verb mit -ing an.",
+      "hintEn": null,
+      "explainDe": "Sag I like + Verb mit -ing, zum Beispiel I like reading. Nach like immer die -ing-Form.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Free time fun.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I like cooking",
+          "right": "in the kitchen."
+        },
+        {
+          "left": "She likes reading",
+          "right": "with a good book."
+        },
+        {
+          "left": "He likes painting",
+          "right": "with his pictures."
+        },
+        {
+          "left": "We like dancing",
+          "right": "to the music."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Nach like(s) steht die -ing-Form. Welcher zweite Teil passt zur Tätigkeit?",
+      "hintEn": null,
+      "explainDe": "Jede -ing-Form passt zu einem Ort oder Ding: cooking in the kitchen, reading with a good book, painting with his pictures, dancing to the music.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.like-ing",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Your dad never enjoys running when it is cold.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My dad doesn't like running.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "My dad doesn't like run.",
+        "My dad doesn't likes running.",
+        "My dad don't like running."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he/dad: doesn't like + Verb mit -ing.",
+      "hintEn": null,
+      "explainDe": "Richtig: My dad doesn't like running. Bei dad/he heißt es doesn't like, und run wird zu running.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "My dad doesn't like run.",
+          "My dad doesn't likes running.",
+          "My dad don't like running.",
+          "My dad doesn't like to running.",
+          "My dad not like running."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u10-like-ing-mc-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "You ___ do your homework before you play outside.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "must",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Etwas ist nötig (Verpflichtung). Welches Wort sagt \"müssen\"?",
+      "hintEn": null,
+      "explainDe": "must heißt \"müssen\": You must do your homework. Danach steht die Grundform ohne to.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-gf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "You ___ delete the file. Dad needs it!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "mustn't",
+          "tier": "full"
+        },
+        {
+          "text": "must not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist verboten (nicht dürfen). Welches Wort passt?",
+      "hintEn": null,
+      "explainDe": "mustn't heißt \"nicht dürfen\" (verboten): You mustn't delete the file. Danach die Grundform.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-gf-002",
+      "sbRef": "g2/sb/More 2 SB Unit 10.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She ___ wear a cycle helmet at the adventure camp.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "must",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Helm tragen ist Pflicht. must bleibt auch bei she gleich (kein -s).",
+      "hintEn": null,
+      "explainDe": "must sagt, dass es nötig ist, und ändert sich bei she nicht: She must wear a cycle helmet.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-gf-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You ___ touch the tools at the adventure camp. It is dangerous.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "mustn't",
+          "tier": "full"
+        },
+        {
+          "text": "must not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Gefährlich heißt: es ist verboten. Welches Wort sagt \"nicht dürfen\"?",
+      "hintEn": null,
+      "explainDe": "Weil es verboten ist, nimmst du mustn't: You mustn't touch the tools.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-gf-004",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "In the museum you ___ run, but you ___ stay with the guide all the time.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "mustn't | must",
+          "tier": "full"
+        },
+        {
+          "text": "must not | must",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst etwas Verbotenes (nicht dürfen), dann etwas Nötiges (müssen).",
+      "hintEn": null,
+      "explainDe": "Rennen ist verboten (mustn't run), beim Guide bleiben ist Pflicht (must stay): You mustn't run, but you must stay.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-gf-006",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You are in the museum and you want to run.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You mustn't run in the museum.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "You don't have to run in the museum.",
+        "You don't must run in the museum.",
+        "You must run in the museum."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Im Museum ist Rennen verboten. Welcher Satz sagt \"nicht dürfen\"?",
+      "hintEn": null,
+      "explainDe": "Verboten = mustn't: You mustn't run in the museum. \"don't have to\" hieße \"nicht müssen\", das passt hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "You don't have to run in the museum.",
+          "You don't must run in the museum.",
+          "You must run in the museum.",
+          "You mustn't to run in the museum.",
+          "You must not to run in the museum."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u10-must-mc-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It is Saturday and there is no school.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We don't have to get up early today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We mustn't get up early today.",
+        "We must get up early today.",
+        "We don't must get up early today."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Früh aufstehen ist nicht nötig (aber nicht verboten!). Welches sagt \"nicht müssen\"?",
+      "hintEn": null,
+      "explainDe": "\"nicht nötig\" = don't have to: We don't have to get up early. mustn't wäre \"verboten\" und ist hier falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "We mustn't get up early today.",
+          "We must get up early today.",
+          "We don't must get up early today.",
+          "We haven't to get up early today.",
+          "We don't have get up early today."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u10-must-mc-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You must to wear a life jacket in the canoe.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You must wear a life jacket in the canoe.",
+          "tier": "full"
+        },
+        {
+          "text": "must wear",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach must steht die Grundform ohne to.",
+      "hintEn": null,
+      "explainDe": "Nach must kommt kein to: You must wear a life jacket. Nur must + Grundform.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-ec-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You don't must open the cage.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You mustn't open the cage.",
+          "tier": "full"
+        },
+        {
+          "text": "You must not open the cage.",
+          "tier": "full"
+        },
+        {
+          "text": "mustn't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Verneinung von must ist mustn't, nicht \"don't must\".",
+      "hintEn": null,
+      "explainDe": "must wird mit mustn't (must not) verneint: You mustn't open the cage. \"don't must\" gibt es nicht.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-ec-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She musts clean the kitchen after dinner.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She must clean the kitchen after dinner.",
+          "tier": "full"
+        },
+        {
+          "text": "must clean",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "must bekommt nie ein -s, auch nicht bei she.",
+      "hintEn": null,
+      "explainDe": "must bleibt bei she gleich: She must clean the kitchen. Kein musts.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It's the weekend. We mustn't go to school.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We don't have to go to school.",
+          "tier": "full"
+        },
+        {
+          "text": "We do not have to go to school.",
+          "tier": "full"
+        },
+        {
+          "text": "don't have to",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Am Wochenende ist Schule nicht nötig, aber nicht verboten. Was sagt \"nicht müssen\"?",
+      "hintEn": null,
+      "explainDe": "mustn't (verboten) ist hier falsch. \"nicht müssen\" = don't have to: We don't have to go to school.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-ec-003",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She ___ (clean) the kitchen.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "She must clean the kitchen.",
+          "tier": "full"
+        },
+        {
+          "text": "must clean the kitchen",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist nötig, also must + Grundform.",
+      "hintEn": null,
+      "explainDe": "must zeigt, dass es nötig ist: She must clean the kitchen. Danach die Grundform clean.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-tf-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It is a rule at the camp. You ___ (touch) the tools here.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "You mustn't touch the tools here.",
+          "tier": "full"
+        },
+        {
+          "text": "You must not touch the tools here.",
+          "tier": "full"
+        },
+        {
+          "text": "mustn't touch",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das ist verboten, also mustn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Verboten = mustn't: You mustn't touch the tools here. Danach die Grundform touch.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-tf-002",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du musst ruhig bleiben.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You must stay calm.",
+          "tier": "full"
+        },
+        {
+          "text": "You have to stay calm.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"musst\" = must, danach die Grundform. \"ruhig bleiben\" = stay calm.",
+      "hintEn": null,
+      "explainDe": "\"musst\" wird zu must, ohne to: You must stay calm.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-tr-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du darfst hier nicht laufen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You mustn't run here.",
+          "tier": "full"
+        },
+        {
+          "text": "You must not run here.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"nicht dürfen\" = mustn't (NICHT don't have to). Danach die Grundform.",
+      "hintEn": null,
+      "explainDe": "\"darfst nicht\" heißt mustn't: You mustn't run here. Pass auf: das ist verboten, nicht \"nicht nötig\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "mustn't / the / you / delete / file",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You mustn't delete the file.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: Person + mustn't + Grundform + Rest.",
+      "hintEn": null,
+      "explainDe": "You mustn't delete the file. Erst die Person, dann mustn't, dann die Grundform delete.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "must",
+          "don't",
+          "to",
+          "deletes"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": "m2-u10-must-sb-001",
+      "sbRef": "g2/sb/More 2 SB Unit 10.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "At the camp you all wear a hard hat.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You must wear a hard hat.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "You mustn't wear a hard hat.",
+        "You don't have to wear a hard hat.",
+        "You must to wear a hard hat."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Helm tragen ist Pflicht. Welcher Satz sagt \"müssen\" richtig?",
+      "hintEn": null,
+      "explainDe": "Pflicht = must: You must wear a hard hat. Danach die Grundform ohne to.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "You mustn't wear a hard hat.",
+          "You don't have to wear a hard hat.",
+          "You must to wear a hard hat.",
+          "You musts wear a hard hat.",
+          "You don't must wear a hard hat."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m2-u10-must-cp-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "What you must and mustn't do.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "It is the weekend.",
+          "right": "You don't have to get up early."
+        },
+        {
+          "left": "The kitchen is dirty.",
+          "right": "You must clean it."
+        },
+        {
+          "left": "The teacher is talking.",
+          "right": "You mustn't talk."
+        },
+        {
+          "left": "The cage is open.",
+          "right": "You must close it."
+        }
+      ],
+      "groups": [],
+      "hintDe": "must = nötig, mustn't = verboten, don't have to = nicht nötig. Ordne nach Bedeutung.",
+      "hintEn": null,
+      "explainDe": "Nicht nötig: don't have to get up early. Nötig: must clean it und must close it. Verboten: mustn't talk.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m2-u10-must-mt-001",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Must, mustn't or not?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "must",
+          "members": [
+            "You must close the door.",
+            "You must clean the kitchen."
+          ]
+        },
+        {
+          "label": "mustn't",
+          "members": [
+            "You mustn't climb that tree.",
+            "You mustn't tell a lie."
+          ]
+        },
+        {
+          "label": "don't have to",
+          "members": [
+            "You don't have to wear school shoes.",
+            "You don't have to print out the file."
+          ]
+        }
+      ],
+      "hintDe": "must = es ist nötig, mustn't = es ist verboten, don't have to = es ist nicht nötig.",
+      "hintEn": null,
+      "explainDe": "must zeigt Pflicht, mustn't ein Verbot, don't have to bedeutet, dass etwas nicht nötig ist.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "A family lives on a spaceship. Write one rule with mustn't for them.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You mustn't open the door.",
+          "tier": "full"
+        },
+        {
+          "text": "You mustn't touch the tools.",
+          "tier": "full"
+        },
+        {
+          "text": "You mustn't go in there.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit You mustn't und hänge eine Grundform an.",
+      "hintEn": null,
+      "explainDe": "Eine Verbotsregel beginnt mit You mustn't + Grundform, zum Beispiel You mustn't open the door.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g2/sb/More 2 SB Unit 10.txt#grammar-1",
+      "note": null
+    },
+    {
+      "structureId": "g2u10.s.must",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "nicht dürfen (kurz, mit Apostroph)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "mustn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Kurzform von must not.",
+      "hintEn": null,
+      "explainDe": "must not wird zu mustn't und bedeutet \"nicht dürfen\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

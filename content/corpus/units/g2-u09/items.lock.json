@@ -1,0 +1,86 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u09",
+  "items": {
+    "11964500cb90": "g2u09.gi.one-ones.gf.001",
+    "5c766d1670c7": "g2u09.gi.one-ones.gf.002",
+    "4436e1f3d762": "g2u09.gi.one-ones.gf.003",
+    "abc7c0fa598e": "g2u09.gi.one-ones.gf.004",
+    "b3ccb68a14eb": "g2u09.gi.one-ones.gf.005",
+    "1dce3942f194": "g2u09.gi.one-ones.gf.006",
+    "29c63329f3c9": "g2u09.gi.one-ones.mc.001",
+    "cba038857ef4": "g2u09.gi.one-ones.mc.002",
+    "03525fa96b4a": "g2u09.gi.one-ones.cp.001",
+    "16915ab400b9": "g2u09.gi.one-ones.cp.002",
+    "9b4ac6cccf53": "g2u09.gi.one-ones.ec.001",
+    "bf0e4c366e6e": "g2u09.gi.one-ones.ec.002",
+    "4d8cf70f76e1": "g2u09.gi.one-ones.tf.001",
+    "9bf88f2bc367": "g2u09.gi.one-ones.tf.002",
+    "a71e8c5dd322": "g2u09.gi.one-ones.tr.001",
+    "ece1c84f8158": "g2u09.gi.one-ones.tr.002",
+    "5d23c39f866a": "g2u09.gi.one-ones.sb.001",
+    "db2eea4299e7": "g2u09.gi.one-ones.sb.002",
+    "fc5f4a764db4": "g2u09.gi.one-ones.qf.001",
+    "226ce19a7a2c": "g2u09.gi.one-ones.mt.001",
+    "ef3fdcf03713": "g2u09.gi.one-ones.gs.001",
+    "1848fe2c9e59": "g2u09.gi.one-ones.ff.001",
+    "69dcf36332bc": "g2u09.gi.some-any.gf.001",
+    "1982915b8a6f": "g2u09.gi.some-any.gf.002",
+    "432b79a8e953": "g2u09.gi.some-any.gf.003",
+    "1432c0938e05": "g2u09.gi.some-any.gf.004",
+    "4ec0856fb5db": "g2u09.gi.some-any.gf.005",
+    "474680ae6532": "g2u09.gi.some-any.gf.006",
+    "2042d752c0b3": "g2u09.gi.some-any.mc.001",
+    "e7c4d5e7e6b5": "g2u09.gi.some-any.mc.002",
+    "0add40610f32": "g2u09.gi.some-any.cp.001",
+    "7029e4169b5d": "g2u09.gi.some-any.ec.001",
+    "bf1df721a412": "g2u09.gi.some-any.ec.002",
+    "4adb2b4e2d34": "g2u09.gi.some-any.ec.003",
+    "5371ba507066": "g2u09.gi.some-any.tf.001",
+    "a896b489364e": "g2u09.gi.some-any.tf.002",
+    "b328402635f3": "g2u09.gi.some-any.tr.002",
+    "03c15c20e30f": "g2u09.gi.some-any.sb.001",
+    "357147a0d1eb": "g2u09.gi.some-any.sb.002",
+    "d1fe66b08e40": "g2u09.gi.some-any.qf.001",
+    "c6cc591d53c7": "g2u09.gi.some-any.gs.001",
+    "2961511469fe": "g2u09.gi.some-any.ff.001",
+    "5b25a9767c8c": "g2u09.gi.one-ones.ag.003",
+    "6e87de18f500": "g2u09.gi.one-ones.ag.004",
+    "0d9e19a5c630": "g2u09.gi.some-any.tr.003",
+    "9b849359c341": "g2u09.gi.some-any.mt.002",
+    "b5f692fd1b5a": "g2u09.gi.some-any.ag.003",
+    "7cc3f5b2725c": "g2u09.gi.some-any.ag.004"
+  },
+  "tombstones": [
+    {
+      "id": "g2u09.gi.one-ones.ag.001",
+      "key": "ca1b395c47d0",
+      "removedWith": "e13f9a702b93"
+    },
+    {
+      "id": "g2u09.gi.one-ones.ag.002",
+      "key": "48da64b17ba9",
+      "removedWith": "e13f9a702b93"
+    },
+    {
+      "id": "g2u09.gi.some-any.tr.001",
+      "key": "d53858fabd6c",
+      "removedWith": "e13f9a702b93"
+    },
+    {
+      "id": "g2u09.gi.some-any.mt.001",
+      "key": "00724087ab41",
+      "removedWith": "e13f9a702b93"
+    },
+    {
+      "id": "g2u09.gi.some-any.ag.001",
+      "key": "41cde386dba7",
+      "removedWith": "e13f9a702b93"
+    },
+    {
+      "id": "g2u09.gi.some-any.ag.002",
+      "key": "a51bd3264841",
+      "removedWith": "e13f9a702b93"
+    }
+  ]
+}

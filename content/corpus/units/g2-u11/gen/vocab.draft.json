@@ -1,0 +1,3852 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g2-u11",
+  "briefBank": "dbdedfccfbc4",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g2u11.w.wardrobe",
+      "w": "wardrobe",
+      "g": "Kleiderschrank",
+      "d": "A big thing in your bedroom where you keep your clothes.",
+      "s": "I keep all my clothes in the big ___ in my bedroom.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "wardrobe",
+          "tier": "full"
+        },
+        {
+          "text": "wardrobes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wardrobe",
+          "tier": "full"
+        },
+        {
+          "text": "wardrobes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wardrobe",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kleiderschrank",
+            "tier": "full"
+          },
+          {
+            "text": "Schrank",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cupboard",
+        "fridge",
+        "curtain"
+      ],
+      "hintDe": "Hier hängst du deine Kleidung hinein.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cupboard",
+          "fridge",
+          "curtain",
+          "armchair",
+          "sink"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB ex 1 (A = wardrobe)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.bed",
+      "w": "bed",
+      "g": "Bett",
+      "d": "At night you lie down on this and close your eyes.",
+      "s": "I go to ___ at nine o'clock every night.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bed",
+          "tier": "full"
+        },
+        {
+          "text": "beds",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bed",
+          "tier": "full"
+        },
+        {
+          "text": "beds",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bett",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "chair",
+        "sofa",
+        "table"
+      ],
+      "hintDe": "Hier schläfst du in der Nacht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "chair",
+          "sofa",
+          "table",
+          "armchair",
+          "rug"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 7 (Robert had a bed)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.bedside-table",
+      "w": "bedside table",
+      "g": "Nachttisch",
+      "d": "This small thing is next to where you lie down at night, for your lamp.",
+      "s": "I put my book and my lamp on the ___ next to my bed.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bedside table",
+          "tier": "full"
+        },
+        {
+          "text": "bedside tables",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bedside table",
+          "tier": "full"
+        },
+        {
+          "text": "bedside tables",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bedside table",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nachttisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wardrobe",
+        "cupboard",
+        "radiator"
+      ],
+      "hintDe": "Der kleine Tisch direkt neben deinem Bett.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "wardrobe",
+          "cupboard",
+          "radiator",
+          "sink",
+          "sofa"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB ex 1 (H = bedside table)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.carpet",
+      "w": "carpet",
+      "g": "Teppich(boden)",
+      "d": "This big thing covers the ground of a room, and you walk on it.",
+      "s": "There is a big red ___ on the ground in my living room.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "carpet",
+          "tier": "full"
+        },
+        {
+          "text": "carpets",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "carpet",
+          "tier": "full"
+        },
+        {
+          "text": "carpets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "carpet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Teppichboden",
+            "tier": "full"
+          },
+          {
+            "text": "Teppich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rug",
+        "lamp",
+        "curtain"
+      ],
+      "hintDe": "Der bedeckt den ganzen Boden im Zimmer.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "rug",
+          "lamp",
+          "curtain",
+          "sofa",
+          "armchair"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB ex 1 (N = carpet)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.fridge",
+      "w": "fridge",
+      "g": "Kühlschrank",
+      "d": "This cold machine in the kitchen keeps your food cold.",
+      "s": "We keep the milk and the cheese cold in the ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fridge",
+          "tier": "full"
+        },
+        {
+          "text": "fridges",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fridge",
+          "tier": "full"
+        },
+        {
+          "text": "fridges",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fridge",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kühlschrank",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cooker",
+        "sink",
+        "cupboard"
+      ],
+      "hintDe": "Hier bleiben Milch und Käse kühl.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cooker",
+          "sink",
+          "cupboard",
+          "wardrobe",
+          "radiator"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 7 (a fridge for food)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.cooker",
+      "w": "cooker",
+      "g": "Herd",
+      "d": "You make your hot dinner on this thing in the kitchen.",
+      "s": "Mum makes hot food on the ___ in the kitchen.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cooker",
+          "tier": "full"
+        },
+        {
+          "text": "cookers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cooker",
+          "tier": "full"
+        },
+        {
+          "text": "cookers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cooker",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Herd",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fridge",
+        "sink",
+        "table"
+      ],
+      "hintDe": "Hier kocht man das warme Essen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fridge",
+          "sink",
+          "table",
+          "cupboard",
+          "radiator"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB ex 1 (P = cooker)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.curtain",
+      "w": "curtain",
+      "g": "Vorhang",
+      "d": "You pull this in front of the window to keep the light out.",
+      "s": "Close the ___ so the sun is not in my eyes.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "curtain",
+          "tier": "full"
+        },
+        {
+          "text": "curtains",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "curtain",
+          "tier": "full"
+        },
+        {
+          "text": "curtains",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "curtain",
+            "tier": "full"
+          },
+          {
+            "text": "curtains",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vorhang",
+            "tier": "full"
+          },
+          {
+            "text": "Vorhänge",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "carpet",
+        "lamp",
+        "window"
+      ],
+      "hintDe": "Den ziehst du vor das Fenster.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "carpet",
+          "lamp",
+          "window",
+          "rug",
+          "wall"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 5 (New curtains for the window)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.sink",
+      "w": "sink",
+      "g": "Spülbecken",
+      "d": "The place in the kitchen where you wash the plates and glasses.",
+      "s": "We wash the dirty plates and glasses in the kitchen ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sink",
+          "tier": "full"
+        },
+        {
+          "text": "sinks",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sink",
+          "tier": "full"
+        },
+        {
+          "text": "sinks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sink",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Spülbecken",
+            "tier": "full"
+          },
+          {
+            "text": "Waschbecken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fridge",
+        "cooker",
+        "cupboard"
+      ],
+      "hintDe": "Hier wäschst du das schmutzige Geschirr.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fridge",
+          "cooker",
+          "cupboard",
+          "wardrobe",
+          "radiator"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB ex 1 (F = sink); SB ex 13 (a sink and a fridge)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.cupboard",
+      "w": "cupboard",
+      "g": "Schrank",
+      "d": "This thing in the kitchen has doors, and you keep plates and glasses in it.",
+      "s": "We keep the plates and glasses in this ___ in the kitchen.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cupboard",
+          "tier": "full"
+        },
+        {
+          "text": "cupboards",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cupboard",
+          "tier": "full"
+        },
+        {
+          "text": "cupboards",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cupboard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schrank",
+            "tier": "full"
+          },
+          {
+            "text": "Küchenschrank",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wardrobe",
+        "fridge",
+        "sink"
+      ],
+      "hintDe": "Schrank mit Türen, für Teller und Gläser.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "wardrobe",
+          "fridge",
+          "sink",
+          "cooker",
+          "bedside table"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 5 (new cupboards for my books); WB ex 1 (E = cupboard)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.table",
+      "w": "table",
+      "g": "Tisch",
+      "d": "This thing has four legs, and you eat your dinner at it.",
+      "s": "We have our dinner at the ___ in the kitchen.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "table",
+          "tier": "full"
+        },
+        {
+          "text": "tables",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "table",
+          "tier": "full"
+        },
+        {
+          "text": "tables",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "table",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "chair",
+        "bed",
+        "sofa"
+      ],
+      "hintDe": "Daran sitzt du beim Essen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "chair",
+          "bed",
+          "sofa",
+          "armchair",
+          "cupboard"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 13 (There's a big table and four chairs)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.chair",
+      "w": "chair",
+      "g": "Stuhl",
+      "d": "You sit down on this thing, and it has a back and four legs.",
+      "s": "Sit down on this ___ and have your dinner.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "chair",
+          "tier": "full"
+        },
+        {
+          "text": "chairs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chair",
+          "tier": "full"
+        },
+        {
+          "text": "chairs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chair",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stuhl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "table",
+        "bed",
+        "sofa"
+      ],
+      "hintDe": "Darauf setzt du dich, hat vier Beine.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "table",
+          "bed",
+          "sofa",
+          "armchair",
+          "lamp"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 13 (a big table and four chairs)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.sofa",
+      "w": "sofa",
+      "g": "Sofa",
+      "d": "A long seat for two or three people in the living room.",
+      "s": "My family sits down on the big ___ to watch a film in the living room.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sofa",
+          "tier": "full"
+        },
+        {
+          "text": "sofas",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sofa",
+          "tier": "full"
+        },
+        {
+          "text": "sofas",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sofa",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sofa",
+            "tier": "full"
+          },
+          {
+            "text": "Couch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "armchair",
+        "chair",
+        "bed"
+      ],
+      "hintDe": "Langer Sitz für mehrere Leute im Wohnzimmer.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "armchair",
+          "chair",
+          "bed",
+          "table",
+          "rug"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 6/10 (armchair / sofa in the room); WB (D = sofa)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.armchair",
+      "w": "armchair",
+      "g": "Sessel",
+      "d": "Grandpa likes to read in this big comfortable seat for just one.",
+      "s": "Grandpa sits down in his big comfortable ___ and reads the newspaper.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "armchair",
+          "tier": "full"
+        },
+        {
+          "text": "armchairs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "armchair",
+          "tier": "full"
+        },
+        {
+          "text": "armchairs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "armchair",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sessel",
+            "tier": "full"
+          },
+          {
+            "text": "Lehnstuhl",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "sofa",
+        "chair",
+        "bed"
+      ],
+      "hintDe": "Bequemer Sitz für eine Person, oft zum Lesen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sofa",
+          "chair",
+          "bed",
+          "table",
+          "cupboard"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 14 (he sits there in an armchair and reads)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.lamp",
+      "w": "lamp",
+      "g": "Lampe",
+      "d": "When it is dark, you put this on and it gives you light.",
+      "s": "Put the ___ on so I can read my book in the dark.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "lamp",
+          "tier": "full"
+        },
+        {
+          "text": "lamps",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lamp",
+          "tier": "full"
+        },
+        {
+          "text": "lamps",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lamp",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lampe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "radiator",
+        "curtain",
+        "sink"
+      ],
+      "hintDe": "Die machst du an, wenn es dunkel ist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "radiator",
+          "curtain",
+          "sink",
+          "carpet",
+          "window"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB ex 1 (I = lamp); SB ex 12 (put the lamp on the sofa)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.radiator",
+      "w": "radiator",
+      "g": "Heizkörper",
+      "d": "This metal thing on the wall makes your room hot in the cold days.",
+      "s": "My room is hot because the ___ on the wall is on.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "radiator",
+          "tier": "full"
+        },
+        {
+          "text": "radiators",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "radiator",
+          "tier": "full"
+        },
+        {
+          "text": "radiators",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "radiator",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Heizkörper",
+            "tier": "full"
+          },
+          {
+            "text": "Heizung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "lamp",
+        "fridge",
+        "window"
+      ],
+      "hintDe": "Das macht das Zimmer im Winter warm.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "lamp",
+          "fridge",
+          "window",
+          "cooker",
+          "sink"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB ex 1 (C = radiator)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.rug",
+      "w": "rug",
+      "g": "Teppich",
+      "d": "This small thing on the ground is smaller than a carpet, and you walk on it.",
+      "s": "There is a small ___ on the ground in front of my bed.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "rug",
+          "tier": "full"
+        },
+        {
+          "text": "rugs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rug",
+          "tier": "full"
+        },
+        {
+          "text": "rugs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rug",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Teppich",
+            "tier": "full"
+          },
+          {
+            "text": "Vorleger",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "carpet",
+        "curtain",
+        "lamp"
+      ],
+      "hintDe": "Kleiner Teppich, kleiner als ein Teppichboden.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "carpet",
+          "curtain",
+          "lamp",
+          "sofa",
+          "cupboard"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB ex 1 (K = rug)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.roof",
+      "w": "roof",
+      "g": "Dach",
+      "d": "The ___ of a building keeps out the rain.",
+      "s": "Our building has a ___, walls, windows and doors.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "roof",
+          "tier": "full"
+        },
+        {
+          "text": "roofs",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "roof",
+          "tier": "full"
+        },
+        {
+          "text": "roofs",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "roof",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "rain",
+          "de": "Regen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "wall",
+        "window",
+        "staircase"
+      ],
+      "hintDe": "Das ist oben auf dem Haus.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "wall",
+          "window",
+          "staircase",
+          "cellar",
+          "ground"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (It has a roof, walls, rooms, windows and doors)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.wall",
+      "w": "wall",
+      "g": "Wand",
+      "d": "This is the side of a room, and you can put a picture on it.",
+      "s": "There is a poster of my favourite singer on my bedroom ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "wall",
+          "tier": "full"
+        },
+        {
+          "text": "walls",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wall",
+          "tier": "full"
+        },
+        {
+          "text": "walls",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wall",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wand",
+            "tier": "full"
+          },
+          {
+            "text": "Mauer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "side",
+          "de": "Seite",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "roof",
+        "window",
+        "ground"
+      ],
+      "hintDe": "Die senkrechte Seite eines Zimmers.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "roof",
+          "window",
+          "ground",
+          "staircase",
+          "cellar"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (It has a roof, walls, rooms, windows and doors)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.window",
+      "w": "window",
+      "g": "Fenster",
+      "d": "You look out of this to look at the garden.",
+      "s": "Open the ___, please. It is too hot in here.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "window",
+          "tier": "full"
+        },
+        {
+          "text": "windows",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "window",
+          "tier": "full"
+        },
+        {
+          "text": "windows",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "window",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fenster",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wall",
+        "roof",
+        "curtain"
+      ],
+      "hintDe": "Da schaust du nach draußen in den Garten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "wall",
+          "roof",
+          "curtain",
+          "staircase",
+          "cellar"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 13 (There's a big window and we can look into the garden)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.staircase",
+      "w": "staircase",
+      "g": "Treppe",
+      "d": "You go up and down these steps inside a building.",
+      "s": "Go up the ___ to the bedrooms.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "staircase",
+          "tier": "full"
+        },
+        {
+          "text": "staircases",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "staircase",
+          "tier": "full"
+        },
+        {
+          "text": "staircases",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "staircase",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Treppe",
+            "tier": "full"
+          },
+          {
+            "text": "Stiege",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "steps",
+          "de": "Stufen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "roof",
+        "wall",
+        "cellar"
+      ],
+      "hintDe": "Darüber gehst du hinauf und hinunter.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "roof",
+          "wall",
+          "cellar",
+          "window",
+          "ground"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (There might be a staircase)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.cellar",
+      "w": "cellar",
+      "g": "Keller",
+      "d": "This dark room is under a building.",
+      "s": "We keep old boxes down in the dark ___ under the building.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cellar",
+          "tier": "full"
+        },
+        {
+          "text": "cellars",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cellar",
+          "tier": "full"
+        },
+        {
+          "text": "cellars",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cellar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Keller",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "old",
+          "de": "alt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "roof",
+        "staircase",
+        "wall"
+      ],
+      "hintDe": "Der dunkle Raum unter dem Haus.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "roof",
+          "staircase",
+          "wall",
+          "window",
+          "garden"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (There might be a cellar underneath it)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.trailer",
+      "w": "trailer (American English)",
+      "g": "Wohnwagen",
+      "d": "A car can pull this small home on wheels along the road.",
+      "s": "Some people live in a ___ with wheels and pull it from park to park with a car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "trailer",
+          "tier": "full"
+        },
+        {
+          "text": "trailers",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "trailer",
+          "tier": "full"
+        },
+        {
+          "text": "trailers",
+          "tier": "full"
+        },
+        {
+          "text": "caravan",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "trailer",
+            "tier": "full"
+          },
+          {
+            "text": "caravan",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wohnwagen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "home",
+          "de": "Zuhause",
+          "scope": "d"
+        },
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "tree house",
+        "island",
+        "hammock"
+      ],
+      "hintDe": "Ein Zuhause mit Rädern, das ein Auto ziehen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "tree house",
+          "island",
+          "hammock",
+          "stilts",
+          "reed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (Around twenty million Americans live in trailer homes)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.tree-house",
+      "w": "tree house",
+      "g": "Baumhaus",
+      "d": "Children play up high in this small room over the ground.",
+      "s": "We read our books up in our ___ in the big tree.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tree house",
+          "tier": "full"
+        },
+        {
+          "text": "tree houses",
+          "tier": "partial"
+        },
+        {
+          "text": "treehouse",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tree house",
+          "tier": "full"
+        },
+        {
+          "text": "tree houses",
+          "tier": "full"
+        },
+        {
+          "text": "treehouse",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tree house",
+            "tier": "full"
+          },
+          {
+            "text": "treehouse",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Baumhaus",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "trailer",
+        "island",
+        "hammock"
+      ],
+      "hintDe": "Ein kleines Spielhaus oben in einem Baum.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "trailer",
+          "island",
+          "hammock",
+          "stilts",
+          "reed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (some people live in tree houses)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.stilts",
+      "w": "stilts",
+      "g": "Stelzen",
+      "d": "These are long, strong legs that hold homes up high over the ground.",
+      "s": "Some homes are high up on ___, over the water.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stilts",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stilts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stilts",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stelzen",
+            "tier": "full"
+          },
+          {
+            "text": "Pfähle",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "reed",
+        "ground",
+        "island"
+      ],
+      "hintDe": "Lange Beine, die ein Haus hoch über den Boden halten.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "reed",
+          "ground",
+          "island",
+          "trailer",
+          "tree house"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (some people in South East Asia build their houses on stilts)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.reed",
+      "w": "reed",
+      "g": "Schilf",
+      "d": "The Uros people make their homes from this tall, strong grass.",
+      "s": "Fifty homes of ___ float on the lake.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "reed",
+          "tier": "full"
+        },
+        {
+          "text": "reeds",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reed",
+          "tier": "full"
+        },
+        {
+          "text": "reeds",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reed",
+            "tier": "full"
+          },
+          {
+            "text": "reeds",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schilf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "grass",
+          "de": "Gras",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "stilts",
+        "island",
+        "ground"
+      ],
+      "hintDe": "Hohes, starkes Gras am Wasser, gut zum Hausbau.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "stilts",
+          "island",
+          "ground",
+          "trailer",
+          "tree house"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (fifty floating islands of reeds)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.island",
+      "w": "island",
+      "g": "Insel",
+      "d": "This is land with water all around it.",
+      "s": "There is a small ___ in the middle of the lake.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "island",
+          "tier": "full"
+        },
+        {
+          "text": "islands",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "island",
+          "tier": "full"
+        },
+        {
+          "text": "islands",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "island",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Insel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        },
+        {
+          "word": "around",
+          "de": "rundherum",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ground",
+        "reed",
+        "stilts"
+      ],
+      "hintDe": "Land mit Wasser rundherum.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ground",
+          "reed",
+          "stilts",
+          "trailer",
+          "pond"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (fifty floating islands of reeds)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.ground",
+      "w": "ground",
+      "g": "Boden",
+      "d": "This is what you walk on when you are outside.",
+      "s": "Some homes are high up on stilts, not on the ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ground",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ground",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ground",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Boden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "roof",
+        "island",
+        "wall"
+      ],
+      "hintDe": "Darauf gehst du, wenn du draußen bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "roof",
+          "island",
+          "wall",
+          "reed",
+          "stilts"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 1 (people live in houses that are not on the ground)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.ours",
+      "w": "ours",
+      "g": "unsere/r/s",
+      "d": "A thing that is for us.",
+      "s": "This is the dog of our family, so it is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ours",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ours",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ours",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unsere",
+            "tier": "full"
+          },
+          {
+            "text": "unserer",
+            "tier": "full"
+          },
+          {
+            "text": "unseres",
+            "tier": "full"
+          },
+          {
+            "text": "unser",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "theirs",
+        "yours",
+        "mine"
+      ],
+      "hintDe": "Es gehört uns.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "theirs",
+          "yours",
+          "mine",
+          "hers",
+          "his"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 10 (No, it's ours, but they want to borrow it)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.theirs",
+      "w": "theirs",
+      "g": "ihre/r/s",
+      "d": "A thing that is for them.",
+      "s": "These books are for Mum and Dad, so they are ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "theirs",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "theirs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "theirs",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ihre",
+            "tier": "full"
+          },
+          {
+            "text": "ihrer",
+            "tier": "full"
+          },
+          {
+            "text": "ihres",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ours",
+        "yours",
+        "hers"
+      ],
+      "hintDe": "Es gehört ihnen (mehreren).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ours",
+          "yours",
+          "hers",
+          "mine",
+          "his"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 10 (No, they're Mike's ... they aren't theirs)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.mine",
+      "w": "mine",
+      "g": "meine/r/s",
+      "d": "It is my thing.",
+      "s": "This pen is my pen, so it is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mine",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "meine",
+            "tier": "full"
+          },
+          {
+            "text": "meiner",
+            "tier": "full"
+          },
+          {
+            "text": "meines",
+            "tier": "full"
+          },
+          {
+            "text": "meins",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "yours",
+        "hers",
+        "his"
+      ],
+      "hintDe": "Es gehört mir.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "yours",
+          "hers",
+          "his",
+          "ours",
+          "theirs"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 12 (No, it isn't mine); grammar (It's mine)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.hers",
+      "w": "hers",
+      "g": "ihre/r/s (Singular)",
+      "d": "A thing that is a girl's or a woman's.",
+      "s": "This is not my jacket. It is Mum's, so it is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hers",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hers",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ihre",
+            "tier": "full"
+          },
+          {
+            "text": "ihrer",
+            "tier": "full"
+          },
+          {
+            "text": "ihres",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "his",
+        "mine",
+        "yours"
+      ],
+      "hintDe": "Es gehört ihr (einer Frau/einem Mädchen).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "his",
+          "mine",
+          "yours",
+          "ours",
+          "theirs"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 11 (No. It's hers); grammar (The bag is hers)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.his",
+      "w": "his",
+      "g": "seine/r/s",
+      "d": "A thing that is a boy's or a man's.",
+      "s": "Tom has a green cap. This green cap is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "his",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "his",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "his",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "seine",
+            "tier": "full"
+          },
+          {
+            "text": "seiner",
+            "tier": "full"
+          },
+          {
+            "text": "seines",
+            "tier": "full"
+          },
+          {
+            "text": "seins",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hers",
+        "theirs",
+        "ours"
+      ],
+      "hintDe": "Es gehört ihm (einem Mann/einem Jungen).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hers",
+          "theirs",
+          "ours",
+          "mine",
+          "yours"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB grammar (This is my bed, and that's his)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.yours",
+      "w": "yours",
+      "g": "deine/r/s",
+      "d": "A thing that is for you, not for me.",
+      "s": "This book is for you, so it is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "yours",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "yours",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "yours",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "deine",
+            "tier": "full"
+          },
+          {
+            "text": "deiner",
+            "tier": "full"
+          },
+          {
+            "text": "deines",
+            "tier": "full"
+          },
+          {
+            "text": "deins",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mine",
+        "ours",
+        "theirs"
+      ],
+      "hintDe": "Es gehört dir.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mine",
+          "ours",
+          "theirs",
+          "hers",
+          "his"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 11 (Whose pen is this? Is it yours?)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.furniture",
+      "w": "furniture",
+      "g": "Möbel",
+      "d": "A sofa, a table, beds and chairs are all ___.",
+      "s": "In our building, there is a lot of ___: a sofa, a table and chairs.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "furniture",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "furniture",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "furniture",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Möbel",
+            "tier": "full"
+          },
+          {
+            "text": "Möbelstücke",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "material",
+        "electricity",
+        "pattern"
+      ],
+      "hintDe": "Oberbegriff für Sofa, Tisch, Bett und Stuhl.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "material",
+          "electricity",
+          "pattern",
+          "ground",
+          "seat"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (In our house, there's lots of furniture)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.whose",
+      "w": "whose",
+      "g": "wessen",
+      "d": "You ask this when you want to find who a thing is for.",
+      "s": "___ pen is this? Is it yours or mine?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        },
+        {
+          "text": "Whose",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "whose",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wessen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "mine",
+        "yours",
+        "ours"
+      ],
+      "hintDe": "Fragewort: Wem gehört etwas?",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "mine",
+          "yours",
+          "ours",
+          "hers",
+          "theirs"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 11 (Whose pen is this?); MORE Words and Phrases",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.american",
+      "w": "American",
+      "g": "amerikanisch",
+      "d": "A man or woman from America is ___.",
+      "s": "My mum is from America, so she is ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "American",
+          "tier": "full"
+        },
+        {
+          "text": "american",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "American",
+          "tier": "full"
+        },
+        {
+          "text": "Americans",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "American",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "amerikanisch",
+            "tier": "full"
+          },
+          {
+            "text": "Amerikaner",
+            "tier": "full"
+          },
+          {
+            "text": "Amerikanerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Mongolian",
+        "moveable",
+        "plain"
+      ],
+      "hintDe": "Aus Amerika / aus den USA.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "Mongolian",
+          "moveable",
+          "plain",
+          "striped",
+          "spotted"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (My mom is American)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.cellar-2",
+      "w": "cellar",
+      "g": "Keller",
+      "d": "This dark room is underneath a building.",
+      "s": "There is a big ___ underneath our building, and it is dark and cold down there.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cellar",
+          "tier": "full"
+        },
+        {
+          "text": "cellars",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cellar",
+          "tier": "full"
+        },
+        {
+          "text": "cellars",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cellar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Keller",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "staircase",
+        "roof",
+        "ground"
+      ],
+      "hintDe": "Der dunkle Raum unter dem Haus.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "staircase",
+          "roof",
+          "ground",
+          "wall",
+          "window"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (There's a big cellar underneath our house)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.central-asia",
+      "w": "Central Asia",
+      "g": "Zentralasien",
+      "d": "This is a big area in the middle of the biggest land.",
+      "s": "The Mongolian people in ___ move their homes a lot.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Central Asia",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Central Asia",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Central Asia",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zentralasien",
+            "tier": "full"
+          },
+          {
+            "text": "Mittelasien",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "move",
+          "de": "ziehen, umziehen",
+          "scope": "s"
+        },
+        {
+          "word": "lot",
+          "de": "(a lot = viel, oft)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "America",
+        "Mongolian",
+        "ground"
+      ],
+      "hintDe": "Die Mitte des größten Erdteils.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "America",
+          "Mongolian",
+          "ground",
+          "island",
+          "pond"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (The Mongolian people in Central Asia move their houses a lot)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.electricity",
+      "w": "electricity",
+      "g": "Elektrizität",
+      "d": "This power makes your lights and your fridge work.",
+      "s": "We had no ___ in the storm, so the lights and the fridge did not work.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "electricity",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "electricity",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "electricity",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Elektrizität",
+            "tier": "full"
+          },
+          {
+            "text": "Strom",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "material",
+        "furniture",
+        "pattern"
+      ],
+      "hintDe": "Damit funktionieren Licht und Kühlschrank.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "material",
+          "furniture",
+          "pattern",
+          "metal",
+          "ground"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (The trailers can be connected to electricity and water)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.to-float",
+      "w": "to float",
+      "g": "treiben",
+      "d": "When a thing can ___, it stays on the water and does not go down.",
+      "s": "Fifty islands of reed can ___ on the lake.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "float",
+          "tier": "full"
+        },
+        {
+          "text": "floats",
+          "tier": "partial"
+        },
+        {
+          "text": "floated",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "float",
+          "tier": "full"
+        },
+        {
+          "text": "to float",
+          "tier": "partial"
+        },
+        {
+          "text": "floats",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "float",
+            "tier": "full"
+          },
+          {
+            "text": "to float",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "treiben",
+            "tier": "full"
+          },
+          {
+            "text": "schweben",
+            "tier": "full"
+          },
+          {
+            "text": "schwimmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "transport",
+        "carry",
+        "pull"
+      ],
+      "hintDe": "Oben auf dem Wasser bleiben, nicht untergehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "transport",
+          "carry",
+          "pull",
+          "give",
+          "find"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (Fifty islands of reed float on the water)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.moveable",
+      "w": "moveable",
+      "g": "beweglich",
+      "d": "When a thing is ___, you can move it from place to place.",
+      "s": "The desk has wheels, so you can move it. It is very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "moveable",
+          "tier": "full"
+        },
+        {
+          "text": "movable",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "moveable",
+          "tier": "full"
+        },
+        {
+          "text": "movable",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "moveable",
+            "tier": "full"
+          },
+          {
+            "text": "movable",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beweglich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "move",
+          "de": "bewegen",
+          "scope": null
+        },
+        {
+          "word": "wheels",
+          "de": "Räder",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "plain",
+        "heavy",
+        "American"
+      ],
+      "hintDe": "Man kann es von Ort zu Ort bewegen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "plain",
+          "heavy",
+          "American",
+          "striped",
+          "spotted"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (The Mongolian people have moveable houses)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.underneath",
+      "w": "underneath",
+      "g": "unterhalb",
+      "d": "When a thing is under another thing, it is ___ it.",
+      "s": "Our dog likes to lie ___ the table.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "underneath",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "underneath",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "underneath",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unterhalb",
+            "tier": "full"
+          },
+          {
+            "text": "unter",
+            "tier": "full"
+          },
+          {
+            "text": "darunter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "another",
+          "de": "ein anderes",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "underground",
+        "opposite",
+        "behind"
+      ],
+      "hintDe": "Unter etwas, weiter unten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "underground",
+          "opposite",
+          "behind",
+          "along",
+          "across"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (There might be a cellar underneath the house)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.to-transport",
+      "w": "to transport",
+      "g": "transportieren",
+      "d": "To ___ a thing is to move it from one place to another.",
+      "s": "They can ___ their homes to new places.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "transport",
+          "tier": "full"
+        },
+        {
+          "text": "transports",
+          "tier": "partial"
+        },
+        {
+          "text": "transported",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "transport",
+          "tier": "full"
+        },
+        {
+          "text": "to transport",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "transport",
+            "tier": "full"
+          },
+          {
+            "text": "to transport",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "transportieren",
+            "tier": "full"
+          },
+          {
+            "text": "befördern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "move",
+          "de": "bewegen",
+          "scope": "d"
+        },
+        {
+          "word": "another",
+          "de": "ein anderer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "float",
+        "pull",
+        "burn"
+      ],
+      "hintDe": "Etwas von einem Ort zum anderen bringen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "float",
+          "carry",
+          "pull",
+          "give",
+          "find"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (They can transport their homes)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.hammock",
+      "w": "hammock",
+      "g": "Hängematte",
+      "d": "You hang this up and lie in it in the garden.",
+      "s": "I have a new ___. I like to lie in it in the garden.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hammock",
+          "tier": "full"
+        },
+        {
+          "text": "hammocks",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hammock",
+          "tier": "full"
+        },
+        {
+          "text": "hammocks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hammock",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hängematte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hang",
+          "de": "hängen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sofa",
+        "armchair",
+        "bed"
+      ],
+      "hintDe": "Die hängst du auf und liegst darin.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sofa",
+          "armchair",
+          "bed",
+          "rug",
+          "seat"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex 7 (Now I have a hammock!); MORE Words and Phrases",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.cotton",
+      "w": "cotton",
+      "g": "Baumwolle",
+      "d": "This white material is good for shirts and shoes.",
+      "s": "My white shirt is made of ___, so it is good in hot weather.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cotton",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cotton",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cotton",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Baumwolle",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "made",
+          "de": "gemacht (made of = aus)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "leather",
+        "metal",
+        "plastic"
+      ],
+      "hintDe": "Weicher, weißer Stoff für T-Shirts.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "leather",
+          "metal",
+          "plastic",
+          "material",
+          "reed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Twins ex 1 (made of cotton); MORE Words and Phrases (My jacket is made of cotton)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.leather",
+      "w": "leather",
+      "g": "Leder",
+      "d": "This material is from animal skin, and we make shoes from it.",
+      "s": "She does not wear ___ shoes because she wants to help animals.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "leather",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "leather",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "leather",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Leder",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "cotton",
+        "metal",
+        "plastic"
+      ],
+      "hintDe": "Material aus Tierhaut, für Schuhe und Taschen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cotton",
+          "metal",
+          "plastic",
+          "material",
+          "reed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Twins ex 1 (made of leather); MORE Words and Phrases (She doesn't wear leather shoes ...)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.material",
+      "w": "material",
+      "g": "Material",
+      "d": "This is what a thing is made of, like cotton or metal.",
+      "s": "What ___ is your school bag made of: cotton, metal or plastic?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "material",
+          "tier": "full"
+        },
+        {
+          "text": "materials",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "material",
+          "tier": "full"
+        },
+        {
+          "text": "materials",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "material",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Material",
+            "tier": "full"
+          },
+          {
+            "text": "Stoff",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "made",
+          "de": "gemacht (made of = aus)",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "pattern",
+        "furniture",
+        "electricity"
+      ],
+      "hintDe": "Woraus ein Ding gemacht ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "pattern",
+          "furniture",
+          "electricity",
+          "metal",
+          "seat"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (What material did they use to build this house?)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.metal",
+      "w": "metal",
+      "g": "Metall",
+      "d": "Keys and a fridge are this heavy, cold material.",
+      "s": "My keys and the fridge are this cold, heavy ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "metal",
+          "tier": "full"
+        },
+        {
+          "text": "metals",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "metal",
+          "tier": "full"
+        },
+        {
+          "text": "metals",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "metal",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Metall",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "plastic",
+        "leather",
+        "cotton"
+      ],
+      "hintDe": "Hartes, kaltes Material wie bei Schlüsseln.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "plastic",
+          "leather",
+          "cotton",
+          "material",
+          "reed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Twins ex 2 (It's made of metal); MORE Words and Phrases (It's made of metal)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.pattern",
+      "w": "pattern",
+      "g": "Muster",
+      "d": "This is the spots, the stripes or the shapes on a thing.",
+      "s": "My new dress has a ___ of red spots on it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pattern",
+          "tier": "full"
+        },
+        {
+          "text": "patterns",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pattern",
+          "tier": "full"
+        },
+        {
+          "text": "patterns",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pattern",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Muster",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stripes",
+          "de": "Streifen",
+          "scope": "d"
+        },
+        {
+          "word": "shapes",
+          "de": "Formen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "material",
+        "metal",
+        "seat"
+      ],
+      "hintDe": "Die Punkte oder Streifen auf einem Stoff.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "material",
+          "metal",
+          "seat",
+          "furniture",
+          "electricity"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (The shirt has a striped pattern)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.plain",
+      "w": "plain",
+      "g": "einfarbig",
+      "d": "It has nothing on it — no spots and no stripes.",
+      "s": "It is ___ white, with no spots and no stripes on it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "plain",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "plain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einfarbig",
+            "tier": "full"
+          },
+          {
+            "text": "schlicht",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stripes",
+          "de": "Streifen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "striped",
+        "spotted",
+        "moveable"
+      ],
+      "hintDe": "Einfarbig, ohne Punkte oder Streifen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "striped",
+          "spotted",
+          "moveable",
+          "American",
+          "leather"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Twins ex 2 (so it's plain white, is it?); MORE Words and Phrases (It's plain white)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.plastic",
+      "w": "plastic",
+      "g": "Plastik",
+      "d": "Many bottles are this light material, and so are lots of toys.",
+      "s": "This bottle is light because it is made of ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "plastic",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plastic",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "plastic",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Plastik",
+            "tier": "full"
+          },
+          {
+            "text": "Kunststoff",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "toys",
+          "de": "Spielsachen",
+          "scope": "d"
+        },
+        {
+          "word": "made",
+          "de": "gemacht (made of = aus)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "metal",
+        "leather",
+        "cotton"
+      ],
+      "hintDe": "Leichtes Material für Flaschen und Spielsachen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "metal",
+          "leather",
+          "cotton",
+          "material",
+          "reed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Twins ex 2 (It's made of plastic); MORE Words and Phrases (This bottle is made of plastic)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.pond",
+      "w": "pond",
+      "g": "Teich",
+      "d": "Frogs live in this small water in a garden, smaller than a lake.",
+      "s": "There are frogs in the small ___ in our garden.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pond",
+          "tier": "full"
+        },
+        {
+          "text": "ponds",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pond",
+          "tier": "full"
+        },
+        {
+          "text": "ponds",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pond",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Teich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "frogs",
+          "de": "Frösche",
+          "scope": null
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "island",
+        "ground",
+        "reed"
+      ],
+      "hintDe": "Kleines Gewässer im Garten, kleiner als ein See.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "island",
+          "ground",
+          "reed",
+          "stilts",
+          "pattern"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (She falls in the pond)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.seat",
+      "w": "seat",
+      "g": "(Sitz-)Platz",
+      "d": "This is a place where you sit down, like a chair.",
+      "s": "There is one free ___ next to me on the sofa.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "seat",
+          "tier": "full"
+        },
+        {
+          "text": "seats",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "seat",
+          "tier": "full"
+        },
+        {
+          "text": "seats",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "seat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sitzplatz",
+            "tier": "full"
+          },
+          {
+            "text": "Platz",
+            "tier": "full"
+          },
+          {
+            "text": "Sitz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pond",
+        "ground",
+        "pattern"
+      ],
+      "hintDe": "Ein Platz zum Sitzen, wie ein Stuhl.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "pond",
+          "ground",
+          "pattern",
+          "material",
+          "reed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words and Phrases (Take a seat)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.spotted",
+      "w": "spotted",
+      "g": "gepunktet",
+      "d": "It has many small spots on it.",
+      "s": "Her dress has small spots on it, so it is ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "spotted",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spotted",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spotted",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gepunktet",
+            "tier": "full"
+          },
+          {
+            "text": "getupft",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "striped",
+        "plain",
+        "moveable"
+      ],
+      "hintDe": "Mit vielen kleinen Punkten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "striped",
+          "plain",
+          "moveable",
+          "American",
+          "leather"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Twins (A spotted); MORE Words and Phrases (I can't find my spotted sunglasses)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.strap",
+      "w": "strap",
+      "g": "Band",
+      "d": "This holds your watch on you, and it can be leather, plastic or metal.",
+      "s": "I've got a watch with a green ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "strap",
+          "tier": "full"
+        },
+        {
+          "text": "straps",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "strap",
+          "tier": "full"
+        },
+        {
+          "text": "straps",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "strap",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Band",
+            "tier": "full"
+          },
+          {
+            "text": "Armband",
+            "tier": "partial"
+          },
+          {
+            "text": "Riemen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pattern",
+        "material",
+        "seat"
+      ],
+      "hintDe": "Das Band, das die Uhr an dir hält.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "pattern",
+          "material",
+          "seat",
+          "metal",
+          "reed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Twins ex 2 (the strap is different ... it's striped); MORE Words and Phrases (I've got a watch with a blue strap)",
+      "note": null
+    },
+    {
+      "wordId": "g2u11.w.striped",
+      "w": "striped",
+      "g": "gestreift",
+      "d": "It has long stripes on it.",
+      "s": "His shirt has long stripes on it, so it is ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "striped",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "striped",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "striped",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gestreift",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stripes",
+          "de": "Streifen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "spotted",
+        "plain",
+        "moveable"
+      ],
+      "hintDe": "Mit langen Streifen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "spotted",
+          "plain",
+          "moveable",
+          "American",
+          "leather"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB Twins ex 2 (It's striped); MORE Words and Phrases (My T-shirt is striped)",
+      "note": null
+    }
+  ]
+}

@@ -1,0 +1,623 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g2-u04",
+  "round": 1,
+  "itemsHash": "b34faed5561b",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g2u04.w.anaconda",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.anaconda",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.bat",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.bat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.centimetre",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.centimetre",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.cheetah",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.cheetah",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.climate-change",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.climate-change",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.crocodile",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.crocodile",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.desert",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.desert",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.dolphin",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.dolphin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.female",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.female",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.giraffe",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.giraffe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.intelligent",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.intelligent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.length",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.length",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.luck",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.luck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.male",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.male",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.mammal",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.mammal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.mosquito",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.mosquito",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.ostrich",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.ostrich",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.parrot",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.parrot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.pigeon",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.pigeon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.rhino",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.rhino",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.scientist",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.scientist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.shark",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.shark",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.smart",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.smart",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.to-carry",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.to-carry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.to-die",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.to-die",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.to-die-out",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.to-die-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.to-protect",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.to-protect",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.ton",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.ton",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.venomous",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.venomous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g2u04.w.whale",
+      "kind": "new-gloss",
+      "itemId": "g2u04.w.whale",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.ago",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.ago",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.anaconda",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.anaconda",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.antelope",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.antelope",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.bat",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.bat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.centimetre",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.centimetre",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.cheetah",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.cheetah",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.chimpanzee",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.chimpanzee",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.climate-change",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.climate-change",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.crocodile",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.crocodile",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.dangerous",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.dangerous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.desert",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.desert",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.dolphin",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.dolphin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.farmer",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.farmer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.fast",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.fast",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.female",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.female",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.forever",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.forever",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.giraffe",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.giraffe",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.hairy",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.hairy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.heavy",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.heavy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.human",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.human",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.incredible",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.incredible",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.intelligent",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.intelligent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.length",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.length",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.less",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.less",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.luck",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.luck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.male",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.male",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.mammal",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.mammal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.mosquito",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.mosquito",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.nobody",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.nobody",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.ostrich",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.ostrich",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.parrot",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.parrot",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.pigeon",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.pigeon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.powerful",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.powerful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.reason",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.reason",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.rhino",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.rhino",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.scientist",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.scientist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.shark",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.shark",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.smart",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.smart",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.speed",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.speed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.strong",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.strong",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.to-carry",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.to-carry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.to-die",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.to-die",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.to-die-out",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.to-die-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.to-protect",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.to-protect",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.to-share",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.to-share",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.to-weigh",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.to-weigh",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.ton",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.ton",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.truck",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.truck",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.venomous",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.venomous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.w.whale",
+      "kind": "translation-audit",
+      "itemId": "g2u04.w.whale",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.gi.as-as.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u04.gi.as-as.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.gi.as-as.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u04.gi.as-as.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.gi.comparatives.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u04.gi.comparatives.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.gi.comparatives.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u04.gi.comparatives.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.gi.superlatives.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g2u04.gi.superlatives.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g2u04.gi.superlatives.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g2u04.gi.superlatives.tr.002",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Approved. 50 vocab + 66 grammar (comparatives 24, superlatives 21, as…as 21), the animals/comparison unit. Grants: as / better / worse / worst (SB box) + item-scoped \"mosquitoes\" (standard irregular plural the regular family misses). Smoke-check (pre-verify) fixed: variant-answer demotions (US centimeter, \"human being\", tonne, lorry → partial), farmer def off \"farm\", 3 group-sort labels reworded off grammar-meta (\"-er\"/\"-est\"/\"equal\" → exemplar labels), 1 chip-budget overflow. Verify round 1 caught two FALSE comparison facts (pigeon>ostrich at running; ostrich=giraffe height — both corrected to true), a synonym distractor (powerful for strong), a pronoun-remap ambiguity, and \"past\" masked by the name \"Past\" in w.ago — all fixed; round 2 clean. Stage-8: all 30 glosses correct German + genuinely above level, all 56 translations accurate. NOTE FOR KOKI: this unit is gloss-heavy (~40 glossed tokens) because the animal-category vocabulary — animal, bird, snake, insect, reptile, sea — is untaught at g2-u04 yet unavoidable in an animals unit. Worth considering whether \"animal\"/\"bird\" belong in the core taught set; for now they're correctly glossed. rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 116,
+    "fullRows": 116,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

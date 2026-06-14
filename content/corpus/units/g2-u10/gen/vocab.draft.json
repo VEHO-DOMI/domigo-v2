@@ -1,0 +1,818 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g2-u10",
+  "briefBank": "96a3bd6f6117",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g2u10.w.auntie",
+      "w": "auntie",
+      "g": "Tantchen",
+      "d": "your mum's or dad's sister.",
+      "s": "My ___ arrived first and she had a big present for me.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "auntie", "tier": "full" },
+        { "text": "aunty", "tier": "partial" },
+        { "text": "aunt", "tier": "partial" }
+      ],
+      "dAnswers": [
+        { "text": "auntie", "tier": "full" },
+        { "text": "aunty", "tier": "partial" },
+        { "text": "aunties", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "auntie", "tier": "full" },
+          { "text": "aunty", "tier": "full" },
+          { "text": "aunt", "tier": "partial" }
+        ],
+        "enToDe": [
+          { "text": "Tantchen", "tier": "full" },
+          { "text": "Tante", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["uncle", "grandma", "grandpa"],
+      "hintDe": "Eine liebe Bezeichnung für die Schwester deiner Mama oder deines Papas.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": ["uncle", "grandma", "grandpa", "sister", "mother"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex.3 (Sophie's diary), MORE Words p.86",
+      "note": "masterlist exampleSb 'My auntie arrived first.' extended with taught words; SB ex.3 'Auntie Mildred arrived first.'"
+    },
+    {
+      "wordId": "g2u10.w.calm",
+      "w": "calm",
+      "g": "ruhig",
+      "d": "not nervous and not scared; you stay nice and still.",
+      "s": "It's difficult for me to stay ___ when so many people are here.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "calm", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "calm", "tier": "full" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "calm", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "ruhig", "tier": "full" },
+          { "text": "gelassen", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["nervous", "angry", "scared"],
+      "hintDe": "Ganz ruhig bleiben, nicht nervös und nicht ärgerlich werden.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["nervous", "angry", "scared", "proud", "sad"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.3 'I stayed calm this time.'",
+      "note": "masterlist exampleSb 'It's difficult for me to stay calm.' extended with taught words."
+    },
+    {
+      "wordId": "g2u10.w.girlfriend",
+      "w": "girlfriend",
+      "g": "feste Freundin",
+      "d": "a girl or woman that a boy or man loves.",
+      "s": "My dad has a new ___ and she is very nice.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "girlfriend", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "girlfriend", "tier": "full" },
+        { "text": "girlfriends", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "girlfriend", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "feste Freundin", "tier": "full" },
+          { "text": "Freundin", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["boyfriend", "sister", "aunt"],
+      "hintDe": "Die feste Freundin von jemandem.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": ["boyfriend", "sister", "aunt", "grandma", "mother"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.3 'He has a new girlfriend.'",
+      "note": "masterlist exampleSb 'My dad has a new girlfriend.' extended with taught words."
+    },
+    {
+      "wordId": "g2u10.w.to-be-proud-of",
+      "w": "to be proud of",
+      "g": "stolz sein auf",
+      "d": "to be very happy about what you or your family did.",
+      "s": "I am very ___ myself for my good work today.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "proud of", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "to be proud of", "tier": "full" },
+        { "text": "be proud of", "tier": "full" },
+        { "text": "proud of", "tier": "full" },
+        { "text": "proud", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "to be proud of", "tier": "full" },
+          { "text": "be proud of", "tier": "full" },
+          { "text": "proud of", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "stolz sein auf", "tier": "full" },
+          { "text": "stolz auf", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["scared", "calm", "nervous"],
+      "hintDe": "Sehr glücklich über das sein, was du oder andere geschafft haben.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": ["scared", "calm", "nervous", "angry", "divorced"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.3 'Today I'm really proud of myself.'",
+      "note": "masterlist exampleSb 'I'm very proud of myself.' adapted to gap form."
+    },
+    {
+      "wordId": "g2u10.w.sense-of-humour",
+      "w": "sense of humour",
+      "g": "Sinn für Humor",
+      "d": "when you can be funny and make people laugh.",
+      "s": "My dad is so funny. He has a great ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        { "text": "sense of humour", "tier": "full" },
+        { "text": "sense of humor", "tier": "partial" }
+      ],
+      "dAnswers": [
+        { "text": "sense of humour", "tier": "full" },
+        { "text": "sense of humor", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "sense of humour", "tier": "full" },
+          { "text": "sense of humor", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "Sinn für Humor", "tier": "full" },
+          { "text": "Humor", "tier": "partial" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["virus", "file", "fault"],
+      "hintDe": "Wenn jemand lustig ist und andere zum Lachen bringt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["virus", "file", "fault", "tool", "tractor"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.3 'We've got the same sense of humour.'",
+      "note": "SB sentence reworked to drop untaught 'got'/'same'; kept funny/great/he."
+    },
+    {
+      "wordId": "g2u10.w.ugly",
+      "w": "ugly",
+      "g": "hässlich",
+      "d": "not nice to look at.",
+      "s": "Your hat's so ___! I really don't like it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "ugly", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "ugly", "tier": "full" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "ugly", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "hässlich", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["pretty", "beautiful", "nice"],
+      "hintDe": "Etwas sieht gar nicht schön aus.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": ["pretty", "beautiful", "nice", "calm", "proud"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.3 'Your hat's so ugly!'",
+      "note": "masterlist exampleSb 'Your hat's so ugly!' extended with taught words."
+    },
+    {
+      "wordId": "g2u10.w.virus",
+      "w": "virus",
+      "g": "Virus",
+      "d": "a very small living thing that can make you sick.",
+      "s": "I'm not well today. I've got this ___ and I must stay in bed.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "virus", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "virus", "tier": "full" },
+        { "text": "viruses", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "virus", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "Virus", "tier": "full" },
+          { "text": "der Virus", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["file", "tool", "fault"],
+      "hintDe": "Ein winziges Ding, von dem man krank werden kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": ["file", "tool", "fault", "tractor", "girlfriend"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.3 'I've got this virus.'",
+      "note": "masterlist exampleSb 'I've got this virus.' kept (have/'ve got taught as I've got) and extended with taught words."
+    },
+    {
+      "wordId": "g2u10.w.to-breathe",
+      "w": "to breathe",
+      "g": "(ein-)atmen",
+      "d": "you do this with your nose and mouth all day, in and out.",
+      "s": "When you run very fast, it is difficult to ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "breathe", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "to breathe", "tier": "full" },
+        { "text": "breathe", "tier": "full" },
+        { "text": "breathes", "tier": "partial" },
+        { "text": "breathed", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "to breathe", "tier": "full" },
+          { "text": "breathe", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "atmen", "tier": "full" },
+          { "text": "einatmen", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["burn", "panic", "delete"],
+      "hintDe": "Mit Nase und Mund Luft holen, ein und aus.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["burn", "panic", "delete", "print out", "tool"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86",
+      "note": "masterlist exampleSb used 'breathe the clean air'; air is untaught, so reworked to a taught carrier (run/fast/difficult)."
+    },
+    {
+      "wordId": "g2u10.w.to-burn",
+      "w": "to burn",
+      "g": "(ver-)brennen",
+      "d": "when fire makes a thing hot and black.",
+      "s": "Be careful with the fire — you can ___ your fingers!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "burn", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "to burn", "tier": "full" },
+        { "text": "burn", "tier": "full" },
+        { "text": "burns", "tier": "partial" },
+        { "text": "burned", "tier": "partial" },
+        { "text": "burnt", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "to burn", "tier": "full" },
+          { "text": "burn", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "brennen", "tier": "full" },
+          { "text": "verbrennen", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["breathe", "delete", "panic"],
+      "hintDe": "Sich am Feuer oder an etwas Heißem wehtun.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["breathe", "delete", "panic", "print out", "file"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86",
+      "note": "masterlist exampleSb 'You can burn wood on a fire'; wood is untaught, so reworked to fire/fingers (taught)."
+    },
+    {
+      "wordId": "g2u10.w.foreign-language",
+      "w": "foreign language",
+      "g": "Fremdsprache",
+      "d": "English or French for you, if you speak German at school and with your family.",
+      "s": "She doesn't speak a ___; she just speaks German.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "foreign language", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "foreign language", "tier": "full" },
+        { "text": "foreign languages", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "foreign language", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "Fremdsprache", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["sense of humour", "virus", "tractor"],
+      "hintDe": "Eine Sprache, die man nicht zu Hause spricht, z. B. Englisch für ein Kind in Österreich.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["sense of humour", "virus", "tractor", "tool", "file"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86",
+      "note": "masterlist exampleSb 'She doesn't speak a foreign language.' extended with taught 'she just speaks German.'"
+    },
+    {
+      "wordId": "g2u10.w.to-panic",
+      "w": "to panic",
+      "g": "in Panik geraten",
+      "d": "to be so scared that you do not stay calm.",
+      "s": "Stay calm and don't ___! I am here to help you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "panic", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "to panic", "tier": "full" },
+        { "text": "panic", "tier": "full" },
+        { "text": "panics", "tier": "partial" },
+        { "text": "panicked", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "to panic", "tier": "full" },
+          { "text": "panic", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "in Panik geraten", "tier": "full" },
+          { "text": "Panik bekommen", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["breathe", "burn", "delete"],
+      "hintDe": "So große Angst bekommen, dass man nicht mehr ruhig bleibt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["breathe", "burn", "delete", "print out", "public"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86",
+      "note": "masterlist exampleSb 'When you get scared, try not to panic'; get/try untaught, reworked to 'Stay calm and don't panic!' (taught)."
+    },
+    {
+      "wordId": "g2u10.w.tractor",
+      "w": "tractor",
+      "g": "Traktor",
+      "d": "a big machine a farmer uses to work in the fields.",
+      "s": "The farmer has a big ___ on his farm.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "tractor", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "tractor", "tier": "full" },
+        { "text": "tractors", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "tractor", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "Traktor", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["tool", "virus", "file"],
+      "hintDe": "Eine große Maschine, mit der ein Bauer auf dem Feld arbeitet.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": ["tool", "virus", "file", "fault", "girlfriend"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.5 'Jonathan – sitting on a red tractor.'",
+      "note": "masterlist exampleSb 'The farmer has a big tractor on his farm.' kept verbatim."
+    },
+    {
+      "wordId": "g2u10.w.tool",
+      "w": "tool",
+      "g": "Werkzeug",
+      "d": "a thing like a hammer; you hold it to make or open a box.",
+      "s": "I need a ___ to make this chair. A hammer is one.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "tool", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "tool", "tier": "full" },
+        { "text": "tools", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "tool", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "Werkzeug", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["tractor", "virus", "file"],
+      "hintDe": "Etwas wie ein Hammer, das man zum Bauen oder Reparieren in die Hand nimmt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": ["tractor", "virus", "file", "fault", "girlfriend"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.8 'using tools.'",
+      "note": "masterlist exampleSb 'You use a tool to make or build something'; use/build/something untaught, reworked with hammer/chair/make (taught)."
+    },
+    {
+      "wordId": "g2u10.w.divorced",
+      "w": "divorced",
+      "g": "geschieden",
+      "d": "when a mum and dad are not a family any more, and the dad lives in a new place.",
+      "s": "Rick's parents are ___ and he lives with his mum.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "divorced", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "divorced", "tier": "full" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "divorced", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "geschieden", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["calm", "proud", "ugly"],
+      "hintDe": "Wenn Mama und Papa nicht mehr zusammen sind und getrennt leben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["calm", "proud", "ugly", "public", "nervous"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.10/11 'Rick's parents are divorced.'",
+      "note": "masterlist exampleSb 'Rick's parents are divorced.' extended with taught SB clause 'he lives with his mum.'"
+    },
+    {
+      "wordId": "g2u10.w.to-be-related-to",
+      "w": "to be related to",
+      "g": "mit jdm. verwandt sein",
+      "d": "to be in one family with people like your aunt and uncle.",
+      "s": "Talk about the people in your family and how they are ___ you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "related to", "tier": "full" },
+        { "text": "related", "tier": "partial" }
+      ],
+      "dAnswers": [
+        { "text": "to be related to", "tier": "full" },
+        { "text": "be related to", "tier": "full" },
+        { "text": "related to", "tier": "full" },
+        { "text": "related", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "to be related to", "tier": "full" },
+          { "text": "be related to", "tier": "full" },
+          { "text": "related to", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "mit jemandem verwandt sein", "tier": "full" },
+          { "text": "verwandt sein", "tier": "full" },
+          { "text": "verwandt", "tier": "partial" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["proud of", "divorced", "public"],
+      "hintDe": "Mit jemandem in einer Familie sein, z. B. mit Tante und Onkel.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": ["proud of", "divorced", "public", "calm", "ugly"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.13 'how they are related to you.'",
+      "note": "masterlist exampleSb 'Talk about the people and how they are related to you.' kept (SB ex.13)."
+    },
+    {
+      "wordId": "g2u10.w.to-delete",
+      "w": "to delete",
+      "g": "löschen",
+      "d": "to make a file go away on your tablet, so it is not there any more.",
+      "s": "Don't ___ my homework — I need it!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "delete", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "to delete", "tier": "full" },
+        { "text": "delete", "tier": "full" },
+        { "text": "deletes", "tier": "partial" },
+        { "text": "deleted", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "to delete", "tier": "full" },
+          { "text": "delete", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "löschen", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["print out", "breathe", "burn"],
+      "hintDe": "Eine Datei vom Gerät entfernen, sodass sie weg ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["print out", "breathe", "burn", "panic", "public"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.15 'delete a file.'",
+      "note": "masterlist exampleSb 'Don't delete the last email I sent you'; email/sent untaught, reworked to 'Don't delete my homework' (taught)."
+    },
+    {
+      "wordId": "g2u10.w.file",
+      "w": "file",
+      "g": "Datei",
+      "d": "a place on your tablet where you keep your work.",
+      "s": "I keep my homework in this ___ and open it on my tablet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "file", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "file", "tier": "full" },
+        { "text": "files", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "file", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "Datei", "tier": "full" },
+          { "text": "Ordner", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["tool", "virus", "fault"],
+      "hintDe": "Ein Ort auf dem Gerät, wo du deine Arbeit speicherst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": ["tool", "virus", "fault", "tractor", "girlfriend"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.15 'go into private files / delete a file.'",
+      "note": "masterlist exampleSb 'You mustn't go into my private files'; private untaught, reworked to taught carrier with keep/open/tablet."
+    },
+    {
+      "wordId": "g2u10.w.to-print-out",
+      "w": "to print out",
+      "g": "ausdrucken",
+      "d": "to make your work come out of the tablet so you can hold it and read it.",
+      "s": "Can you ___ this story for me, so I can read it on my desk?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "print out", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "to print out", "tier": "full" },
+        { "text": "print out", "tier": "full" },
+        { "text": "prints out", "tier": "partial" },
+        { "text": "printed out", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "to print out", "tier": "full" },
+          { "text": "print out", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "ausdrucken", "tier": "full" },
+          { "text": "drucken", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["delete", "breathe", "burn"],
+      "hintDe": "Etwas vom Gerät auf ein Blatt bringen, das du in der Hand hältst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["delete", "breathe", "burn", "panic", "file"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB ex.15 'print out everything.'",
+      "note": "masterlist exampleSb 'I should print out everything'; should untaught, reworked to a taught 'Can you print out this story...' carrier."
+    },
+    {
+      "wordId": "g2u10.w.public",
+      "w": "public",
+      "g": "öffentlich",
+      "d": "open for all the people, not just for you.",
+      "s": "A library is a ___ place — anyone can go in.",
+      "sSource": "invented",
+      "sAnswers": [
+        { "text": "public", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "public", "tier": "full" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "public", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "öffentlich", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["calm", "ugly", "divorced"],
+      "hintDe": "Für alle Leute da, nicht nur für dich – z. B. ein Park.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["calm", "ugly", "divorced", "proud", "nervous"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB ex.16 'mustn't wear jeans outside in public.'",
+      "note": "SB carrier 'You mustn't shout in public' uses untaught 'shout'; invented a taught library carrier (anyone/place taught)."
+    },
+    {
+      "wordId": "g2u10.w.ice-skating",
+      "w": "ice skating",
+      "g": "Eislaufen",
+      "d": "you do this on skates when it is very cold.",
+      "s": "I don't like ___, because I always fall down.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "ice skating", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "ice skating", "tier": "full" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "ice skating", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "Eislaufen", "tier": "full" },
+          { "text": "Schlittschuhlaufen", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["tool", "tractor", "fault"],
+      "hintDe": "Im Winter auf Schlittschuhen über das Eis gleiten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": ["tool", "tractor", "fault", "virus", "file"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB GRAMMAR p.82 'I don't like ice skating.'",
+      "note": "masterlist exampleSb 'I don't like ice skating.' extended with taught 'fall down' (g1-u13)."
+    },
+    {
+      "wordId": "g2u10.w.fault",
+      "w": "fault",
+      "g": "Schuld",
+      "d": "when a bad thing happens because of you.",
+      "s": "It's not my ___! I did nothing bad.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        { "text": "fault", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "fault", "tier": "full" },
+        { "text": "faults", "tier": "partial" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "fault", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "Schuld", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["virus", "tool", "file"],
+      "hintDe": "Wenn etwas Schlimmes wegen dir passiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["virus", "tool", "file", "tractor", "girlfriend"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB EVERYDAY ENGLISH 'it wasn't your fault.'",
+      "note": "masterlist exampleSb 'It's not my fault.' extended with taught 'I did nothing bad.'"
+    },
+    {
+      "wordId": "g2u10.w.hopefully",
+      "w": "hopefully",
+      "g": "hoffentlich",
+      "d": "you want a good thing to happen tomorrow.",
+      "s": "___ it is sunny tomorrow, so we can play outside.",
+      "sSource": "invented",
+      "sAnswers": [
+        { "text": "hopefully", "tier": "full" }
+      ],
+      "dAnswers": [
+        { "text": "hopefully", "tier": "full" }
+      ],
+      "translation": {
+        "deToEn": [
+          { "text": "hopefully", "tier": "full" }
+        ],
+        "enToDe": [
+          { "text": "hoffentlich", "tier": "full" }
+        ]
+      },
+      "gloss": [],
+      "mc": ["honestly", "actually", "completely"],
+      "hintDe": "Du wünschst dir, dass etwas Gutes passiert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": ["honestly", "actually", "completely", "simply", "absolutely"],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "MORE Words p.86; SB EVERYDAY ENGLISH 'hopefully'.",
+      "note": "masterlist exampleSb 'This was hopefully the last time' reworked to a clear sentence-initial carrier using only taught words (sunny/tomorrow/play/outside)."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "verify-merged@1",
+  "slug": "g2-u01",
+  "round": 6,
+  "itemsHash": "015265583952",
+  "lenses": {
+    "level-gloss": {
+      "by": "fable-lens-level-gloss",
+      "flagged": 1
+    },
+    "answers": {
+      "by": "fable-lens-answers",
+      "flagged": 1
+    },
+    "translation": {
+      "by": "fable-lens-translation",
+      "flagged": 0
+    },
+    "register": {
+      "by": "fable-lens-register",
+      "flagged": 0
+    }
+  },
+  "byItem": {
+    "g2u01.w.subject": [
+      {
+        "key": "above-level:g2u01.w.subject",
+        "kind": "above-level",
+        "itemId": "g2u01.w.subject",
+        "severity": "warn",
+        "note": "Definition 'd' = \"Maths, art, music and history are all kinds of these.\" 'kind' is taught only as the hedge 'kind of' (g1-u14, = sort of / quite); the plural count noun 'kinds of' (= types/categories, Arten) is an untaught meaning, and the cataphoric 'these' pointing forward to the gapped answer is knotty for A1+. Defensible (standing accepted warn): the four fronted examples plus the s-sentence (\"English is my favourite ___ of all.\") still scaffold the answer. Definition and carrier are byte-identical to round 5; no new issue. Sibling subject defs (science, geography, history, etc.) read cleanly.",
+        "lens": "level-gloss"
+      }
+    ],
+    "g2u01.w.webpage": [
+      {
+        "key": "distractor-plausible-correct:g2u01.w.webpage",
+        "kind": "distractor-plausible-correct",
+        "itemId": "g2u01.w.webpage",
+        "severity": "warn",
+        "note": "Definition d=\"You read it on a tablet or mobile phone.\" states a property, not an identity, so mc distractors \"calendar\" and \"timetable\" satisfy it literally (you can read either on a tablet) and the carrier \"Open the school ___ and read it on your tablet.\" admits them too. They are different objects, not true synonyms of \"webpage\", so per the mc calibration this is warn not fix; it is the known accepted property-style-definition warn. Tighten the definition to a webpage-specific cue to retire it.",
+        "lens": "answers"
+      }
+    ]
+  },
+  "fixCount": 0,
+  "warnCount": 2,
+  "escalated": []
+}

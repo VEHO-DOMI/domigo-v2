@@ -1,0 +1,20 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g2-u01",
+  "lens": "answers",
+  "itemsHash": "015265583952",
+  "promptHash": "70fa2d8cdf22",
+  "round": 6,
+  "by": "fable-lens-answers",
+  "flags": [
+    {
+      "key": "distractor-plausible-correct:g2u01.w.webpage",
+      "kind": "distractor-plausible-correct",
+      "itemId": "g2u01.w.webpage",
+      "severity": "warn",
+      "note": "Definition d=\"You read it on a tablet or mobile phone.\" states a property, not an identity, so mc distractors \"calendar\" and \"timetable\" satisfy it literally (you can read either on a tablet) and the carrier \"Open the school ___ and read it on your tablet.\" admits them too. They are different objects, not true synonyms of \"webpage\", so per the mc calibration this is warn not fix; it is the known accepted property-style-definition warn. Tighten the definition to a webpage-specific cue to retire it.",
+      "suggestion": null
+    }
+  ],
+  "summary": { "itemsSeen": 70, "flagged": 1 }
+}

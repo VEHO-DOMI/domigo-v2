@@ -1,0 +1,3665 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g2-u05",
+  "briefBank": "e4e84149755f",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g2u05.w.cinema",
+      "w": "cinema",
+      "g": "Kino",
+      "d": "A place where you watch a new film on a big screen.",
+      "s": "I want to watch the latest film. Let's go to the ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "cinema",
+          "tier": "full"
+        },
+        {
+          "text": "cinemas",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cinema",
+          "tier": "full"
+        },
+        {
+          "text": "cinemas",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cinema",
+            "tier": "full"
+          },
+          {
+            "text": "cinemas",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kino",
+            "tier": "full"
+          },
+          {
+            "text": "das Kino",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "restaurant",
+        "church",
+        "supermarket"
+      ],
+      "hintDe": "Hier schaust du auf einer großen Leinwand einen Film.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "restaurant",
+          "church",
+          "supermarket",
+          "music shop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "cinema",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB3 ('I want to see the latest Disney film. Let's go to the cinema.'); 'Disney' dropped and 'see' changed to taught 'watch'. 'film' glossed (untaught) and used in both s and d, hence scope null. 'latest' taught (g1-u14)."
+    },
+    {
+      "wordId": "g2u05.w.church",
+      "w": "church",
+      "g": "Kirche",
+      "d": "A building with a tall tower and a cross.",
+      "s": "He's going to the ___ on the corner. It has a tall tower with a cross.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "church",
+          "tier": "full"
+        },
+        {
+          "text": "churches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "church",
+          "tier": "full"
+        },
+        {
+          "text": "churches",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "church",
+            "tier": "full"
+          },
+          {
+            "text": "churches",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kirche",
+            "tier": "full"
+          },
+          {
+            "text": "die Kirche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tower",
+          "de": "Turm",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "bank",
+        "restaurant",
+        "supermarket"
+      ],
+      "hintDe": "Ein Gebäude mit einem hohen Turm; oben siehst du ein Kreuz.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bank",
+          "restaurant",
+          "supermarket",
+          "cinema"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "church",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB1 picture cue ('He's going to the church', church with a cross on the tower). Glosses 'tower' and the noun 'cross' (the bank verb 'cross' is taught; the noun sense is glossed to be safe), both in s and d, scope null. 'corner' is audited-granted; 'tall' taught (g1-u03)."
+    },
+    {
+      "wordId": "g2u05.w.bank",
+      "w": "bank",
+      "g": "Bank",
+      "d": "A place where you can keep your money.",
+      "s": "I don't have any money left. I need a ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "bank",
+          "tier": "full"
+        },
+        {
+          "text": "banks",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bank",
+          "tier": "full"
+        },
+        {
+          "text": "banks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bank",
+            "tier": "full"
+          },
+          {
+            "text": "banks",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bank",
+            "tier": "full"
+          },
+          {
+            "text": "die Bank",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "post office",
+        "supermarket",
+        "tourist office"
+      ],
+      "hintDe": "Hierher gehst du, wenn du Geld brauchst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "post office",
+          "supermarket",
+          "tourist office",
+          "cinema"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "bank",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB3 ('I haven't got any money left. I need a bank.'); 'haven't got' triggers the gate on bare 'got', so rewritten to 'I don't have any money left.'"
+    },
+    {
+      "wordId": "g2u05.w.restaurant",
+      "w": "restaurant",
+      "g": "Restaurant",
+      "d": "A place where you eat your dinner and a waiter brings it to you.",
+      "s": "I don't want to cook today. Let's go to the ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "restaurant",
+          "tier": "full"
+        },
+        {
+          "text": "restaurants",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "restaurant",
+          "tier": "full"
+        },
+        {
+          "text": "restaurants",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "restaurant",
+            "tier": "full"
+          },
+          {
+            "text": "restaurants",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Restaurant",
+            "tier": "full"
+          },
+          {
+            "text": "das Restaurant",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bank",
+        "church",
+        "hospital"
+      ],
+      "hintDe": "Hierher gehst du, wenn du nicht selbst kochen willst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bank",
+          "church",
+          "hospital",
+          "post office"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "restaurant",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier verbatim from WB3 ('I don't want to cook today. Let's go to the restaurant.'). 'waiter' taught (g1-u07)."
+    },
+    {
+      "wordId": "g2u05.w.railway-station",
+      "w": "railway station",
+      "g": "Bahnhof",
+      "d": "A place where you wait for your train.",
+      "s": "I don't have a car. Let's go to the ___ and catch the train to York.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "railway station",
+          "tier": "full"
+        },
+        {
+          "text": "railway stations",
+          "tier": "partial"
+        },
+        {
+          "text": "train station",
+          "tier": "partial"
+        },
+        {
+          "text": "station",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "railway station",
+          "tier": "full"
+        },
+        {
+          "text": "railway stations",
+          "tier": "full"
+        },
+        {
+          "text": "train station",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "railway station",
+            "tier": "full"
+          },
+          {
+            "text": "train station",
+            "tier": "partial"
+          },
+          {
+            "text": "station",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bahnhof",
+            "tier": "full"
+          },
+          {
+            "text": "der Bahnhof",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bus stop",
+        "airport",
+        "supermarket"
+      ],
+      "hintDe": "Hier steigst du in den Zug.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bus stop",
+          "airport",
+          "supermarket",
+          "music shop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "railway station",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB3 ('I don't have a car. Let's go to the railway station and take the train to York.'); base 'take' is untaught, so 'take the train' rewritten to 'catch the train' ('to catch' taught g1-u06)."
+    },
+    {
+      "wordId": "g2u05.w.chemist-s",
+      "w": "chemist's",
+      "g": "Apotheke",
+      "d": "A place that sells medicine for when you have a cold.",
+      "s": "I've got a cold. Can you go to the ___ for me?",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "chemist's",
+          "tier": "full"
+        },
+        {
+          "text": "chemist",
+          "tier": "partial"
+        },
+        {
+          "text": "pharmacy",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chemist's",
+          "tier": "full"
+        },
+        {
+          "text": "chemist",
+          "tier": "partial"
+        },
+        {
+          "text": "pharmacy",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chemist's",
+            "tier": "full"
+          },
+          {
+            "text": "chemist",
+            "tier": "partial"
+          },
+          {
+            "text": "pharmacy",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Apotheke",
+            "tier": "full"
+          },
+          {
+            "text": "die Apotheke",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hospital",
+        "supermarket",
+        "post office"
+      ],
+      "hintDe": "Hierher gehst du, wenn du erkältet bist und Medizin brauchst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hospital",
+          "supermarket",
+          "post office",
+          "bank"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "chemist's",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier verbatim from WB3 ('I've got a cold. Can you go to the chemist's for me?'). 'medicine' taught (g1-u13), 'cold' taught (g1-u04); def uses 'sells' (taught g1-u14) to avoid untaught 'buy'/'get'."
+    },
+    {
+      "wordId": "g2u05.w.tourist-office",
+      "w": "tourist office",
+      "g": "Touristeninformation",
+      "d": "A place where you can ask for a map and find out about a town.",
+      "s": "We want a map of this town. Let's ask at the ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "tourist office",
+          "tier": "full"
+        },
+        {
+          "text": "tourist offices",
+          "tier": "partial"
+        },
+        {
+          "text": "tourist information",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tourist office",
+          "tier": "full"
+        },
+        {
+          "text": "tourist offices",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tourist office",
+            "tier": "full"
+          },
+          {
+            "text": "tourist information",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Touristeninformation",
+            "tier": "full"
+          },
+          {
+            "text": "die Touristeninformation",
+            "tier": "full"
+          },
+          {
+            "text": "Touristenbüro",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "post office",
+        "police station",
+        "supermarket"
+      ],
+      "hintDe": "Hier bekommst du als Besucher eine Karte und Infos über die Stadt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "post office",
+          "police station",
+          "supermarket",
+          "bank"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "tourist office",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB3 ('We should make a tour with a river boat. Let's ask at the tourist office.'); 'should', 'tour' and 'boat' are all untaught (and 'know' is untaught — only 'to understand' is taught), so reworded to 'We want a map of this town. Let's ask at the tourist office.', which also matches what a tourist office gives you."
+    },
+    {
+      "wordId": "g2u05.w.music-shop",
+      "w": "music shop",
+      "g": "Musikgeschäft",
+      "d": "A place where you can find a guitar or a keyboard to play.",
+      "s": "I want a new guitar. Let's go to the ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "music shop",
+          "tier": "full"
+        },
+        {
+          "text": "music shops",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "music shop",
+          "tier": "full"
+        },
+        {
+          "text": "music shops",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "music shop",
+            "tier": "full"
+          },
+          {
+            "text": "music shops",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Musikgeschäft",
+            "tier": "full"
+          },
+          {
+            "text": "das Musikgeschäft",
+            "tier": "full"
+          },
+          {
+            "text": "Musikladen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "supermarket",
+        "chemist's",
+        "post office"
+      ],
+      "hintDe": "Hier bekommst du eine Gitarre oder andere Dinge für Musik.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "supermarket",
+          "chemist's",
+          "post office",
+          "bank"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "music shop",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier modelled on WB1 picture cue ('I'm going to the music shop', man with a guitar). 'buy' is untaught, so carrier uses 'want a new guitar' and def uses 'find ... to play music' (all taught). 'guitar' taught (g1-u05)."
+    },
+    {
+      "wordId": "g2u05.w.post-office",
+      "w": "post office",
+      "g": "Postamt",
+      "d": "A place where you go when you want to send a letter.",
+      "s": "I need some stamps. Is there a ___ near here?",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "post office",
+          "tier": "full"
+        },
+        {
+          "text": "post offices",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "post office",
+          "tier": "full"
+        },
+        {
+          "text": "post offices",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "post office",
+            "tier": "full"
+          },
+          {
+            "text": "post offices",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Postamt",
+            "tier": "full"
+          },
+          {
+            "text": "das Postamt",
+            "tier": "full"
+          },
+          {
+            "text": "die Post",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stamps",
+          "de": "Briefmarken",
+          "scope": "s"
+        },
+        {
+          "word": "send",
+          "de": "schicken",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "police station",
+        "bank",
+        "tourist office"
+      ],
+      "hintDe": "Hierher gehst du, wenn du einen Brief schicken willst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "police station",
+          "bank",
+          "tourist office",
+          "supermarket"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "post office",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB3 ('I need some stamps. Is there a post office around here?'); 'around' untaught, changed to 'near here'. Glosses 'stamps' (s) and 'send' (d) — both untaught and unavoidable for this meaning. 'letter' taught (g1-u09)."
+    },
+    {
+      "wordId": "g2u05.w.supermarket",
+      "w": "supermarket",
+      "g": "Supermarkt",
+      "d": "A big place where you can buy your food.",
+      "s": "We don't have any food. Please go to the ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "supermarket",
+          "tier": "full"
+        },
+        {
+          "text": "supermarkets",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "supermarket",
+          "tier": "full"
+        },
+        {
+          "text": "supermarkets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "supermarket",
+            "tier": "full"
+          },
+          {
+            "text": "supermarkets",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Supermarkt",
+            "tier": "full"
+          },
+          {
+            "text": "der Supermarkt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "buy",
+          "de": "kaufen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "bank",
+        "church",
+        "police station"
+      ],
+      "hintDe": "Ein großes Geschäft, in dem du dein Essen bekommst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bank",
+          "church",
+          "police station",
+          "music shop"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "supermarket",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB3 ('We haven't got any food. Please go to the supermarket.'); 'haven't got' flags 'got', so changed to 'We don't have any food.' Glosses 'buy' (d, untaught). 'food' taught (g1-u07)."
+    },
+    {
+      "wordId": "g2u05.w.hospital",
+      "w": "hospital",
+      "g": "Krankenhaus",
+      "d": "A place where doctors help you when you are sick or hurt.",
+      "s": "When you are very sick, the ambulance drives you to the ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "hospital",
+          "tier": "full"
+        },
+        {
+          "text": "hospitals",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hospital",
+          "tier": "full"
+        },
+        {
+          "text": "hospitals",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hospital",
+            "tier": "full"
+          },
+          {
+            "text": "hospitals",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Krankenhaus",
+            "tier": "full"
+          },
+          {
+            "text": "das Krankenhaus",
+            "tier": "full"
+          },
+          {
+            "text": "Spital",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "chemist's",
+        "supermarket",
+        "police station"
+      ],
+      "hintDe": "Hierher kommst du, wenn du krank oder verletzt bist und Ärzte dich behandeln.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "chemist's",
+          "supermarket",
+          "police station",
+          "bank"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "hospital",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier expanded from WB3 ('The ambulance drives to the hospital.'). 'ambulance' taught (g1-u13), 'drives' taught (g1-u09), 'sick' taught (g2-u03), 'hurt' taught (g1-u08), 'doctors' taught (g1-u05)."
+    },
+    {
+      "wordId": "g2u05.w.police-station",
+      "w": "police station",
+      "g": "Polizeistation",
+      "d": "A building where you go to tell about a crime.",
+      "s": "Help! A robber! Where is the nearest ___?",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "police station",
+          "tier": "full"
+        },
+        {
+          "text": "police stations",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "police station",
+          "tier": "full"
+        },
+        {
+          "text": "police stations",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "police station",
+            "tier": "full"
+          },
+          {
+            "text": "police stations",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Polizeistation",
+            "tier": "full"
+          },
+          {
+            "text": "die Polizeistation",
+            "tier": "full"
+          },
+          {
+            "text": "Polizeiwache",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "post office",
+        "hospital",
+        "supermarket"
+      ],
+      "hintDe": "Ein Gebäude, in dem die Polizei arbeitet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "post office",
+          "hospital",
+          "supermarket",
+          "tourist office"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "police station",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB3 idea ('Somebody stole my passport. Where's the nearest police station?'); 'stole'/'passport'/'took' all untaught, so reworded to 'Help! A robber! Where is the nearest police station?' ('robber' taught g1-u12). Def uses 'the police work' (plural 'officers' is untaught, so avoided)."
+    },
+    {
+      "wordId": "g2u05.w.to-go-past",
+      "w": "to go past",
+      "g": "vorbeigehen",
+      "d": "To come up to a place and keep going, not in.",
+      "s": "Go straight ahead. ___ the supermarket and then turn left.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Go past",
+          "tier": "full"
+        },
+        {
+          "text": "go past",
+          "tier": "full"
+        },
+        {
+          "text": "Goes past",
+          "tier": "partial"
+        },
+        {
+          "text": "Went past",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "go past",
+          "tier": "full"
+        },
+        {
+          "text": "to go past",
+          "tier": "full"
+        },
+        {
+          "text": "goes past",
+          "tier": "partial"
+        },
+        {
+          "text": "went past",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "go past",
+            "tier": "full"
+          },
+          {
+            "text": "to go past",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vorbeigehen",
+            "tier": "full"
+          },
+          {
+            "text": "vorbeigehen an",
+            "tier": "full"
+          },
+          {
+            "text": "vorbei gehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "turn left",
+        "cross the street",
+        "go straight on"
+      ],
+      "hintDe": "An etwas vorbei und nicht hinein.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "turn left",
+          "cross the street",
+          "go straight on",
+          "take the second right"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to go past",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from SB3 Dialogue 1 ('Go straight ahead. Go past the supermarket. Then take the first left.'); 'take the first left' uses untaught base 'take', so changed to 'turn left'. MC are bank direction phrases in imperative form to match the blank."
+    },
+    {
+      "wordId": "g2u05.w.to-go-straight-ahead",
+      "w": "to go straight ahead",
+      "g": "geradeaus gehen",
+      "d": "To go on and not turn left or right.",
+      "s": "Don't turn here. ___ to the traffic lights.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Go straight ahead",
+          "tier": "full"
+        },
+        {
+          "text": "go straight ahead",
+          "tier": "full"
+        },
+        {
+          "text": "Go straight on",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "go straight ahead",
+          "tier": "full"
+        },
+        {
+          "text": "to go straight ahead",
+          "tier": "full"
+        },
+        {
+          "text": "go straight on",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "go straight ahead",
+            "tier": "full"
+          },
+          {
+            "text": "to go straight ahead",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "geradeaus gehen",
+            "tier": "full"
+          },
+          {
+            "text": "geradeaus weitergehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "turn left",
+        "go past",
+        "cross the street"
+      ],
+      "hintDe": "Immer geradeaus weiter, nicht abbiegen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "turn left",
+          "go past",
+          "cross the street",
+          "take the second right"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to go straight ahead",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from TWINS dialogue ('Then go straight ahead and turn left at the traffic lights.'); 'until you get to' uses untaught 'until'/'get', so shortened to 'to the traffic lights' ('traffic lights' is this unit's word)."
+    },
+    {
+      "wordId": "g2u05.w.to-cross-the-street",
+      "w": "to cross the street",
+      "g": "die Straße überqueren",
+      "d": "To go over the road on foot.",
+      "s": "Look left and right before you ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cross the street",
+          "tier": "full"
+        },
+        {
+          "text": "crosses the street",
+          "tier": "partial"
+        },
+        {
+          "text": "crossed the street",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cross the street",
+          "tier": "full"
+        },
+        {
+          "text": "to cross the street",
+          "tier": "full"
+        },
+        {
+          "text": "crosses the street",
+          "tier": "full"
+        },
+        {
+          "text": "crossed the street",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cross the street",
+            "tier": "full"
+          },
+          {
+            "text": "to cross the street",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "die Straße überqueren",
+            "tier": "full"
+          },
+          {
+            "text": "über die Straße gehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "go past",
+        "turn left",
+        "go straight on"
+      ],
+      "hintDe": "Von einer Straßenseite auf die andere gehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "go past",
+          "turn left",
+          "go straight on",
+          "take the second right"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to cross the street",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier modelled on SB1 direction illustration ('cross the street') with a road-safety frame; 'hit' is untaught, so the original 'so a car does not hit you' clause was dropped. Def 'on foot' (foot taught g1-u03) distinguishes it from the plain verb 'to cross'."
+    },
+    {
+      "wordId": "g2u05.w.to-turn-left",
+      "w": "to turn left",
+      "g": "links abbiegen",
+      "d": "At a corner, do not go straight on or to the right.",
+      "s": "Go straight ahead and ___ at the traffic lights. The station is at the end of the road.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "turn left",
+          "tier": "full"
+        },
+        {
+          "text": "turns left",
+          "tier": "partial"
+        },
+        {
+          "text": "turned left",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "turn left",
+          "tier": "full"
+        },
+        {
+          "text": "to turn left",
+          "tier": "full"
+        },
+        {
+          "text": "turns left",
+          "tier": "full"
+        },
+        {
+          "text": "turned left",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "turn left",
+            "tier": "full"
+          },
+          {
+            "text": "to turn left",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "links abbiegen",
+            "tier": "full"
+          },
+          {
+            "text": "nach links abbiegen",
+            "tier": "full"
+          },
+          {
+            "text": "links abzweigen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "go past",
+        "cross the street",
+        "take the second right"
+      ],
+      "hintDe": "An der Kreuzung nach links gehen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "go past",
+          "cross the street",
+          "take the second right",
+          "go straight on"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to turn left",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from TWINS dialogue ('Then go straight ahead and turn left at the traffic lights. The railway station is at the end of the road.'); 'railway station' shortened to the granted proper noun 'Station'."
+    },
+    {
+      "wordId": "g2u05.w.to-take-the-second-right",
+      "w": "to take the second right",
+      "g": "die zweite rechts nehmen",
+      "d": "The road after the first one, not the one on your left.",
+      "s": "Go past that bus stop and ___. Then go straight ahead.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "take the second right",
+          "tier": "full"
+        },
+        {
+          "text": "takes the second right",
+          "tier": "partial"
+        },
+        {
+          "text": "took the second right",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take the second right",
+          "tier": "full"
+        },
+        {
+          "text": "to take the second right",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take the second right",
+            "tier": "full"
+          },
+          {
+            "text": "to take the second right",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "die zweite rechts nehmen",
+            "tier": "full"
+          },
+          {
+            "text": "die zweite Straße rechts nehmen",
+            "tier": "full"
+          },
+          {
+            "text": "rechts die zweite nehmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "turn left",
+        "go past",
+        "cross the street"
+      ],
+      "hintDe": "Bei der zweiten Straße nach rechts abbiegen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "turn left",
+          "go past",
+          "cross the street",
+          "go straight on"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to take the second right",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from SB3 Dialogue 2 / TWINS ('take the second right'; 'Go past it and take the second left'). 'bus stop' is this unit's word. The headword phrase carries 'take', which is in-level as part of the bank multiword entry."
+    },
+    {
+      "wordId": "g2u05.w.round-the-corner",
+      "w": "round the corner",
+      "g": "um die Ecke",
+      "d": "Very near, just past the place where two streets meet.",
+      "s": "The bank is just ___, very near the post office.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "round the corner",
+          "tier": "full"
+        },
+        {
+          "text": "around the corner",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "round the corner",
+          "tier": "full"
+        },
+        {
+          "text": "around the corner",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "round the corner",
+            "tier": "full"
+          },
+          {
+            "text": "around the corner",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "um die Ecke",
+            "tier": "full"
+          },
+          {
+            "text": "gleich um die Ecke",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "next to",
+        "opposite",
+        "as far as"
+      ],
+      "hintDe": "Ganz nah, gleich um die Ecke.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "next to",
+          "opposite",
+          "as far as",
+          "go past"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "round the corner",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from SB Grammar box ('It's just round the corner, beside the bank.') and SB14 ('the bank's just round the corner from there'); 'only a few steps away' uses untaught 'only'/'few'/'steps', so replaced with 'very near the post office'. MC are bank place/direction phrases."
+    },
+    {
+      "wordId": "g2u05.w.as-far-as",
+      "w": "as far as",
+      "g": "bis zu",
+      "d": "Right up to a place, and not past it.",
+      "s": "Cross the street and go ___ the cinema. The bank is right beside it.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "as far as",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "as far as",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "as far as",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bis zu",
+            "tier": "full"
+          },
+          {
+            "text": "bis zur",
+            "tier": "full"
+          },
+          {
+            "text": "bis zum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "as soon as",
+        "next to",
+        "opposite"
+      ],
+      "hintDe": "Bis zu einer Stelle und nicht weiter.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "as soon as",
+          "next to",
+          "opposite",
+          "round the corner"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "as far as",
+      "sbRef": "g2/wb/More 2 WB Unit 5.txt",
+      "note": "Carrier from WB6 dialogue 1 ('Cross the street and go as far as the cinema. The bank is next door.'); 'next door' flags untaught 'next', so changed to 'right beside it' (beside taught g1-u02). 'as soon as' is taught (g2-u01) and is a strong same-shape distractor."
+    },
+    {
+      "wordId": "g2u05.w.opposite",
+      "w": "opposite",
+      "g": "gegenüber",
+      "d": "Right across the road from it, looking at it.",
+      "s": "The restaurant is ___ the church, across the road.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "opposite",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "opposite",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "opposite",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gegenüber",
+            "tier": "full"
+          },
+          {
+            "text": "gegenüber von",
+            "tier": "full"
+          },
+          {
+            "text": "vis-à-vis",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "next to",
+        "behind",
+        "in front of"
+      ],
+      "hintDe": "Auf der anderen Straßenseite, direkt davor.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "next to",
+          "behind",
+          "in front of",
+          "round the corner"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "opposite",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from SB Grammar box ('The restaurant is opposite the church.') and SONG ('It's opposite the restaurant.'); 'they look at each other' flags untaught 'each other', so simplified to '... across the road' (across taught g1-u09)."
+    },
+    {
+      "wordId": "g2u05.w.next-to",
+      "w": "next to",
+      "g": "neben",
+      "d": "Right beside it, very close to it.",
+      "s": "Go past the bank. The post office is ___ it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "next to",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "next to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "next to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neben",
+            "tier": "full"
+          },
+          {
+            "text": "gleich neben",
+            "tier": "full"
+          },
+          {
+            "text": "direkt neben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "opposite",
+        "behind",
+        "in front of"
+      ],
+      "hintDe": "Direkt daneben, ganz nah.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "opposite",
+          "behind",
+          "in front of",
+          "round the corner"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "next to",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier verbatim from SB3 Dialogue 1 ('Go past the bank. The post office is next to it.'). 'next to' is also this unit's bank word."
+    },
+    {
+      "wordId": "g2u05.w.to-cross",
+      "w": "to cross",
+      "g": "überqueren",
+      "d": "To go over a street or a river.",
+      "s": "We have to ___ the street. The supermarket is over there.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cross",
+          "tier": "full"
+        },
+        {
+          "text": "crosses",
+          "tier": "partial"
+        },
+        {
+          "text": "crossed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cross",
+          "tier": "full"
+        },
+        {
+          "text": "to cross",
+          "tier": "full"
+        },
+        {
+          "text": "crosses",
+          "tier": "full"
+        },
+        {
+          "text": "crossed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cross",
+            "tier": "full"
+          },
+          {
+            "text": "to cross",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "überqueren",
+            "tier": "full"
+          },
+          {
+            "text": "hinübergehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "turn",
+        "offer",
+        "interrupt"
+      ],
+      "hintDe": "Über die Straße oder den Fluss gehen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "turn",
+          "offer",
+          "interrupt",
+          "bother"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to cross",
+      "sbRef": null,
+      "note": "Carrier is the masterlist exampleSb ('We have to cross the street.') with a taught tail ('The supermarket is over there.'); the alternative '... to get to the supermarket' flags untaught 'get', so it was avoided. 'over there' taught (g1-u10), 'river' taught (g1-u06). MC are in-bank base-form verbs; 'turn' (this unit) is a near-miss direction verb."
+    },
+    {
+      "wordId": "g2u05.w.map",
+      "w": "map",
+      "g": "(Land-)Karte",
+      "d": "A picture that shows you where places are in a town.",
+      "s": "We used a ___ to find the hotel.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "map",
+          "tier": "full"
+        },
+        {
+          "text": "maps",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "map",
+          "tier": "full"
+        },
+        {
+          "text": "maps",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "map",
+            "tier": "full"
+          },
+          {
+            "text": "maps",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Karte",
+            "tier": "full"
+          },
+          {
+            "text": "Landkarte",
+            "tier": "full"
+          },
+          {
+            "text": "Stadtplan",
+            "tier": "partial"
+          },
+          {
+            "text": "Plan",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "comment",
+        "review",
+        "feedback"
+      ],
+      "hintDe": "Ein Bild, das zeigt, wo die Orte in einer Stadt sind.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "comment",
+          "review",
+          "feedback",
+          "fountain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "map",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('You can see where you are on the map.'); 'see' is untaught, so reworded to 'We used a map to find the hotel.' ('used'/'find'/'hotel' all taught). MC are abstract bank nouns (no other 'picture-like' bank noun is close enough)."
+    },
+    {
+      "wordId": "g2u05.w.second",
+      "w": "second",
+      "g": "zweiter/zweite/zweites",
+      "d": "Right after the first one.",
+      "s": "Don't turn into the first street. Go to the ___ one, just after the bank.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "second",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "second",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "second",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zweiter",
+            "tier": "full"
+          },
+          {
+            "text": "zweite",
+            "tier": "full"
+          },
+          {
+            "text": "zweites",
+            "tier": "full"
+          },
+          {
+            "text": "Sekunde",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "first",
+        "third",
+        "next to"
+      ],
+      "hintDe": "Kommt gleich nach dem ersten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "first",
+          "third",
+          "next to",
+          "opposite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "second",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('Take the second right.') expanded to fix the ordinal sense. 'first'/'third' are taught ordinals (g1-u12) and the natural near-miss distractors."
+    },
+    {
+      "wordId": "g2u05.w.to-go-straight-on",
+      "w": "to go straight on",
+      "g": "geradeaus weitergehen",
+      "d": "To keep going on and not turn left or right.",
+      "s": "Don't turn here. ___, then turn left.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Go straight on",
+          "tier": "full"
+        },
+        {
+          "text": "go straight on",
+          "tier": "full"
+        },
+        {
+          "text": "Go straight ahead",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "go straight on",
+          "tier": "full"
+        },
+        {
+          "text": "to go straight on",
+          "tier": "full"
+        },
+        {
+          "text": "go straight ahead",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "go straight on",
+            "tier": "full"
+          },
+          {
+            "text": "to go straight on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "geradeaus weitergehen",
+            "tier": "full"
+          },
+          {
+            "text": "geradeaus gehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "turn left",
+        "go past",
+        "cross the street"
+      ],
+      "hintDe": "Immer geradeaus weiter, nicht abbiegen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "turn left",
+          "go past",
+          "cross the street",
+          "take the second right"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to go straight on",
+      "sbRef": null,
+      "note": "Carrier is masterlist exampleSb ('Go straight on, then turn left.'); also SB3 ('Go straight on, take the second right'). Def adds 'keep going' to distinguish from 'go straight ahead'."
+    },
+    {
+      "wordId": "g2u05.w.airport",
+      "w": "airport",
+      "g": "Flughafen",
+      "d": "A place where planes go up into the sky and land again.",
+      "s": "We have to be at the ___ very early to catch our plane.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "airport",
+          "tier": "full"
+        },
+        {
+          "text": "airports",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "airport",
+          "tier": "full"
+        },
+        {
+          "text": "airports",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "airport",
+            "tier": "full"
+          },
+          {
+            "text": "airports",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flughafen",
+            "tier": "full"
+          },
+          {
+            "text": "der Flughafen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "railway station",
+        "bus stop",
+        "supermarket"
+      ],
+      "hintDe": "Hier heben Flugzeuge ab und landen; hier steigst du ins Flugzeug.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "railway station",
+          "bus stop",
+          "supermarket",
+          "market square"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "airport",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('His son picked him up from the airport.'); 'son'/'picked'/'came' all untaught, so reworded to 'We have to be at the airport very early to catch our plane.' Def uses 'go up into the sky ... land' because 'take ... away'/'fly' are untaught. 'plane'/'land'/'sky' taught (g1-u15/g1-u13)."
+    },
+    {
+      "wordId": "g2u05.w.to-change-trains",
+      "w": "to change trains",
+      "g": "umsteigen",
+      "d": "To get off one and get on a new one at the railway station.",
+      "s": "We have to ___ at Waterloo Station.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "change trains",
+          "tier": "full"
+        },
+        {
+          "text": "changes trains",
+          "tier": "partial"
+        },
+        {
+          "text": "changed trains",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "change trains",
+          "tier": "full"
+        },
+        {
+          "text": "to change trains",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "change trains",
+            "tier": "full"
+          },
+          {
+            "text": "to change trains",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "umsteigen",
+            "tier": "full"
+          },
+          {
+            "text": "den Zug wechseln",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get on",
+          "de": "einsteigen",
+          "scope": "d"
+        },
+        {
+          "word": "get off",
+          "de": "aussteigen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "cross the street",
+        "go past",
+        "turn left"
+      ],
+      "hintDe": "Aus einem Zug aussteigen und in einen anderen einsteigen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "cross the street",
+          "go past",
+          "turn left",
+          "go straight on"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to change trains",
+      "sbRef": null,
+      "note": "Carrier verbatim from masterlist exampleSb ('We have to change trains at Waterloo Station.'). Glosses 'get on'/'get off' (d) — both untaught and unavoidable for this meaning; 'a new one' avoids untaught 'another'/'different'. The headword phrase 'change trains' carries the otherwise-untaught 'change'."
+    },
+    {
+      "wordId": "g2u05.w.most-of-the-time",
+      "w": "most of the time",
+      "g": "meistens",
+      "d": "On most days, but not every day.",
+      "s": "In summer it is sunny ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "most of the time",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "most of the time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "most of the time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "meistens",
+            "tier": "full"
+          },
+          {
+            "text": "die meiste Zeit",
+            "tier": "full"
+          },
+          {
+            "text": "fast immer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "next to",
+        "as far as",
+        "round the corner"
+      ],
+      "hintDe": "Fast immer, an den meisten Tagen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "next to",
+          "as far as",
+          "round the corner",
+          "opposite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "most of the time",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('In Ireland, it rains most of the time.'); 'rains' as the finite verb is untaught, so reframed to 'In summer it is sunny most of the time.' ('sunny' g1-u13, 'summer' g1-u15). Def avoids untaught 'almost'/'nearly'. MC are bank phrases (no in-bank frequency adverb fits)."
+    },
+    {
+      "wordId": "g2u05.w.pocket",
+      "w": "pocket",
+      "g": "Tasche (bei Kleidungsstücken)",
+      "d": "A small place in your clothes for your money or your pen.",
+      "s": "He keeps his money in his jacket ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pocket",
+          "tier": "full"
+        },
+        {
+          "text": "pockets",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pocket",
+          "tier": "full"
+        },
+        {
+          "text": "pockets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pocket",
+            "tier": "full"
+          },
+          {
+            "text": "pockets",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tasche",
+            "tier": "full"
+          },
+          {
+            "text": "Hosentasche",
+            "tier": "partial"
+          },
+          {
+            "text": "Jackentasche",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "map",
+        "fountain",
+        "guest"
+      ],
+      "hintDe": "Eine kleine Tasche in deiner Jacke oder Hose.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "map",
+          "fountain",
+          "guest",
+          "comment"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "pocket",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('He put his ticket into his coat pocket.'); 'coat' untaught (and v1's 'hands' untaught), so reworded to 'He keeps his money in his jacket pocket.' Def avoids untaught 'bag'/'things' via 'a small place in your clothes'. 'jacket' taught (g1-u08), 'clothes' taught (g1-u08)."
+    },
+    {
+      "wordId": "g2u05.w.slow",
+      "w": "slow",
+      "g": "langsam",
+      "d": "Not fast; a long time to go from here to there.",
+      "s": "A tortoise is very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "slow",
+          "tier": "full"
+        },
+        {
+          "text": "slower",
+          "tier": "partial"
+        },
+        {
+          "text": "slowest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "slow",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "slow",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "langsam",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fast",
+        "positive",
+        "cold"
+      ],
+      "hintDe": "Nicht schnell; braucht viel Zeit.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fast",
+          "positive",
+          "cold",
+          "wild"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "slow",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('Tortoises are slow animals.'); 'animals' (plural) and 'walks' are untaught, so simplified to 'A tortoise is very slow.' 'fast' (g2-u04) is the clean antonym distractor. 'tortoise' taught (g1-u09)."
+    },
+    {
+      "wordId": "g2u05.w.somewhere",
+      "w": "somewhere",
+      "g": "irgendwo",
+      "d": "In a place, but you cannot point to it.",
+      "s": "I left my pencil case ___ in school, but I cannot find it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "somewhere",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "somewhere",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "somewhere",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "irgendwo",
+            "tier": "full"
+          },
+          {
+            "text": "irgendwohin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "simply",
+        "politely",
+        "slow"
+      ],
+      "hintDe": "An irgendeinem Ort, du weißt aber nicht genau wo.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "simply",
+          "politely",
+          "slow",
+          "positive"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "somewhere",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('He hoped to see his son somewhere.'); 'hoped'/'see'/'son' all untaught, so reframed with 'pencil case' (g1-u01) and 'find' (g1-u01). Def avoids untaught 'know'/'exactly'/'sure' via 'cannot point to it' ('to point to' g1-u14). MC are in-bank adverbs."
+    },
+    {
+      "wordId": "g2u05.w.underground",
+      "w": "underground",
+      "g": "U-Bahn",
+      "d": "A fast train that runs under a big city.",
+      "s": "In London the ___ runs under the city.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "underground",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "underground",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "underground",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "U-Bahn",
+            "tier": "full"
+          },
+          {
+            "text": "die U-Bahn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "airport",
+        "bus stop",
+        "market square"
+      ],
+      "hintDe": "Ein schneller Zug, der unter einer großen Stadt fährt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "airport",
+          "bus stop",
+          "market square",
+          "fountain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "underground",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('They went into London by underground.'); 'went'/'by' untaught (and 'take'/'get' untaught), so reframed to 'In London the underground runs under the city.' ('runs' taught g1-u06). Def matches."
+    },
+    {
+      "wordId": "g2u05.w.market-square",
+      "w": "market square",
+      "g": "Marktplatz",
+      "d": "An open place in a town where people sell food.",
+      "s": "There is a big market on ___ every Saturday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "market square",
+          "tier": "full"
+        },
+        {
+          "text": "the market square",
+          "tier": "partial"
+        },
+        {
+          "text": "market squares",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "market square",
+          "tier": "full"
+        },
+        {
+          "text": "market squares",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "market square",
+            "tier": "full"
+          },
+          {
+            "text": "market squares",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Marktplatz",
+            "tier": "full"
+          },
+          {
+            "text": "der Marktplatz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bus stop",
+        "airport",
+        "music shop"
+      ],
+      "hintDe": "Ein offener Platz in der Stadt, wo man Dinge verkauft.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bus stop",
+          "airport",
+          "music shop",
+          "fountain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "market square",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('We can meet on market square.') and SONG ('Market Square'), reframed to a market scene. 'market' (g1-u06) and 'sell' (g1-u14) taught; def uses 'sell food' to avoid untaught 'things'."
+    },
+    {
+      "wordId": "g2u05.w.simply",
+      "w": "simply",
+      "g": "einfach",
+      "d": "When you can do it with no problem.",
+      "s": "Don't worry. ___ go straight on and you are there.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Simply",
+          "tier": "full"
+        },
+        {
+          "text": "simply",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "simply",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "simply",
+            "tier": "full"
+          },
+          {
+            "text": "just",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einfach",
+            "tier": "full"
+          },
+          {
+            "text": "ganz einfach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "politely",
+        "somewhere",
+        "slow"
+      ],
+      "hintDe": "Auf eine ganz einfache Art, ohne Mühe.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "politely",
+          "somewhere",
+          "slow",
+          "positive"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "simply",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from SB SONG ('Then simply go ahead.'); reframed using 'Don't worry' (g1-u05) + 'you are there'. Def avoids untaught 'easy'/'way'/'simple'/'quick' via 'do it with no problem'. MC are in-bank adverbs."
+    },
+    {
+      "wordId": "g2u05.w.comment",
+      "w": "comment",
+      "g": "Kommentar",
+      "d": "What you write under a posting to show what you think.",
+      "s": "I read a nice ___ on Mickey's Place.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "comment",
+          "tier": "full"
+        },
+        {
+          "text": "comments",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "comment",
+          "tier": "full"
+        },
+        {
+          "text": "comments",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "comment",
+            "tier": "full"
+          },
+          {
+            "text": "comments",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kommentar",
+            "tier": "full"
+          },
+          {
+            "text": "der Kommentar",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "review",
+        "feedback",
+        "guest"
+      ],
+      "hintDe": "Was du unter einem Posting schreibst, um deine Meinung zu zeigen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "review",
+          "feedback",
+          "guest",
+          "opening"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "comment",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from SB OUR YOUNG WORLD 1 ('Who wrote the positive comment on Mickey's Place?'); 'wrote' is untaught, so reframed to 'I read a nice comment on Mickey's Place.' ('read' g1-u01, past 'read' in-level). 'posting' taught (g2-u02). 'review'/'feedback' are near-meaning bank nouns."
+    },
+    {
+      "wordId": "g2u05.w.to-comment",
+      "w": "to comment",
+      "g": "kommentieren",
+      "d": "To write under a posting to show what you think about it.",
+      "s": "You can ___ on the postings and write what you think.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "comment",
+          "tier": "full"
+        },
+        {
+          "text": "comments",
+          "tier": "partial"
+        },
+        {
+          "text": "commented",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "comment",
+          "tier": "full"
+        },
+        {
+          "text": "to comment",
+          "tier": "full"
+        },
+        {
+          "text": "comments",
+          "tier": "full"
+        },
+        {
+          "text": "commented",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "comment",
+            "tier": "full"
+          },
+          {
+            "text": "to comment",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kommentieren",
+            "tier": "full"
+          },
+          {
+            "text": "einen Kommentar schreiben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "offer",
+        "interrupt",
+        "bother"
+      ],
+      "hintDe": "Unter einem Posting schreiben, was du davon hältst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "offer",
+          "interrupt",
+          "bother",
+          "cross"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "comment",
+      "sbRef": null,
+      "note": "Carrier is masterlist exampleSb ('You can comment on the postings.') with a taught clause. The verb frame ('You can ___ on the postings') separates this from the noun item. MC are in-bank base-form verbs."
+    },
+    {
+      "wordId": "g2u05.w.feedback",
+      "w": "feedback",
+      "g": "Feedback",
+      "d": "When people tell you what they think about your work.",
+      "s": "Tell me what you think about my project. I want your ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "feedback",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "feedback",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "feedback",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Feedback",
+            "tier": "full"
+          },
+          {
+            "text": "das Feedback",
+            "tier": "full"
+          },
+          {
+            "text": "Rückmeldung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "comment",
+        "review",
+        "opening"
+      ],
+      "hintDe": "Wenn dir jemand sagt, was er von deiner Arbeit hält.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "comment",
+          "review",
+          "opening",
+          "guest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "feedback",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('You can give positive and negative feedback.'); 'negative' untaught, so reframed to a taught request ('Tell me what you think about my project. I want your feedback.'). 'project' taught (g2-u02), 'work' taught. MC are near-meaning bank nouns."
+    },
+    {
+      "wordId": "g2u05.w.guest",
+      "w": "guest",
+      "g": "Gast",
+      "d": "A friend or family that you ask to come to dinner.",
+      "s": "She invited ten ___ to dinner.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "guests",
+          "tier": "full"
+        },
+        {
+          "text": "guest",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "guest",
+          "tier": "full"
+        },
+        {
+          "text": "guests",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "guest",
+            "tier": "full"
+          },
+          {
+            "text": "guests",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gast",
+            "tier": "full"
+          },
+          {
+            "text": "Gäste",
+            "tier": "full"
+          },
+          {
+            "text": "der Gast",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "comment",
+        "fountain",
+        "review"
+      ],
+      "hintDe": "Ein Freund oder Familienmitglied, das du zum Essen einlädst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "comment",
+          "fountain",
+          "review",
+          "opening"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "guest",
+      "sbRef": null,
+      "note": "Carrier verbatim from masterlist exampleSb ('She invited ten guests to dinner.'). 'invited' taught (g1-u15), 'dinner' taught (g1-u07), 'family'/'friend' taught. Def avoids untaught 'person'/'party'."
+    },
+    {
+      "wordId": "g2u05.w.to-offer",
+      "w": "to offer",
+      "g": "anbieten",
+      "d": "To tell somebody that you want to give them a thing.",
+      "s": "We ___ you three nights for the price of two.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "offer",
+          "tier": "full"
+        },
+        {
+          "text": "offers",
+          "tier": "partial"
+        },
+        {
+          "text": "offered",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "offer",
+          "tier": "full"
+        },
+        {
+          "text": "to offer",
+          "tier": "full"
+        },
+        {
+          "text": "offers",
+          "tier": "full"
+        },
+        {
+          "text": "offered",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "offer",
+            "tier": "full"
+          },
+          {
+            "text": "to offer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anbieten",
+            "tier": "full"
+          },
+          {
+            "text": "bieten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bother",
+        "interrupt",
+        "cross"
+      ],
+      "hintDe": "Jemandem sagen, dass man ihm etwas geben will.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bother",
+          "interrupt",
+          "cross",
+          "comment"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to offer",
+      "sbRef": null,
+      "note": "Carrier verbatim from masterlist exampleSb ('We offer you three nights for the price of two.') and SB4. 'nights'/'price' taught; def uses 'tell ... that you want to give' to avoid untaught 'say'/'will'/'something'. MC are in-bank verbs."
+    },
+    {
+      "wordId": "g2u05.w.opening",
+      "w": "opening",
+      "g": "Eröffnung",
+      "d": "When a new place opens for the first time.",
+      "s": "There is a big ___ of a new restaurant today!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "opening",
+          "tier": "full"
+        },
+        {
+          "text": "openings",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "opening",
+          "tier": "full"
+        },
+        {
+          "text": "openings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "opening",
+            "tier": "full"
+          },
+          {
+            "text": "openings",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eröffnung",
+            "tier": "full"
+          },
+          {
+            "text": "die Eröffnung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "review",
+        "comment",
+        "feedback"
+      ],
+      "hintDe": "Wenn ein neuer Ort zum ersten Mal aufmacht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "review",
+          "comment",
+          "feedback",
+          "guest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "opening",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('There is a new shopping centre opening.'); 'shopping centre' untaught, so changed to 'a new restaurant' (taught). MC are abstract bank nouns."
+    },
+    {
+      "wordId": "g2u05.w.positive",
+      "w": "positive",
+      "g": "positiv",
+      "d": "Good and nice, the opposite of bad.",
+      "s": "Write a ___ comment about the new book and tell people it is good.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "positive",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "positive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "positive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "positiv",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "slow",
+        "simply",
+        "the worst"
+      ],
+      "hintDe": "Gut und nett, das Gegenteil von schlecht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "slow",
+          "simply",
+          "the worst",
+          "politely"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "positive",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from SB CYBER PROJECT / FIND OUT ('Write a positive comment.') expanded with a taught tail. 'comment' is this unit's word, 'book' taught. Def avoids untaught 'friendly' via 'nice'. 'the worst' is a contrasting bank distractor."
+    },
+    {
+      "wordId": "g2u05.w.review",
+      "w": "review",
+      "g": "Rezension",
+      "d": "When you write what you think about a book or a place.",
+      "s": "Read a ___ of the new book before you read it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "review",
+          "tier": "full"
+        },
+        {
+          "text": "reviews",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "review",
+          "tier": "full"
+        },
+        {
+          "text": "reviews",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "review",
+            "tier": "full"
+          },
+          {
+            "text": "reviews",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rezension",
+            "tier": "full"
+          },
+          {
+            "text": "die Rezension",
+            "tier": "full"
+          },
+          {
+            "text": "Bewertung",
+            "tier": "partial"
+          },
+          {
+            "text": "Kritik",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "comment",
+        "feedback",
+        "opening"
+      ],
+      "hintDe": "Wenn du aufschreibst, was du von einem Buch oder Ort hältst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "comment",
+          "feedback",
+          "opening",
+          "guest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "review",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('The restaurant got a bad review online.'); 'got' and 'online' both untaught, so reframed to 'Read a review of the new book before you read it.' 'book' taught. MC are near-meaning bank nouns."
+    },
+    {
+      "wordId": "g2u05.w.the-worst",
+      "w": "the worst",
+      "g": "der/die/das schlechteste",
+      "d": "The most bad; the opposite of the best.",
+      "s": "Of all the pizzas in town, that one was ___. I really hated it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "the worst",
+          "tier": "full"
+        },
+        {
+          "text": "worst",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "the worst",
+          "tier": "full"
+        },
+        {
+          "text": "worst",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "the worst",
+            "tier": "full"
+          },
+          {
+            "text": "worst",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "der schlechteste",
+            "tier": "full"
+          },
+          {
+            "text": "die schlechteste",
+            "tier": "full"
+          },
+          {
+            "text": "das schlechteste",
+            "tier": "full"
+          },
+          {
+            "text": "am schlechtesten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "the best",
+        "positive",
+        "slow"
+      ],
+      "hintDe": "Am allerschlechtesten; das Gegenteil vom Besten.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "the best",
+          "positive",
+          "slow",
+          "simply"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "the worst",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('Luigi's pizza is the worst pizza ever!'); 'ever'/'eaten' untaught, so reframed to 'Of all the pizzas in town, that one was the worst. I really hated it.' 'the best' (g1-u06) is the clean antonym distractor; 'hated' taught (g1-u01)."
+    },
+    {
+      "wordId": "g2u05.w.to-bother",
+      "w": "to bother",
+      "g": "stören",
+      "d": "To talk to somebody when they have no time for you.",
+      "s": "I'm sorry to ___ you, but can you help me find the railway station?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bother",
+          "tier": "full"
+        },
+        {
+          "text": "bothers",
+          "tier": "partial"
+        },
+        {
+          "text": "bothered",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bother",
+          "tier": "full"
+        },
+        {
+          "text": "to bother",
+          "tier": "full"
+        },
+        {
+          "text": "bothers",
+          "tier": "full"
+        },
+        {
+          "text": "bothered",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bother",
+            "tier": "full"
+          },
+          {
+            "text": "to bother",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stören",
+            "tier": "full"
+          },
+          {
+            "text": "belästigen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "interrupt",
+        "offer",
+        "comment"
+      ],
+      "hintDe": "Jemanden stören, der gerade keine Zeit für dich hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "interrupt",
+          "offer",
+          "comment",
+          "cross"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to bother",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from SB/WB TWINS dialogue ('I'm sorry to bother you, but can you tell me the way to the railway station?'); 'tell me the way' flags untaught 'way', so changed to 'help me find the railway station'. Def avoids untaught 'take'/'busy' via 'have no time for you'. MC are in-bank verbs."
+    },
+    {
+      "wordId": "g2u05.w.bus-stop",
+      "w": "bus stop",
+      "g": "Bushaltestelle",
+      "d": "A place on the road where people wait to travel into town.",
+      "s": "I waited a long time at the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "bus stop",
+          "tier": "full"
+        },
+        {
+          "text": "bus stops",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bus stop",
+          "tier": "full"
+        },
+        {
+          "text": "bus stops",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bus stop",
+            "tier": "full"
+          },
+          {
+            "text": "bus stops",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bushaltestelle",
+            "tier": "full"
+          },
+          {
+            "text": "die Bushaltestelle",
+            "tier": "full"
+          },
+          {
+            "text": "Haltestelle",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "railway station",
+        "airport",
+        "market square"
+      ],
+      "hintDe": "Ein Ort an der Straße, wo du auf den Bus wartest.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "railway station",
+          "airport",
+          "market square",
+          "fountain"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "bus stop",
+      "sbRef": null,
+      "note": "verify r1 (level-gloss): removed the orphaned 'bus (= Bus)' gloss — the definition was reworded off 'bus' during the smoke-check, leaving the gloss with no target word in its field."
+    },
+    {
+      "wordId": "g2u05.w.fountain",
+      "w": "fountain",
+      "g": "(Spring-)Brunnen",
+      "d": "Water that jumps up high in an open place in a town.",
+      "s": "There's a big ___ at market square.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fountain",
+          "tier": "full"
+        },
+        {
+          "text": "fountains",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fountain",
+          "tier": "full"
+        },
+        {
+          "text": "fountains",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fountain",
+            "tier": "full"
+          },
+          {
+            "text": "fountains",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brunnen",
+            "tier": "full"
+          },
+          {
+            "text": "Springbrunnen",
+            "tier": "full"
+          },
+          {
+            "text": "der Brunnen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "bus stop",
+        "market square",
+        "guest"
+      ],
+      "hintDe": "Wasser, das auf einem Platz in die Höhe spritzt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bus stop",
+          "market square",
+          "guest",
+          "comment"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "fountain",
+      "sbRef": null,
+      "note": "Carrier verbatim from masterlist exampleSb ('There's a big fountain at market square.'). Def glosses 'water' and 'springs' (both untaught and unavoidable). MC are nearby place/noun bank words."
+    },
+    {
+      "wordId": "g2u05.w.to-interrupt",
+      "w": "to interrupt",
+      "g": "unterbrechen",
+      "d": "To begin talking when somebody is still talking.",
+      "s": "Please don't ___ me. I want to talk first.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "interrupt",
+          "tier": "full"
+        },
+        {
+          "text": "interrupts",
+          "tier": "partial"
+        },
+        {
+          "text": "interrupted",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "interrupt",
+          "tier": "full"
+        },
+        {
+          "text": "to interrupt",
+          "tier": "full"
+        },
+        {
+          "text": "interrupts",
+          "tier": "full"
+        },
+        {
+          "text": "interrupted",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "interrupt",
+            "tier": "full"
+          },
+          {
+            "text": "to interrupt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unterbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden unterbrechen",
+            "tier": "partial"
+          },
+          {
+            "text": "dazwischenreden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bother",
+        "offer",
+        "comment"
+      ],
+      "hintDe": "Zu reden beginnen, während ein anderer noch spricht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bother",
+          "offer",
+          "comment",
+          "cross"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to interrupt",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('You can interrupt politely.') reframed to a classroom request ('Please don't interrupt me. I want to talk first.'); 'Let me' flags untaught bare 'let', so 'I want to talk first' is used instead. Def uses 'begin' (g1-u09) to avoid untaught 'start'/'else'. MC are in-bank verbs."
+    },
+    {
+      "wordId": "g2u05.w.politely",
+      "w": "politely",
+      "g": "höflich",
+      "d": "When you ask with a please and a thank you.",
+      "s": "She asks ___, with a please and a thank you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "politely",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "politely",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "politely",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "höflich",
+            "tier": "full"
+          },
+          {
+            "text": "auf höfliche Art",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "simply",
+        "somewhere",
+        "slow"
+      ],
+      "hintDe": "Auf eine nette, höfliche Art — mit bitte und danke.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "simply",
+          "somewhere",
+          "slow",
+          "positive"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "politely",
+      "sbRef": null,
+      "note": "Carrier from masterlist exampleSb ('You should always ask politely and say please.'); 'should'/'say' untaught, so reframed to 'She asks politely, with a please and a thank you.' Def avoids untaught 'nice way'/'friendly'/'polite'/'rude' by describing the behaviour. MC are in-bank adverbs."
+    },
+    {
+      "wordId": "g2u05.w.traffic-lights",
+      "w": "traffic lights",
+      "g": "Verkehrsampel",
+      "d": "The red and green thing at a corner: red for wait, green for go.",
+      "s": "Turn left at the ___ and then go straight ahead.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "traffic lights",
+          "tier": "full"
+        },
+        {
+          "text": "traffic light",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "traffic lights",
+          "tier": "full"
+        },
+        {
+          "text": "traffic light",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "traffic lights",
+            "tier": "full"
+          },
+          {
+            "text": "traffic light",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verkehrsampel",
+            "tier": "full"
+          },
+          {
+            "text": "die Ampel",
+            "tier": "full"
+          },
+          {
+            "text": "Ampel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bus stop",
+        "fountain",
+        "market square"
+      ],
+      "hintDe": "Rote und grüne Lichter für die Autos an einer Kreuzung.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bus stop",
+          "fountain",
+          "market square",
+          "airport"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "traffic lights",
+      "sbRef": "g2/sb/More 2 SB Unit 5.txt",
+      "note": "Carrier from masterlist exampleSb ('Turn left at the traffic lights.') and TWINS dialogue, extended with 'and then go straight ahead'. Def uses 'Red and green lights for the cars at a street corner' because untaught 'yellow'/'stop' block the fuller wording; the hint carries the stop/go idea. 'cars' taught (g1-u02)."
+    }
+  ]
+}

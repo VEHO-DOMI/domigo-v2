@@ -156,18 +156,28 @@ export function levelGateErrors(
 ): string[] {
   const errors: string[] = [];
   const grants = grantsForUnit(slug);
-  const check = (fields: EnField[], gloss: Array<{ word: string; scope: string | null }>): void => {
+  const check = (
+    fields: EnField[],
+    gloss: Array<{ word: string; scope: string | null }>,
+    ownTokens: string[] = [],
+  ): void => {
     for (const f of fields) {
       const applicable = gloss
         .filter((g) => g.scope === null || f.scopes.includes(g.scope))
         .map((g) => g.word);
+      // A vocab item teaches its OWN headword — for a multiword entry ("to be
+      // part of", "what's the matter") the carrier blanks a component word, so
+      // that word is the answer and naturally sits in the item's own fields.
+      // Its tokens are in-level WITHIN this item (the definition is still guarded
+      // against leaks by V-8). Single-word headwords already ride the bank.
+      const extraPhrases = ownTokens.length > 0 ? [...applicable, ...ownTokens] : applicable;
       const granted = new Set([...grants.unitWide, ...(grants.byItem.get(f.itemId) ?? [])]);
-      for (const token of matcher.unknownTokens(f.text, { extraPhrases: applicable, grantedTokens: granted })) {
+      for (const token of matcher.unknownTokens(f.text, { extraPhrases, grantedTokens: granted })) {
         errors.push(`${slug}: V-5 — "${token}" in ${f.itemId}.${f.field} is above level and unglossed`);
       }
     }
   };
-  for (const it of items.vocab) check(vocabEnFields(it), it.gloss);
+  for (const it of items.vocab) check(vocabEnFields(it), it.gloss, wordTokens(it.w));
   for (const it of items.grammar) check(grammarEnFields(it), it.gloss);
   return errors;
 }
@@ -243,6 +253,19 @@ export function substitutionErrors(slug: string, items: UnitItems): { errors: st
   return { errors, warns };
 }
 
+/** Tokens that are GLUE in a multiword headword, not the leaked content (V-8). */
+const HEADWORD_GLUE = new Set<string>([
+  "a", "an", "the", "and", "or", "to", "of", // articles/connectors
+  "be", "am", "is", "are", "was", "were", "been", "being", // copula
+  "on", "in", "at", "up", "down", "out", "off", "by", "for", "with", "into", "over", "from", "about", // prepositions/particles
+  "most", "more", "all", "some", "one", "two", // quantifiers/numerals
+  "go", "goes", "going", "went", "gone", // the ubiquitous motion verb of direction phrases
+  "do", "does", "did", "doing", "done", // the light/pro-verb of activity phrases (DO nothing, DO the shopping, DO your homework)
+  "i", "you", "he", "she", "it", "we", "they", "me", "him", "her", "us", "them", // pronouns (glue in "poor YOU", "thank YOU", "tell ME")
+  "my", "your", "his", "its", "our", "their", // possessives
+  "this", "that", "these", "those", // demonstratives (glue in "in THAT case", "at THIS time")
+]);
+
 export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordBankT): string[] {
   const errors: string[] = [];
   const bankById = new Map(bank.entries.map((e) => [e.id, e]));
@@ -251,7 +274,13 @@ export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordB
     const headTokens = new Set<string>();
     for (const form of [it.w, ...(entry?.forms ?? [])]) {
       for (const t of wordTokens(form)) {
-        if (!["a", "an", "the", "to", "of"].includes(t)) headTokens.add(t);
+        // Glue tokens in a multiword headword are not the content a definition
+        // "leaks": closed-class connectors/prepositions ("design AND technology",
+        // "round THE corner", "go straight ON"), the copula ("to BE part of"),
+        // quantifiers ("MOST of the time") and the ubiquitous motion verb GO
+        // ("GO past", "GO straight ahead") — in a phrase headword the distinctive
+        // word is what's left (past, straight, corner, trains), never "go"/"on".
+        if (!HEADWORD_GLUE.has(t)) headTokens.add(t);
       }
     }
     for (const dTok of wordTokens(it.d)) {
@@ -268,10 +297,12 @@ export function definitionLeakErrors(slug: string, items: UnitItems, bank: WordB
 export function distractorErrors(slug: string, items: UnitItems, matcher: AllowedMatcher): string[] {
   const errors: string[] = [];
   const grants = grantsForUnit(slug);
-  /** In-bank, or covered by audited unit-wide level grants (e.g. the unit's
-   *  grammar-structure tokens "should"/"shouldn't" — pools must offer them). */
+  /** Every token in-level — bank (phrase-aware), audited unit-wide grant, or own
+   *  gloss. Phrase-aware via unknownTokens, so a distractor SENTENCE containing a
+   *  multiword bank entry ("…at the traffic lights") is covered (the bare token
+   *  "traffic" is not a single, but the phrase "traffic lights" is in-bank). */
   const inBankOrGranted = (s: string): boolean =>
-    matcher.hasPhrase(s) || wordTokens(s).every((t) => grants.unitWide.has(t) || matcher.has(t));
+    matcher.unknownTokens(s, { grantedTokens: grants.unitWide }).length === 0;
   const lemmaClash = (candidate: string, accepted: string[]): boolean => {
     const cTokens = wordTokens(candidate);
     return accepted.some((a) => {
@@ -289,12 +320,14 @@ export function distractorErrors(slug: string, items: UnitItems, matcher: Allowe
   for (const it of items.vocab) {
     const accepted = [it.w, ...it.sAnswers.map((a) => a.text), ...it.dAnswers.map((a) => a.text)];
     for (const m of it.mc) {
-      if (!matcher.hasPhrase(m)) errors.push(`${slug}: V-9 — ${it.id}: mc distractor "${m}" is not in the cumulative bank`);
+      // a granted token (e.g. the unit's structure word "turn") is taught, so it
+      // is a legitimate distractor — honor grants here exactly as the grammar branch does
+      if (!inBankOrGranted(m)) errors.push(`${slug}: V-9 — ${it.id}: mc distractor "${m}" is not in the cumulative bank (or granted)`);
       if (lemmaClash(m, accepted)) errors.push(`${slug}: V-9 — ${it.id}: mc distractor "${m}" lemma-matches an accepted answer`);
     }
     const pool = it.presentation.gameMeta?.distractorPool ?? [];
     for (const m of pool) {
-      if (!matcher.hasPhrase(m)) errors.push(`${slug}: V-17 — ${it.id}: distractorPool "${m}" is not in the cumulative bank`);
+      if (!inBankOrGranted(m)) errors.push(`${slug}: V-17 — ${it.id}: distractorPool "${m}" is not in the cumulative bank (or granted)`);
       if (lemmaClash(m, accepted)) errors.push(`${slug}: V-17 — ${it.id}: distractorPool "${m}" lemma-matches an accepted answer`);
     }
   }
@@ -302,12 +335,17 @@ export function distractorErrors(slug: string, items: UnitItems, matcher: Allowe
     const accepted = it.answers.map((a) => a.text);
     const seen = new Set<string>();
     const granted = new Set([...grants.unitWide, ...(grants.byItem.get(it.id) ?? [])]);
+    const acceptedSurface = new Set(accepted.map((a) => wordTokens(a).join(" ")));
     for (const m of it.distractors) {
       const lower = m.toLowerCase();
       if (seen.has(lower)) errors.push(`${slug}: V-9 — ${it.id}: duplicate distractor "${m}"`);
       seen.add(lower);
-      if (it.format !== "context-picker" && lemmaClash(m, accepted)) {
-        errors.push(`${slug}: V-9 — ${it.id}: distractor "${m}" lemma-matches an accepted answer`);
+      // Grammar items TEST form, so a wrong inflection of the answer ("study"
+      // for "studies", "walk" for "walked") is a legitimate distractor — only
+      // an EXACT duplicate of an accepted answer is a bug here. (A "secretly
+      // correct synonym" distractor is the stage-6 answers lens's job.)
+      if (it.format !== "context-picker" && acceptedSurface.has(wordTokens(m).join(" "))) {
+        errors.push(`${slug}: V-9 — ${it.id}: distractor "${m}" duplicates an accepted answer`);
       }
       if (it.format === "context-picker") {
         if (accepted.some((a) => wordTokens(a).join(" ") === wordTokens(m).join(" "))) {
@@ -403,11 +441,23 @@ export function sieRule(slug: string, items: UnitItems): { errors: string[]; war
 }
 
 /** EN grammar jargon — banned in EVERY student-facing field (incl. hints). */
+/** Abstract grammar-mechanism jargon — banned EVERYWHERE (incl. hints). */
 const EN_JARGON = [
-  "modal verb", "auxiliary", "past simple", "simple past", "present perfect", "past continuous",
-  "present simple", "present continuous", "infinitive", "base form", "third person", "gerund",
+  "modal verb", "auxiliary", "infinitive", "base form", "third person", "gerund",
   "passive voice", "reported speech", "conditional", "comparative", "superlative", "preposition",
   "conjunction", "adverb", "past participle", "question tag",
+];
+/**
+ * English tense/structure NAMES — the MORE! textbook's own grammar-box labels
+ * (students see "Present simple", "Past simple" in their book). Banned in
+ * student-facing carriers, but allowed in hintDe/explainDe — the help text may
+ * name the structure the way the book does, exactly like DE_TERMS.
+ */
+const EN_TENSE_NAMES = [
+  "past simple", "simple past", "present perfect", "past continuous",
+  "present simple", "present continuous", "will-future",
+  // NB: bare "going to" is NOT here — it is everyday English ("going to the zoo",
+  // "going to do it"), not a meta-label. The will-future label covers future meta-talk.
 ];
 /** DE pedagogical terms — allowed ONLY in hintDe/explainDe (textbook precedent). */
 const DE_TERMS = [
@@ -449,6 +499,7 @@ export function metaTalkErrors(slug: string, items: UnitItems): string[] {
   for (const it of [...items.vocab, ...items.grammar]) {
     for (const f of carrierFields(it)) {
       for (const t of hits(f.text, EN_JARGON)) errors.push(`${slug}: V-13 — ${it.id}: EN grammar jargon "${t}" in ${f.field}`);
+      for (const t of hits(f.text, EN_TENSE_NAMES)) errors.push(`${slug}: V-13 — ${it.id}: tense name "${t}" in carrier field ${f.field} (allowed only in hints/explains)`);
       for (const t of hits(f.text, DE_TERMS)) errors.push(`${slug}: V-13 — ${it.id}: German grammar term "${t}" in carrier field ${f.field} (allowed only in hints/explains)`);
     }
     for (const f of helpFields(it)) {
@@ -458,12 +509,22 @@ export function metaTalkErrors(slug: string, items: UnitItems): string[] {
   return errors;
 }
 
-export function germanOrthographyErrors(slug: string, items: UnitItems): string[] {
+/** Irregular English ae/oe/ue words the matcher's regular inflection misses
+ *  but that legitimately appear (quoted) in German hints. */
+const EN_DIGRAPH_OK = new Set(["goes", "does", "doesn't", "shoes", "toes", "canoe", "foes", "hoe", "oboe"]);
+
+export function germanOrthographyErrors(slug: string, items: UnitItems, matcher: AllowedMatcher): string[] {
   const errors: string[] = [];
   for (const it of [...items.vocab, ...items.grammar]) {
     for (const f of germanFields(it)) {
-      if (asciiUmlautSuspect(f.text)) {
-        errors.push(`${slug}: V-14 — ${it.id}: possible ASCII umlaut in ${f.field} (${JSON.stringify(f.text.slice(0, 50))})`);
+      // ASCII-umlaut is a per-WORD property; checking word-by-word avoids
+      // flagging English structure words quoted in a German hint ("Verneinung
+      // mit doesn't + Grundform" — d+oe trips the digraph heuristic).
+      for (const word of f.text.match(/[A-Za-zÄÖÜäöüß][A-Za-zÄÖÜäöüß']*/g) ?? []) {
+        if (!asciiUmlautSuspect(word)) continue;
+        const lower = word.toLowerCase();
+        if (matcher.has(lower) || EN_DIGRAPH_OK.has(lower)) continue; // taught/quoted English
+        errors.push(`${slug}: V-14 — ${it.id}: possible ASCII umlaut "${word}" in ${f.field}`);
       }
       if (f.text !== f.text.normalize("NFC")) {
         errors.push(`${slug}: V-14 — ${it.id}: ${f.field} is not NFC-normalized`);
@@ -555,7 +616,10 @@ interface V1VocabUnit {
   entries: unknown[];
 }
 
-export function validateUnitItems(slug: string): ItemValidation {
+export function validateUnitItems(
+  slug: string,
+  opts: { skipGateIntegrity?: boolean } = {},
+): ItemValidation {
   const errors: string[] = [];
   const warns: ValidatorWarn[] = [];
   const infos: string[] = [];
@@ -650,7 +714,7 @@ export function validateUnitItems(slug: string): ItemValidation {
   errors.push(...sie.errors);
   warns.push(...sie.warns);
   errors.push(...metaTalkErrors(slug, items));
-  errors.push(...germanOrthographyErrors(slug, items));
+  errors.push(...germanOrthographyErrors(slug, items, matcher));
   errors.push(...renderShapeErrors(slug, items));
   errors.push(...variantErrors(slug, items));
   errors.push(...gameMetaErrors(slug, items));
@@ -692,14 +756,18 @@ export function validateUnitItems(slug: string): ItemValidation {
     else if (diffs.size === 2) infos.push(`${slug}: structure ${s.id} covers 2 of 3 difficulty levels`);
   }
 
-  // ---- V-22 gate integrity (per unit)
+  // ---- V-22 gate integrity (per unit). Skipped by the ingest-review approve
+  // re-validation, which only cares whether the EDITED items are content-valid
+  // (V-1..V-21) — the gate-integrity bookkeeping is mid-flux during the approve
+  // (the approved transition is appended right after this check).
   const log = readStateLog(unitDir);
+  const currentHash = itemsContentHash(items);
+  if (!opts.skipGateIntegrity) {
   // every item-stage state carries a contentHash over the item layer —
   // changes_requested too (the reviewer's inline edits land before it), so the
   // drift guard must anchor on it, not on the prior review_ready hash.
   const ITEM_STATES = new Set(["generated", "verified", "validated", "review_ready", "changes_requested", "approved"]);
   const lastItemState = [...(log?.transitions ?? [])].reverse().find((t) => ITEM_STATES.has(t.state));
-  const currentHash = itemsContentHash(items);
   if (lastItemState !== undefined && lastItemState.contentHash !== currentHash) {
     errors.push(`${slug}: V-22 — recorded ${lastItemState.state} hash ${lastItemState.contentHash?.slice(0, 12)} ≠ current items ${currentHash.slice(0, 12)} (drifted)`);
   }
@@ -708,7 +776,10 @@ export function validateUnitItems(slug: string): ItemValidation {
   if (lastState !== undefined && ["verified", "validated", "review_ready", "approved"].includes(lastState)) {
     if (merged === null) errors.push(`${slug}: V-22 — state ${lastState} but verify/verify.merged.json is missing`);
     else {
-      if (merged.itemsHash !== currentHash.slice(0, 12)) {
+      // an approved unit's items may legitimately differ from the verify round —
+      // the reviewer's audited cell edits post-date verify; the approved gate is
+      // the review-flags completeness + the doc byte-regen below, not verify freshness.
+      if (lastState !== "approved" && merged.itemsHash !== currentHash.slice(0, 12)) {
         errors.push(`${slug}: V-22 — verify.merged is for items ${merged.itemsHash}, current ${currentHash.slice(0, 12)}`);
       }
       const escalatedSet = new Set(merged.escalated);
@@ -760,6 +831,7 @@ export function validateUnitItems(slug: string): ItemValidation {
       errors.push(`${slug}: V-22 — level grant for missing item ${g.itemId}`);
     }
   }
+  } // end gate-integrity (V-22)
 
   return { errors, warns, infos };
 }

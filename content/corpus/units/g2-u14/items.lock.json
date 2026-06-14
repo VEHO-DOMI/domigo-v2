@@ -1,0 +1,62 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g2-u14",
+  "items": {
+    "604d9ca5db73": "g2u14.gi.present-perfect-already-yet.gf.001",
+    "35376a1c8431": "g2u14.gi.present-perfect-already-yet.gf.002",
+    "df843e4b599a": "g2u14.gi.present-perfect-already-yet.gf.003",
+    "47006d460ac3": "g2u14.gi.present-perfect-already-yet.gf.004",
+    "11289294ddb8": "g2u14.gi.present-perfect-already-yet.gf.005",
+    "cf9bf626048b": "g2u14.gi.present-perfect-already-yet.gf.006",
+    "0c3a99c90388": "g2u14.gi.present-perfect-already-yet.mc.001",
+    "180d5401f114": "g2u14.gi.present-perfect-already-yet.mc.002",
+    "6a663b4e6ed0": "g2u14.gi.present-perfect-already-yet.ec.002",
+    "a4a0720624e5": "g2u14.gi.present-perfect-already-yet.ec.003",
+    "37ac19659bdd": "g2u14.gi.present-perfect-already-yet.tf.001",
+    "c57ba9234954": "g2u14.gi.present-perfect-already-yet.qf.001",
+    "49efb994945a": "g2u14.gi.present-perfect-already-yet.sb.001",
+    "a53faee55377": "g2u14.gi.present-perfect-already-yet.sb.002",
+    "593049ee2ad7": "g2u14.gi.present-perfect-already-yet.tr.001",
+    "d0ae689bb2fe": "g2u14.gi.present-perfect-already-yet.tr.002",
+    "8cbc0de2a072": "g2u14.gi.present-perfect-already-yet.mp.001",
+    "239a020e9855": "g2u14.gi.present-perfect-already-yet.gs.001",
+    "cb1917ce5622": "g2u14.gi.present-perfect-already-yet.ag.001",
+    "8b656028bbfa": "g2u14.gi.present-perfect-ever-never.gf.001",
+    "ad68d5abcfc8": "g2u14.gi.present-perfect-ever-never.gf.002",
+    "ce02e1f5d536": "g2u14.gi.present-perfect-ever-never.gf.003",
+    "7b17a007d58a": "g2u14.gi.present-perfect-ever-never.mc.001",
+    "ea2ae0d60dfa": "g2u14.gi.present-perfect-ever-never.ec.001",
+    "9d992e9b59ba": "g2u14.gi.present-perfect-ever-never.ec.002",
+    "96f511fb469c": "g2u14.gi.present-perfect-ever-never.tf.001",
+    "d1566be4b728": "g2u14.gi.present-perfect-ever-never.sb.001",
+    "9cbbce36e8f3": "g2u14.gi.present-perfect-ever-never.tr.001",
+    "a3bbabc6327e": "g2u14.gi.present-perfect-ever-never.mt.001",
+    "aab5982f4525": "g2u14.gi.present-perfect-ever-never.ag.001",
+    "42185ddf07be": "g2u14.gi.present-perfect-already-yet.cp.002",
+    "92af2c953746": "g2u14.gi.present-perfect-already-yet.tf.003",
+    "c4e2666476ee": "g2u14.gi.present-perfect-already-yet.ec.004",
+    "07ec16f05d6c": "g2u14.gi.present-perfect-ever-never.mc.003"
+  },
+  "tombstones": [
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.cp.001",
+      "key": "0dacbb91901a",
+      "removedWith": "ef1986d90acf"
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.tf.002",
+      "key": "e885082d19a0",
+      "removedWith": "ef1986d90acf"
+    },
+    {
+      "id": "g2u14.gi.present-perfect-already-yet.ec.001",
+      "key": "a2347c492dfe",
+      "removedWith": "4f0bc826d33e"
+    },
+    {
+      "id": "g2u14.gi.present-perfect-ever-never.mc.002",
+      "key": "2211a9e20057",
+      "removedWith": "4f0bc826d33e"
+    }
+  ]
+}
