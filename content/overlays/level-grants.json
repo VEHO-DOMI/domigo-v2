@@ -4005,6 +4005,501 @@
       "reason": "common music/opinion word missing from any g1-g3 bank (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "cooking",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "crossing",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "doing",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "driving",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "eating",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "having",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "looking",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "playing",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "queuing",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "queueing",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "raining",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "reading",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "running",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "shining",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "sitting",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "sleeping",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "talking",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "waiting",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "walking",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "watching",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "arrived",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "began",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "called",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "hit",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "lost",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "met",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "phoned",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "ran",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "rang",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "saw",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "walked",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "went",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "cooked",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "cooks",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "goes",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "going",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "looks",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "reads",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "ringing",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "rings",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "seeing",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "siting",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "walks",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "animals",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "boys",
+      "reason": "past-continuous: -ing form / interrupting past-simple verb / wrong-form decoy (structure under test); base taught",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "phone",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "walk",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "pm",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "iceberg",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "sleep",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "shop",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "hunter",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "bus",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "alarm",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u02",
+      "itemId": null,
+      "field": null,
+      "token": "off",
+      "reason": "past-continuous carrier word (harvesting gap / phrase-component / Titanic-story noun)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

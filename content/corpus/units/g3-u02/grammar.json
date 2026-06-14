@@ -1,0 +1,2362 @@
+{
+  "schema": "grammar@1",
+  "grade": 3,
+  "unit": 2,
+  "slug": "g3-u02",
+  "items": [
+    {
+      "id": "g3u02.gi.past-continuous.ag.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single token; -ing spelling (sitting)."
+      },
+      "prompt": {
+        "text": "Die Form von 'sit', die nach was/were kommt:",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "sitting",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach was/were kommt die Form mit -ing. Bei sit wird das t verdoppelt.",
+      "hintEn": null,
+      "explainDe": "sit + ting = sitting: der letzte Buchstabe wird vor -ing verdoppelt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.ag.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single token; -ing spelling (running)."
+      },
+      "prompt": {
+        "text": "Die Form von 'run', die nach was/were kommt:",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "running",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach was/were steht die Form mit -ing. Bei run wird das n verdoppelt.",
+      "hintEn": null,
+      "explainDe": "run + ning = running: der letzte Buchstabe wird verdoppelt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.ag.003",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single token tied to Titanic carrier."
+      },
+      "prompt": {
+        "text": "Die Form von 'cross' im Satz 'The Titanic was ___ the Atlantic.':",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "crossing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach was kommt die Form mit -ing.",
+      "hintEn": null,
+      "explainDe": "cross + ing = crossing: was crossing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.cp.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "My sister was cooking dinner.",
+            "My sister cooked dinner.",
+            "My sister cooks dinner every night.",
+            "My sister has cooked dinner."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-cp-001",
+        "narrative": null,
+        "note": "Mined cp-001; German instruction prompt."
+      },
+      "prompt": {
+        "text": "Gestern um 8 Uhr abends — welcher Satz beschreibt, was gerade passierte?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My sister was cooking dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "My sister cooked dinner.",
+        "My sister cooks dinner every night.",
+        "My sister has cooked dinner."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du beschreibst eine Handlung, die zu einer Uhrzeit gerade ablief. Welche Form zeigt das?",
+      "hintEn": null,
+      "explainDe": "was cooking zeigt: die Handlung war zu 8 Uhr im Gange. Die anderen Formen passen nicht zu 'gerade gestern um 8'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.cp.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Our teacher was reading a story when the alarm went off.",
+            "Our teacher read a story when the alarm went off.",
+            "Our teacher reads a story when the alarm goes off.",
+            "Our teacher was reading a story when the alarm was going off."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-cp-020",
+        "narrative": null,
+        "note": "Mined cp-020; reworked to in-gate verb (read a story)."
+      },
+      "prompt": {
+        "text": "Du erzählst von dem Moment, als der Feueralarm in der Schule losging. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Our teacher was reading a story when the alarm went off.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Our teacher read a story when the alarm went off.",
+        "Our teacher reads a story when the alarm goes off.",
+        "Our teacher was reading a story when the alarm was going off."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die lange Handlung (lesen) läuft, als die kurze (Alarm) sie unterbricht.",
+      "hintEn": null,
+      "explainDe": "was reading + went off ist richtig: lange Handlung in der Verlaufsform, kurze im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.ec.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-ec-001",
+        "narrative": null,
+        "note": "was/were mismatch."
+      },
+      "prompt": {
+        "text": "I were playing football when Mum called.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was playing football when Mum called.",
+          "tier": "full"
+        },
+        {
+          "text": "was playing",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei I heißt es nicht were. Welche Form von be passt?",
+      "hintEn": null,
+      "explainDe": "Bei I steht was, nicht were: I was playing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.ec.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-ec-002",
+        "narrative": null,
+        "note": "Missing -ing."
+      },
+      "prompt": {
+        "text": "She was walk to the shop when she met her friend.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was walking to the shop when she met her friend.",
+          "tier": "full"
+        },
+        {
+          "text": "walking",
+          "tier": "partial"
+        },
+        {
+          "text": "was walking",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach was fehlt eine Endung am Wort.",
+      "hintEn": null,
+      "explainDe": "Nach was kommt die Form mit -ing: was walking.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.ec.003",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-ec-003",
+        "narrative": null,
+        "note": "Classic error: short action wrongly in continuous."
+      },
+      "prompt": {
+        "text": "I was walking to school when I was seeing a dog.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was walking to school when I saw a dog.",
+          "tier": "full"
+        },
+        {
+          "text": "saw",
+          "tier": "partial"
+        },
+        {
+          "text": "I saw a dog",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die kurze Handlung (den Hund sehen) darf nicht in der Verlaufsform stehen.",
+      "hintEn": null,
+      "explainDe": "Die kurze, unterbrechende Handlung steht im Past simple: when I saw a dog.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.ec.004",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-ec-020",
+        "narrative": null,
+        "note": "they -> were."
+      },
+      "prompt": {
+        "text": "They was having a picnic in the park.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They were having a picnic in the park.",
+          "tier": "full"
+        },
+        {
+          "text": "were having",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "they passt nicht zu was.",
+      "hintEn": null,
+      "explainDe": "Bei they steht were: They were having.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.ec.005",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-ec-022",
+        "narrative": null,
+        "note": "Spelling of -ing (sitting)."
+      },
+      "prompt": {
+        "text": "She was reading a magazine while the dog was siting on the sofa.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was reading a magazine while the dog was sitting on the sofa.",
+          "tier": "full"
+        },
+        {
+          "text": "sitting",
+          "tier": "partial"
+        },
+        {
+          "text": "was sitting",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Wort ist falsch geschrieben: sit verdoppelt vor -ing den letzten Buchstaben.",
+      "hintEn": null,
+      "explainDe": "sit wird zu sitting (Doppel-t): was sitting.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.ec.006",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Man-in-black story; missing -ing."
+      },
+      "prompt": {
+        "text": "The thief was watch the two boys and the woman.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The thief was watching the two boys and the woman.",
+          "tier": "full"
+        },
+        {
+          "text": "watching",
+          "tier": "partial"
+        },
+        {
+          "text": "was watching",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach was fehlt das -ing.",
+      "hintEn": null,
+      "explainDe": "was watching: nach was kommt die Form mit -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Verbatim SB scene-setting line."
+      },
+      "prompt": {
+        "text": "The sun ___ (shine) and we ___ (have) a lot of fun.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was shining | were having",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei the sun (= it) nimmst du was, bei we nimmst du were. Häng an beide Wörter -ing an.",
+      "hintEn": null,
+      "explainDe": "The sun = es, also was shining. we braucht were having. An die Grundform kommt -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Canonical SB Titanic sentence; iceberg glossed."
+      },
+      "prompt": {
+        "text": "The Titanic ___ (cross) the Atlantic when it hit an iceberg.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was crossing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "The Titanic ist wie it, also was. Die lange Handlung in der Vergangenheit bekommt was/were + -ing.",
+      "hintEn": null,
+      "explainDe": "Die lange Handlung (überqueren) steht als was crossing. Die kurze (hit) bleibt im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.003",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB hunter illustration, reworked to in-gate words (animals/ran away)."
+      },
+      "prompt": {
+        "text": "While the hunter ___ (look) at the animals, they ran away.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was looking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "the hunter ist wie he, also was + -ing für die längere Handlung.",
+      "hintEn": null,
+      "explainDe": "Die lange Handlung mit while braucht was looking; die kurze Handlung (ran) steht im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.004",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB: 'They were all queuing up at the entrance of the Greenwich Museum.'"
+      },
+      "prompt": {
+        "text": "They ___ (queue) up at the entrance of the museum.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were queuing",
+          "tier": "full"
+        },
+        {
+          "text": "were queueing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "they braucht were und an das Wort kommt -ing.",
+      "hintEn": null,
+      "explainDe": "they were queuing: were bei they, plus -ing an queue.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.005",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB grammar box answer to 'What were you doing at 8 o'clock?'"
+      },
+      "prompt": {
+        "text": "At 8 o'clock I ___ (walk) my dog.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was walking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei I nimmst du was und häng -ing an walk.",
+      "hintEn": null,
+      "explainDe": "I was walking: bei I steht was, plus -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.006",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB read-and-write scene (detective driving, raining)."
+      },
+      "prompt": {
+        "text": "The detective ___ (drive) down the street and it ___ (rain).",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was driving | was raining",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "the detective und it sind beide wie he/it, also zweimal was + -ing.",
+      "hintEn": null,
+      "explainDe": "was driving und was raining: bei the detective und bei it steht was.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.007",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB cue 'At 6 o'clock I was having a shower' (bath/sister keep it in-gate)."
+      },
+      "prompt": {
+        "text": "At 6 o'clock I ___ (have) a bath and my sister ___ (do) her homework.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was having | was doing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zweimal was, weil I und my sister (= she) gemeint sind. Vergiss das -ing nicht.",
+      "hintEn": null,
+      "explainDe": "was having / was doing: I und my sister nehmen beide was + -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.008",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB read-and-write: 'Mum and Dad were watching TV.'"
+      },
+      "prompt": {
+        "text": "Mum and Dad ___ (watch) TV in the living room.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were watching",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mum and Dad sind zwei Personen (= they), also were + -ing.",
+      "hintEn": null,
+      "explainDe": "were watching: bei zwei Personen (they) steht were.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.009",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "SB/poem-page question 'What were you doing at 8 p.m. last night?'"
+      },
+      "prompt": {
+        "text": "At 8 p.m. last night, what ___ you ___ (do)?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "were | doing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei you steht were, und an do kommt -ing.",
+      "hintEn": null,
+      "explainDe": "What were you doing: in der Frage steht were vor you, das Wort bekommt -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.010",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Lost-phone story; common error didn't do."
+      },
+      "prompt": {
+        "text": "Lucas ___ (not / do) anything — Amelia just lost her phone.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wasn't doing",
+          "tier": "full"
+        },
+        {
+          "text": "was not doing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei Lucas (= he) bildest du die Verneinung mit wasn't und häng -ing an.",
+      "hintEn": null,
+      "explainDe": "wasn't doing: was + not (wasn't) bei he, plus -ing. Nicht didn't!",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.011",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-gf-006",
+        "narrative": null,
+        "note": "Mined v1 gf-006; strict negation."
+      },
+      "prompt": {
+        "text": "She ___ (not / wait) for the bus. She ___ (walk) home.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "wasn't waiting | was walking",
+          "tier": "full"
+        },
+        {
+          "text": "was not waiting | was walking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst die Verneinung mit wasn't + -ing, dann ganz normal was + -ing.",
+      "hintEn": null,
+      "explainDe": "wasn't waiting / was walking: she nimmt was, in der Verneinung wasn't, immer mit -ing.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.012",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Man-in-black story; they -> weren't."
+      },
+      "prompt": {
+        "text": "The two boys ___ (not / look) at the thief.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't looking",
+          "tier": "full"
+        },
+        {
+          "text": "were not looking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "The two boys (= they) verneinst du mit weren't und -ing.",
+      "hintEn": null,
+      "explainDe": "weren't looking: bei they steht were, verneint weren't, plus -ing.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.013",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Lost-phone world; we -> weren't."
+      },
+      "prompt": {
+        "text": "We ___ (not / queue) — we were inside the museum.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't queuing",
+          "tier": "full"
+        },
+        {
+          "text": "were not queuing",
+          "tier": "full"
+        },
+        {
+          "text": "weren't queueing",
+          "tier": "full"
+        },
+        {
+          "text": "were not queueing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "we braucht were, verneint weren't, und an queue kommt -ing.",
+      "hintEn": null,
+      "explainDe": "weren't queuing: bei we steht were, verneint weren't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.014",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": "m3-u2-past-continuous-tr-021",
+        "narrative": null,
+        "note": "Question form."
+      },
+      "prompt": {
+        "text": "___ you ___ (sleep) when I phoned you?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Were | sleeping",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der Frage steht Were vor you, das Wort bekommt -ing.",
+      "hintEn": null,
+      "explainDe": "Were you sleeping: bei you steht Were am Satzanfang, plus -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gf.015",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Greenwich weather opener as a yes/no question."
+      },
+      "prompt": {
+        "text": "___ the sun ___ (shine) when you arrived?",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Was | shining",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "the sun ist wie it, also Was am Anfang und -ing am Wort.",
+      "hintEn": null,
+      "explainDe": "Was the sun shining: bei it/the sun steht Was, plus -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gs.003",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Each wrong member breaks only be-form or -ing."
+      },
+      "prompt": {
+        "text": "Richtig oder falsch? Sortiere die Sätze.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "I was walking to school.",
+            "They were playing football.",
+            "She was doing her homework."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "I were walking to school.",
+            "They was playing football.",
+            "She was do her homework."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Achte auf was/were und auf das -ing am Wort.",
+      "hintEn": null,
+      "explainDe": "Richtig: I was, they were, was doing. Falsch sind I were, they was und was do (ohne -ing).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gs.004",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Sort subjects by was vs were."
+      },
+      "prompt": {
+        "text": "Welche Form passt? Sortiere die Personen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "was",
+          "members": [
+            "I ___ walking.",
+            "She ___ reading.",
+            "The dog ___ sleeping.",
+            "He ___ driving."
+          ]
+        },
+        {
+          "label": "were",
+          "members": [
+            "You ___ waiting.",
+            "We ___ having fun.",
+            "They ___ playing.",
+            "The boys ___ talking."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "was steht bei I/he/she/it (und Einzahl-Namen), were bei you/we/they (und Mehrzahl).",
+      "hintEn": null,
+      "explainDe": "I/she/he/the dog nehmen was; you/we/they/the boys nehmen were.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.gs.005",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Long(continuous) vs short(simple); iceberg glossed."
+      },
+      "prompt": {
+        "text": "Lange oder kurze Handlung? Sortiere die Satzteile.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "was crossing",
+          "members": [
+            "The Titanic was crossing the Atlantic",
+            "We were having dinner",
+            "I was walking my dog",
+            "The sun was shining"
+          ]
+        },
+        {
+          "label": "hit",
+          "members": [
+            "it hit an iceberg",
+            "the phone rang",
+            "I saw a dog",
+            "we saw the people"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Die lange Handlung steht mit was/were + -ing, die kurze im Past simple.",
+      "hintEn": null,
+      "explainDe": "was crossing/were having sind lange Handlungen; hit/rang/saw sind kurze Handlungen im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.mc.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "was shining",
+            "were shining",
+            "was shine",
+            "shining"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Distractors: wrong be-form, missing -ing, missing be."
+      },
+      "prompt": {
+        "text": "The sun ___ when we arrived at the museum.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was shining",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "were shining",
+        "was shine",
+        "shining"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "the sun ist Einzahl (wie it). Welche Form passt?",
+      "hintEn": null,
+      "explainDe": "was shining: bei the sun steht was, und das Wort braucht -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.mc.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "was playing",
+            "were playing",
+            "was play",
+            "playing"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": "m3-u2-past-continuous-mc-020",
+        "narrative": null,
+        "note": "Mined mc-020 carrier; in-bank distractors."
+      },
+      "prompt": {
+        "text": "My sister ___ the guitar when I came home.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was playing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "were playing",
+        "was play",
+        "playing"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "My sister ist wie she. Achte auf was und auf -ing.",
+      "hintEn": null,
+      "explainDe": "was playing: she/my sister nimmt was, plus -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.mc.003",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "were having",
+            "was having",
+            "were have",
+            "having"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Distractors flawed only in this structure."
+      },
+      "prompt": {
+        "text": "They ___ a picnic in the park at 5 o'clock.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were having",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "was having",
+        "were have",
+        "having"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "they braucht were. Und die Form mit -ing.",
+      "hintEn": null,
+      "explainDe": "were having: bei they steht were, plus -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.mc.004",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I was having dinner when the phone rang.",
+            "I was having dinner when the phone was ringing.",
+            "I had dinner when the phone rang.",
+            "I were having dinner when the phone rang."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-mc-002",
+        "narrative": null,
+        "note": "Mined mc-002; German instruction prompt; each distractor breaks the long/short contrast or the be-form."
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was having dinner when the phone rang.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I was having dinner when the phone was ringing.",
+        "I had dinner when the phone rang.",
+        "I were having dinner when the phone rang."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die lange Handlung steht mit was/were + -ing, die kurze (das Klingeln) im Past simple.",
+      "hintEn": null,
+      "explainDe": "Richtig: was having (lange Handlung) + rang (kurze Handlung). Beide lang oder I were ist falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.mc.005",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "While we were eating, the lights went out.",
+            "While we eating, the lights went out.",
+            "While we were eating, the lights were going out.",
+            "While we was eating, the lights went out."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-mc-003",
+        "narrative": null,
+        "note": "Mined mc-003; in-bank carrier."
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While we were eating, the lights went out.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "While we eating, the lights went out.",
+        "While we were eating, the lights were going out.",
+        "While we was eating, the lights went out."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach while steht die lange Handlung (were + -ing), die kurze (went out) im Past simple.",
+      "hintEn": null,
+      "explainDe": "were eating + went out ist richtig. Ohne were, mit was, oder mit were going out ist es falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.mp.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Unique right-sides; includes negatives -> strict."
+      },
+      "prompt": {
+        "text": "Welche Form von be passt zur Person?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I ___ walking",
+          "right": "was"
+        },
+        {
+          "left": "They ___ playing",
+          "right": "were"
+        },
+        {
+          "left": "She ___ reading",
+          "right": "wasn't"
+        },
+        {
+          "left": "We ___ queuing",
+          "right": "weren't"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "was/wasn't bei I/he/she/it, were/weren't bei you/we/they.",
+      "hintEn": null,
+      "explainDe": "I was, they were, she wasn't, we weren't: was bei Einzahl, were bei Mehrzahl.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u02.gi.past-continuous.mt.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Unique right-sides; SB carriers; iceberg glossed."
+      },
+      "prompt": {
+        "text": "Anfang und passendes Ende",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "The Titanic was crossing the Atlantic",
+          "right": "when it hit an iceberg."
+        },
+        {
+          "left": "While we were having dinner,",
+          "right": "the phone rang."
+        },
+        {
+          "left": "I was walking my dog",
+          "right": "when I saw a dog."
+        },
+        {
+          "left": "The sun was shining and",
+          "right": "we were having a lot of fun."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die lange Handlung (was/were + -ing) trifft auf die kurze Handlung im Past simple oder auf einen zweiten Hintergrund.",
+      "hintEn": null,
+      "explainDe": "Jeder Anfang in der Verlaufsform passt zu genau einer kurzen Handlung (Past simple) oder zu einem zweiten langen Teil.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.mt.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Unique right-sides; mix of Was/Were and W/yes-no."
+      },
+      "prompt": {
+        "text": "Frage und passende Antwort",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "What were you doing at 8 p.m.?",
+          "right": "I was walking my dog."
+        },
+        {
+          "left": "Was your sister sleeping?",
+          "right": "No, she was reading."
+        },
+        {
+          "left": "Were the boys playing football?",
+          "right": "Yes, they were."
+        },
+        {
+          "left": "What was the detective doing?",
+          "right": "He was driving down the street."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte darauf, ob die Frage mit Was oder Were beginnt und ob eine W-Frage eine ganze Antwort braucht.",
+      "hintEn": null,
+      "explainDe": "W-Fragen (What ...?) brauchen eine ganze Antwort, Ja/Nein-Fragen die Kurzantwort mit was/were.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.qf.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Build yes/no question."
+      },
+      "prompt": {
+        "text": "you / sleep / when I phoned you",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Were you sleeping when I phoned you?",
+          "tier": "full"
+        },
+        {
+          "text": "Were you sleeping when I called you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne die Frage mit Were, dann you, dann das Wort mit -ing.",
+      "hintEn": null,
+      "explainDe": "Were you sleeping ...?: in der Frage steht Were vor you, plus -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.qf.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Wh-question with was."
+      },
+      "prompt": {
+        "text": "what / your sister / do / at 6 p.m.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What was your sister doing at 6 p.m.?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "your sister ist wie she, also Was. Frage: What was she doing ...?",
+      "hintEn": null,
+      "explainDe": "What was your sister doing: bei she/your sister steht was, das Wort bekommt -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.sb.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "were",
+            "cooked",
+            "cooking",
+            "She was cooking dinner at 6 pm."
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-sb-001",
+        "narrative": null,
+        "note": "Chips tempt cooked/were."
+      },
+      "prompt": {
+        "text": "she / was / cooking / dinner / at / 6 / pm",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was cooking dinner at 6 pm.",
+          "tier": "full"
+        },
+        {
+          "text": "At 6 pm she was cooking dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: she + was + Wort mit -ing + Rest.",
+      "hintEn": null,
+      "explainDe": "She was cooking dinner at 6 pm: was bei she, plus -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.sb.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "were",
+            "did",
+            "was ringing",
+            "She was doing her homework when the phone rang."
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-sb-020",
+        "narrative": null,
+        "note": "Interrupted pattern build."
+      },
+      "prompt": {
+        "text": "she / was / doing / her / homework / when / the / phone / rang",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was doing her homework when the phone rang.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lange Handlung: was doing. Kurze Handlung (phone): rang im Past simple.",
+      "hintEn": null,
+      "explainDe": "She was doing her homework when the phone rang: lange Handlung mit was + -ing, kurze im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.sb.003",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "was",
+            "shine",
+            "had",
+            "The sun was shining and we were having fun."
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Verbatim SB scene-setting line as a build."
+      },
+      "prompt": {
+        "text": "the / sun / was / shining / and / we / were / having / fun",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The sun was shining and we were having fun.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "the sun (= it) nimmt was shining; we nimmt were having.",
+      "hintEn": null,
+      "explainDe": "The sun was shining and we were having fun: was bei the sun, were bei we, beide mit -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tf.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Combine into interrupted pattern."
+      },
+      "prompt": {
+        "text": "The phone rang. We were having dinner. (join with WHILE)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While we were having dinner, the phone rang.",
+          "tier": "full"
+        },
+        {
+          "text": "The phone rang while we were having dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die lange Handlung kommt nach while mit were + -ing, die kurze bleibt im Past simple.",
+      "hintEn": null,
+      "explainDe": "While we were having dinner, the phone rang: lange Handlung mit while, kurze im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tf.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Present -> past continuous at a clock time."
+      },
+      "prompt": {
+        "text": "I walk my dog. (8 o'clock last night)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was walking my dog at 8 o'clock last night.",
+          "tier": "full"
+        },
+        {
+          "text": "At 8 o'clock last night I was walking my dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mache aus 'I walk' eine Handlung, die um 8 Uhr gerade ablief.",
+      "hintEn": null,
+      "explainDe": "I was walking my dog: bei I steht was, plus -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tf.003",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "WB ex.7 idea, in-gate carrier."
+      },
+      "prompt": {
+        "text": "She reads a book. The phone rings. (join with WHILE)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While she was reading a book, the phone rang.",
+          "tier": "full"
+        },
+        {
+          "text": "The phone rang while she was reading a book.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lange Handlung nach while mit was + -ing, kurze (rang) im Past simple.",
+      "hintEn": null,
+      "explainDe": "While she was reading a book, the phone rang: lange Handlung in der Verlaufsform, kurze im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tf.004",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "WB ex.7 Billy idea; 'walked into' keeps it in-gate (crash avoided)."
+      },
+      "prompt": {
+        "text": "He looks at his phone. He walks into a lamp post. (join with WHILE)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While he was looking at his phone, he walked into a lamp post.",
+          "tier": "full"
+        },
+        {
+          "text": "He walked into a lamp post while he was looking at his phone.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die lange Handlung (aufs Handy schauen) läuft, als die kurze (walk into) passiert.",
+      "hintEn": null,
+      "explainDe": "While he was looking at his phone, he walked into a lamp post: lange Handlung mit while, kurze im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tr.001",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-tr-001",
+        "narrative": null,
+        "note": "Mined tr-001; 'began' is the in-gate interrupting verb."
+      },
+      "prompt": {
+        "text": "Ich ging gerade zur Schule, als es zu regnen begann.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was walking to school when it began to rain.",
+          "tier": "full"
+        },
+        {
+          "text": "I was walking to school when it began raining.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'ging gerade' = was walking (lange Handlung). 'begann' bleibt im Past simple (began).",
+      "hintEn": null,
+      "explainDe": "I was walking ... when it began: die lange Handlung in der Verlaufsform, die kurze (began) im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tr.002",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-tr-020",
+        "narrative": null,
+        "note": "Mined tr-020."
+      },
+      "prompt": {
+        "text": "Während wir zu Abend aßen, klingelte plötzlich das Telefon.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While we were having dinner, the phone suddenly rang.",
+          "tier": "full"
+        },
+        {
+          "text": "While we were eating dinner, the phone suddenly rang.",
+          "tier": "full"
+        },
+        {
+          "text": "While we were having dinner, the phone rang suddenly.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach 'während' steht die lange Handlung mit were + -ing, 'klingelte' im Past simple.",
+      "hintEn": null,
+      "explainDe": "While we were having dinner, the phone rang: lange Handlung in der Verlaufsform, kurze im Past simple.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tr.003",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-tr-002",
+        "narrative": null,
+        "note": "Question in production."
+      },
+      "prompt": {
+        "text": "Was hast du gestern um 9 Uhr gemacht?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What were you doing at 9 o'clock yesterday?",
+          "tier": "full"
+        },
+        {
+          "text": "What were you doing yesterday at 9 o'clock?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'Was hast du gerade gemacht?' = What were you doing? Bei you steht were.",
+      "hintEn": null,
+      "explainDe": "What were you doing: bei you steht were, das Wort bekommt -ing.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tr.004",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 2.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Greenwich scene; everybody/the sun -> was."
+      },
+      "prompt": {
+        "text": "Die Sonne schien und alle stellten sich am Eingang an.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The sun was shining and everybody was queuing at the entrance.",
+          "tier": "full"
+        },
+        {
+          "text": "The sun was shining and everybody was queueing at the entrance.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Handlungen liefen gleichzeitig ab: was shining und was queuing.",
+      "hintEn": null,
+      "explainDe": "was shining / was queuing: beide langen Handlungen stehen in der Verlaufsform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u02.gi.past-continuous.tr.005",
+      "structureId": "g3u02.s.past-continuous",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u2-past-continuous-gf-001",
+        "narrative": null,
+        "note": "Interrupted pattern in production."
+      },
+      "prompt": {
+        "text": "Ich habe gerade ein Buch gelesen, als du mich angerufen hast.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was reading a book when you called me.",
+          "tier": "full"
+        },
+        {
+          "text": "I was reading a book when you phoned me.",
+          "tier": "full"
+        },
+        {
+          "text": "I was reading a book when you rang me.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'las gerade' = was reading (lange Handlung), 'riefst an' im Past simple.",
+      "hintEn": null,
+      "explainDe": "I was reading ... when you called: lange Handlung in der Verlaufsform, kurze im Past simple.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}
