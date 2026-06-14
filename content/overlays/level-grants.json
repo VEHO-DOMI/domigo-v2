@@ -6930,6 +6930,501 @@
       "reason": "unless: past form of leave in a context-picker pool sentence",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "air",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "almost",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "bell",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "camera",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "cat",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "father",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "floor",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "flows",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "fresh",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "guards",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "pilot",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "same",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "song",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "through",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "made",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "took",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "bought",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "broke",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "broken",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "stolen",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "built",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "wrote",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "seen",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "met",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "goes",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "sits",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "lives",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "looks",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "helped",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "plays",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "wakes",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "leads",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "ordered",
+      "reason": "relative-clauses: London-theme carrier noun or irregular/3sg verb form in a relative clause (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "as",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "bag",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "bike",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "burnt",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "bus",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "center",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "gallery",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "house",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "know",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "led",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "name",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "next",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "old",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "party",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "phone",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "pick",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "see",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "sleeps",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "paid",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "work",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "job",
+      "reason": "relative-clauses carrier/theme word untaught at g3 (multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u06",
+      "itemId": null,
+      "field": null,
+      "token": "lead",
+      "reason": "government def: lead a country",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

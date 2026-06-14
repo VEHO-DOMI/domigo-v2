@@ -1,0 +1,2751 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g3-u06",
+  "briefBank": "9580793d8313",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g3u06.w.bridge",
+      "w": "bridge",
+      "g": "Brücke",
+      "d": "a way over a river or road that you can cross",
+      "s": "We crossed the river on a stone ___ near the town centre.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bridge",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bridge",
+          "tier": "full"
+        },
+        {
+          "text": "bridges",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bridge",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brücke",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tower",
+        "path",
+        "river"
+      ],
+      "hintDe": "Du gehst darüber, um auf die andere Seite eines Flusses zu kommen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "tower",
+          "path",
+          "river",
+          "street"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.river",
+      "w": "river",
+      "g": "Fluss",
+      "d": "a long wide way where ships travel down to the sea",
+      "s": "The ___ here is very wide, so we cannot cross it on foot.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "river",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "river",
+          "tier": "full"
+        },
+        {
+          "text": "rivers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "river",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fluss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bridge",
+        "path",
+        "tower"
+      ],
+      "hintDe": "Wasser fließt darin durch die Stadt bis zum Meer.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bridge",
+          "path",
+          "tower",
+          "park"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.art-gallery",
+      "w": "art gallery",
+      "g": "Kunstgalerie",
+      "d": "a place where you can look at famous pictures on the walls",
+      "s": "We looked at famous pictures in the ___ in the city centre.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "art gallery",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "art gallery",
+          "tier": "full"
+        },
+        {
+          "text": "art galleries",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "art gallery",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kunstgalerie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "theatre",
+        "stadium",
+        "shop"
+      ],
+      "hintDe": "Hier hängen Bilder und Kunst an den Wänden, die du dir anschauen kannst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "theatre",
+          "stadium",
+          "shop",
+          "building"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.square",
+      "w": "square",
+      "g": "Platz",
+      "d": "a big open place in the middle of a town",
+      "s": "There is a big fountain in the middle of the town ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "square",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "square",
+          "tier": "full"
+        },
+        {
+          "text": "squares",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "square",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Platz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "park",
+        "bridge",
+        "river"
+      ],
+      "hintDe": "Ein großer, freier Ort mitten in der Stadt, oft mit Häusern rundherum.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "park",
+          "bridge",
+          "river",
+          "tower"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.park",
+      "w": "park",
+      "g": "Park",
+      "d": "a big open area with trees where you can play and have a picnic",
+      "s": "Let's meet at the ___ near the trees and play football.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "park",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "park",
+          "tier": "full"
+        },
+        {
+          "text": "parks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "park",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Park",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "square",
+        "shop",
+        "building"
+      ],
+      "hintDe": "Ein grüner Ort mit Bäumen, wo du spielen oder picknicken kannst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "square",
+          "shop",
+          "building",
+          "street"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.tower",
+      "w": "tower",
+      "g": "Turm",
+      "d": "a tall building with a clock that is very high",
+      "s": "The tall church ___ with a clock is very high.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "tower",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tower",
+          "tier": "full"
+        },
+        {
+          "text": "towers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tower",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Turm",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bridge",
+        "shop",
+        "park"
+      ],
+      "hintDe": "Ein hohes, schmales Gebäude, zum Beispiel mit einer Uhr oben.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bridge",
+          "shop",
+          "park",
+          "building"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.district",
+      "w": "district",
+      "g": "Bezirk",
+      "d": "one area of a city or town",
+      "s": "There are many shops and restaurants in this ___ of the city.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "district",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "district",
+          "tier": "full"
+        },
+        {
+          "text": "districts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "district",
+            "tier": "full"
+          },
+          {
+            "text": "area",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bezirk",
+            "tier": "full"
+          },
+          {
+            "text": "Viertel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "square",
+        "tower",
+        "bridge"
+      ],
+      "hintDe": "Ein Teil einer Stadt, zum Beispiel das Viertel, in dem du wohnst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "square",
+          "tower",
+          "bridge",
+          "building"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.building",
+      "w": "building",
+      "g": "Gebäude",
+      "d": "a place with walls and a roof where people live or work",
+      "s": "There is a tall new ___ in our town with many windows.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "building",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "building",
+          "tier": "full"
+        },
+        {
+          "text": "buildings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "building",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gebäude",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "river",
+        "park",
+        "street"
+      ],
+      "hintDe": "Etwas mit Wänden und Dach, zum Beispiel ein Haus oder eine Schule.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "river",
+          "park",
+          "street",
+          "bridge"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.street",
+      "w": "street",
+      "g": "Straße",
+      "d": "a road in a city or town with houses and shops",
+      "s": "There is a lot of traffic on the ___, so it is very noisy.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "street",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "street",
+          "tier": "full"
+        },
+        {
+          "text": "streets",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "street",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Straße",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "park",
+        "tower",
+        "bridge"
+      ],
+      "hintDe": "Hier fahren Autos, und an den Seiten stehen Häuser und Geschäfte.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "park",
+          "tower",
+          "bridge",
+          "building"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.shop",
+      "w": "shop",
+      "g": "Geschäft",
+      "d": "a place where you can pay money for sweets, food and clothes",
+      "s": "There are many small ___ on this street that sell sweets and books.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "shops",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shop",
+          "tier": "full"
+        },
+        {
+          "text": "shops",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shop",
+            "tier": "full"
+          },
+          {
+            "text": "store",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Geschäft",
+            "tier": "full"
+          },
+          {
+            "text": "Laden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "park",
+        "tower",
+        "river"
+      ],
+      "hintDe": "Hier kaufst du Dinge wie Süßigkeiten, Bücher oder Kleidung.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "park",
+          "tower",
+          "river",
+          "bridge"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.shopping-centre",
+      "w": "shopping centre",
+      "g": "Einkaufszentrum",
+      "d": "a big building with lots of shops in it",
+      "s": "This big ___ centre has 100 shops under one roof.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "shopping",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shopping centre",
+          "tier": "full"
+        },
+        {
+          "text": "shopping center",
+          "tier": "full"
+        },
+        {
+          "text": "shopping centres",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shopping centre",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Einkaufszentrum",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "art gallery",
+        "tower",
+        "bridge"
+      ],
+      "hintDe": "Ein großes Gebäude, in dem viele Geschäfte unter einem Dach sind.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "art gallery",
+          "tower",
+          "bridge",
+          "stadium"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "WB U6 ex.4",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.stadium",
+      "w": "stadium",
+      "g": "Stadion",
+      "d": "a big building where many people watch a match",
+      "s": "This big ___ can hold more than 50,000 people.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "stadium",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stadium",
+          "tier": "full"
+        },
+        {
+          "text": "stadiums",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stadium",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stadion",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "theatre",
+        "art gallery",
+        "shop"
+      ],
+      "hintDe": "Ein großes Gebäude, in dem viele Menschen ein Spiel anschauen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "theatre",
+          "art gallery",
+          "shop",
+          "tower"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-burn-down",
+      "w": "to burn down",
+      "g": "niederbrennen",
+      "d": "to be destroyed in a fire",
+      "s": "The Globe Theatre ___ a long time ago, but now there is a new one.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "burned down",
+          "tier": "full"
+        },
+        {
+          "text": "burnt down",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "burn down",
+          "tier": "full"
+        },
+        {
+          "text": "burnt down",
+          "tier": "full"
+        },
+        {
+          "text": "burned down",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to burn down",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "niederbrennen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to raise",
+        "to report",
+        "to experience"
+      ],
+      "hintDe": "Wenn ein Feuer ein Gebäude ganz zerstört.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to raise",
+          "to report",
+          "to experience",
+          "to lead"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.collection",
+      "w": "collection",
+      "g": "Sammlung",
+      "d": "all the art that an art gallery keeps and shows",
+      "s": "This art gallery has a famous ___ of modern art.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "collection",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "collection",
+          "tier": "full"
+        },
+        {
+          "text": "collections",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "collection",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sammlung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "government",
+        "view",
+        "play"
+      ],
+      "hintDe": "Viele gleiche Dinge, die jemand gesammelt und zusammen hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "government",
+          "view",
+          "play",
+          "contract"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.government",
+      "w": "government",
+      "g": "Regierung",
+      "d": "the people who lead a country.",
+      "s": "The ___ meets at the Houses of Parliament in London.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "government",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "government",
+          "tier": "full"
+        },
+        {
+          "text": "governments",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "government",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Regierung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "visitor",
+        "contract"
+      ],
+      "hintDe": "Die Menschen, die ein Land leiten und führen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "visitor",
+          "contract",
+          "play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.the-houses-of-parliament",
+      "w": "the Houses of Parliament",
+      "g": "das Parlament (von Großbritannien)",
+      "d": "the building in London where the British government meets",
+      "s": "We can take a picture of ___ in London.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "the Houses of Parliament",
+          "tier": "full"
+        },
+        {
+          "text": "Houses of Parliament",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "the Houses of Parliament",
+          "tier": "full"
+        },
+        {
+          "text": "Houses of Parliament",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "the Houses of Parliament",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "das Parlament",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tower",
+        "stadium",
+        "art gallery"
+      ],
+      "hintDe": "Das große Gebäude in London, in dem sich die Regierung trifft.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "tower",
+          "stadium",
+          "art gallery",
+          "theatre"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.in-advance",
+      "w": "in advance",
+      "g": "im Voraus",
+      "d": "early, before a thing happens",
+      "s": "You can book your tickets ___ so you do not have to wait in the queue.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "in advance",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in advance",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in advance",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "im Voraus",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "approximately",
+        "empty",
+        "thrilling"
+      ],
+      "hintDe": "Schon früher, bevor etwas passiert, und nicht erst im letzten Moment.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "approximately",
+          "empty",
+          "thrilling",
+          "cruel"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-photograph",
+      "w": "to photograph",
+      "g": "fotografieren",
+      "d": "to take a picture of a place or a thing",
+      "s": "A lot of people ___ these famous places in London.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "photograph",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "photograph",
+          "tier": "full"
+        },
+        {
+          "text": "photographs",
+          "tier": "full"
+        },
+        {
+          "text": "photographed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to photograph",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fotografieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to raise",
+        "to report",
+        "to sign"
+      ],
+      "hintDe": "Ein Foto von einem Ort oder einer Sache machen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to raise",
+          "to report",
+          "to sign",
+          "to experience"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.play",
+      "w": "play",
+      "g": "Theaterstück",
+      "d": "a story that people show on a stage",
+      "s": "You can watch a Shakespeare ___ at the Globe.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "play",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "play",
+          "tier": "full"
+        },
+        {
+          "text": "plays",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "play",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Theaterstück",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "view",
+        "collection",
+        "shop"
+      ],
+      "hintDe": "Eine Geschichte, die Menschen auf einer Bühne zeigen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "view",
+          "collection",
+          "shop",
+          "path"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.prison",
+      "w": "prison",
+      "g": "Gefängnis",
+      "d": "a place where bad people stay after they do a crime",
+      "s": "It was a castle first, and then for many years it was a ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "prison",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "prison",
+          "tier": "full"
+        },
+        {
+          "text": "prisons",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "prison",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gefängnis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "theatre",
+        "art gallery",
+        "shop"
+      ],
+      "hintDe": "Hier müssen Menschen bleiben, nachdem sie etwas Schlimmes getan haben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "theatre",
+          "art gallery",
+          "shop",
+          "tower"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-raise",
+      "w": "to raise",
+      "g": "anheben",
+      "d": "to put a thing up high",
+      "s": "They ___ the bridge so that big ships can go under it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "raise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "raise",
+          "tier": "full"
+        },
+        {
+          "text": "raised",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to raise",
+            "tier": "full"
+          },
+          {
+            "text": "to lift",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anheben",
+            "tier": "full"
+          },
+          {
+            "text": "erhöhen",
+            "tier": "full"
+          },
+          {
+            "text": "hochheben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to report",
+        "to sign",
+        "to lead"
+      ],
+      "hintDe": "Etwas nach oben bewegen, zum Beispiel die Hand heben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to report",
+          "to sign",
+          "to lead",
+          "to experience"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.raven",
+      "w": "raven",
+      "g": "Rabe",
+      "d": "a big black animal that can fly",
+      "s": "The black ___ live at the Tower of London and never leave.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ravens",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "raven",
+          "tier": "full"
+        },
+        {
+          "text": "ravens",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "raven",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rabe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "visitor",
+        "path",
+        "view"
+      ],
+      "hintDe": "Ein großer, schwarzer Vogel, der fliegen kann.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "visitor",
+          "path",
+          "view",
+          "play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-take-a-walk",
+      "w": "to take a walk",
+      "g": "einen Spaziergang machen",
+      "d": "to go on foot for fun, not in a hurry",
+      "s": "Let's ___ along the river — the weather is great today.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "take a walk",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take a walk",
+          "tier": "full"
+        },
+        {
+          "text": "took a walk",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to take a walk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einen Spaziergang machen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to photograph",
+        "to report",
+        "to sign"
+      ],
+      "hintDe": "Gemütlich zu Fuß gehen, einfach weil es dir Spaß macht.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to photograph",
+          "to report",
+          "to sign",
+          "to lead"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.theatre",
+      "w": "theatre",
+      "g": "Theater",
+      "d": "a building where you watch plays and shows",
+      "s": "We are going to the ___ tonight to watch a play.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "theatre",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "theatre",
+          "tier": "full"
+        },
+        {
+          "text": "theater",
+          "tier": "partial"
+        },
+        {
+          "text": "theatres",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "theatre",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Theater",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "stadium",
+        "art gallery",
+        "shop"
+      ],
+      "hintDe": "Ein Gebäude, in dem du Theaterstücke und Shows anschaust.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "stadium",
+          "art gallery",
+          "shop",
+          "tower"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.view",
+      "w": "view",
+      "g": "Ausblick",
+      "d": "the nice land or town you can look at from a high place",
+      "s": "On the wheel you have the best ___ of the whole city.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "view",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "view",
+          "tier": "full"
+        },
+        {
+          "text": "views",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "view",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ausblick",
+            "tier": "full"
+          },
+          {
+            "text": "Aussicht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "path",
+        "collection",
+        "play"
+      ],
+      "hintDe": "Das, was du von einem hohen Ort aus sehen kannst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "path",
+          "collection",
+          "play",
+          "district"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.visitor",
+      "w": "visitor",
+      "g": "Besucher/Besucherin",
+      "d": "somebody who comes to look at a place or to meet somebody",
+      "s": "The history museum has many ___ from all over the world every year.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "visitors",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "visitor",
+          "tier": "full"
+        },
+        {
+          "text": "visitors",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "visitor",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Besucher",
+            "tier": "full"
+          },
+          {
+            "text": "Besucherin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "government",
+        "collection",
+        "raven"
+      ],
+      "hintDe": "Jemand, der kommt, um sich einen Ort anzuschauen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "government",
+          "collection",
+          "raven",
+          "view"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 3",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.thrilling",
+      "w": "thrilling",
+      "g": "aufregend",
+      "d": "very exciting, but also scary",
+      "s": "The ghost show was really ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "thrilling",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "thrilling",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "thrilling",
+            "tier": "full"
+          },
+          {
+            "text": "exciting",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufregend",
+            "tier": "full"
+          },
+          {
+            "text": "spannend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "empty",
+        "cruel",
+        "multicultural"
+      ],
+      "hintDe": "Sehr spannend und ein bisschen gruselig zugleich.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "empty",
+          "cruel",
+          "multicultural",
+          "spectacular"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.approximately",
+      "w": "approximately",
+      "g": "ungefähr",
+      "d": "close to a number, more or less",
+      "s": "There are ___ 200 children at our school.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "approximately",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "approximately",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "approximately",
+            "tier": "full"
+          },
+          {
+            "text": "about",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ungefähr",
+            "tier": "full"
+          },
+          {
+            "text": "etwa",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "thrilling",
+        "spectacular",
+        "cruel"
+      ],
+      "hintDe": "Nah an einer Zahl, aber nicht ganz genau.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "thrilling",
+          "spectacular",
+          "cruel",
+          "empty"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-cough",
+      "w": "to cough (up)",
+      "g": "(aus-)husten",
+      "d": "to make a noise from your throat because you have a cold",
+      "s": "He ___ all night because he had a bad cold.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "coughed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cough",
+          "tier": "full"
+        },
+        {
+          "text": "coughed",
+          "tier": "full"
+        },
+        {
+          "text": "coughing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to cough",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "husten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to report",
+        "to raise",
+        "to experience"
+      ],
+      "hintDe": "Mit einem lauten Geräusch Luft aus dem Hals stoßen, wenn du krank bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to report",
+          "to raise",
+          "to experience",
+          "to lead"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.cruel",
+      "w": "cruel",
+      "g": "grausam",
+      "d": "when you hurt people and feel happy about it",
+      "s": "It is very ___ to hurt people for no reason.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cruel",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cruel",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cruel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "grausam",
+            "tier": "full"
+          },
+          {
+            "text": "gemein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "empty",
+        "thrilling",
+        "multicultural"
+      ],
+      "hintDe": "Sehr gemein und froh darüber, anderen wehzutun.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "empty",
+          "thrilling",
+          "multicultural",
+          "spectacular"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.empty",
+      "w": "empty",
+      "g": "leer",
+      "d": "with nothing or no one inside",
+      "s": "The fridge is completely ___ — there is no milk and no food.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "empty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "empty",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "empty",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "leer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cruel",
+        "thrilling",
+        "spectacular"
+      ],
+      "hintDe": "Wenn nichts und niemand drin ist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cruel",
+          "thrilling",
+          "spectacular",
+          "multicultural"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 10",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.fever",
+      "w": "fever",
+      "g": "Fieber",
+      "d": "when you feel very hot because you are ill",
+      "s": "She stayed in bed because she had a high ___ of 39 degrees.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fever",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fever",
+          "tier": "full"
+        },
+        {
+          "text": "fevers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fever",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fieber",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "traffic",
+        "collection",
+        "view"
+      ],
+      "hintDe": "Wenn dein Körper sehr heiß ist, weil du krank bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "traffic",
+          "collection",
+          "view",
+          "path"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 10",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-report",
+      "w": "to report",
+      "g": "berichten",
+      "d": "to tell the police or a teacher about a thing that happened",
+      "s": "If a bad thing happens at school, please ___ it to a teacher.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "report",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "report",
+          "tier": "full"
+        },
+        {
+          "text": "reported",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to report",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "berichten",
+            "tier": "full"
+          },
+          {
+            "text": "melden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to photograph",
+        "to raise",
+        "to sign"
+      ],
+      "hintDe": "Der Polizei oder einer Lehrkraft von etwas erzählen, das passiert ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to photograph",
+          "to raise",
+          "to sign",
+          "to experience"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.path",
+      "w": "path",
+      "g": "Weg",
+      "d": "a small road for people on foot",
+      "s": "There's a long ___, a lake and lots of trees.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "path",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "path",
+          "tier": "full"
+        },
+        {
+          "text": "paths",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "path",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Weg",
+            "tier": "full"
+          },
+          {
+            "text": "Pfad",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bridge",
+        "tower",
+        "square"
+      ],
+      "hintDe": "Ein schmaler Weg, auf dem du zu Fuß gehst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bridge",
+          "tower",
+          "square",
+          "street"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 11",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.spectacular",
+      "w": "spectacular",
+      "g": "spektakulär",
+      "d": "very nice and amazing to look at",
+      "s": "What I loved most was the ___ light show.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "spectacular",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spectacular",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spectacular",
+            "tier": "full"
+          },
+          {
+            "text": "amazing",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "spektakulär",
+            "tier": "full"
+          },
+          {
+            "text": "beeindruckend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "empty",
+        "cruel",
+        "multicultural"
+      ],
+      "hintDe": "Wunderschön und beeindruckend anzusehen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "empty",
+          "cruel",
+          "multicultural",
+          "thrilling"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 11",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.tourist-attraction",
+      "w": "tourist attraction",
+      "g": "Sehenswürdigkeit",
+      "d": "a popular place that many people visit on holiday",
+      "s": "The castle on the hill is the most popular ___ in our town.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tourist attraction",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tourist attraction",
+          "tier": "full"
+        },
+        {
+          "text": "tourist attractions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tourist attraction",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sehenswürdigkeit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "government",
+        "contract"
+      ],
+      "hintDe": "Ein beliebter Ort, den viele Menschen im Urlaub besuchen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "government",
+          "contract",
+          "view"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 11",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-experience",
+      "w": "to experience",
+      "g": "erleben",
+      "d": "to do or feel a new thing for the first time",
+      "s": "On the farm you can ___ farm life for three days.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "experience",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "experience",
+          "tier": "full"
+        },
+        {
+          "text": "experienced",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to experience",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erleben",
+            "tier": "full"
+          },
+          {
+            "text": "erfahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to report",
+        "to raise",
+        "to sign"
+      ],
+      "hintDe": "Etwas Neues zum ersten Mal tun oder fühlen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to report",
+          "to raise",
+          "to sign",
+          "to lead"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 11",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.traffic",
+      "w": "traffic",
+      "g": "Verkehr",
+      "d": "all the cars on a road",
+      "s": "There's a lot of ___ on the street. It's very noisy.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "traffic",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "traffic",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "traffic",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verkehr",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "fever",
+        "view"
+      ],
+      "hintDe": "All die Autos und Busse, die auf der Straße fahren.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "fever",
+          "view",
+          "path"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 11",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.multicultural",
+      "w": "multicultural",
+      "g": "multikulturell",
+      "d": "with people from many countries in one place",
+      "s": "London is a very ___ city with people from all over the world.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "multicultural",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "multicultural",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "multicultural",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "multikulturell",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "empty",
+        "cruel",
+        "thrilling"
+      ],
+      "hintDe": "Wenn an einem Ort Menschen aus vielen Ländern zusammenleben.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "empty",
+          "cruel",
+          "thrilling",
+          "spectacular"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 Reading 11",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.contract",
+      "w": "contract",
+      "g": "Vertrag",
+      "d": "what two people sign when they agree to a thing",
+      "s": "Before you begin the new job, you need to sign a ___ with the owner.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "contract",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "contract",
+          "tier": "full"
+        },
+        {
+          "text": "contracts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "contract",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vertrag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "government",
+        "view"
+      ],
+      "hintDe": "Ein Papier, das zwei Leute unterschreiben, wenn sie sich einig sind.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "government",
+          "view",
+          "play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-lead",
+      "w": "to lead",
+      "g": "leiten",
+      "d": "to be the head of a country or a group of people",
+      "s": "The guide will ___ the group along the river.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "lead",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lead",
+          "tier": "full"
+        },
+        {
+          "text": "led",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to lead",
+            "tier": "full"
+          },
+          {
+            "text": "to guide",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "leiten",
+            "tier": "full"
+          },
+          {
+            "text": "führen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to report",
+        "to sign",
+        "to experience"
+      ],
+      "hintDe": "Der Kopf einer Gruppe sein und sie führen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to report",
+          "to sign",
+          "to experience",
+          "to raise"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.sugar",
+      "w": "sugar",
+      "g": "Zucker",
+      "d": "a sweet white food you put in tea, cakes and sweets",
+      "s": "I want to eat less ___ because it is not healthy.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sugar",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sugar",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sugar",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zucker",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "traffic",
+        "fever",
+        "path"
+      ],
+      "hintDe": "Etwas Süßes und Weißes, das du in Tee oder Kuchen tust.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "traffic",
+          "fever",
+          "path",
+          "view"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 OYW",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-earn",
+      "w": "to earn (money)",
+      "g": "(Geld) verdienen",
+      "d": "to be paid for the work that you do.",
+      "s": "My after-school job ___ me ten pounds a week.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "earns",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "earn",
+          "tier": "full"
+        },
+        {
+          "text": "earns",
+          "tier": "full"
+        },
+        {
+          "text": "earned",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to earn",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verdienen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to sign",
+        "to report",
+        "to experience"
+      ],
+      "hintDe": "Für die Arbeit, die du machst, Geld bekommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to sign",
+          "to report",
+          "to experience",
+          "to lead"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "SB U6 OYW",
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-save-up-for",
+      "w": "to save up for",
+      "g": "ansparen",
+      "d": "to keep your money so you can pay for a big thing you want",
+      "s": "I want to ___ a new mobile phone, so I do not spend my pocket money.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "save up for",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "save up for",
+          "tier": "full"
+        },
+        {
+          "text": "saved up for",
+          "tier": "full"
+        },
+        {
+          "text": "saving up for",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to save up for",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ansparen",
+            "tier": "full"
+          },
+          {
+            "text": "sparen für",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to sign",
+        "to report",
+        "to lead"
+      ],
+      "hintDe": "Geld nicht ausgeben, sondern es für etwas Großes zur Seite legen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to sign",
+          "to report",
+          "to lead",
+          "to experience"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u06.w.to-sign",
+      "w": "to sign",
+      "g": "unterschreiben",
+      "d": "to write at the end of a letter to show you agree to it",
+      "s": "He read the contract and then ___ it.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "signed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sign",
+          "tier": "full"
+        },
+        {
+          "text": "signed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to sign",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unterschreiben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to report",
+        "to raise",
+        "to experience"
+      ],
+      "hintDe": "Deinen Namen unter ein Schreiben setzen, um zu zeigen, dass du einverstanden bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to report",
+          "to raise",
+          "to experience",
+          "to lead"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

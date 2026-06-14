@@ -1,0 +1,2104 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g3-u06",
+  "briefBank": "9580793d8313",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The guide ___ showed us London was very funny.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "who",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um eine Person. Da nimmst du who oder that.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who oder that: The guide who/that showed us London.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-gf-001",
+      "sbRef": null,
+      "note": "grant: showed (show in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The tower ___ you can see from the bridge is very old.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "which",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Turm ist ein Ding. Für Dinge nimmst du which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which oder that: The tower which/that you can see.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Hyde Park is great for people ___ like fresh air.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "who",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "people sind Personen. Da passt who oder that.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who oder that: people who/that like fresh air.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt#grammar-1",
+      "note": "carrier from SB caption 'Cycling is great for people who like fresh air'; grant: fresh, air",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "That is the friend ___ father is a pilot.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wem gehört etwas? Hier passt whose (= dessen/deren).",
+      "hintEn": null,
+      "explainDe": "Bei Besitz nimmst du whose: the friend whose father is a pilot. who's heißt who is und passt nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-gf-003",
+      "sbRef": null,
+      "note": "grant: father, pilot",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Big Ben is the name of the great bell ___ is in the clock tower.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "which",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Glocke ist ein Ding. Für Dinge nimmst du which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which oder that: the bell which/that is in the tower.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "carrier from SB Big Ben fact; grant: bell",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Tate Modern is an art gallery ___ collection of modern art is one of the best in the world.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Sammlung gehört zur Galerie. Bei Besitz nimmst du whose - das geht auch bei Dingen.",
+      "hintEn": null,
+      "explainDe": "whose zeigt Besitz und passt auch bei Dingen: an art gallery whose collection ...",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt#grammar-1",
+      "note": "verbatim SB carrier; grant: collection (in bank), modern (in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The raven ___ sits on the wall belongs to the Tower of London.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "which",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Tier ist hier wie ein Ding. Da nimmst du which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Tiere nimmst du which oder that: the raven which/that sits on the wall.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "London raven theme; grant: sits (sit in bank), belongs (belong to in g3-u01), wall (in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The play ___ we watched at the Globe Theatre was thrilling.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "that",
+          "tier": "full"
+        },
+        {
+          "text": "which",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Theaterstück ist ein Ding. Da passt that oder which.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du that oder which: the play that/which we watched.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-gf-005",
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "grant: watched (watch in bank), thrilling (in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "That is the girl ___ bike was stolen near the station.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Fahrrad gehört dem Mädchen. Bei Besitz nimmst du whose.",
+      "hintEn": null,
+      "explainDe": "whose zeigt Besitz: the girl whose bike was stolen. who's (= who is) wäre hier falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-gf-006",
+      "sbRef": null,
+      "note": "grant: stolen (steal in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I have a friend ___ lives in London.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "who",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Freund ist eine Person. Da nimmst du who oder that.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who oder that: a friend who/that lives in London.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-gf-020",
+      "sbRef": "g3/wb/More 3 WB Unit 6.txt",
+      "note": "WB ex9 'I've got a friend who lives in London'; grant: lives (live in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Have you seen the building ___ looks like a UFO?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "which",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Gebäude ist ein Ding. Da passt which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which oder that: the building which/that looks like a UFO.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 6.txt",
+      "note": "WB ex4 example 'a strange building that looks like a UFO'; grant: looks (look in bank), UFO (proper-ish; in g2-u08 bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He is the man ___ dog wakes me up every morning.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Hund gehört dem Mann. Bei Besitz nimmst du whose.",
+      "hintEn": null,
+      "explainDe": "whose zeigt Besitz: the man whose dog wakes me up. who's (= who is) passt hier nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 6.txt",
+      "note": "WB ex7 sentence; grant: wakes (wake in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The cat which sleeps all day is very small.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The cat who sleeps all day is very small.",
+        "The cat what sleeps all day is very small.",
+        "The cat whose sleeps all day is very small."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Tier ist hier wie ein Ding. Achte darauf, welches Wort dafür passt.",
+      "hintEn": null,
+      "explainDe": "Für Tiere nimmst du which (oder that): The cat which sleeps all day. who ist für Personen, what gibt es so nicht, whose zeigt Besitz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The cat who sleeps all day is very small.",
+          "The cat what sleeps all day is very small.",
+          "The cat whose sleeps all day is very small.",
+          "The cat where sleeps all day is very small."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-mc-001",
+      "sbRef": null,
+      "note": "errors: who-for-animal / what / whose-without-noun; grant: cat; sleeps (sleep in bank), small in bank",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The woman who lives next door is a teacher.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The woman which lives next door is a teacher.",
+        "The woman what lives next door is a teacher.",
+        "The woman whose lives next door is a teacher."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um eine Person. Achte darauf, welches Wort dafür passt.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who (oder that): The woman who lives next door. which ist für Dinge, what gibt es so nicht, whose zeigt Besitz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The woman which lives next door is a teacher.",
+          "The woman what lives next door is a teacher.",
+          "The woman whose lives next door is a teacher.",
+          "The woman where lives next door is a teacher."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-mc-020",
+      "sbRef": null,
+      "note": "errors: which-for-person / what / whose-without-noun; grant: lives (live in bank); teacher,door,next in bank",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The phone which I bought last week is broken.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The phone who I bought last week is broken.",
+        "The phone what I bought last week is broken.",
+        "The phone whose I bought last week is broken."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Handy ist ein Ding. Achte darauf, welches Wort dafür passt.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which (oder that): The phone which I bought. who ist für Personen, what gibt es so nicht, whose zeigt Besitz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The phone who I bought last week is broken.",
+          "The phone what I bought last week is broken.",
+          "The phone whose I bought last week is broken.",
+          "The phone where I bought last week is broken."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-mc-021",
+      "sbRef": null,
+      "note": "errors: who-for-thing / what / whose-without-noun; grant: bought (buy in bank), broken (break in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The woman whose car broke down called for help.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The woman who's car broke down called for help.",
+        "The woman which car broke down called for help.",
+        "The woman who car broke down called for help."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Auto gehört der Frau. Pass auf den Unterschied whose / who's auf.",
+      "hintEn": null,
+      "explainDe": "whose zeigt Besitz: the woman whose car. who's heißt who is, which ist für Dinge, und who allein kann hier keinen Besitz zeigen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The woman who's car broke down called for help.",
+          "The woman which car broke down called for help.",
+          "The woman who car broke down called for help.",
+          "The woman what car broke down called for help."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-mc-002",
+      "sbRef": null,
+      "note": "errors: who's-for-whose / which-for-person-possession / who-without-possessive; grant: broke (break in bank), called (call in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Beefeaters are the guards who protect the Crown Jewels.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Beefeaters are the guards which protect the Crown Jewels.",
+        "Beefeaters are the guards what protect the Crown Jewels.",
+        "Beefeaters are the guards whose protect the Crown Jewels."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "guards sind Personen. Achte darauf, welches Wort dafür passt.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who: the guards who protect the Crown Jewels. which ist für Dinge, what gibt es so nicht, whose zeigt Besitz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Beefeaters are the guards which protect the Crown Jewels.",
+          "Beefeaters are the guards what protect the Crown Jewels.",
+          "Beefeaters are the guards whose protect the Crown Jewels.",
+          "Beefeaters are the guards where protect the Crown Jewels."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 6.txt",
+      "note": "WB quiz 'guards who protect the Crown Jewels'; grant: guards (guard new), protect (in bank); proper: Beefeaters, Crown, Jewels",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du beschreibst deinem Austausch-Freund den Jungen, der neben dir wohnt. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That's the boy who lives next door.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "That's the boy which lives next door.",
+        "That's the boy what lives next door.",
+        "That's the boy whose lives next door."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Junge ist eine Person. Achte darauf, welches Wort dafür passt.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who: the boy who lives next door. which ist für Dinge, what gibt es so nicht, whose zeigt Besitz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "That's the boy which lives next door.",
+          "That's the boy what lives next door.",
+          "That's the boy whose lives next door.",
+          "That's the boy where lives next door."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-tf-001",
+      "sbRef": null,
+      "note": "cp person; errors: which-for-person / what / whose-without-noun; grant: lives (live in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du zeigst deiner Freundin dein neues Handy. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have a phone which has a good camera.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have a phone who has a good camera.",
+        "I have a phone what has a good camera.",
+        "I have a phone whose has a good camera."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Handy ist ein Ding. Achte darauf, welches Wort dafür passt.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which (oder that): a phone which has a good camera. who ist für Personen, what gibt es so nicht, whose zeigt Besitz.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I have a phone who has a good camera.",
+          "I have a phone what has a good camera.",
+          "I have a phone whose has a good camera.",
+          "I have a phone where has a good camera."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-tf-002",
+      "sbRef": null,
+      "note": "cp thing; errors: who-for-thing / what / whose-without-noun; grant: camera; good in bank",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du erzählst von einem Freund, dessen Vater Pilot ist. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He's the boy whose father is a pilot.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He's the boy who's father is a pilot.",
+        "He's the boy who father is a pilot.",
+        "He's the boy which father is a pilot."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Vater gehört zum Jungen. Pass auf den Unterschied whose / who's auf.",
+      "hintEn": null,
+      "explainDe": "whose zeigt Besitz: the boy whose father. who's heißt who is, who allein zeigt keinen Besitz, und which ist für Dinge.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "He's the boy who's father is a pilot.",
+          "He's the boy who father is a pilot.",
+          "He's the boy which father is a pilot.",
+          "He's the boy what father is a pilot."
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "cp possession; errors: who's-for-whose / who-without-possessive / which-for-person; grant: father, pilot",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The man which helped me at the station was very nice.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The man who helped me at the station was very nice.",
+          "tier": "full"
+        },
+        {
+          "text": "The man that helped me at the station was very nice.",
+          "tier": "full"
+        },
+        {
+          "text": "who",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Mann ist eine Person. Für Personen passt which nicht.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who oder that, nicht which: The man who/that helped me.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-ec-001",
+      "sbRef": null,
+      "note": "error which-for-person; grant: helped (help in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The river who flows through London is the Thames.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The river which flows through London is the Thames.",
+          "tier": "full"
+        },
+        {
+          "text": "The river that flows through London is the Thames.",
+          "tier": "full"
+        },
+        {
+          "text": "which",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Fluss ist ein Ding. Für Dinge passt who nicht.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which oder that, nicht who: The river which/that flows through London.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-ec-022",
+      "sbRef": "g3/wb/More 3 WB Unit 6.txt",
+      "note": "WB quiz 'the river which flows through London'; error who-for-thing; grant: flows (flow new)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "That's the house what the king built.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That's the house that the king built.",
+          "tier": "full"
+        },
+        {
+          "text": "That's the house which the king built.",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "what gibt es als Anschlusswort hier nicht. Für ein Ding nimmst du that oder which.",
+      "hintEn": null,
+      "explainDe": "Statt what nimmst du that oder which: the house that/which the king built.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-ec-002",
+      "sbRef": null,
+      "note": "error what-as-relative; grant: none new (king in bank g2-u01, built<-build in bank, house in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The boy who's bag is on the floor must pick it up.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The boy whose bag is on the floor must pick it up.",
+          "tier": "full"
+        },
+        {
+          "text": "whose",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Tasche gehört dem Jungen. who's heißt who is - bei Besitz brauchst du whose.",
+      "hintEn": null,
+      "explainDe": "who's heißt who is. Für Besitz nimmst du whose: the boy whose bag is on the floor.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-ec-003",
+      "sbRef": null,
+      "note": "error who's-for-whose; grant: floor",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The Globe is a theatre who looks almost the same as the old one.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The Globe is a theatre which looks almost the same as the old one.",
+          "tier": "full"
+        },
+        {
+          "text": "The Globe is a theatre that looks almost the same as the old one.",
+          "tier": "full"
+        },
+        {
+          "text": "which",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Theater ist ein Ding. Für Dinge passt who nicht.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which oder that, nicht who: a theatre which/that looks the same.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt#grammar-1",
+      "note": "SB carrier 'a new Globe Theatre which looks almost the same'; error who-for-thing; grant: looks (look in bank), same (in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach aus den zwei Sätzen einen. Verbinde sie mit who, which oder that: 'That's the girl. She sits next to me.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That's the girl who sits next to me.",
+          "tier": "full"
+        },
+        {
+          "text": "That's the girl that sits next to me.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Mädchen ist eine Person. Verbinde mit who oder that.",
+      "hintEn": null,
+      "explainDe": "Für Personen verbindest du mit who oder that: That's the girl who/that sits next to me.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-tf-020",
+      "sbRef": null,
+      "note": "grant: sits (sit in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach aus den zwei Sätzen einen. Verbinde sie mit who, which oder that: 'I have a tablet. It has a big screen.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have a tablet which has a big screen.",
+          "tier": "full"
+        },
+        {
+          "text": "I have a tablet that has a big screen.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Tablet ist ein Ding. Verbinde mit which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge verbindest du mit which oder that: a tablet which/that has a big screen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-tf-021",
+      "sbRef": null,
+      "note": "grant: screen (in bank g1-u14)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mach aus den zwei Sätzen einen. Zeig den Besitz mit whose: 'That's the boy. His dog plays in the park.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That's the boy whose dog plays in the park.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Der Hund gehört dem Jungen. Für Besitz nimmst du whose.",
+      "hintEn": null,
+      "explainDe": "whose ersetzt his/her und zeigt Besitz: That's the boy whose dog plays in the park.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-tr-002",
+      "sbRef": null,
+      "note": "grant: plays (play in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mach aus den zwei Sätzen einen. Verbinde sie mit who, which oder that: 'The Tower of London is a building. It was a prison.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The Tower of London is a building which was a prison.",
+          "tier": "full"
+        },
+        {
+          "text": "The Tower of London is a building that was a prison.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Gebäude ist ein Ding. Verbinde mit which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge verbindest du mit which oder that: a building which/that was a prison.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "SB Tower 'It was a prison'; grant: prison (in bank), building (in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Das Mädchen, das neben mir sitzt, ist sehr nett.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The girl who sits next to me is very nice.",
+          "tier": "full"
+        },
+        {
+          "text": "The girl that sits next to me is very nice.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Mädchen ist eine Person. Im Englischen nimmst du who oder that.",
+      "hintEn": null,
+      "explainDe": "Das deutsche das wird hier zu who oder that, weil es um eine Person geht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-tr-001",
+      "sbRef": null,
+      "note": "grant: sits (sit in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Das ist der Turm, den du vom Park aus sehen kannst.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That's the tower which you can see from the park.",
+          "tier": "full"
+        },
+        {
+          "text": "That's the tower that you can see from the park.",
+          "tier": "full"
+        },
+        {
+          "text": "That is the tower which you can see from the park.",
+          "tier": "full"
+        },
+        {
+          "text": "That is the tower that you can see from the park.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Turm ist ein Ding. Im Englischen nimmst du which oder that.",
+      "hintEn": null,
+      "explainDe": "Das deutsche den wird hier zu which oder that, weil es um ein Ding geht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-tr-020",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Das ist der Junge, dessen Vater Pilot ist.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That's the boy whose father is a pilot.",
+          "tier": "full"
+        },
+        {
+          "text": "That is the boy whose father is a pilot.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "dessen zeigt Besitz. Im Englischen nimmst du whose.",
+      "hintEn": null,
+      "explainDe": "Das deutsche dessen/deren wird im Englischen zu whose: the boy whose father ...",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "grant: father, pilot",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sieh dir die Männer an, deren Aufgabe es ist, die Kronjuwelen zu schützen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Look at the men whose job is to protect the Crown Jewels.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "deren zeigt Besitz. Im Englischen nimmst du whose.",
+      "hintEn": null,
+      "explainDe": "Das deutsche deren wird zu whose: the men whose job is to protect ...",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt#grammar-1",
+      "note": "SB Beefeaters carrier; grant: job (in bank), protect (in bank); proper: Crown, Jewels",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "who / the / is / woman / lives / that / here",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "That is the woman who lives here.",
+          "tier": "full"
+        },
+        {
+          "text": "Who is the woman that lives here?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit That, dann das Nomen, dann das Anschlusswort who.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: That is the woman + who + lives here.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "which",
+          "whose",
+          "what",
+          "where"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-sb-001",
+      "sbRef": null,
+      "note": "sb 7 answer chips; grant: lives (live in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "which / the / I / pizza / ordered / was / great",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The pizza which I ordered was great.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit dem Nomen, dann das Anschlusswort which für ein Ding.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: The pizza + which + I ordered + was great.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "who",
+          "whose",
+          "what",
+          "where"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-sb-021",
+      "sbRef": null,
+      "note": "sb 7 answer chips; grant: ordered (order in bank), great (in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "is / the / that / man / wrote / who / the / play / Shakespeare",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Shakespeare is the man who wrote the play.",
+          "tier": "full"
+        },
+        {
+          "text": "Shakespeare is the man that wrote the play.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit dem Namen, dann das Nomen und das Anschlusswort who.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: Shakespeare is the man + who/that + wrote the play.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "which",
+          "whose",
+          "what",
+          "where"
+        ],
+        "chipBudget": 9,
+        "minOptions": null
+      },
+      "seedV1": "m3-u6-relative-clauses-sb-020",
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "WB ex9 pattern; SB names Shakespeare; 9 answer chips incl who+that; grant: none new (wrote<-write in bank, play in bank); proper: Shakespeare (in list)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du willst wissen, ob dieser Bus zum Park fährt. Bring die Wörter zu einer Frage: 'to / this / goes / which / Is / the bus / the park'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Is this the bus which goes to the park?",
+          "tier": "full"
+        },
+        {
+          "text": "Is this the bus that goes to the park?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Bus ist ein Ding. In der Frage nimmst du which oder that.",
+      "hintEn": null,
+      "explainDe": "Die Frage lautet: Is this the bus which goes to the park? which steht nach bus, weil ein Bus ein Ding ist.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 6.txt",
+      "note": "WB ex9 'Is this the bus which goes to Piccadilly Circus'; grant: goes (go in bank), bus (in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "free-form",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Beschreibe deinen besten Freund oder deine beste Freundin in einem Satz. Verwende who.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My best friend is the girl who sits next to me.",
+          "tier": "full"
+        },
+        {
+          "text": "My best friend is the boy who lives next door.",
+          "tier": "full"
+        },
+        {
+          "text": "My best friend is the girl who plays football with me.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bau einen Satz mit who, weil es um eine Person geht: My best friend is the girl who ...",
+      "hintEn": null,
+      "explainDe": "Du beschreibst eine Person, also nimmst du who: My best friend is the girl who ...",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 6.txt",
+      "note": "WB ex10 pattern; grant: none new (sits<-sit, lives<-live, plays<-play, friend/girl/boy/football all in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Sortiere: Person oder Ding?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "who (✓)",
+          "members": [
+            "the guide",
+            "the woman",
+            "the visitor",
+            "the teacher"
+          ]
+        },
+        {
+          "label": "which (✓)",
+          "members": [
+            "the bridge",
+            "the tower",
+            "the play",
+            "the collection"
+          ]
+        }
+      ],
+      "hintDe": "who steht für Personen, which für Dinge.",
+      "hintEn": null,
+      "explainDe": "Personen bekommen who (the guide, the woman ...), Dinge bekommen which (the bridge, the tower ...).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "gs person-vs-thing; grant: guide (in bank), visitor (in bank), bridge/tower/play/collection (in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sortiere die Sätze: Welches Wort fehlt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "who",
+          "members": [
+            "The man ___ helped me.",
+            "The girl ___ made the cake.",
+            "People ___ like fresh air."
+          ]
+        },
+        {
+          "label": "which",
+          "members": [
+            "The phone ___ has a camera.",
+            "The book ___ is about London.",
+            "The cake ___ she made."
+          ]
+        },
+        {
+          "label": "whose",
+          "members": [
+            "The boy ___ father is a pilot.",
+            "The girl ___ bike was stolen.",
+            "The man ___ dog wakes me up."
+          ]
+        }
+      ],
+      "hintDe": "Personen -> who, Dinge -> which, Besitz -> whose.",
+      "hintEn": null,
+      "explainDe": "who steht bei Personen, which bei Dingen, whose bei Besitz (= dessen/deren).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "gs which pronoun fits; grant: fresh, air, camera, father, pilot (helped<-help, made<-make, stolen<-steal, wakes<-wake, like all in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches Ende passt zu welchem Anfang?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "The Houses of Parliament is the building",
+          "right": "where the government meets."
+        },
+        {
+          "left": "Tate Modern is an art gallery",
+          "right": "which has modern art."
+        },
+        {
+          "left": "The Beefeaters are the guards",
+          "right": "who protect the Crown Jewels."
+        },
+        {
+          "left": "Big Ben is the bell",
+          "right": "that is in the tower."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte darauf, ob es um eine Person, ein Ding oder einen Ort geht.",
+      "hintEn": null,
+      "explainDe": "Jeder Anfang braucht das passende Ende: who bei den guards, which/that bei den Dingen, where beim Ort.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "matching London facts, unique rights; grant: government (in bank), meets (meet in bank), guards (guard new), protect (in bank), bell; proper: Crown, Jewels, Beefeaters",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verbinde die zwei Sätze zu einem mit who, which oder whose.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "That's the boy. He sits next to me.",
+          "right": "That's the boy who sits next to me."
+        },
+        {
+          "left": "This is the phone. It has a great camera.",
+          "right": "This is the phone which has a great camera."
+        },
+        {
+          "left": "That's the girl. Her bike was stolen.",
+          "right": "That's the girl whose bike was stolen."
+        },
+        {
+          "left": "He's the man. His dog wakes me up.",
+          "right": "He's the man whose dog wakes me up."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Personen -> who, Dinge -> which, Besitz (his/her) -> whose.",
+      "hintEn": null,
+      "explainDe": "Du verbindest mit who bei Personen, which bei Dingen und whose, wenn his/her einen Besitz zeigt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "mp combine-two-sentences, unique rights; grant: sits (sit), camera, stolen (steal), wakes (wake)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welches Wort nimmst du für Personen? Sortiere die Buchstaben: o h w",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "who",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist das Wort für Personen.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "anagram who; one word answer",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches Wort zeigt Besitz (= dessen/deren)? Sortiere die Buchstaben: s e h o w",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist das Wort für Besitz, nicht who's.",
+      "hintEn": null,
+      "explainDe": "Für Besitz nimmst du whose (= dessen/deren).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "anagram whose; one word answer",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The visitor ___ took a picture of the tower was from Austria.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "who",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Besucher ist eine Person. Da nimmst du who oder that.",
+      "hintEn": null,
+      "explainDe": "Für Personen nimmst du who oder that: the visitor who/that took a photo.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "grant: none new (visitor in bank, took<-take in bank, picture in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "London is a city ___ has a lot of traffic and many tourist attractions.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "which",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Stadt ist ein Ding. Da passt which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which oder that: a city which/that has a lot of traffic.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "grant: city (in bank), traffic (in bank), tourist attraction (in bank), has (have in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Hyde Park is a tourist attraction ___ I really want to see.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "which",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Sehenswürdigkeit ist ein Ding. Da passt which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which oder that: a tourist attraction which/that I want to see.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "grant: tourist attraction (in bank); proper: Hyde (in list), Park in bank",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The girl whose I met at the party is in my class.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The girl who I met at the party is in my class.",
+          "tier": "full"
+        },
+        {
+          "text": "The girl that I met at the party is in my class.",
+          "tier": "full"
+        },
+        {
+          "text": "who",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hier zeigt nichts einen Besitz. Für die Person nimmst du who oder that, nicht whose.",
+      "hintEn": null,
+      "explainDe": "whose zeigt Besitz, aber hier gibt es keinen. Für die Person nimmst du who oder that: the girl who/that I met.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-gf-025",
+      "sbRef": null,
+      "note": "error whose-without-possession; grant: met (meet in bank), party (in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I know a girl who she plays the guitar very well.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I know a girl who plays the guitar very well.",
+          "tier": "full"
+        },
+        {
+          "text": "I know a girl that plays the guitar very well.",
+          "tier": "full"
+        },
+        {
+          "text": "who plays",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach who steht direkt das Verb. Das zweite she ist zu viel.",
+      "hintEn": null,
+      "explainDe": "who ist schon das Subjekt, deshalb fällt she weg: a girl who plays the guitar.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m3-u6-relative-clauses-ec-021",
+      "sbRef": null,
+      "note": "error doubled subject who+she; grant: plays (play in bank), guitar (in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach aus den zwei Sätzen einen. Verbinde sie mit who, which oder that: 'The Globe is a theatre. It has no roof.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The Globe is a theatre which has no roof.",
+          "tier": "full"
+        },
+        {
+          "text": "The Globe is a theatre that has no roof.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Ein Theater ist ein Ding. Verbinde mit which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge verbindest du mit which oder that: a theatre which/that has no roof.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt",
+      "note": "SB 'the Globe does not have a roof'; grant: theatre (in bank), roof (in bank g2-u11)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welches Wort passt? The street ___ leads to the bridge is very long.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "which",
+          "tier": "full"
+        },
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "who",
+        "whose",
+        "what"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Straße ist ein Ding. Da passt which oder that.",
+      "hintEn": null,
+      "explainDe": "Für Dinge nimmst du which oder that: the street which/that leads to the bridge.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "who",
+          "whose",
+          "what",
+          "where"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "mc single-word; errors who/whose/what; grant: none new (street/bridge/long in bank, leads<-lead in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches Wort passt? The girl ___ song is my favourite is in my class.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "whose",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "who",
+        "who's",
+        "which"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Lied gehört dem Mädchen. Bei Besitz nimmst du whose.",
+      "hintEn": null,
+      "explainDe": "whose zeigt Besitz: the girl whose song is my favourite. who's heißt who is und passt nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "who",
+          "who's",
+          "which",
+          "what"
+        ],
+        "chipBudget": null,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": "mc possession; errors who/who's/which; grant: song (NEW) (favourite/class in bank)",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Cycling is great for people ___ like fresh air, and the park ___ I go to has a lot of trees.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "who | which",
+          "tier": "full"
+        },
+        {
+          "text": "that | that",
+          "tier": "full"
+        },
+        {
+          "text": "who | that",
+          "tier": "full"
+        },
+        {
+          "text": "that | which",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst geht es um Personen (people), dann um ein Ding (park). who/that, dann which/that.",
+      "hintEn": null,
+      "explainDe": "Für people nimmst du who oder that, für den park which oder that.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 6.txt#grammar-1",
+      "note": "two-blank, person then thing; grant: fresh, air, trees (tree in bank); proper: none",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "London ist eine Stadt, die ich liebe.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "London is a city which I love.",
+          "tier": "full"
+        },
+        {
+          "text": "London is a city that I love.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Stadt ist ein Ding. Im Englischen nimmst du which oder that.",
+      "hintEn": null,
+      "explainDe": "Das deutsche die wird hier zu which oder that, weil es um ein Ding geht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": "grant: city (in bank), love (in bank)",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u06.s.relative-clauses",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge zu einer Frage: 'lives / the / who / Do / girl / know / next door / you'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you know the girl who lives next door?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you know the girl that lives next door?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit Do you know ..., dann das Nomen und das Anschlusswort who.",
+      "hintEn": null,
+      "explainDe": "Die Frage lautet: Do you know the girl who lives next door? who steht direkt nach girl.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/wb/More 3 WB Unit 6.txt",
+      "note": "WB ex9 pattern; grant: none new (lives<-live in bank, next/door in bank)",
+      "blanks": 0
+    }
+  ]
+}
