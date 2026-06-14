@@ -1,0 +1,4867 @@
+{
+  "schema": "vocab@1",
+  "grade": 1,
+  "unit": 14,
+  "slug": "g1-u14",
+  "items": [
+    {
+      "id": "g1u14.w.adventure",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "friendship",
+            "cover",
+            "poem",
+            "headline"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 14",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "adventure",
+      "g": "Abenteuer",
+      "d": "an exciting thing that happens, often in a faraway place.",
+      "s": "My favourite books are ___ stories about clever children.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "adventure",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "adventure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "adventure",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abenteuer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "faraway",
+          "de": "weit entfernt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "friendship",
+        "cover",
+        "poem"
+      ],
+      "hintDe": "Etwas Aufregendes, das oft an einem fernen Ort passiert."
+    },
+    {
+      "id": "g1u14.w.adventure-story",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "romantic story",
+            "detective story",
+            "horror story",
+            "fantasy story"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "adventure story",
+      "g": "Abenteuergeschichte",
+      "d": "A book or film about children who do exciting things in faraway places.",
+      "s": "The ___ was about children who go to an island to find gold.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "adventure story",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "adventure story",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "adventure story",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abenteuergeschichte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "faraway",
+          "de": "weit entfernt",
+          "scope": "d"
+        },
+        {
+          "word": "island",
+          "de": "Insel",
+          "scope": "s"
+        },
+        {
+          "word": "gold",
+          "de": "Gold",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "romantic story",
+        "detective story",
+        "horror story"
+      ],
+      "hintDe": "Eine Geschichte über spannende Erlebnisse an fernen Orten."
+    },
+    {
+      "id": "g1u14.w.cartoon",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "the news",
+            "quiz show",
+            "nature programme",
+            "reality show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cartoon",
+      "g": "Zeichentrick(-film/-serie)",
+      "d": "a show with drawn people and animals that move.",
+      "s": "My ___ are my favourite programme, with funny drawn animals.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cartoons",
+          "tier": "full"
+        },
+        {
+          "text": "cartoon",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cartoon",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cartoon",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeichentrickfilm",
+            "tier": "full"
+          },
+          {
+            "text": "Zeichentrickserie",
+            "tier": "full"
+          },
+          {
+            "text": "Zeichentrick",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "drawn",
+          "de": "gezeichnet",
+          "scope": null
+        },
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": null
+        },
+        {
+          "word": "move",
+          "de": "sich bewegen",
+          "scope": "d"
+        },
+        {
+          "word": "funny",
+          "de": "lustig",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "the news",
+        "quiz show",
+        "nature programme"
+      ],
+      "hintDe": "Ein Film mit gezeichneten Figuren, die sich bewegen."
+    },
+    {
+      "id": "g1u14.w.comedy",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "episode",
+            "headline",
+            "power",
+            "voice"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 4",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "comedy",
+      "g": "Komödie",
+      "d": "a funny show that makes you laugh.",
+      "s": "We watched a funny ___ and we all had to laugh and laugh.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "comedy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "comedy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "comedy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Komödie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "funny",
+          "de": "lustig",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "episode",
+        "headline",
+        "power"
+      ],
+      "hintDe": "Ein lustiger Film, über den du lachen musst."
+    },
+    {
+      "id": "g1u14.w.cover",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headline",
+            "poem",
+            "spot",
+            "voice"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 14",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cover",
+      "g": "(Buch-)Umschlag",
+      "d": "the part on the outside of a book with a picture on it.",
+      "s": "Look at the ___ of this book: it has a big dragon on it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cover",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cover",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cover",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Umschlag",
+            "tier": "full"
+          },
+          {
+            "text": "Buchumschlag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "headline",
+        "poem",
+        "spot"
+      ],
+      "hintDe": "Der äußere Teil eines Buches mit einem Bild darauf."
+    },
+    {
+      "id": "g1u14.w.dead",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "weak",
+            "huge",
+            "tiny",
+            "wide"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 17",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "dead",
+      "g": "tot",
+      "d": "not alive any more.",
+      "s": "The snake fell into the water and now it is ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "dead",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dead",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dead",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "tot",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "alive",
+          "de": "lebendig",
+          "scope": "d"
+        },
+        {
+          "word": "snake",
+          "de": "Schlange",
+          "scope": "s"
+        },
+        {
+          "word": "fell",
+          "de": "fiel",
+          "scope": "s"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "weak",
+        "huge",
+        "tiny"
+      ],
+      "hintDe": "Nicht mehr am Leben."
+    },
+    {
+      "id": "g1u14.w.detective-story",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "romantic story",
+            "fantasy story",
+            "adventure story",
+            "horror story"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "detective story",
+      "g": "Kriminalgeschichte",
+      "d": "A book or film where a clever man or woman finds out who did a crime.",
+      "s": "In the ___, a clever inspector finds out who did the robbery.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "detective story",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "detective story",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "detective story",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kriminalgeschichte",
+            "tier": "full"
+          },
+          {
+            "text": "Krimi",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "romantic story",
+        "fantasy story",
+        "adventure story"
+      ],
+      "hintDe": "Eine Geschichte, in der ein Verbrechen gelöst wird."
+    },
+    {
+      "id": "g1u14.w.drama-series",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "music video",
+            "cartoon",
+            "the news",
+            "quiz show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "drama series",
+      "g": "Dramaserie",
+      "d": "a show with many parts about the lives of a family.",
+      "s": "The new ___ has many parts about one big family.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "drama series",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drama series",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drama series",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dramaserie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "parts",
+          "de": "Teile",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "music video",
+        "cartoon",
+        "the news"
+      ],
+      "hintDe": "Eine ernste Serie mit vielen Folgen über das Leben einer Familie."
+    },
+    {
+      "id": "g1u14.w.episode",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headline",
+            "comedy",
+            "cover",
+            "spot"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 4",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "episode",
+      "g": "Episode",
+      "d": "one part of a show that has many parts.",
+      "s": "I watched the first ___ and now I want to watch all the others.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "episode",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "episode",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "episode",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Episode",
+            "tier": "full"
+          },
+          {
+            "text": "Folge",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "parts",
+          "de": "Teile",
+          "scope": "d"
+        },
+        {
+          "word": "others",
+          "de": "anderen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "headline",
+        "comedy",
+        "cover"
+      ],
+      "hintDe": "Ein Teil von einer Serie mit vielen Teilen."
+    },
+    {
+      "id": "g1u14.w.fantasy-film",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sports programme",
+            "the news",
+            "reality show",
+            "quiz show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "fantasy film",
+      "g": "Fantasyfilm",
+      "d": "a show with magic and things that are not real, like dragons.",
+      "s": "We watched a ___ with a young magician and a big dragon.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fantasy film",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fantasy film",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fantasy film",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fantasyfilm",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "real",
+          "de": "echt, wirklich",
+          "scope": "d"
+        },
+        {
+          "word": "dragons",
+          "de": "Drachen",
+          "scope": "d"
+        },
+        {
+          "word": "magician",
+          "de": "Zauberer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "sports programme",
+        "the news",
+        "reality show"
+      ],
+      "hintDe": "Ein Film mit Zauberei und Drachen."
+    },
+    {
+      "id": "g1u14.w.fantasy-story",
+      "rev": 4,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "detective story",
+            "horror story",
+            "adventure story",
+            "romantic story"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "fantasy story",
+      "g": "Fantasygeschichte",
+      "d": "A book or film with magic and things that are not real.",
+      "s": "I am reading a ___ about a school for young magicians.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fantasy story",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fantasy story",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fantasy story",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fantasygeschichte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "real",
+          "de": "echt, wirklich",
+          "scope": "d"
+        },
+        {
+          "word": "magicians",
+          "de": "Zauberer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "detective story",
+        "horror story",
+        "adventure story"
+      ],
+      "hintDe": "Eine Geschichte mit Zauberei."
+    },
+    {
+      "id": "g1u14.w.friendship",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "adventure",
+            "cover",
+            "poem",
+            "power"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 14",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "friendship",
+      "g": "Freundschaft",
+      "d": "when two people are good friends and like each other very much.",
+      "s": "Is this a story about ___ between two best friends?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "friendship",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "friendship",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "friendship",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Freundschaft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "each",
+          "de": "einander (each other)",
+          "scope": "d"
+        },
+        {
+          "word": "other",
+          "de": "einander (each other)",
+          "scope": "d"
+        },
+        {
+          "word": "between",
+          "de": "zwischen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "adventure",
+        "cover",
+        "poem"
+      ],
+      "hintDe": "Wenn zwei Menschen Freunde sind und sich sehr mögen."
+    },
+    {
+      "id": "g1u14.w.gamer",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "shopkeeper",
+            "neighbour",
+            "detective",
+            "singer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 4",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "gamer",
+      "g": "Spieler/Spielerin",
+      "d": "a child or grown-up who plays computer games very much.",
+      "s": "My big sister is a ___ and plays computer games for many hours.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "gamer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gamer",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gamer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Spieler",
+            "tier": "full"
+          },
+          {
+            "text": "Spielerin",
+            "tier": "full"
+          },
+          {
+            "text": "Zocker",
+            "tier": "full"
+          },
+          {
+            "text": "Zockerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "grown-up",
+          "de": "Erwachsener",
+          "scope": "d"
+        },
+        {
+          "word": "hours",
+          "de": "Stunden",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shopkeeper",
+        "neighbour",
+        "detective"
+      ],
+      "hintDe": "Jemand, der viel am Computer spielt."
+    },
+    {
+      "id": "g1u14.w.headline",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "episode",
+            "cover",
+            "voice",
+            "poem"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 2",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "headline",
+      "g": "Schlagzeile",
+      "d": "the big words over a news story that tell you what it is about.",
+      "s": "What is the news ___ today over the big story?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "headline",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "headline",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "headline",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlagzeile",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": "d"
+        },
+        {
+          "word": "news",
+          "de": "Nachrichten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "episode",
+        "cover",
+        "voice"
+      ],
+      "hintDe": "Die großen Wörter über einer Nachricht."
+    },
+    {
+      "id": "g1u14.w.horror-story",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "romantic story",
+            "adventure story",
+            "fantasy story",
+            "detective story"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "horror story",
+      "g": "Horrorgeschichte",
+      "d": "A book or film that is made to make you very scared.",
+      "s": "The ___ about the dark castle was so scary that I was scared all night.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "horror story",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "horror story",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "horror story",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Horrorgeschichte",
+            "tier": "full"
+          },
+          {
+            "text": "Gruselgeschichte",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "scary",
+          "de": "gruselig",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "romantic story",
+        "adventure story",
+        "fantasy story"
+      ],
+      "hintDe": "Eine Geschichte, die dir richtig Angst macht."
+    },
+    {
+      "id": "g1u14.w.huge",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "tiny",
+            "weak",
+            "wide",
+            "dead"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "huge",
+      "g": "riesig",
+      "d": "very, very big.",
+      "s": "An elephant is a ___ animal, much bigger than a dog.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "huge",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "huge",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "huge",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "riesig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "tiny",
+        "weak",
+        "wide"
+      ],
+      "hintDe": "Ganz besonders groß."
+    },
+    {
+      "id": "g1u14.w.inside",
+      "rev": 3,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "huge",
+            "wide",
+            "tiny",
+            "weak"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "inside",
+      "g": "in",
+      "d": "in something, not out in the open.",
+      "s": "It was raining, so we stayed ___ all afternoon.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "inside",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "inside",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "inside",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in",
+            "tier": "partial"
+          },
+          {
+            "text": "drinnen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "raining",
+          "de": "regnen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "huge",
+        "wide",
+        "tiny"
+      ],
+      "hintDe": "In etwas drinnen, nicht draußen."
+    },
+    {
+      "id": "g1u14.w.kind-of",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "quite",
+            "latest",
+            "inside",
+            "huge"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 4",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "kind of",
+      "g": "eine Art von",
+      "d": "a type of, a sort of.",
+      "s": "What ___ music do you like, pop or rock?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "kind of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kind of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kind of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Art von",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "type",
+          "de": "Art, Sorte",
+          "scope": "d"
+        },
+        {
+          "word": "sort",
+          "de": "Sorte",
+          "scope": "d"
+        },
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": "s"
+        },
+        {
+          "word": "pop",
+          "de": "Pop",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "quite",
+        "latest",
+        "inside"
+      ],
+      "hintDe": "Eine Art oder Sorte von etwas."
+    },
+    {
+      "id": "g1u14.w.lake",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "river",
+            "leaf",
+            "skin",
+            "spot"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 13 (The leopard and the giraffe)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "lake",
+      "g": "See",
+      "d": "a very big place with a lot of water and land all around it.",
+      "s": "One day a giraffe came to the ___ to drink some water.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lake",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "See",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": null
+        },
+        {
+          "word": "around",
+          "de": "herum",
+          "scope": "d"
+        },
+        {
+          "word": "came",
+          "de": "kam",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "river",
+        "leaf",
+        "skin"
+      ],
+      "hintDe": "Eine große Wasserfläche mit Land rundherum."
+    },
+    {
+      "id": "g1u14.w.latest",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "huge",
+            "tiny",
+            "wide",
+            "weak"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 2",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "latest",
+      "g": "neuester/neueste/neuestes",
+      "d": "the most new, the one that is from today and not from before.",
+      "s": "Have you heard their ___ song? It is their most new one.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "latest",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "latest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "latest",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "neueste",
+            "tier": "full"
+          },
+          {
+            "text": "neuester",
+            "tier": "full"
+          },
+          {
+            "text": "neuestes",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "heard",
+          "de": "gehört",
+          "scope": "s"
+        },
+        {
+          "word": "song",
+          "de": "Lied",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "huge",
+        "tiny",
+        "wide"
+      ],
+      "hintDe": "Das Neueste, das zuletzt herausgekommen ist."
+    },
+    {
+      "id": "g1u14.w.leaf",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "lake",
+            "skin",
+            "spot",
+            "cover"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 13 (The leopard and the giraffe)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "leaf (pl leaves)",
+      "g": "Blatt (Blätter)",
+      "d": "a flat green thing that grows on a tree.",
+      "s": "The giraffe gives the leopard some magic ___ from the tree.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "leaf",
+          "tier": "full"
+        },
+        {
+          "text": "leaves",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "leaf",
+            "tier": "full"
+          },
+          {
+            "text": "leaves",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Blatt",
+            "tier": "full"
+          },
+          {
+            "text": "Blätter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flat",
+          "de": "flach",
+          "scope": "d"
+        },
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "d"
+        },
+        {
+          "word": "grows",
+          "de": "wächst",
+          "scope": "d"
+        },
+        {
+          "word": "leopard",
+          "de": "Leopard",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "lake",
+        "skin",
+        "spot"
+      ],
+      "hintDe": "Etwas Flaches und Grünes, das an einem Baum wächst."
+    },
+    {
+      "id": "g1u14.w.music-video",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "the news",
+            "quiz show",
+            "nature programme",
+            "reality show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "music video",
+      "g": "Musikvideo",
+      "d": "a short show for a song, with the singer and the band.",
+      "s": "Have you watched the new ___ with the singer and her band?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "music video",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "music video",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "music video",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Musikvideo",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "song",
+          "de": "Lied",
+          "scope": "d"
+        },
+        {
+          "word": "band",
+          "de": "Band",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "the news",
+        "quiz show",
+        "nature programme"
+      ],
+      "hintDe": "Ein kurzer Film zu einem Lied."
+    },
+    {
+      "id": "g1u14.w.nature-programme",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "quiz show",
+            "music video",
+            "the news",
+            "cartoon"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "nature programme",
+      "g": "Naturdokumentation",
+      "d": "a show about animals and the places where they live.",
+      "s": "I love that ___ with real lions and elephants in Africa.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "nature programme",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nature programme",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nature programme",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Naturdokumentation",
+            "tier": "full"
+          },
+          {
+            "text": "Tierdokumentation",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": "d"
+        },
+        {
+          "word": "real",
+          "de": "echt, wirklich",
+          "scope": "s"
+        },
+        {
+          "word": "Africa",
+          "de": "Afrika",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "quiz show",
+        "music video",
+        "the news"
+      ],
+      "hintDe": "Eine Sendung über Tiere und ihre Welt."
+    },
+    {
+      "id": "g1u14.w.neighbour",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "shopkeeper",
+            "gamer",
+            "detective",
+            "singer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 19",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "neighbour",
+      "g": "Nachbar/Nachbarin",
+      "d": "somebody who lives next to you or very near you.",
+      "s": "Our ___ next door has a big dog that barks at night.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "neighbour",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "neighbour",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "neighbour",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nachbar",
+            "tier": "full"
+          },
+          {
+            "text": "Nachbarin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "next",
+          "de": "neben (next to)",
+          "scope": null
+        },
+        {
+          "word": "barks",
+          "de": "bellt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shopkeeper",
+        "gamer",
+        "detective"
+      ],
+      "hintDe": "Jemand, der neben dir oder ganz in der Nähe wohnt."
+    },
+    {
+      "id": "g1u14.w.once-upon-a-time",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "one day",
+            "weekend",
+            "midnight",
+            "tonight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 15 (The little fox and the lion)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "once upon a time",
+      "g": "es war einmal",
+      "d": "the first words of many fairy tales, before the story begins.",
+      "s": "___, in a land far away, there was a big lion.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Once upon a time",
+          "tier": "full"
+        },
+        {
+          "text": "once upon a time",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "once upon a time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "once upon a time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "es war einmal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": "d"
+        },
+        {
+          "word": "fairy",
+          "de": "Märchen- (fairy tale)",
+          "scope": "d"
+        },
+        {
+          "word": "tales",
+          "de": "Geschichten, Märchen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "one day",
+        "weekend",
+        "midnight"
+      ],
+      "hintDe": "Die Wörter, mit denen viele Märchen beginnen."
+    },
+    {
+      "id": "g1u14.w.one-day",
+      "rev": 4,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "once upon a time",
+            "weekend",
+            "tonight",
+            "midnight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 13 (The leopard and the giraffe)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "one day",
+      "g": "eines Tages",
+      "d": "At some time long ago, in a book.",
+      "s": "___, a giraffe came to the lake near the big wood.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "One day",
+          "tier": "full"
+        },
+        {
+          "text": "one day",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "one day",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "one day",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eines Tages",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "came",
+          "de": "kam",
+          "scope": "s"
+        },
+        {
+          "word": "wood",
+          "de": "Wald",
+          "scope": "s"
+        },
+        {
+          "word": "ago",
+          "de": "vor langer Zeit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "once upon a time",
+        "weekend",
+        "tonight"
+      ],
+      "hintDe": "Irgendwann, an einem Tag in einer Geschichte."
+    },
+    {
+      "id": "g1u14.w.poem",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cover",
+            "headline",
+            "adventure",
+            "friendship"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 11 (Watching TV)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "poem",
+      "g": "Gedicht",
+      "d": "a short text with lines that often sound nice.",
+      "s": "I read a ___ about watching TV with my mum and dad.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "poem",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "poem",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "poem",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gedicht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lines",
+          "de": "Zeilen",
+          "scope": "d"
+        },
+        {
+          "word": "sound",
+          "de": "klingen",
+          "scope": "d"
+        },
+        {
+          "word": "TV",
+          "de": "Fernsehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "cover",
+        "headline",
+        "adventure"
+      ],
+      "hintDe": "Ein kurzer Text mit Zeilen, die oft schön klingen."
+    },
+    {
+      "id": "g1u14.w.power",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "voice",
+            "skin",
+            "cover",
+            "spot"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 6 (The remote control)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "power",
+      "g": "Kraft",
+      "d": "a special, magic thing that lets you do what others cannot do.",
+      "s": "The remote control has a special ___ and can make people stop.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "power",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "power",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "power",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kraft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "special",
+          "de": "besonders",
+          "scope": null
+        },
+        {
+          "word": "lets",
+          "de": "lässt",
+          "scope": "d"
+        },
+        {
+          "word": "others",
+          "de": "andere",
+          "scope": "d"
+        },
+        {
+          "word": "stop",
+          "de": "anhalten, stehen bleiben",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "voice",
+        "skin",
+        "cover"
+      ],
+      "hintDe": "Eine besondere Kraft, mit der du etwas kannst, das andere nicht können."
+    },
+    {
+      "id": "g1u14.w.quite",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "latest",
+            "inside",
+            "huge",
+            "wide"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 4",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "quite",
+      "g": "ziemlich",
+      "d": "more than a little, but not very.",
+      "s": "I ___ like detective stories, but I love nature programmes more.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "quite",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "quite",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "quite",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ziemlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "wenig, ein bisschen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "latest",
+        "inside",
+        "huge"
+      ],
+      "hintDe": "Mehr als ein bisschen, aber nicht sehr."
+    },
+    {
+      "id": "g1u14.w.quiz-show",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "nature programme",
+            "romantic film",
+            "music video",
+            "the news"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "quiz show",
+      "g": "Quizshow",
+      "d": "On TV, people answer questions here and can win money.",
+      "s": "She is on a TV ___ and gives the answer to win a lot of money.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "quiz show",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "quiz show",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "quiz show",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Quizshow",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "answer",
+          "de": "Antwort",
+          "scope": null
+        },
+        {
+          "word": "questions",
+          "de": "Fragen",
+          "scope": "d"
+        },
+        {
+          "word": "win",
+          "de": "gewinnen",
+          "scope": null
+        },
+        {
+          "word": "TV",
+          "de": "Fernsehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "nature programme",
+        "romantic film",
+        "music video"
+      ],
+      "hintDe": "Eine Sendung, in der Leute Fragen beantworten und Geld gewinnen."
+    },
+    {
+      "id": "g1u14.w.reality-show",
+      "rev": 4,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "nature programme",
+            "the news",
+            "cartoon",
+            "quiz show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "reality show",
+      "g": "Reality-Show",
+      "d": "On TV, real people, not famous ones, do things and you watch them.",
+      "s": "My sister watches a ___ with real people in one big house.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "reality show",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reality show",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reality show",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Reality-Show",
+            "tier": "full"
+          },
+          {
+            "text": "Realityshow",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "real",
+          "de": "echt, wirklich",
+          "scope": null
+        },
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        },
+        {
+          "word": "house",
+          "de": "Haus",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "nature programme",
+        "the news",
+        "cartoon"
+      ],
+      "hintDe": "Eine Show mit echten Leuten, nicht mit berühmten Schauspielern."
+    },
+    {
+      "id": "g1u14.w.remote-control",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "headline",
+            "screen",
+            "cover",
+            "power"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "remote control",
+      "g": "Fernbedienung",
+      "d": "a small thing you use to change the programme on TV.",
+      "s": "You use a ___ to change the programme on TV from the sofa.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "remote control",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "remote control",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "remote control",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fernbedienung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": null
+        },
+        {
+          "word": "change",
+          "de": "wechseln",
+          "scope": null
+        },
+        {
+          "word": "TV",
+          "de": "Fernsehen",
+          "scope": null
+        },
+        {
+          "word": "sofa",
+          "de": "Sofa",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "headline",
+        "screen",
+        "cover"
+      ],
+      "hintDe": "Das kleine Gerät, mit dem du das Programm im Fernsehen wechselst."
+    },
+    {
+      "id": "g1u14.w.romantic-film",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "horror story",
+            "sports programme",
+            "the news",
+            "quiz show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "romantic film",
+      "g": "Liebesfilm",
+      "d": "a show about a girl and a boy who are very much in love.",
+      "s": "My mum likes a ___ about a girl and a boy who are very much in love.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "romantic film",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "romantic film",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "romantic film",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Liebesfilm",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "horror story",
+        "sports programme",
+        "the news"
+      ],
+      "hintDe": "Ein Film über zwei Menschen, die sich ineinander verlieben."
+    },
+    {
+      "id": "g1u14.w.romantic-story",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "horror story",
+            "detective story",
+            "adventure story",
+            "fantasy story"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "romantic story",
+      "g": "Liebesgeschichte",
+      "d": "A book or film about two people who are very much in love.",
+      "s": "She likes a ___ about a prince and a girl who are in love.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "romantic story",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "romantic story",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "romantic story",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Liebesgeschichte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "prince",
+          "de": "Prinz",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "horror story",
+        "detective story",
+        "adventure story"
+      ],
+      "hintDe": "Eine Geschichte über zwei Menschen, die sich ineinander verlieben."
+    },
+    {
+      "id": "g1u14.w.science-fiction-film",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "nature programme",
+            "the news",
+            "romantic film",
+            "quiz show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "science fiction film",
+      "g": "Science-Fiction-Film",
+      "d": "a show about robots, about space, or about life a long time from now.",
+      "s": "The ___ was about people who go to space and meet robots.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "science fiction film",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "science fiction film",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "science fiction film",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Science-Fiction-Film",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "robots",
+          "de": "Roboter",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "nature programme",
+        "the news",
+        "romantic film"
+      ],
+      "hintDe": "Ein Film über Roboter, den Weltraum oder die Zukunft."
+    },
+    {
+      "id": "g1u14.w.screen-time",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "screen",
+            "remote control",
+            "headline",
+            "weekend"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "screen time",
+      "g": "Zeit vor einem Bildschirm",
+      "d": "the hours you spend looking at a phone, a tablet or a TV.",
+      "s": "Every day we spend three hours of ___ on a tablet or a phone.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "screen time",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "screen time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "screen time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeit vor einem Bildschirm",
+            "tier": "full"
+          },
+          {
+            "text": "Bildschirmzeit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hours",
+          "de": "Stunden",
+          "scope": null
+        },
+        {
+          "word": "phone",
+          "de": "Handy",
+          "scope": null
+        },
+        {
+          "word": "TV",
+          "de": "Fernsehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "screen",
+        "remote control",
+        "headline"
+      ],
+      "hintDe": "Die Zeit, die du auf einen Bildschirm schaust."
+    },
+    {
+      "id": "g1u14.w.shopkeeper",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "neighbour",
+            "gamer",
+            "detective",
+            "singer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 7 (The remote control)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "shopkeeper",
+      "g": "Ladenbesitzer/Ladenbesitzerin",
+      "d": "somebody who has a small shop and sells things in it.",
+      "s": "The ___ behind the desk helped me find a good book.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shopkeeper",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shopkeeper",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shopkeeper",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ladenbesitzer",
+            "tier": "full"
+          },
+          {
+            "text": "Ladenbesitzerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Laden, Geschäft",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Dinge",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "neighbour",
+        "gamer",
+        "detective"
+      ],
+      "hintDe": "Jemand, dem ein Laden gehört und der dort Sachen verkauft."
+    },
+    {
+      "id": "g1u14.w.skin",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "voice",
+            "spot",
+            "power",
+            "cover"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 13 (The leopard and the giraffe)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "skin",
+      "g": "Haut",
+      "d": "the part on the outside of your body that the sun can make red.",
+      "s": "The lion has yellow ___, and the giraffe has black spots.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "skin",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "skin",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "skin",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Haut",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        },
+        {
+          "word": "sun",
+          "de": "Sonne",
+          "scope": "d"
+        },
+        {
+          "word": "yellow",
+          "de": "gelb",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "voice",
+        "spot",
+        "power"
+      ],
+      "hintDe": "Der äußere Teil deines Körpers, den die Sonne rot machen kann."
+    },
+    {
+      "id": "g1u14.w.sports-programme",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "the news",
+            "cartoon",
+            "romantic film",
+            "quiz show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "sports programme",
+      "g": "Sportsendung",
+      "d": "a show about football, tennis and more games.",
+      "s": "We watched the big football match on the ___ on TV.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sports programme",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sports programme",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sports programme",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sportsendung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "football",
+          "de": "Fußball",
+          "scope": null
+        },
+        {
+          "word": "tennis",
+          "de": "Tennis",
+          "scope": "d"
+        },
+        {
+          "word": "games",
+          "de": "Spiele",
+          "scope": "d"
+        },
+        {
+          "word": "TV",
+          "de": "Fernsehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "the news",
+        "cartoon",
+        "romantic film"
+      ],
+      "hintDe": "Eine Sendung über Fußball, Tennis und andere Spiele."
+    },
+    {
+      "id": "g1u14.w.spot",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "skin",
+            "voice",
+            "cover",
+            "power"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 13 (The leopard and the giraffe)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "spot",
+      "g": "Punkt",
+      "d": "a small round mark on a thing.",
+      "s": "The giraffe has black ___ all over its yellow skin.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "spots",
+          "tier": "full"
+        },
+        {
+          "text": "spot",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spot",
+          "tier": "full"
+        },
+        {
+          "text": "spots",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spot",
+            "tier": "full"
+          },
+          {
+            "text": "spots",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Punkt",
+            "tier": "full"
+          },
+          {
+            "text": "Fleck",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "round",
+          "de": "rund",
+          "scope": "d"
+        },
+        {
+          "word": "yellow",
+          "de": "gelb",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "skin",
+        "voice",
+        "cover"
+      ],
+      "hintDe": "Ein kleiner runder Fleck auf etwas."
+    },
+    {
+      "id": "g1u14.w.the-news",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cartoon",
+            "music video",
+            "quiz show",
+            "reality show"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "the news",
+      "g": "die Nachrichten",
+      "d": "a programme that tells you about today in your country and all over the world.",
+      "s": "My dad watches ___ at eight to hear about today in the world.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "the news",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "the news",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "the news",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "die Nachrichten",
+            "tier": "full"
+          },
+          {
+            "text": "Nachrichten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tells",
+          "de": "erzählt",
+          "scope": "d"
+        },
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": "s"
+        },
+        {
+          "word": "world",
+          "de": "Welt",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "cartoon",
+        "music video",
+        "quiz show"
+      ],
+      "hintDe": "Eine Sendung, die dir erzählt, was heute in der Welt los ist."
+    },
+    {
+      "id": "g1u14.w.tiny",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "huge",
+            "wide",
+            "weak",
+            "dead"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tiny",
+      "g": "winzig",
+      "d": "very, very small.",
+      "s": "An ant is a ___ animal, much smaller than a dog.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tiny",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tiny",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tiny",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "winzig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "ant",
+          "de": "Ameise",
+          "scope": "s"
+        },
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "huge",
+        "wide",
+        "weak"
+      ],
+      "hintDe": "Ganz besonders klein."
+    },
+    {
+      "id": "g1u14.w.to-bend-down",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hug",
+            "to hold",
+            "to lie",
+            "to fight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 12/13",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to bend down (bent down)",
+      "g": "(sich) hinunterbeugen",
+      "d": "to move the top of your body down low.",
+      "s": "I have to ___ low to look under my bed.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bend down",
+          "tier": "full"
+        },
+        {
+          "text": "bend",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bend down",
+          "tier": "full"
+        },
+        {
+          "text": "to bend down",
+          "tier": "full"
+        },
+        {
+          "text": "bent down",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bend down",
+            "tier": "full"
+          },
+          {
+            "text": "to bend down",
+            "tier": "full"
+          },
+          {
+            "text": "bent down",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich hinunterbeugen",
+            "tier": "full"
+          },
+          {
+            "text": "hinunterbeugen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "move",
+          "de": "bewegen",
+          "scope": "d"
+        },
+        {
+          "word": "top",
+          "de": "oberer Teil",
+          "scope": "d"
+        },
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        },
+        {
+          "word": "low",
+          "de": "tief, nach unten",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "to hug",
+        "to hold",
+        "to lie"
+      ],
+      "hintDe": "Den oberen Teil des Körpers nach unten beugen. Die Vergangenheit ist bent down."
+    },
+    {
+      "id": "g1u14.w.to-disappear",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to fight",
+            "to hug",
+            "to sell",
+            "to lie"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to disappear",
+      "g": "verschwinden",
+      "d": "to go away so that nobody can find you.",
+      "s": "Andrew turned the magic ring three times and started to ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "disappear",
+          "tier": "full"
+        },
+        {
+          "text": "to disappear",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "disappear",
+          "tier": "full"
+        },
+        {
+          "text": "to disappear",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "disappear",
+            "tier": "full"
+          },
+          {
+            "text": "to disappear",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verschwinden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "nobody",
+          "de": "niemand",
+          "scope": "d"
+        },
+        {
+          "word": "turned",
+          "de": "drehte",
+          "scope": "s"
+        },
+        {
+          "word": "ring",
+          "de": "Ring",
+          "scope": "s"
+        },
+        {
+          "word": "started",
+          "de": "begann",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to fight",
+        "to hug",
+        "to sell"
+      ],
+      "hintDe": "Weggehen, sodass dich niemand mehr findet."
+    },
+    {
+      "id": "g1u14.w.to-fight",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hold",
+            "sell",
+            "pay",
+            "freeze"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 7 (The remote control)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to fight (fought)",
+      "g": "kämpfen (mit)",
+      "d": "to use your hands hard, like two angry people who both want one thing.",
+      "s": "The two boys want to ___ over the last cake on the plate.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fight",
+          "tier": "full"
+        },
+        {
+          "text": "to fight",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fight",
+          "tier": "full"
+        },
+        {
+          "text": "to fight",
+          "tier": "full"
+        },
+        {
+          "text": "fought",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fight",
+            "tier": "full"
+          },
+          {
+            "text": "to fight",
+            "tier": "full"
+          },
+          {
+            "text": "fought",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kämpfen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": "d"
+        },
+        {
+          "word": "hands",
+          "de": "Hände",
+          "scope": "d"
+        },
+        {
+          "word": "hard",
+          "de": "fest, heftig",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "hold",
+        "sell",
+        "pay"
+      ],
+      "hintDe": "Mit den Händen gegen jemanden kämpfen. Die Vergangenheit ist fought."
+    },
+    {
+      "id": "g1u14.w.to-freeze",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sell",
+            "pay",
+            "hold",
+            "fight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 6 (The remote control)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to freeze (froze)",
+      "g": "erstarren",
+      "d": "to stop and stand very still, like a picture that does not move.",
+      "s": "If you press the button, the people on the screen ___ and cannot move.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "freeze",
+          "tier": "full"
+        },
+        {
+          "text": "to freeze",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "freeze",
+          "tier": "full"
+        },
+        {
+          "text": "to freeze",
+          "tier": "full"
+        },
+        {
+          "text": "froze",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "freeze",
+            "tier": "full"
+          },
+          {
+            "text": "to freeze",
+            "tier": "full"
+          },
+          {
+            "text": "froze",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erstarren",
+            "tier": "full"
+          },
+          {
+            "text": "anhalten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "stop",
+          "de": "aufhören",
+          "scope": "d"
+        },
+        {
+          "word": "stand",
+          "de": "stehen",
+          "scope": "d"
+        },
+        {
+          "word": "move",
+          "de": "sich bewegen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "sell",
+        "pay",
+        "hold"
+      ],
+      "hintDe": "Aufhören sich zu bewegen und ganz still stehen. Die Vergangenheit ist froze."
+    },
+    {
+      "id": "g1u14.w.to-hold",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sell",
+            "pay",
+            "fight",
+            "freeze"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to hold (held)",
+      "g": "halten",
+      "d": "to have a thing in your hand and not let it go.",
+      "s": "Can you ___ this book in your hand for me, please?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "hold",
+          "tier": "full"
+        },
+        {
+          "text": "to hold",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hold",
+          "tier": "full"
+        },
+        {
+          "text": "to hold",
+          "tier": "full"
+        },
+        {
+          "text": "held",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hold",
+            "tier": "full"
+          },
+          {
+            "text": "to hold",
+            "tier": "full"
+          },
+          {
+            "text": "held",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "halten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hand",
+          "de": "Hand",
+          "scope": "d"
+        },
+        {
+          "word": "let",
+          "de": "lassen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "sell",
+        "pay",
+        "fight"
+      ],
+      "hintDe": "Etwas in der Hand haben und nicht loslassen. Die Vergangenheit ist held."
+    },
+    {
+      "id": "g1u14.w.to-hug",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to fight",
+            "to hold",
+            "to sell",
+            "to bend down"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 12/13",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to hug",
+      "g": "umarmen",
+      "d": "to put your arms around somebody to show you like them.",
+      "s": "The weak leopard asked the giraffe to ___ him.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hug",
+          "tier": "full"
+        },
+        {
+          "text": "to hug",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hug",
+          "tier": "full"
+        },
+        {
+          "text": "to hug",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hug",
+            "tier": "full"
+          },
+          {
+            "text": "to hug",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "umarmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "arms",
+          "de": "Arme",
+          "scope": "d"
+        },
+        {
+          "word": "around",
+          "de": "herum",
+          "scope": "d"
+        },
+        {
+          "word": "leopard",
+          "de": "Leopard",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to fight",
+        "to hold",
+        "to sell"
+      ],
+      "hintDe": "Die Arme um jemanden legen."
+    },
+    {
+      "id": "g1u14.w.to-lie",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hug",
+            "to hold",
+            "to bend down",
+            "to fight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to lie",
+      "g": "liegen",
+      "d": "to have your body flat and still, like on a bed.",
+      "s": "After the long day, I want to ___ on the sofa and read a book.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "lie",
+          "tier": "full"
+        },
+        {
+          "text": "to lie",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lie",
+          "tier": "full"
+        },
+        {
+          "text": "to lie",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lie",
+            "tier": "full"
+          },
+          {
+            "text": "to lie",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "liegen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        },
+        {
+          "word": "flat",
+          "de": "flach, ausgestreckt",
+          "scope": "d"
+        },
+        {
+          "word": "sofa",
+          "de": "Sofa",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to hug",
+        "to hold",
+        "to bend down"
+      ],
+      "hintDe": "Mit dem Körper flach und still sein, wie auf dem Bett."
+    },
+    {
+      "id": "g1u14.w.to-pay",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sell",
+            "hold",
+            "freeze",
+            "fight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 6 (The remote control)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to pay (paid)",
+      "g": "(be-)zahlen",
+      "d": "to give money for a thing you want to have.",
+      "s": "I want to ___ three pounds for this book at the shop.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pay",
+          "tier": "full"
+        },
+        {
+          "text": "to pay",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pay",
+          "tier": "full"
+        },
+        {
+          "text": "to pay",
+          "tier": "full"
+        },
+        {
+          "text": "paid",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pay",
+            "tier": "full"
+          },
+          {
+            "text": "to pay",
+            "tier": "full"
+          },
+          {
+            "text": "paid",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zahlen",
+            "tier": "full"
+          },
+          {
+            "text": "bezahlen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shop",
+          "de": "Laden, Geschäft",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "sell",
+        "hold",
+        "freeze"
+      ],
+      "hintDe": "Geld für etwas geben. Die Vergangenheit ist paid."
+    },
+    {
+      "id": "g1u14.w.to-point-to",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to hold",
+            "to hug",
+            "to sell",
+            "to reply"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 6 (The remote control)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to point to",
+      "g": "zeigen auf",
+      "d": "to show where a thing is with your finger.",
+      "s": "She used her finger to ___ the small button with a star on it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "point to",
+          "tier": "full"
+        },
+        {
+          "text": "point",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "point to",
+          "tier": "full"
+        },
+        {
+          "text": "to point to",
+          "tier": "full"
+        },
+        {
+          "text": "point",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "point to",
+            "tier": "full"
+          },
+          {
+            "text": "to point to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zeigen auf",
+            "tier": "full"
+          },
+          {
+            "text": "deuten auf",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "star",
+          "de": "Stern",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to hold",
+        "to hug",
+        "to sell"
+      ],
+      "hintDe": "Mit dem Finger zeigen, wo etwas ist."
+    },
+    {
+      "id": "g1u14.w.to-reply",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to sell",
+            "to hold",
+            "to pay",
+            "to spend"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 6 (The remote control)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to reply (replied)",
+      "g": "antworten",
+      "d": "to say a thing back to somebody who asked you.",
+      "s": "I asked Tom, but he did not ___ all day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "reply",
+          "tier": "full"
+        },
+        {
+          "text": "to reply",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reply",
+          "tier": "full"
+        },
+        {
+          "text": "to reply",
+          "tier": "full"
+        },
+        {
+          "text": "replied",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reply",
+            "tier": "full"
+          },
+          {
+            "text": "to reply",
+            "tier": "full"
+          },
+          {
+            "text": "replied",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "antworten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to sell",
+        "to hold",
+        "to pay"
+      ],
+      "hintDe": "Jemandem etwas zurücksagen, der dich gefragt hat."
+    },
+    {
+      "id": "g1u14.w.to-sell",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pay",
+            "hold",
+            "freeze",
+            "fight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to sell (sold)",
+      "g": "verkaufen",
+      "d": "to give a thing to somebody for money.",
+      "s": "He wants to ___ his car for a lot of money.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sell",
+          "tier": "full"
+        },
+        {
+          "text": "to sell",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sell",
+          "tier": "full"
+        },
+        {
+          "text": "to sell",
+          "tier": "full"
+        },
+        {
+          "text": "sold",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sell",
+            "tier": "full"
+          },
+          {
+            "text": "to sell",
+            "tier": "full"
+          },
+          {
+            "text": "sold",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verkaufen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pay",
+        "hold",
+        "freeze"
+      ],
+      "hintDe": "Jemandem etwas für Geld geben. Die Vergangenheit ist sold."
+    },
+    {
+      "id": "g1u14.w.to-spend",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to stream",
+            "to reply",
+            "to hold",
+            "to sell"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 11",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to spend",
+      "g": "verbringen (mit)",
+      "d": "to use your time doing a thing.",
+      "s": "We ___ a lot of time watching shows on TV.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "spend",
+          "tier": "full"
+        },
+        {
+          "text": "to spend",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spend",
+          "tier": "full"
+        },
+        {
+          "text": "to spend",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spend",
+            "tier": "full"
+          },
+          {
+            "text": "to spend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verbringen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen, nutzen",
+          "scope": "d"
+        },
+        {
+          "word": "TV",
+          "de": "Fernsehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to stream",
+        "to reply",
+        "to hold"
+      ],
+      "hintDe": "Deine Zeit mit etwas verbringen."
+    },
+    {
+      "id": "g1u14.w.to-stream",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to sell",
+            "to pay",
+            "to reply",
+            "to spend"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 4",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to stream",
+      "g": "streamen",
+      "d": "to watch a show on the internet.",
+      "s": "We sometimes ___ a new show on our tablet at the weekend.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "stream",
+          "tier": "full"
+        },
+        {
+          "text": "to stream",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stream",
+          "tier": "full"
+        },
+        {
+          "text": "to stream",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stream",
+            "tier": "full"
+          },
+          {
+            "text": "to stream",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "streamen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "internet",
+          "de": "Internet",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to sell",
+        "to pay",
+        "to reply"
+      ],
+      "hintDe": "Einen Film über das Internet anschauen."
+    },
+    {
+      "id": "g1u14.w.voice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "skin",
+            "power",
+            "spot",
+            "cover"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "voice",
+      "g": "Stimme",
+      "d": "the sound you make when you talk or sing.",
+      "s": "She is a great singer with a beautiful ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "voice",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "voice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "voice",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stimme",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sound",
+          "de": "Geräusch, Klang",
+          "scope": "d"
+        },
+        {
+          "word": "sing",
+          "de": "singen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "skin",
+        "power",
+        "spot"
+      ],
+      "hintDe": "Der Klang, den du machst, wenn du sprichst oder singst."
+    },
+    {
+      "id": "g1u14.w.weak",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "huge",
+            "tiny",
+            "wide",
+            "dead"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB ex. 13 (The leopard and the giraffe)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "weak",
+      "g": "schwach",
+      "d": "not strong.",
+      "s": "After a week in bed, the leopard was very tired and ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "weak",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "weak",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "weak",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schwach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "leopard",
+          "de": "Leopard",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "huge",
+        "tiny",
+        "wide"
+      ],
+      "hintDe": "Nicht stark."
+    },
+    {
+      "id": "g1u14.w.weekend",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bedtime",
+            "midnight",
+            "midday",
+            "break"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 4",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "weekend",
+      "g": "Wochenende",
+      "d": "Saturday and Sunday, the days with no school.",
+      "s": "Saturday and Sunday are the ___, so we have no school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "weekend",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "weekend",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "weekend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wochenende",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bedtime",
+        "midnight",
+        "midday"
+      ],
+      "hintDe": "Samstag und Sonntag, wenn keine Schule ist."
+    },
+    {
+      "id": "g1u14.w.wide",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "huge",
+            "tiny",
+            "weak",
+            "dead"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "MORE Words and Phrases, no. 6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wide",
+      "g": "breit",
+      "d": "big from one side to the other side.",
+      "s": "There is a very ___ road near our school, with room for many cars.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wide",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wide",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wide",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "breit",
+            "tier": "full"
+          },
+          {
+            "text": "weit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "side",
+          "de": "Seite",
+          "scope": "d"
+        },
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "huge",
+        "tiny",
+        "weak"
+      ],
+      "hintDe": "Groß von einer Seite zur anderen."
+    }
+  ]
+}

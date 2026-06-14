@@ -1,0 +1,175 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g1-u14",
+  "items": {
+    "2693060de430": "g1u14.gi.past-simple-irregular.gf.001",
+    "7926d47b9de5": "g1u14.gi.past-simple-irregular.gf.002",
+    "57882a6a9d50": "g1u14.gi.past-simple-irregular.gf.003",
+    "e403b541e68a": "g1u14.gi.past-simple-irregular.gf.004",
+    "c6b3b2c8fbd0": "g1u14.gi.past-simple-irregular.gf.005",
+    "057d2859e6e0": "g1u14.gi.past-simple-irregular.gf.006",
+    "a137b3caeeee": "g1u14.gi.past-simple-irregular.gf.007",
+    "411beb51857a": "g1u14.gi.past-simple-irregular.gf.008",
+    "2210657ea59a": "g1u14.gi.past-simple-irregular.mc.003",
+    "d72372132e96": "g1u14.gi.past-simple-irregular.mc.006",
+    "940845bde985": "g1u14.gi.past-simple-irregular.cp.001",
+    "1310cba52445": "g1u14.gi.past-simple-irregular.cp.002",
+    "0fa34616885f": "g1u14.gi.past-simple-irregular.ec.001",
+    "e067be6c1fc3": "g1u14.gi.past-simple-irregular.ec.002",
+    "5c6ba91bff0c": "g1u14.gi.past-simple-irregular.ec.003",
+    "9cfafd9894a0": "g1u14.gi.past-simple-irregular.ec.004",
+    "e5aae32bb1bb": "g1u14.gi.past-simple-irregular.tr.001",
+    "c97e178985a4": "g1u14.gi.past-simple-irregular.tr.002",
+    "b3626c50e235": "g1u14.gi.past-simple-negative.gf.001",
+    "bab7afaa2a15": "g1u14.gi.past-simple-negative.gf.002",
+    "275b0911b047": "g1u14.gi.past-simple-negative.gf.003",
+    "fffd9f8a9124": "g1u14.gi.past-simple-negative.gf.004",
+    "0fad564e7201": "g1u14.gi.past-simple-negative.gf.005",
+    "33b9e6821a0f": "g1u14.gi.past-simple-negative.gf.006",
+    "974004f62787": "g1u14.gi.past-simple-negative.mc.001",
+    "eb09a08515a5": "g1u14.gi.past-simple-negative.mc.002",
+    "d4f42e1587bf": "g1u14.gi.past-simple-negative.cp.001",
+    "aaff513a13ba": "g1u14.gi.past-simple-negative.cp.002",
+    "031dc31dbdc9": "g1u14.gi.past-simple-negative.ec.001",
+    "8c2e771976d1": "g1u14.gi.past-simple-negative.ec.002",
+    "46d2ce0faabb": "g1u14.gi.past-simple-negative.ec.003",
+    "fdec98656f92": "g1u14.gi.past-simple-negative.tf.001",
+    "e6ed5d37891b": "g1u14.gi.past-simple-negative.tf.002",
+    "80299010072b": "g1u14.gi.past-simple-negative.tf.003",
+    "f469dfa27f19": "g1u14.gi.past-simple-negative.tr.001",
+    "6e9e261ba7c0": "g1u14.gi.past-simple-negative.tr.002",
+    "89227f7dba42": "g1u14.gi.past-simple-negative.sb.001",
+    "baa14fe8918c": "g1u14.gi.past-simple-negative.sb.002",
+    "c1102914c70a": "g1u14.gi.past-simple-negative.qf.001",
+    "80fc650383ae": "g1u14.gi.past-simple-negative.mp.001",
+    "0100835b27b1": "g1u14.gi.past-simple-negative.mt.001",
+    "30d0b70cd52d": "g1u14.gi.past-simple-irregular.ag.008",
+    "1568cc2b769e": "g1u14.gi.past-simple-irregular.ag.009",
+    "c00d6be5e24c": "g1u14.gi.past-simple-irregular.ag.010",
+    "b3054ff6d1c9": "g1u14.gi.past-simple-irregular.ag.011",
+    "f55aec594ede": "g1u14.gi.past-simple-irregular.ag.012",
+    "185a4546bd4b": "g1u14.gi.past-simple-irregular.ag.013",
+    "ba9152fe514d": "g1u14.gi.past-simple-irregular.ag.014",
+    "db1af2496ba6": "g1u14.gi.past-simple-irregular.mc.007",
+    "d53adc446fd8": "g1u14.gi.past-simple-irregular.mc.008",
+    "3ddc97443483": "g1u14.gi.past-simple-irregular.mc.009",
+    "1ed27612cd50": "g1u14.gi.past-simple-irregular.mc.010",
+    "b8c168e4483b": "g1u14.gi.past-simple-irregular.tf.004",
+    "c6c12c6396fc": "g1u14.gi.past-simple-irregular.tf.005",
+    "0a6769a973b0": "g1u14.gi.past-simple-irregular.tf.006",
+    "09c70f9842b8": "g1u14.gi.past-simple-irregular.mt.002",
+    "4d39876ba553": "g1u14.gi.past-simple-irregular.mp.003",
+    "c9789b80a033": "g1u14.gi.past-simple-irregular.mp.004",
+    "6c04190ff85f": "g1u14.gi.past-simple-irregular.gs.003",
+    "afcc123726ac": "g1u14.gi.past-simple-irregular.gs.004",
+    "66a206669c25": "g1u14.gi.past-simple-negative.mc.004",
+    "f93450125160": "g1u14.gi.past-simple-negative.gs.002"
+  },
+  "tombstones": [
+    {
+      "id": "g1u14.gi.past-simple-irregular.ag.001",
+      "key": "76838063a94f",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.ag.002",
+      "key": "227be5277b32",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.ag.003",
+      "key": "5ba054de95a2",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.ag.004",
+      "key": "5d60f7ad1b1d",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.ag.005",
+      "key": "7ef7b371c88c",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.ag.006",
+      "key": "7ee76460c000",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.ag.007",
+      "key": "bff9eeab362d",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.mc.001",
+      "key": "2e5f910598c0",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.mc.002",
+      "key": "f62dae42c09b",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.mc.004",
+      "key": "5eeb993887a4",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.mc.005",
+      "key": "ab7cde736f0d",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.tf.001",
+      "key": "1251264ba198",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.tf.002",
+      "key": "d1d481209fdf",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.tf.003",
+      "key": "61c131f5996d",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.mt.001",
+      "key": "27a9b97dc365",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.mp.001",
+      "key": "bd273418977d",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.mp.002",
+      "key": "2cd3bce658ee",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.gs.001",
+      "key": "3a9262e221a9",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-irregular.gs.002",
+      "key": "a2d372114f8b",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-negative.mc.003",
+      "key": "a785cc9763ca",
+      "removedWith": "1ec32457d3de"
+    },
+    {
+      "id": "g1u14.gi.past-simple-negative.gs.001",
+      "key": "222c5a03abda",
+      "removedWith": "1ec32457d3de"
+    }
+  ]
+}
