@@ -1,0 +1,756 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u11",
+  "round": 1,
+  "itemsHash": "e2b0f58f9867",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u11.w.9-p-m",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.9-p-m",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.amazing",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.amazing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.break",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.break",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.bush",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.bush",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.clock",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.clock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.clue",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.clue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.daily",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.daily",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.excuse-me",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.excuse-me",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.exercise",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.exercise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.half-an-hour",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.half-an-hour",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.have-fun",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.have-fun",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.hurry-up",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.hurry-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.it-s-10-a-m",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.it-s-10-a-m",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.it-s-8-p-m",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.it-s-8-p-m",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.knock",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.knock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.living-room",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.living-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.midnight",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.midnight",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.outside",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.outside",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.place",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.place",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.road",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.road",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.see-you-soon",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.see-you-soon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.surprise",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.surprise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.text-message",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.text-message",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-cook",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-cook",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-go-to-bed",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-go-to-bed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-go-to-school",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-go-to-school",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-hurry",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-hurry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-look-after",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-look-after",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-play-computer-games",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-play-computer-games",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-play-football",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-play-football",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-play-the-piano",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-play-the-piano",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-push",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-push",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-ride-a-bike",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-ride-a-bike",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-ride-a-horse",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-ride-a-horse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-ride-a-scooter",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-ride-a-scooter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-skate",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-skate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-skateboard",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-skateboard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-snow",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-snow",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-snowboard",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-snowboard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-study",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-study",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-wake-somebody-up",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-wake-somebody-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.to-watch-tv",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.to-watch-tv",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.what-s-the-time",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.what-s-the-time",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u11.w.what-time-is-it",
+      "kind": "new-gloss",
+      "itemId": "g1u11.w.what-time-is-it",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.9-a-m",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.9-a-m",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.9-o-clock",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.9-o-clock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.9-p-m",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.9-p-m",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.amazing",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.amazing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.bedtime",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.bedtime",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.break",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.break",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.bush",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.bush",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.clock",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.clock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.clue",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.clue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.daily",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.daily",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.excuse-me",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.excuse-me",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.exercise",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.exercise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.free-time",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.free-time",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.half-an-hour",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.half-an-hour",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.half-past-nine",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.half-past-nine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.have-fun",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.have-fun",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.hurry-up",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.hurry-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.it-s-10-a-m",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.it-s-10-a-m",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.it-s-8-p-m",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.it-s-8-p-m",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.knock",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.knock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.living-room",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.living-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.midday",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.midday",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.midnight",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.midnight",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.outside",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.outside",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.place",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.place",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.programme",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.programme",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.quarter-past-nine",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.quarter-past-nine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.quarter-to-ten",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.quarter-to-ten",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.road",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.road",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.see-you-soon",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.see-you-soon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.surprise",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.surprise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.text-message",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.text-message",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-answer-the-door",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-answer-the-door",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-cook",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-cook",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-cook-2",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-cook-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-go-to-bed",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-go-to-bed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-go-to-school",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-go-to-school",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-hide",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-hide",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-hurry",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-hurry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-look-after",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-look-after",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-play-computer-games",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-play-computer-games",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-play-football",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-play-football",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-play-the-piano",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-play-the-piano",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-push",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-push",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-ride-a-bike",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-ride-a-bike",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-ride-a-horse",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-ride-a-horse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-ride-a-scooter",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-ride-a-scooter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-skate",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-skate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-skateboard",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-skateboard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-ski",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-ski",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-snow",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-snow",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-snowboard",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-snowboard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-study",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-study",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-wake-somebody-up",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-wake-somebody-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.to-watch-tv",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.to-watch-tv",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.weather",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.weather",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.what-s-the-time",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.what-s-the-time",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.w.what-time-is-it",
+      "kind": "translation-audit",
+      "itemId": "g1u11.w.what-time-is-it",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.gi.present-continuous.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u11.gi.present-continuous.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u11.gi.present-continuous.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u11.gi.present-continuous.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u11.gi.present-continuous.tr.001#2bd4cd",
+      "kind": "validator-warn",
+      "itemId": "g1u11.gi.present-continuous.tr.001",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 96 rows. Verify lenses: register CLEAN, then fixed translation 1 (place enToDe \"Ort\"→full, \"Wohnung\"/\"Zuhause\"→partial), level-gloss 3 (help=Hilfe not helfen in clue/to-look-after; to-hurry \"something\" scope→d), and answers 1 REAL fix — the 4 present-continuous negation items (gf.006, tf.001, tf.003, ec.003) were strict:false, risking fuzzy-acceptance of the affirmative (opposite meaning); set strict:true to match the g1-u04 negation convention. Floor-grade unit: incidental everyday words glossed with context-correct German (lens-confirmed: keys=Tasten, get=ablesen/bekommen/erfahren/gehen by sense, puts=legt, lot=viel, goes=geht). Audited level-grants for topic-core tokens: time units (minutes/hour/quarter), free-time nouns (football/bike/computer/game/tv/music/phone/piano), ride/riding/right + sleep/sleeping, SB name Jennifer, and deliberate wrong -ing spellings (rideing/makeing). Grammar instruction prompts authored in German (lang:de). My own sweep caught gf.013 (reworded café item) as a near-duplicate of gf.005 with a stale \"I/am\" hint on a \"We/are\" carrier → repointed to \"Peter is playing the piano\" with a correct hint. tr.001 sentence-initial \"Sie\" = \"she\" (lens-confirmed, the validator-warn). Translations faithful & du-form; clock times idiomatic (halb zehn, Viertel nach/vor). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 96,
+    "fullRows": 96,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

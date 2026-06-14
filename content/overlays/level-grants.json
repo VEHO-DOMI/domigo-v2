@@ -1611,6 +1611,186 @@
       "reason": "how-much: anagram component of bank phrase computer game",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "right",
+      "reason": "present-continuous time marker (right now), SB box",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "ride",
+      "reason": "activity verb, component of bank phrases to-ride-a-bike/horse/scooter",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "riding",
+      "reason": "-ing form for present-continuous (to ride a …)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "rideing",
+      "reason": "deliberate wrong -ing spelling in mc distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "makeing",
+      "reason": "deliberate wrong -ing spelling in mc distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "bike",
+      "reason": "component noun of bank phrase to-ride-a-bike",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "bikes",
+      "reason": "plural of bike (to-ride-a-bike)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "football",
+      "reason": "component noun of bank phrase to-play-football",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "computer",
+      "reason": "component of bank phrase to-play-computer-games",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "game",
+      "reason": "component of bank phrase to-play-computer-games",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "tv",
+      "reason": "component of bank phrase to-watch-TV",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "music",
+      "reason": "free-time noun from SB (listening to music)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "phone",
+      "reason": "component of bank phrases mobile phone / text message",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "sleeping",
+      "reason": "-ing form of sleep, present-continuous (bedtime topic)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "sleep",
+      "reason": "bedtime-topic verb (to go to bed / to wake somebody up)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "jennifer",
+      "reason": "SB character name (Jennifer and Christine)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "minutes",
+      "reason": "time unit for the telling-the-time unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "hour",
+      "reason": "time unit (half an hour); telling-the-time unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "quarter",
+      "reason": "time unit, component of bank quarter past/to",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u11",
+      "itemId": null,
+      "field": null,
+      "token": "piano",
+      "reason": "component noun of bank phrase to-play-the-piano",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

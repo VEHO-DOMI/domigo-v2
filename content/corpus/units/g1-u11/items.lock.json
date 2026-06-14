@@ -1,0 +1,66 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g1-u11",
+  "items": {
+    "2b35c59da55b": "g1u11.gi.present-continuous.gf.001",
+    "55ae12468fc9": "g1u11.gi.present-continuous.gf.003",
+    "a6bd55a70d5e": "g1u11.gi.present-continuous.gf.004",
+    "3bc374dff88b": "g1u11.gi.present-continuous.gf.005",
+    "c2329c0e9148": "g1u11.gi.present-continuous.gf.006",
+    "aa08d765181b": "g1u11.gi.present-continuous.gf.008",
+    "c888d175637a": "g1u11.gi.present-continuous.gf.009",
+    "046e54b4e816": "g1u11.gi.present-continuous.gf.010",
+    "c6d1f42ce7c2": "g1u11.gi.present-continuous.mc.001",
+    "722e3d47719a": "g1u11.gi.present-continuous.mc.002",
+    "324f85af5ac4": "g1u11.gi.present-continuous.mc.003",
+    "fe41d36d15cb": "g1u11.gi.present-continuous.mc.004",
+    "d3058cb07552": "g1u11.gi.present-continuous.cp.001",
+    "58090e25e5be": "g1u11.gi.present-continuous.cp.002",
+    "2ec726f42fbe": "g1u11.gi.present-continuous.cp.003",
+    "3cd6c00266ad": "g1u11.gi.present-continuous.ec.001",
+    "8eb3f8fe32b1": "g1u11.gi.present-continuous.ec.002",
+    "d89347235f6f": "g1u11.gi.present-continuous.ec.003",
+    "5d54afb23243": "g1u11.gi.present-continuous.ec.004",
+    "833758291ea6": "g1u11.gi.present-continuous.tf.001",
+    "7ce807d21176": "g1u11.gi.present-continuous.tf.002",
+    "58266ed0f5b0": "g1u11.gi.present-continuous.tf.003",
+    "75922aa81cd0": "g1u11.gi.present-continuous.qf.001",
+    "847b6fcbcf1a": "g1u11.gi.present-continuous.qf.002",
+    "97ea5cebef51": "g1u11.gi.present-continuous.tr.001",
+    "7b02ea40b7a0": "g1u11.gi.present-continuous.tr.002",
+    "21e42a7a00bc": "g1u11.gi.present-continuous.sb.001",
+    "be8fe0260bb9": "g1u11.gi.present-continuous.sb.002",
+    "8d61e5b1b19f": "g1u11.gi.present-continuous.sb.003",
+    "d5731bb4da42": "g1u11.gi.present-continuous.mt.001",
+    "a5bda1b529fb": "g1u11.gi.present-continuous.gs.001",
+    "d3a54c76395e": "g1u11.gi.present-continuous.gs.002",
+    "0b5707409bb8": "g1u11.gi.present-continuous.ag.001",
+    "36ea092f7f0a": "g1u11.gi.present-continuous.ag.002",
+    "f4f54fb539f8": "g1u11.gi.present-continuous.ag.003",
+    "0ef4ad346a27": "g1u11.gi.present-continuous.gf.011",
+    "f7f6797011f5": "g1u11.gi.present-continuous.mp.002",
+    "7ea816629ddd": "g1u11.gi.present-continuous.gf.013"
+  },
+  "tombstones": [
+    {
+      "id": "g1u11.gi.present-continuous.gf.002",
+      "key": "23baf12fbba7",
+      "removedWith": "6486fad5f431"
+    },
+    {
+      "id": "g1u11.gi.present-continuous.gf.007",
+      "key": "73f63fd520df",
+      "removedWith": "6486fad5f431"
+    },
+    {
+      "id": "g1u11.gi.present-continuous.mp.001",
+      "key": "e1fcebb98ae2",
+      "removedWith": "6486fad5f431"
+    },
+    {
+      "id": "g1u11.gi.present-continuous.gf.012",
+      "key": "d2556d47abcd",
+      "removedWith": "2cd11dc2dc6c"
+    }
+  ]
+}
