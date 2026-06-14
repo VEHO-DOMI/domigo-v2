@@ -1224,6 +1224,213 @@
       "reason": "unit-14 Present perfect of bank phrase \"take part\" → \"taken part\"; the participle form leaves \"part\" as a bare token",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "children",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "fish",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "boxes",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "babies",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "boys",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "boy",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "baby",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "city",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "story",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "day",
+      "reason": "unit-1 Plurals structure (SB grammar box): plural form / cue singular taught by the lesson, not a separate word-bank entry",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "run",
+      "reason": "unit-1 Imperatives structure (SB box): common imperative verb run (run/runs/running)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "name",
+      "reason": "unit-1 Questions-personal-info structure (SB box): What is your name? / Can you spell it? / I am fine",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "spell",
+      "reason": "unit-1 Questions-personal-info structure (SB box): What is your name? / Can you spell it? / I am fine",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "fine",
+      "reason": "unit-1 Questions-personal-info structure (SB box): What is your name? / Can you spell it? / I am fine",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "fishs",
+      "reason": "unit-1 Plurals: audited WRONG plural form used as a deliberate-error distractor in a discrimination exercise (correct form is the answer)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "fishes",
+      "reason": "unit-1 Plurals: audited WRONG plural form used as a deliberate-error distractor in a discrimination exercise (correct form is the answer)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "fishys",
+      "reason": "unit-1 Plurals: audited WRONG plural form used as a deliberate-error distractor in a discrimination exercise (correct form is the answer)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "childrens",
+      "reason": "unit-1 Plurals: audited WRONG plural form used as a deliberate-error distractor in a discrimination exercise (correct form is the answer)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "childes",
+      "reason": "unit-1 Plurals: audited WRONG plural form used as a deliberate-error distractor in a discrimination exercise (correct form is the answer)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "boxs",
+      "reason": "unit-1 Plurals: audited WRONG plural form used as a deliberate-error distractor in a discrimination exercise (correct form is the answer)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "boxies",
+      "reason": "unit-1 Plurals: audited WRONG plural form used as a deliberate-error distractor in a discrimination exercise (correct form is the answer)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "runs",
+      "reason": "unit-1 Imperatives: runs/running as wrong-form distractors (the imperative uses the base form run)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u01",
+      "itemId": null,
+      "field": null,
+      "token": "running",
+      "reason": "unit-1 Imperatives: runs/running as wrong-form distractors (the imperative uses the base form run)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

@@ -1,0 +1,5624 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g1-u01",
+  "briefBank": "6b8c1ede4887",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g1u01.w.sound-system",
+      "w": "sound system",
+      "g": "Soundsystem",
+      "d": "A machine in the classroom. It plays music for all the class.",
+      "s": "Our teacher plays a song on the ___ and we all listen.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sound system",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sound system",
+          "tier": "full"
+        },
+        {
+          "text": "sound-system",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sound system",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Soundsystem",
+            "tier": "full"
+          },
+          {
+            "text": "Musikanlage",
+            "tier": "full"
+          },
+          {
+            "text": "Anlage",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "machine",
+          "de": "Gerät",
+          "scope": "d"
+        },
+        {
+          "word": "plays",
+          "de": "spielt",
+          "scope": null
+        },
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": "d"
+        },
+        {
+          "word": "song",
+          "de": "Lied",
+          "scope": "s"
+        },
+        {
+          "word": "teacher",
+          "de": "Lehrer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "projector",
+        "board",
+        "tablet"
+      ],
+      "hintDe": "Daraus kommt die Musik für die ganze Klasse.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "projector",
+          "board",
+          "tablet",
+          "window",
+          "desk"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.projector",
+      "w": "projector",
+      "g": "Projektor",
+      "d": "A machine that shows a picture or a film on the wall.",
+      "s": "Our teacher turns on the ___ and we look at the film on the wall.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "projector",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "projector",
+          "tier": "full"
+        },
+        {
+          "text": "beamer",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "projector",
+            "tier": "full"
+          },
+          {
+            "text": "beamer",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Projektor",
+            "tier": "full"
+          },
+          {
+            "text": "Beamer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "machine",
+          "de": "Gerät",
+          "scope": "d"
+        },
+        {
+          "word": "shows",
+          "de": "zeigt",
+          "scope": "d"
+        },
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": null
+        },
+        {
+          "word": "wall",
+          "de": "Wand",
+          "scope": null
+        },
+        {
+          "word": "turns on",
+          "de": "schaltet ein",
+          "scope": "s"
+        },
+        {
+          "word": "teacher",
+          "de": "Lehrer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "sound system",
+        "chair",
+        "ruler"
+      ],
+      "hintDe": "Damit kommt ein großes Bild oder ein Film an die Wand.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "sound system",
+          "chair",
+          "ruler",
+          "board",
+          "tablet"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.board",
+      "w": "board",
+      "g": "Tafel",
+      "d": "A flat thing on the wall. The teacher writes on it, and then you clean it.",
+      "s": "Don't write on your desk! Write on the ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "board",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "board",
+          "tier": "full"
+        },
+        {
+          "text": "whiteboard",
+          "tier": "partial"
+        },
+        {
+          "text": "blackboard",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "board",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tafel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flat",
+          "de": "flach",
+          "scope": "d"
+        },
+        {
+          "word": "wall",
+          "de": "Wand",
+          "scope": "d"
+        },
+        {
+          "word": "teacher",
+          "de": "Lehrer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "desk",
+        "chair",
+        "school bag"
+      ],
+      "hintDe": "Vorne an der Wand; die Lehrerin schreibt darauf und wischt es dann sauber.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "desk",
+          "chair",
+          "school bag",
+          "window",
+          "door"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.window",
+      "w": "window",
+      "g": "Fenster",
+      "d": "You open it in the wall. You can look out and see the school garden.",
+      "s": "It is hot in here. Please open the ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "window",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "window",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "window",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fenster",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wall",
+          "de": "Wand",
+          "scope": "d"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        },
+        {
+          "word": "garden",
+          "de": "Garten",
+          "scope": "d"
+        },
+        {
+          "word": "hot",
+          "de": "heiß",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "door",
+        "board",
+        "desk"
+      ],
+      "hintDe": "Du machst es auf, dann kommt frische Luft herein.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "door",
+          "board",
+          "desk",
+          "chair",
+          "tablet"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.door",
+      "w": "door",
+      "g": "Tür",
+      "d": "You open it to go into a room. You close it after you.",
+      "s": "Please close the ___ and sit down.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "door",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "door",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "door",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tür",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "room",
+          "de": "Raum",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "window",
+        "board",
+        "chair"
+      ],
+      "hintDe": "Du machst sie auf und gehst in den Raum.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "window",
+          "board",
+          "chair",
+          "desk",
+          "school bag"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.desk",
+      "w": "desk",
+      "g": "Schreibtisch",
+      "d": "You sit down at it in class to read and write. Your books are on it.",
+      "s": "My books and pens are on my ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "desk",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "desk",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "desk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schreibtisch",
+            "tier": "full"
+          },
+          {
+            "text": "Pult",
+            "tier": "full"
+          },
+          {
+            "text": "Tisch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "chair",
+        "door",
+        "window"
+      ],
+      "hintDe": "Daran sitzt du und legst deine Bücher darauf.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "chair",
+          "door",
+          "window",
+          "board",
+          "school bag"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.scissors",
+      "w": "scissors",
+      "g": "Schere",
+      "d": "You find it in your pencil case. You cut paper with it.",
+      "s": "I need my ___ to cut out this picture.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "scissors",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scissors",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scissors",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schere",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "cut",
+          "de": "schneiden",
+          "scope": null
+        },
+        {
+          "word": "paper",
+          "de": "Papier",
+          "scope": "d"
+        },
+        {
+          "word": "need",
+          "de": "brauchen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "ruler",
+        "pen",
+        "rubber"
+      ],
+      "hintDe": "Damit schneidest du Papier.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ruler",
+          "pen",
+          "rubber",
+          "pencil",
+          "book"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.ruler",
+      "w": "ruler",
+      "g": "Lineal",
+      "d": "It is flat. You use it to draw a line that is not bent.",
+      "s": "Use a ___ to draw a straight line.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "ruler",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ruler",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ruler",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lineal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flat",
+          "de": "flach",
+          "scope": "d"
+        },
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": null
+        },
+        {
+          "word": "draw",
+          "de": "ziehen, zeichnen",
+          "scope": null
+        },
+        {
+          "word": "line",
+          "de": "Linie",
+          "scope": null
+        },
+        {
+          "word": "bent",
+          "de": "krumm",
+          "scope": "d"
+        },
+        {
+          "word": "straight",
+          "de": "gerade",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "pencil",
+        "scissors",
+        "pen"
+      ],
+      "hintDe": "Damit ziehst du eine gerade Linie.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "pencil",
+          "scissors",
+          "pen",
+          "rubber",
+          "book"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.tablet",
+      "w": "tablet",
+      "g": "Tablet",
+      "d": "A flat thing with a glass screen. A child can read or play games on it.",
+      "s": "Switch on your ___ and look at the picture on the screen.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tablet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tablet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tablet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tablet",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flat",
+          "de": "flach",
+          "scope": "d"
+        },
+        {
+          "word": "glass",
+          "de": "Glas",
+          "scope": "d"
+        },
+        {
+          "word": "screen",
+          "de": "Bildschirm",
+          "scope": null
+        },
+        {
+          "word": "play",
+          "de": "spielen",
+          "scope": "d"
+        },
+        {
+          "word": "games",
+          "de": "Spiele",
+          "scope": "d"
+        },
+        {
+          "word": "switch on",
+          "de": "einschalten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "book",
+        "board",
+        "exercise book"
+      ],
+      "hintDe": "Ein kleiner, flacher Computer mit Bildschirm.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "book",
+          "board",
+          "exercise book",
+          "projector",
+          "ruler"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.chair",
+      "w": "chair",
+      "g": "Stuhl",
+      "d": "You sit down on it at your desk.",
+      "s": "Sit down on your ___, please.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "chair",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "chair",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "chair",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stuhl",
+            "tier": "full"
+          },
+          {
+            "text": "Sessel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "desk",
+        "door",
+        "board"
+      ],
+      "hintDe": "Darauf setzt du dich.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "desk",
+          "door",
+          "board",
+          "window",
+          "school bag"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.school-bag",
+      "w": "school bag",
+      "g": "Schultasche",
+      "d": "You put all your books and pens in it. You take it to class.",
+      "s": "Take your exercise book out of your ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "school bag",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "school bag",
+          "tier": "full"
+        },
+        {
+          "text": "schoolbag",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "school bag",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schultasche",
+            "tier": "full"
+          },
+          {
+            "text": "Schulrucksack",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "put",
+          "de": "tun",
+          "scope": "d"
+        },
+        {
+          "word": "take",
+          "de": "nehmen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "pencil case",
+        "book",
+        "desk"
+      ],
+      "hintDe": "Darin sind alle deine Bücher und Stifte für die Schule.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "pencil case",
+          "book",
+          "desk",
+          "chair",
+          "exercise book"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.pen",
+      "w": "pen",
+      "g": "Kugelschreiber",
+      "d": "You write with it. It is blue, red or black, and you can not clean it with a rubber.",
+      "s": "Can I write my name with your blue ___?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pen",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pen",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pen",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kugelschreiber",
+            "tier": "full"
+          },
+          {
+            "text": "Kuli",
+            "tier": "full"
+          },
+          {
+            "text": "Stift",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "blue",
+          "de": "blau",
+          "scope": null
+        },
+        {
+          "word": "red",
+          "de": "rot",
+          "scope": "d"
+        },
+        {
+          "word": "black",
+          "de": "schwarz",
+          "scope": "d"
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "pencil",
+        "rubber",
+        "ruler"
+      ],
+      "hintDe": "Damit schreibst du; weg radieren kannst du es nicht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "pencil",
+          "rubber",
+          "ruler",
+          "scissors",
+          "book"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.exercise-book",
+      "w": "exercise book",
+      "g": "Heft",
+      "d": "A thin thing with empty pages. You write your homework in it.",
+      "s": "Write the numbers in your ___ with a pen.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "exercise book",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "exercise book",
+          "tier": "full"
+        },
+        {
+          "text": "notebook",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "exercise book",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Heft",
+            "tier": "full"
+          },
+          {
+            "text": "Schreibheft",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "thin",
+          "de": "dünn",
+          "scope": "d"
+        },
+        {
+          "word": "empty",
+          "de": "leer",
+          "scope": "d"
+        },
+        {
+          "word": "pages",
+          "de": "Seiten",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "book",
+        "school bag",
+        "tablet"
+      ],
+      "hintDe": "Ein dünnes Heft, in das du deine Hausaufgaben schreibst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "book",
+          "school bag",
+          "tablet",
+          "pencil case",
+          "board"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.pencil-case",
+      "w": "pencil case",
+      "g": "Federmäppchen",
+      "d": "A little bag. Your pen and ruler are in it.",
+      "s": "Take your pencil and rubber out of your ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pencil case",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pencil case",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pencil case",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Federmäppchen",
+            "tier": "full"
+          },
+          {
+            "text": "Federpennal",
+            "tier": "full"
+          },
+          {
+            "text": "Mäppchen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "little",
+          "de": "klein",
+          "scope": "d"
+        },
+        {
+          "word": "bag",
+          "de": "Tasche",
+          "scope": "d"
+        },
+        {
+          "word": "take",
+          "de": "nehmen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "school bag",
+        "desk",
+        "book"
+      ],
+      "hintDe": "Die kleine Tasche für Stift, Bleistift und Lineal.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "school bag",
+          "desk",
+          "book",
+          "exercise book",
+          "chair"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.pencil",
+      "w": "pencil",
+      "g": "Bleistift",
+      "d": "You write or draw with it, and then you can clean it with a rubber.",
+      "s": "I write with my grey ___, and I can clean it with a rubber.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pencil",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pencil",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pencil",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bleistift",
+            "tier": "full"
+          },
+          {
+            "text": "Stift",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "draw",
+          "de": "zeichnen",
+          "scope": "d"
+        },
+        {
+          "word": "grey",
+          "de": "grau",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "pen",
+        "ruler",
+        "scissors"
+      ],
+      "hintDe": "Damit schreibst oder zeichnest du; mit dem Radiergummi geht es weg.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "pen",
+          "ruler",
+          "scissors",
+          "rubber",
+          "book"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.rubber",
+      "w": "rubber",
+      "g": "Radiergummi",
+      "d": "You use it to clean a pencil mark from the page.",
+      "s": "I write a wrong word, so I use my ___ to clean the page.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "rubber",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rubber",
+          "tier": "full"
+        },
+        {
+          "text": "eraser",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rubber",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Radiergummi",
+            "tier": "full"
+          },
+          {
+            "text": "Gummi",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": null
+        },
+        {
+          "word": "mark",
+          "de": "Strich",
+          "scope": "d"
+        },
+        {
+          "word": "page",
+          "de": "Seite",
+          "scope": null
+        },
+        {
+          "word": "wrong",
+          "de": "falsch",
+          "scope": "s"
+        },
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "pencil",
+        "ruler",
+        "pen"
+      ],
+      "hintDe": "Damit machst du einen Bleistiftstrich wieder weg.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "pencil",
+          "ruler",
+          "pen",
+          "scissors",
+          "book"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.book",
+      "w": "book",
+      "g": "Buch",
+      "d": "You read it. It has many pages and pictures.",
+      "s": "I am reading a funny story ___ with many pictures.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "book",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "book",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "book",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Buch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pages",
+          "de": "Seiten",
+          "scope": "d"
+        },
+        {
+          "word": "story",
+          "de": "Geschichte",
+          "scope": "s"
+        },
+        {
+          "word": "funny",
+          "de": "lustig",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "pen",
+        "ruler",
+        "chair"
+      ],
+      "hintDe": "Das liest du; es hat viele Seiten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "pen",
+          "ruler",
+          "chair",
+          "tablet",
+          "exercise book"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.hairband",
+      "w": "hairband",
+      "g": "Haarreif",
+      "d": "A girl can wear it in her hair, over her head.",
+      "s": "Leah has a pink ___ in her hair.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "hairband",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hairband",
+          "tier": "full"
+        },
+        {
+          "text": "hair band",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hairband",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Haarreif",
+            "tier": "full"
+          },
+          {
+            "text": "Stirnband",
+            "tier": "partial"
+          },
+          {
+            "text": "Haarband",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "girl",
+          "de": "Mädchen",
+          "scope": "d"
+        },
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": "d"
+        },
+        {
+          "word": "hair",
+          "de": "Haar",
+          "scope": null
+        },
+        {
+          "word": "head",
+          "de": "Kopf",
+          "scope": "d"
+        },
+        {
+          "word": "pink",
+          "de": "rosa",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "hat",
+        "school tie",
+        "sunglasses"
+      ],
+      "hintDe": "Das trägt ein Mädchen im Haar.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hat",
+          "school tie",
+          "sunglasses",
+          "shirt",
+          "skirt"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.sunglasses",
+      "w": "sunglasses",
+      "g": "Sonnenbrille",
+      "d": "Dark glasses. You wear them on your eyes when the sun is bright.",
+      "s": "It is very sunny, so I wear my dark ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sunglasses",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sunglasses",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sunglasses",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sonnenbrille",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "dark",
+          "de": "dunkel",
+          "scope": null
+        },
+        {
+          "word": "glasses",
+          "de": "Brille",
+          "scope": "d"
+        },
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": null
+        },
+        {
+          "word": "eyes",
+          "de": "Augen",
+          "scope": "d"
+        },
+        {
+          "word": "sun",
+          "de": "Sonne",
+          "scope": "d"
+        },
+        {
+          "word": "bright",
+          "de": "hell",
+          "scope": "d"
+        },
+        {
+          "word": "sunny",
+          "de": "sonnig",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "hat",
+        "hairband",
+        "school tie"
+      ],
+      "hintDe": "Eine dunkle Brille für sonnige Tage.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hat",
+          "hairband",
+          "school tie",
+          "shirt",
+          "socks"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.hat",
+      "w": "hat",
+      "g": "Hut",
+      "d": "You wear it on your head.",
+      "s": "He has a warm ___ on his head in winter.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "hat",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hut",
+            "tier": "full"
+          },
+          {
+            "text": "Mütze",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": "d"
+        },
+        {
+          "word": "head",
+          "de": "Kopf",
+          "scope": null
+        },
+        {
+          "word": "warm",
+          "de": "warm",
+          "scope": "s"
+        },
+        {
+          "word": "winter",
+          "de": "Winter",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shoe",
+        "school tie",
+        "skirt"
+      ],
+      "hintDe": "Das trägst du auf dem Kopf.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "shoe",
+          "school tie",
+          "skirt",
+          "shirt",
+          "socks"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.school-tie",
+      "w": "school tie",
+      "g": "Schulkrawatte",
+      "d": "You wear it around your neck with a shirt.",
+      "s": "Can you find Leah's ___? It is on her white shirt.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "school tie",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "school tie",
+          "tier": "full"
+        },
+        {
+          "text": "tie",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "school tie",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schulkrawatte",
+            "tier": "full"
+          },
+          {
+            "text": "Krawatte",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": "d"
+        },
+        {
+          "word": "around",
+          "de": "um ... herum",
+          "scope": "d"
+        },
+        {
+          "word": "neck",
+          "de": "Hals",
+          "scope": "d"
+        },
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shirt",
+        "hat",
+        "sweater"
+      ],
+      "hintDe": "Das trägst du um den Hals zum Schulhemd.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "shirt",
+          "hat",
+          "sweater",
+          "skirt",
+          "socks"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.shirt",
+      "w": "shirt",
+      "g": "Hemd",
+      "d": "You wear it on the top of your body. It has buttons.",
+      "s": "He has a clean white ___ on for school.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "shirt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shirt",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shirt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hemd",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": "d"
+        },
+        {
+          "word": "top",
+          "de": "oberer Teil",
+          "scope": "d"
+        },
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        },
+        {
+          "word": "buttons",
+          "de": "Knöpfe",
+          "scope": "d"
+        },
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "socks",
+        "shoe",
+        "hat"
+      ],
+      "hintDe": "Das trägst du oben am Körper; es hat Knöpfe.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "socks",
+          "shoe",
+          "hat",
+          "skirt",
+          "school tie"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.sweater",
+      "w": "sweater",
+      "g": "Pullover",
+      "d": "A warm top with sleeves. You wear it over your shirt when it is cold.",
+      "s": "It is cold today, so wear a warm ___ over your shirt.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sweater",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sweater",
+          "tier": "full"
+        },
+        {
+          "text": "pullover",
+          "tier": "partial"
+        },
+        {
+          "text": "jumper",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sweater",
+            "tier": "full"
+          },
+          {
+            "text": "jumper",
+            "tier": "partial"
+          },
+          {
+            "text": "pullover",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pullover",
+            "tier": "full"
+          },
+          {
+            "text": "Pulli",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "warm",
+          "de": "warm",
+          "scope": null
+        },
+        {
+          "word": "top",
+          "de": "Oberteil",
+          "scope": "d"
+        },
+        {
+          "word": "sleeves",
+          "de": "Ärmel",
+          "scope": "d"
+        },
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": null
+        },
+        {
+          "word": "cold",
+          "de": "kalt",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "skirt",
+        "socks",
+        "hat"
+      ],
+      "hintDe": "Ein warmes Oberteil mit langen Ärmeln über dem Hemd.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "skirt",
+          "socks",
+          "hat",
+          "shirt",
+          "shoe"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.skirt",
+      "w": "skirt",
+      "g": "Rock",
+      "d": "A girl can wear it. It is not trousers.",
+      "s": "She has a red ___ on today.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "skirt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "skirt",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "skirt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rock",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "girl",
+          "de": "Mädchen",
+          "scope": "d"
+        },
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": "d"
+        },
+        {
+          "word": "trousers",
+          "de": "Hose",
+          "scope": "d"
+        },
+        {
+          "word": "red",
+          "de": "rot",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shirt",
+        "hat",
+        "shoe"
+      ],
+      "hintDe": "Das trägt oft ein Mädchen; es ist keine Hose.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "shirt",
+          "hat",
+          "shoe",
+          "socks",
+          "sweater"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.socks",
+      "w": "socks",
+      "g": "Socken",
+      "d": "You wear them on your feet, in your shoes.",
+      "s": "I put on my clean ___ and then my shoes.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "socks",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "socks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "socks",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Socken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": "d"
+        },
+        {
+          "word": "feet",
+          "de": "Füße",
+          "scope": "d"
+        },
+        {
+          "word": "put on",
+          "de": "anziehen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shoe",
+        "hat",
+        "shirt"
+      ],
+      "hintDe": "Die trägst du an den Füßen, in den Schuhen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "shoe",
+          "hat",
+          "shirt",
+          "skirt",
+          "sweater"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.shoe",
+      "w": "shoe",
+      "g": "Schuh",
+      "d": "You wear it on one foot, over your sock.",
+      "s": "I can find one ___, but where is the other one?",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "shoe",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shoe",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shoe",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schuh",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wear",
+          "de": "tragen",
+          "scope": "d"
+        },
+        {
+          "word": "foot",
+          "de": "Fuß",
+          "scope": "d"
+        },
+        {
+          "word": "sock",
+          "de": "Socke",
+          "scope": "d"
+        },
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "socks",
+        "hat",
+        "skirt"
+      ],
+      "hintDe": "Den trägst du an einem Fuß, über der Socke.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "socks",
+          "hat",
+          "skirt",
+          "shirt",
+          "sweater"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-give",
+      "w": "to give",
+      "g": "geben",
+      "d": "To put a thing into the hand of a child or your teacher.",
+      "s": "___ me your school bag, please.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "give",
+          "tier": "full"
+        },
+        {
+          "text": "to give",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to give",
+          "tier": "full"
+        },
+        {
+          "text": "give",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to give",
+            "tier": "full"
+          },
+          {
+            "text": "give",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "geben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "put",
+          "de": "tun",
+          "scope": "d"
+        },
+        {
+          "word": "hand",
+          "de": "Hand",
+          "scope": "d"
+        },
+        {
+          "word": "teacher",
+          "de": "Lehrer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to find",
+        "to ask",
+        "to read"
+      ],
+      "hintDe": "Du legst jemandem etwas in die Hand.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to find",
+          "to ask",
+          "to read",
+          "to look",
+          "to write"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.time",
+      "w": "time",
+      "g": "Zeit",
+      "d": "What a clock shows you. It can be one o'clock or two o'clock.",
+      "s": "What ___ is it now? It's midnight.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "time",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "time",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "time",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zeit",
+            "tier": "full"
+          },
+          {
+            "text": "Uhrzeit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "clock",
+          "de": "Uhr",
+          "scope": "d"
+        },
+        {
+          "word": "shows",
+          "de": "zeigt",
+          "scope": "d"
+        },
+        {
+          "word": "o'clock",
+          "de": "Uhr (volle Stunde)",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "picture",
+        "book",
+        "class"
+      ],
+      "hintDe": "Das zeigt dir die Uhr.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "picture",
+          "book",
+          "class",
+          "child",
+          "address"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-understand",
+      "w": "to understand",
+      "g": "verstehen",
+      "d": "To look at a word and find out what it means.",
+      "s": "I don't ___ this word. What is it in German?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "understand",
+          "tier": "full"
+        },
+        {
+          "text": "to understand",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to understand",
+          "tier": "full"
+        },
+        {
+          "text": "understand",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to understand",
+            "tier": "full"
+          },
+          {
+            "text": "understand",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verstehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": null
+        },
+        {
+          "word": "means",
+          "de": "bedeutet",
+          "scope": "d"
+        },
+        {
+          "word": "german",
+          "de": "Deutsch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to read",
+        "to look",
+        "to find"
+      ],
+      "hintDe": "Du weißt, was ein Wort bedeutet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to read",
+          "to look",
+          "to find",
+          "to ask",
+          "to write"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-write",
+      "w": "to write",
+      "g": "schreiben",
+      "d": "To make words and numbers on a page with a pen.",
+      "s": "___ the numbers in your exercise book.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "write",
+          "tier": "full"
+        },
+        {
+          "text": "to write",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to write",
+          "tier": "full"
+        },
+        {
+          "text": "write",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to write",
+            "tier": "full"
+          },
+          {
+            "text": "write",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schreiben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "make",
+          "de": "machen",
+          "scope": "d"
+        },
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": "d"
+        },
+        {
+          "word": "page",
+          "de": "Seite",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to read",
+        "to look",
+        "to listen"
+      ],
+      "hintDe": "Du machst Wörter und Zahlen mit einem Stift aufs Papier.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to read",
+          "to look",
+          "to listen",
+          "to find",
+          "to give"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-enjoy",
+      "w": "to enjoy",
+      "g": "genießen",
+      "d": "To like a thing very, very much when you do it.",
+      "s": "___ the music! It is a very cool song.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "enjoy",
+          "tier": "full"
+        },
+        {
+          "text": "to enjoy",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to enjoy",
+          "tier": "full"
+        },
+        {
+          "text": "enjoy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to enjoy",
+            "tier": "full"
+          },
+          {
+            "text": "enjoy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "genießen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "like",
+          "de": "mögen",
+          "scope": "d"
+        },
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": "s"
+        },
+        {
+          "word": "song",
+          "de": "Lied",
+          "scope": "s"
+        },
+        {
+          "word": "cool",
+          "de": "cool",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to hate",
+        "to ask",
+        "to find"
+      ],
+      "hintDe": "Etwas mit viel Freude tun.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to hate",
+          "to ask",
+          "to find",
+          "to look",
+          "to read"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-listen",
+      "w": "to listen",
+      "g": "zuhören",
+      "d": "To use your ears for a song or for music.",
+      "s": "___ to the song, then read the text.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "listen",
+          "tier": "full"
+        },
+        {
+          "text": "to listen",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to listen",
+          "tier": "full"
+        },
+        {
+          "text": "listen",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to listen",
+            "tier": "full"
+          },
+          {
+            "text": "listen",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zuhören",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": "d"
+        },
+        {
+          "word": "ears",
+          "de": "Ohren",
+          "scope": "d"
+        },
+        {
+          "word": "song",
+          "de": "Lied",
+          "scope": null
+        },
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": "d"
+        },
+        {
+          "word": "text",
+          "de": "Text",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to look",
+        "to read",
+        "to write"
+      ],
+      "hintDe": "Du nimmst die Ohren, um ein Lied zu hören.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to look",
+          "to read",
+          "to write",
+          "to speak",
+          "to find"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-love",
+      "w": "to love",
+      "g": "lieben",
+      "d": "To like a child, an animal or a thing very, very much.",
+      "s": "I ___ blue. It's my favourite colour.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "love",
+          "tier": "full"
+        },
+        {
+          "text": "to love",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to love",
+          "tier": "full"
+        },
+        {
+          "text": "love",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to love",
+            "tier": "full"
+          },
+          {
+            "text": "love",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lieben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "like",
+          "de": "mögen",
+          "scope": "d"
+        },
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "blue",
+          "de": "blau",
+          "scope": "s"
+        },
+        {
+          "word": "colour",
+          "de": "Farbe",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to hate",
+        "to find",
+        "to ask"
+      ],
+      "hintDe": "Etwas oder jemanden ganz, ganz doll mögen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to hate",
+          "to find",
+          "to ask",
+          "to enjoy",
+          "to look"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.more",
+      "w": "more",
+      "g": "mehr",
+      "d": "A bigger number of a thing than now.",
+      "s": "Can I have ___ water, please? My glass is empty.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "more",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "more",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "more",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mehr",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "bigger",
+          "de": "größer",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "s"
+        },
+        {
+          "word": "glass",
+          "de": "Glas",
+          "scope": "s"
+        },
+        {
+          "word": "empty",
+          "de": "leer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "here",
+        "then",
+        "or"
+      ],
+      "hintDe": "Eine größere Menge als jetzt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "here",
+          "then",
+          "or",
+          "your",
+          "their"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-read",
+      "w": "to read",
+      "g": "lesen",
+      "d": "To look at words on a page and understand them.",
+      "s": "I like to ___ a story book before I go to bed.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "read",
+          "tier": "full"
+        },
+        {
+          "text": "to read",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to read",
+          "tier": "full"
+        },
+        {
+          "text": "read",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to read",
+            "tier": "full"
+          },
+          {
+            "text": "read",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lesen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": "d"
+        },
+        {
+          "word": "page",
+          "de": "Seite",
+          "scope": "d"
+        },
+        {
+          "word": "like",
+          "de": "mögen",
+          "scope": "s"
+        },
+        {
+          "word": "story",
+          "de": "Geschichte",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to write",
+        "to look",
+        "to speak"
+      ],
+      "hintDe": "Du schaust Wörter auf einer Seite an und verstehst sie.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to write",
+          "to look",
+          "to speak",
+          "to listen",
+          "to find"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.their",
+      "w": "their",
+      "g": "ihr/e",
+      "d": "Of them. The book is of the children, so it is the book of them.",
+      "s": "The children put ___ school bags on the floor.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "their",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "their",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "their",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ihr",
+            "tier": "full"
+          },
+          {
+            "text": "ihre",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "children",
+          "de": "Kinder",
+          "scope": null
+        },
+        {
+          "word": "put",
+          "de": "legen",
+          "scope": "s"
+        },
+        {
+          "word": "floor",
+          "de": "Boden",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "your",
+        "our",
+        "it"
+      ],
+      "hintDe": "Es gehört ihnen (mehreren).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "your",
+          "our",
+          "it",
+          "here",
+          "more"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-ask",
+      "w": "to ask",
+      "g": "fragen",
+      "d": "To put a question to a child or to your teacher.",
+      "s": "Can I ___ you a question?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ask",
+          "tier": "full"
+        },
+        {
+          "text": "to ask",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to ask",
+          "tier": "full"
+        },
+        {
+          "text": "ask",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to ask",
+            "tier": "full"
+          },
+          {
+            "text": "ask",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fragen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "put",
+          "de": "stellen",
+          "scope": "d"
+        },
+        {
+          "word": "question",
+          "de": "Frage",
+          "scope": null
+        },
+        {
+          "word": "teacher",
+          "de": "Lehrer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to find",
+        "to give",
+        "to read"
+      ],
+      "hintDe": "Du stellst jemandem eine Frage.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to find",
+          "to give",
+          "to read",
+          "to look",
+          "to write"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.address",
+      "w": "(email) address",
+      "g": "(E-Mail-)Adresse",
+      "d": "You write to a child at this, for example noah11@zpin.com.",
+      "s": "What is your email ___? Can you spell it, please?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "address",
+          "tier": "full"
+        },
+        {
+          "text": "email address",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "address",
+          "tier": "full"
+        },
+        {
+          "text": "email address",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "address",
+            "tier": "full"
+          },
+          {
+            "text": "email address",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Adresse",
+            "tier": "full"
+          },
+          {
+            "text": "E-Mail-Adresse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "email",
+          "de": "E-Mail",
+          "scope": "s"
+        },
+        {
+          "word": "for example",
+          "de": "zum Beispiel",
+          "scope": "d"
+        },
+        {
+          "word": "noah11@zpin.com",
+          "de": "eine E-Mail-Adresse",
+          "scope": "d"
+        },
+        {
+          "word": "spell",
+          "de": "buchstabieren",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "picture",
+        "class",
+        "time"
+      ],
+      "hintDe": "Dorthin schickst du jemandem eine E-Mail.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "picture",
+          "class",
+          "time",
+          "book",
+          "child"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.how-are-you",
+      "w": "How are you?",
+      "g": "Wie geht es dir/Ihnen/euch?",
+      "d": "You say it to a child. You ask the child if all is good.",
+      "s": "Hi, Dave! ___ — I'm fine, thanks.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "How are you?",
+          "tier": "full"
+        },
+        {
+          "text": "How are you",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "How are you?",
+          "tier": "full"
+        },
+        {
+          "text": "How are you",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "How are you?",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wie geht es dir?",
+            "tier": "full"
+          },
+          {
+            "text": "Wie geht's?",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "good",
+          "de": "gut",
+          "scope": "d"
+        },
+        {
+          "word": "fine",
+          "de": "gut",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "I am fine.",
+        "how many",
+        "here"
+      ],
+      "hintDe": "So fragst du jemanden, wie es ihm geht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "I am fine.",
+          "how many",
+          "here",
+          "then",
+          "more"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.i-am-fine",
+      "w": "I am (= I'm) fine.",
+      "g": "Es geht mir gut.",
+      "d": "You say it when a child asks how you are and all is good.",
+      "s": "How are you? — ___, thanks. And you?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "I'm fine",
+          "tier": "full"
+        },
+        {
+          "text": "I am fine",
+          "tier": "full"
+        },
+        {
+          "text": "I'm fine.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I am fine.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm fine.",
+          "tier": "full"
+        },
+        {
+          "text": "I'm fine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I'm fine.",
+            "tier": "full"
+          },
+          {
+            "text": "I am fine.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Es geht mir gut.",
+            "tier": "full"
+          },
+          {
+            "text": "Mir geht's gut.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "good",
+          "de": "gut",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "How are you?",
+        "how many",
+        "here"
+      ],
+      "hintDe": "So sagst du, dass es dir gut geht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "How are you?",
+          "how many",
+          "here",
+          "then",
+          "more"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-meet",
+      "w": "to meet",
+      "g": "kennenlernen",
+      "d": "To see a child for the first time and say hello.",
+      "s": "Nice to ___ you! My name is Sue.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "meet",
+          "tier": "full"
+        },
+        {
+          "text": "to meet",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to meet",
+          "tier": "full"
+        },
+        {
+          "text": "meet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to meet",
+            "tier": "full"
+          },
+          {
+            "text": "meet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kennenlernen",
+            "tier": "full"
+          },
+          {
+            "text": "treffen",
+            "tier": "full"
+          },
+          {
+            "text": "sich treffen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        },
+        {
+          "word": "first",
+          "de": "erste",
+          "scope": "d"
+        },
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to find",
+        "to look",
+        "to give"
+      ],
+      "hintDe": "Jemanden zum ersten Mal sehen und Hallo sagen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to find",
+          "to look",
+          "to give",
+          "to ask",
+          "to read"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.then",
+      "w": "then",
+      "g": "dann",
+      "d": "After the first thing.",
+      "s": "Listen to the dialogue. ___ read it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "then",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "then",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "then",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dann",
+            "tier": "full"
+          },
+          {
+            "text": "danach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "first",
+          "de": "erste",
+          "scope": "d"
+        },
+        {
+          "word": "dialogue",
+          "de": "Dialog",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "here",
+        "or",
+        "more"
+      ],
+      "hintDe": "Danach, als Nächstes.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "here",
+          "or",
+          "more",
+          "their",
+          "your"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.your",
+      "w": "your",
+      "g": "dein/e",
+      "d": "Of you. It is not mine.",
+      "s": "Is this ___ pen? It was on your desk.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "your",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "your",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "your",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "dein",
+            "tier": "full"
+          },
+          {
+            "text": "deine",
+            "tier": "full"
+          },
+          {
+            "text": "euer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "mine",
+          "de": "meins",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "their",
+        "our",
+        "it"
+      ],
+      "hintDe": "Es gehört dir.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "their",
+          "our",
+          "it",
+          "here",
+          "more"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-look",
+      "w": "to look",
+      "g": "schauen",
+      "d": "To use your eyes to see a thing.",
+      "s": "___ at the picture on the board!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "look",
+          "tier": "full"
+        },
+        {
+          "text": "to look",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to look",
+          "tier": "full"
+        },
+        {
+          "text": "look",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to look",
+            "tier": "full"
+          },
+          {
+            "text": "look",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schauen",
+            "tier": "full"
+          },
+          {
+            "text": "sehen",
+            "tier": "full"
+          },
+          {
+            "text": "anschauen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": "d"
+        },
+        {
+          "word": "eyes",
+          "de": "Augen",
+          "scope": "d"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to listen",
+        "to read",
+        "to speak"
+      ],
+      "hintDe": "Du nimmst die Augen, um etwas zu sehen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to listen",
+          "to read",
+          "to speak",
+          "to find",
+          "to write"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.or",
+      "w": "or",
+      "g": "oder",
+      "d": "A word for one thing and not the other. You take one of two.",
+      "s": "Do you want a pen ___ a pencil? Take one.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "or",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "or",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "or",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "oder",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": "d"
+        },
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "d"
+        },
+        {
+          "word": "take",
+          "de": "nehmen",
+          "scope": null
+        },
+        {
+          "word": "want",
+          "de": "wollen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "then",
+        "here",
+        "more"
+      ],
+      "hintDe": "Du nimmst eins von zweien.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "then",
+          "here",
+          "more",
+          "their",
+          "your"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-eat",
+      "w": "to eat",
+      "g": "essen",
+      "d": "To put food into your mouth.",
+      "s": "I'm a frog and I ___ insects.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "eat",
+          "tier": "full"
+        },
+        {
+          "text": "to eat",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to eat",
+          "tier": "full"
+        },
+        {
+          "text": "eat",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to eat",
+            "tier": "full"
+          },
+          {
+            "text": "eat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "essen",
+            "tier": "full"
+          },
+          {
+            "text": "fressen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "put",
+          "de": "tun",
+          "scope": "d"
+        },
+        {
+          "word": "food",
+          "de": "Essen",
+          "scope": "d"
+        },
+        {
+          "word": "mouth",
+          "de": "Mund",
+          "scope": "d"
+        },
+        {
+          "word": "frog",
+          "de": "Frosch",
+          "scope": "s"
+        },
+        {
+          "word": "insects",
+          "de": "Insekten",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to read",
+        "to look",
+        "to ask"
+      ],
+      "hintDe": "Du tust Essen in den Mund.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to read",
+          "to look",
+          "to ask",
+          "to find",
+          "to give"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-go",
+      "w": "to go",
+      "g": "gehen",
+      "d": "To walk from one place to the next place.",
+      "s": "It is late. I must ___ home now. Bye!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "go",
+          "tier": "full"
+        },
+        {
+          "text": "to go",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to go",
+          "tier": "full"
+        },
+        {
+          "text": "go",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to go",
+            "tier": "full"
+          },
+          {
+            "text": "go",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "walk",
+          "de": "gehen, laufen",
+          "scope": "d"
+        },
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        },
+        {
+          "word": "next",
+          "de": "nächste",
+          "scope": "d"
+        },
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "s"
+        },
+        {
+          "word": "home",
+          "de": "nach Hause",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to find",
+        "to look",
+        "to ask"
+      ],
+      "hintDe": "Von einem Ort zum nächsten gehen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to find",
+          "to look",
+          "to ask",
+          "to read",
+          "to give"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.must",
+      "w": "must",
+      "g": "müssen",
+      "d": "When you have to do a thing. You can not say no to it.",
+      "s": "It's late. I ___ go home now.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "must",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "must",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "must",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "müssen",
+            "tier": "full"
+          },
+          {
+            "text": "muss",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "s"
+        },
+        {
+          "word": "home",
+          "de": "nach Hause",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "here",
+        "more",
+        "then"
+      ],
+      "hintDe": "Du hast keine Wahl, du tust es.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "here",
+          "more",
+          "then",
+          "or",
+          "your"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.how-many",
+      "w": "how many",
+      "g": "wie viele",
+      "d": "You ask it about a number of books, pens or animals.",
+      "s": "___ frogs can you see in the picture?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "how many",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "how many",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "how many",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wie viele",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": "d"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "s"
+        },
+        {
+          "word": "frogs",
+          "de": "Frösche",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "here",
+        "or",
+        "then"
+      ],
+      "hintDe": "So fragst du nach einer Anzahl.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "here",
+          "or",
+          "then",
+          "more",
+          "your"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-hate",
+      "w": "to hate",
+      "g": "hassen",
+      "d": "To not like a thing at all. It is the other way from love.",
+      "s": "I ___ pink. It is not for me at all!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hate",
+          "tier": "full"
+        },
+        {
+          "text": "to hate",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to hate",
+          "tier": "full"
+        },
+        {
+          "text": "hate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to hate",
+            "tier": "full"
+          },
+          {
+            "text": "hate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hassen",
+            "tier": "full"
+          },
+          {
+            "text": "nicht ausstehen können",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "like",
+          "de": "mögen",
+          "scope": "d"
+        },
+        {
+          "word": "other way",
+          "de": "Gegenteil",
+          "scope": "d"
+        },
+        {
+          "word": "pink",
+          "de": "rosa",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to love",
+        "to enjoy",
+        "to find"
+      ],
+      "hintDe": "Etwas überhaupt nicht mögen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to love",
+          "to enjoy",
+          "to find",
+          "to look",
+          "to give"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.here",
+      "w": "here",
+      "g": "hier",
+      "d": "In this place, not over there.",
+      "s": "___ is your pencil case. It was on my desk.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "here",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "here",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "here",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hier",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "place",
+          "de": "Ort",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "then",
+        "or",
+        "more"
+      ],
+      "hintDe": "An diesem Ort, nicht dort drüben.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "then",
+          "or",
+          "more",
+          "their",
+          "your"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.it",
+      "w": "it",
+      "g": "es",
+      "d": "A word for a thing or an animal, not for a child.",
+      "s": "I have a pet frog. ___ is green.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "it",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "it",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "it",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "es",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": "d"
+        },
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "pet",
+          "de": "Haustier",
+          "scope": "s"
+        },
+        {
+          "word": "frog",
+          "de": "Frosch",
+          "scope": "s"
+        },
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "here",
+        "their",
+        "your"
+      ],
+      "hintDe": "Das Wort für ein Ding oder ein Tier.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "here",
+          "their",
+          "your",
+          "our",
+          "more"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.let-s",
+      "w": "Let's …",
+      "g": "Lass(t) …",
+      "d": "You say it when you want to do a thing with a child.",
+      "s": "___ sing a song! It is so much fun.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Let's",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Let's",
+          "tier": "full"
+        },
+        {
+          "text": "Lets",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Let's",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lass uns",
+            "tier": "full"
+          },
+          {
+            "text": "Lasst uns",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "want",
+          "de": "wollen",
+          "scope": "d"
+        },
+        {
+          "word": "sing",
+          "de": "singen",
+          "scope": "s"
+        },
+        {
+          "word": "song",
+          "de": "Lied",
+          "scope": "s"
+        },
+        {
+          "word": "fun",
+          "de": "Spaß",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "here",
+        "then",
+        "more"
+      ],
+      "hintDe": "So schlägst du vor, etwas zusammen zu tun.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "here",
+          "then",
+          "more",
+          "or",
+          "your"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.midnight",
+      "w": "midnight",
+      "g": "Mitternacht",
+      "d": "12 o'clock at night, when all the class is in bed.",
+      "s": "It's 12 o'clock now — it's ___ in the classroom.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "midnight",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "midnight",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "midnight",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mitternacht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "o'clock",
+          "de": "Uhr (volle Stunde)",
+          "scope": null
+        },
+        {
+          "word": "night",
+          "de": "Nacht",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "time",
+        "class",
+        "picture"
+      ],
+      "hintDe": "Zwölf Uhr in der Nacht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "time",
+          "class",
+          "picture",
+          "book",
+          "address"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.our",
+      "w": "our",
+      "g": "unser/e",
+      "d": "Of you and me. It is not theirs.",
+      "s": "This is ___ classroom. All of us in this class learn here.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "our",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "our",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "our",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unser",
+            "tier": "full"
+          },
+          {
+            "text": "unsere",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "learn",
+          "de": "lernen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "their",
+        "your",
+        "it"
+      ],
+      "hintDe": "Es gehört dir und mir zusammen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "their",
+          "your",
+          "it",
+          "here",
+          "more"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.favourite",
+      "w": "favourite",
+      "g": "Lieblings-",
+      "d": "The one thing you love the best of all.",
+      "s": "Green is my ___ colour. I love it the best.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "favourite",
+          "tier": "full"
+        },
+        {
+          "text": "favorite",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "favourite",
+          "tier": "full"
+        },
+        {
+          "text": "favorite",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "favourite",
+            "tier": "full"
+          },
+          {
+            "text": "favorite",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lieblings-",
+            "tier": "full"
+          },
+          {
+            "text": "liebste",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": "s"
+        },
+        {
+          "word": "colour",
+          "de": "Farbe",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "light",
+        "more",
+        "here"
+      ],
+      "hintDe": "Das, was du am allerliebsten magst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "light",
+          "more",
+          "here",
+          "then",
+          "or"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-find",
+      "w": "to find",
+      "g": "finden",
+      "d": "To see a thing you were looking for.",
+      "s": "Can you ___ my school tie? It is on my chair.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "find",
+          "tier": "full"
+        },
+        {
+          "text": "to find",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to find",
+          "tier": "full"
+        },
+        {
+          "text": "find",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to find",
+            "tier": "full"
+          },
+          {
+            "text": "find",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "finden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        },
+        {
+          "word": "looking for",
+          "de": "suchen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to look",
+        "to give",
+        "to ask"
+      ],
+      "hintDe": "Du siehst etwas, das du gesucht hast.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to look",
+          "to give",
+          "to ask",
+          "to read",
+          "to meet"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.light",
+      "w": "light",
+      "g": "hell",
+      "d": "Not dark. A pale colour, for example the sky on a sunny morning.",
+      "s": "My favourite colour is ___ blue, like the sky.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "light",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "light",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "light",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hell",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "dark",
+          "de": "dunkel",
+          "scope": "d"
+        },
+        {
+          "word": "pale",
+          "de": "blass",
+          "scope": "d"
+        },
+        {
+          "word": "colour",
+          "de": "Farbe",
+          "scope": null
+        },
+        {
+          "word": "for example",
+          "de": "zum Beispiel",
+          "scope": "d"
+        },
+        {
+          "word": "sky",
+          "de": "Himmel",
+          "scope": null
+        },
+        {
+          "word": "sunny",
+          "de": "sonnig",
+          "scope": "d"
+        },
+        {
+          "word": "morning",
+          "de": "Morgen",
+          "scope": "d"
+        },
+        {
+          "word": "blue",
+          "de": "blau",
+          "scope": "s"
+        },
+        {
+          "word": "like",
+          "de": "wie",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "favourite",
+        "more",
+        "here"
+      ],
+      "hintDe": "Nicht dunkel, eine blasse Farbe.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "favourite",
+          "more",
+          "here",
+          "then",
+          "or"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.child",
+      "w": "child",
+      "g": "Kind",
+      "d": "A young boy or girl. There are 20 of them in our class.",
+      "s": "This ___ in our class is Mike. He is ten.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "child",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "child",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "child",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kind",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "young",
+          "de": "jung",
+          "scope": "d"
+        },
+        {
+          "word": "boy",
+          "de": "Junge",
+          "scope": "d"
+        },
+        {
+          "word": "girl",
+          "de": "Mädchen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "class",
+        "book",
+        "picture"
+      ],
+      "hintDe": "Ein junger Bub oder ein junges Mädchen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "class",
+          "book",
+          "picture",
+          "time",
+          "address"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-clean",
+      "w": "to clean",
+      "g": "sauber machen",
+      "d": "To take the dirt from a thing so it is not dirty.",
+      "s": "Please ___ the board after the class.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "clean",
+          "tier": "full"
+        },
+        {
+          "text": "to clean",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to clean",
+          "tier": "full"
+        },
+        {
+          "text": "clean",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to clean",
+            "tier": "full"
+          },
+          {
+            "text": "clean",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sauber machen",
+            "tier": "full"
+          },
+          {
+            "text": "putzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "take",
+          "de": "nehmen",
+          "scope": "d"
+        },
+        {
+          "word": "dirt",
+          "de": "Schmutz",
+          "scope": "d"
+        },
+        {
+          "word": "dirty",
+          "de": "schmutzig",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to open",
+        "to close",
+        "to find"
+      ],
+      "hintDe": "Den Schmutz wegmachen, sodass etwas wieder sauber ist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to open",
+          "to close",
+          "to find",
+          "to look",
+          "to give"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-close",
+      "w": "to close",
+      "g": "schließen",
+      "d": "To shut a door or a window so it is not open.",
+      "s": "It is cold in here. Please ___ the window.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "close",
+          "tier": "full"
+        },
+        {
+          "text": "to close",
+          "tier": "partial"
+        },
+        {
+          "text": "shut",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to close",
+          "tier": "full"
+        },
+        {
+          "text": "close",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to close",
+            "tier": "full"
+          },
+          {
+            "text": "close",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schließen",
+            "tier": "full"
+          },
+          {
+            "text": "zumachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shut",
+          "de": "zumachen",
+          "scope": "d"
+        },
+        {
+          "word": "cold",
+          "de": "kalt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to open",
+        "to clean",
+        "to find"
+      ],
+      "hintDe": "Eine Tür oder ein Fenster zumachen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to open",
+          "to clean",
+          "to find",
+          "to look",
+          "to give"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-open",
+      "w": "to open",
+      "g": "öffnen",
+      "d": "To make a door, a window or a book not closed.",
+      "s": "___ your books and read page ten.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "open",
+          "tier": "full"
+        },
+        {
+          "text": "to open",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to open",
+          "tier": "full"
+        },
+        {
+          "text": "open",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to open",
+            "tier": "full"
+          },
+          {
+            "text": "open",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "öffnen",
+            "tier": "full"
+          },
+          {
+            "text": "aufmachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "make",
+          "de": "machen",
+          "scope": "d"
+        },
+        {
+          "word": "page",
+          "de": "Seite",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to close",
+        "to clean",
+        "to find"
+      ],
+      "hintDe": "Eine Tür, ein Fenster oder ein Buch aufmachen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to close",
+          "to clean",
+          "to find",
+          "to look",
+          "to give"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.picture",
+      "w": "picture",
+      "g": "Bild",
+      "d": "You draw or paint it. You can also look at it in a book.",
+      "s": "Look at the ___ on the wall. Can you see the colours?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "picture",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "picture",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "picture",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bild",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "draw",
+          "de": "zeichnen",
+          "scope": "d"
+        },
+        {
+          "word": "paint",
+          "de": "malen",
+          "scope": "d"
+        },
+        {
+          "word": "wall",
+          "de": "Wand",
+          "scope": "s"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "s"
+        },
+        {
+          "word": "colours",
+          "de": "Farben",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "book",
+        "board",
+        "class"
+      ],
+      "hintDe": "Das zeichnest oder malst du.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "book",
+          "board",
+          "class",
+          "tablet",
+          "address"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-sit-down",
+      "w": "to sit down",
+      "g": "sich (hin-)setzen",
+      "d": "To put your body down on a chair.",
+      "s": "Please ___ on your chair, children.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sit down",
+          "tier": "full"
+        },
+        {
+          "text": "to sit down",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to sit down",
+          "tier": "full"
+        },
+        {
+          "text": "sit down",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to sit down",
+            "tier": "full"
+          },
+          {
+            "text": "sit down",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich setzen",
+            "tier": "full"
+          },
+          {
+            "text": "sich hinsetzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "put",
+          "de": "bringen",
+          "scope": "d"
+        },
+        {
+          "word": "body",
+          "de": "Körper",
+          "scope": "d"
+        },
+        {
+          "word": "children",
+          "de": "Kinder",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to stand up",
+        "to open",
+        "to close"
+      ],
+      "hintDe": "Du bringst deinen Körper auf den Stuhl.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to stand up",
+          "to open",
+          "to close",
+          "to take out",
+          "to clean"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-speak",
+      "w": "to speak",
+      "g": "sprechen",
+      "d": "To use your mouth to say words to a child.",
+      "s": "Don't ___ during the test. Listen and write.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "speak",
+          "tier": "full"
+        },
+        {
+          "text": "to speak",
+          "tier": "partial"
+        },
+        {
+          "text": "talk",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to speak",
+          "tier": "full"
+        },
+        {
+          "text": "speak",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to speak",
+            "tier": "full"
+          },
+          {
+            "text": "speak",
+            "tier": "full"
+          },
+          {
+            "text": "talk",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sprechen",
+            "tier": "full"
+          },
+          {
+            "text": "reden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": "d"
+        },
+        {
+          "word": "mouth",
+          "de": "Mund",
+          "scope": "d"
+        },
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": "d"
+        },
+        {
+          "word": "during",
+          "de": "während",
+          "scope": "s"
+        },
+        {
+          "word": "test",
+          "de": "Test",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to listen",
+        "to read",
+        "to look"
+      ],
+      "hintDe": "Du nimmst den Mund, um Wörter zu sagen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to listen",
+          "to read",
+          "to look",
+          "to find",
+          "to write"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-stand-up",
+      "w": "to stand up",
+      "g": "aufstehen",
+      "d": "To get up from your chair and be on your feet.",
+      "s": "Don't ___. Sit down, please.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stand up",
+          "tier": "full"
+        },
+        {
+          "text": "to stand up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to stand up",
+          "tier": "full"
+        },
+        {
+          "text": "stand up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to stand up",
+            "tier": "full"
+          },
+          {
+            "text": "stand up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufstehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get up",
+          "de": "hochkommen",
+          "scope": "d"
+        },
+        {
+          "word": "feet",
+          "de": "Füße",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to sit down",
+        "to open",
+        "to close"
+      ],
+      "hintDe": "Vom Stuhl hoch auf die Füße kommen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to sit down",
+          "to open",
+          "to close",
+          "to take out",
+          "to clean"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.to-take-out",
+      "w": "to take out",
+      "g": "herausnehmen",
+      "d": "To get a thing from inside your school bag.",
+      "s": "___ your books and put them on your desks.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "take out",
+          "tier": "full"
+        },
+        {
+          "text": "to take out",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to take out",
+          "tier": "full"
+        },
+        {
+          "text": "take out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to take out",
+            "tier": "full"
+          },
+          {
+            "text": "take out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "herausnehmen",
+            "tier": "full"
+          },
+          {
+            "text": "rausnehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "get",
+          "de": "holen",
+          "scope": "d"
+        },
+        {
+          "word": "inside",
+          "de": "drinnen",
+          "scope": "d"
+        },
+        {
+          "word": "put",
+          "de": "legen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to sit down",
+        "to stand up",
+        "to clean"
+      ],
+      "hintDe": "Etwas aus der Schultasche holen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to sit down",
+          "to stand up",
+          "to clean",
+          "to open",
+          "to close"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u01.w.class",
+      "w": "class",
+      "g": "(Schul-)Klasse",
+      "d": "All the children who learn together with one teacher.",
+      "s": "There are 20 children in our ___. We learn English here.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "class",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "class",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "class",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Klasse",
+            "tier": "full"
+          },
+          {
+            "text": "Schulklasse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "children",
+          "de": "Kinder",
+          "scope": null
+        },
+        {
+          "word": "learn",
+          "de": "lernen",
+          "scope": null
+        },
+        {
+          "word": "together",
+          "de": "zusammen",
+          "scope": "d"
+        },
+        {
+          "word": "teacher",
+          "de": "Lehrer",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "school",
+        "book",
+        "picture"
+      ],
+      "hintDe": "Alle Kinder, die mit einer Lehrkraft zusammen lernen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "school",
+          "book",
+          "picture",
+          "time",
+          "address"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}
