@@ -226,9 +226,17 @@ export function buildItemsReview(slug: string, opts: { full: boolean }): Generat
       allowed: menuFor("translation-audit", it.id),
     });
   }
+  const seenWarnKeys = new Set<string>();
   for (const w of validation.warns) {
+    // The same validator warning can fire multiple times on one item (e.g. a
+    // sentence-initial "Sie" in several answer sentences) — collapse identical
+    // (itemId, note) warns into a single review flag, else ingest sees a
+    // duplicate verdict block.
+    const key = `validator-warn:${w.itemId}#${sha256OfString(w.note).slice(0, 6)}`;
+    if (seenWarnKeys.has(key)) continue;
+    seenWarnKeys.add(key);
     flags.push({
-      key: `validator-warn:${w.itemId}#${sha256OfString(w.note).slice(0, 6)}`,
+      key,
       kind: "validator-warn",
       itemId: w.itemId,
       title: "deterministic validator warning",
