@@ -1,0 +1,686 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u10",
+  "round": 1,
+  "itemsHash": "6fab9ef3ff7b",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u10.w.argument",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.argument",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.businessman",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.businessman",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.compromise",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.compromise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.concern",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.concern",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.don-t-drop-litter",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.don-t-drop-litter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.education",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.education",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.headteacher",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.headteacher",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.majority",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.majority",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.right",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.right",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.suffrage",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.suffrage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.suffragette",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.suffragette",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-arrest",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-arrest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-attend",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-attend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-be-able-to-do",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-be-able-to-do",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-be-equal",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-be-equal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-close-down",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-close-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-hand-out-leaflets",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-hand-out-leaflets",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-involve",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-involve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-protest",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-protest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-refuse",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-refuse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-save-water-and-energy",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-save-water-and-energy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-send-out-emails",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-send-out-emails",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-sign-a-petition",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-sign-a-petition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-stand-up-for",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-stand-up-for",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-take-action",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-take-action",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-treat",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-treat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.to-vote",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.to-vote",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.way-out",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.way-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g3u10.w.wrapping",
+      "kind": "new-gloss",
+      "itemId": "g3u10.w.wrapping",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.ability",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.ability",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.argument",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.argument",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.businessman",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.businessman",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.city-council",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.city-council",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.cloth-bag",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.cloth-bag",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.compromise",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.compromise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.concern",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.concern",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.cottage",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.cottage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.debate",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.debate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.don-t-buy-a-new-bag-bring-your-own",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.don-t-buy-a-new-bag-bring-your-own",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.don-t-drive-short-distances",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.don-t-drive-short-distances",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.don-t-drop-litter",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.don-t-drop-litter",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.don-t-leave-bottles-or-cans-on-the-beach",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.don-t-leave-bottles-or-cans-on-the-beach",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.education",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.education",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.good-point",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.good-point",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.hardly-ever",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.hardly-ever",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.headteacher",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.headteacher",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.in-general",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.in-general",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.law",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.law",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.lazy",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.lazy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.majority",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.majority",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.non-violent",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.non-violent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.nowadays",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.nowadays",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.organisation",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.organisation",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.quality",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.quality",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.right",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.right",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.suffrage",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.suffrage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.suffragette",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.suffragette",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-arrest",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-arrest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-attend",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-attend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-be-able-to-do",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-be-able-to-do",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-be-equal",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-be-equal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-buy-locally-produced-food",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-buy-locally-produced-food",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-close-down",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-close-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-exist",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-exist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-go-on-a-protest-march",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-go-on-a-protest-march",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-hand-out-leaflets",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-hand-out-leaflets",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-involve",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-involve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-organise-a-meeting",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-organise-a-meeting",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-protest",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-protest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-recycle-paper-glass-plastic-and-cans",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-recycle-paper-glass-plastic-and-cans",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-refuse",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-refuse",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-save-water-and-energy",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-save-water-and-energy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-send-out-emails",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-send-out-emails",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-sign-a-petition",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-sign-a-petition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-speak-out",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-speak-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-stand-up-for",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-stand-up-for",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-take-action",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-take-action",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-treat",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-treat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.to-vote",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.to-vote",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.town-hall",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.town-hall",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.way-out",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.way-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.w.wrapping",
+      "kind": "translation-audit",
+      "itemId": "g3u10.w.wrapping",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.be-allowed-to-tenses.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.be-allowed-to-tenses.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.be-allowed-to-tenses.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.be-allowed-to-tenses.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.be-allowed-to-tenses.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.be-allowed-to-tenses.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.007",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.008",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u10.gi.could-was-able-to.tr.009",
+      "kind": "translation-audit",
+      "itemId": "g3u10.gi.could-was-able-to.tr.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g3u10.w.to-attend#fe9562",
+      "kind": "validator-warn",
+      "itemId": "g3u10.w.to-attend",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 170 rows, 2 structures (could/was-able-to past ability; be-allowed-to across past/future/present-perfect). Largest single unit (117 grammar). Translation CLEAN (could=general ability, was-able-to=managed once, durfte/wird dürfen/hat dürfen → was/will be/has been allowed to all faithful). Answers: the could-vs-was-able-to semantic distinction is correctly taught (single past success keys was-able-to, not could); fixed 5 general-ability items where the \"was able to\" distractor was ALSO valid → swapped to clearly-wrong forms. Register: relabeled 2 group-sorts off English meta-language → \"could\"/\"was able to\". Level-gloss: reworded the \"for good\" idiom → \"forever\"; removed 3 false-positive glosses (natural/college/leader are taught). ~185 audited grants (the rights/suffrage/ability vocab is dense; \"allowed\"/\"been\" needed granting for this slug). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 170,
+    "fullRows": 170,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
