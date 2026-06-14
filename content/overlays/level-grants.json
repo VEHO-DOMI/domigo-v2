@@ -7740,6 +7740,1581 @@
       "reason": "present-perfect: deliberate present-simple/for-since wrong-form distractor word",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "went",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "saw",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "was",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "were",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "had",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "made",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "broke",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "met",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "got",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "lost",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "moved",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "visited",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "finished",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "entered",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "arrived",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "invented",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "invested",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "designed",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "watched",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "phoned",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "started",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "tried",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "gone",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "seen",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "done",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "eaten",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "written",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ridden",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "tidied",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ever",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "never",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "already",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "yet",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "just",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ago",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "rode",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "be",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "finish",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "invest",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "lose",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "another",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "fifteen",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "minutes",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "years",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "keys",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "machines",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "prize",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "win",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "sushi",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "Indian",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "Spain",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "Madrid",
+      "reason": "past-vs-present-perfect: past form/participle/signal word/decoy or inventions-theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "by",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "itself",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "person",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "cat",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "thin",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "fry",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "band",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "goes",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "around",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "created",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "learn",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "sure",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "something",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "large",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "standing",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "together",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "coils",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "sticks",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "arms",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "walk",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "flows",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "through",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "passed",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "body",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "bulbs",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "special",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "allows",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "water",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "working",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "things",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "said",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "send",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "oily",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "part",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "soft",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "clothing",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "hand",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "warm",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "hands",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "winter",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "enough",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "problem",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "health",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "stopped",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "change",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "other",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "idea",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "right",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "exist",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "say",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "gave",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "sold",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "angle",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "steps",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "kids",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "yourself",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "situation",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "able",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "easily",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "different",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "situations",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "fix",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "i'll",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "email",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "important",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "someone",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "draw",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "sat",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "paper",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "slowly",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "late",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "1880s",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "knew",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "try",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ways",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "colours",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "until",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "found",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "worked",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "might",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "better",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "putting",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "telephone",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "alexander",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "graham",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "bell",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "get",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "later",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "works",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "start",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "broken",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ideas",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "carefully",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "decided",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "underwater",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "sounds",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "air",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "shot",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "future",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "test",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "see",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "built",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "answer",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "thinking",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "took",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "few",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "wheels",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "helps",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "between",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "arm",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "film",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "moment",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "exact",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "I",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "have",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "that",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "last",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "week",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "Did",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "you",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u08",
+      "itemId": null,
+      "field": null,
+      "token": "did",
+      "reason": "g3-u08 inventions/tech unit: word untaught in cumulative bank (multiword-phrase indexing gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
