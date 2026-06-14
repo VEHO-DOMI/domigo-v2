@@ -1,0 +1,294 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u07",
+  "round": 1,
+  "itemsHash": "4ce24136baf3",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "translation-audit:g3u07.w.a-pile-of",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.a-pile-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.beloved",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.beloved",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.childhood",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.childhood",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.clumsy",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.clumsy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.earring",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.earring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.honest",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.honest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.it-s-none-of-my-business",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.it-s-none-of-my-business",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.jealous",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.jealous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.nowhere",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.nowhere",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.questionnaire",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.questionnaire",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.rash",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.rash",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.relationship",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.relationship",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.script",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.script",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.soft-toy",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.soft-toy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-admit",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-admit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-blackmail",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-blackmail",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-break-up-with-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-break-up-with-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-fall-out-with-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-fall-out-with-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-get-on-well-with-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-get-on-well-with-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-keep-secret",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-keep-secret",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-laugh-at-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-laugh-at-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-lie-to-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-lie-to-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-make-fun-of-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-make-fun-of-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-make-up-one-s-mind",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-make-up-one-s-mind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-make-up-with-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-make-up-with-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-mind-your-own-business",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-mind-your-own-business",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-move",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-move",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-own",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-own",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-solve",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-solve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-step-in",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-step-in",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-storm-out-of",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-storm-out-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-struggle",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-struggle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.to-tell-sb-off",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.to-tell-sb-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.w.unwell",
+      "kind": "translation-audit",
+      "itemId": "g3u07.w.unwell",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.gi.present-perfect-for-since.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u07.gi.present-perfect-for-since.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.gi.present-perfect-for-since.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u07.gi.present-perfect-for-since.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.gi.present-perfect-for-since.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u07.gi.present-perfect-for-since.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u07.gi.present-perfect-for-since.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g3u07.gi.present-perfect-for-since.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g3u07.gi.present-perfect-for-since.tr.004#2c51f2",
+      "kind": "validator-warn",
+      "itemId": "g3u07.gi.present-perfect-for-since.tr.004",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Stage-8 (Fable) adjudication — full sweep of all 81 rows (structure: present perfect with for/since — have/has + past participle). Answers lens verified: have/has agreement, correct participles (been/lived/known/gone-not-went/seen-not-saw/eaten/studied), for+duration vs since+starting-point keying, and all for↔since / past-simple / present-simple distractors genuinely wrong. Translation CLEAN — the seit→for/since trap is handled correctly (seit+duration→for, seit+point→since, German present→English present perfect). Fixed: answers 3 (ec.004/005/006 missing the 's/'ve contracted variant → added as partial); register 1 (\"Present-perfect\" tense label in an mp prompt → removed). ~30 audited grants (participles + carriers). Level-gloss findings (tennis/primary school) are gate-clean (granted/in-bank). 0 fix, 0 drop → approve."
+  },
+  "metrics": {
+    "itemsReviewed": 81,
+    "fullRows": 81,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

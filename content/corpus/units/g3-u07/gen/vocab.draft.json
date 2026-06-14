@@ -1,0 +1,2446 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g3-u07",
+  "briefBank": "c74971b27547",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g3u07.w.to-fall-out-with-sb",
+      "w": "to fall out with sb.",
+      "g": "sich mit jdm. zerstreiten",
+      "d": "to have a big fight and stop talking to a friend",
+      "s": "I ___ with my best friend last week, and now we do not talk.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "fell out",
+          "tier": "full"
+        },
+        {
+          "text": "fall out",
+          "tier": "partial"
+        },
+        {
+          "text": "fell out with",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fall out with sb.",
+          "tier": "full"
+        },
+        {
+          "text": "fall out with",
+          "tier": "full"
+        },
+        {
+          "text": "fall out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fall out with",
+            "tier": "full"
+          },
+          {
+            "text": "to fall out with sb.",
+            "tier": "full"
+          },
+          {
+            "text": "fall out",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich mit jemandem zerstreiten",
+            "tier": "full"
+          },
+          {
+            "text": "sich zerstreiten",
+            "tier": "full"
+          },
+          {
+            "text": "sich streiten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up with sb.",
+        "to get on well with sb.",
+        "to step in"
+      ],
+      "hintDe": "Du hast einen großen Streit mit einem Freund und redest danach nicht mehr mit ihm.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to make up with sb.",
+          "to get on well with sb.",
+          "to step in",
+          "to break up with sb."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-storm-out-of",
+      "w": "to storm out of",
+      "g": "wütend hinausstürmen",
+      "d": "to leave a room in an angry way",
+      "s": "He was so angry that he ___ the room and did not look back.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stormed out of",
+          "tier": "full"
+        },
+        {
+          "text": "storm out of",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "storm out of",
+          "tier": "full"
+        },
+        {
+          "text": "to storm out of",
+          "tier": "full"
+        },
+        {
+          "text": "stormed out of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "storm out of",
+            "tier": "full"
+          },
+          {
+            "text": "to storm out of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wütend hinausstürmen",
+            "tier": "full"
+          },
+          {
+            "text": "wütend hinauslaufen",
+            "tier": "full"
+          },
+          {
+            "text": "hinausstürmen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to step in",
+        "to make up with sb.",
+        "to get on well with sb."
+      ],
+      "hintDe": "Du bist wütend und gehst schnell aus dem Zimmer.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to step in",
+          "to make up with sb.",
+          "to get on well with sb.",
+          "to move"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-break-up-with-sb",
+      "w": "to break up with sb.",
+      "g": "mit jdm. Schluss machen",
+      "d": "to no longer be a boyfriend or girlfriend with somebody",
+      "s": "She had a big fight with her boyfriend, so she will ___ him.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "break up with",
+          "tier": "full"
+        },
+        {
+          "text": "break up with him",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "break up with sb.",
+          "tier": "full"
+        },
+        {
+          "text": "break up with",
+          "tier": "full"
+        },
+        {
+          "text": "broke up with",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "break up with",
+            "tier": "full"
+          },
+          {
+            "text": "to break up with sb.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mit jemandem Schluss machen",
+            "tier": "full"
+          },
+          {
+            "text": "Schluss machen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to fall out with sb.",
+        "to make up with sb.",
+        "to get on well with sb."
+      ],
+      "hintDe": "Du beendest die Beziehung mit deinem Freund oder deiner Freundin.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to fall out with sb.",
+          "to make up with sb.",
+          "to get on well with sb.",
+          "to laugh at sb."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-mind-your-own-business",
+      "w": "to mind your own business",
+      "g": "sich um seine eigenen Angelegenheiten kümmern",
+      "d": "to not ask about a thing that is not for you",
+      "s": "Stop asking me about my family! It is not for you, so ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "mind your own business",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mind your own business",
+          "tier": "full"
+        },
+        {
+          "text": "to mind your own business",
+          "tier": "full"
+        },
+        {
+          "text": "mind my own business",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mind your own business",
+            "tier": "full"
+          },
+          {
+            "text": "to mind your own business",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kümmere dich um deine eigenen Angelegenheiten",
+            "tier": "full"
+          },
+          {
+            "text": "kümmere dich um deinen eigenen Kram",
+            "tier": "full"
+          },
+          {
+            "text": "misch dich nicht ein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up with sb.",
+        "to get on well with sb.",
+        "to laugh at sb."
+      ],
+      "hintDe": "Du sollst dich nicht in fremde Dinge einmischen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to make up with sb.",
+          "to get on well with sb.",
+          "to laugh at sb.",
+          "to tell sb. off"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-make-up-with-sb",
+      "w": "to make up with sb.",
+      "g": "sich mit jdm. versöhnen",
+      "d": "to become good friends again after a fight",
+      "s": "They had a fight in the morning, but now they ___ and are friends again.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "make up",
+          "tier": "full"
+        },
+        {
+          "text": "make up with each other",
+          "tier": "full"
+        },
+        {
+          "text": "made up",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make up with sb.",
+          "tier": "full"
+        },
+        {
+          "text": "make up with",
+          "tier": "full"
+        },
+        {
+          "text": "make up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make up with",
+            "tier": "full"
+          },
+          {
+            "text": "to make up with sb.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich mit jemandem versöhnen",
+            "tier": "full"
+          },
+          {
+            "text": "sich versöhnen",
+            "tier": "full"
+          },
+          {
+            "text": "sich wieder vertragen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to fall out with sb.",
+        "to break up with sb.",
+        "to storm out of"
+      ],
+      "hintDe": "Nach einem Streit versöhnst du dich wieder mit jemandem.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to fall out with sb.",
+          "to break up with sb.",
+          "to storm out of",
+          "to tell sb. off"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-get-on-well-with-sb",
+      "w": "to get on well with sb.",
+      "g": "sich gut mit jdm. verstehen",
+      "d": "to have a good and happy time with a friend",
+      "s": "I ___ on really well with my big sister, and we always laugh and play.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "get",
+          "tier": "full"
+        },
+        {
+          "text": "got",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get on well with sb.",
+          "tier": "full"
+        },
+        {
+          "text": "get on well with",
+          "tier": "full"
+        },
+        {
+          "text": "get on with",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get on well with",
+            "tier": "full"
+          },
+          {
+            "text": "to get on well with sb.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich gut mit jemandem verstehen",
+            "tier": "full"
+          },
+          {
+            "text": "sich gut verstehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to fall out with sb.",
+        "to break up with sb.",
+        "to storm out of"
+      ],
+      "hintDe": "Du verstehst dich gut mit jemandem und hast eine schöne Zeit zusammen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to fall out with sb.",
+          "to break up with sb.",
+          "to storm out of",
+          "to tell sb. off"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.it-s-none-of-my-business",
+      "w": "It's none of my business.",
+      "g": "Das geht mich nichts an.",
+      "d": "a way to tell somebody that a thing is not for you to ask about",
+      "s": "Who she talks to at the break is ___, so I will not ask her about it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "none of my business",
+          "tier": "full"
+        },
+        {
+          "text": "my business",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It's none of my business.",
+          "tier": "full"
+        },
+        {
+          "text": "none of my business",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It's none of my business.",
+            "tier": "full"
+          },
+          {
+            "text": "none of my business",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Das geht mich nichts an.",
+            "tier": "full"
+          },
+          {
+            "text": "Das ist nicht meine Sache.",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to mind your own business",
+        "to get on well with sb.",
+        "to make up with sb."
+      ],
+      "hintDe": "So sagst du, dass dich eine Sache nichts angeht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to mind your own business",
+          "to get on well with sb.",
+          "to make up with sb.",
+          "to laugh at sb."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-laugh-at-sb",
+      "w": "to laugh at sb.",
+      "g": "jdn. auslachen",
+      "d": "to show somebody you think they are funny in a not nice way",
+      "s": "Some children at school ___ me when I dropped my books.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "laughed at",
+          "tier": "full"
+        },
+        {
+          "text": "laugh at",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "laugh at sb.",
+          "tier": "full"
+        },
+        {
+          "text": "laugh at",
+          "tier": "full"
+        },
+        {
+          "text": "to laugh at sb.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "laugh at",
+            "tier": "full"
+          },
+          {
+            "text": "to laugh at sb.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemanden auslachen",
+            "tier": "full"
+          },
+          {
+            "text": "auslachen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up with sb.",
+        "to step in",
+        "to get on well with sb."
+      ],
+      "hintDe": "Du lachst über jemanden, sodass er sich schlecht fühlt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to make up with sb.",
+          "to step in",
+          "to get on well with sb.",
+          "to tell sb. off"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-make-up-one-s-mind",
+      "w": "to make up one's mind",
+      "g": "einen Entschluss fassen",
+      "d": "to think well about a thing and then go for it",
+      "s": "Once she has ___ about what she wants, she does not let go of it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "made up her mind",
+          "tier": "full"
+        },
+        {
+          "text": "make up her mind",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make up one's mind",
+          "tier": "full"
+        },
+        {
+          "text": "make up your mind",
+          "tier": "full"
+        },
+        {
+          "text": "make up my mind",
+          "tier": "full"
+        },
+        {
+          "text": "made up her mind",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make up one's mind",
+            "tier": "full"
+          },
+          {
+            "text": "make up your mind",
+            "tier": "full"
+          },
+          {
+            "text": "to make up one's mind",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einen Entschluss fassen",
+            "tier": "full"
+          },
+          {
+            "text": "sich entscheiden",
+            "tier": "full"
+          },
+          {
+            "text": "sich entschließen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to mind your own business",
+        "to make fun of sb.",
+        "to get on well with sb."
+      ],
+      "hintDe": "Du überlegst gut und entscheidest dich dann für eine Sache.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to mind your own business",
+          "to make fun of sb.",
+          "to get on well with sb.",
+          "to solve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-make-fun-of-sb",
+      "w": "to make fun of sb.",
+      "g": "sich über jdn. lustig machen",
+      "d": "to do or tell jokes about somebody to laugh at them",
+      "s": "Do not ___ him just because he is new and has no friends.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "make fun of",
+          "tier": "full"
+        },
+        {
+          "text": "making fun of",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make fun of sb.",
+          "tier": "full"
+        },
+        {
+          "text": "make fun of",
+          "tier": "full"
+        },
+        {
+          "text": "to make fun of sb.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make fun of",
+            "tier": "full"
+          },
+          {
+            "text": "to make fun of sb.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich über jemanden lustig machen",
+            "tier": "full"
+          },
+          {
+            "text": "sich lustig machen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up with sb.",
+        "to step in",
+        "to get on well with sb."
+      ],
+      "hintDe": "Du machst Witze über jemanden und lachst über ihn.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to make up with sb.",
+          "to step in",
+          "to get on well with sb.",
+          "to laugh at sb."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-move",
+      "w": "to move",
+      "g": "umziehen",
+      "d": "to leave your home and go to live in a new place",
+      "s": "My parents want to ___ to a bigger home in a new city.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "move",
+          "tier": "full"
+        },
+        {
+          "text": "moved",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "move",
+          "tier": "full"
+        },
+        {
+          "text": "to move",
+          "tier": "full"
+        },
+        {
+          "text": "moved",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "move",
+            "tier": "full"
+          },
+          {
+            "text": "to move",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "umziehen",
+            "tier": "full"
+          },
+          {
+            "text": "übersiedeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to own",
+        "to solve",
+        "to admit"
+      ],
+      "hintDe": "Du verlässt dein Zuhause und wohnst an einem neuen Ort.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to own",
+          "to solve",
+          "to admit",
+          "to struggle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.soft-toy",
+      "w": "soft toy",
+      "g": "Stofftier",
+      "d": "a cuddly animal that you hug in bed",
+      "s": "I have had these ___ since I was very little, and I still love them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "soft toys",
+          "tier": "full"
+        },
+        {
+          "text": "soft toy",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "soft toy",
+          "tier": "full"
+        },
+        {
+          "text": "soft toys",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "soft toy",
+            "tier": "full"
+          },
+          {
+            "text": "soft toys",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stofftier",
+            "tier": "full"
+          },
+          {
+            "text": "Kuscheltier",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "earring",
+        "questionnaire",
+        "script"
+      ],
+      "hintDe": "Ein kuscheliges Tier, das du im Bett umarmst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "earring",
+          "questionnaire",
+          "script",
+          "relationship"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-step-in",
+      "w": "to step in",
+      "g": "eingreifen",
+      "d": "to help when two people have a fight",
+      "s": "When a child makes fun of your friend, you must ___ and help.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "step in",
+          "tier": "full"
+        },
+        {
+          "text": "stepped in",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "step in",
+          "tier": "full"
+        },
+        {
+          "text": "to step in",
+          "tier": "full"
+        },
+        {
+          "text": "stepped in",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "step in",
+            "tier": "full"
+          },
+          {
+            "text": "to step in",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eingreifen",
+            "tier": "full"
+          },
+          {
+            "text": "dazwischengehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to storm out of",
+        "to laugh at sb.",
+        "to make fun of sb."
+      ],
+      "hintDe": "Wenn es einen Streit gibt, hilfst du und greifst ein.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to storm out of",
+          "to laugh at sb.",
+          "to make fun of sb.",
+          "to break up with sb."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.relationship",
+      "w": "relationship",
+      "g": "Beziehung",
+      "d": "the way you feel about a friend and behave to a friend",
+      "s": "A good ___ with a friend is all about trust and good times.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "relationship",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "relationship",
+          "tier": "full"
+        },
+        {
+          "text": "relationships",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "relationship",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Beziehung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "childhood",
+        "questionnaire",
+        "script"
+      ],
+      "hintDe": "Wie du zu einer anderen Person stehst und mit ihr umgehst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "childhood",
+          "questionnaire",
+          "script",
+          "earring"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-own",
+      "w": "to own",
+      "g": "besitzen",
+      "d": "to have a thing that is yours",
+      "s": "Does your family ___ a dog at home, or do you have no pets?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "own",
+          "tier": "full"
+        },
+        {
+          "text": "owns",
+          "tier": "partial"
+        },
+        {
+          "text": "owned",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "own",
+          "tier": "full"
+        },
+        {
+          "text": "to own",
+          "tier": "full"
+        },
+        {
+          "text": "owns",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "own",
+            "tier": "full"
+          },
+          {
+            "text": "to own",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "besitzen",
+            "tier": "full"
+          },
+          {
+            "text": "haben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to move",
+        "to solve",
+        "to struggle"
+      ],
+      "hintDe": "Eine Sache gehört dir und ist dein Eigentum.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to move",
+          "to solve",
+          "to struggle",
+          "to admit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.childhood",
+      "w": "childhood (no pl)",
+      "g": "Kindheit",
+      "d": "the time of your life when you are a child",
+      "s": "My happiest ___ memory is of summer days at the lake when I was seven.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "childhood",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "childhood",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "childhood",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kindheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "relationship",
+        "questionnaire",
+        "earring"
+      ],
+      "hintDe": "Die Zeit, in der du ein Kind bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "relationship",
+          "questionnaire",
+          "earring",
+          "script"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.earring",
+      "w": "earring",
+      "g": "Ohrring",
+      "d": "a small thing you wear on your ear to look nice",
+      "s": "She dropped one of her favourite ___ in the sea while swimming.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "earrings",
+          "tier": "full"
+        },
+        {
+          "text": "earring",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "earring",
+          "tier": "full"
+        },
+        {
+          "text": "earrings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "earring",
+            "tier": "full"
+          },
+          {
+            "text": "earrings",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ohrring",
+            "tier": "full"
+          },
+          {
+            "text": "Ohrringe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "soft toy",
+        "questionnaire",
+        "script"
+      ],
+      "hintDe": "Ein kleiner Schmuck, den du am Ohr trägst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "soft toy",
+          "questionnaire",
+          "script",
+          "relationship"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.jealous",
+      "w": "jealous",
+      "g": "eifersüchtig",
+      "d": "feeling sad because a friend has a thing you want",
+      "s": "My best friend has a new friend now, and I feel a little ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "jealous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "jealous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "jealous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eifersüchtig",
+            "tier": "full"
+          },
+          {
+            "text": "neidisch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "honest",
+        "clumsy",
+        "unwell"
+      ],
+      "hintDe": "Du bist traurig, weil ein Freund etwas hat, das du auch willst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "honest",
+          "clumsy",
+          "unwell",
+          "beloved"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-keep-secret",
+      "w": "to keep (a) secret",
+      "g": "ein Geheimnis für sich behalten",
+      "d": "to not tell people a thing that nobody must find out",
+      "s": "Can you ___ a secret? I want to tell you a thing, but please tell nobody.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "keep",
+          "tier": "full"
+        },
+        {
+          "text": "keep a secret",
+          "tier": "full"
+        },
+        {
+          "text": "kept a secret",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "keep a secret",
+          "tier": "full"
+        },
+        {
+          "text": "keep secret",
+          "tier": "full"
+        },
+        {
+          "text": "to keep a secret",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "keep a secret",
+            "tier": "full"
+          },
+          {
+            "text": "keep secret",
+            "tier": "full"
+          },
+          {
+            "text": "to keep a secret",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein Geheimnis für sich behalten",
+            "tier": "full"
+          },
+          {
+            "text": "ein Geheimnis bewahren",
+            "tier": "full"
+          },
+          {
+            "text": "ein Geheimnis behalten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to lie to sb.",
+        "to admit",
+        "to blackmail"
+      ],
+      "hintDe": "Du erzählst niemandem von einer Sache, die geheim bleiben soll.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to lie to sb.",
+          "to admit",
+          "to blackmail",
+          "to tell sb. off"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.questionnaire",
+      "w": "questionnaire",
+      "g": "Fragebogen",
+      "d": "boxes you tick to find out a thing about you",
+      "s": "Tick the boxes in this ___ to find out if you are a good friend.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "questionnaire",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "questionnaire",
+          "tier": "full"
+        },
+        {
+          "text": "questionnaires",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "questionnaire",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fragebogen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "relationship",
+        "childhood",
+        "script"
+      ],
+      "hintDe": "Du kreuzt Kästchen an, um etwas über dich herauszufinden.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "relationship",
+          "childhood",
+          "script",
+          "earring"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-tell-sb-off",
+      "w": "to tell sb. off",
+      "g": "mit jdm. schimpfen",
+      "d": "to talk to somebody in an angry way because they did a bad thing",
+      "s": "My teacher always ___ the children for not doing their homework.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tells off",
+          "tier": "full"
+        },
+        {
+          "text": "told off",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tell sb. off",
+          "tier": "full"
+        },
+        {
+          "text": "tell off",
+          "tier": "full"
+        },
+        {
+          "text": "to tell sb. off",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tell off",
+            "tier": "full"
+          },
+          {
+            "text": "to tell sb. off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mit jemandem schimpfen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden ausschimpfen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up with sb.",
+        "to get on well with sb.",
+        "to step in"
+      ],
+      "hintDe": "Du schimpfst mit jemandem, weil er etwas falsch gemacht hat.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to make up with sb.",
+          "to get on well with sb.",
+          "to step in",
+          "to laugh at sb."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-solve",
+      "w": "to solve",
+      "g": "lösen",
+      "d": "to find the way out of a difficult thing",
+      "s": "A clever detective can ___ this crime and find the robber.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "solve",
+          "tier": "full"
+        },
+        {
+          "text": "solves",
+          "tier": "partial"
+        },
+        {
+          "text": "solved",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "solve",
+          "tier": "full"
+        },
+        {
+          "text": "to solve",
+          "tier": "full"
+        },
+        {
+          "text": "solved",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "solve",
+            "tier": "full"
+          },
+          {
+            "text": "to solve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lösen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to own",
+        "to move",
+        "to admit"
+      ],
+      "hintDe": "Du findest die Lösung für eine schwierige Sache.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to own",
+          "to move",
+          "to admit",
+          "to struggle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.beloved",
+      "w": "beloved",
+      "g": "geliebt",
+      "d": "loved very much",
+      "s": "My grandma loves her ___ dog more than anything in the world.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "beloved",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beloved",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beloved",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "geliebt",
+            "tier": "full"
+          },
+          {
+            "text": "heiß geliebt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "honest",
+        "jealous",
+        "clumsy"
+      ],
+      "hintDe": "Etwas, das man sehr liebt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "honest",
+          "jealous",
+          "clumsy",
+          "unwell"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.nowhere",
+      "w": "nowhere",
+      "g": "nirgends",
+      "d": "in no place at all",
+      "s": "Stallone had no money and ___ to go for the night.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "nowhere",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nowhere",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nowhere",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "nirgends",
+            "tier": "full"
+          },
+          {
+            "text": "nirgendwo",
+            "tier": "full"
+          },
+          {
+            "text": "nirgendwohin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "honest",
+        "clumsy",
+        "unwell"
+      ],
+      "hintDe": "An keinem einzigen Ort.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "honest",
+          "clumsy",
+          "unwell",
+          "jealous"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.script",
+      "w": "script",
+      "g": "Drehbuch",
+      "d": "the writing that people read before they go on stage",
+      "s": "Before she was famous, the woman worked on a ___ for a new story.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "script",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "script",
+          "tier": "full"
+        },
+        {
+          "text": "scripts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "script",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Drehbuch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "questionnaire",
+        "earring",
+        "relationship"
+      ],
+      "hintDe": "Der Text, den man liest, bevor man auf die Bühne geht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "questionnaire",
+          "earring",
+          "relationship",
+          "soft toy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-struggle",
+      "w": "to struggle",
+      "g": "kämpfen",
+      "d": "to work very long and find a thing difficult",
+      "s": "He ___ at school because the work was very difficult for him.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "struggled",
+          "tier": "full"
+        },
+        {
+          "text": "struggles",
+          "tier": "partial"
+        },
+        {
+          "text": "struggle",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "struggle",
+          "tier": "full"
+        },
+        {
+          "text": "to struggle",
+          "tier": "full"
+        },
+        {
+          "text": "struggled",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "struggle",
+            "tier": "full"
+          },
+          {
+            "text": "to struggle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kämpfen",
+            "tier": "full"
+          },
+          {
+            "text": "sich abmühen",
+            "tier": "full"
+          },
+          {
+            "text": "sich schwertun",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to solve",
+        "to own",
+        "to move"
+      ],
+      "hintDe": "Du mühst dich lange ab und findest eine Sache schwierig.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to solve",
+          "to own",
+          "to move",
+          "to admit"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-lie-to-sb",
+      "w": "to lie to sb.",
+      "g": "jdn. anlügen",
+      "d": "to tell somebody a thing that is not true when you want to",
+      "s": "A good friend never ___ to you; they always tell you the truth.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lies",
+          "tier": "full"
+        },
+        {
+          "text": "lie",
+          "tier": "partial"
+        },
+        {
+          "text": "lied",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lie to sb.",
+          "tier": "full"
+        },
+        {
+          "text": "lie to",
+          "tier": "full"
+        },
+        {
+          "text": "to lie to sb.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lie to",
+            "tier": "full"
+          },
+          {
+            "text": "to lie to sb.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemanden anlügen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden belügen",
+            "tier": "full"
+          },
+          {
+            "text": "anlügen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to admit",
+        "to keep (a) secret",
+        "to blackmail"
+      ],
+      "hintDe": "Du sagst jemandem mit Absicht etwas, das nicht stimmt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to admit",
+          "to keep (a) secret",
+          "to blackmail",
+          "to solve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-admit",
+      "w": "to admit",
+      "g": "zugeben",
+      "d": "to tell people that a thing is true, often a bad thing you did",
+      "s": "He does not want to ___ that he is the one who did it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "admit",
+          "tier": "full"
+        },
+        {
+          "text": "admitted",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "admit",
+          "tier": "full"
+        },
+        {
+          "text": "to admit",
+          "tier": "full"
+        },
+        {
+          "text": "admitted",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "admit",
+            "tier": "full"
+          },
+          {
+            "text": "to admit",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zugeben",
+            "tier": "full"
+          },
+          {
+            "text": "eingestehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to lie to sb.",
+        "to keep (a) secret",
+        "to blackmail"
+      ],
+      "hintDe": "Du sagst, dass etwas wahr ist, oft etwas Schlechtes.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to lie to sb.",
+          "to keep (a) secret",
+          "to blackmail",
+          "to solve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.to-blackmail",
+      "w": "to blackmail",
+      "g": "erpressen",
+      "d": "to make somebody give you money so you keep their secret",
+      "s": "He wants to ___ Tom so Tom gives him money for his secret.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "blackmail",
+          "tier": "full"
+        },
+        {
+          "text": "blackmailed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "blackmail",
+          "tier": "full"
+        },
+        {
+          "text": "to blackmail",
+          "tier": "full"
+        },
+        {
+          "text": "blackmailed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "blackmail",
+            "tier": "full"
+          },
+          {
+            "text": "to blackmail",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erpressen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to admit",
+        "to lie to sb.",
+        "to keep (a) secret"
+      ],
+      "hintDe": "Du zwingst jemanden, dir Geld zu geben, damit du sein Geheimnis behältst.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "to admit",
+          "to lie to sb.",
+          "to keep (a) secret",
+          "to tell sb. off"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.clumsy",
+      "w": "clumsy",
+      "g": "ungeschickt",
+      "d": "often dropping a glass and knocking into the door",
+      "s": "He is so ___ that he often drops his pen and books.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "clumsy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "clumsy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "clumsy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ungeschickt",
+            "tier": "full"
+          },
+          {
+            "text": "tollpatschig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "honest",
+        "jealous",
+        "unwell"
+      ],
+      "hintDe": "Du lässt oft Dinge fallen oder stößt irgendwo an.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "honest",
+          "jealous",
+          "unwell",
+          "beloved"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.honest",
+      "w": "honest",
+      "g": "ehrlich",
+      "d": "always telling the truth",
+      "s": "She lies all the time and is never ___ with people.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "honest",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "honest",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "honest",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ehrlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "jealous",
+        "clumsy",
+        "unwell"
+      ],
+      "hintDe": "Du sagst immer die Wahrheit.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "jealous",
+          "clumsy",
+          "unwell",
+          "beloved"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.a-pile-of",
+      "w": "a pile of",
+      "g": "ein Stapel an",
+      "d": "a high group of books or clothes, one over the one under it",
+      "s": "There is ___ dirty clothes in his very messy bedroom.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "a pile of",
+          "tier": "full"
+        },
+        {
+          "text": "pile of",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "a pile of",
+          "tier": "full"
+        },
+        {
+          "text": "pile of",
+          "tier": "full"
+        },
+        {
+          "text": "a pile",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "a pile of",
+            "tier": "full"
+          },
+          {
+            "text": "pile of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ein Stapel an",
+            "tier": "full"
+          },
+          {
+            "text": "ein Stapel",
+            "tier": "full"
+          },
+          {
+            "text": "ein Haufen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "nowhere",
+        "beloved",
+        "unwell"
+      ],
+      "hintDe": "Viele Dinge wie Bücher oder Kleidung, eines auf dem anderen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "nowhere",
+          "beloved",
+          "unwell",
+          "honest"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.rash",
+      "w": "rash",
+      "g": "Hautausschlag",
+      "d": "red spots on your skin that feel hot",
+      "s": "She has a red ___ all over her skin.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "rash",
+          "tier": "full"
+        },
+        {
+          "text": "rashes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rash",
+          "tier": "full"
+        },
+        {
+          "text": "rashes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rash",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hautausschlag",
+            "tier": "full"
+          },
+          {
+            "text": "Ausschlag",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "earring",
+        "script",
+        "questionnaire"
+      ],
+      "hintDe": "Rote Flecken auf der Haut, die sich heiß anfühlen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "earring",
+          "script",
+          "questionnaire",
+          "soft toy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g3u07.w.unwell",
+      "w": "unwell",
+      "g": "unwohl",
+      "d": "not feeling well, a little ill",
+      "s": "He looks ill and ___, so he stayed in bed all day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "unwell",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unwell",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unwell",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unwohl",
+            "tier": "full"
+          },
+          {
+            "text": "krank",
+            "tier": "full"
+          },
+          {
+            "text": "nicht wohl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "honest",
+        "jealous",
+        "clumsy"
+      ],
+      "hintDe": "Du fühlst dich nicht gut, ein bisschen krank.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "honest",
+          "jealous",
+          "clumsy",
+          "beloved"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}
