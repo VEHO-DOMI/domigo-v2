@@ -11205,6 +11205,150 @@
       "reason": "could-was-able-to: past-form distractor/decoy (could+past wrong form)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "working",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "raining",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "learning",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "learn",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "practising",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "sitting",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "sightseeing",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "sleeping",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "known",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "living",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "reading",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "waiting",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "playing",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "studying",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u11",
+      "itemId": null,
+      "field": null,
+      "token": "running",
+      "reason": "present-perfect-continuous: been or -ing form (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
