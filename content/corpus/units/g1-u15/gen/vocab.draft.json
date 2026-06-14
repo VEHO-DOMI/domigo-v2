@@ -1,0 +1,1686 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g1-u15",
+  "briefBank": "d2f850cdb0ab",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g1u15.w.to-fly-to",
+      "w": "to fly to",
+      "g": "fliegen nach",
+      "d": "to go to a far country, up in the sky.",
+      "s": "This summer we are going to ___ Croatia and stay there for two weeks.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fly to",
+          "tier": "full"
+        },
+        {
+          "text": "to fly to",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to fly to",
+          "tier": "full"
+        },
+        {
+          "text": "fly to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to fly to",
+            "tier": "full"
+          },
+          {
+            "text": "fly to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fliegen nach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "far",
+          "de": "weit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to drive",
+        "to swim in the sea",
+        "to go fishing"
+      ],
+      "hintDe": "Du sitzt im Flugzeug und reist hoch durch die Luft in ein anderes Land.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to drive",
+          "to swim in the sea",
+          "to go fishing",
+          "to visit a castle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-go-fishing",
+      "w": "to go fishing",
+      "g": "angeln gehen",
+      "d": "You sit near the water and try to catch your dinner.",
+      "s": "On Saturday I'm going to ___ at the lake with my uncle.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "go fishing",
+          "tier": "full"
+        },
+        {
+          "text": "to go fishing",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to go fishing",
+          "tier": "full"
+        },
+        {
+          "text": "go fishing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to go fishing",
+            "tier": "full"
+          },
+          {
+            "text": "go fishing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "angeln gehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sit",
+          "de": "sitzen",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        },
+        {
+          "word": "try",
+          "de": "versuchen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to swim in the sea",
+        "to play badminton",
+        "to fly to"
+      ],
+      "hintDe": "Du gehst zum Wasser und möchtest einen Fisch fangen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to swim in the sea",
+          "to play badminton",
+          "to fly to",
+          "to lie in the sun"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-stay-at-a-campsite",
+      "w": "to stay at a campsite",
+      "g": "auf einem Campingplatz übernachten",
+      "d": "to sleep at a place where you put up a tent.",
+      "s": "We are going to ___ near the lake and sleep in our tent.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stay at a campsite",
+          "tier": "full"
+        },
+        {
+          "text": "to stay at a campsite",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to stay at a campsite",
+          "tier": "full"
+        },
+        {
+          "text": "stay at a campsite",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to stay at a campsite",
+            "tier": "full"
+          },
+          {
+            "text": "stay at a campsite",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf einem Campingplatz übernachten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tent",
+          "de": "Zelt",
+          "scope": null
+        },
+        {
+          "word": "sleep",
+          "de": "schlafen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "to fly to",
+        "to visit a castle",
+        "to go fishing"
+      ],
+      "hintDe": "Du schläfst nicht im Haus, sondern im Zelt am Campingplatz.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to fly to",
+          "to visit a castle",
+          "to go fishing",
+          "to swim in the sea"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-swim-in-the-sea",
+      "w": "to swim in the sea",
+      "g": "im Meer schwimmen",
+      "d": "to play in the big water at the beach when it is hot.",
+      "s": "When we are hot, we are going to ___ at the beach.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "swim in the sea",
+          "tier": "full"
+        },
+        {
+          "text": "to swim in the sea",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to swim in the sea",
+          "tier": "full"
+        },
+        {
+          "text": "swim in the sea",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to swim in the sea",
+            "tier": "full"
+          },
+          {
+            "text": "swim in the sea",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "im Meer schwimmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to go fishing",
+        "to lie in the sun",
+        "to play board games"
+      ],
+      "hintDe": "Du gehst am Strand ins große Wasser und schwimmst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to go fishing",
+          "to lie in the sun",
+          "to play board games",
+          "to fly to"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-play-badminton",
+      "w": "to play badminton",
+      "g": "Badminton spielen",
+      "d": "a game over a tall net, with a small, light ball.",
+      "s": "In Croatia my friends and I are going to ___ in the garden.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "play badminton",
+          "tier": "full"
+        },
+        {
+          "text": "to play badminton",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to play badminton",
+          "tier": "full"
+        },
+        {
+          "text": "play badminton",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to play badminton",
+            "tier": "full"
+          },
+          {
+            "text": "play badminton",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Badminton spielen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "net",
+          "de": "Netz",
+          "scope": "d"
+        },
+        {
+          "word": "ball",
+          "de": "Ball",
+          "scope": "d"
+        },
+        {
+          "word": "game",
+          "de": "Spiel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to play board games",
+        "to go fishing",
+        "to swim in the sea"
+      ],
+      "hintDe": "Du spielst mit einem kleinen, leichten Ball über ein hohes Netz.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to play board games",
+          "to go fishing",
+          "to swim in the sea",
+          "to lie in the sun"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-lie-in-the-sun",
+      "w": "to lie in the sun",
+      "g": "in der Sonne liegen",
+      "d": "to be outside when it is hot and sunny, and do nothing.",
+      "s": "What are you going to do? I'm going to ___ in the garden.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lie in the sun",
+          "tier": "full"
+        },
+        {
+          "text": "to lie in the sun",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to lie in the sun",
+          "tier": "full"
+        },
+        {
+          "text": "lie in the sun",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to lie in the sun",
+            "tier": "full"
+          },
+          {
+            "text": "lie in the sun",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in der Sonne liegen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to go fishing",
+        "to play badminton",
+        "to write a postcard"
+      ],
+      "hintDe": "Du liegst draußen und ruhst dich aus, wenn es heiß und sonnig ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to go fishing",
+          "to play badminton",
+          "to write a postcard",
+          "to visit a castle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-write-a-postcard",
+      "w": "to write a postcard",
+      "g": "eine Postkarte schreiben",
+      "d": "a short holiday message on a card with a picture, for your friends.",
+      "s": "On holiday I'm going to ___ to all my friends.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "write a postcard",
+          "tier": "full"
+        },
+        {
+          "text": "to write a postcard",
+          "tier": "partial"
+        },
+        {
+          "text": "write postcards",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to write a postcard",
+          "tier": "full"
+        },
+        {
+          "text": "write a postcard",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to write a postcard",
+            "tier": "full"
+          },
+          {
+            "text": "write a postcard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Postkarte schreiben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "card",
+          "de": "Karte",
+          "scope": "d"
+        },
+        {
+          "word": "message",
+          "de": "Nachricht",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to play board games",
+        "to lie in the sun",
+        "to go fishing"
+      ],
+      "hintDe": "Du schreibst aus dem Urlaub eine kurze Postkarte mit einem Bild an deine Freunde.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to play board games",
+          "to lie in the sun",
+          "to go fishing",
+          "to swim in the sea"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-play-board-games",
+      "w": "to play board games",
+      "g": "Brettspiele spielen",
+      "d": "to sit at the table and have fun with something like Monopoly.",
+      "s": "In the evening, we are going to ___ like Monopoly.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "play board games",
+          "tier": "full"
+        },
+        {
+          "text": "to play board games",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to play board games",
+          "tier": "full"
+        },
+        {
+          "text": "play board games",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to play board games",
+            "tier": "full"
+          },
+          {
+            "text": "play board games",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brettspiele spielen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Monopoly",
+          "de": "ein Brettspiel",
+          "scope": "d"
+        },
+        {
+          "word": "Monopoly",
+          "de": "ein Brettspiel",
+          "scope": "s"
+        },
+        {
+          "word": "sit",
+          "de": "sitzen",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to play badminton",
+        "to swim in the sea",
+        "to go fishing"
+      ],
+      "hintDe": "Du spielst am Tisch ein Spiel mit einem Brett und kleinen Spielfiguren.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to play badminton",
+          "to swim in the sea",
+          "to go fishing",
+          "to write a postcard"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-visit-a-castle",
+      "w": "to visit a castle",
+      "g": "eine Burg/ein Schloss besuchen",
+      "d": "to go and see a very big, old building with tall stone walls.",
+      "s": "On holiday we are going to ___ in the mountains.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "visit a castle",
+          "tier": "full"
+        },
+        {
+          "text": "to visit a castle",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to visit a castle",
+          "tier": "full"
+        },
+        {
+          "text": "visit a castle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to visit a castle",
+            "tier": "full"
+          },
+          {
+            "text": "visit a castle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Burg besuchen",
+            "tier": "full"
+          },
+          {
+            "text": "ein Schloss besuchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "mountains",
+          "de": "Berge",
+          "scope": "s"
+        },
+        {
+          "word": "old",
+          "de": "alt",
+          "scope": "d"
+        },
+        {
+          "word": "see",
+          "de": "sehen",
+          "scope": "d"
+        },
+        {
+          "word": "walls",
+          "de": "Mauern",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to go fishing",
+        "to play badminton",
+        "to swim in the sea"
+      ],
+      "hintDe": "Du gehst zu einer großen, alten Burg und schaust sie dir an.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to go fishing",
+          "to play badminton",
+          "to swim in the sea",
+          "to fly to"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.aunt",
+      "w": "aunt",
+      "g": "Tante",
+      "d": "the sister of your mum or dad.",
+      "s": "My ___ Jane is my mum's sister and she lives in New York.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "aunt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "aunt",
+          "tier": "full"
+        },
+        {
+          "text": "aunty",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "aunt",
+            "tier": "full"
+          },
+          {
+            "text": "aunty",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tante",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cook",
+        "parents",
+        "hippo"
+      ],
+      "hintDe": "Die Schwester von deiner Mama oder deinem Papa.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cook",
+          "parents",
+          "hippo",
+          "campsite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.beach",
+      "w": "beach",
+      "g": "Strand",
+      "d": "the place next to the sea where you can play and swim.",
+      "s": "Let's go to the ___ and swim in the sea.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "beach",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beach",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beach",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Strand",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "campsite",
+        "national park",
+        "plane"
+      ],
+      "hintDe": "Der Platz direkt am Meer, wo du spielen und schwimmen kannst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "campsite",
+          "national park",
+          "plane",
+          "summer"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.board-game",
+      "w": "board game",
+      "g": "Brettspiel",
+      "d": "something like Monopoly that you sit and do at the table with small pieces.",
+      "s": "In the evening, we're going to play a ___ like Monopoly.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "board game",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "board game",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "board game",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Brettspiel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Monopoly",
+          "de": "ein Brettspiel",
+          "scope": "d"
+        },
+        {
+          "word": "Monopoly",
+          "de": "ein Brettspiel",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "sit",
+          "de": "sitzen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "plane",
+        "beach",
+        "campsite"
+      ],
+      "hintDe": "Ein Spiel für den Tisch mit einem Brett und kleinen Spielfiguren.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "plane",
+          "beach",
+          "campsite",
+          "national park"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.campsite",
+      "w": "campsite",
+      "g": "Campingplatz",
+      "d": "a place where people sleep in tents.",
+      "s": "We're going to stay at a ___ and sleep in a tent.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "campsite",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "campsite",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "campsite",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Campingplatz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "tents",
+          "de": "Zelte",
+          "scope": "d"
+        },
+        {
+          "word": "tent",
+          "de": "Zelt",
+          "scope": "s"
+        },
+        {
+          "word": "sleep",
+          "de": "schlafen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "beach",
+        "national park",
+        "plane"
+      ],
+      "hintDe": "Der Platz, wo die Leute im Zelt schlafen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "beach",
+          "national park",
+          "plane",
+          "board game"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.cook",
+      "w": "cook",
+      "g": "Koch/Köchin",
+      "d": "somebody who can make good food in the kitchen.",
+      "s": "My grandma is a very good ___ . I love her food.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cook",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cook",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cook",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Koch",
+            "tier": "full"
+          },
+          {
+            "text": "Köchin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aunt",
+        "parents",
+        "hippo"
+      ],
+      "hintDe": "Eine Person, die in der Küche das Essen macht.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "aunt",
+          "parents",
+          "hippo",
+          "campsite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-drive",
+      "w": "to drive",
+      "g": "fahren",
+      "d": "to take people to a place in a car.",
+      "s": "My dad is going to ___ us to the lake in our car.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "drive",
+          "tier": "full"
+        },
+        {
+          "text": "to drive",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to drive",
+          "tier": "full"
+        },
+        {
+          "text": "drive",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to drive",
+            "tier": "full"
+          },
+          {
+            "text": "drive",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "take",
+          "de": "bringen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to fly to",
+        "to join",
+        "to invite"
+      ],
+      "hintDe": "Du bringst Leute mit dem Auto irgendwohin.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to fly to",
+          "to join",
+          "to invite",
+          "to go fishing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.holiday",
+      "w": "holiday",
+      "g": "Urlaub",
+      "d": "a time when you do not go to school and you can have a lot of fun.",
+      "s": "Where are you going for your summer ___ this year?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "holiday",
+          "tier": "full"
+        },
+        {
+          "text": "holidays",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "holiday",
+          "tier": "full"
+        },
+        {
+          "text": "holidays",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "holiday",
+            "tier": "full"
+          },
+          {
+            "text": "holidays",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Urlaub",
+            "tier": "full"
+          },
+          {
+            "text": "Ferien",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "summer",
+        "beach",
+        "national park"
+      ],
+      "hintDe": "Die Zeit, in der du nicht in die Schule gehst und schöne Sachen machst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "summer",
+          "beach",
+          "national park",
+          "campsite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.national-park",
+      "w": "national park",
+      "g": "Nationalpark",
+      "d": "a very big place in nature where wild animals can live free.",
+      "s": "In the United States we are going to visit a ___ .",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "national park",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "national park",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "national park",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nationalpark",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wild",
+          "de": "wild",
+          "scope": "d"
+        },
+        {
+          "word": "animals",
+          "de": "Tiere",
+          "scope": "d"
+        },
+        {
+          "word": "nature",
+          "de": "Natur",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "beach",
+        "campsite",
+        "plane"
+      ],
+      "hintDe": "Ein sehr großes Stück Natur, wo wilde Tiere frei leben dürfen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "beach",
+          "campsite",
+          "plane",
+          "board game"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.parents",
+      "w": "parents",
+      "g": "Eltern",
+      "d": "your mum and your dad.",
+      "s": "My ___ and I are going to fly to the United States.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "parents",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "parents",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "parents",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Eltern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aunt",
+        "cook",
+        "hippo"
+      ],
+      "hintDe": "Deine Mama und dein Papa zusammen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "aunt",
+          "cook",
+          "hippo",
+          "campsite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.plane",
+      "w": "plane",
+      "g": "Flugzeug",
+      "d": "you sit in it and it flies up in the sky to a far country.",
+      "s": "I'm not scared of flying. I can sleep on the ___ .",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "plane",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "plane",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "plane",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flugzeug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "far",
+          "de": "weit",
+          "scope": "d"
+        },
+        {
+          "word": "flies",
+          "de": "fliegt",
+          "scope": "d"
+        },
+        {
+          "word": "sit",
+          "de": "sitzen",
+          "scope": "d"
+        },
+        {
+          "word": "sleep",
+          "de": "schlafen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "beach",
+        "campsite",
+        "national park"
+      ],
+      "hintDe": "Ein großes Ding, das hoch am Himmel fliegt und dich in ein fernes Land bringt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "beach",
+          "campsite",
+          "national park",
+          "board game"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.summer",
+      "w": "summer",
+      "g": "Sommer",
+      "d": "the hot time of the year with the long school holiday.",
+      "s": "In the ___ , I'm going to swim every day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "summer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "summer",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "summer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sommer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "holiday",
+        "beach",
+        "plane"
+      ],
+      "hintDe": "Die heiße Jahreszeit mit den langen Schulferien.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "holiday",
+          "beach",
+          "plane",
+          "campsite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.hippo",
+      "w": "hippo",
+      "g": "Nilpferd",
+      "d": "a very big grey animal that lives in the river.",
+      "s": "At the zoo there is a big grey ___ in the water.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hippo",
+          "tier": "full"
+        },
+        {
+          "text": "hippos",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hippo",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hippo",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nilpferd",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "animal",
+          "de": "Tier",
+          "scope": "d"
+        },
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "cook",
+        "aunt",
+        "parents"
+      ],
+      "hintDe": "Ein sehr großes, graues Tier, das im Fluss lebt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cook",
+          "aunt",
+          "parents",
+          "campsite"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-join",
+      "w": "to join",
+      "g": "beitreten",
+      "d": "to go into a group and do something nice with them.",
+      "s": "Let's ___ the music group at school.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "join",
+          "tier": "full"
+        },
+        {
+          "text": "to join",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to join",
+          "tier": "full"
+        },
+        {
+          "text": "join",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to join",
+            "tier": "full"
+          },
+          {
+            "text": "join",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "beitreten",
+            "tier": "full"
+          },
+          {
+            "text": "ein Mitglied werden",
+            "tier": "full"
+          },
+          {
+            "text": "mitmachen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to invite",
+        "to drive",
+        "to fly to"
+      ],
+      "hintDe": "Du wirst ein Teil von einer Gruppe und machst mit.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to invite",
+          "to drive",
+          "to fly to",
+          "to go fishing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u15.w.to-invite",
+      "w": "to invite",
+      "g": "einladen",
+      "d": "to ask a friend to come and do something nice with you.",
+      "s": "Who are you going to ___ to your birthday party?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "invite",
+          "tier": "full"
+        },
+        {
+          "text": "to invite",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "to invite",
+          "tier": "full"
+        },
+        {
+          "text": "invite",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to invite",
+            "tier": "full"
+          },
+          {
+            "text": "invite",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einladen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "party",
+          "de": "Party",
+          "scope": "s"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to join",
+        "to drive",
+        "to visit a castle"
+      ],
+      "hintDe": "Du fragst einen Freund, ob er zu deiner Party kommt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to join",
+          "to drive",
+          "to visit a castle",
+          "to fly to"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}
