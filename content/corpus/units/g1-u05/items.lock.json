@@ -1,0 +1,108 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g1-u05",
+  "items": {
+    "11074a71c3c5": "g1u05.gi.can.gf.001",
+    "2700889c0c27": "g1u05.gi.can.gf.002",
+    "c0a1cf8e4653": "g1u05.gi.can.gf.003",
+    "e3604abbaf47": "g1u05.gi.can.gf.004",
+    "d6337a8868ae": "g1u05.gi.can.gf.005",
+    "977e31b9629b": "g1u05.gi.can.gf.006",
+    "501befc7caf4": "g1u05.gi.can.mc.001",
+    "c4825c0f004f": "g1u05.gi.can.mc.002",
+    "1350e5e75f05": "g1u05.gi.can.mc.003",
+    "c5e55d22a146": "g1u05.gi.can.cp.001",
+    "80cd05346849": "g1u05.gi.can.ec.001",
+    "4e9a6474297b": "g1u05.gi.can.ec.002",
+    "edfa5765b52f": "g1u05.gi.can.ec.003",
+    "91ee7e7f41f9": "g1u05.gi.can.tf.001",
+    "3761bbd17f28": "g1u05.gi.can.tf.002",
+    "7df093a90708": "g1u05.gi.can.qf.001",
+    "c9338da69f31": "g1u05.gi.can.sb.001",
+    "714dbec0ffc7": "g1u05.gi.can.sb.002",
+    "7a744639b717": "g1u05.gi.can.tr.001",
+    "552618bef1b4": "g1u05.gi.can.tr.002",
+    "2b8f7d03de82": "g1u05.gi.can.mp.001",
+    "955070e5512a": "g1u05.gi.can.ff.001",
+    "2598371ff853": "g1u05.gi.possessives.gf.001",
+    "b6b9c6061be6": "g1u05.gi.possessives.gf.002",
+    "a9050e34f3e6": "g1u05.gi.possessives.gf.003",
+    "7e2e1763192f": "g1u05.gi.possessives.gf.004",
+    "aeba7cb16724": "g1u05.gi.possessives.gf.005",
+    "295d4826f5a5": "g1u05.gi.possessives.gf.006",
+    "32baac5f0970": "g1u05.gi.possessives.gf.007",
+    "ea9d05826ae2": "g1u05.gi.possessives.mc.001",
+    "513e578a32d4": "g1u05.gi.possessives.mc.002",
+    "88b2bfcd0123": "g1u05.gi.possessives.mc.003",
+    "45a5312280cd": "g1u05.gi.possessives.ec.002",
+    "4edcf34c390c": "g1u05.gi.possessives.ec.003",
+    "7c660b05f88a": "g1u05.gi.possessives.ec.004",
+    "c181e087e4ba": "g1u05.gi.possessives.tf.001",
+    "200790903904": "g1u05.gi.possessives.tf.002",
+    "bbba79bfc9f1": "g1u05.gi.possessives.tr.001",
+    "3473912e0ab2": "g1u05.gi.possessives.sb.001",
+    "a7df6ff11095": "g1u05.gi.possessives.sb.002",
+    "9018eafb74b8": "g1u05.gi.possessives.ag.001",
+    "1b1f35af3635": "g1u05.gi.possessives.cp.001",
+    "ad797363d609": "g1u05.gi.can.cp.003",
+    "b55b131e985f": "g1u05.gi.can.mt.002",
+    "dd7504a05271": "g1u05.gi.can.gs.002",
+    "cfb130e7af90": "g1u05.gi.possessives.ec.005",
+    "c6d218c89bd7": "g1u05.gi.possessives.mt.002",
+    "04b13b50d3ae": "g1u05.gi.possessives.mp.002",
+    "76f7ff695575": "g1u05.gi.possessives.gs.003",
+    "d19a2a995b4a": "g1u05.gi.possessives.tr.004"
+  },
+  "tombstones": [
+    {
+      "id": "g1u05.gi.possessives.gs.001",
+      "key": "84639d74b883",
+      "removedWith": "a4d0680e8e33"
+    },
+    {
+      "id": "g1u05.gi.can.cp.002",
+      "key": "07e8a4591d35",
+      "removedWith": "eb228571b5ae"
+    },
+    {
+      "id": "g1u05.gi.can.mt.001",
+      "key": "e1c92e817c65",
+      "removedWith": "eb228571b5ae"
+    },
+    {
+      "id": "g1u05.gi.can.gs.001",
+      "key": "82198e10a5a4",
+      "removedWith": "eb228571b5ae"
+    },
+    {
+      "id": "g1u05.gi.possessives.ec.001",
+      "key": "a91d77605c51",
+      "removedWith": "eb228571b5ae"
+    },
+    {
+      "id": "g1u05.gi.possessives.tr.002",
+      "key": "0310db0a0514",
+      "removedWith": "eb228571b5ae"
+    },
+    {
+      "id": "g1u05.gi.possessives.mt.001",
+      "key": "cd107a2e152d",
+      "removedWith": "eb228571b5ae"
+    },
+    {
+      "id": "g1u05.gi.possessives.mp.001",
+      "key": "ebab3352a5fc",
+      "removedWith": "eb228571b5ae"
+    },
+    {
+      "id": "g1u05.gi.possessives.gs.002",
+      "key": "4b21b053aad5",
+      "removedWith": "eb228571b5ae"
+    },
+    {
+      "id": "g1u05.gi.possessives.tr.003",
+      "key": "5b04f7e3e279",
+      "removedWith": "ff991b160212"
+    }
+  ]
+}

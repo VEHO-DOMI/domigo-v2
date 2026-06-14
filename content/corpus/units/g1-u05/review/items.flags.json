@@ -1,0 +1,560 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g1-u05",
+  "round": 1,
+  "itemsHash": "a49a2dd842a9",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g1u05.w.can",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.can",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.can-cannot-can-t",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.can-cannot-can-t",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.concert",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.concert",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.drums",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.drums",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.economy",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.economy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.hospital",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.hospital",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.in-one-go",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.in-one-go",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.is-that-so",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.is-that-so",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.its",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.its",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.keyboard-player",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.keyboard-player",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.money",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.money",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.nothing",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.nothing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.profit",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.profit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.saxophone-player",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.saxophone-player",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.school-canteen",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.school-canteen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.table",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.table",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.this-is-me",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.this-is-me",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-carry",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-carry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-dance",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-dance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-drink",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-drink",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-laugh",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-laugh",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-play",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-play",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-stand-on",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-stand-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-walk-on",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-walk-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-wash",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-wash",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.to-wiggle",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.to-wiggle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g1u05.w.uncle",
+      "kind": "new-gloss",
+      "itemId": "g1u05.w.uncle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.boyfriend",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.boyfriend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.can",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.can",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.can-cannot-can-t",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.can-cannot-can-t",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.concert",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.concert",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.don-t-worry",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.don-t-worry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.drummer",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.drummer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.drums",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.drums",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.economy",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.economy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.guitar",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.guitar",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.guitarist",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.guitarist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.hospital",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.hospital",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.hundred",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.hundred",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.in-one-go",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.in-one-go",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.is-that-so",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.is-that-so",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.its",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.its",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.job",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.job",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.keyboard",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.keyboard",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.keyboard-player",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.keyboard-player",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.money",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.money",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.nothing",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.nothing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.perfect",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.perfect",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.pound",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.pound",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.profit",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.profit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.saxophone",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.saxophone",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.saxophone-player",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.saxophone-player",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.school-canteen",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.school-canteen",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.singer",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.singer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.sister",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.sister",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.sorry",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.sorry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.table",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.table",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.teacher",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.teacher",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.this-is-me",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.this-is-me",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-carry",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-carry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-dance",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-dance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-drink",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-drink",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-laugh",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-laugh",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-play",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-play",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-stand-on",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-stand-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-touch",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-touch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-walk-on",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-walk-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-wash",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-wash",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.to-wiggle",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.to-wiggle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.tongue",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.tongue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.w.uncle",
+      "kind": "translation-audit",
+      "itemId": "g1u05.w.uncle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.gi.can.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u05.gi.can.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.gi.can.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g1u05.gi.can.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.gi.possessives.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g1u05.gi.possessives.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g1u05.gi.possessives.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g1u05.gi.possessives.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u05.w.tongue#68e1d1",
+      "kind": "validator-warn",
+      "itemId": "g1u05.w.tongue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g1u05.gi.possessives.tr.004#e7455a",
+      "kind": "validator-warn",
+      "itemId": "g1u05.gi.possessives.tr.004",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 94 rows + 77 flags reviewed (FULL). Verify clean (0 fix, 0 warn); rejectRate 0%. 27 gloss + 48 translation audits lens-verified (deToEn EN / enToDe DE). 2 validator-warns benign. Full v1 parity: 50 grammar (can 25, possessives 25) over the 43 floor; no grants (forms in allowlist). Gloss-heavy unit (music vocab barred — flag for Koki, cf. u04). Verify fixes landed: truth-fix to-wiggle (\"up/down\"→\"here and there\"), tongue (\"eat with it\"→\"you speak with it\"), its def +animal; can.gs.001 mis-sort (\"walk on my feet\"→I can); possessives.ec.001 +\"her\"; its enToDe sein/seine full (ihr/ihre→partial); tr Bacon German/English aligned to \"is\"; 5 DE grammar terms removed from prompts (Fürwort/Begleiter/Frage/Antwort); 8 gloss-scope fixes (word in both d+s → null)."
+  },
+  "metrics": {
+    "itemsReviewed": 94,
+    "fullRows": 94,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
