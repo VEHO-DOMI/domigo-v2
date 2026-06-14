@@ -1,0 +1,1537 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g1-u03",
+  "briefBank": "4c3046921b06",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I ___ got a pen. (have / has)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have",
+          "tier": "full"
+        },
+        {
+          "text": "'ve",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für ich/du/wir/sie (Mehrzahl) nimmst du have.",
+      "hintEn": null,
+      "explainDe": "Bei I/you/we/they heißt es immer have got. has got brauchst du nur bei he/she/it.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-gf-001",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Affirmative carrier; matcher absorbs 'have got' as a unit (probes clean). Untaught form tokens for granting: have got, 've (contraction in partial answer)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Polly ___ got purple hair. (have / has)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has",
+          "tier": "full"
+        },
+        {
+          "text": "'s",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she (Polly) brauchst du eine besondere Form.",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it lautet die Form has got, nicht have got. Polly ist she.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-gf-002",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#sounds-right",
+      "note": "Affirmative carrier; 'has got' probes clean as a unit. Untaught form tokens for granting: has got, 's (contraction in partial answer)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He ___ got a dog. He's got a parrot.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hasn't",
+          "tier": "full"
+        },
+        {
+          "text": "has not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei he: hasn't got.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bei he/she/it ist hasn't got (= has not got). haven't got passt nur zu I/you/we/they.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-gf-003",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Negative carrier; untaught tokens for granting: got, hasn't got, has not got, 's got (in carrier 'He's got')."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ you got a hat?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Have",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage beginnt bei you mit Have.",
+      "hintEn": null,
+      "explainDe": "Fragen mit have got beginnen mit Have/Has: Have you got …? Bei he/she/it nimmst du Has.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-gf-004",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Question carrier; untaught token for granting: got (in 'Have you got …?')."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "___ she got a parrot? — No, she ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Has | hasn't",
+          "tier": "full"
+        },
+        {
+          "text": "Has | has not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she heißt die Frage Has …?, die kurze Antwort No, she hasn't.",
+      "hintEn": null,
+      "explainDe": "Frage bei she: Has she got …? Kurzantwort: No, she hasn't. (nicht doesn't!).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-gf-005",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#reading-7",
+      "note": "Two blanks pipe-split. Question + short answer; untaught token for granting: got (in 'Has she got …?'). Short answer 'hasn't' probes clean."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ got a car. We have got a big ship.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "haven't",
+          "tier": "full"
+        },
+        {
+          "text": "have not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei we: haven't got.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bei I/you/we/they ist haven't got (= have not got).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-gf-006",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Negative carrier; untaught tokens for granting: got, haven't got, have not got. 'have got' in second sentence probes clean."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Blackbeard ___ a big ship.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has got",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "have got",
+        "has",
+        "have"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Blackbeard ist he — welche Form passt?",
+      "hintEn": null,
+      "explainDe": "Bei he (Blackbeard) heißt es has got. have got passt nur zu I/you/we/they, und got darf nicht fehlen.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "have got",
+          "has",
+          "have",
+          "hasn't",
+          "haven't"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u3-have-got-mc-001",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#read-1",
+      "note": "Affirmative carrier 'Blackbeard has got a big ship' probes clean. Distractors/pool are word-distinct (have/has), gate-clean. Untaught form tokens for granting: has got, have got."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Was ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Has he got a dog?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Does he has got a dog?",
+        "Have he got a dog?",
+        "Is he got a dog?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Frage mit have got braucht kein do/does.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Has he got …? Bei have got brauchst du kein do/does und kein is.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Does he has got a dog?",
+          "Have he got a dog?",
+          "Is he got a dog?",
+          "Do he got a dog?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u3-have-got-mc-002",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "German prompt -> lang=de. Answer 'Has he got a dog?' untaught token for granting: got. Distractors are deliberately wrong full sentences (each flawed in have-got form)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She ___ got long hair.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "have",
+        "is",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she nimmst du has got.",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it lautet die Form has got. Es heißt nicht 'she is got' oder 'she have got'.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "have",
+          "is",
+          "can",
+          "are"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u3-have-got-gf-007",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#choices-16",
+      "note": "Affirmative carrier 'She has got long hair' probes clean. Distractors word-distinct and in-bank (have/is/can/are). Untaught form token for granting: has got."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They haven't got a ship.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They hasn't got a ship.",
+        "They don't have got a ship.",
+        "They haven't a ship got."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei they: haven't got.",
+      "hintEn": null,
+      "explainDe": "Richtig ist They haven't got a ship. Bei they nimmst du haven't (nicht hasn't) und kein don't.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "They hasn't got a ship.",
+          "They don't have got a ship.",
+          "They haven't a ship got.",
+          "They has got a ship not."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m1-u3-have-got-mc-003",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "German prompt -> lang=de. Answer 'They haven't got a ship.' untaught tokens for granting: got, haven't got. Distractors are wrong full sentences (subject-verb / word-order errors)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du sprichst über Polly. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She has got purple hair.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She have got purple hair.",
+        "She has purple hair got.",
+        "She is got purple hair."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she (Polly): has got, in der richtigen Reihenfolge.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She has got purple hair. Bei she nimmst du has got und stellst die Wörter richtig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She have got purple hair.",
+          "She has purple hair got.",
+          "She is got purple hair.",
+          "She got has purple hair."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#sounds-right",
+      "note": "German prompt -> lang=de. Correct sentence 'She has got purple hair' probes clean. Each distractor flawed in have-got form (subject-verb / word order). Untaught form token for granting: has got."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du willst von deinem Freund wissen, ob er einen Hund hat. Was ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Have you got a dog?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do you have got a dog?",
+        "Has you got a dog?",
+        "You have got a dog?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage bei you: Have you got …?",
+      "hintEn": null,
+      "explainDe": "Richtig ist Have you got a dog? Bei you nimmst du Have (nicht Has) und kein do.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Do you have got a dog?",
+          "Has you got a dog?",
+          "You have got a dog?",
+          "Are you got a dog?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#listening-10",
+      "note": "German prompt -> lang=de. Answer 'Have you got a dog?' untaught token for granting: got. Distractors flawed in question form (do/Has/no inversion)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: He have got a beard.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has got a beard.",
+          "tier": "full"
+        },
+        {
+          "text": "has",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he muss have zu has werden.",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it heißt es has got, nicht have got. Also: He has got a beard.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-ec-001",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#choices-16",
+      "note": "Corrected sentence 'He has got a beard' probes clean. Untaught form tokens for granting: has got, have got (in the wrong prompt sentence)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: Does he has got a dog?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Has he got a dog?",
+          "tier": "full"
+        },
+        {
+          "text": "Has he",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine have-got-Frage braucht kein does.",
+      "hintEn": null,
+      "explainDe": "Bei have got bildest du die Frage mit Has/Have, ohne do/does: Has he got a dog?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-ec-002",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Answer 'Has he got a dog?' untaught token for granting: got. Prompt sentence is intentionally wrong (does + has got)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Finde und verbessere den Fehler: They hasn't got a ship.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They haven't got a ship.",
+          "tier": "full"
+        },
+        {
+          "text": "haven't",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei they: haven't got, nicht hasn't got.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung bei they ist haven't got. hasn't got passt nur zu he/she/it.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-ec-003",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#choices-16",
+      "note": "Answer 'They haven't got a ship.' untaught tokens for granting: got, haven't got. Prompt is intentionally wrong (hasn't got with they)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She has got a parrot. → She ___ got a parrot. (–)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hasn't",
+          "tier": "full"
+        },
+        {
+          "text": "has not",
+          "tier": "full"
+        },
+        {
+          "text": "She hasn't got a parrot.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei she: hasn't got.",
+      "hintEn": null,
+      "explainDe": "Aus has got wird in der Verneinung hasn't got: She hasn't got a parrot.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-tf-001",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Source 'She has got a parrot' probes clean; target is negative. Untaught tokens for granting: got, hasn't got, has not got."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "They have got a ship. → ___ they got a ship? (?)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Have",
+          "tier": "full"
+        },
+        {
+          "text": "Have they got a ship?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage bei they beginnt mit Have.",
+      "hintEn": null,
+      "explainDe": "Für die Frage stellst du have nach vorne: Have they got a ship?",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-tf-002",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Source 'They have got a ship' probes clean; target is a question. Untaught token for granting: got (in 'Have they got a ship?')."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I have got a hat. (he) → He ___ got a hat.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "has",
+          "tier": "full"
+        },
+        {
+          "text": "'s",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aus I have got wird bei he: he has got.",
+      "hintEn": null,
+      "explainDe": "Wenn du das Subjekt zu he änderst, wird have got zu has got: He has got a hat.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Source 'I have got a hat' probes clean; target switches to he -> has got. Untaught form tokens for granting: has got, 's (contraction in partial answer)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich habe einen Hut.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have got a hat.",
+          "tier": "full"
+        },
+        {
+          "text": "I've got a hat.",
+          "tier": "full"
+        },
+        {
+          "text": "I have a hat.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "haben = have got. Bei I: I have got / I've got.",
+      "hintEn": null,
+      "explainDe": "Mit have got sagst du, dass du etwas hast. Kurzform: I've got.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-tr-001",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "translation deToEn. Untaught form tokens for granting: have got, 've got (in answers)."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Hat er einen Hund? — Nein, er hat keinen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Has he got a dog? — No, he hasn't.",
+          "tier": "full"
+        },
+        {
+          "text": "Has he got a dog? — No, he has not.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage bei he: Has he got …? Kurzantwort: No, he hasn't.",
+      "hintEn": null,
+      "explainDe": "Frage mit Has he got …? und kurze Antwort No, he hasn't. (= No, he has not.)",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-tr-002",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#reading-7",
+      "note": "translation deToEn. Untaught token for granting: got (in 'Has he got a dog?'). Short answer 'No, he hasn't.' probes clean."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She has got purple hair.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sie hat lila Haare.",
+          "tier": "full"
+        },
+        {
+          "text": "Sie hat violette Haare.",
+          "tier": "full"
+        },
+        {
+          "text": "Sie hat purpurne Haare.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "has got = hat. purple = lila/violett.",
+      "hintEn": null,
+      "explainDe": "has got heißt auf Deutsch einfach hat. purple = lila oder violett.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#sounds-right",
+      "note": "translation enToDe. English prompt 'She has got purple hair' probes clean. Untaught form token for granting: has got."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Has / he / got / a / ship / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Has he got a ship?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Frage bei he beginnt mit Has und endet mit got …?",
+      "hintEn": null,
+      "explainDe": "Reihenfolge der Frage: Has + he + got + a ship? Bei he nimmst du Has.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "have",
+          "she",
+          "hat",
+          "they",
+          "hair"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m1-u3-have-got-sb-001",
+      "sbRef": "g1/sb/WB Unit 3 Pirates.txt#ex-8",
+      "note": "sentence-building. Answer 'Has he got a ship?' untaught token for granting: got. distractorPool chips (have/she/hat/they/hair) all in-bank and probe clean."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She / hasn't / got / a / beard / .",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She hasn't got a beard.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei she: She hasn't got …",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: She + hasn't + got + a beard. hasn't got ist die Verneinung bei she.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "haven't",
+          "he",
+          "nose",
+          "they",
+          "hat"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#choices-11",
+      "note": "sentence-building. Answer 'She hasn't got a beard.' untaught tokens for granting: got, hasn't got. distractorPool chips (haven't/he/nose/they/hat) all in-bank and probe clean."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "you / a / parrot → ___",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Have you got a parrot?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mach aus den Wörtern eine Frage: Have you got …?",
+      "hintEn": null,
+      "explainDe": "Die Frage bei you lautet Have you got a parrot?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/WB Unit 3 Pirates.txt#ex-12",
+      "note": "question-formation. Answer 'Have you got a parrot?' untaught token for granting: got."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "have got oder has got?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "have got",
+          "members": [
+            "I",
+            "you",
+            "we",
+            "they"
+          ]
+        },
+        {
+          "label": "has got",
+          "members": [
+            "he",
+            "she",
+            "it"
+          ]
+        }
+      ],
+      "hintDe": "has got nur bei he/she/it, sonst have got.",
+      "hintEn": null,
+      "explainDe": "he/she/it bekommen has got. I/you/we/they bekommen have got.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-gs-001",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "group-sort, 2 groups each >=2 members; members and labels in-bank. Labels 'have got'/'has got' are the untaught form tokens for granting."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Has she got a parrot?",
+          "right": "No, she hasn't."
+        },
+        {
+          "left": "Have you got a hat?",
+          "right": "Yes, I have."
+        },
+        {
+          "left": "Has he got a beard?",
+          "right": "Yes, he has."
+        },
+        {
+          "left": "Have they got a ship?",
+          "right": "No, they haven't."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte auf das Subjekt: she → she, you → I, he → he, they → they.",
+      "hintEn": null,
+      "explainDe": "Die Kurzantwort wiederholt das Subjekt und have/has: Has she …? → No, she hasn't.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-mt-001",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#reading-7",
+      "note": "matching En<->En, unique right-sides. Untaught token for granting: got (in the question left-sides). Short answers probe clean."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "matching-pairs",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Sätze passen zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I have got a hat.",
+          "right": "I haven't got a hat."
+        },
+        {
+          "left": "She has got a parrot.",
+          "right": "She hasn't got a parrot."
+        },
+        {
+          "left": "We have got a ship.",
+          "right": "We haven't got a ship."
+        },
+        {
+          "left": "He has got a dog.",
+          "right": "He hasn't got a dog."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Aus have got wird haven't got, aus has got wird hasn't got.",
+      "hintEn": null,
+      "explainDe": "Die Verneinung von have got ist haven't got, die von has got ist hasn't got.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m1-u3-have-got-mp-001",
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "matching-pairs En<->En, unique sides. Left sides 'have/has got' probe clean; right sides untaught tokens for granting: got, haven't got, hasn't got."
+    },
+    {
+      "structureId": "g1u03.s.have-got",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Pollys Haare sind nicht braun, sondern …",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "purple",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Farbe: lila/violett.",
+      "hintEn": null,
+      "explainDe": "Die Farbe lila heißt auf Englisch purple. Polly has got purple hair.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#sounds-right",
+      "note": "anagram, single token 'purple' (6 letters), in-bank, probes clean. No untaught tokens."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "My foot is big. My two ___ are big.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "feet",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Mehrzahl von foot bildest du nicht mit -s. Der Vokal ändert sich.",
+      "hintEn": null,
+      "explainDe": "Foot ist eine Ausnahme: ein foot, aber zwei feet (oo wird zu ee). Niemals foots.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1 (one foot → two feet)",
+      "note": "Plural forms used: feet (singular foot). Both gate-clean."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I have got one tooth. Now I have got five ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "teeth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Mehrzahl von tooth bildest du nicht mit -s. Der Vokal ändert sich.",
+      "hintEn": null,
+      "explainDe": "Tooth ist eine Ausnahme: ein tooth, aber fünf teeth (oo wird zu ee). Niemals tooths.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1 (one tooth → five teeth)",
+      "note": "Plural forms used: teeth (singular tooth). Both gate-clean."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Blackbeard has got two big ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "feet",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "foots",
+        "feets",
+        "foot"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Stück – also Mehrzahl. Und foot ist eine Ausnahme.",
+      "hintEn": null,
+      "explainDe": "Bei zwei brauchst du die Mehrzahl, und die heißt feet – nicht foots, feets oder foot.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "foots",
+          "feets",
+          "foot",
+          "teeth"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural forms used: feet (singular foot). Deliberate-error distractors for granting: foots, feets."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The captain has got five ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "teeth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "tooths",
+        "teeths",
+        "tooth"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Fünf Stück – also Mehrzahl. Und tooth ist eine Ausnahme.",
+      "hintEn": null,
+      "explainDe": "Bei fünf brauchst du die Mehrzahl, und die heißt teeth – nicht tooths, teeths oder tooth.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "tooths",
+          "teeths",
+          "tooth",
+          "feet"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural forms used: teeth (singular tooth). Deliberate-error distractors for granting: tooths, teeths."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde den Fehler und schreib den Satz richtig: My foots are big.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My feet are big.",
+          "tier": "full"
+        },
+        {
+          "text": "feet",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Foot ist eine Ausnahme – die Mehrzahl bildest du nicht mit -s.",
+      "hintEn": null,
+      "explainDe": "Die Mehrzahl von foot ist feet, nicht foots. Der Vokal ändert sich.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural forms used: feet (singular foot). Deliberate-error form in prompt for granting: foots."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Finde den Fehler und schreib den Satz richtig: I clean my tooths.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I clean my teeth.",
+          "tier": "full"
+        },
+        {
+          "text": "teeth",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Tooth ist eine Ausnahme – die Mehrzahl bildest du nicht mit -s.",
+      "hintEn": null,
+      "explainDe": "Die Mehrzahl von tooth ist teeth, nicht tooths. Der Vokal ändert sich.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural forms used: teeth (singular tooth). Deliberate-error form in prompt for granting: tooths."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I have got one foot. (→ two)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have got two feet.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mach foot zur Mehrzahl. Achtung: Es ist eine Ausnahme.",
+      "hintEn": null,
+      "explainDe": "Aus one foot wird two feet – der Vokal ändert sich, kein -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1 (one foot → two feet)",
+      "note": "Plural forms used: feet (singular foot). Gate-clean."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The captain has got one tooth. (→ five)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The captain has got five teeth.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Mach tooth zur Mehrzahl. Achtung: Es ist eine Ausnahme.",
+      "hintEn": null,
+      "explainDe": "Aus one tooth wird five teeth – der Vokal ändert sich, kein -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1 (one tooth → five teeth)",
+      "note": "Plural forms used: teeth (singular tooth). Gate-clean."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Mehr als ein foot:",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "feet",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vier Buchstaben. Aus oo wird ee.",
+      "hintEn": null,
+      "explainDe": "Die Mehrzahl von foot ist feet.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural form used: feet. Single token, 4 letters. Gate-clean."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mehr als ein tooth:",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "teeth",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Fünf Buchstaben. Aus oo wird ee.",
+      "hintEn": null,
+      "explainDe": "Die Mehrzahl von tooth ist teeth.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural form used: teeth. Single token, 5 letters. Gate-clean."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Eines oder mehrere? Sortiere die Wörter.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "one",
+          "members": [
+            "foot",
+            "tooth"
+          ]
+        },
+        {
+          "label": "two",
+          "members": [
+            "feet",
+            "teeth"
+          ]
+        }
+      ],
+      "hintDe": "Eins oder mehrere? feet und teeth stehen für mehrere.",
+      "hintEn": null,
+      "explainDe": "foot und tooth sind Einzahl; feet und teeth sind die Mehrzahl mit Vokalwechsel.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Forms used: foot, feet, tooth, teeth. 2 groups, 2 members each. Gate-clean."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Polly hat zwei große Füße. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have got two big feet.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I have got two big foots.",
+        "I have got two big feets.",
+        "I have got two big foot."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Stück – also Mehrzahl. Und foot ist eine Ausnahme.",
+      "hintEn": null,
+      "explainDe": "Richtig ist feet. Foots, feets und foot passen nicht zu two.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I have got two big foots.",
+          "I have got two big feets.",
+          "I have got two big foot.",
+          "I have got five teeth."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural forms used: feet (singular foot). Deliberate-error distractors for granting: foots, feets."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ich habe zwei Füße.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have got two feet.",
+          "tier": "full"
+        },
+        {
+          "text": "I have two feet.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Füße – denk an die Mehrzahl-Ausnahme von foot.",
+      "hintEn": null,
+      "explainDe": "Füße heißt feet (nicht foots). Mit have got sagst du, was du hast.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural form used: feet (singular foot). Gate-clean."
+    },
+    {
+      "structureId": "g1u03.s.irregular-plurals-2",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Der Kapitän hat fünf Zähne.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The captain has got five teeth.",
+          "tier": "full"
+        },
+        {
+          "text": "The captain has five teeth.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Fünf Zähne – denk an die Mehrzahl-Ausnahme von tooth.",
+      "hintEn": null,
+      "explainDe": "Zähne heißt teeth (nicht tooths). Bei the captain steht has got.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g1/sb/SB Unit 3- Pirates.txt#grammar-1",
+      "note": "Plural form used: teeth (singular tooth). Gate-clean."
+    }
+  ]
+}

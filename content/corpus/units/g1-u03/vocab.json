@@ -1,0 +1,3156 @@
+{
+  "schema": "vocab@1",
+  "grade": 1,
+  "unit": 3,
+  "slug": "g1-u03",
+  "items": [
+    {
+      "id": "g1u03.w.again",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "also",
+            "back",
+            "here",
+            "very",
+            "more"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (Hooray! We won again)",
+        "seedV1": "again",
+        "narrative": null,
+        "note": null
+      },
+      "w": "again",
+      "g": "wieder",
+      "d": "one more time.",
+      "s": "I want to do it one more time. Let's do it ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "again",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "again",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "again",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wieder",
+            "tier": "full"
+          },
+          {
+            "text": "nochmal",
+            "tier": "full"
+          },
+          {
+            "text": "noch einmal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "also",
+        "back",
+        "here"
+      ],
+      "hintDe": "Noch ein Mal."
+    },
+    {
+      "id": "g1u03.w.also",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "again",
+            "back",
+            "here",
+            "very",
+            "more"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 (Blackbeard is also in the films); carrier adapted to in-bank words",
+        "seedV1": "also",
+        "narrative": null,
+        "note": "too is the SB synonym; accepted as partial in s and d"
+      },
+      "w": "also",
+      "g": "auch",
+      "d": "it means too.",
+      "s": "Tamara is a captain. Greybeard is ___ a captain.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "also",
+          "tier": "full"
+        },
+        {
+          "text": "too",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "also",
+          "tier": "full"
+        },
+        {
+          "text": "too",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "also",
+            "tier": "full"
+          },
+          {
+            "text": "too",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "means",
+          "de": "bedeutet",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "again",
+        "back",
+        "here"
+      ],
+      "hintDe": "Hat dieselbe Bedeutung wie too."
+    },
+    {
+      "id": "g1u03.w.back",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "again",
+            "also",
+            "here",
+            "very",
+            "more"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.27 (Now go back to page 22)",
+        "seedV1": "back",
+        "narrative": null,
+        "note": null
+      },
+      "w": "back",
+      "g": "zurück",
+      "d": "to where you were before.",
+      "s": "The pirates are at the zoo. When are they ___?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "back",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "back",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "back",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zurück",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "again",
+        "also",
+        "here"
+      ],
+      "hintDe": "Dorthin, wo du vorher warst."
+    },
+    {
+      "id": "g1u03.w.beard",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hair",
+            "ear",
+            "shoulder",
+            "nose",
+            "mouth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.26 (He has got a black beard)",
+        "seedV1": "beard",
+        "narrative": null,
+        "note": null
+      },
+      "w": "beard",
+      "g": "Bart",
+      "d": "it is the long hair on a man, under his mouth.",
+      "s": "The man has got a long brown ___ on his face.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "beard",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "beard",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "beard",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bart",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "brown",
+          "de": "braun",
+          "scope": "s"
+        },
+        {
+          "word": "face",
+          "de": "Gesicht",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "hair",
+        "ear",
+        "shoulder"
+      ],
+      "hintDe": "Das sind die Haare auf dem Gesicht eines Mannes."
+    },
+    {
+      "id": "g1u03.w.big",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "small",
+            "short",
+            "long",
+            "tall",
+            "strong"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 (It's a big ship)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "big",
+      "g": "groß",
+      "d": "not small.",
+      "s": "Greybeard has got a ___ ship, not a small one.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "big",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "big",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "big",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "groß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "small",
+        "short",
+        "long"
+      ],
+      "hintDe": "Nicht klein."
+    },
+    {
+      "id": "g1u03.w.boy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "girl",
+            "woman",
+            "sister",
+            "man",
+            "captain"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (The boy has got brown hair)",
+        "seedV1": "boy",
+        "narrative": null,
+        "note": null
+      },
+      "w": "boy",
+      "g": "Junge",
+      "d": "he is not a girl, and he is not an adult man.",
+      "s": "That ___ over there is my friend; he is not a girl.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "boy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "boy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "boy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Junge",
+            "tier": "full"
+          },
+          {
+            "text": "Bub",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "friend",
+          "de": "Freund/Freundin",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "girl",
+        "woman",
+        "sister"
+      ],
+      "hintDe": "Kein Mädchen und noch kein erwachsener Mann."
+    },
+    {
+      "id": "g1u03.w.captain",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "sister",
+            "boy",
+            "man",
+            "girl",
+            "woman"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (The captain has got a blue ship)",
+        "seedV1": "captain",
+        "narrative": null,
+        "note": null
+      },
+      "w": "captain",
+      "g": "Kapitän/Kapitänin",
+      "d": "the man on a ship who is the boss.",
+      "s": "The ___ has got a big blue ship.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "captain",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "captain",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "captain",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kapitän",
+            "tier": "full"
+          },
+          {
+            "text": "Kapitänin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "boss",
+          "de": "Chef/Chefin",
+          "scope": "d"
+        },
+        {
+          "word": "blue",
+          "de": "blau",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "sister",
+        "boy",
+        "man"
+      ],
+      "hintDe": "Der Chef auf einem Schiff."
+    },
+    {
+      "id": "g1u03.w.ear",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "eye",
+            "mouth",
+            "foot",
+            "nose",
+            "finger"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.30 word file",
+        "seedV1": "ear",
+        "narrative": null,
+        "note": null
+      },
+      "w": "ear",
+      "g": "Ohr",
+      "d": "you have got two of these, and you hear music with them.",
+      "s": "You have got two ___, and you hear music with them.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "ears",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ear",
+          "tier": "full"
+        },
+        {
+          "text": "ears",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ear",
+            "tier": "full"
+          },
+          {
+            "text": "ears",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ohr",
+            "tier": "full"
+          },
+          {
+            "text": "Ohren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "hear",
+          "de": "hören",
+          "scope": null
+        },
+        {
+          "word": "music",
+          "de": "Musik",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "eye",
+        "mouth",
+        "foot"
+      ],
+      "hintDe": "Damit hörst du Musik."
+    },
+    {
+      "id": "g1u03.w.eye",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ear",
+            "nose",
+            "finger",
+            "mouth",
+            "leg"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.25 ex.9 (His eyes are brown)",
+        "seedV1": "eye",
+        "narrative": null,
+        "note": null
+      },
+      "w": "eye",
+      "g": "Auge",
+      "d": "you have got two of these; one is green and one is blue.",
+      "s": "You have got two ___; one is green and one is blue.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "eyes",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "eye",
+          "tier": "full"
+        },
+        {
+          "text": "eyes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "eye",
+            "tier": "full"
+          },
+          {
+            "text": "eyes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Auge",
+            "tier": "full"
+          },
+          {
+            "text": "Augen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "green",
+          "de": "grün",
+          "scope": null
+        },
+        {
+          "word": "blue",
+          "de": "blau",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "ear",
+        "nose",
+        "finger"
+      ],
+      "hintDe": "Damit siehst du; du hast zwei davon."
+    },
+    {
+      "id": "g1u03.w.famous",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pretty",
+            "strong",
+            "tall",
+            "big",
+            "short"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (Greybeard is a famous pirate)",
+        "seedV1": "famous",
+        "narrative": null,
+        "note": null
+      },
+      "w": "famous",
+      "g": "berühmt",
+      "d": "many people know this man or woman.",
+      "s": "This is Greybeard. He is a ___ captain and many people know him.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "famous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "famous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "famous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "berühmt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "people",
+          "de": "Leute",
+          "scope": null
+        },
+        {
+          "word": "know",
+          "de": "kennen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "pretty",
+        "strong",
+        "tall"
+      ],
+      "hintDe": "Viele Leute kennen diese berühmte Person."
+    },
+    {
+      "id": "g1u03.w.feet",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ears",
+            "teeth",
+            "legs",
+            "eyes",
+            "fingers"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 (1 foot - 2 feet)",
+        "seedV1": "feet",
+        "narrative": null,
+        "note": null
+      },
+      "w": "feet",
+      "g": "Füße",
+      "d": "one foot, but two of these; your two shoes go on them.",
+      "s": "I have got a shoe on each of my two ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "feet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "feet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "feet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Füße",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "each",
+          "de": "jeder/jede/jedes",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "ears",
+        "teeth",
+        "legs"
+      ],
+      "hintDe": "Ein Fuß, aber zwei davon; deine Schuhe kommen drauf."
+    },
+    {
+      "id": "g1u03.w.finger",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ear",
+            "leg",
+            "nose",
+            "mouth",
+            "shoulder"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.30 word file",
+        "seedV1": "finger",
+        "narrative": null,
+        "note": null
+      },
+      "w": "finger",
+      "g": "Finger",
+      "d": "you have got ten of these — five and five.",
+      "s": "You have got ten ___ — five and five.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fingers",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "finger",
+          "tier": "full"
+        },
+        {
+          "text": "fingers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "finger",
+            "tier": "full"
+          },
+          {
+            "text": "fingers",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Finger",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ear",
+        "leg",
+        "nose"
+      ],
+      "hintDe": "Davon hast du zehn an deinen Händen."
+    },
+    {
+      "id": "g1u03.w.foot",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ear",
+            "nose",
+            "eye",
+            "finger",
+            "mouth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 (1 foot - 2 feet)",
+        "seedV1": "foot",
+        "narrative": null,
+        "note": null
+      },
+      "w": "foot",
+      "g": "Fuß",
+      "d": "it is on the end of your leg, and your shoe is on it.",
+      "s": "I have got one shoe on one ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "foot",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "foot",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "foot",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fuß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "end",
+          "de": "Ende",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ear",
+        "nose",
+        "eye"
+      ],
+      "hintDe": "Da kommt dein Schuh drauf; er ist am Ende deines Beins."
+    },
+    {
+      "id": "g1u03.w.girl",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "boy",
+            "man",
+            "captain",
+            "woman",
+            "sister"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (The girl has got blond hair)",
+        "seedV1": "girl",
+        "narrative": null,
+        "note": null
+      },
+      "w": "girl",
+      "g": "Mädchen",
+      "d": "she is not a boy, and she is not an adult woman.",
+      "s": "That ___ over there is my friend; she is not a boy.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "girl",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "girl",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "girl",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mädchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "friend",
+          "de": "Freund/Freundin",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "boy",
+        "man",
+        "captain"
+      ],
+      "hintDe": "Kein Junge und noch keine erwachsene Frau."
+    },
+    {
+      "id": "g1u03.w.hair",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "beard",
+            "ear",
+            "eye",
+            "nose",
+            "mouth"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 ex.1 (Blackbeard has got very long hair)",
+        "seedV1": "hair",
+        "narrative": null,
+        "note": null
+      },
+      "w": "hair",
+      "g": "Haar(e)",
+      "d": "it can be long or short, and it is on your head.",
+      "s": "Greybeard has got very long ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hair",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hair",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hair",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Haare",
+            "tier": "full"
+          },
+          {
+            "text": "Haar",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "head",
+          "de": "Kopf",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "beard",
+        "ear",
+        "eye"
+      ],
+      "hintDe": "Es wächst auf deinem Kopf und kann lang oder kurz sein."
+    },
+    {
+      "id": "g1u03.w.have-got-has-got",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "also",
+            "again",
+            "back",
+            "here",
+            "more"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (I have got brown hair. Tamara has got red hair)",
+        "seedV1": "have got",
+        "narrative": null,
+        "note": "blank with 'I' takes 'have got'; 'has got' is the he/she/it form, accepted in dAnswers/translation"
+      },
+      "w": "have got / has got",
+      "g": "haben",
+      "d": "you speak this for a thing that is yours.",
+      "s": "I ___ two sisters and one ship.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "have got",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "have got",
+          "tier": "full"
+        },
+        {
+          "text": "has got",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "have got",
+            "tier": "full"
+          },
+          {
+            "text": "has got",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "haben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "also",
+        "again",
+        "back"
+      ],
+      "hintDe": "Das sagst du, wenn du etwas hast (mit 'I' / 'you' / 'we' / 'they')."
+    },
+    {
+      "id": "g1u03.w.her-name-is",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "His name is",
+            "have got",
+            "has got",
+            "again",
+            "back"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB-style (Her name is …)",
+        "seedV1": "Her name is",
+        "narrative": null,
+        "note": "carrier supplies the name 'Betty' after the blank"
+      },
+      "w": "Her name is …",
+      "g": "Sie heißt …",
+      "d": "you say this for a girl or a woman, and it says who she is.",
+      "s": "This is my sister. ___ Betty.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Her name is",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Her name is",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Her name is",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sie heißt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "His name is",
+        "have got",
+        "has got"
+      ],
+      "hintDe": "Damit sagst du, wie ein Mädchen oder eine Frau heißt."
+    },
+    {
+      "id": "g1u03.w.him",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "his",
+            "us",
+            "back",
+            "again",
+            "here"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (Peter is nice. We like him)",
+        "seedV1": "him",
+        "narrative": null,
+        "note": null
+      },
+      "w": "him",
+      "g": "ihn",
+      "d": "it is for a boy or a man; you do not say it for a girl.",
+      "s": "Peter is nice. We love ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "him",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "him",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "him",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ihn",
+            "tier": "full"
+          },
+          {
+            "text": "ihm",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "his",
+        "us",
+        "back"
+      ],
+      "hintDe": "Für einen Jungen oder Mann, nicht für ein Mädchen."
+    },
+    {
+      "id": "g1u03.w.his",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "him",
+            "her",
+            "their",
+            "your",
+            "our"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 (His pirate name is Blackbeard)",
+        "seedV1": "his",
+        "narrative": null,
+        "note": "capitalised in s because it is sentence-initial"
+      },
+      "w": "his",
+      "g": "sein/e",
+      "d": "a boy or a man has got this thing.",
+      "s": "This is Blackbeard. ___ ship is big.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "His",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "his",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "his",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sein",
+            "tier": "full"
+          },
+          {
+            "text": "seine",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "him",
+        "her",
+        "their"
+      ],
+      "hintDe": "Es gehört einem Jungen oder Mann."
+    },
+    {
+      "id": "g1u03.w.his-name-is",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Her name is",
+            "have got",
+            "has got",
+            "again",
+            "back"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB-style (His name is …)",
+        "seedV1": "His name is",
+        "narrative": null,
+        "note": "carrier supplies the name 'Mike' after the blank"
+      },
+      "w": "His name is …",
+      "g": "Er heißt …",
+      "d": "you say this for a boy or a man, and it says who he is.",
+      "s": "This is my friend. ___ Mike.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "His name is",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "His name is",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "His name is",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Er heißt",
+            "tier": "full"
+          },
+          {
+            "text": "Sein Name ist",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "say",
+          "de": "sagen",
+          "scope": "d"
+        },
+        {
+          "word": "friend",
+          "de": "Freund/Freundin",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "Her name is",
+        "have got",
+        "has got"
+      ],
+      "hintDe": "Damit sagst du, wie ein Junge oder ein Mann heißt."
+    },
+    {
+      "id": "g1u03.w.left-arm",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "right arm",
+            "shoulder",
+            "leg",
+            "foot",
+            "ear"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.26 (Frank has got a pelican on his left shoulder)",
+        "seedV1": "left arm",
+        "narrative": null,
+        "note": null
+      },
+      "w": "left arm",
+      "g": "linker Arm",
+      "d": "It is under your shoulder. It is not the one you write with.",
+      "s": "Frank has got a parrot on his ___ and a parrot on his right arm.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "left arm",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "left arm",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "left arm",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "linker Arm",
+            "tier": "full"
+          },
+          {
+            "text": "der linke Arm",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "right arm",
+        "shoulder",
+        "leg"
+      ],
+      "hintDe": "Der Arm auf deiner linken Seite, nicht der rechte."
+    },
+    {
+      "id": "g1u03.w.leg",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ear",
+            "nose",
+            "finger",
+            "mouth",
+            "eye"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.26 (He hasn't got a strong left leg)",
+        "seedV1": "leg",
+        "narrative": null,
+        "note": null
+      },
+      "w": "leg",
+      "g": "Bein",
+      "d": "you have got two of these, and your foot is on the end of one.",
+      "s": "Greybeard has got a strong ___ and he can stand up.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "leg",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "leg",
+          "tier": "full"
+        },
+        {
+          "text": "legs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "leg",
+            "tier": "full"
+          },
+          {
+            "text": "legs",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bein",
+            "tier": "full"
+          },
+          {
+            "text": "Beine",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "end",
+          "de": "Ende",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ear",
+        "nose",
+        "finger"
+      ],
+      "hintDe": "Damit stehst du; dein Fuß ist unten dran."
+    },
+    {
+      "id": "g1u03.w.long",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "short",
+            "small",
+            "tall",
+            "big",
+            "strong"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 (32 metres long)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "long",
+      "g": "lang",
+      "d": "your hair can be this if it is not short.",
+      "s": "Greybeard has got very ___ hair, not short hair.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "long",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "long",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "long",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lang",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "short",
+        "small",
+        "tall"
+      ],
+      "hintDe": "Nicht kurz; lange Haare zum Beispiel."
+    },
+    {
+      "id": "g1u03.w.man",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "woman",
+            "boy",
+            "girl",
+            "sister",
+            "captain"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (The man has got a red beard)",
+        "seedV1": "man",
+        "narrative": null,
+        "note": null
+      },
+      "w": "man (pl men)",
+      "g": "Mann",
+      "d": "an adult; he is not a woman and not a boy.",
+      "s": "The ___ has got a beard; he is not a woman.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "man",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "man",
+          "tier": "full"
+        },
+        {
+          "text": "men",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "man",
+            "tier": "full"
+          },
+          {
+            "text": "men",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mann",
+            "tier": "full"
+          },
+          {
+            "text": "Männer",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "woman",
+        "boy",
+        "girl"
+      ],
+      "hintDe": "Ein erwachsener Mann, keine Frau."
+    },
+    {
+      "id": "g1u03.w.mouth",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "eye",
+            "ear",
+            "finger",
+            "nose",
+            "leg"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.30 word file",
+        "seedV1": "mouth",
+        "narrative": null,
+        "note": null
+      },
+      "w": "mouth",
+      "g": "Mund",
+      "d": "you eat and talk with this.",
+      "s": "You eat and talk with your ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mouth",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mouth",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mouth",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mund",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "eye",
+        "ear",
+        "finger"
+      ],
+      "hintDe": "Damit isst und sprichst du."
+    },
+    {
+      "id": "g1u03.w.nose",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ear",
+            "leg",
+            "shoulder",
+            "foot",
+            "eye"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.30 word file",
+        "seedV1": "nose",
+        "narrative": null,
+        "note": null
+      },
+      "w": "nose",
+      "g": "Nase",
+      "d": "you have got one big or small one, and you smell with it.",
+      "s": "You have got one big ___, and you smell with it.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "nose",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nose",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nose",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nase",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "smell",
+          "de": "riechen",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "ear",
+        "leg",
+        "shoulder"
+      ],
+      "hintDe": "Damit riechst du."
+    },
+    {
+      "id": "g1u03.w.pretty",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "famous",
+            "strong",
+            "tall",
+            "big",
+            "small"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.23 (Polly Pym - the pretty pirate)",
+        "seedV1": "pretty",
+        "narrative": null,
+        "note": null
+      },
+      "w": "pretty",
+      "g": "hübsch",
+      "d": "nice to look at.",
+      "s": "Polly is a ___ captain and she is nice to look at.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "pretty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pretty",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pretty",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hübsch",
+            "tier": "full"
+          },
+          {
+            "text": "schön",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "famous",
+        "strong",
+        "tall"
+      ],
+      "hintDe": "Schön anzusehen."
+    },
+    {
+      "id": "g1u03.w.purple",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "famous",
+            "pretty",
+            "strong",
+            "big",
+            "small"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.23 (Purple hair and pink eyes)",
+        "seedV1": "purple",
+        "narrative": null,
+        "note": "violet is the listed alternate sense; accepted partial. mc are in-bank adjectives (no colour words are taught, so colour distractors are impossible)."
+      },
+      "w": "purple",
+      "g": "lila",
+      "d": "the colour of red and blue together.",
+      "s": "Polly has got ___ hair — the colour of red and blue.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "purple",
+          "tier": "full"
+        },
+        {
+          "text": "violet",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "purple",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "purple",
+            "tier": "full"
+          },
+          {
+            "text": "violet",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lila",
+            "tier": "full"
+          },
+          {
+            "text": "violett",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "colour",
+          "de": "Farbe",
+          "scope": null
+        },
+        {
+          "word": "red",
+          "de": "rot",
+          "scope": null
+        },
+        {
+          "word": "blue",
+          "de": "blau",
+          "scope": null
+        },
+        {
+          "word": "together",
+          "de": "zusammen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "famous",
+        "pretty",
+        "strong"
+      ],
+      "hintDe": "Die Farbe aus Rot und Blau zusammen."
+    },
+    {
+      "id": "g1u03.w.right-arm",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "left arm",
+            "shoulder",
+            "leg",
+            "foot",
+            "ear"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.26 (Fred has got a pelican on his right shoulder)",
+        "seedV1": "right arm",
+        "narrative": null,
+        "note": null
+      },
+      "w": "right arm",
+      "g": "rechter Arm",
+      "d": "It is under your shoulder. It is the one you write with.",
+      "s": "Fred has got a parrot on his ___ and a parrot on his left arm.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "right arm",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "right arm",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "right arm",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "rechter Arm",
+            "tier": "full"
+          },
+          {
+            "text": "der rechte Arm",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "left arm",
+        "shoulder",
+        "leg"
+      ],
+      "hintDe": "Der Arm auf deiner rechten Seite, nicht der linke."
+    },
+    {
+      "id": "g1u03.w.ship",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "captain",
+            "beard",
+            "week",
+            "leg",
+            "shoulder"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (Greybeard has got a big ship)",
+        "seedV1": "ship",
+        "narrative": null,
+        "note": "boat is a near-synonym; partial"
+      },
+      "w": "ship",
+      "g": "Schiff",
+      "d": "it is a very big boat; a captain is on it.",
+      "s": "Greybeard has got a big ___ and he can go on the sea.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ship",
+          "tier": "full"
+        },
+        {
+          "text": "boat",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ship",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ship",
+            "tier": "full"
+          },
+          {
+            "text": "boat",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schiff",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "boat",
+          "de": "Boot",
+          "scope": "d"
+        },
+        {
+          "word": "sea",
+          "de": "Meer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "captain",
+        "beard",
+        "week"
+      ],
+      "hintDe": "Ein großes Boot; der Kapitän ist darauf."
+    },
+    {
+      "id": "g1u03.w.short",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "tall",
+            "long",
+            "big",
+            "small",
+            "strong"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.26 (He is short)",
+        "seedV1": "short",
+        "narrative": null,
+        "note": "two senses: kurz (length) and klein (height); both correct"
+      },
+      "w": "short",
+      "g": "kurz",
+      "d": "not long and not tall.",
+      "s": "Greybeard is ___, not tall.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "short",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "short",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "short",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kurz",
+            "tier": "full"
+          },
+          {
+            "text": "klein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tall",
+        "long",
+        "big"
+      ],
+      "hintDe": "Nicht lang und nicht groß."
+    },
+    {
+      "id": "g1u03.w.shoulder",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "leg",
+            "finger",
+            "nose",
+            "mouth",
+            "eye"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.24 (She's got a parrot on her shoulder)",
+        "seedV1": "shoulder",
+        "narrative": null,
+        "note": null
+      },
+      "w": "shoulder",
+      "g": "Schulter",
+      "d": "it is under your ear and over your arm; a parrot can be on it.",
+      "s": "The parrot is on his ___, next to his ear.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "shoulder",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shoulder",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shoulder",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schulter",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "arm",
+          "de": "Arm",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "leg",
+        "finger",
+        "nose"
+      ],
+      "hintDe": "Der Körperteil unter deinem Ohr, wo ein Papagei sitzen kann."
+    },
+    {
+      "id": "g1u03.w.sister",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "captain",
+            "boy",
+            "man",
+            "girl",
+            "woman"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (My sister has got brown hair)",
+        "seedV1": "sister",
+        "narrative": null,
+        "note": null
+      },
+      "w": "sister",
+      "g": "Schwester",
+      "d": "a girl in your family.",
+      "s": "My ___ is a girl and she has got long hair.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sister",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sister",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sister",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwester",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "captain",
+        "boy",
+        "man"
+      ],
+      "hintDe": "Ein Mädchen in deiner Familie."
+    },
+    {
+      "id": "g1u03.w.small",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "big",
+            "tall",
+            "long",
+            "short",
+            "strong"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.26 (Frank has got a small nose)",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "small",
+      "g": "klein",
+      "d": "not big.",
+      "s": "Frank has got a ___ nose, not a big one.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "small",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "small",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "small",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "klein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "big",
+        "tall",
+        "long"
+      ],
+      "hintDe": "Nicht groß."
+    },
+    {
+      "id": "g1u03.w.strong",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pretty",
+            "famous",
+            "tall",
+            "big",
+            "short"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (Greybeard hasn't got a strong left leg)",
+        "seedV1": "strong",
+        "narrative": null,
+        "note": null
+      },
+      "w": "strong",
+      "g": "stark",
+      "d": "not weak; a man with big arms is this.",
+      "s": "Greybeard has got a ___ left arm; he is not weak.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "strong",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "strong",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "strong",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stark",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "weak",
+          "de": "schwach",
+          "scope": null
+        },
+        {
+          "word": "arms",
+          "de": "Arme",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "pretty",
+        "famous",
+        "tall"
+      ],
+      "hintDe": "Nicht schwach; du kannst viel mit deinen Armen."
+    },
+    {
+      "id": "g1u03.w.tall",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "short",
+            "small",
+            "long",
+            "big",
+            "strong"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.26 (She is tall)",
+        "seedV1": "tall",
+        "narrative": null,
+        "note": null
+      },
+      "w": "tall",
+      "g": "groß",
+      "d": "big from your feet to your hair; a giraffe is this.",
+      "s": "Tamara is ___, not short.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tall",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tall",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tall",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "groß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "short",
+        "small",
+        "long"
+      ],
+      "hintDe": "Groß von den Füßen bis zum Kopf; eine Giraffe ist so."
+    },
+    {
+      "id": "g1u03.w.teeth",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hair",
+            "ears",
+            "fingers",
+            "eyes",
+            "legs"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 (1 tooth - 2 teeth)",
+        "seedV1": "teeth",
+        "narrative": null,
+        "note": null
+      },
+      "w": "teeth",
+      "g": "Zähne",
+      "d": "one tooth, but more of these white ones in your mouth.",
+      "s": "You have got more than one tooth; you have got ___ in your mouth.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "teeth",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "teeth",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "teeth",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zähne",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "hair",
+        "ears",
+        "fingers"
+      ],
+      "hintDe": "Ein Zahn, aber viele davon in deinem Mund."
+    },
+    {
+      "id": "g1u03.w.to-be-scared",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "famous",
+            "pretty",
+            "strong",
+            "tall",
+            "big"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.22 (People are very scared of him)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "blank takes 'scared'; carrier supplies 'of him'"
+      },
+      "w": "to be scared (of)",
+      "g": "Angst haben (vor)",
+      "d": "Tamara has got this when she is not happy and a big ship is there.",
+      "s": "Greybeard is big and strong. Tamara is ___ of him.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "scared",
+          "tier": "full"
+        },
+        {
+          "text": "scared of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scared",
+          "tier": "full"
+        },
+        {
+          "text": "be scared",
+          "tier": "full"
+        },
+        {
+          "text": "to be scared",
+          "tier": "full"
+        },
+        {
+          "text": "scared of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to be scared",
+            "tier": "full"
+          },
+          {
+            "text": "be scared",
+            "tier": "full"
+          },
+          {
+            "text": "scared",
+            "tier": "full"
+          },
+          {
+            "text": "to be scared of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Angst haben",
+            "tier": "full"
+          },
+          {
+            "text": "Angst haben vor",
+            "tier": "full"
+          },
+          {
+            "text": "sich fürchten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "famous",
+        "pretty",
+        "strong"
+      ],
+      "hintDe": "Du hast das, wenn dir etwas nicht geheuer ist und du nicht glücklich bist."
+    },
+    {
+      "id": "g1u03.w.to-paint",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "read",
+            "open",
+            "give",
+            "find",
+            "ask"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "WB p.26 (Mal die Piraten an)",
+        "seedV1": "to paint",
+        "narrative": null,
+        "note": null
+      },
+      "w": "to paint",
+      "g": "malen",
+      "d": "you do this to a picture with red, blue and other colours.",
+      "s": "Let's ___ a picture of a captain with our colours.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "paint",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "paint",
+          "tier": "full"
+        },
+        {
+          "text": "to paint",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "to paint",
+            "tier": "full"
+          },
+          {
+            "text": "paint",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "malen",
+            "tier": "full"
+          },
+          {
+            "text": "anmalen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "red",
+          "de": "rot",
+          "scope": "d"
+        },
+        {
+          "word": "blue",
+          "de": "blau",
+          "scope": "d"
+        },
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "d"
+        },
+        {
+          "word": "colours",
+          "de": "Farben",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "read",
+        "open",
+        "give"
+      ],
+      "hintDe": "Das machst du mit Farben auf einem Bild."
+    },
+    {
+      "id": "g1u03.w.tooth",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hair",
+            "finger",
+            "ear",
+            "nose",
+            "eye"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.24 (a golden tooth in her mouth)",
+        "seedV1": "tooth",
+        "narrative": null,
+        "note": null
+      },
+      "w": "tooth",
+      "g": "Zahn",
+      "d": "it is small and white, and it is in your mouth.",
+      "s": "I have got one small white ___ in my mouth.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tooth",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tooth",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tooth",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zahn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "white",
+          "de": "weiß",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "hair",
+        "finger",
+        "ear"
+      ],
+      "hintDe": "Das kleine weiße Ding in deinem Mund (nur eines)."
+    },
+    {
+      "id": "g1u03.w.week",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ship",
+            "captain",
+            "beard",
+            "sister",
+            "boy"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (Seven days is one week)",
+        "seedV1": "week",
+        "narrative": null,
+        "note": null
+      },
+      "w": "week",
+      "g": "Woche",
+      "d": "seven days are one of these.",
+      "s": "Seven days is one ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "week",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "week",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "week",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Woche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "days",
+          "de": "Tage",
+          "scope": null
+        }
+      ],
+      "mc": [
+        "ship",
+        "captain",
+        "beard"
+      ],
+      "hintDe": "Sieben Tage sind eine davon."
+    },
+    {
+      "id": "g1u03.w.woman",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "man",
+            "boy",
+            "girl",
+            "sister",
+            "captain"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "SB p.30 (The woman has got brown hair)",
+        "seedV1": "woman",
+        "narrative": null,
+        "note": null
+      },
+      "w": "woman (pl women)",
+      "g": "Frau",
+      "d": "an adult; she is not a man and not a girl.",
+      "s": "The ___ has got long hair; she is not a man.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "woman",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "woman",
+          "tier": "full"
+        },
+        {
+          "text": "women",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "woman",
+            "tier": "full"
+          },
+          {
+            "text": "women",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Frau",
+            "tier": "full"
+          },
+          {
+            "text": "Frauen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "man",
+        "boy",
+        "girl"
+      ],
+      "hintDe": "Eine erwachsene Frau, kein Mann."
+    }
+  ]
+}

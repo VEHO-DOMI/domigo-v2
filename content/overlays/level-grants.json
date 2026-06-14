@@ -1431,6 +1431,33 @@
       "reason": "unit-1 Imperatives: runs/running as wrong-form distractors (the imperative uses the base form run)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u03",
+      "itemId": null,
+      "field": null,
+      "token": "got",
+      "reason": "unit-3 have got / haven't got structure (SB box): the have-got family forms are not separate word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u03",
+      "itemId": null,
+      "field": null,
+      "token": "haven't",
+      "reason": "unit-3 have got / haven't got structure (SB box): the have-got family forms are not separate word-bank entries",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u03",
+      "itemId": null,
+      "field": null,
+      "token": "hasn't",
+      "reason": "unit-3 have got / haven't got structure (SB box): the have-got family forms are not separate word-bank entries",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
