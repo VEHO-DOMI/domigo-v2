@@ -1,0 +1,939 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g3-u01",
+  "briefBank": "97dbe14fb08d",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "group-sort",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form passt? Sortiere die Sätze nach der richtigen Form.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "She / He / It",
+          "members": [
+            "She ___ great lyrics.",
+            "He ___ in a concert tonight.",
+            "Tom ___ the guitar."
+          ]
+        },
+        {
+          "label": "I / You / We / They",
+          "members": [
+            "I ___ great lyrics.",
+            "You ___ in a concert tonight.",
+            "My friends ___ the guitar."
+          ]
+        }
+      ],
+      "hintDe": "Bei he/she/it und einem Namen hängst du -s an. Bei I/you/we/they bleibt das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "In der 3. Person Einzahl (he/she/it, ein Name) bekommt das Verb ein -s: She writes. Bei I/you/we/they bleibt es ohne -s: They write.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Carrier verbs (write/sing/play) stay implicit so the sort is purely about the subject-verb match.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Richtig oder falsch? Sortiere die Sätze.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "She writes great lyrics.",
+            "He doesn't like pop music.",
+            "My sister plays the drums."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "She write great lyrics.",
+            "He don't like pop music.",
+            "My sister play the drums."
+          ]
+        }
+      ],
+      "hintDe": "Achte bei he/she/it auf das -s am Verb und auf doesn't (nicht don't).",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it heißt es writes, plays und doesn't like. Ohne -s oder mit don't ist der Satz falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Each wrong member is flawed only in the third-person -s / don't-vs-doesn't contrast.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "matching-pairs",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Welche Form des Verbs passt zur Person?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "She",
+          "right": "writes"
+        },
+        {
+          "left": "They",
+          "right": "write"
+        },
+        {
+          "left": "He",
+          "right": "plays"
+        },
+        {
+          "left": "We",
+          "right": "play"
+        },
+        {
+          "left": "It",
+          "right": "sounds"
+        },
+        {
+          "left": "You",
+          "right": "sound"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Zu he/she/it gehört die Form mit -s. Zu I/you/we/they gehört die Form ohne -s.",
+      "hintEn": null,
+      "explainDe": "She/He/It bekommt ein -s am Verb (writes, plays). We/You/They bleiben ohne -s (write, play).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Unique right-sides; each subject maps to exactly one verb form.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Frage und passende Antwort",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Do you like pop music?",
+          "right": "Yes, I do."
+        },
+        {
+          "left": "Does she write her own lyrics?",
+          "right": "Yes, she does."
+        },
+        {
+          "left": "Do your friends play the guitar?",
+          "right": "No, they don't."
+        },
+        {
+          "left": "Does he sing along?",
+          "right": "No, he doesn't."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Beginnt die Frage mit Do, antwortest du mit do/don't. Beginnt sie mit Does, antwortest du mit does/doesn't.",
+      "hintEn": null,
+      "explainDe": "Die Kurzantwort passt zu do/does aus der Frage: Do you …? → Yes, I do. Does she …? → Yes, she does.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Unique right-sides; one Do-question and one Does-question each for yes/no.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She ___ some great lyrics.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "writes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "write",
+        "don't write",
+        "is write"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "She ist 3. Person Einzahl. Welche Form bekommt da das Verb?",
+      "hintEn": null,
+      "explainDe": "Bei she hängst du -s an das Verb an: She writes some great lyrics.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "write",
+          "don't write",
+          "is write",
+          "writing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Adapts SB example 'She writes some brilliant songs.' with in-bank 'great lyrics'.",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He ___ like rock music.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "don't",
+        "isn't",
+        "not"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei he/she/it: Welches Hilfswort gehört zu he?",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it bildest du die Verneinung mit doesn't + Grundform: He doesn't like …",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "don't",
+          "isn't",
+          "not",
+          "didn't"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Targets don't-vs-doesn't with in-bank 'rock music'.",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "___ she write her own lyrics?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Does",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Do",
+        "Is",
+        "Did"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage steht in der 3. Person Einzahl (she). Womit beginnt sie?",
+      "hintEn": null,
+      "explainDe": "Fragen bei he/she/it beginnst du mit Does + Person + Grundform: Does she write …?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Do",
+          "Is",
+          "Did",
+          "Are"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Adapts SB 'Does she write her own songs?' with in-bank 'lyrics'. All distractors are real wrong auxiliaries (Do/Is/Did/Are).",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Your friend asks about Madonna. She writes her own lyrics.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She writes her own lyrics.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She write her own lyrics.",
+        "She don't write her own lyrics.",
+        "She writing her own lyrics."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Welcher Satz hat das -s bei she an der richtigen Stelle?",
+      "hintEn": null,
+      "explainDe": "Bei she heißt es writes (mit -s). 'She write' und 'She writing' sind falsch.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She write her own lyrics.",
+          "She don't write her own lyrics.",
+          "She writing her own lyrics.",
+          "She does writes her own lyrics."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Each wrong sentence is flawed only in present-simple verb form. 'Madonna' is a harvested proper noun.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Paul is a critic. He really doesn't enjoy this singer at all.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't like the singer.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He don't like the singer.",
+        "He doesn't likes the singer.",
+        "He not like the singer."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei he: doesn't + Grundform. Nach doesn't bekommt das Verb kein -s.",
+      "hintEn": null,
+      "explainDe": "Richtig ist He doesn't like: doesn't + Grundform ohne -s. 'don't' und 'doesn't likes' sind falsch.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "He don't like the singer.",
+          "He doesn't likes the singer.",
+          "He not like the singer.",
+          "He isn't like the singer."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Combines doesn't + no double -s. All distractors flawed only in this structure.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I really ___ music with a good tune. (like)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "like",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach I bleibt das Verb in der Grundform – ohne -s.",
+      "hintEn": null,
+      "explainDe": "Bei I, you, we und they steht das Verb ohne -s: I like …",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Adapts SB 'I like songs with a good tune.' with in-bank 'music'.",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My sister ___ the guitar and ___ in a concert every week. (play / sing)",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "plays | sings",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "My sister ist 3. Person Einzahl (= she). Beide Verben bekommen ein -s.",
+      "hintEn": null,
+      "explainDe": "My sister = she, also bekommen beide Verben -s: plays und sings.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Two-blank: both verbs take -s with 'my sister'. Pipe-split answers.",
+      "blanks": 2
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Paul is a critic, but he ___ play the guitar. (not / play)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei he: doesn't + Grundform. Ins Feld kommt nur das Hilfswort.",
+      "hintEn": null,
+      "explainDe": "Bei he heißt die Verneinung doesn't + play (Grundform): he doesn't play …",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Single blank for the auxiliary; base 'play' is given after the blank.",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She write some great lyrics.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She writes some great lyrics.",
+          "tier": "full"
+        },
+        {
+          "text": "She writes some great lyrics",
+          "tier": "full"
+        },
+        {
+          "text": "writes",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she fehlt etwas am Verb. Was hängst du an?",
+      "hintEn": null,
+      "explainDe": "Bei she bekommt das Verb ein -s: She writes some great lyrics.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Intentional error: missing third-person -s.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He don't like pop music.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't like pop music.",
+          "tier": "full"
+        },
+        {
+          "text": "He doesn't like pop music",
+          "tier": "full"
+        },
+        {
+          "text": "He does not like pop music.",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't like",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei he ist don't falsch. Welches Hilfswort gehört zu he?",
+      "hintEn": null,
+      "explainDe": "Bei he/she/it heißt die Verneinung doesn't (nicht don't): He doesn't like pop music.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Intentional error: don't for doesn't (third-person negative).",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Does she writes her own lyrics?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she write her own lyrics?",
+          "tier": "full"
+        },
+        {
+          "text": "Does she write her own lyrics",
+          "tier": "full"
+        },
+        {
+          "text": "write",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach Does steht das Verb in der Grundform – ohne -s.",
+      "hintEn": null,
+      "explainDe": "Nach does/doesn't bleibt das Verb in der Grundform: Does she write …? Das -s entfällt.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Intentional error: -s kept after 'does'. Adapts SB 'Does she write her own songs?'",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I write my own lyrics. → Beginne mit 'She': She ___ her own lyrics.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "writes",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aus I wird She. Was passiert dann mit dem Verb?",
+      "hintEn": null,
+      "explainDe": "Bei She bekommt das Verb ein -s: She writes her own lyrics.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Subject swap I→She forces the -s.",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He likes pop music. → Mach den Satz verneint: He ___ pop music.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't like",
+          "tier": "full"
+        },
+        {
+          "text": "does not like",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei he: doesn't + Grundform. Das -s wandert vom Verb zu does.",
+      "hintEn": null,
+      "explainDe": "Aus He likes wird He doesn't like: doesn't + Grundform, das Verb verliert sein -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Affirmative→negative; tests that -s moves off the main verb.",
+      "blanks": 1
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "question-formation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She writes her own lyrics. → Stell eine Ja/Nein-Frage.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Does she write her own lyrics?",
+          "tier": "full"
+        },
+        {
+          "text": "Does she write her own lyrics",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Frage beginnt mit Does. Danach steht das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Für die Frage stellst du Does an den Anfang und nimmst die Grundform: Does she write …?",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Statement→question; -s drops to the base after 'does'.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Frag deine Freundin, ob sie Popmusik mag. (you / like / pop music)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you like pop music?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you like pop music",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei you beginnt die Frage mit Do. Danach kommt you und die Grundform.",
+      "hintEn": null,
+      "explainDe": "Fragen mit you bildest du mit Do + you + Grundform: Do you like pop music?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "From chips; contrasts with the Does-questions above.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "she / writes / her / own / lyrics",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She writes her own lyrics.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: she + Verb mit -s + Rest.",
+      "hintEn": null,
+      "explainDe": "Richtig ist She writes her own lyrics: zuerst she, dann das Verb mit -s (writes).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "write",
+          "doesn't",
+          "do",
+          "She writes her own lyrics."
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Distractor chips 'write/doesn't/do' tempt the wrong verb form.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "he / doesn't / like / rock / music",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't like rock music.",
+          "tier": "full"
+        },
+        {
+          "text": "He does not like rock music.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Reihenfolge: he + doesn't + Grundform + Rest. Nach doesn't kein -s.",
+      "hintEn": null,
+      "explainDe": "Richtig ist He doesn't like rock music: doesn't + Grundform like (ohne -s).",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "don't",
+          "likes",
+          "isn't",
+          "He doesn't like rock music."
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Distractor chips target don't / extra -s. In-bank 'rock music'.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Sie schreibt ihre eigenen Liedtexte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She writes her own lyrics.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei she bekommt das Verb ein -s. „Liedtexte“ = lyrics.",
+      "hintEn": null,
+      "explainDe": "'Sie schreibt' = She writes: bei she hängst du -s an das Verb an.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "deToEn; checks third-person -s in production.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Er mag keine Rockmusik.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He doesn't like rock music.",
+          "tier": "full"
+        },
+        {
+          "text": "He does not like rock music.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Verneinung bei er (= he): doesn't + Grundform. 'Rockmusik' = rock music.",
+      "hintEn": null,
+      "explainDe": "'Er mag keine …' = He doesn't like …: doesn't + Grundform ohne -s.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "deToEn negation in production with in-bank 'rock music'.",
+      "blanks": 0
+    },
+    {
+      "structureId": "g3u01.s.present-simple",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Die he/she/it-Form von 'play':",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "plays",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Hänge -s an play an.",
+      "hintEn": null,
+      "explainDe": "play + s = plays. So bildest du bei he/she/it die Form des Verbs.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g3/sb/More 3 SB Unit 1.txt#grammar-1",
+      "note": "Single-word anagram reinforcing the -s ending.",
+      "blanks": 0
+    }
+  ]
+}

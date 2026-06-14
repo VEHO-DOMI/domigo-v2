@@ -1,0 +1,42 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g3-u01",
+  "items": {
+    "81db79204b3a": "g3u01.gi.present-simple.mp.001",
+    "b090568bfb49": "g3u01.gi.present-simple.mt.001",
+    "8b3283c13903": "g3u01.gi.present-simple.mc.001",
+    "489321b679f0": "g3u01.gi.present-simple.mc.002",
+    "013ef0f90a01": "g3u01.gi.present-simple.mc.003",
+    "b519a4d0d8d4": "g3u01.gi.present-simple.cp.001",
+    "df939e0b8c80": "g3u01.gi.present-simple.cp.002",
+    "6f6efcbe7b21": "g3u01.gi.present-simple.gf.001",
+    "d2638d62a5f7": "g3u01.gi.present-simple.gf.002",
+    "f0f582fc3a6c": "g3u01.gi.present-simple.gf.003",
+    "6e1d4de154ca": "g3u01.gi.present-simple.ec.001",
+    "27480c42eb92": "g3u01.gi.present-simple.ec.002",
+    "a859a7e61ee7": "g3u01.gi.present-simple.ec.003",
+    "82a36b25c82b": "g3u01.gi.present-simple.tf.001",
+    "6790707558e2": "g3u01.gi.present-simple.tf.002",
+    "4af4cf1323e3": "g3u01.gi.present-simple.qf.001",
+    "68f77e24e463": "g3u01.gi.present-simple.qf.002",
+    "dc7fdf40de73": "g3u01.gi.present-simple.sb.001",
+    "c4dcb3b2d3e7": "g3u01.gi.present-simple.sb.002",
+    "b09bb9835a02": "g3u01.gi.present-simple.tr.001",
+    "c4799416de27": "g3u01.gi.present-simple.tr.002",
+    "f7076bd096eb": "g3u01.gi.present-simple.ag.001",
+    "ea09d84ce687": "g3u01.gi.present-simple.gs.003",
+    "38dbb065f9fc": "g3u01.gi.present-simple.gs.004"
+  },
+  "tombstones": [
+    {
+      "id": "g3u01.gi.present-simple.gs.002",
+      "key": "91750c3921b0",
+      "removedWith": "e85aaa64322e"
+    },
+    {
+      "id": "g3u01.gi.present-simple.gs.001",
+      "key": "eab20ffd2848",
+      "removedWith": "bf6162edaf7a"
+    }
+  ]
+}

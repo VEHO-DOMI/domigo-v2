@@ -1,0 +1,3153 @@
+{
+  "schema": "vocab@1",
+  "grade": 3,
+  "unit": 1,
+  "slug": "g3-u01",
+  "items": [
+    {
+      "id": "g3u01.w.afterwards",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "apart from",
+            "not even",
+            "in my opinion",
+            "extremely"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "afterwards",
+      "g": "danach",
+      "d": "after that, when the first thing is done",
+      "s": "We are going to the concert first, and ___ we can all go for a pizza.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "afterwards",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "afterwards",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "afterwards",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "danach",
+            "tier": "full"
+          },
+          {
+            "text": "anschließend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "apart from",
+        "not even",
+        "in my opinion"
+      ],
+      "hintDe": "Im Anschluss, kurz nachdem etwas anderes passiert ist."
+    },
+    {
+      "id": "g3u01.w.apart-from",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "afterwards",
+            "not even",
+            "in my opinion",
+            "extremely"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "apart from",
+      "g": "abgesehen von",
+      "d": "not counting one thing, the rest is all true",
+      "s": "___ his bad taste in music, my dad is really cool and fun to be with.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Apart from",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "apart from",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "apart from",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "abgesehen von",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "counting",
+          "de": "mitgerechnet",
+          "scope": "d"
+        },
+        {
+          "word": "rest",
+          "de": "der Rest",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "afterwards",
+        "not even",
+        "in my opinion"
+      ],
+      "hintDe": "Eine Sache ausgenommen, sonst stimmt alles."
+    },
+    {
+      "id": "g3u01.w.audition",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "singer",
+            "critic",
+            "tune",
+            "record"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "audition",
+      "g": "Vorsingen",
+      "d": "a short show where people watch you and tell you if you are good at music",
+      "s": "She played a pop tune on the flute at her ___ for the school show, and the critics liked it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "audition",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "audition",
+          "tier": "full"
+        },
+        {
+          "text": "auditions",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "audition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vorsingen",
+            "tier": "full"
+          },
+          {
+            "text": "Vorsprechen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "singer",
+        "critic",
+        "tune"
+      ],
+      "hintDe": "Da zeigst du kurz, was du kannst, damit man dich auswählt."
+    },
+    {
+      "id": "g3u01.w.brave",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "unhappy",
+            "talented",
+            "successful",
+            "whole"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "brave",
+      "g": "mutig",
+      "d": "not scared, ready for anything scary",
+      "s": "You're a ___ man to get up and play music in front of the whole school — well done!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "brave",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "brave",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "brave",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mutig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "ready",
+          "de": "bereit",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "unhappy",
+        "talented",
+        "successful"
+      ],
+      "hintDe": "Du hast keine Angst und traust dich was."
+    },
+    {
+      "id": "g3u01.w.critic",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "singer",
+            "record",
+            "audition",
+            "tune"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "critic",
+      "g": "Kritiker/Kritikerin",
+      "d": "somebody whose job is to tell people if music or shows are good or bad",
+      "s": "The ___ on the music show did not like the young singer's voice at all, and everybody could tell.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "critic",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "critic",
+          "tier": "full"
+        },
+        {
+          "text": "critics",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "critic",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kritiker",
+            "tier": "full"
+          },
+          {
+            "text": "Kritikerin",
+            "tier": "full"
+          },
+          {
+            "text": "Kritiker/Kritikerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "singer",
+        "record",
+        "audition"
+      ],
+      "hintDe": "Diese Person sagt öffentlich, ob etwas gut oder schlecht ist."
+    },
+    {
+      "id": "g3u01.w.extremely",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "whole",
+            "brave",
+            "successful",
+            "talented"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "extremely",
+      "g": "extrem",
+      "d": "very, very much",
+      "s": "This famous singer was ___ talented — he played all the music on his record alone.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "extremely",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "extremely",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "extremely",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "extrem",
+            "tier": "full"
+          },
+          {
+            "text": "äußerst",
+            "tier": "full"
+          },
+          {
+            "text": "sehr",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "whole",
+        "brave",
+        "successful"
+      ],
+      "hintDe": "Steigerung von sehr: ganz, ganz besonders stark."
+    },
+    {
+      "id": "g3u01.w.flute",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "record",
+            "suit",
+            "tune",
+            "singer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "flute",
+      "g": "Flöte",
+      "d": "a long, thin musical thing that you play with your mouth and your fingers",
+      "s": "She plays the ___ in the school music club, and her favourite tune is beautiful on it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "flute",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "flute",
+          "tier": "full"
+        },
+        {
+          "text": "flutes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "flute",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flöte",
+            "tier": "full"
+          },
+          {
+            "text": "Querflöte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "thin",
+          "de": "dünn",
+          "scope": "d"
+        },
+        {
+          "word": "club",
+          "de": "Klub, Verein",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "record",
+        "suit",
+        "tune"
+      ],
+      "hintDe": "Ein langes, dünnes Blasinstrument zum Spielen von Melodien."
+    },
+    {
+      "id": "g3u01.w.i-can-t-stand-it",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I don't mind (it).",
+            "Me neither.",
+            "in my opinion",
+            "apart from"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "I can't stand it.",
+      "g": "Ich kann es nicht ausstehen.",
+      "d": "a way to tell people you really do not like a thing at all",
+      "s": "The noise from the room next to mine is so bad — ___ stand it!",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "I can't",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I can't stand it",
+          "tier": "full"
+        },
+        {
+          "text": "I can't stand it.",
+          "tier": "full"
+        },
+        {
+          "text": "can't stand",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I can't stand it",
+            "tier": "full"
+          },
+          {
+            "text": "I can't stand it.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich kann es nicht ausstehen.",
+            "tier": "full"
+          },
+          {
+            "text": "Ich kann es nicht ausstehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "I don't mind (it).",
+        "Me neither.",
+        "in my opinion"
+      ],
+      "hintDe": "So sagst du, dass du etwas überhaupt nicht magst."
+    },
+    {
+      "id": "g3u01.w.i-don-t-mind",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I can't stand it.",
+            "Me neither.",
+            "in my opinion",
+            "afterwards"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "I don't mind (it).",
+      "g": "Ich habe nichts dagegen.",
+      "d": "a way to tell people a thing is OK for you, you are happy with it",
+      "s": "We can listen to your music if you want — ___ mind, it's all good with me.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "I don't",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "I don't mind",
+          "tier": "full"
+        },
+        {
+          "text": "I don't mind it",
+          "tier": "full"
+        },
+        {
+          "text": "I don't mind it.",
+          "tier": "full"
+        },
+        {
+          "text": "don't mind",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "I don't mind",
+            "tier": "full"
+          },
+          {
+            "text": "I don't mind it",
+            "tier": "full"
+          },
+          {
+            "text": "I don't mind it.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich habe nichts dagegen.",
+            "tier": "full"
+          },
+          {
+            "text": "Ich habe nichts dagegen",
+            "tier": "full"
+          },
+          {
+            "text": "Mir ist es egal.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "I can't stand it.",
+        "Me neither.",
+        "in my opinion"
+      ],
+      "hintDe": "So sagst du, dass dir etwas recht ist und du nichts dagegen hast."
+    },
+    {
+      "id": "g3u01.w.in-my-opinion",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "apart from",
+            "afterwards",
+            "not even",
+            "Me neither."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "in my opinion",
+      "g": "meiner Meinung nach",
+      "d": "words you use to show what you think",
+      "s": "___, this is the best record they have ever made — I love every tune on it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "In my opinion",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in my opinion",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in my opinion",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "meiner Meinung nach",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": "d"
+        },
+        {
+          "word": "use",
+          "de": "benutzen",
+          "scope": "d"
+        },
+        {
+          "word": "ever",
+          "de": "je, jemals",
+          "scope": "s"
+        },
+        {
+          "word": "made",
+          "de": "gemacht",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "apart from",
+        "afterwards",
+        "not even"
+      ],
+      "hintDe": "So leitest du ein, was du persönlich denkst."
+    },
+    {
+      "id": "g3u01.w.lyrics",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "tune",
+            "record",
+            "singer",
+            "audition"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "lyrics",
+      "g": "Liedtext",
+      "d": "the words that a singer sings in a piece of music",
+      "s": "I love this tune, but I can never remember the ___ when I want to sing along.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "lyrics",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lyrics",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lyrics",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Liedtext",
+            "tier": "full"
+          },
+          {
+            "text": "Songtext",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "words",
+          "de": "Wörter",
+          "scope": "d"
+        },
+        {
+          "word": "sings",
+          "de": "singt",
+          "scope": "d"
+        },
+        {
+          "word": "remember",
+          "de": "sich erinnern an",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "tune",
+        "record",
+        "singer"
+      ],
+      "hintDe": "Das sind die Wörter, die in einem Lied gesungen werden."
+    },
+    {
+      "id": "g3u01.w.me-neither",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I can't stand it.",
+            "I don't mind (it).",
+            "in my opinion",
+            "apart from"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Me neither.",
+      "g": "Ich auch nicht.",
+      "d": "a way to agree when a friend does not like a thing and you do not like it too",
+      "s": "'I can't listen to their new music any more.' — '___ It's not so good now.'",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Me neither.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Me neither",
+          "tier": "full"
+        },
+        {
+          "text": "Me neither.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Me neither",
+            "tier": "full"
+          },
+          {
+            "text": "Me neither.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ich auch nicht.",
+            "tier": "full"
+          },
+          {
+            "text": "Ich auch nicht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "I can't stand it.",
+        "I don't mind (it).",
+        "in my opinion"
+      ],
+      "hintDe": "So stimmst du zu, wenn jemand sagt, dass er etwas nicht mag."
+    },
+    {
+      "id": "g3u01.w.not-even",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "afterwards",
+            "apart from",
+            "extremely",
+            "in my opinion"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "not even",
+      "g": "noch nicht einmal",
+      "d": "used to show a thing is surprising because it is less than you would think",
+      "s": "You're not going to be our new singer — you're ___ going to be at the back of the show.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "not even",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "not even",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "not even",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "noch nicht einmal",
+            "tier": "full"
+          },
+          {
+            "text": "nicht einmal",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "afterwards",
+        "apart from",
+        "extremely"
+      ],
+      "hintDe": "Du betonst, dass sogar das Kleinste nicht passiert."
+    },
+    {
+      "id": "g3u01.w.record",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "flute",
+            "suit",
+            "singer",
+            "tune"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "record",
+      "g": "(Schall-)Platte",
+      "d": "a big, black, round music thing that you put on a player to play music",
+      "s": "My mum has a box of old black ___ that she still plays on a player on calm days.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "records",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "record",
+          "tier": "full"
+        },
+        {
+          "text": "records",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "record",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schallplatte",
+            "tier": "full"
+          },
+          {
+            "text": "Platte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "round",
+          "de": "rund",
+          "scope": "d"
+        },
+        {
+          "word": "old",
+          "de": "alt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "flute",
+        "suit",
+        "singer"
+      ],
+      "hintDe": "Eine große, runde schwarze Scheibe, die auf einem Plattenspieler läuft."
+    },
+    {
+      "id": "g3u01.w.singer",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "critic",
+            "record",
+            "tune",
+            "audition"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "singer",
+      "g": "Sänger/Sängerin",
+      "d": "somebody who makes music with their voice, and this is their job",
+      "s": "My favourite ___ has a new record out this week, and her voice is amazing on every tune.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "singer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "singer",
+          "tier": "full"
+        },
+        {
+          "text": "singers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "singer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sänger",
+            "tier": "full"
+          },
+          {
+            "text": "Sängerin",
+            "tier": "full"
+          },
+          {
+            "text": "Sänger/Sängerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "critic",
+        "record",
+        "tune"
+      ],
+      "hintDe": "Diese Person macht mit ihrer Stimme Musik."
+    },
+    {
+      "id": "g3u01.w.successful",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "talented",
+            "brave",
+            "unhappy",
+            "whole"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "successful",
+      "g": "erfolgreich",
+      "d": "having done very well and got what you wanted",
+      "s": "The tune was so ___ that you could listen to it on the radio every day for a whole year.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "successful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "successful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "successful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erfolgreich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "got",
+          "de": "bekommen, erreicht",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "talented",
+        "brave",
+        "unhappy"
+      ],
+      "hintDe": "Etwas läuft super und kommt gut an."
+    },
+    {
+      "id": "g3u01.w.suit",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "record",
+            "flute",
+            "tune",
+            "singer"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "suit",
+      "g": "Anzug",
+      "d": "a matching jacket and trousers that you wear for special days",
+      "s": "Play your music at home when you're not wearing that smart grey ___ with the matching jacket and trousers.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "suit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "suit",
+          "tier": "full"
+        },
+        {
+          "text": "suits",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "suit",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Anzug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "special",
+          "de": "besonders",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "record",
+        "flute",
+        "tune"
+      ],
+      "hintDe": "Sakko und Hose, die zusammenpassen, für festliche Anlässe."
+    },
+    {
+      "id": "g3u01.w.talented",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "successful",
+            "brave",
+            "unhappy",
+            "extremely"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "talented",
+      "g": "talentiert",
+      "d": "very good at a thing, with no help and no work",
+      "s": "My young sister is so ___ at music — nobody taught her, but she plays the flute beautifully.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "talented",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "talented",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "talented",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "talentiert",
+            "tier": "full"
+          },
+          {
+            "text": "begabt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "taught",
+          "de": "es ihr beigebracht",
+          "scope": "s"
+        },
+        {
+          "word": "beautifully",
+          "de": "wunderschön",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "successful",
+        "brave",
+        "unhappy"
+      ],
+      "hintDe": "Jemand kann etwas von Natur aus richtig gut."
+    },
+    {
+      "id": "g3u01.w.to-agree",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to seem",
+            "to feel",
+            "to celebrate",
+            "to belong to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to agree",
+      "g": "zustimmen",
+      "d": "to think like a friend, with the very opinion they have",
+      "s": "I ___ with you — this singer makes the best music in the whole town!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "agree",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "agree",
+          "tier": "full"
+        },
+        {
+          "text": "agreed",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "agree",
+            "tier": "full"
+          },
+          {
+            "text": "to agree",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zustimmen",
+            "tier": "full"
+          },
+          {
+            "text": "der gleichen Meinung sein",
+            "tier": "full"
+          },
+          {
+            "text": "Recht geben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to seem",
+        "to feel",
+        "to celebrate"
+      ],
+      "hintDe": "Du bist genau derselben Meinung wie jemand anderer."
+    },
+    {
+      "id": "g3u01.w.to-be-interested-in",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to get tired of sth.",
+            "to give up",
+            "to seem",
+            "to belong to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be interested in",
+      "g": "an etw. interessiert sein",
+      "d": "to want to find out more about a thing because you like it",
+      "s": "He is really ___ in music — he reads every book about famous singers he can find.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "interested",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be interested in",
+          "tier": "full"
+        },
+        {
+          "text": "interested in",
+          "tier": "full"
+        },
+        {
+          "text": "to be interested in",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be interested in",
+            "tier": "full"
+          },
+          {
+            "text": "interested in",
+            "tier": "full"
+          },
+          {
+            "text": "to be interested in",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "an etw. interessiert sein",
+            "tier": "full"
+          },
+          {
+            "text": "sich für etwas interessieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to get tired of sth.",
+        "to give up",
+        "to seem"
+      ],
+      "hintDe": "Du willst mehr über etwas wissen, weil es dich anzieht."
+    },
+    {
+      "id": "g3u01.w.to-be-on-the-way-up",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give up",
+            "to take place",
+            "to belong to",
+            "to make up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be on the way up",
+      "g": "auf dem Weg nach oben sein",
+      "d": "to become more and more famous, doing very well",
+      "s": "That young drummer is really on the ___ up — every month she plays bigger and bigger concerts.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "way",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be on the way up",
+          "tier": "full"
+        },
+        {
+          "text": "on the way up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be on the way up",
+            "tier": "full"
+          },
+          {
+            "text": "on the way up",
+            "tier": "full"
+          },
+          {
+            "text": "to be on the way up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf dem Weg nach oben sein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to give up",
+        "to take place",
+        "to belong to"
+      ],
+      "hintDe": "Mit dir geht es bergauf, du wirst immer erfolgreicher."
+    },
+    {
+      "id": "g3u01.w.to-belong-to",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to seem",
+            "to feel",
+            "to agree",
+            "to come along"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to belong to",
+      "g": "gehören",
+      "d": "when a thing is yours and not a friend's",
+      "s": "This old record isn't mine — it ___ to my mum, so I have to give it back to her.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "belongs",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "belong to",
+          "tier": "full"
+        },
+        {
+          "text": "belongs to",
+          "tier": "full"
+        },
+        {
+          "text": "belonged to",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "belong to",
+            "tier": "full"
+          },
+          {
+            "text": "to belong to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gehören",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "old",
+          "de": "alt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to seem",
+        "to feel",
+        "to agree"
+      ],
+      "hintDe": "Etwas ist deins oder gehört jemandem."
+    },
+    {
+      "id": "g3u01.w.to-celebrate",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to agree",
+            "to waste",
+            "to seem",
+            "to feel"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to celebrate",
+      "g": "feiern",
+      "d": "to do a happy thing because of a good day, like a birthday",
+      "s": "To ___ music, the radio played all our favourite tunes the whole day long.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "celebrate",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "celebrate",
+          "tier": "full"
+        },
+        {
+          "text": "celebrated",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "celebrate",
+            "tier": "full"
+          },
+          {
+            "text": "to celebrate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "feiern",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to agree",
+        "to waste",
+        "to seem"
+      ],
+      "hintDe": "Du machst etwas Schönes wegen eines besonderen Tages."
+    },
+    {
+      "id": "g3u01.w.to-come-along",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give up",
+            "to take place",
+            "to make up",
+            "to belong to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to come along",
+      "g": "mitkommen",
+      "d": "to go somewhere with a friend",
+      "s": "We're all going to the concert tonight. Do you want to ___ along with us?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "come",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "come along",
+          "tier": "full"
+        },
+        {
+          "text": "came along",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "come along",
+            "tier": "full"
+          },
+          {
+            "text": "to come along",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mitkommen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to give up",
+        "to take place",
+        "to make up"
+      ],
+      "hintDe": "Du gehst mit jemandem zusammen irgendwohin."
+    },
+    {
+      "id": "g3u01.w.to-feel",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to seem",
+            "to agree",
+            "to belong to",
+            "to celebrate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to feel",
+      "g": "sich fühlen",
+      "d": "to be happy, sad, or scared inside you",
+      "s": "Whenever I ___ sad, I listen to my favourite tune and it makes me happy again.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "feel",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "feel",
+          "tier": "full"
+        },
+        {
+          "text": "felt",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "feel",
+            "tier": "full"
+          },
+          {
+            "text": "to feel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich fühlen",
+            "tier": "full"
+          },
+          {
+            "text": "fühlen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "whenever",
+          "de": "immer wenn",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to seem",
+        "to agree",
+        "to belong to"
+      ],
+      "hintDe": "Etwas geht in dir vor, du hast ein Gefühl."
+    },
+    {
+      "id": "g3u01.w.to-get-back-to-sb",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give up",
+            "to come along",
+            "to seem",
+            "to make it"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get back to sb.",
+      "g": "sich bei jdm. melden",
+      "d": "to talk to a friend again after, not now",
+      "s": "I have no time at the music club now, but I get ___ to you with a yes or no after lunch.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "back",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get back to",
+          "tier": "full"
+        },
+        {
+          "text": "get back to sb.",
+          "tier": "full"
+        },
+        {
+          "text": "got back to",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get back to sb.",
+            "tier": "full"
+          },
+          {
+            "text": "get back to somebody",
+            "tier": "full"
+          },
+          {
+            "text": "to get back to sb.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich bei jdm. melden",
+            "tier": "full"
+          },
+          {
+            "text": "sich bei jemandem melden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "club",
+          "de": "Klub, Verein",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to give up",
+        "to come along",
+        "to seem"
+      ],
+      "hintDe": "Du meldest dich später wieder bei jemandem."
+    },
+    {
+      "id": "g3u01.w.to-get-tired-of-sth",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make up",
+            "to seem",
+            "to come along",
+            "to belong to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to get tired of sth.",
+      "g": "etw. satt haben",
+      "d": "to not like a thing any more because you have done it too much",
+      "s": "I love this music so much that I never ___ tired of listening to it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "get",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get tired of",
+          "tier": "full"
+        },
+        {
+          "text": "get tired of sth.",
+          "tier": "full"
+        },
+        {
+          "text": "got tired of",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get tired of sth.",
+            "tier": "full"
+          },
+          {
+            "text": "to get tired of sth.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etw. satt haben",
+            "tier": "full"
+          },
+          {
+            "text": "etwas satt haben",
+            "tier": "full"
+          },
+          {
+            "text": "genug von etwas haben",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up",
+        "to seem",
+        "to come along"
+      ],
+      "hintDe": "Du magst etwas nicht mehr, weil es dir zu viel wurde."
+    },
+    {
+      "id": "g3u01.w.to-give-sth-a-try",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give up",
+            "to waste",
+            "to make up",
+            "to come along"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to give sth. a try",
+      "g": "etw. versuchen",
+      "d": "to do a thing once to find out if you like it or can do it",
+      "s": "I have never played the flute, but I want to ___ it a try at the music club this week.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "give",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "give sth. a try",
+          "tier": "full"
+        },
+        {
+          "text": "give it a try",
+          "tier": "full"
+        },
+        {
+          "text": "give something a try",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "give sth. a try",
+            "tier": "full"
+          },
+          {
+            "text": "give it a try",
+            "tier": "full"
+          },
+          {
+            "text": "to give sth. a try",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etw. versuchen",
+            "tier": "full"
+          },
+          {
+            "text": "etwas ausprobieren",
+            "tier": "full"
+          },
+          {
+            "text": "es versuchen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "club",
+          "de": "Klub, Verein",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to give up",
+        "to waste",
+        "to make up"
+      ],
+      "hintDe": "Du probierst etwas einfach einmal aus."
+    },
+    {
+      "id": "g3u01.w.to-give-up",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make it",
+            "to come along",
+            "to celebrate",
+            "to agree"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to give up",
+      "g": "aufgeben",
+      "d": "to not keep doing a thing, because you do not want to do it any more",
+      "s": "Playing the guitar is not always fun at first, but please don't ___. Keep playing every day and you are going to play well.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "give up",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "give up",
+          "tier": "full"
+        },
+        {
+          "text": "gave up",
+          "tier": "partial"
+        },
+        {
+          "text": "given up",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "give up",
+            "tier": "full"
+          },
+          {
+            "text": "to give up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufgeben",
+            "tier": "full"
+          },
+          {
+            "text": "aufhören",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make it",
+        "to come along",
+        "to celebrate"
+      ],
+      "hintDe": "Du hörst auf und versuchst es nicht weiter."
+    },
+    {
+      "id": "g3u01.w.to-have-got-what-it-takes",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give up",
+            "to waste",
+            "to seem",
+            "to belong to"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to have got what it takes",
+      "g": "das Zeug dazu haben",
+      "d": "to be good, with all you need to do very well",
+      "s": "You are a great dancer and so musical — you've got ___ it takes to be a famous singer!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "what",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "have got what it takes",
+          "tier": "full"
+        },
+        {
+          "text": "have what it takes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "have got what it takes",
+            "tier": "full"
+          },
+          {
+            "text": "have what it takes",
+            "tier": "full"
+          },
+          {
+            "text": "to have got what it takes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "das Zeug dazu haben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to give up",
+        "to waste",
+        "to seem"
+      ],
+      "hintDe": "Du hast genau das, was man braucht, um es zu schaffen."
+    },
+    {
+      "id": "g3u01.w.to-make-it",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give up",
+            "to celebrate",
+            "to come along",
+            "to take place"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to make it",
+      "g": "es schaffen",
+      "d": "to do very well and become famous, or to be there at a place",
+      "s": "Sorry, I can't ___ it to your concert tonight — I have to look after my young sister.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "make",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make it",
+          "tier": "full"
+        },
+        {
+          "text": "made it",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make it",
+            "tier": "full"
+          },
+          {
+            "text": "to make it",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "es schaffen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to give up",
+        "to celebrate",
+        "to come along"
+      ],
+      "hintDe": "Du schaffst es — oder du schaffst es, dabei zu sein."
+    },
+    {
+      "id": "g3u01.w.to-make-up",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to give up",
+            "to take place",
+            "to seem",
+            "to come along"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to make up",
+      "g": "erfinden",
+      "d": "to think of a new thing that is not real, just in your mind",
+      "s": "My young sister likes to ___ up funny dances for her favourite tunes before bedtime.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "make",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make up",
+          "tier": "full"
+        },
+        {
+          "text": "made up",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make up",
+            "tier": "full"
+          },
+          {
+            "text": "to make up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erfinden",
+            "tier": "full"
+          },
+          {
+            "text": "sich ausdenken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "real",
+          "de": "echt, wirklich",
+          "scope": "d"
+        },
+        {
+          "word": "mind",
+          "de": "Gedanken, Kopf",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to give up",
+        "to take place",
+        "to seem"
+      ],
+      "hintDe": "Du denkst dir etwas Neues aus, das es so nicht gibt."
+    },
+    {
+      "id": "g3u01.w.to-seem",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to feel",
+            "to agree",
+            "to belong to",
+            "to celebrate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to seem",
+      "g": "scheinen",
+      "d": "to look like a thing is true, from how it looks to you",
+      "s": "That singer ___ to play worse every time she becomes more famous, in my opinion.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "seems",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "seem",
+          "tier": "full"
+        },
+        {
+          "text": "seems",
+          "tier": "full"
+        },
+        {
+          "text": "seemed",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "seem",
+            "tier": "full"
+          },
+          {
+            "text": "to seem",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "scheinen",
+            "tier": "full"
+          },
+          {
+            "text": "wirken",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "worse",
+          "de": "schlechter",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to feel",
+        "to agree",
+        "to belong to"
+      ],
+      "hintDe": "Etwas wirkt so, sieht für dich nach etwas aus."
+    },
+    {
+      "id": "g3u01.w.to-sing-along",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make up",
+            "to take place",
+            "to seem",
+            "to come along"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to sing along",
+      "g": "mitsingen",
+      "d": "to join in with your voice when music is playing",
+      "s": "Everybody in the car began to ___ along to their favourite tune on the radio.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sing along",
+          "tier": "full"
+        },
+        {
+          "text": "sang along",
+          "tier": "partial"
+        },
+        {
+          "text": "sung along",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sing along",
+            "tier": "full"
+          },
+          {
+            "text": "to sing along",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "mitsingen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "began",
+          "de": "fing an",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "to make up",
+        "to take place",
+        "to seem"
+      ],
+      "hintDe": "Du singst mit, wenn Musik läuft."
+    },
+    {
+      "id": "g3u01.w.to-spill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to waste",
+            "to feel",
+            "to celebrate",
+            "to seem"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to spill",
+      "g": "verschütten",
+      "d": "to let a drink fall out of its glass without wanting to",
+      "s": "Be careful with that glass of milk near the record player, or you are going to ___ it all over the table!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "spill",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spill",
+          "tier": "full"
+        },
+        {
+          "text": "spilled",
+          "tier": "full"
+        },
+        {
+          "text": "spilt",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spill",
+            "tier": "full"
+          },
+          {
+            "text": "to spill",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verschütten",
+            "tier": "full"
+          },
+          {
+            "text": "ausschütten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "let",
+          "de": "lassen",
+          "scope": "d"
+        },
+        {
+          "word": "fall",
+          "de": "fallen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to waste",
+        "to feel",
+        "to celebrate"
+      ],
+      "hintDe": "Aus Versehen kippt dir ein Getränk um."
+    },
+    {
+      "id": "g3u01.w.to-take-place",
+      "rev": 3,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to come along",
+            "to give up",
+            "to make it",
+            "to celebrate"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to take place",
+      "g": "stattfinden",
+      "d": "to happen at a certain time, like a concert or a show.",
+      "s": "Where did the concert ___ place — at the school or in the city park?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "take",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "take place",
+          "tier": "full"
+        },
+        {
+          "text": "takes place",
+          "tier": "full"
+        },
+        {
+          "text": "took place",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "take place",
+            "tier": "full"
+          },
+          {
+            "text": "to take place",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stattfinden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to come along",
+        "to give up",
+        "to make it"
+      ],
+      "hintDe": "Etwas passiert zu einer bestimmten Zeit an einem bestimmten Ort."
+    },
+    {
+      "id": "g3u01.w.to-waste",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to spill",
+            "to feel",
+            "to celebrate",
+            "to give up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to waste",
+      "g": "verschwenden",
+      "d": "to use too much of a thing, or use it in a bad way for no good reason",
+      "s": "Don't ___ our time — you are never going to be a famous singer, so please leave now.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "waste",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "waste",
+          "tier": "full"
+        },
+        {
+          "text": "wasted",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "waste",
+            "tier": "full"
+          },
+          {
+            "text": "to waste",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verschwenden",
+            "tier": "full"
+          },
+          {
+            "text": "vergeuden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "use",
+          "de": "benutzen, verbrauchen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "to spill",
+        "to feel",
+        "to celebrate"
+      ],
+      "hintDe": "Du gehst mit etwas leichtfertig um und gebrauchst zu viel."
+    },
+    {
+      "id": "g3u01.w.tune",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "lyrics",
+            "record",
+            "singer",
+            "audition"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "tune",
+      "g": "Melodie",
+      "d": "a piece of music that you can sing along to",
+      "s": "I like music with a good ___ that you can sing along to in the car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "tune",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tune",
+          "tier": "full"
+        },
+        {
+          "text": "tunes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tune",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Melodie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "lyrics",
+        "record",
+        "singer"
+      ],
+      "hintDe": "Die Melodie eines Liedes, die man leicht mitsingen kann."
+    },
+    {
+      "id": "g3u01.w.unhappy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "brave",
+            "talented",
+            "successful",
+            "whole"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "unhappy",
+      "g": "unglücklich",
+      "d": "not happy, feeling sad inside",
+      "s": "Don't be too ___ that the critics did not like it — you did your best, and that is all good.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "unhappy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unhappy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unhappy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unglücklich",
+            "tier": "full"
+          },
+          {
+            "text": "traurig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "brave",
+        "talented",
+        "successful"
+      ],
+      "hintDe": "Das Gegenteil von glücklich, du bist traurig."
+    },
+    {
+      "id": "g3u01.w.whole",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "successful",
+            "brave",
+            "extremely",
+            "talented"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "whole",
+      "g": "ganze/r/s",
+      "d": "all of a thing, with nothing missing",
+      "s": "For 600 euros, your driver is going to drive you behind your favourite singer for the ___ day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "whole",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "whole",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "whole",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ganze",
+            "tier": "full"
+          },
+          {
+            "text": "ganzer",
+            "tier": "full"
+          },
+          {
+            "text": "ganzes",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "euros",
+          "de": "Euro",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "successful",
+        "brave",
+        "extremely"
+      ],
+      "hintDe": "Das Ganze, alles davon, nichts fehlt."
+    }
+  ]
+}

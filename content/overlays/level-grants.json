@@ -3969,6 +3969,42 @@
       "reason": "going-to negative: stay at home",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u01",
+      "itemId": null,
+      "field": null,
+      "token": "own",
+      "reason": "common music/opinion word missing from any g1-g3 bank (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u01",
+      "itemId": null,
+      "field": null,
+      "token": "sing",
+      "reason": "common music/opinion word missing from any g1-g3 bank (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u01",
+      "itemId": null,
+      "field": null,
+      "token": "sings",
+      "reason": "common music/opinion word missing from any g1-g3 bank (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u01",
+      "itemId": null,
+      "field": null,
+      "token": "sounds",
+      "reason": "common music/opinion word missing from any g1-g3 bank (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
