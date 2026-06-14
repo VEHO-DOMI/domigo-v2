@@ -1503,6 +1503,15 @@
       "reason": "unit-7 Present simple negative (SB box): do not/does not contractions",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u08",
+      "itemId": null,
+      "field": null,
+      "token": "colour",
+      "reason": "unit-8 Present simple questions: \"What colour is/are …?\" — colour is core to the question structure",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

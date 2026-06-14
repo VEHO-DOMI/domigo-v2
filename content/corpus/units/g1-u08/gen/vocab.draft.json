@@ -1,0 +1,1798 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g1-u08",
+  "briefBank": "9dd0f200363c",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "wordId": "g1u08.w.cap",
+      "w": "cap",
+      "g": "Kappe",
+      "d": "You wear it on your hair.",
+      "s": "Does he wear a grey ___?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "cap",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cap",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cap",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kappe",
+            "tier": "full"
+          },
+          {
+            "text": "Mütze",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "belt",
+        "blouse",
+        "jacket"
+      ],
+      "hintDe": "Du trägst es auf dem Kopf, zum Beispiel eine Baseballkappe.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "belt",
+          "blouse",
+          "jacket",
+          "mask"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "cap",
+      "sbRef": "SB Unit 8 p62 chant: Does he wear a grey cap?",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.mask",
+      "w": "mask",
+      "g": "Maske",
+      "d": "You wear it on your eyes and nose.",
+      "s": "The clown wears a ___ over his eyes and nose.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mask",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mask",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mask",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Maske",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "belt",
+        "cap",
+        "hoodie"
+      ],
+      "hintDe": "Du trägst es vor dem Gesicht, über Augen und Nase.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "belt",
+          "cap",
+          "hoodie",
+          "cape"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "mask",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.jacket",
+      "w": "jacket",
+      "g": "Jacke",
+      "d": "You wear it when it is cold, and it is not long.",
+      "s": "Put on your ___ because it is cold.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "jacket",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "jacket",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "jacket",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Jacke",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "belt",
+        "shoes"
+      ],
+      "hintDe": "Eine kurze Jacke, die du anziehst, wenn es kalt ist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "belt",
+          "shoes",
+          "tights"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "jacket",
+      "sbRef": "WB Unit 8 p73: I wear trousers and a jacket.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.sweater",
+      "w": "sweater",
+      "g": "Pullover",
+      "d": "You wear it when it is cold. It is like a hoodie, but you cannot pull it over your hair.",
+      "s": "Can I borrow your red ___?",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sweater",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sweater",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sweater",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pullover",
+            "tier": "full"
+          },
+          {
+            "text": "Pulli",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "belt",
+        "boots"
+      ],
+      "hintDe": "Etwas Warmes mit langen Ärmeln, das du anziehst, wenn dir kalt ist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "belt",
+          "boots",
+          "mask"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "sweater",
+      "sbRef": "SB Unit 8 p61: Sophia, can I borrow your red sweater?",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.blouse",
+      "w": "blouse",
+      "g": "Bluse",
+      "d": "It is like a shirt, and girls or women wear it.",
+      "s": "She wears a ___ and a grey skirt to school.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "blouse",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "blouse",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "blouse",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bluse",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "belt",
+        "boots"
+      ],
+      "hintDe": "Wie ein Hemd, aber für Mädchen oder Frauen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "belt",
+          "boots",
+          "trainers"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "blouse",
+      "sbRef": "WB Unit 8 p73: a green skirt and a white blouse",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.trousers",
+      "w": "trousers",
+      "g": "Hose",
+      "d": "You wear it on your legs.",
+      "s": "His ___ are too big, so he wears a belt.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "trousers",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "trousers",
+          "tier": "full"
+        },
+        {
+          "text": "pants",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "trousers",
+            "tier": "full"
+          },
+          {
+            "text": "pants",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hose",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "mask",
+        "belt"
+      ],
+      "hintDe": "Etwas, das deine beiden Beine bedeckt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "mask",
+          "belt",
+          "blouse"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "trousers",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.hoodie",
+      "w": "hoodie",
+      "g": "Hoodie",
+      "d": "It is like a sweater and you can pull it up over your hair.",
+      "s": "He wears a grey ___ when it is cold.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "hoodie",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hoodie",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hoodie",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hoodie",
+            "tier": "full"
+          },
+          {
+            "text": "Kapuzenpulli",
+            "tier": "full"
+          },
+          {
+            "text": "Kapuzenpullover",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "belt",
+        "boots"
+      ],
+      "hintDe": "Wie ein Pullover, aber du kannst ihn über die Haare ziehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "belt",
+          "boots",
+          "mask"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "hoodie",
+      "sbRef": "WB Unit 8 p73: my jeans and a hoodie",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.cape",
+      "w": "cape",
+      "g": "Umhang",
+      "d": "It is long and you wear it on your back.",
+      "s": "The clown has a long red ___ on his back.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "cape",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cape",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cape",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Umhang",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "belt",
+        "shoes"
+      ],
+      "hintDe": "Etwas Langes, das du auf dem Rücken trägst, wie bei einem Helden.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "belt",
+          "shoes",
+          "tights"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "cape",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.pyjamas",
+      "w": "pyjamas",
+      "g": "Pyjama",
+      "d": "You wear it in bed.",
+      "s": "I put on my ___ before I go to sleep.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pyjamas",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pyjamas",
+          "tier": "full"
+        },
+        {
+          "text": "pajamas",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pyjamas",
+            "tier": "full"
+          },
+          {
+            "text": "pajamas",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pyjama",
+            "tier": "full"
+          },
+          {
+            "text": "Schlafanzug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "belt",
+        "boots"
+      ],
+      "hintDe": "Das ziehst du an, bevor du ins Bett gehst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "belt",
+          "boots",
+          "trainers"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "pyjamas",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.tights",
+      "w": "tights",
+      "g": "Strumpfhose",
+      "d": "You wear it on your legs and feet, often under a skirt.",
+      "s": "She wears grey ___ under her skirt.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "tights",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tights",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tights",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Strumpfhose",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "mask",
+        "belt"
+      ],
+      "hintDe": "Bedeckt deine Beine und Füße, oft unter einem Rock.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "mask",
+          "belt",
+          "jacket"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "tights",
+      "sbRef": "WB Unit 8 p73: a dress, tights and black boots",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.shoes",
+      "w": "shoes",
+      "g": "Schuhe",
+      "d": "You put these on your feet when you go out.",
+      "s": "I wear ___ on my feet.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "shoes",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shoes",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shoes",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schuhe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "mask",
+        "belt"
+      ],
+      "hintDe": "Die ziehst du an die Füße, wenn du nach draußen gehst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "mask",
+          "belt",
+          "blouse"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "shoes",
+      "sbRef": "WB Unit 8 p73: with brown shoes",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.boots",
+      "w": "boots",
+      "g": "Stiefel",
+      "d": "These are big and strong, and you wear them on your feet over your socks.",
+      "s": "When it is cold, I wear my big ___ on my feet.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "boots",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "boots",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "boots",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Stiefel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "mask",
+        "belt"
+      ],
+      "hintDe": "Große, feste Schuhe, die auch deine Knöchel bedecken.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "mask",
+          "belt",
+          "blouse"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "boots",
+      "sbRef": "WB Unit 8 p73: tights and black boots",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.trainers",
+      "w": "trainers",
+      "g": "Turnschuhe",
+      "d": "You wear these shoes when you run.",
+      "s": "You wear ___ on your feet when you run.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "trainers",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "trainers",
+          "tier": "full"
+        },
+        {
+          "text": "sneakers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "trainers",
+            "tier": "full"
+          },
+          {
+            "text": "sneakers",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Turnschuhe",
+            "tier": "full"
+          },
+          {
+            "text": "Sneakers",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "mask",
+        "belt"
+      ],
+      "hintDe": "Leichte Schuhe zum Laufen und für Sport.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "mask",
+          "belt",
+          "jacket"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "trainers",
+      "sbRef": "SB Unit 8 p61: Can I borrow your yellow trainers?",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.belt",
+      "w": "belt",
+      "g": "Gürtel",
+      "d": "It is long, and you wear it on your trousers so they do not come down.",
+      "s": "Look at her purple ___ and her grey skirt.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "belt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "belt",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "belt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gürtel",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cap",
+        "mask",
+        "shoes"
+      ],
+      "hintDe": "Trägst du um die Mitte, damit die Hose nicht herunterrutscht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "cap",
+          "mask",
+          "shoes",
+          "tights"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "belt",
+      "sbRef": "WB Unit 8 p73: jeans, a brown belt and a white shirt",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.hole",
+      "w": "hole",
+      "g": "Loch",
+      "d": "It is a small open thing in your sweater or shoe, and your finger can go in it.",
+      "s": "There is a big ___ in my shoe.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "hole",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hole",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hole",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Loch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "belt",
+        "cap",
+        "mask"
+      ],
+      "hintDe": "Eine offene Stelle, zum Beispiel im Socken, wo der Zeh herausschaut.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "belt",
+          "cap",
+          "mask",
+          "boots"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "hole",
+      "sbRef": "SB Unit 8 p60: Do you wear jeans with holes?",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.anything",
+      "w": "anything",
+      "g": "(irgend)etwas",
+      "d": "It can be one thing, or no thing at all.",
+      "s": "Is there ___ in the box?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "anything",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "anything",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "anything",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas",
+            "tier": "full"
+          },
+          {
+            "text": "irgendetwas",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "somebody",
+        "tonight",
+        "backwards"
+      ],
+      "hintDe": "Dieses Wort benutzt du in Fragen, zum Beispiel: Ist da etwas?",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "somebody",
+          "tonight",
+          "backwards",
+          "exciting"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "anything",
+      "sbRef": "MORE list: Is there anything in the box?",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.to-borrow",
+      "w": "to borrow",
+      "g": "(sich) ausleihen",
+      "d": "to have it for a short time and then give it back to a friend",
+      "s": "Can I ___ your red sweater?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "borrow",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "borrow",
+          "tier": "full"
+        },
+        {
+          "text": "to borrow",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "borrow",
+            "tier": "full"
+          },
+          {
+            "text": "to borrow",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausleihen",
+            "tier": "full"
+          },
+          {
+            "text": "sich ausleihen",
+            "tier": "full"
+          },
+          {
+            "text": "borgen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to wear",
+        "to fit",
+        "to hurt"
+      ],
+      "hintDe": "Du hast etwas kurz und gibst es dann zurück.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to wear",
+          "to fit",
+          "to hurt",
+          "to tickle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to borrow",
+      "sbRef": "MORE list: Can I borrow your sweater tomorrow?",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.to-fit",
+      "w": "to fit",
+      "g": "passen",
+      "d": "when clothes are good for you and not too big or small",
+      "s": "These shoes do not ___ me.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fit",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fit",
+          "tier": "full"
+        },
+        {
+          "text": "to fit",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fit",
+            "tier": "full"
+          },
+          {
+            "text": "to fit",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "passen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to borrow",
+        "to wear",
+        "to tickle"
+      ],
+      "hintDe": "Wenn Kleidung dir gut passt, also nicht zu groß und nicht zu klein ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to borrow",
+          "to wear",
+          "to tickle",
+          "to hurt"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to fit",
+      "sbRef": "MORE list: These jeans don't fit.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.to-try-on",
+      "w": "to try on",
+      "g": "anprobieren",
+      "d": "to put clothes on and look in the mirror to find out if they fit",
+      "s": "Can I ___ these trousers on?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "try",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "try on",
+          "tier": "full"
+        },
+        {
+          "text": "to try on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "try on",
+            "tier": "full"
+          },
+          {
+            "text": "to try on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "anprobieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to borrow",
+        "to fit",
+        "to hurt"
+      ],
+      "hintDe": "Du ziehst Kleidung an und schaust, ob sie dir passt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to borrow",
+          "to fit",
+          "to hurt",
+          "to wear"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to try on",
+      "sbRef": "MORE list: Can I try these trousers on?",
+      "note": "blank holds 'try'; 'on' stays in the carrier (separable phrase)"
+    },
+    {
+      "wordId": "g1u08.w.to-wear",
+      "w": "to wear",
+      "g": "tragen (Kleidung)",
+      "d": "to have clothes on you",
+      "s": "What clothes do you like to ___?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wear",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wear",
+          "tier": "full"
+        },
+        {
+          "text": "to wear",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wear",
+            "tier": "full"
+          },
+          {
+            "text": "to wear",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "tragen",
+            "tier": "full"
+          },
+          {
+            "text": "anhaben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to borrow",
+        "to fit",
+        "to tickle"
+      ],
+      "hintDe": "Kleidung anhaben, zum Beispiel eine Jacke.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "to borrow",
+          "to fit",
+          "to tickle",
+          "to hurt"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to wear",
+      "sbRef": "MORE list: I always wear jeans.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.to-hurt",
+      "w": "to hurt",
+      "g": "wehtun",
+      "d": "When your shoes do this, your feet are not happy and not OK.",
+      "s": "These shoes ___ my feet.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hurt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hurt",
+          "tier": "full"
+        },
+        {
+          "text": "to hurt",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hurt",
+            "tier": "full"
+          },
+          {
+            "text": "to hurt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wehtun",
+            "tier": "full"
+          },
+          {
+            "text": "schmerzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to borrow",
+        "to fit",
+        "to wear"
+      ],
+      "hintDe": "Wenn etwas wehtut, ist ein Teil von dir nicht OK.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to borrow",
+          "to fit",
+          "to wear",
+          "to tickle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to hurt",
+      "sbRef": "SB Unit 8 p62 poem: they tickle and they hurt",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.poem",
+      "w": "poem",
+      "g": "Gedicht",
+      "d": "a short text you read or write, like a story but very short",
+      "s": "He likes to write ___ and read them to the class.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "poems",
+          "tier": "full"
+        },
+        {
+          "text": "poem",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "poem",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "poem",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gedicht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "horse",
+        "building",
+        "belt"
+      ],
+      "hintDe": "Ein kurzer Text, den man liest oder schreibt und der oft Reime hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "horse",
+          "building",
+          "belt",
+          "hole"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "poem",
+      "sbRef": "MORE list: He likes to write poems.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.to-tickle",
+      "w": "to tickle",
+      "g": "kitzeln",
+      "d": "to touch a child so they laugh",
+      "s": "Please do not ___ me!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tickle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tickle",
+          "tier": "full"
+        },
+        {
+          "text": "to tickle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tickle",
+            "tier": "full"
+          },
+          {
+            "text": "to tickle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kitzeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to borrow",
+        "to fit",
+        "to wear"
+      ],
+      "hintDe": "Jemanden so berühren, dass er lachen muss.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "to borrow",
+          "to fit",
+          "to wear",
+          "to hurt"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "to tickle",
+      "sbRef": "MORE list: Please don't tickle me!",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.somebody",
+      "w": "somebody",
+      "g": "jemand",
+      "d": "It is a child or an adult, but who? You cannot find out.",
+      "s": "There is ___ behind the door.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "somebody",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "somebody",
+          "tier": "full"
+        },
+        {
+          "text": "someone",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "somebody",
+            "tier": "full"
+          },
+          {
+            "text": "someone",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemand",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "anything",
+        "tonight",
+        "backwards"
+      ],
+      "hintDe": "Eine Person, aber du weißt nicht, wer es ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "anything",
+          "tonight",
+          "backwards",
+          "exciting"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "somebody",
+      "sbRef": "MORE list: There's somebody behind the bushes.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.backwards",
+      "w": "backwards",
+      "g": "rückwärts",
+      "d": "to do it from the end back to A, not from A to the end",
+      "s": "Some children can read the alphabet ___, from the end back to A.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "backwards",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "backwards",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "backwards",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "rückwärts",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tonight",
+        "exciting",
+        "anything"
+      ],
+      "hintDe": "Von hinten nach vorne, zum Beispiel zehn, neun, acht.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "tonight",
+          "exciting",
+          "anything",
+          "somebody"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "backwards",
+      "sbRef": "MORE list: I can spell the word backwards too.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.exciting",
+      "w": "exciting",
+      "g": "aufregend",
+      "d": "It is so good that it makes you happy and you want to jump up.",
+      "s": "The big show was very ___! We all jumped and danced.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "exciting",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "exciting",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "exciting",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufregend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "tonight",
+        "backwards",
+        "anything"
+      ],
+      "hintDe": "Etwas ist so toll, dass du dich freust und am liebsten hüpfst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "tonight",
+          "backwards",
+          "anything",
+          "somebody"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "exciting",
+      "sbRef": "MORE list: It's a very exciting costume.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.tonight",
+      "w": "tonight",
+      "g": "heute Abend",
+      "d": "It is this evening, after dinner and before you go to sleep.",
+      "s": "We have got fun ___ after dinner.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tonight",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tonight",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tonight",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "heute Abend",
+            "tier": "full"
+          },
+          {
+            "text": "heute Nacht",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "backwards",
+        "exciting",
+        "anything"
+      ],
+      "hintDe": "Heute Abend, nach dem Abendessen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "backwards",
+          "exciting",
+          "anything",
+          "somebody"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "tonight",
+      "sbRef": "MORE list: They all want to win the big prize tonight.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.horse",
+      "w": "horse",
+      "g": "Pferd",
+      "d": "It is big, it can run, and you can go on its back.",
+      "s": "Her ___ is big and strong and it can run.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "horse",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "horse",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "horse",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pferd",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "building",
+        "poem",
+        "belt"
+      ],
+      "hintDe": "Ein großes Tier, das laufen kann und auf dem du sitzen kannst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "building",
+          "poem",
+          "belt",
+          "hole"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "horse",
+      "sbRef": "MORE list: She rides her horse at weekends.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.building",
+      "w": "building",
+      "g": "Gebäude",
+      "d": "It is a very big thing in the street, and your school is one.",
+      "s": "The children go into the big ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "building",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "building",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "building",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gebäude",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "horse",
+        "poem",
+        "belt"
+      ],
+      "hintDe": "Ein großes Bauwerk in der Stadt, zum Beispiel deine Schule.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "horse",
+          "poem",
+          "belt",
+          "hole"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "building",
+      "sbRef": "MORE list: The children go into the building.",
+      "note": null
+    },
+    {
+      "wordId": "g1u08.w.let-s-get-out-of-here",
+      "w": "Let's get out of here.",
+      "g": "Lass(t) uns verschwinden.",
+      "d": "It is what you call when you want to go now, with a friend.",
+      "s": "It is not nice here. I want to go now. ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Let's get out of here.",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Let's get out of here.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Let's get out of here.",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lass uns verschwinden.",
+            "tier": "full"
+          },
+          {
+            "text": "Lasst uns verschwinden.",
+            "tier": "full"
+          },
+          {
+            "text": "Nichts wie weg hier.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Come on!",
+        "Let me see.",
+        "Well done."
+      ],
+      "hintDe": "Das sagst du, wenn du schnell weg willst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Come on!",
+          "Let me see.",
+          "Well done.",
+          "Go on."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "Let's get out of here.",
+      "sbRef": "SB Unit 8 p65: Everyday English — Let's get out of here",
+      "note": null
+    }
+  ]
+}
