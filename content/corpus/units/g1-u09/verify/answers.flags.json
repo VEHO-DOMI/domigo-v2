@@ -1,0 +1,23 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g1-u09",
+  "lens": "answers",
+  "itemsHash": "ba1d244426bd",
+  "promptHash": "70fa2d8cdf22",
+  "round": 1,
+  "by": "fable-carryforward",
+  "flags": [
+    {
+      "key": "distractor-plausible-correct:g1u09.w.box",
+      "kind": "distractor-plausible-correct",
+      "itemId": "g1u09.w.box",
+      "severity": "warn",
+      "note": "box.mc distractor \"tank\" is a defensible spider container; kept because every in-bank container (cage/basket/terrarium) is equally plausible and the unit teaches the spider lives in a box.",
+      "suggestion": "Leave as-is; no clearly-wrong in-bank container exists."
+    }
+  ],
+  "summary": {
+    "itemsSeen": 146,
+    "flagged": 1
+  }
+}

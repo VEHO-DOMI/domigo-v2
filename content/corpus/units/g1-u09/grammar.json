@@ -1,0 +1,4087 @@
+{
+  "schema": "grammar@1",
+  "grade": 1,
+  "unit": 9,
+  "slug": "g1-u09",
+  "items": [
+    {
+      "id": "g1u09.gi.irregular-plurals-3.ag.002",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single-token anagram 'mice' (4 letters ≥3). German cue, no grammar jargon. Plural form used: mice (probes gate-clean)."
+      },
+      "prompt": {
+        "text": "Eine mouse, zwei …? Schreibe das Wort (es wird nicht mit -s gebildet).",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "mice",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Vier Buchstaben, beginnt mit m und endet auf -ice.",
+      "hintEn": null,
+      "explainDe": "Die Mehrzahl von mouse ist mice.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.cp.001",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "There are six mouses in the basket.",
+            "There are six mouse in the basket.",
+            "There is six mice in the basket.",
+            "There are six mices in the basket.",
+            "There is six mouse in the basket."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Whole-sentence pick: correct mice vs regularised mouses, unchanged singular mouse, and is/are agreement error. Deliberate-error forms shown as distractors: mouses, mices. German scenario → lang=de (distractor sentences not V-5-gated; mouses/mices/mouse all probe gate-clean anyway). Plural answer: mice. strict."
+      },
+      "prompt": {
+        "text": "Du zeigst auf einen Korb mit vielen kleinen Mäusen. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are six mice in the basket.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "There are six mouses in the basket.",
+        "There are six mouse in the basket.",
+        "There is six mice in the basket."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf die richtige Mehrzahl von mouse und auf are statt is.",
+      "hintEn": null,
+      "explainDe": "Richtig ist There are six mice in the basket. – mice ist die Mehrzahl, und bei mehreren heißt es are.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.ec.001",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Deliberate-error form in carrier: mouses (probes gate-clean as an in-bank form, so prompt stays lang=en). Correct form: mice. Carrier gate-clean."
+      },
+      "prompt": {
+        "text": "I have got two mouses.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have got two mice.",
+          "tier": "full"
+        },
+        {
+          "text": "mice",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "mouse bekommt keine -s-Mehrzahl. Wie heißt die richtige Form?",
+      "hintEn": null,
+      "explainDe": "mouse ist eine Ausnahme: Statt mouses heißt es mice.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.ec.002",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Deliberate-error form in carrier: ponys (probes UNTAUGHT) — prompt set lang=de so V-5 does not gate the carrier; corrected English answer 'ponies' is gate-clean. Correct form: ponies."
+      },
+      "prompt": {
+        "text": "My friend has got two ponys.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My friend has got two ponies.",
+          "tier": "full"
+        },
+        {
+          "text": "ponies",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei Konsonant + y reicht kein angehängtes -s: Das y wird zu -ies.",
+      "hintEn": null,
+      "explainDe": "ponys ist falsch. Bei pony (Konsonant + y) wird die Mehrzahl zu ponies.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.gf.001",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1 (one mouse → two mice)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Plural form used: mice. mouse + mice both probe gate-clean (listed forms in bank). New target form mice — flag for grant. strict (mice vs mouses minimal pair)."
+      },
+      "prompt": {
+        "text": "one mouse → two ___",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "mice",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "mouse hat eine besondere Mehrzahl – sie endet nicht auf -s.",
+      "hintEn": null,
+      "explainDe": "mouse ist eine Ausnahme: Die Mehrzahl ist mice (nicht mouses).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.gf.002",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1 (one pony → two ponies)",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Plural form used: ponies. pony + ponies both probe gate-clean (listed forms in bank). Revisits consonant+y→ies rule. New target form ponies — flag for grant. strict (ponies vs ponys minimal pair)."
+      },
+      "prompt": {
+        "text": "one pony → two ___",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ponies",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Endet ein Wort auf Konsonant + y, wird das y in der Mehrzahl zu -ies.",
+      "hintEn": null,
+      "explainDe": "pony endet auf Konsonant + y, darum wird die Mehrzahl zu ponies (das y wird zu -ies).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.gf.003",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Two blanks pipe-split in order: mice | ponies. Carrier gate-clean (have got / has got kept as phrases). Plural forms used: mice, ponies — flag for grant."
+      },
+      "prompt": {
+        "text": "I have got one mouse and one pony. My friend has got two ___ and two ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "mice | ponies",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beide Tiere haben eine besondere Mehrzahl: einmal Vokalwechsel, einmal -y zu -ies.",
+      "hintEn": null,
+      "explainDe": "mouse wird zu mice (Vokalwechsel) und pony wird zu ponies (Konsonant + y → -ies).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.mc.001",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mouses",
+            "rats",
+            "rabbits",
+            "dogs",
+            "budgies"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Tests mice vs the regularised error mouses (which probes gate-clean as an in-bank form) plus two real in-bank pet plurals that are wrong in context (rats, rabbits). Deliberate-error form shown as a distractor: mouses. Plural answer: mice. Pool all gate-clean. strict."
+      },
+      "prompt": {
+        "text": "I have got one mouse. Now I have got two ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "mice",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "mouses",
+        "rats",
+        "rabbits"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such die Ausnahme-Mehrzahl von mouse – nicht die Form mit -s.",
+      "hintEn": null,
+      "explainDe": "Die Mehrzahl von mouse ist mice. mouses gibt es nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.mc.002",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dogs",
+            "budgies",
+            "rabbits",
+            "rats",
+            "lizards"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Tests ponies; the natural wrong form ponys is UNTAUGHT (probes UNTAUGHT, fails V-9), so distractors are real in-bank pet plurals wrong in context (dogs/budgies/rabbits). Plural answer: ponies. Tom is a harvested proper noun. Pool all gate-clean. strict."
+      },
+      "prompt": {
+        "text": "Tom has got one pony. Now Tom has got two ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ponies",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "dogs",
+        "budgies",
+        "rabbits"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei Konsonant + y wird die Mehrzahl zu -ies – such diese Form.",
+      "hintEn": null,
+      "explainDe": "Die Mehrzahl von pony ist ponies (y wird zu -ies).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.sb.001",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "mice",
+            "dogs",
+            "rabbits",
+            "rats",
+            "budgies"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Word order; answer chips kept gate-clean ('has got' as one chip so 'got' is never an isolated token). Distractor chips are in-bank pet plurals (mice/dogs/rabbits/rats/budgies), all gate-clean. Plural answer: ponies."
+      },
+      "prompt": {
+        "text": "My friend / has got / two / ponies / .",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My friend has got two ponies.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bau den Satz: Wer? + has got + wie viele + welche Tiere (Mehrzahl auf -ies).",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: My friend has got two ponies. – ponies ist die Mehrzahl von pony.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.tf.001",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Singular→plural transformation: mouse → mice (and is → are). Carrier gate-clean (box, there is/are). Plural form used: mice."
+      },
+      "prompt": {
+        "text": "There is one mouse in the box. (two)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are two mice in the box.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus einem mouse werden zwei – denk an die besondere Mehrzahl und an are.",
+      "hintEn": null,
+      "explainDe": "Aus one mouse wird two mice, und is wird zu are: There are two mice in the box.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.tf.002",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Singular→plural transformation: pony → ponies (and is → are). Carrier gate-clean (farm, there is/are). Plural form used: ponies."
+      },
+      "prompt": {
+        "text": "There is one pony on the farm. (three)",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "There are three ponies on the farm.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus einem pony werden drei – pass die Mehrzahl auf -ies und are an.",
+      "hintEn": null,
+      "explainDe": "Aus one pony wird three ponies (y → -ies), und is wird zu are: There are three ponies on the farm.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.irregular-plurals-3.tr.001",
+      "structureId": "g1u09.s.irregular-plurals-3",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "deToEn translation; German prompt → lang=de. English answer gate-clean (have got / mice). Plural form used: mice."
+      },
+      "prompt": {
+        "text": "Ich habe zwei Mäuse.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I have got two mice.",
+          "tier": "full"
+        },
+        {
+          "text": "I have two mice.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwei Mäuse – denk an die besondere Mehrzahl von mouse.",
+      "hintEn": null,
+      "explainDe": "Mäuse heißt im Englischen mice (die Mehrzahl von mouse).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.ag.003",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single token, 4 letters."
+      },
+      "prompt": {
+        "text": "Ordne die Buchstaben: Look at …! (they)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "them",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus \"they\" wird als Objekt ein kurzes Wort mit vier Buchstaben.",
+      "hintEn": null,
+      "explainDe": "Die Objektform von \"they\" ist \"them\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.ag.004",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single token, 3 letters (him); 'us' avoided because <3 letters."
+      },
+      "prompt": {
+        "text": "Ordne die Buchstaben: Look at …! (he)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "him",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus \"he\" wird als Objekt ein kurzes Wort mit drei Buchstaben.",
+      "hintEn": null,
+      "explainDe": "Die Objektform von \"he\" ist \"him\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.cp.001",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "We love she.",
+            "We love them.",
+            "We love him.",
+            "We love it."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Each distractor flawed in the structure; correct line from SB box."
+      },
+      "prompt": {
+        "text": "Du sprichst über Mandy. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We love her.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "We love she.",
+        "We love them.",
+        "We love him."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mandy ist ein Mädchen und steht als Objekt. Welches Fürwort passt?",
+      "hintEn": null,
+      "explainDe": "Für ein Mädchen als Objekt steht \"her\": We love her. \"she\" ist die Subjektform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.cp.002",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Come with we to the park!",
+            "Come with they to the park!",
+            "Come with our to the park!",
+            "Come with them to the park!"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-mc-003",
+        "narrative": null,
+        "note": "Preposition + object; distractors each break the object form."
+      },
+      "prompt": {
+        "text": "Dein Freund möchte mit euch in den Park kommen. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Come with us to the park!",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Come with we to the park!",
+        "Come with they to the park!",
+        "Come with our to the park!"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach \"with\" steht das Objekt. Welches Fürwort steht für \"we\"?",
+      "hintEn": null,
+      "explainDe": "Nach der Präposition \"with\" steht \"us\", nicht \"we\": Come with us!",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.ec.001",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-ec-001",
+        "narrative": null,
+        "note": "Subject pronoun wrongly used as object; strict he/him."
+      },
+      "prompt": {
+        "text": "I like he very much.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I like him very much.",
+          "tier": "full"
+        },
+        {
+          "text": "him",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach dem Verb \"like\" brauchst du die Objektform.",
+      "hintEn": null,
+      "explainDe": "Als Objekt steht nicht \"he\", sondern \"him\": I like him.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.ec.002",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-ec-002",
+        "narrative": null,
+        "note": "Subject pronoun after preposition; carrier uses in-bank 'present'. Strict she/her."
+      },
+      "prompt": {
+        "text": "This present is for she.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This present is for her.",
+          "tier": "full"
+        },
+        {
+          "text": "her",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach der Präposition \"for\" brauchst du die Objektform.",
+      "hintEn": null,
+      "explainDe": "Nach \"for\" steht nicht \"she\", sondern \"her\": for her.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.ec.003",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-ec-003",
+        "narrative": null,
+        "note": "they → them after preposition; swapped untaught 'pencils' to in-bank 'basket'. Strict they/them."
+      },
+      "prompt": {
+        "text": "Give the basket to they, please.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Give the basket to them, please.",
+          "tier": "full"
+        },
+        {
+          "text": "them",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach \"to\" brauchst du die Objektform für mehrere.",
+      "hintEn": null,
+      "explainDe": "Nach \"to\" steht nicht \"they\", sondern \"them\": to them.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gf.001",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-object-pronouns-gf-001",
+        "narrative": null,
+        "note": "Object pronoun for he → him."
+      },
+      "prompt": {
+        "text": "I like Tom. I like ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "him",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Tom ist das Objekt. Welches Fürwort steht für \"Tom\"?",
+      "hintEn": null,
+      "explainDe": "Als Objekt wird aus \"he\" das Wort \"him\": I like him.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gf.003",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#letter-13",
+        "seedV1": "m1-u9-object-pronouns-gf-003",
+        "narrative": null,
+        "note": "Carrier from Harry's letter (We like her a lot). she → her."
+      },
+      "prompt": {
+        "text": "Mandy is nice. We like ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "her",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Mandy ist das Objekt. Welches Fürwort passt für ein Mädchen?",
+      "hintEn": null,
+      "explainDe": "Als Objekt wird aus \"she\" das Wort \"her\": We like her.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gf.004",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-gf-004",
+        "narrative": null,
+        "note": "we → us after preposition."
+      },
+      "prompt": {
+        "text": "The present is for ___. (we)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "us",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach \"for\" steht das Objekt. Welches Fürwort steht für \"we\"?",
+      "hintEn": null,
+      "explainDe": "Nach einer Präposition wie \"for\" wird aus \"we\" das Wort \"us\": for us.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gf.005",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-gf-008",
+        "narrative": null,
+        "note": "they → them after preposition; swapped untaught 'every day' to 'on Sunday'."
+      },
+      "prompt": {
+        "text": "Tom and Sam are my friends. I play with ___ on Sunday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "them",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Tom und Sam sind das Objekt. Welches Fürwort steht für mehrere?",
+      "hintEn": null,
+      "explainDe": "Für mehrere Personen wird aus \"they\" als Objekt das Wort \"them\": with them.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gf.006",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-gf-006",
+        "narrative": null,
+        "note": "Multi-blank pipe-split; swapped untaught 'parents' to 'friends'."
+      },
+      "prompt": {
+        "text": "My friends are great. I love ___ and they love ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "them | me",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zuerst sind die Freunde das Objekt, dann bist du es. Setze zwei Fürwörter ein.",
+      "hintEn": null,
+      "explainDe": "they → them und I → me: I love them and they love me.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gf.007",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-object-pronouns-gf-002",
+        "narrative": null,
+        "note": "I → me; verbatim from SB box (Do you like me?)."
+      },
+      "prompt": {
+        "text": "Can you find ___? (I)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "me",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Du bist das Objekt. Welches Fürwort steht für \"I\"?",
+      "hintEn": null,
+      "explainDe": "Als Objekt wird aus \"I\" das Wort \"me\": Can you help me?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.gs.002",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-object-pronouns-gs-001",
+        "narrative": null,
+        "note": "2 groups, 5 members each; in-bank labels Subject/Object."
+      },
+      "prompt": {
+        "text": "Sortiere die Fürwörter.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "He runs.",
+          "members": [
+            "I",
+            "she",
+            "we",
+            "they"
+          ]
+        },
+        {
+          "label": "Look at him.",
+          "members": [
+            "me",
+            "her",
+            "us",
+            "them"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Subjektformen stehen vor dem Verb, Objektformen danach oder nach einer Präposition.",
+      "hintEn": null,
+      "explainDe": "Subjekt: I, he, she, we, they. Objekt: me, him, her, us, them.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.mc.001",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "he",
+            "his",
+            "they",
+            "their",
+            "she"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/wb/WB Unit 9 Unusual pets.txt#ex12",
+        "seedV1": "m1-u9-object-pronouns-gf-001",
+        "narrative": null,
+        "note": "Carrier from WB ex.12 (Let's talk to him). Strict minimal pair he/him."
+      },
+      "prompt": {
+        "text": "There's Steve. Let's talk to ___!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "him",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "he",
+        "his",
+        "they"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach \"to\" steht das Objekt. Welches Fürwort steht für \"Steve\"?",
+      "hintEn": null,
+      "explainDe": "Nach der Präposition \"to\" wird aus \"he\" das Wort \"him\": talk to him.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.mc.002",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "she",
+            "him",
+            "hers",
+            "his",
+            "they"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/wb/WB Unit 9 Unusual pets.txt#ex12",
+        "seedV1": "m1-u9-object-pronouns-gf-007",
+        "narrative": null,
+        "note": "WB ex.12 carrier (Do you like her?); name is harvested 'Betty' (untaught 'Jennifer' avoided). Strict she/her."
+      },
+      "prompt": {
+        "text": "Betty is in my class. Do you like ___?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "her",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "she",
+        "him",
+        "hers"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Betty ist das Objekt. Welches Fürwort passt für ein Mädchen?",
+      "hintEn": null,
+      "explainDe": "Als Objekt wird aus \"she\" das Wort \"her\". \"hers\" wäre besitzanzeigend.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.mc.003",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "they",
+            "their",
+            "it",
+            "him",
+            "us"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#letter-13",
+        "seedV1": "m1-u9-object-pronouns-mc-003",
+        "narrative": null,
+        "note": "From Harry's letter (We hate them). they → them."
+      },
+      "prompt": {
+        "text": "We don't like spiders. We hate ___!",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "them",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "they",
+        "their",
+        "it"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Spinnen sind das Objekt. Welches Fürwort steht für mehrere Dinge?",
+      "hintEn": null,
+      "explainDe": "Für mehrere wird aus \"they\" als Objekt das Wort \"them\": We hate them.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.mt.002",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Question↔answer; unique right-sides, 4 pairs; all carriers gate-clean."
+      },
+      "prompt": {
+        "text": "Welche Antwort passt zur Frage?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Do you like Tom?",
+          "right": "Yes, I like him."
+        },
+        {
+          "left": "Do you like Mandy?",
+          "right": "Yes, I like her."
+        },
+        {
+          "left": "Do you like the spiders?",
+          "right": "No, I hate them."
+        },
+        {
+          "left": "Do you like me?",
+          "right": "Yes, I love you."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte darauf, ob die Frage von einem Jungen, Mädchen oder mehreren spricht.",
+      "hintEn": null,
+      "explainDe": "Tom→him, Mandy→her, spiders→them, you→you. Das Objekt richtet sich nach der Person.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.mt.003",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-object-pronouns-mt-001",
+        "narrative": null,
+        "note": "Subject↔object pronoun; unique right-sides, 5 pairs."
+      },
+      "prompt": {
+        "text": "Verbinde die Wörter mit der passenden Form.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I",
+          "right": "me"
+        },
+        {
+          "left": "he",
+          "right": "him"
+        },
+        {
+          "left": "she",
+          "right": "her"
+        },
+        {
+          "left": "we",
+          "right": "us"
+        },
+        {
+          "left": "they",
+          "right": "them"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jedes Subjekt-Fürwort hat eine eigene Objektform.",
+      "hintEn": null,
+      "explainDe": "I→me, he→him, she→her, we→us, they→them.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.sb.001",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "I",
+            "him",
+            "we",
+            "she"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-sb-001",
+        "narrative": null,
+        "note": "Distractor chips are in-bank subject/object pronouns."
+      },
+      "prompt": {
+        "text": "Can / you / help / me / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Can you help me?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bilde eine Frage. Das Fürwort \"me\" steht am Ende als Objekt.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: Can you help me? \"me\" ist das Objekt von \"help\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.sb.002",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "we",
+            "them",
+            "her",
+            "they"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Verbatim SB box sentence (She carries us to school)."
+      },
+      "prompt": {
+        "text": "carries / She / to / us / school",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She carries us to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bilde einen Satz. \"us\" ist das Objekt von \"carries\".",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: She carries us to school. \"us\" steht direkt nach dem Verb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.tf.001",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-tf-001",
+        "narrative": null,
+        "note": "Subject→object: replace noun phrase with them."
+      },
+      "prompt": {
+        "text": "I love the girls. → I love ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "them",
+          "tier": "full"
+        },
+        {
+          "text": "I love them.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ersetze \"the girls\" durch ein Fürwort im Objekt.",
+      "hintEn": null,
+      "explainDe": "\"the girls\" wird als Objekt zu \"them\": I know them.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.tf.002",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-tf-002",
+        "narrative": null,
+        "note": "Subject→object: 'my sister and me' → us; swapped 'ball' to 'present'."
+      },
+      "prompt": {
+        "text": "Give the present to my sister and me. → Give it to ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "us",
+          "tier": "full"
+        },
+        {
+          "text": "Give it to us.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"my sister and me\" sind zusammen das Objekt. Welches Fürwort fasst sie zusammen?",
+      "hintEn": null,
+      "explainDe": "\"my sister and me\" wird als Objekt zu \"us\": Give it to us.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.tf.003",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "it → it; pet carrier."
+      },
+      "prompt": {
+        "text": "I love my dog. → I love ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "it",
+          "tier": "full"
+        },
+        {
+          "text": "I love it.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ein Tier ist hier das Objekt. Welches Fürwort steht für ein Ding oder Tier?",
+      "hintEn": null,
+      "explainDe": "Für ein Tier oder Ding bleibt die Objektform \"it\": I love it.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.tr.001",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u9-object-pronouns-tr-001",
+        "narrative": null,
+        "note": "deToEn; German du-form prompt, lang=de."
+      },
+      "prompt": {
+        "text": "Kannst du mir helfen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Can you help me?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "\"mir\" ist das Objekt. Welches englische Fürwort passt?",
+      "hintEn": null,
+      "explainDe": "\"mir\" heißt als Objekt \"me\": Can you help me?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.object-pronouns.tr.002",
+      "structureId": "g1u09.s.object-pronouns",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-object-pronouns-tr-002",
+        "narrative": null,
+        "note": "deToEn; verbatim SB-box English (We don't like him); German 'sie' disambiguated as Bob."
+      },
+      "prompt": {
+        "text": "Wir mögen sie nicht. (= Bob)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We don't like him.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es geht um Bob, also einen Jungen. Welche Objektform passt?",
+      "hintEn": null,
+      "explainDe": "Für Bob als Objekt steht \"him\": We don't like him.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ag.004",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single token >=3 letters (Tom's). German cue -> lang=de. Probes clean."
+      },
+      "prompt": {
+        "text": "Wie schreibt man „Toms“ auf Englisch? (mit 's)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Name + Apostroph + s: Tom wird zu …",
+      "hintEn": null,
+      "explainDe": "Für Besitz hängst du 's an: Tom's.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ag.005",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Single token (Sue's). German cue -> lang=de."
+      },
+      "prompt": {
+        "text": "Wie schreibt man „Mikes“ auf Englisch? (mit 's)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mike's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Name + Apostroph + s.",
+      "hintEn": null,
+      "explainDe": "Besitz mit 's: Tom wird zu Tom's.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.cp.001",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "This is Tom's dog.",
+            "This is Tom dog.",
+            "This is dog Tom.",
+            "This is Tom is dog."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Each distractor is flawed only in the possessive-'s (no 's / no apostrophe / 'is' instead). Whole sentences word-distinct. Pool 4."
+      },
+      "prompt": {
+        "text": "Du zeigst auf einen Hund, der Tom gehört. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is Tom's dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "This is Tom dog.",
+        "This is dog Tom.",
+        "This is Tom is dog."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such den Satz, in dem das Besitz-'s richtig steht (Apostroph + s am Namen).",
+      "hintEn": null,
+      "explainDe": "Nur „This is Tom's dog.\" hat das Besitz-'s richtig. Tom dog (kein 's), Toms (kein Apostroph) und Tom is dog sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ec.001",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-ec-001",
+        "narrative": null,
+        "note": "Missing 's. Error sentence probes clean (Tom dog). Corrected fragment Tom's accepted as partial."
+      },
+      "prompt": {
+        "text": "This is Tom dog.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is Tom's dog.",
+          "tier": "full"
+        },
+        {
+          "text": "Tom's",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es fehlt das Besitz-'s am Namen. Der Hund gehört Tom.",
+      "hintEn": null,
+      "explainDe": "Vor dem Besitzer-Namen fehlt 's: This is Tom's dog.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ec.003",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "of-phrase -> 's rewrite as error-correction. Both clauses probe clean."
+      },
+      "prompt": {
+        "text": "This is the rabbit of Dan.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This is Dan's rabbit.",
+          "tier": "full"
+        },
+        {
+          "text": "Dan's rabbit",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im Englischen sagt man Besitz lieber mit 's statt mit „of\": Dan's rabbit.",
+      "hintEn": null,
+      "explainDe": "Statt „the rabbit of Dan\" sagt man die Kurzform mit 's: Dan's rabbit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.ec.004",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-ec-002",
+        "narrative": null,
+        "note": "Missing-apostrophe error (Sues -> Sue's). Only the deliberately-wrong token 'Sues' is out-of-bank (it IS the error); the corrected form Sue's + rabbit/cage are clean. GRANT/expected-untaught: Sues (error-correction error form)."
+      },
+      "prompt": {
+        "text": "Toms rabbit is in the cage.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom's rabbit is in the cage.",
+          "tier": "full"
+        },
+        {
+          "text": "Tom's",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwischen Name und s fehlt das Häkchen (Apostroph): Tom → Tom's.",
+      "hintEn": null,
+      "explainDe": "Das Besitz-'s braucht den Apostroph: Tom's rabbit. Ohne Apostroph ist es falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gf.001",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u3-possessive-s-gf-001",
+        "narrative": null,
+        "note": "Name+'s, single token. Clean: Tom's, dog both in-bank (bare 'bag' from v1 seed is untaught, swapped to dog)."
+      },
+      "prompt": {
+        "text": "This is ___ dog. (Tom)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Tom's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Häng 's an den Namen, um zu zeigen, dass der Hund Tom gehört.",
+      "hintEn": null,
+      "explainDe": "Der Hund gehört Tom, darum Tom + 's: This is Tom's dog.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gf.002",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-gf-003",
+        "narrative": null,
+        "note": "Harvested proper noun Sue. Sue's probes clean; rabbit in-bank."
+      },
+      "prompt": {
+        "text": "Where is ___ rabbit? (Sue)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Sue's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Kaninchen gehört Sue – häng 's an Sue.",
+      "hintEn": null,
+      "explainDe": "Besitz mit 's: das Kaninchen gehört Sue, also Sue's rabbit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gf.003",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-gf-002",
+        "narrative": null,
+        "note": "Common noun (not a name) takes 's too. sister's, pony, grey all clean."
+      },
+      "prompt": {
+        "text": "My ___ pony is grey. (sister)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "sister's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Auch an eine Personenbezeichnung wie „sister\" hängst du 's.",
+      "hintEn": null,
+      "explainDe": "Das Pony gehört meiner Schwester: my sister's pony. An sister kommt 's.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gf.004",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Animal owner (the dog's tail from brief uses untaught 'tail'; basket is in-bank)."
+      },
+      "prompt": {
+        "text": "The ___ basket is here. (dog)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "dog's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Auch ein Tier kann etwas besitzen: häng 's an dog.",
+      "hintEn": null,
+      "explainDe": "Der Korb gehört dem Hund: the dog's basket. 's geht auch bei Tieren.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gf.005",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "Two-word name Mr White (from SB box). Mr White's shark + 'fish and chips' all clean."
+      },
+      "prompt": {
+        "text": "___ shark eats fish and chips. (Mr White)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Mr White's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei einem Namen mit Mr hängst du das 's an den letzten Teil: Mr White → Mr White's.",
+      "hintEn": null,
+      "explainDe": "Der Hai gehört Mr White: Mr White's shark. Das 's kommt ans Ende des Namens.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gf.006",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Harvested noun Pete. Pete's, tortoise, carrots all clean."
+      },
+      "prompt": {
+        "text": "___ tortoise eats carrots. (Pete)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Pete's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Schildkröte gehört Pete – häng 's an Pete.",
+      "hintEn": null,
+      "explainDe": "Besitz mit 's: Pete's tortoise eats carrots.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gf.007",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Animal owner the rat's. 'name' is UNTAUGHT in the gate -> glossed inline + recorded. Harry is a harvested proper noun."
+      },
+      "prompt": {
+        "text": "The ___ name is Harry. (rat)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "rat's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": null
+        }
+      ],
+      "hintDe": "Der Name gehört zur Ratte: häng 's an rat.",
+      "hintEn": null,
+      "explainDe": "Besitz mit 's bei einem Tier: the rat's name is Harry.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.gs.002",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-mt-001",
+        "narrative": null,
+        "note": "2 groups, 3 members each. Labels are short in-prompt phrases (no grammar jargon). All members probe clean."
+      },
+      "prompt": {
+        "text": "Was bedeutet das s hier?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "his dog",
+          "members": [
+            "Tom's dog",
+            "Sue's rabbit",
+            "Mike's pony"
+          ]
+        },
+        {
+          "label": "he is",
+          "members": [
+            "Tom's happy.",
+            "Sue's at school.",
+            "Mike's nice."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Folgt nach 's ein Ding/Tier (Besitz) oder ein Wort wie happy/at/nice (dann ist 's = is)?",
+      "hintEn": null,
+      "explainDe": "Tom's dog/Sue's rabbit/Mike's pony zeigen Besitz. Tom's happy/Sue's at school/Mike's nice bedeuten Tom is, Sue is, Mike is.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.mc.001",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Sam's car",
+            "Sam car",
+            "Sam is car",
+            "car Sam"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-mc-001",
+        "narrative": null,
+        "note": "Only Sam's car has the 's; distractors are word-distinct (no apostrophe-only contrast). Pool 4, all in-bank."
+      },
+      "prompt": {
+        "text": "___ is red.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Sam's car",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Sam car",
+        "Sam is car",
+        "car Sam"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Welche Form zeigt, dass das Auto Sam gehört?",
+      "hintEn": null,
+      "explainDe": "Besitz mit 's: das Auto gehört Sam, also Sam's car is red.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.mc.002",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Mike's",
+            "Mike",
+            "Mike is",
+            "Mike has"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Word-distinct options (Mike / Mike is / Mike has), not apostrophe-only. carrots in-bank."
+      },
+      "prompt": {
+        "text": "___ pony eats carrots.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Mike's",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Mike",
+        "Mike is",
+        "Mike has"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Pony gehört Mike – welche Form zeigt Besitz?",
+      "hintEn": null,
+      "explainDe": "Für Besitz brauchst du Mike + 's: Mike's pony eats carrots.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.mc.004",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "My mum's car is red.",
+            "Tom's happy today.",
+            "Sue's at school.",
+            "Mike's my friend."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-mc-003",
+        "narrative": null,
+        "note": "possessive-'s vs is contraction. Whole sentences differ in words (not apostrophe-only). All 4 probe clean."
+      },
+      "prompt": {
+        "text": "In welchem Satz gehört etwas jemandem? (Das 's ist hier nicht kurz für is.)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My mum's car is red.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Tom's happy today.",
+        "Sue's at school.",
+        "Mike's my friend."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In drei Sätzen ist 's eine Kurzform von is. Nur in einem zeigt 's Besitz.",
+      "hintEn": null,
+      "explainDe": "Nur „My mum's car\" zeigt Besitz (das Auto gehört Mum). In den anderen ist 's = is: Tom is happy, Sue is at school, Mike is my friend.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.mp.001",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "English<->English owner<->thing. 4 unique right-sides (owl/rabbit/pony/car). All clean."
+      },
+      "prompt": {
+        "text": "Verbinde jeden Besitzer mit seinem Tier oder Ding.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Tom's",
+          "right": "owl"
+        },
+        {
+          "left": "Sue's",
+          "right": "rabbit"
+        },
+        {
+          "left": "Mike's",
+          "right": "pony"
+        },
+        {
+          "left": "Sam's",
+          "right": "car"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verbinde jeden Besitzer mit 's mit seinem Ding oder Tier.",
+      "hintEn": null,
+      "explainDe": "Jeder Name mit 's gehört zu einem Besitz: Tom's owl, Sue's rabbit, Mike's pony, Sam's car.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.mt.001",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-mp-001",
+        "narrative": null,
+        "note": "English<->English (of-phrase <-> 's). 4 unique right-sides. No En<->De. All sides probe clean."
+      },
+      "prompt": {
+        "text": "Verbinde die lange Form mit „of“ mit der kurzen Form mit 's.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "the dog of Sue",
+          "right": "Sue's dog"
+        },
+        {
+          "left": "the car of my mum",
+          "right": "my mum's car"
+        },
+        {
+          "left": "the pony of Mike",
+          "right": "Mike's pony"
+        },
+        {
+          "left": "the rabbit of Dan",
+          "right": "Dan's rabbit"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Such die kurze Form mit 's, die dasselbe bedeutet wie die lange Form mit „of\".",
+      "hintEn": null,
+      "explainDe": "„the dog of Sue\" = Sue's dog, „the car of my mum\" = my mum's car usw. Die Kurzform nutzt 's.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.sb.001",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dog's",
+            "Sue's",
+            "big",
+            "nice"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-sb-001",
+        "narrative": null,
+        "note": "4 answer chips. distractorPool: 4 in-bank chips (dog's, Sue's, big, nice). chipBudget 12, minOptions null per rule."
+      },
+      "prompt": {
+        "text": "Sam's / car / is / red",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sam's car is red.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit dem Besitzer: Sam's … Wem gehört das Auto?",
+      "hintEn": null,
+      "explainDe": "Der Besitzer steht vorn: Sam's car is red.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.sb.002",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Sue's",
+            "owl",
+            "cage",
+            "lizard"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "Answer chips: lives/Tom's/in a box/spider. distractorPool 4 in-bank chips, all gate-clean."
+      },
+      "prompt": {
+        "text": "lives / Tom's / in a box / spider",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom's spider lives in a box.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wer besitzt die Spinne? Beginne mit Tom's …",
+      "hintEn": null,
+      "explainDe": "Der Besitzer kommt vorn: Tom's spider lives in a box.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.tf.001",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-tf-001",
+        "narrative": null,
+        "note": "belongs-to -> 's. Accepts the single fill or the full sentence as full."
+      },
+      "prompt": {
+        "text": "Das Pony gehört Mike. → It's ___ pony.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Mike's",
+          "tier": "full"
+        },
+        {
+          "text": "It's Mike's pony.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zeig mit 's, dass das Pony Mike gehört.",
+      "hintEn": null,
+      "explainDe": "Das Pony gehört Mike, also Mike's pony: It's Mike's pony.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.tf.002",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-tf-002",
+        "narrative": null,
+        "note": "of-phrase -> 's, two-token answer (budgie's cage). budgie's cage probes clean."
+      },
+      "prompt": {
+        "text": "the cage of my budgie → my ___",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "budgie's cage",
+          "tier": "full"
+        },
+        {
+          "text": "my budgie's cage",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Schreib es kurz mit 's: aus „the cage of my budgie\" wird my budgie's cage.",
+      "hintEn": null,
+      "explainDe": "Die Kurzform mit 's: my budgie's cage statt „the cage of my budgie\".",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.tf.003",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "has -> 's transformation. Single fill or full sentence accepted. All clean."
+      },
+      "prompt": {
+        "text": "Sue has a budgie. → It's ___ budgie.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Sue's",
+          "tier": "full"
+        },
+        {
+          "text": "It's Sue's budgie.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wenn Sue einen Wellensittich hat, ist es Sue's budgie.",
+      "hintEn": null,
+      "explainDe": "Besitz mit 's: It's Sue's budgie.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.tr.002",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-tr-002",
+        "narrative": null,
+        "note": "deToEn. German prompt -> lang=de. mother's and mum's both accepted; both clean. car/red clean."
+      },
+      "prompt": {
+        "text": "Das Auto meiner Mutter ist rot.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My mother's car is red.",
+          "tier": "full"
+        },
+        {
+          "text": "My mum's car is red.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„das Auto meiner Mutter\" sagst du mit 's: my mother's car.",
+      "hintEn": null,
+      "explainDe": "Besitz mit 's: my mother's car is red. „mum's\" geht auch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.possessive-s.tr.003",
+      "structureId": "g1u09.s.possessive-s",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m1-u3-possessive-s-tr-001",
+        "narrative": null,
+        "note": "deToEn. German prompt -> lang=de. Accepts the/a cage as full. Sue's rabbit/cage clean."
+      },
+      "prompt": {
+        "text": "Toms Kaninchen ist im Käfig.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom's rabbit is in the cage.",
+          "tier": "full"
+        },
+        {
+          "text": "Tom's rabbit is in a cage.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "„Toms\" heißt im Englischen Tom's (mit Apostroph-s).",
+      "hintEn": null,
+      "explainDe": "Besitz mit 's: Tom's rabbit. „im Käfig\" = in the cage.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.ag.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-gf-002",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word). Single-token answer, 5 letters. German cue du-form (uses German word 'Ort', not English grammar jargon)."
+      },
+      "prompt": {
+        "text": "Es geht um den Ort (Wo?): ___ do you live?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Where",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es beginnt mit W und fragt nach dem Wo.",
+      "hintEn": null,
+      "explainDe": "Where ist das Fragewort für den Ort: Where do you live?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.cp.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "context-picker",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Where she keep her dog?",
+            "Where does she keeps her dog?",
+            "Where she does keep her dog?",
+            "Where do she keep her dog?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-mc-002",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word) and verb 'keep' (named bank verb, gate flags UNTAUGHT). German prompt is du-form, no grammar terms."
+      },
+      "prompt": {
+        "text": "Du willst wissen, wo Mandy ihren Hund hält. Was ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Where does she keep her dog?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Where she keep her dog?",
+        "Where does she keeps her dog?",
+        "Where she does keep her dog?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach Where folgt does + Subjekt + Grundform. Das does steht nur einmal, das Verb bleibt in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtig ist Where does she keep her dog?: Fragewort + does + Subjekt + Grundform (keep, nicht keeps).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.question-words.cp.002",
+      "structureId": "g1u09.s.question-words",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Who does like pizza?",
+            "Who do like pizza?",
+            "Who like pizza?",
+            "Who is like pizza?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-mc-003",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Who' (passes gate). German prompt du-form, no grammar terms. 'pizza' (g1-u07) taught."
+      },
+      "prompt": {
+        "text": "Du willst wissen, wer Pizza mag. Was ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who likes pizza?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Who does like pizza?",
+        "Who do like pizza?",
+        "Who like pizza?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wenn who das Subjekt ist, brauchst du kein do/does. Das Verb bekommt einfach ein -s.",
+      "hintEn": null,
+      "explainDe": "Bei who als Subjekt steht kein do/does: Who likes pizza? Das Verb hat das -s (likes).",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.question-words.ec.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-ec-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word)."
+      },
+      "prompt": {
+        "text": "Where you live?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Where do you live?",
+          "tier": "full"
+        },
+        {
+          "text": "do",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei einer W-Frage mit you fehlt das kleine Hilfswort vor dem Subjekt.",
+      "hintEn": null,
+      "explainDe": "Nach dem Fragewort brauchst du do: Where do you live? Ohne do ist die Frage nicht vollständig.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.ec.002",
+      "structureId": "g1u09.s.question-words",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-ec-002",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'What' (named question word)."
+      },
+      "prompt": {
+        "text": "What does she likes?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What does she like?",
+          "tier": "full"
+        },
+        {
+          "text": "like",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wenn does schon da ist, bleibt das Verb in der Grundform.",
+      "hintEn": null,
+      "explainDe": "Nach does steht die Grundform: What does she like? Das -s ist schon in does, nicht noch einmal am Verb.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.question-words.ec.003",
+      "structureId": "g1u09.s.question-words",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-ec-003",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'What' and 'Where' (named question words). Tests What-vs-Where: answer 'a spider' identifies the thing, so What is correct (gate-clean)."
+      },
+      "prompt": {
+        "text": "Where is it? — It is a spider.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What is it?",
+          "tier": "full"
+        },
+        {
+          "text": "What",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Antwort sagt, WAS das Tier ist (a spider), nicht wo es ist. Welches Fragewort passt?",
+      "hintEn": null,
+      "explainDe": "What fragt nach einer Sache: What is it? Die Antwort a spider sagt, was das Tier ist. Where fragt nach dem Ort und passt hier nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g1u09.gi.question-words.gf.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-gf-002",
+        "narrative": null,
+        "note": "GRANT-NEEDED question word: 'Where' (named unit-9 question word; passes gate via core allowlist but listed for granting per brief)."
+      },
+      "prompt": {
+        "text": "___ do you live? — I live in London.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Where",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es geht um den Ort. Welches Fragewort fragt nach dem Wo?",
+      "hintEn": null,
+      "explainDe": "Where fragt nach dem Ort. Die Antwort nennt einen Ort (in London), also passt Where.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.gf.002",
+      "structureId": "g1u09.s.question-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-gf-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED question word: 'What' (named unit-9 question word; passes gate via core allowlist but listed for granting per brief)."
+      },
+      "prompt": {
+        "text": "___ does it eat? — It eats fish.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "What",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es geht um eine Sache. Welches Fragewort fragt nach dem Was?",
+      "hintEn": null,
+      "explainDe": "What fragt nach einer Sache. Die Antwort nennt das Futter (fish), also passt What.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.gf.003",
+      "structureId": "g1u09.s.question-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-gf-004",
+        "narrative": null,
+        "note": "GRANT-NEEDED: question word 'How often' (named unit-9 question word) and verb 'feed' (named unit-9 bank verb; gate flags 'feed' as UNTAUGHT — appears in SB carrier 'How often does he feed his pet?')."
+      },
+      "prompt": {
+        "text": "___ ___ do you feed it? — Twice a day.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "How | often",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es geht darum, wie oft etwas passiert. Zwei kleine Wörter zusammen.",
+      "hintEn": null,
+      "explainDe": "How often fragt nach der Häufigkeit. Die Antwort sagt, wie oft du fütterst (Twice a day).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.gf.004",
+      "structureId": "g1u09.s.question-words",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-gf-002",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word) and verb 'keep' (named unit-9 bank verb; gate flags 'keep' as UNTAUGHT — appears in SB carrier 'Where do you keep your crocodile?')."
+      },
+      "prompt": {
+        "text": "___ do you keep your spider? — In a box.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Where",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Antwort nennt einen Ort (In a box). Welches Fragewort passt?",
+      "hintEn": null,
+      "explainDe": "Where fragt nach dem Ort. Die Antwort sagt, wo die Spinne lebt (In a box).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.gs.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-mp-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: question words 'What', 'Where' (also used as in-bank group labels) and verb 'keep' (named bank verb, gate flags UNTAUGHT). 2 groups, 3 members each. German framing du-form, no grammar terms. 'Bob' harvested proper noun."
+      },
+      "prompt": {
+        "text": "Sortiere: Beginnt es mit What oder mit Where?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "What",
+          "members": [
+            "What does it eat?",
+            "What is it?",
+            "What does your rabbit eat?"
+          ]
+        },
+        {
+          "label": "Where",
+          "members": [
+            "Where do you live?",
+            "Where do you keep it?",
+            "Where does Bob live?"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "What fragt nach einer Sache, Where nach einem Ort. Schau, womit die Frage beginnt.",
+      "hintEn": null,
+      "explainDe": "Fragen mit What fragen nach einer Sache (eat). Fragen mit Where fragen nach dem Ort (live, keep).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.mc.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "What",
+            "Who",
+            "How many",
+            "When",
+            "Why",
+            "How often"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-gf-002",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word). 'London' is a harvested proper noun (gate-clean)."
+      },
+      "prompt": {
+        "text": "___ do you live? — In London.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Where",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "What",
+        "Who",
+        "How many"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Antwort nennt einen Ort. Welches Fragewort fragt nach dem Wo?",
+      "hintEn": null,
+      "explainDe": "Where fragt nach dem Ort. What fragt nach einer Sache, Who nach einer Person, How many nach der Anzahl.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.mc.002",
+      "structureId": "g1u09.s.question-words",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Where",
+            "Who",
+            "How often",
+            "When",
+            "Why",
+            "How many"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-mc-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'What' (named question word). 'fish' (g1-u09) and 'carrots' (carrot, g1-u07) taught (gate-clean)."
+      },
+      "prompt": {
+        "text": "___ does your rabbit eat? — Fish and carrots.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "What",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Where",
+        "Who",
+        "How often"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Antwort nennt Futter. Welches Fragewort fragt nach einer Sache?",
+      "hintEn": null,
+      "explainDe": "What fragt nach einer Sache. Where fragt nach dem Ort, Who nach einer Person, How often nach der Häufigkeit.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.mc.003",
+      "structureId": "g1u09.s.question-words",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "What",
+            "How often",
+            "Who",
+            "When",
+            "Why",
+            "How many"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-qf-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word). 'Tom' and 'London' are in the harvested proper-noun list."
+      },
+      "prompt": {
+        "text": "Tom lives in London. ___ does Tom live?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Where",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "What",
+        "How often",
+        "Who"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Satz nennt einen Ort (London). Frage nach dem Ort.",
+      "hintEn": null,
+      "explainDe": "Where fragt nach dem Ort. Tom lives in London nennt einen Ort, also fragst du mit Where.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.mp.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-mp-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: question words 'Where', 'What', 'How often' and verbs 'keep'/'feed' (named bank verbs, gate flags UNTAUGHT). English↔English; right-sides unique. 'Bob' is a harvested proper noun. German framing du-form."
+      },
+      "prompt": {
+        "text": "Finde die Paare, die zusammenpassen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Where do you keep it?",
+          "right": "In a box."
+        },
+        {
+          "left": "What does it eat?",
+          "right": "Meat."
+        },
+        {
+          "left": "How often do you feed it?",
+          "right": "Once a day."
+        },
+        {
+          "left": "What is it?",
+          "right": "A rabbit."
+        },
+        {
+          "left": "Where does Bob live?",
+          "right": "On a farm."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Lies das Fragewort: Where → Ort, What → Sache, How often → wie oft.",
+      "hintEn": null,
+      "explainDe": "Jede Frage beginnt mit einem Fragewort und passt zu einer kurzen Antwort: Where → In a box / On a farm, What → Meat / A rabbit, How often → Once a day.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.mt.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-mt-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: question words 'Where', 'What', 'How often' and verb 'feed' (named bank verb, gate flags UNTAUGHT). English↔English question↔answer; right-sides unique. German framing du-form, no grammar terms."
+      },
+      "prompt": {
+        "text": "Was passt zusammen?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "Where do you live?",
+          "right": "In London."
+        },
+        {
+          "left": "What does it eat?",
+          "right": "Fish and meat."
+        },
+        {
+          "left": "How often do you feed it?",
+          "right": "Twice a day."
+        },
+        {
+          "left": "What is it?",
+          "right": "A spider."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf das Fragewort: Where → Ort, What → Sache, How often → wie oft.",
+      "hintEn": null,
+      "explainDe": "Where fragt nach dem Ort (In London), What nach einer Sache (Fish and meat / A spider), How often nach der Häufigkeit (Twice a day).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.qf.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-qf-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word). German instruction du-form, no grammar terms. 'Tom' and 'London' are harvested proper nouns."
+      },
+      "prompt": {
+        "text": "Tom lives in London. Frag nach dem Ort: ___ does Tom live?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Where",
+          "tier": "full"
+        },
+        {
+          "text": "Where does Tom live?",
+          "tier": "full"
+        },
+        {
+          "text": "Where does he live?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Fragewort für den Ort kommt an den Anfang, danach does Tom live.",
+      "hintEn": null,
+      "explainDe": "Where fragt nach dem Ort: Where does Tom live? Nach does bleibt das Verb in der Grundform (live).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.qf.002",
+      "structureId": "g1u09.s.question-words",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-mc-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'What' (named question word). German instruction du-form, no grammar terms."
+      },
+      "prompt": {
+        "text": "It eats fish. Frag nach dem Futter: ___ does it eat?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "What",
+          "tier": "full"
+        },
+        {
+          "text": "What does it eat?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das Fragewort für eine Sache kommt an den Anfang.",
+      "hintEn": null,
+      "explainDe": "What fragt nach einer Sache (dem Futter): What does it eat? Nach does steht die Grundform eat.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.sb.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Where",
+            "do",
+            "you",
+            "live",
+            "eats"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-sb-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'What' (named question word). Distractor chips (Where/do/you/live/eats) are all gate-clean in-bank."
+      },
+      "prompt": {
+        "text": "does / What / eat / it / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What does it eat?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Fragewort + does + Subjekt + Grundform + ?",
+      "hintEn": null,
+      "explainDe": "What does it eat? — Erst das Fragewort, dann does, dann das Subjekt it und die Grundform eat.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.sb.002",
+      "structureId": "g1u09.s.question-words",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "What",
+            "does",
+            "it",
+            "eat",
+            "lives"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-sb-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word). Distractor chips (What/does/it/eat/lives) are all gate-clean in-bank."
+      },
+      "prompt": {
+        "text": "do / Where / live / you / ?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Where do you live?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Reihenfolge: Fragewort + do + Subjekt + Grundform + ?",
+      "hintEn": null,
+      "explainDe": "Where do you live? — Erst das Fragewort, dann do, dann das Subjekt you und die Grundform live.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.tf.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-tf-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word). German trigger in parentheses is du-form, no grammar terms. 'London' is a harvested proper noun."
+      },
+      "prompt": {
+        "text": "I live in London. (mit Where, bitte) → ___ do you live?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "Where",
+          "tier": "full"
+        },
+        {
+          "text": "Where do you live?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Setze das Fragewort für den Ort an den Anfang.",
+      "hintEn": null,
+      "explainDe": "Where fragt nach dem Ort: Where do you live? Die Antwort I live in London nennt einen Ort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.tf.003",
+      "structureId": "g1u09.s.question-words",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-tf-002",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'How often' (named question word) and verb 'feed' (named bank verb, gate flags UNTAUGHT). German trigger du-form, no grammar terms."
+      },
+      "prompt": {
+        "text": "I feed my dog twice a day. (wie oft?) → ___ ___ do you feed your dog?",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "How | often",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwei kleine Wörter fragen, wie oft etwas passiert.",
+      "hintEn": null,
+      "explainDe": "How often fragt nach der Häufigkeit: How often do you feed your dog? Die Antwort twice a day sagt, wie oft.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.tr.001",
+      "structureId": "g1u09.s.question-words",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-tr-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'Where' (named question word). Translation direction deToEn, prompt German du-form."
+      },
+      "prompt": {
+        "text": "Wo wohnst du?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Where do you live?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit dem Fragewort für den Ort, dann do you live.",
+      "hintEn": null,
+      "explainDe": "Where do you live? — Where fragt nach dem Ort, do you live ist die Grundform mit Hilfswort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g1u09.gi.question-words.tr.002",
+      "structureId": "g1u09.s.question-words",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g1/sb/SB Unit 9- Unusual pets.txt#grammar-1",
+        "seedV1": "m1-u9-question-words-tr-001",
+        "narrative": null,
+        "note": "GRANT-NEEDED: 'How often' (named question word) and verb 'feed' (named bank verb, gate flags UNTAUGHT). Translation deToEn, prompt German du-form."
+      },
+      "prompt": {
+        "text": "Wie oft fütterst du deinen Hund?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How often do you feed your dog?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit zwei kleinen Wörtern für die Häufigkeit, dann do you feed your dog.",
+      "hintEn": null,
+      "explainDe": "How often do you feed your dog? — How often fragt nach der Häufigkeit, danach folgt do you feed your dog.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

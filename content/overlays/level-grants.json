@@ -1512,6 +1512,78 @@
       "reason": "unit-8 Present simple questions: \"What colour is/are …?\" — colour is core to the question structure",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g1-u09",
+      "itemId": null,
+      "field": null,
+      "token": "feed",
+      "reason": "unit-9 Question words SB box verbs feed/keep",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u09",
+      "itemId": null,
+      "field": null,
+      "token": "feeds",
+      "reason": "unit-9 Question words SB box verbs feed/keep",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u09",
+      "itemId": null,
+      "field": null,
+      "token": "keep",
+      "reason": "unit-9 Question words SB box verbs feed/keep",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u09",
+      "itemId": null,
+      "field": null,
+      "token": "keeps",
+      "reason": "unit-9 Question words SB box verbs feed/keep",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u09",
+      "itemId": null,
+      "field": null,
+      "token": "mice",
+      "reason": "unit-9 Irregular plurals (3): mouse->mice, pony->ponies",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u09",
+      "itemId": null,
+      "field": null,
+      "token": "ponies",
+      "reason": "unit-9 Irregular plurals (3): mouse->mice, pony->ponies",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u09",
+      "itemId": null,
+      "field": null,
+      "token": "ponys",
+      "reason": "unit-9 deliberate WRONG plural (pony->ponies) used as a find-the-error form",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g1-u09",
+      "itemId": null,
+      "field": null,
+      "token": "Toms",
+      "reason": "unit-9 possessive: deliberate missing-apostrophe error form (Tom + s)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
