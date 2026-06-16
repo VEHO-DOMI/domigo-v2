@@ -1250,7 +1250,7 @@
     },
     {
       "id": "g1u05.w.keyboard-player",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1309,11 +1309,6 @@
         ]
       },
       "gloss": [
-        {
-          "word": "band",
-          "de": "Band",
-          "scope": "d"
-        },
         {
           "word": "keys",
           "de": "Tasten",
@@ -1769,7 +1764,7 @@
     },
     {
       "id": "g1u05.w.saxophone-player",
-      "rev": 2,
+      "rev": 3,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1828,11 +1823,6 @@
         ]
       },
       "gloss": [
-        {
-          "word": "band",
-          "de": "Band",
-          "scope": "d"
-        },
         {
           "word": "gold",
           "de": "golden",

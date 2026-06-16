@@ -1,6 +1,6 @@
-# Verify lens — level-gloss — g1-u01 (round 1)
+# Verify lens — level-gloss — g1-u01 (round 2)
 
-<!-- domigo:verify level-gloss g1-u01 items=f420e20d1860 prompt=aefb997bf664 round=1 -->
+<!-- domigo:verify level-gloss g1-u01 items=5a43fad1d4fa prompt=aefb997bf664 round=2 -->
 
 <!-- domigo:prompt verify-level-gloss v=1 -->
 # Lens 1 — level + gloss (adversarial)
@@ -37,7 +37,7 @@ Cumulative bank — every headword below (plus its inflections and listed forms)
 
 - **g1-u01**: sound system, projector, board, window, door, desk, scissors, ruler, tablet, chair, school bag, pen, exercise book, pencil case, pencil, rubber, book, hairband, sunglasses, hat, school tie, shirt, sweater, skirt, socks, shoe, to give, time, to understand, to write, to enjoy, to listen, to love, more, to read, their, to ask, (email) address, How are you?, I am (= I'm) fine., to meet, then, your, to look, or, to eat, to go, must, how many, to hate, here, it, Let's …, midnight, our, favourite, to find, light, child, to clean, to close, to open, picture, to sit down, to speak, to stand up, to take out, class
 
-Core allowlist (closed-class, always allowed): a, an, the, i, you, he, she, it, we, they, me, him, her, us, them, my, your, his, its, our, their, this, that, these, those, who, what, which, when, where, why, how, be, am, is, are, was, were, isn't, aren't, wasn't, weren't, i'm, you're, he's, she's, it's, we're, they're, do, does, did, done, doing, don't, doesn't, didn't, have, has, had, having, haven't, hasn't, i've, you've, we've, they've, can, can't, cannot, let's, and, or, but, because, so, if, than, then, in, on, at, to, of, for, with, from, up, down, about, into, out, over, under, after, before, not, no, yes, n't, some, any, all, both, many, much, more, most, one, two, three, four, five, six, seven, eight, nine, ten, here, there, now, today, very, too, also, there's, please, sorry, ok, hello, hi, bye, goodbye, thanks, thank
+Core allowlist (closed-class, always allowed): a, an, the, i, you, he, she, it, we, they, me, him, her, us, them, my, your, his, its, our, their, this, that, these, those, who, what, which, when, where, why, how, be, am, is, are, was, were, isn't, aren't, wasn't, weren't, i'm, you're, he's, she's, it's, we're, they're, do, does, did, done, doing, don't, doesn't, didn't, have, has, had, having, haven't, hasn't, i've, you've, we've, they've, can, can't, cannot, let's, and, or, but, because, so, if, than, then, in, on, at, to, of, for, with, from, up, down, about, into, out, over, under, after, before, not, no, yes, n't, some, any, all, both, many, much, more, most, one, two, three, four, five, six, seven, eight, nine, ten, here, there, now, today, very, too, also, there's, please, sorry, ok, hello, hi, bye, goodbye, thanks, thank, song, band
 
 Harvested proper nouns (≤ this unit): Ahmed, Arbeit, Befehlsformen, Betty, Box, Carina, Carl, Chloe, Classroom, Dave, Dialog, Don, English, Freddy, Gordon, Homework, Imperatives, Irregular, Jenny, Julia, Leah, Mail, Mike, Nice, Nomen, Number, Numbers, Plural, Reihenfolge, School, Sue, Well, Zahlen
 
@@ -64,7 +64,7 @@ Bare numbers (2026, 14, …) always pass. ANY other word must be glossed `word (
 | g1u01.w.how-many | You ask it about a number of books, pens or animals. | ___ frogs can you see in the picture? | here ; or ; then | here ; or ; then ; more ; your | animals (= Tiere) ; see (= sehen) ; frogs (= Frösche) |
 | g1u01.w.i-am-fine | You say it when a child asks how you are and all is good. | How are you? — ___, thanks. And you? | How are you? ; how many ; here | How are you? ; how many ; here ; then ; more | say (= sagen) ; good (= gut) |
 | g1u01.w.it | A word for a thing or an animal, not for a child. | I have a pet frog. ___ is green. | here ; their ; your | here ; their ; your ; our ; more | word (= Wort) ; animal (= Tier) ; pet (= Haustier) ; frog (= Frosch) ; green (= grün) |
-| g1u01.w.let-s | You say it when you want to do a thing with a child. | ___ sing a song! It is so much fun. | here ; then ; more | here ; then ; more ; or ; your | say (= sagen) ; want (= wollen) ; sing (= singen) ; song (= Lied) ; fun (= Spaß) |
+| g1u01.w.let-s | You say it when you want to do a thing with a child. | ___ sing a song! It is so much fun. | here ; then ; more | here ; then ; more ; or ; your | say (= sagen) ; want (= wollen) ; sing (= singen) ; fun (= Spaß) |
 | g1u01.w.light | Not dark. A pale colour, for example the sky on a sunny morning. | My favourite colour is ___ blue, like the sky. | favourite ; more ; here | favourite ; more ; here ; then ; or | dark (= dunkel) ; pale (= blass) ; colour (= Farbe) ; for example (= zum Beispiel) ; sky (= Himmel) ; sunny (= sonnig) ; morning (= Morgen) ; blue (= blau) ; like (= wie) |
 | g1u01.w.midnight | 12 o'clock at night, when all the class is in bed. | It's 12 o'clock now — it's ___ in the classroom. | time ; class ; picture | time ; class ; picture ; book ; address | o'clock (= Uhr (volle Stunde)) ; night (= Nacht) |
 | g1u01.w.more | A bigger number of a thing than now. | Can I have ___ water, please? My glass is empty. | here ; then ; or | here ; then ; or ; your ; their | bigger (= größer) ; water (= Wasser) ; glass (= Glas) ; empty (= leer) |
@@ -85,7 +85,7 @@ Bare numbers (2026, 14, …) always pass. ANY other word must be glossed `word (
 | g1u01.w.shoe | You wear it on one foot, over your sock. | I can find one ___, but where is the other one? | socks ; hat ; skirt | socks ; hat ; skirt ; shirt ; sweater | wear (= tragen) ; foot (= Fuß) ; sock (= Socke) ; other (= andere) |
 | g1u01.w.skirt | A girl can wear it. It is not trousers. | She has a red ___ on today. | shirt ; hat ; shoe | shirt ; hat ; shoe ; socks ; sweater | girl (= Mädchen) ; wear (= tragen) ; trousers (= Hose) ; red (= rot) |
 | g1u01.w.socks | You wear them on your feet, in your shoes. | I put on my clean ___ and then my shoes. | shoe ; hat ; shirt | shoe ; hat ; shirt ; skirt ; sweater | wear (= tragen) ; feet (= Füße) ; put on (= anziehen) |
-| g1u01.w.sound-system | A machine in the classroom. It plays music for all the class. | Our teacher plays a song on the ___ and we all listen. | projector ; board ; tablet | projector ; board ; tablet ; window ; desk | machine (= Gerät) ; plays (= spielt) ; music (= Musik) ; song (= Lied) ; teacher (= Lehrer) |
+| g1u01.w.sound-system | A machine in the classroom. It plays music for all the class. | Our teacher plays a song on the ___ and we all listen. | projector ; board ; tablet | projector ; board ; tablet ; window ; desk | machine (= Gerät) ; plays (= spielt) ; music (= Musik) ; teacher (= Lehrer) |
 | g1u01.w.sunglasses | Dark glasses. You wear them on your eyes when the sun is bright. | It is very sunny, so I wear my dark ___. | hat ; hairband ; school tie | hat ; hairband ; school tie ; shirt ; socks | dark (= dunkel) ; glasses (= Brille) ; wear (= tragen) ; eyes (= Augen) ; sun (= Sonne) ; bright (= hell) ; sunny (= sonnig) |
 | g1u01.w.sweater | A warm top with sleeves. You wear it over your shirt when it is cold. | It is cold today, so wear a warm ___ over your shirt. | skirt ; socks ; hat | skirt ; socks ; hat ; shirt ; shoe | warm (= warm) ; top (= Oberteil) ; sleeves (= Ärmel) ; wear (= tragen) ; cold (= kalt) |
 | g1u01.w.tablet | A flat thing with a glass screen. A child can read or play games on it. | Switch on your ___ and look at the picture on the screen. | book ; board ; exercise book | book ; board ; exercise book ; projector ; ruler | flat (= flach) ; glass (= Glas) ; screen (= Bildschirm) ; play (= spielen) ; games (= Spiele) ; switch on (= einschalten) |
@@ -96,12 +96,12 @@ Bare numbers (2026, 14, …) always pass. ANY other word must be glossed `word (
 | g1u01.w.to-clean | To take the dirt from a thing so it is not dirty. | Please ___ the board after the class. | to open ; to close ; to find | to open ; to close ; to find ; to look ; to give | take (= nehmen) ; dirt (= Schmutz) ; dirty (= schmutzig) |
 | g1u01.w.to-close | To shut a door or a window so it is not open. | It is cold in here. Please ___ the window. | to open ; to clean ; to find | to open ; to clean ; to find ; to look ; to give | shut (= zumachen) ; cold (= kalt) |
 | g1u01.w.to-eat | To put food into your mouth. | I'm a frog and I ___ insects. | to read ; to look ; to ask | to read ; to look ; to ask ; to find ; to give | put (= tun) ; food (= Essen) ; mouth (= Mund) ; frog (= Frosch) ; insects (= Insekten) |
-| g1u01.w.to-enjoy | To like a thing very, very much when you do it. | ___ the music! It is a very cool song. | to hate ; to ask ; to find | to hate ; to ask ; to find ; to look ; to read | like (= mögen) ; music (= Musik) ; song (= Lied) ; cool (= cool) |
+| g1u01.w.to-enjoy | To like a thing very, very much when you do it. | ___ the music! It is a very cool song. | to hate ; to ask ; to find | to hate ; to ask ; to find ; to look ; to read | like (= mögen) ; music (= Musik) ; cool (= cool) |
 | g1u01.w.to-find | To see a thing you were looking for. | Can you ___ my school tie? It is on my chair. | to look ; to give ; to ask | to look ; to give ; to ask ; to read ; to meet | see (= sehen) ; looking for (= suchen) |
 | g1u01.w.to-give | To put a thing into the hand of a child or your teacher. | ___ me your school bag, please. | to find ; to ask ; to read | to find ; to ask ; to read ; to look ; to write | put (= tun) ; hand (= Hand) ; teacher (= Lehrer) |
 | g1u01.w.to-go | To walk from one place to the next place. | It is late. I must ___ home now. Bye! | to find ; to look ; to ask | to find ; to look ; to ask ; to read ; to give | walk (= gehen, laufen) ; place (= Ort) ; next (= nächste) ; late (= spät) ; home (= nach Hause) |
 | g1u01.w.to-hate | To not like a thing at all. It is the other way from love. | I ___ pink. It is not for me at all! | to love ; to enjoy ; to find | to love ; to enjoy ; to find ; to look ; to give | like (= mögen) ; other way (= Gegenteil) ; pink (= rosa) |
-| g1u01.w.to-listen | To use your ears for a song or for music. | ___ to the song, then read the text. | to look ; to read ; to write | to look ; to read ; to write ; to speak ; to find | use (= benutzen) ; ears (= Ohren) ; song (= Lied) ; music (= Musik) ; text (= Text) |
+| g1u01.w.to-listen | To use your ears for a song or for music. | ___ to the song, then read the text. | to look ; to read ; to write | to look ; to read ; to write ; to speak ; to find | use (= benutzen) ; ears (= Ohren) ; music (= Musik) ; text (= Text) |
 | g1u01.w.to-look | To use your eyes to see a thing. | ___ at the picture on the board! | to listen ; to read ; to speak | to listen ; to read ; to speak ; to find ; to write | use (= benutzen) ; eyes (= Augen) ; see (= sehen) |
 | g1u01.w.to-love | To like a child, an animal or a thing very, very much. | I ___ blue. It's my favourite colour. | to hate ; to find ; to ask | to hate ; to find ; to ask ; to enjoy ; to look | like (= mögen) ; animal (= Tier) ; blue (= blau) ; colour (= Farbe) |
 | g1u01.w.to-meet | To see a child for the first time and say hello. | Nice to ___ you! My name is Sue. | to find ; to look ; to give | to find ; to look ; to give ; to ask ; to read | see (= sehen) ; first (= erste) ; say (= sagen) ; name (= Name) |
@@ -301,9 +301,9 @@ Write `content/corpus/units/g1-u01/verify/level-gloss.flags.json`:
   "schema": "verify-flags@1",
   "slug": "g1-u01",
   "lens": "level-gloss",
-  "itemsHash": "f420e20d1860",
+  "itemsHash": "5a43fad1d4fa",
   "promptHash": "aefb997bf664",
-  "round": 1,
+  "round": 2,
   "by": "fable-lens-level-gloss",
   "flags": [
     { "key": "<kind>:<itemId>", "kind": "…", "itemId": "…",

@@ -113,6 +113,41 @@
       "contentHash": "f420e20d1860bd12ab58912f28ab227a174af42d291b87bd623a0cc1930466c2",
       "note": "round 1: 158 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
       "at": "2026-06-14T04:44:11.589Z"
+    },
+    {
+      "state": "generated",
+      "by": "pipeline",
+      "contentHash": "5a43fad1d4fa4d19a860b9cab2fd0275be0a8c0064916b454cd89c83b630f8b9",
+      "note": "gen ingest: 68 vocab + 171 grammar item(s); draft 10541db0539d",
+      "at": "2026-06-16T10:50:46.233Z"
+    },
+    {
+      "state": "verified",
+      "by": "pipeline",
+      "contentHash": "5a43fad1d4fa4d19a860b9cab2fd0275be0a8c0064916b454cd89c83b630f8b9",
+      "note": "verify round 2: 0 fix, 0 warn",
+      "at": "2026-06-16T10:52:00.876Z"
+    },
+    {
+      "state": "validated",
+      "by": "pipeline",
+      "contentHash": "5a43fad1d4fa4d19a860b9cab2fd0275be0a8c0064916b454cd89c83b630f8b9",
+      "note": "V-1..V-22 green (9 warn)",
+      "at": "2026-06-16T10:52:26.296Z"
+    },
+    {
+      "state": "review_ready",
+      "by": "pipeline",
+      "contentHash": "5a43fad1d4fa4d19a860b9cab2fd0275be0a8c0064916b454cd89c83b630f8b9",
+      "note": "round 2 doc: 4 open flag(s), 4 row(s) rendered (FULL)",
+      "at": "2026-06-16T10:52:26.346Z"
+    },
+    {
+      "state": "approved",
+      "by": "fable",
+      "contentHash": "5a43fad1d4fa4d19a860b9cab2fd0275be0a8c0064916b454cd89c83b630f8b9",
+      "note": "round 2: 4 verdict(s), 0 edit(s), 0 drop(s), rejectRate 0.0%",
+      "at": "2026-06-16T10:53:44.684Z"
     }
   ]
 }

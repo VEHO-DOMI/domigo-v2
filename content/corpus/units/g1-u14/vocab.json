@@ -1499,7 +1499,7 @@
     },
     {
       "id": "g1u14.w.latest",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1565,11 +1565,6 @@
         {
           "word": "heard",
           "de": "gehört",
-          "scope": "s"
-        },
-        {
-          "word": "song",
-          "de": "Lied",
           "scope": "s"
         }
       ],
@@ -1679,7 +1674,7 @@
     },
     {
       "id": "g1u14.w.music-video",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -1733,18 +1728,7 @@
           }
         ]
       },
-      "gloss": [
-        {
-          "word": "song",
-          "de": "Lied",
-          "scope": "d"
-        },
-        {
-          "word": "band",
-          "de": "Band",
-          "scope": null
-        }
-      ],
+      "gloss": [],
       "mc": [
         "the news",
         "quiz show",

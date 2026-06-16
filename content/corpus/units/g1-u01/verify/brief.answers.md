@@ -1,6 +1,6 @@
-# Verify lens — answers — g1-u01 (round 1)
+# Verify lens — answers — g1-u01 (round 2)
 
-<!-- domigo:verify answers g1-u01 items=f420e20d1860 prompt=70fa2d8cdf22 round=1 -->
+<!-- domigo:verify answers g1-u01 items=5a43fad1d4fa prompt=70fa2d8cdf22 round=2 -->
 
 <!-- domigo:prompt verify-answers v=1 -->
 # Lens 2 — answer-set completeness + in-sentence grammaticality (adversarial)
@@ -289,9 +289,9 @@ Write `content/corpus/units/g1-u01/verify/answers.flags.json`:
   "schema": "verify-flags@1",
   "slug": "g1-u01",
   "lens": "answers",
-  "itemsHash": "f420e20d1860",
+  "itemsHash": "5a43fad1d4fa",
   "promptHash": "70fa2d8cdf22",
-  "round": 1,
+  "round": 2,
   "by": "fable-lens-answers",
   "flags": [
     { "key": "<kind>:<itemId>", "kind": "…", "itemId": "…",

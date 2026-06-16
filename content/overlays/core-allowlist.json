@@ -676,6 +676,16 @@
       "token": "thank",
       "category": "courtesy",
       "note": null
+    },
+    {
+      "token": "song",
+      "category": "ubiquitous-noun",
+      "note": null
+    },
+    {
+      "token": "band",
+      "category": "ubiquitous-noun",
+      "note": null
     }
   ]
 }

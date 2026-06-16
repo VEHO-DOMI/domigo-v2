@@ -1,6 +1,6 @@
-# Verify lens — register — g1-u01 (round 1)
+# Verify lens — register — g1-u01 (round 2)
 
-<!-- domigo:verify register g1-u01 items=f420e20d1860 prompt=359c6953017a round=1 -->
+<!-- domigo:verify register g1-u01 items=5a43fad1d4fa prompt=359c6953017a round=2 -->
 
 <!-- domigo:prompt verify-register v=1 -->
 # Lens 4 — German register (du) + meta-talk (adversarial)
@@ -47,7 +47,7 @@ every note.
 | g1u01.w.how-many | wie viele | ___ frogs can you see in the picture? | You ask it about a number of books, pens or animals. | So fragst du nach einer Anzahl. | animals (= Tiere) ; see (= sehen) ; frogs (= Frösche) |
 | g1u01.w.i-am-fine | Es geht mir gut. | How are you? — ___, thanks. And you? | You say it when a child asks how you are and all is good. | So sagst du, dass es dir gut geht. | say (= sagen) ; good (= gut) |
 | g1u01.w.it | es | I have a pet frog. ___ is green. | A word for a thing or an animal, not for a child. | Das Wort für ein Ding oder ein Tier. | word (= Wort) ; animal (= Tier) ; pet (= Haustier) ; frog (= Frosch) ; green (= grün) |
-| g1u01.w.let-s | Lass(t) … | ___ sing a song! It is so much fun. | You say it when you want to do a thing with a child. | So schlägst du vor, etwas zusammen zu tun. | say (= sagen) ; want (= wollen) ; sing (= singen) ; song (= Lied) ; fun (= Spaß) |
+| g1u01.w.let-s | Lass(t) … | ___ sing a song! It is so much fun. | You say it when you want to do a thing with a child. | So schlägst du vor, etwas zusammen zu tun. | say (= sagen) ; want (= wollen) ; sing (= singen) ; fun (= Spaß) |
 | g1u01.w.light | hell | My favourite colour is ___ blue, like the sky. | Not dark. A pale colour, for example the sky on a sunny morning. | Nicht dunkel, eine blasse Farbe. | dark (= dunkel) ; pale (= blass) ; colour (= Farbe) ; for example (= zum Beispiel) ; sky (= Himmel) ; sunny (= sonnig) ; morning (= Morgen) ; blue (= blau) ; like (= wie) |
 | g1u01.w.midnight | Mitternacht | It's 12 o'clock now — it's ___ in the classroom. | 12 o'clock at night, when all the class is in bed. | Zwölf Uhr in der Nacht. | o'clock (= Uhr (volle Stunde)) ; night (= Nacht) |
 | g1u01.w.more | mehr | Can I have ___ water, please? My glass is empty. | A bigger number of a thing than now. | Eine größere Menge als jetzt. | bigger (= größer) ; water (= Wasser) ; glass (= Glas) ; empty (= leer) |
@@ -68,7 +68,7 @@ every note.
 | g1u01.w.shoe | Schuh | I can find one ___, but where is the other one? | You wear it on one foot, over your sock. | Den trägst du an einem Fuß, über der Socke. | wear (= tragen) ; foot (= Fuß) ; sock (= Socke) ; other (= andere) |
 | g1u01.w.skirt | Rock | She has a red ___ on today. | A girl can wear it. It is not trousers. | Das trägt oft ein Mädchen; es ist keine Hose. | girl (= Mädchen) ; wear (= tragen) ; trousers (= Hose) ; red (= rot) |
 | g1u01.w.socks | Socken | I put on my clean ___ and then my shoes. | You wear them on your feet, in your shoes. | Die trägst du an den Füßen, in den Schuhen. | wear (= tragen) ; feet (= Füße) ; put on (= anziehen) |
-| g1u01.w.sound-system | Soundsystem | Our teacher plays a song on the ___ and we all listen. | A machine in the classroom. It plays music for all the class. | Daraus kommt die Musik für die ganze Klasse. | machine (= Gerät) ; plays (= spielt) ; music (= Musik) ; song (= Lied) ; teacher (= Lehrer) |
+| g1u01.w.sound-system | Soundsystem | Our teacher plays a song on the ___ and we all listen. | A machine in the classroom. It plays music for all the class. | Daraus kommt die Musik für die ganze Klasse. | machine (= Gerät) ; plays (= spielt) ; music (= Musik) ; teacher (= Lehrer) |
 | g1u01.w.sunglasses | Sonnenbrille | It is very sunny, so I wear my dark ___. | Dark glasses. You wear them on your eyes when the sun is bright. | Eine dunkle Brille für sonnige Tage. | dark (= dunkel) ; glasses (= Brille) ; wear (= tragen) ; eyes (= Augen) ; sun (= Sonne) ; bright (= hell) ; sunny (= sonnig) |
 | g1u01.w.sweater | Pullover | It is cold today, so wear a warm ___ over your shirt. | A warm top with sleeves. You wear it over your shirt when it is cold. | Ein warmes Oberteil mit langen Ärmeln über dem Hemd. | warm (= warm) ; top (= Oberteil) ; sleeves (= Ärmel) ; wear (= tragen) ; cold (= kalt) |
 | g1u01.w.tablet | Tablet | Switch on your ___ and look at the picture on the screen. | A flat thing with a glass screen. A child can read or play games on it. | Ein kleiner, flacher Computer mit Bildschirm. | flat (= flach) ; glass (= Glas) ; screen (= Bildschirm) ; play (= spielen) ; games (= Spiele) ; switch on (= einschalten) |
@@ -79,12 +79,12 @@ every note.
 | g1u01.w.to-clean | sauber machen | Please ___ the board after the class. | To take the dirt from a thing so it is not dirty. | Den Schmutz wegmachen, sodass etwas wieder sauber ist. | take (= nehmen) ; dirt (= Schmutz) ; dirty (= schmutzig) |
 | g1u01.w.to-close | schließen | It is cold in here. Please ___ the window. | To shut a door or a window so it is not open. | Eine Tür oder ein Fenster zumachen. | shut (= zumachen) ; cold (= kalt) |
 | g1u01.w.to-eat | essen | I'm a frog and I ___ insects. | To put food into your mouth. | Du tust Essen in den Mund. | put (= tun) ; food (= Essen) ; mouth (= Mund) ; frog (= Frosch) ; insects (= Insekten) |
-| g1u01.w.to-enjoy | genießen | ___ the music! It is a very cool song. | To like a thing very, very much when you do it. | Etwas mit viel Freude tun. | like (= mögen) ; music (= Musik) ; song (= Lied) ; cool (= cool) |
+| g1u01.w.to-enjoy | genießen | ___ the music! It is a very cool song. | To like a thing very, very much when you do it. | Etwas mit viel Freude tun. | like (= mögen) ; music (= Musik) ; cool (= cool) |
 | g1u01.w.to-find | finden | Can you ___ my school tie? It is on my chair. | To see a thing you were looking for. | Du siehst etwas, das du gesucht hast. | see (= sehen) ; looking for (= suchen) |
 | g1u01.w.to-give | geben | ___ me your school bag, please. | To put a thing into the hand of a child or your teacher. | Du legst jemandem etwas in die Hand. | put (= tun) ; hand (= Hand) ; teacher (= Lehrer) |
 | g1u01.w.to-go | gehen | It is late. I must ___ home now. Bye! | To walk from one place to the next place. | Von einem Ort zum nächsten gehen. | walk (= gehen, laufen) ; place (= Ort) ; next (= nächste) ; late (= spät) ; home (= nach Hause) |
 | g1u01.w.to-hate | hassen | I ___ pink. It is not for me at all! | To not like a thing at all. It is the other way from love. | Etwas überhaupt nicht mögen. | like (= mögen) ; other way (= Gegenteil) ; pink (= rosa) |
-| g1u01.w.to-listen | zuhören | ___ to the song, then read the text. | To use your ears for a song or for music. | Du nimmst die Ohren, um ein Lied zu hören. | use (= benutzen) ; ears (= Ohren) ; song (= Lied) ; music (= Musik) ; text (= Text) |
+| g1u01.w.to-listen | zuhören | ___ to the song, then read the text. | To use your ears for a song or for music. | Du nimmst die Ohren, um ein Lied zu hören. | use (= benutzen) ; ears (= Ohren) ; music (= Musik) ; text (= Text) |
 | g1u01.w.to-look | schauen | ___ at the picture on the board! | To use your eyes to see a thing. | Du nimmst die Augen, um etwas zu sehen. | use (= benutzen) ; eyes (= Augen) ; see (= sehen) |
 | g1u01.w.to-love | lieben | I ___ blue. It's my favourite colour. | To like a child, an animal or a thing very, very much. | Etwas oder jemanden ganz, ganz doll mögen. | like (= mögen) ; animal (= Tier) ; blue (= blau) ; colour (= Farbe) |
 | g1u01.w.to-meet | kennenlernen | Nice to ___ you! My name is Sue. | To see a child for the first time and say hello. | Jemanden zum ersten Mal sehen und Hallo sagen. | see (= sehen) ; first (= erste) ; say (= sagen) ; name (= Name) |
@@ -284,9 +284,9 @@ Write `content/corpus/units/g1-u01/verify/register.flags.json`:
   "schema": "verify-flags@1",
   "slug": "g1-u01",
   "lens": "register",
-  "itemsHash": "f420e20d1860",
+  "itemsHash": "5a43fad1d4fa",
   "promptHash": "359c6953017a",
-  "round": 1,
+  "round": 2,
   "by": "fable-lens-register",
   "flags": [
     { "key": "<kind>:<itemId>", "kind": "…", "itemId": "…",

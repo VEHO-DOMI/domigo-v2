@@ -109,7 +109,7 @@ The beta died on content quality, so **Track A (items) has right-of-way** and is
 
 ---
 
-## 7. OPEN DECISION — the song/band bank gap (raised 2026-06-14, investigated, NOT yet executed)
+## 7. RESOLVED & APPLIED (2026-06-16) — the song/band bank gap
 
 **Symptom:** g3-u01 ("Music makes the world go round") generation couldn't use `song`/`songs`/`band`/`bands` — the deterministic vocab gate rejects them — so the present-simple grammar draft substituted `music`/`records`/`lyrics`. They are A1 words used pervasively in the unit's SB/WB transcripts.
 
@@ -122,9 +122,14 @@ The beta died on content quality, so **Track A (items) has right-of-way** and is
 2. **Wordbank supplement to g1-u05** — no existing overlay adds *new headwords* (overlays are core-allowlist / item-fixes / level-grants / parse-fixes / proper-noun-rejects; `parse-fixes.json` is for correcting mis-parsed source rows, not inventing rows absent from the source). Would need a new mechanism + re-approval of g1-u05's bank. Heavier; semantically "these are real MORE!-1 vocab" but the source disagrees.
 3. **Example-sentence harvest** — generalize `harvest-nouns` to harvest common lowercase words from master-list example sentences into the taught set. Architecturally the "correct" general fix, but teaches a LOT implicitly and needs careful calibration + tests. A post-wave project, not a point fix.
 
-**Recommendation:** Option 1 now for `song/band` (4 tokens, audited, append to `core-allowlist.json` + note in `core-allowlist.review.md`), then re-run `pnpm content validate` and confirm the g3-u01 brief/gate now accepts them (`probe-gate g3-u01 "She writes her own songs in a band."`). Defer Option 3 (the general harvesting-gap sweep) to post-wave §6. **This is a global gate change → confirm the mechanism with Koki before executing** (the reason it was documented rather than applied during this checkpoint).
+**Applied: Option 1 (core allowlist).** Procedure used — and the two gotchas that make it non-obvious:
 
-> Note: applying Option 1 does NOT retroactively rewrite g3-u01's already-approved items (they're committed with `music/records/lyrics`). It unblocks FUTURE music-unit generation and would let a future `--fix` pass restore natural `song/band` wording in g3-u01 if desired.
+1. **Add only 2 tokens, not 4.** The allowlist is family-expanded at consumption (`cumulative-bank.ts` → `inflectionFamily`), so `song`→`songs` and `band`→`bands` come free.
+2. **Extend the pruned review doc directly; do NOT regenerate from the seed.** The allowlist is seed→review-doc→ingest, but `core-allowlist-seed.ts` is a **superset (~163 tokens)** and `content/corpus/review/core-allowlist.review.md` is **hand-pruned to the approved 135** (a prior review deleted 28 tokens — `mine/will/would/reflexives/been/…` — to avoid over-teaching g1). Regenerating from the seed would re-admit all 28. So: append two rows to the *already-pruned* doc (`| song | ubiquitous-noun | … |`, `| band | … |`), keep the seed untouched (preserves the `seed=` hash so `ingest-review` accepts), keep `> unit: ok`, then `pnpm content ingest-review --allowlist` (135 → 137 tokens). `allowlist.ts:90` checks the doc's seed-hash against the seed; `:101` writes the table rows verbatim.
+3. **V-6 fallout cleanup.** Making a word *taught* turns any existing **gloss of it** into a V-6 "gloss-unneeded" error. Validate flagged **9 song/band glosses** across already-approved units (g1-u01 ×4 "song", g1-u05 ×2 "band", g1-u14 ×2+1). Stripped them at source (each unit's `gen/vocab.draft.json`), re-ingested, carry-forward re-verified (round 2), batch-ok stage-8, re-approved at 0.0% — gloss-array-only change, ids stable (gloss is stripped from the fingerprint). Verified: `probe-gate g3-u01 "She writes her own songs in a band."` → no UNTAUGHT; `content validate` green; `pnpm test` 60/60.
+
+> Did NOT retroactively rewrite g3-u01's approved items (still `music/records/lyrics`). A future `gen --fix` pass could restore natural `song/band` wording there — optional follow-up.
+> **General sweep deferred (post-wave §6):** Option 3 (harvest common words from master-list example sentences) is the systemic fix for this whole gap class — song/band was just the first surfaced.
 
 ---
 

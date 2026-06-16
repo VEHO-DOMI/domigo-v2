@@ -933,18 +933,7 @@
           }
         ]
       },
-      "gloss": [
-        {
-          "word": "song",
-          "de": "Lied",
-          "scope": "d"
-        },
-        {
-          "word": "band",
-          "de": "Band",
-          "scope": null
-        }
-      ],
+      "gloss": [],
       "mc": [
         "the news",
         "quiz show",
@@ -1301,11 +1290,6 @@
         {
           "word": "heard",
           "de": "gehört",
-          "scope": "s"
-        },
-        {
-          "word": "song",
-          "de": "Lied",
           "scope": "s"
         }
       ],

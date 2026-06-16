@@ -2,9 +2,9 @@
   "schema": "verify-flags@1",
   "slug": "g1-u01",
   "lens": "register",
-  "itemsHash": "f420e20d1860",
+  "itemsHash": "5a43fad1d4fa",
   "promptHash": "359c6953017a",
-  "round": 1,
+  "round": 2,
   "by": "fable-carryforward",
   "flags": [],
   "summary": {

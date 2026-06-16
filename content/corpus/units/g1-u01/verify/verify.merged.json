@@ -1,8 +1,8 @@
 {
   "schema": "verify-merged@1",
   "slug": "g1-u01",
-  "round": 1,
-  "itemsHash": "f420e20d1860",
+  "round": 2,
+  "itemsHash": "5a43fad1d4fa",
   "lenses": {
     "level-gloss": {
       "by": "fable-carryforward",

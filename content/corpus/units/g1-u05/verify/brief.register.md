@@ -1,6 +1,6 @@
-# Verify lens — register — g1-u05 (round 1)
+# Verify lens — register — g1-u05 (round 2)
 
-<!-- domigo:verify register g1-u05 items=a49a2dd842a9 prompt=359c6953017a round=1 -->
+<!-- domigo:verify register g1-u05 items=564df2a033b6 prompt=359c6953017a round=2 -->
 
 <!-- domigo:prompt verify-register v=1 -->
 # Lens 4 — German register (du) + meta-talk (adversarial)
@@ -47,14 +47,14 @@ every note.
 | g1u05.w.its | sein/e | The dog can wiggle ___ ears. | for a thing or an animal, not a boy or girl | Du sagst es für ein Tier oder eine Sache, nicht für einen Menschen. | animal (= Tier) |
 | g1u05.w.job | Arbeit | She has a good ___ at the hospital. | work that you do for money | Die Arbeit, die du für Geld machst. | — |
 | g1u05.w.keyboard | Keyboard | Ellie plays the ___ with her fingers. | You sit down and play this big thing with your fingers. | Du spielst es mit den Fingern, ähnlich wie ein kleines Klavier. | — |
-| g1u05.w.keyboard-player | Keyboarder/Keyboarderin | Ellie is the ___. She plays the keyboard. | the one in the band who plays the keys | Diese Person sitzt am Keyboard und spielt. | band (= Band) ; keys (= Tasten) |
+| g1u05.w.keyboard-player | Keyboarder/Keyboarderin | Ellie is the ___. She plays the keyboard. | the one in the band who plays the keys | Diese Person sitzt am Keyboard und spielt. | keys (= Tasten) |
 | g1u05.w.money | (Taschen-)Geld | My mum gives me ___ every week. | the euros your mum and uncle give you | Das Geld, das deine Mama dir gibt. | euros (= Euro (Plural)) ; every (= jede/jeder/jedes) |
 | g1u05.w.nothing | nichts | There's ___ in the garden. | not one thing, zero | Gar nichts, kein einziges Ding. | zero (= null) ; garden (= Garten) |
 | g1u05.w.perfect | perfekt | The job is ___ for you! | very very good, the best it can be | Ganz ohne Fehler, einfach das Beste. | — |
 | g1u05.w.pound | Pfund | In England, a book is ten ___. | the money in England | Das Geld, das man in England benutzt. | — |
 | g1u05.w.profit | Gewinn | It's 120 pounds. That's my ___. | the money you have after you sell a thing | Das Geld, das du behältst, wenn du etwas verkaufst. | sell (= verkaufen) |
 | g1u05.w.saxophone | Saxophon | Jack plays the ___ with his mouth. | You play this long thing with your mouth. | Du spielst es mit dem Mund. | — |
-| g1u05.w.saxophone-player | Saxophonist/Saxophonistin | Jack plays the saxophone. He is the ___. | the one in the band who plays a long gold thing | Diese Person spielt das Saxophon. | band (= Band) ; gold (= golden) |
+| g1u05.w.saxophone-player | Saxophonist/Saxophonistin | Jack plays the saxophone. He is the ___. | the one in the band who plays a long gold thing | Diese Person spielt das Saxophon. | gold (= golden) |
 | g1u05.w.school-canteen | Schulkantine | We eat our lunch in the ___ at school. | the room where you eat at lunchtime | Der Raum in der Schule, wo du zu Mittag isst. | lunch (= Mittagessen) |
 | g1u05.w.singer | Sänger/Sängerin | James is the ___. He uses his mouth, not a guitar. | This is the one who uses a mouth, not the guitar or drums. | Diese Person benutzt den Mund, nicht ein Instrument. | — |
 | g1u05.w.sister | Schwester | Jessica is my ___. | a girl in your family who is not your mum | Ein Mädchen mit derselben Mama wie du. | — |
@@ -139,9 +139,9 @@ Write `content/corpus/units/g1-u05/verify/register.flags.json`:
   "schema": "verify-flags@1",
   "slug": "g1-u05",
   "lens": "register",
-  "itemsHash": "a49a2dd842a9",
+  "itemsHash": "564df2a033b6",
   "promptHash": "359c6953017a",
-  "round": 1,
+  "round": 2,
   "by": "fable-lens-register",
   "flags": [
     { "key": "<kind>:<itemId>", "kind": "…", "itemId": "…",

@@ -1,6 +1,6 @@
-# Verify lens — register — g1-u14 (round 1)
+# Verify lens — register — g1-u14 (round 2)
 
-<!-- domigo:verify register g1-u14 items=90d713f573be prompt=359c6953017a round=1 -->
+<!-- domigo:verify register g1-u14 items=1e4d4c2a2d9c prompt=359c6953017a round=2 -->
 
 <!-- domigo:prompt verify-register v=1 -->
 # Lens 4 — German register (du) + meta-talk (adversarial)
@@ -49,9 +49,9 @@ every note.
 | g1u14.w.inside | in | It was raining, so we stayed ___ all afternoon. | in something, not out in the open. | In etwas drinnen, nicht draußen. | something (= etwas) ; raining (= regnen) |
 | g1u14.w.kind-of | eine Art von | What ___ music do you like, pop or rock? | a type of, a sort of. | Eine Art oder Sorte von etwas. | type (= Art, Sorte) ; sort (= Sorte) ; music (= Musik) ; pop (= Pop) |
 | g1u14.w.lake | See | One day a giraffe came to the ___ to drink some water. | a very big place with a lot of water and land all around it. | Eine große Wasserfläche mit Land rundherum. | water (= Wasser) ; around (= herum) ; came (= kam) |
-| g1u14.w.latest | neuester/neueste/neuestes | Have you heard their ___ song? It is their most new one. | the most new, the one that is from today and not from before. | Das Neueste, das zuletzt herausgekommen ist. | heard (= gehört) ; song (= Lied) |
+| g1u14.w.latest | neuester/neueste/neuestes | Have you heard their ___ song? It is their most new one. | the most new, the one that is from today and not from before. | Das Neueste, das zuletzt herausgekommen ist. | heard (= gehört) |
 | g1u14.w.leaf | Blatt (Blätter) | The giraffe gives the leopard some magic ___ from the tree. | a flat green thing that grows on a tree. | Etwas Flaches und Grünes, das an einem Baum wächst. | flat (= flach) ; green (= grün) ; grows (= wächst) ; leopard (= Leopard) |
-| g1u14.w.music-video | Musikvideo | Have you watched the new ___ with the singer and her band? | a short show for a song, with the singer and the band. | Ein kurzer Film zu einem Lied. | song (= Lied) ; band (= Band) |
+| g1u14.w.music-video | Musikvideo | Have you watched the new ___ with the singer and her band? | a short show for a song, with the singer and the band. | Ein kurzer Film zu einem Lied. | — |
 | g1u14.w.nature-programme | Naturdokumentation | I love that ___ with real lions and elephants in Africa. | a show about animals and the places where they live. | Eine Sendung über Tiere und ihre Welt. | animals (= Tiere) ; real (= echt, wirklich) ; Africa (= Afrika) |
 | g1u14.w.neighbour | Nachbar/Nachbarin | Our ___ next door has a big dog that barks at night. | somebody who lives next to you or very near you. | Jemand, der neben dir oder ganz in der Nähe wohnt. | next (= neben (next to)) ; barks (= bellt) |
 | g1u14.w.once-upon-a-time | es war einmal | ___, in a land far away, there was a big lion. | the first words of many fairy tales, before the story begins. | Die Wörter, mit denen viele Märchen beginnen. | words (= Wörter) ; fairy (= Märchen- (fairy tale)) ; tales (= Geschichten, Märchen) |
@@ -166,9 +166,9 @@ Write `content/corpus/units/g1-u14/verify/register.flags.json`:
   "schema": "verify-flags@1",
   "slug": "g1-u14",
   "lens": "register",
-  "itemsHash": "90d713f573be",
+  "itemsHash": "1e4d4c2a2d9c",
   "promptHash": "359c6953017a",
-  "round": 1,
+  "round": 2,
   "by": "fable-lens-register",
   "flags": [
     { "key": "<kind>:<itemId>", "kind": "…", "itemId": "…",

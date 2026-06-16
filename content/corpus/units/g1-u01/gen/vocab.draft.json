@@ -66,11 +66,6 @@
           "scope": "d"
         },
         {
-          "word": "song",
-          "de": "Lied",
-          "scope": "s"
-        },
-        {
           "word": "teacher",
           "de": "Lehrer",
           "scope": "s"
@@ -2486,11 +2481,6 @@
           "scope": "s"
         },
         {
-          "word": "song",
-          "de": "Lied",
-          "scope": "s"
-        },
-        {
           "word": "cool",
           "de": "cool",
           "scope": "s"
@@ -2573,11 +2563,6 @@
           "word": "ears",
           "de": "Ohren",
           "scope": "d"
-        },
-        {
-          "word": "song",
-          "de": "Lied",
-          "scope": null
         },
         {
           "word": "music",
@@ -4329,11 +4314,6 @@
         {
           "word": "sing",
           "de": "singen",
-          "scope": "s"
-        },
-        {
-          "word": "song",
-          "de": "Lied",
           "scope": "s"
         },
         {

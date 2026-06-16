@@ -1,6 +1,6 @@
-# Verify lens — level-gloss — g1-u05 (round 1)
+# Verify lens — level-gloss — g1-u05 (round 2)
 
-<!-- domigo:verify level-gloss g1-u05 items=a49a2dd842a9 prompt=aefb997bf664 round=1 -->
+<!-- domigo:verify level-gloss g1-u05 items=564df2a033b6 prompt=aefb997bf664 round=2 -->
 
 <!-- domigo:prompt verify-level-gloss v=1 -->
 # Lens 1 — level + gloss (adversarial)
@@ -41,7 +41,7 @@ Cumulative bank — every headword below (plus its inflections and listed forms)
 - **g1-u04**: cold, angry, happy, scared, excited, hot, bored, sad, hungry, nervous, tired, proud, morning, lunchtime, afternoon, evening, night, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, after, day, end, fun, Go away!, to happen, show, a day in the life of, to be asleep, early, life, still, story, today, Are you OK?, homework (no pl), into, Oh dear!, room, bad, Don't be late., tomorrow, birthday, friend, Be yourself., no one else, bottle, to get back, mad, magic, to break, to go to sleep, because, It's me., Try it!, Let go!, What's happening?
 - **g1-u05**: keyboard player, keyboard, singer, drummer, drums, saxophone player, saxophone, guitarist, guitar, boyfriend, its, to play, sister, can, cannot / can't, concert, to dance, Don't worry., job, perfect, to carry, to stand on, tongue, to touch, to walk on, to wiggle, can, to drink, hundred, in one go, Is that so?, This is me., economy, hospital, to laugh, (pocket) money, pound, profit, school canteen, table, teacher, uncle, to wash, nothing, Sorry?
 
-Core allowlist (closed-class, always allowed): a, an, the, i, you, he, she, it, we, they, me, him, her, us, them, my, your, his, its, our, their, this, that, these, those, who, what, which, when, where, why, how, be, am, is, are, was, were, isn't, aren't, wasn't, weren't, i'm, you're, he's, she's, it's, we're, they're, do, does, did, done, doing, don't, doesn't, didn't, have, has, had, having, haven't, hasn't, i've, you've, we've, they've, can, can't, cannot, let's, and, or, but, because, so, if, than, then, in, on, at, to, of, for, with, from, up, down, about, into, out, over, under, after, before, not, no, yes, n't, some, any, all, both, many, much, more, most, one, two, three, four, five, six, seven, eight, nine, ten, here, there, now, today, very, too, also, there's, please, sorry, ok, hello, hi, bye, goodbye, thanks, thank
+Core allowlist (closed-class, always allowed): a, an, the, i, you, he, she, it, we, they, me, him, her, us, them, my, your, his, its, our, their, this, that, these, those, who, what, which, when, where, why, how, be, am, is, are, was, were, isn't, aren't, wasn't, weren't, i'm, you're, he's, she's, it's, we're, they're, do, does, did, done, doing, don't, doesn't, didn't, have, has, had, having, haven't, hasn't, i've, you've, we've, they've, can, can't, cannot, let's, and, or, but, because, so, if, than, then, in, on, at, to, of, for, with, from, up, down, about, into, out, over, under, after, before, not, no, yes, n't, some, any, all, both, many, much, more, most, one, two, three, four, five, six, seven, eight, nine, ten, here, there, now, today, very, too, also, there's, please, sorry, ok, hello, hi, bye, goodbye, thanks, thank, song, band
 
 Harvested proper nouns (≤ this unit): Ahmed, Arbeit, Bacon, Baker, Befehlsformen, Betty, Bild, Bilder, Blackbeard, Blackie, Bob, Box, Buckingham, Buddy, California, Cambridge, Caribbean, Carina, Carl, Chloe, Classroom, Clown, Dan, Dana, Dave, David, Davis, Dialog, Dialoge, Doctors, Don, Ellie, England, English, False, Fido, Frank, Fred, Freddy, Gina, Good, Gordon, Great, Greybeard, Guess, Harry, Homework, Hook, Imperatives, Irregular, Jack, James, Jamie, Jenny, Jessica, Jill, Julia, Kitty, Leah, Leo, London, Lucy, Mail, Manchester, Mary, Mike, Miss, Mr, Mum, Nibbs, Nice, Nomen, Number, Numbers, Omar, Palace, Pardon, Pete, Peter, Pirates, Plural, Polly, Possessives, Prepositions, Project, Put, Rajit, Reihenfolge, Richard, Ronald, Saying, School, Steve, Sue, Tamara, Text, Tick, Toby, Tock, Tom, True, Welcome, Well, Work, Wortes, Wow, York, Zahlen, Zimmer
 
@@ -68,14 +68,14 @@ Bare numbers (2026, 14, …) always pass. ANY other word must be glossed `word (
 | g1u05.w.its | for a thing or an animal, not a boy or girl | The dog can wiggle ___ ears. | his ; her ; their | his ; her ; their ; your | animal (= Tier) |
 | g1u05.w.job | work that you do for money | She has a good ___ at the hospital. | concert ; table ; hospital | concert ; table ; hospital ; school canteen | — |
 | g1u05.w.keyboard | You sit down and play this big thing with your fingers. | Ellie plays the ___ with her fingers. | guitar ; drums ; saxophone | guitar ; drums ; saxophone ; table | — |
-| g1u05.w.keyboard-player | the one in the band who plays the keys | Ellie is the ___. She plays the keyboard. | drummer ; singer ; guitarist | drummer ; singer ; guitarist ; saxophone player | band (= Band) ; keys (= Tasten) |
+| g1u05.w.keyboard-player | the one in the band who plays the keys | Ellie is the ___. She plays the keyboard. | drummer ; singer ; guitarist | drummer ; singer ; guitarist ; saxophone player | keys (= Tasten) |
 | g1u05.w.money | the euros your mum and uncle give you | My mum gives me ___ every week. | profit ; pound ; job | profit ; pound ; job ; table | euros (= Euro (Plural)) ; every (= jede/jeder/jedes) |
 | g1u05.w.nothing | not one thing, zero | There's ___ in the garden. | more ; here ; again | more ; here ; again ; then | zero (= null) ; garden (= Garten) |
 | g1u05.w.perfect | very very good, the best it can be | The job is ___ for you! | happy ; tired ; scared | happy ; tired ; scared ; angry | — |
 | g1u05.w.pound | the money in England | In England, a book is ten ___. | profit ; money ; concert | profit ; money ; concert ; table | — |
 | g1u05.w.profit | the money you have after you sell a thing | It's 120 pounds. That's my ___. | money ; pound ; job | money ; pound ; job ; table | sell (= verkaufen) |
 | g1u05.w.saxophone | You play this long thing with your mouth. | Jack plays the ___ with his mouth. | guitar ; drums ; keyboard | guitar ; drums ; keyboard ; table | — |
-| g1u05.w.saxophone-player | the one in the band who plays a long gold thing | Jack plays the saxophone. He is the ___. | drummer ; singer ; guitarist | drummer ; singer ; guitarist ; keyboard player | band (= Band) ; gold (= golden) |
+| g1u05.w.saxophone-player | the one in the band who plays a long gold thing | Jack plays the saxophone. He is the ___. | drummer ; singer ; guitarist | drummer ; singer ; guitarist ; keyboard player | gold (= golden) |
 | g1u05.w.school-canteen | the room where you eat at lunchtime | We eat our lunch in the ___ at school. | hospital ; concert ; table | hospital ; concert ; table ; economy | lunch (= Mittagessen) |
 | g1u05.w.singer | This is the one who uses a mouth, not the guitar or drums. | James is the ___. He uses his mouth, not a guitar. | drummer ; guitarist ; keyboard player | drummer ; guitarist ; keyboard player ; saxophone player | — |
 | g1u05.w.sister | a girl in your family who is not your mum | Jessica is my ___. | uncle ; teacher ; boyfriend | uncle ; teacher ; boyfriend ; singer | — |
@@ -160,9 +160,9 @@ Write `content/corpus/units/g1-u05/verify/level-gloss.flags.json`:
   "schema": "verify-flags@1",
   "slug": "g1-u05",
   "lens": "level-gloss",
-  "itemsHash": "a49a2dd842a9",
+  "itemsHash": "564df2a033b6",
   "promptHash": "aefb997bf664",
-  "round": 1,
+  "round": 2,
   "by": "fable-lens-level-gloss",
   "flags": [
     { "key": "<kind>:<itemId>", "kind": "…", "itemId": "…",

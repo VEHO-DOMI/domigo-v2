@@ -1,6 +1,6 @@
-# Verify lens — translation — g1-u05 (round 1)
+# Verify lens — translation — g1-u05 (round 2)
 
-<!-- domigo:verify translation g1-u05 items=a49a2dd842a9 prompt=c6328b13b073 round=1 -->
+<!-- domigo:verify translation g1-u05 items=564df2a033b6 prompt=c6328b13b073 round=2 -->
 
 <!-- domigo:prompt verify-translation v=1 -->
 # Lens 3 — translation, both directions (adversarial)
@@ -94,9 +94,9 @@ Write `content/corpus/units/g1-u05/verify/translation.flags.json`:
   "schema": "verify-flags@1",
   "slug": "g1-u05",
   "lens": "translation",
-  "itemsHash": "a49a2dd842a9",
+  "itemsHash": "564df2a033b6",
   "promptHash": "c6328b13b073",
-  "round": 1,
+  "round": 2,
   "by": "fable-lens-translation",
   "flags": [
     { "key": "<kind>:<itemId>", "kind": "…", "itemId": "…",

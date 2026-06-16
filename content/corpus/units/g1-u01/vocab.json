@@ -1472,7 +1472,7 @@
     },
     {
       "id": "g1u01.w.let-s",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -1549,11 +1549,6 @@
         {
           "word": "sing",
           "de": "singen",
-          "scope": "s"
-        },
-        {
-          "word": "song",
-          "de": "Lied",
           "scope": "s"
         },
         {
@@ -3350,7 +3345,7 @@
     },
     {
       "id": "g1u01.w.sound-system",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -3432,11 +3427,6 @@
           "word": "music",
           "de": "Musik",
           "scope": "d"
-        },
-        {
-          "word": "song",
-          "de": "Lied",
-          "scope": "s"
         },
         {
           "word": "teacher",
@@ -4404,7 +4394,7 @@
     },
     {
       "id": "g1u01.w.to-enjoy",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 2,
       "presentation": {
         "variants": [],
@@ -4480,11 +4470,6 @@
         {
           "word": "music",
           "de": "Musik",
-          "scope": "s"
-        },
-        {
-          "word": "song",
-          "de": "Lied",
           "scope": "s"
         },
         {
@@ -4883,7 +4868,7 @@
     },
     {
       "id": "g1u01.w.to-listen",
-      "rev": 1,
+      "rev": 2,
       "difficulty": 1,
       "presentation": {
         "variants": [],
@@ -4960,11 +4945,6 @@
           "word": "ears",
           "de": "Ohren",
           "scope": "d"
-        },
-        {
-          "word": "song",
-          "de": "Lied",
-          "scope": null
         },
         {
           "word": "music",
