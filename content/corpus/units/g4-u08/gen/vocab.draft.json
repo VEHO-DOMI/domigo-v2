@@ -1,0 +1,2026 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u08",
+  "briefBank": "c2962a2f7b3c",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u08.w.black-market",
+      "w": "black market",
+      "g": "Schwarzmarkt",
+      "d": "an illegal place where you pay money for what you cannot find in any shop",
+      "s": "You cannot find these in any shop. People have to use the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "black market",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "black market",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "black market",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwarzmarkt",
+            "tier": "full"
+          },
+          {
+            "text": "der Schwarzmarkt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "auction",
+        "library",
+        "collection"
+      ],
+      "hintDe": "Hier kaufst du heimlich Dinge, die es nirgends offiziell gibt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "auction",
+          "library",
+          "collection",
+          "monastery",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.collect",
+      "w": "collect",
+      "g": "sammeln",
+      "d": "to look for and keep many books, cars or pictures because you love them",
+      "s": "I love to ___ pretty stones and rocks from the beach.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "collect",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "collect",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "collect",
+            "tier": "full"
+          },
+          {
+            "text": "to collect",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sammeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "preserve",
+        "rob",
+        "shorten"
+      ],
+      "hintDe": "Du suchst viele schöne Dinge und behältst sie als Hobby.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "preserve",
+          "rob",
+          "shorten",
+          "execute",
+          "whisper"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.collection",
+      "w": "collection",
+      "g": "Sammlung",
+      "d": "all the books, cars or pictures that somebody keeps because they love them",
+      "s": "She has an amazing ___ of old cars at home.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "collection",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "collection",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "collection",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sammlung",
+            "tier": "full"
+          },
+          {
+            "text": "die Sammlung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fascination",
+        "auction",
+        "addiction"
+      ],
+      "hintDe": "All die Dinge, die jemand über die Jahre zusammengetragen hat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fascination",
+          "auction",
+          "addiction",
+          "library",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.fascination",
+      "w": "fascination",
+      "g": "Faszination",
+      "d": "when you love a thing so much that you want to know all about it",
+      "s": "His ___ with sand is so strong that he reads about it all day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "fascination",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fascination",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fascination",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Faszination",
+            "tier": "full"
+          },
+          {
+            "text": "die Faszination",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "addiction",
+        "command"
+      ],
+      "hintDe": "Etwas zieht dich so stark an, dass du alles darüber wissen willst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "addiction",
+          "command",
+          "auction",
+          "library"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.rare",
+      "w": "rare",
+      "g": "selten",
+      "d": "not found very often",
+      "s": "You will not find many of these. They are very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rare",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rare",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rare",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "selten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "furious",
+        "precious",
+        "pale"
+      ],
+      "hintDe": "Davon gibt es nur ganz wenige - man sieht es kaum.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "furious",
+          "precious",
+          "pale",
+          "kitschy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.auction",
+      "w": "auction",
+      "g": "Auktion",
+      "d": "a place where books, cars and pictures go to the people who pay the most money",
+      "s": "At an ___ you can pay a lot of money for a very old painting.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "auction",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "auction",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "auction",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Auktion",
+            "tier": "full"
+          },
+          {
+            "text": "die Auktion",
+            "tier": "full"
+          },
+          {
+            "text": "Versteigerung",
+            "tier": "full"
+          },
+          {
+            "text": "die Versteigerung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "library",
+        "monastery"
+      ],
+      "hintDe": "Wer am meisten bietet, bekommt hier das Stück.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "library",
+          "monastery",
+          "fascination",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.burn-to-the-ground",
+      "w": "burn to the ground",
+      "g": "niederbrennen",
+      "d": "to be destroyed completely in a fire",
+      "s": "The old house was on fire all night and ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "burned to the ground",
+          "tier": "full"
+        },
+        {
+          "text": "burnt to the ground",
+          "tier": "full"
+        },
+        {
+          "text": "burn to the ground",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "burn to the ground",
+          "tier": "full"
+        },
+        {
+          "text": "burned to the ground",
+          "tier": "full"
+        },
+        {
+          "text": "burnt to the ground",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "burn to the ground",
+            "tier": "full"
+          },
+          {
+            "text": "burned to the ground",
+            "tier": "full"
+          },
+          {
+            "text": "burnt to the ground",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "niederbrennen",
+            "tier": "full"
+          },
+          {
+            "text": "abbrennen",
+            "tier": "full"
+          },
+          {
+            "text": "bis auf die Grundmauern niederbrennen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rob",
+        "execute",
+        "preserve"
+      ],
+      "hintDe": "Das Feuer lässt vom Gebäude nichts mehr übrig.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "rob",
+          "execute",
+          "preserve",
+          "shorten",
+          "collect"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.copy",
+      "w": "copy",
+      "g": "Exemplar",
+      "d": "one of the many books that all look just like it",
+      "s": "The library has three ___ of that famous book.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "copies",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "copy",
+          "tier": "full"
+        },
+        {
+          "text": "copies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "copy",
+            "tier": "full"
+          },
+          {
+            "text": "copies",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Exemplar",
+            "tier": "full"
+          },
+          {
+            "text": "das Exemplar",
+            "tier": "full"
+          },
+          {
+            "text": "Kopie",
+            "tier": "full"
+          },
+          {
+            "text": "die Kopie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "auction",
+        "library"
+      ],
+      "hintDe": "Ein einzelnes Buch von vielen, die alle gleich aussehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "auction",
+          "library",
+          "sheet",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.execute",
+      "w": "execute",
+      "g": "hinrichten",
+      "d": "to put somebody to death in prison for a very bad crime",
+      "s": "After the murder, the man was ___ in prison.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "executed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "execute",
+          "tier": "full"
+        },
+        {
+          "text": "executed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "execute",
+            "tier": "full"
+          },
+          {
+            "text": "to execute",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinrichten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rob",
+        "preserve",
+        "shorten"
+      ],
+      "hintDe": "Als Strafe wird ein Mensch getötet.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "rob",
+          "preserve",
+          "shorten",
+          "collect",
+          "confuse sb"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.furious",
+      "w": "furious",
+      "g": "wütend",
+      "d": "very, very angry",
+      "s": "I am ___ that nobody asked me first.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "furious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "furious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "furious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wütend",
+            "tier": "full"
+          },
+          {
+            "text": "aufgebracht",
+            "tier": "full"
+          },
+          {
+            "text": "sehr wütend",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rare",
+        "precious",
+        "pale"
+      ],
+      "hintDe": "Du bist so wütend, dass du fast platzt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "rare",
+          "precious",
+          "pale",
+          "kitschy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.judge",
+      "w": "judge",
+      "g": "Richter/in",
+      "d": "a man or woman in court who can put a thief in prison",
+      "s": "The ___ gives the murderer ten years in prison.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "judge",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "judge",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "judge",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Richter",
+            "tier": "full"
+          },
+          {
+            "text": "Richterin",
+            "tier": "full"
+          },
+          {
+            "text": "der Richter",
+            "tier": "full"
+          },
+          {
+            "text": "die Richterin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "court",
+          "de": "Gericht",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "librarian",
+        "monk",
+        "addict"
+      ],
+      "hintDe": "Diese Person entscheidet, wer ins Gefängnis muss.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "librarian",
+          "monk",
+          "addict",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.librarian",
+      "w": "librarian",
+      "g": "Bibliothekar/in",
+      "d": "a man or woman who looks after all the books in a library",
+      "s": "Ask the ___ if you cannot find the book you want in the library.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "librarian",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "librarian",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "librarian",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bibliothekar",
+            "tier": "full"
+          },
+          {
+            "text": "Bibliothekarin",
+            "tier": "full"
+          },
+          {
+            "text": "der Bibliothekar",
+            "tier": "full"
+          },
+          {
+            "text": "die Bibliothekarin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "judge",
+        "monk",
+        "addict"
+      ],
+      "hintDe": "Diese Person arbeitet in der Bibliothek und hilft beim Suchen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "judge",
+          "monk",
+          "addict",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.library",
+      "w": "library",
+      "g": "Bibliothek",
+      "d": "a place where many books are free for everybody to read or borrow",
+      "s": "I never have to pay for books here. I borrow them all from the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "library",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "library",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "library",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Bibliothek",
+            "tier": "full"
+          },
+          {
+            "text": "die Bibliothek",
+            "tier": "full"
+          },
+          {
+            "text": "Bücherei",
+            "tier": "full"
+          },
+          {
+            "text": "die Bücherei",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "auction",
+        "monastery",
+        "collection"
+      ],
+      "hintDe": "Hier kannst du Bücher ausleihen, ohne zu bezahlen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "auction",
+          "monastery",
+          "collection",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.monastery",
+      "w": "monastery",
+      "g": "Kloster",
+      "d": "a big old building where monks live and pray",
+      "s": "The monks lived in a big old ___ in the mountains.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "monastery",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "monastery",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "monastery",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kloster",
+            "tier": "full"
+          },
+          {
+            "text": "das Kloster",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "library",
+        "auction",
+        "collection"
+      ],
+      "hintDe": "Das große Gebäude, in dem Mönche zusammenleben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "library",
+          "auction",
+          "collection",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.monk",
+      "w": "monk",
+      "g": "Mönch",
+      "d": "a man who lives in a monastery and prays every day",
+      "s": "A ___ is a man who lives and prays in a monastery.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "monk",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "monk",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "monk",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mönch",
+            "tier": "full"
+          },
+          {
+            "text": "der Mönch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "judge",
+        "librarian",
+        "addict"
+      ],
+      "hintDe": "Ein Mann, der im Kloster lebt und betet.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "judge",
+          "librarian",
+          "addict",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.precious",
+      "w": "precious",
+      "g": "kostbar",
+      "d": "very expensive or very dear to somebody",
+      "s": "This old photograph of my grandmother is very ___ to me.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "precious",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "precious",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "precious",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kostbar",
+            "tier": "full"
+          },
+          {
+            "text": "wertvoll",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rare",
+        "furious",
+        "pale"
+      ],
+      "hintDe": "Etwas, das dir sehr viel wert ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "rare",
+          "furious",
+          "pale",
+          "kitschy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.preserve",
+      "w": "preserve",
+      "g": "erhalten",
+      "d": "to keep an old building or thing in good order so it does not go away",
+      "s": "We must ___ these old buildings so that our children can enjoy them too.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "preserve",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "preserve",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "preserve",
+            "tier": "full"
+          },
+          {
+            "text": "to preserve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "erhalten",
+            "tier": "full"
+          },
+          {
+            "text": "schützen",
+            "tier": "full"
+          },
+          {
+            "text": "bewahren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collect",
+        "rob",
+        "shorten"
+      ],
+      "hintDe": "Du hältst etwas Altes in gutem Zustand, damit es bleibt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collect",
+          "rob",
+          "shorten",
+          "execute",
+          "confuse sb"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.rob",
+      "w": "rob",
+      "g": "ausrauben",
+      "d": "to take money or jewels from a house or shop that is not yours",
+      "s": "Thieves came into the house at night to ___ the family of all their money.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rob",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rob",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rob",
+            "tier": "full"
+          },
+          {
+            "text": "to rob",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausrauben",
+            "tier": "full"
+          },
+          {
+            "text": "berauben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "preserve",
+        "collect",
+        "execute"
+      ],
+      "hintDe": "Diebe nehmen jemandem mit Gewalt alles weg.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "preserve",
+          "collect",
+          "execute",
+          "shorten",
+          "whisper"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.sentence-to-death",
+      "w": "sentence to death",
+      "g": "zu Tode verurteilen",
+      "d": "to tell somebody in court that they must die for a very bad crime",
+      "s": "The judge ___ the murderer, and he was executed a week afterwards.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sentenced to death",
+          "tier": "full"
+        },
+        {
+          "text": "sentence to death",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sentence to death",
+          "tier": "full"
+        },
+        {
+          "text": "sentenced to death",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sentence to death",
+            "tier": "full"
+          },
+          {
+            "text": "sentenced to death",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zu Tode verurteilen",
+            "tier": "full"
+          },
+          {
+            "text": "zum Tode verurteilen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "court",
+          "de": "Gericht",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "burn to the ground",
+        "go crazy",
+        "miss out on sth"
+      ],
+      "hintDe": "Der Richter spricht aus, dass der Mensch sterben muss.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "burn to the ground",
+          "go crazy",
+          "miss out on sth",
+          "turn up",
+          "confuse sb"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.shorten",
+      "w": "shorten",
+      "g": "kürzen",
+      "d": "to make a book, a show or a thing shorter in time",
+      "s": "That book was much too long, so they had to ___ it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "shorten",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shorten",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shorten",
+            "tier": "full"
+          },
+          {
+            "text": "to shorten",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kürzen",
+            "tier": "full"
+          },
+          {
+            "text": "verkürzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collect",
+        "preserve",
+        "rob"
+      ],
+      "hintDe": "Du machst etwas kürzer, weil es zu lang ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collect",
+          "preserve",
+          "rob",
+          "execute",
+          "whisper"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.addict",
+      "w": "addict",
+      "g": "Süchtige/r",
+      "d": "somebody who cannot stop doing a thing that is very bad for them",
+      "s": "He plays on his screen all night and cannot stop. Everybody calls him a screen ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "addict",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "addict",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "addict",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Süchtiger",
+            "tier": "full"
+          },
+          {
+            "text": "Süchtige",
+            "tier": "full"
+          },
+          {
+            "text": "Abhängiger",
+            "tier": "full"
+          },
+          {
+            "text": "Abhängige",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "judge",
+        "librarian",
+        "monk"
+      ],
+      "hintDe": "Jemand, der von etwas nicht mehr loskommt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "judge",
+          "librarian",
+          "monk",
+          "addiction",
+          "command"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.addiction",
+      "w": "addiction",
+      "g": "Sucht",
+      "d": "when somebody cannot stop doing a thing that is very bad for them",
+      "s": "She cannot stop looking at her screen; she has a bad ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "addiction",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "addiction",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "addiction",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sucht",
+            "tier": "full"
+          },
+          {
+            "text": "die Sucht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "fascination",
+        "command"
+      ],
+      "hintDe": "Du kannst mit etwas einfach nicht mehr aufhören.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "fascination",
+          "command",
+          "addict",
+          "auction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.command",
+      "w": "command",
+      "g": "Befehl",
+      "d": "an order from somebody that everybody must do at once",
+      "s": "When the officer calls out a ___, all the men must do it at once.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "command",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "command",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "command",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Befehl",
+            "tier": "full"
+          },
+          {
+            "text": "der Befehl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collection",
+        "auction",
+        "fascination"
+      ],
+      "hintDe": "Ein klarer Befehl, dem alle sofort folgen müssen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "collection",
+          "auction",
+          "fascination",
+          "addiction",
+          "sheet"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.go-crazy",
+      "w": "go crazy",
+      "g": "durchdrehen",
+      "d": "to start to feel very angry, or to lose control of how you feel",
+      "s": "If I have to wait in this queue much longer, I am going to ___!",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "go crazy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "go crazy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "go crazy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "durchdrehen",
+            "tier": "full"
+          },
+          {
+            "text": "verrückt werden",
+            "tier": "full"
+          },
+          {
+            "text": "ausrasten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "turn up",
+        "miss out on sth",
+        "burn to the ground"
+      ],
+      "hintDe": "Du verlierst fast die Nerven und drehst durch.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "turn up",
+          "miss out on sth",
+          "burn to the ground",
+          "confuse sb",
+          "whisper"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.miss-out-on-sth",
+      "w": "miss out on sth",
+      "g": "etw. verpassen",
+      "d": "to not be there for a thing, so you cannot enjoy it",
+      "s": "Everybody is talking about the new show, and I do not want to ___ on it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "miss out",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "miss out on sth",
+          "tier": "full"
+        },
+        {
+          "text": "miss out on something",
+          "tier": "full"
+        },
+        {
+          "text": "miss out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "miss out on sth",
+            "tier": "full"
+          },
+          {
+            "text": "miss out on something",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas verpassen",
+            "tier": "full"
+          },
+          {
+            "text": "etw. verpassen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "go crazy",
+        "turn up",
+        "confuse sb"
+      ],
+      "hintDe": "Du bist nicht dabei und verpasst etwas Schönes.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "go crazy",
+          "turn up",
+          "confuse sb",
+          "whisper",
+          "shorten"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.pale",
+      "w": "pale",
+      "g": "blass",
+      "d": "with very little red in your skin, often because you feel ill",
+      "s": "She was ill in bed for a week, so now she looks very ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pale",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pale",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pale",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "blass",
+            "tier": "full"
+          },
+          {
+            "text": "bleich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "furious",
+        "rare",
+        "precious"
+      ],
+      "hintDe": "Dein Gesicht hat kaum Farbe, oft wenn du krank bist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "furious",
+          "rare",
+          "precious",
+          "kitschy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.turn-up",
+      "w": "turn up",
+      "g": "auftauchen",
+      "d": "to come or arrive, often when nobody waits for you",
+      "s": "We waited a long time, but our guests did not ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "turn up",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "turn up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "turn up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auftauchen",
+            "tier": "full"
+          },
+          {
+            "text": "erscheinen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "go crazy",
+        "miss out on sth",
+        "whisper"
+      ],
+      "hintDe": "Jemand taucht plötzlich auf, oft ohne Ankündigung.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "go crazy",
+          "miss out on sth",
+          "whisper",
+          "confuse sb",
+          "shorten"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.whisper",
+      "w": "whisper",
+      "g": "flüstern",
+      "d": "to talk to somebody very, very close to their ear so it is a secret",
+      "s": "He ___ in my ear to tell me the secret.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "whispered",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "whisper",
+          "tier": "full"
+        },
+        {
+          "text": "whispered",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "whisper",
+            "tier": "full"
+          },
+          {
+            "text": "to whisper",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "flüstern",
+            "tier": "full"
+          },
+          {
+            "text": "wispern",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "turn up",
+        "go crazy",
+        "confuse sb"
+      ],
+      "hintDe": "Du sprichst ganz leise ins Ohr.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "turn up",
+          "go crazy",
+          "confuse sb",
+          "miss out on sth",
+          "shorten"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.sheet",
+      "w": "sheet",
+      "g": "Blatt",
+      "d": "a thin, white piece that you write on",
+      "s": "Take out a clean ___ and write your homework on it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "sheet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sheet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sheet",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Blatt",
+            "tier": "full"
+          },
+          {
+            "text": "das Blatt",
+            "tier": "full"
+          },
+          {
+            "text": "Blatt Papier",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "copy",
+        "command",
+        "collection"
+      ],
+      "hintDe": "Ein dünnes, weißes Blatt zum Schreiben.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "copy",
+          "command",
+          "collection",
+          "library",
+          "auction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.confuse-sb",
+      "w": "confuse sb",
+      "g": "verwirren",
+      "d": "to make somebody think and think but still not understand a thing",
+      "s": "I do not understand the new lesson at all; it really ___ me.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "confuses",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "confuse sb",
+          "tier": "full"
+        },
+        {
+          "text": "confuse",
+          "tier": "full"
+        },
+        {
+          "text": "confuses",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "confuse sb",
+            "tier": "full"
+          },
+          {
+            "text": "confuse somebody",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verwirren",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden verwirren",
+            "tier": "full"
+          },
+          {
+            "text": "durcheinanderbringen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "preserve",
+        "collect",
+        "shorten"
+      ],
+      "hintDe": "Du machst, dass jemand nichts mehr versteht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "preserve",
+          "collect",
+          "shorten",
+          "whisper",
+          "turn up"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u08.w.kitschy",
+      "w": "kitschy",
+      "g": "kitschig",
+      "d": "too bright and a little funny to look at, and not nice at all",
+      "s": "The restaurant is decorated with ___, colourful pictures that I do not really like.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "kitschy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kitschy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kitschy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kitschig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rare",
+        "furious",
+        "precious"
+      ],
+      "hintDe": "Etwas ist zu bunt und billig - einfach kitschig.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "rare",
+          "furious",
+          "precious",
+          "pale"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

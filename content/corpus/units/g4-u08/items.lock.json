@@ -1,0 +1,131 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g4-u08",
+  "items": {
+    "bd70489b4e7b": "g4u08.gi.tense-time-expression-review.gf.001",
+    "2c1454467ee8": "g4u08.gi.tense-time-expression-review.gf.002",
+    "2c133ae466be": "g4u08.gi.tense-time-expression-review.gf.003",
+    "21f2cb4fd1e4": "g4u08.gi.tense-time-expression-review.gf.004",
+    "07669353edad": "g4u08.gi.tense-time-expression-review.gf.006",
+    "75d303c8479c": "g4u08.gi.tense-time-expression-review.gf.007",
+    "0892c35de5fb": "g4u08.gi.tense-time-expression-review.gf.008",
+    "db4936708c5b": "g4u08.gi.tense-time-expression-review.gf.009",
+    "bc86820efb78": "g4u08.gi.tense-time-expression-review.gf.010",
+    "cda96c30bc8d": "g4u08.gi.tense-time-expression-review.gf.011",
+    "be42cc99b182": "g4u08.gi.tense-time-expression-review.gf.012",
+    "c2210b195b53": "g4u08.gi.tense-time-expression-review.gf.013",
+    "a78b3637c4aa": "g4u08.gi.tense-time-expression-review.mc.001",
+    "e8c430bf424a": "g4u08.gi.tense-time-expression-review.mc.002",
+    "f6568b433abe": "g4u08.gi.tense-time-expression-review.mc.003",
+    "a6f9a4e3ba49": "g4u08.gi.tense-time-expression-review.mc.004",
+    "7a4123ba2c9b": "g4u08.gi.tense-time-expression-review.ec.001",
+    "27e120e9ffac": "g4u08.gi.tense-time-expression-review.ec.002",
+    "cdbfb6e477e4": "g4u08.gi.tense-time-expression-review.ec.003",
+    "499d9f4864dc": "g4u08.gi.tense-time-expression-review.ec.004",
+    "4edf31a17024": "g4u08.gi.tense-time-expression-review.ec.005",
+    "297e047e50b9": "g4u08.gi.tense-time-expression-review.tf.001",
+    "bb4a775e8c0a": "g4u08.gi.tense-time-expression-review.tf.002",
+    "1ca58c9be86b": "g4u08.gi.tense-time-expression-review.tr.001",
+    "13bf5804a70f": "g4u08.gi.tense-time-expression-review.tr.002",
+    "4c6a50036faa": "g4u08.gi.tense-time-expression-review.tr.003",
+    "7a877c7d3cb5": "g4u08.gi.tense-time-expression-review.sb.001",
+    "bf5ef651c3bb": "g4u08.gi.tense-time-expression-review.sb.002",
+    "fb199545a93e": "g4u08.gi.tense-time-expression-review.sb.003",
+    "b80397dfd7f7": "g4u08.gi.tense-time-expression-review.mt.002",
+    "f169e26bb1c6": "g4u08.gi.tense-time-expression-review.gs.001",
+    "515fbf485262": "g4u08.gi.tense-time-expression-review.cp.003",
+    "3d9749caccb4": "g4u08.gi.tense-time-expression-review.qf.001",
+    "def5fe4ec90e": "g4u08.gi.tense-time-expression-review.qf.002",
+    "525e3810afd2": "g4u08.gi.tense-time-expression-review.qf.003",
+    "b12649ea09a6": "g4u08.gi.tense-time-expression-review.gf.014",
+    "cdad53e50cd2": "g4u08.gi.tense-time-expression-review.gf.015",
+    "d522dd9387ff": "g4u08.gi.tense-time-expression-review.gf.016",
+    "a11e870c50cf": "g4u08.gi.tense-time-expression-review.ec.006",
+    "3ef45b258503": "g4u08.gi.tense-time-expression-review.tr.005",
+    "3ed8556229f4": "g4u08.gi.tense-time-expression-review.tf.005",
+    "865011faf430": "g4u08.gi.tense-time-expression-review.mc.006",
+    "d24eadeb38d4": "g4u08.gi.tense-time-expression-review.cp.004",
+    "cb05fc4f5901": "g4u08.gi.tense-time-expression-review.ag.001",
+    "27ae4a67de60": "g4u08.gi.tense-time-expression-review.gf.017",
+    "4086f26a43e3": "g4u08.gi.tense-time-expression-review.gf.018",
+    "6da4686bcf17": "g4u08.gi.tense-time-expression-review.ec.007",
+    "5f08dc59683d": "g4u08.gi.tense-time-expression-review.gf.019",
+    "4d36fc294eaa": "g4u08.gi.tense-time-expression-review.mc.007",
+    "86595609bfa0": "g4u08.gi.tense-time-expression-review.tf.006",
+    "cbf8115110fc": "g4u08.gi.tense-time-expression-review.tf.007",
+    "fd43358d364e": "g4u08.gi.tense-time-expression-review.gs.005",
+    "48dad90c428b": "g4u08.gi.tense-time-expression-review.tr.007",
+    "a2859c7f98d8": "g4u08.gi.tense-time-expression-review.cp.005",
+    "69fea3633639": "g4u08.gi.tense-time-expression-review.cp.006",
+    "f5b4aa971c86": "g4u08.gi.tense-time-expression-review.tr.009",
+    "e83ebcb710be": "g4u08.gi.tense-time-expression-review.mt.003",
+    "b080d4d676da": "g4u08.gi.tense-time-expression-review.gs.006"
+  },
+  "tombstones": [
+    {
+      "id": "g4u08.gi.tense-time-expression-review.gf.005",
+      "key": "e5a324d62ba8",
+      "removedWith": "631bc7c1d1ac"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.mc.005",
+      "key": "4a39adbee420",
+      "removedWith": "631bc7c1d1ac"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.tf.003",
+      "key": "804ae18c0868",
+      "removedWith": "631bc7c1d1ac"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.tf.004",
+      "key": "71b35f05abaa",
+      "removedWith": "631bc7c1d1ac"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.gs.002",
+      "key": "f76459798cf4",
+      "removedWith": "631bc7c1d1ac"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.gs.003",
+      "key": "595d39f2a6ad",
+      "removedWith": "631bc7c1d1ac"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.tr.006",
+      "key": "85af5f1bc686",
+      "removedWith": "ef5a70b46052"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.tr.004",
+      "key": "0f3f2ac549ba",
+      "removedWith": "da203a7d2412"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.cp.001",
+      "key": "a465392347fa",
+      "removedWith": "da203a7d2412"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.cp.002",
+      "key": "8c0e73cc5ddf",
+      "removedWith": "da203a7d2412"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.mt.001",
+      "key": "2874dd7a3b22",
+      "removedWith": "a212c0bd557c"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.gs.004",
+      "key": "da7d2dd6cac2",
+      "removedWith": "a212c0bd557c"
+    },
+    {
+      "id": "g4u08.gi.tense-time-expression-review.tr.008",
+      "key": "a8a3592b1597",
+      "removedWith": "a212c0bd557c"
+    }
+  ]
+}

@@ -14184,6 +14184,186 @@
       "reason": "g4-u07: present-simple-future form exemplar in group label / exam carrier (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "burnt",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "collector",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "something",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "started",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "turned",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "s",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ve",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "saw",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "seen",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ever",
+      "reason": "present-perfect-vs-past-simple: participle / irregular past / contraction fragment / time word (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "officer",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "painting",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "murderer",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "club",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "moments",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "shells",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "bought",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "ran",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u08",
+      "itemId": null,
+      "field": null,
+      "token": "robbed",
+      "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

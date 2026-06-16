@@ -1,0 +1,294 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u08",
+  "round": 1,
+  "itemsHash": "5f8f7f160504",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u08.w.judge",
+      "kind": "new-gloss",
+      "itemId": "g4u08.w.judge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u08.w.sentence-to-death",
+      "kind": "new-gloss",
+      "itemId": "g4u08.w.sentence-to-death",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.addict",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.addict",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.addiction",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.addiction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.auction",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.auction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.black-market",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.black-market",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.burn-to-the-ground",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.burn-to-the-ground",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.collect",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.collect",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.collection",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.collection",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.command",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.command",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.confuse-sb",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.confuse-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.copy",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.copy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.execute",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.execute",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.fascination",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.fascination",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.furious",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.furious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.go-crazy",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.go-crazy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.judge",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.judge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.kitschy",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.kitschy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.librarian",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.librarian",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.library",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.library",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.miss-out-on-sth",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.miss-out-on-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.monastery",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.monastery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.monk",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.monk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.pale",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.pale",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.precious",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.precious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.preserve",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.preserve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.rare",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.rare",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.rob",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.rob",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.sentence-to-death",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.sentence-to-death",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.sheet",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.sheet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.shorten",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.shorten",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.turn-up",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.turn-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.w.whisper",
+      "kind": "translation-audit",
+      "itemId": "g4u08.w.whisper",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.gi.tense-time-expression-review.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u08.gi.tense-time-expression-review.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.gi.tense-time-expression-review.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u08.gi.tense-time-expression-review.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.gi.tense-time-expression-review.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u08.gi.tense-time-expression-review.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.gi.tense-time-expression-review.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u08.gi.tense-time-expression-review.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.gi.tense-time-expression-review.tr.007",
+      "kind": "translation-audit",
+      "itemId": "g4u08.gi.tense-time-expression-review.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u08.gi.tense-time-expression-review.tr.009",
+      "kind": "translation-audit",
+      "itemId": "g4u08.gi.tense-time-expression-review.tr.009",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Present perfect vs past simple (revision): present perfect (have/has + past participle) for experience / unfinished time / present result with already/yet/just/ever/never/since/for/so far; past simple for finished/specific past with yesterday/ago/last/in 1990; the time-expression contrast (present perfect NEVER with a finished-time word; past simple NEVER with since/for). 31 vocab + 58 grammar, full v1 parity (floor 40 → 58). 4 verify lenses clean after fixes (translation 0 defects). The grammar agent hit a transient API error mid-run but had already written its 58 items, so the whole unit went through the full validate fix-loop: relabeled 3 group-sorts off German category text ('(2./3. Form)' / 'for + Spanne' / 'since + Anfangspunkt' → form-exemplars 'visited'/'have visited' and the keywords 'for'/'since'); reworded gf.005 'Verneinung/Gegenwartsbezug' + gs.004 'Verbformen'→'Wörter'; flipped tr.004 to deToEn (it was enToDe with a German instruction prompt → direction/lang conflict; now German-present-+-seit → English present perfect); disambiguated cp.001 (→Anna) and cp.002 (sie mid-sentence); fixed mt.001 (was ambiguous — both present-perfect stems accepted both since/for endings, 4 valid bijections — reworked to TENSE + content/pronoun-locked pairs so each matches uniquely); fixed gf.016's non-standard sentence-final 'just' (moved the blank to 'I have ___ looked at the collection'); tr.008 contraction tier→full; granted the past participles / irregular pasts / contraction fragments ('s/'ve) + cognates (officer/painting/murderer/club/moments). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 89,
+    "fullRows": 89,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
