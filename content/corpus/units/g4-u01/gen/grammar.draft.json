@@ -1,0 +1,2059 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g4-u01",
+  "briefBank": "05dcb9424620",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Gestern um 8 Uhr abends ___ (read) Anna ein Buch. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was reading",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Person (Anna) und etwas, das damals gerade im Gange war: welche Form von be und welche -ing-Form?",
+      "hintEn": null,
+      "explainDe": "Anna ist eine einzelne Person (wie she), darum was; die Tätigkeit war im Gange, also was reading.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The children ___ (play) in the garden when their friends arrived. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were playing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "children ist Mehrzahl (wie they): welche Form von be brauchst du?",
+      "hintEn": null,
+      "explainDe": "children steht für mehrere (they), darum were; die längere Handlung im Hintergrund steht in der -ing-Form: were playing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "My dad ___ (cook) dinner when I came home. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was cooking",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Person (dad) und eine längere Handlung, die schon lief, als etwas anderes passierte.",
+      "hintEn": null,
+      "explainDe": "dad ist eine Person (he), darum was; das Kochen war schon im Gange: was cooking.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "At 10 o'clock last night, we ___ (watch) a story about Ireland. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were watching",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "we braucht welche Form von be für etwas, das zu dieser Uhrzeit gerade lief?",
+      "hintEn": null,
+      "explainDe": "Bei we nimmst du were; um 10 Uhr war das Schauen im Gange: were watching.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "His sister ___ (listen) to music when my mum called her. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was listening",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "sister ist eine Person (she): was oder were?",
+      "hintEn": null,
+      "explainDe": "sister entspricht she, darum was; das Musikhören lief schon: was listening.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-008",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib beide Lücken: While Mum ___ (cook), Dad ___ (clean) the kitchen. Beide Handlungen liefen gleichzeitig.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was cooking | was cleaning",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei längere Handlungen gleichzeitig: beide brauchen was/were + die -ing-Form. Mum und Dad sind je eine Person.",
+      "hintEn": null,
+      "explainDe": "Gleichzeitige längere Handlungen stehen beide in der Form was/were + -ing; Mum und Dad sind je eine Person (was): was cooking … was cleaning.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib beide Lücken: While the teacher ___ (read) the story, the children ___ (paint) a picture.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was reading | were painting",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Handlungen liefen gleichzeitig. Pass auf: teacher ist eine Person, children sind mehrere.",
+      "hintEn": null,
+      "explainDe": "teacher = was, children = were; beide gleichzeitigen Handlungen stehen in der -ing-Form: was reading … were painting.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-009",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The sun ___ (shine) and the people ___ (dance) in the street. Setze beide Verben in die Form was/were + -ing.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was shining | were dancing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Dinge waren gleichzeitig im Gange. sun ist Einzahl, people sind mehrere.",
+      "hintEn": null,
+      "explainDe": "sun = was, people = were; beide längeren Handlungen in der -ing-Form: was shining … were dancing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We ___ (have) dinner when the storm came. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were having",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (Abendessen) lief schon, als das Gewitter kam. we braucht welche Form?",
+      "hintEn": null,
+      "explainDe": "we = were; die Handlung war im Gange, als etwas Kurzes dazwischenkam: were having.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Tom ___ (wait) for me at the school when it ___ (snow). Setze beide Verben in die Form was/were + -ing.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was waiting | was snowing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide längeren Handlungen liefen zur selben Zeit. Tom und it sind je Einzahl.",
+      "hintEn": null,
+      "explainDe": "Beides sind längere, gleichzeitige Handlungen in der -ing-Form; Tom und it nehmen was: was waiting … was snowing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "His mum ___ (read) on the sofa when Johnny showed her a surprise. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was reading",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Lesen lief schon, als Johnny sie überraschte. mum ist eine Person.",
+      "hintEn": null,
+      "explainDe": "mum = was; die längere Handlung im Hintergrund steht in der -ing-Form: was reading.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 1.txt#grammar-box",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "While many poor people in Ireland ___ (starve), the landlords ___ (send) cattle to England. Setze beide Verben in die Form was/were + -ing.",
+        "lang": "de",
+        "blanks": 2,
+        "gloss": [
+          {
+            "word": "poor",
+            "de": "= arm"
+          },
+          {
+            "word": "send",
+            "de": "= schicken"
+          }
+        ]
+      },
+      "answers": [
+        {
+          "text": "were starving | were sending",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei längere Handlungen liefen gleichzeitig. people und landlords sind beide Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "Beide Gruppen sind Mehrzahl (were); zwei gleichzeitige längere Handlungen stehen in der -ing-Form: were starving … were sending.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "send",
+          "de": "= schicken",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 1.txt#history-text",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Verneinung: I ___ (not / read) when the storm came. Schreib die volle Form mit was/were.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was not reading",
+          "tier": "full"
+        },
+        {
+          "text": "wasn't reading",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Verneinung steht zwischen was/were und der -ing-Form. I nimmt was.",
+      "hintEn": null,
+      "explainDe": "Bei I nimmst du was, die Verneinung not kommt dazwischen: was not reading (kurz: wasn't reading).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-010",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Frage: ___ you ___ (wait) at home when the snow came? Schreib beide Lücken mit was/were.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "Were | waiting",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "In der Frage rutscht was/were nach vorne, vor das Subjekt. you nimmt were.",
+      "hintEn": null,
+      "explainDe": "In der Frage steht were vor you, dann die -ing-Form: Were you waiting …?",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-gf-012",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "While Lucas ___ (talk) on his mobile, his friends ___ (listen) to the music. Setze beide Verben in die Form was/were + -ing.",
+        "lang": "de",
+        "blanks": 2,
+        "gloss": [
+          {
+            "word": "mobile",
+            "de": "= Handy"
+          }
+        ]
+      },
+      "answers": [
+        {
+          "text": "was talking | were listening",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Handlungen liefen gleichzeitig. Lucas ist eine Person, friends sind mehrere.",
+      "hintEn": null,
+      "explainDe": "Lucas = was, friends = were; zwei gleichzeitige längere Handlungen in der -ing-Form: was talking … were listening.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 1.txt#ex6",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Washington Otis ___ (clean) the floor while his family ___ (watch). Setze beide Verben in die Form was/were + -ing.",
+        "lang": "de",
+        "blanks": 2,
+        "gloss": [
+          {
+            "word": "floor",
+            "de": "= Boden"
+          }
+        ]
+      },
+      "answers": [
+        {
+          "text": "was cleaning | was watching",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Handlungen liefen gleichzeitig. Washington ist eine Person, family zählt als Einheit (Einzahl).",
+      "hintEn": null,
+      "explainDe": "Beide Subjekte gelten als Einzahl (was); gleichzeitige längere Handlungen in der -ing-Form: was cleaning … was watching.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 1.txt#ex6",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "While James ___ (look) at the people in the hall, some of them ___ (dance). Setze die richtige -ing-Form ein.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was looking | were dancing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Handlungen liefen gleichzeitig. James ist eine Person, people sind mehrere.",
+      "hintEn": null,
+      "explainDe": "James = was, people = were; beide gleichzeitigen längeren Handlungen in der -ing-Form: was looking … were dancing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 1.txt#ex7",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "We ___ (climb) the stairs to the Blarney Stone while the wind ___ (blow). Setze die richtige -ing-Form ein.",
+        "lang": "de",
+        "blanks": 2,
+        "gloss": [
+          {
+            "word": "wind",
+            "de": "= Wind"
+          },
+          {
+            "word": "blow",
+            "de": "= wehen, blasen"
+          }
+        ]
+      },
+      "answers": [
+        {
+          "text": "were climbing | was blowing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide längeren Handlungen liefen gleichzeitig. we ist Mehrzahl, wind ist Einzahl.",
+      "hintEn": null,
+      "explainDe": "we = were, wind = was; zwei gleichzeitige längere Handlungen in der -ing-Form: were climbing … was blowing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "blow",
+          "de": "= wehen, blasen",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 1.txt#ex8",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Yesterday at 5 o'clock, my sister ___ her homework. Wähle die Form für etwas, das zu der Zeit gerade im Gange war.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was doing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "did",
+        "does",
+        "was did"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Um 17 Uhr lief die Hausübung gerade: was + welche Form?",
+      "hintEn": null,
+      "explainDe": "Für eine Handlung, die zu einer Uhrzeit gerade lief, nimmst du was + -ing: was doing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was doing",
+          "did",
+          "does",
+          "was did",
+          "is doing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-mc-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The children ___ in the garden when their friends came. Wähle die richtige Form.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were playing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "was playing",
+        "played",
+        "are playing"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "children ist Mehrzahl: welche Form von be steht vor der -ing-Form?",
+      "hintEn": null,
+      "explainDe": "children braucht were, und die längere Handlung steht in der -ing-Form: were playing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "were playing",
+          "was playing",
+          "played",
+          "are playing"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz beschreibt richtig, dass eine längere Handlung von einer kürzeren unterbrochen wird?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was reading a book when my dad called me.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I read a book when my dad was calling me.",
+        "I was reading a book when my dad was calling me.",
+        "I read a book when my dad called me."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (lesen) braucht was/were + -ing, die kurze (called) das einfache Past.",
+      "hintEn": null,
+      "explainDe": "Die längere Handlung steht in der -ing-Form (was reading), die kurze unterbrechende im einfachen Past (called): I was reading … when … called.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I was reading a book when my dad called me.",
+          "I read a book when my dad was calling me.",
+          "I was reading a book when my dad was calling me.",
+          "I read a book when my dad called me."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satz beschreibt richtig zwei längere Handlungen, die gleichzeitig im Gange waren?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While Dad was washing the car, Mum was cleaning the kitchen.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "While Dad washed the car, Mum cleaned the kitchen.",
+        "While Dad was washing the car, Mum cleaned the kitchen.",
+        "While Dad washed the car, Mum was cleaning the kitchen."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Bei zwei gleichzeitigen längeren Handlungen stehen beide in der Form was/were + -ing.",
+      "hintEn": null,
+      "explainDe": "Zwei gleichzeitige längere Handlungen brauchen beide die -ing-Form: was washing … was cleaning.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "While Dad was washing the car, Mum was cleaning the kitchen.",
+          "While Dad washed the car, Mum cleaned the kitchen.",
+          "While Dad was washing the car, Mum cleaned the kitchen.",
+          "While Dad washed the car, Mum was cleaning the kitchen."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-mc-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "At 9 o'clock last night, she was ___ in bed. Wähle die richtige -ing-Form.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "reading",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "read",
+        "reads",
+        "to read"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach was already kommt die -ing-Form des Verbs.",
+      "hintEn": null,
+      "explainDe": "Nach was steht die -ing-Form: she was already reading.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "reading",
+          "read",
+          "reads",
+          "to read"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "While we ___ in the garden, my dad ___ us. Wähle die richtige Kombination.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "were playing | called",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "played | called",
+        "were playing | was calling",
+        "was playing | called"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (spielen) braucht was/were + -ing, die kurze (called) das einfache Past. we nimmt were.",
+      "hintEn": null,
+      "explainDe": "Längere Handlung: were playing; kurze unterbrechende Handlung im einfachen Past: called.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "were playing | called",
+          "played | called",
+          "were playing | was calling",
+          "was playing | called"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-mc-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist NICHT korrekt? Achte auf Verben, die kein was/were + -ing mögen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was wanting a new book for my birthday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She was painting a picture when her friends came.",
+        "They were having dinner when the storm came.",
+        "We were waiting for the snow to stop."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Manche Verben (wie want) beschreiben keinen Vorgang, sondern einen Zustand - sie stehen NICHT in der -ing-Form.",
+      "hintEn": null,
+      "explainDe": "want beschreibt einen Zustand, kein Tun; darum kein was wanting, sondern einfaches Past: wanted. Die anderen Sätze sind korrekt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I was wanting a new book for my birthday.",
+          "She was painting a picture when her friends came.",
+          "They were having dinner when the storm came.",
+          "We were waiting for the snow to stop."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-mc-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Welcher Satz ist NICHT korrekt? Manche Verben beschreiben einen Zustand, kein Tun.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was liking the song very much.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I was reading a book when my mum called.",
+        "She was listening to music while he was cooking.",
+        "We were dancing in the street."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "like (mögen) ist ein Zustand - es steht nicht in der -ing-Form.",
+      "hintEn": null,
+      "explainDe": "like beschreibt einen Zustand; statt was liking heißt es einfach liked. Die anderen Sätze sind richtig.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I was liking the song very much.",
+          "I was reading a book when my mum called.",
+          "She was listening to music while he was cooking.",
+          "We were dancing in the street."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-mc-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Es war Mitternacht und die ganze Familie war im Wohnzimmer vor dem Fernseher. Welcher Satz passt am besten?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The whole family was watching the news.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The whole family watched the news.",
+        "The whole family watches the news.",
+        "The whole family watch the news."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Um Mitternacht lief das Fernsehen gerade - du beschreibst etwas, das zu dem Zeitpunkt im Gange war.",
+      "hintEn": null,
+      "explainDe": "Für etwas, das zu einem Zeitpunkt gerade lief, nimmst du was/were + -ing: was watching.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The whole family was watching the news.",
+          "The whole family watched the news.",
+          "The whole family watches the news.",
+          "The whole family watch the news."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My brother ___ to music when I came into his room. Wähle die richtige Form.",
+        "lang": "de",
+        "blanks": 1,
+        "gloss": [
+          {
+            "word": "brother",
+            "de": "= Bruder"
+          }
+        ]
+      },
+      "answers": [
+        {
+          "text": "was listening",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "were listening",
+        "listened",
+        "is listening"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "brother ist eine Person (he), und das Hören lief schon, als du kamst.",
+      "hintEn": null,
+      "explainDe": "brother = was; die längere Handlung steht in der -ing-Form: was listening.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was listening",
+          "were listening",
+          "listened",
+          "is listening"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-gf-008",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Ein Fehler bei was/were. Schreib den Satz richtig: The children was playing in the garden.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The children were playing in the garden.",
+          "tier": "full"
+        },
+        {
+          "text": "were",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "children sind mehrere - welche Form von be passt dann?",
+      "hintEn": null,
+      "explainDe": "children ist Mehrzahl, darum were statt was: The children were playing.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-ec-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Ein Fehler bei was/were. Schreib den Satz richtig: She were watching the news when my mum called.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was watching the news when my mum called.",
+          "tier": "full"
+        },
+        {
+          "text": "was",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "she ist eine Person - was oder were?",
+      "hintEn": null,
+      "explainDe": "she braucht was, nicht were: She was watching.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-ec-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Hier fehlt eine Form von be. Schreib den Satz richtig: While I reading, my dad came home.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While I was reading, my dad came home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor der -ing-Form muss eine Form von be stehen. I nimmt was.",
+      "hintEn": null,
+      "explainDe": "Die -ing-Form allein reicht nicht; es braucht was/were davor: While I was reading.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Hier fehlt eine Form von be. Schreib den Satz richtig: The people dancing in the street all night.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The people were dancing in the street all night.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vor dancing muss eine Form von be stehen. people sind mehrere.",
+      "hintEn": null,
+      "explainDe": "Vor der -ing-Form braucht es were: The people were dancing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Falsche -ing-Form. Schreib den Satz richtig: My dad was cookking dinner when I came home.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "My dad was cooking dinner when I came home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Schau dir die Schreibweise der -ing-Form genau an.",
+      "hintEn": null,
+      "explainDe": "Die -ing-Form von cook ist cooking (nur ein k): was cooking.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die kurze Handlung darf nicht in der -ing-Form stehen. Schreib den Satz richtig: While she was cooking dinner, the storm was coming.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While she was cooking dinner, the storm came.",
+          "tier": "full"
+        },
+        {
+          "text": "She was cooking dinner when the storm came.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (kochen) bleibt in der -ing-Form, die kurze (kommen) wird einfaches Past.",
+      "hintEn": null,
+      "explainDe": "Die kurze, plötzliche Handlung steht im einfachen Past: came, nicht was coming.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-ec-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die längere Hintergrund-Handlung muss in die -ing-Form. Schreib den Satz richtig: While he walked to school, he dropped his book.",
+        "lang": "de",
+        "blanks": 0,
+        "gloss": [
+          {
+            "word": "walk",
+            "de": "= gehen, zu Fuß gehen"
+          }
+        ]
+      },
+      "answers": [
+        {
+          "text": "While he was walking to school, he dropped his book.",
+          "tier": "full"
+        },
+        {
+          "text": "He was walking to school when he dropped his book.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung im Hintergrund (gehen) braucht was/were + -ing.",
+      "hintEn": null,
+      "explainDe": "Die längere Hintergrund-Handlung steht in der -ing-Form: was walking; die kurze bleibt einfaches Past: dropped.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "want und like beschreiben einen Zustand und stehen nicht in der -ing-Form. Schreib den Satz richtig: I was wanting a new book for my birthday.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I wanted a new book for my birthday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "want beschreibt einen Zustand - es steht im einfachen Past, nicht in der -ing-Form.",
+      "hintEn": null,
+      "explainDe": "want beschreibt keinen Vorgang; statt was wanting nimmst du wanted.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-ec-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Ein Fehler bei was/were. Schreib den Satz richtig: We was having dinner when the storm came.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were having dinner when the storm came.",
+          "tier": "full"
+        },
+        {
+          "text": "were",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "we ist Mehrzahl - welche Form von be?",
+      "hintEn": null,
+      "explainDe": "we braucht were, nicht was: We were having dinner.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mach aus den zwei Bildern einen Satz mit while: Dad → drive the car. You → listen to music. (gleichzeitig)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While Dad was driving the car, I was listening to music.",
+          "tier": "full"
+        },
+        {
+          "text": "I was listening to music while Dad was driving the car.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei gleichzeitige längere Handlungen: beide brauchen was/were + -ing, verbunden mit while.",
+      "hintEn": null,
+      "explainDe": "Beide gleichzeitigen Handlungen stehen in der -ing-Form: While Dad was driving …, I was listening …",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-tf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Setze die Verben ein: 'I ___ (have) lunch when my friend ___ (call) me.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was having | called",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (Mittagessen) braucht was/were + -ing, die kurze (anrufen) das einfache Past.",
+      "hintEn": null,
+      "explainDe": "Längere Handlung: was having; kurze unterbrechende Handlung im einfachen Past: called.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-tf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Mach aus den zwei Sätzen einen einzigen mit when: 'I was eating lunch in the school canteen.' + 'A dog came in.'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I was eating lunch in the school canteen when a dog came in.",
+          "tier": "full"
+        },
+        {
+          "text": "When a dog came in, I was eating lunch in the school canteen.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (essen) bleibt in der -ing-Form, die kurze (came) ist einfaches Past, verbunden mit when.",
+      "hintEn": null,
+      "explainDe": "Die längere Handlung steht in der -ing-Form, die kurze plötzliche im einfachen Past: I was eating … when a dog came in.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-tf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setze beide Verben ein, um die Szene zu beschreiben: 'It ___ (snow) and the children ___ (dance) in the garden.'",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was snowing | were dancing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei gleichzeitige längere Handlungen, beide in der -ing-Form. it ist Einzahl, children sind mehrere.",
+      "hintEn": null,
+      "explainDe": "it = was, children = were; beide gleichzeitigen Handlungen in der -ing-Form: was snowing … were dancing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-tf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: was / she / when / reading / my / dad / came / home",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She was reading when my dad came home.",
+          "tier": "full"
+        },
+        {
+          "text": "When my dad came home, she was reading.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit der Person und der längeren Handlung (was reading), dann when + die kurze Handlung.",
+      "hintEn": null,
+      "explainDe": "Die längere Handlung steht in der -ing-Form, dann folgt when + einfaches Past: She was reading when my dad came home.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "were",
+          "is",
+          "are"
+        ],
+        "chipBudget": 8,
+        "minOptions": null
+      },
+      "seedV1": "m4-u1-past-continuous-revision-sb-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: while / were / dinner / having / they / their / friends / came",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While they were having dinner, their friends came.",
+          "tier": "full"
+        },
+        {
+          "text": "Their friends came while they were having dinner.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit while + der längeren Handlung (were having), dann die kurze Handlung.",
+      "hintEn": null,
+      "explainDe": "Nach while steht die längere Handlung in der -ing-Form, dann die kurze im einfachen Past: While they were having dinner, their friends came.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "were",
+          "is",
+          "are"
+        ],
+        "chipBudget": 8,
+        "minOptions": null
+      },
+      "seedV1": "m4-u1-past-continuous-revision-sb-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Bring die Wörter in die richtige Reihenfolge: at / 7 / o'clock / last / night / I / was / reading / a / book",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "At 7 o'clock last night, I was reading a book.",
+          "tier": "full"
+        },
+        {
+          "text": "At 7 o'clock last night I was reading a book.",
+          "tier": "full"
+        },
+        {
+          "text": "I was reading a book at 7 o'clock last night.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Zeitangabe kann vorne oder hinten stehen; die Handlung lief gerade: was + -ing.",
+      "hintEn": null,
+      "explainDe": "Für etwas, das zu einer Uhrzeit gerade lief, nimmst du was + -ing: was reading.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "was",
+          "were",
+          "is",
+          "are"
+        ],
+        "chipBudget": 12,
+        "minOptions": null
+      },
+      "seedV1": "m4-u1-past-continuous-revision-sb-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Heute früh um 6 Uhr hast du aus dem Fenster geschaut. Die Straße war voller Schnee und ein Mann war draußen. Welcher Satz beschreibt am besten, was du gesehen hast?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "A man was cleaning the snow in the street.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "A man cleaned the snow in the street.",
+        "A man cleans the snow in the street.",
+        "A man is cleaning the snow in the street."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du beschreibst etwas, das in genau diesem Moment in der Vergangenheit gerade im Gange war.",
+      "hintEn": null,
+      "explainDe": "Für eine Handlung, die in dem Moment gerade lief, nimmst du was/were + -ing: was cleaning.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "A man was cleaning the snow in the street.",
+          "A man cleaned the snow in the street.",
+          "A man cleans the snow in the street.",
+          "A man is cleaning the snow in the street."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-cp-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du erzählst, was gestern um 15 Uhr im Park los war. Welcher Satz nutzt die richtige Form für die Hintergrund-Handlung?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While she was reading, her dog jumped into the lake.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "While she read, her dog was jumping into the lake.",
+        "While she was reading, her dog was jumping into the lake.",
+        "While she read, her dog jumped into the lake."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (lesen) braucht was/were + -ing, die kurze (springen) das einfache Past.",
+      "hintEn": null,
+      "explainDe": "Die längere Hintergrund-Handlung steht in der -ing-Form (was reading), die kurze im einfachen Past (jumped).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "While she was reading, her dog jumped into the lake.",
+          "While she read, her dog was jumping into the lake.",
+          "While she was reading, her dog was jumping into the lake.",
+          "While she read, her dog jumped into the lake."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u1-past-continuous-revision-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Während ich lernte, rief mein Freund an.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "While I was studying, my friend called.",
+          "tier": "full"
+        },
+        {
+          "text": "My friend called while I was studying.",
+          "tier": "full"
+        },
+        {
+          "text": "While I was studying, my friend called me.",
+          "tier": "full"
+        },
+        {
+          "text": "While I was learning, my friend called.",
+          "tier": "full"
+        },
+        {
+          "text": "My friend called while I was learning.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (lernen) braucht was + -ing, die kurze (anrufen) das einfache Past.",
+      "hintEn": null,
+      "explainDe": "Längere Handlung: was studying; kurze unterbrechende Handlung: called.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die Sonne schien und die Kinder spielten im Garten, als ein Hund hereinkam.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The sun was shining and the children were playing in the garden when a dog came in.",
+          "tier": "full"
+        },
+        {
+          "text": "The sun was shining and the children were playing in the garden when a dog came.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei längere Handlungen (scheinen, spielen) in der -ing-Form; die kurze (hereinkommen) im einfachen Past.",
+      "hintEn": null,
+      "explainDe": "Die zwei längeren Handlungen stehen in der -ing-Form (was shining, were playing); die kurze plötzliche im einfachen Past (came in).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-tr-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welcher Satzanfang passt zu welchem Ende?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "While I was reading,",
+          "right": "my mum called me."
+        },
+        {
+          "left": "When the teacher came in,",
+          "right": "everyone was waiting at the tables."
+        },
+        {
+          "left": "She was cooking dinner",
+          "right": "when her friends arrived."
+        },
+        {
+          "left": "While they were watching the news,",
+          "right": "their dog jumped up."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte darauf, welcher Teil die längere Handlung (was/were + -ing) und welcher die kurze (einfaches Past) trägt.",
+      "hintEn": null,
+      "explainDe": "Jeder Satz verbindet eine längere Handlung (was/were + -ing) mit einer kurzen im einfachen Past.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u1-past-continuous-revision-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Form passt zu welchem Subjekt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "was + -ing (I / he / she / it)",
+          "members": [
+            "He was reading.",
+            "She was cooking.",
+            "The dog was running.",
+            "I was waiting."
+          ]
+        },
+        {
+          "label": "were + -ing (you / we / they)",
+          "members": [
+            "They were dancing.",
+            "We were watching.",
+            "The children were playing.",
+            "You were running."
+          ]
+        }
+      ],
+      "hintDe": "was steht bei I/he/she/it, were bei you/we/they. Schau dir das Subjekt an.",
+      "hintEn": null,
+      "explainDe": "Einzelne Person oder Sache (I/he/she/it) → was; mehrere oder you/we/they → were.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Sortiere die Sätze: richtig oder falsch?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "She was reading when her friends came.",
+            "They were dancing all night.",
+            "While I was cooking, my dad cleaned the kitchen."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "The children was playing in the garden.",
+            "I was liking the song.",
+            "While he played, he dropped his book."
+          ]
+        }
+      ],
+      "hintDe": "Achte auf was/were-Übereinstimmung, auf Zustands-Verben (like) und darauf, dass die längere Handlung in der -ing-Form steht.",
+      "hintEn": null,
+      "explainDe": "Falsch sind: children braucht were; like steht nicht in der -ing-Form (liked); die längere Hintergrund-Handlung braucht was playing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It ___ (snow) when we came home from school. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was snowing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "it nimmt welche Form von be für etwas, das gerade lief?",
+      "hintEn": null,
+      "explainDe": "it = was; das Schneien war im Gange: was snowing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "While James ___ (talk) to the people, the children ___ (come) closer. Setze beide Verben passend ein.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was talking | came",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die längere Handlung (reden) braucht was + -ing, die kürzere (näher kommen) das einfache Past.",
+      "hintEn": null,
+      "explainDe": "Längere Handlung: was talking; die kürzere unterbrechende im einfachen Past: came.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 1.txt#ex6",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The band ___ (play) a song when we arrived at the concert. Setze was/were + die -ing-Form ein.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was playing",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "band zählt als eine Einheit (Einzahl): was oder were?",
+      "hintEn": null,
+      "explainDe": "band gilt als Einzahl, darum was; die Handlung lief schon: was playing.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u01.s.past-continuous-revision",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Falsche -ing-Form. Schreib den Satz richtig: We were swiming in the lake when the storm came.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We were swimming in the lake when the storm came.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Schau dir die Schreibweise der -ing-Form von swim genau an.",
+      "hintEn": null,
+      "explainDe": "Die -ing-Form von swim verdoppelt das m: swimming.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}

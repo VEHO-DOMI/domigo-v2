@@ -12780,6 +12780,60 @@
       "reason": "going-to unit: common time word in distractor (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u01",
+      "itemId": null,
+      "field": null,
+      "token": "fungi",
+      "reason": "past-continuous unit: irregular plural / -ing-Form cue / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u01",
+      "itemId": null,
+      "field": null,
+      "token": "ing",
+      "reason": "past-continuous unit: irregular plural / -ing-Form cue / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u01",
+      "itemId": null,
+      "field": null,
+      "token": "something",
+      "reason": "past-continuous unit: irregular plural / -ing-Form cue / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u01",
+      "itemId": null,
+      "field": null,
+      "token": "walking",
+      "reason": "past-continuous: -ing form in error-correction answer",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u01",
+      "itemId": null,
+      "field": null,
+      "token": "learning",
+      "reason": "past-continuous: -ing form in tr.001 answer variant",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u01",
+      "itemId": null,
+      "field": null,
+      "token": "wind",
+      "reason": "past-continuous: common noun in lang:de prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
