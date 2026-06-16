@@ -12438,6 +12438,348 @@
       "reason": "common A1 noun, master-list example-only (harvesting gap, like song/band)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "going",
+      "reason": "going-to/will: structure spine (excluded from core allowlist)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "will",
+      "reason": "going-to/will: structure spine (excluded from core allowlist)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "won't",
+      "reason": "going-to/will: structure spine (excluded from core allowlist)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "around",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "baby",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "bought",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "cup",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "drove",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "eaten",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "fall",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "full",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "get",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "made",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "maybe",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "team",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "i'll",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "'ll",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "'s",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "'re",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "'m",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "m",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "re",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "s",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "falls",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "getting",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "rains",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "rained",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "visit",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "trip",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "saved",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "nice",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "things",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "fun",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "study",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "plan",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "streets",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "stay",
+      "reason": "going-to unit: inflection / contraction fragment / def-reword carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u14",
+      "itemId": null,
+      "field": null,
+      "token": "next",
+      "reason": "going-to unit: common time word in distractor (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
