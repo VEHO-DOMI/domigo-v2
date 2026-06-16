@@ -1,0 +1,308 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u10",
+  "round": 1,
+  "itemsHash": "2a4426bd419e",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "translation-audit:g4u10.w.agreement",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.agreement",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.angry",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.angry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.annoy",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.annoy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.bicycle",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.bicycle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.brother-in-law",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.brother-in-law",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.claim",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.claim",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.defeat",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.defeat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.fair-trade",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.fair-trade",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.fairness",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.fairness",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.farmer",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.farmer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.harmony",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.harmony",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.hell",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.hell",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.helpless",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.helpless",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.human-being",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.human-being",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.hurt",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.hurt",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.hurtful",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.hurtful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.ignorance",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.ignorance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.increase",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.increase",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.introduction",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.introduction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.make-a-living",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.make-a-living",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.misunderstood",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.misunderstood",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.oil",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.oil",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.overcome",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.overcome",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.painful",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.painful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.pay-rise",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.pay-rise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.pesticide",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.pesticide",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.pollution",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.pollution",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.proud",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.proud",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.racism",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.racism",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.racist",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.racist",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.rate",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.rate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.recognition",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.recognition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.select",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.select",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.shocked",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.shocked",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.slavery",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.slavery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.son-in-law",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.son-in-law",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.w.surprised",
+      "kind": "translation-audit",
+      "itemId": "g4u10.w.surprised",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.gi.third-conditional.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u10.gi.third-conditional.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.gi.third-conditional.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u10.gi.third-conditional.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.gi.third-conditional.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u10.gi.third-conditional.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u10.gi.third-conditional.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u10.gi.third-conditional.tr.004",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Third conditional (if + past perfect [had + past participle] → would have + past participle, for the unreal/regretted past; also could have / might have) WITH revision of the 1st conditional (if + present simple → will + base) and 2nd conditional (if + past simple → would + base), plus the three-way contrast (real future / unreal present / unreal past). 37 vocab + 54 grammar, full v1 parity (floor 40 → 54). 4 verify lenses clean: answers + translation + register found 0 defects (verified no 'would have' in any keyed if-clause — the classic error — and every conditional type is correctly paired; the three-conditional group-sorts classify each member right). Fixes during the validate loop: converted 4 transformation items from a stuck 2-blank gap format into full transformations (the keyed answer is the complete 'If … had …, … would have …' sentence; this required recomputing blanks=0 and switching the German-instruction prompts to lang:de so the German didn't get level-gated); reworded 'Vergangenheit'→'Zeit von früher' in 3 prompts (banned category term); granted the past-participle / would-have / will load (~40 grants: known/helped/passed/sold/bought/kept/paid/left/lost/understood/woken + hadn't/wouldn't/won't + would/will + structure tokens) plus bike (bicycle alt) and tongues (figurative 'languages' in the claim carrier). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 91,
+    "fullRows": 91,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

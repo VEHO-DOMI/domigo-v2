@@ -14427,6 +14427,375 @@
       "reason": "g4-u09: common A1/A2 noun/adjective (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "around",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "bought",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "bus",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "exam",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "helped",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "kept",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "known",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "late",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "left",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "lost",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "paid",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "party",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "passed",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "rained",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "rains",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "saved",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "sold",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "together",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "understood",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "woken",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "would",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "will",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "come",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "came",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "buy",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "help",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "fair",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "dad",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "number",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "project",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "school",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "world",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "well",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "harder",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "hadn't",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "won't",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "wouldn't",
+      "reason": "3rd-conditional: past participle / negated aux / structure token (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "bike",
+      "reason": "g4-u10: bicycle alternate answer (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u10",
+      "itemId": null,
+      "field": null,
+      "token": "tongues",
+      "reason": "g4-u10: figurative use (languages) in claim carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

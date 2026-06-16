@@ -1,0 +1,2352 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u10",
+  "briefBank": "2e7bd10777c1",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u10.w.oil",
+      "w": "oil",
+      "g": "Öl",
+      "d": "A thick dark wet from under the ground that we burn to run cars, planes and machines.",
+      "s": "___ is very precious in our society.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Oil",
+          "tier": "full"
+        },
+        {
+          "text": "oil",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "oil",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "oil",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Öl",
+            "tier": "full"
+          },
+          {
+            "text": "das Öl",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pollution",
+        "rate",
+        "harmony"
+      ],
+      "hintDe": "Daraus macht man Benzin für Autos.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "pollution",
+          "rate",
+          "harmony",
+          "agreement",
+          "recognition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.fair-trade",
+      "w": "Fair Trade",
+      "g": "eine Organisation",
+      "d": "A way of selling that pays people in countries with little money a just price for what they make and sell.",
+      "s": "The ___ project gives farmers more money for their products.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "Fair Trade",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Fair Trade",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Fair Trade",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fair Trade",
+            "tier": "full"
+          },
+          {
+            "text": "fairer Handel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "agreement",
+        "recognition",
+        "harmony"
+      ],
+      "hintDe": "Diese Organisation zahlt Bäuerinnen und Bauern einen gerechten Preis.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "agreement",
+          "recognition",
+          "harmony",
+          "fairness",
+          "slavery"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.farmer",
+      "w": "farmer",
+      "g": "Landwirt/in",
+      "d": "A man or woman who owns or works on land where food and animal life are raised.",
+      "s": "My uncle is a ___ and he owns a farm with horses.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "farmer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "farmer",
+          "tier": "full"
+        },
+        {
+          "text": "farmers",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "farmer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Landwirt",
+            "tier": "full"
+          },
+          {
+            "text": "Landwirtin",
+            "tier": "full"
+          },
+          {
+            "text": "Bauer",
+            "tier": "full"
+          },
+          {
+            "text": "Bäuerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "human being",
+        "son-in-law",
+        "brother-in-law"
+      ],
+      "hintDe": "Diese Person arbeitet auf einem Bauernhof.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "human being",
+          "son-in-law",
+          "brother-in-law",
+          "racist",
+          "oil"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.make-a-living",
+      "w": "make a living",
+      "g": "den Lebensunterhalt verdienen",
+      "d": "To earn the money you need to pay for food, clothes and a home.",
+      "s": "He could not ___ from his small farm.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "make a living",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make a living",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make a living",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "den Lebensunterhalt verdienen",
+            "tier": "full"
+          },
+          {
+            "text": "seinen Lebensunterhalt verdienen",
+            "tier": "full"
+          },
+          {
+            "text": "genug Geld zum Leben verdienen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "increase",
+        "select",
+        "defeat"
+      ],
+      "hintDe": "Genug Geld verdienen, um davon zu leben.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "increase",
+          "select",
+          "defeat",
+          "overcome",
+          "claim"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.pay-rise",
+      "w": "pay rise",
+      "g": "Gehaltserhöhung",
+      "d": "More money than before for the work you do.",
+      "s": "After two years of good work, she asked her boss for a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pay rise",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pay rise",
+          "tier": "full"
+        },
+        {
+          "text": "pay raise",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pay rise",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gehaltserhöhung",
+            "tier": "full"
+          },
+          {
+            "text": "Lohnerhöhung",
+            "tier": "full"
+          },
+          {
+            "text": "eine Gehaltserhöhung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "agreement",
+        "recognition",
+        "rate"
+      ],
+      "hintDe": "Mehr Geld für deine Arbeit als vorher.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "agreement",
+          "recognition",
+          "rate",
+          "oil",
+          "introduction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.pesticide",
+      "w": "pesticide",
+      "g": "Pestizid",
+      "d": "A thing that farmers put on their plants to stop fungus and small bugs.",
+      "s": "A ___ is used to stop fungus and to protect the crops.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pesticide",
+          "tier": "full"
+        },
+        {
+          "text": "pesticides",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pesticide",
+          "tier": "full"
+        },
+        {
+          "text": "pesticides",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pesticide",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Pestizid",
+            "tier": "full"
+          },
+          {
+            "text": "Insektenbekämpfungsmittel",
+            "tier": "full"
+          },
+          {
+            "text": "Schädlingsbekämpfungsmittel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "oil",
+        "agreement",
+        "rate"
+      ],
+      "hintDe": "Das spritzen Bäuerinnen und Bauern gegen Insekten auf die Pflanzen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "oil",
+          "agreement",
+          "rate",
+          "harmony",
+          "pollution"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.select",
+      "w": "select",
+      "g": "auswählen",
+      "d": "To take the best ones from a bigger group.",
+      "s": "The company will ___ the best beans and dry them.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "select",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "select",
+          "tier": "full"
+        },
+        {
+          "text": "selected",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "select",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auswählen",
+            "tier": "full"
+          },
+          {
+            "text": "aussuchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "increase",
+        "defeat",
+        "overcome"
+      ],
+      "hintDe": "Die besten Stücke heraussuchen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "increase",
+          "defeat",
+          "overcome",
+          "claim",
+          "annoy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.agreement",
+      "w": "agreement",
+      "g": "Vereinbarung",
+      "d": "A decision that two or more people or groups are all happy with.",
+      "s": "Fair Trade is an ___ that gives farmers a fair price.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "agreement",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "agreement",
+          "tier": "full"
+        },
+        {
+          "text": "agreements",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "agreement",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vereinbarung",
+            "tier": "full"
+          },
+          {
+            "text": "Abmachung",
+            "tier": "full"
+          },
+          {
+            "text": "eine Vereinbarung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "recognition",
+        "ignorance",
+        "harmony"
+      ],
+      "hintDe": "Wenn sich zwei Seiten auf etwas einigen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "recognition",
+          "ignorance",
+          "harmony",
+          "fairness",
+          "introduction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.increase",
+      "w": "increase",
+      "g": "steigen",
+      "d": "To become more in number; to go up.",
+      "s": "The price of food can ___ from one year to the next.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "increase",
+          "tier": "full"
+        },
+        {
+          "text": "increases",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "increase",
+          "tier": "full"
+        },
+        {
+          "text": "increases",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "increase",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "steigen",
+            "tier": "full"
+          },
+          {
+            "text": "erhöhen",
+            "tier": "full"
+          },
+          {
+            "text": "ansteigen",
+            "tier": "full"
+          },
+          {
+            "text": "zunehmen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "select",
+        "defeat",
+        "claim"
+      ],
+      "hintDe": "Mehr werden, nach oben gehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "select",
+          "defeat",
+          "claim",
+          "overcome",
+          "annoy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.rate",
+      "w": "rate",
+      "g": "Rate",
+      "d": "How fast a thing happens, or how much of it there is in some time.",
+      "s": "The number of crimes is rising at a fast ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rate",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rate",
+          "tier": "full"
+        },
+        {
+          "text": "rates",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rate",
+            "tier": "full"
+          },
+          {
+            "text": "die Rate",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "agreement",
+        "recognition",
+        "oil"
+      ],
+      "hintDe": "Sagt, wie schnell oder wie oft etwas passiert.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "agreement",
+          "recognition",
+          "oil",
+          "ignorance",
+          "introduction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.brother-in-law",
+      "w": "brother-in-law",
+      "g": "Schwager",
+      "d": "The man who is married to your sister.",
+      "s": "The man who married my sister is my ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "brother-in-law",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "brother-in-law",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "brother-in-law",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwager",
+            "tier": "full"
+          },
+          {
+            "text": "der Schwager",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "son-in-law",
+        "human being",
+        "farmer"
+      ],
+      "hintDe": "Der Mann, der deine Schwester geheiratet hat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "son-in-law",
+          "human being",
+          "farmer",
+          "racist",
+          "introduction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.defeat",
+      "w": "defeat",
+      "g": "besiegen",
+      "d": "To be stronger than the people you fight and take the victory.",
+      "s": "He wants to ___ the best boxer in the world.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "defeat",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "defeat",
+          "tier": "full"
+        },
+        {
+          "text": "defeated",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "defeat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "besiegen",
+            "tier": "full"
+          },
+          {
+            "text": "überwältigen",
+            "tier": "full"
+          },
+          {
+            "text": "schlagen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "overcome",
+        "increase",
+        "select"
+      ],
+      "hintDe": "Stärker sein und den anderen schlagen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "overcome",
+          "increase",
+          "select",
+          "claim",
+          "annoy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.harmony",
+      "w": "harmony",
+      "g": "Harmonie",
+      "d": "A way of living in which people are at one and do not fight.",
+      "s": "People of all races can live in ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "harmony",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "harmony",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "harmony",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Harmonie",
+            "tier": "full"
+          },
+          {
+            "text": "Eintracht",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ignorance",
+        "recognition",
+        "slavery"
+      ],
+      "hintDe": "Friedlich und ohne Streit zusammenleben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ignorance",
+          "recognition",
+          "slavery",
+          "fairness",
+          "agreement"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.human-being",
+      "w": "human being",
+      "g": "Mensch",
+      "d": "A man, woman or child; one of the people who live on Earth.",
+      "s": "In the end, we are all just ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "human beings",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "human being",
+          "tier": "full"
+        },
+        {
+          "text": "human beings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "human being",
+            "tier": "full"
+          },
+          {
+            "text": "human beings",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mensch",
+            "tier": "full"
+          },
+          {
+            "text": "Menschen",
+            "tier": "full"
+          },
+          {
+            "text": "ein Mensch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "farmer",
+        "racist",
+        "brother-in-law"
+      ],
+      "hintDe": "Ein Mann, eine Frau oder ein Kind auf der Erde.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "farmer",
+          "racist",
+          "brother-in-law",
+          "son-in-law",
+          "oil"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.hurtful",
+      "w": "hurtful",
+      "g": "verletzend",
+      "d": "That makes people feel sad inside.",
+      "s": "He is horrible and he likes to make ___ comments.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hurtful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hurtful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hurtful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verletzend",
+            "tier": "full"
+          },
+          {
+            "text": "kränkend",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "painful",
+        "helpless",
+        "racist"
+      ],
+      "hintDe": "Etwas, das die Gefühle anderer verletzt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "painful",
+          "helpless",
+          "racist",
+          "angry",
+          "proud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.ignorance",
+      "w": "ignorance",
+      "g": "Ignoranz",
+      "d": "When you know very little about people or the world.",
+      "s": "We can defeat racism, but first we must defeat ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ignorance",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ignorance",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ignorance",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ignoranz",
+            "tier": "full"
+          },
+          {
+            "text": "Unwissenheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "recognition",
+        "harmony",
+        "slavery"
+      ],
+      "hintDe": "Wenn man wenig über andere oder die Welt weiß.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "recognition",
+          "harmony",
+          "slavery",
+          "fairness",
+          "agreement"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.overcome",
+      "w": "overcome",
+      "g": "überwinden",
+      "d": "To be stronger than a fear or a bad thing in the end.",
+      "s": "I want to ___ my fear of flying.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "overcome",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "overcome",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "overcome",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "überwinden",
+            "tier": "full"
+          },
+          {
+            "text": "besiegen",
+            "tier": "full"
+          },
+          {
+            "text": "bewältigen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "defeat",
+        "increase",
+        "select"
+      ],
+      "hintDe": "Eine Angst oder ein Problem besiegen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "defeat",
+          "increase",
+          "select",
+          "claim",
+          "annoy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.painful",
+      "w": "painful",
+      "g": "schmerzhaft",
+      "d": "Making the body or the feeling inside hurt.",
+      "s": "Losing a good friend can be very ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "painful",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "painful",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "painful",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schmerzhaft",
+            "tier": "full"
+          },
+          {
+            "text": "schmerzvoll",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hurtful",
+        "helpless",
+        "angry"
+      ],
+      "hintDe": "Etwas, das im Körper oder in der Seele wehtut.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hurtful",
+          "helpless",
+          "angry",
+          "proud",
+          "shocked"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.racism",
+      "w": "racism",
+      "g": "Rassismus",
+      "d": "When people are treated in a cruel way just because of where they or their family come from.",
+      "s": "Long ago, black people in America had to live with ___ every day.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "racism",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "racism",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "racism",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rassismus",
+            "tier": "full"
+          },
+          {
+            "text": "der Rassismus",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "slavery",
+        "ignorance",
+        "pollution"
+      ],
+      "hintDe": "Menschen wegen ihrer Herkunft schlecht behandeln.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "slavery",
+          "ignorance",
+          "pollution",
+          "harmony",
+          "recognition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.racist",
+      "w": "racist",
+      "g": "rassistisch",
+      "d": "Showing hate to people because of their skin or the land they come from.",
+      "s": "He had to leave the band for making ___ comments.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "racist",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "racist",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "racist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "rassistisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hurtful",
+        "helpless",
+        "proud"
+      ],
+      "hintDe": "Beschreibt Worte oder Taten voller Rassismus.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hurtful",
+          "helpless",
+          "proud",
+          "angry",
+          "painful"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.recognition",
+      "w": "recognition",
+      "g": "Anerkennung",
+      "d": "When people notice and thank you for the good work you have done.",
+      "s": "The farmers want more money and more ___ for their work.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "recognition",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "recognition",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "recognition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Anerkennung",
+            "tier": "full"
+          },
+          {
+            "text": "Bestätigung",
+            "tier": "full"
+          },
+          {
+            "text": "die Anerkennung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "agreement",
+        "ignorance",
+        "harmony"
+      ],
+      "hintDe": "Wenn Leute deine gute Arbeit sehen und loben.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "agreement",
+          "ignorance",
+          "harmony",
+          "fairness",
+          "rate"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.slavery",
+      "w": "slavery",
+      "g": "Sklaverei",
+      "d": "When people are owned and have to work for no pay and are not free.",
+      "s": "For two hundred years, black people in America had to live in ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "slavery",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "slavery",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "slavery",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sklaverei",
+            "tier": "full"
+          },
+          {
+            "text": "die Sklaverei",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "racism",
+        "ignorance",
+        "pollution"
+      ],
+      "hintDe": "Wenn Menschen anderen gehören und ohne Lohn arbeiten müssen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "racism",
+          "ignorance",
+          "pollution",
+          "harmony",
+          "agreement"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.son-in-law",
+      "w": "son-in-law",
+      "g": "Schwiegersohn",
+      "d": "The man who is married to your daughter.",
+      "s": "Your ___ is the man who married your daughter.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "son-in-law",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "son-in-law",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "son-in-law",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwiegersohn",
+            "tier": "full"
+          },
+          {
+            "text": "der Schwiegersohn",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "brother-in-law",
+        "human being",
+        "farmer"
+      ],
+      "hintDe": "Der Mann, der deine Tochter geheiratet hat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "brother-in-law",
+          "human being",
+          "farmer",
+          "racist",
+          "oil"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.angry",
+      "w": "angry",
+      "g": "wütend",
+      "d": "Feeling very upset about a thing that is not fair.",
+      "s": "The passengers were ___ about the long wait.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "angry",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "angry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "angry",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wütend",
+            "tier": "full"
+          },
+          {
+            "text": "verärgert",
+            "tier": "full"
+          },
+          {
+            "text": "böse",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "proud",
+        "shocked",
+        "surprised"
+      ],
+      "hintDe": "Sehr wütend über etwas Ungerechtes.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "proud",
+          "shocked",
+          "surprised",
+          "helpless",
+          "misunderstood"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.annoy",
+      "w": "annoy",
+      "g": "verärgern",
+      "d": "To make people feel a little angry.",
+      "s": "Please stop, you really ___ me when you do that.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "annoy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "annoy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "annoy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verärgern",
+            "tier": "full"
+          },
+          {
+            "text": "ärgern",
+            "tier": "full"
+          },
+          {
+            "text": "nerven",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "hurt",
+        "defeat",
+        "select"
+      ],
+      "hintDe": "Jemanden ein bisschen wütend machen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "hurt",
+          "defeat",
+          "select",
+          "increase",
+          "overcome"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.helpless",
+      "w": "helpless",
+      "g": "hilflos",
+      "d": "Weak and with no way to stop a bad thing.",
+      "s": "Without his glasses he was completely ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "helpless",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "helpless",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "helpless",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hilflos",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "angry",
+        "proud",
+        "shocked"
+      ],
+      "hintDe": "Schwach und ohne Möglichkeit, sich zu helfen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "angry",
+          "proud",
+          "shocked",
+          "surprised",
+          "misunderstood"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.hurt",
+      "w": "hurt",
+      "g": "verletzen",
+      "d": "To make people feel bad, in the body or inside.",
+      "s": "It ___ me to think that he would lie.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hurt",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hurt",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hurt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verletzen",
+            "tier": "full"
+          },
+          {
+            "text": "wehtun",
+            "tier": "full"
+          },
+          {
+            "text": "kränken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "annoy",
+        "defeat",
+        "claim"
+      ],
+      "hintDe": "Jemandem im Körper oder in den Gefühlen wehtun.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "annoy",
+          "defeat",
+          "claim",
+          "select",
+          "overcome"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.misunderstood",
+      "w": "misunderstood",
+      "g": "missverstanden",
+      "d": "When people do not really know what you are like.",
+      "s": "She often feels ___ because people do not really know her.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "misunderstood",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "misunderstood",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "misunderstood",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "missverstanden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "surprised",
+        "shocked",
+        "proud"
+      ],
+      "hintDe": "Wenn andere falsch verstehen, wie du wirklich bist.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "surprised",
+          "shocked",
+          "proud",
+          "angry",
+          "helpless"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.proud",
+      "w": "proud",
+      "g": "stolz",
+      "d": "Feeling very happy about a good thing you or your family have done.",
+      "s": "My parents were ___ of me when I did well at school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "proud",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "proud",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "proud",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stolz",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "angry",
+        "shocked",
+        "helpless"
+      ],
+      "hintDe": "Sehr froh über etwas Gutes, das du geschafft hast.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "angry",
+          "shocked",
+          "helpless",
+          "surprised",
+          "misunderstood"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.shocked",
+      "w": "shocked",
+      "g": "schockiert",
+      "d": "Feeling very upset because of a bad thing you did not think would happen.",
+      "s": "She was ___ when she read about the accident.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "shocked",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shocked",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shocked",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schockiert",
+            "tier": "full"
+          },
+          {
+            "text": "geschockt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "surprised",
+        "proud",
+        "angry"
+      ],
+      "hintDe": "Sehr erschrocken über etwas Schlimmes.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "surprised",
+          "proud",
+          "angry",
+          "helpless",
+          "misunderstood"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.surprised",
+      "w": "surprised",
+      "g": "überrascht",
+      "d": "Feeling that a thing happened that you did not think would happen.",
+      "s": "I was really ___ to find a cake at school.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "surprised",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "surprised",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "surprised",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "überrascht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "shocked",
+        "proud",
+        "angry"
+      ],
+      "hintDe": "Wenn etwas passiert, womit du nicht gerechnet hast.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "shocked",
+          "proud",
+          "angry",
+          "helpless",
+          "misunderstood"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.claim",
+      "w": "claim",
+      "g": "behaupten",
+      "d": "To tell people that a thing is true when you cannot prove it.",
+      "s": "She ___ she can speak five tongues, but she cannot prove it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "claims",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "claim",
+          "tier": "full"
+        },
+        {
+          "text": "claims",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "claim",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "behaupten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "defeat",
+        "select",
+        "increase"
+      ],
+      "hintDe": "Etwas sagen, das vielleicht gar nicht stimmt.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "defeat",
+          "select",
+          "increase",
+          "overcome",
+          "annoy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.bicycle",
+      "w": "bicycle",
+      "g": "Fahrrad",
+      "d": "A two-wheel machine that you ride and move with your feet.",
+      "s": "He likes to ride his ___ in the park.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bicycle",
+          "tier": "full"
+        },
+        {
+          "text": "bike",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bicycle",
+          "tier": "full"
+        },
+        {
+          "text": "bike",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bicycle",
+            "tier": "full"
+          },
+          {
+            "text": "bike",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fahrrad",
+            "tier": "full"
+          },
+          {
+            "text": "das Fahrrad",
+            "tier": "full"
+          },
+          {
+            "text": "Rad",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "oil",
+        "introduction",
+        "agreement"
+      ],
+      "hintDe": "Ein Gefährt mit zwei Rädern, das du trittst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "oil",
+          "introduction",
+          "agreement",
+          "harmony",
+          "pollution"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.fairness",
+      "w": "fairness",
+      "g": "Gerechtigkeit",
+      "d": "Treating all people in a just and honest way.",
+      "s": "We want ___ for all people, both rich and not rich.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fairness",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fairness",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fairness",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gerechtigkeit",
+            "tier": "full"
+          },
+          {
+            "text": "Fairness",
+            "tier": "full"
+          },
+          {
+            "text": "die Fairness",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "recognition",
+        "agreement",
+        "harmony"
+      ],
+      "hintDe": "Alle gleich und gerecht behandeln.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "recognition",
+          "agreement",
+          "harmony",
+          "ignorance",
+          "introduction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.hell",
+      "w": "hell",
+      "g": "Hölle",
+      "d": "A very bad place where some people think bad people go when they are dead.",
+      "s": "___ is the opposite of a happy place after death.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Hell",
+          "tier": "full"
+        },
+        {
+          "text": "hell",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hell",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hell",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hölle",
+            "tier": "full"
+          },
+          {
+            "text": "die Hölle",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "harmony",
+        "fairness",
+        "recognition"
+      ],
+      "hintDe": "Der schlimme Ort, das Gegenteil vom Himmel.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "harmony",
+          "fairness",
+          "recognition",
+          "ignorance",
+          "slavery"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.introduction",
+      "w": "introduction",
+      "g": "Einleitung",
+      "d": "The opening of a book or speech that shows what it will be about.",
+      "s": "He writes a short ___ at the start of his book.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "introduction",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "introduction",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "introduction",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Einleitung",
+            "tier": "full"
+          },
+          {
+            "text": "die Einleitung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "agreement",
+        "recognition",
+        "rate"
+      ],
+      "hintDe": "Der erste Teil eines Buches, der sagt, worum es geht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "agreement",
+          "recognition",
+          "rate",
+          "fairness",
+          "oil"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u10.w.pollution",
+      "w": "pollution",
+      "g": "Verschmutzung",
+      "d": "Dirty land, rivers and sky that is bad for people, plants and animal life.",
+      "s": "___ of the environment is bad for trees and rivers.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Pollution",
+          "tier": "full"
+        },
+        {
+          "text": "pollution",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pollution",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pollution",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verschmutzung",
+            "tier": "full"
+          },
+          {
+            "text": "die Verschmutzung",
+            "tier": "full"
+          },
+          {
+            "text": "Umweltverschmutzung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "slavery",
+        "racism",
+        "ignorance"
+      ],
+      "hintDe": "Wenn Luft, Wasser und Boden schmutzig gemacht werden.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "slavery",
+          "racism",
+          "ignorance",
+          "harmony",
+          "oil"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}
