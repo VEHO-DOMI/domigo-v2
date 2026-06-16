@@ -13662,6 +13662,195 @@
       "reason": "reported-questions: -ing form in def (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "gone",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "went",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "ate",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "eaten",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "left",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "practised",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "however",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "already",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "read",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "guests",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "seats",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "cinema",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "arrived",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "finished",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "started",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "relationship",
+      "reason": "past-perfect-connectors: participle/irregular past in gloss-less distractor or carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "win",
+      "reason": "past-perfect-connectors: base verb in distractor / derived adj in def (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "unhealthy",
+      "reason": "past-perfect-connectors: base verb in distractor / derived adj in def (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u05",
+      "itemId": null,
+      "field": null,
+      "token": "natural",
+      "reason": "food unit: common adjective (antonym of artificial; harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

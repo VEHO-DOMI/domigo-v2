@@ -1,0 +1,525 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u05",
+  "round": 1,
+  "itemsHash": "85d993378c1a",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u05.w.habits",
+      "kind": "new-gloss",
+      "itemId": "g4u05.w.habits",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.w.nutritious",
+      "kind": "new-gloss",
+      "itemId": "g4u05.w.nutritious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.w.vegetarian",
+      "kind": "new-gloss",
+      "itemId": "g4u05.w.vegetarian",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.cp.001",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.cp.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.ec.001",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.ec.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.ec.003",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.ec.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.ec.004",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.ec.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.ec.005",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.ec.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.ec.007",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.ec.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.001",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.004",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.005",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.006",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.007",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.008",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.009",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.013",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.013",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.015",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.015",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.018",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.018",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.019",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.019",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.020",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.020",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.gf.021",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.021",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.mc.002",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.mc.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.mc.008",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.mc.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.mc.009",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.mc.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.mc.010",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.mc.010",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.mt.001",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.mt.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.tf.002",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.tf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.tr.002",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.tr.003",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u05.gi.past-perfect-connectors.tr.004",
+      "kind": "new-gloss",
+      "itemId": "g4u05.gi.past-perfect-connectors.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.accept",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.accept",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.afford",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.afford",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.afterwards",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.afterwards",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.artificial",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.artificial",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.ashamed",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.ashamed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.contain",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.contain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.cookery",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.cookery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.diet",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.diet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.dislike",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.dislike",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.eating-disorder",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.eating-disorder",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.even-though",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.even-though",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.fattening",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.fattening",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.feed",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.feed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.filling",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.filling",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.fresh",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.fresh",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.gain",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.gain",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.gym",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.gym",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.habits",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.habits",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.harmful",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.harmful",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.health",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.health",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.healthy",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.healthy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.hunger",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.hunger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.intake",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.intake",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.nutrition",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.nutrition",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.nutritious",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.nutritious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.overweight",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.overweight",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.regularly",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.regularly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.revolting",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.revolting",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.tasty",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.tasty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.thin",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.thin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.throw-up",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.throw-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.trust",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.trust",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.vegetarian",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.vegetarian",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.w.waste",
+      "kind": "translation-audit",
+      "itemId": "g4u05.w.waste",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.gi.past-perfect-connectors.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u05.gi.past-perfect-connectors.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.gi.past-perfect-connectors.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u05.gi.past-perfect-connectors.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.gi.past-perfect-connectors.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u05.gi.past-perfect-connectors.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u05.gi.past-perfect-connectors.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u05.gi.past-perfect-connectors.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u05.gi.past-perfect-connectors.cp.003#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g4u05.gi.past-perfect-connectors.cp.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u05.gi.past-perfect-connectors.gf.018#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.018",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u05.gi.past-perfect-connectors.gf.020#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g4u05.gi.past-perfect-connectors.gf.020",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Past perfect with just / after / before (revision): had + past participle marks the EARLIER of two past actions; after + past perfect, before + past simple, by the time, just; sequencing vs past simple; connector meanings (reason / contrast / purpose). 34 vocab + 57 grammar, full v1 parity (floor 40 → 57 items / 10 formats). 4 verify lenses: answers + translation + register all found 0 defects (every sequence puts the past perfect on the earlier action; all connector classifications correct; German natural; no jargon). Fixes: relabeled the connector group-sort (German category nouns Grund/Gegensatz/Absicht → taught 'why?'/'but'/'what for?'); reworded mc.011 'Vergangenheit' + mt.002 'Grundform' out of prompts; fixed gf.016/gf.021 2-blank pipe answers ('had | cooked'); reworded eating-disorder def off its headword token ('eat'); granted the past-participle / irregular-past load that lands in gloss-less distractor & group-member sentences (gone/went/eaten/ate/left/won/win/practised/however/already/etc.) + natural/unhealthy; disambiguated cp.002 sentence-initial Sie→Lisa. The 31 inline glosses (food-domain + participle forms) are correct; 38 translation audits accurate (diet→Ernährung not the false-friend Diät; gym→Turnhalle PE-sense). 3 defensible explainDe sentence-initial-Sie warns (=she/they). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 91,
+    "fullRows": 91,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
