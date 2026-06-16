@@ -14796,6 +14796,276 @@
       "reason": "g4-u10: figurative use (languages) in claim carrier (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "himself",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "herself",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "themselves",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "yourself",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "ourselves",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "itself",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "yourselves",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "each",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "other",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "by",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "hisself",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "theirselves",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "ourself",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "sheself",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "herselves",
+      "reason": "reflexive-pronouns: reflexive (allowlist-rejected) / each other / error non-word distractor",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "cup",
+      "reason": "reflexive-pronouns: common noun / past form in answer (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "taught",
+      "reason": "reflexive-pronouns: common noun / past form in answer (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "cat",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "only",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "already",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "bookshop",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "great",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "kids",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "bit",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "yet",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "says",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "smiled",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "twins",
+      "reason": "reflexive-pronouns: common word in embedded lang:de-prompt carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "loud",
+      "reason": "reflexive-pronouns: common word in answer (gate-untaught; lens gloss-unneeded was a false positive)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u11",
+      "itemId": null,
+      "field": null,
+      "token": "name",
+      "reason": "reflexive-pronouns: common word in answer (gate-untaught; lens gloss-unneeded was a false positive)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

@@ -1,0 +1,2282 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u11",
+  "briefBank": "143b60cf5aef",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u11.w.fiction",
+      "w": "Fiction",
+      "g": "Belletristik",
+      "d": "Writing that is not true, about people who never lived.",
+      "s": "In our library, the ___ books are stories that never really happened.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Fiction",
+          "tier": "full"
+        },
+        {
+          "text": "fiction",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Fiction",
+          "tier": "full"
+        },
+        {
+          "text": "fiction",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Fiction",
+            "tier": "full"
+          },
+          {
+            "text": "fiction",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Belletristik",
+            "tier": "full"
+          },
+          {
+            "text": "Fiktion",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Non-fiction",
+        "Poetry",
+        "biography"
+      ],
+      "hintDe": "Erfundene Geschichten, keine wahren.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Non-fiction",
+          "Poetry",
+          "biography",
+          "Reference",
+          "Classics"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.reference",
+      "w": "Reference",
+      "g": "Nachschlagewerk",
+      "d": "A book you read to find help, like a dictionary.",
+      "s": "A dictionary is a ___ book, one you read to find help.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Reference",
+          "tier": "full"
+        },
+        {
+          "text": "reference",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Reference",
+          "tier": "full"
+        },
+        {
+          "text": "reference",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Reference",
+            "tier": "full"
+          },
+          {
+            "text": "reference",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nachschlagewerk",
+            "tier": "full"
+          },
+          {
+            "text": "das Nachschlagewerk",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Poetry",
+        "Fiction",
+        "novel"
+      ],
+      "hintDe": "Hier schlägst du etwas nach, z. B. in einem Wörterbuch.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Poetry",
+          "Fiction",
+          "novel",
+          "Classics",
+          "comic"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.poetry",
+      "w": "Poetry",
+      "g": "Lyrik",
+      "d": "Writing that shows what you feel, like a poem.",
+      "s": "She writes ___ and she loves reading her poems to us.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Poetry",
+          "tier": "full"
+        },
+        {
+          "text": "poetry",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Poetry",
+          "tier": "full"
+        },
+        {
+          "text": "poetry",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Poetry",
+            "tier": "full"
+          },
+          {
+            "text": "poetry",
+            "tier": "full"
+          },
+          {
+            "text": "Lyrik",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lyrik",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Non-fiction",
+        "biography",
+        "dictionary"
+      ],
+      "hintDe": "Gedichte, die zeigen, was du fühlst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Non-fiction",
+          "biography",
+          "dictionary",
+          "Reference",
+          "novel"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.non-fiction",
+      "w": "Non-fiction",
+      "g": "Sachbücher",
+      "d": "Books that are true and not invented.",
+      "s": "Books that are true and not invented are called ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Non-fiction",
+          "tier": "full"
+        },
+        {
+          "text": "non-fiction",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Non-fiction",
+          "tier": "full"
+        },
+        {
+          "text": "non-fiction",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Non-fiction",
+            "tier": "full"
+          },
+          {
+            "text": "non-fiction",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sachbücher",
+            "tier": "full"
+          },
+          {
+            "text": "Sachbuch",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Fiction",
+        "Poetry",
+        "novel"
+      ],
+      "hintDe": "Wahre Bücher, nichts Erfundenes.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Fiction",
+          "Poetry",
+          "novel",
+          "Classics",
+          "anthology"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.classics",
+      "w": "Classics",
+      "g": "Klassiker",
+      "d": "Famous old books that people have loved for many years.",
+      "s": "Famous old books that people still love to read are called ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "Classics",
+          "tier": "full"
+        },
+        {
+          "text": "classics",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Classics",
+          "tier": "full"
+        },
+        {
+          "text": "classics",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Classics",
+            "tier": "full"
+          },
+          {
+            "text": "classics",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Klassiker",
+            "tier": "full"
+          },
+          {
+            "text": "die Klassiker",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "Reference",
+        "comic",
+        "screenplay"
+      ],
+      "hintDe": "Berühmte alte Bücher, die man seit vielen Jahren liebt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "Reference",
+          "comic",
+          "screenplay",
+          "Poetry",
+          "dictionary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.comic",
+      "w": "comic",
+      "g": "Comic",
+      "d": "A funny book with lots of pictures and a short story.",
+      "s": "He reads a new ___ every week because he loves the funny pictures.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "comic",
+          "tier": "full"
+        },
+        {
+          "text": "comics",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "comic",
+          "tier": "full"
+        },
+        {
+          "text": "comics",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "comic",
+            "tier": "full"
+          },
+          {
+            "text": "comic book",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Comic",
+            "tier": "full"
+          },
+          {
+            "text": "der Comic",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dictionary",
+        "biography",
+        "screenplay"
+      ],
+      "hintDe": "Lustiges Buch mit vielen Bildern.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "dictionary",
+          "biography",
+          "screenplay",
+          "anthology",
+          "play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.screenplay",
+      "w": "screenplay",
+      "g": "Drehbuch",
+      "d": "The text you use to make a cinema story.",
+      "s": "Before they make the cinema story, they write the ___ first.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "screenplay",
+          "tier": "full"
+        },
+        {
+          "text": "screenplays",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "screenplay",
+          "tier": "full"
+        },
+        {
+          "text": "screenplays",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "screenplay",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Drehbuch",
+            "tier": "full"
+          },
+          {
+            "text": "das Drehbuch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dictionary",
+        "comic",
+        "anthology"
+      ],
+      "hintDe": "Der Text, nach dem ein Film gedreht wird.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "dictionary",
+          "comic",
+          "anthology",
+          "biography",
+          "play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.play",
+      "w": "play",
+      "g": "Theaterstück",
+      "d": "A story you put on for people on a stage.",
+      "s": "We are putting on a ___ at school, and I am on the stage.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "play",
+          "tier": "full"
+        },
+        {
+          "text": "plays",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "play",
+          "tier": "full"
+        },
+        {
+          "text": "plays",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "play",
+            "tier": "full"
+          },
+          {
+            "text": "stage play",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Theaterstück",
+            "tier": "full"
+          },
+          {
+            "text": "das Theaterstück",
+            "tier": "full"
+          },
+          {
+            "text": "Stück",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "screenplay",
+        "novel",
+        "dictionary"
+      ],
+      "hintDe": "Ein Stück, das auf einer Bühne im Theater gespielt wird.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "screenplay",
+          "novel",
+          "dictionary",
+          "anthology",
+          "comic"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.anthology",
+      "w": "anthology",
+      "g": "Anthologie",
+      "d": "Many short stories collected in one book.",
+      "s": "Our teacher read us an ___ with many short stories in one book.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "anthology",
+          "tier": "full"
+        },
+        {
+          "text": "anthologies",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "anthology",
+          "tier": "full"
+        },
+        {
+          "text": "anthologies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "anthology",
+            "tier": "full"
+          },
+          {
+            "text": "collection",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Anthologie",
+            "tier": "full"
+          },
+          {
+            "text": "Sammlung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dictionary",
+        "biography",
+        "screenplay"
+      ],
+      "hintDe": "Eine Sammlung vieler kurzer Geschichten in einem Buch.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "dictionary",
+          "biography",
+          "screenplay",
+          "comic",
+          "play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.dictionary",
+      "w": "dictionary",
+      "g": "Wörterbuch",
+      "d": "A book where you look up a word you do not know.",
+      "s": "You look up the alphabet in a ___ when you read a book.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "dictionary",
+          "tier": "full"
+        },
+        {
+          "text": "dictionaries",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dictionary",
+          "tier": "full"
+        },
+        {
+          "text": "dictionaries",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dictionary",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wörterbuch",
+            "tier": "full"
+          },
+          {
+            "text": "das Wörterbuch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "word",
+          "de": "Wort",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "anthology",
+        "biography",
+        "comic"
+      ],
+      "hintDe": "Hier schlägst du nach, wie ein Wort heißt oder geschrieben wird.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "anthology",
+          "biography",
+          "comic",
+          "novel",
+          "play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.biography",
+      "w": "biography",
+      "g": "Biografie",
+      "d": "The true life story of a famous man or woman.",
+      "s": "I am reading a ___ of Nelson, and his life story is amazing.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "biography",
+          "tier": "full"
+        },
+        {
+          "text": "biographies",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "biography",
+          "tier": "full"
+        },
+        {
+          "text": "biographies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "biography",
+            "tier": "full"
+          },
+          {
+            "text": "life story",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Biografie",
+            "tier": "full"
+          },
+          {
+            "text": "die Biografie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "novel",
+        "anthology",
+        "screenplay"
+      ],
+      "hintDe": "Die wahre Lebensgeschichte einer berühmten Person.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "novel",
+          "anthology",
+          "screenplay",
+          "comic",
+          "dictionary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.novel",
+      "w": "novel",
+      "g": "Roman",
+      "d": "A long invented story you can read in a book.",
+      "s": "Her favourite ___ is a long invented story she has read three times.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "novel",
+          "tier": "full"
+        },
+        {
+          "text": "novels",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "novel",
+          "tier": "full"
+        },
+        {
+          "text": "novels",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "novel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Roman",
+            "tier": "full"
+          },
+          {
+            "text": "der Roman",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "biography",
+        "anthology",
+        "dictionary"
+      ],
+      "hintDe": "Eine lange erfundene Geschichte in einem Buch.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "biography",
+          "anthology",
+          "dictionary",
+          "screenplay",
+          "comic"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.short-story",
+      "w": "short story",
+      "g": "Kurzgeschichte",
+      "d": "A small work of fiction, much smaller than a novel.",
+      "s": "We had to write a ___ for homework, and mine was about a boy who finds a magic stone.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "short story",
+          "tier": "full"
+        },
+        {
+          "text": "short stories",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "short story",
+          "tier": "full"
+        },
+        {
+          "text": "short stories",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "short story",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kurzgeschichte",
+            "tier": "full"
+          },
+          {
+            "text": "die Kurzgeschichte",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "novel",
+        "biography",
+        "screenplay"
+      ],
+      "hintDe": "Eine kurze erfundene Geschichte, kürzer als ein Roman.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "novel",
+          "biography",
+          "screenplay",
+          "anthology",
+          "play"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.book-review",
+      "w": "book review",
+      "g": "Buchrezension",
+      "d": "What you write to show if a story is good or not.",
+      "s": "Brenda writes a ___ to show if a book is good or not.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "book review",
+          "tier": "full"
+        },
+        {
+          "text": "book reviews",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "book review",
+          "tier": "full"
+        },
+        {
+          "text": "book reviews",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "book review",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Buchrezension",
+            "tier": "full"
+          },
+          {
+            "text": "die Buchrezension",
+            "tier": "full"
+          },
+          {
+            "text": "Buchkritik",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "blurb",
+        "biography",
+        "dictionary"
+      ],
+      "hintDe": "Was du über ein Buch schreibst, um zu zeigen, ob es gut ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "blurb",
+          "biography",
+          "dictionary",
+          "anthology",
+          "novel"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.fence",
+      "w": "fence",
+      "g": "Zaun",
+      "d": "A long wall between two gardens that keeps a dog in.",
+      "s": "They put up a high ___ between the two gardens.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fence",
+          "tier": "full"
+        },
+        {
+          "text": "fences",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fence",
+          "tier": "full"
+        },
+        {
+          "text": "fences",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fence",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zaun",
+            "tier": "full"
+          },
+          {
+            "text": "der Zaun",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "blurb",
+        "trilogy",
+        "millionaire"
+      ],
+      "hintDe": "Eine Art Mauer, die zwei Gärten trennt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "blurb",
+          "trilogy",
+          "millionaire",
+          "fairy",
+          "kilt"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.innocent",
+      "w": "innocent",
+      "g": "unschuldig",
+      "d": "Not bad at all; you have done nothing bad.",
+      "s": "The man is completely ___ and has done nothing bad at all.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "innocent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "innocent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "innocent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unschuldig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wee",
+        "obey",
+        "prefer"
+      ],
+      "hintDe": "Hat nichts Böses getan, trägt keine Schuld.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "wee",
+          "obey",
+          "prefer",
+          "scratch",
+          "clear up"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.disappointment",
+      "w": "disappointment",
+      "g": "Enttäuschung",
+      "d": "A sad feeling when a good thing does not happen.",
+      "s": "Not making the school play was a big ___ for him.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "disappointment",
+          "tier": "full"
+        },
+        {
+          "text": "disappointments",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "disappointment",
+          "tier": "full"
+        },
+        {
+          "text": "disappointments",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "disappointment",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Enttäuschung",
+            "tier": "full"
+          },
+          {
+            "text": "die Enttäuschung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "blurb",
+        "trilogy",
+        "millionaire"
+      ],
+      "hintDe": "Das traurige Gefühl, wenn etwas Gutes nicht klappt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "blurb",
+          "trilogy",
+          "millionaire",
+          "fairy",
+          "fence"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.prefer",
+      "w": "prefer",
+      "g": "bevorzugen",
+      "d": "To like one thing best of all.",
+      "s": "Do you ___ reading at home or playing outside?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "prefer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "prefer",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "prefer",
+            "tier": "full"
+          },
+          {
+            "text": "like better",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bevorzugen",
+            "tier": "full"
+          },
+          {
+            "text": "lieber mögen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "obey",
+        "scratch",
+        "clear up"
+      ],
+      "hintDe": "Etwas am liebsten mögen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "obey",
+          "scratch",
+          "clear up",
+          "answer the door",
+          "sort oneself out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.blurb",
+      "w": "blurb",
+      "g": "Klappentext",
+      "d": "A short text on the back cover about a book.",
+      "s": "Before I buy a book, I always read the ___ on the back cover first.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "blurb",
+          "tier": "full"
+        },
+        {
+          "text": "blurbs",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "blurb",
+          "tier": "full"
+        },
+        {
+          "text": "blurbs",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "blurb",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Klappentext",
+            "tier": "full"
+          },
+          {
+            "text": "der Klappentext",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "book review",
+        "trilogy",
+        "biography"
+      ],
+      "hintDe": "Der kurze Text auf der Buchrückseite.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "book review",
+          "trilogy",
+          "biography",
+          "anthology",
+          "dictionary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.millionaire",
+      "w": "millionaire",
+      "g": "Millionär/in",
+      "d": "A very rich man or woman with more money than they need.",
+      "s": "He opens a small shop and becomes a very rich ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "millionaire",
+          "tier": "full"
+        },
+        {
+          "text": "millionaires",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "millionaire",
+          "tier": "full"
+        },
+        {
+          "text": "millionaires",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "millionaire",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Millionär/in",
+            "tier": "full"
+          },
+          {
+            "text": "Millionär",
+            "tier": "full"
+          },
+          {
+            "text": "Millionärin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "fairy",
+        "trilogy",
+        "blurb"
+      ],
+      "hintDe": "Sehr reicher Mensch mit ganz viel Geld.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "fairy",
+          "trilogy",
+          "blurb",
+          "fence",
+          "disappointment"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.fairy",
+      "w": "fairy",
+      "g": "Fee",
+      "d": "A tiny magic girl with wings in old stories.",
+      "s": "In the story, a good ___ with wings gives the children magic help.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fairy",
+          "tier": "full"
+        },
+        {
+          "text": "fairies",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fairy",
+          "tier": "full"
+        },
+        {
+          "text": "fairies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fairy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fee",
+            "tier": "full"
+          },
+          {
+            "text": "die Fee",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "millionaire",
+        "trilogy",
+        "blurb"
+      ],
+      "hintDe": "Winziges Zauberwesen mit Flügeln aus alten Geschichten.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "millionaire",
+          "trilogy",
+          "blurb",
+          "fence",
+          "kilt"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.historical-novel",
+      "w": "historical novel",
+      "g": "historischer Roman",
+      "d": "An invented story about times long ago.",
+      "s": "She loves the past, so a ___ about times long ago is the perfect present.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "historical novel",
+          "tier": "full"
+        },
+        {
+          "text": "historical novels",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "historical novel",
+          "tier": "full"
+        },
+        {
+          "text": "historical novels",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "historical novel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "historischer Roman",
+            "tier": "full"
+          },
+          {
+            "text": "der historische Roman",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "biography",
+        "anthology",
+        "screenplay"
+      ],
+      "hintDe": "Eine erfundene Geschichte, die in alter Zeit spielt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "biography",
+          "anthology",
+          "screenplay",
+          "dictionary",
+          "comic"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.reference-2",
+      "w": "reference",
+      "g": "Hinweis",
+      "d": "A note that points to a song or a book.",
+      "s": "There are a lot of ___ to famous songs in this book.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "references",
+          "tier": "full"
+        },
+        {
+          "text": "reference",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reference",
+          "tier": "full"
+        },
+        {
+          "text": "references",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reference",
+            "tier": "full"
+          },
+          {
+            "text": "references",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hinweis",
+            "tier": "full"
+          },
+          {
+            "text": "Bezug",
+            "tier": "full"
+          },
+          {
+            "text": "Anspielung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "trilogy",
+        "blurb",
+        "biography"
+      ],
+      "hintDe": "Ein Hinweis, der auf etwas anderes zeigt, z. B. auf ein Lied.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "trilogy",
+          "blurb",
+          "biography",
+          "anthology",
+          "novel"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.trilogy",
+      "w": "trilogy",
+      "g": "Trilogie",
+      "d": "Three books that go with one big story.",
+      "s": "Three books that tell one big story make a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "trilogy",
+          "tier": "full"
+        },
+        {
+          "text": "trilogies",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "trilogy",
+          "tier": "full"
+        },
+        {
+          "text": "trilogies",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "trilogy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Trilogie",
+            "tier": "full"
+          },
+          {
+            "text": "die Trilogie",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "anthology",
+        "biography",
+        "novel"
+      ],
+      "hintDe": "Drei Bücher, die zusammen eine große Geschichte erzählen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "anthology",
+          "biography",
+          "novel",
+          "screenplay",
+          "dictionary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.answer-the-door",
+      "w": "answer the door",
+      "g": "an die Tür gehen",
+      "d": "To go and open up when a visitor knocks.",
+      "s": "There is a knock at the door, so I go to ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "answer the door",
+          "tier": "full"
+        },
+        {
+          "text": "answer it",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "answer the door",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "answer the door",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "an die Tür gehen",
+            "tier": "full"
+          },
+          {
+            "text": "die Tür aufmachen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden hereinbitten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "clear up",
+        "sort oneself out",
+        "obey"
+      ],
+      "hintDe": "Hingehen und für einen Besuch die Tür aufmachen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "clear up",
+          "sort oneself out",
+          "obey",
+          "scratch",
+          "prefer"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.clear-up",
+      "w": "clear up",
+      "g": "aufräumen",
+      "d": "To make a place clean and put your mess away.",
+      "s": "My room is a mess, so I have to ___ before dinner.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "clear up",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "clear up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "clear up",
+            "tier": "full"
+          },
+          {
+            "text": "tidy up",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufräumen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "answer the door",
+        "sort oneself out",
+        "obey"
+      ],
+      "hintDe": "Einen Ort sauber machen und Sachen wegräumen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "answer the door",
+          "sort oneself out",
+          "obey",
+          "scratch",
+          "prefer"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.goggles",
+      "w": "goggles",
+      "g": "Schwimmbrille",
+      "d": "Glasses that fit close to your eyes so they do not hurt.",
+      "s": "I put on my ___ before I jump in, so my eyes do not hurt.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "goggles",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "goggles",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "goggles",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schwimmbrille",
+            "tier": "full"
+          },
+          {
+            "text": "Schutzbrille",
+            "tier": "full"
+          },
+          {
+            "text": "die Schwimmbrille",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "kilt",
+        "fence",
+        "blurb"
+      ],
+      "hintDe": "Eine Brille, die eng an den Augen sitzt und sie schützt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "kilt",
+          "fence",
+          "blurb",
+          "trilogy",
+          "fairy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.kilt",
+      "w": "kilt",
+      "g": "Kilt",
+      "d": "A Scottish skirt that men wear.",
+      "s": "When we are in Edinburgh, a man in a ___ plays music for us.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "kilt",
+          "tier": "full"
+        },
+        {
+          "text": "kilts",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kilt",
+          "tier": "full"
+        },
+        {
+          "text": "kilts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kilt",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kilt",
+            "tier": "full"
+          },
+          {
+            "text": "Schottenrock",
+            "tier": "full"
+          },
+          {
+            "text": "der Kilt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "goggles",
+        "fence",
+        "fairy"
+      ],
+      "hintDe": "Ein schottischer Rock, den Männer tragen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "goggles",
+          "fence",
+          "fairy",
+          "blurb",
+          "trilogy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.sort-oneself-out",
+      "w": "sort oneself out",
+      "g": "sich ordnen",
+      "d": "To organise your life and your home again.",
+      "s": "My aunt spends six months in India to ___.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "sort herself out",
+          "tier": "full"
+        },
+        {
+          "text": "sort oneself out",
+          "tier": "full"
+        },
+        {
+          "text": "sort yourself out",
+          "tier": "partial"
+        },
+        {
+          "text": "sort himself out",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sort oneself out",
+          "tier": "full"
+        },
+        {
+          "text": "sort herself out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sort oneself out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich ordnen",
+            "tier": "full"
+          },
+          {
+            "text": "zu sich selbst finden",
+            "tier": "full"
+          },
+          {
+            "text": "sich sortieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "clear up",
+        "answer the door",
+        "obey"
+      ],
+      "hintDe": "Dein Leben und dein Zuhause wieder ordnen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "clear up",
+          "answer the door",
+          "obey",
+          "scratch",
+          "prefer"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.spot-of-bother",
+      "w": "spot of bother",
+      "g": "Ärger",
+      "d": "A small mess that you are in for a short time.",
+      "s": "I am in a ___ because I cannot find my key and nobody is home.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "spot of bother",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "spot of bother",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "spot of bother",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ärger",
+            "tier": "full"
+          },
+          {
+            "text": "Problem",
+            "tier": "full"
+          },
+          {
+            "text": "Schwierigkeiten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "kilt",
+        "goggles",
+        "fence"
+      ],
+      "hintDe": "Eine kleine Schwierigkeit, in der du kurz steckst.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "kilt",
+          "goggles",
+          "fence",
+          "blurb",
+          "trilogy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.wee",
+      "w": "wee",
+      "g": "klein",
+      "d": "Very small; tiny (used in Scotland).",
+      "s": "He is Scottish, so he calls a small thing a ___ thing.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wee",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wee",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wee",
+            "tier": "full"
+          },
+          {
+            "text": "tiny",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "klein",
+            "tier": "full"
+          },
+          {
+            "text": "winzig",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "innocent",
+        "obey",
+        "prefer"
+      ],
+      "hintDe": "Ganz klein (vor allem in Schottland gebraucht).",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "innocent",
+          "obey",
+          "prefer",
+          "scratch",
+          "clear up"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.obey",
+      "w": "obey",
+      "g": "befolgen",
+      "d": "To do what you are asked and keep the rules.",
+      "s": "His dog can ___ many commands now.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "obey",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "obey",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "obey",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "befolgen",
+            "tier": "full"
+          },
+          {
+            "text": "gehorchen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "prefer",
+        "scratch",
+        "clear up"
+      ],
+      "hintDe": "Tun, was man dir sagt, und Regeln einhalten.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "prefer",
+          "scratch",
+          "clear up",
+          "answer the door",
+          "sort oneself out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u11.w.scratch",
+      "w": "scratch",
+      "g": "kratzen",
+      "d": "To move your fingers over your skin again and again.",
+      "s": "When my skin is dry, I want to ___ it with my fingers.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "scratch",
+          "tier": "full"
+        },
+        {
+          "text": "scratched",
+          "tier": "partial"
+        },
+        {
+          "text": "scratching",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "scratch",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "scratch",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kratzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "obey",
+        "prefer",
+        "clear up"
+      ],
+      "hintDe": "Mit den Fingern über die Haut reiben, wenn es juckt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "obey",
+          "prefer",
+          "clear up",
+          "answer the door",
+          "sort oneself out"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

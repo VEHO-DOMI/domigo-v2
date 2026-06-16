@@ -1,0 +1,350 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u11",
+  "round": 1,
+  "itemsHash": "06166970f5b8",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u11.w.dictionary",
+      "kind": "new-gloss",
+      "itemId": "g4u11.w.dictionary",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u11.gi.reflexive-pronouns.ec.006",
+      "kind": "new-gloss",
+      "itemId": "g4u11.gi.reflexive-pronouns.ec.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u11.gi.reflexive-pronouns.ec.007",
+      "kind": "new-gloss",
+      "itemId": "g4u11.gi.reflexive-pronouns.ec.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u11.gi.reflexive-pronouns.gs.003",
+      "kind": "new-gloss",
+      "itemId": "g4u11.gi.reflexive-pronouns.gs.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u11.gi.reflexive-pronouns.mc.005",
+      "kind": "new-gloss",
+      "itemId": "g4u11.gi.reflexive-pronouns.mc.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u11.gi.reflexive-pronouns.sb.003",
+      "kind": "new-gloss",
+      "itemId": "g4u11.gi.reflexive-pronouns.sb.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u11.gi.reflexive-pronouns.tf.004",
+      "kind": "new-gloss",
+      "itemId": "g4u11.gi.reflexive-pronouns.tf.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u11.gi.reflexive-pronouns.tr.003",
+      "kind": "new-gloss",
+      "itemId": "g4u11.gi.reflexive-pronouns.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u11.gi.reflexive-pronouns.tr.004",
+      "kind": "new-gloss",
+      "itemId": "g4u11.gi.reflexive-pronouns.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.answer-the-door",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.answer-the-door",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.anthology",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.anthology",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.biography",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.biography",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.blurb",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.blurb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.book-review",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.book-review",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.classics",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.classics",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.clear-up",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.clear-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.comic",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.comic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.dictionary",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.dictionary",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.disappointment",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.disappointment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.fairy",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.fairy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.fence",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.fence",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.fiction",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.fiction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.goggles",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.goggles",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.historical-novel",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.historical-novel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.innocent",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.innocent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.kilt",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.kilt",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.millionaire",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.millionaire",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.non-fiction",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.non-fiction",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.novel",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.novel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.obey",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.obey",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.play",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.play",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.poetry",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.poetry",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.prefer",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.prefer",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.reference",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.reference",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.reference-2",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.reference-2",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.scratch",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.scratch",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.screenplay",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.screenplay",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.short-story",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.short-story",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.sort-oneself-out",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.sort-oneself-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.spot-of-bother",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.spot-of-bother",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.trilogy",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.trilogy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.w.wee",
+      "kind": "translation-audit",
+      "itemId": "g4u11.w.wee",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.gi.reflexive-pronouns.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u11.gi.reflexive-pronouns.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.gi.reflexive-pronouns.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u11.gi.reflexive-pronouns.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.gi.reflexive-pronouns.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u11.gi.reflexive-pronouns.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.gi.reflexive-pronouns.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u11.gi.reflexive-pronouns.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u11.gi.reflexive-pronouns.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u11.gi.reflexive-pronouns.tr.005",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Reflexive pronouns (myself / yourself / himself / herself / itself / ourselves / yourselves / themselves): used when the subject and object are the same ('I hurt myself', 'she taught herself'); emphatic ('I did it myself', 'the author himself'); by + reflexive = alone; and the reciprocal each other / one another (which is NOT reflexive — 'they looked at each other'). 33 vocab + 64 grammar, full v1 parity (floor 40 → 64). 4 verify lenses clean: answers + translation + register found 0 defects (every keyed reflexive agrees with its subject — incl. the 'She hurt himself→herself' trap; reciprocal-vs-reflexive correctly distinguished in the group-sort; the no-reflexive-in-English verbs feel/concentrate/relax/remember correctly omit it). Fixes during the loop: granted all 7 allowlist-rejected reflexives (himself/herself/themselves/yourself/ourselves/itself/yourselves; myself rides g2-u03) + each/other/by + the deliberate error non-words (hisself/theirselves/ourself/sheself/herselves, used as wrong-form distractors/EC targets) + common carrier words the level-gloss lens surfaced inside embedded lang:de-prompt carriers (cat/only/already/bookshop/great/kids/bit/yet/says/smiled/twins/cup/taught/loud/name — the last two were a lens 'gloss-unneeded' false positive; the gate actually needs them, so granted); relabeled the reflexive-vs-reciprocal group-sort off German ('sich selbst' / 'gegenseitig' parentheticals → the bare example sentences); poetry g→'Lyrik' (sidesteps the 'Poesie' oe-digraph V-14 umlaut false-positive — both are correct German). The 1 vocab gloss (dictionary→word) is correct. Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 97,
+    "fullRows": 97,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

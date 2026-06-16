@@ -1,0 +1,2428 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g4-u11",
+  "briefBank": "143b60cf5aef",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Be careful with the knife! Don't cut ___!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "yourself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wort für \"dich selbst\" (eine Person, du).",
+      "hintEn": null,
+      "explainDe": "\"You\" als Subjekt nimmt \"yourself\", wenn die Person sich selbst meint.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-gf-007",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "The cat washed ___ after dinner.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "itself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es geht um ein Tier (\"the cat\") – welches Wort für \"sich selbst\" passt?",
+      "hintEn": null,
+      "explainDe": "Für Dinge und Tiere (\"it\") verwendest du \"itself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-gf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I hurt ___ when I fell.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "myself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wort für \"mich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"I\" als Subjekt nimmt \"myself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She looked at ___ in the mirror.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "herself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wort für \"sich selbst\" bei \"she\".",
+      "hintEn": null,
+      "explainDe": "\"She\" als Subjekt nimmt \"herself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-gf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He looked at ___ in the mirror.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "himself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wort für \"sich selbst\" bei \"he\".",
+      "hintEn": null,
+      "explainDe": "\"He\" als Subjekt nimmt \"himself\". Pass auf: nicht \"hisself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-gf-009",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "My little brother is only three, but he can already dress ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "himself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wer zieht sich an? \"He\" – also das Wort für \"sich selbst\" bei \"he\".",
+      "hintEn": null,
+      "explainDe": "Subjekt und Objekt sind dieselbe Person (\"he\"), darum \"himself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-gf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The children cooked dinner all by ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "themselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"By\" + das Wort für \"sich selbst\" bedeutet \"allein, ohne Hilfe\". Es geht um \"the children\" (they).",
+      "hintEn": null,
+      "explainDe": "\"They\" nimmt \"themselves\". \"by themselves\" = ganz allein.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-gf-008",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Would you call ___ a reader, Lucas?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "yourself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du sprichst eine Person (Lucas) an: das Wort für \"dich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"You\" (eine Person) nimmt \"yourself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-5",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We suddenly found ___ in front of a nice bookshop.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ourselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wort für \"uns selbst\" bei \"we\".",
+      "hintEn": null,
+      "explainDe": "\"We\" nimmt \"ourselves\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-5",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "That's a great book review. Did you write it ___? — Of course, I always write the reviews ___.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "yourself | myself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erste Lücke: du sprichst jemanden an (you). Zweite Lücke: die Person spricht über sich (I).",
+      "hintEn": null,
+      "explainDe": "\"You\" → \"yourself\", \"I\" → \"myself\". Hier betont es: ganz allein, ohne Hilfe.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-5",
+      "note": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I hope the kids enjoy ___ at camp.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "themselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"Enjoy\" + das Wort für \"sich selbst\" heißt \"sich vergnügen\". Es geht um \"the kids\" (they).",
+      "hintEn": null,
+      "explainDe": "\"The kids\" = they → \"themselves\". \"enjoy themselves\" = Spaß haben.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-5",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Let's make ___ a nice cup of tea and read for a bit.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ourselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"Let's\" = let us, also \"we\" – das Wort für \"uns selbst\".",
+      "hintEn": null,
+      "explainDe": "\"Let's\" steht für \"we\", darum \"ourselves\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-6",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I haven't read the novel ___ yet, but Adrian says it's good.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "myself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zur Betonung: \"ich selbst\" habe es noch nicht gelesen.",
+      "hintEn": null,
+      "explainDe": "\"I\" → \"myself\". Hier betont es \"selbst, persönlich\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-5",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "You two read a good book and enjoy ___!",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "yourselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du sprichst ZWEI Personen an (\"you two\") – das Wort für \"euch selbst\".",
+      "hintEn": null,
+      "explainDe": "Mehrere Personen mit \"you\" → \"yourselves\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-8",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She designs all the covers for her books ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "herself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zur Betonung: \"sie selbst\" macht es. Subjekt ist \"she\".",
+      "hintEn": null,
+      "explainDe": "\"She\" → \"herself\". Es betont: ganz allein, ohne Hilfe.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-6",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She burnt ___ while cooking dinner.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "herself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "her",
+        "himself",
+        "themselves"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt ist \"she\" – welches Wort für \"sich selbst\" passt dazu?",
+      "hintEn": null,
+      "explainDe": "\"She\" → \"herself\". \"her\" wäre eine andere Person, \"himself\" passt zu \"he\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "her",
+          "himself",
+          "themselves",
+          "herself",
+          "she",
+          "hers"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-mc-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "I taught ___ to play the guitar.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "myself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "me",
+        "my",
+        "himself"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt ist \"I\" – das Wort für \"mich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"I\" → \"myself\". \"me\" und \"my\" sind keine Reflexivformen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "me",
+          "my",
+          "himself",
+          "myself",
+          "I",
+          "yourself"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-gf-010",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Choose the correct word: 'She painted the picture all by ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "herself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "her",
+        "itself",
+        "themselves"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"By\" + das Wort für \"sich selbst\" bei \"she\".",
+      "hintEn": null,
+      "explainDe": "\"By herself\" = ganz allein. Subjekt \"she\" → \"herself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "her",
+          "itself",
+          "themselves",
+          "herself",
+          "hers",
+          "she"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-mc-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Which English sentence is correct?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The children enjoyed the story.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The children enjoyed themselves the story.",
+        "The children enjoyed them the story.",
+        "The children enjoyed itself the story."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach \"enjoy\" mit einer Sache (\"the story\") steht KEIN Wort für \"sich selbst\".",
+      "hintEn": null,
+      "explainDe": "Auf Englisch: \"enjoy the story\". \"enjoy yourself\" geht nur ohne Objekt danach.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "The children enjoyed themselves the story.",
+          "The children enjoyed them the story.",
+          "The children enjoyed itself the story.",
+          "The children enjoyed the story.",
+          "The children enjoyed himself the story."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-mc-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Which English sentence uses the word for \"sich selbst\" correctly?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He hurt himself while playing football.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He hurt hisself while playing football.",
+        "She washed himself in the morning.",
+        "We cooked ourself dinner."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Achte darauf, dass das Wort zum Subjekt passt und richtig geschrieben ist.",
+      "hintEn": null,
+      "explainDe": "\"He\" → \"himself\" (nicht \"hisself\"). \"She\" bräuchte \"herself\", \"we\" bräuchte \"ourselves\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "football",
+          "de": "Fußball",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "He hurt hisself while playing football.",
+          "She washed himself in the morning.",
+          "We cooked ourself dinner.",
+          "He hurt himself while playing football.",
+          "They dressed theirselves for school."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-mc-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Which English sentence does NOT need a word for \"sich selbst\"?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I feel great today!",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She hurt herself in the garden.",
+        "We enjoyed ourselves at the beach.",
+        "He cut himself with the knife."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Manche Verben (z. B. \"feel\") brauchen im Englischen KEIN Wort für \"sich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"I feel great\" – auf Englisch ohne Reflexivwort. Die anderen Sätze brauchen eines.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She hurt herself in the garden.",
+          "We enjoyed ourselves at the beach.",
+          "He cut himself with the knife.",
+          "I feel great today!",
+          "They looked after themselves."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-mc-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Choose the correct English sentence with \"by + sich selbst\":",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She prefers to travel by herself.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She prefers to travel by her.",
+        "She prefers to travel by sheself.",
+        "She prefers to travel by herselves."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"By\" + das richtige Wort für \"sich selbst\" bei \"she\".",
+      "hintEn": null,
+      "explainDe": "\"by herself\" = allein. \"sheself\" und \"herselves\" gibt es nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She prefers to travel by her.",
+          "She prefers to travel by sheself.",
+          "She prefers to travel by herselves.",
+          "She prefers to travel by herself.",
+          "She prefers to travel by themselves."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-mc-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Which English sentence is correct? (one artist, talking about her book covers)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She painted every picture herself.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She painted every picture themselves.",
+        "She painted every picture by she.",
+        "She painted every picture hisself."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Person (she) → welches betonende Wort für \"selbst\" passt?",
+      "hintEn": null,
+      "explainDe": "\"She\" → \"herself\". \"themselves\" wäre Mehrzahl, die anderen Formen gibt es nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She painted every picture themselves.",
+          "She painted every picture by she.",
+          "She painted every picture hisself.",
+          "She painted every picture herself.",
+          "She painted every picture itself."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The two friends looked at ___ and smiled.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "each other",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "themselves",
+        "theirselves",
+        "itself"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Personen schauen sich GEGENSEITIG an – nicht jeder sich selbst.",
+      "hintEn": null,
+      "explainDe": "\"each other\" = gegenseitig (A → B und B → A). \"themselves\" hieße: jeder sich selbst.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "themselves",
+          "theirselves",
+          "itself",
+          "each other",
+          "ourselves"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He hurt hisself when he fell.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He hurt himself when he fell.",
+          "tier": "full"
+        },
+        {
+          "text": "himself",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"He\" braucht die richtige Form für \"sich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"hisself\" gibt es nicht – richtig ist \"himself\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-ec-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "The children dressed theirselves for school.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The children dressed themselves for school.",
+          "tier": "full"
+        },
+        {
+          "text": "themselves",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"The children\" = they – welche Form für \"sich selbst\"?",
+      "hintEn": null,
+      "explainDe": "\"theirselves\" gibt es nicht – richtig ist \"themselves\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-ec-006",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "We really enjoyed us at the beach yesterday.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We really enjoyed ourselves at the beach yesterday.",
+          "tier": "full"
+        },
+        {
+          "text": "ourselves",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"enjoy\" braucht hier das Wort für \"uns selbst\", nicht \"us\".",
+      "hintEn": null,
+      "explainDe": "\"enjoy ourselves\" = Spaß haben. \"us\" ist hier falsch.",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-ec-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "The children enjoyed themselves the new library.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The children enjoyed the new library.",
+          "tier": "full"
+        },
+        {
+          "text": "The children enjoyed the new library",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wenn ein Objekt folgt (\"the new library\"), darf KEIN Wort für \"sich selbst\" dabei sein.",
+      "hintEn": null,
+      "explainDe": "Auf Englisch: \"enjoyed the library\" – ohne \"themselves\", weil ein Objekt folgt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-ec-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She hurt himself when she fell.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She hurt herself when she fell.",
+          "tier": "full"
+        },
+        {
+          "text": "herself",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wort für \"sich selbst\" muss zum Subjekt \"she\" passen.",
+      "hintEn": null,
+      "explainDe": "Subjekt \"she\" → \"herself\", nicht \"himself\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I can't remember myself where I put my keys.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I can't remember where I put my keys.",
+          "tier": "full"
+        },
+        {
+          "text": "I cannot remember where I put my keys.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"remember\" braucht im Englischen KEIN Wort für \"sich selbst\".",
+      "hintEn": null,
+      "explainDe": "Auf Deutsch \"sich erinnern\", aber im Englischen \"remember\" ohne Reflexivwort.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "remember",
+          "de": "sich erinnern",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-ec-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "I can't concentrate myself when there's loud music.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I can't concentrate when there's loud music.",
+          "tier": "full"
+        },
+        {
+          "text": "I cannot concentrate when there's loud music.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"concentrate\" braucht im Englischen KEIN Wort für \"sich selbst\".",
+      "hintEn": null,
+      "explainDe": "Auf Deutsch \"sich konzentrieren\", aber im Englischen nur \"concentrate\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "concentrate",
+          "de": "sich konzentrieren",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-ec-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Dein Freund fragt, ob dir jemand beim Malen geholfen hat. Antworte: 'No, I painted this picture all by ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "myself",
+          "tier": "full"
+        },
+        {
+          "text": "No, I painted this picture all by myself.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"by\" + das Wort für \"mich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"I\" → \"myself\". \"all by myself\" = ganz allein.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-tf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Deine Eltern waren gestern Abend nicht da. Erzähl ihnen: 'Don't worry — I cooked dinner ___!'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "myself",
+          "tier": "full"
+        },
+        {
+          "text": "Don't worry — I cooked dinner myself!",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zur Betonung: \"ich selbst\" habe gekocht.",
+      "hintEn": null,
+      "explainDe": "\"I\" → \"myself\", betont \"ganz allein, ohne Hilfe\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-tf-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Schreib mit 'by + sich selbst' um, sodass es 'allein' bedeutet: 'My little sister cleaned her room without any help.' → 'My little sister cleaned her room ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "by herself",
+          "tier": "full"
+        },
+        {
+          "text": "My little sister cleaned her room by herself.",
+          "tier": "full"
+        },
+        {
+          "text": "all by herself",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"by\" + das Wort für \"sich selbst\" bei \"she\".",
+      "hintEn": null,
+      "explainDe": "\"by herself\" = allein, ohne Hilfe. Subjekt \"she\" → \"herself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-tf-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Setze das Wort für \"sich selbst\" ein, falls nötig. Wenn keines nötig ist, schreib einen Bindestrich (—): 'I need to relax ___ after this week.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "—",
+          "tier": "full"
+        },
+        {
+          "text": "I need to relax after this week.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"relax\" braucht im Englischen KEIN Wort für \"sich selbst\".",
+      "hintEn": null,
+      "explainDe": "Auf Deutsch \"sich entspannen\", aber im Englischen nur \"relax\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "relax",
+          "de": "sich entspannen",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-tf-005",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Dein Freund schrieb 'they taught theyself'. Verbessere das Wort für \"sich selbst\": 'They taught ___ to read.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "themselves",
+          "tier": "full"
+        },
+        {
+          "text": "They taught themselves to read.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"They\" → das Wort für \"sich selbst\" in der Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "\"They\" → \"themselves\". \"theyself\" gibt es nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-tf-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Er hat sich beim Fußballspielen verletzt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He hurt himself while playing football.",
+          "tier": "full"
+        },
+        {
+          "text": "He hurt himself playing football.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"sich verletzen\" → hurt + das Wort für \"sich selbst\" bei \"he\".",
+      "hintEn": null,
+      "explainDe": "\"He\" → \"himself\". \"hurt\" bleibt in der Vergangenheit gleich.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-tr-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Pass auf mit dem Messer! Schneide dich nicht!",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Be careful with the knife! Don't cut yourself!",
+          "tier": "full"
+        },
+        {
+          "text": "Be careful with the knife! Don't cut yourself.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"dich\" → das Wort für \"dich selbst\" bei \"you\".",
+      "hintEn": null,
+      "explainDe": "\"you\" → \"yourself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Wir haben die Bücher selbst gekauft.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We bought the books ourselves.",
+          "tier": "full"
+        },
+        {
+          "text": "We bought the books by ourselves.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zur Betonung \"selbst\": das Wort für \"uns selbst\" bei \"we\".",
+      "hintEn": null,
+      "explainDe": "\"We\" → \"ourselves\". Es betont: wir, niemand sonst.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "bought",
+          "de": "kauften (buy)",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 11.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Ich kann mich nicht an seinen Namen erinnern.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I can't remember his name.",
+          "tier": "full"
+        },
+        {
+          "text": "I cannot remember his name.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Achtung: \"sich erinnern\" wird im Englischen OHNE Wort für \"sich selbst\" gesagt.",
+      "hintEn": null,
+      "explainDe": "\"remember\" steht im Englischen ohne Reflexivwort – nicht \"remember myself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "remember",
+          "de": "sich erinnern",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-tr-004",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du musst das Buch selbst lesen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You have to read the book yourself.",
+          "tier": "full"
+        },
+        {
+          "text": "You will have to read the book yourself.",
+          "tier": "full"
+        },
+        {
+          "text": "You must read the book yourself.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zur Betonung \"selbst\": das Wort für \"dich selbst\" bei \"you\".",
+      "hintEn": null,
+      "explainDe": "\"You\" → \"yourself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 11.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "herself / she / in / the / looked / at / mirror",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She looked at herself in the mirror.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginne mit dem Subjekt \"she\".",
+      "hintEn": null,
+      "explainDe": "Wortstellung: She + looked at + herself + in the mirror.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "myself",
+          "himself",
+          "herself",
+          "themselves"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-sb-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "themselves / the / enjoyed / children / library / at / the",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The children enjoyed themselves at the library.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"enjoy themselves\" = Spaß haben. Beginne mit \"the children\".",
+      "hintEn": null,
+      "explainDe": "The children + enjoyed + themselves + at the library.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "myself",
+          "himself",
+          "herself",
+          "themselves"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "by / the / review / ourselves / we / wrote / whole",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We wrote the whole review by ourselves.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"by ourselves\" = ganz allein. Beginne mit \"we\".",
+      "hintEn": null,
+      "explainDe": "We + wrote + the whole review + by ourselves.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "wrote",
+          "de": "schrieben (write)",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "myself",
+          "himself",
+          "herself",
+          "themselves"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": "m4-u11-reflexive-pronouns-sb-003",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches Wort für \"sich selbst\" gehört zu welchem Subjekt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "I",
+          "right": "myself"
+        },
+        {
+          "left": "he",
+          "right": "himself"
+        },
+        {
+          "left": "she",
+          "right": "herself"
+        },
+        {
+          "left": "it",
+          "right": "itself"
+        },
+        {
+          "left": "they",
+          "right": "themselves"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Jedes Subjekt hat seine eigene Form für \"sich selbst\".",
+      "hintEn": null,
+      "explainDe": "I→myself, he→himself, she→herself, it→itself, they→themselves.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-mt-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches Wort für \"sich selbst\" gehört zu welchem Subjekt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "you (one)",
+          "right": "yourself"
+        },
+        {
+          "left": "we",
+          "right": "ourselves"
+        },
+        {
+          "left": "you (two or more)",
+          "right": "yourselves"
+        },
+        {
+          "left": "they",
+          "right": "themselves"
+        },
+        {
+          "left": "he",
+          "right": "himself"
+        }
+      ],
+      "groups": [],
+      "hintDe": "Achte auf Einzahl und Mehrzahl bei \"you\".",
+      "hintEn": null,
+      "explainDe": "you (eine Person)→yourself, you (zwei)→yourselves, we→ourselves, they→themselves.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-mt-002",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Verbinde die Satzhälften.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "She fell and",
+          "right": "hurt herself."
+        },
+        {
+          "left": "We read a good book and",
+          "right": "enjoyed ourselves."
+        },
+        {
+          "left": "He looked in the mirror and",
+          "right": "washed himself."
+        },
+        {
+          "left": "The children can",
+          "right": "look after themselves."
+        },
+        {
+          "left": "Be careful or you will",
+          "right": "cut yourself."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Das Wort für \"sich selbst\" am Ende muss zum Subjekt am Anfang passen.",
+      "hintEn": null,
+      "explainDe": "she→herself, we→ourselves, he→himself, they→themselves, you→yourself.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-mt-001",
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-8",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "myself / himself / herself / ourselves / yourselves / themselves",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "myself, himself, herself …",
+          "members": [
+            "myself",
+            "himself",
+            "herself"
+          ]
+        },
+        {
+          "label": "ourselves, yourselves, themselves …",
+          "members": [
+            "ourselves",
+            "yourselves",
+            "themselves"
+          ]
+        }
+      ],
+      "hintDe": "Eine Gruppe endet auf -self (eine Person), die andere auf -selves (mehrere).",
+      "hintEn": null,
+      "explainDe": "-self = Einzahl (myself, himself, herself), -selves = Mehrzahl (ourselves, yourselves, themselves).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "group-sort",
+      "difficulty": 3,
+      "prompt": {
+        "text": "She hurt herself. / They helped each other. / We enjoyed ourselves. / The friends looked at each other.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "She hurt herself.",
+          "members": [
+            "She hurt herself.",
+            "We enjoyed ourselves."
+          ]
+        },
+        {
+          "label": "They helped each other.",
+          "members": [
+            "They helped each other.",
+            "The friends looked at each other."
+          ]
+        }
+      ],
+      "hintDe": "Eine Gruppe: jede Person tut etwas SICH SELBST. Andere Gruppe: zwei tun etwas GEGENSEITIG.",
+      "hintEn": null,
+      "explainDe": "\"herself/ourselves\" = sich selbst. \"each other\" = gegenseitig (A↔B).",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [
+        {
+          "word": "helped",
+          "de": "halfen",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Lena schaut in den Spiegel und betrachtet sich selbst. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She looked at herself in the mirror.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She looked at her in the mirror.",
+        "She looked at each other in the mirror.",
+        "She looked at himself in the mirror."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Person betrachtet SICH SELBST.",
+      "hintEn": null,
+      "explainDe": "\"she\" → \"herself\". \"her\" wäre eine andere Person, \"each other\" wären zwei Personen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She looked at her in the mirror.",
+          "She looked at each other in the mirror.",
+          "She looked at himself in the mirror.",
+          "She looked at herself in the mirror.",
+          "She looked at themselves in the mirror."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Tom und Ben schauen sich gegenseitig an (Tom schaut Ben an und Ben schaut Tom an). Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They looked at each other.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "They looked at themselves.",
+        "They looked at theirselves.",
+        "They looked at itself."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Personen, GEGENSEITIG – nicht jeder sich selbst.",
+      "hintEn": null,
+      "explainDe": "\"each other\" = gegenseitig. \"themselves\" hieße: jeder schaut sich selbst an.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "They looked at themselves.",
+          "They looked at theirselves.",
+          "They looked at itself.",
+          "They looked at each other.",
+          "They looked at himself."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du erzählst auf Englisch, dass dir die Geschichte gefallen hat. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "I enjoyed the story.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "I enjoyed myself the story.",
+        "I enjoyed me the story.",
+        "I enjoyed ourselves the story."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Wenn ein Objekt folgt (\"the story\"), steht KEIN Wort für \"sich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"enjoy the story\" – ohne \"myself\", weil ein Objekt folgt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "I enjoyed myself the story.",
+          "I enjoyed me the story.",
+          "I enjoyed ourselves the story.",
+          "I enjoyed the story.",
+          "I enjoyed himself the story."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Deine Freundin ist gestern vom Fahrrad gefallen. Frag, ob sie sich verletzt hat. Beginne mit 'Did...'",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Did you hurt yourself?",
+          "tier": "full"
+        },
+        {
+          "text": "Did she hurt herself?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du sprichst die Freundin direkt an (you) → das Wort für \"dich selbst\".",
+      "hintEn": null,
+      "explainDe": "Direkte Anrede: \"Did you hurt yourself?\"",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-qf-002",
+      "sbRef": "g4/sb/More 4 SB Unit 11.txt#grammar-1",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Tom taught himself to play the guitar. Frag nach der Person: wer hat es Tom beigebracht?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Who taught Tom to play the guitar?",
+          "tier": "full"
+        },
+        {
+          "text": "Who taught him to play the guitar?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frage nach der Person mit \"Who\".",
+      "hintEn": null,
+      "explainDe": "\"Who taught Tom ...?\" – Frage nach dem Subjekt.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u11-reflexive-pronouns-qf-001",
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "anagram",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Das Wort für \"mich selbst\" (bei \"I\"): ",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "myself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beginnt mit \"my...\".",
+      "hintEn": null,
+      "explainDe": "\"I\" → \"myself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "anagram",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Das Wort für \"sich selbst\" bei \"they\": ",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "themselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Endet auf \"-selves\" (Mehrzahl).",
+      "hintEn": null,
+      "explainDe": "\"they\" → \"themselves\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Don't worry about us — we can look after ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "ourselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Das Wort für \"uns selbst\" bei \"we\".",
+      "hintEn": null,
+      "explainDe": "\"We\" → \"ourselves\". \"look after ourselves\" = auf uns selbst aufpassen.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 11.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Late again! You've got ___ into big trouble this time.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "yourself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du sprichst eine Person an (you) – das Wort für \"dich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"You\" → \"yourself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-6",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "They are free to have fun and enjoy ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "themselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"enjoy\" + Wort für \"sich selbst\" bei \"they\" = sich vergnügen.",
+      "hintEn": null,
+      "explainDe": "\"They\" → \"themselves\". \"enjoy themselves\" = Spaß haben.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 11.txt#grammar-1",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Are the twins enjoying ___ at the camp?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "themselves",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "theirselves",
+        "himself",
+        "itself"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zwei Kinder (they) → Wort für \"sich selbst\" in der Mehrzahl.",
+      "hintEn": null,
+      "explainDe": "\"They\" → \"themselves\". \"theirselves\" gibt es nicht.",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "theirselves",
+          "himself",
+          "itself",
+          "themselves",
+          "yourselves"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-6",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Let's make ourself a nice cup of tea.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Let's make ourselves a nice cup of tea.",
+          "tier": "full"
+        },
+        {
+          "text": "ourselves",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"Let's\" = let us = we → Mehrzahlform.",
+      "hintEn": null,
+      "explainDe": "\"ourself\" gibt es nicht – richtig ist \"ourselves\".",
+      "explainEn": null,
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-6",
+      "note": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Schreib so um, dass es 'allein, ohne Hilfe' bedeutet: 'He reads alone.' → 'He reads ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "by himself",
+          "tier": "full"
+        },
+        {
+          "text": "He reads by himself.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "\"by\" + Wort für \"sich selbst\" bei \"he\".",
+      "hintEn": null,
+      "explainDe": "\"by himself\" = allein. Subjekt \"he\" → \"himself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "My History teacher told me about the book, so I ___ got a copy.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "myself",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Zur Betonung: \"ich selbst\". Subjekt ist \"I\".",
+      "hintEn": null,
+      "explainDe": "\"I myself\" betont die Person. \"I\" → \"myself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 11.txt#reading-2",
+      "note": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u11.s.reflexive-pronouns",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du fragst Lucas auf Englisch, ob er sich als Leser bezeichnen würde. Welcher Satz passt?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Would you call yourself a reader?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Would you call you a reader?",
+        "Would you call yourselves a reader?",
+        "Would you call himself a reader?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Eine Person, direkt angesprochen (you) → das Wort für \"dich selbst\".",
+      "hintEn": null,
+      "explainDe": "\"you\" (eine Person) → \"yourself\".",
+      "explainEn": null,
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Would you call you a reader?",
+          "Would you call yourselves a reader?",
+          "Would you call himself a reader?",
+          "Would you call yourself a reader?",
+          "Would you call themselves a reader?"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 11.txt#grammar-5",
+      "note": null,
+      "blanks": 0
+    }
+  ]
+}
