@@ -13617,6 +13617,51 @@
       "reason": "reported-speech unit: past form / spelling variant / common word (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u04",
+      "itemId": null,
+      "field": null,
+      "token": "healthcare",
+      "reason": "reported-questions: spelling variant / structure cue / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u04",
+      "itemId": null,
+      "field": null,
+      "token": "memorize",
+      "reason": "reported-questions: spelling variant / structure cue / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u04",
+      "itemId": null,
+      "field": null,
+      "token": "wh",
+      "reason": "reported-questions: spelling variant / structure cue / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u04",
+      "itemId": null,
+      "field": null,
+      "token": "word",
+      "reason": "reported-questions: spelling variant / structure cue / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u04",
+      "itemId": null,
+      "field": null,
+      "token": "helping",
+      "reason": "reported-questions: -ing form in def (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

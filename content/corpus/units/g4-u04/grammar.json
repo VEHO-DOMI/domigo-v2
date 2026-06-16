@@ -1,0 +1,3598 @@
+{
+  "schema": "grammar@1",
+  "grade": 4,
+  "unit": 4,
+  "slug": "g4-u04",
+  "items": [
+    {
+      "id": "g4u04.gi.reported-questions.ag.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bei einer berichteten Ja/Nein-Frage steht dieses kleine Wort (= ob): ___",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "whether",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Es bedeutet 'ob' und beginnt mit 'wh-'. Sieben Buchstaben.",
+      "hintEn": null,
+      "explainDe": "Das gesuchte Wort ist 'whether' (= ob). Es leitet eine berichtete Ja/Nein-Frage ein, genau wie 'if'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.cp.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She asked me when could I start.",
+            "She asked me when can I start.",
+            "She asked me when I can start.",
+            "She asked me when I could start.",
+            "She asked me when did I start."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Nach dem Vorstellungsgespräch erzählst du einer Freundin, wann du anfangen kannst. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me when I could start.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She asked me when could I start.",
+        "She asked me when can I start.",
+        "She asked me when I can start."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'when' bleibt, 'can' → 'could', keine Inversion.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'when I could start'. 'can' rückt zurück zu 'could' und es gibt keine Inversion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.cp.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He asked me did I have any experience.",
+            "He asked me if did I have any experience.",
+            "He asked me that I had any experience.",
+            "He asked me if I had any experience.",
+            "He asked me if I have any experience."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Im Vorstellungsgespräch wollte der Chef etwas über deine Erfahrung wissen. Welche Wiedergabe ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me if I had any experience.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He asked me did I have any experience.",
+        "He asked me if did I have any experience.",
+        "He asked me that I had any experience."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ja/Nein-Frage → 'if', kein 'did', kein 'that'.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'if I had any experience'. 'if' bei Ja/Nein-Frage, 'have' → 'had', kein 'did' und kein 'that'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.cp.003",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "Mum asked me where was I going after school.",
+            "Mum asked me where am I going after school.",
+            "Mum asked me where I am going after school.",
+            "Mum asked me where I was going after school.",
+            "Mum asked me where did I go after school."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Mutter wollte wissen, was du nach der Schule vorhast. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mum asked me where I was going after school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Mum asked me where was I going after school.",
+        "Mum asked me where am I going after school.",
+        "Mum asked me where I am going after school."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fragewort 'where' bleibt, 'am' → 'was', keine Inversion.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'where I was going'. 'am/are' rückt zu 'was', Subjekt vor Verb, keine Inversion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He asked where did I live.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked where I lived.",
+          "tier": "full"
+        },
+        {
+          "text": "where I lived",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der berichteten Frage gibt es kein 'did' und keine Inversion.",
+      "hintEn": null,
+      "explainDe": "Streiche 'did' und stelle die Wortstellung wie im Aussagesatz: 'where I lived'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She asked me that I was hungry.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me if I was hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "She asked me whether I was hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "if I was hungry",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Bei einer Ja/Nein-Frage steht 'if' (oder 'whether') statt 'that'.",
+      "hintEn": null,
+      "explainDe": "'that' ist hier falsch. Bei einer berichteten Ja/Nein-Frage verwendest du 'if' (= ob): 'asked me if I was hungry'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.003",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#5",
+        "seedV1": "m4-u4-reported-questions-ec-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The interviewer asked me where did I work.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The interviewer asked me where I worked.",
+          "tier": "full"
+        },
+        {
+          "text": "where I worked",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "worked",
+          "de": "arbeitete (2. Form von work)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Kein 'did', Wortstellung wie im Aussagesatz, 'work' → 2. Form.",
+      "hintEn": null,
+      "explainDe": "Streiche 'did' und stelle es wie einen Aussagesatz: 'where I worked'. Das 'work' steht in der 2. Form.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.004",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-ec-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The teacher asked us what were we doing.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The teacher asked us what we were doing.",
+          "tier": "full"
+        },
+        {
+          "text": "what we were doing",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Keine Inversion: Subjekt 'we' steht vor 'were'.",
+      "hintEn": null,
+      "explainDe": "In der berichteten Frage gibt es keine Inversion. Subjekt vor Verb: 'what we were doing'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.005",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-ec-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She asked me did I like the job.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me if I liked the job.",
+          "tier": "full"
+        },
+        {
+          "text": "She asked me whether I liked the job.",
+          "tier": "full"
+        },
+        {
+          "text": "if I liked the job",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Kein 'did'. Ja/Nein-Frage → 'if', und 'like' → 'liked'.",
+      "hintEn": null,
+      "explainDe": "Das 'did' fällt weg. Bei der Ja/Nein-Frage steht 'if' und 'like' rückt zurück zu 'liked'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.006",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The doctor asked if was I feeling OK.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The doctor asked if I was feeling OK.",
+          "tier": "full"
+        },
+        {
+          "text": "if I was feeling OK",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach 'if' keine Inversion: 'I was', nicht 'was I'.",
+      "hintEn": null,
+      "explainDe": "Nach 'if' steht ganz normale Aussagesatz-Wortstellung: 'if I was feeling OK'. Kein 'was I'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.007",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He asked that if I was ready.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked if I was ready.",
+          "tier": "full"
+        },
+        {
+          "text": "He asked whether I was ready.",
+          "tier": "full"
+        },
+        {
+          "text": "if I was ready",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        },
+        {
+          "word": "ready",
+          "de": "bereit, fertig",
+          "scope": null
+        }
+      ],
+      "hintDe": "Vor 'if' steht kein 'that'.",
+      "hintEn": null,
+      "explainDe": "'that' ist hier überflüssig. Bei einer Ja/Nein-Frage steht nur 'if' (= ob), niemals 'that if'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.008",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#5",
+        "seedV1": "m4-u4-reported-questions-ec-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He asked me what did I want to do.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me what I wanted to do.",
+          "tier": "full"
+        },
+        {
+          "text": "what I wanted to do",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kein 'did'. Fragewort 'what' bleibt, dann Subjekt + 2. Form.",
+      "hintEn": null,
+      "explainDe": "Das 'did' fällt weg. 'what I wanted to do': Subjekt vor Verb, 'want' rückt zurück zu 'wanted'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.009",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She asked me whether did I have any homework.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me whether I had any homework.",
+          "tier": "full"
+        },
+        {
+          "text": "She asked me if I had any homework.",
+          "tier": "full"
+        },
+        {
+          "text": "whether I had any homework",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Nach 'whether' kein 'did'. Subjekt + 'had'.",
+      "hintEn": null,
+      "explainDe": "Nach 'whether' (= ob) steht kein 'did'. Es folgt Subjekt + Verb: 'whether I had any homework'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.ec.010",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He asked when can I start.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked when I could start.",
+          "tier": "full"
+        },
+        {
+          "text": "when I could start",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'can' → 'could', und Subjekt 'I' vor das Verb.",
+      "hintEn": null,
+      "explainDe": "Beim Berichten wird 'can' zu 'could' und das Subjekt steht vor dem Verb: 'when I could start'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": "m4-u4-reported-questions-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Where do you live?\" — She asked me where I ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "lived",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Eine Zeitstufe zurück: Gegenwart → die 2. Form (2. Form). Kein do/does/did.",
+      "hintEn": null,
+      "explainDe": "'live' rückt eine Stufe zurück zu 'lived'. In der berichteten Frage gibt es kein 'do' und keine Frage-Wortstellung.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": "m4-u4-reported-questions-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Do you have any experience?\" — The interviewer asked me ___ I had any experience.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "if",
+          "tier": "full"
+        },
+        {
+          "text": "whether",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if' oder 'whether' (= ob). Kein 'that', kein 'do'.",
+      "hintEn": null,
+      "explainDe": "Bei einer Ja/Nein-Frage berichtest du mit 'if' (oder 'whether'). Beide bedeuten 'ob'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.003",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": "m4-u4-reported-questions-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Why do you want this job?\" — She asked me why I ___ the job.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wanted",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fragewort 'why' bleibt. Danach Subjekt + 2. Form, ohne do/does/did.",
+      "hintEn": null,
+      "explainDe": "Bei einer W-Frage behältst du das Fragewort 'why' und rückst die Zeit zurück: 'want' → 'wanted'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.004",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Where is the library?\" — She asked me where the library ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'is' wird eine Stufe zurück zu 'was'.",
+      "hintEn": null,
+      "explainDe": "In der berichteten Frage rückt 'is' zurück zu 'was'. Das Fragewort 'where' bleibt, die Wortstellung ist wie im Aussagesatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.005",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"When can you start?\" — They asked me when I ___ start.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'can' rückt zurück zu 'could'.",
+      "hintEn": null,
+      "explainDe": "Beim Berichten wird 'can' zu 'could'. Fragewort 'when' bleibt, danach Subjekt + Verb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.006",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"What is your ambition?\" — He asked me what my ambition ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'is' → 'was'. Fragewort 'what' bleibt vorne.",
+      "hintEn": null,
+      "explainDe": "'What is your ambition?' wird zu 'what my ambition was'. 'is' rückt zurück zu 'was'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.007",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Will you come on Saturday?\" — She asked me if I ___ come on Saturday.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'will' rückt zurück zu 'would'.",
+      "hintEn": null,
+      "explainDe": "Beim Berichten wird aus 'will' → 'would'. Es ist eine Ja/Nein-Frage, also steht 'if' davor.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.008",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Do you play football?\" — He asked me ___ I played football.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "if",
+          "tier": "full"
+        },
+        {
+          "text": "whether",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if' (= ob).",
+      "hintEn": null,
+      "explainDe": "Bei der Ja/Nein-Frage steht 'if' (oder 'whether'). Kein 'that', kein 'do'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.009",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-gf-009",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"What are you doing?\" — My mum asked me what I ___ doing.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'are you doing' wird zu '... I was doing'. 'are' → 'was' (ich), und die Wortstellung wie im Aussagesatz.",
+      "hintEn": null,
+      "explainDe": "Das Fragewort 'what' bleibt. 'are you doing' → 'I was doing': 'are' rückt zu 'was', Subjekt vor Verb, keine Inversion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.010",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#8",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"How much do you want to earn?\" — She asked me how much I ___ to earn.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wanted",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'do you want' → 'I wanted'. Kein 'do', 2. Form.",
+      "hintEn": null,
+      "explainDe": "'How much do you want ...' wird zu 'how much I wanted ...'. Das 'do' fällt weg, 'want' rückt zurück zu 'wanted'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.011",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-gf-010",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Have you studied English?\" — She asked me ___ I ___ studied English.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "if | had",
+          "tier": "full"
+        },
+        {
+          "text": "whether | had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if'. 'have studied' rückt zurück zu 'had studied'.",
+      "hintEn": null,
+      "explainDe": "'Have you studied?' ist eine Ja/Nein-Frage → 'if'. Das 'have' rückt eine Stufe zurück zu 'had': 'had studied'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.012",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#7",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Are you nervous?\" — He asked me if I ___ nervous.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'are you' wird zu 'I was'. 'are' → 'was'.",
+      "hintEn": null,
+      "explainDe": "Bei 'I' rückt 'are' zurück zu 'was': 'if I was nervous'. Ja/Nein-Frage, also 'if'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.013",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Who is your employer?\" — She asked me who my employer ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fragewort 'who' bleibt. 'is' → 'was'.",
+      "hintEn": null,
+      "explainDe": "'Who is your employer?' wird zu 'who my employer was'. 'is' rückt zurück zu 'was'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.014",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Can you help me?\" — She asked me ___ I could help her.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "if",
+          "tier": "full"
+        },
+        {
+          "text": "whether",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if' (= ob).",
+      "hintEn": null,
+      "explainDe": "Es ist eine Ja/Nein-Frage, also steht 'if'. 'can' wird im Bericht zu 'could'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.015",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": "m4-u4-reported-questions-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Where have you worked before?\" — He asked me where I ___ ___ before.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | worked",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "worked",
+          "de": "gearbeitet (2./3. Form von work)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Fragewort 'where' bleibt. 'have worked' → 'had worked'.",
+      "hintEn": null,
+      "explainDe": "Das Fragewort 'where' bleibt. 'have worked' rückt eine Stufe zurück zu 'had worked': Subjekt vor Verb, kein 'did'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.016",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Why did you want to work there?\" — She asked me why I ___ wanted to work there.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'did want' rückt eine Stufe zurück: 'had wanted'.",
+      "hintEn": null,
+      "explainDe": "Aus dem 2. Form ('did want' = wanted) wird beim Berichten 'had wanted'. Fragewort 'why' bleibt, kein 'did'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.017",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#10",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Do you enjoy your job?\" — They asked me if I ___ my job.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "enjoyed",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Kein 'do'. 'enjoy' → 2. Form 'enjoyed'.",
+      "hintEn": null,
+      "explainDe": "Das 'do' fällt weg und 'enjoy' rückt zurück zu 'enjoyed'. Ja/Nein-Frage, also 'if'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.018",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Can you speak English?\" — The employer asked me if I ___ speak English.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'can' rückt zurück zu 'could'.",
+      "hintEn": null,
+      "explainDe": "Beim Berichten wird 'can' zu 'could': 'if I could speak English'. Ja/Nein-Frage, also 'if'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.019",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": "m4-u4-reported-questions-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Where do you work?\" — He asked me ___ I worked.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "where",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "worked",
+          "de": "arbeitete (2. Form von work)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Es ist eine W-Frage, also bleibt das Fragewort 'where'. Kein 'if'.",
+      "hintEn": null,
+      "explainDe": "Bei einer W-Frage behältst du das Fragewort: 'where'. 'if' steht nur bei Ja/Nein-Fragen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.020",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Are you hungry?\" — She asked me ___ I was hungry.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "if",
+          "tier": "full"
+        },
+        {
+          "text": "whether",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if' (= ob). Kein Fragewort.",
+      "hintEn": null,
+      "explainDe": "'Are you hungry?' ist eine Ja/Nein-Frage, also steht 'if' (oder 'whether').",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gf.021",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Will you be late?\" — He asked me if I ___ be late.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "late",
+          "de": "spät, zu spät",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "'will' rückt zurück zu 'would'.",
+      "hintEn": null,
+      "explainDe": "Beim Berichten wird 'will' zu 'would': 'if I would be late'. Ja/Nein-Frage, also 'if'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gs.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Wiedergaben beginnen mit „if“ und welche mit einem Fragewort?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "if",
+          "members": [
+            "She asked if I liked pizza.",
+            "He asked if I could cook.",
+            "They asked if I had a job."
+          ]
+        },
+        {
+          "label": "wh-word",
+          "members": [
+            "She asked where I lived.",
+            "He asked when I could start.",
+            "They asked what I wanted."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Ja/Nein-Fragen → 'if'. W-Fragen → Fragewort (where, when, what ...).",
+      "hintEn": null,
+      "explainDe": "Aus Ja/Nein-Fragen wird '... if ...'. Aus W-Fragen wird '... where/when/what ...' mit dem Fragewort am Anfang.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gs.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: richtig wiedergegeben oder mit Fehler?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "He asked where I lived.",
+            "She asked if I was ready.",
+            "They asked when I could start."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "He asked where did I live.",
+            "She asked if was I ready.",
+            "They asked did I want the job."
+          ]
+        }
+      ],
+      "gloss": [
+        {
+          "word": "ready",
+          "de": "bereit, fertig",
+          "scope": null
+        }
+      ],
+      "hintDe": "Kein do/does/did, keine Inversion, Subjekt vor Verb.",
+      "hintEn": null,
+      "explainDe": "Falsch sind alle mit 'did' oder Inversion ('was I', 'did I'). Richtig: Aussagesatz-Wortstellung ohne 'do'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.gs.003",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere die Sätze danach, wie sich can, will und is/are beim Wiedergeben verändern.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "can → could",
+          "members": [
+            "She asked if I could cook.",
+            "He asked when I could start."
+          ]
+        },
+        {
+          "label": "will → would",
+          "members": [
+            "She asked if I would help.",
+            "He asked if I would work weekends."
+          ]
+        },
+        {
+          "label": "is/are → was/were",
+          "members": [
+            "She asked if I was ready.",
+            "He asked what my skills were."
+          ]
+        }
+      ],
+      "gloss": [
+        {
+          "word": "ready",
+          "de": "bereit, fertig",
+          "scope": null
+        }
+      ],
+      "hintDe": "Jede Zeit rückt eine Stufe zurück: can→could, will→would, is/are→was/were.",
+      "hintEn": null,
+      "explainDe": "Beim Berichten verschiebt sich jedes Verb eine Stufe zurück: 'can'→'could', 'will'→'would', 'is/are'→'was/were'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mc.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "that",
+            "do",
+            "what",
+            "if",
+            "does"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": "m4-u4-reported-questions-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Do you like pizza?\" — She asked me ___ I liked pizza.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "if",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "that",
+        "do",
+        "what"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Bei einer Ja/Nein-Frage steht 'if' (= ob). Kein 'that' und kein 'do'.",
+      "hintEn": null,
+      "explainDe": "Aus einer Ja/Nein-Frage wird 'asked ... if ...'. 'if' = ob. Niemals 'that' davor und niemals do/does/did.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mc.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She asked me where did I live.",
+            "She asked me where do I live.",
+            "She asked me where I did live.",
+            "She asked me where I lived.",
+            "She asked me where lived I."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": "m4-u4-reported-questions-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Wiedergabe von „Where do you live?“ ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me where I lived.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She asked me where did I live.",
+        "She asked me where do I live.",
+        "She asked me where I did live."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wortstellung wie im Aussagesatz, kein do/does/did, Verb in der 2. Form.",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'where I lived': Subjekt vor Verb, kein 'do', und 'live' → 'lived'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mc.003",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She asked him did he have a dog.",
+            "She asked him that he had a dog.",
+            "She asked him if did he have a dog.",
+            "She asked him if he had a dog.",
+            "She asked him if he have a dog."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Do you have a dog?“, fragte sie ihn. Welche Wiedergabe ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked him if he had a dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She asked him did he have a dog.",
+        "She asked him that he had a dog.",
+        "She asked him if did he have a dog."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ja/Nein-Frage → 'if'. Kein 'did', kein 'that', keine Inversion.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'asked him if he had a dog'. 'if' bei Ja/Nein-Frage, 'have' → 'had', keine Inversion und kein 'did'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mc.004",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He asked if could he borrow my pen.",
+            "He asked that he could borrow my pen.",
+            "He asked if he can borrow my pen.",
+            "He asked if he could borrow my pen.",
+            "He asked if he could borrow your pen."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-mc-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Can I borrow your pen?“ Welche Wiedergabe ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked if he could borrow my pen.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He asked if could he borrow my pen.",
+        "He asked that he could borrow my pen.",
+        "He asked if he can borrow my pen."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'can' → 'could', Ja/Nein-Frage → 'if', keine Inversion.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'if he could borrow my pen'. 'can' rückt zurück zu 'could', Subjekt vor Verb, kein 'that'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mc.005",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "The boss asked me when could I start.",
+            "The boss asked me when can I start.",
+            "The boss asked me that I could start.",
+            "The boss asked me when I could start.",
+            "The boss asked me when I can start."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„When can you start?“, fragte der Chef. Welche Wiedergabe ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The boss asked me when I could start.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "The boss asked me when could I start.",
+        "The boss asked me when can I start.",
+        "The boss asked me that I could start."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "W-Frage: 'when' bleibt, dann Subjekt + 'could'. Kein 'that'.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'when I could start'. Fragewort bleibt, 'can' → 'could', Subjekt vor Verb, keine Inversion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mc.006",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He asked me do I like my job.",
+            "He asked me that I liked my job.",
+            "He asked me if did I like my job.",
+            "He asked me if I liked my job.",
+            "He asked me if I like my job."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Do you like your job?“ Welche Wiedergabe ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me if I liked my job.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He asked me do I like my job.",
+        "He asked me that I liked my job.",
+        "He asked me if did I like my job."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ja/Nein-Frage → 'if', 'like' → 'liked', kein 'do'.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'if I liked my job'. 'if' bei Ja/Nein-Frage, 'like' → 'liked', kein 'do' und kein 'that'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mc.007",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He asked me if was I happy.",
+            "He asked me are you happy.",
+            "He asked me that I was happy.",
+            "He asked me if I was happy.",
+            "He asked me if I am happy."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#7",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Wiedergabe von „Are you happy?“ ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me if I was happy.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He asked me if was I happy.",
+        "He asked me are you happy.",
+        "He asked me that I was happy."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ja/Nein-Frage → 'if', 'are you' → 'I was', keine Inversion.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'if I was happy'. 'if' bei Ja/Nein-Frage, 'are' → 'was', Subjekt vor Verb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mc.008",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She asked me why did I want the job.",
+            "She asked me why I did want the job.",
+            "She asked me why had I wanted the job.",
+            "She asked me why I had wanted the job.",
+            "She asked me why I have wanted the job."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-mc-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Why did you want the job?“ Welche Wiedergabe ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me why I had wanted the job.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She asked me why did I want the job.",
+        "She asked me why I did want the job.",
+        "She asked me why had I wanted the job."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'did want' rückt zurück zu 'had wanted', keine Inversion.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'why I had wanted the job'. Das 2. Form rückt zurück zu 'had wanted', Subjekt vor Verb, kein 'did'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mt.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ordne jeder direkten Frage ihre Wiedergabe zu.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "\"Do you like music?\"",
+          "right": "She asked if I liked music."
+        },
+        {
+          "left": "\"Where is the station?\"",
+          "right": "He asked where the station was."
+        },
+        {
+          "left": "\"Can you cook?\"",
+          "right": "They asked if I could cook."
+        },
+        {
+          "left": "\"What time is it?\"",
+          "right": "She asked what time it was."
+        },
+        {
+          "left": "\"Are you happy?\"",
+          "right": "He asked if I was happy."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ja/Nein-Fragen → 'if'; W-Fragen → Fragewort. Immer eine Zeitstufe zurück.",
+      "hintEn": null,
+      "explainDe": "Ja/Nein-Fragen bekommen 'if' (like → liked, can → could, are → was). W-Fragen behalten das Fragewort (is → was).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.mt.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": "m4-u4-reported-questions-mt-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ordne jeder Frage aus dem Vorstellungsgespräch ihre Wiedergabe zu.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "\"Do you have any experience?\"",
+          "right": "She asked if I had any experience."
+        },
+        {
+          "left": "\"When can you start?\"",
+          "right": "He asked when I could start."
+        },
+        {
+          "left": "\"What is your ambition?\"",
+          "right": "She asked what my ambition was."
+        },
+        {
+          "left": "\"Will you work at weekends?\"",
+          "right": "He asked if I would work at weekends."
+        },
+        {
+          "left": "\"Why do you want this job?\"",
+          "right": "She asked why I wanted the job."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ja/Nein → 'if'; W-Frage → Fragewort. can → could, will → would, is → was, want → wanted.",
+      "hintEn": null,
+      "explainDe": "Achte auf die Rückverschiebung: can → could, will → would, is → was, want → wanted. Ja/Nein-Fragen bekommen 'if'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.qf.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": "m4-u4-reported-questions-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib die direkte Frage, die dahintersteckt: She asked me if I could work Saturdays.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Can you work Saturdays?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zurück zur direkten Frage: 'could' → 'can', Inversion, ohne 'if'.",
+      "hintEn": null,
+      "explainDe": "Die direkte Frage hat wieder Frage-Wortstellung und kein 'if': 'Can you work Saturdays?'. 'could' wird wieder zu 'can'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.qf.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": "m4-u4-reported-questions-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib die direkte Frage, die dahintersteckt: She asked me where I had worked before.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Where have you worked before?",
+          "tier": "full"
+        },
+        {
+          "text": "Where did you work before?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "worked",
+          "de": "gearbeitet (2./3. Form von work)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Zurück zur direkten Frage: Fragewort 'where', dann normale Frage-Wortstellung.",
+      "hintEn": null,
+      "explainDe": "Die direkte Frage lautet 'Where have you worked before?'. Das Fragewort bleibt, aber die Frage-Wortstellung kommt zurück.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.qf.003",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": "m4-u4-reported-questions-qf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Schreib die direkte Frage, die dahintersteckt: She asked me what my ambition was.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What is your ambition?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zurück zur direkten Frage: 'what' + 'is' + 'your ambition'.",
+      "hintEn": null,
+      "explainDe": "Die direkte Frage lautet 'What is your ambition?'. 'was' wird wieder zu 'is' und 'my' wieder zu 'your'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.sb.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "was",
+            "were",
+            "did",
+            "had"
+          ],
+          "chipBudget": 7,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "she / asked / me / if / I / was / tired",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me if I was tired.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ja/Nein-Frage → 'if', danach Subjekt 'I' vor 'was'.",
+      "hintEn": null,
+      "explainDe": "'She asked me if I was tired.' — 'if' bei der Ja/Nein-Frage, Subjekt vor Verb, keine Inversion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.sb.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "was",
+            "were",
+            "did",
+            "had"
+          ],
+          "chipBudget": 7,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": "m4-u4-reported-questions-sb-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "asked / he / me / where / I / lived / before",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me where I lived before.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fragewort 'where', dann Subjekt 'I' + 2. Form 'lived'.",
+      "hintEn": null,
+      "explainDe": "'He asked me where I lived before.' — Fragewort bleibt, Subjekt vor Verb, kein 'did'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.sb.003",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "was",
+            "were",
+            "did",
+            "had"
+          ],
+          "chipBudget": 7,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "they / asked / me / when / I / could / start",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They asked me when I could start.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fragewort 'when', dann Subjekt + 'could'.",
+      "hintEn": null,
+      "explainDe": "'They asked me when I could start.' — 'when' bleibt, 'can' → 'could', Subjekt vor Verb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.sb.004",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "was",
+            "were",
+            "did",
+            "had"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "asked / she / me / if / I / had / any / experience",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me if I had any experience.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Ja/Nein-Frage → 'if', dann Subjekt 'I' + 'had'.",
+      "hintEn": null,
+      "explainDe": "'She asked me if I had any experience.' — 'if' bei Ja/Nein-Frage, 'have' → 'had', keine Inversion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.sb.005",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "was",
+            "were",
+            "did",
+            "had"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "asked / she / me / why / I / wanted / the / job",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me why I wanted the job.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Fragewort 'why', dann Subjekt 'I' + 'wanted'.",
+      "hintEn": null,
+      "explainDe": "'She asked me why I wanted the job.' — 'why' bleibt, Subjekt vor Verb, 2. Form 'wanted', kein 'did'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.001",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Do you like pizza?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: She asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me if I liked pizza.",
+          "tier": "full"
+        },
+        {
+          "text": "She asked me whether I liked pizza.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if', 'like' → 'liked', kein 'do'.",
+      "hintEn": null,
+      "explainDe": "Aus 'Do you like pizza?' wird 'if I liked pizza': 'if' bei Ja/Nein-Frage, 'like' rückt zurück zu 'liked', das 'do' fällt weg.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Where do you live?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: He asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me where I lived.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'where' bleibt, dann Subjekt + 2. Form, kein 'do'.",
+      "hintEn": null,
+      "explainDe": "'Where do you live?' wird zu 'where I lived'. Fragewort bleibt, 'live' → 'lived', das 'do' fällt weg.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.003",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Beim Vorstellungsgespräch: „Can you start on Monday?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: They asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They asked me if I could start on Monday.",
+          "tier": "full"
+        },
+        {
+          "text": "They asked me whether I could start on Monday.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if'. 'can' → 'could'.",
+      "hintEn": null,
+      "explainDe": "Ja/Nein-Frage, also 'if'. 'can' rückt zurück zu 'could': 'if I could start on Monday'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.004",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#8",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Beim Vorstellungsgespräch: „How much do you want to earn?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: She asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me how much I wanted to earn.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'how much' bleibt, 'want' → 'wanted', kein 'do'.",
+      "hintEn": null,
+      "explainDe": "Das Fragewort 'how much' bleibt. 'do you want' wird zu 'I wanted': kein 'do', 2. Form.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.005",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#8",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Beim Vorstellungsgespräch: „Will you work at weekends?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: He asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me if I would work at weekends.",
+          "tier": "full"
+        },
+        {
+          "text": "He asked me whether I would work at weekends.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if'. 'will' → 'would'.",
+      "hintEn": null,
+      "explainDe": "Ja/Nein-Frage, also 'if'. 'will' rückt zurück zu 'would': 'if I would work at weekends'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.006",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Why do you want this job?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: The employer asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The employer asked me why I wanted the job.",
+          "tier": "full"
+        },
+        {
+          "text": "The employer asked me why I wanted this job.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'why' bleibt, 'want' → 'wanted', kein 'do'.",
+      "hintEn": null,
+      "explainDe": "Fragewort 'why' bleibt. 'do you want' wird zu 'I wanted': das 'do' fällt weg, 'want' rückt zurück.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.007",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": "m4-u4-reported-questions-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Erzähle deiner Freundin, was im Vorstellungsgespräch gefragt wurde: „What is your ambition?“ — He asked me what my ambition ___ (be).",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'is' rückt eine Stufe zurück zu 'was'.",
+      "hintEn": null,
+      "explainDe": "In der berichteten Frage wird 'is' zu 'was'. Das Fragewort 'what' bleibt vorne.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.008",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-tf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Später erzählst du deinem Vater: „How many languages can you speak?“ — She asked me how many languages I ___ (can) speak.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'can' rückt zurück zu 'could'.",
+      "hintEn": null,
+      "explainDe": "Beim Berichten wird 'can' zu 'could'. Das Fragewort bleibt, danach Subjekt + 'could'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.009",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Beim Arzt: „Do you feel OK?“ Erzähle es deiner Mutter: She asked me ___ I ___ (feel) OK.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "if | felt",
+          "tier": "full"
+        },
+        {
+          "text": "whether | felt",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        },
+        {
+          "word": "felt",
+          "de": "fühlte (2. Form von feel)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if'. 'feel' → 2. Form 'felt'.",
+      "hintEn": null,
+      "explainDe": "Ja/Nein-Frage, also 'if'. 'feel' rückt eine Stufe zurück zur 2. Form 'felt'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.010",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Are you ready?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: She asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me if I was ready.",
+          "tier": "full"
+        },
+        {
+          "text": "She asked me whether I was ready.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        },
+        {
+          "word": "ready",
+          "de": "bereit, fertig",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if'. 'are you' → 'I was'.",
+      "hintEn": null,
+      "explainDe": "Aus 'Are you ready?' wird 'if I was ready': 'if' bei Ja/Nein-Frage, 'are' → 'was', keine Inversion.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.011",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib wieder, was im Vorstellungsgespräch gefragt wurde: „Have you worked before?“ Beginne mit: He asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me if I had worked before.",
+          "tier": "full"
+        },
+        {
+          "text": "He asked me whether I had worked before.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        },
+        {
+          "word": "worked",
+          "de": "gearbeitet (2./3. Form von work)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if'. 'have worked' → 'had worked'.",
+      "hintEn": null,
+      "explainDe": "Ja/Nein-Frage, also 'if'. 'have worked' rückt eine Stufe zurück zu 'had worked'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.012",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„Do you have a dog?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: He asked Rover ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked Rover if he had a dog.",
+          "tier": "full"
+        },
+        {
+          "text": "He asked Rover whether he had a dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ja/Nein-Frage → 'if'. 'have' → 'had', 'you' → 'he'.",
+      "hintEn": null,
+      "explainDe": "'if' bei der Ja/Nein-Frage, 'have' → 'had'. Das Pronomen 'you' wird zu 'he'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tf.013",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "„What do you do at the weekend?“ Gib die Frage so wieder, wie sie gestellt wurde. Beginne mit: She asked me ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She asked me what I did at the weekend.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'what' bleibt, 'do you do' → 'I did', kein extra 'do'.",
+      "hintEn": null,
+      "explainDe": "Das Fragewort 'what' bleibt. 'do you do' wird zu 'I did': das Frage-'do' fällt weg, das Vollverb 'do' rückt zurück zu 'did'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tr.002",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er fragte mich, wo ich wohnte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me where I lived.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "W-Frage: 'where' + Subjekt + 2. Form, kein 'did'.",
+      "hintEn": null,
+      "explainDe": "'wo' → 'where'. Danach 'I lived' (2. Form), keine Inversion und kein 'did'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tr.004",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#15",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er fragte mich, was meine Fähigkeiten waren.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He asked me what my skills were.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "W-Frage: 'what' bleibt. 'sind/waren' → 'were'.",
+      "hintEn": null,
+      "explainDe": "'was' (Fragewort) → 'what'. Bei 'Fähigkeiten' (Mehrzahl) steht 'were': 'what my skills were'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tr.007",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u4-reported-questions-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mia fragte mich, ob ich einen Hund hatte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mia asked me if I had a dog.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia asked me whether I had a dog.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "'ob' → 'if' (oder 'whether'). Danach Aussagesatz-Wortstellung, kein 'did'.",
+      "hintEn": null,
+      "explainDe": "'ob' heißt 'if'. Es ist eine Ja/Nein-Frage, also 'asked me if I had a dog'. Kein 'did', Subjekt vor Verb.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tr.008",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 4.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sue fragte mich, ob ich am Montag anfangen könnte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sue asked me if I could start on Monday.",
+          "tier": "full"
+        },
+        {
+          "text": "Sue asked me whether I could start on Monday.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "'ob' → 'if'. 'könnte' → 'could'.",
+      "hintEn": null,
+      "explainDe": "'ob' = 'if', 'könnte' = 'could'. Es ist eine Ja/Nein-Frage: 'asked me if I could start on Monday'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tr.009",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mia asked me if I liked my job.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mia fragte mich, ob ich meinen Job mochte.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia fragte mich, ob ich meine Arbeit mochte.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia fragte mich, ob mir mein Job gefiel.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'if' = ob. Im Deutschen kommt das Verb ans Ende des Nebensatzes.",
+      "hintEn": null,
+      "explainDe": "'if' heißt hier 'ob'. Im deutschen Nebensatz steht das Verb am Ende: '..., ob ich meinen Job mochte'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u04.gi.reported-questions.tr.010",
+      "structureId": "g4u04.s.reported-questions",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 WB Unit 4.txt#6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sue fragte mich, ob ich Erfahrung hatte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sue asked me if I had any experience.",
+          "tier": "full"
+        },
+        {
+          "text": "Sue asked me whether I had any experience.",
+          "tier": "full"
+        },
+        {
+          "text": "Sue asked me if I had experience.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "whether",
+          "de": "ob",
+          "scope": null
+        }
+      ],
+      "hintDe": "'ob' → 'if'. 'Erfahrung' = experience. 'hatte' → 'had'.",
+      "hintEn": null,
+      "explainDe": "'ob' = 'if', 'Erfahrung' = 'experience', 'hatte' = 'had': 'asked me if I had any experience'.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

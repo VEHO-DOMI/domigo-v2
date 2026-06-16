@@ -1,0 +1,3420 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g4-u04",
+  "briefBank": "ed0525f1c242",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "wordId": "g4u04.w.accountant",
+      "w": "accountant",
+      "g": "Buchhalter/in",
+      "d": "Someone whose job is to keep and look after the money of a company.",
+      "s": "She has a job in finance. She's an ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "accountant",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "accountant",
+          "tier": "full"
+        },
+        {
+          "text": "an accountant",
+          "tier": "full"
+        },
+        {
+          "text": "accountants",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "accountant",
+            "tier": "full"
+          },
+          {
+            "text": "an accountant",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Buchhalter",
+            "tier": "full"
+          },
+          {
+            "text": "Buchhalterin",
+            "tier": "full"
+          },
+          {
+            "text": "Buchhalter/in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Someone",
+          "de": "jemand",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "mechanic",
+        "receptionist",
+        "electrician"
+      ],
+      "hintDe": "Diese Person kümmert sich um die Zahlen und das Geld einer Firma.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mechanic",
+          "receptionist",
+          "electrician",
+          "nurse",
+          "secretary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "accountant",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.receptionist",
+      "w": "receptionist",
+      "g": "Rezeptionist/in",
+      "d": "Someone whose job is at the desk in a hotel, welcoming the people who come in.",
+      "s": "The ___ at the hotel gave us our key and a map of the city.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "receptionist",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "receptionist",
+          "tier": "full"
+        },
+        {
+          "text": "a receptionist",
+          "tier": "full"
+        },
+        {
+          "text": "receptionists",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "receptionist",
+            "tier": "full"
+          },
+          {
+            "text": "a receptionist",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rezeptionist",
+            "tier": "full"
+          },
+          {
+            "text": "Rezeptionistin",
+            "tier": "full"
+          },
+          {
+            "text": "Rezeptionist/in",
+            "tier": "full"
+          },
+          {
+            "text": "Empfangsdame",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Someone",
+          "de": "jemand",
+          "scope": "d"
+        },
+        {
+          "word": "welcoming",
+          "de": "begrüßen",
+          "scope": "d"
+        },
+        {
+          "word": "gave",
+          "de": "gab (von: geben)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "secretary",
+        "mechanic",
+        "accountant"
+      ],
+      "hintDe": "Diese Person sitzt am Empfang im Hotel und begrüßt die Gäste.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "secretary",
+          "mechanic",
+          "accountant",
+          "nurse",
+          "electrician"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "receptionist",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.mechanic",
+      "w": "mechanic",
+      "g": "Mechaniker/in",
+      "d": "Someone whose job is to repair machines, especially cars.",
+      "s": "I took my car to the ___ because the engine was making a strange noise.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mechanic",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mechanic",
+          "tier": "full"
+        },
+        {
+          "text": "a mechanic",
+          "tier": "full"
+        },
+        {
+          "text": "mechanics",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mechanic",
+            "tier": "full"
+          },
+          {
+            "text": "a mechanic",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mechaniker",
+            "tier": "full"
+          },
+          {
+            "text": "Mechanikerin",
+            "tier": "full"
+          },
+          {
+            "text": "Mechaniker/in",
+            "tier": "full"
+          },
+          {
+            "text": "Automechaniker",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Someone",
+          "de": "jemand",
+          "scope": "d"
+        },
+        {
+          "word": "especially",
+          "de": "besonders",
+          "scope": "d"
+        },
+        {
+          "word": "took",
+          "de": "brachte (von: bringen)",
+          "scope": "s"
+        },
+        {
+          "word": "strange",
+          "de": "seltsam, komisch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "electrician",
+        "nurse",
+        "secretary"
+      ],
+      "hintDe": "Diese Person repariert Maschinen, vor allem Autos.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "electrician",
+          "nurse",
+          "secretary",
+          "accountant",
+          "receptionist"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "mechanic",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.nurse",
+      "w": "nurse",
+      "g": "Krankenpfleger/in",
+      "d": "Someone whose job is to care for people who are ill, usually in a hospital.",
+      "s": "The ___ looked after me in hospital and gave me my medicine.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "nurse",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nurse",
+          "tier": "full"
+        },
+        {
+          "text": "a nurse",
+          "tier": "full"
+        },
+        {
+          "text": "nurses",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nurse",
+            "tier": "full"
+          },
+          {
+            "text": "a nurse",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Krankenpfleger",
+            "tier": "full"
+          },
+          {
+            "text": "Krankenpflegerin",
+            "tier": "full"
+          },
+          {
+            "text": "Krankenschwester",
+            "tier": "full"
+          },
+          {
+            "text": "Krankenpfleger/in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Someone",
+          "de": "jemand",
+          "scope": "d"
+        },
+        {
+          "word": "gave",
+          "de": "gab (von: geben)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "accountant",
+        "electrician",
+        "mechanic"
+      ],
+      "hintDe": "Diese Person pflegt kranke Menschen, meistens im Krankenhaus.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "accountant",
+          "electrician",
+          "mechanic",
+          "receptionist",
+          "secretary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "nurse",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.health-care",
+      "w": "health care",
+      "g": "Gesundheitswesen",
+      "d": "The work of looking after people who are ill, for example in hospitals.",
+      "s": "She wants a job in ___ because she likes looking after people.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "health care",
+          "tier": "full"
+        },
+        {
+          "text": "healthcare",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "health care",
+          "tier": "full"
+        },
+        {
+          "text": "healthcare",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "health care",
+            "tier": "full"
+          },
+          {
+            "text": "healthcare",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gesundheitswesen",
+            "tier": "full"
+          },
+          {
+            "text": "Gesundheitsbereich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "example",
+          "de": "Beispiel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "finance",
+        "computing",
+        "marketing"
+      ],
+      "hintDe": "Dieser Bereich kümmert sich um kranke Menschen, zum Beispiel in Krankenhäusern.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "finance",
+          "computing",
+          "marketing",
+          "journalism",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "health care",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.marketing",
+      "w": "marketing",
+      "g": "Marketing",
+      "d": "The work of showing people the things a company sells so that they want them.",
+      "s": "She has a job in ___ and shows people why our new drink is so good.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "marketing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "marketing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "marketing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Marketing",
+            "tier": "full"
+          },
+          {
+            "text": "Vermarktung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge, Sachen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "finance",
+        "computing",
+        "journalism"
+      ],
+      "hintDe": "Dieser Bereich sorgt dafür, dass Leute die Produkte einer Firma kaufen wollen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "finance",
+          "computing",
+          "journalism",
+          "health care",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "marketing",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.finance",
+      "w": "finance",
+      "g": "Finanzwesen",
+      "d": "The work of looking after money for people and companies.",
+      "s": "He wants a job in ___ because he is good with money and numbers.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "finance",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "finance",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "finance",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Finanzwesen",
+            "tier": "full"
+          },
+          {
+            "text": "Finanzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "marketing",
+        "computing",
+        "journalism"
+      ],
+      "hintDe": "Dieser Bereich kümmert sich um Geld, zum Beispiel in einer Bank.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "marketing",
+          "computing",
+          "journalism",
+          "health care",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "finance",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.electrician",
+      "w": "electrician",
+      "g": "Elektriker/in",
+      "d": "Someone whose job is to put in and repair the lights and electricity in a building.",
+      "s": "We called an ___ to repair the broken lights in the kitchen.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "electrician",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "electrician",
+          "tier": "full"
+        },
+        {
+          "text": "an electrician",
+          "tier": "full"
+        },
+        {
+          "text": "electricians",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "electrician",
+            "tier": "full"
+          },
+          {
+            "text": "an electrician",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Elektriker",
+            "tier": "full"
+          },
+          {
+            "text": "Elektrikerin",
+            "tier": "full"
+          },
+          {
+            "text": "Elektriker/in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Someone",
+          "de": "jemand",
+          "scope": "d"
+        },
+        {
+          "word": "broken",
+          "de": "kaputt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "mechanic",
+        "nurse",
+        "accountant"
+      ],
+      "hintDe": "Diese Person repariert alles, was mit Strom zu tun hat.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "mechanic",
+          "nurse",
+          "accountant",
+          "receptionist",
+          "secretary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "electrician",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.secretary",
+      "w": "secretary",
+      "g": "Sekretär/in",
+      "d": "Someone whose job in an office is writing letters, calling people and looking after meetings.",
+      "s": "The ___ in our office writes the letters and looks after all the meetings.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "secretary",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "secretary",
+          "tier": "full"
+        },
+        {
+          "text": "a secretary",
+          "tier": "full"
+        },
+        {
+          "text": "secretaries",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "secretary",
+            "tier": "full"
+          },
+          {
+            "text": "a secretary",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Sekretär",
+            "tier": "full"
+          },
+          {
+            "text": "Sekretärin",
+            "tier": "full"
+          },
+          {
+            "text": "Sekretär/in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Someone",
+          "de": "jemand",
+          "scope": "d"
+        },
+        {
+          "word": "meetings",
+          "de": "Besprechungen, Treffen",
+          "scope": "d"
+        },
+        {
+          "word": "meetings",
+          "de": "Besprechungen, Treffen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "receptionist",
+        "mechanic",
+        "nurse"
+      ],
+      "hintDe": "Diese Person erledigt die Büroarbeit, schreibt Briefe und plant Termine.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "receptionist",
+          "mechanic",
+          "nurse",
+          "accountant",
+          "electrician"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "secretary",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.flight-attendant",
+      "w": "flight attendant",
+      "g": "Flugbegleiter/in",
+      "d": "Someone whose job is to look after the people on a plane.",
+      "s": "The ___ showed us how to be safe on the plane.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "flight attendant",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "flight attendant",
+          "tier": "full"
+        },
+        {
+          "text": "a flight attendant",
+          "tier": "full"
+        },
+        {
+          "text": "flight attendants",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "flight attendant",
+            "tier": "full"
+          },
+          {
+            "text": "a flight attendant",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flugbegleiter",
+            "tier": "full"
+          },
+          {
+            "text": "Flugbegleiterin",
+            "tier": "full"
+          },
+          {
+            "text": "Flugbegleiter/in",
+            "tier": "full"
+          },
+          {
+            "text": "Steward",
+            "tier": "partial"
+          },
+          {
+            "text": "Stewardess",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Someone",
+          "de": "jemand",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "receptionist",
+        "mechanic",
+        "accountant"
+      ],
+      "hintDe": "Diese Person kümmert sich um die Passagiere im Flugzeug.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "receptionist",
+          "mechanic",
+          "accountant",
+          "nurse",
+          "secretary"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "flight attendant",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.computing",
+      "w": "computing",
+      "g": "Computerwesen",
+      "d": "The use of computers and the work people do with them.",
+      "s": "She wants a job in ___ because she loves making apps on the computer.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "computing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "computing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "computing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Computerwesen",
+            "tier": "full"
+          },
+          {
+            "text": "Datenverarbeitung",
+            "tier": "full"
+          },
+          {
+            "text": "Informatik",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "computers",
+          "de": "Computer (Mehrzahl)",
+          "scope": "d"
+        },
+        {
+          "word": "apps",
+          "de": "Apps",
+          "scope": "s"
+        },
+        {
+          "word": "computer",
+          "de": "Computer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "finance",
+        "marketing",
+        "journalism"
+      ],
+      "hintDe": "In diesem Bereich arbeitet man mit Computern.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "finance",
+          "marketing",
+          "journalism",
+          "health care",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "computing",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.computing-2",
+      "w": "computing",
+      "g": "Datenverarbeitung",
+      "d": "The use of computers for work, for example writing programmes.",
+      "s": "I love programming, so I'm glad I found a job in ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "computing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "computing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "computing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Datenverarbeitung",
+            "tier": "full"
+          },
+          {
+            "text": "Computerwesen",
+            "tier": "full"
+          },
+          {
+            "text": "Informatik",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "computers",
+          "de": "Computer (Mehrzahl)",
+          "scope": "d"
+        },
+        {
+          "word": "example",
+          "de": "Beispiel",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "finance",
+        "marketing",
+        "health care"
+      ],
+      "hintDe": "In diesem Bereich verarbeitet man Daten mit dem Computer.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "finance",
+          "marketing",
+          "health care",
+          "journalism",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "computing",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.finance-2",
+      "w": "finance",
+      "g": "Finanzwesen",
+      "d": "The work of looking after money for a bank or a company.",
+      "s": "She has a job in ___. She's an accountant.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "finance",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "finance",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "finance",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Finanzwesen",
+            "tier": "full"
+          },
+          {
+            "text": "Finanzen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "computing",
+        "marketing",
+        "health care"
+      ],
+      "hintDe": "In diesem Bereich geht es um Geld, zum Beispiel in einer Bank.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "computing",
+          "marketing",
+          "health care",
+          "journalism",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "finance",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.health-care-2",
+      "w": "health care",
+      "g": "Gesundheitswesen",
+      "d": "The work of helping people who are ill, for example as a nurse or doctor.",
+      "s": "If you want to work in ___, you need to like helping people.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "health care",
+          "tier": "full"
+        },
+        {
+          "text": "healthcare",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "health care",
+          "tier": "full"
+        },
+        {
+          "text": "healthcare",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "health care",
+            "tier": "full"
+          },
+          {
+            "text": "healthcare",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gesundheitswesen",
+            "tier": "full"
+          },
+          {
+            "text": "Gesundheitsbereich",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "example",
+          "de": "Beispiel",
+          "scope": "d"
+        },
+        {
+          "word": "as",
+          "de": "als",
+          "scope": "d"
+        },
+        {
+          "word": "helping",
+          "de": "helfen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "finance",
+        "computing",
+        "marketing"
+      ],
+      "hintDe": "In diesem Bereich kümmert man sich um kranke Menschen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "finance",
+          "computing",
+          "marketing",
+          "journalism",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "health care",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.sales-and-marketing",
+      "w": "sales and marketing",
+      "g": "Verkauf und Marketing",
+      "d": "The part of a company that sells things and shows people why they are good.",
+      "s": "He is good with people. No wonder he has a job in ___.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "sales and marketing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sales and marketing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sales and marketing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Verkauf und Marketing",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "part",
+          "de": "Teil",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Dinge, Sachen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "finance",
+        "computing",
+        "health care"
+      ],
+      "hintDe": "In diesem Bereich verkauft man Produkte und macht Werbung dafür.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "finance",
+          "computing",
+          "health care",
+          "journalism",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "sales and marketing",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.deserve",
+      "w": "deserve",
+      "g": "verdienen",
+      "d": "To have a right to something good because of what you have done.",
+      "s": "You studied so well for school — you ___ a great result.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "deserve",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "deserve",
+          "tier": "full"
+        },
+        {
+          "text": "deserved",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "deserve",
+            "tier": "full"
+          },
+          {
+            "text": "to deserve",
+            "tier": "full"
+          },
+          {
+            "text": "deserved",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verdienen",
+            "tier": "full"
+          },
+          {
+            "text": "es verdienen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "result",
+          "de": "Ergebnis",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "earn",
+        "develop",
+        "launch"
+      ],
+      "hintDe": "Etwas zu Recht bekommen, weil man es sich verdient hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "earn",
+          "develop",
+          "launch",
+          "memorise"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "deserve",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.female",
+      "w": "female",
+      "g": "weiblich",
+      "d": "A woman or a girl, not a man or a boy.",
+      "s": "My dog's a girl, so it's ___, not male.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "female",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "female",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "female",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "weiblich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "male",
+        "casual",
+        "enthusiastic"
+      ],
+      "hintDe": "So nennt man das Geschlecht von Frauen und Mädchen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "male",
+          "casual",
+          "enthusiastic",
+          "unemployed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "female",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.male",
+      "w": "male",
+      "g": "männlich",
+      "d": "A man or a boy, not a woman or a girl.",
+      "s": "My sister has a dog, and it's ___, not female.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "male",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "male",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "male",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "männlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "female",
+        "casual",
+        "unemployed"
+      ],
+      "hintDe": "So nennt man das Geschlecht von Männern und Jungen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "female",
+          "casual",
+          "unemployed",
+          "enthusiastic"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "male",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.satisfaction",
+      "w": "satisfaction",
+      "g": "Zufriedenheit",
+      "d": "The happy feeling you have when you do something well.",
+      "s": "I love my job. It gives me a lot of ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "satisfaction",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "satisfaction",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "satisfaction",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zufriedenheit",
+            "tier": "full"
+          },
+          {
+            "text": "Genugtuung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "ambition",
+        "career",
+        "advice"
+      ],
+      "hintDe": "Das gute Gefühl, wenn du etwas geschafft hast oder zufrieden bist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ambition",
+          "career",
+          "advice",
+          "bonus"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "satisfaction",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.unemployed",
+      "w": "unemployed",
+      "g": "arbeitslos",
+      "d": "Not having a job that pays you money.",
+      "s": "I lost my job last week. Now I'm ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "unemployed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "unemployed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "unemployed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "arbeitslos",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "lost",
+          "de": "verlor (von: verlieren)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "casual",
+        "enthusiastic",
+        "female"
+      ],
+      "hintDe": "So heißt jemand, der gerade keine Arbeit hat.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "casual",
+          "enthusiastic",
+          "female",
+          "male"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "unemployed",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.career",
+      "w": "career",
+      "g": "Karriere",
+      "d": "The jobs a person does in one kind of work over many years.",
+      "s": "She started her ___ as a singer ten years ago.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "career",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "career",
+          "tier": "full"
+        },
+        {
+          "text": "careers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "career",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Karriere",
+            "tier": "full"
+          },
+          {
+            "text": "Berufslaufbahn",
+            "tier": "full"
+          },
+          {
+            "text": "Laufbahn",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "started",
+          "de": "begann (von: beginnen)",
+          "scope": "s"
+        },
+        {
+          "word": "as",
+          "de": "als",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "ambition",
+        "salary",
+        "company"
+      ],
+      "hintDe": "Der berufliche Weg, den jemand über viele Jahre geht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ambition",
+          "salary",
+          "company",
+          "satisfaction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "career",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.be-keen-on",
+      "w": "be keen on",
+      "g": "von etw. begeistert sein",
+      "d": "To like something very much or be very happy to do it.",
+      "s": "I was very tired, so I wasn't ___ going out that evening.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "keen on",
+          "tier": "full"
+        },
+        {
+          "text": "keen",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be keen on",
+          "tier": "full"
+        },
+        {
+          "text": "keen on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be keen on",
+            "tier": "full"
+          },
+          {
+            "text": "keen on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "von etwas begeistert sein",
+            "tier": "full"
+          },
+          {
+            "text": "scharf auf etwas sein",
+            "tier": "partial"
+          },
+          {
+            "text": "auf etwas stehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "be responsible for",
+        "deserve",
+        "develop"
+      ],
+      "hintDe": "Etwas sehr gerne mögen oder begeistert davon sein.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "be responsible for",
+          "deserve",
+          "develop",
+          "memorise"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "be keen on",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.be-responsible-for",
+      "w": "be responsible for",
+      "g": "für etw. verantwortlich sein",
+      "d": "To be the one who has to look after something or make sure it happens.",
+      "s": "In our team, Tom is ___ calling the customers every morning.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "responsible for",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be responsible for",
+          "tier": "full"
+        },
+        {
+          "text": "responsible for",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be responsible for",
+            "tier": "full"
+          },
+          {
+            "text": "responsible for",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "für etwas verantwortlich sein",
+            "tier": "full"
+          },
+          {
+            "text": "verantwortlich sein für",
+            "tier": "full"
+          },
+          {
+            "text": "zuständig sein für",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "team",
+          "de": "Team, Mannschaft",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "be keen on",
+        "develop",
+        "deserve"
+      ],
+      "hintDe": "Derjenige sein, der sich um etwas kümmern muss.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "be keen on",
+          "develop",
+          "deserve",
+          "launch"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "be responsible for",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.bonus",
+      "w": "bonus",
+      "g": "Prämie",
+      "d": "Extra money for doing your job especially well.",
+      "s": "Everyone in the office got a ___ for their great work this year.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "bonus",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bonus",
+          "tier": "full"
+        },
+        {
+          "text": "bonuses",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bonus",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Prämie",
+            "tier": "full"
+          },
+          {
+            "text": "Bonus",
+            "tier": "full"
+          },
+          {
+            "text": "Zulage",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "Extra",
+          "de": "extra, zusätzlich",
+          "scope": "d"
+        },
+        {
+          "word": "especially",
+          "de": "besonders",
+          "scope": "d"
+        },
+        {
+          "word": "got",
+          "de": "bekam (von: bekommen)",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "salary",
+        "deadline",
+        "advice"
+      ],
+      "hintDe": "Extra Geld, das du für gute Arbeit bekommst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "salary",
+          "deadline",
+          "advice",
+          "ambition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "bonus",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.deadline",
+      "w": "deadline",
+      "g": "Abgabetermin",
+      "d": "The last day or time when your work needs to be done.",
+      "s": "We had to hurry to meet the ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "deadline",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "deadline",
+          "tier": "full"
+        },
+        {
+          "text": "deadlines",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "deadline",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abgabetermin",
+            "tier": "full"
+          },
+          {
+            "text": "Frist",
+            "tier": "full"
+          },
+          {
+            "text": "Termin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bonus",
+        "salary",
+        "company"
+      ],
+      "hintDe": "Der letzte Zeitpunkt, bis zu dem etwas fertig sein muss.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bonus",
+          "salary",
+          "company",
+          "ambition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "deadline",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.develop",
+      "w": "develop",
+      "g": "entwickeln",
+      "d": "To make something new over time, for example a new product.",
+      "s": "The company ___ new apps for mobile phones.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "develops",
+          "tier": "full"
+        },
+        {
+          "text": "develop",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "develop",
+          "tier": "full"
+        },
+        {
+          "text": "develops",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "develop",
+            "tier": "full"
+          },
+          {
+            "text": "to develop",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "entwickeln",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "example",
+          "de": "Beispiel",
+          "scope": "d"
+        },
+        {
+          "word": "apps",
+          "de": "Apps",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "launch",
+        "earn",
+        "deserve"
+      ],
+      "hintDe": "Etwas Neues nach und nach entstehen lassen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "launch",
+          "earn",
+          "deserve",
+          "memorise"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "develop",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.earn",
+      "w": "earn",
+      "g": "verdienen",
+      "d": "To be paid money for the work that you do.",
+      "s": "I need to ___ a lot of money if I want to go on holiday to Australia.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "earn",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "earn",
+          "tier": "full"
+        },
+        {
+          "text": "earns",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "earn",
+            "tier": "full"
+          },
+          {
+            "text": "to earn",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verdienen",
+            "tier": "full"
+          },
+          {
+            "text": "Geld verdienen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "paid",
+          "de": "bezahlt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "deserve",
+        "develop",
+        "launch"
+      ],
+      "hintDe": "Geld für deine Arbeit bekommen.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "deserve",
+          "develop",
+          "launch",
+          "memorise"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "earn",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.launch",
+      "w": "launch",
+      "g": "auf den Markt bringen",
+      "d": "To bring out a new product and start selling it for the first time.",
+      "s": "The new product will be ___ in July.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "launched",
+          "tier": "full"
+        },
+        {
+          "text": "launch",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "launch",
+          "tier": "full"
+        },
+        {
+          "text": "launched",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "launch",
+            "tier": "full"
+          },
+          {
+            "text": "to launch",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "auf den Markt bringen",
+            "tier": "full"
+          },
+          {
+            "text": "einführen",
+            "tier": "full"
+          },
+          {
+            "text": "herausbringen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "develop",
+        "earn",
+        "memorise"
+      ],
+      "hintDe": "Etwas Neues herausbringen und beginnen, es zu verkaufen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "develop",
+          "earn",
+          "memorise",
+          "deserve"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "launch",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.pros-and-cons",
+      "w": "pros and cons",
+      "g": "Vor- und Nachteile",
+      "d": "The good and the bad sides of something.",
+      "s": "Think about the ___ before you take a new job.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "pros and cons",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pros and cons",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pros and cons",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vor- und Nachteile",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "sides",
+          "de": "Seiten",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "working hours",
+        "eye contact",
+        "skills"
+      ],
+      "hintDe": "Die guten und die schlechten Seiten von etwas.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "working hours",
+          "eye contact",
+          "skills",
+          "advice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "pros and cons",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.salary",
+      "w": "salary",
+      "g": "Gehalt",
+      "d": "The money you are paid for your job every month.",
+      "s": "She earns a good ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "salary",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "salary",
+          "tier": "full"
+        },
+        {
+          "text": "salaries",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "salary",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gehalt",
+            "tier": "full"
+          },
+          {
+            "text": "Lohn",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "paid",
+          "de": "bezahlt",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "bonus",
+        "deadline",
+        "company"
+      ],
+      "hintDe": "Das Geld, das du jeden Monat für deine Arbeit bekommst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "bonus",
+          "deadline",
+          "company",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "salary",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.think-up",
+      "w": "think up",
+      "g": "ausdenken",
+      "d": "To make a new idea or plan in your head.",
+      "s": "We need to ___ a good name for our new school band.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "think up",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "think up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "think up",
+            "tier": "full"
+          },
+          {
+            "text": "to think up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausdenken",
+            "tier": "full"
+          },
+          {
+            "text": "sich ausdenken",
+            "tier": "full"
+          },
+          {
+            "text": "erfinden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "idea",
+          "de": "Idee",
+          "scope": "d"
+        },
+        {
+          "word": "plan",
+          "de": "Plan",
+          "scope": "d"
+        },
+        {
+          "word": "name",
+          "de": "Name",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "develop",
+        "memorise",
+        "launch"
+      ],
+      "hintDe": "Sich eine neue Idee oder einen Plan ausdenken.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "develop",
+          "memorise",
+          "launch",
+          "earn"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "think up",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.working-hours",
+      "w": "working hours",
+      "g": "Arbeitszeit",
+      "d": "The times of the day when a person is at their job.",
+      "s": "Most people enjoy shorter ___ and more free time.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "working hours",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "working hours",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "working hours",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Arbeitszeit",
+            "tier": "full"
+          },
+          {
+            "text": "Arbeitszeiten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "pros and cons",
+        "eye contact",
+        "skills"
+      ],
+      "hintDe": "Die Zeiten am Tag, an denen jemand arbeitet.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "pros and cons",
+          "eye contact",
+          "skills",
+          "advice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "working hours",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.advice",
+      "w": "advice",
+      "g": "Ratschlag",
+      "d": "What you tell somebody to help them do the right thing.",
+      "s": "Take my ___. Don't do it.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "advice",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "advice",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "advice",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ratschlag",
+            "tier": "full"
+          },
+          {
+            "text": "Rat",
+            "tier": "full"
+          },
+          {
+            "text": "Tipp",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ambition",
+        "skills",
+        "career"
+      ],
+      "hintDe": "Wenn du jemandem sagst, was er tun sollte, um zu helfen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "ambition",
+          "skills",
+          "career",
+          "satisfaction"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "advice",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.ambition",
+      "w": "ambition",
+      "g": "Ehrgeiz",
+      "d": "A strong wish to do or become something great in your life.",
+      "s": "Her ___ is to become a famous singer one day.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "ambition",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ambition",
+          "tier": "full"
+        },
+        {
+          "text": "ambitions",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ambition",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ehrgeiz",
+            "tier": "full"
+          },
+          {
+            "text": "großes Ziel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wish",
+          "de": "Wunsch",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "career",
+        "advice",
+        "satisfaction"
+      ],
+      "hintDe": "Ein starker Wunsch, etwas Großes zu erreichen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "career",
+          "advice",
+          "satisfaction",
+          "skills"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "ambition",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.casual",
+      "w": "casual",
+      "g": "lässig",
+      "d": "Free and easy, not too smart or serious.",
+      "s": "Don't be too ___ during an interview for a new job.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "casual",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "casual",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "casual",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "lässig",
+            "tier": "full"
+          },
+          {
+            "text": "locker",
+            "tier": "full"
+          },
+          {
+            "text": "leger",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "easy",
+          "de": "locker, ungezwungen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "enthusiastic",
+        "confidently",
+        "female"
+      ],
+      "hintDe": "Entspannt und locker, nicht zu schick oder ernst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "enthusiastic",
+          "female",
+          "male",
+          "unemployed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "casual",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.company",
+      "w": "company",
+      "g": "Firma",
+      "d": "A business that makes or sells things and gives people jobs.",
+      "s": "My dad has a job in a small ___ that makes furniture.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "company",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "company",
+          "tier": "full"
+        },
+        {
+          "text": "companies",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "company",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Firma",
+            "tier": "full"
+          },
+          {
+            "text": "Unternehmen",
+            "tier": "full"
+          },
+          {
+            "text": "Betrieb",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "business",
+          "de": "Geschäft, Betrieb",
+          "scope": "d"
+        },
+        {
+          "word": "things",
+          "de": "Dinge, Sachen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "employer",
+        "career",
+        "salary"
+      ],
+      "hintDe": "Ein Betrieb, der Dinge herstellt oder verkauft.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "employer",
+          "career",
+          "salary",
+          "ambition"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "company",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.confidently",
+      "w": "confidently",
+      "g": "selbstbewusst",
+      "d": "In a way that shows you believe in yourself.",
+      "s": "Try to speak and act ___, but don't be cheeky.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "confidently",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "confidently",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "confidently",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "selbstbewusst",
+            "tier": "full"
+          },
+          {
+            "text": "selbstsicher",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "believe",
+          "de": "glauben",
+          "scope": "d"
+        },
+        {
+          "word": "yourself",
+          "de": "dich selbst",
+          "scope": "d"
+        },
+        {
+          "word": "Try",
+          "de": "versuche",
+          "scope": "s"
+        },
+        {
+          "word": "act",
+          "de": "sich verhalten, handeln",
+          "scope": "s"
+        },
+        {
+          "word": "cheeky",
+          "de": "frech",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "naturally",
+        "enthusiastic",
+        "casual"
+      ],
+      "hintDe": "Auf eine Art, die zeigt, dass du an dich selbst glaubst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "naturally",
+          "enthusiastic",
+          "casual",
+          "female"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "confidently",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.employer",
+      "w": "employer",
+      "g": "Arbeitgeber/in",
+      "d": "A person or company that pays other people to work for them.",
+      "s": "My new ___ is a big computer company.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "employer",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "employer",
+          "tier": "full"
+        },
+        {
+          "text": "an employer",
+          "tier": "full"
+        },
+        {
+          "text": "employers",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "employer",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Arbeitgeber",
+            "tier": "full"
+          },
+          {
+            "text": "Arbeitgeberin",
+            "tier": "full"
+          },
+          {
+            "text": "Arbeitgeber/in",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "person",
+          "de": "Person",
+          "scope": "d"
+        },
+        {
+          "word": "other",
+          "de": "andere",
+          "scope": "d"
+        },
+        {
+          "word": "computer",
+          "de": "Computer",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "company",
+        "career",
+        "salary"
+      ],
+      "hintDe": "Eine Person oder Firma, die andere für sich arbeiten lässt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "company",
+          "career",
+          "salary",
+          "ambition",
+          "advice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "employer",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.enthusiastic",
+      "w": "enthusiastic",
+      "g": "begeistert",
+      "d": "Showing a lot of happy and excited feelings about something.",
+      "s": "The boys and girls were very ___ about the school trip to London.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "enthusiastic",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "enthusiastic",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "enthusiastic",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "begeistert",
+            "tier": "full"
+          },
+          {
+            "text": "enthusiastisch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "feelings",
+          "de": "Gefühle",
+          "scope": "d"
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "trip",
+          "de": "Ausflug, Reise",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "casual",
+        "confidently",
+        "unemployed"
+      ],
+      "hintDe": "Voller Interesse und Begeisterung für etwas.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "casual",
+          "female",
+          "male",
+          "unemployed"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "enthusiastic",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.eye-contact",
+      "w": "eye contact",
+      "g": "Augenkontakt",
+      "d": "When you look right at somebody while you talk to them.",
+      "s": "Look at your interviewer and try to keep ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "eye contact",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "eye contact",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "eye contact",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Augenkontakt",
+            "tier": "full"
+          },
+          {
+            "text": "Blickkontakt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "try",
+          "de": "versuchen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "working hours",
+        "skills",
+        "pros and cons"
+      ],
+      "hintDe": "Jemandem beim Sprechen direkt in die Augen schauen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "working hours",
+          "skills",
+          "pros and cons",
+          "advice"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "eye contact",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.interview",
+      "w": "(job) interview",
+      "g": "Vorstellungsgespräch",
+      "d": "A meeting where somebody asks you things to find out if you are right for the work.",
+      "s": "She has an ___ next week for a new job.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "interview",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "interview",
+          "tier": "full"
+        },
+        {
+          "text": "job interview",
+          "tier": "full"
+        },
+        {
+          "text": "an interview",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "job interview",
+            "tier": "full"
+          },
+          {
+            "text": "interview",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vorstellungsgespräch",
+            "tier": "full"
+          },
+          {
+            "text": "Bewerbungsgespräch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge, Sachen",
+          "scope": "d"
+        },
+        {
+          "word": "next",
+          "de": "nächste",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "employer",
+        "ambition",
+        "salary"
+      ],
+      "hintDe": "Ein Gespräch, in dem man dir Fragen stellt, um zu sehen, ob du zum Job passt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "employer",
+          "ambition",
+          "salary",
+          "career"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "(job) interview",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.memorise",
+      "w": "memorise",
+      "g": "sich einprägen",
+      "d": "To keep something well in your head so that you can use it again later.",
+      "s": "Read the text and try to ___ it all.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "memorise",
+          "tier": "full"
+        },
+        {
+          "text": "memorize",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "memorise",
+          "tier": "full"
+        },
+        {
+          "text": "memorize",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "memorise",
+            "tier": "full"
+          },
+          {
+            "text": "memorize",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich einprägen",
+            "tier": "full"
+          },
+          {
+            "text": "auswendig lernen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": "d"
+        },
+        {
+          "word": "later",
+          "de": "später",
+          "scope": "d"
+        },
+        {
+          "word": "try",
+          "de": "versuchen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "develop",
+        "launch",
+        "deserve"
+      ],
+      "hintDe": "Sich etwas so gut merken, dass du es später auswendig kannst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "develop",
+          "launch",
+          "deserve",
+          "earn"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "memorise",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.naturally",
+      "w": "naturally",
+      "g": "natürlich",
+      "d": "In a normal and easy way, just like you really are.",
+      "s": "During the interview, speak ___ and just be yourself.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "naturally",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "naturally",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "naturally",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "natürlich",
+            "tier": "full"
+          },
+          {
+            "text": "ganz natürlich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "normal",
+          "de": "normal",
+          "scope": "d"
+        },
+        {
+          "word": "easy",
+          "de": "locker, ungezwungen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "confidently",
+        "casual",
+        "enthusiastic"
+      ],
+      "hintDe": "Auf eine normale, ungezwungene Art.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "confidently",
+          "casual",
+          "enthusiastic",
+          "female"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "naturally",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.skills",
+      "w": "skills",
+      "g": "Fähigkeiten",
+      "d": "The things you can do well because you have done them many times.",
+      "s": "We need somebody with good people ___ for this job.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "skills",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "skills",
+          "tier": "full"
+        },
+        {
+          "text": "skill",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "skills",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fähigkeiten",
+            "tier": "full"
+          },
+          {
+            "text": "Können",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "things",
+          "de": "Dinge, Sachen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "advice",
+        "ambition",
+        "working hours"
+      ],
+      "hintDe": "Die Dinge, die du gut kannst, weil du sie gelernt hast.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "advice",
+          "ambition",
+          "working hours",
+          "pros and cons"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "skills",
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "wordId": "g4u04.w.journalism",
+      "w": "journalism",
+      "g": "Journalismus",
+      "d": "The work of finding and writing the news for newspapers and TV programmes.",
+      "s": "She can write well. She's looking for a career in ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "journalism",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "journalism",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "journalism",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Journalismus",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "news",
+          "de": "Nachrichten",
+          "scope": "d"
+        },
+        {
+          "word": "TV",
+          "de": "Fernsehen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "finance",
+        "computing",
+        "marketing"
+      ],
+      "hintDe": "Die Arbeit, Nachrichten zu finden und aufzuschreiben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "finance",
+          "computing",
+          "marketing",
+          "health care"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": "journalism",
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}
