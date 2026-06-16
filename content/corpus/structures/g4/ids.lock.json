@@ -1,0 +1,22 @@
+{
+  "schema": "structure-ids-lock@1",
+  "grade": 4,
+  "structures": {
+    "past-continuous-revision": "g4u01.s.past-continuous-revision",
+    "past-perfect": "g4u02.s.past-perfect",
+    "reported-speech-statements": "g4u03.s.reported-speech-statements",
+    "reported-questions": "g4u04.s.reported-questions",
+    "past-perfect-connectors": "g4u05.s.past-perfect-connectors",
+    "adverbs-of-manner": "g4u06.s.adverbs-of-manner",
+    "question-tags": "g4u06.s.question-tags",
+    "present-simple-future": "g4u07.s.present-simple-future",
+    "want-someone-to": "g4u07.s.want-someone-to",
+    "tense-time-expression-review": "g4u08.s.tense-time-expression-review",
+    "modals-possibility": "g4u09.s.modals-possibility",
+    "third-conditional": "g4u10.s.third-conditional",
+    "reflexive-pronouns": "g4u11.s.reflexive-pronouns",
+    "phrasal-verbs": "g4u12.s.phrasal-verbs",
+    "word-formation": "g4u13.s.word-formation"
+  },
+  "tombstones": []
+}

@@ -14,12 +14,12 @@ It supersedes nothing; it sits beside [`item-pilot-g2-u03.md`](item-pilot-g2-u03
 |---|---|---|---|
 | G1 | 15 | **15/15 ✓ COMPLETE** | — |
 | G2 | 15 | **15/15 ✓ COMPLETE** | — |
-| G3 | 14 | **11/14** (u01–u11 ✓) | u12, u13, u14 |
+| G3 | 14 | **14/14 ✓ COMPLETE** | — |
 | G4 | 13 | **0/13** | u01–u13 (+ structures catalog not yet built) |
 
-**41 / 57 units approved.** 16 remain (`wordbank_approved` → need items).
+**44 / 57 units approved.** 13 remain (`wordbank_approved` → need items) — all of G4.
 
-Structures catalogs: **g1 (35) ✓, g2 (28) ✓, g3 (18) ✓ generated**. **g4 structures NOT built** — this is the gate for the entire G4 wave.
+Structures catalogs: **g1 (35) ✓, g2 (28) ✓, g3 (18) ✓ generated**. **g4 structures NOT built** — this is the gate for the entire G4 wave (build it FIRST).
 
 Commits are the durable progress — one `content(gN-uNN): items approved at 0.0% reject` commit per unit. `git log --oneline` is the receipt. The last commit is `4b7578a content(g3-u11)`.
 
