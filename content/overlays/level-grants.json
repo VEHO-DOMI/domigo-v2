@@ -12834,6 +12834,744 @@
       "reason": "past-continuous: common noun in lang:de prompt carrier (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "stolen",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "taken",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "seen",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "broken",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "written",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "eaten",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "gone",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "drunk",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "forgotten",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "begun",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "flown",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "spoken",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "driven",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "chosen",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "given",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "hidden",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "hid",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "left",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "lost",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "paid",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "told",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "finished",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "started",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "ordered",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "stopped",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "walked",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "ran",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "got",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "went",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "saw",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "knew",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "took",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "drank",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "wrote",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "broke",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "ate",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "stole",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "spent",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "passed",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "began",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "threw",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "felt",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "already",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "hadn't",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "by",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "through",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "off",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "ever",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "just",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "wallet",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "exams",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "hours",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "ready",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "worried",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "water",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "buy",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "get",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "see",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "lock",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "someone",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "quickly",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "wrong",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "been",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "face",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "other",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "raining",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "starting",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "stopping",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "arrived",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "committed",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "escaped",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "locked",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "recognised",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "heard",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "news",
+      "reason": "past-perfect: past participle / irregular past / crime carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "film",
+      "reason": "past-perfect: US spelling / -ing past / carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "realize",
+      "reason": "past-perfect: US spelling / -ing past / carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "realized",
+      "reason": "past-perfect: US spelling / -ing past / carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "slept",
+      "reason": "past-perfect: US spelling / -ing past / carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "something",
+      "reason": "past-perfect: US spelling / -ing past / carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "burglars",
+      "reason": "past-perfect: crime carrier in error-correction answer (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u02",
+      "itemId": null,
+      "field": null,
+      "token": "party",
+      "reason": "past-perfect: crime carrier in error-correction answer (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

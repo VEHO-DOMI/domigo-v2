@@ -1,0 +1,434 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u02",
+  "round": 1,
+  "itemsHash": "b209f975f67d",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u02.w.chest",
+      "kind": "new-gloss",
+      "itemId": "g4u02.w.chest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u02.gi.past-perfect.ec.005",
+      "kind": "new-gloss",
+      "itemId": "g4u02.gi.past-perfect.ec.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u02.gi.past-perfect.ec.011",
+      "kind": "new-gloss",
+      "itemId": "g4u02.gi.past-perfect.ec.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u02.gi.past-perfect.gf.036",
+      "kind": "new-gloss",
+      "itemId": "g4u02.gi.past-perfect.gf.036",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.attractive",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.attractive",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.besides",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.besides",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.blackmail",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.blackmail",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.chest",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.chest",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.commit",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.commit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.common",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.common",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.conclusion",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.conclusion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.confusion",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.confusion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.consider",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.consider",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.crime-scene",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.crime-scene",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.criminal",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.criminal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.employee",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.employee",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.escape",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.escape",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.evidence",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.evidence",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.excellent",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.excellent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.expect",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.expect",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.get-hold-of-sth",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.get-hold-of-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.handkerchief",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.handkerchief",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.historical",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.historical",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.illegal",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.illegal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.investigation",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.investigation",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.keep-an-eye-on",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.keep-an-eye-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.likely",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.likely",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.mention",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.mention",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.murder",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.murder",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.mystery",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.mystery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.nephew",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.nephew",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.never-mind",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.never-mind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.office-clerk",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.office-clerk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.personal",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.personal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.prove",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.prove",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.realise",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.realise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.relative",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.relative",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.report",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.report",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.retire",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.retire",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.right-away",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.right-away",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.suspect",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.suspect",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.suspicion",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.suspicion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.take-over",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.take-over",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.to-steal",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.to-steal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.unlock",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.unlock",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.upset",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.upset",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.victim",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.victim",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.wastepaper-bin",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.wastepaper-bin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.weapon",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.weapon",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.w.witness",
+      "kind": "translation-audit",
+      "itemId": "g4u02.w.witness",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.gi.past-perfect.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u02.gi.past-perfect.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.gi.past-perfect.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u02.gi.past-perfect.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.gi.past-perfect.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u02.gi.past-perfect.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.gi.past-perfect.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u02.gi.past-perfect.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.gi.past-perfect.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u02.gi.past-perfect.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u02.gi.past-perfect.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g4u02.gi.past-perfect.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u02.w.criminal#55f661",
+      "kind": "validator-warn",
+      "itemId": "g4u02.w.criminal",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u02.w.get-hold-of-sth#6b7a0c",
+      "kind": "validator-warn",
+      "itemId": "g4u02.w.get-hold-of-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u02.gi.past-perfect.gf.020#8e5d83",
+      "kind": "validator-warn",
+      "itemId": "g4u02.gi.past-perfect.gf.020",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Past perfect (had + past participle; an action completed before another past action; with already/just/by the time/after/before; past-perfect-vs-past-simple sequencing; error classes: had+base, wrong participle, tense choice). 46 vocab + 82 grammar, full v1 parity (floor 40 → 82 items / 11 formats — largest unit in the wave). 4 verify lenses clean after fixes: reworded 11 'Past perfect' + 1 'Verb' prompts → 'had + die 3. Form' / '2. Form' (MORE! form-numbering, jargon-free); reframed mc.005 to require the earlier-action sequence (was ambiguous — both past simple and past perfect were grammatical); granted the past-participle / irregular-past load + crime carriers (burglars/party/wallet/film + ~75 grants); stripped 18 cross-item-redundant glosses; relabeled richtig/falsch group-sorts → ✓/✗; reworded 'Grundform'→'einfachen Form'; pipe-joined mc.004's 2-blank combinations; dropped a lemma-clashing distractorPool entry (keep-an-eye-on); fixed retire's enToDe with an umlaut-bearing variant ('mit der Arbeit aufhören' — V-10 needs ≥1 DE-stop or umlaut, retire's 'in Pension/Rente gehen' had neither). The 4 gloss audits (chest→heart, test, recognise) are correct; 52 translation audits accurate. 3 defensible warns: criminal 'Verbrecher/in' + get-hold-of 'an etwas gelangen' (homograph heuristic), one sentence-initial 'Sie' in explainDe (=she/they). mc.007/mc.014 left as defensible (past-simple distractors are grammatical but mitigated by the explicit 'frühere Handlung' framing). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 128,
+    "fullRows": 128,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
