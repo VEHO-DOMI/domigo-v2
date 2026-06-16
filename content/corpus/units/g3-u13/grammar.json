@@ -1,0 +1,1526 @@
+{
+  "schema": "grammar@1",
+  "grade": 3,
+  "unit": 13,
+  "slug": "g3-u13",
+  "items": [
+    {
+      "id": "g3u13.gi.second-conditional.cp.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If I am you, I will join a band.",
+            "If I would be you, I would join a band.",
+            "If I were you, I will join a band.",
+            "If I were you, I would join a band."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-cp-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund sagt: 'I'm so bored at home!' Welche Antwort gibt einen guten Rat und ist richtig gebaut?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were you, I would join a band.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If I am you, I will join a band.",
+        "If I would be you, I would join a band.",
+        "If I were you, I will join a band."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Rat = 'If I were you, I would …'.",
+      "hintEn": null,
+      "explainDe": "Der richtige Rat ist 'If I were you, I would join …'. am/will/'would be' sind hier falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.cp.002",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If I were you, I will put it outside.",
+            "If I am you, I would put it outside.",
+            "If I would be you, I would put it outside.",
+            "If I were you, I would put it outside."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 13.txt#12",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Freundin sagt: 'There is a big spider in my room!' Welche Antwort ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were you, I would put it outside.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If I were you, I will put it outside.",
+        "If I am you, I would put it outside.",
+        "If I would be you, I would put it outside."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + were, dann would + Grundform – kein will im Hauptsatz, kein would im if-Satz.",
+      "hintEn": null,
+      "explainDe": "Richtig: 'If I were you, I would put it outside.' Im if-Satz steht were (kein would), im Hauptsatz would (kein will).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.ec.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-ec-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I would be rich, I would help people.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were rich, I would help people.",
+          "tier": "full"
+        },
+        {
+          "text": "If I was rich, I would help people.",
+          "tier": "full"
+        },
+        {
+          "text": "were",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "would gehört NICHT in den if-Satz – dort steht die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Im if-Satz darf kein would stehen. 'If I would be rich' ist falsch – richtig ist 'If I were rich'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.ec.002",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-ec-021",
+        "narrative": null,
+        "note": "single-token swap will->would; strict"
+      },
+      "prompt": {
+        "text": "If she studied harder, she will pass the test.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If she studied harder, she would pass the test.",
+          "tier": "full"
+        },
+        {
+          "text": "would",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "harder",
+          "de": "härter, mehr",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Ein Fehler steckt drin: Welches kleine Wort gehört in den Hauptsatz?",
+      "hintEn": null,
+      "explainDe": "Bei einer unwahrscheinlichen Situation steht im Hauptsatz would, nicht will: 'she would pass'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u13.gi.second-conditional.ec.003",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "single-token swap have->had; strict"
+      },
+      "prompt": {
+        "text": "If I have more time, I would read more books.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had more time, I would read more books.",
+          "tier": "full"
+        },
+        {
+          "text": "had",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der if-Satz braucht die Vergangenheit, nicht die Gegenwart.",
+      "hintEn": null,
+      "explainDe": "Nach if steht hier das Past simple: have muss had sein. So wird die Situation unwirklich.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u13.gi.second-conditional.ec.004",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "error-correction",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": "single-token swap was->were in fixed 'if I were you'; strict"
+      },
+      "prompt": {
+        "text": "If I was you, I would not worry so much.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were you, I would not worry so much.",
+          "tier": "full"
+        },
+        {
+          "text": "were",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "In der Rat-Formel 'If I … you' steht immer were.",
+      "hintEn": null,
+      "explainDe": "In der festen Wendung 'If I were you' nimmt man were, nicht was. So gibst du einen Rat.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u13.gi.second-conditional.ec.005",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-ec-022",
+        "narrative": null,
+        "note": "single-token swap talked->talk after would; strict"
+      },
+      "prompt": {
+        "text": "If I were you, I would talked to him.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were you, I would talk to him.",
+          "tier": "full"
+        },
+        {
+          "text": "talk",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach would steht die Grundform – nicht die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Nach would kommt die Grundform: 'would talk', nicht 'would talked'.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-gf-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I ___ (have) a lot of money, I would help my friends.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im if-Satz steht die Vergangenheit (Past simple) – auch wenn die Situation nur vorgestellt ist.",
+      "hintEn": null,
+      "explainDe": "Nach if kommt hier das Past simple: have wird zu had. Das zeigt, dass die Situation unwirklich ist.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.002",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 13.txt#11",
+        "seedV1": "m3-u13-second-conditional-gf-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I ___ (be) you, I would talk to the teacher.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        },
+        {
+          "text": "was",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Für einen Rat sagst du immer 'If I were you …' – mit were, nicht was.",
+      "hintEn": null,
+      "explainDe": "In der festen Wendung 'If I were you' nimmst du were. was hörst du zwar auch, were ist hier aber die richtige Form.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.003",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 13.txt#11",
+        "seedV1": "m3-u13-second-conditional-gf-022",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I were you, I ___ (talk) to the teacher about it.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would talk",
+          "tier": "full"
+        },
+        {
+          "text": "'d talk",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im Hauptsatz steht would (oder 'd) + Grundform.",
+      "hintEn": null,
+      "explainDe": "Der Hauptsatz braucht would + Grundform: would talk. Kurzform: I'd talk.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.004",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 13.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": "from SB example 'If she wasn't a good coach, I would find another team'; team avoided as untaught"
+      },
+      "prompt": {
+        "text": "If she ___ (be) a bad coach, I ___ (find) a new one.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "were | would find",
+          "tier": "full"
+        },
+        {
+          "text": "was | would find",
+          "tier": "partial"
+        },
+        {
+          "text": "were | 'd find",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + Vergangenheit, dann would + Grundform.",
+      "hintEn": null,
+      "explainDe": "if-Satz im Past simple (were), Hauptsatz mit would + Grundform (would find). So baust du diese Sätze.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.005",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-gf-023",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If we ___ (not / live) so near the school, we ___ (ride) a scooter.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "didn't live | would ride",
+          "tier": "full"
+        },
+        {
+          "text": "did not live | would ride",
+          "tier": "full"
+        },
+        {
+          "text": "didn't live | 'd ride",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die Verneinung im if-Satz: didn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "Verneinung im if-Satz: didn't live (nicht 'wouldn't live'). Im Hauptsatz steht would ride.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.006",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/sb/More 3 SB Unit 13.txt#7",
+        "seedV1": "m3-u13-second-conditional-gf-024",
+        "narrative": null,
+        "note": "iconic textbook dilemma; found glossed (irregular past untaught)"
+      },
+      "prompt": {
+        "text": "What ___ you ___ (do) if you ___ (find) money on the street?",
+        "lang": "de",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "would | do | found",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage: would + Person + Grundform, und im if-Satz die Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "In der Frage steht would you do …, und der if-Satz steht im Past simple: found. find wird zu found.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.007",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-gf-025",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I ___ (can / fly), I ___ (not / need) a car.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "could fly | wouldn't need",
+          "tier": "full"
+        },
+        {
+          "text": "could fly | would not need",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "can wird im if-Satz zu could; im Hauptsatz steht would not / wouldn't + Grundform.",
+      "hintEn": null,
+      "explainDe": "can wird zu could (Vergangenheitsform). Die Verneinung im Hauptsatz ist wouldn't / would not + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.008",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If it ___ (be) sunny, we would go to the park.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        },
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach if steht die Vergangenheit. Bei it sind were und was beide möglich.",
+      "hintEn": null,
+      "explainDe": "Im if-Satz steht das Past simple von be. Bei it/he/she sind hier was und were beide üblich.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.009",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 13.txt#7",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I ___ (not / be) so tired, I ___ (play) more games.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "weren't | would play",
+          "tier": "full"
+        },
+        {
+          "text": "wasn't | would play",
+          "tier": "full"
+        },
+        {
+          "text": "were not | would play",
+          "tier": "full"
+        },
+        {
+          "text": "weren't | 'd play",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Verneinung von be im if-Satz: weren't / wasn't; Hauptsatz mit would.",
+      "hintEn": null,
+      "explainDe": "Im if-Satz steht die verneinte Vergangenheit (weren't/wasn't), im Hauptsatz would play.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gf.010",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "gap-fill",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I ___ (have) a band at school, I ___ (join) it.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | would join",
+          "tier": "full"
+        },
+        {
+          "text": "had | 'd join",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + Vergangenheit (had), dann would + Grundform (join).",
+      "hintEn": null,
+      "explainDe": "if-Satz im Past simple (had), Hauptsatz mit would join. Beide Teile zusammen ergeben den 2. Konditional.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.gs.002",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig gebaut, welcher hat einen Fehler?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "If I had a dog, I would walk it every day.",
+            "If I were you, I would ask the teacher.",
+            "If she lived here, we would play every day."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "If I would have a dog, I would walk it.",
+            "If I have a dog, I will walk it every day.",
+            "If I were you, I will ask the teacher."
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Richtig = if + Vergangenheit, dann would + Grundform. Falsch = would im if-Satz oder will statt would.",
+      "hintEn": null,
+      "explainDe": "Richtig sind Sätze mit if + Vergangenheit und would im Hauptsatz. Falsch sind 'If I would have …' und 'If …, I will …'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.mc.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If I have a dog, I would take it for a walk every day.",
+            "If I had a dog, I will take it for a walk every day.",
+            "If I would have a dog, I would take it for a walk every day.",
+            "If I had a dog, I would take it for a walk every day."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-mc-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig gebaut?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had a dog, I would take it for a walk every day.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If I have a dog, I would take it for a walk every day.",
+        "If I had a dog, I will take it for a walk every day.",
+        "If I would have a dog, I would take it for a walk every day."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "if + Vergangenheit (had) und im Hauptsatz would – beides muss stimmen.",
+      "hintEn": null,
+      "explainDe": "Richtig ist 'If I had a dog, I would take …': if-Satz in der Vergangenheit, Hauptsatz mit would. would im if-Satz oder will sind falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.mc.002",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "If I am you, I will take music.",
+            "If I were you, I will take music.",
+            "If I would be you, I would take music.",
+            "If I were you, I would take music."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-mc-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Freundin weiß nicht, welches Fach sie nehmen soll. Welcher Rat ist richtig gebaut?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were you, I would take music.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "If I am you, I will take music.",
+        "If I were you, I will take music.",
+        "If I would be you, I would take music."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Rat-Formel: 'If I were you, I would …'.",
+      "hintEn": null,
+      "explainDe": "Ein Rat heißt 'If I were you, I would take …'. am/will oder 'would be' sind hier falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.mc.003",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "am",
+            "would be",
+            "will be",
+            "were"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If I ___ a bird, I would fly to Africa.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "am",
+        "would be",
+        "will be"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Unwirkliche Situation – nach if steht were.",
+      "hintEn": null,
+      "explainDe": "Die Situation ist unwirklich, deshalb 'If I were a bird'. am/will be/would be passen nicht in den if-Satz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.mc.004",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "multiple-choice",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "study",
+            "would study",
+            "will study",
+            "studied"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 13.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "If you ___ (study) more, you would get better marks.  →  Welche Form passt?",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "studied",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "study",
+        "would study",
+        "will study"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach if steht die Vergangenheit, nicht would oder will.",
+      "hintEn": null,
+      "explainDe": "Im if-Satz steht das Past simple: studied. would/will gehören nicht in den if-Satz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.mt.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-mt-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "if-Satz und passenden Hauptsatz verbinden",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "If I had more time,",
+          "right": "I would play the guitar."
+        },
+        {
+          "left": "If we lived near the sea,",
+          "right": "we would go surfing every day."
+        },
+        {
+          "left": "If I were you,",
+          "right": "I would talk to her."
+        },
+        {
+          "left": "If it were sunny,",
+          "right": "we would walk to school."
+        },
+        {
+          "left": "If I had a horse,",
+          "right": "I would ride every day."
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jeder if-Satz braucht eine sinnvolle Folge mit would.",
+      "hintEn": null,
+      "explainDe": "Verbinde die Bedingung mit der passenden Folge. In jedem Hauptsatz steht would + Grundform.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.qf.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "question-formation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 13.txt#10",
+        "seedV1": "m3-u13-second-conditional-gf-024",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde eine Frage über eine unwirkliche Situation: 'you' + 'win a lot of money'. (Beginne mit 'What would you do if …')",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "What would you do if you won a lot of money?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Frage: 'What would you do if you …' + Vergangenheit.",
+      "hintEn": null,
+      "explainDe": "Die Frage lautet 'What would you do if you won …?'. Im if-Satz steht das Past simple (won), in der Frage would.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.sb.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "will",
+            "was",
+            "am",
+            "they"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-sb-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "were / if / you / I / would / I / ask / her",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were you, I would ask her.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beginne mit der Rat-Formel 'If I were you, …'.",
+      "hintEn": null,
+      "explainDe": "Richtige Reihenfolge: 'If I were you, I would ask her.' Erst der if-Satz, dann der Hauptsatz mit would.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.sb.002",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "can",
+            "will",
+            "was",
+            "go"
+          ],
+          "chipBudget": 11,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-sb-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "could / if / I / fly / would / I / travel",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I could fly, I would travel.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "can wird zu could; im Hauptsatz steht would + Grundform.",
+      "hintEn": null,
+      "explainDe": "Richtige Reihenfolge: 'If I could fly, I would travel.' could im if-Satz, would im Hauptsatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.tf.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-tf-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Echte Situation: 'I don't have a scooter, so I walk to school.' Schreib sie als unwirkliche Bedingung um (beginne mit 'If I …').",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had a scooter, I would not walk to school.",
+          "tier": "full"
+        },
+        {
+          "text": "If I had a scooter, I wouldn't walk to school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Dreh die echte Situation um: aus 'nicht haben' wird im Gedanken 'hätte', aus 'gehen' wird 'würde nicht gehen'.",
+      "hintEn": null,
+      "explainDe": "Die unwirkliche Umkehrung: 'If I had a scooter, I would not walk to school.' if-Satz in der Vergangenheit, Hauptsatz mit would not.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.tf.002",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g3/wb/More 3 WB Unit 13.txt#8",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She is ill, so she is not at school. (→ 'If she ___')",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "If she were not ill, she would be at school.",
+          "tier": "full"
+        },
+        {
+          "text": "If she wasn't ill, she would be at school.",
+          "tier": "full"
+        },
+        {
+          "text": "If she were not ill, she'd be at school.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die echte Situation umdrehen: aus 'ist krank' wird 'wäre nicht krank', aus 'ist nicht da' wird 'würde da sein'.",
+      "hintEn": null,
+      "explainDe": "Umkehrung in den 2. Konditional: 'If she weren't ill, she would be at school.' were not / wasn't im if-Satz, would im Hauptsatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.tf.003",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "transformation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I don't like this song, so I don't listen to it. (→ 'If I ___')",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "If I liked this song, I would listen to it.",
+          "tier": "full"
+        },
+        {
+          "text": "If I liked this song, I'd listen to it.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus 'mag nicht' wird 'würde mögen', aus 'höre nicht' wird 'würde hören'.",
+      "hintEn": null,
+      "explainDe": "Umkehrung: 'If I liked this song, I would listen to it.' like wird zu liked (Vergangenheit), der Hauptsatz nimmt would.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.tr.001",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-tr-020",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wenn ich ein Tier wäre, wäre ich ein Delfin.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were an animal, I would be a dolphin.",
+          "tier": "full"
+        },
+        {
+          "text": "If I was an animal, I would be a dolphin.",
+          "tier": "partial"
+        },
+        {
+          "text": "If I were an animal, I'd be a dolphin.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'wäre' wird hier zweimal anders: im if-Satz were, im Hauptsatz would be.",
+      "hintEn": null,
+      "explainDe": "'Wenn ich … wäre' = 'If I were …'; 'wäre ich …' = 'I would be …'. Im Englischen brauchst du im Hauptsatz would.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.tr.002",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m3-u13-second-conditional-tr-021",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "An deiner Stelle würde ich mir keine Sorgen machen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I were you, I would not worry.",
+          "tier": "full"
+        },
+        {
+          "text": "If I were you, I wouldn't worry.",
+          "tier": "full"
+        },
+        {
+          "text": "If I were you, I'd not worry.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'An deiner Stelle …' heißt auf Englisch 'If I were you …'.",
+      "hintEn": null,
+      "explainDe": "'An deiner Stelle' = 'If I were you'. Danach kommt der Rat mit would (not): 'I would not worry'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g3u13.gi.second-conditional.tr.003",
+      "structureId": "g3u13.s.second-conditional",
+      "format": "translation",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Wenn ich mehr Zeit hätte, würde ich dir helfen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "If I had more time, I would help you.",
+          "tier": "full"
+        },
+        {
+          "text": "If I had more time, I'd help you.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'hätte' = had (Vergangenheit), 'würde helfen' = would help.",
+      "hintEn": null,
+      "explainDe": "'Wenn ich … hätte' = 'If I had …'; 'würde ich helfen' = 'I would help'. if-Satz in der Vergangenheit, Hauptsatz mit would.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

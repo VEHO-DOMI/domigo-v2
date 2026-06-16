@@ -11655,6 +11655,789 @@
       "reason": "passive-voice: base verb in deliberately-malformed distractor (was see / are throw)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "would",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "wouldn't",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "'d",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "i'd",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "she'd",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "he'd",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "we'd",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "they'd",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "you'd",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "we'll",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "i'll",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "mind",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "minds",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "thoughts",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "loss",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "kick",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "off",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "tennis",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "let",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "party",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "situation",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "decided",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "get",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "football",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "team",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "knew",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "trip",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "win",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "hard",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "see",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "jim",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "broke",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "vase",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "idea",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "someone",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "choose",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "until",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "next",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "decide",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "answer",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "problem",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "unsure",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "part",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "start",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "pick",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "things",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "say",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "something",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "planned",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "as",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "father",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "different",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "change",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "plan",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "counting",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "person",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "better",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "someone's",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "words",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "else",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "card",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "photo",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "parent",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "wrong",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "punishment",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "fix",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "by",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "mistake",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "turn",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "act",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "made",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "bought",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "other",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "paper",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "cloth",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "around",
+      "reason": "2nd conditional: would/'d contraction or theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "d",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "found",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "grandad",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "kept",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "pass",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "slept",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "test",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "told",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "worry",
+      "reason": "2nd conditional: irregular past / theme carrier (g3 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g3-u13",
+      "itemId": null,
+      "field": null,
+      "token": "bird",
+      "reason": "common A1 noun, master-list example-only (harvesting gap, like song/band)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

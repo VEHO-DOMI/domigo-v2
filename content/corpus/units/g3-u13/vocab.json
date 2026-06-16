@@ -1,0 +1,2946 @@
+{
+  "schema": "vocab@1",
+  "grade": 3,
+  "unit": 13,
+  "slug": "g3-u13",
+  "items": [
+    {
+      "id": "g3u13.w.accidentally",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "homemade",
+            "except",
+            "neither of",
+            "voucher",
+            "dilemma"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "accidentally",
+      "g": "versehentlich",
+      "d": "When you do something by mistake, not because you wanted to.",
+      "s": "When running down the stairs, you ___ broke a vase.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "accidentally",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "accidentally",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "accidentally",
+            "tier": "full"
+          },
+          {
+            "text": "by accident",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "versehentlich",
+            "tier": "full"
+          },
+          {
+            "text": "aus Versehen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "homemade",
+        "except",
+        "neither of"
+      ],
+      "hintDe": "Du machst etwas aus Versehen, nicht mit Absicht."
+    },
+    {
+      "id": "g3u13.w.alibi",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "voucher",
+            "lift",
+            "detention",
+            "dilemma",
+            "ID"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "alibi",
+      "g": "Alibi",
+      "d": "Words that show you were somewhere else when something happened.",
+      "s": "Your friend asks you to give her an ___ for last night.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "alibi",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "alibi",
+          "tier": "full"
+        },
+        {
+          "text": "an alibi",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "alibi",
+            "tier": "full"
+          },
+          {
+            "text": "an alibi",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Alibi",
+            "tier": "full"
+          },
+          {
+            "text": "das Alibi",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "voucher",
+        "lift",
+        "detention"
+      ],
+      "hintDe": "Ein Nachweis, dass du woanders warst, als etwas passiert ist."
+    },
+    {
+      "id": "g3u13.w.detention",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "disappointment",
+            "dilemma",
+            "voucher",
+            "alibi",
+            "lift"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "detention",
+      "g": "Nachsitzen",
+      "d": "A punishment at school: you must stay after class.",
+      "s": "If you didn't tell the teacher anything, you'd probably get ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "detention",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "detention",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "detention",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Nachsitzen",
+            "tier": "full"
+          },
+          {
+            "text": "das Nachsitzen",
+            "tier": "full"
+          },
+          {
+            "text": "Nachsitzstunde",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "disappointment",
+        "dilemma",
+        "voucher"
+      ],
+      "hintDe": "Eine Strafe in der Schule: Du musst nach dem Unterricht dableiben."
+    },
+    {
+      "id": "g3u13.w.dilemma",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "disappointment",
+            "decision",
+            "voucher",
+            "detention",
+            "alibi"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "dilemma",
+      "g": "Dilemma",
+      "d": "A hard situation where you must pick one of two things.",
+      "s": "I'm sure we'll find a way out of this ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "dilemma",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "dilemma",
+          "tier": "full"
+        },
+        {
+          "text": "a dilemma",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "dilemma",
+            "tier": "full"
+          },
+          {
+            "text": "a dilemma",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dilemma",
+            "tier": "full"
+          },
+          {
+            "text": "das Dilemma",
+            "tier": "full"
+          },
+          {
+            "text": "Zwangslage",
+            "tier": "full"
+          },
+          {
+            "text": "die Zwangslage",
+            "tier": "full"
+          },
+          {
+            "text": "Zwickmühle",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "disappointment",
+        "decision",
+        "voucher"
+      ],
+      "hintDe": "Eine schwierige Lage, in der du dich zwischen zwei Dingen entscheiden musst."
+    },
+    {
+      "id": "g3u13.w.disappointment",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dilemma",
+            "decision",
+            "voucher",
+            "detention",
+            "lift"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "disappointment",
+      "g": "Enttäuschung",
+      "d": "A sad feeling when something is not as good as you hoped.",
+      "s": "It's a big ___ that you can't play on Saturday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "disappointment",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "disappointment",
+          "tier": "full"
+        },
+        {
+          "text": "a disappointment",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "disappointment",
+            "tier": "full"
+          },
+          {
+            "text": "a disappointment",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Enttäuschung",
+            "tier": "full"
+          },
+          {
+            "text": "die Enttäuschung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dilemma",
+        "decision",
+        "voucher"
+      ],
+      "hintDe": "Das traurige Gefühl, wenn etwas nicht so gut ist, wie du gehofft hast."
+    },
+    {
+      "id": "g3u13.w.except",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "neither of",
+            "homemade",
+            "accidentally",
+            "voucher",
+            "lift"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "except",
+      "g": "außer",
+      "d": "Not counting one person or thing.",
+      "s": "Everyone in the class knew about the trip ___ you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "except",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "except",
+          "tier": "full"
+        },
+        {
+          "text": "except for",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "except",
+            "tier": "full"
+          },
+          {
+            "text": "except for",
+            "tier": "full"
+          },
+          {
+            "text": "apart from",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "außer",
+            "tier": "full"
+          },
+          {
+            "text": "bis auf",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "neither of",
+        "homemade",
+        "accidentally"
+      ],
+      "hintDe": "Du nimmst eine Person oder Sache aus: alle, nur die/der eine nicht."
+    },
+    {
+      "id": "g3u13.w.granddad",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "voucher",
+            "lift",
+            "alibi",
+            "detention",
+            "dilemma"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "granddad",
+      "g": "Opa",
+      "d": "The father of your mother or your father.",
+      "s": "We are going to visit ___ in the afternoon.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "granddad",
+          "tier": "full"
+        },
+        {
+          "text": "grandad",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "granddad",
+          "tier": "full"
+        },
+        {
+          "text": "grandad",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "granddad",
+            "tier": "full"
+          },
+          {
+            "text": "grandad",
+            "tier": "full"
+          },
+          {
+            "text": "grandpa",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Opa",
+            "tier": "full"
+          },
+          {
+            "text": "der Opa",
+            "tier": "full"
+          },
+          {
+            "text": "Großvater",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "voucher",
+        "lift",
+        "alibi"
+      ],
+      "hintDe": "So nennst du den Vater deiner Mutter oder deines Vaters."
+    },
+    {
+      "id": "g3u13.w.homemade",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "accidentally",
+            "except",
+            "neither of",
+            "voucher",
+            "lift"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "homemade",
+      "g": "hausgemacht",
+      "d": "Made at home, not bought in a shop.",
+      "s": "I could give him some ___ vouchers for his birthday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "homemade",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "homemade",
+          "tier": "full"
+        },
+        {
+          "text": "home-made",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "homemade",
+            "tier": "full"
+          },
+          {
+            "text": "home-made",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hausgemacht",
+            "tier": "full"
+          },
+          {
+            "text": "selbst gemacht",
+            "tier": "full"
+          },
+          {
+            "text": "selbstgemacht",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "accidentally",
+        "except",
+        "neither of"
+      ],
+      "hintDe": "Zu Hause gemacht, nicht im Geschäft gekauft."
+    },
+    {
+      "id": "g3u13.w.id",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "voucher",
+            "alibi",
+            "lift",
+            "detention",
+            "dilemma"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ID (=identification)",
+      "g": "Personalausweis",
+      "d": "A card with your photo that shows who you are.",
+      "s": "At the door they asked to see my ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ID",
+          "tier": "full"
+        },
+        {
+          "text": "ID card",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ID",
+          "tier": "full"
+        },
+        {
+          "text": "ID card",
+          "tier": "full"
+        },
+        {
+          "text": "identification",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ID",
+            "tier": "full"
+          },
+          {
+            "text": "ID card",
+            "tier": "full"
+          },
+          {
+            "text": "identification",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Personalausweis",
+            "tier": "full"
+          },
+          {
+            "text": "der Personalausweis",
+            "tier": "full"
+          },
+          {
+            "text": "Ausweis",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "detention",
+        "alibi",
+        "lift"
+      ],
+      "hintDe": "Eine Karte mit deinem Foto, die zeigt, wer du bist."
+    },
+    {
+      "id": "g3u13.w.it-s-a-shame",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "homemade",
+            "accidentally",
+            "neither of",
+            "except",
+            "dilemma"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "It's a shame.",
+      "g": "Das ist schade.",
+      "d": "You say this when you feel sorry that something is not better.",
+      "s": "She didn't win after all that hard work. ___",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "It's a shame.",
+          "tier": "full"
+        },
+        {
+          "text": "It's a shame",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "It's a shame.",
+          "tier": "full"
+        },
+        {
+          "text": "It's a shame",
+          "tier": "full"
+        },
+        {
+          "text": "What a shame.",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "It's a shame.",
+            "tier": "full"
+          },
+          {
+            "text": "It's a shame",
+            "tier": "full"
+          },
+          {
+            "text": "What a shame.",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Das ist schade.",
+            "tier": "full"
+          },
+          {
+            "text": "Schade.",
+            "tier": "full"
+          },
+          {
+            "text": "Wie schade.",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "homemade",
+        "accidentally",
+        "neither of"
+      ],
+      "hintDe": "Das sagst du, wenn dir etwas leidtut, weil es nicht besser gelaufen ist."
+    },
+    {
+      "id": "g3u13.w.lift",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "voucher",
+            "alibi",
+            "dilemma",
+            "detention",
+            "disappointment"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "lift",
+      "g": "Mitfahrgelegenheit",
+      "d": "A free ride in someone's car.",
+      "s": "Can you give me a ___ to the station in your car?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "lift",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lift",
+          "tier": "full"
+        },
+        {
+          "text": "a lift",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lift",
+            "tier": "full"
+          },
+          {
+            "text": "a lift",
+            "tier": "full"
+          },
+          {
+            "text": "ride",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mitfahrgelegenheit",
+            "tier": "full"
+          },
+          {
+            "text": "die Mitfahrgelegenheit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "voucher",
+        "alibi",
+        "dilemma"
+      ],
+      "hintDe": "Hier: Du wirst gratis im Auto von jemandem mitgenommen."
+    },
+    {
+      "id": "g3u13.w.neither-of",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "except",
+            "homemade",
+            "accidentally",
+            "voucher",
+            "lift"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "neither of",
+      "g": "keiner von",
+      "d": "Not one and not the other of two.",
+      "s": "___ us has any money for a present.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Neither of",
+          "tier": "full"
+        },
+        {
+          "text": "neither of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "neither of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "neither of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "keiner von",
+            "tier": "full"
+          },
+          {
+            "text": "keine von",
+            "tier": "full"
+          },
+          {
+            "text": "keines von",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "except",
+        "homemade",
+        "accidentally"
+      ],
+      "hintDe": "Von zweien nicht der eine und nicht der andere."
+    },
+    {
+      "id": "g3u13.w.to-argue",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pretend",
+            "deserve",
+            "wrap",
+            "cancel",
+            "reject"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to argue",
+      "g": "streiten",
+      "d": "To fight with words because you do not agree.",
+      "s": "I don't like to ___ with my parents.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "argue",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "argue",
+          "tier": "full"
+        },
+        {
+          "text": "to argue",
+          "tier": "full"
+        },
+        {
+          "text": "argued",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "argue",
+            "tier": "full"
+          },
+          {
+            "text": "to argue",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "streiten",
+            "tier": "full"
+          },
+          {
+            "text": "sich streiten",
+            "tier": "full"
+          },
+          {
+            "text": "diskutieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pretend",
+        "deserve",
+        "wrap"
+      ],
+      "hintDe": "Beim Streiten benutzt ihr Worte, weil ihr nicht einer Meinung seid."
+    },
+    {
+      "id": "g3u13.w.to-ask-sb-out",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "keep",
+            "reject",
+            "wrap",
+            "argue",
+            "deserve"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to ask sb. out",
+      "g": "jdn. nach einem Date fragen",
+      "d": "To invite someone to go on a date.",
+      "s": "Jim has ___ me out, but I don't want to go out with him.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "asked",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ask sb. out",
+          "tier": "full"
+        },
+        {
+          "text": "to ask sb. out",
+          "tier": "full"
+        },
+        {
+          "text": "ask out",
+          "tier": "full"
+        },
+        {
+          "text": "asked out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ask sb. out",
+            "tier": "full"
+          },
+          {
+            "text": "to ask sb. out",
+            "tier": "full"
+          },
+          {
+            "text": "ask out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemanden nach einem Date fragen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden um ein Date bitten",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden einladen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "keep",
+        "reject",
+        "wrap"
+      ],
+      "hintDe": "Du fragst jemanden, ob er oder sie mit dir auf ein Date geht."
+    },
+    {
+      "id": "g3u13.w.to-be-at-a-loss",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make up your mind",
+            "to reach a decision",
+            "to deserve",
+            "to find a way out of a dilemma",
+            "to wrap"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be at a loss",
+      "g": "ratlos sein",
+      "d": "To have no idea at all what to say or do.",
+      "s": "I don't know what to get Dad for his birthday. I'm really ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "at a loss",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be at a loss",
+          "tier": "full"
+        },
+        {
+          "text": "to be at a loss",
+          "tier": "full"
+        },
+        {
+          "text": "at a loss",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be at a loss",
+            "tier": "full"
+          },
+          {
+            "text": "to be at a loss",
+            "tier": "full"
+          },
+          {
+            "text": "at a loss",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ratlos sein",
+            "tier": "full"
+          },
+          {
+            "text": "nicht weiterwissen",
+            "tier": "full"
+          },
+          {
+            "text": "keine Ahnung haben, was man tun soll",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up your mind",
+        "to reach a decision",
+        "to deserve"
+      ],
+      "hintDe": "Du bist ratlos und hast keine Ahnung, was du tun sollst."
+    },
+    {
+      "id": "g3u13.w.to-be-in-two-minds-about-sth",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make up your mind",
+            "to reach a decision",
+            "to deserve",
+            "to cancel",
+            "to sleep on it"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to be in two minds about sth.",
+      "g": "bei etw. unentschlossen sein",
+      "d": "To be unsure because part of you wants to and part of you does not.",
+      "s": "Jo's party is tonight, but I'm not sure. I'm ___ about it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "in two minds",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be in two minds",
+          "tier": "full"
+        },
+        {
+          "text": "to be in two minds",
+          "tier": "full"
+        },
+        {
+          "text": "in two minds",
+          "tier": "full"
+        },
+        {
+          "text": "be in two minds about sth.",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be in two minds",
+            "tier": "full"
+          },
+          {
+            "text": "to be in two minds about sth.",
+            "tier": "full"
+          },
+          {
+            "text": "in two minds",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "bei etwas unentschlossen sein",
+            "tier": "full"
+          },
+          {
+            "text": "unentschlossen sein",
+            "tier": "full"
+          },
+          {
+            "text": "sich nicht sicher sein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up your mind",
+        "to reach a decision",
+        "to deserve"
+      ],
+      "hintDe": "Du bist unentschlossen: ein Teil von dir will, der andere nicht."
+    },
+    {
+      "id": "g3u13.w.to-cancel",
+      "rev": 2,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to move",
+            "to deserve",
+            "to wrap",
+            "to rethink",
+            "to put up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to cancel",
+      "g": "absagen",
+      "d": "To say that something you planned will not happen now.",
+      "s": "You can't just ___ the party because you want to play football.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cancel",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cancel",
+          "tier": "full"
+        },
+        {
+          "text": "to cancel",
+          "tier": "full"
+        },
+        {
+          "text": "cancelled",
+          "tier": "full"
+        },
+        {
+          "text": "canceled",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cancel",
+            "tier": "full"
+          },
+          {
+            "text": "to cancel",
+            "tier": "full"
+          },
+          {
+            "text": "call off",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "absagen",
+            "tier": "full"
+          },
+          {
+            "text": "abblasen",
+            "tier": "partial"
+          },
+          {
+            "text": "streichen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to pretend",
+        "to deserve",
+        "to wrap"
+      ],
+      "hintDe": "Du sagst etwas ab, was schon geplant war."
+    },
+    {
+      "id": "g3u13.w.to-deserve",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cancel",
+            "move",
+            "reject",
+            "wrap",
+            "rethink"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to deserve",
+      "g": "verdienen",
+      "d": "To get something good because of what you did.",
+      "s": "You ___ a present after all your help at home.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "deserve",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "deserve",
+          "tier": "full"
+        },
+        {
+          "text": "to deserve",
+          "tier": "full"
+        },
+        {
+          "text": "deserved",
+          "tier": "full"
+        },
+        {
+          "text": "deserves",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "deserve",
+            "tier": "full"
+          },
+          {
+            "text": "to deserve",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verdienen",
+            "tier": "full"
+          },
+          {
+            "text": "verdient haben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cancel",
+        "move",
+        "reject"
+      ],
+      "hintDe": "Du bekommst etwas Gutes, weil du es dir verdient hast."
+    },
+    {
+      "id": "g3u13.w.to-find-a-way-out-of-a-dilemma",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to be at a loss",
+            "to be in two minds about sth.",
+            "to cancel",
+            "to reject",
+            "to argue"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to find a way out of a dilemma",
+      "g": "einen Ausweg aus einem Dilemma finden",
+      "d": "To get a good answer to a hard problem in the end.",
+      "s": "It's a difficult situation, but I'm sure we'll ___ in the end.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "find a way out of a dilemma",
+          "tier": "full"
+        },
+        {
+          "text": "find a way out",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "find a way out of a dilemma",
+          "tier": "full"
+        },
+        {
+          "text": "to find a way out of a dilemma",
+          "tier": "full"
+        },
+        {
+          "text": "find a way out",
+          "tier": "full"
+        },
+        {
+          "text": "found a way out",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "find a way out of a dilemma",
+            "tier": "full"
+          },
+          {
+            "text": "to find a way out of a dilemma",
+            "tier": "full"
+          },
+          {
+            "text": "find a way out",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einen Ausweg aus einem Dilemma finden",
+            "tier": "full"
+          },
+          {
+            "text": "einen Ausweg finden",
+            "tier": "full"
+          },
+          {
+            "text": "eine Lösung finden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to be at a loss",
+        "to be in two minds about sth.",
+        "to cancel"
+      ],
+      "hintDe": "Du findest doch noch eine gute Lösung für ein schwieriges Problem."
+    },
+    {
+      "id": "g3u13.w.to-have-second-thoughts-about-sth",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make up your mind",
+            "to reach a decision",
+            "to deserve",
+            "to wrap",
+            "to argue"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to have second thoughts about sth.",
+      "g": "etw. noch einmal überdenken",
+      "d": "To start to think that your first idea was not so good.",
+      "s": "I'm not happy about the present we decided to get for Mum. I'm ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "having second thoughts",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "have second thoughts",
+          "tier": "full"
+        },
+        {
+          "text": "to have second thoughts",
+          "tier": "full"
+        },
+        {
+          "text": "having second thoughts",
+          "tier": "full"
+        },
+        {
+          "text": "had second thoughts",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "have second thoughts",
+            "tier": "full"
+          },
+          {
+            "text": "to have second thoughts about sth.",
+            "tier": "full"
+          },
+          {
+            "text": "having second thoughts",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "etwas noch einmal überdenken",
+            "tier": "full"
+          },
+          {
+            "text": "es sich anders überlegen",
+            "tier": "full"
+          },
+          {
+            "text": "Zweifel bekommen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up your mind",
+        "to reach a decision",
+        "to deserve"
+      ],
+      "hintDe": "Du fängst an zu denken, dass deine erste Idee doch nicht so gut war."
+    },
+    {
+      "id": "g3u13.w.to-keep-quiet",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to tell on sb.",
+            "to argue",
+            "to put up",
+            "to reject",
+            "to pretend"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to keep quiet",
+      "g": "schweigen",
+      "d": "To say nothing about something.",
+      "s": "I'd ___ if the teacher asked me what happened.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "keep quiet",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "keep quiet",
+          "tier": "full"
+        },
+        {
+          "text": "to keep quiet",
+          "tier": "full"
+        },
+        {
+          "text": "kept quiet",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "keep quiet",
+            "tier": "full"
+          },
+          {
+            "text": "to keep quiet",
+            "tier": "full"
+          },
+          {
+            "text": "say nothing",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schweigen",
+            "tier": "full"
+          },
+          {
+            "text": "still sein",
+            "tier": "full"
+          },
+          {
+            "text": "nichts sagen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to tell on sb.",
+        "to argue",
+        "to put up"
+      ],
+      "hintDe": "Du sagst nichts über eine Sache und behältst sie für dich."
+    },
+    {
+      "id": "g3u13.w.to-kick-sb-off",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "move",
+            "deserve",
+            "reject",
+            "cancel",
+            "argue"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to kick sb. off",
+      "g": "rausschmeißen",
+      "d": "To make someone leave a team or a group.",
+      "s": "My coach is going to ___ me off the football team.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "kick",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "kick sb. off",
+          "tier": "full"
+        },
+        {
+          "text": "to kick sb. off",
+          "tier": "full"
+        },
+        {
+          "text": "kick off",
+          "tier": "full"
+        },
+        {
+          "text": "kicked off",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "kick sb. off",
+            "tier": "full"
+          },
+          {
+            "text": "to kick sb. off",
+            "tier": "full"
+          },
+          {
+            "text": "kick off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "rausschmeißen",
+            "tier": "full"
+          },
+          {
+            "text": "rauswerfen",
+            "tier": "full"
+          },
+          {
+            "text": "von der Mannschaft werfen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "move",
+        "deserve",
+        "reject"
+      ],
+      "hintDe": "Du wirfst jemanden aus einem Team oder einer Gruppe."
+    },
+    {
+      "id": "g3u13.w.to-look-the-other-way",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to keep quiet",
+            "to pretend",
+            "to reject",
+            "to argue",
+            "to tell on sb."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to look the other way",
+      "g": "wegsehen",
+      "d": "To turn your head away so you don't see something wrong.",
+      "s": "If someone needs help, don't ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "look the other way",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "look the other way",
+          "tier": "full"
+        },
+        {
+          "text": "to look the other way",
+          "tier": "full"
+        },
+        {
+          "text": "looked the other way",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "look the other way",
+            "tier": "full"
+          },
+          {
+            "text": "to look the other way",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wegsehen",
+            "tier": "full"
+          },
+          {
+            "text": "wegschauen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to keep quiet",
+        "to pretend",
+        "to reject"
+      ],
+      "hintDe": "Du drehst den Kopf weg, damit du etwas Schlechtes nicht siehst."
+    },
+    {
+      "id": "g3u13.w.to-make-up-your-mind",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to sleep on it",
+            "to be at a loss",
+            "to keep quiet",
+            "to argue",
+            "to cancel"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to make up your mind",
+      "g": "sich entscheiden",
+      "d": "To finally choose what you want to do.",
+      "s": "Pizza or salad or both! I really can't ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "make up my mind",
+          "tier": "full"
+        },
+        {
+          "text": "make up your mind",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "make up your mind",
+          "tier": "full"
+        },
+        {
+          "text": "to make up your mind",
+          "tier": "full"
+        },
+        {
+          "text": "made up my mind",
+          "tier": "full"
+        },
+        {
+          "text": "made up your mind",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "make up your mind",
+            "tier": "full"
+          },
+          {
+            "text": "to make up your mind",
+            "tier": "full"
+          },
+          {
+            "text": "make up my mind",
+            "tier": "full"
+          },
+          {
+            "text": "decide",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich entscheiden",
+            "tier": "full"
+          },
+          {
+            "text": "sich entschließen",
+            "tier": "partial"
+          },
+          {
+            "text": "eine Entscheidung treffen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to sleep on it",
+        "to be at a loss",
+        "to keep quiet"
+      ],
+      "hintDe": "Du wählst endlich aus und weißt, was du willst."
+    },
+    {
+      "id": "g3u13.w.to-move",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cancel",
+            "deserve",
+            "wrap",
+            "rethink",
+            "reject"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to move",
+      "g": "verschieben",
+      "d": "To put something at a different time or day.",
+      "s": "They have asked me to ___ the match to Saturday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "move",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "move",
+          "tier": "full"
+        },
+        {
+          "text": "to move",
+          "tier": "full"
+        },
+        {
+          "text": "moved",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "move",
+            "tier": "full"
+          },
+          {
+            "text": "to move",
+            "tier": "full"
+          },
+          {
+            "text": "change",
+            "tier": "partial"
+          },
+          {
+            "text": "put off",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verschieben",
+            "tier": "full"
+          },
+          {
+            "text": "umlegen",
+            "tier": "partial"
+          },
+          {
+            "text": "verlegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cancel",
+        "deserve",
+        "wrap"
+      ],
+      "hintDe": "Hier: Du legst etwas auf eine andere Zeit oder einen anderen Tag."
+    },
+    {
+      "id": "g3u13.w.to-pretend",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "argue",
+            "deserve",
+            "reject",
+            "wrap",
+            "cancel"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to pretend",
+      "g": "vortäuschen",
+      "d": "To act as if something is true when it is not.",
+      "s": "Would you ___ you weren't my friend?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pretend",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pretend",
+          "tier": "full"
+        },
+        {
+          "text": "to pretend",
+          "tier": "full"
+        },
+        {
+          "text": "pretended",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pretend",
+            "tier": "full"
+          },
+          {
+            "text": "to pretend",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "vortäuschen",
+            "tier": "full"
+          },
+          {
+            "text": "so tun, als ob",
+            "tier": "full"
+          },
+          {
+            "text": "so tun als ob",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "argue",
+        "deserve",
+        "reject"
+      ],
+      "hintDe": "Du tust so, als ob etwas wahr wäre, obwohl es nicht stimmt."
+    },
+    {
+      "id": "g3u13.w.to-put-up",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "wrap",
+            "reject",
+            "argue",
+            "cancel",
+            "move"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to put up",
+      "g": "aufhängen",
+      "d": "To fix something on a wall or board so people can see it.",
+      "s": "I ___ a note on the wall about my new band.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "put up",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "put up",
+          "tier": "full"
+        },
+        {
+          "text": "to put up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "put up",
+            "tier": "full"
+          },
+          {
+            "text": "to put up",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "aufhängen",
+            "tier": "full"
+          },
+          {
+            "text": "anbringen",
+            "tier": "partial"
+          },
+          {
+            "text": "aushängen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "wrap",
+        "reject",
+        "argue"
+      ],
+      "hintDe": "Du befestigst etwas an einer Wand oder Tafel, damit man es sieht."
+    },
+    {
+      "id": "g3u13.w.to-reach-a-decision",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to be in two minds about sth.",
+            "to be at a loss",
+            "to cancel",
+            "to sleep on it",
+            "to argue"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to reach a decision",
+      "g": "eine Entscheidung treffen",
+      "d": "To finally agree on what to do after a long talk.",
+      "s": "After a long talk, the two friends could ___ about the holiday.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "reach a decision",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reach a decision",
+          "tier": "full"
+        },
+        {
+          "text": "to reach a decision",
+          "tier": "full"
+        },
+        {
+          "text": "reached a decision",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reach a decision",
+            "tier": "full"
+          },
+          {
+            "text": "to reach a decision",
+            "tier": "full"
+          },
+          {
+            "text": "make a decision",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Entscheidung treffen",
+            "tier": "full"
+          },
+          {
+            "text": "zu einer Entscheidung kommen",
+            "tier": "full"
+          },
+          {
+            "text": "sich entscheiden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to be in two minds about sth.",
+        "to be at a loss",
+        "to cancel"
+      ],
+      "hintDe": "Nach langem Reden seid ihr euch endlich einig, was ihr tut."
+    },
+    {
+      "id": "g3u13.w.to-reject",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "deserve",
+            "argue",
+            "wrap",
+            "cancel",
+            "pretend"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to reject",
+      "g": "ablehnen",
+      "d": "To say no to something or someone.",
+      "s": "She just ___ my idea and did the opposite.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rejected",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reject",
+          "tier": "full"
+        },
+        {
+          "text": "to reject",
+          "tier": "full"
+        },
+        {
+          "text": "rejected",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reject",
+            "tier": "full"
+          },
+          {
+            "text": "to reject",
+            "tier": "full"
+          },
+          {
+            "text": "turn down",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ablehnen",
+            "tier": "full"
+          },
+          {
+            "text": "zurückweisen",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "deserve",
+        "argue",
+        "wrap"
+      ],
+      "hintDe": "Du sagst Nein zu etwas oder zu jemandem."
+    },
+    {
+      "id": "g3u13.w.to-rethink",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cancel",
+            "deserve",
+            "argue",
+            "move",
+            "reject"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to rethink",
+      "g": "überdenken",
+      "d": "To go over something in your head again so you can change your plan.",
+      "s": "I'll have to ___ my decision.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rethink",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rethink",
+          "tier": "full"
+        },
+        {
+          "text": "to rethink",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rethink",
+            "tier": "full"
+          },
+          {
+            "text": "to rethink",
+            "tier": "full"
+          },
+          {
+            "text": "think again about",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "überdenken",
+            "tier": "full"
+          },
+          {
+            "text": "noch einmal überdenken",
+            "tier": "full"
+          },
+          {
+            "text": "neu überlegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cancel",
+        "deserve",
+        "argue"
+      ],
+      "hintDe": "Du denkst noch einmal über etwas nach, um deinen Plan zu ändern."
+    },
+    {
+      "id": "g3u13.w.to-sleep-on-it",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "to make up your mind",
+            "to reach a decision",
+            "to argue",
+            "to reject",
+            "to cancel"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to sleep on it",
+      "g": "eine Nacht darüber schlafen",
+      "d": "To wait until the next day before you decide.",
+      "s": "I'm not sure if I want to enter the tennis competition. Let me ___.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "sleep on it",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "sleep on it",
+          "tier": "full"
+        },
+        {
+          "text": "to sleep on it",
+          "tier": "full"
+        },
+        {
+          "text": "slept on it",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "sleep on it",
+            "tier": "full"
+          },
+          {
+            "text": "to sleep on it",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "eine Nacht darüber schlafen",
+            "tier": "full"
+          },
+          {
+            "text": "darüber schlafen",
+            "tier": "full"
+          },
+          {
+            "text": "noch eine Nacht darüber schlafen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "to make up your mind",
+        "to reach a decision",
+        "to argue"
+      ],
+      "hintDe": "Du wartest bis zum nächsten Tag, bevor du dich entscheidest."
+    },
+    {
+      "id": "g3u13.w.to-tell-on-sb",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "keep",
+            "argue",
+            "pretend",
+            "reject",
+            "deserve"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to tell on sb.",
+      "g": "jdn. verpetzen",
+      "d": "To go to a teacher or parent about what someone did wrong.",
+      "s": "I'm not going to ___ on my friend.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tell",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tell on sb.",
+          "tier": "full"
+        },
+        {
+          "text": "to tell on sb.",
+          "tier": "full"
+        },
+        {
+          "text": "tell on",
+          "tier": "full"
+        },
+        {
+          "text": "told on",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tell on sb.",
+            "tier": "full"
+          },
+          {
+            "text": "to tell on sb.",
+            "tier": "full"
+          },
+          {
+            "text": "tell on",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemanden verpetzen",
+            "tier": "full"
+          },
+          {
+            "text": "verpetzen",
+            "tier": "full"
+          },
+          {
+            "text": "verraten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "keep",
+        "argue",
+        "pretend"
+      ],
+      "hintDe": "Du gehst zu einer Lehrkraft oder zu Eltern und sagst, was jemand falsch gemacht hat."
+    },
+    {
+      "id": "g3u13.w.to-wrap",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "put up",
+            "reject",
+            "argue",
+            "cancel",
+            "deserve"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "to wrap",
+      "g": "verpacken",
+      "d": "To put paper or cloth around something.",
+      "s": "I'll ___ the present and give it to him.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wrap",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wrap",
+          "tier": "full"
+        },
+        {
+          "text": "to wrap",
+          "tier": "full"
+        },
+        {
+          "text": "wrapped",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wrap",
+            "tier": "full"
+          },
+          {
+            "text": "to wrap",
+            "tier": "full"
+          },
+          {
+            "text": "wrap up",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verpacken",
+            "tier": "full"
+          },
+          {
+            "text": "einpacken",
+            "tier": "full"
+          },
+          {
+            "text": "einwickeln",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "put up",
+        "reject",
+        "argue"
+      ],
+      "hintDe": "Du legst Papier oder Stoff um etwas herum."
+    },
+    {
+      "id": "g3u13.w.voucher",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "dilemma",
+            "detention",
+            "lift",
+            "alibi",
+            "disappointment"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "voucher",
+      "g": "Gutschein",
+      "d": "A piece of paper you can use instead of money.",
+      "s": "I make a ___ for one free maths homework.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "voucher",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "voucher",
+          "tier": "full"
+        },
+        {
+          "text": "a voucher",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "voucher",
+            "tier": "full"
+          },
+          {
+            "text": "a voucher",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gutschein",
+            "tier": "full"
+          },
+          {
+            "text": "der Gutschein",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "dilemma",
+        "detention",
+        "lift"
+      ],
+      "hintDe": "Ein Stück Papier, das du statt Geld verwenden kannst."
+    }
+  ]
+}

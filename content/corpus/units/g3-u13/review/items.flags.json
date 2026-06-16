@@ -1,0 +1,287 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g3-u13",
+  "round": 1,
+  "itemsHash": "aba8b8f9dad4",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g3u13.gi.second-conditional.ec.002",
+      "kind": "new-gloss",
+      "itemId": "g3u13.gi.second-conditional.ec.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.accidentally",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.accidentally",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.alibi",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.alibi",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.detention",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.detention",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.dilemma",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.dilemma",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.disappointment",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.disappointment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.except",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.except",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.granddad",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.granddad",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.homemade",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.homemade",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.id",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.id",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.it-s-a-shame",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.it-s-a-shame",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.lift",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.lift",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.neither-of",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.neither-of",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-argue",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-argue",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-ask-sb-out",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-ask-sb-out",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-be-at-a-loss",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-be-at-a-loss",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-be-in-two-minds-about-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-be-in-two-minds-about-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-cancel",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-cancel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-deserve",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-deserve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-find-a-way-out-of-a-dilemma",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-find-a-way-out-of-a-dilemma",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-have-second-thoughts-about-sth",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-have-second-thoughts-about-sth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-keep-quiet",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-keep-quiet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-kick-sb-off",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-kick-sb-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-look-the-other-way",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-look-the-other-way",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-make-up-your-mind",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-make-up-your-mind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-move",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-move",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-pretend",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-pretend",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-put-up",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-put-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-reach-a-decision",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-reach-a-decision",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-reject",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-reject",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-rethink",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-rethink",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-sleep-on-it",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-sleep-on-it",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-tell-on-sb",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-tell-on-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.to-wrap",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.to-wrap",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.w.voucher",
+      "kind": "translation-audit",
+      "itemId": "g3u13.w.voucher",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.gi.second-conditional.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g3u13.gi.second-conditional.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.gi.second-conditional.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g3u13.gi.second-conditional.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g3u13.gi.second-conditional.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g3u13.gi.second-conditional.tr.003",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Second conditional (if + past simple → would/wouldn't + base; subjunctive 'if I were'; hypothetical advice; 3 error classes: would-in-if-clause / will-for-would / was-for-were). 34 vocab + 32 grammar, full v1 parity (floor 21 → 32 items / 10 formats / diff 1-3). 4 verify lenses clean after fixes: granted the conditional words (would/'d/wouldn't/i'd/she'd) + irregular pasts (found/kept/slept/told/won) + theme carriers; stripped 25 now-redundant glosses (cross-item taught-word trap from the grant); relabeled the richtig/falsch group-sort → ✓/✗; reworded 2 sentence-initial 'ihr' hintDe to mid-sentence (informal you-plural, warn-free); granted 'bird' (harvesting-gap A1 noun, same class as song/band); tightened 2 plausible distractors (to-cancel 'to move'→'to pretend', id 'voucher'→'detention'). The 1 gloss (harder) is correct; 37 translation audits accurate both directions. Validate fully green (0 errors, 0 warns). Note: cp.001 & gf.010 use 'band' naturally via the same-session core-allowlist fix."
+  },
+  "metrics": {
+    "itemsReviewed": 66,
+    "fullRows": 66,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
