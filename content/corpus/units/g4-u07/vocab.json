@@ -1,0 +1,2441 @@
+{
+  "schema": "vocab@1",
+  "grade": 4,
+  "unit": 7,
+  "slug": "g4-u07",
+  "items": [
+    {
+      "id": "g4u07.w.aborigine",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ancestor",
+            "walkabout",
+            "heritage",
+            "(the) outback",
+            "track"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "Aborigine",
+      "g": "Ureinwohner/in Australiens",
+      "d": "a member of the people who lived in Australia first",
+      "s": "The ___ were the first people to live in Australia.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "Aborigines",
+          "tier": "full"
+        },
+        {
+          "text": "Aborigine",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "Aborigine",
+          "tier": "full"
+        },
+        {
+          "text": "Aborigines",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "Aborigine",
+            "tier": "full"
+          },
+          {
+            "text": "Aborigines",
+            "tier": "full"
+          },
+          {
+            "text": "Aboriginal",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Ureinwohner Australiens",
+            "tier": "full"
+          },
+          {
+            "text": "Ureinwohnerin Australiens",
+            "tier": "full"
+          },
+          {
+            "text": "Ureinwohner/in Australiens",
+            "tier": "full"
+          },
+          {
+            "text": "Aborigine",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ancestor",
+        "walkabout",
+        "heritage"
+      ],
+      "hintDe": "So nennt man die ersten Menschen, die in Australien lebten."
+    },
+    {
+      "id": "g4u07.w.aircraft",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "airline",
+            "ambulance",
+            "landing",
+            "headlight",
+            "distance"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "aircraft",
+      "g": "Flugzeug",
+      "d": "a machine with wings that can fly, like a plane",
+      "s": "The Flying Doctors travel long distances in their ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "aircraft",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "aircraft",
+          "tier": "full"
+        },
+        {
+          "text": "an aircraft",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "aircraft",
+            "tier": "full"
+          },
+          {
+            "text": "plane",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flugzeug",
+            "tier": "full"
+          },
+          {
+            "text": "Maschine",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "airline",
+        "ambulance",
+        "landing"
+      ],
+      "hintDe": "Eine Maschine mit Flügeln, die fliegen kann."
+    },
+    {
+      "id": "g4u07.w.airline",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "aircraft",
+            "landing",
+            "cheque",
+            "envelope",
+            "distance"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "airline",
+      "g": "Fluglinie",
+      "d": "a big company that flies people to many cities",
+      "s": "We are flying to Australia with a famous ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "airline",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "airline",
+          "tier": "full"
+        },
+        {
+          "text": "an airline",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "airline",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fluglinie",
+            "tier": "full"
+          },
+          {
+            "text": "Fluggesellschaft",
+            "tier": "full"
+          },
+          {
+            "text": "Airline",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aircraft",
+        "landing",
+        "cheque"
+      ],
+      "hintDe": "Mit dieser Firma fliegst du in viele Städte."
+    },
+    {
+      "id": "g4u07.w.ambulance",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "aircraft",
+            "landing",
+            "ancestor",
+            "headlight",
+            "drugs"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ambulance",
+      "g": "Krankenwagen",
+      "d": "a car that brings sick or hurt people to hospital fast",
+      "s": "There was an accident, so we called an ___ right away.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ambulance",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ambulance",
+          "tier": "full"
+        },
+        {
+          "text": "an ambulance",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ambulance",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Krankenwagen",
+            "tier": "full"
+          },
+          {
+            "text": "Rettungswagen",
+            "tier": "full"
+          },
+          {
+            "text": "Rettung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aircraft",
+        "landing",
+        "ancestor"
+      ],
+      "hintDe": "Dieses Auto bringt kranke oder verletzte Menschen schnell ins Krankenhaus."
+    },
+    {
+      "id": "g4u07.w.ancestor",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "heritage",
+            "Aborigine",
+            "walkabout",
+            "(the) outback",
+            "ambulance"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "ancestor",
+      "g": "Vorfahr/in",
+      "d": "a member of your family from a very long time before you",
+      "s": "The ___ of the Aborigines came to Australia long ago.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "ancestors",
+          "tier": "full"
+        },
+        {
+          "text": "ancestor",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ancestor",
+          "tier": "full"
+        },
+        {
+          "text": "ancestors",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ancestor",
+            "tier": "full"
+          },
+          {
+            "text": "ancestors",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vorfahr",
+            "tier": "full"
+          },
+          {
+            "text": "Vorfahrin",
+            "tier": "full"
+          },
+          {
+            "text": "Vorfahr/in",
+            "tier": "full"
+          },
+          {
+            "text": "Ahne",
+            "tier": "full"
+          },
+          {
+            "text": "Ahnin",
+            "tier": "full"
+          },
+          {
+            "text": "Vorfahren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "heritage",
+        "Aborigine",
+        "walkabout"
+      ],
+      "hintDe": "Dieser Mensch aus deiner Familie lebte lange vor dir."
+    },
+    {
+      "id": "g4u07.w.bush-trail",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "walkabout",
+            "(the) outback",
+            "shade",
+            "track",
+            "reed"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bush trail",
+      "g": "Buschpfad",
+      "d": "a small path in the wild Australian land",
+      "s": "Simon showed us a ___ in the wild.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "bush trail",
+          "tier": "full"
+        },
+        {
+          "text": "bush trails",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bush trail",
+          "tier": "full"
+        },
+        {
+          "text": "a bush trail",
+          "tier": "full"
+        },
+        {
+          "text": "bush trails",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bush trail",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Buschpfad",
+            "tier": "full"
+          },
+          {
+            "text": "Buschweg",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "walkabout",
+        "(the) outback",
+        "shade"
+      ],
+      "hintDe": "Ein schmaler Weg durch die wilde Landschaft Australiens."
+    },
+    {
+      "id": "g4u07.w.cheque",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "envelope",
+            "airline",
+            "string",
+            "shade",
+            "ancestor"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cheque",
+      "g": "Scheck",
+      "d": "you write this to pay money from your bank",
+      "s": "I have no money with me, so I will pay with a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cheque",
+          "tier": "full"
+        },
+        {
+          "text": "check",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cheque",
+          "tier": "full"
+        },
+        {
+          "text": "a cheque",
+          "tier": "full"
+        },
+        {
+          "text": "check",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cheque",
+            "tier": "full"
+          },
+          {
+            "text": "check",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Scheck",
+            "tier": "full"
+          },
+          {
+            "text": "ein Scheck",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "envelope",
+        "airline",
+        "string"
+      ],
+      "hintDe": "Damit zahlst du Geld von deinem Bankkonto."
+    },
+    {
+      "id": "g4u07.w.crawl",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drag",
+            "grab",
+            "provide",
+            "jump-start"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "crawl",
+      "g": "kriechen",
+      "d": "to move along the ground on your knees",
+      "s": "We were so scared that we ___ out of the camp on our knees.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crawled",
+          "tier": "full"
+        },
+        {
+          "text": "crawl",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crawl",
+          "tier": "full"
+        },
+        {
+          "text": "to crawl",
+          "tier": "full"
+        },
+        {
+          "text": "crawled",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crawl",
+            "tier": "full"
+          },
+          {
+            "text": "to crawl",
+            "tier": "full"
+          },
+          {
+            "text": "crawled",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "kriechen",
+            "tier": "full"
+          },
+          {
+            "text": "krabbeln",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drag",
+        "grab",
+        "provide"
+      ],
+      "hintDe": "Du bewegst dich nahe am Boden auf den Knien vorwärts."
+    },
+    {
+      "id": "g4u07.w.detailed",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "gorgeous",
+            "heritage",
+            "distance",
+            "pressure",
+            "shade"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "detailed",
+      "g": "ausführlich",
+      "d": "telling you very much about a thing and leaving nothing out",
+      "s": "The police asked her for a ___ picture of the thief.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "detailed",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "detailed",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "detailed",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "ausführlich",
+            "tier": "full"
+          },
+          {
+            "text": "detailliert",
+            "tier": "full"
+          },
+          {
+            "text": "genau",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "gorgeous",
+        "heritage",
+        "distance"
+      ],
+      "hintDe": "Etwas erzählt sehr viel und lässt nichts aus."
+    },
+    {
+      "id": "g4u07.w.distance",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "landing",
+            "pressure",
+            "heritage",
+            "shade",
+            "track"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "distance",
+      "g": "Entfernung",
+      "d": "how much space there is between two places",
+      "s": "The ___ from Vienna to Salzburg is about 300 kilometres.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "distance",
+          "tier": "full"
+        },
+        {
+          "text": "distances",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "distance",
+          "tier": "full"
+        },
+        {
+          "text": "distances",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "distance",
+            "tier": "full"
+          },
+          {
+            "text": "distances",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Entfernung",
+            "tier": "full"
+          },
+          {
+            "text": "Distanz",
+            "tier": "full"
+          },
+          {
+            "text": "Strecke",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "landing",
+        "pressure",
+        "heritage"
+      ],
+      "hintDe": "Wie viel Platz zwischen zwei Orten liegt."
+    },
+    {
+      "id": "g4u07.w.drag",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "grab",
+            "crawl",
+            "provide",
+            "jump-start"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "drag",
+      "g": "schleppen",
+      "d": "to pull a heavy thing along the ground",
+      "s": "The big crocodile wanted to ___ the camp into the river.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "drag",
+          "tier": "full"
+        },
+        {
+          "text": "dragged",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drag",
+          "tier": "full"
+        },
+        {
+          "text": "to drag",
+          "tier": "full"
+        },
+        {
+          "text": "dragged",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drag",
+            "tier": "full"
+          },
+          {
+            "text": "to drag",
+            "tier": "full"
+          },
+          {
+            "text": "pull",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "schleppen",
+            "tier": "full"
+          },
+          {
+            "text": "ziehen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "grab",
+        "crawl",
+        "provide"
+      ],
+      "hintDe": "Du ziehst etwas Schweres über den Boden."
+    },
+    {
+      "id": "g4u07.w.drugs",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "first aid",
+            "landing",
+            "track",
+            "ambulance",
+            "distance"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "drugs",
+      "g": "Medikamente",
+      "d": "the medicines you take when you are sick",
+      "s": "You have to take ___ if you have this illness.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "drugs",
+          "tier": "full"
+        },
+        {
+          "text": "drug",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drugs",
+          "tier": "full"
+        },
+        {
+          "text": "drug",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drugs",
+            "tier": "full"
+          },
+          {
+            "text": "medicines",
+            "tier": "partial"
+          },
+          {
+            "text": "medicine",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Medikamente",
+            "tier": "full"
+          },
+          {
+            "text": "Arzneien",
+            "tier": "full"
+          },
+          {
+            "text": "Medizin",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "first aid",
+        "landing",
+        "track"
+      ],
+      "hintDe": "Die Mittel, die du nimmst, wenn du krank bist."
+    },
+    {
+      "id": "g4u07.w.envelope",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cheque",
+            "string",
+            "airline",
+            "reed",
+            "track"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "envelope",
+      "g": "Kuvert",
+      "d": "a thin cover that you put a letter in",
+      "s": "When you write a letter, you put it in an ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "envelope",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "envelope",
+          "tier": "full"
+        },
+        {
+          "text": "an envelope",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "envelope",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kuvert",
+            "tier": "full"
+          },
+          {
+            "text": "Briefumschlag",
+            "tier": "full"
+          },
+          {
+            "text": "Umschlag",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cheque",
+        "string",
+        "airline"
+      ],
+      "hintDe": "Da steckst du den Brief hinein, bevor du ihn abschickst."
+    },
+    {
+      "id": "g4u07.w.excess-weight",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "distance",
+            "landing",
+            "airline",
+            "aircraft",
+            "pressure"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "excess weight",
+      "g": "Übergewicht (bei Gepäck)",
+      "d": "money you pay when what you bring on a plane is too heavy",
+      "s": "I have to pay the ___ from my pocket money.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "excess weight",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "excess weight",
+          "tier": "full"
+        },
+        {
+          "text": "excess baggage",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "excess weight",
+            "tier": "full"
+          },
+          {
+            "text": "excess baggage",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Übergewicht",
+            "tier": "full"
+          },
+          {
+            "text": "Übergewicht bei Gepäck",
+            "tier": "full"
+          },
+          {
+            "text": "Mehrgewicht",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "distance",
+        "landing",
+        "airline"
+      ],
+      "hintDe": "Das zahlst du, wenn dein Gepäck im Flugzeug zu schwer ist."
+    },
+    {
+      "id": "g4u07.w.first-aid",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drugs",
+            "ambulance",
+            "landing",
+            "survival skills",
+            "distance"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "first aid",
+      "g": "Erste Hilfe",
+      "d": "the help you give somebody who is hurt before the doctor arrives",
+      "s": "If somebody is hurt, you give them ___ before the doctor arrives.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "first aid",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "first aid",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "first aid",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erste Hilfe",
+            "tier": "full"
+          },
+          {
+            "text": "erste Hilfe",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drugs",
+        "ambulance",
+        "landing"
+      ],
+      "hintDe": "Die erste Hilfe für jemanden, der verletzt ist."
+    },
+    {
+      "id": "g4u07.w.gorgeous",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "detailed",
+            "heritage",
+            "shade",
+            "distance",
+            "pressure"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "gorgeous",
+      "g": "wunderschön",
+      "d": "very beautiful and nice to look at",
+      "s": "Broome has the most ___ beach.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "gorgeous",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "gorgeous",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "gorgeous",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "wunderschön",
+            "tier": "full"
+          },
+          {
+            "text": "herrlich",
+            "tier": "full"
+          },
+          {
+            "text": "traumhaft",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "detailed",
+        "heritage",
+        "shade"
+      ],
+      "hintDe": "Etwas ist sehr schön und ein Genuss für die Augen."
+    },
+    {
+      "id": "g4u07.w.grab",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "drag",
+            "crawl",
+            "provide",
+            "jump-start"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "grab",
+      "g": "packen",
+      "d": "to take hold of a thing fast",
+      "s": "___ your school books, we have to go now!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Grab",
+          "tier": "full"
+        },
+        {
+          "text": "grab",
+          "tier": "full"
+        },
+        {
+          "text": "Grabbed",
+          "tier": "partial"
+        },
+        {
+          "text": "grabbed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "grab",
+          "tier": "full"
+        },
+        {
+          "text": "to grab",
+          "tier": "full"
+        },
+        {
+          "text": "grabbed",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "grab",
+            "tier": "full"
+          },
+          {
+            "text": "to grab",
+            "tier": "full"
+          },
+          {
+            "text": "grabbed",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "packen",
+            "tier": "full"
+          },
+          {
+            "text": "schnappen",
+            "tier": "full"
+          },
+          {
+            "text": "greifen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drag",
+        "crawl",
+        "provide"
+      ],
+      "hintDe": "Du nimmst etwas schnell und fest in die Hand."
+    },
+    {
+      "id": "g4u07.w.headlight",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "aircraft",
+            "string",
+            "track",
+            "reed",
+            "ambulance"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "headlight",
+      "g": "Scheinwerfer",
+      "d": "a bright light on a car that lights up the road in the dark",
+      "s": "It was dark, so I put the car's ___ on to light up the road.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "headlights",
+          "tier": "full"
+        },
+        {
+          "text": "headlight",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "headlight",
+          "tier": "full"
+        },
+        {
+          "text": "headlights",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "headlight",
+            "tier": "full"
+          },
+          {
+            "text": "headlights",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Scheinwerfer",
+            "tier": "full"
+          },
+          {
+            "text": "Autoscheinwerfer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aircraft",
+        "string",
+        "track"
+      ],
+      "hintDe": "Das helle Licht vorne am Auto, mit dem du im Dunkeln die Straße siehst."
+    },
+    {
+      "id": "g4u07.w.heritage",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "ancestor",
+            "walkabout",
+            "Aborigine",
+            "(the) outback",
+            "distance"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "heritage",
+      "g": "Erbe",
+      "d": "all the old traditions that people keep from long ago",
+      "s": "Vienna is famous for its musical ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "heritage",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "heritage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "heritage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erbe",
+            "tier": "full"
+          },
+          {
+            "text": "Tradition",
+            "tier": "full"
+          },
+          {
+            "text": "Kulturerbe",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "ancestor",
+        "walkabout",
+        "Aborigine"
+      ],
+      "hintDe": "Die alten Traditionen, die ein Volk über viele Jahre weitergibt."
+    },
+    {
+      "id": "g4u07.w.jump-start",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "provide",
+            "drag",
+            "grab",
+            "crawl"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "jump-start",
+      "g": "Starthilfe geben",
+      "d": "to help a car go again using cables from a second car",
+      "s": "Our car would not start, so we had to ___ it with cables from his car.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "jump-start",
+          "tier": "full"
+        },
+        {
+          "text": "jumpstart",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "jump-start",
+          "tier": "full"
+        },
+        {
+          "text": "to jump-start",
+          "tier": "full"
+        },
+        {
+          "text": "jumpstart",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "jump-start",
+            "tier": "full"
+          },
+          {
+            "text": "to jump-start",
+            "tier": "full"
+          },
+          {
+            "text": "jumpstart",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Starthilfe geben",
+            "tier": "full"
+          },
+          {
+            "text": "überbrücken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "provide",
+        "drag",
+        "grab"
+      ],
+      "hintDe": "Du gibst einem Auto mit Kabeln von einem zweiten Auto Starthilfe."
+    },
+    {
+      "id": "g4u07.w.landing",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "aircraft",
+            "distance",
+            "airline",
+            "ambulance",
+            "pressure"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "landing",
+      "g": "Landung",
+      "d": "when a plane reaches the ground at the end of a flight",
+      "s": "The aircraft had a good ___ on the dirt road.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "landing",
+          "tier": "full"
+        },
+        {
+          "text": "landings",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "landing",
+          "tier": "full"
+        },
+        {
+          "text": "a landing",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "landing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Landung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "aircraft",
+        "distance",
+        "airline"
+      ],
+      "hintDe": "Wenn ein Flugzeug am Ende des Fluges auf dem Boden ankommt."
+    },
+    {
+      "id": "g4u07.w.outback",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "walkabout",
+            "bush trail",
+            "shade",
+            "heritage",
+            "track"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "(the) outback",
+      "g": "Hinterland Australiens",
+      "d": "the dry wild Australian land, away from the cities",
+      "s": "It is very hot and dry in the Australian ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "outback",
+          "tier": "full"
+        },
+        {
+          "text": "the outback",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "outback",
+          "tier": "full"
+        },
+        {
+          "text": "the outback",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "outback",
+            "tier": "full"
+          },
+          {
+            "text": "the outback",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hinterland Australiens",
+            "tier": "full"
+          },
+          {
+            "text": "Hinterland",
+            "tier": "full"
+          },
+          {
+            "text": "Outback",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "walkabout",
+        "bush trail",
+        "shade"
+      ],
+      "hintDe": "Das trockene, wilde Landesinnere Australiens, weit weg von den Städten."
+    },
+    {
+      "id": "g4u07.w.pressure",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "heritage",
+            "shade",
+            "distance",
+            "landing",
+            "track"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "pressure",
+      "g": "Druck",
+      "d": "the heavy feeling you have when you have too much to do",
+      "s": "You take a holiday to leave the ___ of work behind.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pressure",
+          "tier": "full"
+        },
+        {
+          "text": "pressures",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pressure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pressure",
+            "tier": "full"
+          },
+          {
+            "text": "stress",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Druck",
+            "tier": "full"
+          },
+          {
+            "text": "Stress",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "heritage",
+        "shade",
+        "distance"
+      ],
+      "hintDe": "Das schwere Gefühl, wenn du viel zu viel zu tun hast."
+    },
+    {
+      "id": "g4u07.w.provide",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "grab",
+            "drag",
+            "crawl",
+            "jump-start"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "provide",
+      "g": "versorgen",
+      "d": "to give somebody what they need",
+      "s": "The school will ___ all you need for the art class.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "provide",
+          "tier": "full"
+        },
+        {
+          "text": "provides",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "provide",
+          "tier": "full"
+        },
+        {
+          "text": "to provide",
+          "tier": "full"
+        },
+        {
+          "text": "provides",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "provide",
+            "tier": "full"
+          },
+          {
+            "text": "to provide",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "versorgen",
+            "tier": "full"
+          },
+          {
+            "text": "verschaffen",
+            "tier": "full"
+          },
+          {
+            "text": "bereitstellen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "grab",
+        "drag",
+        "crawl"
+      ],
+      "hintDe": "Du gibst jemandem das, was er braucht."
+    },
+    {
+      "id": "g4u07.w.reed",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "string",
+            "shade",
+            "track",
+            "bush trail",
+            "(the) outback"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "reed",
+      "g": "Schilfrohr",
+      "d": "a tall thin green thing with long leaves near a lake",
+      "s": "You can find ___ near a pond or a lake.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "reeds",
+          "tier": "full"
+        },
+        {
+          "text": "reed",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reed",
+          "tier": "full"
+        },
+        {
+          "text": "reeds",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reed",
+            "tier": "full"
+          },
+          {
+            "text": "reeds",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schilfrohr",
+            "tier": "full"
+          },
+          {
+            "text": "Schilf",
+            "tier": "full"
+          },
+          {
+            "text": "Rohr",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "string",
+        "shade",
+        "track"
+      ],
+      "hintDe": "Eine hohe, dünne Wasserpflanze, die am Ufer eines Sees wächst."
+    },
+    {
+      "id": "g4u07.w.shade",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "pressure",
+            "reed",
+            "track",
+            "string",
+            "(the) outback"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "shade",
+      "g": "Schatten",
+      "d": "a cooler darker place out of the sun, under a tree or wall",
+      "s": "On a hot day, the big tree gives us cool ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "shade",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shade",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shade",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schatten",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "pressure",
+        "reed",
+        "track"
+      ],
+      "hintDe": "Ein kühlerer, dunklerer Platz, wo die Sonne nicht hinkommt."
+    },
+    {
+      "id": "g4u07.w.string",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "reed",
+            "shade",
+            "track",
+            "envelope",
+            "headlight"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "string",
+      "g": "Schnur",
+      "d": "a long thin piece you use to hold a thing or pull it",
+      "s": "They put a piece of ___ on the rock and pulled it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "string",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "string",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "string",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schnur",
+            "tier": "full"
+          },
+          {
+            "text": "Bindfaden",
+            "tier": "full"
+          },
+          {
+            "text": "Faden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "reed",
+        "shade",
+        "track"
+      ],
+      "hintDe": "Ein langes, dünnes Stück, mit dem du etwas zusammenbindest."
+    },
+    {
+      "id": "g4u07.w.survival-skills",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "walkabout",
+            "(the) outback",
+            "heritage",
+            "bush trail",
+            "first aid"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "survival skills",
+      "g": "Überlebenstechniken",
+      "d": "what you must know so you do not die in the wild",
+      "s": "You need good ___ to stay alive in the wild.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "survival skills",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "survival skills",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "survival skills",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Überlebenstechniken",
+            "tier": "full"
+          },
+          {
+            "text": "Überlebenskünste",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "walkabout",
+        "(the) outback",
+        "heritage"
+      ],
+      "hintDe": "Das musst du können, damit du in der Wildnis überlebst."
+    },
+    {
+      "id": "g4u07.w.track",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "reed",
+            "string",
+            "shade",
+            "bush trail",
+            "walkabout"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "track",
+      "g": "(Tier)Fährte",
+      "d": "the foot signs an animal leaves on the ground",
+      "s": "The Aborigines can read animal ___ on the ground.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "tracks",
+          "tier": "full"
+        },
+        {
+          "text": "track",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "track",
+          "tier": "full"
+        },
+        {
+          "text": "tracks",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "track",
+            "tier": "full"
+          },
+          {
+            "text": "tracks",
+            "tier": "full"
+          },
+          {
+            "text": "trail",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fährte",
+            "tier": "full"
+          },
+          {
+            "text": "Tierfährte",
+            "tier": "full"
+          },
+          {
+            "text": "Spur",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "reed",
+        "string",
+        "shade"
+      ],
+      "hintDe": "Die Fußabdrücke, die ein Tier am Boden hinterlässt."
+    },
+    {
+      "id": "g4u07.w.walkabout",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bush trail",
+            "(the) outback",
+            "heritage",
+            "survival skills",
+            "Aborigine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "walkabout",
+      "g": "Buschwanderung",
+      "d": "a long journey on foot across the Australian land",
+      "s": "On their ___, the Aborigines cross Australia on foot.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "walkabout",
+          "tier": "full"
+        },
+        {
+          "text": "walkabouts",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "walkabout",
+          "tier": "full"
+        },
+        {
+          "text": "a walkabout",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "walkabout",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Buschwanderung",
+            "tier": "full"
+          },
+          {
+            "text": "Wanderung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bush trail",
+        "(the) outback",
+        "heritage"
+      ],
+      "hintDe": "Eine lange Wanderung zu Fuß durch das australische Land."
+    }
+  ]
+}

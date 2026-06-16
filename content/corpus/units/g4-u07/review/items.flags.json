@@ -1,0 +1,399 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u07",
+  "round": 1,
+  "itemsHash": "fa13b94a59e9",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u07.gi.present-simple-future.ec.004",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.present-simple-future.ec.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u07.gi.want-someone-to.cp.002",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.want-someone-to.cp.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u07.gi.want-someone-to.ec.003",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.want-someone-to.ec.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u07.gi.want-someone-to.gf.005",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.want-someone-to.gf.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u07.gi.want-someone-to.gf.011",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.want-someone-to.gf.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u07.gi.want-someone-to.gf.017",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.want-someone-to.gf.017",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u07.gi.want-someone-to.mc.003",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.want-someone-to.mc.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u07.gi.want-someone-to.tr.005",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.want-someone-to.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u07.gi.want-someone-to.tr.006",
+      "kind": "new-gloss",
+      "itemId": "g4u07.gi.want-someone-to.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.aborigine",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.aborigine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.aircraft",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.aircraft",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.airline",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.airline",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.ambulance",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.ambulance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.ancestor",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.ancestor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.bush-trail",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.bush-trail",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.cheque",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.cheque",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.crawl",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.crawl",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.detailed",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.detailed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.distance",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.distance",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.drag",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.drag",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.drugs",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.drugs",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.envelope",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.envelope",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.excess-weight",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.excess-weight",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.first-aid",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.first-aid",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.gorgeous",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.gorgeous",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.grab",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.grab",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.headlight",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.headlight",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.heritage",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.heritage",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.jump-start",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.jump-start",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.landing",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.landing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.outback",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.outback",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.pressure",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.pressure",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.provide",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.provide",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.reed",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.reed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.shade",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.shade",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.string",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.string",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.survival-skills",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.survival-skills",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.track",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.track",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.w.walkabout",
+      "kind": "translation-audit",
+      "itemId": "g4u07.w.walkabout",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.present-simple-future.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.present-simple-future.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.present-simple-future.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.present-simple-future.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.present-simple-future.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.present-simple-future.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.present-simple-future.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.present-simple-future.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.present-simple-future.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.present-simple-future.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.present-simple-future.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.present-simple-future.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.present-simple-future.tr.007",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.present-simple-future.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.want-someone-to.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.want-someone-to.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.want-someone-to.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.want-someone-to.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.want-someone-to.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.want-someone-to.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.want-someone-to.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.want-someone-to.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.want-someone-to.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.want-someone-to.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u07.gi.want-someone-to.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g4u07.gi.want-someone-to.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u07.w.aborigine#776612",
+      "kind": "validator-warn",
+      "itemId": "g4u07.w.aborigine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u07.w.ancestor#4b0431",
+      "kind": "validator-warn",
+      "itemId": "g4u07.w.ancestor",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Two structures. Present simple for the future (timetables/schedules: 'the train leaves at 6:30', 'the museum opens at 9'; contrast with will/going-to for plans & predictions) + want/tell/ask + person + to-infinitive (the required 'to', negative 'not to', object pronoun me/him/her/us/them, the 'want that' German-interference error). 30 vocab + 117 grammar (2 structures, floors 39+40 → 58+59), full v1 parity. 4 verify lenses clean after fixes. BIG fix: 50 grammar prompts were mislabeled lang:'en' while carrying German instructions, so the German got level-gated → 408 phantom V-5s; switched them to lang:'de' (matches every other unit; embedded English carriers are then checked by the level-gloss lens, not the gate). Relabeled 4 group-sorts off German category labels (Fahrplan/richtig/falsch/Objektform) → form exemplars ('leaves / opens' vs 'will / going to'), ✓/✗, 'to do'/'not to do'; the present-simple group-sorts were corrected twice (my first 'clock time' labels contradicted the members — both buckets had clock times — so the answers lens caught it; fixed to the real present-simple-vs-will/going-to axis). Reworded 'Objektform' out of an anagram prompt; rescrambled an 'ae'-digraph anagram ('esaelv'→'leevas'); raised 3 sentence-building chip budgets; granted the form exemplars (leaves/opens/will/going) + exams/win/late/phones. Translation lens 0 defects. 2 defensible enToDe warns (Aborigine→'Ureinwohner Australiens', ancestor→'Vorfahr/Ahne' — no umlaut trips the heuristic). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 147,
+    "fullRows": 147,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

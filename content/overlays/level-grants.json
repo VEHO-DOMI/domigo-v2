@@ -14112,6 +14112,78 @@
       "reason": "adverbs-of-manner: -ly adverb / base adjective / wrong-form distractor (derivational -ly not in inflection family)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u07",
+      "itemId": null,
+      "field": null,
+      "token": "win",
+      "reason": "g4-u07: bare verb / adverb in gloss-less distractor (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u07",
+      "itemId": null,
+      "field": null,
+      "token": "late",
+      "reason": "g4-u07: bare verb / adverb in gloss-less distractor (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u07",
+      "itemId": null,
+      "field": null,
+      "token": "phones",
+      "reason": "g4-u07: plural noun in answer (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u07",
+      "itemId": null,
+      "field": null,
+      "token": "leaves",
+      "reason": "g4-u07: present-simple-future form exemplar in group label / exam carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u07",
+      "itemId": null,
+      "field": null,
+      "token": "opens",
+      "reason": "g4-u07: present-simple-future form exemplar in group label / exam carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u07",
+      "itemId": null,
+      "field": null,
+      "token": "will",
+      "reason": "g4-u07: present-simple-future form exemplar in group label / exam carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u07",
+      "itemId": null,
+      "field": null,
+      "token": "going",
+      "reason": "g4-u07: present-simple-future form exemplar in group label / exam carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u07",
+      "itemId": null,
+      "field": null,
+      "token": "exams",
+      "reason": "g4-u07: present-simple-future form exemplar in group label / exam carrier (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
