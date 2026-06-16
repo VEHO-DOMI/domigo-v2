@@ -1,0 +1,378 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u12",
+  "round": 1,
+  "itemsHash": "21864bde9cfd",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u12.w.advert",
+      "kind": "new-gloss",
+      "itemId": "g4u12.w.advert",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u12.w.atmosphere",
+      "kind": "new-gloss",
+      "itemId": "g4u12.w.atmosphere",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u12.w.genetic-engineering",
+      "kind": "new-gloss",
+      "itemId": "g4u12.w.genetic-engineering",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u12.w.neither-nor",
+      "kind": "new-gloss",
+      "itemId": "g4u12.w.neither-nor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u12.gi.phrasal-verbs.ec.004",
+      "kind": "new-gloss",
+      "itemId": "g4u12.gi.phrasal-verbs.ec.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u12.gi.phrasal-verbs.mt.007",
+      "kind": "new-gloss",
+      "itemId": "g4u12.gi.phrasal-verbs.mt.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.advert",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.advert",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.altogether",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.altogether",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.asteroid",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.asteroid",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.astronaut",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.astronaut",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.atmosphere",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.atmosphere",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.biosphere",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.biosphere",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.celebrate",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.celebrate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.commander",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.commander",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.commercial",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.commercial",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.crew",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.crew",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.demand",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.demand",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.depressed",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.depressed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.disgusting",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.disgusting",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.disturb",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.disturb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.engineering",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.engineering",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.explosion",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.explosion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.genetic-engineering",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.genetic-engineering",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.gravity",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.gravity",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.mankind",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.mankind",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.masterpiece",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.masterpiece",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.multibillion",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.multibillion",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.neither-nor",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.neither-nor",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.orbit",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.orbit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.plaque",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.plaque",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.privately-owned",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.privately-owned",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.reply",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.reply",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.resource",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.resource",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.space-shuttle",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.space-shuttle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.space-travel",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.space-travel",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.spacecraft",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.spacecraft",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.sunrise",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.sunrise",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.sunset",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.sunset",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.surface",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.surface",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.tiring",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.tiring",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.uninhabitable",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.uninhabitable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.w.warning",
+      "kind": "translation-audit",
+      "itemId": "g4u12.w.warning",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.gi.phrasal-verbs.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u12.gi.phrasal-verbs.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.gi.phrasal-verbs.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u12.gi.phrasal-verbs.tr.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.gi.phrasal-verbs.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u12.gi.phrasal-verbs.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.gi.phrasal-verbs.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u12.gi.phrasal-verbs.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.gi.phrasal-verbs.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u12.gi.phrasal-verbs.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.gi.phrasal-verbs.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g4u12.gi.phrasal-verbs.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u12.gi.phrasal-verbs.tr.007",
+      "kind": "translation-audit",
+      "itemId": "g4u12.gi.phrasal-verbs.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u12.w.altogether#32e675",
+      "kind": "validator-warn",
+      "itemId": "g4u12.w.altogether",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u12.gi.phrasal-verbs.tr.001#402a08",
+      "kind": "validator-warn",
+      "itemId": "g4u12.gi.phrasal-verbs.tr.001",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Phrasal verbs (verb + particle): the right particle (take→off, give→up, find→out, look→up, run→out of), verb↔meaning matching, and word order — with a NOUN object either order works ('turn off the light' / 'turn the light off'), but with a PRONOUN object the particle goes AFTER ('turn it off', NOT 'turn off it'); some are inseparable ('look after', 'get on with'). 36 vocab + 70 grammar, full v1 parity (floor 40 → 70). 4 verify lenses clean after fixes (translation 0 defects). Fixed the vocab agent's mc-as-objects bug (the schema needs mc:string[], not [{text,tier}] — affected all 36 vocab items). Granted 'off' (the bare particle — taught by the SB box but absent from the bank, exactly the g4-u11 reflexive-grant pattern) + set/took/broke/gets/takes/stops/shuttle + advertisement/answer (vocab alt answers) + could/floor/nearly/finished/wrong (carrier commons the level-gloss lens surfaced). Flipped tr.004/tr.005 to lang:en (they are enToDe with English-source prompts). Reworded 5 mc prompts that were written in English under a lang:de label → proper German ('Welcher Satz hat die richtige Wortstellung mit it?' etc.). Reworded 6 jargon prompts ('Phrasal verb' / 'Verb' → functional 'Welche Bedeutung passt?' / 'Welches kleine Wort passt?' / 'durch eins wie give up / take off'). The answers lens's mc.009 second-correct-in-pool resolved on re-mint (its distractors are now all clearly wrong). 2 defensible warns (altogether → 'insgesamt / alles in allem'; the prompt 'Zieh deinen Raumanzug an!' — the 'an'/'in' homographs trip the language-evidence heuristic; both are correct German). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 106,
+    "fullRows": 106,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

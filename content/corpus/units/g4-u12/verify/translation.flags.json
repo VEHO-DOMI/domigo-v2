@@ -1,0 +1,14 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g4-u12",
+  "lens": "translation",
+  "itemsHash": "21864bde9cfd",
+  "promptHash": "c6328b13b073",
+  "round": 1,
+  "by": "fable-carryforward",
+  "flags": [],
+  "summary": {
+    "itemsSeen": 43,
+    "flagged": 0
+  }
+}

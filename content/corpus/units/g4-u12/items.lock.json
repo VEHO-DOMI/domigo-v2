@@ -1,0 +1,133 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g4-u12",
+  "items": {
+    "425017485de9": "g4u12.gi.phrasal-verbs.gf.001",
+    "719dd471920c": "g4u12.gi.phrasal-verbs.gf.002",
+    "df4627805740": "g4u12.gi.phrasal-verbs.gf.003",
+    "cd2bd18b8069": "g4u12.gi.phrasal-verbs.gf.004",
+    "1f0968ec4af0": "g4u12.gi.phrasal-verbs.gf.005",
+    "5bcd182f7ae1": "g4u12.gi.phrasal-verbs.gf.006",
+    "d7801b56ebea": "g4u12.gi.phrasal-verbs.gf.007",
+    "5823c15cb4fb": "g4u12.gi.phrasal-verbs.gf.008",
+    "2cd86501f576": "g4u12.gi.phrasal-verbs.gf.009",
+    "09f50b13ebb5": "g4u12.gi.phrasal-verbs.gf.010",
+    "3916b648e965": "g4u12.gi.phrasal-verbs.gf.011",
+    "cb8d77455584": "g4u12.gi.phrasal-verbs.gf.012",
+    "d2b9e6b53be3": "g4u12.gi.phrasal-verbs.mc.001",
+    "6a0fb2ea2935": "g4u12.gi.phrasal-verbs.mc.002",
+    "0721331a8363": "g4u12.gi.phrasal-verbs.mc.003",
+    "13b56593cfda": "g4u12.gi.phrasal-verbs.ec.001",
+    "a6bf54408f7e": "g4u12.gi.phrasal-verbs.ec.002",
+    "b01dc6477b20": "g4u12.gi.phrasal-verbs.ec.003",
+    "31ed52abf713": "g4u12.gi.phrasal-verbs.ec.004",
+    "5d080dc15508": "g4u12.gi.phrasal-verbs.ec.005",
+    "96239b7e4c78": "g4u12.gi.phrasal-verbs.ec.006",
+    "07beae12ce5a": "g4u12.gi.phrasal-verbs.tf.001",
+    "c3cc9be6bf72": "g4u12.gi.phrasal-verbs.tf.003",
+    "bf917e52bd25": "g4u12.gi.phrasal-verbs.tr.001",
+    "bed6b3c56ffc": "g4u12.gi.phrasal-verbs.tr.002",
+    "780056bc2276": "g4u12.gi.phrasal-verbs.tr.003",
+    "b8dcb60290ae": "g4u12.gi.phrasal-verbs.tr.004",
+    "03f8de295cb7": "g4u12.gi.phrasal-verbs.tr.005",
+    "c55eba77898b": "g4u12.gi.phrasal-verbs.sb.001",
+    "007dfaac8458": "g4u12.gi.phrasal-verbs.sb.002",
+    "06740f6d9158": "g4u12.gi.phrasal-verbs.sb.003",
+    "7c918d8800c5": "g4u12.gi.phrasal-verbs.sb.004",
+    "e1b9a5f2b4fa": "g4u12.gi.phrasal-verbs.gs.001",
+    "d1a9ae5e9178": "g4u12.gi.phrasal-verbs.gs.002",
+    "46b7af2ce192": "g4u12.gi.phrasal-verbs.cp.001",
+    "4448fa4c2347": "g4u12.gi.phrasal-verbs.cp.002",
+    "d08928cdddff": "g4u12.gi.phrasal-verbs.cp.003",
+    "1780ec16e611": "g4u12.gi.phrasal-verbs.qf.001",
+    "5213c4f8b416": "g4u12.gi.phrasal-verbs.qf.002",
+    "af9a17458923": "g4u12.gi.phrasal-verbs.ag.001",
+    "9f730778d5b1": "g4u12.gi.phrasal-verbs.ag.002",
+    "e5c6949fd397": "g4u12.gi.phrasal-verbs.gf.013",
+    "86a1976a9808": "g4u12.gi.phrasal-verbs.gf.014",
+    "da08b62eaaed": "g4u12.gi.phrasal-verbs.gf.015",
+    "d791344faaa7": "g4u12.gi.phrasal-verbs.mc.008",
+    "d67e7d93ba1b": "g4u12.gi.phrasal-verbs.gf.016",
+    "a15ccda445b7": "g4u12.gi.phrasal-verbs.ec.007",
+    "b7c5cac2c185": "g4u12.gi.phrasal-verbs.tr.006",
+    "936d9e95300c": "g4u12.gi.phrasal-verbs.sb.005",
+    "b267adf05031": "g4u12.gi.phrasal-verbs.gf.017",
+    "c6400f7ee88c": "g4u12.gi.phrasal-verbs.cp.004",
+    "cac11c11b351": "g4u12.gi.phrasal-verbs.tf.005",
+    "7b8894344b49": "g4u12.gi.phrasal-verbs.gf.018",
+    "5d9ed94f88c0": "g4u12.gi.phrasal-verbs.ff.001",
+    "094b523c297d": "g4u12.gi.phrasal-verbs.gf.019",
+    "121f00bb7446": "g4u12.gi.phrasal-verbs.qf.003",
+    "b6a42b0602d0": "g4u12.gi.phrasal-verbs.gf.020",
+    "8d37bea6056c": "g4u12.gi.phrasal-verbs.ec.008",
+    "2f7558b398fe": "g4u12.gi.phrasal-verbs.tr.007",
+    "3149b8beb0e1": "g4u12.gi.phrasal-verbs.mc.010",
+    "ea0592055d75": "g4u12.gi.phrasal-verbs.mc.011",
+    "697e291be057": "g4u12.gi.phrasal-verbs.mc.012",
+    "c431c86a5399": "g4u12.gi.phrasal-verbs.mc.013",
+    "1b8c98d9326e": "g4u12.gi.phrasal-verbs.tf.006",
+    "aa6224fe147e": "g4u12.gi.phrasal-verbs.tf.007",
+    "3d234e4d3d40": "g4u12.gi.phrasal-verbs.mt.005",
+    "4ea7b85f9300": "g4u12.gi.phrasal-verbs.mt.006",
+    "f9d44c992cd5": "g4u12.gi.phrasal-verbs.mt.007",
+    "689c2830b4ef": "g4u12.gi.phrasal-verbs.mt.008",
+    "b3c6c2bb4cf8": "g4u12.gi.phrasal-verbs.mc.014"
+  },
+  "tombstones": [
+    {
+      "id": "g4u12.gi.phrasal-verbs.mc.004",
+      "key": "cd8e8aa7f879",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.mc.005",
+      "key": "bc277e7beaf4",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.mc.006",
+      "key": "595202c34f21",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.mc.007",
+      "key": "957a5c332c8f",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.tf.002",
+      "key": "20923f2193c9",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.tf.004",
+      "key": "9b74a12f17f6",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.mt.001",
+      "key": "c9a499e30727",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.mt.002",
+      "key": "a80b24b25d20",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.mt.003",
+      "key": "e0a982cb78c6",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.mt.004",
+      "key": "ba67e428382f",
+      "removedWith": "d2c334e9d9b5"
+    },
+    {
+      "id": "g4u12.gi.phrasal-verbs.mc.009",
+      "key": "44c0f1627d7d",
+      "removedWith": "d2c334e9d9b5"
+    }
+  ]
+}

@@ -15066,6 +15066,141 @@
       "reason": "reflexive-pronouns: common word in answer (gate-untaught; lens gloss-unneeded was a false positive)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "off",
+      "reason": "phrasal-verbs: bare particle / base verb / carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "set",
+      "reason": "phrasal-verbs: bare particle / base verb / carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "took",
+      "reason": "phrasal-verbs: bare particle / base verb / carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "broke",
+      "reason": "phrasal-verbs: bare particle / base verb / carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "gets",
+      "reason": "phrasal-verbs: bare particle / base verb / carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "takes",
+      "reason": "phrasal-verbs: bare particle / base verb / carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "stops",
+      "reason": "phrasal-verbs: bare particle / base verb / carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "shuttle",
+      "reason": "phrasal-verbs: bare particle / base verb / carrier (g4 multiword-bank gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "advertisement",
+      "reason": "phrasal-verbs: full-form / synonym answer (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "answer",
+      "reason": "phrasal-verbs: full-form / synonym answer (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "could",
+      "reason": "phrasal-verbs: common carrier word in embedded prompt (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "floor",
+      "reason": "phrasal-verbs: common carrier word in embedded prompt (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "nearly",
+      "reason": "phrasal-verbs: common carrier word in embedded prompt (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "finished",
+      "reason": "phrasal-verbs: common carrier word in embedded prompt (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u12",
+      "itemId": null,
+      "field": null,
+      "token": "wrong",
+      "reason": "phrasal-verbs: common carrier word in embedded prompt (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }
