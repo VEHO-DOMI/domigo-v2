@@ -1,0 +1,3944 @@
+{
+  "schema": "vocab-draft@1",
+  "slug": "g3-u12",
+  "briefBank": "6732fa924d08",
+  "briefPrompt": "346902f9f0f1",
+  "items": [
+    {
+      "w": "drought",
+      "g": "Dürre",
+      "d": "a long time with no rain, when the land becomes very dry.",
+      "s": "Last year there was a long ___ and many plants died because there was no rain for months.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "drought",
+          "tier": "full"
+        },
+        {
+          "text": "droughts",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "drought",
+          "tier": "full"
+        },
+        {
+          "text": "a drought",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "drought",
+            "tier": "full"
+          },
+          {
+            "text": "a drought",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Dürre",
+            "tier": "full"
+          },
+          {
+            "text": "die Dürre",
+            "tier": "full"
+          },
+          {
+            "text": "Trockenheit",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "plants",
+          "de": "Pflanzen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "flood",
+        "earthquake",
+        "tsunami"
+      ],
+      "hintDe": "Eine lange Zeit ganz ohne Regen, in der alles austrocknet.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "flood",
+          "earthquake",
+          "tsunami",
+          "avalanche",
+          "mudslide"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.drought",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "earthquake",
+      "g": "Erdbeben",
+      "d": "a strong shaking of the ground.",
+      "s": "There was a strong ___ in Japan last night and the ground shook for a minute.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "earthquake",
+          "tier": "full"
+        },
+        {
+          "text": "earthquakes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "earthquake",
+          "tier": "full"
+        },
+        {
+          "text": "an earthquake",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "earthquake",
+            "tier": "full"
+          },
+          {
+            "text": "an earthquake",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Erdbeben",
+            "tier": "full"
+          },
+          {
+            "text": "das Erdbeben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "shook",
+          "de": "schüttelte, bebte",
+          "scope": "s"
+        },
+        {
+          "word": "minute",
+          "de": "Minute",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "flood",
+        "drought",
+        "hurricane"
+      ],
+      "hintDe": "Der Boden wackelt plötzlich stark.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "flood",
+          "drought",
+          "hurricane",
+          "tsunami",
+          "mudslide"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.earthquake",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "hurricane",
+      "g": "Hurrikan",
+      "d": "a very strong storm with fast winds and heavy rain.",
+      "s": "The ___ brought very strong winds and a lot of rain to the islands near the sea.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "hurricane",
+          "tier": "full"
+        },
+        {
+          "text": "hurricanes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hurricane",
+          "tier": "full"
+        },
+        {
+          "text": "a hurricane",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hurricane",
+            "tier": "full"
+          },
+          {
+            "text": "a hurricane",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Hurrikan",
+            "tier": "full"
+          },
+          {
+            "text": "der Hurrikan",
+            "tier": "full"
+          },
+          {
+            "text": "Wirbelsturm",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "winds",
+          "de": "Winde",
+          "scope": null
+        },
+        {
+          "word": "brought",
+          "de": "brachte",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "drought",
+        "earthquake",
+        "avalanche"
+      ],
+      "hintDe": "Ein riesiger Sturm mit sehr schnellem Wind über dem Meer.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "drought",
+          "earthquake",
+          "avalanche",
+          "flood",
+          "mudslide"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.hurricane",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "volcanic eruption",
+      "g": "Vulkanausbruch",
+      "d": "when hot rock and ash come out of a mountain.",
+      "s": "The huge ___ covered the whole town in a thick grey layer of hot ash.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "volcanic eruption",
+          "tier": "full"
+        },
+        {
+          "text": "volcanic eruptions",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "volcanic eruption",
+          "tier": "full"
+        },
+        {
+          "text": "a volcanic eruption",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "volcanic eruption",
+            "tier": "full"
+          },
+          {
+            "text": "a volcanic eruption",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vulkanausbruch",
+            "tier": "full"
+          },
+          {
+            "text": "der Vulkanausbruch",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "layer",
+          "de": "Schicht",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "flood",
+        "earthquake",
+        "drought"
+      ],
+      "hintDe": "Wenn ein Vulkan ausbricht und heiße Asche herausschleudert.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "flood",
+          "earthquake",
+          "drought",
+          "tsunami",
+          "hurricane"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.volcanic-eruption",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "mudslide",
+      "g": "Schlammlawine",
+      "d": "wet earth that moves quickly down a hill or mountain.",
+      "s": "After three days of rain, a brown ___ of wet earth came down the hill and covered the road.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "mudslide",
+          "tier": "full"
+        },
+        {
+          "text": "mudslides",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "mudslide",
+          "tier": "full"
+        },
+        {
+          "text": "a mudslide",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "mudslide",
+            "tier": "full"
+          },
+          {
+            "text": "a mudslide",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schlammlawine",
+            "tier": "full"
+          },
+          {
+            "text": "die Schlammlawine",
+            "tier": "full"
+          },
+          {
+            "text": "Mure",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "quickly",
+          "de": "schnell",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "avalanche",
+        "drought",
+        "earthquake"
+      ],
+      "hintDe": "Nasse Erde rutscht schnell den Berg hinunter.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "avalanche",
+          "drought",
+          "earthquake",
+          "flood",
+          "hurricane"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.mudslide",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "avalanche",
+      "g": "Lawine",
+      "d": "a big mass of snow moving fast down a mountain.",
+      "s": "Three people on the mountain had to wait for help after a big ___ of snow came down.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "avalanche",
+          "tier": "full"
+        },
+        {
+          "text": "avalanches",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "avalanche",
+          "tier": "full"
+        },
+        {
+          "text": "an avalanche",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "avalanche",
+            "tier": "full"
+          },
+          {
+            "text": "an avalanche",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Lawine",
+            "tier": "full"
+          },
+          {
+            "text": "die Lawine",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "mass",
+          "de": "Masse, Menge",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "flood",
+        "drought",
+        "hurricane"
+      ],
+      "hintDe": "Eine riesige Menge Schnee rutscht schnell den Berg hinab.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "flood",
+          "drought",
+          "hurricane",
+          "tsunami",
+          "mudslide"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.avalanche",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "forest fire",
+      "g": "Waldbrand",
+      "d": "when the woods are burning and many trees are destroyed.",
+      "s": "It was difficult to put out the ___ because the strong wind pushed the flames through the trees.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "forest fire",
+          "tier": "full"
+        },
+        {
+          "text": "forest fires",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "forest fire",
+          "tier": "full"
+        },
+        {
+          "text": "a forest fire",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "forest fire",
+            "tier": "full"
+          },
+          {
+            "text": "a forest fire",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Waldbrand",
+            "tier": "full"
+          },
+          {
+            "text": "der Waldbrand",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "wind",
+          "de": "Wind",
+          "scope": "s"
+        },
+        {
+          "word": "through",
+          "de": "durch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "flood",
+        "drought",
+        "hurricane"
+      ],
+      "hintDe": "Ein großes Feuer, das die Bäume im Wald verbrennt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "flood",
+          "drought",
+          "hurricane",
+          "tsunami",
+          "avalanche"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.forest-fire",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "tsunami",
+      "g": "Tsunami",
+      "d": "a very big sea wave after an earthquake under the sea.",
+      "s": "A big ___ came in from the sea and flooded the towns near the coast.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "tsunami",
+          "tier": "full"
+        },
+        {
+          "text": "tsunamis",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "tsunami",
+          "tier": "full"
+        },
+        {
+          "text": "a tsunami",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "tsunami",
+            "tier": "full"
+          },
+          {
+            "text": "a tsunami",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Tsunami",
+            "tier": "full"
+          },
+          {
+            "text": "der Tsunami",
+            "tier": "full"
+          },
+          {
+            "text": "Flutwelle",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "drought",
+        "earthquake",
+        "hurricane"
+      ],
+      "hintDe": "Eine riesige Welle aus dem Meer nach einem Seebeben.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "drought",
+          "earthquake",
+          "hurricane",
+          "avalanche",
+          "mudslide"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.tsunami",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "flood",
+      "g": "Überschwemmung",
+      "d": "when water covers land that is usually dry.",
+      "s": "After the heavy rain there was a ___ and many homes were flooded for days.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "flood",
+          "tier": "full"
+        },
+        {
+          "text": "floods",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "flood",
+          "tier": "full"
+        },
+        {
+          "text": "a flood",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "flood",
+            "tier": "full"
+          },
+          {
+            "text": "a flood",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Überschwemmung",
+            "tier": "full"
+          },
+          {
+            "text": "die Überschwemmung",
+            "tier": "full"
+          },
+          {
+            "text": "Flut",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "water",
+          "de": "Wasser",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "drought",
+        "earthquake",
+        "avalanche"
+      ],
+      "hintDe": "Das Wasser steht überall, wo sonst trockenes Land ist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "drought",
+          "earthquake",
+          "avalanche",
+          "hurricane",
+          "mudslide"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.flood",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "fire drill",
+      "g": "Feueralarm-Übung",
+      "d": "when you all go outside fast to know what to do if there is danger.",
+      "s": "We have a ___ at school every month so we all know how to leave the building fast.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "fire drill",
+          "tier": "full"
+        },
+        {
+          "text": "fire drills",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fire drill",
+          "tier": "full"
+        },
+        {
+          "text": "a fire drill",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fire drill",
+            "tier": "full"
+          },
+          {
+            "text": "a fire drill",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Feueralarm-Übung",
+            "tier": "full"
+          },
+          {
+            "text": "Feuerübung",
+            "tier": "partial"
+          },
+          {
+            "text": "Probealarm",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "danger",
+          "de": "Gefahr",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "escape route",
+        "meeting place",
+        "smoke detector"
+      ],
+      "hintDe": "Beim Üben in der Schule lernst du, wie du bei Feuer schnell rauskommst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "escape route",
+          "meeting place",
+          "smoke detector",
+          "flood",
+          "earthquake"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.fire-drill",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "escape route",
+      "g": "Fluchtweg",
+      "d": "the way out of a building when there is danger.",
+      "s": "When you go into a new building, always look for the nearest ___ and the way out.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "escape route",
+          "tier": "full"
+        },
+        {
+          "text": "escape routes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "escape route",
+          "tier": "full"
+        },
+        {
+          "text": "an escape route",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "escape route",
+            "tier": "full"
+          },
+          {
+            "text": "an escape route",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Fluchtweg",
+            "tier": "full"
+          },
+          {
+            "text": "der Fluchtweg",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "danger",
+          "de": "Gefahr",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "smoke detector",
+        "meeting place",
+        "fire drill"
+      ],
+      "hintDe": "Der Weg, auf dem du bei Gefahr aus dem Gebäude kommst.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "smoke detector",
+          "meeting place",
+          "fire drill",
+          "flood",
+          "avalanche"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.escape-route",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "smoke detector",
+      "g": "Rauchmelder",
+      "d": "a small thing on the wall that makes a noise when there is a fire.",
+      "s": "Every bedroom needs a ___ that makes a noise when there is smoke in the room.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "smoke detector",
+          "tier": "full"
+        },
+        {
+          "text": "smoke detectors",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "smoke detector",
+          "tier": "full"
+        },
+        {
+          "text": "a smoke detector",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "smoke detector",
+            "tier": "full"
+          },
+          {
+            "text": "a smoke detector",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rauchmelder",
+            "tier": "full"
+          },
+          {
+            "text": "der Rauchmelder",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "escape route",
+        "meeting place",
+        "fire drill"
+      ],
+      "hintDe": "Das kleine Gerät an der Decke piept laut, wenn es Rauch riecht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "escape route",
+          "meeting place",
+          "fire drill",
+          "flood",
+          "earthquake"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.smoke-detector",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "meeting place",
+      "g": "Treffpunkt",
+      "d": "where everybody meets after they leave a building in danger.",
+      "s": "After we all leave the building, our ___ is behind the school.",
+      "sSource": "wb",
+      "sAnswers": [
+        {
+          "text": "meeting place",
+          "tier": "full"
+        },
+        {
+          "text": "meeting places",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "meeting place",
+          "tier": "full"
+        },
+        {
+          "text": "a meeting place",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "meeting place",
+            "tier": "full"
+          },
+          {
+            "text": "a meeting place",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Treffpunkt",
+            "tier": "full"
+          },
+          {
+            "text": "der Treffpunkt",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "danger",
+          "de": "Gefahr",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "escape route",
+        "smoke detector",
+        "fire drill"
+      ],
+      "hintDe": "Der Ort, an dem sich alle nach dem Verlassen des Gebäudes treffen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "escape route",
+          "smoke detector",
+          "fire drill",
+          "flood",
+          "tsunami"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.meeting-place",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to check doors",
+      "g": "Türen überprüfen",
+      "d": "to feel if they are hot before you open them in a fire.",
+      "s": "In a fire you must ___ first because they could be very hot to open.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "check doors",
+          "tier": "full"
+        },
+        {
+          "text": "check the doors",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "check doors",
+          "tier": "full"
+        },
+        {
+          "text": "to check doors",
+          "tier": "full"
+        },
+        {
+          "text": "check the doors",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "check doors",
+            "tier": "full"
+          },
+          {
+            "text": "to check doors",
+            "tier": "full"
+          },
+          {
+            "text": "check the doors",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Türen überprüfen",
+            "tier": "full"
+          },
+          {
+            "text": "die Türen überprüfen",
+            "tier": "full"
+          },
+          {
+            "text": "Türen kontrollieren",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "crawl low",
+        "fall down",
+        "turn into"
+      ],
+      "hintDe": "Fühle bei Feuer zuerst, ob eine Tür heiß ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "crawl low",
+          "fall down",
+          "turn into",
+          "deliver",
+          "measure"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-check-doors",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to crawl low",
+      "g": "niedrig kriechen",
+      "d": "to move along on your knees near the ground.",
+      "s": "If there is thick smoke in a room, you must ___ to stay under it.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "crawl low",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crawl low",
+          "tier": "full"
+        },
+        {
+          "text": "to crawl low",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crawl low",
+            "tier": "full"
+          },
+          {
+            "text": "to crawl low",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "niedrig kriechen",
+            "tier": "full"
+          },
+          {
+            "text": "tief kriechen",
+            "tier": "partial"
+          },
+          {
+            "text": "am Boden kriechen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "smoke",
+          "de": "Rauch",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "check doors",
+        "fall down",
+        "turn into"
+      ],
+      "hintDe": "Bei Rauch nahe am Boden kriechen, um darunter zu bleiben.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "check doors",
+          "fall down",
+          "turn into",
+          "deliver",
+          "evacuate"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-crawl-low",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to stop, drop & roll",
+      "g": "stoppen",
+      "d": "what to do if your clothes catch fire so the flames go out.",
+      "s": "If your clothes catch fire, you must ___ on the ground to put out the flames.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "stop, drop and roll",
+          "tier": "full"
+        },
+        {
+          "text": "stop, drop & roll",
+          "tier": "full"
+        },
+        {
+          "text": "stop drop and roll",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "stop, drop and roll",
+          "tier": "full"
+        },
+        {
+          "text": "stop, drop & roll",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "stop, drop and roll",
+            "tier": "full"
+          },
+          {
+            "text": "stop, drop & roll",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "stoppen, fallen und rollen",
+            "tier": "full"
+          },
+          {
+            "text": "stehen bleiben, fallen und rollen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "check doors",
+        "crawl low",
+        "fall down"
+      ],
+      "hintDe": "Wenn deine Kleidung brennt: stehen bleiben, hinlegen, rollen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "check doors",
+          "crawl low",
+          "fall down",
+          "turn into",
+          "collapse"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-stop-drop-roll",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "research",
+      "g": "Forschung",
+      "d": "the study of a thing to find out the truth.",
+      "s": "A lot of money is spent on the ___ of avalanches.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "research",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "research",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "research",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Forschung",
+            "tier": "full"
+          },
+          {
+            "text": "die Forschung",
+            "tier": "full"
+          },
+          {
+            "text": "Recherche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "spent",
+          "de": "ausgegeben",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "damage",
+        "pressure",
+        "survival"
+      ],
+      "hintDe": "Das genaue Untersuchen eines Themas, um Neues herauszufinden.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "damage",
+          "pressure",
+          "survival",
+          "joy",
+          "shelter"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.research",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to be trapped",
+      "g": "gefangen sein",
+      "d": "when you cannot leave a place and cannot move away.",
+      "s": "If you are ___ in an avalanche, nobody can find you.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "trapped",
+          "tier": "full"
+        },
+        {
+          "text": "be trapped",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be trapped",
+          "tier": "full"
+        },
+        {
+          "text": "to be trapped",
+          "tier": "full"
+        },
+        {
+          "text": "trapped",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be trapped",
+            "tier": "full"
+          },
+          {
+            "text": "to be trapped",
+            "tier": "full"
+          },
+          {
+            "text": "trapped",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gefangen sein",
+            "tier": "full"
+          },
+          {
+            "text": "festsitzen",
+            "tier": "full"
+          },
+          {
+            "text": "eingeschlossen sein",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "free",
+        "alone",
+        "strong"
+      ],
+      "hintDe": "Irgendwo festsitzen und nicht mehr herauskommen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "free",
+          "alone",
+          "strong",
+          "dangerous",
+          "proud"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-be-trapped",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "pressure",
+      "g": "Druck",
+      "d": "the strong push of a thing.",
+      "s": "The gas inside a volcano creates a lot of ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pressure",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pressure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pressure",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Druck",
+            "tier": "full"
+          },
+          {
+            "text": "der Druck",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "gas",
+          "de": "Gas",
+          "scope": "s"
+        },
+        {
+          "word": "volcano",
+          "de": "Vulkan",
+          "scope": "s"
+        },
+        {
+          "word": "creates",
+          "de": "erzeugt",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "damage",
+        "research",
+        "joy"
+      ],
+      "hintDe": "Die starke Kraft, mit der etwas gegen etwas anderes drückt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "damage",
+          "research",
+          "joy",
+          "survival",
+          "shelter"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.pressure",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "surface",
+      "g": "Oberfläche",
+      "d": "the outside of a thing.",
+      "s": "There's a pool of hot rock under the ___ of the Earth.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "surface",
+          "tier": "full"
+        },
+        {
+          "text": "surfaces",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "surface",
+          "tier": "full"
+        },
+        {
+          "text": "the surface",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "surface",
+            "tier": "full"
+          },
+          {
+            "text": "the surface",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Oberfläche",
+            "tier": "full"
+          },
+          {
+            "text": "die Oberfläche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "pool",
+          "de": "Becken, See",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "bottom",
+        "border",
+        "shelter"
+      ],
+      "hintDe": "Die oberste oder äußere Schicht von etwas.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "bottom",
+          "border",
+          "shelter",
+          "region",
+          "flame"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.surface",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "undersea",
+      "g": "unter Wasser",
+      "d": "below the outside of the sea.",
+      "s": "There are also ___ volcanoes that can erupt.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "undersea",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "undersea",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "undersea",
+            "tier": "full"
+          },
+          {
+            "text": "underwater",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unter Wasser",
+            "tier": "full"
+          },
+          {
+            "text": "unterseeisch",
+            "tier": "partial"
+          },
+          {
+            "text": "im Meer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "volcanoes",
+          "de": "Vulkane",
+          "scope": "s"
+        },
+        {
+          "word": "erupt",
+          "de": "ausbrechen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "violent",
+        "underneath",
+        "border"
+      ],
+      "hintDe": "Unter der Meeresoberfläche, tief im Wasser.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "violent",
+          "underneath",
+          "border",
+          "region",
+          "surface"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.undersea",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "border",
+      "g": "Grenze",
+      "d": "the place where two countries meet.",
+      "s": "There were fights at the Mexican ___ with North America.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "border",
+          "tier": "full"
+        },
+        {
+          "text": "borders",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "border",
+          "tier": "full"
+        },
+        {
+          "text": "the border",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "border",
+            "tier": "full"
+          },
+          {
+            "text": "the border",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Grenze",
+            "tier": "full"
+          },
+          {
+            "text": "die Grenze",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "surface",
+        "region",
+        "shelter"
+      ],
+      "hintDe": "Die Linie, an der ein Land in das nächste übergeht.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "surface",
+          "region",
+          "shelter",
+          "damage",
+          "flame"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.border",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "damage",
+      "g": "Schaden",
+      "d": "when a thing breaks and does not work.",
+      "s": "The ___ caused by the earthquake was bad.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "damage",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "damage",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "damage",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schaden",
+            "tier": "full"
+          },
+          {
+            "text": "der Schaden",
+            "tier": "full"
+          },
+          {
+            "text": "Schäden",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "research",
+        "pressure",
+        "joy"
+      ],
+      "hintDe": "Etwas geht kaputt oder wird beschädigt.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "research",
+          "pressure",
+          "joy",
+          "survival",
+          "shelter"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.damage",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to evacuate",
+      "g": "evakuieren",
+      "d": "to move people away from a place that is in danger.",
+      "s": "The police had to ___ all the people from the burning building very fast.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "evacuate",
+          "tier": "full"
+        },
+        {
+          "text": "to evacuate",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "evacuate",
+          "tier": "full"
+        },
+        {
+          "text": "to evacuate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "evacuate",
+            "tier": "full"
+          },
+          {
+            "text": "to evacuate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "evakuieren",
+            "tier": "full"
+          },
+          {
+            "text": "in Sicherheit bringen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "danger",
+          "de": "Gefahr",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "measure",
+        "deliver",
+        "realise"
+      ],
+      "hintDe": "Menschen aus einem gefährlichen Ort wegbringen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "measure",
+          "deliver",
+          "realise",
+          "collapse",
+          "fall down"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-evacuate",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to measure",
+      "g": "messen",
+      "d": "to find how big or heavy a thing is.",
+      "s": "The earthquake ___ 7.0 on the Richter scale.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "measured",
+          "tier": "full"
+        },
+        {
+          "text": "measure",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "measure",
+          "tier": "full"
+        },
+        {
+          "text": "to measure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "measure",
+            "tier": "full"
+          },
+          {
+            "text": "to measure",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "messen",
+            "tier": "full"
+          },
+          {
+            "text": "ausmessen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "evacuate",
+        "deliver",
+        "realise"
+      ],
+      "hintDe": "Herausfinden, wie groß, schwer oder wie viel etwas ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "evacuate",
+          "deliver",
+          "realise",
+          "collapse",
+          "turn into"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-measure",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "region",
+      "g": "Region",
+      "d": "a big piece of land.",
+      "s": "This ___ of Austria is famous for its high mountains and beautiful lakes.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "region",
+          "tier": "full"
+        },
+        {
+          "text": "regions",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "region",
+          "tier": "full"
+        },
+        {
+          "text": "a region",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "region",
+            "tier": "full"
+          },
+          {
+            "text": "a region",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Region",
+            "tier": "full"
+          },
+          {
+            "text": "die Region",
+            "tier": "full"
+          },
+          {
+            "text": "Gebiet",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "border",
+        "surface",
+        "shelter"
+      ],
+      "hintDe": "Ein großes Gebiet oder eine größere Gegend.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "border",
+          "surface",
+          "shelter",
+          "damage",
+          "flame"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.region",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "violent",
+      "g": "gewalttätig",
+      "d": "wild and very dangerous to people.",
+      "s": "Droughts have led to ___ conflicts in the regions.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "violent",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "violent",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "violent",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "gewalttätig",
+            "tier": "full"
+          },
+          {
+            "text": "heftig",
+            "tier": "partial"
+          },
+          {
+            "text": "brutal",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "led",
+          "de": "geführt",
+          "scope": "s"
+        },
+        {
+          "word": "conflicts",
+          "de": "Konflikte",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "undersea",
+        "underneath",
+        "famous"
+      ],
+      "hintDe": "Mit starker Gewalt, sodass Menschen verletzt werden.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "undersea",
+          "underneath",
+          "famous",
+          "dangerous",
+          "strong"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.violent",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to keep away from",
+      "g": "fernbleiben von",
+      "d": "to not go near a thing that is dangerous.",
+      "s": "___ heavy furniture that might fall over.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "Keep away from",
+          "tier": "full"
+        },
+        {
+          "text": "keep away from",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "keep away from",
+          "tier": "full"
+        },
+        {
+          "text": "to keep away from",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "keep away from",
+            "tier": "full"
+          },
+          {
+            "text": "to keep away from",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "fernbleiben von",
+            "tier": "full"
+          },
+          {
+            "text": "sich fernhalten von",
+            "tier": "full"
+          },
+          {
+            "text": "wegbleiben von",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "might",
+          "de": "könnte",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "fall down",
+        "turn into",
+        "get used to"
+      ],
+      "hintDe": "Nicht in die Nähe von etwas Gefährlichem gehen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "fall down",
+          "turn into",
+          "get used to",
+          "check doors",
+          "crawl low"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-keep-away-from",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to fall down",
+      "g": "hinunterfallen",
+      "d": "to drop down to the ground.",
+      "s": "A few trees ___ because of the earthquake.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "fell down",
+          "tier": "full"
+        },
+        {
+          "text": "fall down",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "fall down",
+          "tier": "full"
+        },
+        {
+          "text": "to fall down",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "fall down",
+            "tier": "full"
+          },
+          {
+            "text": "to fall down",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinunterfallen",
+            "tier": "full"
+          },
+          {
+            "text": "umfallen",
+            "tier": "full"
+          },
+          {
+            "text": "herunterfallen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "few",
+          "de": "ein paar, wenige",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "keep away from",
+        "turn into",
+        "get used to"
+      ],
+      "hintDe": "Von oben auf den Boden fallen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "keep away from",
+          "turn into",
+          "get used to",
+          "collapse",
+          "deliver"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-fall-down",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to realise",
+      "g": "realisieren",
+      "d": "to suddenly understand a thing.",
+      "s": "I ___ it was serious when I saw people running away.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "realised",
+          "tier": "full"
+        },
+        {
+          "text": "realized",
+          "tier": "partial"
+        },
+        {
+          "text": "realise",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "realise",
+          "tier": "full"
+        },
+        {
+          "text": "to realise",
+          "tier": "full"
+        },
+        {
+          "text": "realize",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "realise",
+            "tier": "full"
+          },
+          {
+            "text": "to realise",
+            "tier": "full"
+          },
+          {
+            "text": "realize",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "realisieren",
+            "tier": "full"
+          },
+          {
+            "text": "erkennen",
+            "tier": "full"
+          },
+          {
+            "text": "begreifen",
+            "tier": "partial"
+          },
+          {
+            "text": "merken",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "saw",
+          "de": "sah",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "measure",
+        "evacuate",
+        "deliver"
+      ],
+      "hintDe": "Plötzlich etwas verstehen oder bemerken.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "measure",
+          "evacuate",
+          "deliver",
+          "collapse",
+          "turn into"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-realise",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "survival",
+      "g": "Überleben",
+      "d": "staying alive in a dangerous situation.",
+      "s": "We are looking for people with amazing ___ stories.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "survival",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "survival",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "survival",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Überleben",
+            "tier": "full"
+          },
+          {
+            "text": "das Überleben",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "situation",
+          "de": "Situation, Lage",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "research",
+        "damage",
+        "pleasure"
+      ],
+      "hintDe": "Am Leben bleiben in einer gefährlichen Lage.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "research",
+          "damage",
+          "pleasure",
+          "joy",
+          "miracle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.survival",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "underneath",
+      "g": "unter",
+      "d": "below a thing, in a place that is not high.",
+      "s": "I just got ___ the kitchen table.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "underneath",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "underneath",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "underneath",
+            "tier": "full"
+          },
+          {
+            "text": "under",
+            "tier": "partial"
+          },
+          {
+            "text": "below",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "unter",
+            "tier": "full"
+          },
+          {
+            "text": "darunter",
+            "tier": "full"
+          },
+          {
+            "text": "unterhalb",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "undersea",
+        "violent",
+        "behind"
+      ],
+      "hintDe": "Weiter unten, unter etwas.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "undersea",
+          "violent",
+          "behind",
+          "near",
+          "below"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.underneath",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "ash",
+      "g": "Asche",
+      "d": "the grey powder on the ground after a fire.",
+      "s": "He used ___ from the fire to draw a face on the ball.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "ash",
+          "tier": "full"
+        },
+        {
+          "text": "ashes",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "ash",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "ash",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Asche",
+            "tier": "full"
+          },
+          {
+            "text": "die Asche",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "powder",
+          "de": "Pulver",
+          "scope": "d"
+        },
+        {
+          "word": "draw",
+          "de": "zeichnen, malen",
+          "scope": "s"
+        },
+        {
+          "word": "face",
+          "de": "Gesicht",
+          "scope": "s"
+        },
+        {
+          "word": "ball",
+          "de": "Ball",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "flame",
+        "shelter",
+        "raft"
+      ],
+      "hintDe": "Das graue Pulver, das nach dem Verbrennen übrig bleibt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "flame",
+          "shelter",
+          "raft",
+          "joy",
+          "parcel"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.ash",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "castaway",
+      "g": "Schiffbrüchiger/Schiffbrüchige",
+      "d": "a person who lives alone on an island after their ship sinks.",
+      "s": "How would you spend your time if you were a ___?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "castaway",
+          "tier": "full"
+        },
+        {
+          "text": "castaways",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "castaway",
+          "tier": "full"
+        },
+        {
+          "text": "a castaway",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "castaway",
+            "tier": "full"
+          },
+          {
+            "text": "a castaway",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Schiffbrüchiger",
+            "tier": "full"
+          },
+          {
+            "text": "Schiffbrüchige",
+            "tier": "full"
+          },
+          {
+            "text": "ein Schiffbrüchiger",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "shelter",
+        "flame",
+        "raft"
+      ],
+      "hintDe": "Jemand, der nach einem Schiffsunglück allein auf einer Insel ist.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "shelter",
+          "flame",
+          "raft",
+          "parcel",
+          "miracle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.castaway",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to deliver",
+      "g": "zustellen",
+      "d": "to bring a thing to a house or a place.",
+      "s": "He still hoped to ___ the parcels unopened one day.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "deliver",
+          "tier": "full"
+        },
+        {
+          "text": "to deliver",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "deliver",
+          "tier": "full"
+        },
+        {
+          "text": "to deliver",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "deliver",
+            "tier": "full"
+          },
+          {
+            "text": "to deliver",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zustellen",
+            "tier": "full"
+          },
+          {
+            "text": "liefern",
+            "tier": "full"
+          },
+          {
+            "text": "ausliefern",
+            "tier": "partial"
+          },
+          {
+            "text": "bringen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "unopened",
+          "de": "ungeöffnet",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "measure",
+        "evacuate",
+        "realise"
+      ],
+      "hintDe": "Etwas zu einer Person oder an einen Ort bringen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "measure",
+          "evacuate",
+          "realise",
+          "collapse",
+          "fall down"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-deliver",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "delivery company",
+      "g": "Zustelldienst",
+      "d": "a business that brings parcels and letters to people's houses.",
+      "s": "Chuck had a job at a big worldwide ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "delivery company",
+          "tier": "full"
+        },
+        {
+          "text": "delivery companies",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "delivery company",
+          "tier": "full"
+        },
+        {
+          "text": "a delivery company",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "delivery company",
+            "tier": "full"
+          },
+          {
+            "text": "a delivery company",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Zustelldienst",
+            "tier": "full"
+          },
+          {
+            "text": "der Zustelldienst",
+            "tier": "full"
+          },
+          {
+            "text": "Lieferdienst",
+            "tier": "full"
+          },
+          {
+            "text": "Paketdienst",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "business",
+          "de": "Firma, Unternehmen",
+          "scope": "d"
+        },
+        {
+          "word": "worldwide",
+          "de": "weltweit",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "delivery",
+        "shelter",
+        "border"
+      ],
+      "hintDe": "Eine Firma, die Pakete und Briefe zu den Häusern bringt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "delivery",
+          "shelter",
+          "border",
+          "region",
+          "parcel"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.delivery-company",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "flame",
+      "g": "Flamme",
+      "d": "the bright, hot light of a fire.",
+      "s": "He was trying to make fire and finally he saw a ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "flame",
+          "tier": "full"
+        },
+        {
+          "text": "flames",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "flame",
+          "tier": "full"
+        },
+        {
+          "text": "a flame",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "flame",
+            "tier": "full"
+          },
+          {
+            "text": "a flame",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flamme",
+            "tier": "full"
+          },
+          {
+            "text": "die Flamme",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "trying",
+          "de": "versuchte",
+          "scope": "s"
+        },
+        {
+          "word": "saw",
+          "de": "sah",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "ash",
+        "shelter",
+        "raft"
+      ],
+      "hintDe": "Der helle, heiße Teil eines Feuers.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "ash",
+          "shelter",
+          "raft",
+          "parcel",
+          "joy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.flame",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to get used to",
+      "g": "sich an etw. gewöhnen",
+      "d": "to begin to like a new thing after some time.",
+      "s": "After many years went by, Chuck ___ the island.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "got used to",
+          "tier": "full"
+        },
+        {
+          "text": "get used to",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "get used to",
+          "tier": "full"
+        },
+        {
+          "text": "to get used to",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "get used to",
+            "tier": "full"
+          },
+          {
+            "text": "to get used to",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich an etwas gewöhnen",
+            "tier": "full"
+          },
+          {
+            "text": "sich gewöhnen an",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "went",
+          "de": "vergingen",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "turn into",
+        "fall down",
+        "keep away from"
+      ],
+      "hintDe": "Sich langsam an etwas Neues gewöhnen.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "turn into",
+          "fall down",
+          "keep away from",
+          "deliver",
+          "measure"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-get-used-to",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "hometown",
+      "g": "Heimatstadt",
+      "d": "the town or city where you grew up.",
+      "s": "Chuck lived on the island so long that it was like his old ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "hometown",
+          "tier": "full"
+        },
+        {
+          "text": "hometowns",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "hometown",
+          "tier": "full"
+        },
+        {
+          "text": "your hometown",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "hometown",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Heimatstadt",
+            "tier": "full"
+          },
+          {
+            "text": "die Heimatstadt",
+            "tier": "full"
+          },
+          {
+            "text": "Heimatort",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "grew",
+          "de": "aufgewachsen",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "shelter",
+        "border",
+        "region"
+      ],
+      "hintDe": "Die Stadt, in der du aufgewachsen bist.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "shelter",
+          "border",
+          "region",
+          "surface",
+          "raft"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.hometown",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "joy",
+      "g": "Freude",
+      "d": "a feeling of great happiness.",
+      "s": "He laughed with ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "joy",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "joy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "joy",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Freude",
+            "tier": "full"
+          },
+          {
+            "text": "die Freude",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "happiness",
+          "de": "Glück, Freude",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "damage",
+        "pressure",
+        "research"
+      ],
+      "hintDe": "Ein Gefühl von großer Freude.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "damage",
+          "pressure",
+          "research",
+          "survival",
+          "pleasure"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.joy",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "parcel",
+      "g": "Paket",
+      "d": "a box you bring to a friend.",
+      "s": "He put the unopened ___ next to him.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "parcel",
+          "tier": "full"
+        },
+        {
+          "text": "parcels",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "parcel",
+          "tier": "full"
+        },
+        {
+          "text": "a parcel",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "parcel",
+            "tier": "full"
+          },
+          {
+            "text": "a parcel",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Paket",
+            "tier": "full"
+          },
+          {
+            "text": "das Paket",
+            "tier": "full"
+          },
+          {
+            "text": "Päckchen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "unopened",
+          "de": "ungeöffnet",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "flame",
+        "shelter",
+        "raft"
+      ],
+      "hintDe": "Eine Schachtel, die jemandem geschickt oder gebracht wird.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "flame",
+          "shelter",
+          "raft",
+          "ash",
+          "joy"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.parcel",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "raft",
+      "g": "Floß",
+      "d": "a flat thing made from wood for going on the sea.",
+      "s": "Chuck built a ___ to escape the island.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "raft",
+          "tier": "full"
+        },
+        {
+          "text": "rafts",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "raft",
+          "tier": "full"
+        },
+        {
+          "text": "a raft",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "raft",
+            "tier": "full"
+          },
+          {
+            "text": "a raft",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Floß",
+            "tier": "full"
+          },
+          {
+            "text": "das Floß",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "flat",
+          "de": "flach",
+          "scope": "d"
+        },
+        {
+          "word": "wood",
+          "de": "Holz",
+          "scope": "d"
+        },
+        {
+          "word": "made",
+          "de": "gemacht, gebaut",
+          "scope": "d"
+        },
+        {
+          "word": "built",
+          "de": "baute",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "shelter",
+        "flame",
+        "parcel"
+      ],
+      "hintDe": "Etwas Flaches aus Holz, mit dem man auf dem Wasser fährt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "shelter",
+          "flame",
+          "parcel",
+          "ash",
+          "border"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.raft",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "shelter",
+      "g": "Unterschlupf",
+      "d": "a safe place to stay, away from bad weather.",
+      "s": "He built himself a ___ from the rain.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "shelter",
+          "tier": "full"
+        },
+        {
+          "text": "shelters",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "shelter",
+          "tier": "full"
+        },
+        {
+          "text": "a shelter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "shelter",
+            "tier": "full"
+          },
+          {
+            "text": "a shelter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Unterschlupf",
+            "tier": "full"
+          },
+          {
+            "text": "Unterkunft",
+            "tier": "full"
+          },
+          {
+            "text": "der Unterschlupf",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "safe",
+          "de": "sicher",
+          "scope": "d"
+        },
+        {
+          "word": "built",
+          "de": "baute",
+          "scope": "s"
+        },
+        {
+          "word": "himself",
+          "de": "sich selbst",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "flame",
+        "raft",
+        "border"
+      ],
+      "hintDe": "Ein sicherer Platz zum Bleiben, geschützt vor schlechtem Wetter.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "flame",
+          "raft",
+          "border",
+          "region",
+          "parcel"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.shelter",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to turn into",
+      "g": "verwandeln",
+      "d": "to become a completely new thing.",
+      "s": "The rainfall quickly ___ heavy snowfall.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "turned into",
+          "tier": "full"
+        },
+        {
+          "text": "turn into",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "turn into",
+          "tier": "full"
+        },
+        {
+          "text": "to turn into",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "turn into",
+            "tier": "full"
+          },
+          {
+            "text": "to turn into",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "sich verwandeln in",
+            "tier": "full"
+          },
+          {
+            "text": "werden zu",
+            "tier": "full"
+          },
+          {
+            "text": "verwandeln",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "quickly",
+          "de": "schnell",
+          "scope": "s"
+        },
+        {
+          "word": "snowfall",
+          "de": "Schneefall",
+          "scope": "s"
+        }
+      ],
+      "mc": [
+        "fall down",
+        "get used to",
+        "keep away from"
+      ],
+      "hintDe": "Zu etwas ganz anderem werden.",
+      "difficulty": 3,
+      "gameMeta": {
+        "distractorPool": [
+          "fall down",
+          "get used to",
+          "keep away from",
+          "deliver",
+          "collapse"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-turn-into",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "miracle",
+      "g": "Wunder",
+      "d": "an amazing thing that you cannot understand.",
+      "s": "It's a ___ that we survived the earthquake.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "miracle",
+          "tier": "full"
+        },
+        {
+          "text": "miracles",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "miracle",
+          "tier": "full"
+        },
+        {
+          "text": "a miracle",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "miracle",
+            "tier": "full"
+          },
+          {
+            "text": "a miracle",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wunder",
+            "tier": "full"
+          },
+          {
+            "text": "das Wunder",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "damage",
+        "pressure",
+        "survival"
+      ],
+      "hintDe": "Etwas Erstaunliches, das man kaum erklären kann.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "damage",
+          "pressure",
+          "survival",
+          "joy",
+          "pleasure"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.miracle",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "desert island",
+      "g": "einsame Insel",
+      "d": "a lonely piece of land in the sea where nobody lives.",
+      "s": "What would you take on a ___?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "desert island",
+          "tier": "full"
+        },
+        {
+          "text": "desert islands",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "desert island",
+          "tier": "full"
+        },
+        {
+          "text": "a desert island",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "desert island",
+            "tier": "full"
+          },
+          {
+            "text": "a desert island",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einsame Insel",
+            "tier": "full"
+          },
+          {
+            "text": "eine einsame Insel",
+            "tier": "full"
+          },
+          {
+            "text": "verlassene Insel",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "shelter",
+        "raft",
+        "region"
+      ],
+      "hintDe": "Ein einsames Stück Land im Meer, wo niemand wohnt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "shelter",
+          "raft",
+          "region",
+          "border",
+          "surface"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.desert-island",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "pleasure (no pl)",
+      "g": "Freude",
+      "d": "a happy feeling when you like a thing.",
+      "s": "It's a ___ to be here.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "pleasure",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "pleasure",
+          "tier": "full"
+        },
+        {
+          "text": "a pleasure",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "pleasure",
+            "tier": "full"
+          },
+          {
+            "text": "a pleasure",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Freude",
+            "tier": "full"
+          },
+          {
+            "text": "Vergnügen",
+            "tier": "full"
+          },
+          {
+            "text": "das Vergnügen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "damage",
+        "pressure",
+        "survival"
+      ],
+      "hintDe": "Ein warmes Gefühl von Freude und Genuss.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "damage",
+          "pressure",
+          "survival",
+          "joy",
+          "miracle"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.pleasure",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "in case of",
+      "g": "im Falle von",
+      "d": "if there is a certain emergency.",
+      "s": "___ fire go outside!",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "In case of",
+          "tier": "full"
+        },
+        {
+          "text": "in case of",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "in case of",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "in case of",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "im Falle von",
+            "tier": "full"
+          },
+          {
+            "text": "im Fall von",
+            "tier": "full"
+          },
+          {
+            "text": "bei",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "because of",
+        "instead of",
+        "out of"
+      ],
+      "hintDe": "Wenn ein bestimmter Notfall eintritt.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "because of",
+          "instead of",
+          "out of",
+          "next to",
+          "in front of"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.in-case-of",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "lighter",
+      "g": "Feuerzeug",
+      "d": "a small thing that you use to make a flame.",
+      "s": "Don't play with ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "lighters",
+          "tier": "full"
+        },
+        {
+          "text": "lighter",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "lighter",
+          "tier": "full"
+        },
+        {
+          "text": "a lighter",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "lighter",
+            "tier": "full"
+          },
+          {
+            "text": "a lighter",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Feuerzeug",
+            "tier": "full"
+          },
+          {
+            "text": "das Feuerzeug",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "flame",
+        "ash",
+        "raft"
+      ],
+      "hintDe": "Ein kleines Ding, mit dem du eine Flamme machst.",
+      "difficulty": 1,
+      "gameMeta": {
+        "distractorPool": [
+          "flame",
+          "ash",
+          "raft",
+          "parcel",
+          "shelter"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.lighter",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    },
+    {
+      "w": "to collapse",
+      "g": "zusammenbrechen",
+      "d": "to break and drop down all at once.",
+      "s": "The house could ___ during an earthquake.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "collapse",
+          "tier": "full"
+        },
+        {
+          "text": "to collapse",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "collapse",
+          "tier": "full"
+        },
+        {
+          "text": "to collapse",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "collapse",
+            "tier": "full"
+          },
+          {
+            "text": "to collapse",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zusammenbrechen",
+            "tier": "full"
+          },
+          {
+            "text": "einstürzen",
+            "tier": "full"
+          },
+          {
+            "text": "einbrechen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "evacuate",
+        "deliver",
+        "measure"
+      ],
+      "hintDe": "Plötzlich in sich zusammenfallen.",
+      "difficulty": 2,
+      "gameMeta": {
+        "distractorPool": [
+          "evacuate",
+          "deliver",
+          "measure",
+          "realise",
+          "fall down"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "wordId": "g3u12.w.to-collapse",
+      "seedV1": null,
+      "sbRef": null,
+      "note": null
+    }
+  ]
+}

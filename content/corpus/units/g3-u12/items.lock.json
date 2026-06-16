@@ -1,0 +1,102 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g3-u12",
+  "items": {
+    "b4a081a8727d": "g3u12.gi.passive-voice.gf.001",
+    "781f32a0a26f": "g3u12.gi.passive-voice.gf.002",
+    "2e8df71aa113": "g3u12.gi.passive-voice.gf.003",
+    "b87f4c736eff": "g3u12.gi.passive-voice.gf.004",
+    "da20bb276330": "g3u12.gi.passive-voice.gf.005",
+    "3667f29f5ae7": "g3u12.gi.passive-voice.gf.006",
+    "d0602e4a6c29": "g3u12.gi.passive-voice.gf.007",
+    "3467e9fd0395": "g3u12.gi.passive-voice.gf.008",
+    "91ebea2c654d": "g3u12.gi.passive-voice.mc.003",
+    "b42dcc541932": "g3u12.gi.passive-voice.ec.001",
+    "73923f84142c": "g3u12.gi.passive-voice.ec.002",
+    "b1c69f97b3fb": "g3u12.gi.passive-voice.ec.003",
+    "b5086ab326e4": "g3u12.gi.passive-voice.ec.004",
+    "8c2783683439": "g3u12.gi.passive-voice.ec.005",
+    "2914382e6873": "g3u12.gi.passive-voice.sb.001",
+    "495e97115153": "g3u12.gi.passive-voice.sb.002",
+    "6cf5900cf8e4": "g3u12.gi.passive-voice.tr.001",
+    "5de715aae485": "g3u12.gi.passive-voice.tr.002",
+    "fce14ee84f51": "g3u12.gi.passive-voice.cp.001",
+    "032f651b4025": "g3u12.gi.passive-voice.mc.005",
+    "aed932ca8fd7": "g3u12.gi.passive-voice.mc.006",
+    "e117f372b634": "g3u12.gi.passive-voice.qf.003",
+    "e5cc6242e8f6": "g3u12.gi.passive-voice.qf.004",
+    "fae9eb98bde0": "g3u12.gi.passive-voice.mt.002",
+    "0733594931cd": "g3u12.gi.passive-voice.gs.002",
+    "0826656098d8": "g3u12.gi.passive-voice.tf.007",
+    "58f60ba5f58c": "g3u12.gi.passive-voice.tf.008",
+    "e45fd1e7376d": "g3u12.gi.passive-voice.tf.009",
+    "40617e8b7b30": "g3u12.gi.passive-voice.mc.007"
+  },
+  "tombstones": [
+    {
+      "id": "g3u12.gi.passive-voice.mc.001",
+      "key": "919d6f78b538",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.mc.004",
+      "key": "f1239bc70f89",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.tf.001",
+      "key": "4692e2e0348a",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.tf.002",
+      "key": "23e7702aee33",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.tf.003",
+      "key": "262d9227527b",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.qf.001",
+      "key": "5a6253f0dc26",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.qf.002",
+      "key": "3005559a4164",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.mt.001",
+      "key": "d3f1b65b6798",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.gs.001",
+      "key": "676c6c736e0f",
+      "removedWith": "32c141eff448"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.tf.004",
+      "key": "9b81acb2eaef",
+      "removedWith": "43bd666bd0b3"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.tf.005",
+      "key": "d9deff7f5f7f",
+      "removedWith": "43bd666bd0b3"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.tf.006",
+      "key": "e409f0f811b4",
+      "removedWith": "43bd666bd0b3"
+    },
+    {
+      "id": "g3u12.gi.passive-voice.mc.002",
+      "key": "64684af9a05d",
+      "removedWith": "42cc36a270a4"
+    }
+  ]
+}
