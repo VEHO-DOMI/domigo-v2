@@ -1,0 +1,28 @@
+{
+  "schema": "verify-merged@1",
+  "slug": "g4-u06",
+  "round": 1,
+  "itemsHash": "cc5e46d741cb",
+  "lenses": {
+    "level-gloss": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "answers": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "translation": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "register": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    }
+  },
+  "byItem": {},
+  "fixCount": 0,
+  "warnCount": 0,
+  "escalated": []
+}

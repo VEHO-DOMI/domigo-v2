@@ -1,0 +1,5367 @@
+{
+  "schema": "grammar@1",
+  "grade": 4,
+  "unit": 6,
+  "slug": "g4-u06",
+  "items": [
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ag.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde das WIE-Wort zu good (Ausnahme – kein -ly!). Sortiere die Buchstaben: l w e l",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "well",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good → ? (eine Ausnahme, kein -ly).",
+      "hintEn": null,
+      "explainDe": "Das WIE-Wort zu good ist well.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ag.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bilde das WIE-Wort zu slow. Sortiere die Buchstaben: w o l s l y",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "slowly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "slow + -ly.",
+      "hintEn": null,
+      "explainDe": "Das WIE-Wort zu slow ist slowly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.cp.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He cooks really good.",
+            "He cooks good really.",
+            "He cooks real well.",
+            "He cook really well.",
+            "He cooks really fast good."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund kocht super. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He cooks really well.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He cooks really good.",
+        "He cooks good really.",
+        "He cooks real well."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good → well, wenn es sagt WIE jemand kocht.",
+      "hintEn": null,
+      "explainDe": "Richtig ist he cooks really well. good ist hier falsch, weil es sagt WIE er kocht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.cp.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He runs very fastly.",
+            "He runs very good.",
+            "He very fast runs.",
+            "He run very fast.",
+            "He runs very quick."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du beschreibst, wie schnell dein Freund läuft. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He runs very fast.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He runs very fastly.",
+        "He runs very good.",
+        "He very fast runs."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "fast bleibt fast – es gibt kein 'fastly'.",
+      "hintEn": null,
+      "explainDe": "Richtig ist he runs very fast. fast ist eine Ausnahme und bekommt KEIN -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She dances very good.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She dances very well.",
+          "tier": "full"
+        },
+        {
+          "text": "well",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good → well, wenn es sagt WIE jemand tanzt.",
+      "hintEn": null,
+      "explainDe": "good ist das Eigenschaftswort. Als WIE-Wort nach dance brauchst du well: she dances well.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-ec-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He speaks French fluent.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He speaks French fluently.",
+          "tier": "full"
+        },
+        {
+          "text": "fluently",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "fluent → fluently (das WIE-Wort nach speak).",
+      "hintEn": null,
+      "explainDe": "Nach speak steht das WIE-Wort fluently, nicht das Eigenschaftswort fluent.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.003",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He runs very fastly.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He runs very fast.",
+          "tier": "full"
+        },
+        {
+          "text": "fast",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Es gibt kein 'fastly' – fast bleibt fast.",
+      "hintEn": null,
+      "explainDe": "fast ist eine Ausnahme und bekommt KEIN -ly. Richtig: he runs fast.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.004",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He plays football very good.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He plays football very well.",
+          "tier": "full"
+        },
+        {
+          "text": "well",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good → well nach play.",
+      "hintEn": null,
+      "explainDe": "Als WIE-Wort nach play brauchst du well, nicht good: he plays well.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.005",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The food tastes badly.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The food tastes bad.",
+          "tier": "full"
+        },
+        {
+          "text": "bad",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach taste steht ein Eigenschaftswort: bad, nicht 'badly'.",
+      "hintEn": null,
+      "explainDe": "taste beschreibt einen Zustand. Deshalb steht das Eigenschaftswort bad, nicht das WIE-Wort badly.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.006",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She closes the door quietly and careful opens the box.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She closes the door quietly and carefully opens the box.",
+          "tier": "full"
+        },
+        {
+          "text": "carefully",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "careful → carefully (das zweite WIE-Wort fehlt das -ly).",
+      "hintEn": null,
+      "explainDe": "Beide WIE-Wörter brauchen -ly: quietly UND carefully.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.007",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-ec-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She paints beautiful but she dances bad.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She paints beautifully but she dances badly.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zwei WIE-Wörter: beautiful → beautifully, bad → badly.",
+      "hintEn": null,
+      "explainDe": "Nach paint und dance brauchst du WIE-Wörter mit -ly: beautifully und badly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.008",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-ec-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He plays football hardly every day.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He plays football hard every day.",
+          "tier": "full"
+        },
+        {
+          "text": "hard",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "hardly heißt 'kaum' – gemeint ist 'mit Anstrengung' = hard.",
+      "hintEn": null,
+      "explainDe": "hardly = kaum. Wer mit Anstrengung spielt, plays hard. hardly ergäbe das Gegenteil.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.ec.009",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She paints very beautiful.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She paints very beautifully.",
+          "tier": "full"
+        },
+        {
+          "text": "beautifully",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "beautiful → beautifully (das WIE-Wort nach paint).",
+      "hintEn": null,
+      "explainDe": "Nach paint brauchst du das WIE-Wort beautifully, nicht das Eigenschaftswort beautiful.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She plays the guitar ___. (beautiful)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "beautifully",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "beautiful",
+        "well",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Wie spielt sie? An beautiful hängst du -ly an.",
+      "hintEn": null,
+      "explainDe": "Das Wort, das sagt WIE jemand etwas tut, bildest du meist mit dem Eigenschaftswort + -ly: beautiful → beautifully.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He runs very ___. (fast)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "fast",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "quickly",
+        "well",
+        "slowly"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "fast bleibt fast – hier hängst du KEIN -ly an.",
+      "hintEn": null,
+      "explainDe": "fast ist eine Ausnahme: Es bleibt unverändert, du sagst he runs fast, nicht 'fastly'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.003",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She plays the piano very ___. (good)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "well",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "good",
+        "fast",
+        "early"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good wird zu well, wenn es sagt WIE jemand etwas macht.",
+      "hintEn": null,
+      "explainDe": "good ist eine Ausnahme: Als WIE-Wort heißt es well – she plays well, nicht 'plays good'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.004",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Please speak up! I can ___ understand you.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hardly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "hard",
+        "well",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "hardly bedeutet 'kaum', hard bedeutet 'mit Anstrengung'.",
+      "hintEn": null,
+      "explainDe": "hardly heißt 'fast gar nicht/kaum': I can hardly understand you = ich verstehe dich kaum.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.005",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The children play ___ in the garden. (happy)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "happily",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "happy",
+        "well",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Endet das Wort auf -y, wird daraus -ily: happy → happily.",
+      "hintEn": null,
+      "explainDe": "Bei -y am Ende wird das y zu i und du hängst -ly an: happy → happily.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.006",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Please speak ___ in the library. (quiet)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "quietly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "quiet",
+        "fast",
+        "well"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "quiet",
+          "de": "leise",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Wie soll man sprechen? quiet + -ly.",
+      "hintEn": null,
+      "explainDe": "quiet → quietly: das WIE-Wort sagt, auf welche Art man sprechen soll.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.007",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The dog runs ___ in the park. (angry)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "angrily",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "angry",
+        "well",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "angry endet auf -y → angrily.",
+      "hintEn": null,
+      "explainDe": "Bei -y wird das y zu i: angry → angrily (auf welche Art der Hund läuft).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.008",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-009",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She works ___ on her project but still has problems. (hard)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hard",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "hardly",
+        "well",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "hard",
+          "de": "hart, mit Anstrengung",
+          "scope": "prompt"
+        },
+        {
+          "word": "problems",
+          "de": "Probleme",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "hard bleibt hard – nicht 'hardly' (das hieße 'kaum').",
+      "hintEn": null,
+      "explainDe": "hard = 'mit viel Anstrengung' bleibt unverändert. hardly würde 'kaum' bedeuten und ergäbe keinen Sinn.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.009",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-010",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He reads all the rules ___. (correct)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "correctly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "correct",
+        "well",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "correct",
+          "de": "richtig",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "correct + -ly = correctly.",
+      "hintEn": null,
+      "explainDe": "Das WIE-Wort sagt, auf welche Art er liest: correct → correctly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.010",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She speaks French ___. (fluent)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "fluently",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "fluent",
+        "well",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "fluent + -ly = fluently.",
+      "hintEn": null,
+      "explainDe": "Hinter dem Tätigkeitswort speak steht das WIE-Wort fluently, nicht das Eigenschaftswort fluent.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.011",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-011",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He plays really ___ in the first match but ___ in the second. (good / terrible)",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "well | terribly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "terrible",
+          "de": "furchtbar, schlecht",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "good → well (Ausnahme); terrible → terribly (das e am Ende fällt weg).",
+      "hintEn": null,
+      "explainDe": "good wird zu well; bei terrible fällt das -e weg und du hängst -y an: terribly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.012",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-012",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Don't arrive ___ for the job interview! (late)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "late",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "lately",
+        "early",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "late",
+          "de": "spät",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "late bleibt late – 'lately' bedeutet etwas anderes ('in letzter Zeit').",
+      "hintEn": null,
+      "explainDe": "late ist eine Ausnahme und bleibt unverändert. lately heißt 'in letzter Zeit' und passt hier nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.013",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He drives ___ through the village. (slow)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "slowly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "slow",
+        "fast",
+        "well"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "through",
+          "de": "durch",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "slow + -ly = slowly.",
+      "hintEn": null,
+      "explainDe": "Das WIE-Wort sagt, auf welche Art er fährt: slow → slowly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gf.014",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I haven't seen Tom ___. Is he OK? (recently)",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "lately",
+          "tier": "full"
+        },
+        {
+          "text": "recently",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "late",
+        "early",
+        "fast"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "seen",
+          "de": "gesehen",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "lately = 'in letzter Zeit' (nicht 'spät'). recently passt auch.",
+      "hintEn": null,
+      "explainDe": "lately bedeutet 'in letzter Zeit'. late würde 'spät' heißen und passt hier nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gs.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche Wörter bekommen -ly und welche bleiben gleich? (Beispiel: slow → slowly, aber fast → fast)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "slow → slowly",
+          "members": [
+            "careful",
+            "quiet",
+            "beautiful",
+            "correct"
+          ]
+        },
+        {
+          "label": "fast → fast",
+          "members": [
+            "fast",
+            "hard",
+            "late",
+            "early"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Ausnahmen (fast, hard, late, early) bleiben gleich; der Rest bekommt -ly.",
+      "hintEn": null,
+      "explainDe": "careful/quiet/beautiful/correct → + -ly. fast, hard, late, early sind Ausnahmen und bleiben unverändert.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.gs.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: Was passt nach 'She speaks ___' und was nach 'It tastes ___'? (Tipp: nach taste, look, sound, feel steht das Wort OHNE -ly.)",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "She speaks ___",
+          "members": [
+            "beautifully",
+            "well",
+            "quietly"
+          ]
+        },
+        {
+          "label": "It tastes ___",
+          "members": [
+            "good",
+            "awful",
+            "delicious"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Nach taste/look/sound/feel steht ein Eigenschaftswort; nach einem normalen Tun steht das WIE-Wort mit -ly.",
+      "hintEn": null,
+      "explainDe": "she speaks beautifully/well/quietly (Tun → WIE-Wort). it tastes good/awful/delicious (Zustand → Eigenschaftswort).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She speaks fluently English.",
+            "She fluently speaks English.",
+            "She speaks English fluent.",
+            "She speaks English good.",
+            "She speaks fluent English."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She speaks English fluently.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She speaks fluently English.",
+        "She fluently speaks English.",
+        "She speaks English fluent."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das WIE-Wort steht nach dem Objekt (English), nicht zwischen Tätigkeitswort und Objekt.",
+      "hintEn": null,
+      "explainDe": "Richtig ist she speaks English fluently: Das WIE-Wort kommt ans Ende und hat die Endung -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.003",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "He plays hardly but he can hard move.",
+            "He plays hard but he can hard move.",
+            "He plays hardly but he can hardly move.",
+            "He plays good but he can hardly move.",
+            "He plays hard but he can well move."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-mc-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig? (Achte auf hard und hardly.)",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He plays hard but he can hardly move.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "He plays hardly but he can hard move.",
+        "He plays hard but he can hard move.",
+        "He plays hardly but he can hardly move."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "hard = 'mit Anstrengung', hardly = 'kaum'. Beides im selben Satz!",
+      "hintEn": null,
+      "explainDe": "Er spielt hard (mit Anstrengung), kann sich danach aber hardly (kaum) bewegen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.005",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She dances really good.",
+            "She dances good really.",
+            "She dances real well.",
+            "She dance really well.",
+            "She dances really fast good."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-mc-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She dances really well.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She dances really good.",
+        "She dances good really.",
+        "She dances real well."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good wird zu well, wenn es sagt WIE jemand tanzt.",
+      "hintEn": null,
+      "explainDe": "Richtig ist she dances really well. good ist hier falsch, weil es sagt WIE sie tanzt.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.007",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hardly ... hard",
+            "hardly ... hardly",
+            "hard ... hard",
+            "well ... hardly",
+            "hard ... well"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-mc-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Setze BEIDE Wörter richtig ein:  He trains ___ every day, but today he can ___ move.",
+        "lang": "de",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "hard | hardly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "hardly ... hard",
+        "hardly ... hardly",
+        "hard ... hard"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Zuerst 'mit Anstrengung' (hard), dann 'kaum' (hardly).",
+      "hintEn": null,
+      "explainDe": "Er trainiert hard (mit Anstrengung), kann sich aber hardly (kaum) bewegen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.010",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "careful",
+            "quick",
+            "quiet",
+            "slowly"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Wort passt in die Lücke?  She reads the letter ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "carefully",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "careful",
+        "quick",
+        "quiet"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach dem Tätigkeitswort read steht das WIE-Wort, nicht das Eigenschaftswort.",
+      "hintEn": null,
+      "explainDe": "carefully sagt, WIE sie liest. careful ist das Eigenschaftswort und passt hier nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.011",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "clear",
+            "quick",
+            "quiet",
+            "carefully"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Wort passt in die Lücke?  The teacher explains the rules ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "clearly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "clear",
+        "quick",
+        "quiet"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "clear + -ly = clearly.",
+      "hintEn": null,
+      "explainDe": "clearly sagt, WIE die Lehrerin erklärt. clear ist das Eigenschaftswort und passt nach explain nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.012",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "This food tastes awfully.",
+            "This food awful tastes.",
+            "This food tastes badly.",
+            "This food taste awful.",
+            "This food tastes bad awful."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig? Nach taste kommt ein Wort wie good/bad, kein -ly-Wort!",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "This food tastes awful.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "This food tastes awfully.",
+        "This food awful tastes.",
+        "This food tastes badly."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach taste/smell/look/sound/feel steht ein Eigenschaftswort, KEIN WIE-Wort mit -ly.",
+      "hintEn": null,
+      "explainDe": "taste beschreibt einen Zustand, kein Tun. Darum steht das Eigenschaftswort awful, nicht 'awfully'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.013",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "beautiful",
+            "quick",
+            "quiet",
+            "carefully"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches Wort passt in die Lücke?  She paints the wall ___.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "beautifully",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "beautiful",
+        "quick",
+        "quiet"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "beautiful + -ly = beautifully.",
+      "hintEn": null,
+      "explainDe": "Nach paint steht das WIE-Wort beautifully. beautiful ist das Eigenschaftswort.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mc.014",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She feels happily.",
+            "She happy feels.",
+            "She feel happy.",
+            "She feels good happy.",
+            "She feels well happy."
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welcher Satz ist richtig? Nach feel kommt ein Wort wie good/bad, kein -ly-Wort!",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She feels happy.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She feels happily.",
+        "She happy feels.",
+        "She feel happy."
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach feel steht ein Eigenschaftswort: happy, nicht 'happily'.",
+      "hintEn": null,
+      "explainDe": "feel beschreibt einen Zustand. Darum steht das Eigenschaftswort happy, kein WIE-Wort mit -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mt.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-mt-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ordne jedem Wort sein passendes WIE-Wort zu.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "angry",
+          "right": "angrily"
+        },
+        {
+          "left": "slow",
+          "right": "slowly"
+        },
+        {
+          "left": "beautiful",
+          "right": "beautifully"
+        },
+        {
+          "left": "correct",
+          "right": "correctly"
+        },
+        {
+          "left": "late",
+          "right": "late"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "late bleibt late; die anderen bekommen -ly (bei -y wird y zu i).",
+      "hintEn": null,
+      "explainDe": "slow → slowly, beautiful → beautifully, correct → correctly, angry → angrily; late ist eine Ausnahme und bleibt late.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.mt.003",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welches WIE-Wort (-ly) gehört zu welchem Grundwort?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "good",
+          "right": "well"
+        },
+        {
+          "left": "fast",
+          "right": "fast"
+        },
+        {
+          "left": "careful",
+          "right": "carefully"
+        },
+        {
+          "left": "happy",
+          "right": "happily"
+        },
+        {
+          "left": "easy",
+          "right": "easily"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Manche sind regelmäßig (+ -ly), manche unregelmäßig (good → well, fast → fast).",
+      "hintEn": null,
+      "explainDe": "good → well und fast → fast sind Ausnahmen; careful → carefully, happy → happily, easy → easily folgen der Regel.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.qf.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She plays the guitar beautifully. Frag danach, WIE sie die Gitarre spielt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How does she play the guitar?",
+          "tier": "full"
+        },
+        {
+          "text": "How well does she play the guitar?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach dem WIE fragst du mit How … do/does …?",
+      "hintEn": null,
+      "explainDe": "Mit how fragst du nach der Art und Weise: How does she play the guitar?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.qf.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-qf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He speaks French fluently. Frag danach, WIE er Französisch spricht.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "How does he speak French?",
+          "tier": "full"
+        },
+        {
+          "text": "How well does he speak French?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "How … does … ? fragt nach dem WIE.",
+      "hintEn": null,
+      "explainDe": "Mit how fragst du nach der Art und Weise: How does he speak French?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.sb.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "quickly",
+            "slowly",
+            "the book",
+            "well"
+          ],
+          "chipBudget": 10,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "carefully / she / reads / the letter",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She reads the letter carefully.",
+          "tier": "full"
+        },
+        {
+          "text": "She carefully reads the letter.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das WIE-Wort steht meist am Ende, nicht zwischen Tätigkeitswort und Objekt.",
+      "hintEn": null,
+      "explainDe": "she reads the letter carefully: Das WIE-Wort carefully kommt ans Satzende.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.sb.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "happily",
+            "the box",
+            "quickly",
+            "well"
+          ],
+          "chipBudget": 10,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-sb-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "nervously / she / opens / the door",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She opens the door nervously.",
+          "tier": "full"
+        },
+        {
+          "text": "She nervously opens the door.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das WIE-Wort nervously steht am Satzende oder vor dem Tätigkeitswort.",
+      "hintEn": null,
+      "explainDe": "she opens the door nervously: nervous + -ly = nervously sagt, WIE sie die Tür öffnet.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.sb.003",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "good",
+            "fast",
+            "badly",
+            "slowly"
+          ],
+          "chipBudget": 10,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-sb-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "well / she / cooks / really",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She cooks really well.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "really verstärkt das WIE-Wort well und steht direkt davor.",
+      "hintEn": null,
+      "explainDe": "she cooks really well: well sagt WIE sie kocht, really verstärkt es.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tf.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort, das WIE beschreibt, einen Satz: 'He is a slow runner.' → 'He runs ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "He runs slowly.",
+          "tier": "full"
+        },
+        {
+          "text": "slowly",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Aus slow machst du das WIE-Wort slowly.",
+      "hintEn": null,
+      "explainDe": "Aus he is a slow runner wird he runs slowly: slow + -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tf.002",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-tf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort, das WIE beschreibt, einen Satz: 'She is a careful driver.' → 'She drives ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "She drives carefully.",
+          "tier": "full"
+        },
+        {
+          "text": "carefully",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "careful → carefully.",
+      "hintEn": null,
+      "explainDe": "Aus she is a careful driver wird she drives carefully: careful + -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tf.003",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort, das WIE beschreibt, einen Satz: 'He is a beautiful painter.' → 'He paints ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "He paints beautifully.",
+          "tier": "full"
+        },
+        {
+          "text": "beautifully",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "beautiful → beautifully.",
+      "hintEn": null,
+      "explainDe": "Aus she is a beautiful singer wird she sings beautifully: beautiful + -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tf.004",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-tf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort, das WIE beschreibt, einen Satz: 'He is a lazy player.' → 'He plays ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "He plays lazily.",
+          "tier": "full"
+        },
+        {
+          "text": "lazily",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "lazy endet auf -y → lazily.",
+      "hintEn": null,
+      "explainDe": "Bei -y wird das y zu i: lazy → lazily.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tf.005",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort, das WIE beschreibt, einen Satz: 'He is a quick reader.' → 'He reads ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "He reads quickly.",
+          "tier": "full"
+        },
+        {
+          "text": "quickly",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "quick → quickly.",
+      "hintEn": null,
+      "explainDe": "Aus he is a quick reader wird he reads quickly: quick + -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tf.006",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mach aus dem Wort, das WIE beschreibt, einen Satz: 'She is a patient teacher.' → 'She waits ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "She waits patiently.",
+          "tier": "full"
+        },
+        {
+          "text": "patiently",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "patient → patiently.",
+      "hintEn": null,
+      "explainDe": "Aus she is a patient teacher wird she waits patiently: patient + -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tf.007",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Deine Mutter kocht super. Sag es einem Freund: 'My mum is a great cook — she cooks really ___.'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "well",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "good → well, wenn es sagt WIE sie kocht.",
+      "hintEn": null,
+      "explainDe": "Als WIE-Wort nach cook brauchst du well: she cooks well.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tf.008",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-tf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Es war heute Morgen sehr neblig. Sag einem Freund: 'I could ___ see anything — it was so foggy!'",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hardly",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "'fast nichts sehen' = hardly see anything.",
+      "hintEn": null,
+      "explainDe": "hardly heißt 'kaum': I could hardly see anything = ich konnte kaum etwas sehen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tr.001",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er spricht sehr leise.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He speaks very quietly.",
+          "tier": "full"
+        },
+        {
+          "text": "He talks very quietly.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "leise sprechen = speak quietly.",
+      "hintEn": null,
+      "explainDe": "Das WIE-Wort quietly sagt, auf welche Art er spricht: he speaks quietly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tr.004",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Das Essen schmeckt schrecklich.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The food tastes awful.",
+          "tier": "full"
+        },
+        {
+          "text": "The food tastes terrible.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach taste steht ein Eigenschaftswort: awful, nicht 'awfully'.",
+      "hintEn": null,
+      "explainDe": "taste beschreibt einen Zustand, darum steht das Eigenschaftswort awful, kein WIE-Wort mit -ly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tr.005",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Speak quietly, please.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sprich bitte leise.",
+          "tier": "full"
+        },
+        {
+          "text": "Bitte sprich leise.",
+          "tier": "full"
+        },
+        {
+          "text": "Sprich leise, bitte.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "quietly = leise (auf welche Art man spricht).",
+      "hintEn": null,
+      "explainDe": "quietly ist das WIE-Wort zu quiet und bedeutet 'leise'.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tr.006",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mia spielt die Gitarre sehr gut.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mia plays the guitar very well.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia plays guitar very well.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "gut spielen = play well (nicht 'play good').",
+      "hintEn": null,
+      "explainDe": "good wird zu well, wenn es sagt WIE sie spielt: she plays well.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.adverbs-of-manner.tr.007",
+      "structureId": "g4u06.s.adverbs-of-manner",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-adverbs-of-manner-tr-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sue liest die Regeln richtig.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sue reads the rules correctly.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "richtig (auf welche Art?) = correctly.",
+      "hintEn": null,
+      "explainDe": "Das WIE-Wort correctly sagt, WIE sie liest: she reads correctly.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.cp.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "She can cook really well, can't she?",
+            "She can cook really well, can she?",
+            "She can cook really well, doesn't she?",
+            "She can cook really well, isn't she?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du bist dir ziemlich sicher, dass deine Freundin gut kochen kann, und möchtest es mit einer kurzen Frage am Ende bestätigen. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She can cook really well, can't she?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She can cook really well, can she?",
+        "She can cook really well, doesn't she?",
+        "She can cook really well, isn't she?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit can: am Ende muss can verneint stehen.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit can braucht am Ende can verneint: can't she? Nicht doesn't, weil schon can im Satz steht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.cp.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "context-picker",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "You are tired, aren't you?",
+            "You are tired, are you?",
+            "You are tired, don't you?",
+            "You are tired, aren't they?"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Dein Freund sieht müde aus. Du willst freundlich nachfragen und es mit einer kurzen Frage am Ende bestätigen. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You are tired, aren't you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "You are tired, are you?",
+        "You are tired, don't you?",
+        "You are tired, aren't they?"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit are und du (you): am Ende are verneint, und das Subjekt you wird wiederholt.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit are braucht am Ende are verneint: aren't you? Das Subjekt you wird wiederholt, nicht they.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.ec.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She likes music, isn't she?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She likes music, doesn't she?",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't she",
+          "tier": "partial"
+        },
+        {
+          "text": "doesn't she?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "likes hat keine Form von be in sich – die kurze Frage darf also nicht mit is gebildet werden.",
+      "hintEn": null,
+      "explainDe": "likes ist ein Vollverb, da nimmst du do: bei she wird daraus doesn't she? – nicht isn't she.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.ec.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-ec-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She likes the book, doesn't it?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She likes the book, doesn't she?",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't she",
+          "tier": "partial"
+        },
+        {
+          "text": "doesn't she?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Schau dir das Subjekt an: Es ist she, also muss am Ende auch she stehen, nicht it.",
+      "hintEn": null,
+      "explainDe": "Das Subjekt ist she, darum endet die kurze Frage mit she: doesn't she? Das it passt nicht zum Subjekt.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.ec.003",
+      "structureId": "g4u06.s.question-tags",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The children have donated the books, haven't it?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The children have donated the books, haven't they?",
+          "tier": "full"
+        },
+        {
+          "text": "haven't they",
+          "tier": "partial"
+        },
+        {
+          "text": "haven't they?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "the children sind mehrere – das Nomen wird am Ende durch they ersetzt, nicht durch it.",
+      "hintEn": null,
+      "explainDe": "the children stehen für mehrere Personen, also nimmst du they: haven't they? – nicht haven't it.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.ec.004",
+      "structureId": "g4u06.s.question-tags",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You don't like maths, don't you?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You don't like maths, do you?",
+          "tier": "full"
+        },
+        {
+          "text": "do you",
+          "tier": "partial"
+        },
+        {
+          "text": "do you?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Satz ist schon verneint (don't) – die kurze Frage am Ende muss dann ja sein, also ohne n't.",
+      "hintEn": null,
+      "explainDe": "Bei einem nein-Satz (don't) wird die kurze Frage ja: do you? Zwei Verneinungen sind falsch.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.ec.005",
+      "structureId": "g4u06.s.question-tags",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-ec-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Nobody likes the book, do he?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Nobody likes the book, do they?",
+          "tier": "full"
+        },
+        {
+          "text": "do they",
+          "tier": "partial"
+        },
+        {
+          "text": "do they?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Für nobody nimmst du am Ende they, nicht he.",
+      "hintEn": null,
+      "explainDe": "Nach nobody steht im Anhang they: do they? Das he passt nicht zu nobody.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.ec.006",
+      "structureId": "g4u06.s.question-tags",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-ec-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "They have donated the books, didn't they?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They have donated the books, haven't they?",
+          "tier": "full"
+        },
+        {
+          "text": "haven't they",
+          "tier": "partial"
+        },
+        {
+          "text": "haven't they?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im Satz steht schon have – dann darf die kurze Frage nicht mit did gebildet werden.",
+      "hintEn": null,
+      "explainDe": "Weil have im Satz steht, wiederholst du have: haven't they? – nicht did.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She is your sister, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't she",
+          "tier": "full"
+        },
+        {
+          "text": "isn't she?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Der Satz ist ein ja-Satz mit is, also kommt am Ende die verneinte kurze Frage mit is.",
+      "hintEn": null,
+      "explainDe": "Bei einem ja-Satz hängst du eine verneinte kurze Frage an: is wird zu isn't, und she bleibt she. Richtig ist isn't she?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You are from Vienna, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't you",
+          "tier": "full"
+        },
+        {
+          "text": "aren't you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit are und du (you): die kurze Frage am Ende wird verneint.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit are bekommt am Ende are verneint: aren't you? Das Subjekt you wird wiederholt.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.003",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Tom likes music, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "doesn't he",
+          "tier": "full"
+        },
+        {
+          "text": "doesn't he?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im Satz steht keine Form von be oder have und kein can/will – dann nimmst du am Ende eine Form von do.",
+      "hintEn": null,
+      "explainDe": "likes hat keine kurze Frage in sich, also nimmst du do: bei he wird daraus doesn't he? Der Name Tom wird durch he ersetzt.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.004",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "The children were playing outside, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "weren't they",
+          "tier": "full"
+        },
+        {
+          "text": "weren't they?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit were; das Nomen the children wird am Ende zu they.",
+      "hintEn": null,
+      "explainDe": "Bei einem ja-Satz mit were kommt am Ende were verneint: weren't they? The children wird durch they ersetzt.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.005",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You haven't cleaned your room, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "have you",
+          "tier": "full"
+        },
+        {
+          "text": "have you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nein-Satz (haven't): die kurze Frage am Ende ist diesmal ja, also ohne n't.",
+      "hintEn": null,
+      "explainDe": "Der Satz ist verneint (haven't), darum kommt am Ende die kurze Frage ohne n't: have you?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.006",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You can drive, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can't you",
+          "tier": "full"
+        },
+        {
+          "text": "can't you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit can: am Ende kommt can verneint.",
+      "hintEn": null,
+      "explainDe": "Im ja-Satz mit can hängst du can verneint an: can't you? Du wiederholst can und das Subjekt you.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.007",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Your mum has cooked dinner, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hasn't she",
+          "tier": "full"
+        },
+        {
+          "text": "hasn't she?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit has: am Ende has verneint, und your mum wird zu she.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit has bekommt am Ende has verneint: hasn't she? Your mum ersetzt du durch she.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.008",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-tf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She doesn't eat meat, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "does she",
+          "tier": "full"
+        },
+        {
+          "text": "does she?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nein-Satz mit doesn't: die kurze Frage am Ende ist ja (ohne n't) und nimmt do.",
+      "hintEn": null,
+      "explainDe": "Der Satz ist verneint (doesn't), also kommt am Ende die kurze Frage ohne n't: does she?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.009",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-009",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Nobody called you about it, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "did they",
+          "tier": "full"
+        },
+        {
+          "text": "did they?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nobody hat eine verneinende Bedeutung – behandle den Satz als nein-Satz, die kurze Frage wird also ja. Für nobody nimmst du they.",
+      "hintEn": null,
+      "explainDe": "nobody zählt als Verneinung, also kommt am Ende die kurze Frage ohne n't: did they? Für nobody steht im Anhang they.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.010",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-012",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "I am your friend, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "aren't I",
+          "tier": "full"
+        },
+        {
+          "text": "aren't I?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Sonderfall: Nach I am … heißt die kurze Frage am Ende aren't I? – nicht amn't I?",
+      "hintEn": null,
+      "explainDe": "Bei I am … gibt es einen festen Sonderfall: die kurze Frage lautet aren't I? Die Form amn't I gibt es im Englischen nicht.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.011",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-010",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Let's go to the cinema, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "shall we",
+          "tier": "full"
+        },
+        {
+          "text": "shall we?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach Let's … gibt es eine feste kurze Frage am Ende: shall we?",
+      "hintEn": null,
+      "explainDe": "Sätze mit Let's … bekommen immer die feste kurze Frage shall we? am Ende.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.012",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You support the project, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't you",
+          "tier": "full"
+        },
+        {
+          "text": "don't you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz ohne be/have und ohne can/will: nimm do, verneint, mit you.",
+      "hintEn": null,
+      "explainDe": "support ist ein normales Vollverb, also nimmst du do: im ja-Satz wird daraus don't you?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.013",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "It will be sunny tomorrow, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "won't it",
+          "tier": "full"
+        },
+        {
+          "text": "won't it?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "won't",
+          "de": "Kurzform von will not (= wird nicht)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Im Satz steht will. Bei einem ja-Satz wird daraus am Ende die verneinte Form won't.",
+      "hintEn": null,
+      "explainDe": "will gehört zu can/should usw. und wird im Anhang wiederholt. Beim ja-Satz nimmst du die verneinte Form: won't it?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.014",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She inspired a lot of children, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't she",
+          "tier": "full"
+        },
+        {
+          "text": "didn't she?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "inspired ist Vergangenheit und ein Vollverb: nimm did. ja-Satz heißt verneint.",
+      "hintEn": null,
+      "explainDe": "inspired ist Vergangenheit ohne be/have, also nimmst du did: didn't she?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.015",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He dropped out of school, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't he",
+          "tier": "full"
+        },
+        {
+          "text": "didn't he?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "dropped steht in der Vergangenheit und ist ein Vollverb: nimm did, verneint.",
+      "hintEn": null,
+      "explainDe": "dropped out ist Vergangenheit ohne be/have, also nimmst du did: didn't he?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.016",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You have read the story, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "haven't you",
+          "tier": "full"
+        },
+        {
+          "text": "haven't you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit have: am Ende have verneint, mit you.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit have bekommt am Ende have verneint: haven't you?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.017",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He is your teacher, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't he",
+          "tier": "full"
+        },
+        {
+          "text": "isn't he?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit is: am Ende is verneint, mit he.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit is bekommt am Ende is verneint: isn't he?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.018",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "They support the campaign, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't they",
+          "tier": "full"
+        },
+        {
+          "text": "don't they?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "support ist ein Vollverb ohne be/have: nimm do. ja-Satz heißt verneint, mit they.",
+      "hintEn": null,
+      "explainDe": "support braucht do, also wird die kurze Frage im ja-Satz zu don't they?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.019",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She can't come today, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can she",
+          "tier": "full"
+        },
+        {
+          "text": "can she?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nein-Satz mit can't: die kurze Frage am Ende ist ja, also can ohne n't.",
+      "hintEn": null,
+      "explainDe": "Der Satz ist verneint (can't), darum kommt am Ende can she? ohne n't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gf.020",
+      "structureId": "g4u06.s.question-tags",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "You weren't at home, ___ ?",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were you",
+          "tier": "full"
+        },
+        {
+          "text": "were you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nein-Satz mit weren't: die kurze Frage am Ende ist ja, also were ohne n't.",
+      "hintEn": null,
+      "explainDe": "Der Satz ist verneint (weren't), darum kommt am Ende were you? ohne n't.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.gs.003",
+      "structureId": "g4u06.s.question-tags",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche kurze Frage gehört zu welcher Satzart?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "isn't it?",
+          "members": [
+            "She is here, isn't she?",
+            "You can help, can't you?",
+            "They donated money, didn't they?",
+            "He has cleaned his room, hasn't he?"
+          ]
+        },
+        {
+          "label": "is it?",
+          "members": [
+            "She isn't here, is she?",
+            "You can't help, can you?",
+            "They didn't help, did they?",
+            "He hasn't cleaned his room, has he?"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Ist der Satz ein ja-Satz, kommt die kurze Frage mit n't. Ist er ein nein-Satz, kommt sie ohne n't.",
+      "hintEn": null,
+      "explainDe": "Ein ja-Satz bekommt eine verneinte kurze Frage (mit n't), ein nein-Satz eine bejahende (ohne n't).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.gs.004",
+      "structureId": "g4u06.s.question-tags",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche kurze Frage passt zu welchem kleinen Wort im Satz?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "do / does / did",
+          "members": [
+            "You like music, don't you?",
+            "She plays the guitar, doesn't she?",
+            "They came home, didn't they?"
+          ]
+        },
+        {
+          "label": "is / are / can / has",
+          "members": [
+            "She is your sister, isn't she?",
+            "You have read it, haven't you?",
+            "He can drive, can't he?"
+          ]
+        }
+      ],
+      "gloss": [],
+      "hintDe": "Steht im Satz schon is, has oder can, wiederholst du genau dieses Wort. Steht nur ein Vollverb da, nimmst du eine Form von do.",
+      "hintEn": null,
+      "explainDe": "Ist im Satz be, have oder ein Wort wie can, wiederholst du es am Ende. Gibt es keins, nimmst du do/does/did.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mc.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "didn't he",
+            "doesn't he",
+            "did he",
+            "didn't they",
+            "don't he"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He donated money, ___ ? Wähle die richtige kurze Frage für das Ende.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't he",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "doesn't he",
+        "did he",
+        "didn't they"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "donated steht in der Vergangenheit und ist ein Vollverb: nimm did. ja-Satz heißt verneint.",
+      "hintEn": null,
+      "explainDe": "donated ist Vergangenheit ohne be/have, also nimmst du did. Beim ja-Satz wird daraus didn't he?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mc.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "hasn't she",
+            "has she",
+            "didn't she",
+            "doesn't she",
+            "hasn't they"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She has donated more than 100 books, ___ ? Wähle die richtige kurze Frage.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "hasn't she",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "has she",
+        "didn't she",
+        "doesn't she"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit has: am Ende has verneint.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit has bekommt has verneint: hasn't she? Nicht didn't oder doesn't, weil schon has im Satz steht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mc.003",
+      "structureId": "g4u06.s.question-tags",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "did they",
+            "didn't they",
+            "do they",
+            "were they",
+            "did he"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-mc-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "They didn't enjoy it, ___ ? Wähle die richtige kurze Frage.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "did they",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "didn't they",
+        "do they",
+        "were they"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nein-Satz mit didn't: die kurze Frage am Ende ist ja (ohne n't).",
+      "hintEn": null,
+      "explainDe": "Der Satz ist verneint (didn't), also kommt am Ende did they? ohne n't.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mc.004",
+      "structureId": "g4u06.s.question-tags",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "don't they",
+            "doesn't they",
+            "doesn't he",
+            "don't he",
+            "isn't he"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-mc-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Everybody knows your name, ___ ? Wähle die richtige kurze Frage.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "don't they",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "doesn't they",
+        "doesn't he",
+        "don't he"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach everybody steht im Anhang they, und knows ist ein Vollverb, also nimm do.",
+      "hintEn": null,
+      "explainDe": "Für everybody nimmst du im Anhang they. knows braucht do, also: don't they?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mc.005",
+      "structureId": "g4u06.s.question-tags",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "were they",
+            "weren't they",
+            "was she",
+            "did they",
+            "wasn't it"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-tr-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Nobody was there, ___ ? Wähle die richtige kurze Frage.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "were they",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "weren't they",
+        "was she",
+        "did they"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nobody ist verneinend, also wird die kurze Frage ja. Der Satz hat was/were, und für nobody nimmst du they.",
+      "hintEn": null,
+      "explainDe": "nobody zählt als Verneinung, darum kommt die kurze Frage ohne n't: were they? Im Satz steht was, im Anhang passt zu they das were.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mc.006",
+      "structureId": "g4u06.s.question-tags",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "isn't she",
+            "is she",
+            "doesn't she",
+            "wasn't she",
+            "isn't it"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She is your sister, ___ ? Wähle die richtige kurze Frage.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "isn't she",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is she",
+        "doesn't she",
+        "wasn't she"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit is: am Ende is verneint, mit she.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit is bekommt am Ende is verneint: isn't she? Nicht doesn't, weil schon is im Satz steht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mc.007",
+      "structureId": "g4u06.s.question-tags",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "can they",
+            "can't they",
+            "do they",
+            "are they",
+            "can't he"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "They can't come to the party, ___ ? Wähle die richtige kurze Frage.",
+        "lang": "de",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "can they",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "can't they",
+        "do they",
+        "are they"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "nein-Satz mit can't: die kurze Frage am Ende ist ja, also can ohne n't.",
+      "hintEn": null,
+      "explainDe": "Der Satz ist verneint (can't), also kommt die kurze Frage ohne n't: can they?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mt.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche kurze Frage passt zu welchem Satz?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "She is tired,",
+          "right": "isn't she?"
+        },
+        {
+          "left": "They came home,",
+          "right": "didn't they?"
+        },
+        {
+          "left": "He can drive,",
+          "right": "can't he?"
+        },
+        {
+          "left": "You like music,",
+          "right": "don't you?"
+        },
+        {
+          "left": "We have cleaned the room,",
+          "right": "haven't we?"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte darauf, ob der Satz ein ja-Satz ist und welches kleine Wort (is, can, do, have …) am Ende wiederholt wird.",
+      "hintEn": null,
+      "explainDe": "Jeder ja-Satz bekommt am Ende die passende verneinte kurze Frage mit demselben kleinen Wort wie im Satz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mt.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-mt-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche kurze Frage passt zu welchem Satz?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "You aren't tired,",
+          "right": "are you?"
+        },
+        {
+          "left": "They won't come,",
+          "right": "will they?"
+        },
+        {
+          "left": "She doesn't eat meat,",
+          "right": "does she?"
+        },
+        {
+          "left": "You haven't read it,",
+          "right": "have you?"
+        },
+        {
+          "left": "Nobody called,",
+          "right": "did they?"
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "won't",
+          "de": "Kurzform von will not (= wird nicht)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Hier sind die Sätze nein-Sätze – die kurze Frage am Ende ist also ja (ohne n't). Schau auch aufs Subjekt.",
+      "hintEn": null,
+      "explainDe": "nein-Sätze bekommen eine bejahende kurze Frage (ohne n't) mit demselben kleinen Wort wie im Satz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.mt.003",
+      "structureId": "g4u06.s.question-tags",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Welche kurze Frage passt zu welchem Satz?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "He donated money,",
+          "right": "didn't he?"
+        },
+        {
+          "left": "She has read it,",
+          "right": "hasn't she?"
+        },
+        {
+          "left": "We should help,",
+          "right": "shouldn't we?"
+        },
+        {
+          "left": "You are grateful,",
+          "right": "aren't you?"
+        }
+      ],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "shouldn't",
+          "de": "Kurzform von should not (= sollte nicht)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Schau, welches kleine Wort im Satz steckt (do/did, has, should, are) – genau das kommt verneint ans Ende.",
+      "hintEn": null,
+      "explainDe": "Jeder ja-Satz bekommt am Ende die verneinte kurze Frage mit demselben kleinen Wort wie im Satz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.qf.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bau aus den Bausteinen einen ganzen Satz mit kurzer Frage am Ende: He / has cleaned / his room",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He has cleaned his room, hasn't he?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit has: am Ende has verneint, mit he.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit has bekommt am Ende has verneint: hasn't he?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.qf.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-qf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du glaubst, deine Freundin hat das Buch schon gelesen. Frag mit kurzer Frage am Ende nach: You / have read / the book",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You have read the book, haven't you?",
+          "tier": "full"
+        },
+        {
+          "text": "You've read the book, haven't you?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit have: am Ende have verneint, mit you.",
+      "hintEn": null,
+      "explainDe": "Der ja-Satz mit have bekommt am Ende have verneint: haven't you?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.sb.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "isn't",
+            "doesn't",
+            "can",
+            "quickly"
+          ],
+          "chipBudget": 10,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Bausteine in die richtige Reihenfolge: she / can / drive / , / can't / she / ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She can drive, can't she?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst der ganze Satz, dann ein Komma und die kurze Frage am Ende.",
+      "hintEn": null,
+      "explainDe": "Zuerst kommt der Aussagesatz, dann ein Komma und die kurze Frage: She can drive, can't she?",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.sb.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "doesn't",
+            "aren't",
+            "is",
+            "quickly"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-sb-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Bausteine in die richtige Reihenfolge: it / is / a / good / story / , / isn't / it / ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It is a good story, isn't it?",
+          "tier": "full"
+        },
+        {
+          "text": "It's a good story, isn't it?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Erst der Aussagesatz mit is, dann ein Komma und die verneinte kurze Frage am Ende.",
+      "hintEn": null,
+      "explainDe": "Zuerst der ja-Satz mit is, dann ein Komma und isn't it? am Ende.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.sb.003",
+      "structureId": "g4u06.s.question-tags",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "do",
+            "will",
+            "shall",
+            "quickly"
+          ],
+          "chipBudget": 10,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-sb-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Bring die Bausteine in die richtige Reihenfolge: let's / go / swimming / , / shall / we / ?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Let's go swimming, shall we?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Nach Let's … kommt am Ende immer die feste kurze Frage shall we?",
+      "hintEn": null,
+      "explainDe": "Sätze mit Let's … bekommen die feste kurze Frage shall we? am Ende.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u06.gi.question-tags.tf.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Häng die passende kurze Frage an: He can cook well.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He can cook well, can't he?",
+          "tier": "full"
+        },
+        {
+          "text": "can't he",
+          "tier": "partial"
+        },
+        {
+          "text": "can't he?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "ja-Satz mit can: am Ende can verneint, mit he.",
+      "hintEn": null,
+      "explainDe": "Im ja-Satz mit can hängst du can verneint an: can't he?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.tf.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-tf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Häng die passende kurze Frage an: They live in Vienna.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They live in Vienna, don't they?",
+          "tier": "full"
+        },
+        {
+          "text": "don't they",
+          "tier": "partial"
+        },
+        {
+          "text": "don't they?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "live ist ein Vollverb ohne be/have – nimm do. ja-Satz heißt verneint.",
+      "hintEn": null,
+      "explainDe": "live braucht do, also wird die kurze Frage im ja-Satz zu don't they?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.tf.003",
+      "structureId": "g4u06.s.question-tags",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Häng die passende kurze Frage an: Marley started her campaign.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Marley started her campaign, didn't she?",
+          "tier": "full"
+        },
+        {
+          "text": "didn't she",
+          "tier": "partial"
+        },
+        {
+          "text": "didn't she?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "started",
+          "de": "begann, startete",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "started steht in der Vergangenheit und ist ein Vollverb: nimm did. Marley wird zu she.",
+      "hintEn": null,
+      "explainDe": "started ist Vergangenheit ohne be/have, also nimmst du did: didn't she? Marley ersetzt du durch she.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.tf.004",
+      "structureId": "g4u06.s.question-tags",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 6.txt#grammar-1",
+        "seedV1": "m4-u6-question-tags-tf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Häng die passende kurze Frage an: Tom should eat more vegetables.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Tom should eat more vegetables, shouldn't he?",
+          "tier": "full"
+        },
+        {
+          "text": "shouldn't he",
+          "tier": "partial"
+        },
+        {
+          "text": "shouldn't he?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "should",
+          "de": "sollte",
+          "scope": "prompt"
+        },
+        {
+          "word": "shouldn't",
+          "de": "Kurzform von should not (= sollte nicht)",
+          "scope": "prompt"
+        }
+      ],
+      "hintDe": "Im Satz steht should – das wiederholst du am Ende. ja-Satz heißt verneint, und Tom wird zu he.",
+      "hintEn": null,
+      "explainDe": "should gehört zu can/will usw. und wird wiederholt: im ja-Satz wird daraus shouldn't he? Tom ersetzt du durch he.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.tf.005",
+      "structureId": "g4u06.s.question-tags",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Häng die passende kurze Frage an: We could help the community.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "We could help the community, couldn't we?",
+          "tier": "full"
+        },
+        {
+          "text": "couldn't we",
+          "tier": "partial"
+        },
+        {
+          "text": "couldn't we?",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Im Satz steht could – das wiederholst du am Ende. ja-Satz heißt verneint, mit we.",
+      "hintEn": null,
+      "explainDe": "could wird im Anhang wiederholt: im ja-Satz wird daraus couldn't we?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.tr.001",
+      "structureId": "g4u06.s.question-tags",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er ist nett, oder?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He is nice, isn't he?",
+          "tier": "full"
+        },
+        {
+          "text": "He's nice, isn't he?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Das deutsche oder? wird im Englischen zur kurzen Frage am Ende. ja-Satz mit is heißt verneint.",
+      "hintEn": null,
+      "explainDe": "Für das deutsche oder? nimmst du im Englischen die kurze Frage: ja-Satz mit is wird zu isn't he?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.tr.002",
+      "structureId": "g4u06.s.question-tags",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-tr-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du magst Schokolade, oder?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You like chocolate, don't you?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "magst ist ein normales Verb ohne be/have – nimm do. ja-Satz heißt verneint.",
+      "hintEn": null,
+      "explainDe": "like braucht do, also wird das deutsche oder? im ja-Satz zu don't you?",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.tr.003",
+      "structureId": "g4u06.s.question-tags",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-tr-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Niemand war dort, oder?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Nobody was there, were they?",
+          "tier": "full"
+        },
+        {
+          "text": "No one was there, were they?",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Niemand (nobody) ist verneinend, also wird die kurze Frage ja. Für nobody nimmst du they.",
+      "hintEn": null,
+      "explainDe": "nobody zählt als Verneinung, darum kommt die kurze Frage ohne n't: were they? Für nobody steht they.",
+      "explainEn": null,
+      "strict": true
+    },
+    {
+      "id": "g4u06.gi.question-tags.tr.005",
+      "structureId": "g4u06.s.question-tags",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": "m4-u6-question-tags-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mia can drive, can't she?",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mia kann Auto fahren, oder?",
+          "tier": "full"
+        },
+        {
+          "text": "Mia kann fahren, oder?",
+          "tier": "full"
+        },
+        {
+          "text": "Mia kann Auto fahren, nicht wahr?",
+          "tier": "full"
+        }
+      ],
+      "direction": "enToDe",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Die englische kurze Frage am Ende gibst du im Deutschen mit oder? oder nicht wahr? wieder.",
+      "hintEn": null,
+      "explainDe": "Englische kurze Fragen wie can't she? werden im Deutschen einfach zu oder? bzw. nicht wahr?.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}
