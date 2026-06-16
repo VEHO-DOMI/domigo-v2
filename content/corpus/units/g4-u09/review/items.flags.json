@@ -1,0 +1,525 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u09",
+  "round": 1,
+  "itemsHash": "aadd09d9825e",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u09.w.needle",
+      "kind": "new-gloss",
+      "itemId": "g4u09.w.needle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.w.palm",
+      "kind": "new-gloss",
+      "itemId": "g4u09.w.palm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.w.religious",
+      "kind": "new-gloss",
+      "itemId": "g4u09.w.religious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.w.scare-off",
+      "kind": "new-gloss",
+      "itemId": "g4u09.w.scare-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.w.sitting-room",
+      "kind": "new-gloss",
+      "itemId": "g4u09.w.sitting-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.w.sleeve",
+      "kind": "new-gloss",
+      "itemId": "g4u09.w.sleeve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.w.wedding-dress",
+      "kind": "new-gloss",
+      "itemId": "g4u09.w.wedding-dress",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.w.wedding-suit",
+      "kind": "new-gloss",
+      "itemId": "g4u09.w.wedding-suit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.ec.001",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.ec.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.ec.005",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.ec.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.ec.008",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.ec.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.ec.009",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.ec.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.gf.003",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.gf.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.gf.006",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.gf.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.gf.008",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.gf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.gf.011",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.gf.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.gf.012",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.gf.012",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.gf.013",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.gf.013",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.gf.016",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.gf.016",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.mt.001",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.mt.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.mt.002",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.mt.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.sb.006",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.sb.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.tf.002",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.tf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u09.gi.modals-possibility.tf.005",
+      "kind": "new-gloss",
+      "itemId": "g4u09.gi.modals-possibility.tf.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.border",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.border",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.bride",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.bride",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.bridegroom",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.bridegroom",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.bridesmaid",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.bridesmaid",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.bury",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.bury",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.ceremony",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.ceremony",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.communicate",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.communicate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.confused",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.confused",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.decent-looking",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.decent-looking",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.devil",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.devil",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.embarrassed",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.embarrassed",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.far-east",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.far-east",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.fashionable",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.fashionable",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.firstly",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.firstly",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.funeral",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.funeral",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.gesture",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.gesture",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.giggle",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.giggle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.goth",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.goth",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.greet",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.greet",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.hastily",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.hastily",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.health-risk",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.health-risk",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.ignore",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.ignore",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.in-common",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.in-common",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.index-finger",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.index-finger",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.insult",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.insult",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.needle",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.needle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.nod-the-head",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.nod-the-head",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.palm",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.palm",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.pass-something-on",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.pass-something-on",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.permanent",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.permanent",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.pierced",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.pierced",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.possibility",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.possibility",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.rebellious",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.rebellious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.religious",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.religious",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.scare-off",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.scare-off",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.sigh",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.sigh",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.sitting-room",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.sitting-room",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.sleeve",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.sleeve",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.thumb",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.thumb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.victory",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.victory",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.wedding-dress",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.wedding-dress",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.wedding-suit",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.wedding-suit",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.w.zero",
+      "kind": "translation-audit",
+      "itemId": "g4u09.w.zero",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.gi.modals-possibility.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u09.gi.modals-possibility.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.gi.modals-possibility.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u09.gi.modals-possibility.tr.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.gi.modals-possibility.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u09.gi.modals-possibility.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u09.gi.modals-possibility.tr.007",
+      "kind": "translation-audit",
+      "itemId": "g4u09.gi.modals-possibility.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "validator-warn:g4u09.w.fashionable#add851",
+      "kind": "validator-warn",
+      "itemId": "g4u09.w.fashionable",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Might / may / could for possibility: modal + BARE infinitive (no 'to', no -s, no past) for present/future possibility; negatives might not / may not; degrees of certainty. 43 vocab + 58 grammar, full v1 parity (floor 40 → 58). The two generation agents did exceptional gate work — the unit landed with only 1 validate error (a def-leak) + the one expected modal grant. 4 verify lenses clean after fixes: translation + register found 0 defects. Granted 'might' (the core structure modal; 'may' and 'could' already pass the gate — could via prior teaching, may via g4-u02's 'likely…may'); reworded the decent-looking def off its headword token 'look'; disambiguated tr.002 (Sie→Mia, she) and tr.004 (Sie→Die Gäste, they); added 'The guests might/may not come.' to tr.006 (the one deToEn item that swapped a noun subject for a pronoun); granted 6 common A1/A2 harvesting-gap words (jumper/mark/grey/white/thing/body) the level-gloss lens surfaced inside embedded English carriers in lang:de prompts (validate's field-scoping skips those). The vocab's 8 + grammar's 16 inline glosses are correct. 1 defensible enToDe warn (fashionable → 'in Mode / modisch' — no umlaut trips the language-evidence heuristic). Validate green."
+  },
+  "metrics": {
+    "itemsReviewed": 101,
+    "fullRows": 101,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

@@ -14364,6 +14364,69 @@
       "reason": "g4-u08: cognate / past form / theme carrier (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u09",
+      "itemId": null,
+      "field": null,
+      "token": "might",
+      "reason": "modals-possibility: core structure modal (not in cumulative bank)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u09",
+      "itemId": null,
+      "field": null,
+      "token": "jumper",
+      "reason": "g4-u09: common A1/A2 noun/adjective (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u09",
+      "itemId": null,
+      "field": null,
+      "token": "mark",
+      "reason": "g4-u09: common A1/A2 noun/adjective (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u09",
+      "itemId": null,
+      "field": null,
+      "token": "grey",
+      "reason": "g4-u09: common A1/A2 noun/adjective (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u09",
+      "itemId": null,
+      "field": null,
+      "token": "white",
+      "reason": "g4-u09: common A1/A2 noun/adjective (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u09",
+      "itemId": null,
+      "field": null,
+      "token": "thing",
+      "reason": "g4-u09: common A1/A2 noun/adjective (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u09",
+      "itemId": null,
+      "field": null,
+      "token": "body",
+      "reason": "g4-u09: common A1/A2 noun/adjective (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

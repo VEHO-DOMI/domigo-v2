@@ -1,0 +1,2426 @@
+{
+  "schema": "grammar-draft@1",
+  "slug": "g4-u09",
+  "briefBank": "7b87ba493528",
+  "briefPrompt": "4b9164076103",
+  "items": [
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It's very cloudy. It ___ rain today.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Etwas ist vielleicht so. Setze might, may oder could ein und danach die einfache Form (rain).",
+      "explainDe": "might, may und could sagen, dass etwas möglich ist. Danach steht die einfache Form ohne 'to': might/may/could rain.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-gf-001",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Katia is not here. She ___ be busy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du bist dir nicht sicher. Nimm might, may oder could und danach be.",
+      "explainDe": "Wenn du nicht sicher bist, ob etwas stimmt, nimmst du might/may/could + be: She might be busy.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-gf-007",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "In Greece, nodding your head ___ mean \"no\".",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Etwas ist möglich. Nimm may, might oder could und danach mean.",
+      "explainDe": "may/might/could + die einfache Form (mean) zeigt eine Möglichkeit: nodding may mean 'no'.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "nodding",
+          "de": "nicken (mit dem Kopf)",
+          "scope": "prompt"
+        },
+        {
+          "word": "mean",
+          "de": "bedeuten",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "I'm not sure where Katia is. She ___ be at school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du weißt es nicht genau. Setze might, may oder could ein und danach be.",
+      "explainDe": "Bei Unsicherheit nimmst du might/may/could + be: She might be at school.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-gf-004",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Don't worry about the dog. It ___ not be dangerous.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Verneinung heißt might not oder may not. Danach kommt be.",
+      "explainDe": "Verneint wird mit might not oder may not (nicht 'couldn't', das heißt eher 'nicht können'): It might not be dangerous.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Number 1 ___ be Chinese, or it ___ be Japanese. I'm not sure.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "might | may",
+          "tier": "full"
+        },
+        {
+          "text": "may | might",
+          "tier": "full"
+        },
+        {
+          "text": "could | might",
+          "tier": "full"
+        },
+        {
+          "text": "might | might",
+          "tier": "full"
+        },
+        {
+          "text": "may | could",
+          "tier": "full"
+        },
+        {
+          "text": "could | could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Beide Lücken zeigen eine Möglichkeit. Nimm might, may oder could und danach be.",
+      "explainDe": "Beide Male geht es um eine Möglichkeit, also might/may/could + be. Die Reihenfolge ist frei.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "Chinese",
+          "de": "chinesisch",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-gf-012",
+      "sbRef": "g4/wb/More 4 WB Unit 9.txt#ex6",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Don't touch the red button! It ___ explode.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        },
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Etwas Schlimmes ist möglich. Nimm could, might oder may und danach explode.",
+      "explainDe": "could/might/may + die einfache Form (explode) warnt vor etwas Möglichem: It could explode.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 9.txt#ex5",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Take the umbrella with you. We ___ need it later.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Vielleicht brauchst du es. Nimm may, might oder could und danach need.",
+      "explainDe": "may/might/could + need zeigt eine Möglichkeit in der Zukunft: We may need it.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "umbrella",
+          "de": "Regenschirm",
+          "scope": "prompt"
+        },
+        {
+          "word": "later",
+          "de": "später",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 9.txt#ex5",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Be careful with that gesture. It ___ insult people in some countries.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist möglich, dass das passiert. Nimm might, may oder could und danach insult.",
+      "explainDe": "might/may/could + insult drückt eine Möglichkeit aus: It might insult people.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Where's Lucy? She ___ be at home, or she ___ be at the library. I really don't know.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "could | could",
+          "tier": "full"
+        },
+        {
+          "text": "might | might",
+          "tier": "full"
+        },
+        {
+          "text": "may | may",
+          "tier": "full"
+        },
+        {
+          "text": "could | might",
+          "tier": "full"
+        },
+        {
+          "text": "might | could",
+          "tier": "full"
+        },
+        {
+          "text": "may | might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du weißt es überhaupt nicht. Beide Male might, may oder could und danach be.",
+      "explainDe": "Beide Orte sind möglich, also might/may/could + be in beiden Lücken.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-gf-006",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Don't stroke the snake! It ___ bite.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        },
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist möglich, dass es passiert. Nimm could, might oder may und danach bite.",
+      "explainDe": "could/might/may + bite warnt vor einer Möglichkeit: It could bite.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "snake",
+          "de": "Schlange",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 9.txt#ex5",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "People in the Far East ___ feel strange if you keep too far away.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist möglich, dass sie so fühlen. Nimm may, might oder could und danach feel.",
+      "explainDe": "may/might/could + feel zeigt, dass etwas vielleicht passiert: People may feel strange.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "strange",
+          "de": "komisch, seltsam",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Jessica isn't here now. She ___ come later, but she ___ not come at all.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "might | might",
+          "tier": "full"
+        },
+        {
+          "text": "may | may",
+          "tier": "full"
+        },
+        {
+          "text": "could | might",
+          "tier": "full"
+        },
+        {
+          "text": "might | may",
+          "tier": "full"
+        },
+        {
+          "text": "may | might",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Erst eine Möglichkeit, dann die Verneinung. Verneint heißt es might not oder may not (nicht could not).",
+      "explainDe": "might/may/could come ist die Möglichkeit; verneint nimmst du might not oder may not + come.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "later",
+          "de": "später",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 2
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "He's from Hungary, but his English is perfect. He ___ be a teacher.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        },
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist möglich. Nimm could, might oder may und danach be.",
+      "explainDe": "could/might/may + be zeigt eine Vermutung: He could be a teacher.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Du weißt nicht, wo sie ist. Welcher Satz ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might be at home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She might to be at home.",
+        "She might are at home.",
+        "She might is at home."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach might kommt nur die einfache Form: might be. Kein 'to', kein 'is', kein 'are'.",
+      "explainDe": "Richtig ist 'might be'. Nach might/may/could steht immer die einfache Form ohne 'to', nicht 'is' oder 'are'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She might to be at home.",
+          "She might are at home.",
+          "She might is at home.",
+          "She might can be at home."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "multiple-choice",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Es ist grau und bewölkt. Welcher Satz zeigt nur eine Möglichkeit?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It might rain today.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It will rain for sure today.",
+        "It might to rain today.",
+        "It can rain for sure today."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du bist nicht sicher, ob es regnet. Welcher Satz zeigt nur eine Möglichkeit, nicht Sicherheit?",
+      "explainDe": "'might rain' zeigt eine Möglichkeit. 'will/can ... for sure' ist zu sicher; nach might kommt kein 'to'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It will rain for sure today.",
+          "It might to rain today.",
+          "It can rain for sure today.",
+          "It might can rain today."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Es ist nur möglich, nicht sicher. Welcher Satz nutzt may für eine Möglichkeit?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "People may be confused in Japan.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "People may to be confused in Japan.",
+        "People may is confused in Japan.",
+        "People may confused in Japan."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist nur möglich. Nach may kommt die einfache Form 'be': may be confused.",
+      "explainDe": "'may be confused' ist richtig. Nach may kommt kein 'to', kein 'is', und 'be' darf nicht fehlen.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "People may to be confused in Japan.",
+          "People may is confused in Japan.",
+          "People may confused in Japan.",
+          "People may can be confused in Japan."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Es ist etwas bewölkt. Welcher Satz zeigt die Möglichkeit richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It could rain this weekend.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "It can rain this weekend.",
+        "It could to rain this weekend.",
+        "It could be rain this weekend."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für eine Möglichkeit nimmst du could + die einfache Form (rain). 'can' passt hier nicht, und kein 'to'.",
+      "explainDe": "'could rain' ist richtig. 'can' nutzt man nicht für so eine Vorhersage; nach could kommt kein 'to' und kein 'be'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "It can rain this weekend.",
+          "It could to rain this weekend.",
+          "It could be rain this weekend.",
+          "It could can rain this weekend."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "multiple-choice",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She ___ be confused, but I'm really not sure.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "will",
+        "must",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'I'm not sure' zeigt eine Möglichkeit. Welches Wort passt: might, may oder could?",
+      "explainDe": "might/may/could passen zu 'I'm not sure'. will/must klingen zu sicher, can passt hier nicht.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "will",
+          "must",
+          "can",
+          "may",
+          "might",
+          "could"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du warnst vor einer Geste, die im Ausland nur vielleicht unhöflich ist. Welcher Satz ist am besten?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Be careful — it could be rude!",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "Be careful — it is rude for sure!",
+        "Be careful — it could to be rude!",
+        "Be careful — it could is rude!"
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du warnst vor einer Möglichkeit. Nimm could + die einfache Form 'be', ohne 'to'.",
+      "explainDe": "'could be rude' zeigt die Möglichkeit. 'is ... for sure' ist zu sicher; nach could kein 'to' und kein 'is'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "Be careful — it is rude for sure!",
+          "Be careful — it could to be rude!",
+          "Be careful — it could is rude!",
+          "Be careful — it can be rude for sure!"
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "multiple-choice",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Tante Nancy hofft, dass Felicity am Hochzeitstag das Kleid trägt. Mum ist nicht sicher. Welche Antwort ist richtig?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might wear the dress.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She might to wear the dress.",
+        "She might is wear the dress.",
+        "She might are wear the dress."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach might steht nur 'wear' — kein 'to', kein 'is' oder 'are' dazwischen.",
+      "explainDe": "'might wear' ist richtig: might + die einfache Form. 'might to', 'might is', 'might are' sind alle falsch.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She might to wear the dress.",
+          "She might is wear the dress.",
+          "She might are wear the dress.",
+          "She might can wear the dress."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#story-felicity",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "She might to come home later.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might come home later.",
+          "tier": "full"
+        },
+        {
+          "text": "might come",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach might kommt kein 'to'. Streiche das 'to': might come.",
+      "explainDe": "Nach might/may/could steht die einfache Form ohne 'to'. Richtig: might come.",
+      "strict": true,
+      "gloss": [
+        {
+          "word": "later",
+          "de": "später",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-ec-003",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 1,
+      "prompt": {
+        "text": "It may to rain this afternoon.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It may rain this afternoon.",
+          "tier": "full"
+        },
+        {
+          "text": "may rain",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach may steht kein 'to'. Streiche das 'to': may rain.",
+      "explainDe": "Nach may kommt die einfache Form ohne 'to'. Richtig: may rain.",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She may needs help.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She may need help.",
+          "tier": "full"
+        },
+        {
+          "text": "may need",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach may/might/could kommt nie ein '-s', auch bei she/he/it nicht. Richtig: may need.",
+      "explainDe": "Nach might/may/could steht die einfache Form — kein '-s' in der dritten Person. Richtig: may need.",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "He could bes confused here.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He could be confused here.",
+          "tier": "full"
+        },
+        {
+          "text": "could be",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach could kommt 'be', nicht 'bes'. could bleibt immer gleich.",
+      "explainDe": "Nach might/may/could steht die einfache Form 'be'. Kein '-s'. Richtig: could be.",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It can rain tomorrow, so take an umbrella.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It might rain tomorrow, so take an umbrella.",
+          "tier": "full"
+        },
+        {
+          "text": "It may rain tomorrow, so take an umbrella.",
+          "tier": "full"
+        },
+        {
+          "text": "It could rain tomorrow, so take an umbrella.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für so eine Vorhersage nimmst du nicht 'can', sondern might, may oder could.",
+      "explainDe": "Für eine konkrete Möglichkeit in der Zukunft nutzt man might/may/could, nicht 'can': It might rain tomorrow.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "umbrella",
+          "de": "Regenschirm",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-ec-001",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "She can be at school — I'm not sure.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might be at school — I'm not sure.",
+          "tier": "full"
+        },
+        {
+          "text": "She may be at school — I'm not sure.",
+          "tier": "full"
+        },
+        {
+          "text": "She could be at school — I'm not sure.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'I'm not sure' zeigt eine Möglichkeit. Nimm might, may oder could statt 'can'.",
+      "explainDe": "Für eine Möglichkeit, bei der du unsicher bist, nimmst du might/may/could, nicht 'can': She might be at school.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-ec-004",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "In Brazil, the \"OK\" sign may insults people.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "In Brazil, the \"OK\" sign may insult people.",
+          "tier": "full"
+        },
+        {
+          "text": "may insult",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach may kommt die einfache Form 'insult' — ohne '-s'.",
+      "explainDe": "may/might/could + einfache Form ohne '-s'. Richtig: may insult.",
+      "strict": true,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "He may comes to the wedding.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He may come to the wedding.",
+          "tier": "full"
+        },
+        {
+          "text": "may come",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nach may kommt 'come', nicht 'comes'. Nach may/might/could steht die einfache Form.",
+      "explainDe": "Nach may/might/could steht die einfache Form: may come. Kein '-s'.",
+      "strict": true,
+      "gloss": [
+        {
+          "word": "wedding",
+          "de": "Hochzeit",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It can get cold tonight, so bring a jacket.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It might get cold tonight, so bring a jacket.",
+          "tier": "full"
+        },
+        {
+          "text": "It may get cold tonight, so bring a jacket.",
+          "tier": "full"
+        },
+        {
+          "text": "It could get cold tonight, so bring a jacket.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für so eine Vorhersage passt 'can' nicht. Nimm might, may oder could.",
+      "explainDe": "Für eine konkrete Möglichkeit in der Zukunft nimmt man might/may/could statt 'can': It might get cold tonight.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "get",
+          "de": "werden",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Maybe it will snow tonight. → It ___ tonight.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might snow",
+          "tier": "full"
+        },
+        {
+          "text": "may snow",
+          "tier": "full"
+        },
+        {
+          "text": "could snow",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aus 'Maybe ... will' wird might/may/could + die einfache Form (snow).",
+      "explainDe": "'Maybe it will snow' kannst du mit might/may/could ausdrücken: It might snow tonight.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-tf-004",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It's possible he knows the answer. (may) → He ___ the answer.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "may know",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'It's possible he knows' wird kürzer mit may + die einfache Form (know).",
+      "explainDe": "Aus 'It's possible he knows' wird 'He may know'. Nach may steht die einfache Form ohne '-s'.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "knows",
+          "de": "weiß (von 'know')",
+          "scope": "prompt"
+        },
+        {
+          "word": "answer",
+          "de": "Antwort",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 9.txt#ex7",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It's possible the dog bites. (could) → It ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could bite",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'It's possible it bites' wird mit could + die einfache Form (bite).",
+      "explainDe": "Aus 'It's possible it bites' wird 'It could bite'. Nach could die einfache Form ohne '-s'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/wb/More 4 WB Unit 9.txt#ex7",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "transformation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Perhaps she is busy. (might) → She ___ busy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might be",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'Perhaps she is busy' wird might + be. Aus 'is' wird die einfache Form 'be'.",
+      "explainDe": "Aus 'Perhaps she is busy' wird 'She might be busy'. Nach might steht 'be', nicht 'is'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Perhaps they will not come to the wedding. (may) → They ___ to the wedding.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "may not come",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Die Verneinung heißt may not + die einfache Form (come).",
+      "explainDe": "Aus 'Perhaps they won't come' wird 'They may not come'. Verneint mit may not + come.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "wedding",
+          "de": "Hochzeit",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "It's possible the gesture insults people. (might) → The gesture ___ people.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might insult",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'It's possible it insults' wird might + die einfache Form (insult).",
+      "explainDe": "Aus 'It's possible the gesture insults people' wird 'The gesture might insult people'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "sentence-building",
+      "difficulty": 1,
+      "prompt": {
+        "text": "be / she / at / might / home",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might be at home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt zuerst, dann might, dann die einfache Form: She might be ...",
+      "explainDe": "Reihenfolge: Subjekt + might + be + Rest. Richtig: She might be at home.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "might",
+          "may",
+          "could",
+          "can"
+        ],
+        "chipBudget": 5,
+        "minOptions": null
+      },
+      "seedV1": "m4-u9-modals-possibility-sb-002",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "rain / it / may / tomorrow",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It may rain tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt + may + einfache Form: It may rain ...",
+      "explainDe": "Reihenfolge: It + may + rain + tomorrow. Nach may die einfache Form.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "might",
+          "may",
+          "could",
+          "can"
+        ],
+        "chipBudget": 4,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "be / they / not / could / right",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They could not be right.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt + could + not + be: They could not be ...",
+      "explainDe": "Reihenfolge: They + could + not + be + right. 'not' steht direkt nach could.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "might",
+          "may",
+          "could",
+          "can"
+        ],
+        "chipBudget": 5,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "you / surprised / might / be / in / Greece",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "You might be surprised in Greece.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt + might + be + Rest: You might be surprised ...",
+      "explainDe": "Reihenfolge: You + might + be + surprised + in Greece. Nach might steht be.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "might",
+          "may",
+          "could",
+          "can"
+        ],
+        "chipBudget": 6,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "sentence-building",
+      "difficulty": 3,
+      "prompt": {
+        "text": "people / insult / it / could / some / in / countries",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It could insult people in some countries.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt + could + einfache Form: It could insult ...",
+      "explainDe": "Reihenfolge: It + could + insult + people + in some countries. Nach could die einfache Form.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "might",
+          "may",
+          "could",
+          "can"
+        ],
+        "chipBudget": 7,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welche Antwort passt zu welcher Zeile?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "It's grey and cloudy.",
+          "right": "It might rain soon."
+        },
+        {
+          "left": "She is not at home.",
+          "right": "She could be at work."
+        },
+        {
+          "left": "The dog looks angry.",
+          "right": "It may bite, so be careful."
+        },
+        {
+          "left": "He is from Hungary but his English is perfect.",
+          "right": "He might be a teacher."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Lies jede Zeile und such die Antwort mit might, may oder could, die dazu passt.",
+      "explainDe": "Jede Antwort drückt eine Möglichkeit mit might/may/could aus, die zur Zeile passt.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "soon",
+          "de": "bald",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-mt-001",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "matching",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Welches Ende passt zu welchem Anfang?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "In Greece, a nod of the head",
+          "right": "may mean \"no\"."
+        },
+        {
+          "left": "A sign with two fingers",
+          "right": "could insult people in some places."
+        },
+        {
+          "left": "People in Japan",
+          "right": "might smile when they are confused."
+        },
+        {
+          "left": "The \"OK\" sign",
+          "right": "may be very rude in Brazil."
+        }
+      ],
+      "groups": [],
+      "hintDe": "Verbinde jeden Anfang mit dem Ende, das might, may oder could + einfache Form hat.",
+      "explainDe": "Jedes Ende nutzt might/may/could + die einfache Form und passt zum Anfang.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "nod",
+          "de": "Nicken; nodding = nicken",
+          "scope": null
+        },
+        {
+          "word": "mean",
+          "de": "bedeuten",
+          "scope": null
+        },
+        {
+          "word": "smile",
+          "de": "lächeln",
+          "scope": null
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Richtig nach may/could (einfache Form) oder falsch?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "may + be",
+          "members": [
+            "may be",
+            "could come",
+            "may rain"
+          ]
+        },
+        {
+          "label": "may + to be",
+          "members": [
+            "may to be",
+            "could to rain",
+            "mays be"
+          ]
+        }
+      ],
+      "hintDe": "Richtig ist may/could + die einfache Form ohne 'to' und ohne '-s'. Alles mit 'to' oder '-s' ist falsch.",
+      "explainDe": "Korrekt: may be, could come, may rain (einfache Form). Falsch: 'to' nach dem Wort oder '-s' (mays).",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "group-sort",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Gutes Englisch oder nicht?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "may + rain",
+          "members": [
+            "It may rain.",
+            "She could be busy."
+          ]
+        },
+        {
+          "label": "may + to rain",
+          "members": [
+            "It may to rain.",
+            "She could bes busy."
+          ]
+        }
+      ],
+      "hintDe": "Eine Möglichkeit braucht may/could + die einfache Form. Mit 'to' oder '-s' wird der Satz falsch.",
+      "explainDe": "'It may rain' und 'She could be busy' sind richtig. 'may to rain' und 'could bes' sind falsch.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Es könnte heute regnen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It might rain today.",
+          "tier": "full"
+        },
+        {
+          "text": "It may rain today.",
+          "tier": "full"
+        },
+        {
+          "text": "It could rain today.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'könnte' wird hier might, may oder could. Danach die einfache Form (rain).",
+      "explainDe": "Für eine Möglichkeit nimmst du might/may/could + rain: It might rain today.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "translation",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Mia ist vielleicht zu Hause.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mia might be at home.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia may be at home.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia could be at home.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'vielleicht' wird hier might, may oder could + be.",
+      "explainDe": "'vielleicht zu Hause' = might/may/could be at home. Nach might/may/could steht 'be'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Er kommt vielleicht morgen.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He might come tomorrow.",
+          "tier": "full"
+        },
+        {
+          "text": "He may come tomorrow.",
+          "tier": "full"
+        },
+        {
+          "text": "He could come tomorrow.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'vielleicht' wird might, may oder could. Danach die einfache Form (come), kein '-s'.",
+      "explainDe": "'Er kommt vielleicht' = He might/may/could come. Nach might/may/could die einfache Form ohne '-s'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-tr-003",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "translation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Die Gäste kommen vielleicht nicht.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They might not come.",
+          "tier": "full"
+        },
+        {
+          "text": "They may not come.",
+          "tier": "full"
+        },
+        {
+          "text": "The guests might not come.",
+          "tier": "full"
+        },
+        {
+          "text": "The guests may not come.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'vielleicht nicht' wird might not oder may not + die einfache Form (come).",
+      "explainDe": "Verneint heißt es might not / may not + come (nicht 'couldn't', das bedeutet eher 'nicht können').",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Bei den Nachbarn brennt Licht. Frag deinen Freund, ob sie vielleicht zu Hause sind. Beginne mit: Do you think ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you think they might be home?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you think they may be home?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you think they could be home?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frag mit 'Do you think they ___ be home?' und setze might, may oder could ein.",
+      "explainDe": "Für eine Vermutung in einer Frage: Do you think they might/may/could be home?",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": "m4-u9-modals-possibility-qf-002",
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "question-formation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Deine Freundin ist heute nicht in der Schule. Du weißt nicht warum. Frag: Do you think ...",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Do you think she might be ill?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you think she may be ill?",
+          "tier": "full"
+        },
+        {
+          "text": "Do you think she could be ill?",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Frag mit 'Do you think she ___ be ill?' und nimm might, may oder could.",
+      "explainDe": "Für eine Vermutung: Do you think she might/may/could be ill? Danach steht 'be'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "context-picker",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Du weißt nicht, wo Katia ist. Welcher Satz ist richtiges Englisch und zeigt, dass du unsicher bist?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She might be at the library.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "She might to be at the library.",
+        "She might are at the library.",
+        "She might is at the library."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Du bist unsicher: might + be. Kein 'to', kein 'is', kein 'are'.",
+      "explainDe": "'might be' ist richtig. Nach might steht die einfache Form 'be', nicht 'to be', 'is' oder 'are'.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "She might to be at the library.",
+          "She might are at the library.",
+          "She might is at the library.",
+          "She might at the library."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "context-picker",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Du warnst, dass eine \"OK\"-Geste im Ausland nur vielleicht unhöflich ist. Welcher Satz ist am besten?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "In some countries it could be very rude.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "In some countries it could to be very rude.",
+        "In some countries it can be very rude for sure.",
+        "In some countries it could is very rude."
+      ],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Nur möglich, nicht sicher: could + be. Kein 'to', kein 'for sure', kein 'is'.",
+      "explainDe": "'could be' zeigt die Möglichkeit. 'could to', 'can ... for sure' und 'could is' sind falsch.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": {
+        "distractorPool": [
+          "In some countries it could to be very rude.",
+          "In some countries it can be very rude for sure.",
+          "In some countries it could is very rude.",
+          "In some countries it could are very rude."
+        ],
+        "chipBudget": null,
+        "minOptions": 4
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 1,
+      "prompt": {
+        "text": "Katia is new here. She ___ be a little confused.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Es ist möglich. Nimm might, may oder could und danach be.",
+      "explainDe": "might/may/could + be zeigt eine Vermutung: She might be confused.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "gap-fill",
+      "difficulty": 2,
+      "prompt": {
+        "text": "Felicity ___ wear the dress for the wedding, but I'm not sure.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "might",
+          "tier": "full"
+        },
+        {
+          "text": "may",
+          "tier": "full"
+        },
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "'I'm not sure' zeigt eine Möglichkeit. Nimm might, may oder could und danach wear.",
+      "explainDe": "might/may/could + wear drückt aus, dass es vielleicht passiert: She might wear the dress.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "wedding",
+          "de": "Hochzeit",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#story-felicity",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "transformation",
+      "difficulty": 3,
+      "prompt": {
+        "text": "Maybe she will visit Japan next year. (could) → She ___ Japan next year.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could visit",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Aus 'Maybe ... will' wird could + die einfache Form (visit).",
+      "explainDe": "Aus 'Maybe she will visit' wird 'She could visit'. Nach could die einfache Form.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 1
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "error-correction",
+      "difficulty": 2,
+      "prompt": {
+        "text": "It can snow tonight, so be careful on the roads.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "It might snow tonight, so be careful on the roads.",
+          "tier": "full"
+        },
+        {
+          "text": "It may snow tonight, so be careful on the roads.",
+          "tier": "full"
+        },
+        {
+          "text": "It could snow tonight, so be careful on the roads.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Für so eine Vorhersage nimmst du nicht 'can', sondern might, may oder could.",
+      "explainDe": "Für eine konkrete Möglichkeit in der Zukunft nimmt man might/may/could, nicht 'can': It might snow tonight.",
+      "strict": false,
+      "gloss": [],
+      "gameMeta": null,
+      "seedV1": null,
+      "sbRef": null,
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    },
+    {
+      "structureId": "g4u09.s.modals-possibility",
+      "format": "sentence-building",
+      "difficulty": 2,
+      "prompt": {
+        "text": "help / these / may / questions / you",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "These questions may help you.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "hintDe": "Subjekt + may + einfache Form: These questions may help ...",
+      "explainDe": "Reihenfolge: These questions + may + help + you. Nach may die einfache Form.",
+      "strict": false,
+      "gloss": [
+        {
+          "word": "questions",
+          "de": "Fragen",
+          "scope": "prompt"
+        }
+      ],
+      "gameMeta": {
+        "distractorPool": [
+          "might",
+          "may",
+          "could",
+          "can"
+        ],
+        "chipBudget": 5,
+        "minOptions": null
+      },
+      "seedV1": null,
+      "sbRef": "g4/sb/More 4 SB Unit 9.txt#grammar-1",
+      "note": null,
+      "hintEn": null,
+      "explainEn": null,
+      "blanks": 0
+    }
+  ]
+}
