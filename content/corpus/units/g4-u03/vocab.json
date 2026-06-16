@@ -1,0 +1,2438 @@
+{
+  "schema": "vocab@1",
+  "grade": 4,
+  "unit": 3,
+  "slug": "g4-u03",
+  "items": [
+    {
+      "id": "g4u03.w.announcement",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "statement",
+            "campaign",
+            "treatment",
+            "miracle"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "announcement",
+      "g": "Durchsage",
+      "d": "when a voice gives people the times at a station or an airport",
+      "s": "An ___ at the airport gives people the times of every plane.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "announcement",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "announcement",
+          "tier": "full"
+        },
+        {
+          "text": "announcements",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "announcement",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Durchsage",
+            "tier": "full"
+          },
+          {
+            "text": "Ankündigung",
+            "tier": "full"
+          },
+          {
+            "text": "Ansage",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "statement",
+        "campaign",
+        "treatment"
+      ],
+      "hintDe": "So nennt man die Stimme, die am Flughafen die Zeiten durchsagt."
+    },
+    {
+      "id": "g4u03.w.be-in-trouble",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "collide",
+            "evacuate",
+            "explode",
+            "blow up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "be in trouble",
+      "g": "in Schwierigkeiten sein",
+      "d": "to be in a bad spot because you did a bad thing",
+      "s": "If you do not do your homework, you will ___ with the teacher.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "be in trouble",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "be in trouble",
+          "tier": "full"
+        },
+        {
+          "text": "in trouble",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "be in trouble",
+            "tier": "full"
+          },
+          {
+            "text": "to be in trouble",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in Schwierigkeiten sein",
+            "tier": "full"
+          },
+          {
+            "text": "Ärger bekommen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collide",
+        "evacuate",
+        "explode"
+      ],
+      "hintDe": "Es bedeutet, in einer schwierigen Lage zu stecken, weil man etwas falsch gemacht hat."
+    },
+    {
+      "id": "g4u03.w.become-desperate",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "collide",
+            "evacuate",
+            "blow up",
+            "glide down"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "become desperate",
+      "g": "verzweifeln",
+      "d": "to feel that there is no help and a bad time will not end",
+      "s": "After three days with no food, the people start to ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "become desperate",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "become desperate",
+          "tier": "full"
+        },
+        {
+          "text": "became desperate",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "become desperate",
+            "tier": "full"
+          },
+          {
+            "text": "to become desperate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verzweifeln",
+            "tier": "full"
+          },
+          {
+            "text": "verzweifelt werden",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collide",
+        "evacuate",
+        "blow up"
+      ],
+      "hintDe": "Es bedeutet, ganz verzweifelt zu werden, weil eine schlimme Lage nicht endet."
+    },
+    {
+      "id": "g4u03.w.blow-up",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "collide",
+            "evacuate",
+            "glide down",
+            "be in trouble"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "blow up",
+      "g": "explodieren",
+      "d": "to break into many pieces with great power and fire",
+      "s": "The engine catches fire and could ___ at any time.",
+      "sSource": "invented",
+      "sAnswers": [
+        {
+          "text": "blow up",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "blow up",
+          "tier": "full"
+        },
+        {
+          "text": "blew up",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "blow up",
+            "tier": "full"
+          },
+          {
+            "text": "explode",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "explodieren",
+            "tier": "full"
+          },
+          {
+            "text": "in die Luft fliegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collide",
+        "evacuate",
+        "glide down"
+      ],
+      "hintDe": "Es bedeutet, mit großer Wucht in viele Teile zu zerbersten."
+    },
+    {
+      "id": "g4u03.w.bravery",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "treatment",
+            "miracle",
+            "statement",
+            "origin"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "bravery",
+      "g": "Mut",
+      "d": "the way a brave child is when there is a fire or a storm",
+      "s": "The captain shows great ___ when he lands the plane on the river.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "bravery",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "bravery",
+          "tier": "full"
+        },
+        {
+          "text": "courage",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "bravery",
+            "tier": "full"
+          },
+          {
+            "text": "courage",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Mut",
+            "tier": "full"
+          },
+          {
+            "text": "Tapferkeit",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "treatment",
+        "miracle",
+        "statement"
+      ],
+      "hintDe": "Es ist die Eigenschaft, mutig und tapfer zu sein, wenn Gefahr droht."
+    },
+    {
+      "id": "g4u03.w.busy",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "modern",
+            "famous",
+            "nearby",
+            "native"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "busy",
+      "g": "belebt",
+      "d": "a place with many people and many cars",
+      "s": "New York is one of the ___ cities in the world.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "busy",
+          "tier": "full"
+        },
+        {
+          "text": "busiest",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "busy",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "busy",
+            "tier": "full"
+          },
+          {
+            "text": "lively",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "belebt",
+            "tier": "full"
+          },
+          {
+            "text": "hektisch",
+            "tier": "full"
+          },
+          {
+            "text": "geschäftig",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "modern",
+        "famous",
+        "nearby"
+      ],
+      "hintDe": "Denk an einen Ort mit viel Verkehr und vielen Menschen."
+    },
+    {
+      "id": "g4u03.w.campaign",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "statement",
+            "treatment",
+            "origin",
+            "cuisine"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "campaign",
+      "g": "Kampagne",
+      "d": "a lot of work that many people do for one cause",
+      "s": "Our school begins a ___ to raise money for children in need.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "campaign",
+          "tier": "full"
+        },
+        {
+          "text": "campaigns",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "campaign",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "campaign",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kampagne",
+            "tier": "full"
+          },
+          {
+            "text": "Aktion",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "statement",
+        "treatment",
+        "origin"
+      ],
+      "hintDe": "Es ist eine geplante Aktion, bei der viele Menschen für ein Ziel arbeiten."
+    },
+    {
+      "id": "g4u03.w.charge",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "evacuate",
+            "collide",
+            "reward sb",
+            "explode"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "charge",
+      "g": "verlangen",
+      "d": "to ask people for money for a thing",
+      "s": "How much do they ___ for a ticket to the show?",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "charge",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "charge",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "charge",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "verlangen",
+            "tier": "full"
+          },
+          {
+            "text": "berechnen",
+            "tier": "full"
+          },
+          {
+            "text": "kosten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "evacuate",
+        "collide",
+        "reward sb"
+      ],
+      "hintDe": "Es bedeutet, von jemandem Geld für etwas zu verlangen."
+    },
+    {
+      "id": "g4u03.w.collide",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "evacuate",
+            "explode",
+            "glide down",
+            "blow up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "collide",
+      "g": "zusammenstoßen",
+      "d": "to crash into a thing with great power",
+      "s": "The two cars ___ because neither driver wants to stop.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "collide",
+          "tier": "full"
+        },
+        {
+          "text": "collided",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "collide",
+          "tier": "full"
+        },
+        {
+          "text": "collided",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "collide",
+            "tier": "full"
+          },
+          {
+            "text": "crash",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "zusammenstoßen",
+            "tier": "full"
+          },
+          {
+            "text": "kollidieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "evacuate",
+        "explode",
+        "glide down"
+      ],
+      "hintDe": "Es bedeutet, mit voller Wucht gegen etwas zu krachen."
+    },
+    {
+      "id": "g4u03.w.critic",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "immigrant",
+            "native",
+            "statement",
+            "campaign"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "critic",
+      "g": "Kritiker/in",
+      "d": "a child who writes about books and shows and gives an opinion about them",
+      "s": "A famous ___ writes that the new show is too long and not fun.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "critic",
+          "tier": "full"
+        },
+        {
+          "text": "critics",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "critic",
+          "tier": "full"
+        },
+        {
+          "text": "critics",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "critic",
+            "tier": "full"
+          },
+          {
+            "text": "reviewer",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Kritiker",
+            "tier": "full"
+          },
+          {
+            "text": "Kritikerin",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "immigrant",
+        "native",
+        "statement"
+      ],
+      "hintDe": "Das ist eine Person, die über Bücher und Shows schreibt und ihre Meinung sagt."
+    },
+    {
+      "id": "g4u03.w.crowd-funding",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "campaign",
+            "statement",
+            "treatment",
+            "origin"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "crowd-funding",
+      "g": "Gruppenfinanzierung",
+      "d": "a way for a band to ask very many people for a little money online",
+      "s": "The band uses ___ to raise the money for their first record.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "crowd-funding",
+          "tier": "full"
+        },
+        {
+          "text": "crowdfunding",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "crowd-funding",
+          "tier": "full"
+        },
+        {
+          "text": "crowdfunding",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "crowd-funding",
+            "tier": "full"
+          },
+          {
+            "text": "crowdfunding",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Gruppenfinanzierung",
+            "tier": "full"
+          },
+          {
+            "text": "Schwarmfinanzierung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [
+        {
+          "word": "online",
+          "de": "online (= im Internet)",
+          "scope": "d"
+        }
+      ],
+      "mc": [
+        "campaign",
+        "statement",
+        "treatment"
+      ],
+      "hintDe": "So sammelt man im Internet von ganz vielen Menschen kleine Geldbeträge."
+    },
+    {
+      "id": "g4u03.w.cuisine",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "origin",
+            "treatment",
+            "campaign",
+            "statement"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "cuisine",
+      "g": "Küche",
+      "d": "the food and the way people cook in a country",
+      "s": "This food is from Italy, and I love Italian ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "cuisine",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "cuisine",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "cuisine",
+            "tier": "full"
+          },
+          {
+            "text": "cooking",
+            "tier": "partial"
+          },
+          {
+            "text": "food",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Küche",
+            "tier": "full"
+          },
+          {
+            "text": "Kulinarik",
+            "tier": "full"
+          },
+          {
+            "text": "Kochkunst",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "origin",
+        "treatment",
+        "campaign"
+      ],
+      "hintDe": "Es geht um das Essen und die Kochkunst eines Landes."
+    },
+    {
+      "id": "g4u03.w.elevator",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "runway",
+            "statement",
+            "campaign",
+            "treatment"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "elevator (AE)",
+      "g": "Aufzug",
+      "d": "a machine that brings people up and down in a tall building",
+      "s": "We use the ___ to go up and down in a tall building.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "elevator",
+          "tier": "full"
+        },
+        {
+          "text": "elevators",
+          "tier": "partial"
+        },
+        {
+          "text": "lift",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "elevator",
+          "tier": "full"
+        },
+        {
+          "text": "elevators",
+          "tier": "full"
+        },
+        {
+          "text": "lift",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "elevator",
+            "tier": "full"
+          },
+          {
+            "text": "lift",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Aufzug",
+            "tier": "full"
+          },
+          {
+            "text": "Fahrstuhl",
+            "tier": "full"
+          },
+          {
+            "text": "Lift",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "runway",
+        "statement",
+        "campaign"
+      ],
+      "hintDe": "Das amerikanische Wort für einen Lift, der dich im Gebäude nach oben und unten bringt."
+    },
+    {
+      "id": "g4u03.w.emergency-landing",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rescue boat",
+            "runway",
+            "takeoff",
+            "flock of birds"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "emergency landing",
+      "g": "Notlandung",
+      "d": "when a plane has to come down fast because the engine does not work",
+      "s": "The engine does not work, so the plane has to make an ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "emergency landing",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "emergency landing",
+          "tier": "full"
+        },
+        {
+          "text": "emergency landings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "emergency landing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Notlandung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rescue boat",
+        "runway",
+        "takeoff"
+      ],
+      "hintDe": "So nennt man es, wenn ein Flugzeug schnell und ungeplant landen muss."
+    },
+    {
+      "id": "g4u03.w.evacuate",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "collide",
+            "explode",
+            "blow up",
+            "reward sb"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "evacuate",
+      "g": "evakuieren",
+      "d": "to bring all the people out of a building to a place where nothing can hurt them",
+      "s": "The police have to ___ the building when there is a fire inside.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "evacuate",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "evacuate",
+          "tier": "full"
+        },
+        {
+          "text": "evacuated",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "evacuate",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "evakuieren",
+            "tier": "full"
+          },
+          {
+            "text": "in Sicherheit bringen",
+            "tier": "partial"
+          },
+          {
+            "text": "räumen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collide",
+        "explode",
+        "blow up"
+      ],
+      "hintDe": "Es bedeutet, alle Menschen aus einem Gebäude an einen sicheren Ort zu bringen."
+    },
+    {
+      "id": "g4u03.w.explode",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "collide",
+            "evacuate",
+            "glide down",
+            "be in trouble"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "explode",
+      "g": "explodieren",
+      "d": "to break open fast and with great power",
+      "s": "When there is too much fire inside the engine, it can ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "explode",
+          "tier": "full"
+        },
+        {
+          "text": "exploded",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "explode",
+          "tier": "full"
+        },
+        {
+          "text": "exploded",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "explode",
+            "tier": "full"
+          },
+          {
+            "text": "blow up",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "explodieren",
+            "tier": "full"
+          },
+          {
+            "text": "in die Luft fliegen",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collide",
+        "evacuate",
+        "glide down"
+      ],
+      "hintDe": "Es bedeutet, mit großer Wucht und einem Knall auseinanderzubrechen."
+    },
+    {
+      "id": "g4u03.w.flock-of-birds",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "rescue boat",
+            "runway",
+            "wing",
+            "emergency landing"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "flock of birds",
+      "g": "Vogelschwarm",
+      "d": "a big group of them up in the sky",
+      "s": "A huge ___ flies high across the sky over the city.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "flock of birds",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "flock of birds",
+          "tier": "full"
+        },
+        {
+          "text": "flock",
+          "tier": "partial"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "flock of birds",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Vogelschwarm",
+            "tier": "full"
+          },
+          {
+            "text": "Schwarm von Vögeln",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "rescue boat",
+        "runway",
+        "wing"
+      ],
+      "hintDe": "Es ist eine große Gruppe Vögel, die zusammen am Himmel fliegt."
+    },
+    {
+      "id": "g4u03.w.glide-down",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "collide",
+            "evacuate",
+            "blow up",
+            "explode"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "glide down",
+      "g": "hinuntergleiten",
+      "d": "to move to the ground with no noise, like a plane with no power",
+      "s": "We watch the plane ___ in a slow way towards the river.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "glide down",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "glide down",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "glide down",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "hinuntergleiten",
+            "tier": "full"
+          },
+          {
+            "text": "herabgleiten",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "collide",
+        "evacuate",
+        "blow up"
+      ],
+      "hintDe": "Es bedeutet, ruhig und ohne Lärm nach unten zu gleiten."
+    },
+    {
+      "id": "g4u03.w.immigrant",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "native",
+            "critic",
+            "origin",
+            "statement"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "immigrant",
+      "g": "Einwanderer/Einwanderin",
+      "d": "a man or a woman who comes to a new country to live there",
+      "s": "Many people who came to America to live there were ___ from Europe.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "immigrants",
+          "tier": "full"
+        },
+        {
+          "text": "immigrant",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "immigrant",
+          "tier": "full"
+        },
+        {
+          "text": "immigrants",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "immigrant",
+            "tier": "full"
+          },
+          {
+            "text": "immigrants",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Einwanderer",
+            "tier": "full"
+          },
+          {
+            "text": "Einwanderin",
+            "tier": "full"
+          },
+          {
+            "text": "Zuwanderer",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "native",
+        "critic",
+        "origin"
+      ],
+      "hintDe": "So nennt man eine Person, die in ein neues Land zieht, um dort zu leben."
+    },
+    {
+      "id": "g4u03.w.miracle",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bravery",
+            "statement",
+            "treatment",
+            "origin"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "miracle",
+      "g": "Wunder",
+      "d": "a very amazing thing that you cannot understand",
+      "s": "It would be a ___ for this hospital to find a cure so fast.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "miracle",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "miracle",
+          "tier": "full"
+        },
+        {
+          "text": "miracles",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "miracle",
+            "tier": "full"
+          },
+          {
+            "text": "wonder",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Wunder",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bravery",
+        "statement",
+        "treatment"
+      ],
+      "hintDe": "Es ist etwas ganz Erstaunliches, das man nicht erklären kann."
+    },
+    {
+      "id": "g4u03.w.native",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "busy",
+            "famous",
+            "nearby",
+            "modern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "native",
+      "g": "einheimisch",
+      "d": "from the place where you are from at the start; from this place",
+      "s": "The ___ Americans lived here a long time before the city was here.",
+      "sSource": "sb",
+      "sAnswers": [
+        {
+          "text": "native",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "native",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "native",
+            "tier": "full"
+          },
+          {
+            "text": "local",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "einheimisch",
+            "tier": "full"
+          },
+          {
+            "text": "ursprünglich",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "busy",
+        "famous",
+        "nearby"
+      ],
+      "hintDe": "Es bedeutet, dass jemand von Anfang an aus diesem Ort kommt."
+    },
+    {
+      "id": "g4u03.w.nearby",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "busy",
+            "native",
+            "modern",
+            "famous"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "nearby",
+      "g": "in der Nähe",
+      "d": "not far away; close to you",
+      "s": "We were very hungry, so we were happy to find a restaurant ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "nearby",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "nearby",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "nearby",
+            "tier": "full"
+          },
+          {
+            "text": "close by",
+            "tier": "full"
+          },
+          {
+            "text": "near",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "in der Nähe",
+            "tier": "full"
+          },
+          {
+            "text": "ganz nah",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "busy",
+        "native",
+        "modern"
+      ],
+      "hintDe": "Es bedeutet, dass etwas ganz in der Nähe und nicht weit weg ist."
+    },
+    {
+      "id": "g4u03.w.on-duty",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "nearby",
+            "busy",
+            "native",
+            "modern"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "on duty",
+      "g": "im Dienst",
+      "d": "at work right now and in charge of a job",
+      "s": "The doctor is ___ at the hospital all night and cannot leave.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "on duty",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "on duty",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "on duty",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "im Dienst",
+            "tier": "full"
+          },
+          {
+            "text": "im Einsatz",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "nearby",
+        "busy",
+        "native"
+      ],
+      "hintDe": "Es bedeutet, dass jemand gerade arbeitet und für eine Aufgabe verantwortlich ist."
+    },
+    {
+      "id": "g4u03.w.origin",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "cuisine",
+            "treatment",
+            "bravery",
+            "campaign"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "origin",
+      "g": "Herkunft",
+      "d": "the place a thing is from at the start",
+      "s": "This dish is from France, so it is of French ___.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "origin",
+          "tier": "full"
+        },
+        {
+          "text": "origins",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "origin",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "origin",
+            "tier": "full"
+          },
+          {
+            "text": "background",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Herkunft",
+            "tier": "full"
+          },
+          {
+            "text": "Ursprung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "cuisine",
+        "treatment",
+        "bravery"
+      ],
+      "hintDe": "Es geht darum, woher etwas am Anfang stammt."
+    },
+    {
+      "id": "g4u03.w.politics",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bravery",
+            "cuisine",
+            "origin",
+            "treatment"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "politics",
+      "g": "Politik",
+      "d": "the work of the government and the way a country is run",
+      "s": "My uncle loves ___ and always watches the news about the government.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "politics",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "politics",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "politics",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Politik",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bravery",
+        "cuisine",
+        "origin"
+      ],
+      "hintDe": "Es geht um die Regierung und darum, wie ein Land geführt wird."
+    },
+    {
+      "id": "g4u03.w.rescue-boat",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "runway",
+            "wing",
+            "takeoff",
+            "flock of birds"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "rescue boat",
+      "g": "Rettungsboot",
+      "d": "a small ship that comes to help people at sea",
+      "s": "The people in the river wait for a ___ to reach them.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "rescue boat",
+          "tier": "full"
+        },
+        {
+          "text": "rescue boats",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "rescue boat",
+          "tier": "full"
+        },
+        {
+          "text": "rescue boats",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "rescue boat",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Rettungsboot",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "runway",
+        "wing",
+        "takeoff"
+      ],
+      "hintDe": "Es ist ein kleines Schiff, das Menschen auf dem Wasser zu Hilfe kommt."
+    },
+    {
+      "id": "g4u03.w.reward-sb",
+      "rev": 2,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "evacuate",
+            "collide",
+            "explode",
+            "blow up"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "reward sb",
+      "g": "jemanden prämieren",
+      "d": "to give a child a present because they did good work",
+      "s": "The teacher wants to ___ the children with a free day for their good work.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "reward",
+          "tier": "full"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "reward sb",
+          "tier": "full"
+        },
+        {
+          "text": "reward",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "reward sb",
+            "tier": "full"
+          },
+          {
+            "text": "to reward someone",
+            "tier": "full"
+          },
+          {
+            "text": "reward",
+            "tier": "partial"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "jemanden belohnen",
+            "tier": "full"
+          },
+          {
+            "text": "jemanden prämieren",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "evacuate",
+        "collide",
+        "explode"
+      ],
+      "hintDe": "Es bedeutet, jemandem etwas Schönes zu geben, weil er etwas gut gemacht hat."
+    },
+    {
+      "id": "g4u03.w.runway",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "takeoff",
+            "wing",
+            "rescue boat",
+            "emergency landing"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "runway",
+      "g": "Landebahn",
+      "d": "a long road at an airport where planes go up and down",
+      "s": "The plane waits on the ___ for a short time before takeoff.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "runway",
+          "tier": "full"
+        },
+        {
+          "text": "runways",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "runway",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "runway",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Landebahn",
+            "tier": "full"
+          },
+          {
+            "text": "Startbahn",
+            "tier": "partial"
+          },
+          {
+            "text": "Rollbahn",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "takeoff",
+        "wing",
+        "rescue boat"
+      ],
+      "hintDe": "Das ist die lange Bahn am Flughafen, auf der Flugzeuge starten und landen."
+    },
+    {
+      "id": "g4u03.w.statement",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "announcement",
+            "campaign",
+            "treatment",
+            "miracle"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "statement",
+      "g": "Aussage",
+      "d": "what you tell the police about what happened",
+      "s": "The witness gives a ___ to the police about the crime.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "statement",
+          "tier": "full"
+        },
+        {
+          "text": "statements",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "statement",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "statement",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Aussage",
+            "tier": "full"
+          },
+          {
+            "text": "Erklärung",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "announcement",
+        "campaign",
+        "treatment"
+      ],
+      "hintDe": "Das ist das, was du der Polizei darüber erzählst, was passiert ist."
+    },
+    {
+      "id": "g4u03.w.takeoff",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "runway",
+            "rescue boat",
+            "emergency landing",
+            "wing"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "takeoff",
+      "g": "Abflug",
+      "d": "the start of a flight, when a plane leaves the ground",
+      "s": "I always feel nervous during ___ because the plane shakes a little.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "takeoff",
+          "tier": "full"
+        },
+        {
+          "text": "take-off",
+          "tier": "full"
+        },
+        {
+          "text": "take off",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "takeoff",
+          "tier": "full"
+        },
+        {
+          "text": "take-off",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "takeoff",
+            "tier": "full"
+          },
+          {
+            "text": "take-off",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Abflug",
+            "tier": "full"
+          },
+          {
+            "text": "Start",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "runway",
+        "rescue boat",
+        "emergency landing"
+      ],
+      "hintDe": "Es ist der Beginn eines Fluges, wenn das Flugzeug vom Boden abhebt."
+    },
+    {
+      "id": "g4u03.w.treatment",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "bravery",
+            "miracle",
+            "statement",
+            "origin"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "treatment",
+      "g": "Behandlung",
+      "d": "the help a doctor gives to a sick or hurt child",
+      "s": "The doctor gives her ___ for the injury on her leg.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "treatment",
+          "tier": "full"
+        },
+        {
+          "text": "treatments",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "treatment",
+          "tier": "full"
+        },
+        {
+          "text": "treatments",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "treatment",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Behandlung",
+            "tier": "full"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "bravery",
+        "miracle",
+        "statement"
+      ],
+      "hintDe": "Es ist die Hilfe, die ein Arzt einem kranken oder verletzten Menschen gibt."
+    },
+    {
+      "id": "g4u03.w.wing",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "runway",
+            "rescue boat",
+            "takeoff",
+            "flock of birds"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": null,
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "w": "wing",
+      "g": "Flügel",
+      "d": "a long thing on a plane that it uses to fly",
+      "s": "One ___ of the plane was hurt in the crash.",
+      "sSource": "masterlist",
+      "sAnswers": [
+        {
+          "text": "wing",
+          "tier": "full"
+        },
+        {
+          "text": "wings",
+          "tier": "partial"
+        }
+      ],
+      "dAnswers": [
+        {
+          "text": "wing",
+          "tier": "full"
+        },
+        {
+          "text": "wings",
+          "tier": "full"
+        }
+      ],
+      "translation": {
+        "deToEn": [
+          {
+            "text": "wing",
+            "tier": "full"
+          }
+        ],
+        "enToDe": [
+          {
+            "text": "Flügel",
+            "tier": "full"
+          },
+          {
+            "text": "Tragfläche",
+            "tier": "partial"
+          }
+        ]
+      },
+      "gloss": [],
+      "mc": [
+        "runway",
+        "rescue boat",
+        "takeoff"
+      ],
+      "hintDe": "Es ist der lange Teil am Flugzeug, mit dem es fliegt."
+    }
+  ]
+}

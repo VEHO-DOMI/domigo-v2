@@ -1,0 +1,3886 @@
+{
+  "schema": "grammar@1",
+  "grade": 4,
+  "unit": 3,
+  "slug": "g4-u03",
+  "items": [
+    {
+      "id": "g4u03.gi.reported-speech-statements.ag.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du gibst wieder, was jemand gesagt hat — MIT einer Person danach (… me). Lösungswort aus t-o-l-d.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "told",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Es ist die Vergangenheitsform von tell und braucht immer eine Person danach.",
+      "hintEn": null,
+      "explainDe": "told = sagte (jemandem). Du brauchst es immer mit einer Person: told me, told us, told Sully.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ag.002",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "anagram",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Du gibst wieder, was jemand gesagt hat — OHNE Person danach (… that …). Lösungswort aus s-a-i-d.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "said",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Es ist die Vergangenheitsform von say und steht ohne Person: said that ...",
+      "hintEn": null,
+      "explainDe": "said = sagte. Es steht ohne Person danach: He said that ... (nie \"said me\").",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ec.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-ec-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He said that he likes music.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He said that he liked music.",
+          "tier": "full"
+        },
+        {
+          "text": "He said he liked music.",
+          "tier": "full"
+        },
+        {
+          "text": "liked",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Nach said muss das Verb eine Zeit zurück: aus likes wird liked.",
+      "hintEn": null,
+      "explainDe": "Das einleitende said steht in der Vergangenheit, also auch das Verb danach: likes → liked.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ec.002",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-ec-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She said me that she was hungry.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She told me that she was hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "She told me she was hungry.",
+          "tier": "full"
+        },
+        {
+          "text": "She said that she was hungry.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Direkt vor der Person (me) darf nicht said stehen.",
+      "hintEn": null,
+      "explainDe": "Mit Person danach brauchst du told: She told me ... \"said me\" gibt es nicht.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ec.003",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-ec-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She told that she was going home.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She said that she was going home.",
+          "tier": "full"
+        },
+        {
+          "text": "She told me that she was going home.",
+          "tier": "full"
+        },
+        {
+          "text": "She told us that she was going home.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "told braucht eine Person danach. Entweder du fügst eine Person ein (told me) oder du nimmst said.",
+      "hintEn": null,
+      "explainDe": "\"told that\" ohne Person ist falsch. Richtig: said that ... oder told me/us that ...",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ec.004",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-ec-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He said he can't come to the concert.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He said he couldn't come to the concert.",
+          "tier": "full"
+        },
+        {
+          "text": "He said he could not come to the concert.",
+          "tier": "full"
+        },
+        {
+          "text": "He said that he couldn't come to the concert.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "can't muss eine Zeit zurück zu couldn't.",
+      "hintEn": null,
+      "explainDe": "Nach said geht can't zurück zu couldn't. Also: He said he couldn't come to the concert.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ec.005",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-ec-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "He said he will visit us the day after.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He said he would visit us the day after.",
+          "tier": "full"
+        },
+        {
+          "text": "He said that he would visit us the day after.",
+          "tier": "full"
+        },
+        {
+          "text": "would",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "will muss eine Zeit zurück zu would.",
+      "hintEn": null,
+      "explainDe": "Nach said wird will zu would. Also: He said he would visit us the day after.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ec.006",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "She said she is reading a book.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She said she was reading a book.",
+          "tier": "full"
+        },
+        {
+          "text": "She said that she was reading a book.",
+          "tier": "full"
+        },
+        {
+          "text": "was",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "is muss eine Zeit zurück zu was.",
+      "hintEn": null,
+      "explainDe": "is + -ing wird beim Wiedergeben zu was + -ing. Also: She said she was reading a book.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ec.007",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Harten said Sully that runway 1 was free.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Harten told Sully that runway 1 was free.",
+          "tier": "full"
+        },
+        {
+          "text": "Harten said to Sully that runway 1 was free.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Direkt vor der Person (Sully) steht told, nicht said.",
+      "hintEn": null,
+      "explainDe": "Mit Person danach: told Sully. Oder said to Sully. \"said Sully\" allein ist falsch. (So steht es in der Story.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.ec.008",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "error-correction",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "They said they are waiting for the train.",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "They said they were waiting for the train.",
+          "tier": "full"
+        },
+        {
+          "text": "They said that they were waiting for the train.",
+          "tier": "full"
+        },
+        {
+          "text": "were",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Bei they verschiebt sich are zu were.",
+      "hintEn": null,
+      "explainDe": "are + -ing wird zu were + -ing. Also: They said they were waiting for the train.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am tired.\" — He said that he ___ tired.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Das einleitende Verb (said) steht in der Vergangenheit, also schiebst du auch im Nebensatz eine Zeit zurück: am/is wird zu was.",
+      "hintEn": null,
+      "explainDe": "Wenn du wiedergibst, was jemand gesagt hat, und das einleitende Verb in der Vergangenheit steht, geht die Zeit eine Stufe zurück. Aus am/is wird was.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.002",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am hungry.\" — She said that she ___ hungry.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "am/is verschiebt sich eine Zeit zurück zu was.",
+      "hintEn": null,
+      "explainDe": "Nach said geht die Zeit zurück: aus am/is wird was. Also: She said that she was hungry.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.003",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-007",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am busy.\" — He said that he ___ busy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "am verschiebt sich eine Zeit zurück zu was.",
+      "hintEn": null,
+      "explainDe": "Aus am wird beim Wiedergeben was. Also: He said that he was busy.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.004",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I like pizza, but I don't eat it very often.\" — He said that he ___ pizza, but he ___ it very often.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "liked | didn't eat",
+          "tier": "full"
+        },
+        {
+          "text": "liked | did not eat",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Beide Verben gehen eine Zeit zurück: like wird zur 2. Form, und das verneinte don't wird zu didn't.",
+      "hintEn": null,
+      "explainDe": "Nach said schiebst du beide Verben zurück: like → liked, don't eat → didn't eat.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.005",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am reading a great book.\" — She said that she ___ reading a great book.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Das am vor reading verschiebt sich zu was (verlaufende Handlung in der Vergangenheit).",
+      "hintEn": null,
+      "explainDe": "am/is + -ing wird beim Wiedergeben zu was + -ing. Also: She said that she was reading a great book.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.006",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-008",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We don't want to leave.\" — They said that they ___ want to leave.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "didn't",
+          "tier": "full"
+        },
+        {
+          "text": "did not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Die Verneinung don't geht eine Zeit zurück zu didn't.",
+      "hintEn": null,
+      "explainDe": "Aus don't wird beim Wiedergeben didn't. Also: They said that they didn't want to leave.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.007",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": "m4-u3-reported-speech-statements-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We can't make the runway.\" — Sully said that they ___ make the runway.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "couldn't",
+          "tier": "full"
+        },
+        {
+          "text": "could not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "can't verschiebt sich eine Zeit zurück zu couldn't.",
+      "hintEn": null,
+      "explainDe": "Aus can/can't wird beim Wiedergeben could/couldn't. Also: Sully said that they couldn't make the runway.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.008",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": "m4-u3-reported-speech-statements-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We will land on the river.\" — Sully said that they ___ land on the river.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "will verschiebt sich eine Zeit zurück zu would.",
+      "hintEn": null,
+      "explainDe": "Aus will wird beim Wiedergeben would. Also: Sully said that they would land on the river.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.009",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": "m4-u3-reported-speech-statements-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I must land the plane on the river.\" — Sully said that he ___ ___ land the plane on the river.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "must verschiebt sich beim Wiedergeben zu had to (zwei Wörter).",
+      "hintEn": null,
+      "explainDe": "Aus must wird had to. Also: Sully said that he had to land the plane on the river.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.010",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I can swim very well.\" — She said that she ___ swim very well.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "swim",
+          "de": "schwimmen",
+          "scope": null
+        }
+      ],
+      "hintDe": "can verschiebt sich eine Zeit zurück zu could.",
+      "hintEn": null,
+      "explainDe": "Aus can wird beim Wiedergeben could. Also: She said that she could swim very well.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.011",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I saw a good film yesterday.\" — He ___ me that he ___ a good film the day before.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "told | had seen",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": null
+        },
+        {
+          "word": "saw",
+          "de": "sah (2. Form von see)",
+          "scope": null
+        },
+        {
+          "word": "seen",
+          "de": "gesehen (3. Form von see)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Vor me brauchst du told. Das Verb saw (2. Form) geht noch eine Stufe zurück zur Form had + 3. Form.",
+      "hintEn": null,
+      "explainDe": "Mit Person (me) nimmst du told. Past simple (saw) wird beim Wiedergeben zu had + 3. Form: had seen.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.012",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We can come to your party tomorrow.\" — They said that they ___ come to ___ party the day after.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "could | my",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "party",
+          "de": "Party, Fest",
+          "scope": null
+        }
+      ],
+      "hintDe": "can wird zu could. Und das Pronomen wechselt die Perspektive: \"your\" (deine) wird aus meiner Sicht zu \"my\".",
+      "hintEn": null,
+      "explainDe": "can → could, und das Personenwort passt sich an: aus your wird my. Also: They said that they could come to my party the day after.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.013",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-010",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I'm going to visit my grandmother tomorrow.\" — She said that she ___ going to visit ___ grandmother the day after.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was | her",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "am wird zu was. Und \"my\" (aus ihrer Sicht) wird aus deiner Perspektive zu \"her\".",
+      "hintEn": null,
+      "explainDe": "am → was, und das Pronomen passt sich an: aus my (sie selbst) wird her. Also: She said that she was going to visit her grandmother the day after.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.014",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-009",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I have already eaten lunch.\" — He told me that he ___ already ___ lunch.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | eaten",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "already",
+          "de": "schon, bereits",
+          "scope": null
+        },
+        {
+          "word": "eaten",
+          "de": "gegessen (3. Form von eat)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Das present perfect (have eaten) geht eine Stufe zurück: have wird zu had, eaten bleibt die 3. Form.",
+      "hintEn": null,
+      "explainDe": "have + 3. Form wird beim Wiedergeben zu had + 3. Form. Also: He told me that he had already eaten lunch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.015",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I have never been to London.\" — She said that she ___ never ___ to London.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | been",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "been",
+          "de": "gewesen (3. Form von be)",
+          "scope": null
+        }
+      ],
+      "hintDe": "have wird zu had, been (3. Form) bleibt gleich.",
+      "hintEn": null,
+      "explainDe": "have been wird beim Wiedergeben zu had been. Also: She said that she had never been to London.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.016",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I bought this book here last week.\" — She said that she had bought ___ book ___ the week before.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "that | there",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "bought",
+          "de": "kaufte (2./3. Form von buy)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Beim Wiedergeben wird \"this\" zu \"that\" und \"here\" zu \"there\".",
+      "hintEn": null,
+      "explainDe": "Ortsangaben verschieben sich: this → that, here → there. Also: ... she had bought that book there the week before.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.017",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-011",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We were waiting for the train yesterday.\" — They said that they ___ been waiting for the train the day ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "had | before",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "been",
+          "de": "gewesen (3. Form von be)",
+          "scope": null
+        }
+      ],
+      "hintDe": "were waiting geht eine Stufe zurück zu had been waiting. Und yesterday wird zu \"the day before\".",
+      "hintEn": null,
+      "explainDe": "were + -ing wird zu had been + -ing; yesterday → the day before. Also: ... they had been waiting for the train the day before.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.018",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "(said / told?) He ___ me that he was at the airport. — She ___ that she was busy.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "told | said",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Mit Person (me) nimmst du told. Ohne Person nimmst du said.",
+      "hintEn": null,
+      "explainDe": "told braucht eine Person danach (told me), said steht ohne Person (said that ...).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.019",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We have lost power in both engines.\" — Sully ___ Harten that they ___ ___ power in both engines.",
+        "lang": "en",
+        "blanks": 3
+      },
+      "answers": [
+        {
+          "text": "told | had | lost",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "lost",
+          "de": "verlor (2./3. Form von lose)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Vor der Person Harten brauchst du told. have lost geht eine Stufe zurück zu had lost.",
+      "hintEn": null,
+      "explainDe": "Mit Person → told. have + 3. Form wird zu had + 3. Form: had lost. (So steht es auch in der Story.)",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.020",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "(said / told?) She ___ me that the museum was closed.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "told",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Direkt vor der Person (me) steht told, nicht said.",
+      "hintEn": null,
+      "explainDe": "told braucht eine Person danach (told me). said me ist falsch.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.021",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I can't come.\" — He said that he ___ come.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "couldn't",
+          "tier": "full"
+        },
+        {
+          "text": "could not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "can't verschiebt sich eine Zeit zurück zu couldn't.",
+      "hintEn": null,
+      "explainDe": "Aus can't wird couldn't. Also: He said that he couldn't come.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.022",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-6",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I will be there before nine.\" — Olivia said that she ___ be there before nine.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "will verschiebt sich eine Zeit zurück zu would.",
+      "hintEn": null,
+      "explainDe": "Aus will wird would. Also: Olivia said that she would be there before nine.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.023",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I gave the keys to the teacher.\" — Ron said that he ___ given the keys to the teacher.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "gave",
+          "de": "gab (2. Form von give)",
+          "scope": null
+        },
+        {
+          "word": "given",
+          "de": "gegeben (3. Form von give)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Das past simple (gave) geht eine Stufe zurück zur Form had + 3. Form (had given).",
+      "hintEn": null,
+      "explainDe": "gave (2. Form) → had given (had + 3. Form). Also: Ron said that he had given the keys to the teacher.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.024",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I want an ice cream.\" — He said that he ___ an ice cream.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "wanted",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "want geht eine Zeit zurück zur 2. Form wanted.",
+      "hintEn": null,
+      "explainDe": "Nach said wird want zu wanted. Also: He said that he wanted an ice cream.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.025",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am going there this week.\" — He said that he was going there ___ week.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "that",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Beim Wiedergeben wird \"this week\" zu \"that week\".",
+      "hintEn": null,
+      "explainDe": "this (Zeit) → that. Also: He said that he was going there that week.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.026",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-9",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "(said / told?) Mary ___ us that she was going to New York.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "told",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Direkt vor der Person (us) steht told.",
+      "hintEn": null,
+      "explainDe": "Mit Person danach (us) → told. Also: Mary told us that she was going to New York.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gf.027",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "gap-fill",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-9",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "(said / told?) Peter ___ that he would be busy.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "said",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Hier steht keine Person nach dem Verb, also nimmst du said.",
+      "hintEn": null,
+      "explainDe": "Ohne Person danach → said. Also: Peter said that he would be busy.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gs.003",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: Ist die Zeit richtig nach hinten verschoben?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "He said that he was tired.",
+            "She said that she lived there.",
+            "They said that they could come."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "He said that he is tired.",
+            "She said that she lives there.",
+            "They said that they can come."
+          ]
+        }
+      ],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Nach said muss die Zeit eine Stufe zurück: is → was, live → lived, can → could.",
+      "hintEn": null,
+      "explainDe": "Richtig sind die Sätze mit verschobener Zeit (was, lived, could). Falsch sind die mit Gegenwart (is, lives, can).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gs.004",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere: Ist das Wort für \"sagen\" (said/told) richtig verwendet?",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "✓",
+          "members": [
+            "He said that he was busy.",
+            "She told me that she was busy.",
+            "They said that they were tired."
+          ]
+        },
+        {
+          "label": "✗",
+          "members": [
+            "He said me that he was busy.",
+            "She told that she was busy.",
+            "They said me that they were tired."
+          ]
+        }
+      ],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "said steht ohne Person, told steht mit Person. \"said me\" und \"told that\" (ohne Person) sind falsch.",
+      "hintEn": null,
+      "explainDe": "Richtig: said that ... / told me that ... Falsch: said me ... (said braucht keine Person) und told that ... (told braucht eine Person).",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.gs.005",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "group-sort",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sortiere die Sätze nach dem passenden Wort für \"sagen\" (said/told).",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [
+        {
+          "label": "said",
+          "members": [
+            "He said that he was tired.",
+            "She said that she lived there.",
+            "They said that they were busy."
+          ]
+        },
+        {
+          "label": "told",
+          "members": [
+            "He told me that he was tired.",
+            "She told us that she lived there.",
+            "They told me that they were busy."
+          ]
+        }
+      ],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "told hat immer eine Person danach (told me/us). said hat keine Person danach.",
+      "hintEn": null,
+      "explainDe": "Sätze ohne Person nach dem Verb gehören zu said. Sätze mit Person (me/us) gehören zu told.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is",
+            "were",
+            "are",
+            "am",
+            "had"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I'm tired.\" — He said that he ___ tired.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is",
+        "were",
+        "are"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Eine einzelne Person (he) und eine Zeit zurück: aus is wird was.",
+      "hintEn": null,
+      "explainDe": "Nach said geht is zurück zu was. were passt nur zu we/you/they.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.002",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "can",
+            "would",
+            "did",
+            "must",
+            "had"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I can drive a car.\" — She said that she ___ drive a car.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "could",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "can",
+        "would",
+        "did"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "can verschiebt sich eine Zeit zurück.",
+      "hintEn": null,
+      "explainDe": "Aus can wird could. would gehört zu will, nicht zu can.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.003",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "will",
+            "could",
+            "can",
+            "must",
+            "did"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-gf-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I will help you.\" — She told me that she ___ help me.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "will",
+        "could",
+        "can"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "will verschiebt sich eine Zeit zurück.",
+      "hintEn": null,
+      "explainDe": "Aus will wird would. Also: She told me that she would help me.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.005",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is",
+            "were",
+            "are",
+            "had",
+            "did"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am studying.\" — She said that she ___ studying.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is",
+        "were",
+        "are"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Bei she verschiebt sich am/is zu was.",
+      "hintEn": null,
+      "explainDe": "am/is + -ing wird zu was + -ing. Also: She said that she was studying.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.006",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "is | then",
+            "was | now",
+            "were | then",
+            "is | now",
+            "had | then"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am leaving now.\" — She said that she ___ leaving ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "was | then",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "is | then",
+        "was | now",
+        "were | then"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "am wird zu was, und now wird zu then.",
+      "hintEn": null,
+      "explainDe": "am → was, now → then. Also: She said that she was leaving then.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.007",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "this | here",
+            "that | here",
+            "this | there",
+            "these | there",
+            "that | then"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-006",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am reading this book here.\" — He said that he was reading ___ book ___.",
+        "lang": "en",
+        "blanks": 2
+      },
+      "answers": [
+        {
+          "text": "that | there",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "this | here",
+        "that | here",
+        "this | there"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "this wird zu that, here wird zu there.",
+      "hintEn": null,
+      "explainDe": "this → that, here → there. Also: ... he was reading that book there.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.008",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "have",
+            "has",
+            "were",
+            "did",
+            "would"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We have visited New York.\" — They said that they ___ visited New York.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "have",
+        "has",
+        "were"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "have + 3. Form geht eine Stufe zurück: have wird zu had.",
+      "hintEn": null,
+      "explainDe": "have visited → had visited. Also: They said that they had visited New York.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.009",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 1,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "here",
+            "that",
+            "then",
+            "this",
+            "now"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I live here.\" — He said that he lived ___.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "there",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "here",
+        "that",
+        "then"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Die Ortsangabe here wird beim Wiedergeben zu there.",
+      "hintEn": null,
+      "explainDe": "here → there. Also: He said that he lived there.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mc.010",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "multiple-choice",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "could",
+            "had",
+            "has to",
+            "would",
+            "could"
+          ],
+          "chipBudget": null,
+          "minOptions": 4
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mc-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I must go now.\" — He said that he ___ go then.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [
+        "could",
+        "had",
+        "has to"
+      ],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "must verschiebt sich beim Wiedergeben zu had to.",
+      "hintEn": null,
+      "explainDe": "Aus must wird had to. Also: He said that he had to go then.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mp.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "matching-pairs",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ordne jeder Gegenwartsform die Form zu, die sie beim Wiedergeben bekommt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "like",
+          "right": "liked"
+        },
+        {
+          "left": "want",
+          "right": "wanted"
+        },
+        {
+          "left": "can",
+          "right": "could"
+        },
+        {
+          "left": "will",
+          "right": "would"
+        },
+        {
+          "left": "must",
+          "right": "had to"
+        },
+        {
+          "left": "is",
+          "right": "was"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Jedes Wort geht eine Zeit zurück: like → liked, can → could, will → would, must → had to, is → was.",
+      "hintEn": null,
+      "explainDe": "Verschiebe jede Form eine Stufe zurück: like → liked, want → wanted, can → could, will → would, must → had to, is → was.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mt.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-5",
+        "seedV1": "m4-u3-reported-speech-statements-mt-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ordne jedem Wort die Form zu, die es beim Wiedergeben bekommt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "like",
+          "right": "liked"
+        },
+        {
+          "left": "will",
+          "right": "would"
+        },
+        {
+          "left": "can",
+          "right": "could"
+        },
+        {
+          "left": "is",
+          "right": "was"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Achte auf das verschobene Verb: like → liked, will → would, can → could, is → was.",
+      "hintEn": null,
+      "explainDe": "Jede Form verschiebt sich eine Zeit zurück: like → liked, will → would, can → could, is → was.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.mt.002",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "matching",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-mt-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Ordne jedem Zeit- oder Ortswort die Form zu, die es beim Wiedergeben bekommt.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [],
+      "direction": null,
+      "distractors": [],
+      "pairs": [
+        {
+          "left": "today",
+          "right": "that day"
+        },
+        {
+          "left": "yesterday",
+          "right": "the day before"
+        },
+        {
+          "left": "tomorrow",
+          "right": "the day after"
+        },
+        {
+          "left": "last week",
+          "right": "the week before"
+        },
+        {
+          "left": "here",
+          "right": "there"
+        }
+      ],
+      "groups": [],
+      "gloss": [],
+      "hintDe": "Beim Wiedergeben verschieben sich Zeit- und Ortswörter: today → that day, yesterday → the day before, here → there.",
+      "hintEn": null,
+      "explainDe": "today → that day, yesterday → the day before, tomorrow → the day after, last week → the week before, here → there.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.qf.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-8",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib den ganzen Satz wieder. Beginne mit: He told me ... — \"I have lost my book.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He told me that he had lost his book.",
+          "tier": "full"
+        },
+        {
+          "text": "He told me he had lost his book.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "lost",
+          "de": "verlor (2./3. Form von lose)",
+          "scope": null
+        }
+      ],
+      "hintDe": "have lost → had lost, und my → his. Mit Person → told me.",
+      "hintEn": null,
+      "explainDe": "have lost → had lost; my → his. Mit Person: He told me that he had lost his book.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.qf.002",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "question-formation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib den ganzen Satz wieder. Beginne mit: Sully told Harten ... — \"We will land on the Hudson.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sully told Harten that they would land on the Hudson.",
+          "tier": "full"
+        },
+        {
+          "text": "Sully told Harten they would land on the Hudson.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "will → would, we → they. Vor der Person Harten steht told.",
+      "hintEn": null,
+      "explainDe": "will → would; we → they. So steht es in der Story: Sully told Harten that they would land on the Hudson.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.sb.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "likes",
+            "wanted",
+            "loved",
+            "had"
+          ],
+          "chipBudget": 8,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-sb-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "said / he / liked / that / she / chocolate",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He said that she liked chocolate.",
+          "tier": "full"
+        },
+        {
+          "text": "He said she liked chocolate.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Beginne mit der Person, dann said that ..., dann der Nebensatz mit dem Verb in der 2. Form.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: He said that she liked chocolate. Nach said folgt that + Nebensatz.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.sb.003",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "must",
+            "studies",
+            "would",
+            "was"
+          ],
+          "chipBudget": 12,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-sb-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "the / teacher / said / that / had / we / to / study / more",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "The teacher said that we had to study more.",
+          "tier": "full"
+        },
+        {
+          "text": "The teacher said we had to study more.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ohne Person nach said. must wurde zu had to. Reihenfolge: ... said that we had to study more.",
+      "hintEn": null,
+      "explainDe": "The teacher said that we had to study more. \"had to\" ist die verschobene Form von must.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.sb.004",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "sentence-building",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": {
+          "distractorPool": [
+            "could",
+            "will",
+            "wanted",
+            "had"
+          ],
+          "chipBudget": 10,
+          "minOptions": null
+        },
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-sb-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "told / me / would / she / help / that / she / me",
+        "lang": "en",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She told me that she would help me.",
+          "tier": "full"
+        },
+        {
+          "text": "She told me she would help me.",
+          "tier": "partial"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Mit Person: She told me that ... Danach das verschobene will = would.",
+      "hintEn": null,
+      "explainDe": "Reihenfolge: She told me that she would help me. told braucht die Person (me) direkt danach.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"I am tired.\" → Anna said that she ___ (be) tired.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "is/am verschiebt sich zu was.",
+      "hintEn": null,
+      "explainDe": "Aus am wird was. Also: Anna said that she was tired.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.002",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-tf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"Sarah is studying English at a new school.\" → Tom told me that Sarah ___ (study) English at a new school.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "was studying",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "is studying verschiebt sich zu was studying.",
+      "hintEn": null,
+      "explainDe": "is + -ing wird zu was + -ing. Also: ... that Sarah was studying English ...",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.003",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-tf-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We can't come to the party.\" → They said that they ___ (can / not) come to the party.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "couldn't",
+          "tier": "full"
+        },
+        {
+          "text": "could not",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        },
+        {
+          "word": "party",
+          "de": "Party, Fest",
+          "scope": null
+        }
+      ],
+      "hintDe": "can't verschiebt sich zu couldn't.",
+      "hintEn": null,
+      "explainDe": "Aus can't wird couldn't. Also: They said that they couldn't come to the party.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.004",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-tf-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"You must do your homework.\" → The teacher told us that we ___ (must) do our homework.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "had to",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "must verschiebt sich zu had to. Und das Pronomen wechselt: \"you\" wird zu \"we\".",
+      "hintEn": null,
+      "explainDe": "must → had to, und das Personenwort passt sich an (you → we). Also: ... that we had to do our homework.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.005",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "\"We will land on the river.\" → Sully said that they ___ (will) land on the river.",
+        "lang": "en",
+        "blanks": 1
+      },
+      "answers": [
+        {
+          "text": "would",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "will verschiebt sich zu would.",
+      "hintEn": null,
+      "explainDe": "Aus will wird would. So steht es auch in der Story: Sully said that they would land on the river.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.006",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib den ganzen Satz wieder. Beginne mit: She said ... — \"I live here.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "She said that she lived there.",
+          "tier": "full"
+        },
+        {
+          "text": "She said she lived there.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "live → lived (eine Zeit zurück) und here → there.",
+      "hintEn": null,
+      "explainDe": "live wird zu lived, here wird zu there. Also: She said that she lived there.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.007",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 3,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-tf-005",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib den ganzen Satz wieder. Beginne mit: He told me ... — \"I saw a good film yesterday.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He told me that he had seen a good film the day before.",
+          "tier": "full"
+        },
+        {
+          "text": "He told me he had seen a good film the day before.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "seen",
+          "de": "gesehen (3. Form von see)",
+          "scope": null
+        },
+        {
+          "word": "film",
+          "de": "Film",
+          "scope": null
+        }
+      ],
+      "hintDe": "saw geht eine Stufe zurück zu had seen, und yesterday wird zu \"the day before\".",
+      "hintEn": null,
+      "explainDe": "Past simple (saw) → had + 3. Form (had seen); yesterday → the day before. Mit Person: He told me ...",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.008",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-qf-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib den ganzen Satz wieder. Beginne mit: Lisa said ... — \"I don't have any homework today.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Lisa said that she didn't have any homework that day.",
+          "tier": "full"
+        },
+        {
+          "text": "Lisa said she didn't have any homework that day.",
+          "tier": "full"
+        },
+        {
+          "text": "Lisa said that she did not have any homework that day.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "don't have → didn't have, today → that day, und das Pronomen I → she.",
+      "hintEn": null,
+      "explainDe": "don't have wird zu didn't have, today wird zu that day, I wird zu she. Also: Lisa said that she didn't have any homework that day.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.009",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib den ganzen Satz wieder. Beginne mit: Sully told Harten ... — \"We can't make runway 1.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sully told Harten that they couldn't make runway 1.",
+          "tier": "full"
+        },
+        {
+          "text": "Sully told Harten they couldn't make runway 1.",
+          "tier": "full"
+        },
+        {
+          "text": "Sully told Harten that they could not make runway 1.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "can't → couldn't, und we → they. Vor der Person Harten steht told.",
+      "hintEn": null,
+      "explainDe": "can't → couldn't, we → they. So steht es in der Story: Sully told Harten that they couldn't make runway 1.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.010",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#5",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib den ganzen Satz wieder. Beginne mit: Skiles told Sully ... — \"You have done something special.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Skiles told Sully that he had done something special.",
+          "tier": "full"
+        },
+        {
+          "text": "Skiles told Sully he had done something special.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "something",
+          "de": "etwas",
+          "scope": null
+        },
+        {
+          "word": "special",
+          "de": "besonders",
+          "scope": null
+        }
+      ],
+      "hintDe": "have done → had done, und you → he (Skiles spricht über Sully). Vor der Person Sully steht told.",
+      "hintEn": null,
+      "explainDe": "have done → had done; you → he. So steht es sinngemäß in der Story: Skiles told Sully that he had done something special.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tf.011",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "transformation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-7",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Gib den ganzen Satz wieder. Beginne mit: Mum said ... — \"You are going to miss the train.\"",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mum said that I was going to miss the train.",
+          "tier": "full"
+        },
+        {
+          "text": "Mum said I was going to miss the train.",
+          "tier": "full"
+        }
+      ],
+      "direction": null,
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "are wird zu was, und \"you\" (du) wird aus deiner Sicht zu \"I\".",
+      "hintEn": null,
+      "explainDe": "are → was, you → I (deine Mutter spricht über dich). Also: Mum said that I was going to miss the train.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tr.001",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-tr-001",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er sagte, dass er müde war.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He said that he was tired.",
+          "tier": "full"
+        },
+        {
+          "text": "He said he was tired.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Ohne Person nach dem sagen-Verb: He said (that) ... Und müde war = was tired.",
+      "hintEn": null,
+      "explainDe": "\"sagte, dass\" ohne Person → He said that ... Das war wird zu was.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tr.004",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-tr-004",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er erzählte uns, dass er am Tag davor sein Buch verloren hatte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He told us that he had lost his book the day before.",
+          "tier": "full"
+        },
+        {
+          "text": "He told us he had lost his book the day before.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        },
+        {
+          "word": "lost",
+          "de": "verlor (2./3. Form von lose)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Mit Person (uns) → told us. \"hatte verloren\" = had lost. \"am Tag davor\" = the day before.",
+      "hintEn": null,
+      "explainDe": "erzählte uns → told us; hatte verloren → had lost; am Tag davor → the day before.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tr.005",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/wb/More 4 WB Unit 3.txt#grammar-9",
+        "seedV1": null,
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Er sagte mir, dass er die Hausübung gemacht hatte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "He told me that he had done his homework.",
+          "tier": "full"
+        },
+        {
+          "text": "He told me he had done his homework.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Mit Person (mir) → told me. \"gemacht hatte\" = had done.",
+      "hintEn": null,
+      "explainDe": "sagte mir → told me; gemacht hatte → had done. Also: He told me that he had done his homework.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tr.006",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 2,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-tr-003",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Sue sagte, dass sie Kopfschmerzen hatte.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Sue said that she had a headache.",
+          "tier": "full"
+        },
+        {
+          "text": "Sue said she had a headache.",
+          "tier": "full"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "said",
+          "de": "sagte",
+          "scope": null
+        }
+      ],
+      "hintDe": "Kopfschmerzen haben = to have a headache. Ohne Person: She said (that) ...",
+      "hintEn": null,
+      "explainDe": "\"hatte\" → had. Ohne Person nach said: She said that she had a headache.",
+      "explainEn": null,
+      "strict": false
+    },
+    {
+      "id": "g4u03.gi.reported-speech-statements.tr.007",
+      "structureId": "g4u03.s.reported-speech-statements",
+      "format": "translation",
+      "rev": 1,
+      "difficulty": 3,
+      "presentation": {
+        "variants": [],
+        "gameMeta": null,
+        "audio": null
+      },
+      "provenance": {
+        "by": "fable",
+        "sbRef": "g4/sb/More 4 SB Unit 3.txt#grammar-1",
+        "seedV1": "m4-u3-reported-speech-statements-tr-002",
+        "narrative": null,
+        "note": null
+      },
+      "prompt": {
+        "text": "Mia erzählte mir, dass sie am Tag danach nach Wien fahren würde.",
+        "lang": "de",
+        "blanks": 0
+      },
+      "answers": [
+        {
+          "text": "Mia told me that she would go to Vienna the day after.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia told me she would go to Vienna the day after.",
+          "tier": "full"
+        },
+        {
+          "text": "Mia told me that she would travel to Vienna the day after.",
+          "tier": "partial"
+        }
+      ],
+      "direction": "deToEn",
+      "distractors": [],
+      "pairs": [],
+      "groups": [],
+      "gloss": [
+        {
+          "word": "told",
+          "de": "sagte (jemandem)",
+          "scope": null
+        }
+      ],
+      "hintDe": "Mit Person (mir) → told me. \"würde fahren\" = would go. \"am Tag danach\" = the day after.",
+      "hintEn": null,
+      "explainDe": "erzählte mir → told me; würde → would; am Tag danach → the day after. Also: She told me that she would go to Vienna the day after.",
+      "explainEn": null,
+      "strict": false
+    }
+  ]
+}

@@ -13572,6 +13572,51 @@
       "reason": "past-perfect: crime carrier in error-correction answer (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u03",
+      "itemId": null,
+      "field": null,
+      "token": "became",
+      "reason": "reported-speech unit: past form / spelling variant / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u03",
+      "itemId": null,
+      "field": null,
+      "token": "blew",
+      "reason": "reported-speech unit: past form / spelling variant / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u03",
+      "itemId": null,
+      "field": null,
+      "token": "crowdfunding",
+      "reason": "reported-speech unit: past form / spelling variant / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u03",
+      "itemId": null,
+      "field": null,
+      "token": "by",
+      "reason": "reported-speech unit: past form / spelling variant / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u03",
+      "itemId": null,
+      "field": null,
+      "token": "someone",
+      "reason": "reported-speech unit: past form / spelling variant / common word (harvesting gap)",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

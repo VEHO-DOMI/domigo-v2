@@ -1,0 +1,14 @@
+{
+  "schema": "verify-flags@1",
+  "slug": "g4-u03",
+  "lens": "register",
+  "itemsHash": "369ba6e44c94",
+  "promptHash": "359c6953017a",
+  "round": 1,
+  "by": "fable-carryforward",
+  "flags": [],
+  "summary": {
+    "itemsSeen": 105,
+    "flagged": 0
+  }
+}

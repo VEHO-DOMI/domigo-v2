@@ -1,0 +1,777 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u03",
+  "round": 1,
+  "itemsHash": "369ba6e44c94",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "new-gloss:g4u03.w.crowd-funding",
+      "kind": "new-gloss",
+      "itemId": "g4u03.w.crowd-funding",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ag.001",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ag.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ag.002",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ag.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ec.001",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ec.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ec.002",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ec.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ec.003",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ec.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ec.004",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ec.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ec.005",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ec.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ec.006",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ec.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ec.007",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ec.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.ec.008",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.ec.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.001",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.002",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.003",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.004",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.005",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.006",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.007",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.008",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.009",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.010",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.010",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.011",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.012",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.012",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.013",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.013",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.014",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.014",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.015",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.015",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.016",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.016",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.017",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.017",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.018",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.018",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.019",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.019",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.020",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.020",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.021",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.021",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.022",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.022",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.023",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.023",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.024",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.024",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.025",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.025",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.026",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.026",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gf.027",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gf.027",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gs.003",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gs.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gs.004",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gs.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.gs.005",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.gs.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.001",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.002",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.003",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.005",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.006",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.007",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.008",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.009",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.mc.010",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.mc.010",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.qf.001",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.qf.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.qf.002",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.qf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.sb.001",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.sb.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.sb.003",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.sb.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.sb.004",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.sb.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.001",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.002",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.002",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.003",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.003",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.004",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.005",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.006",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.007",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.008",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.008",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.009",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.009",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.010",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.010",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tf.011",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tf.011",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tr.001",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tr.004",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tr.005",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tr.006",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "new-gloss:g4u03.gi.reported-speech-statements.tr.007",
+      "kind": "new-gloss",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.007",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.announcement",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.announcement",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.be-in-trouble",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.be-in-trouble",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.become-desperate",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.become-desperate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.blow-up",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.blow-up",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.bravery",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.bravery",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.busy",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.busy",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.campaign",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.campaign",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.charge",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.charge",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.collide",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.collide",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.critic",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.critic",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.crowd-funding",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.crowd-funding",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.cuisine",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.cuisine",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.elevator",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.elevator",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.emergency-landing",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.emergency-landing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.evacuate",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.evacuate",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.explode",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.explode",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.flock-of-birds",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.flock-of-birds",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.glide-down",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.glide-down",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.immigrant",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.immigrant",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.miracle",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.miracle",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.native",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.native",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.nearby",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.nearby",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.on-duty",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.on-duty",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.origin",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.origin",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.politics",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.politics",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.rescue-boat",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.rescue-boat",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.reward-sb",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.reward-sb",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.runway",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.runway",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.statement",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.statement",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.takeoff",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.takeoff",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.treatment",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.treatment",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.w.wing",
+      "kind": "translation-audit",
+      "itemId": "g4u03.w.wing",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.gi.reported-speech-statements.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.001",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.gi.reported-speech-statements.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.004",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.gi.reported-speech-statements.tr.005",
+      "kind": "translation-audit",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.005",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.gi.reported-speech-statements.tr.006",
+      "kind": "translation-audit",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.006",
+      "verdict": "ok",
+      "note": ""
+    },
+    {
+      "key": "translation-audit:g4u03.gi.reported-speech-statements.tr.007",
+      "kind": "translation-audit",
+      "itemId": "g4u03.gi.reported-speech-statements.tr.007",
+      "verdict": "ok",
+      "note": ""
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "Reported speech (statements): backshift (present→past, present continuous→past continuous, will→would, can→could, must→had to, am/is→was, are→were, present perfect→past perfect); pronoun shifts (I→he/she, my→his/her, we→they); say vs tell; optional 'that'; time/place shifts (today→that day, tomorrow→the day after, here→there). 32 vocab + 73 grammar, full v1 parity (floor 40 → 73 items / 11 formats). 4 verify lenses clean after fixes: gs.001/gs.002 'Verb'→'Wort für sagen' in prompts; mc.004 distractor must→could (must is defensibly unchanged in reported speech — swapped for a clearly-wrong modal); sb.002 added the missing 'me' tile (the keyed answer was unbuildable from the chip set); reworded reward-sb def off 'treat' (untaught noun sense) → 'a present'; disambiguated 2 translation prompts Sie→Sue/Mia (sentence-initial she); granted became/blew/crowdfunding/by/someone; cleared evacuate's V-10 with the umlaut variant 'räumen'. The 71 inline glosses are the reporting verbs + backshifted forms (said/told/saw/seen/been/gave/given/lost/etc. — untaught but essential to the structure; scope:null so they cover pairs/groups too); 37 translation audits accurate. One non-blocking level-gloss note left: tf.007 omits a 'saw' gloss its twin gf.011 carries (the German prompt scaffolds the sentence, and adding the gloss tripped the scope-occurrence check). Validate green. (Process note: grammar drafts must carry the 'note' field — now defaulted in the merge for the remaining units.)"
+  },
+  "metrics": {
+    "itemsReviewed": 105,
+    "fullRows": 105,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}
