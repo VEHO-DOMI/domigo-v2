@@ -1,0 +1,28 @@
+{
+  "schema": "verify-merged@1",
+  "slug": "g4-u13",
+  "round": 1,
+  "itemsHash": "725c2f02834b",
+  "lenses": {
+    "level-gloss": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "answers": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "translation": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    },
+    "register": {
+      "by": "fable-carryforward",
+      "flagged": 0
+    }
+  },
+  "byItem": {},
+  "fixCount": 0,
+  "warnCount": 0,
+  "escalated": []
+}

@@ -15201,6 +15201,906 @@
       "reason": "phrasal-verbs: common carrier word in embedded prompt (harvesting gap)",
       "by": "fable",
       "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "actor",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "beauty",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "careful",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carelessly",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "darkness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "disagree",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "drove",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "finish",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "friendliness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "gave",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "happiness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "hopeful",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "hopeless",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "hour",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "impatient",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "irresponsible",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "kind",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "kindness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "meaning",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "meaningful",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "meaningless",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "misunderstand",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "nature",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "polite",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "regular",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "responsible",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "safe",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "said",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "see",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "sing",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "word",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "wrong",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "bit",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "bus",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "comes",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "danger",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "each",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "fans",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "filled",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "full",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "held",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "idea",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "let",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "licence",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "other",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "rest",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "say",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "seatbelt",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "sense",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "situation",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "students",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "thinks",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "win",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "won",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "wonderful",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "unpossible",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "beautifull",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "kindful",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "inresponsible",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "inpolite",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "dishappy",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "inhappy",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "mishappy",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "inlegal",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "unlegal",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "dislegal",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "inpossible",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "dispossible",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "careness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "carely",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "happyness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "happyful",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "happyless",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "paintness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "paintful",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "paintless",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "eldness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "eldful",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "eldless",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "meaningness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "unmeaning",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "hopeness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "unhope",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "successless",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "successness",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "unsuccess",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "behavior",
+      "reason": "word-formation: derived word / base / carrier / deliberate wrong-affix distractor (derivational morphology not in inflection family)",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "ful",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "less",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "ness",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "er",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "or",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "ous",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "im",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "ir",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "un",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "dis",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "mis",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "in",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
+    },
+    {
+      "slug": "g4-u13",
+      "itemId": null,
+      "field": null,
+      "token": "legal",
+      "reason": "word-formation: affix label / base word — literal taught content of this unit",
+      "by": "fable",
+      "round": 1
     }
   ]
 }

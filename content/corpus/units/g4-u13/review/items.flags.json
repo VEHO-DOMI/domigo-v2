@@ -1,0 +1,266 @@
+{
+  "schema": "items-flags@1",
+  "slug": "g4-u13",
+  "round": 1,
+  "itemsHash": "725c2f02834b",
+  "reviewedBy": "fable",
+  "flags": [
+    {
+      "key": "translation-audit:g4u13.w.apply",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.apply",
+      "verdict": "ok",
+      "note": "Both directions accurate; bewerben demoted to partial (bare form = advertise), full tier sich bewerben (für)."
+    },
+    {
+      "key": "translation-audit:g4u13.w.artist",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.artist",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.attend",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.attend",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.autograph",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.autograph",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.beggar",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.beggar",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.best-wishes",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.best-wishes",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.catch-up-on",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.catch-up-on",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.chill-out",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.chill-out",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.coal",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.coal",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.discipline",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.discipline",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.edition",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.edition",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.elder",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.elder",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.get-involved-with",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.get-involved-with",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.help-out",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.help-out",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.highlight",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.highlight",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.honestly",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.honestly",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.kill-time",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.kill-time",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.last-but-not-least",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.last-but-not-least",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.legend",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.legend",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.leisure-centre",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.leisure-centre",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.make-money",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.make-money",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.occasionally",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.occasionally",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.ripe",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.ripe",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.scuba-diving",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.scuba-diving",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.take-care-of",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.take-care-of",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.take-up",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.take-up",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.tough",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.tough",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.tournament",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.tournament",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.w.water-proof",
+      "kind": "translation-audit",
+      "itemId": "g4u13.w.water-proof",
+      "verdict": "ok",
+      "note": "Both directions accurate, natural, complete; gender/article doublets + tiers correct; >=1 full-tier each."
+    },
+    {
+      "key": "translation-audit:g4u13.gi.word-formation.tr.001",
+      "kind": "translation-audit",
+      "itemId": "g4u13.gi.word-formation.tr.001",
+      "verdict": "ok",
+      "note": "deToEn renders accurate + natural; BrE/AmE and alternate phrasings correctly tiered; >=1 full-tier."
+    },
+    {
+      "key": "translation-audit:g4u13.gi.word-formation.tr.002",
+      "kind": "translation-audit",
+      "itemId": "g4u13.gi.word-formation.tr.002",
+      "verdict": "ok",
+      "note": "deToEn renders accurate + natural; BrE/AmE and alternate phrasings correctly tiered; >=1 full-tier."
+    },
+    {
+      "key": "translation-audit:g4u13.gi.word-formation.tr.003",
+      "kind": "translation-audit",
+      "itemId": "g4u13.gi.word-formation.tr.003",
+      "verdict": "ok",
+      "note": "deToEn renders accurate + natural; BrE/AmE and alternate phrasings correctly tiered; >=1 full-tier."
+    },
+    {
+      "key": "translation-audit:g4u13.gi.word-formation.tr.004",
+      "kind": "translation-audit",
+      "itemId": "g4u13.gi.word-formation.tr.004",
+      "verdict": "ok",
+      "note": "deToEn accurate; 'Her kindness surprised everyone/everybody' full, 'friendliness' correctly partial."
+    },
+    {
+      "key": "validator-warn:g4u13.w.attend#db68da",
+      "kind": "validator-warn",
+      "itemId": "g4u13.w.attend",
+      "verdict": "ok",
+      "note": "V-10 false positive: enToDe set (teilnehmen/an etwas teilnehmen/besuchen) is genuinely German but has no umlaut/stopword token, so langEvidence can't score it. Correct as-is."
+    },
+    {
+      "key": "validator-warn:g4u13.gi.word-formation.tr.004#5a9703",
+      "kind": "validator-warn",
+      "itemId": "g4u13.gi.word-formation.tr.004",
+      "verdict": "ok",
+      "note": "'Ihre' = possessive 'her' (Ihre Freundlichkeit = her kindness), capitalised only sentence-initially; maps to 'Her kindness'. Not formal Sie. Correct."
+    }
+  ],
+  "unit": {
+    "verdict": "ok",
+    "note": "All 87 items (29 vocab + 58 grammar) reviewed in full. 4 verify lenses + validate findings all resolved pre-approval: ec.003/ec.007 set strict=true (fuzzy would have accepted the unfixed wrong sentence); mc.010 carrier fixed (What he was doing…); mc.011 carrier reworded off the nonsensical cross-the-road/hopeless; mc.012 praise→'All my friends were there' (dropped above-level 'praise', no gloss needed in de-prompt); apply bewerben full→partial. Group-sort labels are clean affix tokens (German meta stripped). All 35 flags ok. Final unit of the 57-unit wave. rejectRate 0.0%."
+  },
+  "metrics": {
+    "itemsReviewed": 87,
+    "fullRows": 87,
+    "fixCount": 0,
+    "dropCount": 0,
+    "addCount": 0,
+    "rejectRate": 0
+  }
+}

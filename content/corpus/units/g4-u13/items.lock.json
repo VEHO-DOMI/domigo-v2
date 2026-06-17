@@ -1,0 +1,101 @@
+{
+  "schema": "items-lock@1",
+  "slug": "g4-u13",
+  "items": {
+    "5d119da6532c": "g4u13.gi.word-formation.gf.001",
+    "e76766d364ac": "g4u13.gi.word-formation.gf.002",
+    "2f32f38a0d3d": "g4u13.gi.word-formation.gf.003",
+    "8fd83d941222": "g4u13.gi.word-formation.gf.004",
+    "0d6560aa0a35": "g4u13.gi.word-formation.gf.005",
+    "e2cbd1e1b14f": "g4u13.gi.word-formation.gf.006",
+    "c008fa6888e8": "g4u13.gi.word-formation.gf.007",
+    "d5a39e824ea3": "g4u13.gi.word-formation.gf.008",
+    "994e4e9da396": "g4u13.gi.word-formation.gf.009",
+    "7dbfae0a28cf": "g4u13.gi.word-formation.gf.010",
+    "d18e84df9cfe": "g4u13.gi.word-formation.gf.011",
+    "f9beb03deac4": "g4u13.gi.word-formation.gf.012",
+    "bf3cb844771b": "g4u13.gi.word-formation.gf.013",
+    "78e90d133184": "g4u13.gi.word-formation.gf.014",
+    "5d1e764db8ac": "g4u13.gi.word-formation.gf.015",
+    "622a0abbd269": "g4u13.gi.word-formation.mc.001",
+    "e20977d608e0": "g4u13.gi.word-formation.mc.003",
+    "f79117300c42": "g4u13.gi.word-formation.mc.004",
+    "5faf08f9cdb7": "g4u13.gi.word-formation.mc.006",
+    "4c38fd95507d": "g4u13.gi.word-formation.mc.007",
+    "5e1f75569d05": "g4u13.gi.word-formation.mc.008",
+    "927dd4499654": "g4u13.gi.word-formation.ec.001",
+    "87cfc08140c0": "g4u13.gi.word-formation.ec.002",
+    "ba40b5a2e16f": "g4u13.gi.word-formation.ec.003",
+    "e92cf9229d5f": "g4u13.gi.word-formation.ec.004",
+    "c9730aa63444": "g4u13.gi.word-formation.ec.005",
+    "1c82db3f5b32": "g4u13.gi.word-formation.ec.006",
+    "dc6df4b573d0": "g4u13.gi.word-formation.ec.007",
+    "241cf40f82b0": "g4u13.gi.word-formation.tf.001",
+    "d7d6cfc2206c": "g4u13.gi.word-formation.tf.002",
+    "0daa911ff551": "g4u13.gi.word-formation.tf.003",
+    "855ac8acc3c4": "g4u13.gi.word-formation.tf.004",
+    "3552c53a7e49": "g4u13.gi.word-formation.tf.005",
+    "bf0adc0133ed": "g4u13.gi.word-formation.tf.006",
+    "6a5b84452c98": "g4u13.gi.word-formation.mt.001",
+    "cef6ff2a1184": "g4u13.gi.word-formation.mt.002",
+    "3be23e369e3c": "g4u13.gi.word-formation.mt.003",
+    "03e7681edda2": "g4u13.gi.word-formation.tr.001",
+    "c1c3c4771fb6": "g4u13.gi.word-formation.tr.002",
+    "3d8315baddcf": "g4u13.gi.word-formation.tr.003",
+    "b9fdd19ab1e6": "g4u13.gi.word-formation.tr.004",
+    "075dfa7fe457": "g4u13.gi.word-formation.sb.001",
+    "fe3ff89f52cc": "g4u13.gi.word-formation.sb.002",
+    "1e3b88581bea": "g4u13.gi.word-formation.sb.003",
+    "a6c4a4f5bc83": "g4u13.gi.word-formation.cp.001",
+    "e425cb17107a": "g4u13.gi.word-formation.cp.002",
+    "1bb36b7b89db": "g4u13.gi.word-formation.qf.001",
+    "ea83cce65c46": "g4u13.gi.word-formation.qf.002",
+    "6cbadd32f6ec": "g4u13.gi.word-formation.gf.016",
+    "defc69cd06ce": "g4u13.gi.word-formation.gf.017",
+    "b3400500e446": "g4u13.gi.word-formation.gf.018",
+    "c6861f4e911f": "g4u13.gi.word-formation.gs.005",
+    "9111cd8db500": "g4u13.gi.word-formation.gs.006",
+    "c07d3309071b": "g4u13.gi.word-formation.gs.007",
+    "931ea5167c5d": "g4u13.gi.word-formation.gs.008",
+    "daee09c31100": "g4u13.gi.word-formation.mc.010",
+    "741a3c7f4959": "g4u13.gi.word-formation.mc.011",
+    "65b1c7377689": "g4u13.gi.word-formation.mc.012"
+  },
+  "tombstones": [
+    {
+      "id": "g4u13.gi.word-formation.gs.001",
+      "key": "89c36577ec10",
+      "removedWith": "fc05ea9f6798"
+    },
+    {
+      "id": "g4u13.gi.word-formation.gs.002",
+      "key": "c8512aceaed2",
+      "removedWith": "fc05ea9f6798"
+    },
+    {
+      "id": "g4u13.gi.word-formation.gs.003",
+      "key": "a9525f920f37",
+      "removedWith": "fc05ea9f6798"
+    },
+    {
+      "id": "g4u13.gi.word-formation.gs.004",
+      "key": "39b67b93a5a9",
+      "removedWith": "fc05ea9f6798"
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.002",
+      "key": "570355aae85e",
+      "removedWith": "fd09cdd3d04d"
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.009",
+      "key": "f0e34a56f945",
+      "removedWith": "fd09cdd3d04d"
+    },
+    {
+      "id": "g4u13.gi.word-formation.mc.005",
+      "key": "c51aa57e34f8",
+      "removedWith": "90eb745d9992"
+    }
+  ]
+}
