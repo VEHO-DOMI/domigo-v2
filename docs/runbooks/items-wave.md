@@ -1,6 +1,6 @@
 # Items wave — progress log & handover
 
-**Status as of 2026-06-14** · branch `feat/items-wave-g2` · repo `~/Code/domigo-v2` (do git work HERE, never the iCloud copy).
+**Status as of 2026-06-17 — ✅ WAVE COMPLETE (57/57)** · branch `feat/items-wave-g2` · repo `~/Code/domigo-v2` (do git work HERE, never the iCloud copy).
 
 This is the live runbook for the **content items wave**: generating + verifying + approving practice items (vocab + grammar) for all 57 units across grades 1–4, at **full v1 parity** (every unit meets the full v1 grammar floor — no relaxation), exit bar **0.0% stage-8 reject** on every unit.
 
@@ -15,16 +15,16 @@ It supersedes nothing; it sits beside [`item-pilot-g2-u03.md`](item-pilot-g2-u03
 | G1 | 15 | **15/15 ✓ COMPLETE** | — |
 | G2 | 15 | **15/15 ✓ COMPLETE** | — |
 | G3 | 14 | **14/14 ✓ COMPLETE** | — |
-| G4 | 13 | **4/13** (u01–u04 ✓; structures ✓) | u05–u13 |
+| G4 | 13 | **13/13 ✓ COMPLETE** | — |
 
-**48 / 57 units approved.** 9 remain — G4 u05–u13.
+**57 / 57 units approved — the items wave is DONE.** Final unit g4-u13 (word formation) approved 2026-06-17 (commit `89f6ce3`). `pnpm content status` → `approved=57`; `pnpm content validate` green (V-1…V-22 + V-A…V-F); `pnpm test` 60/60.
 
 Structures catalogs: **g1 (35) ✓, g2 (28) ✓, g3 (18) ✓, g4 (15) ✓ — ALL generated**.
 
 Commits are the durable progress — one `content(gN-uNN): items approved at 0.0% reject` commit per unit. `git log --oneline` is the receipt.
 
 ### In-flight right now
-- Nothing prepared/uncommitted. Next unit is **g4-u05 (past perfect connectors — past perfect revision)**. Run `pnpm content gen --prepare --unit g4-u05` to start the §3 rhythm. Remaining after that: g4-u06…u13.
+- **Nothing — the wave is complete.** No unit prepared/uncommitted; working tree clean apart from this runbook + the memory/handover updates. The whole branch `feat/items-wave-g2` is ready to merge (the per-unit commits ARE the deliverable). See §4 for what follows.
 
 ---
 
@@ -62,21 +62,16 @@ Each unit, in order. Wall-time ~ one focused pass; the strict G3 cumulative gate
 
 ---
 
-## 4. Immediate next steps (finish the wave, in order)
+## 4. Next steps — the items wave is DONE; post-wave tracks open
 
-### NOW: g3-u12 — passive voice
-- 1 structure `g3u12.s.passive-voice` (present + past simple passive), **v1 floor 21**, no SB grammar box (v1-seed only). Bank = 50 words, **disaster/survival theme** (drought, earthquake, hurricane, tsunami, flood, fire-drill, escape-route, to-evacuate, …). `briefBank=6732fa924d08`.
-- **Expect heavy granting:** every past participle the passive needs gates UNTAUGHT — `eaten, spoken, used, destroyed, built, made, written, grown, taken, given, sent, found, broken, …` plus the disaster carriers. Have the grammar agent emit the full participle list it exercises; grant liberally (audited, reason="passive past-participle / disaster-theme harvesting gap").
-- Then u12 follows the §3 rhythm exactly.
+**All 57 units + all 4 structure catalogs are approved and committed.** Nothing remains in the items wave itself. What follows, in rough priority:
 
-### THEN: g3-u13 (2nd conditional), g3-u14 (going-to evidence)
-- Same rhythm. After u14, **G3 wave COMPLETE**.
+1. **Merge `feat/items-wave-g2`.** The per-unit commits are the deliverable; the branch is ready. (Neon free-tier branch cap fails *PR previews* — a known artifact, not a merge blocker.) Decide squash vs. keep-per-unit-history with Koki — per-unit history is the audit trail of 0.0%-reject approvals, worth preserving.
+2. **Wire the approved items into the app/runtime.** The corpus now holds 5,898 reviewed items (29–58 per unit). Confirm the trainer surfaces (vocab + grammar games per the game-layer bible `docs/handover/10_game_layer.md`) consume `content/corpus/units/*/{vocab,grammar}.json` + the overlays, and that `pnpm content` exports/feeds them as the runtime expects.
+3. **Game layer** (the bigger Sept-2026 launch): the 4 standalone grade games. Separate track — see the game-layer memory + bible.
+4. **Firebase→Neon cutover** prep (additive-only Neon, Firebase open till cutover, go-live Sept 2026).
 
-### THEN: G4 — build structures catalog FIRST, then 13 units
-1. `pnpm content gen --structures --grade 4 --prepare` → spawn ONE structures agent that reads `content/corpus/structures/g4/brief.md` (SB boxes + v1 floor + contract) → authors `structures.draft.json` (`grammar-structures-draft@1`, every v1 id mapped to `seedV1` or listed in `v1Waivers`) → `gen --structures --grade 4 --ingest` → `validate` (V-F) → commit `content(g4-structures): …`.
-2. Then g4-u01…u13 via the §3 rhythm. G4's gate is the strictest (cumulative = g1+g2+g3+g4 banks) — expect grant counts at or above G3's.
-
-When all 16 remain-units are approved, the items wave is **done**; update `status`, memory, and this doc, then the post-wave tracks (§6) open.
+If a content defect surfaces post-merge, the fix path is: edit the unit's `gen/` draft (or `content/overlays/`), re-run the §3 rhythm from the affected stage, re-approve at 0.0%. The recurring-fix catalog (§5) and the strict-gate mechanics still apply.
 
 ---
 
@@ -94,6 +89,7 @@ When all 16 remain-units are approved, the items wave is **done**; update `statu
 - **group-sort**: ≥2 groups, EACH ≥2 members; drop infeasible categories.
 - **V-10 weak-DE-evidence** on correct German with `in`/`an` (English homographs) → add an unambiguously-German token (`und`/`im`/`daran`); residual is a defensible WARN.
 - **contractions tokenize to fragments** `ll`/`t` → grant the fragments OR demote the contraction-full answer to `partial` (gate-exempt).
+- **word-formation unit (g4-u13):** the affixes ARE the taught content. Group-sort/label the morphological axis with **clean affix tokens only** (`-ful`, `-less`, `-ness`, `-er`, `-or`, `-ous`, `im-`, `ir-`) — NOT German glosses like `-ful (voll von)` / `eine Person` / `(vor p)` (the German meta tokenizes + gates and is banned in student chips; put the "voll von / ohne" explanations in `hintDe` only). Then **grant the bare affix fragments** (`ful`/`ous`/`im`/`ir`/…) + derived/base/deliberate-wrong-affix-distractor forms — derivational morphology is NOT in the gate's inflection family. A scope:`prompt` gloss CANNOT attach to a `lang:"de"` prompt (de-prompts aren't en-gated, so the gloss has no field to bind → V-6); if a genuinely above-level English word sits inside a German-led carrier, reword the carrier to a taught word rather than glossing.
 
 ---
 
