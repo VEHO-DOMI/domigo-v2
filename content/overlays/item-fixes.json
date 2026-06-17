@@ -29,5 +29,23 @@
         "d": "A screen of stories and pictures that you open and read on a tablet."
       }
     }
+  },
+  "g4-u11": {
+    "patch": {
+      "g4u11.gi.reflexive-pronouns.ag.001": {
+        "prompt": {
+          "text": "Das Wort für \"mich selbst\" (bei \"I\"):",
+          "lang": "de",
+          "blanks": 0
+        }
+      },
+      "g4u11.gi.reflexive-pronouns.ag.002": {
+        "prompt": {
+          "text": "Das Wort für \"sich selbst\" bei \"they\":",
+          "lang": "de",
+          "blanks": 0
+        }
+      }
+    }
   }
 }
