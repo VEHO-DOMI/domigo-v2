@@ -5,6 +5,12 @@
 > `docs/runbooks/story-mode-spike.md`. The guardrails in `08_design_principles.md` apply to every
 > pixel of this — re-read them first. Item quality (04) keeps right-of-way over everything here.
 
+> **Content prerequisite SATISFIED (2026-06-17):** the items wave is complete — all 57/57 units
+> approved at 0.0% reject, every item carries `presentation.gameMeta` (distractor pools / chip
+> budgets / minOptions) + `difficulty` 1–3, and the cumulative level gate is in force. The game
+> layer is therefore unblocked on content; what it now needs is the runtime (the foundation harness:
+> loader + all-format renderer + grader) plus the story/quest/map/encounter schemas below.
+
 ## Mission
 
 Real game worlds where **progression is always earned by solving vocabulary/grammar/language
