@@ -31,3 +31,6 @@ export function xpForTier(baseXp: number, tier: Tier): number {
 export function breaksCombo(tier: Tier): boolean {
   return tier === "close" || tier === "wrong";
 }
+
+// Per-format grader (canonicalize · Levenshtein-close · partial-match · all-or-nothing).
+export * from "./grade.ts";
