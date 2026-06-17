@@ -1,5 +1,5 @@
 {
-  "name": "@domigo/engine",
+  "name": "@domigo/content-loader",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -8,14 +8,13 @@
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "node --test \"src/test/*.test.ts\""
   },
   "dependencies": {
     "@domigo/content-schema": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24",
-    "typescript": "^5",
-    "vitest": "^3"
+    "typescript": "^5"
   }
 }

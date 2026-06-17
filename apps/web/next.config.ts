@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Workspace packages ship raw TS/TSX (exports → ./src/index.ts*); Next must transpile them.
+  transpilePackages: [
+    "@domigo/content-schema",
+    "@domigo/content-loader",
+    "@domigo/engine",
+    "@domigo/task-ui",
+  ],
 };
 
 export default nextConfig;

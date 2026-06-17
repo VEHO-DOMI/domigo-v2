@@ -10,6 +10,18 @@ importers:
 
   apps/web:
     dependencies:
+      '@domigo/content-loader':
+        specifier: workspace:*
+        version: link:../../packages/content-loader
+      '@domigo/content-schema':
+        specifier: workspace:*
+        version: link:../../packages/content-schema
+      '@domigo/engine':
+        specifier: workspace:*
+        version: link:../../packages/engine
+      '@domigo/task-ui':
+        specifier: workspace:*
+        version: link:../../packages/task-ui
       next:
         specifier: 16.2.7
         version: 16.2.7(@babel/core@7.29.7)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -45,6 +57,19 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  packages/content-loader:
+    dependencies:
+      '@domigo/content-schema':
+        specifier: workspace:*
+        version: link:../content-schema
+    devDependencies:
+      '@types/node':
+        specifier: ^24
+        version: 24.13.1
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   packages/content-pipeline:
     dependencies:
       '@domigo/content-schema':
@@ -75,6 +100,10 @@ importers:
         version: 5.9.3
 
   packages/engine:
+    dependencies:
+      '@domigo/content-schema':
+        specifier: workspace:*
+        version: link:../content-schema
     devDependencies:
       '@types/node':
         specifier: ^24
@@ -85,6 +114,25 @@ importers:
       vitest:
         specifier: ^3
         version: 3.2.6(@types/node@24.13.1)(jiti@2.7.0)(lightningcss@1.32.0)
+
+  packages/task-ui:
+    dependencies:
+      '@domigo/content-schema':
+        specifier: workspace:*
+        version: link:../content-schema
+      '@domigo/engine':
+        specifier: workspace:*
+        version: link:../engine
+      react:
+        specifier: ^19
+        version: 19.2.4
+    devDependencies:
+      '@types/react':
+        specifier: ^19
+        version: 19.2.17
+      typescript:
+        specifier: ^5
+        version: 5.9.3
 
 packages:
 

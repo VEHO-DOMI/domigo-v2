@@ -1,0 +1,107 @@
+/**
+ * @domigo/content-loader — read approved corpus items for the runtime.
+ *
+ * Server-only (uses node:fs). The runtime reads the committed JSON directly —
+ * there is no build/export step. This MIRRORS the pipeline's read path
+ * (`packages/content-pipeline/src/gen-items.ts` readUnitItems + applyItemFixes)
+ * so a unit reads identically in the trainer and in the content pipeline:
+ *   - parse vocab.json / grammar.json against the frozen file schemas, then
+ *   - apply the stage-8 review overlay (item-fixes.json: drops + field patches).
+ */
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { GrammarFile, VocabFile } from "@domigo/content-schema";
+import type { GrammarItem, VocabItem } from "@domigo/content-schema";
+
+/**
+ * Repo root. The pipeline derives it from the module path (paths.ts:22), but a
+ * bundler (Next/Turbopack) can rewrite `import.meta.url`, so we treat that as
+ * one candidate and otherwise walk up from cwd looking for the corpus marker.
+ */
+function findRepoRoot(): string {
+  const candidates: string[] = [];
+  try {
+    candidates.push(path.resolve(fileURLToPath(import.meta.url), "../../../.."));
+  } catch {
+    /* import.meta.url unavailable under some bundlers */
+  }
+  let dir = process.cwd();
+  for (let i = 0; i < 10; i++) {
+    candidates.push(dir);
+    const up = path.dirname(dir);
+    if (up === dir) break;
+    dir = up;
+  }
+  for (const c of candidates) {
+    if (fs.existsSync(path.join(c, "content", "corpus", "units"))) return c;
+  }
+  return candidates[0] ?? process.cwd();
+}
+
+export const REPO_ROOT = findRepoRoot();
+const CONTENT_DIR = path.join(REPO_ROOT, "content");
+const UNITS_DIR = path.join(CONTENT_DIR, "corpus", "units");
+const ITEM_FIXES_PATH = path.join(CONTENT_DIR, "overlays", "item-fixes.json");
+
+const UNIT_SLUG = /^g[1-4]-u\d{2}$/;
+
+function readJson<T>(file: string): T | null {
+  if (!fs.existsSync(file)) return null;
+  return JSON.parse(fs.readFileSync(file, "utf8")) as T;
+}
+
+/** Stage-8 review overlay shape (one entry per unit). */
+export interface ItemFixes {
+  [slug: string]: {
+    drop?: string[];
+    patch?: Record<string, Record<string, unknown>>;
+  };
+}
+
+function applyFixes<T extends { id: string }>(list: T[], fix: ItemFixes[string] | undefined): T[] {
+  if (fix === undefined) return list;
+  const drop = new Set(fix.drop ?? []);
+  const patch = fix.patch ?? {};
+  return list
+    .filter((it) => !drop.has(it.id))
+    .map((it) => {
+      const p = patch[it.id];
+      return p !== undefined ? ({ ...it, ...p } as T) : it;
+    });
+}
+
+export interface UnitContent {
+  slug: string;
+  vocab: VocabItem[];
+  grammar: GrammarItem[];
+}
+
+/** Load + schema-validate + overlay-apply one unit's approved items. */
+export function loadUnit(slug: string): UnitContent {
+  if (!UNIT_SLUG.test(slug)) throw new Error(`content-loader: bad unit slug "${slug}"`);
+  const dir = path.join(UNITS_DIR, slug);
+  const vraw = readJson<unknown>(path.join(dir, "vocab.json"));
+  const graw = readJson<unknown>(path.join(dir, "grammar.json"));
+  const vocab = vraw !== null ? VocabFile.parse(vraw).items : [];
+  const grammar = graw !== null ? GrammarFile.parse(graw).items : [];
+  const fix = (readJson<ItemFixes>(ITEM_FIXES_PATH) ?? {})[slug];
+  return { slug, vocab: applyFixes(vocab, fix), grammar: applyFixes(grammar, fix) };
+}
+
+interface StateLogFile {
+  transitions: Array<{ state: string; at: string }>;
+}
+
+/** Unit slugs whose latest state transition is `approved`, sorted. */
+export function listApprovedUnits(): string[] {
+  if (!fs.existsSync(UNITS_DIR)) return [];
+  return fs
+    .readdirSync(UNITS_DIR)
+    .filter((n) => UNIT_SLUG.test(n))
+    .filter((slug) => {
+      const st = readJson<StateLogFile>(path.join(UNITS_DIR, slug, "state.json"));
+      return st?.transitions.at(-1)?.state === "approved";
+    })
+    .sort();
+}
